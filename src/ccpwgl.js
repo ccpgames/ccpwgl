@@ -587,7 +587,7 @@
                 var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObject.locators[i].name);
                 if (match)
                 {
-                    var index = parseInt(match[1]);
+                    var index = parseInt(match[1], 10);
                     slots[index] = true;
                 }
             }

@@ -172,7 +172,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         capture = (/^(\-?\d+)/).exec(value);
         if (capture)
         {
-            parent[index] = parseInt(capture[1]);
+            parent[index] = parseInt(capture[1], 10);
             continue;
         }
 
