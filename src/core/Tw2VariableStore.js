@@ -1,6 +1,6 @@
 function Tw2VariableStore()
 {
-    this._variables = new Object();
+    this._variables = {};
 }
 
 Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type)

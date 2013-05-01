@@ -3,7 +3,7 @@ function Tw2Effect()
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-	this.parameters = new Object();
+	this.parameters = {};
 	this.passes = [];
 }
 
@@ -58,7 +58,7 @@ Tw2Effect.prototype.BindParameters = function ()
         for (var j = 0; j < this.effectRes.passes[i].stages.length; ++j)
         {
             var stageRes = this.effectRes.passes[i].stages[j];
-            var stage = new Object();
+            var stage = {};
             stage.constantBuffer = new Float32Array(stageRes.constantSize);
             stage.reroutedParameters = [];
             stage.parameters = [];
@@ -86,7 +86,7 @@ Tw2Effect.prototype.BindParameters = function ()
                     }
                     else
                     {
-                        var p = new Object();
+                        var p = {};
                         p.parameter = param;
                         p.constantBuffer = stage.constantBuffer;
                         p.offset = constant.offset;
@@ -97,7 +97,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 else if (name in variableStore._variables)
                 {
                     var param = variableStore._variables[name];
-                    var p = new Object();
+                    var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
                     p.offset = constant.offset;
@@ -108,7 +108,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 {
                     variableStore.RegisterType(name, constant.type);
                     var param = variableStore._variables[name];
-                    var p = new Object();
+                    var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
                     p.offset = constant.offset;
@@ -138,7 +138,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 {
                     continue;
                 }
-                var p = new Object();
+                var p = {};
                 p.parameter = param;
                 p.slot = stageRes.textures[k].registerIndex;
                 p.sampler = null;

@@ -1,6 +1,6 @@
 function Tw2MotherLode()
 {
-    this._loadedObjects = new Object();
+    this._loadedObjects = {};
 
     this.Find = function (path)
     {
@@ -23,7 +23,7 @@ function Tw2MotherLode()
     
     this.Clear = function ()
     {
-        this._loadedObjects = new Object();
+        this._loadedObjects = {};
     };
     
     this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
@@ -111,10 +111,10 @@ Inherit(Tw2LoadingObject, Tw2Resource);
 
 function Tw2ResMan()
 {
-    this.resourcePaths = new Object();
+    this.resourcePaths = {};
     this.resourcePaths['res'] = 'res/';
     
-    this._extensions = new Object();
+    this._extensions = {};
     this.motherLode = new Tw2MotherLode();
     this.maxPrepareTime = 0.05;
     this.prepareBudget = 0;
@@ -421,7 +421,7 @@ function Tw2ResMan()
         path = _NormalizePath(path);
 
         var obj = null;
-        obj = new Object();
+        obj = {};
 
         var res = this.motherLode.Find(path);
         if (res !== null)

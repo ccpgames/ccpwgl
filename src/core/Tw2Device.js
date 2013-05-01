@@ -260,8 +260,8 @@ function Tw2Device()
         this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
         this._quadDecl.RebuildHash();
 
-        this.alphaTestState = new Object();
-        this.alphaTestState.states = new Object();
+        this.alphaTestState = {};
+        this.alphaTestState.states = {};
         this.alphaTestState.states[this.RS_ALPHATESTENABLE] = 0;
         this.alphaTestState.states[this.RS_ALPHAREF] = -1;
         this.alphaTestState.states[this.RS_ALPHAFUNC] = this.CMP_GREATER;
@@ -269,8 +269,8 @@ function Tw2Device()
         this.alphaTestState.states[this.RS_CLIPPLANEENABLE] = 0;
         this.alphaTestState.dirty = false;
 
-        this.alphaBlendState = new Object();
-        this.alphaBlendState.states = new Object();
+        this.alphaBlendState = {};
+        this.alphaBlendState.states = {};
         this.alphaBlendState.states[this.RS_SRCBLEND] = this.BLEND_SRCALPHA;
         this.alphaBlendState.states[this.RS_DESTBLEND] = this.BLEND_INVSRCALPHA;
         this.alphaBlendState.states[this.RS_BLENDOP] = this.BLENDOP_ADD;
@@ -280,8 +280,8 @@ function Tw2Device()
         this.alphaBlendState.states[this.RS_DESTBLENDALPHA] = this.BLEND_INVSRCALPHA;
         this.alphaBlendState.dirty = false;
 
-        this.depthOffsetState = new Object();
-        this.depthOffsetState.states = new Object();
+        this.depthOffsetState = {};
+        this.depthOffsetState.states = {};
         this.depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS] = 0;
         this.depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
         this.depthOffsetState.dirty = false;

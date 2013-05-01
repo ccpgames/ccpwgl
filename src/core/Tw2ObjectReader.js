@@ -60,7 +60,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
             var object = null;
             if (type.value == 'dict')
             {
-                object = new Object();
+                object = {};
             }
             else
             {

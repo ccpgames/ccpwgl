@@ -2,7 +2,7 @@ function Tw2RawData()
 {
     this.nextOffset = 0;
     this.data = null;
-    this.elements = new Object();
+    this.elements = {};
 }
 
 Tw2RawData.prototype.Declare = function (name, size)

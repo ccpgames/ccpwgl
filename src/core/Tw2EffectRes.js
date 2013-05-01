@@ -2,7 +2,7 @@ function Tw2EffectRes()
 {
 	this._super.constructor.call(this);
     this.passes = [];
-    this.annotations = new Object();
+    this.annotations = {};
 }
 
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
@@ -10,7 +10,7 @@ Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 Tw2EffectRes.prototype.Prepare = function (data, xml)
 {
     this.passes = [];
-    this.annotations = new Object();
+    this.annotations = {};
 
     var reader = new Tw2BinaryReader(new Uint8Array(data));
     var stringTable = '';
@@ -83,13 +83,13 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     var passCount = reader.ReadUInt8();
     for (var passIx = 0; passIx < passCount; ++passIx)
     {
-        var pass = new Object();
+        var pass = {};
         pass.stages = new Array(new Object(), new Object());
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
         {
-            var stage = new Object();
+            var stage = {};
             stage.inputDefinition = new Tw2VertexDeclaration();
             stage.constants = [];
             stage.textures = [];
@@ -152,7 +152,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             var constantCount = reader.ReadUInt32();
             for (var constantIx = 0; constantIx < constantCount; ++constantIx)
             {
-                var constant = new Object();
+                var constant = {};
                 constant.name = ReadString();
                 constant.offset = reader.ReadUInt32() / 4;
                 constant.size = reader.ReadUInt32() / 4;
@@ -191,7 +191,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             for (var textureIx = 0; textureIx < textureCount; ++textureIx)
             {
                 var registerIndex = reader.ReadUInt8();
-                var texture = new Object();
+                var texture = {};
                 texture.registerIndex = registerIndex;
                 texture.name = ReadString();
                 texture.type = reader.ReadUInt8();
@@ -308,7 +308,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
 
         function CreateProgram(vertexShader, fragmentShader, pass, path)
         {
-            var program = new Object();
+            var program = {};
             program.program = device.gl.createProgram();
             device.gl.attachShader(program.program, vertexShader);
             device.gl.attachShader(program.program, fragmentShader);
@@ -402,7 +402,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         var annotationCount = reader.ReadUInt8();
         for (var annotationIx = 0; annotationIx < annotationCount; ++annotationIx)
         {
-            annotations[annotationIx] = new Object();
+            annotations[annotationIx] = {};
             annotations[annotationIx].name = ReadString();
             annotations[annotationIx].type = reader.ReadUInt8();
             switch (annotations[annotationIx].type)
