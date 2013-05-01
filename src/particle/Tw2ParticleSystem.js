@@ -437,7 +437,7 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
         var eye = device.viewInv;
         var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
         var count = this.aliveCount;
-        function sortItems(a, b)
+        var sortItems = function (a, b)
         {
             if (a >= count && b >= count)
             {
@@ -472,7 +472,7 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
             if (l0 < l1) return 1;
             if (l0 > l1) return -1;
             return 0;
-        }
+        };
         for (var i = 0; i < this.maxParticleCount; ++i)
         {
             this._sortedIndexes[i] = i;
