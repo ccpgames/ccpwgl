@@ -4,7 +4,7 @@ function Tw2Resource()
     this._isLoading = false;
     this._isGood = false;
     this._isPurged = false;
-	this._notifications = new Array();
+	this._notifications = [];
 	this.activeFrame = 0;
 	this.doNotPurge = 0;
 }

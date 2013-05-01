@@ -1,7 +1,7 @@
 function Tw2EffectRes()
 {
 	this._super.constructor.call(this);
-    this.passes = new Array();
+    this.passes = [];
     this.annotations = new Object();
 }
 
@@ -9,7 +9,7 @@ Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
 Tw2EffectRes.prototype.Prepare = function (data, xml)
 {
-    this.passes = new Array();
+    this.passes = [];
     this.annotations = new Object();
 
     var reader = new Tw2BinaryReader(new Uint8Array(data));
@@ -91,9 +91,9 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         {
             var stage = new Object();
             stage.inputDefinition = new Tw2VertexDeclaration();
-            stage.constants = new Array();
-            stage.textures = new Array();
-            stage.samplers = new Array();
+            stage.constants = [];
+            stage.textures = [];
+            stage.samplers = [];
             var stageType = reader.ReadUInt8();
             var inputCount = reader.ReadUInt8();
             for (var inputIx = 0; inputIx < inputCount; ++inputIx)
@@ -297,7 +297,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             pass.stages[stageType] = stage;
         }
 
-        pass.states = new Array();
+        pass.states = [];
         var stateCount = reader.ReadUInt8();
         for (var stateIx = 0; stateIx < stateCount; ++stateIx)
         {
@@ -326,12 +326,12 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             }
 
             device.gl.useProgram(program.program);
-            program.constantBufferHandles = new Array();
+            program.constantBufferHandles = [];
             for (var j = 0; j < 16; ++j)
             {
                 program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
             }
-            program.samplerHandles = new Array();
+            program.samplerHandles = [];
             for (var j = 0; j < 16; ++j)
             {
                 program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
@@ -361,7 +361,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
             program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
             device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
-            program.volumeSlices = new Array();
+            program.volumeSlices = [];
             for (var j = 0; j < pass.stages[1].samplers.length; ++j)
             {
                 if (pass.stages[1].samplers[j].isVolume)
@@ -398,7 +398,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     for (var paramIx = 0; paramIx < parameterCount; ++paramIx)
     {
         var name = ReadString();
-        var annotations = new Array();
+        var annotations = [];
         var annotationCount = reader.ReadUInt8();
         for (var annotationIx = 0; annotationIx < annotationCount; ++annotationIx)
         {

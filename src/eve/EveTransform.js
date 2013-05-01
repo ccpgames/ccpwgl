@@ -56,11 +56,11 @@ function EveTransform()
 	this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
 	this._perObjectData.perObjectFFEData.Create();
     
-    this.children = new Array();
+    this.children = [];
     this.mesh = null;
     
     this._mat4Cache = [mat4.create(), mat4.create()];
-    this._vec3Cache = new Array();
+    this._vec3Cache = [];
     for (var i = 0; i < 7; ++i)
     {
         this._vec3Cache[i] = vec3.create();

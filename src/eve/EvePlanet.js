@@ -7,7 +7,7 @@ function EvePlanet()
     this.heightMapResPath2 = '';
     this.heightMap = new Tw2RenderTarget();
     this.hightDirty = false;
-    this.lockedResources = new Array();
+    this.lockedResources = [];
 }
 
 
@@ -17,7 +17,7 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
     this.heightMapResPath1 = heightMap1;
     this.heightMapResPath2 = heightMap2;
 
-    this.highDetail.children = new Array();
+    this.highDetail.children = [];
     var self = this;
     resMan.GetObject(planetPath, function (obj) { self.highDetail.children.unshift(obj); self._MeshLoaded(); });
     if (atmospherePath)
@@ -50,7 +50,7 @@ EvePlanet.prototype.GetResources = function (obj, visited, result)
 
 EvePlanet.prototype._MeshLoaded = function ()
 {
-    this.lockedResources = new Array();
+    this.lockedResources = [];
     this.GetResources(this.highDetail, new Array(), this.lockedResources);
 
     var mainMesh = this.highDetail.children[0].mesh;

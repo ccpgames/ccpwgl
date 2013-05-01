@@ -23,7 +23,7 @@ function EveTurretSet()
     this.geometryResource = null;
     this.animation = new Tw2AnimationController();
     
-    this.turrets = new Array();
+    this.turrets = [];
     
     this.STATE_INACTIVE = 0;
     this.STATE_IDLE = 1;

@@ -7,7 +7,7 @@ function Tw2PostProcess()
     this.quadRT0 = new Tw2RenderTarget();
     this.quadRT1 = new Tw2RenderTarget();
 
-    this.steps = new Array();
+    this.steps = [];
     this.steps[0] = new Tw2Effect();
     this.steps[0] = { 
         'effect':  new Tw2Effect(), 

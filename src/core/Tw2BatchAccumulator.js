@@ -1,6 +1,6 @@
 function Tw2BatchAccumulator(sorting)
 {
-    this.batches = new Array();
+    this.batches = [];
     this.count = 0;
     this._sortMethod = sorting;
 }

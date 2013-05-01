@@ -3,7 +3,7 @@ function EveOccluder()
     this.name = '';
     this.display = true;
     this.value = 1;
-    this.sprites = new Array();
+    this.sprites = [];
     variableStore.RegisterType('OccluderValue', Tw2Vector4Parameter);
 
     if (!EveOccluder._collectEffect)

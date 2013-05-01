@@ -3,7 +3,7 @@ function Tw2TextureRes()
 	this._super.constructor.call(this);
     this.texture = null;
 	this.isCube = false;
-	this.images = new Array();
+	this.images = [];
 	this.width = 0;
 	this.height = 0;
 	this._facesLoaded = 0;
@@ -59,7 +59,7 @@ Tw2TextureRes.prototype.IsPowerOfTwo = function (x)
 Tw2TextureRes.prototype.DoCustomLoad = function (path)
 {
     this.LoadStarted();
-    this.images = new Array();
+    this.images = [];
     var self = this;
 
     path = resMan.BuildUrl(path);

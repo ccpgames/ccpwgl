@@ -2,18 +2,18 @@ function EveSpaceObject()
 {
 	this.name = '';
 	this.mesh = null;
-	this.spriteSets = new Array();
+	this.spriteSets = [];
 	this.boundingSphereCenter = vec3.create();
 	this.boundingSphereRadius = 0;
-	this.locators = new Array();
-	this.turretSets = new Array();
-	this.decals = new Array();
-	this.spotlightSets = new Array();
+	this.locators = [];
+	this.turretSets = [];
+	this.decals = [];
+	this.spotlightSets = [];
 	
 	this.transform = mat4.create();
 	mat4.identity(this.transform);
 	
-	this.children = new Array();
+	this.children = [];
 	
 	this._perObjectData = new Tw2PerObjectData();
 	this._perObjectData.perObjectVSData = new Tw2RawData();

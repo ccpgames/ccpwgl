@@ -4,15 +4,15 @@ function EveShip()
 
     this.boosterGain = 1;
     this.boosters = null;
-    this.turretSets = new Array();
+    this.turretSets = [];
 
-    this._turretSetsLocatorInfo = new Array();
+    this._turretSetsLocatorInfo = [];
 }
 
 function EveTurretSetLocatorInfo()
 {
     this.isJoint = false;
-    this.locatorTransforms = new Array();
+    this.locatorTransforms = [];
 }
 
 EveShip.prototype.GetBatches = function (mode, accumulator)
@@ -80,7 +80,7 @@ EveShip.prototype.RebuildBoosterSet = function ()
 
 EveShip.prototype.RebuildTurretPositions = function ()
 {
-    this._turretSetsLocatorInfo = new Array();
+    this._turretSetsLocatorInfo = [];
     for (var i = 0; i < this.turretSets.length; ++i)
     {
         var name = this.turretSets[i].locatorName;

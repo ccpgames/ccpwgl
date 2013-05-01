@@ -57,13 +57,13 @@ function Tw2GeometryMeshArea()
 function Tw2GeometryMeshBinding()
 {
     this.mesh = null;
-    this.bones = new Array();
+    this.bones = [];
 }
 
 function Tw2GeometryModel()
 {
     this.name = '';
-    this.meshBindings = new Array();
+    this.meshBindings = [];
     this.skeleton = null;
 }
 
@@ -85,7 +85,7 @@ Tw2GeometryModel.prototype.FindBoneByName = function (name)
 
 function Tw2GeometrySkeleton()
 {
-    this.bones = new Array();
+    this.bones = [];
 }
 
 function Tw2GeometryBone()
@@ -116,14 +116,14 @@ function Tw2GeometryAnimation()
 {
     this.name = '';
     this.duration = 0;
-    this.trackGroups = new Array();
+    this.trackGroups = [];
 }
 
 function Tw2GeometryTrackGroup()
 {
     this.name = '';
     this.model = null;
-    this.transformTracks = new Array();
+    this.transformTracks = [];
 }
 
 function Tw2GeometryTransformTrack()
@@ -146,7 +146,7 @@ function Tw2BlendShapeData()
 {
     this.name = '';
     this.declaration = new Tw2VertexDeclaration();
-    this.buffers = new Array();
+    this.buffers = [];
     this.indexes = null;
     this.weightProxy = null;
 }
@@ -155,7 +155,7 @@ function Tw2GeometryMesh()
 {
 	this.name = '';
     this.declaration = new Tw2VertexDeclaration();
-    this.areas = new Array();
+    this.areas = [];
     this.buffer = null;
     this.bufferData = null;
     this.indexes = null;
@@ -164,20 +164,20 @@ function Tw2GeometryMesh()
 	this.maxBounds = vec3.create();
 	this.boundsSpherePosition = vec3.create();
 	this.boundsSphereRadius = 0;
-	this.bones = new Array();
+	this.bones = [];
 }
 
 function Tw2GeometryRes()
 {
 	this._super.constructor.call(this);
-    this.meshes = new Array();
+    this.meshes = [];
 	this.minBounds = vec3.create();
 	this.maxBounds = vec3.create();
 	this.boundsSpherePosition = vec3.create();
 	this.boundsSphereRadius = 0;
 	
-	this.models = new Array();
-	this.animations = new Array();
+	this.models = [];
+	this.animations = [];
 
 	this.systemMirror = false;
 
@@ -460,7 +460,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
 
         var boneBindingCount = reader.ReadUInt8();
-        mesh.boneBindings = new Array();
+        mesh.boneBindings = [];
         for (var i = 0; i < boneBindingCount; ++i)
         {
             mesh.boneBindings[i] = reader.ReadString();
@@ -473,7 +473,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
         if (annotationSetCount)
         {
-            mesh.blendShapes = new Array();
+            mesh.blendShapes = [];
             for (var i = 0; i < annotationSetCount; ++i)
             {
                 mesh.blendShapes[i] = new Tw2BlendShapeData();
@@ -701,7 +701,7 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
 
         if (typeof (cb) != 'undefined')
         {
-            var drawElements = new Array();
+            var drawElements = [];
             for (var i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)
@@ -774,7 +774,7 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
 
         if (typeof (cb) != 'undefined')
         {
-            var drawElements = new Array();
+            var drawElements = [];
             for (var i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)

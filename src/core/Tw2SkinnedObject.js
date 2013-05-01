@@ -1,14 +1,14 @@
 function Tw2SkinnedObject()
 {
     this.name = '';
-    this.meshes = new Array();
+    this.meshes = [];
     this.animationResPath = '';
     this._animationRes = null;
     
     this.transform = mat4.create();
     mat4.identity(this.transform);
 
-    this._perObjectData = new Array();
+    this._perObjectData = [];
 
     
     this.animation = new Tw2AnimationController();

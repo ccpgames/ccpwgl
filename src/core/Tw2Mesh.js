@@ -28,13 +28,13 @@ function Tw2Mesh()
     this.geometryResPath = '';
     this.lowDetailGeometryResPath = '';
     this.geometryResource = null;
-    this.opaqueAreas = new Array();
-    this.transparentAreas = new Array();
-    this.transparentAreas = new Array();
-    this.additiveAreas = new Array();
-    this.pickableAreas = new Array();
-    this.decalAreas = new Array();
-    this.depthAreas = new Array();
+    this.opaqueAreas = [];
+    this.transparentAreas = [];
+    this.transparentAreas = [];
+    this.additiveAreas = [];
+    this.pickableAreas = [];
+    this.decalAreas = [];
+    this.depthAreas = [];
     this.debugIsHidden = false;
 }
 

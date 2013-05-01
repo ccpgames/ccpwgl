@@ -8,7 +8,7 @@ function Tw2TrackGroup()
 {
     this.trackGroupRes = null;
     this.model = null;
-    this.transformTracks = new Array();
+    this.transformTracks = [];
 }
 
 function Tw2Animation()
@@ -20,7 +20,7 @@ function Tw2Animation()
     this.isPlaying = false;
     this.callback = null;
 
-    this.trackGroups = new Array();
+    this.trackGroups = [];
 }
 
 Tw2Animation.prototype.IsFinished = function ()
@@ -39,7 +39,7 @@ function Tw2Bone()
 function Tw2Model()
 {
     this.modelRes = null;
-    this.bones = new Array();
+    this.bones = [];
 }
 
 
@@ -47,11 +47,11 @@ function Tw2Model()
 
 function Tw2AnimationController(geometryResource)
 {
-    this.geometryResources = new Array();
+    this.geometryResources = [];
 
-    this.models = new Array();
-    this.animations = new Array();
-    this.meshBindings = new Array();
+    this.models = [];
+    this.animations = [];
+    this.meshBindings = [];
     this.loaded = false;
     this.update = true;
     
@@ -63,16 +63,16 @@ function Tw2AnimationController(geometryResource)
 
 Tw2AnimationController.prototype.SetGeometryResource = function (geometryResource)
 {
-    this.models = new Array();
-    this.animations = new Array();
-    this.meshBindings = new Array();
+    this.models = [];
+    this.animations = [];
+    this.meshBindings = [];
 
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
         this.geometryResources[i].UnregisterNotification(this);
     }
     this.loaded = false;
-    this.geometryResources = new Array();
+    this.geometryResources = [];
     if (geometryResource)
     {
         this.geometryResources.push(geometryResource);
@@ -214,7 +214,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
         return;
     }
 
-    var newModels = new Array();
+    var newModels = [];
     if (resource.meshes.length)
     {
         for (var i = 0; i < resource.models.length; ++i)
@@ -252,7 +252,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
             var meshBindings = this._FindMeshBindings(resource);
             if (meshBindings == null)
             {
-                meshBindings = new Array();
+                meshBindings = [];
                 meshBindings.resource = resource;
                 this.meshBindings.push(meshBindings);
             }
@@ -265,7 +265,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
                     {
                         if (!model.bones[n].bindingArrays)
                         {
-                            model.bones[n].bindingArrays = new Array();
+                            model.bones[n].bindingArrays = [];
                         }
                         var arrayInfo = { 'array': meshBindings[meshIx], 'offset': k * 12};
                         model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = arrayInfo;

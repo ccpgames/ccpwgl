@@ -1,7 +1,7 @@
 function EveSpaceScene()
 {
-    this.lensflares = new Array();
-    this.objects = new Array();
+    this.lensflares = [];
+    this.objects = [];
     this.backgroundEffect = null;
     this.envMapResPath = '';
     this.envMap1ResPath = '';

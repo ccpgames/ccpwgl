@@ -13,8 +13,8 @@ function EveBoosterSet()
     this.alwaysOn = true;
     
     this._parentTransform = mat4.create();
-    this._wavePhase = new Array();
-    this._boosterTransforms = new Array();
+    this._wavePhase = [];
+    this._boosterTransforms = [];
     
     this._positions = device.gl.createBuffer();
     
@@ -44,7 +44,7 @@ EveBoosterSet.prototype.Initialize = function ()
 
 EveBoosterSet.prototype.Clear = function ()
 {
-    this._boosterTransforms = new Array();
+    this._boosterTransforms = [];
     this._wavePhase = mat4.create();
     if (this.glows)
     {

@@ -14,7 +14,7 @@ function EveSpotlightSet()
     this.display = true;
     this.coneEffect = null;
     this.glowEffect = null;
-    this.spotlightItems = new Array();
+    this.spotlightItems = [];
     
     this._coneVertexBuffer = null;
     this._spriteVertexBuffer = null;

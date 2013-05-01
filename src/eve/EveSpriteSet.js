@@ -1,6 +1,6 @@
 function EveSpriteSet()
 {
-    this.sprites = new Array();
+    this.sprites = [];
     this.effect = null;
     this._time = 0;
 
@@ -136,7 +136,7 @@ EveSpriteSet.prototype.Update = function (dt)
 
 EveSpriteSet.prototype.Clear = function ()
 {
-    this.sprites = new Array();
+    this.sprites = [];
 };
 
 EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)

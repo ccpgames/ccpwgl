@@ -149,7 +149,7 @@ function Tw2Device()
     this.enableAnisotropicFiltering = true;
     this.effectDir = "/effect.gles2/";
 
-    this._scheduled = new Array();
+    this._scheduled = [];
     this._quadBuffer = null;
     this._cameraQuadBuffer = null;
     this._currentRenderMode = null;

@@ -6,9 +6,9 @@ function EveLensflare()
     this.doOcclusionQueries = true;
     this.cameraFactor = 20;
     this.position = vec3.create();
-    this.flares = new Array();
-    this.occluders = new Array();
-    this.backgroundOccluders = new Array();
+    this.flares = [];
+    this.occluders = [];
+    this.backgroundOccluders = [];
     this.occlusionIntensity = 1;
     this.backgroundOcclusionIntensity = 1;
 

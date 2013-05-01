@@ -4,7 +4,7 @@ function Tw2Effect()
     this.effectFilePath = '';
     this.effectRes = null;
 	this.parameters = new Object();
-	this.passes = new Array();
+	this.passes = [];
 }
 
 Tw2Effect.prototype.Initialize = function ()
@@ -50,19 +50,19 @@ Tw2Effect.prototype.BindParameters = function ()
             }
         }
     }
-    this.passes = new Array();
+    this.passes = [];
     for (var i = 0; i < this.effectRes.passes.length; ++i)
     {
-        var pass = new Array();
-        pass.stages = new Array();
+        var pass = [];
+        pass.stages = [];
         for (var j = 0; j < this.effectRes.passes[i].stages.length; ++j)
         {
             var stageRes = this.effectRes.passes[i].stages[j];
             var stage = new Object();
             stage.constantBuffer = new Float32Array(stageRes.constantSize);
-            stage.reroutedParameters = new Array();
-            stage.parameters = new Array();
-            stage.textures = new Array();
+            stage.reroutedParameters = [];
+            stage.parameters = [];
+            stage.textures = [];
             stage.constantBuffer.set(stageRes.constantValues);
 
             for (var k = 0; k < stageRes.constants.length; ++k)

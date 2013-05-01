@@ -57,7 +57,7 @@ function Tw2LoadingObject()
     this.object = null;
 	this._redContents = null;
 	this._inPrepare = null;
-	this._objects = new Array();
+	this._objects = [];
 }
 
 Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
@@ -118,7 +118,7 @@ function Tw2ResMan()
     this.motherLode = new Tw2MotherLode();
     this.maxPrepareTime = 0.05;
     this.prepareBudget = 0;
-    this._prepareQueue = new Array();
+    this._prepareQueue = [];
     this.autoPurgeResources = true;
     this.activeFrame = 0;
     this._purgeTime = 0;
