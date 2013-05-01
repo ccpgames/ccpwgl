@@ -76,21 +76,22 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this._facesLoaded = 0;
         var base = path.substr(0, path.length - 5);
         var extensions = ['.px', '.nx', '.py', '.ny', '.pz', '.nz'];
+        var onCubeFaceImageLoaded = function (img)
+        {
+            resMan._pendingLoads--;
+            self._facesLoaded++;
+            if (self._facesLoaded >= 6)
+            {
+                self.LoadFinished(true);
+                resMan._prepareQueue.push([self, 'cube', null]);
+            }
+        };
         for (var i = 0; i < 6; ++i)
         {
             resMan._pendingLoads++;
             this.images[i] = new Image();
             this.images[i].crossOrigin = 'anonymous';
-            this.images[i].onload = function (img)
-            {
-                resMan._pendingLoads--;
-                self._facesLoaded++;
-                if (self._facesLoaded >= 6)
-                {
-                    self.LoadFinished(true);
-                    resMan._prepareQueue.push([self, 'cube', null]);
-                }
-            };
+            this.images[i].onload = onCubeFaceImageLoaded;
             this.images[i].src = base + mipExt + extensions[i] + '.png';
         }
     }
