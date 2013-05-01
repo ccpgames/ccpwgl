@@ -84,7 +84,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     for (var passIx = 0; passIx < passCount; ++passIx)
     {
         var pass = {};
-        pass.stages = new Array(new Object(), new Object());
+        pass.stages = [{}, {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)

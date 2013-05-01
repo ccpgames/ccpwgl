@@ -51,7 +51,7 @@ EvePlanet.prototype.GetResources = function (obj, visited, result)
 EvePlanet.prototype._MeshLoaded = function ()
 {
     this.lockedResources = [];
-    this.GetResources(this.highDetail, new Array(), this.lockedResources);
+    this.GetResources(this.highDetail, [], this.lockedResources);
 
     var mainMesh = this.highDetail.children[0].mesh;
     var originalEffect = null;
