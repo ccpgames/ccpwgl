@@ -109,7 +109,7 @@ Tw2Resource.prototype.UnregisterNotification = function (notification)
 
 function Inherit(derived, base)
 {
-    for (i in base.prototype)
+    for (var i in base.prototype)
     {
         if (!(i in derived.prototype))
         {

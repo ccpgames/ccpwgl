@@ -699,7 +699,7 @@
                     if (shipColorScheme && object.turretEffect && object.turretEffect.name != 'not_overridable')
                     {
                         var scheme = shipColorScheme;
-                        for (param in scheme.parameters)
+                        for (var param in scheme.parameters)
                         {
                             if (typeof (scheme.parameters[param].resourcePath) == 'undefined')
                             {

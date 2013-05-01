@@ -28,7 +28,7 @@ function Tw2MotherLode()
     
     this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
     {
-        for (path in this._loadedObjects)
+        for (var path in this._loadedObjects)
         {
             var obj = this._loadedObjects[path];
             if (!obj.doNotPurge)

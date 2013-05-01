@@ -14,7 +14,7 @@ Tw2RawData.prototype.Declare = function (name, size)
 Tw2RawData.prototype.Create = function ()
 {
     this.data = new Float32Array(this.nextOffset);
-    for (el in this.elements)
+    for (var el in this.elements)
     {
         this.elements[el].array = this.data.subarray(this.elements[el].offset, this.elements[el].offset + this.elements[el].size);
     }
