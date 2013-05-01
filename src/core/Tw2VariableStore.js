@@ -15,7 +15,7 @@ Tw2VariableStore.prototype.RegisterType = function (name, type)
 
 Tw2VariableStore.prototype.RegisterVariable = function (name, value)
 {
-    if (value.constructor == (new glMatrixArrayType).constructor)
+    if (value.constructor == (new glMatrixArrayType()).constructor)
     {
         if (value.length == 16)
         {

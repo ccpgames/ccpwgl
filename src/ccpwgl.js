@@ -966,7 +966,7 @@
         */
 		this.create = function ()
 		{
-			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene);
+			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
 		};
 
         /**
@@ -1244,7 +1244,7 @@
     */
     ccpwgl.loadScene = function (resPath, onload)
     {
-        scene = new Scene;
+        scene = new Scene();
         scene.load(resPath, onload);
         return scene;
     };
@@ -1262,7 +1262,7 @@
         {
             clearColor = backgroundColor;
         }
-        scene = new Scene;
+        scene = new Scene();
 		scene.create();
         return scene;
     };
