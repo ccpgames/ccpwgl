@@ -16,7 +16,7 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function (constantBuf
     {
         device.gl.uniform4fv(constantBufferHandles[5], this.perObjectFFEData.data);
     }
-}
+};
 
 function EveTransform()
 {
@@ -74,7 +74,7 @@ EveTransform.prototype.Initialize = function ()
     mat4.transpose(quat4.toMat4(this.rotation, this.rotationTransform));
     mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
     mat4.scale(this.localTransform, this.scaling);
-}
+};
 
 EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
@@ -97,7 +97,7 @@ EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData)
     {
         this.children[i].GetBatches(mode, accumulator, perObjectData);
     }
-}
+};
 
 EveTransform.prototype.Update = function (dt)
 {
@@ -113,9 +113,9 @@ EveTransform.prototype.Update = function (dt)
     {
         this.particleSystems[i].Update(dt);
     }
-}
+};
 
-mat4.multiply3x3 = function(a,b,c){c||(c=b);var d=b[0],e=b[1];b=b[2];c[0]=a[0]*d+a[4]*e+a[8]*b;c[1]=a[1]*d+a[5]*e+a[9]*b;c[2]=a[2]*d+a[6]*e+a[10]*b;return c}; 
+mat4.multiply3x3 = function(a,b,c){c||(c=b);var d=b[0],e=b[1];b=b[2];c[0]=a[0]*d+a[4]*e+a[8]*b;c[1]=a[1]*d+a[5]*e+a[9]*b;c[2]=a[2]*d+a[6]*e+a[10]*b;return c;}; 
 
 EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
 {
@@ -258,4 +258,4 @@ EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
     {
         this.children[i].UpdateViewDependentData(this.worldTransform);
     }
-}
+};

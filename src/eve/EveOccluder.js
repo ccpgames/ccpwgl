@@ -98,7 +98,7 @@ EveOccluder.prototype.UpdateValue = function (parentTransform, index)
     center[3] = y1 - y0;
 
     EveOccluder._collectEffect.parameters['OccluderPosition'].SetValue(center);
-}
+};
 
 EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
 {
@@ -124,4 +124,4 @@ EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
         device.gl.drawArrays(device.gl.TRIANGLES, 0, 255 * 6);
     }
 
-}
+};

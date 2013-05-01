@@ -40,7 +40,7 @@ function EveBoosterSet()
 EveBoosterSet.prototype.Initialize = function ()
 {
     this.rebuildPending = true;
-}
+};
 
 EveBoosterSet.prototype.Clear = function ()
 {
@@ -50,7 +50,7 @@ EveBoosterSet.prototype.Clear = function ()
     {
         this.glows.Clear();
     }
-}
+};
 
 EveBoosterSet.prototype.Add = function (localMatrix)
 {
@@ -71,7 +71,7 @@ EveBoosterSet.prototype.Add = function (localMatrix)
         vec3.subtract(pos, vec3.scale(dir, 3.01, spritePos), spritePos);
         this.glows.Add(spritePos, 0, 1, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor);
     }
-}
+};
 
 EveBoosterSet.prototype.Rebuild = function ()
 {
@@ -113,7 +113,7 @@ EveBoosterSet.prototype.Rebuild = function ()
     {
         this.glows.RebuildBuffers();
     }
-}
+};
 
 EveBoosterSet.prototype.Update = function (dt, parentMatrix)
 {
@@ -122,7 +122,7 @@ EveBoosterSet.prototype.Update = function (dt, parentMatrix)
         this.glows.Update(dt);
     }
     this._parentTransform = parentMatrix;
-}
+};
 
 function EveBoosterBatch()
 {
@@ -134,7 +134,7 @@ function EveBoosterBatch()
 EveBoosterBatch.prototype.Commit = function (overrideEffect)
 {
     this.boosters.Render(overrideEffect);
-}
+};
 
 EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
@@ -158,7 +158,7 @@ EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
     {
         this.glows.GetBatches(mode, accumulator, perObjectData);
     }
-}
+};
 
 EveBoosterSet.prototype.Render = function (overrideEffect)
 {
@@ -182,4 +182,4 @@ EveBoosterSet.prototype.Render = function (overrideEffect)
         device.gl.drawArrays(device.gl.TRIANGLES, 0, this._boosterTransforms.length * 8 * 3);
     }
     return true;
-}
+};

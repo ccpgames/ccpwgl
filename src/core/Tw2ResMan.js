@@ -9,22 +9,22 @@ function Tw2MotherLode()
             return this._loadedObjects[path];
         }
         return null;
-    }
+    };
 
     this.Add = function (path, obj)
     {
         this._loadedObjects[path] = obj;
-    }
+    };
     
     this.Remove = function (path)
     {
         delete this._loadedObjects[path];
-    }
+    };
     
     this.Clear = function ()
     {
         this._loadedObjects = new Object();
-    }
+    };
     
     this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
     {
@@ -48,7 +48,7 @@ function Tw2MotherLode()
                 }
             }
         }
-    }
+    };
 }
 
 function Tw2LoadingObject()
@@ -66,7 +66,7 @@ Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
     object._initialize = initialize;
 	this._objects.push(object);
 	return false;
-}
+};
 
 Tw2LoadingObject.prototype.Prepare = function (text, xml)
 {
@@ -105,7 +105,7 @@ Tw2LoadingObject.prototype.Prepare = function (text, xml)
     resMan.motherLode.Remove(this.path);
     console.info('Prepared ' + this.path);
     this.PrepareFinished(true);
-}
+};
 
 Inherit(Tw2LoadingObject, Tw2Resource);
 
@@ -132,12 +132,12 @@ function Tw2ResMan()
     this.IsLoading = function ()
     {
         return this._noLoadFrames < 2;
-    }
+    };
 
     this.RegisterExtension = function (extension, constructor)
     {
         this._extensions[extension] = constructor;
-    }
+    };
 
     this._CreateHttpRequest = function ()
     {
@@ -172,7 +172,7 @@ function Tw2ResMan()
             console.error('ResMan:',' could not create an XMLHTTP instance');
         }
         return httpRequest;
-    }
+    };
 
     function _NormalizePath(path)
     {
@@ -214,7 +214,7 @@ function Tw2ResMan()
             return path.substr(0, 64) + '...';
         }
         return path;
-    }
+    };
 
     this.PrepareLoop = function (dt)
     {
@@ -268,7 +268,7 @@ function Tw2ResMan()
         }
 
         return true;
-    }
+    };
 
     function _DoLoadResource(obj)
     {
@@ -330,7 +330,7 @@ function Tw2ResMan()
             return resPath;
         }
         return this.resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
-    }
+    };
     
     this._LoadResource = function (obj)
     {
@@ -360,7 +360,7 @@ function Tw2ResMan()
         {
             console.error('ResMan:', ' error sending resource HTTP request: ', e.toString());
         }
-    }
+    };
     
     this.ReloadResource = function (resource)
     {
@@ -373,7 +373,7 @@ function Tw2ResMan()
         }
         this._LoadResource(resource);
         return resource;
-    }
+    };
 
     this.GetResource = function (path)
     {
@@ -404,17 +404,17 @@ function Tw2ResMan()
         obj.path = path;
         this._LoadResource(obj);
         return obj;
-    }
+    };
 
     this.GetObject = function (path, callback)
     {
         this._GetObject(path, callback, true);
-    }
+    };
 
     this.GetObjectNoInitialize = function (path, callback)
     {
         this._GetObject(path, callback, false);
-    }
+    };
 
     this._GetObject = function (path, callback, initialize)
     {
@@ -452,12 +452,12 @@ function Tw2ResMan()
         {
             console.error('ResMan:', ' error sending object HTTP request: ', e.toString());
         }
-    }
+    };
     
     this.Clear = function ()
     {
         this.motherLode.Clear();
-    }
+    };
 }
 
 var resMan = new Tw2ResMan();

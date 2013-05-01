@@ -141,5 +141,5 @@ Tw2PostProcess.prototype.Render = function ()
         }
         device.RenderFullScreenQuad(step.effect);
     }
-}
+};
 

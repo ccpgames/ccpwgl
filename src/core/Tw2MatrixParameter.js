@@ -30,7 +30,7 @@ Tw2MatrixParameter.prototype.Bind = function (constantBuffer, offset, size)
     this.constantBuffer = constantBuffer;
     this.offset = offset;
     this.Apply(this.constantBuffer, this.offset, size);
-}
+};
 
 Tw2MatrixParameter.prototype.SetValue = function (value)
 {
@@ -39,9 +39,9 @@ Tw2MatrixParameter.prototype.SetValue = function (value)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
-}
+};
 
 Tw2MatrixParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
-}
+};

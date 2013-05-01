@@ -424,7 +424,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     }
 
     this.PrepareFinished(true);
-}
+};
 
 Tw2EffectRes.prototype.ApplyPass = function (pass)
 {
@@ -443,7 +443,7 @@ Tw2EffectRes.prototype.ApplyPass = function (pass)
         device.gl.useProgram(pass.shaderProgram.program);
         device.shadowHandles = null;
     }
-}
+};
 
 Inherit(Tw2EffectRes, Tw2Resource);
 

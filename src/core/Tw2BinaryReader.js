@@ -7,7 +7,7 @@ function Tw2BinaryReader(data)
 Tw2BinaryReader.prototype.ReadUInt8 = function ()
 {
     return this.data[this.cursor++];
-}
+};
 
 Tw2BinaryReader.prototype.ReadInt8 = function ()
 {
@@ -17,12 +17,12 @@ Tw2BinaryReader.prototype.ReadInt8 = function ()
         val = (val - 0xff) - 1;
     }
     return val;
-}
+};
 
 Tw2BinaryReader.prototype.ReadUInt16 = function ()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8);
-}
+};
 
 Tw2BinaryReader.prototype.ReadInt16 = function ()
 {
@@ -32,12 +32,12 @@ Tw2BinaryReader.prototype.ReadInt16 = function ()
         val = (val - 0xffff) - 1;
     }
     return val;
-}
+};
 
 Tw2BinaryReader.prototype.ReadUInt32 = function ()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8) + (this.data[this.cursor++] << 16) + ((this.data[this.cursor++] << 24) >>> 0);
-}
+};
 
 Tw2BinaryReader.prototype.ReadInt32 = function ()
 {
@@ -47,7 +47,7 @@ Tw2BinaryReader.prototype.ReadInt32 = function ()
         val = (val - 0xffffffff) - 1;
     }
     return val;
-}
+};
 
 Tw2BinaryReader.prototype.ReadFloat16 = function ()
 {
@@ -59,7 +59,7 @@ Tw2BinaryReader.prototype.ReadFloat16 = function ()
     if (sig == 0 && exp == -15)
         return 0.0;
 	return sign * (1 + sig * Math.pow(2, -10)) * Math.pow(2, exp);
-}
+};
 
 Tw2BinaryReader.prototype.ReadFloat32 = function ()
 {
@@ -73,7 +73,7 @@ Tw2BinaryReader.prototype.ReadFloat32 = function ()
     if (sig == 0 && exp == -127)
         return 0.0;
     return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
-}
+};
 
 Tw2BinaryReader.prototype.ReadString = function ()
 {
@@ -84,4 +84,4 @@ Tw2BinaryReader.prototype.ReadString = function ()
         str += String.fromCharCode(this.data[this.cursor++]);
     }
     return str;
-}
+};

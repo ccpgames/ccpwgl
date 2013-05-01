@@ -49,12 +49,12 @@ Tw2TextureRes.prototype.Prepare = function (text, xml)
         this.PrepareFinished(true);
     }
     delete this.images;
-}
+};
 
 Tw2TextureRes.prototype.IsPowerOfTwo = function (x)
 {
     return (x & (x - 1)) == 0;
-}
+};
 
 Tw2TextureRes.prototype.DoCustomLoad = function (path)
 {
@@ -90,7 +90,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
                     self.LoadFinished(true);
                     resMan._prepareQueue.push([self, 'cube', null]);
                 }
-            }
+            };
             this.images[i].src = base + mipExt + extensions[i] + '.png';
         }
     }
@@ -105,7 +105,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
             resMan._pendingLoads--;
             self.LoadFinished(true);
             resMan._prepareQueue.push([self, '', null]);
-        }
+        };
         if (device.mipLevelSkipCount > 0)
         {
             var index = path.lastIndexOf('.');
@@ -117,7 +117,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this.images[0].src = path;
     }
     return true;
-}
+};
 
 Tw2TextureRes.prototype.Unload = function ()
 {
@@ -130,14 +130,14 @@ Tw2TextureRes.prototype.Unload = function ()
     this._isPurged = true;
     this._isGood = false;
     return true;
-}
+};
 
 Tw2TextureRes.prototype.Attach = function (texture)
 {
     this.texture = texture;
     this.LoadFinished(true);
     this.PrepareFinished(true);
-}
+};
 
 Tw2TextureRes.prototype.Bind = function (sampler, slices)
 {
@@ -160,7 +160,7 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices)
         sampler.Apply(this.hasMipMaps);
         this._currentSampler = sampler.hash;
     }
-}
+};
 
 Inherit(Tw2TextureRes, Tw2Resource);
 

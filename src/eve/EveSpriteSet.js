@@ -1,27 +1,27 @@
 function EveSpriteSet()
 {
-	this.sprites = new Array();
-	this.effect = null;
-	this._time = 0;
+    this.sprites = new Array();
+    this.effect = null;
+    this._time = 0;
 
-	this._vertexBuffer = null;
-	this._indexBuffer = null;
-	this._decl = new Tw2VertexDeclaration();
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 0));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 4));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 16));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 28));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 32));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 36));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 40));
-	this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 44));
-	this._decl.RebuildHash();
+    this._vertexBuffer = null;
+    this._indexBuffer = null;
+    this._decl = new Tw2VertexDeclaration();
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 0));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 4));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 16));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 28));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 32));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 36));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 40));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 44));
+    this._decl.RebuildHash();
 }
 
 EveSpriteSet.prototype.Initialize = function ()
 {
     this.RebuildBuffers();
-}
+};
 
 EveSpriteSet.prototype.RebuildBuffers = function ()
 {
@@ -72,72 +72,72 @@ EveSpriteSet.prototype.RebuildBuffers = function ()
     device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, null);
     this._indexBuffer.count = this.sprites.length * 6;
-}
+};
 
 function EveSpriteSetBatch()
 {
-	this._super.constructor.call(this);
-	this.spriteSet = null;
+    this._super.constructor.call(this);
+    this.spriteSet = null;
 }
 
 EveSpriteSetBatch.prototype.Commit = function (overrideEffect)
 {
     this.spriteSet.Render(overrideEffect);
-}
+};
 
 Inherit(EveSpriteSetBatch, Tw2RenderBatch);
 
 
 EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
-	if (mode == device.RM_ADDITIVE)
-	{
-		var batch = new EveSpriteSetBatch();
-		batch.renderMode = device.RM_ADDITIVE;
-		batch.spriteSet = this;
-		batch.perObjectData = perObjectData;
-		accumulator.Commit(batch);
-	}
-}
+    if (mode == device.RM_ADDITIVE)
+    {
+        var batch = new EveSpriteSetBatch();
+        batch.renderMode = device.RM_ADDITIVE;
+        batch.spriteSet = this;
+        batch.perObjectData = perObjectData;
+        accumulator.Commit(batch);
+    }
+};
 
 EveSpriteSet.prototype.Render = function (overrideEffect)
 {
     var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
-	{
-	    return;
-	}
-	var effectRes = effect.GetEffectRes();
-	if (!effectRes.IsGood())
-	{
-	    return;
-	}
-	device.SetStandardStates(device.RM_ADDITIVE);
+    {
+        return;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes.IsGood())
+    {
+        return;
+    }
+    device.SetStandardStates(device.RM_ADDITIVE);
 
-	device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
-	device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+    device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
+    device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
-	for (var pass = 0; pass < effect.GetPassCount(); ++pass)
-	{
-	    effect.ApplyPass(pass);
-	    if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 48))
-	    {
+    for (var pass = 0; pass < effect.GetPassCount(); ++pass)
+    {
+        effect.ApplyPass(pass);
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 48))
+        {
             return;
-	    }
+        }
         device.ApplyShadowState();
-	    device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
-	}
-}
+        device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
+    }
+};
 
 EveSpriteSet.prototype.Update = function (dt)
 {
     this._time += dt;
-}
+};
 
 EveSpriteSet.prototype.Clear = function ()
 {
     this.sprites = new Array();
-}
+};
 
 EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
@@ -150,16 +150,16 @@ EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, max
     item.falloff = falloff;
     item.color = color;
     this.sprites[this.sprites.length] = item;
-}
+};
 
 function EveSpriteSetItem()
 {
     this.name = '';
-	this.position = vec3.create([0, 0, 0]);
-	this.blinkRate = 0;
-	this.blinkPhase = 0;
-	this.minScale = 1;
-	this.maxScale = 1;
-	this.falloff = 0;
-	this.color = vec3.create([0, 0, 0]);
+    this.position = vec3.create([0, 0, 0]);
+    this.blinkRate = 0;
+    this.blinkPhase = 0;
+    this.minScale = 1;
+    this.maxScale = 1;
+    this.falloff = 0;
+    this.color = vec3.create([0, 0, 0]);
 }

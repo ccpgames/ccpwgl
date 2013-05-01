@@ -25,7 +25,7 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
         resMan.GetObject(atmospherePath, function (obj) { self.highDetail.children.push(obj); });
     }
     this.hightDirty = true;
-}
+};
 
 EvePlanet.prototype.GetResources = function (obj, visited, result)
 {
@@ -46,7 +46,7 @@ EvePlanet.prototype.GetResources = function (obj, visited, result)
             this.GetResources(obj[prop], visited, result);
         }
     }
-}
+};
 
 EvePlanet.prototype._MeshLoaded = function ()
 {
@@ -135,7 +135,7 @@ EvePlanet.prototype._MeshLoaded = function ()
             this.lockedResources[i].Reload();
         }
     }
-}
+};
 
 EvePlanet.prototype.GetBatches = function (mode, accumulator)
 {
@@ -175,14 +175,14 @@ EvePlanet.prototype.GetBatches = function (mode, accumulator)
     //        device.RenderTexture(this.heightMap.texture);
     //        device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
     //    }
-}
+};
 
 EvePlanet.prototype.Update = function (dt)
 {
     this.highDetail.Update(dt);
-}
+};
 
 EvePlanet.prototype.UpdateViewDependentData = function (parentTransform)
 {
     this.highDetail.UpdateViewDependentData(parentTransform);
-}
+};

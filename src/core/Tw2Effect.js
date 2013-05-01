@@ -18,12 +18,12 @@ Tw2Effect.prototype.Initialize = function ()
         this.effectRes = resMan.GetResource(path);
         this.effectRes.RegisterNotification(this);
     }
-}
+};
 
 Tw2Effect.prototype.GetEffectRes = function ()
 {
     return this.effectRes;
-}
+};
 
 Tw2Effect.prototype.RebuildCachedData = function (resource)
 {
@@ -31,7 +31,7 @@ Tw2Effect.prototype.RebuildCachedData = function (resource)
 	{
 		this.BindParameters();
 	}
-}
+};
 
 Tw2Effect.prototype.BindParameters = function ()
 {
@@ -165,7 +165,7 @@ Tw2Effect.prototype.BindParameters = function ()
         device.effectObserver.OnEffectChanged(this);
     }
     return true;
-}
+};
 
 Tw2Effect.prototype.ApplyPass = function (pass)
 {
@@ -217,7 +217,7 @@ Tw2Effect.prototype.ApplyPass = function (pass)
     {
         d.perObjectData.SetPerObjectDataToDevice(program.constantBufferHandles);
     }
-}
+};
 
 Tw2Effect.prototype.GetPassCount = function ()
 {
@@ -226,7 +226,7 @@ Tw2Effect.prototype.GetPassCount = function ()
 		return 0;
 	}
 	return this.passes.length;
-}
+};
 
 Tw2Effect.prototype.GetPassInput = function (pass)
 {
@@ -242,7 +242,7 @@ Tw2Effect.prototype.GetPassInput = function (pass)
 	{
         return this.effectRes.passes[pass].shaderProgram.input;
     }
-}
+};
 
 
 Tw2Effect.prototype.Render = function (cb)
@@ -253,4 +253,4 @@ Tw2Effect.prototype.Render = function (cb)
         this.ApplyPass(i);
         cb(this, i);
     }
-}
+};

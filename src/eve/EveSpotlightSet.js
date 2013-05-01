@@ -33,7 +33,7 @@ function EveSpotlightSet()
 EveSpotlightSet.prototype.Initialize = function()
 {
     this.Rebuild();
-}
+};
 
 
 EveSpotlightSet.prototype.Rebuild = function()
@@ -44,8 +44,8 @@ EveSpotlightSet.prototype.Rebuild = function()
         return;
     }
     var vertCount = 4;
-	var coneQuadCount = 4;
-	var coneVertexCount = itemCount * coneQuadCount * vertCount;
+    var coneQuadCount = 4;
+    var coneVertexCount = itemCount * coneQuadCount * vertCount;
 
     var vertexSize = 20;
     var array = new Float32Array(coneVertexCount * vertexSize);
@@ -94,8 +94,8 @@ EveSpotlightSet.prototype.Rebuild = function()
     device.gl.bufferData(device.gl.ARRAY_BUFFER, array, device.gl.STATIC_DRAW);
     this._coneVertexBuffer.count = itemCount * coneQuadCount * 6;
 
-	var spriteQuadCount = 2;
-	var spriteVertexCount =  itemCount * spriteQuadCount * vertCount;
+    var spriteQuadCount = 2;
+    var spriteVertexCount =  itemCount * spriteQuadCount * vertCount;
     array = new Float32Array(spriteVertexCount * vertexSize);
     
     var indexes = [1, 0, 2, 3];
@@ -172,73 +172,73 @@ EveSpotlightSet.prototype.Rebuild = function()
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
     device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, null);
-}
+};
 
 function EveSpotlightSetBatch()
 {
-	this._super.constructor.call(this);
-	this.spotlightSet = null;
+    this._super.constructor.call(this);
+    this.spotlightSet = null;
 }
 
 EveSpotlightSetBatch.prototype.Commit = function (overrideEffect)
 {
     this.spotlightSet.RenderCones(overrideEffect);
     this.spotlightSet.RenderGlow(overrideEffect);
-}
+};
 
 Inherit(EveSpotlightSetBatch, Tw2RenderBatch);
 
 
 EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
-	if (this.display && mode == device.RM_ADDITIVE)
-	{
-		var batch = new EveSpotlightSetBatch();
-		batch.renderMode = device.RM_ADDITIVE;
-		batch.spotlightSet = this;
-		batch.perObjectData = perObjectData;
-		accumulator.Commit(batch);
-	}
-}
+    if (this.display && mode == device.RM_ADDITIVE)
+    {
+        var batch = new EveSpotlightSetBatch();
+        batch.renderMode = device.RM_ADDITIVE;
+        batch.spotlightSet = this;
+        batch.perObjectData = perObjectData;
+        accumulator.Commit(batch);
+    }
+};
 
 EveSpotlightSet.prototype.RenderCones = function (overrideEffect)
 {
     var effect = typeof (overrideEffect) == 'undefined' ? this.coneEffect : overrideEffect;
     this._Render(effect, this._coneVertexBuffer);
-}
+};
 
 EveSpotlightSet.prototype.RenderGlow = function (overrideEffect)
 {
     var effect = typeof (overrideEffect) == 'undefined' ? this.glowEffect : overrideEffect;
     this._Render(effect, this._spriteVertexBuffer);
-}
+};
 
 EveSpotlightSet.prototype._Render = function (effect, buffer)
 {
     if (!effect || !buffer || !this._indexBuffer)
-	{
-	    return;
-	}
-	var effectRes = effect.GetEffectRes();
-	if (!effectRes.IsGood())
-	{
-	    return;
-	}
+    {
+        return;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes.IsGood())
+    {
+        return;
+    }
 
-	device.SetStandardStates(device.RM_ADDITIVE);
+    device.SetStandardStates(device.RM_ADDITIVE);
 
-	device.gl.bindBuffer(device.gl.ARRAY_BUFFER, buffer);
-	var stride = 20 * 4;
-	device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+    device.gl.bindBuffer(device.gl.ARRAY_BUFFER, buffer);
+    var stride = 20 * 4;
+    device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
-	for (var pass = 0; pass < effect.GetPassCount(); ++pass)
-	{
-	    effect.ApplyPass(pass);
-	    if (!this._decl.SetDeclaration(effect.GetPassInput(pass), stride))
-	    {
+    for (var pass = 0; pass < effect.GetPassCount(); ++pass)
+    {
+        effect.ApplyPass(pass);
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), stride))
+        {
             return;
-	    }
-	    device.ApplyShadowState();
-	    device.gl.drawElements(device.gl.TRIANGLES, buffer.count, device.gl.UNSIGNED_SHORT, 0);
-	}
-}
+        }
+        device.ApplyShadowState();
+        device.gl.drawElements(device.gl.TRIANGLES, buffer.count, device.gl.UNSIGNED_SHORT, 0);
+    }
+};

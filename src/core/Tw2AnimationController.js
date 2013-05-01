@@ -26,7 +26,7 @@ function Tw2Animation()
 Tw2Animation.prototype.IsFinished = function ()
 {
     return !this.cycle && this.time >= this.duration;
-}
+};
 
 function Tw2Bone()
 {
@@ -78,7 +78,7 @@ Tw2AnimationController.prototype.SetGeometryResource = function (geometryResourc
         this.geometryResources.push(geometryResource);
         geometryResource.RegisterNotification(this);
     }
-}
+};
 
 Tw2AnimationController.prototype.AddGeometryResource = function (geometryResource)
 {
@@ -91,7 +91,7 @@ Tw2AnimationController.prototype.AddGeometryResource = function (geometryResourc
     }
     this.geometryResources.push(geometryResource);
     geometryResource.RegisterNotification(this);
-}
+};
 
 Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
 {
@@ -159,7 +159,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype._AddModel = function (modelRes)
 {
@@ -184,7 +184,7 @@ Tw2AnimationController.prototype._AddModel = function (modelRes)
     }
     this.models.push(model);
     return model;
-}
+};
 
 Tw2AnimationController.prototype._FindMeshBindings = function (resource)
 {
@@ -196,7 +196,7 @@ Tw2AnimationController.prototype._FindMeshBindings = function (resource)
         }
     }
     return null;
-}
+};
 
 Tw2AnimationController.prototype.RebuildCachedData = function (resource)
 {
@@ -292,7 +292,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
         }
         this.pendingCommands = null;
     }
-}
+};
 
 Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback)
 {
@@ -321,7 +321,7 @@ Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.StopAnimation = function (name)
 {
@@ -332,7 +332,7 @@ Tw2AnimationController.prototype.StopAnimation = function (name)
             this.animations[i].isPlaying = false;
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.StopAllAnimations = function ()
 {
@@ -340,7 +340,7 @@ Tw2AnimationController.prototype.StopAllAnimations = function ()
     {
         this.animations[i].isPlaying = false;
     }
-}
+};
 
 Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
 {
@@ -376,7 +376,7 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.Update = function (dt)
 {
@@ -589,7 +589,7 @@ Tw2AnimationController.prototype.Update = function (dt)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
 {
@@ -609,7 +609,7 @@ Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometryResource)
 {
@@ -628,7 +628,7 @@ Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometry
         return meshBindings[meshIndex];
     }
     return new Float32Array();
-}
+};
 
 Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometryResource)
 {
@@ -656,4 +656,4 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
         }
     }
     return null;
-}
+};

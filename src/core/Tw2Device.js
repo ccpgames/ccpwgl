@@ -14,15 +14,15 @@ window.requestAnimFrame = (function() {
 
 function Tw2Device()
 {
-	this.RM_ANY = -1;
-	this.RM_OPAQUE = 0;
-	this.RM_DECAL = 1;
-	this.RM_TRANSPARENT = 2;
-	this.RM_ADDITIVE = 3;
-	this.RM_DEPTH = 4;
-	this.RM_FULLSCREEN = 5;
-	
-	
+    this.RM_ANY = -1;
+    this.RM_OPAQUE = 0;
+    this.RM_DECAL = 1;
+    this.RM_TRANSPARENT = 2;
+    this.RM_ADDITIVE = 3;
+    this.RM_DEPTH = 4;
+    this.RM_FULLSCREEN = 5;
+    
+    
     this.RS_ZENABLE                   = 7;    /* D3DZBUFFERTYPE (or TRUE/FALSE for legacy) */
     this.RS_FILLMODE                  = 8;    /* D3DFILLMODE */
     this.RS_SHADEMODE                 = 9;    /* D3DSHADEMODE */
@@ -111,20 +111,20 @@ function Tw2Device()
     this.RS_SRCBLENDALPHA             = 207;  /* SRC blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
     this.RS_DESTBLENDALPHA            = 208;  /* DST blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
     this.RS_BLENDOPALPHA              = 209;  /* Blending operation for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
-	
-	this.CULL_NONE                    = 1;
-	this.CULL_CW                      = 2;
-	this.CULL_CCW                     = 3;
+    
+    this.CULL_NONE                    = 1;
+    this.CULL_CW                      = 2;
+    this.CULL_CCW                     = 3;
 
-	this.CMP_NEVER                    = 1;
-	this.CMP_LESS                     = 2;
-	this.CMP_EQUAL                    = 3;
-	this.CMP_LEQUAL                   = 4;
-	this.CMP_GREATER                  = 5;
-	this.CMP_NOTEQUAL                 = 6;
-	this.CMP_GREATEREQUAL             = 7;
-	this.CMP_ALWAYS                   = 8;
-	
+    this.CMP_NEVER                    = 1;
+    this.CMP_LESS                     = 2;
+    this.CMP_EQUAL                    = 3;
+    this.CMP_LEQUAL                   = 4;
+    this.CMP_GREATER                  = 5;
+    this.CMP_NOTEQUAL                 = 6;
+    this.CMP_GREATEREQUAL             = 7;
+    this.CMP_ALWAYS                   = 8;
+    
     this.BLEND_ZERO                   = 1;
     this.BLEND_ONE                    = 2;
     this.BLEND_SRCCOLOR               = 3;
@@ -150,178 +150,178 @@ function Tw2Device()
     this.effectDir = "/effect.gles2/";
 
     this._scheduled = new Array();
-	this._quadBuffer = null;
-	this._cameraQuadBuffer = null;
-	this._currentRenderMode = null;
-	this._whiteTexture = null;
-	this._whiteCube = null;
-	
-	this.world = mat4.create();
-	mat4.identity(this.world);
-	this.worldInverse = mat4.create();
-	mat4.identity(this.worldInverse);
-	this.view = mat4.create();
-	mat4.identity(this.view);
-	this.viewInv = mat4.create();
-	mat4.identity(this.viewInv);
-	this.projection = mat4.create();
-	mat4.identity(this.projection);
-	this.eyePosition = vec3.create();
-	
-	this.perObjectData = null;
-	
-	variableStore.RegisterVariable('WorldMat', this.world);
-	variableStore.RegisterVariable('ViewMat', this.view);
-	variableStore.RegisterVariable('ProjectionMat', this.projection);
-	variableStore.RegisterType('ViewProjectionMat', Tw2MatrixParameter);
-	variableStore.RegisterType('ViewportSize', Tw2Vector4Parameter);
-	variableStore.RegisterType('Time', Tw2Vector4Parameter);
-	
-	this.frameCounter = 0;
-	this.startTime = new Date();
+    this._quadBuffer = null;
+    this._cameraQuadBuffer = null;
+    this._currentRenderMode = null;
+    this._whiteTexture = null;
+    this._whiteCube = null;
+    
+    this.world = mat4.create();
+    mat4.identity(this.world);
+    this.worldInverse = mat4.create();
+    mat4.identity(this.worldInverse);
+    this.view = mat4.create();
+    mat4.identity(this.view);
+    this.viewInv = mat4.create();
+    mat4.identity(this.viewInv);
+    this.projection = mat4.create();
+    mat4.identity(this.projection);
+    this.eyePosition = vec3.create();
+    
+    this.perObjectData = null;
+    
+    variableStore.RegisterVariable('WorldMat', this.world);
+    variableStore.RegisterVariable('ViewMat', this.view);
+    variableStore.RegisterVariable('ProjectionMat', this.projection);
+    variableStore.RegisterType('ViewProjectionMat', Tw2MatrixParameter);
+    variableStore.RegisterType('ViewportSize', Tw2Vector4Parameter);
+    variableStore.RegisterType('Time', Tw2Vector4Parameter);
+    
+    this.frameCounter = 0;
+    this.startTime = new Date();
 
-	this.CreateDevice = function (canvas, params)
-	{
-	    this.gl = null;
-	    try
-	    {
-	        this.gl = canvas.getContext("webgl", params) || canvas.getContext("experimental-webgl", params);
-	    }
-	    catch (e)
-	    {
-	    }
-	    if (!this.gl)
-	    {
-	        console.error("Could not initialise WebGL");
-	        return false;
-	    }
-	    else
-	    {
-	        if (this.debugMode)
-	        {
-	            this.gl = WebGLDebugUtils.makeDebugContext(this.gl);
-	        }
-	    }
+    this.CreateDevice = function (canvas, params)
+    {
+        this.gl = null;
+        try
+        {
+            this.gl = canvas.getContext("webgl", params) || canvas.getContext("experimental-webgl", params);
+        }
+        catch (e)
+        {
+        }
+        if (!this.gl)
+        {
+            console.error("Could not initialise WebGL");
+            return false;
+        }
+        else
+        {
+            if (this.debugMode)
+            {
+                this.gl = WebGLDebugUtils.makeDebugContext(this.gl);
+            }
+        }
 
-	    this.gl.getExtension("OES_standard_derivatives");
+        this.gl.getExtension("OES_standard_derivatives");
 
-	    this.alphaBlendBackBuffer = !params || typeof (params.alpha) == 'undefined' || params.alpha;
-	    this.antialiasing = this.gl.getParameter(this.gl.SAMPLES) > 1;
+        this.alphaBlendBackBuffer = !params || typeof (params.alpha) == 'undefined' || params.alpha;
+        this.antialiasing = this.gl.getParameter(this.gl.SAMPLES) > 1;
 
-	    this.anisotropicFilter = this.gl.getExtension('EXT_texture_filter_anisotropic') ||
+        this.anisotropicFilter = this.gl.getExtension('EXT_texture_filter_anisotropic') ||
             this.gl.getExtension('MOZ_EXT_texture_filter_anisotropic') ||
             this.gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic');
-	    if (this.anisotropicFilter)
-	    {
-	        this.anisotropicFilter.maxAnisotropy = this.gl.getParameter(this.anisotropicFilter.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
-	    }
+        if (this.anisotropicFilter)
+        {
+            this.anisotropicFilter.maxAnisotropy = this.gl.getParameter(this.anisotropicFilter.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
+        }
 
-	    this.shaderBinary = this.gl.getExtension("CCP_shader_binary");
-	    this.useBinaryShaders = false;
-	    this.effectDir = "/effect.gles2/";
-	    if (this.shaderBinary)
-	    {
-	        var renderer = this.gl.getParameter(this.gl.RENDERER);
-	        var maliVer = renderer.match(/Mali-(\w+).*/);
-	        if (maliVer)
-	        {
-	            this.effectDir = "/effect.gles2.mali" + maliVer[1] + "/";
-	            this.useBinaryShaders = true;
-	        }
-	    }
+        this.shaderBinary = this.gl.getExtension("CCP_shader_binary");
+        this.useBinaryShaders = false;
+        this.effectDir = "/effect.gles2/";
+        if (this.shaderBinary)
+        {
+            var renderer = this.gl.getParameter(this.gl.RENDERER);
+            var maliVer = renderer.match(/Mali-(\w+).*/);
+            if (maliVer)
+            {
+                this.effectDir = "/effect.gles2.mali" + maliVer[1] + "/";
+                this.useBinaryShaders = true;
+            }
+        }
 
-	    canvas.width = canvas.clientWidth;
-	    canvas.height = canvas.clientHeight;
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
 
-	    this.viewportWidth = canvas.clientWidth;
-	    this.viewportHeight = canvas.clientHeight;
-	    this.canvas = canvas;
+        this.viewportWidth = canvas.clientWidth;
+        this.viewportHeight = canvas.clientHeight;
+        this.canvas = canvas;
 
-	    var self = this;
-
-
-	    this._quadBuffer = this.gl.createBuffer();
-	    this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
-
-	    var vertices = [
-			1.0, 1.0, 0.0, 1.0, 1.0, 1.0,
-			-1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
-			1.0, -1.0, 0.0, 1.0, 1.0, 0.0,
-			-1.0, -1.0, 0.0, 1.0, 0.0, 0.0
-		];
-
-	    this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertices), this.gl.STATIC_DRAW);
-
-	    this._cameraQuadBuffer = this.gl.createBuffer();
+        var self = this;
 
 
-	    this._quadDecl = new Tw2VertexDeclaration();
-	    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, this.gl.FLOAT, 4, 0));
-	    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
-	    this._quadDecl.RebuildHash();
+        this._quadBuffer = this.gl.createBuffer();
+        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
 
-	    this.alphaTestState = new Object();
-	    this.alphaTestState.states = new Object();
-	    this.alphaTestState.states[this.RS_ALPHATESTENABLE] = 0;
-	    this.alphaTestState.states[this.RS_ALPHAREF] = -1;
-	    this.alphaTestState.states[this.RS_ALPHAFUNC] = this.CMP_GREATER;
-	    this.alphaTestState.states[this.RS_CLIPPING] = 0;
-	    this.alphaTestState.states[this.RS_CLIPPLANEENABLE] = 0;
-	    this.alphaTestState.dirty = false;
+        var vertices = [
+            1.0, 1.0, 0.0, 1.0, 1.0, 1.0,
+            -1.0, 1.0, 0.0, 1.0, 0.0, 1.0,
+            1.0, -1.0, 0.0, 1.0, 1.0, 0.0,
+            -1.0, -1.0, 0.0, 1.0, 0.0, 0.0
+        ];
 
-	    this.alphaBlendState = new Object();
-	    this.alphaBlendState.states = new Object();
-	    this.alphaBlendState.states[this.RS_SRCBLEND] = this.BLEND_SRCALPHA;
-	    this.alphaBlendState.states[this.RS_DESTBLEND] = this.BLEND_INVSRCALPHA;
-	    this.alphaBlendState.states[this.RS_BLENDOP] = this.BLENDOP_ADD;
-	    this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE] = 0;
-	    this.alphaBlendState.states[this.RS_BLENDOPALPHA] = this.BLENDOP_ADD;
-	    this.alphaBlendState.states[this.RS_SRCBLENDALPHA] = this.BLEND_SRCALPHA;
-	    this.alphaBlendState.states[this.RS_DESTBLENDALPHA] = this.BLEND_INVSRCALPHA;
-	    this.alphaBlendState.dirty = false;
+        this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertices), this.gl.STATIC_DRAW);
 
-	    this.depthOffsetState = new Object();
-	    this.depthOffsetState.states = new Object();
-	    this.depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS] = 0;
-	    this.depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
-	    this.depthOffsetState.dirty = false;
+        this._cameraQuadBuffer = this.gl.createBuffer();
 
-	    this._blendTable = [
-            -1, 					            // --
-            this.gl.ZERO, 					// D3DBLEND_ZERO
-            this.gl.ONE, 					// D3DBLEND_ONE
-            this.gl.SRC_COLOR, 				// D3DBLEND_SRCCOLOR
-            this.gl.ONE_MINUS_SRC_COLOR, 	// D3DBLEND_INVSRCCOLOR
-            this.gl.SRC_ALPHA, 				// D3DBLEND_SRCALPHA
-            this.gl.ONE_MINUS_SRC_ALPHA, 	// D3DBLEND_INVSRCALPHA
-            this.gl.DST_ALPHA, 				// D3DBLEND_DESTALPHA
-            this.gl.ONE_MINUS_DST_ALPHA, 	// D3DBLEND_INVDESTALPHA
-            this.gl.DST_COLOR, 				// D3DBLEND_DESTCOLOR
-            this.gl.ONE_MINUS_DST_COLOR, 	// D3DBLEND_INVDESTCOLOR
-            this.gl.SRC_ALPHA_SATURATE, 		// D3DBLEND_SRCALPHASAT
-            -1, 					            // D3DBLEND_BOTHSRCALPHA
-            -1, 					            // D3DBLEND_BOTHINVSRCALPHA
-            this.gl.CONSTANT_COLOR, 			// D3DBLEND_BLENDFACTOR
-            this.gl.ONE_MINUS_CONSTANT_COLOR	// D3DBLEND_INVBLENDFACTOR
+
+        this._quadDecl = new Tw2VertexDeclaration();
+        this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, this.gl.FLOAT, 4, 0));
+        this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
+        this._quadDecl.RebuildHash();
+
+        this.alphaTestState = new Object();
+        this.alphaTestState.states = new Object();
+        this.alphaTestState.states[this.RS_ALPHATESTENABLE] = 0;
+        this.alphaTestState.states[this.RS_ALPHAREF] = -1;
+        this.alphaTestState.states[this.RS_ALPHAFUNC] = this.CMP_GREATER;
+        this.alphaTestState.states[this.RS_CLIPPING] = 0;
+        this.alphaTestState.states[this.RS_CLIPPLANEENABLE] = 0;
+        this.alphaTestState.dirty = false;
+
+        this.alphaBlendState = new Object();
+        this.alphaBlendState.states = new Object();
+        this.alphaBlendState.states[this.RS_SRCBLEND] = this.BLEND_SRCALPHA;
+        this.alphaBlendState.states[this.RS_DESTBLEND] = this.BLEND_INVSRCALPHA;
+        this.alphaBlendState.states[this.RS_BLENDOP] = this.BLENDOP_ADD;
+        this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE] = 0;
+        this.alphaBlendState.states[this.RS_BLENDOPALPHA] = this.BLENDOP_ADD;
+        this.alphaBlendState.states[this.RS_SRCBLENDALPHA] = this.BLEND_SRCALPHA;
+        this.alphaBlendState.states[this.RS_DESTBLENDALPHA] = this.BLEND_INVSRCALPHA;
+        this.alphaBlendState.dirty = false;
+
+        this.depthOffsetState = new Object();
+        this.depthOffsetState.states = new Object();
+        this.depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS] = 0;
+        this.depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
+        this.depthOffsetState.dirty = false;
+
+        this._blendTable = [
+            -1,                                 // --
+            this.gl.ZERO,                   // D3DBLEND_ZERO
+            this.gl.ONE,                    // D3DBLEND_ONE
+            this.gl.SRC_COLOR,              // D3DBLEND_SRCCOLOR
+            this.gl.ONE_MINUS_SRC_COLOR,    // D3DBLEND_INVSRCCOLOR
+            this.gl.SRC_ALPHA,              // D3DBLEND_SRCALPHA
+            this.gl.ONE_MINUS_SRC_ALPHA,    // D3DBLEND_INVSRCALPHA
+            this.gl.DST_ALPHA,              // D3DBLEND_DESTALPHA
+            this.gl.ONE_MINUS_DST_ALPHA,    // D3DBLEND_INVDESTALPHA
+            this.gl.DST_COLOR,              // D3DBLEND_DESTCOLOR
+            this.gl.ONE_MINUS_DST_COLOR,    // D3DBLEND_INVDESTCOLOR
+            this.gl.SRC_ALPHA_SATURATE,         // D3DBLEND_SRCALPHASAT
+            -1,                                 // D3DBLEND_BOTHSRCALPHA
+            -1,                                 // D3DBLEND_BOTHINVSRCALPHA
+            this.gl.CONSTANT_COLOR,             // D3DBLEND_BLENDFACTOR
+            this.gl.ONE_MINUS_CONSTANT_COLOR    // D3DBLEND_INVBLENDFACTOR
             ];
 
-	    this._shadowStateBuffer = new Float32Array(24);
+        this._shadowStateBuffer = new Float32Array(24);
 
-	    this._prevTime = null;
+        this._prevTime = null;
 
-	    function tick()
-	    {
-	        requestAnimFrame(tick);
-	        self.Tick();
-	    }
-	    requestAnimFrame(tick);
-	    return true;
-	}
-	
+        function tick()
+        {
+            requestAnimFrame(tick);
+            self.Tick();
+        }
+        requestAnimFrame(tick);
+        return true;
+    };
+
     this.Schedule = function (render)
     {
         this._scheduled[this._scheduled.length] = render;
-    }
+    };
 
     this.Tick = function ()
     {
@@ -363,48 +363,48 @@ function Tw2Device()
             }
         }
         this.frameCounter++;
-    }
-	
-	this.SetWorld = function (matrix)
-	{
-		mat4.set(matrix, this.world);
-	}
-	
-	this.SetView = function (matrix)
-	{
-		mat4.set(matrix, this.view);
-		mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
-		
-		mat4.inverse(this.view, this.viewInv);
-		this.eyePosition.set([this.viewInv[12], this.viewInv[13], this.viewInv[14]]);
-	}
-	
-	this.SetProjection = function (matrix)
-	{
-		mat4.set(matrix, this.projection);
-		mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
-	}
-	
-	this.GetEyePosition = function ()
-	{
-        return this.eyePosition;
-	}
+    };
 
-	this.RenderFullScreenQuad = function (effect)
-	{
-	    if (!effect)
-	    {
-	        return;
-	    }
-	    var effectRes = effect.GetEffectRes();
-	    if (!effectRes.IsGood())
-	    {
-	        return;
-	    }
+    this.SetWorld = function (matrix)
+    {
+        mat4.set(matrix, this.world);
+    };
+
+    this.SetView = function (matrix)
+    {
+        mat4.set(matrix, this.view);
+        mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
+        
+        mat4.inverse(this.view, this.viewInv);
+        this.eyePosition.set([this.viewInv[12], this.viewInv[13], this.viewInv[14]]);
+    };
+
+    this.SetProjection = function (matrix)
+    {
+        mat4.set(matrix, this.projection);
+        mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
+    };
+
+    this.GetEyePosition = function ()
+    {
+        return this.eyePosition;
+    };
+
+    this.RenderFullScreenQuad = function (effect)
+    {
+        if (!effect)
+        {
+            return;
+        }
+        var effectRes = effect.GetEffectRes();
+        if (!effectRes.IsGood())
+        {
+            return;
+        }
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._quadBuffer);
 
-	    for (var pass = 0; pass < effect.GetPassCount(); ++pass)
-	    {
+        for (var pass = 0; pass < effect.GetPassCount(); ++pass)
+        {
             effect.ApplyPass(pass);
             if (!this._quadDecl.SetDeclaration(effect.GetPassInput(pass), 24))
             {
@@ -412,8 +412,8 @@ function Tw2Device()
             }
             this.ApplyShadowState();
             device.gl.drawArrays(device.gl.TRIANGLE_STRIP, 0, 4);
-	    }
-    }
+        }
+    };
 
     this.RenderTexture = function (texture)
     {
@@ -428,30 +428,30 @@ function Tw2Device()
         }
         this.blitEffect.parameters['BlitSource'].textureRes = texture;
         this.RenderFullScreenQuad(this.blitEffect);
-    }
+    };
 
-	this.RenderCameraSpaceQuad = function (effect)
-	{
-	    if (!effect)
-	    {
-	        return;
-	    }
-	    var effectRes = effect.GetEffectRes();
-	    if (!effectRes.IsGood())
-	    {
-	        return;
-	    }
-		var vertices = [
-			1.0,  1.0,  0.0, 1.0, 1.0, 1.0,
-			-1.0, 1.0,  0.0, 1.0, 0.0, 1.0,
-			1.0,  -1.0, 0.0, 1.0, 1.0, 0.0,
-			-1.0, -1.0, 0.0, 1.0, 0.0, 0.0
-		];
-		vertices = new Float32Array(vertices);
-		
-		var projInv = mat4.inverse(this.projection, mat4.create());
-		for (var i = 0; i < 4; ++i)
-		{
+    this.RenderCameraSpaceQuad = function (effect)
+    {
+        if (!effect)
+        {
+            return;
+        }
+        var effectRes = effect.GetEffectRes();
+        if (!effectRes.IsGood())
+        {
+            return;
+        }
+        var vertices = [
+            1.0,  1.0,  0.0, 1.0, 1.0, 1.0,
+            -1.0, 1.0,  0.0, 1.0, 0.0, 1.0,
+            1.0,  -1.0, 0.0, 1.0, 1.0, 0.0,
+            -1.0, -1.0, 0.0, 1.0, 0.0, 0.0
+        ];
+        vertices = new Float32Array(vertices);
+        
+        var projInv = mat4.inverse(this.projection, mat4.create());
+        for (var i = 0; i < 4; ++i)
+        {
             var vec = vertices.subarray(i * 6, i * 6 + 4);
             mat4.multiplyVec4(projInv, vec);
             vec3.scale(vec, 1 / vec[3]);
@@ -459,10 +459,10 @@ function Tw2Device()
         }
         
         this.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._cameraQuadBuffer);
-		this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
+        this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
 
-	    for (var pass = 0; pass < effect.GetPassCount(); ++pass)
-	    {
+        for (var pass = 0; pass < effect.GetPassCount(); ++pass)
+        {
             effect.ApplyPass(pass);
             if (!this._quadDecl.SetDeclaration(effect.GetPassInput(pass), 24))
             {
@@ -470,11 +470,11 @@ function Tw2Device()
             }
             this.ApplyShadowState();
             device.gl.drawArrays(device.gl.TRIANGLE_STRIP, 0, 4);
-	    }
-	}
-	
-	this._DwordToFloat = function (value)
-	{
+        }
+    };
+
+    this._DwordToFloat = function (value)
+    {
         var b4 = (value & 0xff);
         var b3 = (value & 0xff00) >> 8;
         var b2 = (value & 0xff0000) >> 16;
@@ -485,15 +485,15 @@ function Tw2Device()
         if (sig == 0 && exp == -127)
             return 0.0;
         return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
-	}
-	
-	this.IsAlphaTestEnabled = function ()
-	{
+    };
+
+    this.IsAlphaTestEnabled = function ()
+    {
         return this.alphaTestState.states[this.RS_ALPHATESTENABLE];
-	}
-	
-	this.SetRenderState = function (state, value)
-	{
+    };
+
+    this.SetRenderState = function (state, value)
+    {
         var gl = this.gl;
         switch (state)
         {
@@ -590,12 +590,12 @@ function Tw2Device()
             }
             return;
         }
-	}
-	
-	this.shadowHandles = null;
-	
-	this.ApplyShadowState = function ()
-	{
+    };
+
+    this.shadowHandles = null;
+
+    this.ApplyShadowState = function ()
+    {
         if (this.alphaBlendState.dirty)
         {
             var blendOp = this.gl.FUNC_ADD;
@@ -625,9 +625,9 @@ function Tw2Device()
                 var destBlendAlpha = this._blendTable[this.alphaBlendState.states[this.RS_DESTBLENDALPHA]];
                 this.gl.blendEquationSeparate(blendOp, blendOpAlpha);
                 this.gl.blendFuncSeparate(srcBlend, 
-										  destBlend, 
-										  srcBlendAlpha, 
-										  destBlendAlpha);
+                                          destBlend, 
+                                          srcBlendAlpha, 
+                                          destBlendAlpha);
             }
             else
             {
@@ -698,18 +698,18 @@ function Tw2Device()
                 clipPlaneEnable);
             //this._shadowStateBuffers
         }
-	}
+    };
 
-	this.SetStandardStates = function (renderMode)
-	{
-	    if (this._currentRenderMode == renderMode)
-	    {
-	        return;
-	    }
-	    this.gl.frontFace(this.gl.CW);
-	    switch (renderMode)
-	    {
-	        case this.RM_OPAQUE:
+    this.SetStandardStates = function (renderMode)
+    {
+        if (this._currentRenderMode == renderMode)
+        {
+            return;
+        }
+        this.gl.frontFace(this.gl.CW);
+        switch (renderMode)
+        {
+            case this.RM_OPAQUE:
                 this.SetRenderState(this.RS_ZENABLE, true);
                 this.SetRenderState(this.RS_ZWRITEENABLE, true);
                 this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
@@ -721,7 +721,7 @@ function Tw2Device()
                 this.SetRenderState(this.RS_DEPTHBIAS, 0);
                 this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
                 break;
-	        case this.RM_DECAL:
+            case this.RM_DECAL:
                 this.SetRenderState(this.RS_ALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_ALPHATESTENABLE, true);
                 this.SetRenderState(this.RS_ALPHAFUNC, this.CMP_GREATER);
@@ -736,7 +736,7 @@ function Tw2Device()
                 this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
                 break;
-	        case this.RM_TRANSPARENT:
+            case this.RM_TRANSPARENT:
                 this.SetRenderState(this.RS_CULLMODE, this.CULL_CW);
                 this.SetRenderState(this.RS_ALPHABLENDENABLE, true);
                 this.SetRenderState(this.RS_SRCBLEND, this.BLEND_SRCALPHA);
@@ -751,7 +751,7 @@ function Tw2Device()
                 this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
                 break;
-	        case this.RM_ADDITIVE:
+            case this.RM_ADDITIVE:
                 this.SetRenderState(this.RS_CULLMODE, this.CULL_NONE);
                 this.SetRenderState(this.RS_ALPHABLENDENABLE, true);
                 this.SetRenderState(this.RS_SRCBLEND, this.BLEND_ONE);
@@ -766,7 +766,7 @@ function Tw2Device()
                 this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
                 break;
-	        case this.RM_FULLSCREEN:
+            case this.RM_FULLSCREEN:
                 this.SetRenderState(this.RS_ALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_ALPHATESTENABLE, false);
                 this.SetRenderState(this.RS_CULLMODE, this.CULL_NONE);
@@ -778,48 +778,48 @@ function Tw2Device()
                 this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
                 this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
                 break;
-	        default:
-	            return;
-	    }
-	    this._currentRenderMode = renderMode;
-	}
-	
-	this.GetFallbackTexture = function ()
-	{
-	    if (this._whiteTexture == null)
-	    {
-			this._whiteTexture = device.gl.createTexture();
-			device.gl.bindTexture(device.gl.TEXTURE_2D, this._whiteTexture);
-			device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0,0,0,0]));
-			device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
-			device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
-			device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
-			device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
-			//device.gl.generateMipmap(device.gl.TEXTURE_2D);
-			device.gl.bindTexture(device.gl.TEXTURE_2D, null);
-	    }
-	    return this._whiteTexture;
-	}
-	
-	this.GetFallbackCubeMap = function ()
-	{
-	    if (this._whiteCube == null)
-	    {
-			this._whiteCube = device.gl.createTexture();
-			device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, this._whiteCube);
-			for (var j = 0; j < 6; ++j)
-			{
-				device.gl.texImage2D(device.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0,0,0,0]));
-			}
-			device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
-			device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
-			device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
-			device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
-			//device.gl.generateMipmap(device.gl.TEXTURE_CUBE_MAP);
-			device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, null);
-	    }
-	    return this._whiteCube;
-	}
+            default:
+                return;
+        }
+        this._currentRenderMode = renderMode;
+    };
+
+    this.GetFallbackTexture = function ()
+    {
+        if (this._whiteTexture == null)
+        {
+            this._whiteTexture = device.gl.createTexture();
+            device.gl.bindTexture(device.gl.TEXTURE_2D, this._whiteTexture);
+            device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0,0,0,0]));
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
+            //device.gl.generateMipmap(device.gl.TEXTURE_2D);
+            device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+        }
+        return this._whiteTexture;
+    };
+
+    this.GetFallbackCubeMap = function ()
+    {
+        if (this._whiteCube == null)
+        {
+            this._whiteCube = device.gl.createTexture();
+            device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, this._whiteCube);
+            for (var j = 0; j < 6; ++j)
+            {
+                device.gl.texImage2D(device.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0,0,0,0]));
+            }
+            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
+            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
+            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
+            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
+            //device.gl.generateMipmap(device.gl.TEXTURE_CUBE_MAP);
+            device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, null);
+        }
+        return this._whiteCube;
+    };
 }
 
 var device = new Tw2Device();

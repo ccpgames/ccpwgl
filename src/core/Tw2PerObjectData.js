@@ -12,4 +12,4 @@ Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHa
     {
         device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
     }
-}
+};

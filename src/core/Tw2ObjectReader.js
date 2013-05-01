@@ -10,8 +10,8 @@ Tw2ObjectReader.prototype.Construct = function (initialize)
     this._initializeObjects = new Array();
     this._ids = new Array();
     var self = this;
-    return function () { return self.ConstructFromNode(initialize, true); }
-}
+    return function () { return self.ConstructFromNode(initialize, true); };
+};
 
 Tw2ObjectReader.prototype.ConstructAsync = function (initialize)
 {
@@ -19,7 +19,7 @@ Tw2ObjectReader.prototype.ConstructAsync = function (initialize)
     this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
     while (!this.ConstructFromNode(initialize, false));
     return this.result;
-}
+};
 
 
 Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
@@ -203,4 +203,4 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         object.Initialize();
     }
     return true;
-}
+};

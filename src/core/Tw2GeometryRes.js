@@ -16,7 +16,7 @@ Tw2GeometryBatch.prototype.Commit = function (overrideEffect)
     {
         this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
     }
-}
+};
 
 Inherit(Tw2GeometryBatch, Tw2RenderBatch);
 
@@ -38,7 +38,7 @@ Tw2GeometryLineBatch.prototype.Commit = function (overrideEffect)
     {
         this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
     }
-}
+};
 
 Inherit(Tw2GeometryLineBatch, Tw2RenderBatch);
 
@@ -81,7 +81,7 @@ Tw2GeometryModel.prototype.FindBoneByName = function (name)
         }
     }
     return null;
-}
+};
 
 function Tw2GeometrySkeleton()
 {
@@ -110,7 +110,7 @@ Tw2GeometryBone.prototype.UpdateTransform = function ()
     this.localTransform[13] = this.position[1];
     this.localTransform[14] = this.position[2];
     return this.localTransform;    
-}
+};
 
 function Tw2GeometryAnimation()
 {
@@ -224,7 +224,7 @@ Tw2GeometryRes.prototype.SetInstanceCount = function (instanceCount)
             this.Reload();
         }
     }
-}
+};
 
 Tw2GeometryRes.prototype.Prepare = function (data)
 {
@@ -664,7 +664,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         this.animations[this.animations.length] = animation;
     }
     this.PrepareFinished(true);
-}
+};
 
 Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb)
 {
@@ -737,7 +737,7 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
         }
     }
     return true;
-}
+};
 
 Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, cb)
 {
@@ -810,7 +810,7 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
         }
     }
     return true;
-}
+};
 
 
 
@@ -839,7 +839,7 @@ Tw2GeometryRes.prototype.RenderDebugInfo = function (debugHelper)
             }
         }
     }
-}
+};
 
 Tw2GeometryRes.prototype.Unload = function ()
 {
@@ -859,7 +859,7 @@ Tw2GeometryRes.prototype.Unload = function ()
     this._isPurged = true;
     this._isGood = false;
     return true;
-}
+};
 
 Inherit(Tw2GeometryRes, Tw2Resource);
 
