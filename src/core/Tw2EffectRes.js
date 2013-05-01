@@ -56,6 +56,72 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         return shader;
     }
 
+    function CreateProgram(vertexShader, fragmentShader, pass, path)
+    {
+        var program = {};
+        program.program = device.gl.createProgram();
+        device.gl.attachShader(program.program, vertexShader);
+        device.gl.attachShader(program.program, fragmentShader);
+        device.gl.linkProgram(program.program);
+
+        if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
+        {
+            console.error(
+                'Tw2EffectRes:',
+                ' error linking shaders (effect \'',
+                path,
+                '\'): ',
+                device.gl.getProgramInfoLog(program.program));
+            return null;
+        }
+
+        device.gl.useProgram(program.program);
+        program.constantBufferHandles = [];
+        for (var j = 0; j < 16; ++j)
+        {
+            program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
+        }
+        program.samplerHandles = [];
+        for (var j = 0; j < 16; ++j)
+        {
+            program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
+            device.gl.uniform1i(program.samplerHandles[j], j);
+        }
+        for (var j = 0; j < 16; ++j)
+        {
+            program.samplerHandles[j + 16] = device.gl.getUniformLocation(program.program, "vs" + j);
+            device.gl.uniform1i(program.samplerHandles[j + 16], j + 16);
+        }
+        program.input = new Tw2VertexDeclaration();
+        for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
+        {
+            var location = device.gl.getAttribLocation(program.program, "attr" + j);
+            if (location >= 0)
+            {
+                var el = new Tw2VertexElement(
+                    pass.stages[0].inputDefinition.elements[j].usage,
+                    pass.stages[0].inputDefinition.elements[j].usageIndex);
+                el.location = location;
+                program.input.elements.push(el);
+            }
+        }
+        program.input.RebuildHash();
+
+        program.shadowStateInt = device.gl.getUniformLocation(program.program, "ssi");
+        program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
+        program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
+        device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
+        program.volumeSlices = [];
+        for (var j = 0; j < pass.stages[1].samplers.length; ++j)
+        {
+            if (pass.stages[1].samplers[j].isVolume)
+            {
+                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, "s" + pass.stages[1].samplers[j].registerIndex + "sl");
+            }
+        }
+        return program;
+    }
+
     var version = reader.ReadUInt32();
     if (version != 2 && version != 3)
     {
@@ -304,72 +370,6 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
             pass.states.push({ 'state': state, 'value': value });
-        }
-
-        function CreateProgram(vertexShader, fragmentShader, pass, path)
-        {
-            var program = {};
-            program.program = device.gl.createProgram();
-            device.gl.attachShader(program.program, vertexShader);
-            device.gl.attachShader(program.program, fragmentShader);
-            device.gl.linkProgram(program.program);
-
-            if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
-            {
-                console.error(
-                    'Tw2EffectRes:',
-                    ' error linking shaders (effect \'',
-                    path,
-                    '\'): ',
-                    device.gl.getProgramInfoLog(program.program));
-                return null;
-            }
-
-            device.gl.useProgram(program.program);
-            program.constantBufferHandles = [];
-            for (var j = 0; j < 16; ++j)
-            {
-                program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
-            }
-            program.samplerHandles = [];
-            for (var j = 0; j < 16; ++j)
-            {
-                program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
-                device.gl.uniform1i(program.samplerHandles[j], j);
-            }
-            for (var j = 0; j < 16; ++j)
-            {
-                program.samplerHandles[j + 16] = device.gl.getUniformLocation(program.program, "vs" + j);
-                device.gl.uniform1i(program.samplerHandles[j + 16], j + 16);
-            }
-            program.input = new Tw2VertexDeclaration();
-            for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
-            {
-                var location = device.gl.getAttribLocation(program.program, "attr" + j);
-                if (location >= 0)
-                {
-                    var el = new Tw2VertexElement(
-                        pass.stages[0].inputDefinition.elements[j].usage,
-                        pass.stages[0].inputDefinition.elements[j].usageIndex);
-                    el.location = location;
-                    program.input.elements.push(el);
-                }
-            }
-            program.input.RebuildHash();
-
-            program.shadowStateInt = device.gl.getUniformLocation(program.program, "ssi");
-            program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
-            program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
-            device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
-            program.volumeSlices = [];
-            for (var j = 0; j < pass.stages[1].samplers.length; ++j)
-            {
-                if (pass.stages[1].samplers[j].isVolume)
-                {
-                    program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, "s" + pass.stages[1].samplers[j].registerIndex + "sl");
-                }
-            }
-            return program;
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
