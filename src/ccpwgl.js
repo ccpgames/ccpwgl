@@ -19,7 +19,7 @@
     * from time to time to clear resources from memory cache. When set to USAGE_BASED
     * (default) resources are automatically removed from the cache if they are not used
     * for a specified period of time.
-    * It is preferable to use USAGE_BASED, but ocasionally is will unload resources
+    * It is preferable to use USAGE_BASED, but ocasionally this will unload resources
     * when you don't want to (for example if you temporary hide a ship). In such cases
     * you will have to use MANUAL policy and call ccpwgl.clearCachedResources when 
     * you know that all resources you need are loaded (see ccpwgl.isLoading).
