@@ -1,191 +1,167 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
-<title>WebGL API Test</title>
+	<head>
+		<title>WebGL API Test</title>
 
-<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
-<script type="text/javascript" src="../src/external/tween.js"></script>
-<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-<script type="text/javascript" src="../src/test/StarMap.js"></script>
-<script type="text/javascript" src="../src/ccpwgl.js"></script>
-<script type="text/javascript">
+		<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+		<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+		<script type="text/javascript" src="../src/external/tween.js"></script>
+		<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+		<script type="text/javascript" src="../src/test/StarMap.js"></script>
+		<script type="text/javascript" src="../src/ccpwgl.js"></script>
+		<script type="text/javascript">
 
-	var 	ship,
-		sm,
-		camera,
-		solarLevel = false,
-		sun,
-		scene,
-		station,
-		ship2;
-    function onDocumentLoad()
-    {
-		ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
+			var ship,
+				sm,
+				camera,
+				solarLevel = false,
+				sun,
+				scene,
+				station,
+				ship2;
+			function onDocumentLoad()
+			{
+				ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
 
-		var smScale = 180.0;
-		var amarrPos = { 0:-20703.7109375, 1:3521.457763671875, 2:-6475.68310546875 };
-		var centerPos = { 0:0, 1:0, 2:0 };
-		var canvas = document.getElementById('mainCanvas');
-		ccpwgl.initialize(canvas);
-		scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
-		sm = new StarMap(scene);
+				var smScale = 180.0;
+				var amarrPos = { 0:-20703.7109375, 1:3521.457763671875, 2:-6475.68310546875 };
+				var centerPos = { 0:0, 1:0, 2:0 };
+				var canvas = document.getElementById('mainCanvas');
+				ccpwgl.initialize(canvas);
+				scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+				sm = new StarMap(scene);
 
-		var planet = scene.loadPlanet(40000002, 'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red', undefined, 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.png', 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.png');
-		sun = scene.loadSun('res:/dx9/model/lensflare/blue.red', onSunLoaded);
+				var planet = scene.loadPlanet(40000002, 'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red', undefined, 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.png', 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.png');
+				sun = scene.loadSun('res:/dx9/model/lensflare/blue.red', onSunLoaded);
 
-		//var lavaPlanet = scene.loadPlanet(40000024, 'res:/dx9/model/WorldObject/Planet/Template/Lava/P_Lava_44_S.red', undefined, 'res:/dx9/model/worldobject/planet/Lava/Lava02_H.png', 'res:/dx9/model/worldobject/planet/Lava/Lava01_H.png');
-		ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', undefined);
-		ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-		
-		ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
-		ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
-		//station = scene.loadObject('res:/dx9/Model/station/gallente/gs2/gs2.red');
-		//planet.setTransform(vec3.create(1.0, 1.0, 1.0));
-		//console.log(planet.getTransform());
-		//lavaPlanet.getTransform()[0] = lavaPlanet.getTransform()[5] = lavaPlanet.getTransform()[10] = 6;
-		
-		planet.getTransform()[0] = planet.getTransform()[5] = planet.getTransform()[10] = 15000;
-		planet.getTransform()[12] = centerPos[0] * smScale + 35000;
-		planet.getTransform()[13] = centerPos[1] * smScale - 500;
-		planet.getTransform()[14] = centerPos[2] * smScale;
-		
-		//planet.getTransform()[12] = 50;
-		// 0, 5, 10 er scale
-		// 12 er x ás
-		// 13 er y ás
-		// 14 er z ás
-		
-		var newStarColor = new Uint8Array(4);
-		newStarColor[0] = 0.0;
-		newStarColor[1] = 0.0;
-		newStarColor[2] = 0.0;
-		newStarColor[3] = 0.0;
-		
-		var oldStarColor = new Uint8Array(4);
-		oldStarColor[0] = 255.0;
-		oldStarColor[1] = 255.0;
-		oldStarColor[2] = 255.0;
-		oldStarColor[3] = 0.0;
-		
-		ccpwgl.postprocessingEnabled = true;
-        canvas.addEventListener('mousedown', function (evt)
-        {
-			
-            var starID = sm.Pick(evt.clientX, evt.clientY);
-            if (starID) //&& starID[1] == 30002187) // Amarr
-            {
-				/*for (var i = 0; i < 100; i++)
-				{
-					sm.SetStarColor(i, newStarColor, 0);
-				}*/
-				sm.SetStarColor(3470, newStarColor, 0);
+				ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', undefined);
+				ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
+
+				ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
+				ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
+
+				planet.getTransform()[0] = planet.getTransform()[5] = planet.getTransform()[10] = 15000;
+				planet.getTransform()[12] = centerPos[0] * smScale + 35000;
+				planet.getTransform()[13] = centerPos[1] * smScale - 500;
+				planet.getTransform()[14] = centerPos[2] * smScale;
+
+				var newStarColor = new Uint8Array(4);
+				newStarColor[0] = 0.0;
+				newStarColor[1] = 0.0;
+				newStarColor[2] = 0.0;
+				newStarColor[3] = 0.0;
+
+				var oldStarColor = new Uint8Array(4);
+				oldStarColor[0] = 255.0;
+				oldStarColor[1] = 255.0;
+				oldStarColor[2] = 255.0;
+				oldStarColor[3] = 0.0;
+
+				ccpwgl.postprocessingEnabled = true;
+				canvas.addEventListener('mousedown', function (evt) {
+					var starID = sm.Pick(evt.clientX, evt.clientY);
+					if (starID) {
+						sm.SetStarColor(3470, newStarColor, 0);
+						evt.stopImmediatePropagation();
+						tweenTo(starID[2]);
+					}
+				}, true);
+				camera = new TestCamera(canvas);
+				camera.minDistance = 100;
+				camera.maxDistance = 1000000;
+				camera.fov = 30;
+				camera.distance = 150000;
+				camera.nearPlane = 50;
+				camera.farPlane = 50000000;
+				camera.minPitch = -0.5;
+				camera.maxPitch = 0.35;
+
+				ccpwgl.setCamera(camera);
+				ccpwgl.enablePostprocessing(true);
+				var runFirstTime = false;
+				var posX = -1500;
 				
-                evt.stopImmediatePropagation();
+				ccpwgl.onPreRender = function () { 
+					if (!runFirstTime && sm.dataSet.IsGood())
+					{
+						runFirstTime = true;
+						sm.model.localTransform[0] = sm.model.localTransform[5] = sm.model.localTransform[10] = smScale;
+					}
+					sm.Update();
 
-				tweenTo(starID[2]);
-            }
-        }, true);
-        camera = new TestCamera(canvas);
-		//camera.shift = 100;
-        camera.minDistance = 100;
-        camera.maxDistance = 1000000;
-        camera.fov = 30;
-        camera.distance = 150000;
-        camera.nearPlane = 50;
-        camera.farPlane = 50000000;
-        camera.minPitch = -0.5;
-        camera.maxPitch = 0.35;
+					var shipTransform = ship.getTransform();
 
-        ccpwgl.setCamera(camera);
-        ccpwgl.enablePostprocessing(true);
-		var runFirstTime = false;
-		var posX = -1500;
-		ccpwgl.onPreRender = function () 
-		{ 
-		
-		
-			if (!runFirstTime && sm.dataSet.IsGood())
-			{
-				runFirstTime = true;
-				sm.model.localTransform[0] = sm.model.localTransform[5] = sm.model.localTransform[10] = smScale;
+					shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
+					shipTransform[12] = centerPos[0] * smScale;
+					shipTransform[13] = centerPos[1] * smScale;
+					shipTransform[14] = centerPos[2] * smScale + posX;
+					posX += 1.0;
+					ship.setTransform(shipTransform);
+					shipTransform[13] = centerPos[1] * smScale + 100;
+					ship2.setTransform(shipTransform);
+
+					if (camera.distance < 2000)
+					{
+						newStarColor[0] = 255 * camera.distance / 2000;
+						newStarColor[1] = 255 * camera.distance / 2000;
+						newStarColor[2] = 255 * camera.distance / 2000;
+						sm.SetStarColor(3470, newStarColor, 0);
+					}
+					if (!solarLevel && camera.distance < 1000)
+					{
+						solarLevel = true
+					}
+					else if (solarLevel && camera.distance >= 1000)
+					{
+						solarLevel = false;
+						sm.SetStarColor(3470, oldStarColor, 0);
+					}
+				};
+
+				// Set initial view
+				sm.SetDataSet('res:/white_starmap.png', 15, 15);
+
+				document.getElementById('none').onclick = function () { sm.SetDataSet('res:/white_starmap.png', 15, 15); };
+				document.getElementById('securityStatus').onclick = function () { sm.SetDataSet('res:/security_status_min.png', 15, 15); };
+				document.getElementById('dedAgents').onclick = function () { sm.SetDataSet('res:/ded_site_min.png', 7.5, 50); };
+				document.getElementById('amarr').onclick = function () { tweenTo( {0:0, 1:0, 2:0}); };
 			}
-			sm.Update();
-			
-			var shipTransform = ship.getTransform();
-			
-			shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
-			shipTransform[12] = centerPos[0] * smScale;
-			shipTransform[13] = centerPos[1] * smScale;
-			shipTransform[14] = centerPos[2] * smScale + posX;
-			posX += 1.0;
-			ship.setTransform(shipTransform);
-			shipTransform[13] = centerPos[1] * smScale + 100;
-			ship2.setTransform(shipTransform);
-			
-			if (camera.distance < 2000)
+
+			function onSunLoaded(sunObj)
 			{
-				newStarColor[0] = 255 * camera.distance / 2000;
-				newStarColor[1] = 255 * camera.distance / 2000;
-				newStarColor[2] = 255 * camera.distance / 2000;
-				sm.SetStarColor(3470, newStarColor, 0);
+				console.log(sunObj);
 			}
-			if (!solarLevel && camera.distance < 1000)
+
+			function tweenTo(pos)
 			{
-				solarLevel = true
+				var smScale = sm.model.localTransform[0];
+				var starPos = { 	x: camera.poi[0], y: camera.poi[1],	z: camera.poi[2] };
+				var starTarget = { 	x: pos[0] * smScale, 	y: pos[1] * smScale, 	z: pos[2] * smScale };
+
+				var tween = new TWEEN.Tween(starPos).to(starTarget, 500);
+				tween.easing(TWEEN.Easing.Cubic.InOut);
+
+				tween.onUpdate(function(){
+					camera.poi[0] = starPos.x;
+					camera.poi[1] = starPos.y;
+					camera.poi[2] = starPos.z;
+				});
+
+				tween.start();
 			}
-			else if (solarLevel && camera.distance >= 1000)
-			{
-				solarLevel = false;
-				
-				sm.SetStarColor(3470, oldStarColor, 0);
-			}
-		};
-		
-		// Set initial view
-		sm.SetDataSet('res:/white_starmap.png', 15, 15);
 
-        document.getElementById('none').onclick = function () { sm.SetDataSet('res:/white_starmap.png', 15, 15); };
-        document.getElementById('securityStatus').onclick = function () { sm.SetDataSet('res:/security_status_min.png', 15, 15); };
-        document.getElementById('dedAgents').onclick = function () { sm.SetDataSet('res:/ded_site_min.png', 7.5, 50); };
-		document.getElementById('amarr').onclick = function () { tweenTo( {0:0, 1:0, 2:0}); };
-    }
-	
-	function onSunLoaded(sunObj)
-	{
-		console.log(sunObj);
-	}
-	
-	function tweenTo(pos)
-	{
-		var smScale = sm.model.localTransform[0];
-		var starPos = { 	x: camera.poi[0], y: camera.poi[1],	z: camera.poi[2] };
-		var starTarget = { 	x: pos[0] * smScale, 	y: pos[1] * smScale, 	z: pos[2] * smScale };
+			onload = onDocumentLoad;
 
-		var tween = new TWEEN.Tween(starPos).to(starTarget, 500);
-		tween.easing(TWEEN.Easing.Cubic.InOut);
-		
-		tween.onUpdate(function(){
-			camera.poi[0] = starPos.x;
-			camera.poi[1] = starPos.y;
-			camera.poi[2] = starPos.z;
-		});
-		
-		tween.start();
-	}
-	
-    onload = onDocumentLoad;
+		</script>
 
-</script>
-
-</head>
-<body style="margin:0">
-    <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
-    <div style="position:absolute">
-        <button id="none">None</button>
-        <button id="securityStatus">Security status</button>
-        <button id="dedAgents">DED Agent site report</button>
-		<button id="amarr">Select Amarr</button>
-    </div>
-</body>
+	</head>
+	<body style="margin:0">
+	    <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+	    <div style="position:absolute">
+	        <button id="none">None</button>
+	        <button id="securityStatus">Security status</button>
+	        <button id="dedAgents">DED Agent site report</button>
+			<button id="amarr">Select Amarr</button>
+	    </div>
+	</body>
 </html>

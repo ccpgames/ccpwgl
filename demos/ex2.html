@@ -1,96 +1,93 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
-<title>WebGL API Test</title>
+	<head>
+		<title>WebGL API Test</title>
 
-<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
-<script type="text/javascript" src="../src/external/tween.js"></script>
-<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-<script type="text/javascript" src="../src/test/StarMap.js"></script>
-<script type="text/javascript" src="../src/ccpwgl.js"></script>
-<script type="text/javascript">
+		<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+		<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+		<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+		<script type="text/javascript" src="../src/ccpwgl.js"></script>
+		<script type="text/javascript">
 
-    function onDocumentLoad()
-    {
-        ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
+			function onDocumentLoad()
+			{
+				ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
 
-        var canvas = document.getElementById('mainCanvas');
-        ccpwgl.initialize(canvas);
-        scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+				var canvas = document.getElementById('mainCanvas');
+				ccpwgl.initialize(canvas);
+				scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
 
-		var ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', onShip1Loaded);
-		ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-		
-		var ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
-		ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
-		
-		var ship3 = scene.loadShip('res:/dx9/model/ship/amarr/at1/at1.red', onShip3Loaded);
-		//ship3.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-		
-		var ship4 = scene.loadShip('res:/dx9/Model/Ship/Jove/Capsule/Capsule.red', onShip4Loaded);
-		//ship4.loadBoosters('res:/dx9/model/ship/booster/booster_jove.red');
-		
-        camera = new TestCamera(canvas);
-        camera.minDistance = 100;
-        camera.maxDistance = 1000000;
-        camera.fov = 30;
-        camera.distance = 150000;
-        camera.nearPlane = 1;
-        camera.farPlane = 10000000;
-        camera.minPitch = -0.5;
-        camera.maxPitch = 0.35;
+				camera = new TestCamera(canvas);
+				camera.minDistance = 100;
+				camera.maxDistance = 1000000;
+				camera.fov = 30;
+				camera.distance = 150000;
+				camera.nearPlane = 1;
+				camera.farPlane = 10000000;
+				camera.minPitch = -0.5;
+				camera.maxPitch = 0.35;
+				ccpwgl.setCamera(camera);
+				
 
-        ccpwgl.setCamera(camera);
-        ccpwgl.enablePostprocessing(true);
+				var ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', onShip1Loaded);
+				ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
 
-		ccpwgl.onPreRender = function () 
-		{ 
-		
-		
-		};
-		
-		function onShip1Loaded()
-		{
-			var shipTransform = ship.getTransform();
-			
-			shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
-			shipTransform[12] = 1000;
-			shipTransform[13] = 0;
-			shipTransform[14] = 0;
-			ship.setTransform(shipTransform);
-		}
-		
-		function onShip3Loaded()
-		{
-			var shipTransform = ship3.getTransform();
-			
-			shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
-			shipTransform[12] = 5000;
-			shipTransform[13] = 0;
-			shipTransform[14] = 0;
-			ship3.setTransform(shipTransform);
-		}
-		
-		function onShip4Loaded()
-		{
-			var shipTransform = ship4.getTransform();
-			
-			shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
-			shipTransform[12] = -100;
-			shipTransform[13] = 0;
-			shipTransform[14] = 0;
-			ship4.setTransform(shipTransform);
-		}
+				var ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
+				ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
 
-    }
-	
-    onload = onDocumentLoad;
+				var ship3 = scene.loadShip('res:/dx9/model/ship/amarr/at1/at1.red', onShip3Loaded);
+				var ship4 = scene.loadShip('res:/dx9/Model/Ship/Jove/Capsule/Capsule.red', onShip4Loaded);
 
-</script>
+				
+				ccpwgl.enablePostprocessing(true);
 
-</head>
-<body style="margin:0">
-    <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
-</body>
+				ccpwgl.onPreRender = function () 
+				{ 
+
+
+				};
+
+				function onShip1Loaded()
+				{
+					var shipTransform = ship.getTransform();
+
+					shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
+					shipTransform[12] = 1000;
+					shipTransform[13] = 0;
+					shipTransform[14] = 0;
+					ship.setTransform(shipTransform);
+				}
+
+				function onShip3Loaded()
+				{
+					var shipTransform = ship3.getTransform();
+
+					shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
+					shipTransform[12] = 5000;
+					shipTransform[13] = 0;
+					shipTransform[14] = 0;
+					ship3.setTransform(shipTransform);
+				}
+
+				function onShip4Loaded()
+				{
+					var shipTransform = ship4.getTransform();
+
+					shipTransform[0] = shipTransform[5] = shipTransform[10] = shipTransform[15] = 1.0;
+					shipTransform[12] = -100;
+					shipTransform[13] = 0;
+					shipTransform[14] = 0;
+					ship4.setTransform(shipTransform);
+				}
+
+			}
+
+			onload = onDocumentLoad;
+
+		</script>
+
+	</head>
+	<body style="margin:0">
+	    <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+	</body>
 </html>
