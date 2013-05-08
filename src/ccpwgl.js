@@ -44,7 +44,7 @@
     {
         this.name = "NoWebGLError";
         this.message = "WebGL context is not available";
-    }
+    };
     ccpwgl.NoWebGLError.prototype = Object.create(Error.prototype);
     ccpwgl.NoWebGLError.prototype.constructor = ccpwgl.NoWebGLError;
 
@@ -55,7 +55,7 @@
     {
         this.name = "IsStillLoadingError";
         this.message = "Cannot process the request until the object is loaded";
-    }
+    };
     ccpwgl.IsStillLoadingError.prototype = Object.create(Error.prototype);
     ccpwgl.IsStillLoadingError.prototype.constructor = ccpwgl.IsStillLoadingError;
 
@@ -226,7 +226,7 @@
         {
             postprocess = new ccpwgl_int.Tw2PostProcess();
         }
-    }
+    };
 
     /**
     * Sets/overrides URLs for resource paths. Resources paths used inside the engine have a 
@@ -246,7 +246,7 @@
     ccpwgl.setResourcePath = function (namespace, path)
     {
         ccpwgl_int.resMan.resourcePaths[namespace] = path;
-    }
+    };
 
     /**
     * Enables/disables postprocessing effects. Triggers shader loading the first time 
@@ -262,7 +262,7 @@
         {
             postprocess = new ccpwgl_int.Tw2PostProcess();
         }
-    }
+    };
 
     /**
     * Assigns an active camera used for scene rendering. A camera is an object that is 
@@ -278,7 +278,7 @@
     ccpwgl.setCamera = function (newCamera)
     {
         camera = newCamera;
-    }
+    };
 
     /**
     * Wrapper for static objects (stations, gates, asteroids, clouds, etc.).
@@ -315,7 +315,7 @@
         *
         * @returns {boolean} True if object's .red file is loading; false otherwise.
         */
-        this.isLoaded = function () { return this.wrappedObject != null; }
+        this.isLoaded = function () { return this.wrappedObject != null; };
 
         /**
         * Returns object's bounding sphere if it is available. Throws an exception otherwise.
@@ -336,7 +336,7 @@
                 throw new TypeError('Object does not have bounding sphere information');
             }
             return [this.wrappedObject.boundingSphereCenter, this.wrappedObject.boundingSphereRadius];
-        }
+        };
 
         /**
         * Sets transform matrix from local coordinate space to world.
@@ -350,7 +350,7 @@
             {
                 this.wrappedObject.transform.set(this.transform);
             }
-        }
+        };
 
         /**
         * Returns transform matrix from local coordinate space to world.
@@ -360,7 +360,7 @@
         this.getTransform = function ()
         {
             return this.transform;
-        }
+        };
     }
 
     /**
@@ -446,7 +446,7 @@
         *
         * @returns {boolean} True if ship's .red file is loading; false otherwise.
         */
-        this.isLoaded = function () { return this.wrappedObject != null; }
+        this.isLoaded = function () { return this.wrappedObject != null; };
 
         /**
         * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
@@ -462,7 +462,7 @@
                 throw new ccpwgl.IsStillLoadingError();
             }
             return [this.wrappedObject.boundingSphereCenter, this.wrappedObject.boundingSphereRadius];
-        }
+        };
 
         /**
         * Sets transform matrix from local coordinate space to world.
@@ -476,7 +476,7 @@
             {
                 this.wrappedObject.transform.set(this.transform);
             }
-        }
+        };
 
         /**
         * Returns transform matrix from local coordinate space to world.
@@ -486,7 +486,7 @@
         this.getTransform = function ()
         {
             return this.transform;
-        }
+        };
 
         /**
         * Loads boosters effect for the ship.
@@ -527,7 +527,7 @@
             {
                 this.wrappedObject.boosterGain = this.boosterStrength;
             }
-        }
+        };
 
         /**
         * Loads color scheme .red file used for turrets. Turrets can use color scheme files
@@ -562,7 +562,7 @@
                     }
                 }
             );
-        }
+        };
 
         /**
         * Returns number of turret slots available on the ship.
@@ -587,13 +587,13 @@
                 var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObject.locators[i].name);
                 if (match)
                 {
-                    var index = parseInt(match[1]);
+                    var index = parseInt(match[1], 10);
                     slots[index] = true;
                 }
             }
             this.turretCount = slots.length;
             return this.turretCount;
-        }
+        };
 
         /**
         * Loads the turret and mounts it in a specified slot index.
@@ -608,7 +608,7 @@
             {
                 doMountTurret.call(this, index, resPath, ccpwgl.TurretState.IDLE);
             }
-        }
+        };
 
         /**
         * Removes turret from specified slot.
@@ -632,7 +632,7 @@
                 }
                 ship.RebuildTurretPositions();
             }
-        }
+        };
 
         /**
         * Sets turret's animation state. The specified slot must have a turret.
@@ -674,7 +674,7 @@
                     }
                 }
             }
-        }
+        };
 
         /** Internal helper method that mount a turret on a loaded ship **/
         function doMountTurret(slot, resPath, state)
@@ -699,7 +699,7 @@
                     if (shipColorScheme && object.turretEffect && object.turretEffect.name != 'not_overridable')
                     {
                         var scheme = shipColorScheme;
-                        for (param in scheme.parameters)
+                        for (var param in scheme.parameters)
                         {
                             if (typeof (scheme.parameters[param].resourcePath) == 'undefined')
                             {
@@ -828,7 +828,7 @@
                     onswitch.call(self, this.siegeState);
                 }
             }
-        }
+        };
     }
 
     /**
@@ -854,7 +854,7 @@
         *
         * @returns {boolean} True if planet is loaded; false otherwise.
         */
-        this.isLoaded = function () { return this.hightDirty; }
+        this.isLoaded = function () { return this.hightDirty; };
 
         /**
         * Returns planets's bounding sphere. We know it always is a unit sphere in local
@@ -866,7 +866,7 @@
         this.getBoundingSphere = function ()
         {
             return [vec3.create([0, 0, 0]), 1];
-        }
+        };
 
         /**
         * Sets transform matrix from local coordinate space to world.
@@ -876,7 +876,7 @@
         this.setTransform = function (newTransform)
         {
             this.wrappedObject.highDetail.localTransform.set(newTransform);
-        }
+        };
 
         /**
         * Returns transform matrix from local coordinate space to world.
@@ -886,7 +886,7 @@
         this.getTransform = function ()
         {
             return this.wrappedObject.highDetail.localTransform;
-        }
+        };
     }
 
     /**
@@ -966,8 +966,8 @@
         */
 		this.create = function ()
 		{
-			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene);
-		}
+			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
+		};
 
         /**
         * Loads a scene from .red file.
@@ -989,14 +989,14 @@
                         onload.call(self);
                     }
                 });
-        }
+        };
 
         /**
         * Check if scene's .red file is still loading.
         *
         * @returns {boolean} True if scene's .red file is loading; false otherwise.
         */
-        this.isLoaded = function () { return this.wrappedScene != null; }
+        this.isLoaded = function () { return this.wrappedScene != null; };
 
         /**
         * Loads a ship from .red file and adds it to scene's objects list.
@@ -1025,7 +1025,7 @@
                 rebuildSceneObjects.call(this);
             }
             return ship;
-        }
+        };
 
         /**
         * Loads a space object from .red file and adds it to scene's objects list.
@@ -1054,7 +1054,7 @@
                 rebuildSceneObjects.call(this);
             }
             return object;
-        }
+        };
 
         /**
         * Creates a planet.
@@ -1073,7 +1073,7 @@
             this.objects.push(object);
             rebuildSceneObjects.call(this);
             return object;
-        }
+        };
 
         /**
         * Returns object (ship or planet) at a specified index in scene's objects list.
@@ -1089,7 +1089,7 @@
                 return this.objects[index];
             }
             throw new ReferenceError('object index out of bounds');
-        }
+        };
 
         /**
         * Returns index of an object (ship or planet) in scene's objects list.
@@ -1107,7 +1107,7 @@
                 }
             }
             return -1;
-        }
+        };
 
         /**
         * Removes object at specified index from scene's objects list.
@@ -1123,7 +1123,7 @@
             }
             this.objects.splice(index, 1);
             rebuildSceneObjects.call(this);
-        }
+        };
 
         /**
         * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
@@ -1158,7 +1158,7 @@
                         onload.call(self);
                     }
                 });
-        }
+        };
 
         /**
         * Removes the sun (flare) from the scene.
@@ -1176,7 +1176,7 @@
             {
                 this.wrappedScene.lensflares = [];
             }
-        }
+        };
 
         /**
         * Sets new sun direction. This affects both lighting on objects and
@@ -1195,7 +1195,7 @@
             {
                 vec3.negate(direction, this.sun.position);
             }
-        }
+        };
 
         /**
         * Sets color for the sunlight. This affects lighting on objects.
@@ -1209,7 +1209,7 @@
             {
                 this.wrappedScene.sunDiffuseColor.set(this.sunLightColor);
             }
-        }
+        };
 
         /**
         * Sets fog parameters. Fog effect helps depth perception. It does not
@@ -1230,7 +1230,7 @@
                 this.wrappedScene.fogMax = maxOpacity;
                 this.wrappedScene.fogColor.set(color);
             }
-        }
+        };
     }
 
     /**
@@ -1244,10 +1244,10 @@
     */
     ccpwgl.loadScene = function (resPath, onload)
     {
-        scene = new Scene;
+        scene = new Scene();
         scene.load(resPath, onload);
         return scene;
-    }
+    };
 
     /**
     * Creates a new epmpty scne. The scene will not have background nebula and will
@@ -1262,10 +1262,10 @@
         {
             clearColor = backgroundColor;
         }
-        scene = new Scene;
+        scene = new Scene();
 		scene.create();
         return scene;
-    }
+    };
 
     /**
     * Checks if assets are still loading.
@@ -1275,7 +1275,7 @@
     ccpwgl.isLoading = function ()
     {
         return ccpwgl_int.resMan.IsLoading();
-    }
+    };
 
     /**
     * Enable/disable scene per-frame updates.
@@ -1286,7 +1286,7 @@
     ccpwgl.enableUpdate = function (enable)
     {
         updateEnabled = enable;
-    }
+    };
 
     /**
     * Enable/disable scene rendering.
@@ -1296,7 +1296,7 @@
     ccpwgl.enableRendering = function (enable)
     {
         renderingEnabled = enable;
-    }
+    };
 
     /**
     * Returns current resource unload policy.
@@ -1306,7 +1306,7 @@
     ccpwgl.getResourceUnloadPolicy = function ()
     {
         return resourceUnloadPolicy;
-    }
+    };
 
     /**
     * Assigns new resource unload policy.
@@ -1323,7 +1323,7 @@
         {
             ccpwgl_int.resMan.purgeTime = timeout;
         }
-    }
+    };
 
     /**
     * Manually clears resource cache.
@@ -1331,7 +1331,7 @@
     ccpwgl.clearCachedResources = function ()
     {
         ccpwgl_int.resMan.Clear();
-    }
+    };
 
     return ccpwgl;
 } (ccpwgl_int || window));

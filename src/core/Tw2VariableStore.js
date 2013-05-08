@@ -1,21 +1,21 @@
 function Tw2VariableStore()
 {
-    this._variables = new Object();
+    this._variables = {};
 }
 
 Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type)
 {
     return this._variables[name] = new type(name, value);
-}
+};
 
 Tw2VariableStore.prototype.RegisterType = function (name, type)
 {
     return this._variables[name] = new type(name);
-}
+};
 
 Tw2VariableStore.prototype.RegisterVariable = function (name, value)
 {
-    if (value.constructor == (new glMatrixArrayType).constructor)
+    if (value.constructor == (new glMatrixArrayType()).constructor)
     {
         if (value.length == 16)
         {
@@ -42,6 +42,6 @@ Tw2VariableStore.prototype.RegisterVariable = function (name, value)
     {
         return this.RegisterVariableWithType(name, value, Tw2TextureParameter);
     }
-}
+};
 
 var variableStore = new Tw2VariableStore();

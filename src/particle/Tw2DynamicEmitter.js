@@ -11,12 +11,12 @@
 Tw2DynamicEmitter.prototype.Initialize = function ()
 {
     this.Rebind();
-}
+};
 
 Tw2DynamicEmitter.prototype.Update = function (dt)
 {
     this.SpawnParticles(null, null, Math.min(dt, 0.1));
-}
+};
 
 Tw2DynamicEmitter.prototype.Rebind = function ()
 {
@@ -33,7 +33,7 @@ Tw2DynamicEmitter.prototype.Rebind = function ()
         }
     }
     this.isValid = true;
-}
+};
 
 Tw2DynamicEmitter.prototype.SpawnParticles = function (position, velocity, rateModifier)
 {
@@ -57,4 +57,4 @@ Tw2DynamicEmitter.prototype.SpawnParticles = function (position, velocity, rateM
         }
         this.particleSystem.EndSpawnParticle();
     }
-}
+};

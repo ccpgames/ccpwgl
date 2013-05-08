@@ -27,7 +27,7 @@ Tw2TextureParameter.prototype.SetTexturePath = function (texturePath)
 	{
 		this.textureRes = resMan.GetResource(this.resourcePath);
 	}
-}
+};
 
 Tw2TextureParameter.prototype.Initialize = function ()
 {
@@ -35,7 +35,7 @@ Tw2TextureParameter.prototype.Initialize = function ()
 	{
 		this.textureRes = resMan.GetResource(this.resourcePath);
 	}
-}
+};
 
 Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices)
 {
@@ -44,4 +44,4 @@ Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices)
         device.gl.activeTexture(device.gl.TEXTURE0 + stage);
         this.textureRes.Bind(sampler, slices);
     }
-}
+};

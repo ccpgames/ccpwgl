@@ -28,13 +28,13 @@ function Tw2Mesh()
     this.geometryResPath = '';
     this.lowDetailGeometryResPath = '';
     this.geometryResource = null;
-    this.opaqueAreas = new Array();
-    this.transparentAreas = new Array();
-    this.transparentAreas = new Array();
-    this.additiveAreas = new Array();
-    this.pickableAreas = new Array();
-    this.decalAreas = new Array();
-    this.depthAreas = new Array();
+    this.opaqueAreas = [];
+    this.transparentAreas = [];
+    this.transparentAreas = [];
+    this.additiveAreas = [];
+    this.pickableAreas = [];
+    this.decalAreas = [];
+    this.depthAreas = [];
     this.debugIsHidden = false;
 }
 
@@ -44,7 +44,7 @@ Tw2Mesh.prototype.Initialize = function ()
     {
         this.geometryResource = resMan.GetResource(this.geometryResPath);
     }
-}
+};
 
 Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
 {
@@ -65,7 +65,7 @@ Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjec
         batch.effect = area.effect;
         accumulator.Commit(batch);
     }
-}
+};
 
 Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
@@ -90,4 +90,4 @@ Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
         this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
     }
     return true;
-}
+};

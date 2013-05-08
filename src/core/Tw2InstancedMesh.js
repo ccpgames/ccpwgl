@@ -25,7 +25,7 @@ Tw2InstancedMesh.prototype.Initialize = function ()
             this.geometryResource.SetInstanceCount(this.instanceGeometryResource.GetMaxInstanceCount(this.instanceMeshIndex));
         }
     }
-}
+};
 
 Tw2InstancedMesh.prototype.RebuildCachedData = function (res)
 {
@@ -33,7 +33,7 @@ Tw2InstancedMesh.prototype.RebuildCachedData = function (res)
     {
         this.geometryResource.SetInstanceCount(this.instanceGeometryResource.GetMaxInstanceCount(this.instanceMeshIndex));
     }
-}
+};
 
 Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
 {
@@ -54,7 +54,7 @@ Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator,
         batch.effect = area.effect;
         accumulator.Commit(batch);
     }
-}
+};
 
 Tw2InstancedMesh.prototype.RenderAreas = function (effect)
 {
@@ -74,7 +74,7 @@ Tw2InstancedMesh.prototype.RenderAreas = function (effect)
         }
         this.instanceGeometryResource.Render(effect, this.geometryResource.meshes[0].buffer, this.geometryResource.meshes[0].indexes, this.geometryResource.meshes[0].declaration, this.geometryResource.meshes[0].declaration.stride);
     }
-}
+};
 
 function Tw2InstancedMeshBatch()
 {
@@ -91,4 +91,4 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect)
     {
         this.instanceMesh.RenderAreas(effect);
     }
-}
+};

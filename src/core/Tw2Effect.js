@@ -3,8 +3,8 @@ function Tw2Effect()
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-	this.parameters = new Object();
-	this.passes = new Array();
+	this.parameters = {};
+	this.passes = [];
 }
 
 Tw2Effect.prototype.Initialize = function ()
@@ -18,12 +18,12 @@ Tw2Effect.prototype.Initialize = function ()
         this.effectRes = resMan.GetResource(path);
         this.effectRes.RegisterNotification(this);
     }
-}
+};
 
 Tw2Effect.prototype.GetEffectRes = function ()
 {
     return this.effectRes;
-}
+};
 
 Tw2Effect.prototype.RebuildCachedData = function (resource)
 {
@@ -31,7 +31,7 @@ Tw2Effect.prototype.RebuildCachedData = function (resource)
 	{
 		this.BindParameters();
 	}
-}
+};
 
 Tw2Effect.prototype.BindParameters = function ()
 {
@@ -50,19 +50,19 @@ Tw2Effect.prototype.BindParameters = function ()
             }
         }
     }
-    this.passes = new Array();
+    this.passes = [];
     for (var i = 0; i < this.effectRes.passes.length; ++i)
     {
-        var pass = new Array();
-        pass.stages = new Array();
+        var pass = [];
+        pass.stages = [];
         for (var j = 0; j < this.effectRes.passes[i].stages.length; ++j)
         {
             var stageRes = this.effectRes.passes[i].stages[j];
-            var stage = new Object();
+            var stage = {};
             stage.constantBuffer = new Float32Array(stageRes.constantSize);
-            stage.reroutedParameters = new Array();
-            stage.parameters = new Array();
-            stage.textures = new Array();
+            stage.reroutedParameters = [];
+            stage.parameters = [];
+            stage.textures = [];
             stage.constantBuffer.set(stageRes.constantValues);
 
             for (var k = 0; k < stageRes.constants.length; ++k)
@@ -86,7 +86,7 @@ Tw2Effect.prototype.BindParameters = function ()
                     }
                     else
                     {
-                        var p = new Object();
+                        var p = {};
                         p.parameter = param;
                         p.constantBuffer = stage.constantBuffer;
                         p.offset = constant.offset;
@@ -97,7 +97,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 else if (name in variableStore._variables)
                 {
                     var param = variableStore._variables[name];
-                    var p = new Object();
+                    var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
                     p.offset = constant.offset;
@@ -108,7 +108,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 {
                     variableStore.RegisterType(name, constant.type);
                     var param = variableStore._variables[name];
-                    var p = new Object();
+                    var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
                     p.offset = constant.offset;
@@ -138,7 +138,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 {
                     continue;
                 }
-                var p = new Object();
+                var p = {};
                 p.parameter = param;
                 p.slot = stageRes.textures[k].registerIndex;
                 p.sampler = null;
@@ -165,7 +165,7 @@ Tw2Effect.prototype.BindParameters = function ()
         device.effectObserver.OnEffectChanged(this);
     }
     return true;
-}
+};
 
 Tw2Effect.prototype.ApplyPass = function (pass)
 {
@@ -217,7 +217,7 @@ Tw2Effect.prototype.ApplyPass = function (pass)
     {
         d.perObjectData.SetPerObjectDataToDevice(program.constantBufferHandles);
     }
-}
+};
 
 Tw2Effect.prototype.GetPassCount = function ()
 {
@@ -226,7 +226,7 @@ Tw2Effect.prototype.GetPassCount = function ()
 		return 0;
 	}
 	return this.passes.length;
-}
+};
 
 Tw2Effect.prototype.GetPassInput = function (pass)
 {
@@ -242,7 +242,7 @@ Tw2Effect.prototype.GetPassInput = function (pass)
 	{
         return this.effectRes.passes[pass].shaderProgram.input;
     }
-}
+};
 
 
 Tw2Effect.prototype.Render = function (cb)
@@ -253,4 +253,4 @@ Tw2Effect.prototype.Render = function (cb)
         this.ApplyPass(i);
         cb(this, i);
     }
-}
+};
