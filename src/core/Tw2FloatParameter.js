@@ -40,7 +40,7 @@ Tw2FloatParameter.prototype.OnValueChanged = function ()
 {
     if (this.constantBuffer != null)
     {
-        constantBuffer[this.offset] = this.value;
+        this.constantBuffer[this.offset] = this.value;
     }
 };
 

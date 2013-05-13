@@ -13,15 +13,6 @@ Tw2ObjectReader.prototype.Construct = function (initialize)
     return function () { return self.ConstructFromNode(initialize, true); };
 };
 
-Tw2ObjectReader.prototype.ConstructAsync = function (initialize)
-{
-    this._inputStack = [];
-    this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
-    while (!this.ConstructFromNode(initialize, false));
-    return this.result;
-};
-
-
 Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
 {
     var now = new Date();

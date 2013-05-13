@@ -123,22 +123,6 @@ EveTurretSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
         }
         mat4.identity(this._perObjectData.perObjectVSData.Get('shipMatrix'));
         this._perObjectData.perObjectVSData.Get('clipData')[0] = this.bottomClipHeight;
-        /*var tp = this._perObjectData.perObjectVSData.Get('turretPose0');
-        for(var i =0; i <15;++i)
-        {
-            tp[i*12+0] = 1;
-            tp[i*12+1] = 0;
-            tp[i*12+2] = 0;
-            tp[i*12+3] = 0;
-            tp[i*12+4] = 1;
-            tp[i*12+5] = 0;
-            tp[i*12+6] = 0;
-            tp[i*12+7] = 0;
-            tp[i*12+8] = 1;
-            tp[i*12+9] = 0;
-            tp[i*12+10] = 0;
-            tp[i*12+11] = 0;
-        }*/
         this._perObjectData.perObjectVSData.Set('turretPose0', transforms);
         this._perObjectData.perObjectVSData.Set('turretPose1', transforms);
         this._perObjectData.perObjectVSData.Set('turretPose2', transforms);
@@ -183,11 +167,15 @@ EveTurretSet.prototype.Render = function (batch, overrideEffect)
 {
     var effect = typeof (overrideEffect) == 'undefined' ? this.turretEffect : overrideEffect;
     var index = 0;
+    var customSetter = function(el) 
+    { 
+        device.gl.disableVertexAttribArray(el.location); 
+        device.gl.vertexAttrib2f(el.location, index, index); 
+    };
     for (var i = 0; i < this.geometryResource.meshes.length; ++i)
     {
         var decl = this.geometryResource.meshes[i].declaration;
-        decl.FindUsage(Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = 
-            function(el) { device.gl.disableVertexAttribArray(el.location); device.gl.vertexAttrib2f(el.location, index, index); };
+        decl.FindUsage(Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = customSetter;
     }
     for (; index < this.turrets.length; ++index)
     {

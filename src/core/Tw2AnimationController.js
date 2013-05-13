@@ -649,7 +649,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
     {
         for (var j = 0; j < this.models[i].modelRes.meshBindings.length; ++i)
         {
-            if (this.models[i].modelRes.meshBindings[j].mesh = mesh)
+            if (this.models[i].modelRes.meshBindings[j].mesh == mesh)
             {
                 return this.models[i];
             }
