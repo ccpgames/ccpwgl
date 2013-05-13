@@ -19,7 +19,7 @@ Tw2RandomUniformAttributeGenerator.prototype.Bind = function (ps)
         }
     }
     return false;
-}
+};
 
 Tw2RandomUniformAttributeGenerator.prototype.Generate = function (position, velocity, index)
 {
@@ -27,4 +27,4 @@ Tw2RandomUniformAttributeGenerator.prototype.Generate = function (position, velo
     {
         this._element.buffer[this._element.instanceStride * index + this._element.startOffset + i] = this.minRange[i] + Math.random() * (this.maxRange[i] - this.minRange[i]);
     }
-}
+};

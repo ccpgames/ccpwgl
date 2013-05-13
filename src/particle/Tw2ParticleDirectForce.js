@@ -8,7 +8,7 @@ Tw2ParticleDirectForce.prototype.ApplyForce = function (position, velocity, forc
     force[0] += this.force[0];
     force[1] += this.force[1];
     force[2] += this.force[2];
-}
+};
 
-Tw2ParticleDirectForce.prototype.Update = function () { }
+Tw2ParticleDirectForce.prototype.Update = function () { };
 

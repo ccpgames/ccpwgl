@@ -17,7 +17,7 @@ Tw2StaticEmitter.prototype.Initialize = function ()
         this.geometryResource.RegisterNotification(this);
     }
     this._spawned = false;
-}
+};
 
 Tw2StaticEmitter.prototype.RebuildCachedData = function ()
 {
@@ -29,7 +29,7 @@ Tw2StaticEmitter.prototype.RebuildCachedData = function ()
             this.geometryResource.Reload();
         }
     }
-}
+};
 
 Tw2StaticEmitter.prototype.Update = function (dt)
 {
@@ -88,4 +88,4 @@ Tw2StaticEmitter.prototype.Update = function (dt)
             this.particleSystem.EndSpawnParticle();
         }
     }
-}
+};

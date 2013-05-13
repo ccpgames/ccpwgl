@@ -5,21 +5,21 @@ function Tw2ObjectReader(xmlNode)
 
 Tw2ObjectReader.prototype.Construct = function (initialize)
 {
-    this._inputStack = new Array();
+    this._inputStack = [];
     this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
-    this._initializeObjects = new Array();
-    this._ids = new Array();
+    this._initializeObjects = [];
+    this._ids = [];
     var self = this;
-    return function () { return self.ConstructFromNode(initialize, true); }
-}
+    return function () { return self.ConstructFromNode(initialize, true); };
+};
 
 Tw2ObjectReader.prototype.ConstructAsync = function (initialize)
 {
-    this._inputStack = new Array();
+    this._inputStack = [];
     this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
     while (!this.ConstructFromNode(initialize, false));
     return this.result;
-}
+};
 
 
 Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
@@ -60,7 +60,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
             var object = null;
             if (type.value == 'dict')
             {
-                object = new Object();
+                object = {};
             }
             else
             {
@@ -103,7 +103,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         var list = xmlNode.attributes.getNamedItem('list');
         if (list)
         {
-            object = new Array();
+            object = [];
             var arrayIndex = 0;
             this._inputStack.push([null, object, null]);
             for (var i = 0; i < xmlNode.childNodes.length; ++i)
@@ -172,7 +172,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         capture = (/^(\-?\d+)/).exec(value);
         if (capture)
         {
-            parent[index] = parseInt(capture[1]);
+            parent[index] = parseInt(capture[1], 10);
             continue;
         }
 
@@ -203,4 +203,4 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         object.Initialize();
     }
     return true;
-}
+};

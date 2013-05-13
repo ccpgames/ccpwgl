@@ -21,7 +21,7 @@ function Tw2VariableParameter(name, variableName)
 Tw2VariableParameter.prototype.Bind = function (constantBuffer, offset, size)
 {
     return false;
-}
+};
 
 
 Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size)
@@ -30,4 +30,4 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size)
     {
         variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
     }
-}
+};

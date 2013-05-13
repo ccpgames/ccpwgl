@@ -1,16 +1,16 @@
 function Tw2EffectRes()
 {
 	this._super.constructor.call(this);
-    this.passes = new Array();
-    this.annotations = new Object();
+    this.passes = [];
+    this.annotations = {};
 }
 
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
 Tw2EffectRes.prototype.Prepare = function (data, xml)
 {
-    this.passes = new Array();
-    this.annotations = new Object();
+    this.passes = [];
+    this.annotations = {};
 
     var reader = new Tw2BinaryReader(new Uint8Array(data));
     var stringTable = '';
@@ -56,6 +56,72 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         return shader;
     }
 
+    function CreateProgram(vertexShader, fragmentShader, pass, path)
+    {
+        var program = {};
+        program.program = device.gl.createProgram();
+        device.gl.attachShader(program.program, vertexShader);
+        device.gl.attachShader(program.program, fragmentShader);
+        device.gl.linkProgram(program.program);
+
+        if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
+        {
+            console.error(
+                'Tw2EffectRes:',
+                ' error linking shaders (effect \'',
+                path,
+                '\'): ',
+                device.gl.getProgramInfoLog(program.program));
+            return null;
+        }
+
+        device.gl.useProgram(program.program);
+        program.constantBufferHandles = [];
+        for (var j = 0; j < 16; ++j)
+        {
+            program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
+        }
+        program.samplerHandles = [];
+        for (var j = 0; j < 16; ++j)
+        {
+            program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
+            device.gl.uniform1i(program.samplerHandles[j], j);
+        }
+        for (var j = 0; j < 16; ++j)
+        {
+            program.samplerHandles[j + 16] = device.gl.getUniformLocation(program.program, "vs" + j);
+            device.gl.uniform1i(program.samplerHandles[j + 16], j + 16);
+        }
+        program.input = new Tw2VertexDeclaration();
+        for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
+        {
+            var location = device.gl.getAttribLocation(program.program, "attr" + j);
+            if (location >= 0)
+            {
+                var el = new Tw2VertexElement(
+                    pass.stages[0].inputDefinition.elements[j].usage,
+                    pass.stages[0].inputDefinition.elements[j].usageIndex);
+                el.location = location;
+                program.input.elements.push(el);
+            }
+        }
+        program.input.RebuildHash();
+
+        program.shadowStateInt = device.gl.getUniformLocation(program.program, "ssi");
+        program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
+        program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
+        device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
+        program.volumeSlices = [];
+        for (var j = 0; j < pass.stages[1].samplers.length; ++j)
+        {
+            if (pass.stages[1].samplers[j].isVolume)
+            {
+                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, "s" + pass.stages[1].samplers[j].registerIndex + "sl");
+            }
+        }
+        return program;
+    }
+
     var version = reader.ReadUInt32();
     if (version != 2 && version != 3)
     {
@@ -83,17 +149,17 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     var passCount = reader.ReadUInt8();
     for (var passIx = 0; passIx < passCount; ++passIx)
     {
-        var pass = new Object();
-        pass.stages = new Array(new Object(), new Object());
+        var pass = {};
+        pass.stages = [{}, {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
         {
-            var stage = new Object();
+            var stage = {};
             stage.inputDefinition = new Tw2VertexDeclaration();
-            stage.constants = new Array();
-            stage.textures = new Array();
-            stage.samplers = new Array();
+            stage.constants = [];
+            stage.textures = [];
+            stage.samplers = [];
             var stageType = reader.ReadUInt8();
             var inputCount = reader.ReadUInt8();
             for (var inputIx = 0; inputIx < inputCount; ++inputIx)
@@ -152,7 +218,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             var constantCount = reader.ReadUInt32();
             for (var constantIx = 0; constantIx < constantCount; ++constantIx)
             {
-                var constant = new Object();
+                var constant = {};
                 constant.name = ReadString();
                 constant.offset = reader.ReadUInt32() / 4;
                 constant.size = reader.ReadUInt32() / 4;
@@ -191,7 +257,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             for (var textureIx = 0; textureIx < textureCount; ++textureIx)
             {
                 var registerIndex = reader.ReadUInt8();
-                var texture = new Object();
+                var texture = {};
                 texture.registerIndex = registerIndex;
                 texture.name = ReadString();
                 texture.type = reader.ReadUInt8();
@@ -297,79 +363,13 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             pass.stages[stageType] = stage;
         }
 
-        pass.states = new Array();
+        pass.states = [];
         var stateCount = reader.ReadUInt8();
         for (var stateIx = 0; stateIx < stateCount; ++stateIx)
         {
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
             pass.states.push({ 'state': state, 'value': value });
-        }
-
-        function CreateProgram(vertexShader, fragmentShader, pass, path)
-        {
-            var program = new Object();
-            program.program = device.gl.createProgram();
-            device.gl.attachShader(program.program, vertexShader);
-            device.gl.attachShader(program.program, fragmentShader);
-            device.gl.linkProgram(program.program);
-
-            if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
-            {
-                console.error(
-                    'Tw2EffectRes:',
-                    ' error linking shaders (effect \'',
-                    path,
-                    '\'): ',
-                    device.gl.getProgramInfoLog(program.program));
-                return null;
-            }
-
-            device.gl.useProgram(program.program);
-            program.constantBufferHandles = new Array();
-            for (var j = 0; j < 16; ++j)
-            {
-                program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
-            }
-            program.samplerHandles = new Array();
-            for (var j = 0; j < 16; ++j)
-            {
-                program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
-                device.gl.uniform1i(program.samplerHandles[j], j);
-            }
-            for (var j = 0; j < 16; ++j)
-            {
-                program.samplerHandles[j + 16] = device.gl.getUniformLocation(program.program, "vs" + j);
-                device.gl.uniform1i(program.samplerHandles[j + 16], j + 16);
-            }
-            program.input = new Tw2VertexDeclaration();
-            for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
-            {
-                var location = device.gl.getAttribLocation(program.program, "attr" + j);
-                if (location >= 0)
-                {
-                    var el = new Tw2VertexElement(
-                        pass.stages[0].inputDefinition.elements[j].usage,
-                        pass.stages[0].inputDefinition.elements[j].usageIndex);
-                    el.location = location;
-                    program.input.elements.push(el);
-                }
-            }
-            program.input.RebuildHash();
-
-            program.shadowStateInt = device.gl.getUniformLocation(program.program, "ssi");
-            program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
-            program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
-            device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
-            program.volumeSlices = new Array();
-            for (var j = 0; j < pass.stages[1].samplers.length; ++j)
-            {
-                if (pass.stages[1].samplers[j].isVolume)
-                {
-                    program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, "s" + pass.stages[1].samplers[j].registerIndex + "sl");
-                }
-            }
-            return program;
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
@@ -398,11 +398,11 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     for (var paramIx = 0; paramIx < parameterCount; ++paramIx)
     {
         var name = ReadString();
-        var annotations = new Array();
+        var annotations = [];
         var annotationCount = reader.ReadUInt8();
         for (var annotationIx = 0; annotationIx < annotationCount; ++annotationIx)
         {
-            annotations[annotationIx] = new Object();
+            annotations[annotationIx] = {};
             annotations[annotationIx].name = ReadString();
             annotations[annotationIx].type = reader.ReadUInt8();
             switch (annotations[annotationIx].type)
@@ -424,7 +424,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     }
 
     this.PrepareFinished(true);
-}
+};
 
 Tw2EffectRes.prototype.ApplyPass = function (pass)
 {
@@ -443,7 +443,7 @@ Tw2EffectRes.prototype.ApplyPass = function (pass)
         device.gl.useProgram(pass.shaderProgram.program);
         device.shadowHandles = null;
     }
-}
+};
 
 Inherit(Tw2EffectRes, Tw2Resource);
 

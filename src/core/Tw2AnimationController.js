@@ -8,7 +8,7 @@ function Tw2TrackGroup()
 {
     this.trackGroupRes = null;
     this.model = null;
-    this.transformTracks = new Array();
+    this.transformTracks = [];
 }
 
 function Tw2Animation()
@@ -20,13 +20,13 @@ function Tw2Animation()
     this.isPlaying = false;
     this.callback = null;
 
-    this.trackGroups = new Array();
+    this.trackGroups = [];
 }
 
 Tw2Animation.prototype.IsFinished = function ()
 {
     return !this.cycle && this.time >= this.duration;
-}
+};
 
 function Tw2Bone()
 {
@@ -39,7 +39,7 @@ function Tw2Bone()
 function Tw2Model()
 {
     this.modelRes = null;
-    this.bones = new Array();
+    this.bones = [];
 }
 
 
@@ -47,11 +47,11 @@ function Tw2Model()
 
 function Tw2AnimationController(geometryResource)
 {
-    this.geometryResources = new Array();
+    this.geometryResources = [];
 
-    this.models = new Array();
-    this.animations = new Array();
-    this.meshBindings = new Array();
+    this.models = [];
+    this.animations = [];
+    this.meshBindings = [];
     this.loaded = false;
     this.update = true;
     
@@ -63,22 +63,22 @@ function Tw2AnimationController(geometryResource)
 
 Tw2AnimationController.prototype.SetGeometryResource = function (geometryResource)
 {
-    this.models = new Array();
-    this.animations = new Array();
-    this.meshBindings = new Array();
+    this.models = [];
+    this.animations = [];
+    this.meshBindings = [];
 
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
         this.geometryResources[i].UnregisterNotification(this);
     }
     this.loaded = false;
-    this.geometryResources = new Array();
+    this.geometryResources = [];
     if (geometryResource)
     {
         this.geometryResources.push(geometryResource);
         geometryResource.RegisterNotification(this);
     }
-}
+};
 
 Tw2AnimationController.prototype.AddGeometryResource = function (geometryResource)
 {
@@ -91,7 +91,7 @@ Tw2AnimationController.prototype.AddGeometryResource = function (geometryResourc
     }
     this.geometryResources.push(geometryResource);
     geometryResource.RegisterNotification(this);
-}
+};
 
 Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
 {
@@ -159,7 +159,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype._AddModel = function (modelRes)
 {
@@ -184,7 +184,7 @@ Tw2AnimationController.prototype._AddModel = function (modelRes)
     }
     this.models.push(model);
     return model;
-}
+};
 
 Tw2AnimationController.prototype._FindMeshBindings = function (resource)
 {
@@ -196,7 +196,7 @@ Tw2AnimationController.prototype._FindMeshBindings = function (resource)
         }
     }
     return null;
-}
+};
 
 Tw2AnimationController.prototype.RebuildCachedData = function (resource)
 {
@@ -214,7 +214,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
         return;
     }
 
-    var newModels = new Array();
+    var newModels = [];
     if (resource.meshes.length)
     {
         for (var i = 0; i < resource.models.length; ++i)
@@ -252,7 +252,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
             var meshBindings = this._FindMeshBindings(resource);
             if (meshBindings == null)
             {
-                meshBindings = new Array();
+                meshBindings = [];
                 meshBindings.resource = resource;
                 this.meshBindings.push(meshBindings);
             }
@@ -265,7 +265,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
                     {
                         if (!model.bones[n].bindingArrays)
                         {
-                            model.bones[n].bindingArrays = new Array();
+                            model.bones[n].bindingArrays = [];
                         }
                         var arrayInfo = { 'array': meshBindings[meshIx], 'offset': k * 12};
                         model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = arrayInfo;
@@ -292,7 +292,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
         }
         this.pendingCommands = null;
     }
-}
+};
 
 Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback)
 {
@@ -321,7 +321,7 @@ Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.StopAnimation = function (name)
 {
@@ -332,7 +332,7 @@ Tw2AnimationController.prototype.StopAnimation = function (name)
             this.animations[i].isPlaying = false;
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.StopAllAnimations = function ()
 {
@@ -340,7 +340,7 @@ Tw2AnimationController.prototype.StopAllAnimations = function ()
     {
         this.animations[i].isPlaying = false;
     }
-}
+};
 
 Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
 {
@@ -376,7 +376,7 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.Update = function (dt)
 {
@@ -589,7 +589,7 @@ Tw2AnimationController.prototype.Update = function (dt)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
 {
@@ -609,7 +609,7 @@ Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
             }
         }
     }
-}
+};
 
 Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometryResource)
 {
@@ -628,7 +628,7 @@ Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometry
         return meshBindings[meshIndex];
     }
     return new Float32Array();
-}
+};
 
 Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometryResource)
 {
@@ -656,4 +656,4 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
         }
     }
     return null;
-}
+};

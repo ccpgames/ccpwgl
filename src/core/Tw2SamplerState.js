@@ -27,7 +27,7 @@ Tw2SamplerState.prototype.ComputeHash = function ()
     this.hash ^= this.addressV;
     this.hash *= 16777619;
     this.hash ^= this.anisotropy;
-}
+};
 
 Tw2SamplerState.prototype.Apply = function (hasMipMaps)
 {
@@ -44,4 +44,4 @@ Tw2SamplerState.prototype.Apply = function (hasMipMaps)
             d.anisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT,
             Math.min(this.anisotropy, d.anisotropicFilter.maxAnisotropy));
     }
-}
+};

@@ -34,7 +34,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
         }
     }
     return (!this.controlPosition || this._position != null) && (!this.controlVelocity || this._velocity != null);
-}
+};
 
 Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, velocity, index)
 {
@@ -77,4 +77,4 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, veloci
         this._position.buffer[offset + 1] = rv[1];
         this._position.buffer[offset + 2] = rv[2];
     }
-}
+};

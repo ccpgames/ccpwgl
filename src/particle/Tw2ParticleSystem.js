@@ -23,7 +23,7 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
     case Tw2ParticleElementDeclaration.MASS: return 1;
     }
     return this.dimension;
-}
+};
 
 Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
 {
@@ -47,7 +47,7 @@ Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
             usageIndex = this.usageIndex + 8;
     }
     return new Tw2VertexElement(usage, usageIndex, device.gl.FLOAT, this.GetDimension());
-}
+};
 
 
 function Tr2ParticleElement(decl)
@@ -96,7 +96,7 @@ function Tw2ParticleSystem()
 Tw2ParticleSystem.prototype.Initialize = function ()
 {
     this.UpdateElementDeclaration();
-}
+};
 
 Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
 {
@@ -199,12 +199,12 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
     }
     this.isValid = true;
     this.bufferDirty = true;
-}
+};
 
 Tw2ParticleSystem.prototype.HasElement = function (type)
 {
     return this._stdElements[type] != null;
-}
+};
 
 Tw2ParticleSystem.prototype.GetElement = function (type)
 {
@@ -213,7 +213,7 @@ Tw2ParticleSystem.prototype.GetElement = function (type)
         this._stdElements[type].offset = this._stdElements[type].startOffset;
     }
     return this._stdElements[type];
-}
+};
 
 Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
 {
@@ -222,7 +222,7 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
         return null;
     }
     return this.aliveCount++;
-}
+};
 
 Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
 {
@@ -231,7 +231,7 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
     {
         if (this.buffers[j])
         {
-            var original = this.buffers[j].subarray(this.instanceStride[j] * index, this.instanceStride[j] * index + this.vertexStride[j])
+            var original = this.buffers[j].subarray(this.instanceStride[j] * index, this.instanceStride[j] * index + this.vertexStride[j]);
             for (var i = 1; i < 4; ++i)
             {
                 this.buffers[j].set(original, this.instanceStride[j] * index + i * this.vertexStride[j]);
@@ -239,7 +239,7 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
         }
     }
     this.bufferDirty = true;
-}
+};
 
 Tw2ParticleSystem.prototype.Update = function (dt)
 {
@@ -390,7 +390,7 @@ Tw2ParticleSystem.prototype.Update = function (dt)
             el.dirty = false;
         }
     }
-}
+};
 
 Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
 {
@@ -416,7 +416,7 @@ Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
         return true;
     }
     return false;
-}
+};
 
 Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, instanceDecl, instanceStride)
 {
@@ -437,7 +437,7 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
         var eye = device.viewInv;
         var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
         var count = this.aliveCount;
-        function sortItems(a, b)
+        var sortItems = function (a, b)
         {
             if (a >= count && b >= count)
             {
@@ -472,7 +472,7 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
             if (l0 < l1) return 1;
             if (l0 > l1) return -1;
             return 0;
-        }
+        };
         for (var i = 0; i < this.maxParticleCount; ++i)
         {
             this._sortedIndexes[i] = i;
@@ -509,11 +509,11 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
         d.gl.drawElements(d.gl.TRIANGLES, this.aliveCount * 6, d.gl.UNSIGNED_SHORT, 0);
     }
     return true;
-}
+};
 
 Tw2ParticleSystem.prototype.GetMaxInstanceCount = function ()
 {
     return this.maxParticleCount;
-}
+};
 
 

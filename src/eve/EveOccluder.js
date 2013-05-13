@@ -3,7 +3,7 @@ function EveOccluder()
     this.name = '';
     this.display = true;
     this.value = 1;
-    this.sprites = new Array();
+    this.sprites = [];
     variableStore.RegisterType('OccluderValue', Tw2Vector4Parameter);
 
     if (!EveOccluder._collectEffect)
@@ -98,7 +98,7 @@ EveOccluder.prototype.UpdateValue = function (parentTransform, index)
     center[3] = y1 - y0;
 
     EveOccluder._collectEffect.parameters['OccluderPosition'].SetValue(center);
-}
+};
 
 EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
 {
@@ -124,4 +124,4 @@ EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
         device.gl.drawArrays(device.gl.TRIANGLES, 0, 255 * 6);
     }
 
-}
+};

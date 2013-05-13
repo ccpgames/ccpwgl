@@ -24,7 +24,7 @@ Tw2RenderTarget.prototype.Destroy = function ()
         device.gl.deleteFramebuffer(this._frameBuffer);
         this._frameBuffer = null;
     }
-}
+};
 
 Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
 {
@@ -60,17 +60,17 @@ Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
     this.width = width;
     this.height = height;
     this.hasDepth = hasDepth;
-}
+};
 
 Tw2RenderTarget.prototype.Set = function ()
 {
     this._oldViewport = device.gl.getParameter(device.gl.VIEWPORT);
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, this._frameBuffer);
     device.gl.viewport(0, 0, this.width, this.height);
-}
+};
 
 Tw2RenderTarget.prototype.Unset = function ()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
     device.gl.viewport(this._oldViewport[0], this._oldViewport[1], this._oldViewport[2], this._oldViewport[3]);
-}
+};

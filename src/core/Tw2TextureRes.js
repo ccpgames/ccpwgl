@@ -3,7 +3,7 @@ function Tw2TextureRes()
 	this._super.constructor.call(this);
     this.texture = null;
 	this.isCube = false;
-	this.images = new Array();
+	this.images = [];
 	this.width = 0;
 	this.height = 0;
 	this._facesLoaded = 0;
@@ -49,17 +49,17 @@ Tw2TextureRes.prototype.Prepare = function (text, xml)
         this.PrepareFinished(true);
     }
     delete this.images;
-}
+};
 
 Tw2TextureRes.prototype.IsPowerOfTwo = function (x)
 {
     return (x & (x - 1)) == 0;
-}
+};
 
 Tw2TextureRes.prototype.DoCustomLoad = function (path)
 {
     this.LoadStarted();
-    this.images = new Array();
+    this.images = [];
     var self = this;
 
     path = resMan.BuildUrl(path);
@@ -76,21 +76,22 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this._facesLoaded = 0;
         var base = path.substr(0, path.length - 5);
         var extensions = ['.px', '.nx', '.py', '.ny', '.pz', '.nz'];
+        var onCubeFaceImageLoaded = function (img)
+        {
+            resMan._pendingLoads--;
+            self._facesLoaded++;
+            if (self._facesLoaded >= 6)
+            {
+                self.LoadFinished(true);
+                resMan._prepareQueue.push([self, 'cube', null]);
+            }
+        };
         for (var i = 0; i < 6; ++i)
         {
             resMan._pendingLoads++;
             this.images[i] = new Image();
             this.images[i].crossOrigin = 'anonymous';
-            this.images[i].onload = function (img)
-            {
-                resMan._pendingLoads--;
-                self._facesLoaded++;
-                if (self._facesLoaded >= 6)
-                {
-                    self.LoadFinished(true);
-                    resMan._prepareQueue.push([self, 'cube', null]);
-                }
-            }
+            this.images[i].onload = onCubeFaceImageLoaded;
             this.images[i].src = base + mipExt + extensions[i] + '.png';
         }
     }
@@ -105,7 +106,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
             resMan._pendingLoads--;
             self.LoadFinished(true);
             resMan._prepareQueue.push([self, '', null]);
-        }
+        };
         if (device.mipLevelSkipCount > 0)
         {
             var index = path.lastIndexOf('.');
@@ -117,7 +118,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this.images[0].src = path;
     }
     return true;
-}
+};
 
 Tw2TextureRes.prototype.Unload = function ()
 {
@@ -130,14 +131,14 @@ Tw2TextureRes.prototype.Unload = function ()
     this._isPurged = true;
     this._isGood = false;
     return true;
-}
+};
 
 Tw2TextureRes.prototype.Attach = function (texture)
 {
     this.texture = texture;
     this.LoadFinished(true);
     this.PrepareFinished(true);
-}
+};
 
 Tw2TextureRes.prototype.Bind = function (sampler, slices)
 {
@@ -160,7 +161,7 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices)
         sampler.Apply(this.hasMipMaps);
         this._currentSampler = sampler.hash;
     }
-}
+};
 
 Inherit(Tw2TextureRes, Tw2Resource);
 

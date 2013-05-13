@@ -39,12 +39,12 @@ EveSpaceObjectDecal.prototype.Initialize = function ()
     this.decalMatrix[13] = this.position[1];
     this.decalMatrix[14] = this.position[2];
     mat4.inverse(this.decalMatrix, this.invDecalMatrix);
-}
+};
 
 EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
 {
     this.parentGeometry = geometryRes;
-}
+};
 
 EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
@@ -66,7 +66,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjec
         batch.renderMode = device.RM_DECAL;
         accumulator.Commit(batch);
     }
-}
+};
 
 EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
 {
@@ -82,4 +82,4 @@ EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
     this.parentGeometry.meshes[0].indexes = bkIB;
     this.parentGeometry.meshes[0].areas[0].start = bkStart;
     this.parentGeometry.meshes[0].areas[0].count = bkCount;
-}
+};
