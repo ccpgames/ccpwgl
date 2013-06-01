@@ -2,18 +2,18 @@ function EveSpaceObject()
 {
 	this.name = '';
 	this.mesh = null;
-	this.spriteSets = new Array();
+	this.spriteSets = [];
 	this.boundingSphereCenter = vec3.create();
 	this.boundingSphereRadius = 0;
-	this.locators = new Array();
-	this.turretSets = new Array();
-	this.decals = new Array();
-	this.spotlightSets = new Array();
+	this.locators = [];
+	this.turretSets = [];
+	this.decals = [];
+	this.spotlightSets = [];
 	
 	this.transform = mat4.create();
 	mat4.identity(this.transform);
 	
-	this.children = new Array();
+	this.children = [];
 	
 	this._perObjectData = new Tw2PerObjectData();
 	this._perObjectData.perObjectVSData = new Tw2RawData();
@@ -39,7 +39,7 @@ EveSpaceObject.prototype.Initialize = function ()
             this.decals[i].SetParentGeometry(this.mesh.geometryResource);
         }
     }
-}
+};
 
 EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
 {
@@ -77,7 +77,7 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
 	{
 		this.decals[i].GetBatches(mode, accumulator, this._perObjectData);
 	}
-}
+};
 
 EveSpaceObject.prototype.Update = function (dt)
 {
@@ -90,7 +90,7 @@ EveSpaceObject.prototype.Update = function (dt)
 		this.children[i].Update(dt);
 	}
 	this.animation.Update(dt);
-}
+};
 
 EveSpaceObject.prototype.GetLocatorCount = function (prefix)
 {
@@ -103,7 +103,7 @@ EveSpaceObject.prototype.GetLocatorCount = function (prefix)
         }
     }
     return count;
-}
+};
 
 EveSpaceObject.prototype.FindLocatorJointByName = function (name)
 {
@@ -119,7 +119,7 @@ EveSpaceObject.prototype.FindLocatorJointByName = function (name)
         }
     }
     return null;
-}
+};
 
 EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
 {
@@ -131,12 +131,12 @@ EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
         }
     }
     return null;
-}
+};
 
 
 EveSpaceObject.prototype.RenderDebugInfo = function (debugHelper)
 {
     this.animation.RenderDebugInfo(debugHelper);
-}
+};
 
 EveStation = EveSpaceObject;

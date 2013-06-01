@@ -4,7 +4,7 @@ function Tw2Resource()
     this._isLoading = false;
     this._isGood = false;
     this._isPurged = false;
-	this._notifications = new Array();
+	this._notifications = [];
 	this.activeFrame = 0;
 	this.doNotPurge = 0;
 }
@@ -13,18 +13,18 @@ Tw2Resource.prototype.IsLoading = function ()
 {
     this.KeepAlive();
     return this._isLoading;
-}
+};
 
 Tw2Resource.prototype.IsGood = function ()
 {
     this.KeepAlive();
     return this._isGood;
-}
+};
 
 Tw2Resource.prototype.IsPurged = function ()
 {
     return this._isPurged;
-}
+};
 
 Tw2Resource.prototype.LoadStarted = function ()
 {
@@ -33,7 +33,7 @@ Tw2Resource.prototype.LoadStarted = function ()
 	{
 		this._notifications[i].ReleaseCachedData(this);
 	}
-}
+};
 
 Tw2Resource.prototype.LoadFinished = function (success)
 {
@@ -42,7 +42,7 @@ Tw2Resource.prototype.LoadFinished = function (success)
     {
         this._isGood = false;
     }
-}
+};
 
 Tw2Resource.prototype.PrepareFinished = function (success)
 {
@@ -52,22 +52,22 @@ Tw2Resource.prototype.PrepareFinished = function (success)
 	{
 		this._notifications[i].RebuildCachedData(this);
 	}
-}
+};
 
 Tw2Resource.prototype.SetIsGood = function (success)
 {
     this._isGood = success;
-}
+};
 
 Tw2Resource.prototype.Unload = function ()
 {
-}
+};
 
 Tw2Resource.prototype.Reload = function ()
 {
     this.Unload();
     resMan.ReloadResource(this);
-}
+};
 
 Tw2Resource.prototype.KeepAlive = function ()
 {
@@ -76,7 +76,7 @@ Tw2Resource.prototype.KeepAlive = function ()
     {
         this.Reload();
     }
-}
+};
 
 Tw2Resource.prototype.RegisterNotification = function (notification)
 {
@@ -92,7 +92,7 @@ Tw2Resource.prototype.RegisterNotification = function (notification)
 	{
 		notification.RebuildCachedData(this);
 	}
-}
+};
 
 Tw2Resource.prototype.UnregisterNotification = function (notification)
 {
@@ -104,12 +104,12 @@ Tw2Resource.prototype.UnregisterNotification = function (notification)
 			return;
 		}
 	}
-}
+};
 
 
 function Inherit(derived, base)
 {
-    for (i in base.prototype)
+    for (var i in base.prototype)
     {
         if (!(i in derived.prototype))
         {

@@ -7,7 +7,7 @@ function EvePlanet()
     this.heightMapResPath2 = '';
     this.heightMap = new Tw2RenderTarget();
     this.hightDirty = false;
-    this.lockedResources = new Array();
+    this.lockedResources = [];
 }
 
 
@@ -17,7 +17,7 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
     this.heightMapResPath1 = heightMap1;
     this.heightMapResPath2 = heightMap2;
 
-    this.highDetail.children = new Array();
+    this.highDetail.children = [];
     var self = this;
     resMan.GetObject(planetPath, function (obj) { self.highDetail.children.unshift(obj); self._MeshLoaded(); });
     if (atmospherePath)
@@ -25,7 +25,7 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
         resMan.GetObject(atmospherePath, function (obj) { self.highDetail.children.push(obj); });
     }
     this.hightDirty = true;
-}
+};
 
 EvePlanet.prototype.GetResources = function (obj, visited, result)
 {
@@ -46,12 +46,12 @@ EvePlanet.prototype.GetResources = function (obj, visited, result)
             this.GetResources(obj[prop], visited, result);
         }
     }
-}
+};
 
 EvePlanet.prototype._MeshLoaded = function ()
 {
-    this.lockedResources = new Array();
-    this.GetResources(this.highDetail, new Array(), this.lockedResources);
+    this.lockedResources = [];
+    this.GetResources(this.highDetail, [], this.lockedResources);
 
     var mainMesh = this.highDetail.children[0].mesh;
     var originalEffect = null;
@@ -135,7 +135,7 @@ EvePlanet.prototype._MeshLoaded = function ()
             this.lockedResources[i].Reload();
         }
     }
-}
+};
 
 EvePlanet.prototype.GetBatches = function (mode, accumulator)
 {
@@ -175,14 +175,14 @@ EvePlanet.prototype.GetBatches = function (mode, accumulator)
     //        device.RenderTexture(this.heightMap.texture);
     //        device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
     //    }
-}
+};
 
 EvePlanet.prototype.Update = function (dt)
 {
     this.highDetail.Update(dt);
-}
+};
 
 EvePlanet.prototype.UpdateViewDependentData = function (parentTransform)
 {
     this.highDetail.UpdateViewDependentData(parentTransform);
-}
+};

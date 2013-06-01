@@ -6,9 +6,9 @@ function EveLensflare()
     this.doOcclusionQueries = true;
     this.cameraFactor = 20;
     this.position = vec3.create();
-    this.flares = new Array();
-    this.occluders = new Array();
-    this.backgroundOccluders = new Array();
+    this.flares = [];
+    this.occluders = [];
+    this.backgroundOccluders = [];
     this.occlusionIntensity = 1;
     this.backgroundOcclusionIntensity = 1;
 
@@ -53,7 +53,7 @@ EveLensflare.prototype.Initialize = function ()
             }
         }
     }
-}
+};
 
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
@@ -81,7 +81,7 @@ EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 	out[8] = -norm[0];
 	out[9] = -norm[1];
 	out[10] = -norm[2];
-}
+};
 
 EveLensflare.prototype.PrepareRender = function ()
 {
@@ -133,7 +133,7 @@ EveLensflare.prototype.PrepareRender = function ()
         this.flares[i].UpdateViewDependentData(this._transform);
     }
     
-}
+};
 
 EveLensflare.prototype.UpdateOccluders = function ()
 {
@@ -211,7 +211,7 @@ EveLensflare.prototype.UpdateOccluders = function ()
 //    device.SetStandardStates(device.RM_FULLSCREEN);
 //    device.RenderTexture(EveLensflare.occluderLevels.texture);
 //    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
-}
+};
 
 EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
@@ -223,4 +223,4 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
     {
 		this.flares[i].GetBatches(mode, accumulator, perObjectData);
     }
-}
+};

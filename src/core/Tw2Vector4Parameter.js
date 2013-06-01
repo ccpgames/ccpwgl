@@ -30,12 +30,12 @@ Tw2Vector4Parameter.prototype.Bind = function (constantBuffer, offset, size)
     this.offset = offset;
     this.Apply(this.constantBuffer, this.offset, size);
     return true;
-}
+};
 
 Tw2Vector4Parameter.prototype.Unbind = function () 
 {
     this.constantBuffer = null;
-}
+};
 
 Tw2Vector4Parameter.prototype.SetValue = function (value)
 {
@@ -44,7 +44,7 @@ Tw2Vector4Parameter.prototype.SetValue = function (value)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
-}
+};
 
 Tw2Vector4Parameter.prototype.OnValueChanged = function ()
 {
@@ -52,9 +52,9 @@ Tw2Vector4Parameter.prototype.OnValueChanged = function ()
     {
         this.constantBuffer.set(this.value, this.offset);
     }
-}
+};
 
 Tw2Vector4Parameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
-}
+};

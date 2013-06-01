@@ -1,17 +1,17 @@
 function Tw2SkinnedObject()
 {
-	this.name = '';
-	this.meshes = new Array();
-	this.animationResPath = '';
-	this._animationRes = null;
-	
-	this.transform = mat4.create();
-	mat4.identity(this.transform);
+    this.name = '';
+    this.meshes = [];
+    this.animationResPath = '';
+    this._animationRes = null;
+    
+    this.transform = mat4.create();
+    mat4.identity(this.transform);
 
-	this._perObjectData = new Array();
+    this._perObjectData = [];
 
-	
-	this.animation = new Tw2AnimationController();
+    
+    this.animation = new Tw2AnimationController();
 }
 
 Tw2SkinnedObject.prototype.Initialize = function ()
@@ -33,29 +33,29 @@ Tw2SkinnedObject.prototype.Initialize = function ()
         this._perObjectData[i].perObjectPSData = new Tw2RawData();
         this._perObjectData[i].perObjectPSData.Declare('Shipdata', 4);
         this._perObjectData[i].perObjectPSData.Create();
-	    mat4.transpose(this.transform, this._perObjectData[i].perObjectVSData.Get('WorldMat'));
+        mat4.transpose(this.transform, this._perObjectData[i].perObjectVSData.Get('WorldMat'));
     }
-}
+};
 
 Tw2SkinnedObject.prototype.GetBatches = function (mode, accumulator)
 {
-	for (var i = 0; i < this.meshes.length; ++i)
-	{
-	    //mat4.transpose(this.transform, this._perObjectData[i].perObjectVSData.Get('WorldMat'));
-	    this._perObjectData[i].perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(this.meshes[i].meshIndex, this.meshes[i].geometryResource));
-		this.meshes[i].GetBatches(mode, accumulator, this._perObjectData[i]);
-	}
-}
+    for (var i = 0; i < this.meshes.length; ++i)
+    {
+        //mat4.transpose(this.transform, this._perObjectData[i].perObjectVSData.Get('WorldMat'));
+        this._perObjectData[i].perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(this.meshes[i].meshIndex, this.meshes[i].geometryResource));
+        this.meshes[i].GetBatches(mode, accumulator, this._perObjectData[i]);
+    }
+};
 
 Tw2SkinnedObject.prototype.Update = function (dt)
 {
-	this.animation.Update(dt);
-}
+    this.animation.Update(dt);
+};
 
 Tw2SkinnedObject.prototype.RenderDebugInfo = function (debugHelper)
 {
     this.animation.RenderDebugInfo(debugHelper);
-}
+};
 
 Tw2SkinnedObject.prototype.ResetBlendShapes = function ()
 {
@@ -82,7 +82,7 @@ Tw2SkinnedObject.prototype.ResetBlendShapes = function ()
             device.gl.bufferSubData(device.gl.ARRAY_BUFFER, 0, mesh.bufferData);
         }
     }
-}
+};
 
 Tw2SkinnedObject.prototype.ApplyBlendShapes = function ()
 {
@@ -138,5 +138,5 @@ Tw2SkinnedObject.prototype.ApplyBlendShapes = function ()
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, mesh.buffer);
         device.gl.bufferSubData(device.gl.ARRAY_BUFFER, 0, mesh.bufferData);
     }
-}
+};
 

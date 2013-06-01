@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <title>WebGL API Test</title>
+
+        <script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+        <script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+        <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+        <script type="text/javascript" src="../src/ccpwgl.js"></script>
+        <script type="text/javascript">
+
+            function onDocumentLoad()
+            {
+                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
+
+
+                var canvas = document.getElementById('mainCanvas');
+                ccpwgl.initialize(canvas);
+                var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+
+        		var camera = new TestCamera(canvas);
+                camera.minDistance = 10;
+                camera.maxDistance = 10000;
+                camera.fov = 30;
+                camera.distance = 5000;
+                camera.nearPlane = 1;
+                camera.farPlane = 10000000;
+                camera.minPitch = -0.5;
+                camera.maxPitch = 0.65;
+                ccpwgl.setCamera(camera);
+
+                // Load the data for the Abaddon
+                var ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', undefined);
+
+                // Engine trails for amarr ship
+                ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
+
+
+                ccpwgl.enablePostprocessing(true);
+
+        		ccpwgl.onPreRender = function () 
+        		{ 
+        		
+        		
+        		};
+        		
+
+            }
+        	
+            onload = onDocumentLoad;
+
+        </script>
+
+    </head>
+    <body style="margin:0">
+        <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+    </body>
+</html>

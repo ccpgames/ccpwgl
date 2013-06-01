@@ -19,7 +19,7 @@ function Tw2TransformParameter(name)
 Tw2TransformParameter.prototype.Initialize = function ()
 {
     this.OnModified();
-}
+};
 
 Tw2TransformParameter.prototype.OnModified = function ()
 {
@@ -49,7 +49,7 @@ Tw2TransformParameter.prototype.OnModified = function ()
     mat4.multiply(this.worldTransform, rotationCenter);
     mat4.translate(this.worldTransform, this.translation);
     mat4.transpose(this.worldTransform);
-}
+};
 
 Tw2TransformParameter.prototype.Bind = function (constantBuffer, offset, size)
 {
@@ -60,7 +60,7 @@ Tw2TransformParameter.prototype.Bind = function (constantBuffer, offset, size)
     this.constantBuffer = constantBuffer;
     this.offset = offset;
     this.Apply(this.constantBuffer, this.offset, size);
-}
+};
 
 Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
@@ -72,4 +72,4 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size)
     {
         constantBuffer.set(this.worldTransform.subarray(0, size), offset);
     }
-}
+};

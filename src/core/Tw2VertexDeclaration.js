@@ -11,8 +11,8 @@ function Tw2VertexElement(usage, usageIndex, type, elements, offset)
 
 function Tw2VertexDeclaration()
 {
-    this.elements = new Array();
-    this._elementsSorted = new Array();
+    this.elements = [];
+    this._elementsSorted = [];
 }
 
 Tw2VertexDeclaration.DECL_POSITION = 0;
@@ -36,13 +36,13 @@ function CompareDeclarationElements(a, b)
 
 Tw2VertexDeclaration.prototype.RebuildHash = function ()
 {
-    this._elementsSorted = new Array();
+    this._elementsSorted = [];
     for (var i = 0; i < this.elements.length; ++i)
     {
         this._elementsSorted[i] = this.elements[i];
     }
     this._elementsSorted.sort(CompareDeclarationElements);
-}
+};
 
 Tw2VertexDeclaration.prototype.FindUsage = function (usage, usageIndex)
 {
@@ -66,7 +66,7 @@ Tw2VertexDeclaration.prototype.FindUsage = function (usage, usageIndex)
         }
     }
     return null;
-}
+};
 
 Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
 {
@@ -108,7 +108,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
         }
     }
     return true;
-}
+};
 
 Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stride)
 {
@@ -155,4 +155,4 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stri
         }
     }
     return true;
-}
+};

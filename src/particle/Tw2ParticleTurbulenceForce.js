@@ -15,8 +15,8 @@ function InitializeNoise()
 {
     for( var i = 0; i < 256; i++ ) 
     {
-	    s_noiseLookup[i] = quat4.create([Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5]);
-	    s_permutations[i] = i;
+        s_noiseLookup[i] = quat4.create([Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5]);
+        s_permutations[i] = i;
     }
 
     var i = 256;
@@ -30,9 +30,9 @@ function InitializeNoise()
 
     for( var i = 0 ; i < 256; i++) 
     {
-	    s_permutations[256 + i] = s_permutations[i];
-	    s_noiseLookup[256 + i] = s_noiseLookup[i];
-	    s_noiseLookup[256 * 2 + i] = s_noiseLookup[i];
+        s_permutations[256 + i] = s_permutations[i];
+        s_noiseLookup[256 + i] = s_noiseLookup[i];
+        s_noiseLookup[256 * 2 + i] = s_noiseLookup[i];
     }
     for (var i = 0; i < 15; ++i)
     {
@@ -69,31 +69,31 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
     var i = s_permutations[a_0];
     var j = s_permutations[b_0];
 
-	var b00 = s_permutations[i + a_1];
-	var b10 = s_permutations[j + a_1];
-	var b01 = s_permutations[i + b_1];
-	var b11 = s_permutations[j + b_1];
+    var b00 = s_permutations[i + a_1];
+    var b10 = s_permutations[j + a_1];
+    var b01 = s_permutations[i + b_1];
+    var b11 = s_permutations[j + b_1];
 
-	var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0, s_globalNoiseTemps[0]);
-	var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0, s_globalNoiseTemps[1]);
-	var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[2]);
-	var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[3]);
-	var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[4]);
-	var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[5]);
-	var c = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[6]);
+    var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0, s_globalNoiseTemps[0]);
+    var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0, s_globalNoiseTemps[1]);
+    var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[2]);
+    var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[3]);
+    var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[4]);
+    var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[5]);
+    var c = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[6]);
 
-	var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0, s_globalNoiseTemps[7]);
-	var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0, s_globalNoiseTemps[8]);
-	var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[9]);
-	var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[10]);
-	var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[11]);
-	var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[12]);
-	var d = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[13]);
+    var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0, s_globalNoiseTemps[7]);
+    var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0, s_globalNoiseTemps[8]);
+    var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[9]);
+    var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[10]);
+    var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[11]);
+    var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[12]);
+    var d = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[13]);
 
-	var r = vec3.lerp(c, d, t_3, s_globalNoiseTemps[14]);
-	result[0] += r[0] * power;
-	result[1] += r[1] * power;
-	result[2] += r[2] * power;
+    var r = vec3.lerp(c, d, t_3, s_globalNoiseTemps[14]);
+    result[0] += r[0] * power;
+    result[1] += r[1] * power;
+    result[2] += r[2] * power;
 }
 
 Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, force)
@@ -123,9 +123,9 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, 
     force[0] += noise[0] * this.amplitude[0] * sum;
     force[1] += noise[1] * this.amplitude[1] * sum;
     force[2] += noise[2] * this.amplitude[2] * sum;
-}
+};
 
 Tw2ParticleTurbulenceForce.prototype.Update = function (dt)
 {
     this._time += dt;
-}
+};

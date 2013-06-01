@@ -1,4 +1,3 @@
-ccpwgl
+CCP WebGL Library
 ======
 
-CCP WebGL Library
