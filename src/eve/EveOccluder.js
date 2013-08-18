@@ -34,19 +34,31 @@ function EveOccluder()
             {
                 var x = (i + Math.random()) / 16 * 2 - 1;
                 var y = (j + Math.random()) / 16 * 2 - 1;
-                vb[index++] = 1; vb[index++] = 1;
-                vb[index++] = x; vb[index++] = y;
-                vb[index++] = -1; vb[index++] = 1;
-                vb[index++] = x; vb[index++] = y;
-                vb[index++] = 1; vb[index++] = -1;
-                vb[index++] = x; vb[index++] = y;
+                vb[index++] = 1;
+                vb[index++] = 1;
+                vb[index++] = x;
+                vb[index++] = y;
+                vb[index++] = -1;
+                vb[index++] = 1;
+                vb[index++] = x;
+                vb[index++] = y;
+                vb[index++] = 1;
+                vb[index++] = -1;
+                vb[index++] = x;
+                vb[index++] = y;
 
-                vb[index++] = -1; vb[index++] = 1;
-                vb[index++] = x; vb[index++] = y;
-                vb[index++] = 1; vb[index++] = -1;
-                vb[index++] = x; vb[index++] = y;
-                vb[index++] = -1; vb[index++] = -1;
-                vb[index++] = x; vb[index++] = y;
+                vb[index++] = -1;
+                vb[index++] = 1;
+                vb[index++] = x;
+                vb[index++] = y;
+                vb[index++] = 1;
+                vb[index++] = -1;
+                vb[index++] = x;
+                vb[index++] = y;
+                vb[index++] = -1;
+                vb[index++] = -1;
+                vb[index++] = x;
+                vb[index++] = y;
             }
         }
         EveOccluder._vertexBuffer = device.gl.createBuffer();
@@ -56,7 +68,7 @@ function EveOccluder()
     }
 }
 
-EveOccluder.prototype.UpdateValue = function (parentTransform, index)
+EveOccluder.prototype.UpdateValue = function(parentTransform, index)
 {
     if (!this.display)
     {
@@ -100,7 +112,7 @@ EveOccluder.prototype.UpdateValue = function (parentTransform, index)
     EveOccluder._collectEffect.parameters['OccluderPosition'].SetValue(center);
 };
 
-EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
+EveOccluder.prototype.CollectSamples = function(tex, index, total, samples)
 {
     var effect = EveOccluder._collectEffect;
     var effectRes = effect.GetEffectRes();

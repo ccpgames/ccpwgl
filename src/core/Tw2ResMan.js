@@ -2,7 +2,7 @@ function Tw2MotherLode()
 {
     this._loadedObjects = {};
 
-    this.Find = function (path)
+    this.Find = function(path)
     {
         if (path in this._loadedObjects)
         {
@@ -11,22 +11,22 @@ function Tw2MotherLode()
         return null;
     };
 
-    this.Add = function (path, obj)
+    this.Add = function(path, obj)
     {
         this._loadedObjects[path] = obj;
     };
-    
-    this.Remove = function (path)
+
+    this.Remove = function(path)
     {
         delete this._loadedObjects[path];
     };
-    
-    this.Clear = function ()
+
+    this.Clear = function()
     {
         this._loadedObjects = {};
     };
-    
-    this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
+
+    this.PurgeInactive = function(curFrame, frameLimit, frameDistance)
     {
         for (var path in this._loadedObjects)
         {
@@ -53,22 +53,22 @@ function Tw2MotherLode()
 
 function Tw2LoadingObject()
 {
-	this._super.constructor.call(this);
+    this._super.constructor.call(this);
     this.object = null;
-	this._redContents = null;
-	this._inPrepare = null;
-	this._objects = [];
+    this._redContents = null;
+    this._inPrepare = null;
+    this._objects = [];
 }
 
-Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
+Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
 {
-	object._loadCallback = callback;
+    object._loadCallback = callback;
     object._initialize = initialize;
-	this._objects.push(object);
-	return false;
+    this._objects.push(object);
+    return false;
 };
 
-Tw2LoadingObject.prototype.Prepare = function (text, xml)
+Tw2LoadingObject.prototype.Prepare = function(text, xml)
 {
     if (xml == null)
     {
@@ -113,7 +113,7 @@ function Tw2ResMan()
 {
     this.resourcePaths = {};
     this.resourcePaths['res'] = 'res/';
-    
+
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
     this.maxPrepareTime = 0.05;
@@ -127,19 +127,19 @@ function Tw2ResMan()
     this.purgeTime = 30;
     this._pendingLoads = 0;
     this._noLoadFrames = 0;
-    
-    
-    this.IsLoading = function ()
+
+
+    this.IsLoading = function()
     {
         return this._noLoadFrames < 2;
     };
 
-    this.RegisterExtension = function (extension, constructor)
+    this.RegisterExtension = function(extension, constructor)
     {
         this._extensions[extension] = constructor;
     };
 
-    this._CreateHttpRequest = function ()
+    this._CreateHttpRequest = function()
     {
         var httpRequest = null;
 
@@ -162,14 +162,13 @@ function Tw2ResMan()
                     httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 catch (e)
-                {
-                }
+                {}
             }
         }
 
         if (!httpRequest)
         {
-            console.error('ResMan:',' could not create an XMLHTTP instance');
+            console.error('ResMan:', ' could not create an XMLHTTP instance');
         }
         return httpRequest;
     };
@@ -184,7 +183,7 @@ function Tw2ResMan()
         path.replace('\\', '/');
         return path;
     }
-    
+
     function _GetPathExt(path)
     {
         if (path.substr(0, 5) == 'str:/')
@@ -206,8 +205,8 @@ function Tw2ResMan()
             return path.substr(dot + 1);
         }
     }
-    
-    this.LogPathString = function (path)
+
+    this.LogPathString = function(path)
     {
         if (path.substr(0, 5) == 'str:/' && path.length > 64)
         {
@@ -216,7 +215,7 @@ function Tw2ResMan()
         return path;
     };
 
-    this.PrepareLoop = function (dt)
+    this.PrepareLoop = function(dt)
     {
         if (this._prepareQueue.length == 0 && this._pendingLoads == 0)
         {
@@ -272,7 +271,7 @@ function Tw2ResMan()
 
     function _DoLoadResource(obj)
     {
-        return function ()
+        return function()
         {
             readyState = 0;
             try
@@ -281,7 +280,7 @@ function Tw2ResMan()
             }
             catch (e)
             {
-                console.error('ResMan:',' communication error when loading  \"', obj.path, '\" (readyState ', readyState, ')');
+                console.error('ResMan:', ' communication error when loading  \"', obj.path, '\" (readyState ', readyState, ')');
                 obj.LoadFinished(false);
                 resMan._pendingLoads--;
                 return;
@@ -322,7 +321,7 @@ function Tw2ResMan()
             console.error('ResMan:', ' invalid resource path: \"', resPath, '\"');
             return resPath;
         }
-        
+
         var prefix = resPath.substr(0, prefixIndex);
         if (!(prefix in this.resourcePaths))
         {
@@ -331,8 +330,8 @@ function Tw2ResMan()
         }
         return this.resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
     };
-    
-    this._LoadResource = function (obj)
+
+    this._LoadResource = function(obj)
     {
         obj._isPurged = false;
         var path = obj.path;
@@ -361,8 +360,8 @@ function Tw2ResMan()
             console.error('ResMan:', ' error sending resource HTTP request: ', e.toString());
         }
     };
-    
-    this.ReloadResource = function (resource)
+
+    this.ReloadResource = function(resource)
     {
         var path = resource.path;
         console.info('ResMan:', 'reloading resource ', path);
@@ -375,7 +374,7 @@ function Tw2ResMan()
         return resource;
     };
 
-    this.GetResource = function (path)
+    this.GetResource = function(path)
     {
         path = _NormalizePath(path);
 
@@ -406,17 +405,17 @@ function Tw2ResMan()
         return obj;
     };
 
-    this.GetObject = function (path, callback)
+    this.GetObject = function(path, callback)
     {
         this._GetObject(path, callback, true);
     };
 
-    this.GetObjectNoInitialize = function (path, callback)
+    this.GetObjectNoInitialize = function(path, callback)
     {
         this._GetObject(path, callback, false);
     };
 
-    this._GetObject = function (path, callback, initialize)
+    this._GetObject = function(path, callback, initialize)
     {
         path = _NormalizePath(path);
 
@@ -453,8 +452,8 @@ function Tw2ResMan()
             console.error('ResMan:', ' error sending object HTTP request: ', e.toString());
         }
     };
-    
-    this.Clear = function ()
+
+    this.Clear = function()
     {
         this.motherLode.Clear();
     };

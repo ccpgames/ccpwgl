@@ -3,17 +3,17 @@ function Tw2VariableStore()
     this._variables = {};
 }
 
-Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type)
+Tw2VariableStore.prototype.RegisterVariableWithType = function(name, value, type)
 {
     return this._variables[name] = new type(name, value);
 };
 
-Tw2VariableStore.prototype.RegisterType = function (name, type)
+Tw2VariableStore.prototype.RegisterType = function(name, type)
 {
     return this._variables[name] = new type(name);
 };
 
-Tw2VariableStore.prototype.RegisterVariable = function (name, value)
+Tw2VariableStore.prototype.RegisterVariable = function(name, value)
 {
     if (value.constructor == (new glMatrixArrayType()).constructor)
     {

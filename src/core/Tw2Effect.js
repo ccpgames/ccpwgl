@@ -3,11 +3,11 @@ function Tw2Effect()
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-	this.parameters = {};
-	this.passes = [];
+    this.parameters = {};
+    this.passes = [];
 }
 
-Tw2Effect.prototype.Initialize = function ()
+Tw2Effect.prototype.Initialize = function()
 {
     if (this.effectFilePath != '')
     {
@@ -20,20 +20,20 @@ Tw2Effect.prototype.Initialize = function ()
     }
 };
 
-Tw2Effect.prototype.GetEffectRes = function ()
+Tw2Effect.prototype.GetEffectRes = function()
 {
     return this.effectRes;
 };
 
-Tw2Effect.prototype.RebuildCachedData = function (resource)
+Tw2Effect.prototype.RebuildCachedData = function(resource)
 {
-	if (resource.IsGood())
-	{
-		this.BindParameters();
-	}
+    if (resource.IsGood())
+    {
+        this.BindParameters();
+    }
 };
 
-Tw2Effect.prototype.BindParameters = function ()
+Tw2Effect.prototype.BindParameters = function()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
     {
@@ -167,7 +167,7 @@ Tw2Effect.prototype.BindParameters = function ()
     return true;
 };
 
-Tw2Effect.prototype.ApplyPass = function (pass)
+Tw2Effect.prototype.ApplyPass = function(pass)
 {
     if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -177,12 +177,12 @@ Tw2Effect.prototype.ApplyPass = function (pass)
     this.effectRes.ApplyPass(pass);
     var p = this.passes[pass];
     var d = device;
-	if (d.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-	{
+    if (d.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+    {
         var program = this.effectRes.passes[pass].shadowShaderProgram;
-	}
-	else
-	{
+    }
+    else
+    {
         var program = this.effectRes.passes[pass].shaderProgram;
     }
     for (var i = 0; i < 2; ++i)
@@ -219,33 +219,33 @@ Tw2Effect.prototype.ApplyPass = function (pass)
     }
 };
 
-Tw2Effect.prototype.GetPassCount = function ()
+Tw2Effect.prototype.GetPassCount = function()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
-	{
-		return 0;
-	}
-	return this.passes.length;
+    {
+        return 0;
+    }
+    return this.passes.length;
 };
 
-Tw2Effect.prototype.GetPassInput = function (pass)
+Tw2Effect.prototype.GetPassInput = function(pass)
 {
-	if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
-	{
-		return null;
-	}
-	if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-	{
+    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+    {
+        return null;
+    }
+    if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+    {
         return this.effectRes.passes[pass].shadowShaderProgram.input;
-	}
-	else
-	{
+    }
+    else
+    {
         return this.effectRes.passes[pass].shaderProgram.input;
     }
 };
 
 
-Tw2Effect.prototype.Render = function (cb)
+Tw2Effect.prototype.Render = function(cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)

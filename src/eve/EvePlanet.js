@@ -11,7 +11,7 @@ function EvePlanet()
 }
 
 
-EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
 {
     this.itemID = itemID;
     this.heightMapResPath1 = heightMap1;
@@ -19,36 +19,43 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
 
     this.highDetail.children = [];
     var self = this;
-    resMan.GetObject(planetPath, function (obj) { self.highDetail.children.unshift(obj); self._MeshLoaded(); });
+    resMan.GetObject(planetPath, function(obj)
+    {
+        self.highDetail.children.unshift(obj);
+        self._MeshLoaded();
+    });
     if (atmospherePath)
     {
-        resMan.GetObject(atmospherePath, function (obj) { self.highDetail.children.push(obj); });
+        resMan.GetObject(atmospherePath, function(obj)
+        {
+            self.highDetail.children.push(obj);
+        });
     }
     this.hightDirty = true;
 };
 
-EvePlanet.prototype.GetResources = function (obj, visited, result)
+EvePlanet.prototype.GetResources = function(obj, visited, result)
 {
     if (visited.indexOf(obj) != -1)
     {
         return;
     }
     visited.push(obj);
-    if (obj && typeof (obj['doNotPurge']) != typeof (undefined))
+    if (obj && typeof(obj['doNotPurge']) != typeof(undefined))
     {
         result.push(obj);
         return;
     }
     for (var prop in obj)
     {
-        if (typeof (obj[prop]) == "object")
+        if (typeof(obj[prop]) == "object")
         {
             this.GetResources(obj[prop], visited, result);
         }
     }
 };
 
-EvePlanet.prototype._MeshLoaded = function ()
+EvePlanet.prototype._MeshLoaded = function()
 {
     this.lockedResources = [];
     this.GetResources(this.highDetail, [], this.lockedResources);
@@ -137,7 +144,7 @@ EvePlanet.prototype._MeshLoaded = function ()
     }
 };
 
-EvePlanet.prototype.GetBatches = function (mode, accumulator)
+EvePlanet.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.hightDirty && !resMan.IsLoading() && this.heightMapResPath1 != '')
     {
@@ -177,12 +184,12 @@ EvePlanet.prototype.GetBatches = function (mode, accumulator)
     //    }
 };
 
-EvePlanet.prototype.Update = function (dt)
+EvePlanet.prototype.Update = function(dt)
 {
     this.highDetail.Update(dt);
 };
 
-EvePlanet.prototype.UpdateViewDependentData = function (parentTransform)
+EvePlanet.prototype.UpdateViewDependentData = function(parentTransform)
 {
     this.highDetail.UpdateViewDependentData(parentTransform);
 };

@@ -1,0 +1,15 @@
+{
+    "indent_size": 4,
+    "indent_char": " ",
+    "indent_with_tabs": false,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 4,
+    "jslint_happy": false,
+    "space_in_paren": false,
+    "brace_style": "expand",
+    "keep_array_indentation": false,
+    "keep_function_indentation": false,
+    "eval_code": false,
+    "unescape_strings": false,
+    "break_chained_methods": false
+}

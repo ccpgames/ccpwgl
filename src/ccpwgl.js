@@ -1,46 +1,63 @@
-﻿var ccpwgl = (function (ccpwgl_int)
+var ccpwgl = (function(ccpwgl_int)
 {
     var ccpwgl = {};
 
     /**
-    * Values for textureQuality option that can be passed to ccpwgl.initialize.
-    */
-    ccpwgl.TextureQuality = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+     * Values for textureQuality option that can be passed to ccpwgl.initialize.
+     */
+    ccpwgl.TextureQuality = {
+        HIGH: 0,
+        MEDIUM: 1,
+        LOW: 2
+    };
 
     /**
-    * Values for textureQuality option that can be passed to ccpwgl.initialize.
-    */
-    ccpwgl.ShaderQuality = { HIGH: 'hi', LOW: 'lo' };
+     * Values for textureQuality option that can be passed to ccpwgl.initialize.
+     */
+    ccpwgl.ShaderQuality = {
+        HIGH: 'hi',
+        LOW: 'lo'
+    };
 
     /**
-    * Resource unload policty. Controls how cached resources are evicted from
-    * memory. See ccpwgl.getResourceUnloadPolicy and ccpwgl.setResourceUnloadPolicy.
-    * When set to MANUAL you need to call ccpwgl.clearCachedResources function manually
-    * from time to time to clear resources from memory cache. When set to USAGE_BASED
-    * (default) resources are automatically removed from the cache if they are not used
-    * for a specified period of time.
-    * It is preferable to use USAGE_BASED, but ocasionally this will unload resources
-    * when you don't want to (for example if you temporary hide a ship). In such cases
-    * you will have to use MANUAL policy and call ccpwgl.clearCachedResources when 
-    * you know that all resources you need are loaded (see ccpwgl.isLoading).
-    */
-    ccpwgl.ResourceUnloadPolicy = { MANUAL: 0, USAGE_BASED: 1 };
+     * Resource unload policty. Controls how cached resources are evicted from
+     * memory. See ccpwgl.getResourceUnloadPolicy and ccpwgl.setResourceUnloadPolicy.
+     * When set to MANUAL you need to call ccpwgl.clearCachedResources function manually
+     * from time to time to clear resources from memory cache. When set to USAGE_BASED
+     * (default) resources are automatically removed from the cache if they are not used
+     * for a specified period of time.
+     * It is preferable to use USAGE_BASED, but ocasionally this will unload resources
+     * when you don't want to (for example if you temporary hide a ship). In such cases
+     * you will have to use MANUAL policy and call ccpwgl.clearCachedResources when
+     * you know that all resources you need are loaded (see ccpwgl.isLoading).
+     */
+    ccpwgl.ResourceUnloadPolicy = {
+        MANUAL: 0,
+        USAGE_BASED: 1
+    };
 
     /**
-    * Turret states
-    */
-    ccpwgl.TurretState = { IDLE: 0, OFFLINE: 1, FIRING: 2 };
+     * Turret states
+     */
+    ccpwgl.TurretState = {
+        IDLE: 0,
+        OFFLINE: 1,
+        FIRING: 2
+    };
 
     /**
-    * Ship siege state
-    */
-    ccpwgl.ShipSiegeState = { NORMAL: 0, SIEGE: 1 };
+     * Ship siege state
+     */
+    ccpwgl.ShipSiegeState = {
+        NORMAL: 0,
+        SIEGE: 1
+    };
 
     /**
-    * Exception class for objects that can be thrown by ccpwgl.initialize function if
-    * WebGL context is not available.
-    */
-    ccpwgl.NoWebGLError = function ()
+     * Exception class for objects that can be thrown by ccpwgl.initialize function if
+     * WebGL context is not available.
+     */
+    ccpwgl.NoWebGLError = function()
     {
         this.name = "NoWebGLError";
         this.message = "WebGL context is not available";
@@ -49,9 +66,9 @@
     ccpwgl.NoWebGLError.prototype.constructor = ccpwgl.NoWebGLError;
 
     /**
-    * Exception that is thrown by some methods when their object .red files is not yet loaded.
-    */
-    ccpwgl.IsStillLoadingError = function ()
+     * Exception that is thrown by some methods when their object .red files is not yet loaded.
+     */
+    ccpwgl.IsStillLoadingError = function()
     {
         this.name = "IsStillLoadingError";
         this.message = "Cannot process the request until the object is loaded";
@@ -77,36 +94,37 @@
     var resourceUnloadPolicy = ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
 
     /**
-    * Callback that is fired before rendering a scene, but after setting view/projection
-    * matrixes and clearing the back buffer. Can be used for per-frame update or for
-    * rendering something on the background. The dt parameter passed to the function is
-    * frame time in seconds.
-    * If there is no current scene set this callback is not called.
-    * @type {!function(dt): void}
-    */
+     * Callback that is fired before rendering a scene, but after setting view/projection
+     * matrixes and clearing the back buffer. Can be used for per-frame update or for
+     * rendering something on the background. The dt parameter passed to the function is
+     * frame time in seconds.
+     * If there is no current scene set this callback is not called.
+     * @type {!function(dt): void}
+     */
     ccpwgl.onPreRender = null;
 
     /**
-    * Callback that is fired after the scene is rendered, but before postprocessing. Can be used 
-    * for rendering additional 3D geometry.
-    * If there is no current scene set this callback is not called. The dt parameter passed to the function is
-    * frame time in seconds.
-    * @type {!function(dt): void}
-    */
+     * Callback that is fired after the scene is rendered, but before postprocessing. Can be used
+     * for rendering additional 3D geometry.
+     * If there is no current scene set this callback is not called. The dt parameter passed to the function is
+     * frame time in seconds.
+     * @type {!function(dt): void}
+     */
     ccpwgl.onPostSceneRender = null;
 
     /**
-    * Callback that is fired after the scene is rendered and postprocessing is applied. Can be 
-    * used for rendering something in front of the scene (UI, etc.). The dt parameter passed to the function is
-    * frame time in seconds.
-    * @type {!function(dt): void}
-    */
+     * Callback that is fired after the scene is rendered and postprocessing is applied. Can be
+     * used for rendering something in front of the scene (UI, etc.). The dt parameter passed to the function is
+     * frame time in seconds.
+     * @type {!function(dt): void}
+     */
     ccpwgl.onPostRender = null;
 
     /**
-    * Internal render/update function. Is called every frame. 
-    * @param {number} dt Frame time.
-    **/
+     * Internal render/update function. Is called every frame.
+     * @param {number} dt Frame time.
+     **/
+
     function render(dt)
     {
         if (updateEnabled && camera && camera.update)
@@ -179,29 +197,29 @@
 
 
     /**
-    * Initializes WebGL library. This function needs to be called before most of other
-    * function from this module. The function accepts a canvas object that is to be used
-    * outputting WebGL graphics and optional parameters that are passed as a map (object).
-    * The parameters can be:
-    * - textureQuality: one of ccpwgl.TextureQuality members, texture quality (size of loaded
-    *   textures) with HIGH being the original size, MEDIUM - half the original size, LOW - a quater.
-    *   Setting a lower texture quality results in smaller download sizes and possibly better
-    *   performance on low-end machines. Defaults to HIGH.
-    * - shaderQuality: one of ccpwgl.ShaderQuality members. Low quality shaders might improve 
-    *   performance on low-end machines, but do look ugly. Defaults to HIGH.
-    * - anisotropicFilter: boolean value; if true anisotropic texture filtering will be
-    *   turned on if browser supports it, if false anisotropic texture filtering is disabled.
-    *   Disabling anisotropic filtering might result in better performance. Defaults to true.
-    * - postprocessing: boolean value; if true, postprocessing effects are applied to the
-    *   rendered image. Disabling postprocessing effects might result in better performance.
-    *   Defaults to false. You can also turn this option on and off with 
-    *   ccpwgl.enablePostprocessing call.
-    *
-    * @param {HtmlCanvas} canvas HTML Canvas object that is used for WebGL output.
-    * @param {Object} params Optional parameters.
-    * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
-    */
-    ccpwgl.initialize = function (canvas, params)
+     * Initializes WebGL library. This function needs to be called before most of other
+     * function from this module. The function accepts a canvas object that is to be used
+     * outputting WebGL graphics and optional parameters that are passed as a map (object).
+     * The parameters can be:
+     * - textureQuality: one of ccpwgl.TextureQuality members, texture quality (size of loaded
+     *   textures) with HIGH being the original size, MEDIUM - half the original size, LOW - a quater.
+     *   Setting a lower texture quality results in smaller download sizes and possibly better
+     *   performance on low-end machines. Defaults to HIGH.
+     * - shaderQuality: one of ccpwgl.ShaderQuality members. Low quality shaders might improve
+     *   performance on low-end machines, but do look ugly. Defaults to HIGH.
+     * - anisotropicFilter: boolean value; if true anisotropic texture filtering will be
+     *   turned on if browser supports it, if false anisotropic texture filtering is disabled.
+     *   Disabling anisotropic filtering might result in better performance. Defaults to true.
+     * - postprocessing: boolean value; if true, postprocessing effects are applied to the
+     *   rendered image. Disabling postprocessing effects might result in better performance.
+     *   Defaults to false. You can also turn this option on and off with
+     *   ccpwgl.enablePostprocessing call.
+     *
+     * @param {HtmlCanvas} canvas HTML Canvas object that is used for WebGL output.
+     * @param {Object} params Optional parameters.
+     * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
+     */
+    ccpwgl.initialize = function(canvas, params)
     {
         function getOption(params, name, defaultValue)
         {
@@ -229,33 +247,33 @@
     };
 
     /**
-    * Sets/overrides URLs for resource paths. Resources paths used inside the engine have a 
-    * format "namespace:/path" where namespace is usualy "res" which resolves to the 
-    * eveonline CDN server and path is a relative path to the resource. You can extend 
-    * the resource loading by using a different namespace to load some resources from your 
-    * server. You can also override the default "res" namespace to load EVE resources from
-    * a different server.
-    * @example
-    * ccpwgl.setResourcePath('myres', 'http://www.myserver.com/resources/');
-    * This call will forward all resource paths "myres:/blah_blah_blah" to 
-    * http://www.myserver.com/resources/blah_blah_blah.
-    *
-    * @param {string} namespace Resource namespace.
-    * @param {path} URL to resource root. Needs to have a trailing slash.
-    */
-    ccpwgl.setResourcePath = function (namespace, path)
+     * Sets/overrides URLs for resource paths. Resources paths used inside the engine have a
+     * format "namespace:/path" where namespace is usualy "res" which resolves to the
+     * eveonline CDN server and path is a relative path to the resource. You can extend
+     * the resource loading by using a different namespace to load some resources from your
+     * server. You can also override the default "res" namespace to load EVE resources from
+     * a different server.
+     * @example
+     * ccpwgl.setResourcePath('myres', 'http://www.myserver.com/resources/');
+     * This call will forward all resource paths "myres:/blah_blah_blah" to
+     * http://www.myserver.com/resources/blah_blah_blah.
+     *
+     * @param {string} namespace Resource namespace.
+     * @param {path} URL to resource root. Needs to have a trailing slash.
+     */
+    ccpwgl.setResourcePath = function(namespace, path)
     {
         ccpwgl_int.resMan.resourcePaths[namespace] = path;
     };
 
     /**
-    * Enables/disables postprocessing effects. Triggers shader loading the first time 
-    * postprocessing is enabled, so the actual postprocessing will be turn on with a
-    * delay after the first enabling call.
-    *
-    * @param {boolean} enable Enable/disable postprocessing.
-    */
-    ccpwgl.enablePostprocessing = function (enable)
+     * Enables/disables postprocessing effects. Triggers shader loading the first time
+     * postprocessing is enabled, so the actual postprocessing will be turn on with a
+     * delay after the first enabling call.
+     *
+     * @param {boolean} enable Enable/disable postprocessing.
+     */
+    ccpwgl.enablePostprocessing = function(enable)
     {
         postprocessingEnabled = enable;
         if (postprocessingEnabled && !postprocess)
@@ -265,30 +283,31 @@
     };
 
     /**
-    * Assigns an active camera used for scene rendering. A camera is an object that is 
-    * required to have three following methods (that are called during rendering):
-    * - update: function (dt) - a chance for camera object to update itself once per frame;
-    *   the dt parameter is frame time in seconds
-    * - getView: function () - return mat4 object, the view matrix
-    * - getProjection: function (aspect) - return mat4 object, the projection matrix; the
-    *   aspect parameter is the aspect ration: canvas width divided by canvas height.
-    *
-    * @param {Object} newCamera Current camera object.
-    */
-    ccpwgl.setCamera = function (newCamera)
+     * Assigns an active camera used for scene rendering. A camera is an object that is
+     * required to have three following methods (that are called during rendering):
+     * - update: function (dt) - a chance for camera object to update itself once per frame;
+     *   the dt parameter is frame time in seconds
+     * - getView: function () - return mat4 object, the view matrix
+     * - getProjection: function (aspect) - return mat4 object, the projection matrix; the
+     *   aspect parameter is the aspect ration: canvas width divided by canvas height.
+     *
+     * @param {Object} newCamera Current camera object.
+     */
+    ccpwgl.setCamera = function(newCamera)
     {
         camera = newCamera;
     };
 
     /**
-    * Wrapper for static objects (stations, gates, asteroids, clouds, etc.).
-    * Created with Scene.loadObject function.
-    *
-    * @constructor
-    * @param {string} resPath Res path to object .red file
-    * @param {!function(): void} onload Optional callback function that is called
-    *   when object .red file is loaded. this will point to SpaceObject instance.
-    */
+     * Wrapper for static objects (stations, gates, asteroids, clouds, etc.).
+     * Created with Scene.loadObject function.
+     *
+     * @constructor
+     * @param {string} resPath Res path to object .red file
+     * @param {!function(): void} onload Optional callback function that is called
+     *   when object .red file is loaded. this will point to SpaceObject instance.
+     */
+
     function SpaceObject(resPath, onload)
     {
         /** Wrapped ccpwgl_int object **/
@@ -301,7 +320,7 @@
         var self = this;
         ccpwgl_int.resMan.GetObject(
             resPath,
-            function (obj)
+            function(obj)
             {
                 self.wrappedObject = obj;
                 if (onload)
@@ -311,21 +330,24 @@
             });
 
         /**
-        * Check if object .red file is still loading.
-        *
-        * @returns {boolean} True if object's .red file is loading; false otherwise.
-        */
-        this.isLoaded = function () { return this.wrappedObject != null; };
+         * Check if object .red file is still loading.
+         *
+         * @returns {boolean} True if object's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.wrappedObject != null;
+        };
 
         /**
-        * Returns object's bounding sphere if it is available. Throws an exception otherwise.
-        *
-        * @throws If object is not yet loaded or if object does not have bounding sphere
-        * information.
-        * @returns {[vec3, float]} Array with first element being sphere position in local
-        * coordinate space and second - sphere radius.
-        */
-        this.getBoundingSphere = function ()
+         * Returns object's bounding sphere if it is available. Throws an exception otherwise.
+         *
+         * @throws If object is not yet loaded or if object does not have bounding sphere
+         * information.
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space and second - sphere radius.
+         */
+        this.getBoundingSphere = function()
         {
             if (!this.isLoaded())
             {
@@ -339,11 +361,11 @@
         };
 
         /**
-        * Sets transform matrix from local coordinate space to world.
-        *
-        * @param {mat4} newTransform Transform matrix.
-        */
-        this.setTransform = function (newTransform)
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
         {
             this.transform.set(newTransform);
             if (this.wrappedObject)
@@ -353,25 +375,26 @@
         };
 
         /**
-        * Returns transform matrix from local coordinate space to world.
-        *
-        * @returns {mat4} Transform matrix.
-        */
-        this.getTransform = function ()
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
         {
             return this.transform;
         };
     }
 
     /**
-    * Wrapper for ships. On top of SpaceObject functionality it provides booster
-    * and turret support.
-    *
-    * @constructor
-    * @param {string} resPath Res path to ship .red file
-    * @param {!function(): void} onload Optional callback function that is called
-    *   when ship .red file is loaded. this will point to Ship instance.
-    */
+     * Wrapper for ships. On top of SpaceObject functionality it provides booster
+     * and turret support.
+     *
+     * @constructor
+     * @param {string} resPath Res path to ship .red file
+     * @param {!function(): void} onload Optional callback function that is called
+     *   when ship .red file is loaded. this will point to Ship instance.
+     */
+
     function Ship(resPath, onload)
     {
         /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
@@ -400,7 +423,7 @@
         var self = this;
         ccpwgl_int.resMan.GetObject(
             resPath,
-            function (obj)
+            function(obj)
             {
                 self.wrappedObject = obj;
                 if (!(obj instanceof ccpwgl_int.EveShip))
@@ -442,20 +465,23 @@
         );
 
         /**
-        * Check if ship's .red file is still loading.
-        *
-        * @returns {boolean} True if ship's .red file is loading; false otherwise.
-        */
-        this.isLoaded = function () { return this.wrappedObject != null; };
+         * Check if ship's .red file is still loading.
+         *
+         * @returns {boolean} True if ship's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.wrappedObject != null;
+        };
 
         /**
-        * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
-        *
-        * @throws If the ship is not yet loaded.
-        * @returns {[vec3, float]} Array with first element being sphere position in local
-        * coordinate space and second - sphere radius.
-        */
-        this.getBoundingSphere = function ()
+         * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
+         *
+         * @throws If the ship is not yet loaded.
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space and second - sphere radius.
+         */
+        this.getBoundingSphere = function()
         {
             if (!this.isLoaded())
             {
@@ -465,11 +491,11 @@
         };
 
         /**
-        * Sets transform matrix from local coordinate space to world.
-        *
-        * @param {mat4} newTransform Transform matrix.
-        */
-        this.setTransform = function (newTransform)
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
         {
             this.transform.set(newTransform);
             if (this.wrappedObject)
@@ -479,28 +505,28 @@
         };
 
         /**
-        * Returns transform matrix from local coordinate space to world.
-        *
-        * @returns {mat4} Transform matrix.
-        */
-        this.getTransform = function ()
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
         {
             return this.transform;
         };
 
         /**
-        * Loads boosters effect for the ship.
-        *
-        * @param {string} resPath Res paths for boosters effect.
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when boosters .red file is loaded. this will point to Ship instance.
-        */
-        this.loadBoosters = function (resPath, onload)
+         * Loads boosters effect for the ship.
+         *
+         * @param {string} resPath Res paths for boosters effect.
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when boosters .red file is loaded. this will point to Ship instance.
+         */
+        this.loadBoosters = function(resPath, onload)
         {
             var self = this;
             ccpwgl_int.resMan.GetObject(
                 resPath,
-                function (obj)
+                function(obj)
                 {
                     self.boosters = obj;
                     if (self.wrappedObject)
@@ -516,11 +542,11 @@
         };
 
         /**
-        * Sets strength of boosters effect.
-        *
-        * @param {number} boosterStrength Boosters strength from 0 to 1.
-        */
-        this.setBoosterStrength = function (boosterStrength)
+         * Sets strength of boosters effect.
+         *
+         * @param {number} boosterStrength Boosters strength from 0 to 1.
+         */
+        this.setBoosterStrength = function(boosterStrength)
         {
             this.boosterStrength = boosterStrength;
             if (this.wrappedObject)
@@ -530,20 +556,20 @@
         };
 
         /**
-        * Loads color scheme .red file used for turrets. Turrets can use color scheme files
-        * to have their colors match the ship (provided the color scheme is appropriate for 
-        * the given ship). Without the color scheme, turrets will be rendered with default colors.
-        *
-        * @param {string} resPath Res paths for color scheme .red file.
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when color scheme .red file is loaded. this will point to Ship instance.
-        */
-        this.setTurretColorScheme = function (resPath, onload)
+         * Loads color scheme .red file used for turrets. Turrets can use color scheme files
+         * to have their colors match the ship (provided the color scheme is appropriate for
+         * the given ship). Without the color scheme, turrets will be rendered with default colors.
+         *
+         * @param {string} resPath Res paths for color scheme .red file.
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when color scheme .red file is loaded. this will point to Ship instance.
+         */
+        this.setTurretColorScheme = function(resPath, onload)
         {
             var self = this;
             ccpwgl_int.resMan.GetObject(
                 resPath,
-                function (obj)
+                function(obj)
                 {
                     self.turretColorScheme = obj;
                     if (self.isLoaded())
@@ -565,12 +591,12 @@
         };
 
         /**
-        * Returns number of turret slots available on the ship.
-        *
-        * @throws If the ship's .red file is not yet loaded.
-        * @returns {number} Number of turret slots.
-        */
-        this.getTurretSlotCount = function ()
+         * Returns number of turret slots available on the ship.
+         *
+         * @throws If the ship's .red file is not yet loaded.
+         * @returns {number} Number of turret slots.
+         */
+        this.getTurretSlotCount = function()
         {
             if (this.turretCount !== undefined)
             {
@@ -596,14 +622,17 @@
         };
 
         /**
-        * Loads the turret and mounts it in a specified slot index.
-        *
-        * @param {number} index Slot index to mount turret in.
-        * @returns {string} resPath Res path to turret .red file.
-        */
-        this.mountTurret = function (index, resPath)
+         * Loads the turret and mounts it in a specified slot index.
+         *
+         * @param {number} index Slot index to mount turret in.
+         * @returns {string} resPath Res path to turret .red file.
+         */
+        this.mountTurret = function(index, resPath)
         {
-            this.turrets[index] = { path: resPath, state: ccpwgl.TurretState.IDLE };
+            this.turrets[index] = {
+                path: resPath,
+                state: ccpwgl.TurretState.IDLE
+            };
             if (this.isLoaded())
             {
                 doMountTurret.call(this, index, resPath, ccpwgl.TurretState.IDLE);
@@ -611,11 +640,11 @@
         };
 
         /**
-        * Removes turret from specified slot.
-        *
-        * @param {number} index Turret slot to clear.
-        */
-        this.removeTurret = function (index)
+         * Removes turret from specified slot.
+         *
+         * @param {number} index Turret slot to clear.
+         */
+        this.removeTurret = function(index)
         {
             this.turrets[index] = null;
             if (this.isLoaded())
@@ -635,13 +664,13 @@
         };
 
         /**
-        * Sets turret's animation state. The specified slot must have a turret.
-        *
-        * @throws If the specified slot doesn't have turret mounted.
-        * @param {number} index Turret slot.
-        * @param {ccpwgl.TurretState} state Turret animation state.
-        */
-        this.setTurretState = function (index, state)
+         * Sets turret's animation state. The specified slot must have a turret.
+         *
+         * @throws If the specified slot doesn't have turret mounted.
+         * @param {number} index Turret slot.
+         * @param {ccpwgl.TurretState} state Turret animation state.
+         */
+        this.setTurretState = function(index, state)
         {
             if (!this.turrets[index])
             {
@@ -677,6 +706,7 @@
         };
 
         /** Internal helper method that mount a turret on a loaded ship **/
+
         function doMountTurret(slot, resPath, state)
         {
             var name = 'locator_turret_' + slot;
@@ -693,7 +723,7 @@
             ship.RebuildTurretPositions();
             ccpwgl_int.resMan.GetObject(
                 resPath,
-                function (object)
+                function(object)
                 {
                     object.locatorName = name;
                     if (shipColorScheme && object.turretEffect && object.turretEffect.name != 'not_overridable')
@@ -701,7 +731,7 @@
                         var scheme = shipColorScheme;
                         for (var param in scheme.parameters)
                         {
-                            if (typeof (scheme.parameters[param].resourcePath) == 'undefined')
+                            if (typeof(scheme.parameters[param].resourcePath) == 'undefined')
                             {
                                 if (object.turretEffect.name == 'half_overridable' && param == 'GlowColor')
                                 {
@@ -730,17 +760,17 @@
         }
 
         /**
-        * Sets ship siege state. Some ships support switching between "normal" and
-        * siege state having different animations for these states. This function
-        * switches ships animation from one state to another. If the ship .red file
-        * is not yet loaded the transition will happen once the file is loaded.
-        *
-        * @param {ccpwgl.ShipSiegeState} state State to switch to.
-        * @param {!function(state): void} onswitch Optional callback function that is called
-        *   when animation has switched to the new state. This will point to Ship instance. The
-        *   state parameter is the new siege state.
-        */
-        this.setSiegeState = function (state, onswitch)
+         * Sets ship siege state. Some ships support switching between "normal" and
+         * siege state having different animations for these states. This function
+         * switches ships animation from one state to another. If the ship .red file
+         * is not yet loaded the transition will happen once the file is loaded.
+         *
+         * @param {ccpwgl.ShipSiegeState} state State to switch to.
+         * @param {!function(state): void} onswitch Optional callback function that is called
+         *   when animation has switched to the new state. This will point to Ship instance. The
+         *   state parameter is the new siege state.
+         */
+        this.setSiegeState = function(state, onswitch)
         {
             if (this.siegeState != state)
             {
@@ -760,7 +790,7 @@
                                 this.wrappedObject.animation.PlayAnimation(
                                     'StartSiege',
                                     false,
-                                    function ()
+                                    function()
                                     {
                                         self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
                                         self.wrappedObject.animation.StopAllAnimations();
@@ -794,7 +824,7 @@
                                 this.wrappedObject.animation.PlayAnimation(
                                     'EndSiege',
                                     false,
-                                    function ()
+                                    function()
                                     {
                                         self.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
                                         self.wrappedObject.animation.StopAllAnimations();
@@ -832,15 +862,16 @@
     }
 
     /**
-    * Wrapper for planets. Created with Scene.loadPlanet function.
-    *
-    * @constructor
-    * @param {integer} itemID Planet's item ID.
-    * @param {string} planetPath Res path to planet's .red template file.
-    * @param {string} atmospherePath Res path to planet's .red atmosphere file.
-    * @param {string} heightMap1 Res path to planet's first height map texture.
-    * @param {string} heightMap2 Res path to planet's second height map texture.
-    */
+     * Wrapper for planets. Created with Scene.loadPlanet function.
+     *
+     * @constructor
+     * @param {integer} itemID Planet's item ID.
+     * @param {string} planetPath Res path to planet's .red template file.
+     * @param {string} atmospherePath Res path to planet's .red atmosphere file.
+     * @param {string} heightMap1 Res path to planet's first height map texture.
+     * @param {string} heightMap2 Res path to planet's second height map texture.
+     */
+
     function Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
     {
         /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
@@ -850,52 +881,56 @@
         this.onUpdate = null;
 
         /**
-        * Check if planet's resources are loaded and the resulting height map is generated.
-        *
-        * @returns {boolean} True if planet is loaded; false otherwise.
-        */
-        this.isLoaded = function () { return this.hightDirty; };
+         * Check if planet's resources are loaded and the resulting height map is generated.
+         *
+         * @returns {boolean} True if planet is loaded; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.hightDirty;
+        };
 
         /**
-        * Returns planets's bounding sphere. We know it always is a unit sphere in local
-        * coordinate space.
-        *
-        * @returns {[vec3, float]} Array with first element being sphere position in local
-        * coordinate space [0, 0, 0] and second - sphere radius (==1).
-        */
-        this.getBoundingSphere = function ()
+         * Returns planets's bounding sphere. We know it always is a unit sphere in local
+         * coordinate space.
+         *
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space [0, 0, 0] and second - sphere radius (==1).
+         */
+        this.getBoundingSphere = function()
         {
             return [vec3.create([0, 0, 0]), 1];
         };
 
         /**
-        * Sets transform matrix from local coordinate space to world.
-        *
-        * @param {mat4} newTransform Transform matrix.
-        */
-        this.setTransform = function (newTransform)
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
         {
             this.wrappedObject.highDetail.localTransform.set(newTransform);
         };
 
         /**
-        * Returns transform matrix from local coordinate space to world.
-        *
-        * @returns {mat4} Transform matrix.
-        */
-        this.getTransform = function ()
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
         {
             return this.wrappedObject.highDetail.localTransform;
         };
     }
 
     /**
-    * Scene gathers together all objects that are rendered together. Scene can reference
-    * a number of ship, other space objects (stations, gates, etc.), planets, sun, background
-    * nebula. Use ccpwgl.loadScene or ccpwgl.createScene functions to create a scene.
-    *
-    * @constructor
-    */
+     * Scene gathers together all objects that are rendered together. Scene can reference
+     * a number of ship, other space objects (stations, gates, etc.), planets, sun, background
+     * nebula. Use ccpwgl.loadScene or ccpwgl.createScene functions to create a scene.
+     *
+     * @constructor
+     */
+
     function Scene()
     {
         /** Wrapped ccpwgl_int scene object @type {ccpwgl_int.EveSpaceScene} **/
@@ -912,9 +947,10 @@
         this.fog = null;
 
         /** 
-        * Internal helper function that rebuilds a list of object in the wrapped
-        * scene with alread loaded objects from Scene.objects array.
-        **/
+         * Internal helper function that rebuilds a list of object in the wrapped
+         * scene with alread loaded objects from Scene.objects array.
+         **/
+
         function rebuildSceneObjects()
         {
             if (!this.wrappedScene)
@@ -930,60 +966,61 @@
                 }
             }
         }
-		
-        /**
-        * Called when an EveSpaceScene is created or loaded.
-        *
-        * @param {ccpwlg_int.EveSpaceScene} obj New scene
-        */
-		function onSceneLoaded(obj)
-		{
-			this.wrappedScene = obj;
-			if (this.sun)
-			{
-				obj.lensflares[0] = this.sun;
-			}
-			if (this.sunDirection)
-			{
-				obj.sunDirection.set(this.sunDirection);
-			}
-			if (this.sunLightColor)
-			{
-				obj.sunDiffuseColor.set(this.sunLightColor);
-			}
-			if (this.fog)
-			{
-				obj.fogStart = this.fog[0];
-				obj.fogEnd = this.fog[1];
-				obj.fogMax = this.fog[2];
-				obj.fogColor.set(this.fog[3]);
-			}
-			rebuildSceneObjects.call(this);
-		}
-		
-        /**
-        * Creates a new empty scene.
-        */
-		this.create = function ()
-		{
-			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
-		};
 
         /**
-        * Loads a scene from .red file.
-        *
-        * @param {string} resPath Res path to scene .red file
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when scene .red file is loaded. this will point to Scene instance.
-        */
-        this.load = function (resPath, onload)
+         * Called when an EveSpaceScene is created or loaded.
+         *
+         * @param {ccpwlg_int.EveSpaceScene} obj New scene
+         */
+
+        function onSceneLoaded(obj)
+        {
+            this.wrappedScene = obj;
+            if (this.sun)
+            {
+                obj.lensflares[0] = this.sun;
+            }
+            if (this.sunDirection)
+            {
+                obj.sunDirection.set(this.sunDirection);
+            }
+            if (this.sunLightColor)
+            {
+                obj.sunDiffuseColor.set(this.sunLightColor);
+            }
+            if (this.fog)
+            {
+                obj.fogStart = this.fog[0];
+                obj.fogEnd = this.fog[1];
+                obj.fogMax = this.fog[2];
+                obj.fogColor.set(this.fog[3]);
+            }
+            rebuildSceneObjects.call(this);
+        }
+
+        /**
+         * Creates a new empty scene.
+         */
+        this.create = function()
+        {
+            onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
+        };
+
+        /**
+         * Loads a scene from .red file.
+         *
+         * @param {string} resPath Res path to scene .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when scene .red file is loaded. this will point to Scene instance.
+         */
+        this.load = function(resPath, onload)
         {
             var self = this;
             ccpwgl_int.resMan.GetObject(
                 resPath,
-                function (obj)
+                function(obj)
                 {
-					onSceneLoaded.call(self, obj);
+                    onSceneLoaded.call(self, obj);
                     if (onload)
                     {
                         onload.call(self);
@@ -992,26 +1029,29 @@
         };
 
         /**
-        * Check if scene's .red file is still loading.
-        *
-        * @returns {boolean} True if scene's .red file is loading; false otherwise.
-        */
-        this.isLoaded = function () { return this.wrappedScene != null; };
+         * Check if scene's .red file is still loading.
+         *
+         * @returns {boolean} True if scene's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.wrappedScene != null;
+        };
 
         /**
-        * Loads a ship from .red file and adds it to scene's objects list.
-        *
-        * @param {string} resPath Res path to ship .red file
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when ship .red file is loaded. this will point to Ship instance.
-        * @returns {ccpwgl.Ship} A newly created ship instance.
-        */
-        this.loadShip = function (resPath, onload)
+         * Loads a ship from .red file and adds it to scene's objects list.
+         *
+         * @param {string} resPath Res path to ship .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when ship .red file is loaded. this will point to Ship instance.
+         * @returns {ccpwgl.Ship} A newly created ship instance.
+         */
+        this.loadShip = function(resPath, onload)
         {
             var self = this;
             var ship = new Ship(
                 resPath,
-                function ()
+                function()
                 {
                     rebuildSceneObjects.call(self);
                     if (onload)
@@ -1028,19 +1068,19 @@
         };
 
         /**
-        * Loads a space object from .red file and adds it to scene's objects list.
-        *
-        * @param {string} resPath Res path to object .red file
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when object .red file is loaded. this will point to SpaceObject instance.
-        * @returns {ccpwgl.SpaceObject} A newly created object instance.
-        */
-        this.loadObject = function (resPath, onload)
+         * Loads a space object from .red file and adds it to scene's objects list.
+         *
+         * @param {string} resPath Res path to object .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when object .red file is loaded. this will point to SpaceObject instance.
+         * @returns {ccpwgl.SpaceObject} A newly created object instance.
+         */
+        this.loadObject = function(resPath, onload)
         {
             var self = this;
             var object = new SpaceObject(
                 resPath,
-                function ()
+                function()
                 {
                     rebuildSceneObjects.call(self);
                     if (onload)
@@ -1057,16 +1097,16 @@
         };
 
         /**
-        * Creates a planet.
-        *
-        * @param {integer} itemID Planet's item ID.
-        * @param {string} planetPath Res path to planet's .red template file.
-        * @param {string} atmospherePath Res path to planet's .red atmosphere file.
-        * @param {string} heightMap1 Res path to planet's first height map texture.
-        * @param {string} heightMap2 Res path to planet's second height map texture.
-        * @returns {ccpwgl.Planet} A newly created planet instance.
-        */
-        this.loadPlanet = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+         * Creates a planet.
+         *
+         * @param {integer} itemID Planet's item ID.
+         * @param {string} planetPath Res path to planet's .red template file.
+         * @param {string} atmospherePath Res path to planet's .red atmosphere file.
+         * @param {string} heightMap1 Res path to planet's first height map texture.
+         * @param {string} heightMap2 Res path to planet's second height map texture.
+         * @returns {ccpwgl.Planet} A newly created planet instance.
+         */
+        this.loadPlanet = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
         {
             var self = this;
             var object = new Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
@@ -1076,13 +1116,13 @@
         };
 
         /**
-        * Returns object (ship or planet) at a specified index in scene's objects list.
-        *
-        * @thorws If index is out of bounds.
-        * @param {number} index Object index.
-        * @returns Object at specified index.
-        */
-        this.getObject = function (index)
+         * Returns object (ship or planet) at a specified index in scene's objects list.
+         *
+         * @thorws If index is out of bounds.
+         * @param {number} index Object index.
+         * @returns Object at specified index.
+         */
+        this.getObject = function(index)
         {
             if (index > 0 && index < this.objects.length)
             {
@@ -1092,12 +1132,12 @@
         };
 
         /**
-        * Returns index of an object (ship or planet) in scene's objects list.
-        *
-        * @param object Object to search for.
-        * @returns {number} Object index or -1 if the object is not found.
-        */
-        this.indexOf = function (object)
+         * Returns index of an object (ship or planet) in scene's objects list.
+         *
+         * @param object Object to search for.
+         * @returns {number} Object index or -1 if the object is not found.
+         */
+        this.indexOf = function(object)
         {
             for (var i = 0; i < this.objects.length; ++i)
             {
@@ -1110,12 +1150,12 @@
         };
 
         /**
-        * Removes object at specified index from scene's objects list.
-        *
-        * @thorws If index is out of bounds.
-        * @param {number} index Object index.
-        */
-        this.removeObject = function (index)
+         * Removes object at specified index from scene's objects list.
+         *
+         * @thorws If index is out of bounds.
+         * @param {number} index Object index.
+         */
+        this.removeObject = function(index)
         {
             if (index >= this.objects.length)
             {
@@ -1126,19 +1166,19 @@
         };
 
         /**
-        * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
-        * can only be once sun in the scene. It doesn't appear in scene's object list.
-        *
-        * @param {string} resPath Res path to sun's .red file
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when sun .red file is loaded. this will point to Scene instance.
-        */
-        this.loadSun = function (resPath, onload)
+         * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
+         * can only be once sun in the scene. It doesn't appear in scene's object list.
+         *
+         * @param {string} resPath Res path to sun's .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when sun .red file is loaded. this will point to Scene instance.
+         */
+        this.loadSun = function(resPath, onload)
         {
             var self = this;
             ccpwgl_int.resMan.GetObject(
                 resPath,
-                function (obj)
+                function(obj)
                 {
                     self.sun = obj;
                     if (self.wrappedScene)
@@ -1161,11 +1201,11 @@
         };
 
         /**
-        * Removes the sun (flare) from the scene.
-        *
-        * @throws If the scene doesn't have sun.
-        */
-        this.removeSun = function ()
+         * Removes the sun (flare) from the scene.
+         *
+         * @throws If the scene doesn't have sun.
+         */
+        this.removeSun = function()
         {
             if (!this.sun)
             {
@@ -1179,12 +1219,12 @@
         };
 
         /**
-        * Sets new sun direction. This affects both lighting on objects and
-        * sun (flare) position.
-        *
-        * @param {vec3} direction Sun direction.
-        */
-        this.setSunDirection = function (direction)
+         * Sets new sun direction. This affects both lighting on objects and
+         * sun (flare) position.
+         *
+         * @param {vec3} direction Sun direction.
+         */
+        this.setSunDirection = function(direction)
         {
             this.sunDirection = direction;
             if (this.wrappedScene)
@@ -1198,11 +1238,11 @@
         };
 
         /**
-        * Sets color for the sunlight. This affects lighting on objects.
-        *
-        * @param {vec3} color Sunlight color as RGB vector.
-        */
-        this.setSunLightColor = function (color)
+         * Sets color for the sunlight. This affects lighting on objects.
+         *
+         * @param {vec3} color Sunlight color as RGB vector.
+         */
+        this.setSunLightColor = function(color)
         {
             this.sunLightColor = color;
             if (this.wrappedScene)
@@ -1212,15 +1252,15 @@
         };
 
         /**
-        * Sets fog parameters. Fog effect helps depth perception. It does not
-        * affect planets.
-        *
-        * @param {number} startDistance Distance at which fog starts to appear.
-        * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
-        * @param {number} maxOpacity Maximum fog opacity from 0 to 1.
-        * @param {vec3} color Fog color as RGB vector.
-        */
-        this.setFog = function (startDistance, endDistance, maxOpacity, color)
+         * Sets fog parameters. Fog effect helps depth perception. It does not
+         * affect planets.
+         *
+         * @param {number} startDistance Distance at which fog starts to appear.
+         * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
+         * @param {number} maxOpacity Maximum fog opacity from 0 to 1.
+         * @param {vec3} color Fog color as RGB vector.
+         */
+        this.setFog = function(startDistance, endDistance, maxOpacity, color)
         {
             this.fog = [startDistance, endDistance, maxOpacity, color];
             if (this.wrappedScene)
@@ -1234,15 +1274,15 @@
     }
 
     /**
-    * Loads a new scene from .red file and makes it the currect scene (the one that
-    * will be automatically updated rendered into the canvas).
-    *
-    * @param {string} resPath Res path to scene's .red file
-    * @param {!function(): void} onload Optional callback function that is called
-    *   when scene .red file is loaded. this will point to Scene instance.
-    * @returns {ccpwgl.Scene} Newly constructed scene.
-    */
-    ccpwgl.loadScene = function (resPath, onload)
+     * Loads a new scene from .red file and makes it the currect scene (the one that
+     * will be automatically updated rendered into the canvas).
+     *
+     * @param {string} resPath Res path to scene's .red file
+     * @param {!function(): void} onload Optional callback function that is called
+     *   when scene .red file is loaded. this will point to Scene instance.
+     * @returns {ccpwgl.Scene} Newly constructed scene.
+     */
+    ccpwgl.loadScene = function(resPath, onload)
     {
         scene = new Scene();
         scene.load(resPath, onload);
@@ -1250,72 +1290,72 @@
     };
 
     /**
-    * Creates a new epmpty scne. The scene will not have background nebula and will
-    * use a solid color to fill the background.
-    *
-    * @param {vec4} backgroundColor Scene background color as RGBA vector.
-    * @returns {ccpwgl.Scene} Newly constructed scene.
-    */
-    ccpwgl.createScene = function (backgroundColor)
+     * Creates a new epmpty scne. The scene will not have background nebula and will
+     * use a solid color to fill the background.
+     *
+     * @param {vec4} backgroundColor Scene background color as RGBA vector.
+     * @returns {ccpwgl.Scene} Newly constructed scene.
+     */
+    ccpwgl.createScene = function(backgroundColor)
     {
         if (backgroundColor)
         {
             clearColor = backgroundColor;
         }
         scene = new Scene();
-		scene.create();
+        scene.create();
         return scene;
     };
 
     /**
-    * Checks if assets are still loading.
-    *
-    * @returns {boolean} True if any assets are still loading; false otherwise.
-    */
-    ccpwgl.isLoading = function ()
+     * Checks if assets are still loading.
+     *
+     * @returns {boolean} True if any assets are still loading; false otherwise.
+     */
+    ccpwgl.isLoading = function()
     {
         return ccpwgl_int.resMan.IsLoading();
     };
 
     /**
-    * Enable/disable scene per-frame updates.
-    *
-    * @param {boolean} enable If true scene update and update callbacks are called
-    *   every frame.
-    */
-    ccpwgl.enableUpdate = function (enable)
+     * Enable/disable scene per-frame updates.
+     *
+     * @param {boolean} enable If true scene update and update callbacks are called
+     *   every frame.
+     */
+    ccpwgl.enableUpdate = function(enable)
     {
         updateEnabled = enable;
     };
 
     /**
-    * Enable/disable scene rendering.
-    *
-    * @param {boolean} enable If true scene is rendered into the canvas.
-    */
-    ccpwgl.enableRendering = function (enable)
+     * Enable/disable scene rendering.
+     *
+     * @param {boolean} enable If true scene is rendered into the canvas.
+     */
+    ccpwgl.enableRendering = function(enable)
     {
         renderingEnabled = enable;
     };
 
     /**
-    * Returns current resource unload policy.
-    *
-    * @returns {ccpwgl.ResourceUnloadPolicy} Current resource unload policy.
-    */
-    ccpwgl.getResourceUnloadPolicy = function ()
+     * Returns current resource unload policy.
+     *
+     * @returns {ccpwgl.ResourceUnloadPolicy} Current resource unload policy.
+     */
+    ccpwgl.getResourceUnloadPolicy = function()
     {
         return resourceUnloadPolicy;
     };
 
     /**
-    * Assigns new resource unload policy.
-    *
-    * @param {ccpwgl.ResourceUnloadPolicy} policy New resource unload policy.
-    * @param {number} timeout Optional timeout value (in seconds) when resource is unloaded
-    *   from memomy if the policy is set to ccpwgl.ResourceUnloadPolicy.USAGE_BASED.
-    */
-    ccpwgl.setResourceUnloadPolicy = function (policy, timeout)
+     * Assigns new resource unload policy.
+     *
+     * @param {ccpwgl.ResourceUnloadPolicy} policy New resource unload policy.
+     * @param {number} timeout Optional timeout value (in seconds) when resource is unloaded
+     *   from memomy if the policy is set to ccpwgl.ResourceUnloadPolicy.USAGE_BASED.
+     */
+    ccpwgl.setResourceUnloadPolicy = function(policy, timeout)
     {
         resourceUnloadPolicy = policy;
         ccpwgl_int.resMan.autoPurgeResources = policy == ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
@@ -1326,12 +1366,12 @@
     };
 
     /**
-    * Manually clears resource cache.
-    */
-    ccpwgl.clearCachedResources = function ()
+     * Manually clears resource cache.
+     */
+    ccpwgl.clearCachedResources = function()
     {
         ccpwgl_int.resMan.Clear();
     };
 
     return ccpwgl;
-} (ccpwgl_int || window));
+}(ccpwgl_int || window));

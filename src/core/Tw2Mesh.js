@@ -38,7 +38,7 @@ function Tw2Mesh()
     this.debugIsHidden = false;
 }
 
-Tw2Mesh.prototype.Initialize = function ()
+Tw2Mesh.prototype.Initialize = function()
 {
     if (this.geometryResPath != '')
     {
@@ -46,7 +46,7 @@ Tw2Mesh.prototype.Initialize = function ()
     }
 };
 
-Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
+Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
 {
     for (var i = 0; i < areas.length; ++i)
     {
@@ -67,7 +67,7 @@ Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjec
     }
 };
 
-Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
+Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.geometryResource == null || this.debugIsHidden)
     {

@@ -1,3 +1,18 @@
 CCP WebGL Library
 ======
 
+Building
+------
+
+Building ccpwgl requires [Node.js](www.nodejs.org) and [Grunt](www.gruntjs.com) installed.
+After installing, run ```npm install``` once, which downloads the dependencies.
+
+When all is set up, ```grunt [task]``` starts the build script.
+
+The default task runs the tasks "format" and "compile". "lint" is currently not in the
+chain for still reporting too many errors.
+
+Available tasks:
+* format: running jsbeautifier (based on .jsbeautifyrc)
+* lint: running jshint (based on .jshintrc)
+* compile: running uglifyjs, producing ccpwgl_int.js

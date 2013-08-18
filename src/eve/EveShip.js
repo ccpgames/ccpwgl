@@ -15,7 +15,7 @@ function EveTurretSetLocatorInfo()
     this.locatorTransforms = [];
 }
 
-EveShip.prototype.GetBatches = function (mode, accumulator)
+EveShip.prototype.GetBatches = function(mode, accumulator)
 {
     this._super.GetBatches.call(this, mode, accumulator);
 
@@ -32,7 +32,7 @@ EveShip.prototype.GetBatches = function (mode, accumulator)
     }
 };
 
-EveShip.prototype.Update = function (dt)
+EveShip.prototype.Update = function(dt)
 {
     this._super.Update.call(this, dt);
 
@@ -60,7 +60,7 @@ EveShip.prototype.Update = function (dt)
     }
 };
 
-EveShip.prototype.RebuildBoosterSet = function ()
+EveShip.prototype.RebuildBoosterSet = function()
 {
     if (!this.boosters)
     {
@@ -78,7 +78,7 @@ EveShip.prototype.RebuildBoosterSet = function ()
     this.boosters.Rebuild();
 };
 
-EveShip.prototype.RebuildTurretPositions = function ()
+EveShip.prototype.RebuildTurretPositions = function()
 {
     this._turretSetsLocatorInfo = [];
     for (var i = 0; i < this.turretSets.length; ++i)

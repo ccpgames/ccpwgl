@@ -1,8 +1,7 @@
 function Tw2PerObjectData()
-{
-}
+{}
 
-Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
+Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {
