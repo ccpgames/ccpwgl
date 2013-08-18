@@ -4,7 +4,7 @@ CCP WebGL Library
 Building
 ------
 
-Building ccpwgl requires [Node.js](www.nodejs.org) and [Grunt](www.gruntjs.com) installed.
+Building ccpwgl requires [Node.js](http://www.nodejs.org) and [Grunt](http://www.gruntjs.com) installed.
 After installing, run ```npm install``` once, which downloads the dependencies.
 
 When all is set up, ```grunt [task]``` starts the build script.
