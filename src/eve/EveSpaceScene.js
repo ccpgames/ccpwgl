@@ -220,7 +220,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
     miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
 
-    
+
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;
