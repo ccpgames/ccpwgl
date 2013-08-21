@@ -18,12 +18,12 @@ function EveSpriteSet()
     this._decl.RebuildHash();
 }
 
-EveSpriteSet.prototype.Initialize = function()
+EveSpriteSet.prototype.Initialize = function ()
 {
     this.RebuildBuffers();
 };
 
-EveSpriteSet.prototype.RebuildBuffers = function()
+EveSpriteSet.prototype.RebuildBuffers = function ()
 {
     var vertexSize = 12;
     var array = new Float32Array(this.sprites.length * 4 * vertexSize);
@@ -80,7 +80,7 @@ function EveSpriteSetBatch()
     this.spriteSet = null;
 }
 
-EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
+EveSpriteSetBatch.prototype.Commit = function (overrideEffect)
 {
     this.spriteSet.Render(overrideEffect);
 };
@@ -88,7 +88,7 @@ EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
 Inherit(EveSpriteSetBatch, Tw2RenderBatch);
 
 
-EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (mode == device.RM_ADDITIVE)
     {
@@ -100,9 +100,9 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
 };
 
-EveSpriteSet.prototype.Render = function(overrideEffect)
+EveSpriteSet.prototype.Render = function (overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
@@ -129,17 +129,17 @@ EveSpriteSet.prototype.Render = function(overrideEffect)
     }
 };
 
-EveSpriteSet.prototype.Update = function(dt)
+EveSpriteSet.prototype.Update = function (dt)
 {
     this._time += dt;
 };
 
-EveSpriteSet.prototype.Clear = function()
+EveSpriteSet.prototype.Clear = function ()
 {
     this.sprites = [];
 };
 
-EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
+EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
     var item = new EveSpriteSetItem();
     item.position = vec3.create(pos);
@@ -162,4 +162,5 @@ function EveSpriteSetItem()
     this.maxScale = 1;
     this.falloff = 0;
     this.color = vec3.create([0, 0, 0]);
+    this.boneIndex = 0;
 }

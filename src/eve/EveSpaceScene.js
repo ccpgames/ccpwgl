@@ -62,6 +62,8 @@ function EveSpaceScene()
     this._perFramePS.Declare('SceneData.FogColor', 4);
     this._perFramePS.Declare('ShadowCameraRange', 4);
     this._perFramePS.Declare('TargetResolution', 4);
+    this._perFramePS.Declare('ShadowMapSettings', 4);
+    this._perFramePS.Declare('MiscSettings', 4);
     this._perFramePS.Create();
 
     variableStore.RegisterVariable('ShadowLightness', 0);
@@ -205,6 +207,20 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     targetResolution[1] = device.viewportHeight;
     targetResolution[3] = fov;
     targetResolution[2] = targetResolution[3] * aspectRatio;
+
+    var shadowMapSettings = this._perFramePS.Get('ShadowMapSettings');
+    shadowMapSettings[0] = 1;
+    shadowMapSettings[1] = 1;
+    shadowMapSettings[2] = 0;
+    shadowMapSettings[3] = 0;
+
+    var miscSettings = this._perFramePS.Get('MiscSettings');
+    miscSettings[0] = variableStore._variables['Time'].value[0];
+    miscSettings[1] = 0;
+    miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
+    miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
+
+    
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;

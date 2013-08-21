@@ -8,7 +8,6 @@ function TestCamera(element)
 	this.poi = vec3.create();
 	this.nearPlane = 1;
 	this.farPlane = 0;
-	this.destPoi = vec3.create();
 
 	this.onShift = null;
 	this.shift = 0;
@@ -45,7 +44,6 @@ TestCamera.prototype.getView = function ()
     mat4.translate(view, [0, 0.0, -this.distance]);
     mat4.rotateX(view, this.rotationY + this.additionalRotationY);
     mat4.rotateY(view, this.rotationX + this.additionalRotationX);
-	//console.log(this.poi[0], this.poi[1], this.poi[2]);
     mat4.translate(view, [-this.poi[0], -this.poi[1], -this.poi[2]]);
     return view;
 }
@@ -59,7 +57,7 @@ TestCamera.prototype.getProjection = function (aspect)
 
 TestCamera.prototype.update = function (dt)
 {
-	this.rotationX += this._rotationSpeedX * dt;
+    this.rotationX += this._rotationSpeedX * dt;
     this._rotationSpeedX *= 0.9;
     this.rotationY += this._rotationSpeedY * dt;
     this._rotationSpeedY *= 0.9;
