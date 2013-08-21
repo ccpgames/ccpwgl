@@ -69,7 +69,6 @@
     this.SetDataSet = function (texturePath, minStarSize, maxStarSize)
     {
         this.dataCanvas = null;
-		console.log("SETTING DATASET");
         this.dataSet = ccpwgl_int.resMan.GetResource(texturePath);
         this.dataSet.RegisterNotification(this);
         if (this.dataSet.IsGood())
@@ -85,7 +84,6 @@
             starEffect.parameters['ParticleSize'].SetValue(this.particleSize);
         }
     }
-	
 	this.SetStarColor = function (starID, colorAndSize, offset)
 	{
 		if (!this.dataSet.IsGood())
@@ -101,7 +99,7 @@
 		var y = Math.floor(index / this.dataSet.width);
 		var d = ccpwgl_int.device;
 		d.gl.bindTexture(d.gl.TEXTURE_2D, this.dataSet.texture);
-		d.gl.texSubImage2D(d.gl.TEXTURE_2D, 0, x, y, 1, 1, d.gl.RGBA, d.gl.UNSIGNED_BYTE, colorAndSize)
+		d.gl.texSubImage2D(d.gl.TEXTURE_2D, 0, x, y, 1, 1, d.gl.RGBA, d.gl.UNSIGNED_CHAR, colorAndSize)
 		d.gl.bindTexture(d.gl.TEXTURE_2D, null);
 	}
     // For animation/timeline
@@ -175,21 +173,15 @@
         {
             return null;
         }
-        var viewProjInv = mat4.create();
-		mat4.inverse(mat4.multiply(ccpwgl_int.device.projection, ccpwgl_int.device.view, viewProjInv));
-		var worldInv = mat4.create();
-		mat4.inverse(this.model.worldTransform, worldInv);
+        var viewProjInv = mat4.inverse(mat4.multiply(ccpwgl_int.device.projection, ccpwgl_int.device.view, mat4.create()));
         var end = quat4.create([(x / ccpwgl_int.device.viewportWidth) * 2 - 1, -(y / ccpwgl_int.device.viewportHeight) * 2 + 1, 1, 1]);
         mat4.multiplyVec4(viewProjInv, end);
         vec3.scale(end, 1.0 / end[3]);
-		mat4.multiplyVec3(worldInv, end);
-        var eye = vec3.create(ccpwgl_int.device.eyePosition);
-		mat4.multiplyVec3(worldInv, eye);
+        var eye = ccpwgl_int.device.eyePosition;
         vec3.normalize(vec3.subtract(end, eye));
         var closest = -1;
         var closestDist = 0;
         var position = this.stars.GetElement(ccpwgl_int.Tw2ParticleElementDeclaration.POSITION);
-		
         var tmp1 = vec3.create();
         var tmp2 = vec3.create();
         var pc = vec3.create();
@@ -226,8 +218,8 @@
         }
         if (closest >= 0)
         {
-			//console.log(closest, closest * 5 + 4, this.mapData[closest * 5 + 4]);
-			console.log(closestPos);
+			console.log(closest, closest * 5 + 4, this.mapData[closest * 5 + 4]);
+			console.log(pos);
             return [closest, this.mapData[closest * 5 + 4], closestPos];
         }
         else
