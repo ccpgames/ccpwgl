@@ -162,4 +162,5 @@ function EveSpriteSetItem()
     this.maxScale = 1;
     this.falloff = 0;
     this.color = vec3.create([0, 0, 0]);
+    this.boneIndex = 0;
 }

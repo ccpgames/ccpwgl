@@ -27,6 +27,14 @@
     ccpwgl.ResourceUnloadPolicy = { MANUAL: 0, USAGE_BASED: 1 };
 
     /**
+    * Scene LOD settings: with LOD_ENABLED, scene will not try to render ships/objects that
+    * are outside view frustum. Additionally it will hide some parts of ship (like decals)
+    * for ships that too far away. Enabling LOD will help performance significantly for
+    * scenes with a large number of objects. Defaults to LOD_DISABLED for compatibility.
+    */
+    ccpwgl.LodSettings = { LOD_DISABLED: 0, LOD_ENABLED: 1 };
+
+    /**
     * Turret states
     */
     ccpwgl.TurretState = { IDLE: 0, OFFLINE: 1, FIRING: 2 };
@@ -292,9 +300,9 @@
     function SpaceObject(resPath, onload)
     {
         /** Wrapped ccpwgl_int object **/
-        this.wrappedObject = null;
+        this.wrappedObjects = [null, ];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.create();
+        this.transform = mat4.identity(mat4.create());
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
 
@@ -303,7 +311,18 @@
             resPath,
             function (obj)
             {
-                self.wrappedObject = obj;
+                self.wrappedObjects[0] = obj;
+                if ('transform' in self.wrappedObjects[0])
+                {
+                    self.wrappedObjects[0].transform.set(self.transform);
+                }
+                else if ('translation' in self.wrappedObjects[0])
+                {
+                    self.wrappedObjects[0].translation.set(self.transform.subarray(12, 15));
+                    self.wrappedObjects[0].scaling[0] = vec3.length(self.transform);
+                    self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
+                    self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
+                }
                 if (onload)
                 {
                     onload.call(self);
@@ -315,7 +334,7 @@
         *
         * @returns {boolean} True if object's .red file is loading; false otherwise.
         */
-        this.isLoaded = function () { return this.wrappedObject != null; };
+        this.isLoaded = function () { return this.wrappedObjects[0] != null; };
 
         /**
         * Returns object's bounding sphere if it is available. Throws an exception otherwise.
@@ -331,11 +350,11 @@
             {
                 throw new ccpwgl.IsStillLoadingError();
             }
-            if (!('boundingSphereRadius' in this.wrappedObject))
+            if (!('boundingSphereRadius' in this.wrappedObjects[0]))
             {
                 throw new TypeError('Object does not have bounding sphere information');
             }
-            return [this.wrappedObject.boundingSphereCenter, this.wrappedObject.boundingSphereRadius];
+            return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
         };
 
         /**
@@ -346,9 +365,19 @@
         this.setTransform = function (newTransform)
         {
             this.transform.set(newTransform);
-            if (this.wrappedObject)
+            if (this.wrappedObjects[0])
             {
-                this.wrappedObject.transform.set(this.transform);
+                if ('transform' in this.wrappedObjects[0])
+                {
+                    this.wrappedObjects[0].transform.set(this.transform);
+                }
+                else if ('translation' in this.wrappedObjects[0])
+                {
+                    this.wrappedObjects[0].translation.set(this.transform.subarray(12, 15));
+                    this.wrappedObjects[0].scaling[0] = vec3.length(this.transform);
+                    this.wrappedObjects[0].scaling[1] = vec3.length(this.transform.subarray(4, 7));
+                    this.wrappedObjects[0].scaling[2] = vec3.length(this.transform.subarray(8, 11));
+                }
             }
         };
 
@@ -375,9 +404,9 @@
     function Ship(resPath, onload)
     {
         /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
-        this.wrappedObject = null;
+        this.wrappedObjects = [null];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.create();
+        this.transform = mat4.identity(mat4.create());
         /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
         this.boosters = null;
         /** Current siege state @type {ccpwgl.ShipSiegeState} **/
@@ -396,32 +425,44 @@
         this.onUpdate = null;
         /** Loaded turret color scheme ccpwgl_int object. **/
         this.turretColorScheme = null;
+        /** Local transforms for Tech3 ship parts **/
+        this.partTransforms = [];
 
         var self = this;
-        ccpwgl_int.resMan.GetObject(
-            resPath,
-            function (obj)
+        if (typeof resPath == 'string')
+        {
+            resPath = [resPath, ];
+        }
+        for (var i = 0; i < resPath.length; ++i)
+        {
+            this.wrappedObjects[i] = null;
+        }
+
+        function OnShipPartLoaded(index)
+        {
+            return function (obj)
             {
-                self.wrappedObject = obj;
+                self.wrappedObjects[index] = obj;
                 if (!(obj instanceof ccpwgl_int.EveShip))
                 {
-                    self.wrappedObject = null;
+                    self.wrappedObjects[index] = null;
                     console.error('Object loaded with scene.loadShip is not a ship');
                     return;
                 }
+                self.wrappedObjects[index].transform.set(self.transform);
                 if (self.boosters)
                 {
-                    self.wrappedObject.boosters = self.boosters;
+                    self.wrappedObjects[index].boosters = self.boosters;
                 }
-                self.wrappedObject.boosterGain = self.boosterStrength;
+                self.wrappedObjects[index].boosterGain = self.boosterStrength;
                 switch (self.siegeState)
                 {
                     case ccpwgl.ShipSiegeState.SIEGE:
-                        self.wrappedObject.animation.PlayAnimation('SiegeLoop', true);
+                        self.wrappedObjects[index].animation.PlayAnimation('SiegeLoop', true);
                         self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
                         break;
                     default:
-                        self.wrappedObject.animation.PlayAnimation('NormalLoop', true);
+                        self.wrappedObjects[index].animation.PlayAnimation('NormalLoop', true);
                 }
                 if (this.onInitialSeigeState)
                 {
@@ -434,19 +475,92 @@
                         doMountTurret.call(self, i, self.turrets[i].path, self.turrets[i].state);
                     }
                 }
-                if (onload)
+                if (onload && self.isLoaded())
                 {
+                    if (self.wrappedObjects.length > 1)
+                    {
+                        assembleT3Ship();
+                    }
                     onload.call(self);
                 }
+            };
+        }
+
+        if (resPath.length > 1)
+        {
+            if (resPath.length != 5)
+            {
+                throw new TypeError('Invalid number of parts passed to Tech3 ship constructor');
             }
-        );
+        }
+
+        for (var i = 0; i < resPath.length; ++i)
+        {
+            ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
+        }
+
+        function assembleT3Ship()
+        {
+            var systemNames = [
+		        "electronic",
+		        "defensive",
+		        "engineering",
+		        "offensive",
+		        "propulsion"];
+            var systems = [];
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
+            {
+                var found = false;
+                for (var j = 1; j < systemNames.length; ++j)
+                {
+                    var loc = self.wrappedObjects[i].FindLocatorTransformByName('locator_attach_' + systemNames[j]);
+                    if (loc !== null)
+                    {
+                        if (systems[j - 1])
+                        {
+                            throw new TypeError('Invalid parts passed to Tech3 ship constructor');
+                        }
+                        systems[j - 1] = [i, loc.subarray(12, 15)];
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    if (systems[4])
+                    {
+                        throw new TypeError('Invalid parts passed to Tech3 ship constructor');
+                    }
+                    systems[4] = [i, vec3.create()];
+                }
+            }
+            var offset = vec3.create();
+            for (var i = 0; i < systems.length; ++i)
+            {
+                var index = systems[i][0];
+                self.partTransforms[index] = mat4.identity(mat4.create());
+                mat4.translate(self.partTransforms[index], offset);
+                vec3.add(offset, systems[i][1]);
+                mat4.multiply(self.transform, self.partTransforms[index], self.wrappedObjects[index].transform);
+            }
+        }
 
         /**
         * Check if ship's .red file is still loading.
         *
         * @returns {boolean} True if ship's .red file is loading; false otherwise.
         */
-        this.isLoaded = function () { return this.wrappedObject != null; };
+        this.isLoaded = function ()
+        {
+            for (var i = 0; i < this.wrappedObjects.length; ++i)
+            {
+                if (!this.wrappedObjects[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        };
 
         /**
         * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
@@ -461,7 +575,7 @@
             {
                 throw new ccpwgl.IsStillLoadingError();
             }
-            return [this.wrappedObject.boundingSphereCenter, this.wrappedObject.boundingSphereRadius];
+            return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
         };
 
         /**
@@ -472,9 +586,22 @@
         this.setTransform = function (newTransform)
         {
             this.transform.set(newTransform);
-            if (this.wrappedObject)
+            if (this.wrappedObjects.length < 2 || !this.isLoaded())
             {
-                this.wrappedObject.transform.set(this.transform);
+                for (var i = 0; i < this.wrappedObjects.length; ++i)
+                {
+                    if (this.wrappedObjects[i])
+                    {
+                        this.wrappedObjects[i].transform.set(this.transform);
+                    }
+                }
+            }
+            else
+            {
+                for (var i = 0; i < this.wrappedObjects.length; ++i)
+                {
+                    mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
+                }
             }
         };
 
@@ -503,9 +630,12 @@
                 function (obj)
                 {
                     self.boosters = obj;
-                    if (self.wrappedObject)
+                    for (var i = 0; i < self.wrappedObjects.length; ++i)
                     {
-                        self.wrappedObject.boosters = obj;
+                        if (self.wrappedObjects[i])
+                        {
+                            self.wrappedObjects[i].boosters = obj;
+                        }
                     }
                     if (onload)
                     {
@@ -523,9 +653,12 @@
         this.setBoosterStrength = function (boosterStrength)
         {
             this.boosterStrength = boosterStrength;
-            if (this.wrappedObject)
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
             {
-                this.wrappedObject.boosterGain = this.boosterStrength;
+                if (this.wrappedObjects[i])
+                {
+                    this.wrappedObjects[i].boosterGain = this.boosterStrength;
+                }
             }
         };
 
@@ -582,13 +715,16 @@
             }
             var slots = [];
             this.turretCount = 0;
-            for (var i = 0; i < this.wrappedObject.locators.length; ++i)
+            for (var j = 0; j < this.wrappedObjects.length; ++j)
             {
-                var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObject.locators[i].name);
-                if (match)
+                for (var i = 0; i < this.wrappedObjects[j].locators.length; ++i)
                 {
-                    var index = parseInt(match[1], 10);
-                    slots[index] = true;
+                    var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObjects[j].locators[i].name);
+                    if (match)
+                    {
+                        var index = parseInt(match[1], 10);
+                        slots[index] = true;
+                    }
                 }
             }
             this.turretCount = slots.length;
@@ -621,16 +757,19 @@
             if (this.isLoaded())
             {
                 var name = 'locator_turret_' + index;
-                var ship = this.ship;
-                for (var i = 0; i < ship.turretSets.length; ++i)
+                for (var j = 0; j < this.wrappedObjects.lenght; ++j)
                 {
-                    if (ship.turretSets[i].locatorName == name)
+                    var ship = this.wrappedObjects[j];
+                    for (var i = 0; i < ship.turretSets.length; ++i)
                     {
-                        ship.turretSets.splice(i, 1);
-                        break;
+                        if (ship.turretSets[i].locatorName == name)
+                        {
+                            ship.turretSets.splice(i, 1);
+                            break;
+                        }
                     }
+                    ship.RebuildTurretPositions();
                 }
-                ship.RebuildTurretPositions();
             }
         };
 
@@ -650,26 +789,29 @@
             if (this.turrets[index].state != state)
             {
                 this.turrets[index].state = state;
-                if (this.wrappedObject)
+                var name = 'locator_turret_' + index;
+                for (var j = 0; j < this.wrappedObjects.length; ++j)
                 {
-                    var name = 'locator_turret_' + index;
-                    for (var i = 0; i < this.wrappedObject.turretSets.length; ++i)
+                    if (this.wrappedObjects[j])
                     {
-                        if (this.wrappedObject.turretSets[i].locatorName == name)
+                        for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
                         {
-                            switch (state)
+                            if (this.wrappedObjects[j].turretSets[i].locatorName == name)
                             {
-                                case ccpwgl.TurretState.FIRING:
-                                    this.wrappedObject.turretSets[i].EnterStateFiring();
-                                    break;
-                                case ccpwgl.TurretState.OFFLINE:
-                                    this.wrappedObject.turretSets[i].EnterStateDeactive();
-                                    break;
-                                default:
-                                    this.wrappedObject.turretSets[i].EnterStateIdle();
-                                    break;
+                                switch (state)
+                                {
+                                    case ccpwgl.TurretState.FIRING:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateFiring();
+                                        break;
+                                    case ccpwgl.TurretState.OFFLINE:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateDeactive();
+                                        break;
+                                    default:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateIdle();
+                                        break;
+                                }
+                                break;
                             }
-                            break;
                         }
                     }
                 }
@@ -680,7 +822,32 @@
         function doMountTurret(slot, resPath, state)
         {
             var name = 'locator_turret_' + slot;
-            var ship = this.wrappedObject;
+            var objectIndex = null;
+            for (var i = 0; i < this.wrappedObjects.length; ++i)
+            {
+                if (this.wrappedObjects[i])
+                {
+                    var foundLocator = false;
+                    for (var j = 0; j < this.wrappedObjects[i].locators.length; ++j)
+                    {
+                        if (this.wrappedObjects[i].locators[j].name.substr(0, name.length) == name)
+                        {
+                            foundLocator = true;
+                            break;
+                        }
+                    }
+                    if (foundLocator)
+                    {
+                        objectIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (objectIndex === null)
+            {
+                return;
+            }
+            var ship = this.wrappedObjects[objectIndex];
             for (var i = 0; i < ship.turretSets.length; ++i)
             {
                 if (ship.turretSets[i].locatorName == name)
@@ -745,80 +912,83 @@
             if (this.siegeState != state)
             {
                 this.siegeState = state;
-                if (this.wrappedObject)
+                for (var j = 0; j < this.wrappedObjects.length; ++j)
                 {
-                    if (state == ccpwgl.ShipSiegeState.SIEGE)
+                    if (this.wrappedObjects[j])
                     {
-                        switch (this.internalSiegeState)
+                        if (state == ccpwgl.ShipSiegeState.SIEGE)
                         {
-                            case ccpwgl.ShipSiegeState.IDLE:
-                            case 101:
-                                // 101 is transforming from siege state. Ideally we'd want to switch to StartSiege
-                                // with correct offset into animation, but we don't have that functionality yet...
-                                this.internalSiegeState = 100;
-                                this.wrappedObject.animation.StopAllAnimations();
-                                this.wrappedObject.animation.PlayAnimation(
+                            switch (this.internalSiegeState)
+                            {
+                                case ccpwgl.ShipSiegeState.IDLE:
+                                case 101:
+                                    // 101 is transforming from siege state. Ideally we'd want to switch to StartSiege
+                                    // with correct offset into animation, but we don't have that functionality yet...
+                                    this.internalSiegeState = 100;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation(
                                     'StartSiege',
                                     false,
                                     function ()
                                     {
                                         self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
-                                        self.wrappedObject.animation.StopAllAnimations();
-                                        self.wrappedObject.animation.PlayAnimation('SiegeLoop', true);
+                                        self.wrappedObjects[j].animation.StopAllAnimations();
+                                        self.wrappedObjects[j].animation.PlayAnimation('SiegeLoop', true);
                                         if (onswitch)
                                         {
                                             onswitch.call(self, self.internalSiegeState);
                                         }
                                     });
-                                break;
-                            default:
-                                this.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
-                                this.wrappedObject.animation.StopAllAnimations();
-                                this.wrappedObject.animation.PlayAnimation('SiegeLoop', true);
-                                if (onswitch)
-                                {
-                                    onswitch.call(self, self.internalSiegeState);
-                                }
+                                    break;
+                                default:
+                                    this.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation('SiegeLoop', true);
+                                    if (onswitch)
+                                    {
+                                        onswitch.call(self, self.internalSiegeState);
+                                    }
+                            }
                         }
-                    }
-                    else
-                    {
-                        switch (this.internalSiegeState)
+                        else
                         {
-                            case ccpwgl.ShipSiegeState.SIEGE:
-                            case 100:
-                                // 100 is transforming to siege state. Ideally we'd want to switch to StartSiege
-                                // with correct offset into animation, but we don't have that functionality yet...
-                                this.internalSiegeState = 101;
-                                this.wrappedObject.animation.StopAllAnimations();
-                                this.wrappedObject.animation.PlayAnimation(
+                            switch (this.internalSiegeState)
+                            {
+                                case ccpwgl.ShipSiegeState.SIEGE:
+                                case 100:
+                                    // 100 is transforming to siege state. Ideally we'd want to switch to StartSiege
+                                    // with correct offset into animation, but we don't have that functionality yet...
+                                    this.internalSiegeState = 101;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation(
                                     'EndSiege',
                                     false,
                                     function ()
                                     {
                                         self.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
-                                        self.wrappedObject.animation.StopAllAnimations();
-                                        self.wrappedObject.animation.PlayAnimation('NormalLoop', true);
+                                        self.wrappedObjects[j].animation.StopAllAnimations();
+                                        self.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
                                     });
-                                if (onswitch)
-                                {
-                                    onswitch.call(self, self.internalSiegeState);
-                                }
-                                break;
-                            default:
-                                this.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
-                                this.wrappedObject.animation.StopAllAnimations();
-                                this.wrappedObject.animation.PlayAnimation('NormalLoop', true);
-                                if (onswitch)
-                                {
-                                    onswitch.call(self, self.internalSiegeState);
-                                }
+                                    if (onswitch)
+                                    {
+                                        onswitch.call(self, self.internalSiegeState);
+                                    }
+                                    break;
+                                default:
+                                    this.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
+                                    if (onswitch)
+                                    {
+                                        onswitch.call(self, self.internalSiegeState);
+                                    }
+                            }
                         }
                     }
-                }
-                else
-                {
-                    this.onInitialSeigeState = onswitch;
+                    else
+                    {
+                        this.onInitialSeigeState = onswitch;
+                    }
                 }
             }
             else
@@ -829,6 +999,28 @@
                 }
             }
         };
+
+        /**
+        * Returns an array of ship's locators. Locators hold transforms for various
+        * ship mounts (turrets, boosters, etc.). If the ship is not yet loaded the
+        * function throws ccpwgl.IsStillLoadingError exception.
+        *
+        * @throws If the ship's .red file is not yet loaded.
+        * @returns {Array} Array of ship locators.
+        */
+        this.GetLocators = function ()
+        {
+            if (!this.isLoaded())
+            {
+                throw new ccpwgl.IsStillLoadingError();
+            }
+            var result = this.wrappedObjects[0].locators;
+            for (var i = 1; i < this.wrappedObjects.length; ++i)
+            {
+                result = result.concat(this.wrappedObjects[i].locators);
+            }
+            return result;
+        }
     }
 
     /**
@@ -844,8 +1036,8 @@
     function Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
     {
         /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
-        this.wrappedObject = new ccpwgl_int.EvePlanet();
-        this.wrappedObject.Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
+        this.wrappedObjects = [new ccpwgl_int.EvePlanet(), ];
+        this.wrappedObjects[0].Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
 
@@ -854,7 +1046,7 @@
         *
         * @returns {boolean} True if planet is loaded; false otherwise.
         */
-        this.isLoaded = function () { return this.hightDirty; };
+        this.isLoaded = function () { return this.wrappedObjects[0].hightDirty; };
 
         /**
         * Returns planets's bounding sphere. We know it always is a unit sphere in local
@@ -875,7 +1067,7 @@
         */
         this.setTransform = function (newTransform)
         {
-            this.wrappedObject.highDetail.localTransform.set(newTransform);
+            this.wrappedObjects[0].highDetail.localTransform.set(newTransform);
         };
 
         /**
@@ -885,7 +1077,7 @@
         */
         this.getTransform = function ()
         {
-            return this.wrappedObject.highDetail.localTransform;
+            return this.wrappedObjects[0].highDetail.localTransform;
         };
     }
 
@@ -910,6 +1102,8 @@
         this.sunLightColor = null;
         /** Fog parameters (if null, the value is taked from scene .red file) @type {Array} **/
         this.fog = null;
+        /** Current LOD setting @type {ccpwgl.LodSettings} **/
+        var lodSetting = ccpwgl.LodSettings.LOD_DISABLED;
 
         /** 
         * Internal helper function that rebuilds a list of object in the wrapped
@@ -921,53 +1115,65 @@
             {
                 return;
             }
+            this.wrappedScene.planets.splice(0, this.wrappedScene.planets.length);
             this.wrappedScene.objects.splice(0, this.wrappedScene.objects.length);
             for (var i = 0; i < this.objects.length; ++i)
             {
-                if (this.objects[i].wrappedObject)
+                for (var j = 0; j < this.objects[i].wrappedObjects.length; ++j)
                 {
-                    this.wrappedScene.objects.push(this.objects[i].wrappedObject);
+                    if (this.objects[i].wrappedObjects[j])
+                    {
+                        if (this.objects[i] instanceof Planet)
+                        {
+                            this.wrappedScene.planets.push(this.objects[i].wrappedObjects[j]);
+                        }
+                        else
+                        {
+                            this.wrappedScene.objects.push(this.objects[i].wrappedObjects[j]);
+                        }
+                    }
                 }
             }
         }
-		
+
         /**
         * Called when an EveSpaceScene is created or loaded.
         *
         * @param {ccpwlg_int.EveSpaceScene} obj New scene
         */
-		function onSceneLoaded(obj)
-		{
-			this.wrappedScene = obj;
-			if (this.sun)
-			{
-				obj.lensflares[0] = this.sun;
-			}
-			if (this.sunDirection)
-			{
-				obj.sunDirection.set(this.sunDirection);
-			}
-			if (this.sunLightColor)
-			{
-				obj.sunDiffuseColor.set(this.sunLightColor);
-			}
-			if (this.fog)
-			{
-				obj.fogStart = this.fog[0];
-				obj.fogEnd = this.fog[1];
-				obj.fogMax = this.fog[2];
-				obj.fogColor.set(this.fog[3]);
-			}
-			rebuildSceneObjects.call(this);
-		}
-		
+        function onSceneLoaded(obj)
+        {
+            this.wrappedScene = obj;
+            if (this.sun)
+            {
+                obj.lensflares[0] = this.sun;
+            }
+            if (this.sunDirection)
+            {
+                obj.sunDirection.set(this.sunDirection);
+            }
+            if (this.sunLightColor)
+            {
+                obj.sunDiffuseColor.set(this.sunLightColor);
+            }
+            obj.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
+            if (this.fog)
+            {
+                obj.fogStart = this.fog[0];
+                obj.fogEnd = this.fog[1];
+                obj.fogMax = this.fog[2];
+                obj.fogColor.set(this.fog[3]);
+            }
+            rebuildSceneObjects.call(this);
+        }
+
         /**
         * Creates a new empty scene.
         */
-		this.create = function ()
-		{
-			onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
-		};
+        this.create = function ()
+        {
+            onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
+        };
 
         /**
         * Loads a scene from .red file.
@@ -983,7 +1189,7 @@
                 resPath,
                 function (obj)
                 {
-					onSceneLoaded.call(self, obj);
+                    onSceneLoaded.call(self, obj);
                     if (onload)
                     {
                         onload.call(self);
@@ -1020,7 +1226,7 @@
                     }
                 });
             this.objects.push(ship);
-            if (ship.wrappedObject)
+            if (ship.wrappedObjects[0])
             {
                 rebuildSceneObjects.call(this);
             }
@@ -1049,12 +1255,28 @@
                     }
                 });
             this.objects.push(object);
-            if (object.wrappedObject)
+            if (object.wrappedObjects[0])
             {
                 rebuildSceneObjects.call(this);
             }
             return object;
         };
+
+        /**
+        * Adds previously loaded, but removed object back to the scene.
+        *
+        * @param {ccpwgl.SpaceObject} object Object to add.
+        * @returns {ccpwgl.SpaceObject} Object added.
+        */
+        this.addObject = function (object)
+        {
+            this.objects.push(object);
+            if (object.wrappedObjects[0])
+            {
+                rebuildSceneObjects.call(this);
+            }
+            return object;
+        }
 
         /**
         * Creates a planet.
@@ -1231,6 +1453,30 @@
                 this.wrappedScene.fogColor.set(color);
             }
         };
+
+        /**
+        * Returns current LOD setting.
+        *
+        * @returns {ccpwgl.LodSettings} Current LOD setting.
+        */
+        this.getLodSetting = function ()
+        {
+            return lodSetting;
+        };
+
+        /**
+        * Assigns new LOD setting.
+        *
+        * @param {ccpwgl.LodSettings} setting New LOD setting.
+        */
+        this.setLodSetting = function (setting)
+        {
+            lodSetting = setting;
+            if (this.wrappedScene)
+            {
+                this.wrappedScene.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
+            }
+        };
     }
 
     /**
@@ -1263,7 +1509,7 @@
             clearColor = backgroundColor;
         }
         scene = new Scene();
-		scene.create();
+        scene.create();
         return scene;
     };
 

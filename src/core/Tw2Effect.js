@@ -152,7 +152,7 @@ Tw2Effect.prototype.BindParameters = function ()
                 }
                 if (j == 0)
                 {
-                    p.slot += 16;
+                    p.slot += 12;
                 }
                 stage.textures.push(p);
             }

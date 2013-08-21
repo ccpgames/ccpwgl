@@ -89,8 +89,8 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         }
         for (var j = 0; j < 16; ++j)
         {
-            program.samplerHandles[j + 16] = device.gl.getUniformLocation(program.program, "vs" + j);
-            device.gl.uniform1i(program.samplerHandles[j + 16], j + 16);
+            program.samplerHandles[j + 12] = device.gl.getUniformLocation(program.program, "vs" + j);
+            device.gl.uniform1i(program.samplerHandles[j + 12], j + 12);
         }
         program.input = new Tw2VertexDeclaration();
         for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)

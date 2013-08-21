@@ -9,6 +9,8 @@ function EveSpaceObject()
 	this.turretSets = [];
 	this.decals = [];
 	this.spotlightSets = [];
+	this.planeSets = [];
+	this.curveSets = [];
 	
 	this.transform = mat4.create();
 	mat4.identity(this.transform);
@@ -65,11 +67,15 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
 	{
 		this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData);
 	}
-	for (var i = 0; i < this.spotlightSets.length; ++i)
-	{
-		this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
-	}
-	for (var i = 0; i < this.children.length; ++i)
+    for (var i = 0; i < this.spotlightSets.length; ++i)
+    {
+        this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
+    }
+    for (var i = 0; i < this.planeSets.length; ++i)
+    {
+        this.planeSets[i].GetBatches(mode, accumulator, this._perObjectData);
+    }
+    for (var i = 0; i < this.children.length; ++i)
 	{
 		this.children[i].GetBatches(mode, accumulator, this._perObjectData);
 	}
@@ -89,7 +95,11 @@ EveSpaceObject.prototype.Update = function (dt)
 	{
 		this.children[i].Update(dt);
 	}
-	this.animation.Update(dt);
+    for (var i = 0; i < this.curveSets.length; ++i)
+    {
+        this.curveSets[i].Update(dt);
+    }
+    this.animation.Update(dt);
 };
 
 EveSpaceObject.prototype.GetLocatorCount = function (prefix)
