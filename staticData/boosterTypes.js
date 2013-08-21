@@ -1,0 +1,16 @@
+var boosterPaths = {
+    'Amarr': "res:/dx9/model/ship/booster/booster_amarr.red",
+    'Caldari': "res:/dx9/model/ship/booster/booster_caldari.red",
+    'Gallente': "res:/dx9/model/ship/booster/booster_gallente.red",
+    'Minmatar': "res:/dx9/model/ship/booster/booster_minmatar.red",
+    'Jove': "res:/dx9/model/ship/booster/booster_jove.red",
+    'Angel': "res:/dx9/model/ship/booster/booster_angel.red",
+    'Sleeper': "res:/dx9/model/ship/booster/booster_sleeper.red",
+    'ORE': "res:/dx9/model/ship/booster/booster_ORE.red",
+    'Concord': "res:/dx9/model/ship/booster/booster_concord.red",
+    'RogueDrone': "res:/dx9/model/ship/booster/booster_roguedrone.red",
+    'Sansha': "res:/dx9/model/ship/booster/booster_sansha.red",
+    'SOCT': "res:/dx9/model/ship/booster/booster_soct.red",
+    'Talocan': "res:/dx9/model/ship/booster/booster_talocan.red",
+    'Generic': "res:/dx9/model/ship/booster/booster_generic.red",
+};
