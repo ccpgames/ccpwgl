@@ -176,25 +176,28 @@ Tw2Effect.prototype.ApplyPass = function (pass)
 
     this.effectRes.ApplyPass(pass);
     var p = this.passes[pass];
+    var rp = this.effectRes.passes[pass];
     var d = device;
-	if (d.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-	{
-        var program = this.effectRes.passes[pass].shadowShaderProgram;
-	}
-	else
-	{
-        var program = this.effectRes.passes[pass].shaderProgram;
+    if (d.IsAlphaTestEnabled() && rp.shadowShaderProgram)
+    {
+        var program = rp.shadowShaderProgram;
+    }
+    else
+    {
+        var program = rp.shaderProgram;
     }
     for (var i = 0; i < 2; ++i)
     {
-        for (var j = 0; j < p.stages[i].parameters.length; ++j)
+        var stages = p.stages[i];
+        for (var j = 0; j < stages.parameters.length; ++j)
         {
-            var pp = p.stages[i].parameters[j];
+            var pp = stages.parameters[j];
             pp.parameter.Apply(pp.constantBuffer, pp.offset, pp.size);
         }
-        for (var j = 0; j < p.stages[i].textures.length; ++j)
+        for (var j = 0; j < stages.textures.length; ++j)
         {
-            p.stages[i].textures[j].parameter.Apply(p.stages[i].textures[j].slot, p.stages[i].textures[j].sampler, program.volumeSlices[p.stages[i].textures[j].sampler.registerIndex]);
+            var tex = stages.textures[j];
+            tex.parameter.Apply(tex.slot, tex.sampler, program.volumeSlices[tex.sampler.registerIndex]);
         }
     }
     if (program.constantBufferHandles[0] != null)

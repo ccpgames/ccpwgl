@@ -264,76 +264,77 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         {
             for (var declIx = 0; declIx < declCount; ++declIx)
             {
-                switch (declaration.elements[declIx].fileType & 0xf)
+                var el = declaration.elements[declIx];
+                switch (el.fileType & 0xf)
                 {
                     case 0:
-                        if (declaration.elements[declIx].fileType & 0x10)
+                        if (el.fileType & 0x10)
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8() / 127.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8();
                             }
                         }
                         break;
                     case 1:
-                        if (declaration.elements[declIx].fileType & 0x10)
+                        if (el.fileType & 0x10)
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8() / 32767.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt16();
                             }
                         }
                         break;
                     case 2:
-                        for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                        for (var i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadInt32();
                         }
                         break;
                     case 3:
-                        for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                        for (var i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat16();
                         }
                         break;
                     case 4:
-                        for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                        for (var i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat32();
                         }
                         break;
                     case 8:
-                        if (declaration.elements[declIx].fileType & 0x10)
+                        if (el.fileType & 0x10)
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt8() / 255.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt8();
                             }
                         }
                         break;
                     case 9:
-                        if (declaration.elements[declIx].fileType & 0x10)
+                        if (el.fileType & 0x10)
                         {
                             for (var i = 0; i < declaration.elements[declIx].elements; ++i)
                             {
@@ -342,14 +343,14 @@ Tw2GeometryRes.prototype.Prepare = function (data)
                         }
                         else
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (var i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt16();
                             }
                         }
                         break;
                     case 10:
-                        for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                        for (var i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadUInt32();
                         }
@@ -675,10 +676,6 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
     }
     var effectRes = effect.GetEffectRes();
     if (!effectRes._isGood)
-    {
-        return false;
-    }
-    if (meshIx >= this.meshes.length)
     {
         return false;
     }

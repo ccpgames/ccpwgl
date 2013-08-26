@@ -54,6 +54,11 @@ function Tw2AnimationController(geometryResource)
     this.meshBindings = [];
     this.loaded = false;
     this.update = true;
+
+    this._tempMat4 = mat4.create();
+    this._tempMat3 = mat3.create();
+    this._tempQuat4 = quat4.create();
+    this._tempVec3 = vec3.create();
     
     if (typeof(geometryResource) != 'undefined')
     {
@@ -480,7 +485,7 @@ Tw2AnimationController.prototype.Update = function (dt)
         }
     }
     
-    var tempMat = mat4.create();
+    var tempMat = this._tempMat4;
     var updateBones = false;
     for (var i = 0; i < this.animations.length; ++i)
     {
@@ -505,9 +510,9 @@ Tw2AnimationController.prototype.Update = function (dt)
                     animation.time = res.duration;
                 }
             }
-            var orientation = quat4.create();
-            var scale = mat3.create();
-            var position = vec3.create();
+            var orientation = this._tempQuat4;
+            var scale = this._tempMat3;
+            var position = this._tempVec3;
             for (var j = 0; j < animation.trackGroups.length; ++j)
             {
                 for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k)

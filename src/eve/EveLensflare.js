@@ -20,11 +20,9 @@ function EveLensflare()
     if (!EveLensflare.backBuffer)
     {
         EveLensflare.backBuffer = new Tw2TextureRes();
-        EveLensflare.backBuffer.Attach(device.gl.createTexture());
         EveLensflare.backBuffer.width = 0;
         EveLensflare.backBuffer.height = 0;
         EveLensflare.backBuffer.hasMipMaps = false;
-
         EveLensflare.occluderLevels = new Tw2RenderTarget();
     }
 }
@@ -114,25 +112,25 @@ EveLensflare.prototype.PrepareRender = function ()
     cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
     cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
     cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
-    
+
     var negDirVec = vec3.negate(this._direction, vec3.create());
     this.MatrixArcFromForward(this._transform, negDirVec);
     this._transform[12] = cameraSpacePos[0];
     this._transform[13] = cameraSpacePos[1];
     this._transform[14] = cameraSpacePos[2];
-    
+
     var scaleMat = mat4.scale(mat4.identity(mat4.create()), [this.occlusionIntensity, this.occlusionIntensity, 1]);
     //mat4.multiply(this._transform, scaleMat);
     this._directionVar.value[0] = this._direction[0];
     this._directionVar.value[1] = this._direction[1];
     this._directionVar.value[2] = this._direction[2];
     this._directionVar.value[3] = 1;
-    
+
     for (var i = 0; i < this.flares.length; ++i)
     {
         this.flares[i].UpdateViewDependentData(this._transform);
     }
-    
+
 };
 
 EveLensflare.prototype.UpdateOccluders = function ()
@@ -187,10 +185,16 @@ EveLensflare.prototype.UpdateOccluders = function ()
         }
 
         // Copy back buffer into a texture
+        if (!EveLensflare.backBuffer.texture)
+        {
+            EveLensflare.backBuffer.Attach(device.gl.createTexture());
+        }
         device.gl.bindTexture(device.gl.TEXTURE_2D, EveLensflare.backBuffer.texture);
         if (EveLensflare.backBuffer.width != device.viewportWidth || EveLensflare.backBuffer.height != device.viewportHeight)
         {
             device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, device.viewportWidth, device.viewportHeight, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.LINEAR);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.LINEAR);
             EveLensflare.backBuffer.width = device.viewportWidth;
             EveLensflare.backBuffer.height = device.viewportHeight;
         }
@@ -207,10 +211,10 @@ EveLensflare.prototype.UpdateOccluders = function ()
         device.gl.sampleCoverage(1, false);
     }
 
-//    device.gl.viewport(0, 0, 100, 100);
-//    device.SetStandardStates(device.RM_FULLSCREEN);
-//    device.RenderTexture(EveLensflare.occluderLevels.texture);
-//    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
+    //    device.gl.viewport(0, 0, 100, 100);
+    //    device.SetStandardStates(device.RM_FULLSCREEN);
+    //    device.RenderTexture(EveLensflare.occluderLevels.texture);
+    //    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
 };
 
 EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
@@ -221,6 +225,6 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
     }
     for (var i = 0; i < this.flares.length; ++i)
     {
-		this.flares[i].GetBatches(mode, accumulator, perObjectData);
+        this.flares[i].GetBatches(mode, accumulator, perObjectData);
     }
 };
