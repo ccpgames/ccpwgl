@@ -20,11 +20,9 @@ function EveLensflare()
     if (!EveLensflare.backBuffer)
     {
         EveLensflare.backBuffer = new Tw2TextureRes();
-        EveLensflare.backBuffer.Attach(device.gl.createTexture());
         EveLensflare.backBuffer.width = 0;
         EveLensflare.backBuffer.height = 0;
         EveLensflare.backBuffer.hasMipMaps = false;
-
         EveLensflare.occluderLevels = new Tw2RenderTarget();
     }
 }
@@ -187,10 +185,16 @@ EveLensflare.prototype.UpdateOccluders = function()
         }
 
         // Copy back buffer into a texture
+        if (!EveLensflare.backBuffer.texture)
+        {
+            EveLensflare.backBuffer.Attach(device.gl.createTexture());
+        }
         device.gl.bindTexture(device.gl.TEXTURE_2D, EveLensflare.backBuffer.texture);
         if (EveLensflare.backBuffer.width != device.viewportWidth || EveLensflare.backBuffer.height != device.viewportHeight)
         {
             device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, device.viewportWidth, device.viewportHeight, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.LINEAR);
+            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.LINEAR);
             EveLensflare.backBuffer.width = device.viewportWidth;
             EveLensflare.backBuffer.height = device.viewportHeight;
         }

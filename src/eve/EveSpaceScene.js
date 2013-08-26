@@ -2,27 +2,28 @@ function EveSpaceScene()
 {
     this.lensflares = [];
     this.objects = [];
+    this.planets = [];
     this.backgroundEffect = null;
     this.envMapResPath = '';
     this.envMap1ResPath = '';
     this.envMap2ResPath = '';
     this.envMap3ResPath = '';
-
+    
     this.fogStart = 0;
     this.fogEnd = 0;
     this.fogMax = 0;
-
+    
     this.sunDirection = vec3.create([1, -1, 1]);
     this.sunDiffuseColor = quat4.create([1, 1, 1, 1]);
     this.ambientColor = quat4.create([0.1, 0.1, 0.1, 1]);
     this.fogColor = quat4.create([1, 1, 1, 1]);
-
-    this.envMapScaling = vec3.create([1, 1, 1]);
-    this.envMapRotation = quat4.create([0, 0, 0, 1]);
+    
+    this.envMapScaling = vec3.create([1,1,1]);
+    this.envMapRotation = quat4.create([0,0,0,1]);
 
     this.renderDebugInfo = false;
     this.backgroundRenderingEnabled = true;
-
+    
     this.envMapRes = null;
     this.envMap1Res = null;
     this.envMap2Res = null;
@@ -33,7 +34,7 @@ function EveSpaceScene()
     this._envMap3Handle = variableStore.RegisterVariable('EnvMap3', '');
     this._debugHelper = null;
     this._batches = new Tw2BatchAccumulator();
-
+    
     this._perFrameVS = new Tw2RawData();
     this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
     this._perFrameVS.Declare('ViewProjectionMat', 16);
@@ -50,7 +51,7 @@ function EveSpaceScene()
     this._perFrameVS.Declare('SceneData.AmbientColor', 4);
     this._perFrameVS.Declare('SceneData.FogColor', 4);
     this._perFrameVS.Create();
-
+    
     this._perFramePS = new Tw2RawData();
     this._perFramePS.Declare('ViewInverseTransposeMat', 16);
     this._perFramePS.Declare('ProjectionMat', 16);
@@ -66,10 +67,12 @@ function EveSpaceScene()
     this._perFramePS.Declare('MiscSettings', 4);
     this._perFramePS.Create();
 
+    this.lodEnabled = false;
+    
     variableStore.RegisterVariable('ShadowLightness', 0);
 }
 
-EveSpaceScene.prototype.Initialize = function()
+EveSpaceScene.prototype.Initialize = function ()
 {
     if (this.envMapResPath != '')
     {
@@ -89,58 +92,73 @@ EveSpaceScene.prototype.Initialize = function()
     }
 };
 
-EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
+EveSpaceScene.prototype.SetEnvMapPath = function (index, path)
 {
     switch (index)
     {
-        case 0:
-            this.envMap1ResPath = path;
-            if (this.envMap1ResPath != '')
-            {
-                this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
-            }
-            else
-            {
-                this.envMap1Res = null;
-            }
-            break;
-        case 1:
-            this.envMap2ResPath = path;
-            if (this.envMap2ResPath != '')
-            {
-                this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
-            }
-            else
-            {
-                this.envMap2Res = null;
-            }
-            break;
-        case 2:
-            this.envMap3ResPath = path;
-            if (this.envMap3ResPath != '')
-            {
-                this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
-            }
-            else
-            {
-                this.envMap3Res = null;
-            }
-            break;
+    case 0:
+        this.envMap1ResPath = path;
+        if (this.envMap1ResPath != '')
+        {
+            this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
+        }
+        else
+        {
+            this.envMap1Res = null;
+        }
+        break;
+    case 1:
+        this.envMap2ResPath = path;
+        if (this.envMap2ResPath != '')
+        {
+            this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
+        }
+        else
+        {
+            this.envMap2Res = null;
+        }
+        break;
+    case 2:
+        this.envMap3ResPath = path;
+        if (this.envMap3ResPath != '')
+        {
+            this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
+        }
+        else
+        {
+            this.envMap3Res = null;
+        }
+        break;
     }
 };
 
-EveSpaceScene.prototype.RenderBatches = function(mode)
+EveSpaceScene.prototype.RenderBatches = function (mode, objectArray)
 {
-    for (var i = 0; i < this.objects.length; ++i)
+    for (var i = 0; i < objectArray.length; ++i)
     {
-        if (typeof(this.objects[i].GetBatches) != 'undefined')
+        if (typeof (objectArray[i].GetBatches) != 'undefined')
         {
-            this.objects[i].GetBatches(mode, this._batches);
+            objectArray[i].GetBatches(mode, this._batches);
         }
     }
 };
 
-EveSpaceScene.prototype.ApplyPerFrameData = function()
+EveSpaceScene.prototype.EnableLod = function (enable)
+{
+    this.lodEnabled = enable;
+    if (!enable)
+    {
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            if (this.objects[i].ResetLod)
+            {
+                this.objects[i].ResetLod();
+            }
+        }
+    }
+}
+
+EveSpaceScene.prototype.ApplyPerFrameData = function ()
 {
     var view = device.view;
     var projection = device.projection;
@@ -220,7 +238,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
     miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
 
-
+    
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;
@@ -231,15 +249,63 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     device.perFramePSData = this._perFramePS;
 };
 
-EveSpaceScene.prototype.Render = function()
+EveSpaceScene.prototype.Render = function ()
 {
     this.ApplyPerFrameData();
 
-    if (this.backgroundRenderingEnabled && this.backgroundEffect)
+    if (this.backgroundRenderingEnabled)
     {
-        device.SetStandardStates(device.RM_FULLSCREEN);
-        device.RenderCameraSpaceQuad(this.backgroundEffect);
+        if (this.backgroundEffect)
+        {
+            device.SetStandardStates(device.RM_FULLSCREEN);
+            device.RenderCameraSpaceQuad(this.backgroundEffect);
+        }
+        if (this.planets.length)
+        {
+            var tempProj = mat4.set(device.projection, mat4.create());
+            var newProj = mat4.set(device.projection, mat4.create());
+            var zn = 10000;
+            var zf = 1e11;
+            newProj[10] = zf / (zn - zf);
+            newProj[14] = (zf * zn) / (zn - zf);
+            device.SetProjection(newProj);
+            this.ApplyPerFrameData();
+            var id = mat4.identity(mat4.create());
+            for (var i = 0; i < this.planets.length; ++i)
+            {
+                if (this.planets[i].UpdateViewDependentData)
+                {
+                    this.planets[i].UpdateViewDependentData(id);
+                }
+            }
+
+            this._batches.Clear();
+
+            device.gl.depthRange(0.9, 1);
+            this.RenderBatches(device.RM_OPAQUE, this.planets);
+            this.RenderBatches(device.RM_DECAL, this.planets);
+            this.RenderBatches(device.RM_TRANSPARENT, this.planets);
+            this.RenderBatches(device.RM_ADDITIVE, this.planets);
+            this._batches.Render();
+            device.SetProjection(tempProj);
+            this.ApplyPerFrameData();
+            device.gl.depthRange(0, 0.9);
+        }
     }
+
+    if (this.lodEnabled)
+    {
+        var frustum = new Tw2Frustum();
+        frustum.Initialize(device.view, device.projection, device.viewportWidth);
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            if (this.objects[i].UpdateLod)
+            {
+                this.objects[i].UpdateLod(frustum);
+            }
+        }
+    }
+
 
     var id = mat4.identity(mat4.create());
     for (var i = 0; i < this.objects.length; ++i)
@@ -256,10 +322,10 @@ EveSpaceScene.prototype.Render = function()
 
     this._batches.Clear();
 
-    this.RenderBatches(device.RM_OPAQUE);
-    this.RenderBatches(device.RM_DECAL);
-    this.RenderBatches(device.RM_TRANSPARENT);
-    this.RenderBatches(device.RM_ADDITIVE);
+    this.RenderBatches(device.RM_OPAQUE, this.objects);
+    this.RenderBatches(device.RM_DECAL, this.objects);
+    this.RenderBatches(device.RM_TRANSPARENT, this.objects);
+    this.RenderBatches(device.RM_ADDITIVE, this.objects);
 
     for (var i = 0; i < this.lensflares.length; ++i)
     {
@@ -281,7 +347,7 @@ EveSpaceScene.prototype.Render = function()
         }
         for (var i = 0; i < this.objects.length; ++i)
         {
-            if (typeof(this.objects[i].RenderDebugInfo) != 'undefined')
+            if (typeof (this.objects[i].RenderDebugInfo) != 'undefined')
             {
                 this.objects[i].RenderDebugInfo(this._debugHelper);
             }
@@ -290,11 +356,18 @@ EveSpaceScene.prototype.Render = function()
     }
 };
 
-EveSpaceScene.prototype.Update = function(dt)
+EveSpaceScene.prototype.Update = function (dt)
 {
+    for (var i = 0; i < this.planets.length; ++i)
+    {
+        if (typeof (this.planets[i].Update) != 'undefined')
+        {
+            this.planets[i].Update(dt);
+        }
+    }
     for (var i = 0; i < this.objects.length; ++i)
     {
-        if (typeof(this.objects[i].Update) != 'undefined')
+        if (typeof (this.objects[i].Update) != 'undefined')
         {
             this.objects[i].Update(dt);
         }

@@ -7,7 +7,7 @@ function Tw2RenderTarget()
     this.hasDepth = null;
 }
 
-Tw2RenderTarget.prototype.Destroy = function()
+Tw2RenderTarget.prototype.Destroy = function ()
 {
     if (this.texture)
     {
@@ -26,7 +26,7 @@ Tw2RenderTarget.prototype.Destroy = function()
     }
 };
 
-Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
+Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
 {
     this.Destroy();
     this.texture = new Tw2TextureRes();
@@ -62,15 +62,14 @@ Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
     this.hasDepth = hasDepth;
 };
 
-Tw2RenderTarget.prototype.Set = function()
+Tw2RenderTarget.prototype.Set = function ()
 {
-    this._oldViewport = device.gl.getParameter(device.gl.VIEWPORT);
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, this._frameBuffer);
     device.gl.viewport(0, 0, this.width, this.height);
 };
 
-Tw2RenderTarget.prototype.Unset = function()
+Tw2RenderTarget.prototype.Unset = function ()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
-    device.gl.viewport(this._oldViewport[0], this._oldViewport[1], this._oldViewport[2], this._oldViewport[3]);
+    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
 };

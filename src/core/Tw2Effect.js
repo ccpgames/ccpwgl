@@ -3,11 +3,11 @@ function Tw2Effect()
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-    this.parameters = {};
-    this.passes = [];
+	this.parameters = {};
+	this.passes = [];
 }
 
-Tw2Effect.prototype.Initialize = function()
+Tw2Effect.prototype.Initialize = function ()
 {
     if (this.effectFilePath != '')
     {
@@ -20,20 +20,20 @@ Tw2Effect.prototype.Initialize = function()
     }
 };
 
-Tw2Effect.prototype.GetEffectRes = function()
+Tw2Effect.prototype.GetEffectRes = function ()
 {
     return this.effectRes;
 };
 
-Tw2Effect.prototype.RebuildCachedData = function(resource)
+Tw2Effect.prototype.RebuildCachedData = function (resource)
 {
-    if (resource.IsGood())
-    {
-        this.BindParameters();
-    }
+	if (resource.IsGood())
+	{
+		this.BindParameters();
+	}
 };
 
-Tw2Effect.prototype.BindParameters = function()
+Tw2Effect.prototype.BindParameters = function ()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
     {
@@ -167,7 +167,7 @@ Tw2Effect.prototype.BindParameters = function()
     return true;
 };
 
-Tw2Effect.prototype.ApplyPass = function(pass)
+Tw2Effect.prototype.ApplyPass = function (pass)
 {
     if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -176,25 +176,28 @@ Tw2Effect.prototype.ApplyPass = function(pass)
 
     this.effectRes.ApplyPass(pass);
     var p = this.passes[pass];
+    var rp = this.effectRes.passes[pass];
     var d = device;
-    if (d.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+    if (d.IsAlphaTestEnabled() && rp.shadowShaderProgram)
     {
-        var program = this.effectRes.passes[pass].shadowShaderProgram;
+        var program = rp.shadowShaderProgram;
     }
     else
     {
-        var program = this.effectRes.passes[pass].shaderProgram;
+        var program = rp.shaderProgram;
     }
     for (var i = 0; i < 2; ++i)
     {
-        for (var j = 0; j < p.stages[i].parameters.length; ++j)
+        var stages = p.stages[i];
+        for (var j = 0; j < stages.parameters.length; ++j)
         {
-            var pp = p.stages[i].parameters[j];
+            var pp = stages.parameters[j];
             pp.parameter.Apply(pp.constantBuffer, pp.offset, pp.size);
         }
-        for (var j = 0; j < p.stages[i].textures.length; ++j)
+        for (var j = 0; j < stages.textures.length; ++j)
         {
-            p.stages[i].textures[j].parameter.Apply(p.stages[i].textures[j].slot, p.stages[i].textures[j].sampler, program.volumeSlices[p.stages[i].textures[j].sampler.registerIndex]);
+            var tex = stages.textures[j];
+            tex.parameter.Apply(tex.slot, tex.sampler, program.volumeSlices[tex.sampler.registerIndex]);
         }
     }
     if (program.constantBufferHandles[0] != null)
@@ -219,33 +222,33 @@ Tw2Effect.prototype.ApplyPass = function(pass)
     }
 };
 
-Tw2Effect.prototype.GetPassCount = function()
+Tw2Effect.prototype.GetPassCount = function ()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
-    {
-        return 0;
-    }
-    return this.passes.length;
+	{
+		return 0;
+	}
+	return this.passes.length;
 };
 
-Tw2Effect.prototype.GetPassInput = function(pass)
+Tw2Effect.prototype.GetPassInput = function (pass)
 {
-    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
-    {
-        return null;
-    }
-    if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-    {
+	if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+	{
+		return null;
+	}
+	if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+	{
         return this.effectRes.passes[pass].shadowShaderProgram.input;
-    }
-    else
-    {
+	}
+	else
+	{
         return this.effectRes.passes[pass].shaderProgram.input;
     }
 };
 
 
-Tw2Effect.prototype.Render = function(cb)
+Tw2Effect.prototype.Render = function (cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)

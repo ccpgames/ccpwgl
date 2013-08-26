@@ -21,10 +21,12 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
 
     this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
     this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-
-    for (var i = 0; i < this.turretSets.length; ++i)
+    if (this.lod > 1)
     {
-        this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        for (var i = 0; i < this.turretSets.length; ++i)
+        {
+            this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
     }
     if (this.boosters)
     {
@@ -56,7 +58,13 @@ EveShip.prototype.Update = function(dt)
                 }
             }
         }
-        this.turretSets[i].Update(dt, this.transform);
+    }
+    if (this.lod > 1)
+    {
+        for (var i = 0; i < this.turretSets.length; ++i)
+        {
+            this.turretSets[i].Update(dt, this.transform);
+        }
     }
 };
 
