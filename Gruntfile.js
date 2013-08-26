@@ -33,6 +33,7 @@ module.exports = function(grunt)
         'core/Tw2AnimationController.js',
         'core/Tw2RenderTarget.js',
         'core/Tw2PostProcess.js',
+        'core/Tw2CurveSet.js',
 
         'eve/EveLocator.js',
         'eve/EveBoosterSet.js',

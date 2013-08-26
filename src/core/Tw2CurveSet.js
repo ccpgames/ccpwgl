@@ -1,4 +1,4 @@
-﻿function Tw2CurveSet()
+function Tw2CurveSet()
 {
     this.name = '';
     this.curves = [];
@@ -9,7 +9,7 @@
     this.scaledTime = 0;
 }
 
-Tw2CurveSet.prototype.Initialize = function ()
+Tw2CurveSet.prototype.Initialize = function()
 {
     if (this.playOnLoad)
     {
@@ -17,13 +17,13 @@ Tw2CurveSet.prototype.Initialize = function ()
     }
 }
 
-Tw2CurveSet.prototype.Play = function ()
+Tw2CurveSet.prototype.Play = function()
 {
     this.isPlaying = true;
     this.scaledTime = 0;
 }
 
-Tw2CurveSet.prototype.Update = function (dt)
+Tw2CurveSet.prototype.Update = function(dt)
 {
     if (this.isPlaying)
     {
