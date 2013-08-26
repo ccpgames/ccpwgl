@@ -27,8 +27,11 @@ function EveSpaceObject()
 	this._perObjectData.perObjectPSData = new Tw2RawData();
 	this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
 	this._perObjectData.perObjectPSData.Create();
-	
+
 	this.animation = new Tw2AnimationController();
+
+	this.lod = 3;
+	this._tempVec = vec3.create();
 }
 
 EveSpaceObject.prototype.Initialize = function ()
@@ -43,63 +46,96 @@ EveSpaceObject.prototype.Initialize = function ()
     }
 };
 
-EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
+EveSpaceObject.prototype.ResetLod = function ()
 {
-	for (var i = 0; i < this.children.length; ++i)
-	{
-		this.children[i].UpdateViewDependentData(this.transform);
-	}
-	
-	mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-	
+    this.lod = 3;
+}
+
+EveSpaceObject.prototype.UpdateLod = function (frustum)
+{
+    var center = mat4.multiplyVec3(this.transform, this.boundingSphereCenter, this._tempVec);
+
+    if (frustum.IsSphereVisible(center, this.boundingSphereRadius))
+    {
+        if (frustum.GetPixelSizeAccross(center, this.boundingSphereRadius) < 100)
+        {
+            this.lod = 1;
+        }
+        else
+        {
+            this.lod = 2;
+        }
+    }
+    else
+    {
+        this.lod = 0;
+    }
+}
+
+EveSpaceObject.prototype.UpdateViewDependentData = function ()
+{
+    for (var i = 0; i < this.children.length; ++i)
+    {
+        this.children[i].UpdateViewDependentData(this.transform);
+    }
+    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
+
     if (this.animation.animations.length)
     {
         this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
     }
-    
-	if (this.mesh != null)
-	{
-		this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-	}
-	
-	
-	for (var i = 0; i < this.spriteSets.length; ++i)
-	{
-		this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData);
-	}
-    for (var i = 0; i < this.spotlightSets.length; ++i)
+}
+
+EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
+{
+    if (this.mesh != null && this.lod > 0)
     {
-        this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
     }
-    for (var i = 0; i < this.planeSets.length; ++i)
+
+    if (this.lod > 1)
     {
-        this.planeSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        for (var i = 0; i < this.spriteSets.length; ++i)
+        {
+            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+        for (var i = 0; i < this.spotlightSets.length; ++i)
+        {
+            this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+        for (var i = 0; i < this.planeSets.length; ++i)
+        {
+            this.planeSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+        for (var i = 0; i < this.decals.length; ++i)
+        {
+            this.decals[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
     }
     for (var i = 0; i < this.children.length; ++i)
-	{
-		this.children[i].GetBatches(mode, accumulator, this._perObjectData);
-	}
-	for (var i = 0; i < this.decals.length; ++i)
-	{
-		this.decals[i].GetBatches(mode, accumulator, this._perObjectData);
-	}
+    {
+        this.children[i].GetBatches(mode, accumulator, this._perObjectData);
+    }
 };
 
 EveSpaceObject.prototype.Update = function (dt)
 {
-	for (var i = 0; i < this.spriteSets.length; ++i)
-	{
-		this.spriteSets[i].Update(dt);
-	}
-	for (var i = 0; i < this.children.length; ++i)
-	{
-		this.children[i].Update(dt);
-	}
-    for (var i = 0; i < this.curveSets.length; ++i)
+    if (this.lod > 0)
     {
-        this.curveSets[i].Update(dt);
+        for (var i = 0; i < this.spriteSets.length; ++i)
+        {
+            this.spriteSets[i].Update(dt);
+        }
+        for (var i = 0; i < this.children.length; ++i)
+        {
+            this.children[i].Update(dt);
+        }
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Update(dt);
+        }
+        this.animation.Update(dt);
     }
-    this.animation.Update(dt);
 };
 
 EveSpaceObject.prototype.GetLocatorCount = function (prefix)
