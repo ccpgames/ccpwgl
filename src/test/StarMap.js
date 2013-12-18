@@ -27,7 +27,7 @@
         'res:/graphics/starmap/starmap.red',
         function ()
         {
-            var obj = this.wrappedObject;
+            var obj = this.wrappedObjects[0];
             self.model = obj;
             self.stars = obj.particleSystems[0];
             var starEffect = obj.mesh.additiveAreas[0].effect;
