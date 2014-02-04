@@ -1,0 +1,26 @@
+{
+    "latedef": true,
+    "undef": true,
+    "quotmark": true,
+    "browser": true,
+
+    "devel": "setting development flag since there are console logs",
+    "devel": true,
+
+    "sub": "allowing access to members with [] notation",
+    "sub": true,
+    "eqnull": "ignoring x == null as there is plenty of this",
+    "eqnull": true,
+    "shadow": "ignored, nearly every loop declares its own i, j or k...",
+    "shadow": true,
+    "undef": "avoiding errors for undefined variables because no dependencies set",
+    "undef": false,
+
+    "globals": {
+        "glMatrixArrayType": false,
+        "mat3": false,
+        "mat4": false,
+        "quat4": false,
+        "vec3": false
+    }
+}

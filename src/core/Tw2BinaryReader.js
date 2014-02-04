@@ -4,12 +4,12 @@ function Tw2BinaryReader(data)
     this.cursor = 0;
 }
 
-Tw2BinaryReader.prototype.ReadUInt8 = function ()
+Tw2BinaryReader.prototype.ReadUInt8 = function()
 {
     return this.data[this.cursor++];
 };
 
-Tw2BinaryReader.prototype.ReadInt8 = function ()
+Tw2BinaryReader.prototype.ReadInt8 = function()
 {
     var val = this.data[this.cursor++];
     if (val > 0x7F)
@@ -19,12 +19,12 @@ Tw2BinaryReader.prototype.ReadInt8 = function ()
     return val;
 };
 
-Tw2BinaryReader.prototype.ReadUInt16 = function ()
+Tw2BinaryReader.prototype.ReadUInt16 = function()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8);
 };
 
-Tw2BinaryReader.prototype.ReadInt16 = function ()
+Tw2BinaryReader.prototype.ReadInt16 = function()
 {
     var val = this.data[this.cursor++] + (this.data[this.cursor++] << 8);
     if (val > 0x7FFF)
@@ -34,12 +34,12 @@ Tw2BinaryReader.prototype.ReadInt16 = function ()
     return val;
 };
 
-Tw2BinaryReader.prototype.ReadUInt32 = function ()
+Tw2BinaryReader.prototype.ReadUInt32 = function()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8) + (this.data[this.cursor++] << 16) + ((this.data[this.cursor++] << 24) >>> 0);
 };
 
-Tw2BinaryReader.prototype.ReadInt32 = function ()
+Tw2BinaryReader.prototype.ReadInt32 = function()
 {
     var val = this.data[this.cursor++] + (this.data[this.cursor++] << 8) + (this.data[this.cursor++] << 16) + ((this.data[this.cursor++] << 24) >>> 0);
     if (val > 0x7FFFFFFF)
@@ -49,33 +49,33 @@ Tw2BinaryReader.prototype.ReadInt32 = function ()
     return val;
 };
 
-Tw2BinaryReader.prototype.ReadFloat16 = function ()
+Tw2BinaryReader.prototype.ReadFloat16 = function()
 {
     var b2 = this.data[this.cursor++],
         b1 = this.data[this.cursor++];
-	var sign = 1 - (2*(b1>>7));				// sign = bit 0
-	var exp = ((b1 >> 2) & 0x1f) - 15;		// exponent = bits 1..5
-	var sig = ((b1 & 3) << 8) | b2;			// significand = bits 6..15
+    var sign = 1 - (2 * (b1 >> 7)); // sign = bit 0
+    var exp = ((b1 >> 2) & 0x1f) - 15; // exponent = bits 1..5
+    var sig = ((b1 & 3) << 8) | b2; // significand = bits 6..15
     if (sig == 0 && exp == -15)
         return 0.0;
-	return sign * (1 + sig * Math.pow(2, -10)) * Math.pow(2, exp);
+    return sign * (1 + sig * Math.pow(2, -10)) * Math.pow(2, exp);
 };
 
-Tw2BinaryReader.prototype.ReadFloat32 = function ()
+Tw2BinaryReader.prototype.ReadFloat32 = function()
 {
     var b4 = this.data[this.cursor++],
         b3 = this.data[this.cursor++],
         b2 = this.data[this.cursor++],
         b1 = this.data[this.cursor++];
-    var sign = 1 - (2 * (b1 >> 7));                     // sign = bit 0
+    var sign = 1 - (2 * (b1 >> 7)); // sign = bit 0
     var exp = (((b1 << 1) & 0xff) | (b2 >> 7)) - 127; // exponent = bits 1..8
-    var sig = ((b2 & 0x7f) << 16) | (b3 << 8) | b4;   // significand = bits 9..31
+    var sig = ((b2 & 0x7f) << 16) | (b3 << 8) | b4; // significand = bits 9..31
     if (sig == 0 && exp == -127)
         return 0.0;
     return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
 };
 
-Tw2BinaryReader.prototype.ReadString = function ()
+Tw2BinaryReader.prototype.ReadString = function()
 {
     var length = this.data[this.cursor++];
     var str = '';

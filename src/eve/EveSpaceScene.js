@@ -8,22 +8,22 @@ function EveSpaceScene()
     this.envMap1ResPath = '';
     this.envMap2ResPath = '';
     this.envMap3ResPath = '';
-    
+
     this.fogStart = 0;
     this.fogEnd = 0;
     this.fogMax = 0;
-    
+
     this.sunDirection = vec3.create([1, -1, 1]);
     this.sunDiffuseColor = quat4.create([1, 1, 1, 1]);
     this.ambientColor = quat4.create([0.1, 0.1, 0.1, 1]);
     this.fogColor = quat4.create([1, 1, 1, 1]);
-    
-    this.envMapScaling = vec3.create([1,1,1]);
-    this.envMapRotation = quat4.create([0,0,0,1]);
+
+    this.envMapScaling = vec3.create([1, 1, 1]);
+    this.envMapRotation = quat4.create([0, 0, 0, 1]);
 
     this.renderDebugInfo = false;
     this.backgroundRenderingEnabled = true;
-    
+
     this.envMapRes = null;
     this.envMap1Res = null;
     this.envMap2Res = null;
@@ -34,7 +34,7 @@ function EveSpaceScene()
     this._envMap3Handle = variableStore.RegisterVariable('EnvMap3', '');
     this._debugHelper = null;
     this._batches = new Tw2BatchAccumulator();
-    
+
     this._perFrameVS = new Tw2RawData();
     this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
     this._perFrameVS.Declare('ViewProjectionMat', 16);
@@ -51,7 +51,7 @@ function EveSpaceScene()
     this._perFrameVS.Declare('SceneData.AmbientColor', 4);
     this._perFrameVS.Declare('SceneData.FogColor', 4);
     this._perFrameVS.Create();
-    
+
     this._perFramePS = new Tw2RawData();
     this._perFramePS.Declare('ViewInverseTransposeMat', 16);
     this._perFramePS.Declare('ProjectionMat', 16);
@@ -68,11 +68,11 @@ function EveSpaceScene()
     this._perFramePS.Create();
 
     this.lodEnabled = false;
-    
+
     variableStore.RegisterVariable('ShadowLightness', 0);
 }
 
-EveSpaceScene.prototype.Initialize = function ()
+EveSpaceScene.prototype.Initialize = function()
 {
     if (this.envMapResPath != '')
     {
@@ -92,58 +92,58 @@ EveSpaceScene.prototype.Initialize = function ()
     }
 };
 
-EveSpaceScene.prototype.SetEnvMapPath = function (index, path)
+EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
 {
     switch (index)
     {
-    case 0:
-        this.envMap1ResPath = path;
-        if (this.envMap1ResPath != '')
-        {
-            this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
-        }
-        else
-        {
-            this.envMap1Res = null;
-        }
-        break;
-    case 1:
-        this.envMap2ResPath = path;
-        if (this.envMap2ResPath != '')
-        {
-            this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
-        }
-        else
-        {
-            this.envMap2Res = null;
-        }
-        break;
-    case 2:
-        this.envMap3ResPath = path;
-        if (this.envMap3ResPath != '')
-        {
-            this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
-        }
-        else
-        {
-            this.envMap3Res = null;
-        }
-        break;
+        case 0:
+            this.envMap1ResPath = path;
+            if (this.envMap1ResPath != '')
+            {
+                this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
+            }
+            else
+            {
+                this.envMap1Res = null;
+            }
+            break;
+        case 1:
+            this.envMap2ResPath = path;
+            if (this.envMap2ResPath != '')
+            {
+                this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
+            }
+            else
+            {
+                this.envMap2Res = null;
+            }
+            break;
+        case 2:
+            this.envMap3ResPath = path;
+            if (this.envMap3ResPath != '')
+            {
+                this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
+            }
+            else
+            {
+                this.envMap3Res = null;
+            }
+            break;
     }
 };
 
-EveSpaceScene.prototype.RenderBatches = function (mode, objectArray)
+EveSpaceScene.prototype.RenderBatches = function(mode, objectArray)
 {
     for (var i = 0; i < objectArray.length; ++i)
     {
-        if (typeof (objectArray[i].GetBatches) != 'undefined')
+        if (typeof(objectArray[i].GetBatches) != 'undefined')
         {
             objectArray[i].GetBatches(mode, this._batches);
         }
     }
 };
 
-EveSpaceScene.prototype.EnableLod = function (enable)
+EveSpaceScene.prototype.EnableLod = function(enable)
 {
     this.lodEnabled = enable;
     if (!enable)
@@ -158,7 +158,7 @@ EveSpaceScene.prototype.EnableLod = function (enable)
     }
 }
 
-EveSpaceScene.prototype.ApplyPerFrameData = function ()
+EveSpaceScene.prototype.ApplyPerFrameData = function()
 {
     var view = device.view;
     var projection = device.projection;
@@ -238,7 +238,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
     miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
 
-    
+
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;
@@ -249,7 +249,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     device.perFramePSData = this._perFramePS;
 };
 
-EveSpaceScene.prototype.Render = function ()
+EveSpaceScene.prototype.Render = function()
 {
     this.ApplyPerFrameData();
 
@@ -347,7 +347,7 @@ EveSpaceScene.prototype.Render = function ()
         }
         for (var i = 0; i < this.objects.length; ++i)
         {
-            if (typeof (this.objects[i].RenderDebugInfo) != 'undefined')
+            if (typeof(this.objects[i].RenderDebugInfo) != 'undefined')
             {
                 this.objects[i].RenderDebugInfo(this._debugHelper);
             }
@@ -356,18 +356,18 @@ EveSpaceScene.prototype.Render = function ()
     }
 };
 
-EveSpaceScene.prototype.Update = function (dt)
+EveSpaceScene.prototype.Update = function(dt)
 {
     for (var i = 0; i < this.planets.length; ++i)
     {
-        if (typeof (this.planets[i].Update) != 'undefined')
+        if (typeof(this.planets[i].Update) != 'undefined')
         {
             this.planets[i].Update(dt);
         }
     }
     for (var i = 0; i < this.objects.length; ++i)
     {
-        if (typeof (this.objects[i].Update) != 'undefined')
+        if (typeof(this.objects[i].Update) != 'undefined')
         {
             this.objects[i].Update(dt);
         }

@@ -12,8 +12,8 @@ function EveLensflare()
     this.occlusionIntensity = 1;
     this.backgroundOcclusionIntensity = 1;
 
-    this._directionVar = variableStore.RegisterVariable( "LensflareFxDirectionScale", quat4.create());
-    variableStore.RegisterVariable( "LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+    this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", quat4.create());
+    variableStore.RegisterVariable("LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
     this._direction = vec3.create();
     this._transform = mat4.create();
 
@@ -27,7 +27,7 @@ function EveLensflare()
     }
 }
 
-EveLensflare.prototype.Initialize = function ()
+EveLensflare.prototype.Initialize = function()
 {
     for (var i = 0; i < this.flares.length; ++i)
     {
@@ -55,33 +55,33 @@ EveLensflare.prototype.Initialize = function ()
 
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
-	var norm = vec3.normalize(v, norm);
+    var norm = vec3.normalize(v, norm);
     mat4.identity(out);
-	if (norm[2] < -0.99999)
-	{
-		return;
-	}
-	if (norm[2] > 0.99999)
-	{
-		out[5] = -1.0;
-		out[10] = -1.0;
-		return;
-	}
-	var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
-	out[0] = h * norm[1] * norm[1] - norm[2];
-	out[1] = -h * norm[0] * norm[1];
-	out[2] = norm[0];
+    if (norm[2] < -0.99999)
+    {
+        return;
+    }
+    if (norm[2] > 0.99999)
+    {
+        out[5] = -1.0;
+        out[10] = -1.0;
+        return;
+    }
+    var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
+    out[0] = h * norm[1] * norm[1] - norm[2];
+    out[1] = -h * norm[0] * norm[1];
+    out[2] = norm[0];
 
-	out[4] = out[1];
-	out[5] = h * norm[0] * norm[0] - norm[2];
-	out[6] = norm[1];
+    out[4] = out[1];
+    out[5] = h * norm[0] * norm[0] - norm[2];
+    out[6] = norm[1];
 
-	out[8] = -norm[0];
-	out[9] = -norm[1];
-	out[10] = -norm[2];
+    out[8] = -norm[0];
+    out[9] = -norm[1];
+    out[10] = -norm[2];
 };
 
-EveLensflare.prototype.PrepareRender = function ()
+EveLensflare.prototype.PrepareRender = function()
 {
     if (!this.display)
     {
@@ -133,7 +133,7 @@ EveLensflare.prototype.PrepareRender = function ()
 
 };
 
-EveLensflare.prototype.UpdateOccluders = function ()
+EveLensflare.prototype.UpdateOccluders = function()
 {
     if (!this.doOcclusionQueries)
     {
@@ -217,7 +217,7 @@ EveLensflare.prototype.UpdateOccluders = function ()
     //    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
 };
 
-EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveLensflare.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
     {

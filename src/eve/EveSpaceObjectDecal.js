@@ -3,19 +3,19 @@ function EveSpaceObjectDecal()
     this.display = true;
     this.decalEffect = null;
     this.name = '';
-    
+
     this.decalGeometryPath = '';
     this.decalIndex = 0;
     this.decalGeometry = null;
-    
+
     this.position = vec3.create();
     this.rotation = quat4.create();
     this.scaling = vec3.create();
-    
+
     this.decalMatrix = mat4.create();
     this.invDecalMatrix = mat4.create();
     this.parentGeometry = null;
-    
+
     this._perObjectData = new Tw2PerObjectData();
     this._perObjectData.perObjectVSData = new Tw2RawData();
     this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
@@ -24,11 +24,11 @@ function EveSpaceObjectDecal()
     this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
     this._perObjectData.perObjectVSData.Create();
 
-	variableStore.RegisterType('u_DecalMatrix', Tw2MatrixParameter);
-	variableStore.RegisterType('u_InvDecalMatrix', Tw2MatrixParameter);
+    variableStore.RegisterType('u_DecalMatrix', Tw2MatrixParameter);
+    variableStore.RegisterType('u_InvDecalMatrix', Tw2MatrixParameter);
 }
 
-EveSpaceObjectDecal.prototype.Initialize = function ()
+EveSpaceObjectDecal.prototype.Initialize = function()
 {
     if (this.decalGeometryPath != '')
     {
@@ -41,12 +41,12 @@ EveSpaceObjectDecal.prototype.Initialize = function ()
     mat4.inverse(this.decalMatrix, this.invDecalMatrix);
 };
 
-EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
+EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
 {
     this.parentGeometry = geometryRes;
 };
 
-EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (mode != device.RM_DECAL)
     {
@@ -55,12 +55,12 @@ EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjec
     if (this.display && this.decalEffect && this.parentGeometry && this.parentGeometry.IsGood() && this.decalGeometry && this.decalGeometry.IsGood())
     {
         var batch = new Tw2ForwardingRenderBatch();
-        
+
         this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
         mat4.inverse(this._perObjectData.perObjectVSData.Get('worldMatrix'), this._perObjectData.perObjectVSData.Get('invWorldMatrix'));
         mat4.transpose(this.decalMatrix, this._perObjectData.perObjectVSData.Get('decalMatrix'));
         mat4.transpose(this.invDecalMatrix, this._perObjectData.perObjectVSData.Get('invDecalMatrix'));
-        
+
         batch.perObjectData = this._perObjectData;
         batch.geometryProvider = this;
         batch.renderMode = device.RM_DECAL;
@@ -68,7 +68,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjec
     }
 };
 
-EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
+EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
 {
     var bkIB = this.parentGeometry.meshes[0].indexes;
     var bkStart = this.parentGeometry.meshes[0].areas[0].start;

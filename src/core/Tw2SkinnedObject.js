@@ -4,17 +4,17 @@ function Tw2SkinnedObject()
     this.meshes = [];
     this.animationResPath = '';
     this._animationRes = null;
-    
+
     this.transform = mat4.create();
     mat4.identity(this.transform);
 
     this._perObjectData = [];
 
-    
+
     this.animation = new Tw2AnimationController();
 }
 
-Tw2SkinnedObject.prototype.Initialize = function ()
+Tw2SkinnedObject.prototype.Initialize = function()
 {
     if (this.animationResPath != '')
     {
@@ -37,7 +37,7 @@ Tw2SkinnedObject.prototype.Initialize = function ()
     }
 };
 
-Tw2SkinnedObject.prototype.GetBatches = function (mode, accumulator)
+Tw2SkinnedObject.prototype.GetBatches = function(mode, accumulator)
 {
     for (var i = 0; i < this.meshes.length; ++i)
     {
@@ -47,17 +47,17 @@ Tw2SkinnedObject.prototype.GetBatches = function (mode, accumulator)
     }
 };
 
-Tw2SkinnedObject.prototype.Update = function (dt)
+Tw2SkinnedObject.prototype.Update = function(dt)
 {
     this.animation.Update(dt);
 };
 
-Tw2SkinnedObject.prototype.RenderDebugInfo = function (debugHelper)
+Tw2SkinnedObject.prototype.RenderDebugInfo = function(debugHelper)
 {
     this.animation.RenderDebugInfo(debugHelper);
 };
 
-Tw2SkinnedObject.prototype.ResetBlendShapes = function ()
+Tw2SkinnedObject.prototype.ResetBlendShapes = function()
 {
     if (!this.meshes.length)
     {
@@ -84,7 +84,7 @@ Tw2SkinnedObject.prototype.ResetBlendShapes = function ()
     }
 };
 
-Tw2SkinnedObject.prototype.ApplyBlendShapes = function ()
+Tw2SkinnedObject.prototype.ApplyBlendShapes = function()
 {
     if (!this.meshes.length)
     {
@@ -139,4 +139,3 @@ Tw2SkinnedObject.prototype.ApplyBlendShapes = function ()
         device.gl.bufferSubData(device.gl.ARRAY_BUFFER, 0, mesh.bufferData);
     }
 };
-

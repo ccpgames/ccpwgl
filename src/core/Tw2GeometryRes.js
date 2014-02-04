@@ -9,9 +9,9 @@ function Tw2GeometryBatch()
     this.batchDepth = 0;
 }
 
-Tw2GeometryBatch.prototype.Commit = function (overrideEffect)
+Tw2GeometryBatch.prototype.Commit = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (this.geometryRes && effect)
     {
         this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
@@ -31,9 +31,9 @@ function Tw2GeometryLineBatch()
     this.batchDepth = 0;
 }
 
-Tw2GeometryLineBatch.prototype.Commit = function (overrideEffect)
+Tw2GeometryLineBatch.prototype.Commit = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (this.geometryRes && effect)
     {
         this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
@@ -48,10 +48,10 @@ function Tw2GeometryMeshArea()
     this.name = '';
     this.start = 0;
     this.count = 0;
-	this.minBounds = vec3.create();
-	this.maxBounds = vec3.create();
-	this.boundsSpherePosition = vec3.create();
-	this.boundsSphereRadius = 0;
+    this.minBounds = vec3.create();
+    this.maxBounds = vec3.create();
+    this.boundsSpherePosition = vec3.create();
+    this.boundsSphereRadius = 0;
 }
 
 function Tw2GeometryMeshBinding()
@@ -67,7 +67,7 @@ function Tw2GeometryModel()
     this.skeleton = null;
 }
 
-Tw2GeometryModel.prototype.FindBoneByName = function (name)
+Tw2GeometryModel.prototype.FindBoneByName = function(name)
 {
     if (this.skeleton == null)
     {
@@ -95,13 +95,13 @@ function Tw2GeometryBone()
     this.position = vec3.create();
     this.orientation = quat4.create();
     this.scaleShear = mat3.create();
-    
+
     this.localTransform = mat4.create();
     this.worldTransform = mat4.create();
     this.worldTransformInv = mat4.create();
 }
 
-Tw2GeometryBone.prototype.UpdateTransform = function ()
+Tw2GeometryBone.prototype.UpdateTransform = function()
 {
     mat3.toMat4(this.scaleShear, this.localTransform);
     mat4.multiply(this.localTransform, mat4.transpose(quat4.toMat4(quat4.normalize(this.orientation))));
@@ -109,7 +109,7 @@ Tw2GeometryBone.prototype.UpdateTransform = function ()
     this.localTransform[12] = this.position[0];
     this.localTransform[13] = this.position[1];
     this.localTransform[14] = this.position[2];
-    return this.localTransform;    
+    return this.localTransform;
 };
 
 function Tw2GeometryAnimation()
@@ -153,68 +153,68 @@ function Tw2BlendShapeData()
 
 function Tw2GeometryMesh()
 {
-	this.name = '';
+    this.name = '';
     this.declaration = new Tw2VertexDeclaration();
     this.areas = [];
     this.buffer = null;
     this.bufferData = null;
     this.indexes = null;
     this.indexType = 0;
-	this.minBounds = vec3.create();
-	this.maxBounds = vec3.create();
-	this.boundsSpherePosition = vec3.create();
-	this.boundsSphereRadius = 0;
-	this.bones = [];
+    this.minBounds = vec3.create();
+    this.maxBounds = vec3.create();
+    this.boundsSpherePosition = vec3.create();
+    this.boundsSphereRadius = 0;
+    this.bones = [];
 }
 
 function Tw2GeometryRes()
 {
-	this._super.constructor.call(this);
+    this._super.constructor.call(this);
     this.meshes = [];
-	this.minBounds = vec3.create();
-	this.maxBounds = vec3.create();
-	this.boundsSpherePosition = vec3.create();
-	this.boundsSphereRadius = 0;
-	
-	this.models = [];
-	this.animations = [];
+    this.minBounds = vec3.create();
+    this.maxBounds = vec3.create();
+    this.boundsSpherePosition = vec3.create();
+    this.boundsSphereRadius = 0;
 
-	this.systemMirror = false;
+    this.models = [];
+    this.animations = [];
 
-	this._instanceCount = 1;
+    this.systemMirror = false;
+
+    this._instanceCount = 1;
 }
 
 function boundsIncludePoint(minBounds, maxBounds, point)
 {
-	if (minBounds[0] > point[0])
-	{
-		minBounds[0] = point[0];
-	}
-	if (minBounds[1] > point[0+1])
-	{
-		minBounds[1] = point[0+1];
-	}
-	if (minBounds[2] > point[0+2])
-	{
-		minBounds[2] = point[0+2];
-	}
-	if (maxBounds[0] < point[0])
-	{
-		maxBounds[0] = point[0];
-	}
-	if (maxBounds[1] < point[0+1])
-	{
-		maxBounds[1] = point[0+1];
-	}
-	if (maxBounds[2] < point[0+2])
-	{
-		maxBounds[2] = point[0+2];
-	}
+    if (minBounds[0] > point[0])
+    {
+        minBounds[0] = point[0];
+    }
+    if (minBounds[1] > point[0 + 1])
+    {
+        minBounds[1] = point[0 + 1];
+    }
+    if (minBounds[2] > point[0 + 2])
+    {
+        minBounds[2] = point[0 + 2];
+    }
+    if (maxBounds[0] < point[0])
+    {
+        maxBounds[0] = point[0];
+    }
+    if (maxBounds[1] < point[0 + 1])
+    {
+        maxBounds[1] = point[0 + 1];
+    }
+    if (maxBounds[2] < point[0 + 2])
+    {
+        maxBounds[2] = point[0 + 2];
+    }
 }
 
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
 
-Tw2GeometryRes.prototype.SetInstanceCount = function (instanceCount)
+Tw2GeometryRes.prototype.SetInstanceCount = function(instanceCount)
 {
     if (this._instanceCount < instanceCount)
     {
@@ -226,7 +226,7 @@ Tw2GeometryRes.prototype.SetInstanceCount = function (instanceCount)
     }
 };
 
-Tw2GeometryRes.prototype.Prepare = function (data)
+Tw2GeometryRes.prototype.Prepare = function(data)
 {
     var reader = new Tw2BinaryReader(new Uint8Array(data));
     var self = this;
@@ -667,7 +667,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
     this.PrepareFinished(true);
 };
 
-Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb)
+Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb)
 {
     this.KeepAlive();
     if (!this._isGood)
@@ -696,7 +696,7 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
         }
         d.ApplyShadowState();
 
-        if (typeof (cb) != 'undefined')
+        if (typeof(cb) != 'undefined')
         {
             var drawElements = [];
             for (var i = 0; i < count; ++i)
@@ -736,7 +736,7 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
     return true;
 };
 
-Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, cb)
+Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb)
 {
     this.KeepAlive();
     if (!this._isGood)
@@ -769,7 +769,7 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
         }
         d.ApplyShadowState();
 
-        if (typeof (cb) != 'undefined')
+        if (typeof(cb) != 'undefined')
         {
             var drawElements = [];
             for (var i = 0; i < count; ++i)
@@ -811,7 +811,7 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
 
 
 
-Tw2GeometryRes.prototype.RenderDebugInfo = function (debugHelper)
+Tw2GeometryRes.prototype.RenderDebugInfo = function(debugHelper)
 {
     if (!this.IsGood())
     {
@@ -828,17 +828,14 @@ Tw2GeometryRes.prototype.RenderDebugInfo = function (debugHelper)
                 {
                     var b1 = this.models[i].skeleton.bones[b0.parentIndex];
                     debugHelper.AddLine(
-                        [b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], 
-                        [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]],
-                        [0, 0.7, 0, 1],
-                        [0, 0.7, 0, 1] );
+                        [b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]], [0, 0.7, 0, 1], [0, 0.7, 0, 1]);
                 }
             }
         }
     }
 };
 
-Tw2GeometryRes.prototype.Unload = function ()
+Tw2GeometryRes.prototype.Unload = function()
 {
     for (var i = 0; i < this.meshes.length; ++i)
     {
