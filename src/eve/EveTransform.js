@@ -48,7 +48,7 @@ function EveTransform()
 
     this.particleSystems = [];
     this.particleEmitters = [];
-    
+    this.curveSets = [];
     
 	this._perObjectData = new EveBasicPerObjectData();
 	this._perObjectData.perObjectFFEData = new Tw2RawData();
@@ -113,12 +113,21 @@ EveTransform.prototype.Update = function (dt)
     {
         this.particleSystems[i].Update(dt);
     }
+    for (var i = 0; i < this.curveSets.length; ++i)
+    {
+        this.curveSets[i].Update(dt);
+    }
 };
 
 mat4.multiply3x3 = function(a,b,c){c||(c=b);var d=b[0],e=b[1];b=b[2];c[0]=a[0]*d+a[4]*e+a[8]*b;c[1]=a[1]*d+a[5]*e+a[9]*b;c[2]=a[2]*d+a[6]*e+a[10]*b;return c;}; 
 
 EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
 {
+    mat4.identity(this.localTransform);
+    mat4.translate(this.localTransform, this.translation);
+    mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
+    mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
+    mat4.scale(this.localTransform, this.scaling);
     switch (this.modifier)
     {
     case this.BILLBOARD:
@@ -147,15 +156,15 @@ EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
                 vec3.scale(finalScale, scale * scale);
             }
             var invView = device.viewInv;
-            this.worldTransform[0] = invView[0] * finalScale;
-            this.worldTransform[1] = invView[1] * finalScale;
-            this.worldTransform[2] = invView[2] * finalScale;
-            this.worldTransform[4] = invView[4] * finalScale;
-            this.worldTransform[5] = invView[5] * finalScale;
-            this.worldTransform[6] = invView[6] * finalScale;
-            this.worldTransform[8] = invView[8] * finalScale;
-            this.worldTransform[9] = invView[9] * finalScale;
-            this.worldTransform[10] = invView[10] * finalScale;
+            this.worldTransform[0] = invView[0] * finalScale[0];
+            this.worldTransform[1] = invView[1] * finalScale[0];
+            this.worldTransform[2] = invView[2] * finalScale[0];
+            this.worldTransform[4] = invView[4] * finalScale[1];
+            this.worldTransform[5] = invView[5] * finalScale[1];
+            this.worldTransform[6] = invView[6] * finalScale[1];
+            this.worldTransform[8] = invView[8] * finalScale[2];
+            this.worldTransform[9] = invView[9] * finalScale[2];
+            this.worldTransform[10] = invView[10] * finalScale[2];
         }
         break;
     case this.EVE_CAMERA_ROTATION:
@@ -249,6 +258,33 @@ EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
                 mat4.scale(this.worldTransform, this.scaling);
                 mat4.multiply(this.worldTransform, alignMat, this.worldTransform);
             }
+        }
+        break;
+    case this.LOOK_AT_CAMERA:
+        {
+            mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+            var invView = this._mat4Cache[0];
+            mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
+            mat4.transpose(invView);
+
+            var finalScale = this._vec3Cache[0];
+            vec3.set(this.scaling, finalScale);
+            var parentScaleX = vec3.length(parentTransform);
+            var parentScaleY = vec3.length(parentTransform.subarray(4));
+            var parentScaleZ = vec3.length(parentTransform.subarray(8));
+            finalScale[0] *= parentScaleX;
+            finalScale[1] *= parentScaleY;
+            finalScale[2] *= parentScaleZ;
+
+            this.worldTransform[0] = invView[0] * finalScale[0];
+            this.worldTransform[1] = invView[1] * finalScale[0];
+            this.worldTransform[2] = invView[2] * finalScale[0];
+            this.worldTransform[4] = invView[4] * finalScale[1];
+            this.worldTransform[5] = invView[5] * finalScale[1];
+            this.worldTransform[6] = invView[6] * finalScale[1];
+            this.worldTransform[8] = invView[8] * finalScale[2];
+            this.worldTransform[9] = invView[9] * finalScale[2];
+            this.worldTransform[10] = invView[10] * finalScale[2];
         }
         break;
     default:

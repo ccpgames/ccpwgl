@@ -548,34 +548,12 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
 
         var meshBindingCount = reader.ReadUInt8();
-        for (var j = 0; j < meshBindingCount; ++j)
+        for (j = 0; j < meshBindingCount; ++j)
         {
-            var binding = new Tw2GeometryMeshBinding();
-            binding.mesh = this.meshes[reader.ReadUInt8()];
-            for (var b = 0; b < binding.mesh.boneBindings.length; ++b)
-            {
-                var name = binding.mesh.boneBindings[b];
-                var bone = model.FindBoneByName(name);
-                if (bone == null)
-                {
-                    console.error(
-                        'Tw2GeometryRes:',
-                        'mesh \'',
-                        binding.mesh.name,
-                        '\' in file \'',
-                        this.path,
-                        '\' has invalid bone name \'',
-                        name,
-                        '\' for model \'',
-                        model.name,
-                        '\'');
-                }
-                else
-                {
-                    binding.bones[binding.bones.length] = bone;
-                }
+            mesh = reader.ReadUInt8();
+            if (mesh < this.meshes.length) {
+                Tw2GeometryRes.BindMeshToModel(this.meshes[mesh], model);
             }
-            model.meshBindings[model.meshBindings.length] = binding;
         }
         this.models[this.models.length] = model;
     }
@@ -666,6 +644,34 @@ Tw2GeometryRes.prototype.Prepare = function (data)
     }
     this.PrepareFinished(true);
 };
+
+Tw2GeometryRes.BindMeshToModel = function (mesh, model)
+{
+    var binding = new Tw2GeometryMeshBinding();
+    binding.mesh = mesh;
+    for (var b = 0; b < binding.mesh.boneBindings.length; ++b)
+    {
+        var name = binding.mesh.boneBindings[b];
+        var bone = model.FindBoneByName(name);
+        if (bone == null)
+        {
+            console.error(
+                'Tw2GeometryRes:',
+                'mesh \'',
+                binding.mesh.name,
+                '\' has invalid bone name \'',
+                name,
+                '\' for model \'',
+                model.name,
+                '\'');
+        }
+        else
+        {
+            binding.bones[binding.bones.length] = bone;
+        }
+    }
+    model.meshBindings[model.meshBindings.length] = binding;
+}
 
 Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb)
 {

@@ -38,8 +38,8 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
 
 Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, velocity, index)
 {
-    var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) * 180 / Math.PI;
-    var theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) * 180 / Math.PI;
+    var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI;
+    var theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) / 180 * Math.PI;
 
     var rv = vec3.create();
     rv[0] = Math.sin(phi) * Math.cos(theta);
@@ -56,9 +56,9 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, veloci
         this._velocity.buffer[offset + 2] = rv[2] * speed;
         if (velocity)
         {
-            this._velocity.buffer[offset] += velocity.buffer[velocity.startOffset] * this.parentVelocityScale;
-            this._velocity.buffer[offset + 1] += velocity.buffer[velocity.startOffset + 1] * this.parentVelocityScale;
-            this._velocity.buffer[offset + 2] += velocity.buffer[velocity.startOffset + 2] * this.parentVelocityScale;
+            this._velocity.buffer[offset] += velocity.buffer[velocity.offset] * this.parentVelocityFactor;
+            this._velocity.buffer[offset + 1] += velocity.buffer[velocity.offset + 1] * this.parentVelocityFactor;
+            this._velocity.buffer[offset + 2] += velocity.buffer[velocity.offset + 2] * this.parentVelocityFactor;
         }
     }
 
@@ -68,9 +68,9 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, veloci
         vec3.add(rv, this.position);
         if (position)
         {
-            rv[0] += position.buffer[position.startOffset];
-            rv[1] += position.buffer[position.startOffset + 1];
-            rv[2] += position.buffer[position.startOffset + 2];
+            rv[0] += position.buffer[position.offset];
+            rv[1] += position.buffer[position.offset + 1];
+            rv[2] += position.buffer[position.offset + 2];
         }
         var offset = this._position.instanceStride * index + this._position.startOffset;
         this._position.buffer[offset] = rv[0];

@@ -15,17 +15,31 @@ function EveTurretSetLocatorInfo()
     this.locatorTransforms = [];
 }
 
+
+EveShip.prototype.Initialize = function ()
+{
+    this._super.Initialize.call(this);
+    if (this.boosters) {
+        this.RebuildBoosterSet();
+    }
+};
+
 EveShip.prototype.GetBatches = function (mode, accumulator)
 {
     this._super.GetBatches.call(this, mode, accumulator);
 
     this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
     this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-    if (this.lod > 1)
-    {
-        for (var i = 0; i < this.turretSets.length; ++i)
-        {
+    if (this.lod > 1) {
+        for (var i = 0; i < this.turretSets.length; ++i) {
             this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+    }
+    else {
+        for (var i = 0; i < this.turretSets.length; ++i) {
+            if (this.turretSets[i].firingEffect) {
+                this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+            }
         }
     }
     if (this.boosters)
@@ -59,14 +73,18 @@ EveShip.prototype.Update = function (dt)
             }
         }
     }
-    if (this.lod > 1)
+    for (var i = 0; i < this.turretSets.length; ++i)
     {
-        for (var i = 0; i < this.turretSets.length; ++i)
-        {
-            this.turretSets[i].Update(dt, this.transform);
-        }
+        this.turretSets[i].Update(dt, this.transform);
     }
 };
+
+EveShip.prototype.UpdateViewDependentData = function () {
+    EveSpaceObject.prototype.UpdateViewDependentData.call(this);
+    for (var i = 0; i < this.turretSets.length; ++i) {
+        this.turretSets[i].UpdateViewDependentData();
+    }
+}
 
 EveShip.prototype.RebuildBoosterSet = function ()
 {

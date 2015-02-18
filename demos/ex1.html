@@ -11,9 +11,6 @@
 
             function onDocumentLoad()
             {
-                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
-
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
@@ -30,11 +27,7 @@
                 ccpwgl.setCamera(camera);
 
                 // Load the data for the Abaddon
-                var ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', undefined);
-
-                // Engine trails for amarr ship
-                ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-
+                scene.loadShip('ab3_t1:amarrbase:amarr', undefined);
 
                 ccpwgl.enablePostprocessing(true);
 

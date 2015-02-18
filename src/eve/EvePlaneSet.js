@@ -19,7 +19,8 @@
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 4, 80));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 4, 96));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 6, device.gl.FLOAT, 4, 112));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 7, device.gl.FLOAT, 1, 128));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 7, device.gl.FLOAT, 4, 128));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 8, device.gl.FLOAT, 2, 144));
     this._decl.RebuildHash();
 }
 
@@ -30,17 +31,17 @@ EvePlaneSet.prototype.Initialize = function ()
 
 EvePlaneSet.prototype.RebuildBuffers = function ()
 {
-    var vertexSize = 33;
+    var vertexSize = 38;
     var array = new Float32Array(this.planes.length * 4 * vertexSize);
     for (var i = 0; i < this.planes.length; ++i)
     {
         var offset = i * 4 * vertexSize;
-        array[offset + 0 * vertexSize + vertexSize - 1] = 0;
-        array[offset + 1 * vertexSize + vertexSize - 1] = 1;
-        array[offset + 2 * vertexSize + vertexSize - 1] = 2;
-        array[offset + 3 * vertexSize + vertexSize - 1] = 3;
+        array[offset + 0 * vertexSize + vertexSize - 2] = 0;
+        array[offset + 1 * vertexSize + vertexSize - 2] = 1;
+        array[offset + 2 * vertexSize + vertexSize - 2] = 2;
+        array[offset + 3 * vertexSize + vertexSize - 2] = 3;
 
-        var itemTransform = mat4.scale(mat4.transpose(quat4.toMat4(this.planes[i].rotation)), this.planes[i].scaling);
+        var itemTransform = mat4.transpose(quat4.toMat4(this.planes[i].rotation));
         itemTransform[12] = this.planes[i].position[0];
         itemTransform[13] = this.planes[i].position[1];
         itemTransform[14] = this.planes[i].position[2];
@@ -85,6 +86,13 @@ EvePlaneSet.prototype.RebuildBuffers = function ()
             array[vtxOffset + 29] = this.planes[i].layer2Scroll[1];
             array[vtxOffset + 30] = this.planes[i].layer2Scroll[2];
             array[vtxOffset + 31] = this.planes[i].layer2Scroll[3];
+
+            array[vtxOffset + 32] = this.planes[i].scaling[0];
+            array[vtxOffset + 33] = this.planes[i].scaling[1];
+            array[vtxOffset + 34] = this.planes[i].scaling[2];
+            array[vtxOffset + 35] = 0;
+
+            array[vtxOffset + 37] = this.boneIndex;
         }
     }
     this._vertexBuffer = device.gl.createBuffer();
@@ -157,7 +165,7 @@ EvePlaneSet.prototype.Render = function (overrideEffect)
     for (var pass = 0; pass < effect.GetPassCount(); ++pass)
     {
         effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 132))
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 152))
         {
             return;
         }

@@ -11,13 +11,11 @@
 
             function onDocumentLoad()
             {
-                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
 
-        		var object = scene.loadObject('res:/dx9/model/worldobject/asteroid/zuthrine/shards/zuthrine_shard01_unmined.red', undefined);
+        		var object = scene.loadObject('res:/dx9/model/celestial/asteroid/ice/blue/blue1.red', undefined);
 
                 camera = new TestCamera(canvas);
                 camera.minDistance = .5;

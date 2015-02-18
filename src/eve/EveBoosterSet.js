@@ -25,7 +25,8 @@ function EveBoosterSet()
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 4, 36));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 4, 52));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 4, 68));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 84));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 4, 84));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 6, device.gl.FLOAT, 1, 100));
     this._decl.RebuildHash();
     
     this._perObjectData = new Tw2PerObjectData();
@@ -75,7 +76,7 @@ EveBoosterSet.prototype.Add = function (localMatrix)
 
 EveBoosterSet.prototype.Rebuild = function ()
 {
-    var data = new Float32Array(this._boosterTransforms.length * 4 * 6 * 22);
+    var data = new Float32Array(this._boosterTransforms.length * 4 * 6 * 26);
     var order = [
         [-1, -1, 0, 1, 1], 
         [1, 1, -1, 0, 0], 
@@ -101,6 +102,10 @@ EveBoosterSet.prototype.Rebuild = function ()
                 data[index++] = order[j][4];
                 data.set(this._boosterTransforms[booster], index);
                 index += 16;
+                data[index++] = 0;
+                data[index++] = 1;
+                data[index++] = 1;
+                data[index++] = 1;
                 data[index++] = this._wavePhase[booster];
             }
         }
@@ -174,7 +179,7 @@ EveBoosterSet.prototype.Render = function (overrideEffect)
     for (var pass = 0; pass < effect.GetPassCount(); ++pass)
     {
         effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 88))
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 104))
         {
             return false;
         }

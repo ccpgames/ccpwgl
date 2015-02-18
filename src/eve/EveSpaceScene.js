@@ -12,11 +12,14 @@ function EveSpaceScene()
     this.fogStart = 0;
     this.fogEnd = 0;
     this.fogMax = 0;
+    this.fogType = 0;
+    this.fogBlur = 0;
+    this.nebulaIntensity = 1;
     
     this.sunDirection = vec3.create([1, -1, 1]);
     this.sunDiffuseColor = quat4.create([1, 1, 1, 1]);
-    this.ambientColor = quat4.create([0.1, 0.1, 0.1, 1]);
-    this.fogColor = quat4.create([1, 1, 1, 1]);
+    this.ambientColor = quat4.create([0.25, 0.25, 0.25, 1]);
+    this.fogColor = quat4.create([0.25, 0.25, 0.25, 1]);
     
     this.envMapScaling = vec3.create([1,1,1]);
     this.envMapRotation = quat4.create([0,0,0,1]);
@@ -48,23 +51,23 @@ function EveSpaceScene()
     this._perFrameVS.Declare('FogFactors', 4);
     this._perFrameVS.Declare('TargetResolution', 4);
     this._perFrameVS.Declare('ViewportAdjustment', 4);
-    this._perFrameVS.Declare('SceneData.AmbientColor', 4);
-    this._perFrameVS.Declare('SceneData.FogColor', 4);
+    this._perFrameVS.Declare('MiscSettings', 4);
     this._perFrameVS.Create();
     
     this._perFramePS = new Tw2RawData();
     this._perFramePS.Declare('ViewInverseTransposeMat', 16);
-    this._perFramePS.Declare('ProjectionMat', 16);
     this._perFramePS.Declare('ViewMat', 16);
     this._perFramePS.Declare('EnvMapRotationMat', 16);
     this._perFramePS.Declare('SunData.DirWorld', 4);
     this._perFramePS.Declare('SunData.DiffuseColor', 4);
-    this._perFramePS.Declare('SceneData.AmbientColor', 4);
+    this._perFramePS.Declare('SceneData.AmbientColor', 3);
+    this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
     this._perFramePS.Declare('SceneData.FogColor', 4);
     this._perFramePS.Declare('ShadowCameraRange', 4);
     this._perFramePS.Declare('TargetResolution', 4);
     this._perFramePS.Declare('ShadowMapSettings', 4);
     this._perFramePS.Declare('MiscSettings', 4);
+    this._perFramePS.Declare('MiscSettings2', 4);
     this._perFramePS.Create();
 
     this.lodEnabled = false;
@@ -208,16 +211,13 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     viewportAdj[2] = 1;
     viewportAdj[3] = 1;
 
-    this._perFrameVS.Set('SceneData.AmbientColor', this.ambientColor);
-    this._perFrameVS.Set('SceneData.FogColor', this.fogColor);
-
     this._perFramePS.Set('ViewInverseTransposeMat', viewInverseTranspose);
     mat4.transpose(view, this._perFramePS.Get('ViewMat'));
-    mat4.transpose(projection, this._perFramePS.Get('ProjectionMat'));
     this._perFramePS.Set('EnvMapRotationMat', envMapTransform);
     vec3.normalize(vec3.negate(this.sunDirection, this._perFramePS.Get('SunData.DirWorld')));
     this._perFramePS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
     this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
+    this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
     this._perFramePS.Set('SceneData.FogColor', this.fogColor);
     this._perFramePS.Get('ShadowCameraRange')[0] = 1;
     var targetResolution = this._perFramePS.Get('TargetResolution');
@@ -238,7 +238,17 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
     miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
 
-    
+    miscSettings = this._perFrameVS.Get('MiscSettings');
+    miscSettings[0] = variableStore._variables['Time'].value[0];
+    miscSettings[1] = 0;
+    miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
+    miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
+
+    miscSettings = this._perFramePS.Get('MiscSettings2');
+    miscSettings[0] = 1;
+    miscSettings[1] = this.fogType;
+    miscSettings[2] = this.fogBlur;
+    miscSettings[3] = 1;
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;

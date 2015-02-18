@@ -11,8 +11,6 @@
 
             function onDocumentLoad()
             {
-                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
@@ -20,9 +18,14 @@
         		var planet = scene.loadPlanet(40000100, 
         				'res:/dx9/model/WorldObject/Planet/Template/Gas/P_GasGiant_12.red', 
                         undefined, 
-                        'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.png', 
-                        'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant03_D.png');
-
+                        'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.dds.0.png',
+                        'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant03_D.dds.0.png');
+                planet.setTransform(mat4.create([
+                    10000, 0, 0, 0,
+                    0, 10000, 0, 0,
+                    0, 0, 10000, 0,
+                    0, -10000, -100000, 1
+                ]));
 
                 camera = new TestCamera(canvas);
                 camera.minDistance = .5;

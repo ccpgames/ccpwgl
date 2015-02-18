@@ -22,14 +22,19 @@ Tw2TextureRes.prototype.Prepare = function (text, xml)
     {
         this.texture = device.gl.createTexture();
         device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, this.texture);
+
+        var canvas = document.createElement('canvas');
+        canvas.width = canvas.height = this.images[0].height;
+        var ctx = canvas.getContext('2d');
         for (var j = 0; j < 6; ++j)
         {
-            device.gl.texImage2D(device.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, format, format, device.gl.UNSIGNED_BYTE, this.images[j]);
+            ctx.drawImage(this.images[0], j * canvas.width, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+            device.gl.texImage2D(device.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, format, format, device.gl.UNSIGNED_BYTE, canvas);
         }
         device.gl.generateMipmap(device.gl.TEXTURE_CUBE_MAP);
         device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, null);
-        this.width = this.images[0].width;
-        this.height = this.images[0].height;
+        this.width = canvas.width;
+        this.height = canvas.height;
         this.hasMipMaps = true;
         this.PrepareFinished(true);
     }
@@ -72,28 +77,26 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
 
     if (path.substr(-5) == '.cube')
     {
+        resMan._pendingLoads++;
         this.isCube = true;
-        this._facesLoaded = 0;
-        var base = path.substr(0, path.length - 5);
-        var extensions = ['.px', '.nx', '.py', '.ny', '.pz', '.nz'];
-        var onCubeFaceImageLoaded = function (img)
+        this.images[0] = new Image();
+        this.images[0].crossOrigin = 'anonymous';
+        this.images[0].onload = function ()
         {
             resMan._pendingLoads--;
-            self._facesLoaded++;
-            if (self._facesLoaded >= 6)
-            {
-                self.LoadFinished(true);
-                resMan._prepareQueue.push([self, 'cube', null]);
-            }
+            self.LoadFinished(true);
+            resMan._prepareQueue.push([self, 'cube', null]);
         };
-        for (var i = 0; i < 6; ++i)
+        path = path.substr(0, path.length-5) + '.png';
+        if (device.mipLevelSkipCount > 0)
         {
-            resMan._pendingLoads++;
-            this.images[i] = new Image();
-            this.images[i].crossOrigin = 'anonymous';
-            this.images[i].onload = onCubeFaceImageLoaded;
-            this.images[i].src = base + mipExt + extensions[i] + '.png';
+            var index = path.lastIndexOf('.');
+            if (index >= 0)
+            {
+                path = path.substr(0, index - 2) + mipExt + path.substr(index);
+            }
         }
+        this.images[0].src = path;
     }
     else
     {
@@ -112,7 +115,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
             var index = path.lastIndexOf('.');
             if (index >= 0)
             {
-                path = path.substr(0, index) + mipExt + path.substr(index);
+                path = path.substr(0, index - 2) + mipExt + path.substr(index);
             }
         }
         this.images[0].src = path;
@@ -144,10 +147,14 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices)
 {
     this.KeepAlive();
     var targetType = sampler.samplerType;
+    if (targetType != (this.isCube ? device.gl.TEXTURE_CUBE_MAP : device.gl.TEXTURE_2D))
+    {
+        return;
+    }
     if (this.texture == null)
     {
         device.gl.bindTexture(
-            targetType, 
+            targetType,
             targetType == device.gl.TEXTURE_2D ? device.GetFallbackTexture() : device.GetFallbackCubeMap());
         return;
     }

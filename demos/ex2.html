@@ -11,8 +11,6 @@
 
 			function onDocumentLoad()
 			{
-				ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
 				var canvas = document.getElementById('mainCanvas');
 				ccpwgl.initialize(canvas);
 				scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
@@ -29,14 +27,10 @@
 				ccpwgl.setCamera(camera);
 				
 
-				var ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', onShip1Loaded);
-				ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-
-				var ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
-				ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
-
-				var ship3 = scene.loadShip('res:/dx9/model/ship/amarr/at1/at1.red', onShip3Loaded);
-				var ship4 = scene.loadShip('res:/dx9/Model/Ship/Jove/Capsule/Capsule.red', onShip4Loaded);
+				var ship = scene.loadShip('ab3_t1:amarrbase:amarr', onShip1Loaded);
+				var ship2 = scene.loadShip('gc3_t2:creodron:gallente', undefined);
+				var ship3 = scene.loadShip('at1_t1:amarrbase:amarr', onShip3Loaded);
+				var ship4 = scene.loadShip('cap1_t1:jovebase:jove', onShip4Loaded);
 
 				
 				ccpwgl.enablePostprocessing(true);

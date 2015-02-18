@@ -21,8 +21,6 @@
 				ship2;
 			function onDocumentLoad()
 			{
-				ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
 				var smScale = 180.0;
 				var amarrPos = { 0:-20703.7109375, 1:3521.457763671875, 2:-6475.68310546875 };
 				var centerPos = { 0:0, 1:0, 2:0 };
@@ -31,14 +29,17 @@
 				scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
 				sm = new StarMap(scene);
 
-				var planet = scene.loadPlanet(40000002, 'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red', undefined, 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.png', 'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.png');
-				sun = scene.loadSun('res:/dx9/model/lensflare/blue.red', onSunLoaded);
+				var planet = scene.loadPlanet(
+                        40000002,
+                        'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red',
+                        undefined,
+                        'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png',
+                        'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png');
+				sun = scene.loadSun('res:/fisfx/lensflare/blue.red', onSunLoaded);
 
-				ship = scene.loadShip('res:/dx9/model/ship/amarr/battleship/ab3/ab3_t1.red', undefined);
-				ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
+				ship = scene.loadShip('ab3_t1:amarrbase:amarr', undefined);
 
-				ship2 = scene.loadShip('res:/dx9/model/ship/gallente/Cruiser/GC3/CreoDron/GC3_T2_CreoDron.red', undefined);
-				ship2.loadBoosters('res:/dx9/model/ship/booster/booster_gallente.red');
+				ship2 = scene.loadShip('gc3_t2:creodron:gallente', undefined);
 
 				planet.getTransform()[0] = planet.getTransform()[5] = planet.getTransform()[10] = 15000;
 				planet.getTransform()[12] = centerPos[0] * smScale + 35000;
@@ -119,11 +120,11 @@
 				};
 
 				// Set initial view
-				sm.SetDataSet('res:/white_starmap.png', 15, 15);
+				sm.SetDataSet('res:/white_starmap.png.0.png', 15, 15);
 
-				document.getElementById('none').onclick = function () { sm.SetDataSet('res:/white_starmap.png', 15, 15); };
-				document.getElementById('securityStatus').onclick = function () { sm.SetDataSet('res:/security_status_min.png', 15, 15); };
-				document.getElementById('dedAgents').onclick = function () { sm.SetDataSet('res:/ded_site_min.png', 7.5, 50); };
+				document.getElementById('none').onclick = function () { sm.SetDataSet('res:/white_starmap.png.0.png', 15, 15); };
+				document.getElementById('securityStatus').onclick = function () { sm.SetDataSet('res:/security_status_min.png.0.png', 15, 15); };
+				document.getElementById('dedAgents').onclick = function () { sm.SetDataSet('res:/ded_site_min.png.0.png', 7.5, 50); };
 				document.getElementById('amarr').onclick = function () { tweenTo( {0:0, 1:0, 2:0}); };
 			}
 

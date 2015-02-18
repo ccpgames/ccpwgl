@@ -11,8 +11,6 @@
 
             function onDocumentLoad()
             {
-                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
-
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
@@ -20,8 +18,14 @@
         		var planet = scene.loadPlanet(40000002, 
         				'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red', 
         				undefined, 
-        				'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.png', 
-        				'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.png');
+        				'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png',
+        				'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png');
+                planet.setTransform(mat4.create([
+                    10000, 0, 0, 0,
+                    0, 10000, 0, 0,
+                    0, 0, 10000, 0,
+                    0, 0, -100000, 1
+                ]));
 
                 camera = new TestCamera(canvas);
                 camera.minDistance = .5;

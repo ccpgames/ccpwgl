@@ -123,7 +123,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     }
 
     var version = reader.ReadUInt32();
-    if (version != 2 && version != 3)
+    if (version < 2 || version > 4)
     {
         console.error('Tw2EffectRes:', ' invalid version of effect file \"', this.path, '\" (version ', version, ')');
         this.PrepareFinished(false);
@@ -207,7 +207,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
                 stage.shadowShader = null;
             }
 
-            if (version == 3)
+            if (version >= 3)
             {
                 reader.ReadUInt32();
                 reader.ReadUInt32();
@@ -270,6 +270,10 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             for (var samplerIx = 0; samplerIx < samplerCount; ++samplerIx)
             {
                 var registerIndex = reader.ReadUInt8();
+                var samplerName = '';
+                if (version >= 4) {
+                    samplerName = ReadString();
+                }
                 /* var comparison = */reader.ReadUInt8();
                 var minFilter = reader.ReadUInt8();
                 var magFilter = reader.ReadUInt8();
@@ -287,9 +291,12 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
                 borderColor[3] = reader.ReadFloat32();
                 var minLOD = reader.ReadFloat32();
                 var maxLOD = reader.ReadFloat32();
-                var isSRGB = reader.ReadUInt8();
+                if (version < 4) {
+                    reader.ReadUInt8();
+                }
                 var sampler = new Tw2SamplerState();
                 sampler.registerIndex = registerIndex;
+                sampler.name = samplerName;
                 if (minFilter == 1)
                 {
                     switch (mipFilter)
@@ -355,7 +362,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
 
                 stage.samplers.push(sampler);
             }
-            if (version == 3)
+            if (version >= 3)
             {
                 reader.ReadUInt8();
             }

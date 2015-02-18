@@ -26,8 +26,8 @@ function Tw2PostProcess()
     this.steps[1].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx';
     this.steps[1].effect.Initialize();
     this.steps[1].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[1].effect.parameters['LuminanceThreshold'] = new Tw2FloatParameter('LuminanceThreshold', 0.5);
-    this.steps[1].effect.parameters['LuminanceScale'] = new Tw2FloatParameter('LuminanceScale', 5);
+    this.steps[1].effect.parameters['LuminanceThreshold'] = new Tw2FloatParameter('LuminanceThreshold', 0.85);
+    this.steps[1].effect.parameters['LuminanceScale'] = new Tw2FloatParameter('LuminanceScale', 2);
 
     this.steps[2] = new Tw2Effect();
     this.steps[2] = { 

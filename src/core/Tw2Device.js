@@ -206,7 +206,8 @@ function Tw2Device()
         this.gl.getExtension("OES_standard_derivatives");
 
         this.alphaBlendBackBuffer = !params || typeof (params.alpha) == 'undefined' || params.alpha;
-        this.antialiasing = this.gl.getParameter(this.gl.SAMPLES) > 1;
+        this.msaaSamples = this.gl.getParameter(this.gl.SAMPLES);
+        this.antialiasing = this.msaaSamples > 1;
 
         this.anisotropicFilter = this.gl.getExtension('EXT_texture_filter_anisotropic') ||
             this.gl.getExtension('MOZ_EXT_texture_filter_anisotropic') ||
@@ -216,6 +217,7 @@ function Tw2Device()
             this.anisotropicFilter.maxAnisotropy = this.gl.getParameter(this.anisotropicFilter.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
         }
 
+        this.shaderTextureLod = this.gl.getExtension("EXT_shader_texture_lod");
         this.shaderBinary = this.gl.getExtension("CCP_shader_binary");
         this.useBinaryShaders = false;
         this.effectDir = "/effect.gles2/";
@@ -494,101 +496,102 @@ function Tw2Device()
 
     this.SetRenderState = function (state, value)
     {
+        this._currentRenderMode = this.RM_ANY;
         var gl = this.gl;
         switch (state)
         {
-        case this.RS_ZENABLE:
-            if (value)
-            {
-                gl.enable(gl.DEPTH_TEST);
-            }
-            else
-            {
-                gl.disable(gl.DEPTH_TEST);
-            }
-            return;
-        case this.RS_ZWRITEENABLE:
-            gl.depthMask(value ? true : false);
-            return;
-        case this.RS_ALPHATESTENABLE:
-        case this.RS_ALPHAREF:
-        case this.RS_ALPHAFUNC:
-        case this.RS_CLIPPING:
-        case this.RS_CLIPPLANEENABLE:
-            if (this.alphaTestState[state] != value)
-            {
-                this.alphaTestState.states[state] = value;
-                this.alphaTestState.dirty = true;
-            }
-            return;
-        case this.RS_SRCBLEND:
-        case this.RS_DESTBLEND:
-        case this.RS_BLENDOP:
-        case this.RS_SEPARATEALPHABLENDENABLE:
-        case this.RS_BLENDOPALPHA:
-        case this.RS_SRCBLENDALPHA:
-        case this.RS_DESTBLENDALPHA:
-            if (this.alphaBlendState[state] != value)
-            {
-                this.alphaBlendState.states[state] = value;
-                this.alphaBlendState.dirty = true;
-            }
-            return;
-        case this.RS_CULLMODE:
-            switch (value)
-            {
-            case this.CULL_NONE:
-                gl.disable(gl.CULL_FACE);
+            case this.RS_ZENABLE:
+                if (value)
+                {
+                    gl.enable(gl.DEPTH_TEST);
+                }
+                else
+                {
+                    gl.disable(gl.DEPTH_TEST);
+                }
                 return;
-            case this.CULL_CW:
-                gl.enable(gl.CULL_FACE);
-                gl.cullFace(gl.FRONT);
+            case this.RS_ZWRITEENABLE:
+                gl.depthMask(value ? true : false);
                 return;
-            case this.CULL_CCW:
-                gl.enable(gl.CULL_FACE);
-                gl.cullFace(gl.BACK);
+            case this.RS_ALPHATESTENABLE:
+            case this.RS_ALPHAREF:
+            case this.RS_ALPHAFUNC:
+            case this.RS_CLIPPING:
+            case this.RS_CLIPPLANEENABLE:
+                if (this.alphaTestState[state] != value)
+                {
+                    this.alphaTestState.states[state] = value;
+                    this.alphaTestState.dirty = true;
+                }
                 return;
-            }
-            return;
-        case this.RS_ZFUNC:
-            gl.depthFunc(0x0200 + value - 1);
-            return;
-        case this.RS_ALPHABLENDENABLE:
-            if (value)
-            {
-                gl.enable(gl.BLEND);
-            }
-            else
-            {
-                gl.disable(gl.BLEND);
-            }
-            return;
-        case this.RS_COLORWRITEENABLE:
-            gl.colorMask(
+            case this.RS_SRCBLEND:
+            case this.RS_DESTBLEND:
+            case this.RS_BLENDOP:
+            case this.RS_SEPARATEALPHABLENDENABLE:
+            case this.RS_BLENDOPALPHA:
+            case this.RS_SRCBLENDALPHA:
+            case this.RS_DESTBLENDALPHA:
+                if (this.alphaBlendState[state] != value)
+                {
+                    this.alphaBlendState.states[state] = value;
+                    this.alphaBlendState.dirty = true;
+                }
+                return;
+            case this.RS_CULLMODE:
+                switch (value)
+                {
+                    case this.CULL_NONE:
+                        gl.disable(gl.CULL_FACE);
+                        return;
+                    case this.CULL_CW:
+                        gl.enable(gl.CULL_FACE);
+                        gl.cullFace(gl.FRONT);
+                        return;
+                    case this.CULL_CCW:
+                        gl.enable(gl.CULL_FACE);
+                        gl.cullFace(gl.BACK);
+                        return;
+                }
+                return;
+            case this.RS_ZFUNC:
+                gl.depthFunc(0x0200 + value - 1);
+                return;
+            case this.RS_ALPHABLENDENABLE:
+                if (value)
+                {
+                    gl.enable(gl.BLEND);
+                }
+                else
+                {
+                    gl.disable(gl.BLEND);
+                }
+                return;
+            case this.RS_COLORWRITEENABLE:
+                gl.colorMask(
                 (value & 1) != 0,
                 (value & 2) != 0,
                 (value & 4) != 0,
                 (value & 8) != 0);
-            return;
-        case this.RS_SCISSORTESTENABLE:
-            if (value)
-            {
-                gl.enable(gl.SCISSOR_TEST);
-            }
-            else
-            {
-                gl.disable(gl.SCISSOR_TEST);
-            }
-            return;
-        case this.RS_SLOPESCALEDEPTHBIAS:
-        case this.RS_DEPTHBIAS:
-            value = this._DwordToFloat(value);
-            if (this.depthOffsetState[state] != value)
-            {
-                this.depthOffsetState.states[state] = value;
-                this.depthOffsetState.dirty = true;
-            }
-            return;
+                return;
+            case this.RS_SCISSORTESTENABLE:
+                if (value)
+                {
+                    gl.enable(gl.SCISSOR_TEST);
+                }
+                else
+                {
+                    gl.disable(gl.SCISSOR_TEST);
+                }
+                return;
+            case this.RS_SLOPESCALEDEPTHBIAS:
+            case this.RS_DEPTHBIAS:
+                value = this._DwordToFloat(value);
+                if (this.depthOffsetState[state] != value)
+                {
+                    this.depthOffsetState.states[state] = value;
+                    this.depthOffsetState.dirty = true;
+                }
+                return;
         }
     };
 

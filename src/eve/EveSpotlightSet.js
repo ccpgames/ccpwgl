@@ -6,6 +6,8 @@ function EveSpotlightSetItem()
     this.spriteColor = quat4.create();
     this.flareColor = quat4.create();
     this.spriteScale = vec3.create();
+    this.boosterGainInfluence = false;
+    this.boneIndex = 0;
 }
 
 function EveSpotlightSet()
@@ -26,7 +28,7 @@ function EveSpotlightSet()
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 4, 32));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 4, 48));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 3, 64));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 76));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 3, 76));
     this._decl.RebuildHash();
 }
 
@@ -47,7 +49,7 @@ EveSpotlightSet.prototype.Rebuild = function()
     var coneQuadCount = 4;
     var coneVertexCount = itemCount * coneQuadCount * vertCount;
 
-    var vertexSize = 20;
+    var vertexSize = 22;
     var array = new Float32Array(coneVertexCount * vertexSize);
     
     var indexes = [1, 0, 2, 3];
@@ -85,6 +87,8 @@ EveSpotlightSet.prototype.Rebuild = function()
                 array[offset + 18] = 1;
                 
                 array[offset + 19] = q * vertCount + indexes[v];
+                array[offset + 20] = item.boneIndex;
+                array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
             }
         }
     }
@@ -147,6 +151,8 @@ EveSpotlightSet.prototype.Rebuild = function()
                 array[offset + 15] = item.transform[14];
                 
                 array[offset + 19] = q * vertCount + indexes[v];
+                array[offset + 20] = item.boneIndex;
+                array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
             }
         }
     }
@@ -228,7 +234,7 @@ EveSpotlightSet.prototype._Render = function (effect, buffer)
     device.SetStandardStates(device.RM_ADDITIVE);
 
     device.gl.bindBuffer(device.gl.ARRAY_BUFFER, buffer);
-    var stride = 20 * 4;
+    var stride = 22 * 4;
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
     for (var pass = 0; pass < effect.GetPassCount(); ++pass)

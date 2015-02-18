@@ -139,11 +139,20 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         {
             try
             {
-                parent[index] = new Float32Array(eval(value));
+                parent[index] = JSON.parse(value);
             }
             catch (e)
             {
                 throw new Error('YAML: property \"' + value + '\" is not a valid JSON property');
+            }
+            if (!xmlNode.attributes.getNamedItem('notnum')) {
+                try
+                {
+                    parent[index] = new Float32Array(parent[index]);
+                }
+                catch (e)
+                {
+                }
             }
             var id = xmlNode.attributes.getNamedItem('id');
             if (id)

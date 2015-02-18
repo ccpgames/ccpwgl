@@ -123,7 +123,7 @@
         if (this.model)
         {
             var lineEffect = this.model.children[0].mesh.transparentAreas[0].effect;
-            lineEffect.parameters['LineColor'] = new ccpwgl_int.Tw2Vector4Parameter('LineColor', this.jumpRoutesColor);
+            lineEffect.parameters['LineColor'].SetValue(this.jumpRoutesColor);
         }
     }
     this.Update = function ()
@@ -220,7 +220,7 @@
         {
 			console.log(closest, closest * 5 + 4, this.mapData[closest * 5 + 4]);
 			console.log(pos);
-            return [closest, this.mapData[closest * 5 + 4], closestPos];
+            return [closest, closestPos];
         }
         else
         {

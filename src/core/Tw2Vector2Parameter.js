@@ -14,7 +14,7 @@ function Tw2Vector2Parameter(name, value)
 	}
 	else
 	{
-		this.value = new Float32Array(1, 1);
+		this.value = new Float32Array([1, 1]);
 	}
 }
 

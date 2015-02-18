@@ -17,10 +17,19 @@ Tw2CurveSet.prototype.Initialize = function ()
     }
 }
 
-Tw2CurveSet.prototype.Play = function ()
-{
+Tw2CurveSet.prototype.Play = function () {
     this.isPlaying = true;
     this.scaledTime = 0;
+}
+
+Tw2CurveSet.prototype.PlayFrom = function (time) {
+    this.isPlaying = true;
+    this.scaledTime = time;
+}
+
+Tw2CurveSet.prototype.Stop = function ()
+{
+    this.isPlaying = false;
 }
 
 Tw2CurveSet.prototype.Update = function (dt)
@@ -40,4 +49,14 @@ Tw2CurveSet.prototype.Update = function (dt)
             bindings[i].CopyValue();
         }
     }
+}
+
+Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
+    var length = 0;
+    for (var i = 0; i < this.curves.length; ++i) {
+        if ('GetLength' in this.curves[i]) {
+            length = Math.max(length, this.curves[i].GetLength());
+        }
+    }
+    return length;
 }

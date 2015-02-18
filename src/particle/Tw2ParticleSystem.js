@@ -161,7 +161,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
 
 
     this.buffers = [null, null];
-    if (this.instanceStride[0])
+    if (this.instanceStride[0] && this.maxParticleCount)
     {
         this.buffers[0] = new Float32Array(this.instanceStride[0] * this.maxParticleCount);
         this._vb = device.gl.createBuffer();
@@ -196,6 +196,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
     {
         this._sortedIndexes = new Array(this.maxParticleCount);
         this._sortedBuffer = new Float32Array(this.instanceStride[0] * this.maxParticleCount);
+        this._distancesBuffer = new Float32Array(this.maxParticleCount);
     }
     this.isValid = true;
     this.bufferDirty = true;
@@ -303,11 +304,16 @@ Tw2ParticleSystem.prototype.Update = function (dt)
         {
             if (hasForces)
             {
+                var amass = 1;
+                if (mass)
+                {
+                    amass = mass.buffer[mass.offset];
+                }
                 var force = tmpVec3;
                 force[0] = force[1] = force[2] = 0;
                 for (var j = 0; j < this.forces.length; ++j)
                 {
-                    this.forces[j].ApplyForce(position, velocity, force);
+                    this.forces[j].ApplyForce(position, velocity, force, dt, amass);
                 }
                 if (mass)
                 {
@@ -323,7 +329,7 @@ Tw2ParticleSystem.prototype.Update = function (dt)
 
             if (this.emitParticleDuringLifeEmitter)
             {
-                this.emitParticleDuringLifeEmitter.SpawnParticles(position, velocity);
+                this.emitParticleDuringLifeEmitter.SpawnParticles(position, velocity, dt);
             }
 
             position.offset += position.instanceStride;
@@ -418,6 +424,51 @@ Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
     return false;
 };
 
+Tw2ParticleSystem.prototype._Sort = function () {
+    var eye = device.viewInv;
+    var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
+    var count = this.aliveCount;
+    var distances = this._distancesBuffer;
+    for (var i = 0; i < count; ++i) {
+        var o0 = position.offset + position.instanceStride * i;
+        var dd = position.buffer[o0] - eye[12];
+        var l0 = dd * dd;
+        dd = position.buffer[o0 + 1] - eye[13];
+        l0 += dd * dd;
+        dd = position.buffer[o0 + 2] - eye[14];
+        l0 += dd * dd;
+        distances[i] = l0;
+    }
+    var sortItems = function (a, b)
+    {
+        if (a >= count && b >= count)
+        {
+            if (a < b) return -1;
+            if (a > b) return 1;
+            return 0;
+        }
+        if (a >= count)
+        {
+            return 1;
+        }
+        if (b >= count)
+        {
+            return -1;
+        }
+        var l0 = distances[a];
+        var l1 = distances[b];
+
+        if (l0 < l1) return 1;
+        if (l0 > l1) return -1;
+        return 0;
+    };
+    for (i = 0; i < this.maxParticleCount; ++i)
+    {
+        this._sortedIndexes[i] = i;
+    }
+    this._sortedIndexes.sort(sortItems);
+};
+
 Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, instanceDecl, instanceStride)
 {
     if (this.aliveCount == 0)
@@ -434,53 +485,17 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
 
     if (this.requiresSorting && this.HasElement(Tw2ParticleElementDeclaration.POSITION) && this.buffers)
     {
-        var eye = device.viewInv;
-        var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
-        var count = this.aliveCount;
-        var sortItems = function (a, b)
+        this._Sort();
+        var stride = this.instanceStride[0];
+        var gpuBuffer = this.buffers[0];
+        var toOffset, fromOffset, j;
+        for (var i = 0; i < this.aliveCount; ++i)
         {
-            if (a >= count && b >= count)
-            {
-                if (a < b) return -1;
-                if (a > b) return 1;
-                return 0;
+            toOffset = i * stride;
+            fromOffset = this._sortedIndexes[i] * stride;
+            for (j = 0; j < stride; ++j) {
+                this._sortedBuffer[toOffset + j] = gpuBuffer[j + fromOffset];
             }
-            if (a > count)
-            {
-                return 1;
-            }
-            if (b > count)
-            {
-                return -1;
-            }
-            var o0 = position.offset + position.instanceStride * a;
-            var o1 = position.offset + position.instanceStride * b;
-            var d = position.buffer[o0] - eye[12];
-            var l0 = d * d;
-            d = position.buffer[o0 + 1] - eye[13];
-            l0 += d * d;
-            d = position.buffer[o0 + 2] - eye[14];
-            l0 += d * d;
-
-            d = position.buffer[o1] - eye[12];
-            var l1 = d * d;
-            d = position.buffer[o1 + 1] - eye[13];
-            l1 += d * d;
-            d = position.buffer[o1 + 2] - eye[14];
-            l1 += d * d;
-
-            if (l0 < l1) return 1;
-            if (l0 > l1) return -1;
-            return 0;
-        };
-        for (var i = 0; i < this.maxParticleCount; ++i)
-        {
-            this._sortedIndexes[i] = i;
-        }
-        this._sortedIndexes.sort(sortItems);
-        for (var i = 0; i < this.maxParticleCount; ++i)
-        {
-            this._sortedBuffer.set(this.buffers[0].subarray(this.instanceStride[0] * this._sortedIndexes[i], this.instanceStride[0] * (this._sortedIndexes[i] + 1)), this.instanceStride[0] * i);
         }
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vb);
         d.gl.bufferSubData(d.gl.ARRAY_BUFFER, 0, this._sortedBuffer.subarray(0, this.instanceStride[0] * this.aliveCount));

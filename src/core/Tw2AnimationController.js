@@ -40,6 +40,7 @@ function Tw2Model()
 {
     this.modelRes = null;
     this.bones = [];
+    this.bonesByName = {};
 }
 
 
@@ -59,6 +60,8 @@ function Tw2AnimationController(geometryResource)
     this._tempMat3 = mat3.create();
     this._tempQuat4 = quat4.create();
     this._tempVec3 = vec3.create();
+    
+    this._geometryResource = null;
     
     if (typeof(geometryResource) != 'undefined')
     {
@@ -185,6 +188,7 @@ Tw2AnimationController.prototype._AddModel = function (modelRes)
             var bone = new Tw2Bone();
             bone.boneRes = skeleton.bones[j];
             model.bones.push(bone);
+            model.bonesByName[bone.boneRes.name] = bone;
         }
     }
     this.models.push(model);
@@ -218,9 +222,23 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
     {
         return;
     }
+    for (var i = 0; i < this.geometryResources.length; ++i)
+    {
+        if (!this.geometryResources[i].IsGood())
+        {
+            return;
+        }
+    }
+    for (var i = 0; i < this.geometryResources.length; ++i)
+    {
+        this._DoRebuildCachedData(this.geometryResources[i]);
+    }
+}
 
+Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
+{
     var newModels = [];
-    if (resource.meshes.length)
+    //if (resource.meshes.length)
     {
         for (var i = 0; i < resource.models.length; ++i)
         {
@@ -236,6 +254,14 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
         this.AddAnimationsFromRes(this.geometryResources[i], this.models);
     }
 
+    if (resource.models.length == 0)
+    {
+        for (var i = 0; i < resource.meshes.length; ++i)
+        {
+            Tw2GeometryRes.BindMeshToModel(resource.meshes[i], this.geometryResources[0].models[0]);
+        }
+        resource.models.push(this.geometryResources[0].models[0]);
+    }
     for (var i = 0; i < resource.models.length; ++i)
     {
         var model = null;
@@ -383,6 +409,96 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
     }
 };
 
+Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, duration)
+{
+    var count = curve.knots.length;
+    var knot = count - 1;
+    var t = 0;
+    for (var i = 0; i < curve.knots.length; ++i)
+    {
+        if (curve.knots[i] > time)
+        {
+            knot = i;
+            break;
+        }
+    }
+
+    if (curve.degree == 0)
+    {
+        for (var i = 0; i < curve.dimension; ++i)
+        {
+            value[i] = curve.controls[knot * curve.dimension + i];
+        }
+    }
+    else if (curve.degree == 1)
+    {
+        var knot0 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
+        var dt = curve.knots[knot] - curve.knots[knot0];
+        if (dt < 0)
+        {
+            dt += duration;
+        }
+        if (dt > 0)
+        {
+            t = (time - curve.knots[i - 1]) / dt;
+        }
+        for (var i = 0; i < curve.dimension; ++i)
+        {
+            value[i] = curve.controls[knot0 * curve.dimension + i] * (1 - t) + curve.controls[knot * curve.dimension + i] * t;
+        }
+    }
+    else
+    {
+        var k_2 = cycle ? (knot + count - 2) % count : knot == 0 ? 0 : knot - 2;
+        var k_1 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
+
+        var p1 = (k_2) * curve.dimension;
+        var p2 = (k_1) * curve.dimension;
+        var p3 = knot * curve.dimension;
+
+        var ti_2 = curve.knots[k_2];
+        var ti_1 = curve.knots[k_1];
+        var ti = curve.knots[knot];
+        var ti1 = curve.knots[(knot + 1) % count];
+        if (ti_2 > ti)
+        {
+            ti += duration;
+            ti1 += duration;
+            time += duration;
+        }
+        if (ti_1 > ti)
+        {
+            ti += duration;
+            ti1 += duration;
+            time += duration;
+        }
+        if (ti1 < ti)
+        {
+            ti1 += duration;
+        }
+
+        var tmti_1 = (time - ti_1);
+        var tmti_2 = (time - ti_2);
+        var dL0 = ti - ti_1;
+        var dL1_1 = ti - ti_2;
+        var dL1_2 = ti1 - ti_1;
+
+        var L0 = tmti_1 / dL0;
+        var L1_1 = tmti_2 / dL1_1;
+        var L1_2 = tmti_1 / dL1_2;
+
+        var ci_2 = (L1_1 + L0) - L0 * L1_1;
+        var ci = L0 * L1_2;
+        var ci_1 = ci_2 - ci;
+        ci_2 = 1 - ci_2;
+
+        for (var i = 0; i < curve.dimension; ++i)
+        {
+            value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
+        }
+    }
+}
+
 Tw2AnimationController.prototype.Update = function (dt)
 {
     if (this.models == null || !this.update)
@@ -395,96 +511,7 @@ Tw2AnimationController.prototype.Update = function (dt)
         this.geometryResources[i].KeepAlive();
     }
     
-    function EvaluateCurve(curve, time, value, cycle, duration)
-    {
-        var count = curve.knots.length;
-        var knot = count - 1;
-        var t = 0;
-        for (var i = 0; i < curve.knots.length; ++i)
-        {
-            if (curve.knots[i] > time)
-            {
-                knot = i;
-                break;
-            }
-        }
 
-        if (curve.degree == 0)
-        {
-            for (var i = 0; i < curve.dimension; ++i)
-            {
-                value[i] = curve.controls[knot * curve.dimension + i];
-            }
-        }
-        else if (curve.degree == 1)
-        {
-            var knot0 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
-            var dt = curve.knots[knot] - curve.knots[knot0];
-            if (dt < 0)
-            {
-                dt += duration;
-            }
-            if (dt > 0)
-            {
-                t = (time - curve.knots[i - 1]) / dt;
-            }
-            for (var i = 0; i < curve.dimension; ++i)
-            {
-                value[i] = curve.controls[knot0 * curve.dimension + i] * (1 - t) + curve.controls[knot * curve.dimension + i] * t;
-            }
-        }
-        else
-        {
-            var k_2 = cycle ? (knot + count - 2) % count : knot == 0 ? 0 : knot - 2;
-            var k_1 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
-        
-            var p1 = (k_2) * curve.dimension;
-            var p2 = (k_1) * curve.dimension;
-            var p3 = knot * curve.dimension;
-            
-            var ti_2 = curve.knots[k_2];
-            var ti_1 = curve.knots[k_1];
-            var ti = curve.knots[knot];
-            var ti1 = curve.knots[(knot + 1) % count];
-            if (ti_2 > ti)
-            {
-                ti += duration;
-                ti1 += duration;
-                time += duration;
-            }
-            if (ti_1 > ti)
-            {
-                ti += duration;
-                ti1 += duration;
-                time += duration;
-            }
-            if (ti1 < ti)
-            {
-                ti1 += duration;
-            }
-            
-            var tmti_1 = (time - ti_1);
-            var tmti_2 = (time - ti_2);
-            var dL0 = ti - ti_1;
-            var dL1_1 = ti - ti_2;
-            var dL1_2 = ti1 - ti_1;
-            
-            var L0 = tmti_1 / dL0;
-            var L1_1 = tmti_2 / dL1_1;
-            var L1_2 = tmti_1 / dL1_2;
-            
-            var ci_2 = (L1_1 + L0) - L0 * L1_1;
-            var ci = L0 * L1_2;
-            var ci_1 = ci_2 - ci;
-            ci_2 = 1 - ci_2;
-            
-            for (var i = 0; i < curve.dimension; ++i)
-            {
-                value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
-            }        
-        }
-    }
-    
     var tempMat = this._tempMat4;
     var updateBones = false;
     for (var i = 0; i < this.animations.length; ++i)
@@ -520,7 +547,7 @@ Tw2AnimationController.prototype.Update = function (dt)
                     var track = animation.trackGroups[j].transformTracks[k];
                     if (track.trackRes.position)
                     {
-                        EvaluateCurve(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
+                        Tw2AnimationController.EvaluateCurve(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
                     }
                     else
                     {
@@ -528,7 +555,7 @@ Tw2AnimationController.prototype.Update = function (dt)
                     }
                     if (track.trackRes.orientation)
                     {
-                        EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
+                        Tw2AnimationController.EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
                         quat4.normalize(orientation);
                     }
                     else
@@ -538,7 +565,7 @@ Tw2AnimationController.prototype.Update = function (dt)
                     }
                     if (track.trackRes.scaleShear)
                     {
-                        EvaluateCurve(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
+                        Tw2AnimationController.EvaluateCurve(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
                     }
                     else
                     {

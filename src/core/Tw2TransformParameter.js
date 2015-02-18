@@ -62,6 +62,11 @@ Tw2TransformParameter.prototype.Bind = function (constantBuffer, offset, size)
     this.Apply(this.constantBuffer, this.offset, size);
 };
 
+Tw2TransformParameter.prototype.OnValueChanged = function ()
+{
+    this.OnModified();
+}
+
 Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     if (size >= 16)

@@ -1,6 +1,7 @@
 function Tw2SamplerState()
 {
     this.registerIndex = 0;
+    this.name = '';
     this.minFilter = device.gl.LINEAR;
     this.maxFilter = device.gl.LINEAR;
     this.minFilterNoMips = device.gl.LINEAR;
@@ -34,8 +35,8 @@ Tw2SamplerState.prototype.Apply = function (hasMipMaps)
     var targetType = this.samplerType;
     var d = device;
     var gl = d.gl;
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, this.addressU);
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, this.addressV);
+    gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : gl.CLAMP_TO_EDGE);
+    gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : gl.CLAMP_TO_EDGE);
     gl.texParameteri(targetType, gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
     gl.texParameteri(targetType, gl.TEXTURE_MAG_FILTER, this.magFilter);
     if (d.anisotropicFilter && d.enableAnisotropicFiltering)

@@ -12,8 +12,18 @@ function EveLensflare()
     this.occlusionIntensity = 1;
     this.backgroundOcclusionIntensity = 1;
 
+    this.distanceToEdgeCurves = [];
+    this.distanceToCenterCurves = [];
+    this.radialAngleCurves = [];
+    this.xDistanceToCenter = [];
+    this.yDistanceToCenter = [];
+    this.bindings = [];
+    this.curveSets = [];
+
+    this.mesh = null;
+
     this._directionVar = variableStore.RegisterVariable( "LensflareFxDirectionScale", quat4.create());
-    variableStore.RegisterVariable( "LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+    this._occlusionVar = variableStore.RegisterVariable( "LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
     this._direction = vec3.create();
     this._transform = mat4.create();
 
@@ -23,35 +33,10 @@ function EveLensflare()
         EveLensflare.backBuffer.width = 0;
         EveLensflare.backBuffer.height = 0;
         EveLensflare.backBuffer.hasMipMaps = false;
-        EveLensflare.occluderLevels = new Tw2RenderTarget();
+        EveLensflare.occluderLevels = [new Tw2RenderTarget(), new Tw2RenderTarget(), new Tw2RenderTarget(), new Tw2RenderTarget()];
+        EveLensflare.occludedLevelIndex = 0;
     }
 }
-
-EveLensflare.prototype.Initialize = function ()
-{
-    for (var i = 0; i < this.flares.length; ++i)
-    {
-        if (this.flares[i].mesh)
-        {
-            for (var j = 0; j < this.flares[i].mesh.additiveAreas.length; ++j)
-            {
-                if (this.flares[i].mesh.additiveAreas[j].effect)
-                {
-                    var param = new Tw2Vector4Parameter();
-                    param.name = 'OccluderPosition';
-                    this.flares[i]._occluderPosition = param;
-                    this.flares[i].mesh.additiveAreas[j].effect.parameters[param.name] = param;
-                    var param = new Tw2TextureParameter();
-                    param.name = 'BackBuffer';
-                    param.textureRes = EveLensflare.backBuffer;
-                    this.flares[i]._backBuffer = param;
-                    this.flares[i].mesh.additiveAreas[j].effect.parameters[param.name] = param;
-                    this.flares[i].mesh.additiveAreas[j].effect.BindParameters();
-                }
-            }
-        }
-    }
-};
 
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
@@ -126,7 +111,34 @@ EveLensflare.prototype.PrepareRender = function ()
     this._directionVar.value[2] = this._direction[2];
     this._directionVar.value[3] = 1;
 
-    for (var i = 0; i < this.flares.length; ++i)
+    var d = quat4.create([this._direction[0], this._direction[1], this._direction[2], 0]);
+    mat4.multiplyVec4(device.view, d);
+    mat4.multiplyVec4(device.projection, d);
+    d[0] /= d[3];
+    d[1] /= d[3];
+    var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1]));
+    var distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]);
+    var radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
+
+    for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
+        this.distanceToEdgeCurves[i].UpdateValue(distanceToEdge);
+    }
+    for (i = 0; i < this.distanceToCenterCurves.length; ++i) {
+        this.distanceToCenterCurves[i].UpdateValue(distanceToCenter);
+    }
+    for (i = 0; i < this.radialAngleCurves.length; ++i) {
+        this.radialAngleCurves[i].UpdateValue(radialAngle);
+    }
+    for (i = 0; i < this.xDistanceToCenter.length; ++i) {
+        this.xDistanceToCenter[i].UpdateValue(d[0] + 10);
+    }
+    for (i = 0; i < this.yDistanceToCenter.length; ++i) {
+        this.yDistanceToCenter[i].UpdateValue(d[1] + 10);
+    }
+    for (i = 0; i < this.bindings.length; ++i) {
+        this.bindings[i].CopyValue();
+    }
+    for (i = 0; i < this.flares.length; ++i)
     {
         this.flares[i].UpdateViewDependentData(this._transform);
     }
@@ -142,27 +154,30 @@ EveLensflare.prototype.UpdateOccluders = function ()
     this.occlusionIntensity = 1;
     this.backgroundOcclusionIntensity = 1;
 
-    if (!EveLensflare.occluderLevels.texture || EveLensflare.occluderLevels.width < this.occluders.length * 2)
+    if (!EveLensflare.occluderLevels[0].texture || EveLensflare.occluderLevels[0].width < this.occluders.length * 2)
     {
-        EveLensflare.occluderLevels.Create(this.occluders.length * 2, 1, false);
-        for (var j = 0; j < this.flares.length; ++j)
-        {
-            if ('_backBuffer' in this.flares[j])
-            {
-                this.flares[j]._backBuffer.textureRes = EveLensflare.occluderLevels.texture;
-            }
+        for (var i = 0; i < EveLensflare.occluderLevels.length; ++i) {
+            EveLensflare.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
         }
     }
-    EveLensflare.occluderLevels.Set();
+    for (var j = 0; j < this.flares.length; ++j)
+    {
+        if ('_backBuffer' in this.flares[j])
+        {
+            this.flares[j]._backBuffer.textureRes = EveLensflare.occluderLevels.texture;
+        }
+    }
+
+    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
     device.SetStandardStates(device.RM_OPAQUE);
     device.gl.clearColor(0.0, 0.0, 0.0, 1.0);
     device.gl.clear(device.gl.COLOR_BUFFER_BIT);
-    EveLensflare.occluderLevels.Unset();
+    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
 
     var samples = 1;
     if (device.antialiasing)
     {
-        samples = device.gl.getParameter(device.gl.SAMPLES);
+        samples = device.msaaSamples;
         device.gl.sampleCoverage(1. / samples, false);
     }
     for (var i = 0; i < this.occluders.length; ++i)
@@ -202,19 +217,29 @@ EveLensflare.prototype.UpdateOccluders = function ()
         device.gl.bindTexture(device.gl.TEXTURE_2D, null);
 
         // Collect samples
-        EveLensflare.occluderLevels.Set();
-        this.occluders[i].CollectSamples(EveLensflare.backBuffer, i, EveLensflare.occluderLevels.width / 2, samples);
-        EveLensflare.occluderLevels.Unset();
+        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
+        this.occluders[i].CollectSamples(EveLensflare.backBuffer, i, EveLensflare.occluderLevels[0].width / 2, samples);
+        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
     }
     if (device.antialiasing)
     {
         device.gl.sampleCoverage(1, false);
     }
 
-    //    device.gl.viewport(0, 0, 100, 100);
-    //    device.SetStandardStates(device.RM_FULLSCREEN);
-    //    device.RenderTexture(EveLensflare.occluderLevels.texture);
-    //    device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
+    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Set();
+    var pixels = new Uint8Array(EveLensflare.occluderLevels[0].width * 4);
+    device.gl.readPixels(0, 0, 2, 1, device.gl.RGBA, device.gl.UNSIGNED_BYTE, pixels);
+    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Unset();
+
+    this.occlusionIntensity = 1;
+    for (i = 0; i < EveLensflare.occluderLevels[0].width * 2; i += 4) {
+        this.occlusionIntensity *= pixels[i + 1] ? pixels[i] / pixels[i + 1] : 1;
+    }
+
+    this.backgroundOcclusionIntensity = this.occlusionIntensity;
+    this._occlusionVar.value[0] = this.occlusionIntensity;
+    this._occlusionVar.value[1] = this._occlusionVar.value[0];
+    EveLensflare.occludedLevelIndex = (EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length;
 };
 
 EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
@@ -223,8 +248,16 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
     {
         return;
     }
+    var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+    if (vec3.dot(viewDir, this._direction) < 0) {
+        return;
+    }
+
     for (var i = 0; i < this.flares.length; ++i)
     {
         this.flares[i].GetBatches(mode, accumulator, perObjectData);
+    }
+    if (this.mesh) {
+        this.mesh.GetBatches(mode, accumulator, perObjectData);
     }
 };

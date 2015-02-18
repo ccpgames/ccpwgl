@@ -1,5 +1,6 @@
 function EveSpriteSet()
 {
+    this.name = '';
     this.sprites = [];
     this.effect = null;
     this._time = 0;
@@ -7,14 +8,14 @@ function EveSpriteSet()
     this._vertexBuffer = null;
     this._indexBuffer = null;
     this._decl = new Tw2VertexDeclaration();
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 0));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 4));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 16));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 28));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 32));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 36));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 40));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 44));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 2, 0));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 8));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 20));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 32));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 36));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 40));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 44));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 48));
     this._decl.RebuildHash();
 }
 
@@ -25,7 +26,7 @@ EveSpriteSet.prototype.Initialize = function ()
 
 EveSpriteSet.prototype.RebuildBuffers = function ()
 {
-    var vertexSize = 12;
+    var vertexSize = 13;
     var array = new Float32Array(this.sprites.length * 4 * vertexSize);
     for (var i = 0; i < this.sprites.length; ++i)
     {
@@ -37,17 +38,18 @@ EveSpriteSet.prototype.RebuildBuffers = function ()
         for (var j = 0; j < 4; ++j)
         {
             var vtxOffset = offset + j * vertexSize;
-            array[vtxOffset + 1] = this.sprites[i].position[0];
-            array[vtxOffset + 2] = this.sprites[i].position[1];
-            array[vtxOffset + 3] = this.sprites[i].position[2];
-            array[vtxOffset + 4] = this.sprites[i].color[0];
-            array[vtxOffset + 5] = this.sprites[i].color[1];
-            array[vtxOffset + 6] = this.sprites[i].color[2];
-            array[vtxOffset + 7] = this.sprites[i].blinkPhase;
-            array[vtxOffset + 8] = this.sprites[i].blinkRate;
-            array[vtxOffset + 9] = this.sprites[i].minScale;
-            array[vtxOffset + 10] = this.sprites[i].maxScale;
-            array[vtxOffset + 11] = this.sprites[i].falloff;
+            array[vtxOffset + 1] = this.sprites[i].boneIndex;
+            array[vtxOffset + 2] = this.sprites[i].position[0];
+            array[vtxOffset + 3] = this.sprites[i].position[1];
+            array[vtxOffset + 4] = this.sprites[i].position[2];
+            array[vtxOffset + 5] = this.sprites[i].color[0];
+            array[vtxOffset + 6] = this.sprites[i].color[1];
+            array[vtxOffset + 7] = this.sprites[i].color[2];
+            array[vtxOffset + 8] = this.sprites[i].blinkPhase;
+            array[vtxOffset + 9] = this.sprites[i].blinkRate;
+            array[vtxOffset + 10] = this.sprites[i].minScale;
+            array[vtxOffset + 11] = this.sprites[i].maxScale;
+            array[vtxOffset + 12] = this.sprites[i].falloff;
         }
     }
     this._vertexBuffer = device.gl.createBuffer();
@@ -120,7 +122,7 @@ EveSpriteSet.prototype.Render = function (overrideEffect)
     for (var pass = 0; pass < effect.GetPassCount(); ++pass)
     {
         effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 48))
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 52))
         {
             return;
         }
