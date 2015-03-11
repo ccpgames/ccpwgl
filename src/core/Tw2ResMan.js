@@ -118,13 +118,14 @@ function Tw2ResMan()
 {
     this.resourcePaths = {};
     
+    this.resourcePaths['res'] = '//developers.eveonline.com/ccpwgl/assetpath/860161/';
     if(window.location.protocol == "https:") {
-        this.resourcePaths['protocol'] = "https:";
+        this.resourcePaths['res'] = 'https:' + this.resourcePaths['res'];
     } else {
-        this.resourcePaths['protocol'] = "http:";
+        this.resourcePaths['res'] = 'http:' + this.resourcePaths['res'];
     }
     
-    this.resourcePaths['res'] = this.resourcePaths['protocol'] + '//developers.eveonline.com/ccpwgl/assetpath/860161/';
+    
     
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
