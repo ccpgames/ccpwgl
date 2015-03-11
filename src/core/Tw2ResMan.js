@@ -117,7 +117,15 @@ Inherit(Tw2LoadingObject, Tw2Resource);
 function Tw2ResMan()
 {
     this.resourcePaths = {};
-    this.resourcePaths['res'] = 'http://developers.eveonline.com/ccpwgl/assetpath/860161/';
+    
+    this.resourcePaths['res'] = '//developers.eveonline.com/ccpwgl/assetpath/860161/';
+    if(window.location.protocol == "https:") {
+        this.resourcePaths['res'] = 'https:' + this.resourcePaths['res'];
+    } else {
+        this.resourcePaths['res'] = 'http:' + this.resourcePaths['res'];
+    }
+    
+    
     
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
