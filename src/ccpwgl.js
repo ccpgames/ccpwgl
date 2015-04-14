@@ -292,6 +292,16 @@
     {
         camera = newCamera;
     };
+    
+    /**
+     * Returns the whole Space Object Factory file.
+     * Provides a callback that is called once SOF data has been loaded.
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter
+     */
+    ccpwgl.getSofData = function (callback)
+    {
+        sof.GetSofData(callback);
+    };
 
     /**
      * Query ship hull names from space object factory database. Along with getSofFactionNames and getSofRaceNames this
