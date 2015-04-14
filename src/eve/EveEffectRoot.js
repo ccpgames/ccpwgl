@@ -1,4 +1,4 @@
-﻿function EveEffectRoot()
+function EveEffectRoot()
 {
     this.name = '';
     this.display = true;
@@ -28,7 +28,7 @@
     this._perObjectData.perObjectPSData.Create();
 }
 
-EveEffectRoot.prototype.Update = function (dt)
+EveEffectRoot.prototype.Update = function(dt)
 {
     if (this.highDetail)
     {
@@ -41,7 +41,7 @@ EveEffectRoot.prototype.Update = function (dt)
     mat4.scale(this.localTransform, this.scaling);
 }
 
-EveEffectRoot.prototype.GetBatches = function (mode, accumulator)
+EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
 {
     if (!this.display || !this.isPlaying || !this.highDetail)
     {
@@ -52,7 +52,7 @@ EveEffectRoot.prototype.GetBatches = function (mode, accumulator)
     this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
 }
 
-EveEffectRoot.prototype.Start = function ()
+EveEffectRoot.prototype.Start = function()
 {
     if (this.highDetail)
     {
@@ -64,7 +64,7 @@ EveEffectRoot.prototype.Start = function ()
     }
 }
 
-EveEffectRoot.prototype.Stop = function ()
+EveEffectRoot.prototype.Stop = function()
 {
     this.isPlaying = false;
 }

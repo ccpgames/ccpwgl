@@ -3,17 +3,20 @@ function Tw2ObjectReader(xmlNode)
     this.xmlNode = xmlNode;
 }
 
-Tw2ObjectReader.prototype.Construct = function (initialize)
+Tw2ObjectReader.prototype.Construct = function(initialize)
 {
     this._inputStack = [];
     this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
     this._initializeObjects = [];
     this._ids = [];
     var self = this;
-    return function () { return self.ConstructFromNode(initialize, true); };
+    return function()
+    {
+        return self.ConstructFromNode(initialize, true);
+    };
 };
 
-Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
+Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
 {
     var now = new Date();
     var startTime = now.getTime();
@@ -30,7 +33,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
         var index = inputData[2];
         if (xmlNode == null)
         {
-            if (initialize && typeof (parent.Initialize) != 'undefined')
+            if (initialize && typeof(parent.Initialize) != 'undefined')
             {
                 this._initializeObjects.push(parent);
                 //parent.Initialize();
@@ -74,7 +77,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
                 }
                 if (type.value != 'dict')
                 {
-                    if (typeof (object[child.nodeName]) == 'undefined')
+                    if (typeof(object[child.nodeName]) == 'undefined')
                     {
                         console.warn('Tw2ObjectReader:', ' object \"', type.value, '\" does not have property \"', child.nodeName, '\"');
                         continue;
@@ -145,14 +148,14 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
             {
                 throw new Error('YAML: property \"' + value + '\" is not a valid JSON property');
             }
-            if (!xmlNode.attributes.getNamedItem('notnum')) {
+            if (!xmlNode.attributes.getNamedItem('notnum'))
+            {
                 try
                 {
                     parent[index] = new Float32Array(parent[index]);
                 }
                 catch (e)
-                {
-                }
+                {}
             }
             var id = xmlNode.attributes.getNamedItem('id');
             if (id)

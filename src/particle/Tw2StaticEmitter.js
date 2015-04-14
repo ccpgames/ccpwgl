@@ -1,4 +1,4 @@
-﻿function Tw2StaticEmitter()
+function Tw2StaticEmitter()
 {
     this.name = '';
     this.particleSystem = null;
@@ -8,7 +8,7 @@
     this._spawned = false;
 }
 
-Tw2StaticEmitter.prototype.Initialize = function ()
+Tw2StaticEmitter.prototype.Initialize = function()
 {
     if (this.geometryResourcePath != '')
     {
@@ -19,7 +19,7 @@ Tw2StaticEmitter.prototype.Initialize = function ()
     this._spawned = false;
 };
 
-Tw2StaticEmitter.prototype.RebuildCachedData = function ()
+Tw2StaticEmitter.prototype.RebuildCachedData = function()
 {
     if (this.geometryResource && this.geometryResource.meshes.length)
     {
@@ -31,7 +31,7 @@ Tw2StaticEmitter.prototype.RebuildCachedData = function ()
     }
 };
 
-Tw2StaticEmitter.prototype.Update = function (dt)
+Tw2StaticEmitter.prototype.Update = function(dt)
 {
     if (!this._spawned &&
         this.particleSystem &&
@@ -54,7 +54,7 @@ Tw2StaticEmitter.prototype.Update = function (dt)
                 console.error('Tw2StaticEmitter: ',
                     'input geometry res \'',
                     this.geometryResource.path,
-                    '\' mesh lacks (', d.usage, ', ', d.usageIndex, 
+                    '\' mesh lacks (', d.usage, ', ', d.usageIndex,
                     ') element required by particle system');
                 return;
             }
@@ -63,7 +63,7 @@ Tw2StaticEmitter.prototype.Update = function (dt)
                 console.error('Tw2StaticEmitter: ',
                     'input geometry res \'',
                     this.geometryResource.path,
-                    '\' mesh elements (', d.usage, ', ', d.usageIndex, 
+                    '\' mesh elements (', d.usage, ', ', d.usageIndex,
                     ') does not have required number of components');
                 return;
             }

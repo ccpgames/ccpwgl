@@ -13,19 +13,23 @@ Tw2ParticleElementDeclaration.VELOCITY = 2;
 Tw2ParticleElementDeclaration.MASS = 3;
 Tw2ParticleElementDeclaration.CUSTOM = 4;
 
-Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
+Tw2ParticleElementDeclaration.prototype.GetDimension = function()
 {
     switch (this.elementType)
     {
-    case Tw2ParticleElementDeclaration.LIFETIME: return 2;
-    case Tw2ParticleElementDeclaration.POSITION: return 3;
-    case Tw2ParticleElementDeclaration.VELOCITY: return 3;
-    case Tw2ParticleElementDeclaration.MASS: return 1;
+        case Tw2ParticleElementDeclaration.LIFETIME:
+            return 2;
+        case Tw2ParticleElementDeclaration.POSITION:
+            return 3;
+        case Tw2ParticleElementDeclaration.VELOCITY:
+            return 3;
+        case Tw2ParticleElementDeclaration.MASS:
+            return 1;
     }
     return this.dimension;
 };
 
-Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
+Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
 {
     var usage = Tw2VertexDeclaration.DECL_TEXCOORD;
     var usageIndex = 8;
@@ -93,12 +97,12 @@ function Tw2ParticleSystem()
     this._declaration = null;
 }
 
-Tw2ParticleSystem.prototype.Initialize = function ()
+Tw2ParticleSystem.prototype.Initialize = function()
 {
     this.UpdateElementDeclaration();
 };
 
-Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
+Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
 {
     this.isValid = false;
     if (this._vb)
@@ -202,12 +206,12 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
     this.bufferDirty = true;
 };
 
-Tw2ParticleSystem.prototype.HasElement = function (type)
+Tw2ParticleSystem.prototype.HasElement = function(type)
 {
     return this._stdElements[type] != null;
 };
 
-Tw2ParticleSystem.prototype.GetElement = function (type)
+Tw2ParticleSystem.prototype.GetElement = function(type)
 {
     if (this._stdElements[type])
     {
@@ -216,7 +220,7 @@ Tw2ParticleSystem.prototype.GetElement = function (type)
     return this._stdElements[type];
 };
 
-Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
+Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
 {
     if (!this.isValid || this.aliveCount >= this.maxParticleCount)
     {
@@ -225,7 +229,7 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
     return this.aliveCount++;
 };
 
-Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
+Tw2ParticleSystem.prototype.EndSpawnParticle = function()
 {
     var index = this.aliveCount - 1;
     for (var j = 0; j < 2; ++j)
@@ -242,7 +246,7 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
     this.bufferDirty = true;
 };
 
-Tw2ParticleSystem.prototype.Update = function (dt)
+Tw2ParticleSystem.prototype.Update = function(dt)
 {
     dt = Math.min(dt, 0.1);
     if (this.applyAging && this.HasElement(Tw2ParticleElementDeclaration.LIFETIME))
@@ -398,7 +402,7 @@ Tw2ParticleSystem.prototype.Update = function (dt)
     }
 };
 
-Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
+Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
 {
     if (this.aliveCount && this.HasElement(Tw2ParticleElementDeclaration.POSITION))
     {
@@ -424,12 +428,14 @@ Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
     return false;
 };
 
-Tw2ParticleSystem.prototype._Sort = function () {
+Tw2ParticleSystem.prototype._Sort = function()
+{
     var eye = device.viewInv;
     var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
     var count = this.aliveCount;
     var distances = this._distancesBuffer;
-    for (var i = 0; i < count; ++i) {
+    for (var i = 0; i < count; ++i)
+    {
         var o0 = position.offset + position.instanceStride * i;
         var dd = position.buffer[o0] - eye[12];
         var l0 = dd * dd;
@@ -439,7 +445,7 @@ Tw2ParticleSystem.prototype._Sort = function () {
         l0 += dd * dd;
         distances[i] = l0;
     }
-    var sortItems = function (a, b)
+    var sortItems = function(a, b)
     {
         if (a >= count && b >= count)
         {
@@ -469,7 +475,7 @@ Tw2ParticleSystem.prototype._Sort = function () {
     this._sortedIndexes.sort(sortItems);
 };
 
-Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, instanceDecl, instanceStride)
+Tw2ParticleSystem.prototype.Render = function(effect, instanceVB, instanceIB, instanceDecl, instanceStride)
 {
     if (this.aliveCount == 0)
     {
@@ -493,7 +499,8 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
         {
             toOffset = i * stride;
             fromOffset = this._sortedIndexes[i] * stride;
-            for (j = 0; j < stride; ++j) {
+            for (j = 0; j < stride; ++j)
+            {
                 this._sortedBuffer[toOffset + j] = gpuBuffer[j + fromOffset];
             }
         }
@@ -526,9 +533,7 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
     return true;
 };
 
-Tw2ParticleSystem.prototype.GetMaxInstanceCount = function ()
+Tw2ParticleSystem.prototype.GetMaxInstanceCount = function()
 {
     return this.maxParticleCount;
 };
-
-

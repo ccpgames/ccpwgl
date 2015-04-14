@@ -1,13 +1,13 @@
 function Tw2TextureParameter(name, texturePath)
 {
-	if (typeof(name) != 'undefined')
-	{
-		this.name = name;
-	}
-	else
-	{
-		this.name = '';
-	}
+    if (typeof(name) != 'undefined')
+    {
+        this.name = name;
+    }
+    else
+    {
+        this.name = '';
+    }
     this.useAllOverrides = false;
     this.addressUMode = 1;
     this.addressVMode = 1;
@@ -17,27 +17,27 @@ function Tw2TextureParameter(name, texturePath)
     this.maxAnisotropy = 4;
     this.textureRes = null;
     this._sampler = null;
-    if (typeof (texturePath) != 'undefined')
-	{
-		this.resourcePath = texturePath;
-		this.Initialize();
-	}
-	else
-	{
-		this.resourcePath = '';
+    if (typeof(texturePath) != 'undefined')
+    {
+        this.resourcePath = texturePath;
+        this.Initialize();
+    }
+    else
+    {
+        this.resourcePath = '';
     }
 }
 
-Tw2TextureParameter.prototype.SetTexturePath = function (texturePath)
+Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
 {
-	this.resourcePath = texturePath;
-	if (this.resourcePath != '')
-	{
-		this.textureRes = resMan.GetResource(this.resourcePath);
-	}
+    this.resourcePath = texturePath;
+    if (this.resourcePath != '')
+    {
+        this.textureRes = resMan.GetResource(this.resourcePath);
+    }
 };
 
-Tw2TextureParameter.prototype.Initialize = function ()
+Tw2TextureParameter.prototype.Initialize = function()
 {
     if (this.resourcePath != '')
     {
@@ -79,12 +79,13 @@ Tw2TextureParameter.prototype.Initialize = function ()
             this._sampler.magFilter = device.gl.LINEAR;
         }
         var wrapModes = [
-                    0,
-                    device.gl.REPEAT,
-                    device.gl.MIRRORED_REPEAT,
-                    device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE];
+            0,
+            device.gl.REPEAT,
+            device.gl.MIRRORED_REPEAT,
+            device.gl.CLAMP_TO_EDGE,
+            device.gl.CLAMP_TO_EDGE,
+            device.gl.CLAMP_TO_EDGE
+        ];
         this._sampler.addressU = wrapModes[this.addressUMode];
         this._sampler.addressV = wrapModes[this.addressVMode];
         this._sampler.addressW = wrapModes[this.addressWMode];
@@ -93,7 +94,7 @@ Tw2TextureParameter.prototype.Initialize = function ()
     }
 };
 
-Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices)
+Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
 {
     if (this.textureRes)
     {

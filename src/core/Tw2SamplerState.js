@@ -11,11 +11,11 @@ function Tw2SamplerState()
     this.anisotropy = 1;
     this.samplerType = device.gl.TEXTURE_2D;
     this.isVolume = false;
-    
+
     this.hash = 0;
 }
 
-Tw2SamplerState.prototype.ComputeHash = function ()
+Tw2SamplerState.prototype.ComputeHash = function()
 {
     this.hash = 2166136261;
     this.hash *= 16777619;
@@ -30,7 +30,7 @@ Tw2SamplerState.prototype.ComputeHash = function ()
     this.hash ^= this.anisotropy;
 };
 
-Tw2SamplerState.prototype.Apply = function (hasMipMaps)
+Tw2SamplerState.prototype.Apply = function(hasMipMaps)
 {
     var targetType = this.samplerType;
     var d = device;
