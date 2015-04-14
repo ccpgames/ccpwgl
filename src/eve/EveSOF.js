@@ -591,11 +591,13 @@ function EveSOF() {
     };
 
     function getDataKeys(name) {
-        var names = {};
-        for (var i in data[name]) {
-            names[i] = data[name][i].description || '';
+        if (name !== 'all') {
+            return Object.getOwnPropertyNames(data[name]).map(function (p) {
+                return data[name][p].description || ''
+            })
+        } else {
+            return data
         }
-        return names;
     }
 
     this.GetHullNames = function (callback) {
@@ -615,4 +617,12 @@ function EveSOF() {
             callback(getDataKeys('race'));
        });
     };
+    
+    this.GetSofData = function (callback) {
+        this.LoadData(function () {
+            callback(getDataKeys('all'));
+        })
+    };
+
+    
 }
