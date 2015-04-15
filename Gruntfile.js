@@ -164,5 +164,5 @@ module.exports = function(grunt)
     grunt.registerTask('format', ['jsbeautifier']);
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('compile', ['uglify']);
-    grunt.registerTask('default', ['format', 'compile']);
+    grunt.registerTask('default', ['compile']);
 };
