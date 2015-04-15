@@ -1,4 +1,4 @@
-function EvePlaneSet()
+﻿function EvePlaneSet()
 {
     this.name = '';
     this.planes = [];
@@ -24,12 +24,12 @@ function EvePlaneSet()
     this._decl.RebuildHash();
 }
 
-EvePlaneSet.prototype.Initialize = function()
+EvePlaneSet.prototype.Initialize = function ()
 {
     this.RebuildBuffers();
 };
 
-EvePlaneSet.prototype.RebuildBuffers = function()
+EvePlaneSet.prototype.RebuildBuffers = function ()
 {
     var vertexSize = 38;
     var array = new Float32Array(this.planes.length * 4 * vertexSize);
@@ -125,7 +125,7 @@ function EvePlaneSetBatch()
     this.planeSet = null;
 }
 
-EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
+EvePlaneSetBatch.prototype.Commit = function (overrideEffect)
 {
     this.planeSet.Render(overrideEffect);
 };
@@ -133,7 +133,7 @@ EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
 Inherit(EvePlaneSetBatch, Tw2RenderBatch);
 
 
-EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (this.display && mode == device.RM_ADDITIVE)
     {
@@ -145,9 +145,9 @@ EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
 };
 
-EvePlaneSet.prototype.Render = function(overrideEffect)
+EvePlaneSet.prototype.Render = function (overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
@@ -174,12 +174,12 @@ EvePlaneSet.prototype.Render = function(overrideEffect)
     }
 };
 
-EvePlaneSet.prototype.Update = function(dt)
+EvePlaneSet.prototype.Update = function (dt)
 {
     this._time += dt;
 };
 
-EvePlaneSet.prototype.Clear = function()
+EvePlaneSet.prototype.Clear = function ()
 {
     this.planes = [];
 };

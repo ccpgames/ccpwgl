@@ -1,29 +1,20 @@
-function EveSOF()
-{
+function EveSOF() {
     var data = null;
     var spriteEffectSkinned = null;
     var spriteEffect = null;
 
-    function _get(obj, property, defaultValue)
-    {
-        if (property in obj)
-        {
+    function _get(obj, property, defaultValue) {
+        if (property in obj) {
             return obj[property];
         }
         return defaultValue;
     }
 
-    function GetFactionMeshAreaParameters(areaName, paramName, faction)
-    {
-        var areas = _get(faction, 'areas',
-        {});
-        if (areaName in areas)
-        {
-            var area = _get(areas, areaName,
-            {});
-            if (paramName in _get(area, 'parameters',
-                {}))
-            {
+    function GetFactionMeshAreaParameters(areaName, paramName, faction) {
+        var areas = _get(faction, 'areas', {});
+        if (areaName in areas) {
+            var area = _get(areas, areaName, {});
+            if (paramName in _get(area, 'parameters', {})) {
                 return _get(area.parameters[paramName], 'value', [0, 0, 0, 0]);
             }
         }
@@ -32,33 +23,25 @@ function EveSOF()
     /**
      * @return {string}
      */
-    function GetShaderPrefix(isAnimated)
-    {
+    function GetShaderPrefix(isAnimated) {
         return isAnimated ? _get(data['generic'], 'shaderPrefixAnimated', '') : _get(data['generic'], 'shaderPrefix', '');
     }
 
-    function ModifyTextureResPath(path, name, hull, faction)
-    {
-        if (!_get(faction, 'resPathInsert', '').length)
-        {
+    function ModifyTextureResPath(path, name, hull, faction) {
+        if (!_get(faction, 'resPathInsert', '').length) {
             return path;
         }
-        if (name == 'PgrMap' || name == 'PgsMap' || name == 'SpecularMap' || name == 'MaskMap' || name == 'SubMaskMap')
-        {
+        if (name == 'PgrMap' || name == 'PgsMap' || name == 'SpecularMap' || name == 'MaskMap' || name == 'SubMaskMap') {
             var index = path.lastIndexOf('/');
             var pathCopy = path;
-            if (index >= 0)
-            {
+            if (index >= 0) {
                 pathCopy = path.substr(0, index + 1) + faction['resPathInsert'] + '/' + path.substr(index + 1);
             }
             index = pathCopy.lastIndexOf('_');
-            if (index >= 0)
-            {
+            if (index >= 0) {
                 pathCopy = pathCopy.substr(0, index) + '_' + faction['resPathInsert'] + pathCopy.substr(index);
-                var textureOverrides = _get(hull, 'textureOverrides',
-                {});
-                if ((name in textureOverrides) && (faction.name in textureOverrides[name]))
-                {
+                var textureOverrides = _get(hull, 'textureOverrides', {});
+                if ((name in  textureOverrides) && (faction.name in textureOverrides[name])) {
                     return pathCopy;
                 }
             }
@@ -69,36 +52,30 @@ function EveSOF()
     /**
      * @return {string}
      */
-    function ModifyShaderPath(shader, isSkinned)
-    {
+    function ModifyShaderPath(shader, isSkinned) {
         var prefix = GetShaderPrefix(isSkinned);
         shader = '/' + shader;
         var index = shader.lastIndexOf('/');
         return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
     }
 
-    function FillMeshAreas(areas, areasName, hull, faction)
-    {
+    function FillMeshAreas(areas, areasName, hull, faction) {
         var hullAreas = _get(hull, areasName, []);
-        for (var i = 0; i < hullAreas.length; ++i)
-        {
+        for (var i = 0; i < hullAreas.length; ++i) {
             var area = hullAreas[i];
             var effect = new Tw2Effect();
             effect.effectFilePath = data['generic']['areaShaderLocation'] + ModifyShaderPath(area.shader, hull['isSkinned']);
             var hullParameters = _get(area, 'parameters', []);
-            for (var j = 0; j < hullParameters.length; ++j)
-            {
+            for (var j = 0; j < hullParameters.length; ++j) {
                 var hullParameter = hullParameters[j];
                 var value = GetFactionMeshAreaParameters(area.name, hullParameter.name, faction);
-                if (!value)
-                {
+                if (!value) {
                     value = _get(hullParameter, 'value', [0, 0, 0, 0]);
                 }
                 effect.parameters[hullParameter.name] = new Tw2Vector4Parameter(hullParameter.name, value);
             }
             var hullTextures = _get(area, 'textures', []);
-            for (j = 0; j < hullTextures.length; ++j)
-            {
+            for (j = 0; j < hullTextures.length; ++j) {
                 var hullTexture = hullTextures[j];
                 var path = _get(hullTexture, 'resFilePath', '');
                 path = ModifyTextureResPath(path, hullTexture.name, hull, faction);
@@ -115,9 +92,7 @@ function EveSOF()
         }
 
     }
-
-    function SetupMesh(ship, hull, faction)
-    {
+    function SetupMesh(ship, hull, faction) {
         var mesh = new Tw2Mesh();
         mesh.geometryResPath = hull['geometryResFilePath'];
         ship.boundingSphereCenter[0] = hull.boundingSphere[0];
@@ -132,57 +107,45 @@ function EveSOF()
         ship.mesh = mesh;
     }
 
-    function SetupDecals(ship, hull, faction)
-    {
+    function SetupDecals(ship, hull, faction) {
         var hullDecals = _get(hull, 'hullDecals', []);
-        for (var i = 0; i < hullDecals.length; ++i)
-        {
+        for (var i = 0; i < hullDecals.length; ++i) {
             var hullDecal = hullDecals[i];
             var factionDecal = null;
             var factionIndex = 'group' + _get(hullDecal, 'groupIndex', -1);
-            if (faction.decals && (factionIndex in faction.decals))
-            {
+            if (faction.decals && (factionIndex in faction.decals)) {
                 factionDecal = faction.decals[factionIndex];
             }
-            if (factionDecal && !factionDecal['isVisible'])
-            {
+            if (factionDecal && !factionDecal['isVisible']) {
                 continue;
             }
             var effect = new Tw2Effect();
-            if (factionDecal && factionDecal.shader && factionDecal.shader.length)
-            {
+            if (factionDecal && factionDecal.shader && factionDecal.shader.length) {
                 effect.effectFilePath = data['generic']['decalShaderLocation'] + '/' + GetShaderPrefix(false) + factionDecal.shader;
             }
-            else if (hullDecal.shader && hullDecal.shader.length)
-            {
+            else if (hullDecal.shader && hullDecal.shader.length) {
                 effect.effectFilePath = data['generic']['decalShaderLocation'] + '/' + GetShaderPrefix(false) + hullDecal.shader;
             }
-            else
-            {
+            else {
                 continue;
             }
             var hullParameters = _get(hullDecal, 'parameters', []);
-            for (var j = 0; j < hullParameters.length; ++j)
-            {
+            for (var j = 0; j < hullParameters.length; ++j) {
                 effect.parameters[hullParameters[j].name] = new Tw2Vector4Parameter(hullParameters[j].name,
                     _get(hullParameters[j], 'value', [0, 0, 0, 0]));
             }
             var hullTextures = _get(hullDecal, 'textures', []);
-            for (j = 0; j < hullTextures.length; ++j)
-            {
+            for (j = 0; j < hullTextures.length; ++j) {
                 effect.parameters[hullTextures[j].name] = new Tw2TextureParameter(hullTextures[j].name, hullTextures[j]['resFilePath']);
             }
-            if (factionDecal)
-            {
+            if (factionDecal) {
                 var factionParameters = _get(factionDecal, 'parameters', []);
-                for (j = 0; j < factionParameters.length; ++j)
-                {
+                for (j = 0; j < factionParameters.length; ++j) {
                     effect.parameters[factionParameters[j].name] = new Tw2Vector4Parameter(factionParameters[j].name,
                         _get(factionParameters[j], 'value', [0, 0, 0, 0]));
                 }
                 var factionTextures = _get(factionDecal, 'textures', []);
-                for (j = 0; j < factionTextures.length; ++j)
-                {
+                for (j = 0; j < factionTextures.length; ++j) {
                     effect.parameters[factionTextures[j].name] = new Tw2TextureParameter(factionTextures[j].name, factionTextures[j]['resFilePath']);
                 }
             }
@@ -201,26 +164,20 @@ function EveSOF()
         }
     }
 
-    function SetupSpriteSets(ship, hull, faction)
-    {
+    function SetupSpriteSets(ship, hull, faction) {
         var hullSets = _get(hull, 'spriteSets', []);
-        var factionSets = _get(faction, 'spriteSets',
-        {});
-        for (var i = 0; i < hullSets.length; ++i)
-        {
+        var factionSets = _get(faction, 'spriteSets', {});
+        for (var i = 0; i < hullSets.length; ++i) {
             var spriteSet = new EveSpriteSet();
             spriteSet.effect = hullSets[i]['skinned'] ? spriteEffectSkinned : spriteEffect;
             var hullData = _get(hullSets[i], 'items', []);
-            for (var j = 0; j < hullData.length; ++j)
-            {
-                if (!('group' + _get(hullData[j], 'groupIndex', -1) in factionSets))
-                {
+            for (var j = 0; j < hullData.length; ++j) {
+                if (!('group' + _get(hullData[j], 'groupIndex', -1) in factionSets)) {
                     continue;
                 }
                 var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
                 var item = new EveSpriteSetItem();
-                if ('color' in factionSet)
-                {
+                if ('color' in factionSet) {
                     item.color = factionSet.color;
                 }
                 item.blinkPhase = _get(hullData[j], 'blinkPhase', 0);
@@ -229,8 +186,7 @@ function EveSOF()
                 item.falloff = _get(hullData[j], 'falloff', 0);
                 item.maxScale = _get(hullData[j], 'maxScale', 10);
                 item.minScale = _get(hullData[j], 'minScale', 1);
-                if ('position' in hullData[j])
-                {
+                if ('position' in hullData[j]) {
                     item.position = hullData[j].position;
                 }
                 spriteSet.sprites.push(item);
@@ -240,32 +196,26 @@ function EveSOF()
         }
     }
 
-    function _scale(a, b, c)
-    {
+    function _scale(a, b, c) {
         c[0] = a[0] * b;
         c[1] = a[1] * b;
         c[2] = a[2] * b;
         c[3] = a[3] * b;
     }
 
-    function SetupSpotlightSets(ship, hull, faction)
-    {
+    function SetupSpotlightSets(ship, hull, faction) {
         var hullSets = _get(hull, 'spotlightSets', []);
-        var factionSets = _get(faction, 'spotlightSets',
-        {});
-        for (var i = 0; i < hullSets.length; ++i)
-        {
+        var factionSets = _get(faction, 'spotlightSets', {});
+        for (var i = 0; i < hullSets.length; ++i) {
             var spotlightSet = new EveSpotlightSet();
 
             spotlightSet.coneEffect = new Tw2Effect();
             spotlightSet.glowEffect = new Tw2Effect();
-            if (hullSets[i]['skinned'])
-            {
+            if (hullSets[i]['skinned']) {
                 spotlightSet.coneEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_spotlightcone.fx';
                 spotlightSet.glowEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_spotlightglow.fx';
             }
-            else
-            {
+            else {
                 spotlightSet.coneEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/spotlightcone.fx';
                 spotlightSet.glowEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/spotlightglow.fx';
             }
@@ -276,31 +226,26 @@ function EveSOF()
             spotlightSet.glowEffect.Initialize();
 
             var hullData = _get(hullSets[i], 'items', []);
-            for (var j = 0; j < hullData.length; ++j)
-            {
+            for (var j = 0; j < hullData.length; ++j) {
                 var item = new EveSpotlightSetItem();
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
                 item.boosterGainInfluence = _get(hullData[j], 'boosterGainInfluence', 0);
                 var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
-                if (factionSet)
-                {
+                if (factionSet) {
                     _scale(_get(factionSet, 'coneColor', [0, 0, 0, 0]), _get(hullData[j], 'coneIntensity', 0), item.coneColor);
                     _scale(_get(factionSet, 'spriteColor', [0, 0, 0, 0]), _get(hullData[j], 'spriteIntensity', 0), item.spriteColor);
                     _scale(_get(factionSet, 'flareColor', [0, 0, 0, 0]), _get(hullData[j], 'flareIntensity', 0), item.flareColor);
                 }
-                else
-                {
+                else {
                     quat4.set([1, 1, 1, 1], item.coneColor);
                     quat4.set([1, 1, 1, 1], item.flareColor);
                     quat4.set([1, 1, 1, 1], item.spriteColor);
                 }
                 item.spriteScale = _get(hullData[j], 'spriteScale', [1, 1, 1]);
-                if ('transform' in hullData[j])
-                {
+                if ('transform' in hullData[j]) {
                     item.transform = hullData[j].transform;
                 }
-                else
-                {
+                else {
                     mat4.identity(item.transform);
                 }
                 spotlightSet.spotlightItems.push(item);
@@ -310,30 +255,23 @@ function EveSOF()
         }
     }
 
-    function _assignIfExists(dest, src, attr)
-    {
-        if (attr in src)
-        {
+    function _assignIfExists(dest, src, attr) {
+        if (attr in src) {
             dest[attr] = src[attr];
         }
     }
 
-    function SetupPlaneSets(ship, hull, faction)
-    {
+    function SetupPlaneSets(ship, hull, faction) {
         var hullSets = _get(hull, 'planeSets', []);
-        var factionSets = _get(faction, 'planeSets',
-        {});
-        for (var i = 0; i < hullSets.length; ++i)
-        {
+        var factionSets = _get(faction, 'planeSets', {});
+        for (var i = 0; i < hullSets.length; ++i) {
             var planeSet = new EvePlaneSet();
 
             planeSet.effect = new Tw2Effect();
-            if (hullSets[i]['skinned'])
-            {
+            if (hullSets[i]['skinned']) {
                 planeSet.effect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_planeglow.fx';
             }
-            else
-            {
+            else {
                 planeSet.effect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/planeglow.fx';
             }
             planeSet.effect.parameters['Layer1Map'] = new Tw2TextureParameter('Layer1Map', hullSets[i]['layer1MapResPath']);
@@ -343,8 +281,7 @@ function EveSOF()
             planeSet.effect.Initialize();
 
             var hullData = _get(hullSets[i], 'items', []);
-            for (var j = 0; j < hullData.length; ++j)
-            {
+            for (var j = 0; j < hullData.length; ++j) {
                 var item = new EvePlaneSetItem();
                 _assignIfExists(item, hullData[j], 'position');
                 _assignIfExists(item, hullData[j], 'rotation');
@@ -357,8 +294,7 @@ function EveSOF()
                 item.boneIndex = _get(hullData[j], 'boneIndex', -1);
 
                 var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
-                if (factionSet)
-                {
+                if (factionSet) {
                     quat4.set(_get(factionSet, 'color', [0, 0, 0, 0]), item.color);
                 }
                 planeSet.planes.push(item);
@@ -368,16 +304,13 @@ function EveSOF()
         }
     }
 
-    function SetupBoosters(ship, hull, race)
-    {
-        if (!('booster' in hull))
-        {
+    function SetupBoosters(ship, hull, race) {
+        if (!('booster' in hull)) {
             return;
         }
         var booster = new EveBoosterSet();
         var hullBooster = hull['booster'];
-        var raceBooster = _get(race, 'booster',
-        {});
+        var raceBooster = _get(race, 'booster', {});
         _assignIfExists(booster, raceBooster, 'glowScale');
         _assignIfExists(booster, raceBooster, 'glowColor');
         _assignIfExists(booster, raceBooster, 'symHaloScale');
@@ -400,16 +333,13 @@ function EveSOF()
         booster.glows.effect.Initialize();
 
         var items = _get(hullBooster, 'items', []);
-        for (var i = 0; i < items.length; ++i)
-        {
+        for (var i = 0; i < items.length; ++i) {
             var locator = new EveLocator();
             locator.name = 'locator_booster_' + (i + 1);
-            if ('transform' in items[i])
-            {
+            if ('transform' in items[i]) {
                 locator.transform = items[i].transform;
             }
-            else
-            {
+            else {
                 mat4.identity(locator.transform);
             }
             ship.locators.push(locator);
@@ -418,31 +348,24 @@ function EveSOF()
         ship.boosters = booster;
     }
 
-    function SetupLocators(ship, hull)
-    {
+    function SetupLocators(ship, hull) {
         var hullLocators = _get(hull, 'locatorTurrets', []);
-        for (var i = 0; i < hullLocators.length; ++i)
-        {
+        for (var i = 0; i < hullLocators.length; ++i) {
             var locator = new EveLocator();
             locator.name = hullLocators[i].name;
-            if ('transform' in hullLocators[i])
-            {
+            if ('transform' in hullLocators[i]) {
                 locator.transform = hullLocators[i].transform;
             }
-            else
-            {
+            else {
                 mat4.identity(locator.transform);
             }
             ship.locators.push(locator);
         }
     }
 
-    function BindParticleEmitters(obj, curveSet, curve)
-    {
-        for (var i = 0; i < obj.particleEmitters.length; ++i)
-        {
-            if ('rate' in obj.particleEmitters[i])
-            {
+    function BindParticleEmitters(obj, curveSet, curve) {
+        for (var i = 0; i < obj.particleEmitters.length; ++i) {
+            if ('rate' in obj.particleEmitters[i]) {
                 var binding = new Tw2ValueBinding();
                 binding.sourceObject = curve;
                 binding.sourceAttribute = 'currentValue';
@@ -452,47 +375,37 @@ function EveSOF()
                 curveSet.bindings.push(binding);
             }
         }
-        for (i = 0; i < obj.children.length; ++i)
-        {
+        for (i = 0; i < obj.children.length; ++i) {
             BindParticleEmitters(obj.children[i], curveSet, curve);
         }
     }
 
-    function SetupChildren(ship, hull, curveSet, curves)
-    {
-        function onChildLoaded(child)
-        {
-            return function(obj)
-            {
+    function SetupChildren(ship, hull, curveSet, curves) {
+        function onChildLoaded(child) {
+            return function (obj) {
                 ship.children.push(obj);
                 _assignIfExists(obj, child, 'translation');
                 _assignIfExists(obj, child, 'rotation');
                 _assignIfExists(obj, child, 'scaling');
                 var id = _get(child, 'id', -1);
-                if (id != -1 && curves[id])
-                {
+                if (id != -1 && curves[id]) {
                     BindParticleEmitters(obj, curveSet, curves[id]);
                 }
             };
         }
         var children = _get(hull, 'children', []);
-        for (var i = 0; i < children.length; ++i)
-        {
+        for (var i = 0; i < children.length; ++i) {
             resMan.GetObject(children[i]['redFilePath'], onChildLoaded(children[i]));
         }
     }
 
-    function SetupAnimations(ship, hull)
-    {
+    function SetupAnimations(ship, hull) {
         var id_curves = [];
         var curveSet = null;
         var animations = _get(hull, 'animations', []);
-        for (var i = 0; i < animations.length; ++i)
-        {
-            if (_get(animations[i], 'id', -1) != -1 && (_get(animations[i], 'startRate', -1) != -1))
-            {
-                if (!curveSet)
-                {
+        for (var i = 0; i < animations.length; ++i) {
+            if (_get(animations[i], 'id', -1) != -1 && (_get(animations[i], 'startRate', -1) != -1)) {
+                if (!curveSet) {
                     curveSet = new Tw2CurveSet();
                 }
                 var curve = new Tw2ScalarCurve2();
@@ -507,8 +420,7 @@ function EveSOF()
                 id_curves[_get(animations[i], 'id', -1)] = curve;
             }
         }
-        if (curveSet)
-        {
+        if (curveSet) {
             curveSet.Initialize();
         }
         return [curveSet, id_curves];
@@ -517,8 +429,7 @@ function EveSOF()
     var dataLoading = false;
     var pendingLoads = [];
 
-    function Build(dna)
-    {
+    function Build(dna) {
         var parts = dna.split(':');
         var ship = new EveShip();
         var hull = data['hull'][parts[0]];
@@ -538,16 +449,12 @@ function EveSOF()
         return ship;
     }
 
-    this.LoadData = function(callback)
-    {
-        if (data == null)
-        {
-            if (callback)
-            {
+    this.LoadData = function (callback) {
+        if (data == null) {
+            if (callback) {
                 pendingLoads.push(callback);
             }
-            if (!dataLoading)
-            {
+            if (!dataLoading) {
                 spriteEffect = new Tw2Effect();
                 spriteEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/blinkinglights.fx';
                 spriteEffect.parameters['MainIntensity'] = new Tw2FloatParameter('MainIntensity', 1);
@@ -560,11 +467,9 @@ function EveSOF()
                 spriteEffectSkinned.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                 spriteEffectSkinned.Initialize();
 
-                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function(obj)
-                {
+                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function (obj) {
                     data = obj;
-                    for (var i = 0; i < pendingLoads.length; ++i)
-                    {
+                    for (var i = 0; i < pendingLoads.length; ++i) {
                         pendingLoads[i]();
                     }
                     pendingLoads = [];
@@ -572,33 +477,25 @@ function EveSOF()
                 dataLoading = true;
             }
         }
-        else
-        {
-            if (callback)
-            {
+        else {
+            if (callback) {
                 callback();
             }
         }
     };
 
-    this.BuildFromDNA = function(dna, callback)
-    {
-        if (data == null)
-        {
-            this.LoadData(function()
-            {
+    this.BuildFromDNA = function (dna, callback) {
+        if (data == null) {
+            this.LoadData(function () {
                 var result = Build(dna);
-                if (callback)
-                {
+                if (callback) {
                     callback(result);
                 }
             });
         }
-        else
-        {
+        else {
             var result = Build(dna);
-            if (callback)
-            {
+            if (callback) {
                 callback(result);
             }
         }
@@ -606,24 +503,19 @@ function EveSOF()
 
     var materialPrefixes = ["Material", "Mask", "SubMask"];
 
-    function GetTurretMaterialParameter(name, matUsageMain, matUsageMask, areaData)
-    {
+    function GetTurretMaterialParameter(name, matUsageMain, matUsageMask, areaData) {
         var materialId = -1;
-        if (name.substr(0, materialPrefixes[0].length).toLowerCase() == materialPrefixes[0].toLowerCase())
-        {
+        if (name.substr(0, materialPrefixes[0].length).toLowerCase() == materialPrefixes[0].toLowerCase()) {
             materialId = matUsageMain;
             name = name.substr(materialPrefixes[0].length);
         }
-        else if (name.substr(0, materialPrefixes[1].length).toLowerCase() == materialPrefixes[1].toLowerCase())
-        {
+        else if (name.substr(0, materialPrefixes[1].length).toLowerCase() == materialPrefixes[1].toLowerCase()) {
             materialId = matUsageMask;
             name = name.substr(materialPrefixes[1].length);
         }
-        if (materialId >= 0 && materialId < 3)
-        {
+        if (materialId >= 0 && materialId < 3) {
             name = materialPrefixes[materialId] + name;
-            if (name in areaData.parameters)
-            {
+            if (name in areaData.parameters) {
                 return areaData.parameters[name].value;
             }
         }
@@ -631,15 +523,12 @@ function EveSOF()
 
     var zeroColor = [0, 0, 0, 0];
 
-    function CombineTurretMaterial(name, parentValue, turretValue, overrideMethod)
-    {
-        switch (overrideMethod)
-        {
+    function CombineTurretMaterial(name, parentValue, turretValue, overrideMethod) {
+        switch (overrideMethod) {
             case 'overridable':
                 return parentValue ? parentValue : turretValue ? turretValue : zeroColor;
             case 'half_overridable':
-                if (name.indexOf('GlowColor') >= 0)
-                {
+                if (name.indexOf('GlowColor') >= 0) {
                     return turretValue ? turretValue : zeroColor;
                 }
                 return parentValue ? parentValue : turretValue ? turretValue : zeroColor;
@@ -650,41 +539,32 @@ function EveSOF()
         return zeroColor;
     }
 
-    function SetupTurretMaterial(turretSet, parentFactionName, turretFactionName)
-    {
+    function SetupTurretMaterial(turretSet, parentFactionName, turretFactionName) {
         var parentFaction = data['faction'][parentFactionName];
         var turretFaction = data['faction'][turretFactionName];
         var parentArea = null;
-        if (parentFaction && parentFaction.areas && ('hull' in parentFaction.areas))
-        {
+        if (parentFaction && parentFaction.areas && ('hull' in parentFaction.areas)) {
             parentArea = parentFaction.areas.hull;
         }
         var turretArea = null;
-        if (turretFaction && turretFaction.areas && ('hull' in turretFaction.areas))
-        {
+        if (turretFaction && turretFaction.areas && ('hull' in turretFaction.areas)) {
             turretArea = turretFaction.areas.hull;
         }
-        if (!parentArea && !turretArea)
-        {
+        if (!parentArea && !turretArea) {
             return;
         }
-        if (turretSet.turretEffect)
-        {
+        if (turretSet.turretEffect) {
             var params = turretSet.turretEffect.parameters;
-            for (var i in params)
-            {
-                if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype)
-                {
+            for (var i in params) {
+                if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype) {
                     continue;
                 }
                 var parentValue = null;
                 var turretValue = null;
-                if (parentArea)
-                {
+                if (parentArea) {
                     parentValue = GetTurretMaterialParameter(i, _get(parentFaction, 'materialUsageMain', 0), _get(parentFaction, 'materialUsageMask', 1), parentArea);
                 }
-                if (turretArea)
-                {
+                if (turretArea) {
                     turretValue = GetTurretMaterialParameter(i, _get(parentFaction, 'materialUsageMain', 0), _get(parentFaction, 'materialUsageMask', 1), parentArea);
                 }
                 quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
@@ -693,60 +573,46 @@ function EveSOF()
         }
     }
 
-    this.SetupTurretMaterial = function(turretSet, parentFactionName, turretFactionName, callback)
-    {
-        if (data == null)
-        {
-            this.LoadData(function()
-            {
+    this.SetupTurretMaterial = function (turretSet, parentFactionName, turretFactionName, callback) {
+        if (data == null) {
+            this.LoadData(function () {
                 SetupTurretMaterial(turretSet, parentFactionName, turretFactionName);
-                if (callback)
-                {
+                if (callback) {
                     callback();
                 }
             });
         }
-        else
-        {
+        else {
             SetupTurretMaterial(turretSet, parentFactionName, turretFactionName);
-            if (callback)
-            {
+            if (callback) {
                 callback();
             }
         }
     };
 
-    function getDataKeys(name)
-    {
+    function getDataKeys(name) {
         var names = {};
-        for (var i in data[name])
-        {
+        for (var i in data[name]) {
             names[i] = data[name][i].description || '';
         }
         return names;
     }
 
-    this.GetHullNames = function(callback)
-    {
-        this.LoadData(function()
-        {
+    this.GetHullNames = function (callback) {
+        this.LoadData(function () {
             callback(getDataKeys('hull'));
-        });
+       });
     };
 
-    this.GetFactionNames = function(callback)
-    {
-        this.LoadData(function()
-        {
+    this.GetFactionNames = function (callback) {
+        this.LoadData(function () {
             callback(getDataKeys('faction'));
-        });
+       });
     };
 
-    this.GetRaceNames = function(callback)
-    {
-        this.LoadData(function()
-        {
+    this.GetRaceNames = function (callback) {
+        this.LoadData(function () {
             callback(getDataKeys('race'));
-        });
+       });
     };
 }

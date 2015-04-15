@@ -1,4 +1,4 @@
-function Tw2ValueBinding()
+﻿function Tw2ValueBinding()
 {
     this.name = '';
     this.sourceObject = null;
@@ -12,7 +12,7 @@ function Tw2ValueBinding()
     this._destinationElement = 0;
 }
 
-Tw2ValueBinding.prototype.Initialize = function()
+Tw2ValueBinding.prototype.Initialize = function ()
 {
     if (!this.sourceObject || this.sourceAttribute == '')
     {
@@ -206,7 +206,7 @@ Tw2ValueBinding.prototype.Initialize = function()
     }
 }
 
-Tw2ValueBinding.prototype.CopyValue = function()
+Tw2ValueBinding.prototype.CopyValue = function ()
 {
     if (this._copyFunc)
     {
@@ -218,12 +218,12 @@ Tw2ValueBinding.prototype.CopyValue = function()
     }
 }
 
-Tw2ValueBinding.prototype._CopyValueToValue = function()
+Tw2ValueBinding.prototype._CopyValueToValue = function ()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
 }
 
-Tw2ValueBinding.prototype._CopyArray = function()
+Tw2ValueBinding.prototype._CopyArray = function ()
 {
     var count = Math.min(this.destinationObject[this.destinationAttribute].length, this.sourceObject[this.sourceAttribute].length);
     for (var i = 0; i < count; ++i)
@@ -232,28 +232,24 @@ Tw2ValueBinding.prototype._CopyArray = function()
     }
 }
 
-Tw2ValueBinding.prototype._CopyElementToElement = function()
+Tw2ValueBinding.prototype._CopyElementToElement = function ()
 {
     this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
 }
 
-Tw2ValueBinding.prototype._ReplicateValue = function()
-{
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
-    {
+Tw2ValueBinding.prototype._ReplicateValue = function () {
+    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[i];
     }
 }
 
-Tw2ValueBinding.prototype._ReplicateElement = function()
-{
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
-    {
+Tw2ValueBinding.prototype._ReplicateElement = function () {
+    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[i];
     }
 }
 
-Tw2ValueBinding.prototype._ExtractPos = function()
+Tw2ValueBinding.prototype._ExtractPos = function ()
 {
     for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
     {
@@ -261,17 +257,17 @@ Tw2ValueBinding.prototype._ExtractPos = function()
     }
 }
 
-Tw2ValueBinding.prototype._CopyElementToValue = function()
+Tw2ValueBinding.prototype._CopyElementToValue = function ()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
 }
 
-Tw2ValueBinding.prototype._CopyValueToElement = function()
+Tw2ValueBinding.prototype._CopyValueToElement = function ()
 {
     this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
 }
 
-Tw2ValueBinding.prototype._CopyFloatToBoolean = function()
+Tw2ValueBinding.prototype._CopyFloatToBoolean = function ()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] != 0;
 }

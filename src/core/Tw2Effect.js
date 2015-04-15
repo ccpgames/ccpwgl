@@ -1,22 +1,19 @@
-function Tw2SamplerOverride()
-{
-    this.name = '';
+function Tw2SamplerOverride() {
+	this.name = '';
 
-    this.addressU = 0;
-    this.addressV = 0;
-    this.addressW = 0;
-    this.filter = 0;
-    this.mipFilter = 0;
-    this.lodBias = 0;
-    this.maxMipLevel = 0;
-    this.maxAnisotropy = 0;
+	this.addressU = 0;
+	this.addressV = 0;
+	this.addressW = 0;
+	this.filter = 0;
+	this.mipFilter = 0;
+	this.lodBias = 0;
+	this.maxMipLevel = 0;
+	this.maxAnisotropy = 0;
 
     var sampler = null;
 
-    this.GetSampler = function(originalSampler)
-    {
-        if (!sampler)
-        {
+    this.GetSampler = function (originalSampler) {
+        if (!sampler) {
             sampler = new Tw2SamplerState();
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
@@ -64,8 +61,7 @@ function Tw2SamplerOverride()
                 device.gl.MIRRORED_REPEAT,
                 device.gl.CLAMP_TO_EDGE,
                 device.gl.CLAMP_TO_EDGE,
-                device.gl.CLAMP_TO_EDGE
-            ];
+                device.gl.CLAMP_TO_EDGE];
             sampler.addressU = wrapModes[this.addressU];
             sampler.addressV = wrapModes[this.addressV];
             sampler.addressW = wrapModes[this.addressW];
@@ -86,12 +82,12 @@ function Tw2Effect()
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-    this.parameters = {};
-    this.passes = [];
+	this.parameters = {};
+	this.passes = [];
     this.samplerOverrides = [];
 }
 
-Tw2Effect.prototype.Initialize = function()
+Tw2Effect.prototype.Initialize = function ()
 {
     if (this.effectFilePath != '')
     {
@@ -104,20 +100,20 @@ Tw2Effect.prototype.Initialize = function()
     }
 };
 
-Tw2Effect.prototype.GetEffectRes = function()
+Tw2Effect.prototype.GetEffectRes = function ()
 {
     return this.effectRes;
 };
 
-Tw2Effect.prototype.RebuildCachedData = function(resource)
+Tw2Effect.prototype.RebuildCachedData = function (resource)
 {
-    if (resource.IsGood())
-    {
-        this.BindParameters();
-    }
+	if (resource.IsGood())
+	{
+		this.BindParameters();
+	}
 };
 
-Tw2Effect.prototype.BindParameters = function()
+Tw2Effect.prototype.BindParameters = function ()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
     {
@@ -230,12 +226,10 @@ Tw2Effect.prototype.BindParameters = function()
                 {
                     if (stageRes.samplers[n].registerIndex == p.slot)
                     {
-                        if (stageRes.samplers[n].name in this.samplerOverrides)
-                        {
+                        if (stageRes.samplers[n].name in this.samplerOverrides) {
                             p.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
                         }
-                        else
-                        {
+                        else {
                             p.sampler = stageRes.samplers[n];
                         }
                         break;
@@ -258,7 +252,7 @@ Tw2Effect.prototype.BindParameters = function()
     return true;
 };
 
-Tw2Effect.prototype.ApplyPass = function(pass)
+Tw2Effect.prototype.ApplyPass = function (pass)
 {
     if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -313,33 +307,33 @@ Tw2Effect.prototype.ApplyPass = function(pass)
     }
 };
 
-Tw2Effect.prototype.GetPassCount = function()
+Tw2Effect.prototype.GetPassCount = function ()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
-    {
-        return 0;
-    }
-    return this.passes.length;
+	{
+		return 0;
+	}
+	return this.passes.length;
 };
 
-Tw2Effect.prototype.GetPassInput = function(pass)
+Tw2Effect.prototype.GetPassInput = function (pass)
 {
-    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
-    {
-        return null;
-    }
-    if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-    {
+	if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+	{
+		return null;
+	}
+	if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+	{
         return this.effectRes.passes[pass].shadowShaderProgram.input;
-    }
-    else
-    {
+	}
+	else
+	{
         return this.effectRes.passes[pass].shaderProgram.input;
     }
 };
 
 
-Tw2Effect.prototype.Render = function(cb)
+Tw2Effect.prototype.Render = function (cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)

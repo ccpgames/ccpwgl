@@ -1,13 +1,13 @@
 function Tw2EffectRes()
 {
-    this._super.constructor.call(this);
+	this._super.constructor.call(this);
     this.passes = [];
     this.annotations = {};
 }
 
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
-Tw2EffectRes.prototype.Prepare = function(data, xml)
+Tw2EffectRes.prototype.Prepare = function (data, xml)
 {
     this.passes = [];
     this.annotations = {};
@@ -138,8 +138,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         return;
     }
 
-    /* var permutation = */
-    reader.ReadUInt32();
+    /* var permutation = */reader.ReadUInt32();
     var offset = reader.ReadUInt32();
     reader.cursor = 2 * 4 + headerSize * 3 * 4;
     var stringTableSize = reader.ReadUInt32();
@@ -151,9 +150,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     for (var passIx = 0; passIx < passCount; ++passIx)
     {
         var pass = {};
-        pass.stages = [
-        {},
-        {}];
+        pass.stages = [{}, {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
@@ -168,11 +165,9 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             for (var inputIx = 0; inputIx < inputCount; ++inputIx)
             {
                 var usage = reader.ReadUInt8();
-                /* var registerIndex = */
-                reader.ReadUInt8();
+                /* var registerIndex = */reader.ReadUInt8();
                 var usageIndex = reader.ReadUInt8();
-                /* var usedMask = */
-                reader.ReadUInt8();
+                /* var usedMask = */reader.ReadUInt8();
                 stage.inputDefinition.elements[inputIx] = new Tw2VertexElement(usage, usageIndex, 0);
             }
             stage.inputDefinition.RebuildHash();
@@ -276,12 +271,10 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             {
                 var registerIndex = reader.ReadUInt8();
                 var samplerName = '';
-                if (version >= 4)
-                {
+                if (version >= 4) {
                     samplerName = ReadString();
                 }
-                /* var comparison = */
-                reader.ReadUInt8();
+                /* var comparison = */reader.ReadUInt8();
                 var minFilter = reader.ReadUInt8();
                 var magFilter = reader.ReadUInt8();
                 var mipFilter = reader.ReadUInt8();
@@ -290,8 +283,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 var addressW = reader.ReadUInt8();
                 var mipLODBias = reader.ReadFloat32();
                 var maxAnisotropy = reader.ReadUInt8();
-                /* var comparisonFunc = */
-                reader.ReadUInt8();
+                /* var comparisonFunc = */reader.ReadUInt8();
                 var borderColor = quat4.create();
                 borderColor[0] = reader.ReadFloat32();
                 borderColor[1] = reader.ReadFloat32();
@@ -299,8 +291,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 borderColor[3] = reader.ReadFloat32();
                 var minLOD = reader.ReadFloat32();
                 var maxLOD = reader.ReadFloat32();
-                if (version < 4)
-                {
+                if (version < 4) {
                     reader.ReadUInt8();
                 }
                 var sampler = new Tw2SamplerState();
@@ -350,8 +341,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                     device.gl.MIRRORED_REPEAT,
                     device.gl.CLAMP_TO_EDGE,
                     device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE
-                ];
+                    device.gl.CLAMP_TO_EDGE];
                 sampler.addressU = wrapModes[addressU];
                 sampler.addressV = wrapModes[addressV];
                 sampler.addressW = wrapModes[addressW];
@@ -386,11 +376,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         {
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
-            pass.states.push(
-            {
-                'state': state,
-                'value': value
-            });
+            pass.states.push({ 'state': state, 'value': value });
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
@@ -447,7 +433,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     this.PrepareFinished(true);
 };
 
-Tw2EffectRes.prototype.ApplyPass = function(pass)
+Tw2EffectRes.prototype.ApplyPass = function (pass)
 {
     pass = this.passes[pass];
     for (var i = 0; i < pass.states.length; ++i)

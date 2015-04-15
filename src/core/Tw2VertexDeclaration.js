@@ -4,7 +4,7 @@ function Tw2VertexElement(usage, usageIndex, type, elements, offset)
     this.usageIndex = usageIndex;
     this.type = type;
     this.elements = elements;
-    this.offset = typeof(offset) === 'undefined' ? 0 : offset;
+    this.offset = typeof(offset)==='undefined' ? 0 : offset;
     this.location = null;
     this.customSetter = null;
 }
@@ -31,10 +31,10 @@ function CompareDeclarationElements(a, b)
     if (a.usage > b.usage) return 1;
     if (a.usageIndex < b.usageIndex) return -1;
     if (a.usageIndex > b.usageIndex) return 1;
-    return 0;
+    return 0; 
 }
 
-Tw2VertexDeclaration.prototype.RebuildHash = function()
+Tw2VertexDeclaration.prototype.RebuildHash = function ()
 {
     this._elementsSorted = [];
     for (var i = 0; i < this.elements.length; ++i)
@@ -44,7 +44,7 @@ Tw2VertexDeclaration.prototype.RebuildHash = function()
     this._elementsSorted.sort(CompareDeclarationElements);
 };
 
-Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
+Tw2VertexDeclaration.prototype.FindUsage = function (usage, usageIndex)
 {
     for (var i = 0; i < this._elementsSorted.length; ++i)
     {
@@ -68,7 +68,7 @@ Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
     return null;
 };
 
-Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
+Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
 {
     var index = 0;
     for (var i = 0; i < inputDecl._elementsSorted.length; ++i)
@@ -110,7 +110,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
     return true;
 };
 
-Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, stride)
+Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stride)
 {
     var index = 0;
     for (var i = 0; i < inputDecl._elementsSorted.length; ++i)

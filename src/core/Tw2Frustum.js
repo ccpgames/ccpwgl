@@ -1,4 +1,4 @@
-function Tw2Frustum()
+﻿function Tw2Frustum()
 {
     this.planes = [quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create(), ];
     this.viewPos = vec3.create();
@@ -7,7 +7,7 @@ function Tw2Frustum()
     this._tempVec = vec3.create();
 }
 
-Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
+Tw2Frustum.prototype.Initialize = function (view, proj, viewportSize)
 {
     var viewProj = mat4.create();
 
@@ -15,7 +15,7 @@ Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
     this.viewPos.set(viewProj.subarray(12, 14));
     this.viewDir.set(viewProj.subarray(8, 10));
 
-    this.halfWidthProjection = proj[0] * viewportSize * 0.5;
+	this.halfWidthProjection = proj[0] * viewportSize * 0.5;
 
     mat4.multiply(proj, view, viewProj);
     this.planes[0][0] = viewProj[2];
@@ -58,7 +58,7 @@ Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
     }
 }
 
-Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
+Tw2Frustum.prototype.IsSphereVisible = function (center, radius)
 {
     for (var i = 0; i < 6; ++i)
     {
@@ -70,7 +70,7 @@ Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
     return true;
 }
 
-Tw2Frustum.prototype.GetPixelSizeAccross = function(center, radius)
+Tw2Frustum.prototype.GetPixelSizeAccross = function (center, radius)
 {
     var d = vec3.subtract(this.viewPos, center, this._tempVec);
     var depth = vec3.dot(this.viewDir, d);
@@ -84,5 +84,5 @@ Tw2Frustum.prototype.GetPixelSizeAccross = function(center, radius)
         return 0;
     }
     var ratio = radius / depth;
-    return ratio * this.halfWidthProjection * 2;
+	return ratio * this.halfWidthProjection * 2;
 }

@@ -1,11 +1,11 @@
-function Tw2ParticleFluidDragForce()
+﻿function Tw2ParticleFluidDragForce()
 {
     this.drag = 0.1;
     this._tempVec = vec3.create();
     this._tempVec2 = vec3.create();
 }
 
-Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
+Tw2ParticleFluidDragForce.prototype.ApplyForce = function (position, velocity, force, dt, mass)
 {
     var speed = Math.sqrt(
         velocity.buffer[velocity.offset] * velocity.buffer[velocity.offset] +
@@ -34,4 +34,5 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
     }
 };
 
-Tw2ParticleFluidDragForce.prototype.Update = function() {};
+Tw2ParticleFluidDragForce.prototype.Update = function () { };
+

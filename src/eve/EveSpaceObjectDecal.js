@@ -3,18 +3,18 @@ function EveSpaceObjectDecal()
     this.display = true;
     this.decalEffect = null;
     this.name = '';
-
+    
     this.position = vec3.create();
     this.rotation = quat4.create();
     this.scaling = vec3.create();
-
+    
     this.decalMatrix = mat4.create();
     this.invDecalMatrix = mat4.create();
     this.parentGeometry = null;
     this.indexBuffer = [];
     this._indexBuffer = null;
     this.parentBoneIndex = -1;
-
+    
     this._perObjectData = new Tw2PerObjectData();
     this._perObjectData.perObjectVSData = new Tw2RawData();
     this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
@@ -27,10 +27,10 @@ function EveSpaceObjectDecal()
     mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
 
     variableStore.RegisterType('u_DecalMatrix', Tw2MatrixParameter);
-    variableStore.RegisterType('u_InvDecalMatrix', Tw2MatrixParameter);
+	variableStore.RegisterType('u_InvDecalMatrix', Tw2MatrixParameter);
 }
 
-EveSpaceObjectDecal.prototype.Initialize = function()
+EveSpaceObjectDecal.prototype.Initialize = function ()
 {
     var indexes = new Uint16Array(this.indexBuffer);
     this._indexBuffer = device.gl.createBuffer();
@@ -44,12 +44,12 @@ EveSpaceObjectDecal.prototype.Initialize = function()
     mat4.inverse(this.decalMatrix, this.invDecalMatrix);
 };
 
-EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
+EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
 {
     this.parentGeometry = geometryRes;
 };
 
-EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (mode != device.RM_DECAL)
     {
@@ -59,8 +59,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObject
     {
         var batch = new Tw2ForwardingRenderBatch();
         this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
-        if (this.parentBoneIndex >= 0)
-        {
+        if (this.parentBoneIndex >= 0) {
             var bones = perObjectData.perObjectVSData.Get('JointMat');
             var offset = this.parentBoneIndex * 12;
             var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
@@ -95,7 +94,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObject
     }
 };
 
-EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
+EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
 {
     var bkIB = this.parentGeometry.meshes[0].indexes;
     var bkStart = this.parentGeometry.meshes[0].areas[0].start;

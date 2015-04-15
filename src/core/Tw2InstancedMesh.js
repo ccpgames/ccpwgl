@@ -1,4 +1,4 @@
-function Tw2InstancedMesh()
+﻿function Tw2InstancedMesh()
 {
     this._super.constructor.call(this);
     this.instanceGeometryResource = null;
@@ -10,7 +10,7 @@ function Tw2InstancedMesh()
 
 Inherit(Tw2InstancedMesh, Tw2Mesh);
 
-Tw2InstancedMesh.prototype.Initialize = function()
+Tw2InstancedMesh.prototype.Initialize = function ()
 {
     this._super.Initialize.call(this);
     if (this.instanceGeometryResPath != '')
@@ -27,7 +27,7 @@ Tw2InstancedMesh.prototype.Initialize = function()
     }
 };
 
-Tw2InstancedMesh.prototype.RebuildCachedData = function(res)
+Tw2InstancedMesh.prototype.RebuildCachedData = function (res)
 {
     if (this.instanceGeometryResource && this.geometryResource)
     {
@@ -35,7 +35,7 @@ Tw2InstancedMesh.prototype.RebuildCachedData = function(res)
     }
 };
 
-Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
+Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
 {
     for (var i = 0; i < areas.length; ++i)
     {
@@ -56,7 +56,7 @@ Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, 
     }
 };
 
-Tw2InstancedMesh.prototype.RenderAreas = function(effect)
+Tw2InstancedMesh.prototype.RenderAreas = function (effect)
 {
     if (this.geometryResource)
     {
@@ -84,9 +84,9 @@ function Tw2InstancedMeshBatch()
 
 Inherit(Tw2InstancedMeshBatch, Tw2RenderBatch);
 
-Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
+Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (this.instanceMesh && effect)
     {
         this.instanceMesh.RenderAreas(effect);
