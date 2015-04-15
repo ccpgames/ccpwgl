@@ -1,4 +1,4 @@
-﻿function Tw2ParticleTurbulenceForce()
+function Tw2ParticleTurbulenceForce()
 {
     this.noiseLevel = 3;
     this.noiseRatio = 0.5;
@@ -28,7 +28,7 @@ function InitializeNoise()
         s_permutations[index] = tmp;
     }
 
-    for (i = 0 ; i < 256; i++)
+    for (i = 0; i < 256; i++)
     {
         s_permutations[256 + i] = s_permutations[i];
         s_noiseLookup[256 + i] = s_noiseLookup[i];
@@ -98,7 +98,7 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
 
 Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
 
-Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, force)
+Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
 {
     if (this.noiseLevel == 0)
     {
@@ -128,7 +128,7 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, 
     force[2] += noise[2] * this.amplitude[2] * sum;
 };
 
-Tw2ParticleTurbulenceForce.prototype.Update = function (dt)
+Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
 {
     this._time += dt;
 };

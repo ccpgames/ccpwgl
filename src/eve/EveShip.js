@@ -16,28 +16,34 @@ function EveTurretSetLocatorInfo()
 }
 
 
-EveShip.prototype.Initialize = function ()
+EveShip.prototype.Initialize = function()
 {
     this._super.Initialize.call(this);
-    if (this.boosters) {
+    if (this.boosters)
+    {
         this.RebuildBoosterSet();
     }
 };
 
-EveShip.prototype.GetBatches = function (mode, accumulator)
+EveShip.prototype.GetBatches = function(mode, accumulator)
 {
     this._super.GetBatches.call(this, mode, accumulator);
 
     this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
     this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-    if (this.lod > 1) {
-        for (var i = 0; i < this.turretSets.length; ++i) {
+    if (this.lod > 1)
+    {
+        for (var i = 0; i < this.turretSets.length; ++i)
+        {
             this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
         }
     }
-    else {
-        for (var i = 0; i < this.turretSets.length; ++i) {
-            if (this.turretSets[i].firingEffect) {
+    else
+    {
+        for (var i = 0; i < this.turretSets.length; ++i)
+        {
+            if (this.turretSets[i].firingEffect)
+            {
                 this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
             }
         }
@@ -48,7 +54,7 @@ EveShip.prototype.GetBatches = function (mode, accumulator)
     }
 };
 
-EveShip.prototype.Update = function (dt)
+EveShip.prototype.Update = function(dt)
 {
     this._super.Update.call(this, dt);
 
@@ -79,14 +85,16 @@ EveShip.prototype.Update = function (dt)
     }
 };
 
-EveShip.prototype.UpdateViewDependentData = function () {
+EveShip.prototype.UpdateViewDependentData = function()
+{
     EveSpaceObject.prototype.UpdateViewDependentData.call(this);
-    for (var i = 0; i < this.turretSets.length; ++i) {
+    for (var i = 0; i < this.turretSets.length; ++i)
+    {
         this.turretSets[i].UpdateViewDependentData();
     }
 }
 
-EveShip.prototype.RebuildBoosterSet = function ()
+EveShip.prototype.RebuildBoosterSet = function()
 {
     if (!this.boosters)
     {
@@ -104,7 +112,7 @@ EveShip.prototype.RebuildBoosterSet = function ()
     this.boosters.Rebuild();
 };
 
-EveShip.prototype.RebuildTurretPositions = function ()
+EveShip.prototype.RebuildTurretPositions = function()
 {
     this._turretSetsLocatorInfo = [];
     for (var i = 0; i < this.turretSets.length; ++i)

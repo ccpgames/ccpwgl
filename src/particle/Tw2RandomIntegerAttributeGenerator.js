@@ -1,4 +1,4 @@
-﻿function Tw2RandomIntegerAttributeGenerator()
+function Tw2RandomIntegerAttributeGenerator()
 {
     this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
     this.customName = '';
@@ -7,7 +7,7 @@
     this._element = null;
 }
 
-Tw2RandomIntegerAttributeGenerator.prototype.Bind = function (ps)
+Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
 {
     for (var i = 0; i < ps._elements.length; ++i)
     {
@@ -21,7 +21,7 @@ Tw2RandomIntegerAttributeGenerator.prototype.Bind = function (ps)
     return false;
 };
 
-Tw2RandomIntegerAttributeGenerator.prototype.Generate = function (position, velocity, index)
+Tw2RandomIntegerAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
     for (var i = 0; i < this._element.dimension; ++i)
     {

@@ -1,4 +1,4 @@
-﻿function Tw2SphereShapeAttributeGenerator()
+function Tw2SphereShapeAttributeGenerator()
 {
     this.minRadius = 0;
     this.maxRadius = 0;
@@ -18,7 +18,7 @@
     this._velocity = null;
 }
 
-Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
+Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
 {
     this._position = null;
     this._velocity = null;
@@ -36,7 +36,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
     return (!this.controlPosition || this._position != null) && (!this.controlVelocity || this._velocity != null);
 };
 
-Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, velocity, index)
+Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
     var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI;
     var theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) / 180 * Math.PI;

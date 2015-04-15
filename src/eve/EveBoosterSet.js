@@ -11,13 +11,13 @@ function EveBoosterSet()
     this.maxVel = 250;
     this.haloColor = [0, 0, 0, 0];
     this.alwaysOn = true;
-    
+
     this._parentTransform = mat4.create();
     this._wavePhase = [];
     this._boosterTransforms = [];
-    
+
     this._positions = device.gl.createBuffer();
-    
+
     this._decl = new Tw2VertexDeclaration();
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 0));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 2, 12));
@@ -28,22 +28,22 @@ function EveBoosterSet()
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 4, 84));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 6, device.gl.FLOAT, 1, 100));
     this._decl.RebuildHash();
-    
+
     this._perObjectData = new Tw2PerObjectData();
     this._perObjectData.perObjectVSData = new Tw2RawData();
     this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
     this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
     this._perObjectData.perObjectVSData.Create();
-    
+
     this.rebuildPending = false;
 }
 
-EveBoosterSet.prototype.Initialize = function ()
+EveBoosterSet.prototype.Initialize = function()
 {
     this.rebuildPending = true;
 };
 
-EveBoosterSet.prototype.Clear = function ()
+EveBoosterSet.prototype.Clear = function()
 {
     this._boosterTransforms = [];
     this._wavePhase = mat4.create();
@@ -53,7 +53,7 @@ EveBoosterSet.prototype.Clear = function ()
     }
 };
 
-EveBoosterSet.prototype.Add = function (localMatrix)
+EveBoosterSet.prototype.Add = function(localMatrix)
 {
     var transform = mat4.create();
     mat4.set(localMatrix, transform);
@@ -74,16 +74,17 @@ EveBoosterSet.prototype.Add = function (localMatrix)
     }
 };
 
-EveBoosterSet.prototype.Rebuild = function ()
+EveBoosterSet.prototype.Rebuild = function()
 {
     var data = new Float32Array(this._boosterTransforms.length * 4 * 6 * 26);
     var order = [
-        [-1, -1, 0, 1, 1], 
-        [1, 1, -1, 0, 0], 
+        [-1, -1, 0, 1, 1],
+        [1, 1, -1, 0, 0],
         [-1, -1, -1, 1, 0],
         [-1, -1, 0, 1, 1],
-        [1, 1, 0, 0, 1], 
-        [1, 1, -1, 0, 0]];
+        [1, 1, 0, 0, 1],
+        [1, 1, -1, 0, 0]
+    ];
     var index = 0;
     for (var booster = 0; booster < this._boosterTransforms.length; ++booster)
     {
@@ -120,7 +121,7 @@ EveBoosterSet.prototype.Rebuild = function ()
     }
 };
 
-EveBoosterSet.prototype.Update = function (dt, parentMatrix)
+EveBoosterSet.prototype.Update = function(dt, parentMatrix)
 {
     if (this.glows)
     {
@@ -131,17 +132,17 @@ EveBoosterSet.prototype.Update = function (dt, parentMatrix)
 
 function EveBoosterBatch()
 {
-	this.renderMode = device.RM_ANY;
-	this.perObjectData = null;
-	this.boosters = null;
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
+    this.boosters = null;
 }
 
-EveBoosterBatch.prototype.Commit = function (overrideEffect)
+EveBoosterBatch.prototype.Commit = function(overrideEffect)
 {
     this.boosters.Render(overrideEffect);
 };
 
-EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display || mode != device.RM_ADDITIVE)
     {
@@ -150,7 +151,7 @@ EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
     if (this.effect && this._boosterTransforms.length)
     {
         var batch = new EveBoosterBatch();
-        
+
         mat4.transpose(this._parentTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
         this._perObjectData.perObjectVSData.Set('Shipdata', perObjectData.perObjectVSData.Get('Shipdata'));
         this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
@@ -165,9 +166,9 @@ EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
     }
 };
 
-EveBoosterSet.prototype.Render = function (overrideEffect)
+EveBoosterSet.prototype.Render = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     var effectRes = effect.GetEffectRes();
     if (!effectRes.IsGood())
     {

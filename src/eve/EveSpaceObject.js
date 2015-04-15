@@ -1,50 +1,50 @@
 function EveSpaceObject()
 {
-	this.name = '';
-	this.mesh = null;
-	this.spriteSets = [];
-	this.boundingSphereCenter = vec3.create();
-	this.boundingSphereRadius = 0;
-	this.locators = [];
-	this.turretSets = [];
-	this.decals = [];
-	this.spotlightSets = [];
-	this.planeSets = [];
-	this.curveSets = [];
-	
-	this.transform = mat4.create();
-	mat4.identity(this.transform);
-	
-	this.children = [];
-	
-	this._perObjectData = new Tw2PerObjectData();
-	this._perObjectData.perObjectVSData = new Tw2RawData();
-	this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-	this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-	this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-	this._perObjectData.perObjectVSData.Declare('JointMat', 196);
-	this._perObjectData.perObjectVSData.Create();
-	
-	this._perObjectData.perObjectPSData = new Tw2RawData();
-	this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-	this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-	this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-	this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-	this._perObjectData.perObjectPSData.Declare('customMaskMatrix', 16);
-	this._perObjectData.perObjectPSData.Create();
+    this.name = '';
+    this.mesh = null;
+    this.spriteSets = [];
+    this.boundingSphereCenter = vec3.create();
+    this.boundingSphereRadius = 0;
+    this.locators = [];
+    this.turretSets = [];
+    this.decals = [];
+    this.spotlightSets = [];
+    this.planeSets = [];
+    this.curveSets = [];
 
-	this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-	this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-	this._perObjectData.perObjectVSData.Get('Shipdata')[3] = 1;
-	this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+    this.transform = mat4.create();
+    mat4.identity(this.transform);
 
-	this.animation = new Tw2AnimationController();
+    this.children = [];
 
-	this.lod = 3;
-	this._tempVec = vec3.create();
+    this._perObjectData = new Tw2PerObjectData();
+    this._perObjectData.perObjectVSData = new Tw2RawData();
+    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+    this._perObjectData.perObjectVSData.Declare('JointMat', 196);
+    this._perObjectData.perObjectVSData.Create();
+
+    this._perObjectData.perObjectPSData = new Tw2RawData();
+    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+    this._perObjectData.perObjectPSData.Declare('customMaskMatrix', 16);
+    this._perObjectData.perObjectPSData.Create();
+
+    this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
+    this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
+    this._perObjectData.perObjectVSData.Get('Shipdata')[3] = 1;
+    this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+
+    this.animation = new Tw2AnimationController();
+
+    this.lod = 3;
+    this._tempVec = vec3.create();
 }
 
-EveSpaceObject.prototype.Initialize = function ()
+EveSpaceObject.prototype.Initialize = function()
 {
     if (this.mesh)
     {
@@ -56,12 +56,12 @@ EveSpaceObject.prototype.Initialize = function ()
     }
 };
 
-EveSpaceObject.prototype.ResetLod = function ()
+EveSpaceObject.prototype.ResetLod = function()
 {
     this.lod = 3;
 }
 
-EveSpaceObject.prototype.UpdateLod = function (frustum)
+EveSpaceObject.prototype.UpdateLod = function(frustum)
 {
     var center = mat4.multiplyVec3(this.transform, this.boundingSphereCenter, this._tempVec);
 
@@ -82,7 +82,7 @@ EveSpaceObject.prototype.UpdateLod = function (frustum)
     }
 }
 
-EveSpaceObject.prototype.UpdateViewDependentData = function ()
+EveSpaceObject.prototype.UpdateViewDependentData = function()
 {
     for (var i = 0; i < this.children.length; ++i)
     {
@@ -96,7 +96,7 @@ EveSpaceObject.prototype.UpdateViewDependentData = function ()
     }
 }
 
-EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
+EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.mesh != null && this.lod > 0)
     {
@@ -128,7 +128,7 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
     }
 };
 
-EveSpaceObject.prototype.Update = function (dt)
+EveSpaceObject.prototype.Update = function(dt)
 {
     if (this.lod > 0)
     {
@@ -148,7 +148,7 @@ EveSpaceObject.prototype.Update = function (dt)
     }
 };
 
-EveSpaceObject.prototype.GetLocatorCount = function (prefix)
+EveSpaceObject.prototype.GetLocatorCount = function(prefix)
 {
     var count = 0;
     for (var i = 0; i < this.locators.length; ++i)
@@ -161,7 +161,7 @@ EveSpaceObject.prototype.GetLocatorCount = function (prefix)
     return count;
 };
 
-EveSpaceObject.prototype.FindLocatorJointByName = function (name)
+EveSpaceObject.prototype.FindLocatorJointByName = function(name)
 {
     var model = this.animation.FindModelForMesh(0);
     if (model != null)
@@ -177,7 +177,7 @@ EveSpaceObject.prototype.FindLocatorJointByName = function (name)
     return null;
 };
 
-EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
+EveSpaceObject.prototype.FindLocatorTransformByName = function(name)
 {
     for (var i = 0; i < this.locators.length; ++i)
     {
@@ -190,7 +190,7 @@ EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
 };
 
 
-EveSpaceObject.prototype.RenderDebugInfo = function (debugHelper)
+EveSpaceObject.prototype.RenderDebugInfo = function(debugHelper)
 {
     this.animation.RenderDebugInfo(debugHelper);
 };

@@ -9,20 +9,28 @@ function Tw2PostProcess()
 
     this.steps = [];
     this.steps[0] = new Tw2Effect();
-    this.steps[0] = { 
-        'effect':  new Tw2Effect(), 
+    this.steps[0] = {
+        'effect': new Tw2Effect(),
         'rt': this.quadRT1,
-        'inputs': { 'BlitCurrent': null } };
+        'inputs':
+        {
+            'BlitCurrent': null
+        }
+    };
     this.steps[0].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx';
     this.steps[0].effect.Initialize();
     this.steps[0].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
     this.steps[0].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
     this.steps[1] = new Tw2Effect();
-    this.steps[1] = { 
-        'effect':  new Tw2Effect(), 
+    this.steps[1] = {
+        'effect': new Tw2Effect(),
         'rt': this.quadRT0,
-        'inputs': { 'BlitCurrent': this.quadRT1 } };
+        'inputs':
+        {
+            'BlitCurrent': this.quadRT1
+        }
+    };
     this.steps[1].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx';
     this.steps[1].effect.Initialize();
     this.steps[1].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
@@ -30,32 +38,43 @@ function Tw2PostProcess()
     this.steps[1].effect.parameters['LuminanceScale'] = new Tw2FloatParameter('LuminanceScale', 2);
 
     this.steps[2] = new Tw2Effect();
-    this.steps[2] = { 
-        'effect':  new Tw2Effect(), 
+    this.steps[2] = {
+        'effect': new Tw2Effect(),
         'rt': this.quadRT1,
-        'inputs': { 'BlitCurrent': this.quadRT0 } };
+        'inputs':
+        {
+            'BlitCurrent': this.quadRT0
+        }
+    };
     this.steps[2].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx';
     this.steps[2].effect.Initialize();
     this.steps[2].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
     this.steps[2].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
     this.steps[3] = new Tw2Effect();
-    this.steps[3] = { 
-        'effect':  new Tw2Effect(), 
+    this.steps[3] = {
+        'effect': new Tw2Effect(),
         'rt': this.quadRT0,
-        'inputs': { 'BlitCurrent': this.quadRT1 } };
+        'inputs':
+        {
+            'BlitCurrent': this.quadRT1
+        }
+    };
     this.steps[3].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx';
     this.steps[3].effect.Initialize();
     this.steps[3].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
     this.steps[3].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
     this.steps[4] = new Tw2Effect();
-    this.steps[4] = { 
-        'effect':  new Tw2Effect(), 
+    this.steps[4] = {
+        'effect': new Tw2Effect(),
         'rt': null,
-        'inputs': { 
+        'inputs':
+        {
             'BlitCurrent': this.quadRT0,
-            'BlitOriginal': null } };
+            'BlitOriginal': null
+        }
+    };
     this.steps[4].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx';
     this.steps[4].effect.Initialize();
     this.steps[4].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
@@ -64,7 +83,7 @@ function Tw2PostProcess()
     this.steps[4].effect.parameters['ScalingFactor'] = new Tw2FloatParameter('ScalingFactor', 1);
 }
 
-Tw2PostProcess.prototype.Render = function ()
+Tw2PostProcess.prototype.Render = function()
 {
     var width = device.viewportWidth;
     var height = device.viewportHeight;
@@ -92,7 +111,7 @@ Tw2PostProcess.prototype.Render = function ()
         for (var i = 0; i < this.steps.length; ++i)
         {
             var step = this.steps[i];
-            for (var name in  step.inputs)
+            for (var name in step.inputs)
             {
                 if (step.inputs[name])
                 {
@@ -126,7 +145,7 @@ Tw2PostProcess.prototype.Render = function ()
     device.gl.bindTexture(device.gl.TEXTURE_2D, null);
 
     device.SetStandardStates(device.RM_OPAQUE);
-    
+
     for (var i = 0; i < this.steps.length; ++i)
     {
         var step = this.steps[i];
@@ -142,4 +161,3 @@ Tw2PostProcess.prototype.Render = function ()
         device.RenderFullScreenQuad(step.effect);
     }
 };
-
