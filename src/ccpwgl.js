@@ -1377,7 +1377,7 @@
         /**
         * Returns object (ship or planet) at a specified index in scene's objects list.
         *
-        * @thorws If index is out of bounds.
+        * @throws If index is out of bounds.
         * @param {number} index Object index.
         * @returns Object at specified index.
         */
@@ -1426,11 +1426,11 @@
 
         /**
         * Sets the scene Environment Reflection Map (PNG)
-        * The scene must be loaded for this function to work
         *
         * @param {resourcePath} path of an Environment Reflection Map
+        * @throws if scene is not loaded
         */	
-	this.SetEnvReflection = function (path) 
+	this.setEnvReflection = function (path) 
 	{
             if (this.wrappedScene) 
             {
@@ -1444,11 +1444,11 @@
         
         /**
         * Sets the scene Environment Diffuse/ Cube Map (PNG)
-        * The scene must be loaded for this function to work
         *
         * @param {resourcePath} path of an Environment Diffuse/ Cube Map
+        * @throws if scene is not loaded
         */	
-	this.SetEnvCube = function (path) 
+	this.setEnvCube = function (path) 
 	{
             if (this.wrappedScene) 
             {
@@ -1462,11 +1462,11 @@
         
         /**
         * Sets the scene Environment Blur Map (PNG)
-        * The scene must be loaded for this function to work
         *
         * @param {resourcePath} path of an Environment Blur Map
+        * @throws is scene is not loaded
         */	
-	this.SetEnvBlur = function (path) 
+	this.setEnvBlur = function (path) 
 	{
             if (this.wrappedScene) 
             {
@@ -1480,13 +1480,13 @@
         
         /**
         * Wrapper to set all of the scene's environment maps
-        * The scene must be loaded for this wrapper to work
         *
-        * @param {resourcePath} path of an Environment Diffuse/ Cube Map (PNG)
-        * @param {resourcePath} path of an Environment Reflection Map (PNG)
-        * @param {resourcePath} path of an Environment Blur Map (PNG)
+        * @param {resourcePath} cubePath path of an Environment Diffuse/ Cube Map (PNG)
+        * @param {resourcePath} reflectionPath path of an Environment Reflection Map (PNG)
+        * @param {resourcePath} blurPath path of an Environment Blur Map (PNG)
+        * @throws if scene is not loaded
         */
-	this.SetEnvironment = function(cubePath, reflectionPath, blurPath)
+	this.setEnvironment = function(cubePath, reflectionPath, blurPath)
 	{
            if (this.wrappedScene) 
            {
@@ -1502,11 +1502,11 @@
 
         /**
         * Sets the scene Star Map (PNG)
-        * A scene with a nebula must be loaded for this function to work
         *
         * @param {resourcePath} path Star Map resource path
+        * @throws is scene is not loaded
         */
-	this.SetStarMap = function (path) 
+	this.setStarMap = function (path) 
 	{
 	    if(!this.wrappedScene)
 	    {
@@ -1533,13 +1533,15 @@
 
         /**
         * Sets the tiling of a Scene's Star Map layers.
-        * A scene with a nebula must be loaded for this function to work.
+        * A scene must be loaded for this function to work.
         *
         * @param {number} tiling1 Tiling Value for Star Map layer 1
         * @param {number} tiling2 Tiling Value for Star Map layer 2
         * @param {number} tiling3 Tiling Value for Star Map layer 3
+        * @throws if scene is not loaded 
+        * @throws if scene is missing the tiling background effect objects
         */
-	 this.SetStarTiling = function (tiling1, tiling2, tiling3)
+	 this.setStarTiling = function (tiling1, tiling2, tiling3)
 	 {
 	    if(!this.wrappedScene)
 	    {
@@ -1550,9 +1552,9 @@
 	    	try 
 	    	{
                     var param = this.wrappedScene.backgroundEffect.parameters;
-                    param.tiling1.constantBuffer[param.tiling1.offset] = one;
-                    param.tiling2.constantBuffer[param.tiling2.offset] = two;
-                    param.tiling3.constantBuffer[param.tiling3.offset] = three;
+                    param.tiling1.constantBuffer[param.tiling1.offset] = tiling1;
+                    param.tiling2.constantBuffer[param.tiling2.offset] = tiling2;
+                    param.tiling3.constantBuffer[param.tiling3.offset] = tiling3;
                 } 
                 catch(err)
                 {
@@ -1651,6 +1653,8 @@
         /**
         * Sets fog parameters. Fog effect helps depth perception. It does not
         * affect planets.
+        * 
+        * If no params are submitted nebula defaults are used
         *
         * @param {number} startDistance Distance at which fog starts to appear.
         * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
@@ -1711,7 +1715,7 @@
     };
 
     /**
-    * Creates a new epmpty scne. The scene will not have background nebula and will
+    * Creates a new epmpty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {vec4} backgroundColor Scene background color as RGBA vector.
@@ -1737,6 +1741,16 @@
     {
         return ccpwgl_int.resMan.IsLoading();
     };
+    
+    /**
+    * Returns the current count of resources pending load.
+    *
+    * @returns {number} Number of resources pending load.
+    */
+    ccpwgl.getPendingLoads = function ()
+    {
+        return ccpwgl_int.resMan._pendingLoads;
+    };
 
     /**
     * Enable/disable scene per-frame updates.
@@ -1748,7 +1762,7 @@
     {
         updateEnabled = enable;
     };
-
+    
     /**
     * Enable/disable scene rendering.
     *
