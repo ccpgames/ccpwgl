@@ -1464,7 +1464,7 @@
         * Sets the scene Environment Blur Map (PNG)
         *
         * @param {resourcePath} path of an Environment Blur Map
-        * @throws is scene is not loaded
+        * @throws if scene is not loaded
         */	
 	this.setEnvBlur = function (path) 
 	{
@@ -1479,7 +1479,7 @@
         };
         
         /**
-        * Wrapper to set all of the scene's environment maps
+        * Wrapper to set all of a scene's environment maps
         *
         * @param {resourcePath} cubePath path of an Environment Diffuse/ Cube Map (PNG)
         * @param {resourcePath} reflectionPath path of an Environment Reflection Map (PNG)
@@ -1504,7 +1504,7 @@
         * Sets the scene Star Map (PNG)
         *
         * @param {resourcePath} path Star Map resource path
-        * @throws is scene is not loaded
+        * @throws if scene is not loaded
         */
 	this.setStarMap = function (path) 
 	{
@@ -1715,7 +1715,7 @@
     };
 
     /**
-    * Creates a new epmpty scene. The scene will not have background nebula and will
+    * Creates a new empty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {vec4} backgroundColor Scene background color as RGBA vector.
