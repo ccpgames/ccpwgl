@@ -341,6 +341,30 @@
     {
         sof.GetRaceNames(callback);
     };
+    
+    /**
+    * Returns the array of values for a supplied TW2VectorEffect parameter 
+    *	
+    * The returned values may not be utilized by any shaders and modifying these
+    * values will only affect the model they belong to.
+    * 
+    * i.e. Changing the color of a ship would not change it's turrets' colors.
+    * 
+    * @param {object} A TW2VectorEffect
+    * @returns {array} the parameter's values
+    */
+    ccpwgl.getParameter = function(tw2VectorEffect)
+    {
+	try 
+	{
+	    return tw2VectorEffect.constantBuffer.subarray(tw2VectorEffect.offset, tw2VectorEffect.offset + tw2VectorEffect.value.length);
+	}
+	catch(err)
+	{
+	    return false
+	}
+		
+    }
 
     /**
     * Wrapper for static objects (stations, gates, asteroids, clouds, etc.).
@@ -1353,7 +1377,7 @@
         /**
         * Returns object (ship or planet) at a specified index in scene's objects list.
         *
-        * @thorws If index is out of bounds.
+        * @throws If index is out of bounds.
         * @param {number} index Object index.
         * @returns Object at specified index.
         */
@@ -1399,6 +1423,146 @@
             this.objects.splice(index, 1);
             rebuildSceneObjects.call(this);
         };
+
+        /**
+        * Sets the scene Environment Reflection Map (PNG)
+        *
+        * @param {resourcePath} path of an Environment Reflection Map
+        * @throws if scene is not loaded
+        */	
+	this.setEnvReflection = function (path) 
+	{
+            if (this.wrappedScene) 
+            {
+                this.wrappedScene.SetEnvMapPath(0, path);
+            } 
+            else 
+            {
+               	throw new ccpwgl.IsStillLoadingError();
+            }
+        };    
+        
+        /**
+        * Sets the scene Environment Diffuse/ Cube Map (PNG)
+        *
+        * @param {resourcePath} path of an Environment Diffuse/ Cube Map
+        * @throws if scene is not loaded
+        */	
+	this.setEnvCube = function (path) 
+	{
+            if (this.wrappedScene) 
+            {
+                this.wrappedScene.SetEnvMapPath(1, path);
+            } 
+            else 
+            {
+               	throw new ccpwgl.IsStillLoadingError();
+            }
+        };   
+        
+        /**
+        * Sets the scene Environment Blur Map (PNG)
+        *
+        * @param {resourcePath} path of an Environment Blur Map
+        * @throws if scene is not loaded
+        */	
+	this.setEnvBlur = function (path) 
+	{
+            if (this.wrappedScene) 
+            {
+                this.wrappedScene.SetEnvMapPath(2, path);
+            } 
+            else 
+            {
+               	console.error("Scene not Loaded")
+            }
+        };
+        
+        /**
+        * Wrapper to set all of a scene's environment maps
+        *
+        * @param {resourcePath} cubePath path of an Environment Diffuse/ Cube Map (PNG)
+        * @param {resourcePath} reflectionPath path of an Environment Reflection Map (PNG)
+        * @param {resourcePath} blurPath path of an Environment Blur Map (PNG)
+        * @throws if scene is not loaded
+        */
+	this.setEnvironment = function(cubePath, reflectionPath, blurPath)
+	{
+           if (this.wrappedScene) 
+           {
+                this.SetEnvCube(cubePath);
+                this.SetEnvReflection(reflectionPath);
+                this.SetEnvBlur(blurPath);
+           } 
+           else 
+           {
+           	throw new ccpwgl.IsStillLoadingError();
+           }
+        };
+
+        /**
+        * Sets the scene Star Map (PNG)
+        *
+        * @param {resourcePath} path Star Map resource path
+        * @throws if scene is not loaded
+        */
+	this.setStarMap = function (path) 
+	{
+	    if(!this.wrappedScene)
+	    {
+		throw new ccpwgl.IsStillLoadingError();	
+	    }
+	    else 
+	    {
+	    	try 
+	    	{
+                    this.wrappedScene.backgroundEffect.parameters.StarMap.SetTexturePath(path);
+                } 
+                catch(err)
+                {
+               	    if(!path){
+               	    	console.error("No resource file supplied")
+               	    }
+               	    else
+               	    {
+               	        console.error("Error while trying to set Star Map")
+               	    }
+                }
+	    }
+        };
+
+        /**
+        * Sets the tiling of a Scene's Star Map layers.
+        * A scene must be loaded for this function to work.
+        *
+        * @param {number} tiling1 Tiling Value for Star Map layer 1
+        * @param {number} tiling2 Tiling Value for Star Map layer 2
+        * @param {number} tiling3 Tiling Value for Star Map layer 3
+        * @throws if scene is not loaded 
+        * @throws if scene is missing the tiling background effect objects
+        */
+	 this.setStarTiling = function (tiling1, tiling2, tiling3)
+	 {
+	    if(!this.wrappedScene)
+	    {
+		throw new ccpwgl.IsStillLoadingError();	
+	    }
+	    else 
+	    {
+	    	try 
+	    	{
+                    var param = this.wrappedScene.backgroundEffect.parameters;
+                    param.tiling1.constantBuffer[param.tiling1.offset] = tiling1;
+                    param.tiling2.constantBuffer[param.tiling2.offset] = tiling2;
+                    param.tiling3.constantBuffer[param.tiling3.offset] = tiling3;
+                } 
+                catch(err)
+                {
+               	    console.error("Error while trying to set Star Tiling")
+                }
+	    }
+        };
+	
 
         /**
         * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
@@ -1489,6 +1653,8 @@
         /**
         * Sets fog parameters. Fog effect helps depth perception. It does not
         * affect planets.
+        * 
+        * If no params are submitted nebula defaults are used
         *
         * @param {number} startDistance Distance at which fog starts to appear.
         * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
@@ -1549,7 +1715,7 @@
     };
 
     /**
-    * Creates a new epmpty scne. The scene will not have background nebula and will
+    * Creates a new empty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {vec4} backgroundColor Scene background color as RGBA vector.
@@ -1575,6 +1741,16 @@
     {
         return ccpwgl_int.resMan.IsLoading();
     };
+    
+    /**
+    * Returns the current count of resources pending load.
+    *
+    * @returns {number} Number of resources pending load.
+    */
+    ccpwgl.getPendingLoads = function ()
+    {
+        return ccpwgl_int.resMan._pendingLoads;
+    };
 
     /**
     * Enable/disable scene per-frame updates.
@@ -1586,7 +1762,7 @@
     {
         updateEnabled = enable;
     };
-
+    
     /**
     * Enable/disable scene rendering.
     *
