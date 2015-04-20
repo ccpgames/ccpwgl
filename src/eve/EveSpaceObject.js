@@ -22,7 +22,7 @@ function EveSpaceObject()
 	this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
 	this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
 	this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-	this._perObjectData.perObjectVSData.Declare('JointMat', 196);
+	this._perObjectData.perObjectVSData.Declare('JointMat', 696);
 	this._perObjectData.perObjectVSData.Create();
 	
 	this._perObjectData.perObjectPSData = new Tw2RawData();
