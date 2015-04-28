@@ -592,9 +592,11 @@ function EveSOF() {
 
     function getDataKeys(name) {
         if (name !== 'all') {
-            return Object.getOwnPropertyNames(data[name]).map(function (p) {
-                return data[name][p].description || ''
-            })
+            var names = {};
+            for (var i in data[name]) {
+                names[i] = data[name][i].description || '';
+            }
+            return names;
         } else {
             return data
         }

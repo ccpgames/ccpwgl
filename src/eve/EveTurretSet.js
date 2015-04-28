@@ -186,6 +186,7 @@ EveTurretSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
         this._perObjectDataInactive.perObjectPSData = perObjectData.perObjectPSData;
     
         var batch = new Tw2ForwardingRenderBatch();
+        batch.renderMode = mode;
         batch.renderActive = false;
         batch.perObjectData = this._perObjectDataInactive;
         batch.geometryProvider = this;

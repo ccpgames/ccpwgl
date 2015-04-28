@@ -204,6 +204,7 @@ function Tw2Device()
         }
 
         this.gl.getExtension("OES_standard_derivatives");
+        this.gl.getExtension("OES_element_index_uint");
 
         this.alphaBlendBackBuffer = !params || typeof (params.alpha) == 'undefined' || params.alpha;
         this.msaaSamples = this.gl.getParameter(this.gl.SAMPLES);
