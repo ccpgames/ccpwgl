@@ -31,7 +31,7 @@ function EveSOF() {
         if (!_get(faction, 'resPathInsert', '').length) {
             return path;
         }
-        if (name == 'PgrMap' || name == 'PgsMap' || name == 'SpecularMap' || name == 'MaskMap' || name == 'SubMaskMap') {
+        if (name == 'PgrMap' || name == 'PgsMap' || name == 'MaterialMap' || name == 'PmdgMap') {
             var index = path.lastIndexOf('/');
             var pathCopy = path;
             if (index >= 0) {
@@ -501,22 +501,21 @@ function EveSOF() {
         }
     };
 
-    var materialPrefixes = ["Material", "Mask", "SubMask"];
-
-    function GetTurretMaterialParameter(name, matUsageMain, matUsageMask, areaData) {
-        var materialId = -1;
-        if (name.substr(0, materialPrefixes[0].length).toLowerCase() == materialPrefixes[0].toLowerCase()) {
-            materialId = matUsageMain;
-            name = name.substr(materialPrefixes[0].length);
+    function GetTurretMaterialParameter(name, parentFaction, areaData) {
+        var materialIdx = -1;
+        for (var i = 0; i < data['generic']['materialPrefixes'].length; ++i) {
+            if (name.substr(0, data['generic']['materialPrefixes'][i].str.length) == data['generic']['materialPrefixes'][i].str) {
+                materialIdx = i;
+                name = name.substr(data['generic']['materialPrefixes'][i].str.length);
+            }
         }
-        else if (name.substr(0, materialPrefixes[1].length).toLowerCase() == materialPrefixes[1].toLowerCase()) {
-            materialId = matUsageMask;
-            name = name.substr(materialPrefixes[1].length);
-        }
-        if (materialId >= 0 && materialId < 3) {
-            name = materialPrefixes[materialId] + name;
-            if (name in areaData.parameters) {
-                return areaData.parameters[name].value;
+        if (materialIdx != -1) {
+            var turretMaterialIndex = _get(parentFaction, 'materialUsageMtl' + (materialIdx + 1), materialIdx);
+            if (turretMaterialIndex >= 0 && turretMaterialIndex < data['generic']['materialPrefixes'].length) {
+                name = data['generic']['materialPrefixes'][turretMaterialIndex].str + name;
+                if (name in areaData.parameters) {
+                    return areaData.parameters[name].value;
+                }
             }
         }
     }
@@ -562,10 +561,10 @@ function EveSOF() {
                 var parentValue = null;
                 var turretValue = null;
                 if (parentArea) {
-                    parentValue = GetTurretMaterialParameter(i, _get(parentFaction, 'materialUsageMain', 0), _get(parentFaction, 'materialUsageMask', 1), parentArea);
+                    parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
                 }
                 if (turretArea) {
-                    turretValue = GetTurretMaterialParameter(i, _get(parentFaction, 'materialUsageMain', 0), _get(parentFaction, 'materialUsageMask', 1), parentArea);
+                    turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
                 }
                 quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
             }

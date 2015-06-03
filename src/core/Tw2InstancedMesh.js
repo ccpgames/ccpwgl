@@ -68,6 +68,9 @@ Tw2InstancedMesh.prototype.RenderAreas = function (effect)
     }
     if (this.geometryResource && this.instanceGeometryResource)
     {
+        if (this.instanceGeometryResource.GetMaxInstanceCount(this.instanceMeshIndex) > this.geometryResource.GetInstanceCount()) {
+            this.geometryResource.SetInstanceCount(this.instanceGeometryResource.GetMaxInstanceCount(this.instanceMeshIndex));
+        }
         if (!this.geometryResource.IsGood())
         {
             return;

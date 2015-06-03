@@ -80,8 +80,20 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
         }
         while (true)
         {
+            if (index >= this._elementsSorted.length)
+            {
+                device.gl.disableVertexAttribArray(el.location);
+                device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                break;
+            }
             var input = this._elementsSorted[index];
-            if (CompareDeclarationElements(input, el) == 0)
+            var cmp = CompareDeclarationElements(input, el);
+            if (cmp > 0) {
+                device.gl.disableVertexAttribArray(el.location);
+                device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                break;
+            }
+            if (cmp == 0)
             {
                 if (input.customSetter)
                 {
@@ -101,10 +113,6 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
                 break;
             }
             index++;
-            if (index >= this._elementsSorted.length)
-            {
-                return false;
-            }
         }
     }
     return true;

@@ -41,9 +41,6 @@ function EveTurretSet()
     this._perObjectDataActive.perObjectVSData = new Tw2RawData();
     this._perObjectDataActive.perObjectVSData.Declare('clipData', 4);
     this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretData0', 4);
-    this._perObjectDataActive.perObjectVSData.Declare('turretData1', 4);
-    this._perObjectDataActive.perObjectVSData.Declare('turretData2', 4);
     this._perObjectDataActive.perObjectVSData.Declare('turretWorld0', 16);
     this._perObjectDataActive.perObjectVSData.Declare('turretWorld1', 16);
     this._perObjectDataActive.perObjectVSData.Declare('turretWorld2', 16);
@@ -56,9 +53,6 @@ function EveTurretSet()
     this._perObjectDataInactive.perObjectVSData = new Tw2RawData();
     this._perObjectDataInactive.perObjectVSData.Declare('clipData', 4);
     this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretData0', 4);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretData1', 4);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretData2', 4);
     this._perObjectDataInactive.perObjectVSData.Declare('turretWorld0', 16);
     this._perObjectDataInactive.perObjectVSData.Declare('turretWorld1', 16);
     this._perObjectDataInactive.perObjectVSData.Declare('turretWorld2', 16);

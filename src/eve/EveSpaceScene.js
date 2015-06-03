@@ -63,11 +63,17 @@ function EveSpaceScene()
     this._perFramePS.Declare('SceneData.AmbientColor', 3);
     this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
     this._perFramePS.Declare('SceneData.FogColor', 4);
-    this._perFramePS.Declare('ShadowCameraRange', 4);
+    this._perFramePS.Declare('ViewportOffset', 2);
+    this._perFramePS.Declare('ViewportSize', 2);
+
     this._perFramePS.Declare('TargetResolution', 4);
     this._perFramePS.Declare('ShadowMapSettings', 4);
+    this._perFramePS.Declare('ShadowCameraRange', 4);
+
+    this._perFramePS.Declare('ProjectionToView', 2);
+    this._perFramePS.Declare('FovXY', 2);
+
     this._perFramePS.Declare('MiscSettings', 4);
-    this._perFramePS.Declare('MiscSettings2', 4);
     this._perFramePS.Create();
 
     this.lodEnabled = false;
@@ -202,8 +208,8 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
 
     var fov = 2.0 * Math.atan(aspectAdjustment / projection[5]);
 
-    targetResolution[3] = fov;
-    targetResolution[2] = targetResolution[3] * aspectRatio;
+    this._perFramePS.Get('FovXY')[0] = targetResolution[3] = fov;
+    this._perFramePS.Get('FovXY')[1] = targetResolution[2] = targetResolution[3] * aspectRatio;
 
     var viewportAdj = this._perFrameVS.Get('ViewportAdjustment');
     viewportAdj[0] = 1;
@@ -219,7 +225,11 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
     this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
     this._perFramePS.Set('SceneData.FogColor', this.fogColor);
+    this._perFramePS.Get('ViewportSize')[0] = device.viewportWidth;
+    this._perFramePS.Get('ViewportSize')[1] = device.viewportHeight;
+
     this._perFramePS.Get('ShadowCameraRange')[0] = 1;
+
     var targetResolution = this._perFramePS.Get('TargetResolution');
     targetResolution[0] = device.viewportWidth;
     targetResolution[1] = device.viewportHeight;
@@ -232,23 +242,20 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     shadowMapSettings[2] = 0;
     shadowMapSettings[3] = 0;
 
+    this._perFramePS.Get('ProjectionToView')[0] = device.projection[14];
+    this._perFramePS.Get('ProjectionToView')[1] = device.projection[10];
+
     var miscSettings = this._perFramePS.Get('MiscSettings');
     miscSettings[0] = variableStore._variables['Time'].value[0];
-    miscSettings[1] = 0;
-    miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
-    miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
+    miscSettings[1] = this.fogType;
+    miscSettings[2] = this.fogBlur;
+    miscSettings[3] = 1;
 
     miscSettings = this._perFrameVS.Get('MiscSettings');
     miscSettings[0] = variableStore._variables['Time'].value[0];
     miscSettings[1] = 0;
     miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
     miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
-
-    miscSettings = this._perFramePS.Get('MiscSettings2');
-    miscSettings[0] = 1;
-    miscSettings[1] = this.fogType;
-    miscSettings[2] = this.fogBlur;
-    miscSettings[3] = 1;
 
     this._envMapHandle.textureRes = this.envMapRes;
     this._envMap1Handle.textureRes = this.envMap1Res;

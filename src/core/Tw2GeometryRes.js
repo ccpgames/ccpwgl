@@ -6,7 +6,6 @@ function Tw2GeometryBatch()
     this.start = 0;
     this.count = 1;
     this.effect = null;
-    this.batchDepth = 0;
 }
 
 Tw2GeometryBatch.prototype.Commit = function (overrideEffect)
@@ -28,7 +27,6 @@ function Tw2GeometryLineBatch()
     this.start = 0;
     this.count = 1;
     this.effect = null;
-    this.batchDepth = 0;
 }
 
 Tw2GeometryLineBatch.prototype.Commit = function (overrideEffect)
@@ -159,6 +157,7 @@ function Tw2GeometryMesh()
     this.buffer = null;
     this.bufferData = null;
     this.indexes = null;
+    this.indexData = null;
     this.indexType = 0;
 	this.minBounds = vec3.create();
 	this.maxBounds = vec3.create();
@@ -175,41 +174,13 @@ function Tw2GeometryRes()
 	this.maxBounds = vec3.create();
 	this.boundsSpherePosition = vec3.create();
 	this.boundsSphereRadius = 0;
-	
+
 	this.models = [];
 	this.animations = [];
 
 	this.systemMirror = false;
 
 	this._instanceCount = 1;
-}
-
-function boundsIncludePoint(minBounds, maxBounds, point)
-{
-	if (minBounds[0] > point[0])
-	{
-		minBounds[0] = point[0];
-	}
-	if (minBounds[1] > point[0+1])
-	{
-		minBounds[1] = point[0+1];
-	}
-	if (minBounds[2] > point[0+2])
-	{
-		minBounds[2] = point[0+2];
-	}
-	if (maxBounds[0] < point[0])
-	{
-		maxBounds[0] = point[0];
-	}
-	if (maxBounds[1] < point[0+1])
-	{
-		maxBounds[1] = point[0+1];
-	}
-	if (maxBounds[2] < point[0+2])
-	{
-		maxBounds[2] = point[0+2];
-	}
 }
 
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
@@ -226,6 +197,10 @@ Tw2GeometryRes.prototype.SetInstanceCount = function (instanceCount)
     }
 };
 
+Tw2GeometryRes.prototype.GetInstanceCount = function () {
+    return this._instanceCount;
+};
+
 Tw2GeometryRes.prototype.Prepare = function (data)
 {
     var reader = new Tw2BinaryReader(new Uint8Array(data));
@@ -235,7 +210,8 @@ Tw2GeometryRes.prototype.Prepare = function (data)
     {
         var declCount = reader.ReadUInt8();
         var vertexSize = 0;
-        for (var declIx = 0; declIx < declCount; ++declIx)
+        var declIx, i;
+        for (declIx = 0; declIx < declCount; ++declIx)
         {
             var element = new Tw2VertexElement();
             element.usage = reader.ReadUInt8();
@@ -249,10 +225,6 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
         declaration.RebuildHash();
         declaration.stride = vertexSize * 4;
-        if (reader.ReadVertexBuffer)
-        {
-            return reader.ReadVertexBuffer(declaration);
-        }
         var vertexCount = reader.ReadUInt32();
         if (vertexCount == 0)
         {
@@ -262,95 +234,95 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         var index = 0;
         for (var vtxIx = 0; vtxIx < vertexCount; ++vtxIx)
         {
-            for (var declIx = 0; declIx < declCount; ++declIx)
+            for (declIx = 0; declIx < declCount; ++declIx)
             {
                 var el = declaration.elements[declIx];
                 switch (el.fileType & 0xf)
                 {
                     case 0:
-                        if (el.fileType & 0x10)
+                        if ((el.fileType & 0x10))
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8() / 127.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8();
                             }
                         }
                         break;
                     case 1:
-                        if (el.fileType & 0x10)
+                        if ((el.fileType & 0x10))
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt8() / 32767.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadInt16();
                             }
                         }
                         break;
                     case 2:
-                        for (var i = 0; i < el.elements; ++i)
+                        for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadInt32();
                         }
                         break;
                     case 3:
-                        for (var i = 0; i < el.elements; ++i)
+                        for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat16();
                         }
                         break;
                     case 4:
-                        for (var i = 0; i < el.elements; ++i)
+                        for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat32();
                         }
                         break;
                     case 8:
-                        if (el.fileType & 0x10)
+                        if ((el.fileType & 0x10))
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt8() / 255.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt8();
                             }
                         }
                         break;
                     case 9:
-                        if (el.fileType & 0x10)
+                        if ((el.fileType & 0x10))
                         {
-                            for (var i = 0; i < declaration.elements[declIx].elements; ++i)
+                            for (i = 0; i < declaration.elements[declIx].elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt8() / 65535.0;
                             }
                         }
                         else
                         {
-                            for (var i = 0; i < el.elements; ++i)
+                            for (i = 0; i < el.elements; ++i)
                             {
                                 buffer[index++] = reader.ReadUInt16();
                             }
                         }
                         break;
                     case 10:
-                        for (var i = 0; i < el.elements; ++i)
+                        for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadUInt32();
                         }
@@ -366,17 +338,13 @@ Tw2GeometryRes.prototype.Prepare = function (data)
 
     function ReadIndexBuffer()
     {
-        if (reader.ReadIndexBuffer)
-        {
-            return reader.ReadIndexBuffer();
-        }
-
         var ibType = reader.ReadUInt8();
         var indexCount = reader.ReadUInt32();
+        var indexes, i;
         if (ibType == 0)
         {
-            var indexes = new Uint16Array(indexCount);
-            for (var i = 0; i < indexCount; ++i)
+            indexes = new Uint16Array(indexCount);
+            for (i = 0; i < indexCount; ++i)
             {
                 indexes[i] = reader.ReadUInt16();
             }
@@ -384,8 +352,8 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
         else
         {
-            var indexes = new Uint32Array(indexCount);
-            for (var i = 0; i < indexCount; ++i)
+            indexes = new Uint32Array(indexCount);
+            for (i = 0; i < indexCount; ++i)
             {
                 indexes[i] = reader.ReadUInt32();
             }
@@ -393,7 +361,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
     }
 
-    var fileVersion = reader.ReadUInt8();
+    /* var fileVersion = */ reader.ReadUInt8();
     var meshCount = reader.ReadUInt8();
     for (var meshIx = 0; meshIx < meshCount; ++meshIx)
     {
@@ -401,14 +369,15 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         mesh.name = reader.ReadString();
 
         var buffer = ReadVertexBuffer(mesh.declaration);
+        var tmp, i, j, k;
         if (buffer)
         {
             mesh.buffer = device.gl.createBuffer();
             device.gl.bindBuffer(device.gl.ARRAY_BUFFER, mesh.buffer);
             if (this._instanceCount > 1)
             {
-                var tmp = new Float32Array(buffer.length * this._instanceCount);
-                for (var i = 0; i < this._instanceCount; ++i)
+                tmp = new Float32Array(buffer.length * this._instanceCount);
+                for (i = 0; i < this._instanceCount; ++i)
                 {
                     tmp.set(buffer, buffer.length * i);
                 }
@@ -430,11 +399,11 @@ Tw2GeometryRes.prototype.Prepare = function (data)
 
             if (this._instanceCount > 1)
             {
-                var tmp = indexes.BYTES_PER_ELEMENT == 2 ? new Uint16Array(indexes.length * this._instanceCount) : new Uint32Array(indexes.length * this._instanceCount);
+                tmp = indexes.BYTES_PER_ELEMENT == 2 ? new Uint16Array(indexes.length * this._instanceCount) : new Uint32Array(indexes.length * this._instanceCount);
                 var offset = 0;
-                for (var i = 0; i < this._instanceCount; ++i)
+                for (i = 0; i < this._instanceCount; ++i)
                 {
-                    for (var j = 0; j < indexes.length; ++j)
+                    for (j = 0; j < indexes.length; ++j)
                     {
                         tmp[j + offset] = indexes[j] + offset;
                     }
@@ -450,7 +419,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
 
         var areaCount = reader.ReadUInt8();
-        for (var i = 0; i < areaCount; ++i)
+        for (i = 0; i < areaCount; ++i)
         {
             mesh.areas[i] = new Tw2GeometryMeshArea();
             mesh.areas[i].name = reader.ReadString();
@@ -462,7 +431,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
 
         var boneBindingCount = reader.ReadUInt8();
         mesh.boneBindings = [];
-        for (var i = 0; i < boneBindingCount; ++i)
+        for (i = 0; i < boneBindingCount; ++i)
         {
             mesh.boneBindings[i] = reader.ReadString();
         }
@@ -471,11 +440,12 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         if (annotationSetCount || this.systemMirror)
         {
             mesh.bufferData = buffer;
+            mesh.indexData = indexes;
         }
         if (annotationSetCount)
         {
             mesh.blendShapes = [];
-            for (var i = 0; i < annotationSetCount; ++i)
+            for (i = 0; i < annotationSetCount; ++i)
             {
                 mesh.blendShapes[i] = new Tw2BlendShapeData();
                 mesh.blendShapes[i].name = reader.ReadString();
@@ -494,7 +464,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
 
         model.skeleton = new Tw2GeometrySkeleton();
         var boneCount = reader.ReadUInt8();
-        for (var j = 0; j < boneCount; ++j)
+        for (j = 0; j < boneCount; ++j)
         {
             var bone = new Tw2GeometryBone();
             bone.name = reader.ReadString();
@@ -504,7 +474,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
             {
                 bone.parentIndex = -1;
             }
-            if (flags & 1)
+            if ((flags & 1))
             {
                 vec3.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.position);
             }
@@ -512,7 +482,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
             {
                 vec3.set([0, 0, 0], bone.position);
             }
-            if (flags & 2)
+            if ((flags & 2))
             {
                 quat4.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.orientation);
             }
@@ -520,9 +490,9 @@ Tw2GeometryRes.prototype.Prepare = function (data)
             {
                 quat4.set([0, 0, 0, 1], bone.orientation);
             }
-            if (flags & 4)
+            if ((flags & 4))
             {
-                for (var k = 0; k < 9; ++k)
+                for (k = 0; k < 9; ++k)
                 {
                     bone.scaleShear[k] = reader.ReadFloat32();
                 }
@@ -533,7 +503,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
             }
             model.skeleton.bones[j] = bone;
         }
-        for (var j = 0; j < model.skeleton.bones.length; ++j)
+        for (j = 0; j < model.skeleton.bones.length; ++j)
         {
             model.skeleton.bones[j].UpdateTransform();
             if (model.skeleton.bones[j].parentIndex != -1)
@@ -577,7 +547,7 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         }
         var controlCount = reader.ReadUInt32();
         curve.controls = new Float32Array(controlCount);
-        for (var i = 0; i < controlCount; ++i)
+        for (i = 0; i < controlCount; ++i)
         {
             curve.controls[i] = reader.ReadFloat32();
         }
@@ -585,26 +555,26 @@ Tw2GeometryRes.prototype.Prepare = function (data)
     }
 
     var animationCount = reader.ReadUInt8();
-    for (var i = 0; i < animationCount; ++i)
+    for (i = 0; i < animationCount; ++i)
     {
         var animation = new Tw2GeometryAnimation();
         animation.name = reader.ReadString();
         animation.duration = reader.ReadFloat32();
         var groupCount = reader.ReadUInt8();
-        for (var j = 0; j < groupCount; ++j)
+        for (j = 0; j < groupCount; ++j)
         {
             var group = new Tw2GeometryTrackGroup();
             group.name = reader.ReadString();
             for (var m = 0; m < this.models.length; ++m)
             {
-                if (this.models[m].name == name)
+                if (this.models[m].name == group.name)
                 {
                     group.model = this.models[m];
                     break;
                 }
             }
             var transformTrackCount = reader.ReadUInt8();
-            for (var k = 0; k < transformTrackCount; ++k)
+            for (k = 0; k < transformTrackCount; ++k)
             {
                 var track = new Tw2GeometryTransformTrack();
                 track.name = reader.ReadString();
@@ -671,7 +641,7 @@ Tw2GeometryRes.BindMeshToModel = function (mesh, model)
         }
     }
     model.meshBindings[model.meshBindings.length] = binding;
-}
+};
 
 Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb)
 {
@@ -691,6 +661,7 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
     d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
     var passCount = effect.GetPassCount();
+    var i, area;
     for (var pass = 0; pass < passCount; ++pass)
     {
         effect.ApplyPass(pass);
@@ -705,11 +676,11 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
         if (typeof (cb) != 'undefined')
         {
             var drawElements = [];
-            for (var i = 0; i < count; ++i)
+            for (i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)
                 {
-                    var area = mesh.areas[i + start];
+                    area = mesh.areas[i + start];
                     drawElements.push([d.gl.TRIANGLES, area.count, mesh.indexType, area.start]);
                 }
             }
@@ -717,24 +688,24 @@ Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, c
         }
         else
         {
-            for (var i = 0; i < count; ++i)
+            for (i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)
                 {
-                    var area = mesh.areas[i + start];
-                    var start = area.start;
+                    area = mesh.areas[i + start];
+                    var areaStart = area.start;
                     var acount = area.count;
                     while (i + 1 < count)
                     {
-                        var area = mesh.areas[i + 1 + start];
-                        if (area.start != start + acount * 2)
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start != areaStart + acount * 2)
                         {
                             break;
                         }
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, start);
+                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -764,6 +735,7 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
     d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
     var passCount = effect.GetPassCount();
+    var i, area;
     for (var pass = 0; pass < passCount; ++pass)
     {
         effect.ApplyPass(pass);
@@ -778,11 +750,11 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
         if (typeof (cb) != 'undefined')
         {
             var drawElements = [];
-            for (var i = 0; i < count; ++i)
+            for (i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)
                 {
-                    var area = mesh.areas[i + start];
+                    area = mesh.areas[i + start];
                     drawElements.push([d.gl.LINES, area.count, mesh.indexType, area.start]);
                 }
             }
@@ -790,24 +762,24 @@ Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, c
         }
         else
         {
-            for (var i = 0; i < count; ++i)
+            for (i = 0; i < count; ++i)
             {
                 if (i + start < mesh.areas.length)
                 {
-                    var area = mesh.areas[i + start];
-                    var start = area.start;
+                    area = mesh.areas[i + start];
+                    var areaStart = area.start;
                     var acount = area.count;
                     while (i + 1 < count)
                     {
-                        var area = mesh.areas[i + 1 + start];
-                        if (area.start != start + acount * 2)
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start != areaStart + acount * 2)
                         {
                             break;
                         }
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, start);
+                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
                 }
             }
         }

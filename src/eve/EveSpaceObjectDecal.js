@@ -99,14 +99,17 @@ EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
     var bkIB = this.parentGeometry.meshes[0].indexes;
     var bkStart = this.parentGeometry.meshes[0].areas[0].start;
     var bkCount = this.parentGeometry.meshes[0].areas[0].count;
+    var bkIndexType = this.parentGeometry.meshes[0].indexType;
     mat4.set(this.decalMatrix, variableStore._variables['u_DecalMatrix'].value);
     mat4.set(this.invDecalMatrix, variableStore._variables['u_InvDecalMatrix'].value);
     this.parentGeometry.meshes[0].indexes = this._indexBuffer;
     this.parentGeometry.meshes[0].areas[0].start = 0;
     this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
+    this.parentGeometry.meshes[0].indexType = device.gl.UNSIGNED_SHORT;
 
     this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : this.decalEffect);
     this.parentGeometry.meshes[0].indexes = bkIB;
     this.parentGeometry.meshes[0].areas[0].start = bkStart;
     this.parentGeometry.meshes[0].areas[0].count = bkCount;
+    this.parentGeometry.meshes[0].indexType = bkIndexType;
 };

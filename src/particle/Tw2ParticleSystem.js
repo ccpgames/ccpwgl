@@ -28,7 +28,7 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
 Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
 {
     var usage = Tw2VertexDeclaration.DECL_TEXCOORD;
-    var usageIndex = 8;
+    var usageIndex = this.usageIndex + 8;
     switch (this.elementType)
     {
         case Tw2ParticleElementDeclaration.LIFETIME:

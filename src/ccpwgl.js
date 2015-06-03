@@ -85,6 +85,14 @@
     var resourceUnloadPolicy = ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
 
     /**
+    * Callback that is fired before updating scne state and before any rendering occurs. The dt parameter passed to the
+    * function is frame time in seconds.
+    * If there is no current scene set this callback is not called.
+    * @type {!function(dt): void}
+    */
+    ccpwgl.onUpdate = null;
+
+    /**
     * Callback that is fired before rendering a scene, but after setting view/projection
     * matrixes and clearing the back buffer. Can be used for per-frame update or for
     * rendering something on the background. The dt parameter passed to the function is
@@ -133,6 +141,10 @@
         }
         if (updateEnabled)
         {
+            if (ccpwgl.onUpdate)
+            {
+                ccpwgl.onUpdate(dt);
+            }
             for (var i = 0; i < scene.objects.length; ++i)
             {
                 if (scene.objects[i].onUpdate)
@@ -1261,7 +1273,7 @@
         * Loads a ship from .red file and adds it to scene's objects list.
         *
         * @param {string} resPath Res path to ship .red file
-        * @param {!function(): void} onload Optional callback function that is called
+        * @param {!function(): void} [onload] Optional callback function that is called
         *   when ship .red file is loaded. this will point to Ship instance.
         * @returns {ccpwgl.Ship} A newly created ship instance.
         */
@@ -1537,7 +1549,7 @@
     * will be automatically updated rendered into the canvas).
     *
     * @param {string} resPath Res path to scene's .red file
-    * @param {!function(): void} onload Optional callback function that is called
+    * @param {!function(): void} [onload] Optional callback function that is called
     *   when scene .red file is loaded. this will point to Scene instance.
     * @returns {ccpwgl.Scene} Newly constructed scene.
     */
@@ -1552,16 +1564,25 @@
     * Creates a new epmpty scne. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
-    * @param {vec4} backgroundColor Scene background color as RGBA vector.
+    * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
     * @returns {ccpwgl.Scene} Newly constructed scene.
     */
-    ccpwgl.createScene = function (backgroundColor)
+    ccpwgl.createScene = function (background)
     {
-        if (backgroundColor)
+        if (background && typeof background != 'string')
         {
-            clearColor = backgroundColor;
+            clearColor = background;
         }
         scene = new Scene();
+        if (background && typeof background == 'string') {
+            var effect = ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function (obj) {
+                scene.wrappedScene.backgroundEffect = obj;
+                if ('NebulaMap' in obj.parameters) {
+                    obj.parameters['NebulaMap'].resourcePath = background;
+                    obj.parameters['NebulaMap'].Initialize();
+                }
+            });
+        }
         scene.create();
         return scene;
     };

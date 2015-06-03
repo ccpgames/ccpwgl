@@ -35,7 +35,7 @@ function EveSpaceObject()
 
 	this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
 	this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-	this._perObjectData.perObjectVSData.Get('Shipdata')[3] = 1;
+	this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
 	this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
 
 	this.animation = new Tw2AnimationController();
