@@ -3,6 +3,7 @@ function EveSpaceObjectDecal()
     this.display = true;
     this.decalEffect = null;
     this.name = '';
+    this.groupIndex = null;
     
     this.position = vec3.create();
     this.rotation = quat4.create();
