@@ -158,6 +158,8 @@ function EveSOF() {
             decal.boneIndex = _get(hullDecal, 'boneIndex', -1);
             decal.indexBuffer = new Uint16Array(hullDecal.indexBuffer);
             decal.decalEffect = effect;
+            decal.name = hullDecals[i].name;
+            decal.groupIndex = hullDecals[i].groupIndex;
             decal.Initialize();
 
             ship.decals.push(decal);
