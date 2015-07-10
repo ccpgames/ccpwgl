@@ -158,10 +158,11 @@ function EveSOF() {
             decal.boneIndex = _get(hullDecal, 'boneIndex', -1);
             decal.indexBuffer = new Uint16Array(hullDecal.indexBuffer);
             decal.decalEffect = effect;
-            decal.name = hullDecals[i].name;
-            decal.groupIndex = hullDecals[i].groupIndex;
+            decal.name = _get(hullDecals[i], 'name', '');
+            if ('groupIndex' in hullDecals[i]) {
+                    decal.groupIndex = hullDecals[i].groupIndex; 
+            }
             decal.Initialize();
-
             ship.decals.push(decal);
         }
     }
@@ -171,6 +172,7 @@ function EveSOF() {
         var factionSets = _get(faction, 'spriteSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
             var spriteSet = new EveSpriteSet();
+            spriteSet.name = _get(hullSets[i], 'name', '');
             spriteSet.effect = hullSets[i]['skinned'] ? spriteEffectSkinned : spriteEffect;
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
@@ -188,6 +190,11 @@ function EveSOF() {
                 item.falloff = _get(hullData[j], 'falloff', 0);
                 item.maxScale = _get(hullData[j], 'maxScale', 10);
                 item.minScale = _get(hullData[j], 'minScale', 1);
+                item.name = _get(hullData[j], 'name', '');
+                if ('groupIndex' in hullData[j]) {
+                    item.groupIndex = hullData[j].groupIndex; 
+                }
+                item.groupName = factionSet.name;
                 if ('position' in hullData[j]) {
                     item.position = hullData[j].position;
                 }
@@ -210,7 +217,7 @@ function EveSOF() {
         var factionSets = _get(faction, 'spotlightSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
             var spotlightSet = new EveSpotlightSet();
-
+            spotlightSet.name = _get(hullSets[i], 'name', '');
             spotlightSet.coneEffect = new Tw2Effect();
             spotlightSet.glowEffect = new Tw2Effect();
             if (hullSets[i]['skinned']) {
@@ -230,6 +237,10 @@ function EveSOF() {
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
                 var item = new EveSpotlightSetItem();
+                item.name = _get(hullData[j], 'name', '');
+                if ('groupIndex' in hullData[j]){
+                    item.groupIndex = hullData[j].groupIndex;
+                }
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
                 item.boosterGainInfluence = _get(hullData[j], 'boosterGainInfluence', 0);
                 var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
@@ -268,7 +279,7 @@ function EveSOF() {
         var factionSets = _get(faction, 'planeSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
             var planeSet = new EvePlaneSet();
-
+            planeSet.name = _get(hullSets[i], 'name', '');
             planeSet.effect = new Tw2Effect();
             if (hullSets[i]['skinned']) {
                 planeSet.effect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_planeglow.fx';
@@ -285,6 +296,8 @@ function EveSOF() {
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
                 var item = new EvePlaneSetItem();
+                _assignIfExists(item, hullData[j], 'groupIndex');
+                _assignIfExists(item, hullData[j], 'name');
                 _assignIfExists(item, hullData[j], 'position');
                 _assignIfExists(item, hullData[j], 'rotation');
                 _assignIfExists(item, hullData[j], 'scaling');
