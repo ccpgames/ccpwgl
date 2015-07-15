@@ -30,7 +30,7 @@
             camera.maxPitch = 0.65;
             ccpwgl.setCamera(camera);
 
-            // Load the data for the Abaddon
+            // Load the data for the Confessor
             ship = scene.loadShip('ade3_t3:amarrbase:amarr', whenLoaded);
 
             // A callback function that is run once the ship's base javascript object has loaded.
@@ -45,8 +45,8 @@
 
                 /**
                  *  Creates a new transform from an identity matrix and supplied arguments
-                 *  @param (position) vec3 array - Position in space [x,y,z]
                  *  @param (rotation) vec3 array - Rotation in space [x,y,z]
+                 *  @param (position) vec3 array - Position in space [x,y,z]
                  *  @param (scale) vec3 array - Scale [x,y,z]
                  *  @returns {mat4} Transform matrix
                  */
