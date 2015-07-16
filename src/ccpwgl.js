@@ -43,7 +43,7 @@
     * Ship siege state
     */
     ccpwgl.ShipSiegeState = { NORMAL: 0, SIEGE: 1 };
-
+    
     /**
     * Exception class for objects that can be thrown by ccpwgl.initialize function if
     * WebGL context is not available.
@@ -272,6 +272,19 @@
     {
         ccpwgl_int.resMan.resourcePaths[namespace] = path;
     };
+    
+    /**
+    * Returns a count of how many resources are still pending load.
+    * The .isLoading methods of ccpwgl space objects and the scene object return true when
+    * the base javascript object has loaded but not necessarily when all of it's resources
+    * have loaded (geometry, textures etc.).
+    * 
+    * @returns (number) Pending resource loads
+    */
+    ccpwgl.getPendingLoads = function()
+    {
+    	return ccpwgl_int.resMan._pendingLoads;
+    }
 
     /**
     * Enables/disables postprocessing effects. Triggers shader loading the first time 
