@@ -274,19 +274,6 @@
     };
     
     /**
-    * Returns a count of how many resources are still pending load.
-    * The .isLoading methods of ccpwgl space objects and the scene object return true when
-    * the base javascript object has loaded but not necessarily when all of it's resources
-    * have loaded (geometry, textures etc.).
-    * 
-    * @returns (number) Pending resource loads
-    */
-    ccpwgl.getPendingLoads = function()
-    {
-    	return ccpwgl_int.resMan._pendingLoads;
-    }
-
-    /**
     * Enables/disables postprocessing effects. Triggers shader loading the first time 
     * postprocessing is enabled, so the actual postprocessing will be turn on with a
     * delay after the first enabling call.
@@ -1574,7 +1561,7 @@
     };
 
     /**
-    * Creates a new epmpty scne. The scene will not have background nebula and will
+    * Creates a new epmpty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
@@ -1609,6 +1596,16 @@
     {
         return ccpwgl_int.resMan.IsLoading();
     };
+    
+    /**
+    * Returns a count of how many resources are still loading.
+    * 
+    * @returns {number} Pending resource loads
+    */
+    ccpwgl.getPendingLoads = function()
+    {
+    	return ccpwgl_int.resMan._pendingLoads;
+    }
 
     /**
     * Enable/disable scene per-frame updates.
