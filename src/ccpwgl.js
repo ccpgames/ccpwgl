@@ -1561,7 +1561,7 @@
     };
 
     /**
-    * Creates a new epmpty scene. The scene will not have background nebula and will
+    * Creates a new empty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
