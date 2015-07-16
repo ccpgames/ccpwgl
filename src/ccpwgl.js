@@ -43,7 +43,7 @@
     * Ship siege state
     */
     ccpwgl.ShipSiegeState = { NORMAL: 0, SIEGE: 1 };
-
+    
     /**
     * Exception class for objects that can be thrown by ccpwgl.initialize function if
     * WebGL context is not available.
@@ -272,7 +272,7 @@
     {
         ccpwgl_int.resMan.resourcePaths[namespace] = path;
     };
-
+    
     /**
     * Enables/disables postprocessing effects. Triggers shader loading the first time 
     * postprocessing is enabled, so the actual postprocessing will be turn on with a
@@ -1561,7 +1561,7 @@
     };
 
     /**
-    * Creates a new epmpty scne. The scene will not have background nebula and will
+    * Creates a new empty scene. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
     * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
@@ -1596,6 +1596,16 @@
     {
         return ccpwgl_int.resMan.IsLoading();
     };
+    
+    /**
+    * Returns a count of how many resources are still loading.
+    * 
+    * @returns {number} Pending resource loads
+    */
+    ccpwgl.getPendingLoads = function()
+    {
+    	return ccpwgl_int.resMan._pendingLoads;
+    }
 
     /**
     * Enable/disable scene per-frame updates.
