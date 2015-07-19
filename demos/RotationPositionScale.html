@@ -69,11 +69,6 @@
                     },
                     set: function (vec3)
                     {
-                        if (!ship.isLoaded())
-                        {
-                            throw new ccpwgl.IsStillLoadingError();
-                        }
-
                         try
                         {
                             var newTransform = createTransform(vec3, position, scale);
@@ -98,11 +93,6 @@
                     },
                     set: function (vec3)
                     {
-                        if (!ship.isLoaded())
-                        {
-                            throw new ccpwgl.IsStillLoadingError();
-                        }
-
                         try
                         {
                             var newTransform = createTransform(rotation, vec3, scale);
@@ -127,11 +117,6 @@
                     },
                     set: function (vec3)
                     {
-                        if (!ship.isLoaded())
-                        {
-                            throw new ccpwgl.IsStillLoadingError();
-                        }
-
                         try
                         {
                             var newTransform = createTransform(rotation, position, vec3);
