@@ -6,8 +6,10 @@ function EvePlanet()
     this.heightMapResPath1 = '';
     this.heightMapResPath2 = '';
     this.heightMap = new Tw2RenderTarget();
-    this.hightDirty = false;
+    this.heightDirty = false;
     this.lockedResources = [];
+    this.zOnlyModel = null;
+    this.watchedResources = [];
 }
 
 
@@ -24,7 +26,10 @@ EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heigh
     {
         resMan.GetObject(atmospherePath, function (obj) { self.highDetail.children.push(obj); });
     }
-    this.hightDirty = true;
+    this.heightDirty = true;
+    resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
+        self.zOnlyModel = obj;
+    })
 };
 
 EvePlanet.prototype.GetResources = function (obj, visited, result)
@@ -55,25 +60,30 @@ EvePlanet.prototype._MeshLoaded = function ()
 
     var mainMesh = this.highDetail.children[0].mesh;
     var originalEffect = null;
+    var resPath;
     if (mainMesh.transparentAreas.length)
     {
         originalEffect = mainMesh.transparentAreas[0].effect;
-        var resPath = originalEffect.effectFilePath;
+        resPath = originalEffect.effectFilePath;
     }
     else if (mainMesh.opaqueAreas.length)
     {
         originalEffect = mainMesh.opaqueAreas[0].effect;
-        var resPath = originalEffect.effectFilePath;
+        resPath = originalEffect.effectFilePath;
     }
     else
     {
-        var resPath = "res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx";
+        resPath = "res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx";
     }
     resPath = resPath.replace('.fx', 'BlitHeight.fx');
+    this.watchedResources = [];
 
     for (var param in originalEffect.parameters)
     {
         this.effectHeight.parameters[param] = originalEffect.parameters[param];
+        if ('textureRes' in originalEffect.parameters[param]) {
+            this.watchedResources.push(originalEffect.parameters[param].textureRes);
+        }
     }
     for (var i = 0; i < this.highDetail.children[0].children.length; ++i)
     {
@@ -95,16 +105,20 @@ EvePlanet.prototype._MeshLoaded = function ()
         {
             continue;
         }
-        for (var param in originalEffect.parameters)
+        for (param in originalEffect.parameters)
         {
             this.effectHeight.parameters[param] = originalEffect.parameters[param];
+            if ('textureRes' in originalEffect.parameters[param]) {
+                this.watchedResources.push(originalEffect.parameters[param].textureRes);
+            }
         }
     }
 
-    var param = new Tw2TextureParameter();
+    param = new Tw2TextureParameter();
     param.name = 'NormalHeight1';
     param.resourcePath = this.heightMapResPath1;
     param.Initialize();
+    this.watchedResources.push(param.textureRes);
     this.lockedResources.push(param.textureRes);
     this.effectHeight.parameters[param.name] = param;
     param = new Tw2TextureParameter();
@@ -112,6 +126,7 @@ EvePlanet.prototype._MeshLoaded = function ()
     param.resourcePath = this.heightMapResPath2;
     param.Initialize();
     this.lockedResources.push(param.textureRes);
+    this.watchedResources.push(param.textureRes);
     this.effectHeight.parameters[param.name] = param;
     param = new Tw2FloatParameter();
     param.name = 'Random';
@@ -124,10 +139,11 @@ EvePlanet.prototype._MeshLoaded = function ()
 
     this.effectHeight.effectFilePath = resPath;
     this.effectHeight.Initialize();
-    this.hightDirty = true;
+    this.heightDirty = true;
     this.heightMap.Create(2048, 1024, false);
+    this.watchedResources.push(this.effectHeight.effectRes);
 
-    for (var i = 0; i < this.lockedResources.length; ++i)
+    for (i = 0; i < this.lockedResources.length; ++i)
     {
         this.lockedResources[i].doNotPurge++;
         if (this.lockedResources[i].IsPurged())
@@ -139,16 +155,22 @@ EvePlanet.prototype._MeshLoaded = function ()
 
 EvePlanet.prototype.GetBatches = function (mode, accumulator)
 {
-    if (this.hightDirty && !resMan.IsLoading() && this.heightMapResPath1 != '')
+    if (this.heightDirty && this.watchedResources.length && this.heightMapResPath1 != '')
     {
+        for (var i = 0; i < this.watchedResources.length; ++i) {
+            if (this.watchedResources[i] && !this.watchedResources[i].IsGood()) {
+                return;
+            }
+        }
+        this.watchedResources = [];
         this.heightMap.Set();
         device.SetStandardStates(device.RM_FULLSCREEN);
         device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
         device.gl.clear(device.gl.COLOR_BUFFER_BIT);
         device.RenderFullScreenQuad(this.effectHeight);
         this.heightMap.Unset();
-        this.hightDirty = false;
-        for (var i = 0; i < this.lockedResources.length; ++i)
+        this.heightDirty = false;
+        for (i = 0; i < this.lockedResources.length; ++i)
         {
             this.lockedResources[i].doNotPurge--;
         }
@@ -168,13 +190,14 @@ EvePlanet.prototype.GetBatches = function (mode, accumulator)
         }
     }
     this.highDetail.GetBatches(mode, accumulator);
-    //    if (!this.hightDirty)
-    //    {
-    //        device.gl.viewport(0, 0, 400, 200);
-    //        device.SetStandardStates(device.RM_FULLSCREEN);
-    //        device.RenderTexture(this.heightMap.texture);
-    //        device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
-    //    }
+};
+
+EvePlanet.prototype.GetZOnlyBatches = function (mode, accumulator)
+{
+    if (this.zOnlyModel)
+    {
+        this.zOnlyModel.GetBatches(mode, accumulator);
+    }
 };
 
 EvePlanet.prototype.Update = function (dt)
@@ -185,4 +208,9 @@ EvePlanet.prototype.Update = function (dt)
 EvePlanet.prototype.UpdateViewDependentData = function (parentTransform)
 {
     this.highDetail.UpdateViewDependentData(parentTransform);
+    if (this.zOnlyModel) {
+        this.zOnlyModel.translation = this.highDetail.translation;
+        this.zOnlyModel.scaling = this.highDetail.scaling;
+        this.zOnlyModel.UpdateViewDependentData(parentTransform);
+    }
 };

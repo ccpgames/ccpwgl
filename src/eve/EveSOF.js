@@ -155,7 +155,7 @@ function EveSOF() {
             vec3.set(_get(hullDecal, 'position', [0, 0, 0]), decal.position);
             quat4.set(_get(hullDecal, 'rotation', [0, 0, 0, 1]), decal.rotation);
             vec3.set(_get(hullDecal, 'scaling', [1, 1, 1]), decal.scaling);
-            decal.boneIndex = _get(hullDecal, 'boneIndex', -1);
+            decal.parentBoneIndex = _get(hullDecal, 'boneIndex', -1);
             decal.indexBuffer = new Uint16Array(hullDecal.indexBuffer);
             decal.decalEffect = effect;
             decal.name = _get(hullDecals[i], 'name', '');

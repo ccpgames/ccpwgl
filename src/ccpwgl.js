@@ -1,4 +1,4 @@
-var ccpwgl = (function (ccpwgl_int)
+﻿var ccpwgl = (function (ccpwgl_int)
 {
     var ccpwgl = {};
 
@@ -221,7 +221,7 @@ var ccpwgl = (function (ccpwgl_int)
      * - glParams: object; WebGL context creation parameters, see
      *   https://www.khronos.org/registry/webgl/specs/1.0/#2.2. Defaults to none.
      *
-     * @param {HtmlCanvas} canvas HTML Canvas object that is used for WebGL output.
+     * @param {HTMLCanvasElement} canvas HTML Canvas object that is used for WebGL output.
      * @param {Object} params Optional parameters.
      * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
      */
@@ -266,7 +266,7 @@ var ccpwgl = (function (ccpwgl_int)
      * http://www.myserver.com/resources/blah_blah_blah.
      *
      * @param {string} namespace Resource namespace.
-     * @param {path} URL to resource root. Needs to have a trailing slash.
+     * @param {string} path URL to resource root. Needs to have a trailing slash.
      */
     ccpwgl.setResourcePath = function (namespace, path)
     {
@@ -360,13 +360,13 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @constructor
      * @param {string} resPath Res path to object .red file
-     * @param {!function(): void} onload Optional callback function that is called
+     * @param {!function(): void} [onload] Optional callback function that is called
      *   when object .red file is loaded. this will point to SpaceObject instance.
      */
     function SpaceObject(resPath, onload)
         {
             /** Wrapped ccpwgl_int object **/
-            this.wrappedObjects = [null, ];
+            this.wrappedObjects = [null];
             /** Local to world space transform matrix @type {mat4} **/
             this.transform = mat4.identity(mat4.create());
             /** Per-frame on update callback @type {!function(dt): void} **/
@@ -463,8 +463,8 @@ var ccpwgl = (function (ccpwgl_int)
      * and turret support.
      *
      * @constructor
-     * @param {string} resPath Res path to ship .red file
-     * @param {!function(): void} onload Optional callback function that is called
+     * @param {string|string[]} resPath Res path to ship .red file
+     * @param {!function(): void} [onload] Optional callback function that is called
      *   when ship .red file is loaded. this will point to Ship instance.
      */
     function Ship(resPath, onload)
@@ -497,7 +497,7 @@ var ccpwgl = (function (ccpwgl_int)
             var self = this;
             if (typeof resPath == 'string')
             {
-                resPath = [resPath, ];
+                resPath = [resPath];
             }
             for (var i = 0; i < resPath.length; ++i)
             {
@@ -530,15 +530,15 @@ var ccpwgl = (function (ccpwgl_int)
                             default:
                                 self.wrappedObjects[index].animation.PlayAnimation('NormalLoop', true);
                         }
-                        if (this.onInitialSeigeState)
+                        if (self.onInitialSeigeState)
                         {
-                            this.onInitialSeigeState.call(self, self.siegeState);
+                            self.onInitialSeigeState.call(self, self.siegeState);
                         }
                         for (var i = 0; i < self.turrets.length; ++i)
                         {
                             if (self.turrets[i])
                             {
-                                doMountTurret.call(self, i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target);
+                                doMountTurret(i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target);
                             }
                         }
                         if (self.isLoaded())
@@ -652,9 +652,10 @@ var ccpwgl = (function (ccpwgl_int)
             this.setTransform = function (newTransform)
             {
                 this.transform.set(newTransform);
+                var i;
                 if (this.wrappedObjects.length < 2 || !this.isLoaded())
                 {
-                    for (var i = 0; i < this.wrappedObjects.length; ++i)
+                    for (i = 0; i < this.wrappedObjects.length; ++i)
                     {
                         if (this.wrappedObjects[i])
                         {
@@ -664,7 +665,7 @@ var ccpwgl = (function (ccpwgl_int)
                 }
                 else
                 {
-                    for (var i = 0; i < this.wrappedObjects.length; ++i)
+                    for (i = 0; i < this.wrappedObjects.length; ++i)
                     {
                         mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
                     }
@@ -766,14 +767,14 @@ var ccpwgl = (function (ccpwgl_int)
              * Loads the turret and mounts it in a specified slot index.
              *
              * @param {number} index Slot index to mount turret in.
-             * @returns {string} resPath Res path to turret .red file.
+             * @param {string} resPath Res path to turret .red file.
              */
             this.mountTurret = function (index, resPath)
             {
                 this.turrets[index] = { path: resPath, state: ccpwgl.TurretState.IDLE, target: vec3.create() };
                 if (this.isLoaded())
                 {
-                    doMountTurret.call(this, index, resPath, ccpwgl.TurretState.IDLE, this.turrets[index].target);
+                    doMountTurret(index, resPath, ccpwgl.TurretState.IDLE, this.turrets[index].target);
                 }
             };
 
@@ -878,21 +879,21 @@ var ccpwgl = (function (ccpwgl_int)
                         }
                     }
                 }
-            }
+            };
 
             /** Internal helper method that mount a turret on a loaded ship **/
             function doMountTurret(slot, resPath, state, targetPosition)
                 {
                     var name = 'locator_turret_' + slot;
                     var objectIndex = null;
-                    for (var i = 0; i < this.wrappedObjects.length; ++i)
+                    for (var i = 0; i < self.wrappedObjects.length; ++i)
                     {
-                        if (this.wrappedObjects[i])
+                        if (self.wrappedObjects[i])
                         {
                             var foundLocator = false;
-                            for (var j = 0; j < this.wrappedObjects[i].locators.length; ++j)
+                            for (var j = 0; j < self.wrappedObjects[i].locators.length; ++j)
                             {
-                                if (this.wrappedObjects[i].locators[j].name.substr(0, name.length) == name)
+                                if (self.wrappedObjects[i].locators[j].name.substr(0, name.length) == name)
                                 {
                                     foundLocator = true;
                                     break;
@@ -909,8 +910,8 @@ var ccpwgl = (function (ccpwgl_int)
                     {
                         return;
                     }
-                    var ship = this.wrappedObjects[objectIndex];
-                    for (var i = 0; i < ship.turretSets.length; ++i)
+                    var ship = self.wrappedObjects[objectIndex];
+                    for (i = 0; i < ship.turretSets.length; ++i)
                     {
                         if (ship.turretSets[i].locatorName == name)
                         {
@@ -1066,9 +1067,9 @@ var ccpwgl = (function (ccpwgl_int)
                     result = result.concat(this.wrappedObjects[i].locators);
                 }
                 return result;
-            }
+            };
 
-            for (var i = 0; i < resPath.length; ++i)
+            for (i = 0; i < resPath.length; ++i)
             {
                 if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
                     if (i == 0)
@@ -1085,7 +1086,7 @@ var ccpwgl = (function (ccpwgl_int)
      * Wrapper for planets. Created with Scene.loadPlanet function.
      *
      * @constructor
-     * @param {integer} itemID Planet's item ID.
+     * @param {number} itemID Planet's item ID.
      * @param {string} planetPath Res path to planet's .red template file.
      * @param {string} atmospherePath Res path to planet's .red atmosphere file.
      * @param {string} heightMap1 Res path to planet's first height map texture.
@@ -1094,7 +1095,7 @@ var ccpwgl = (function (ccpwgl_int)
     function Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
         {
             /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
-            this.wrappedObjects = [new ccpwgl_int.EvePlanet(), ];
+            this.wrappedObjects = [new ccpwgl_int.EvePlanet()];
             this.wrappedObjects[0].Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
             /** Per-frame on update callback @type {!function(dt): void} **/
             this.onUpdate = null;
@@ -1104,7 +1105,7 @@ var ccpwgl = (function (ccpwgl_int)
              *
              * @returns {boolean} True if planet is loaded; false otherwise.
              */
-            this.isLoaded = function () { return this.wrappedObjects[0].hightDirty; };
+            this.isLoaded = function () { return !this.wrappedObjects[0].heightDirty; };
 
             /**
              * Returns planets's bounding sphere. We know it always is a unit sphere in local
@@ -1174,27 +1175,27 @@ var ccpwgl = (function (ccpwgl_int)
              * Internal helper function that rebuilds a list of object in the wrapped
              * scene with alread loaded objects from Scene.objects array.
              **/
-            function rebuildSceneObjects()
+            function rebuildSceneObjects(self)
                 {
-                    if (!this.wrappedScene)
+                    if (!self.wrappedScene)
                     {
                         return;
                     }
-                    this.wrappedScene.planets.splice(0, this.wrappedScene.planets.length);
-                    this.wrappedScene.objects.splice(0, this.wrappedScene.objects.length);
-                    for (var i = 0; i < this.objects.length; ++i)
+                    self.wrappedScene.planets.splice(0, self.wrappedScene.planets.length);
+                    self.wrappedScene.objects.splice(0, self.wrappedScene.objects.length);
+                    for (var i = 0; i < self.objects.length; ++i)
                     {
-                        for (var j = 0; j < this.objects[i].wrappedObjects.length; ++j)
+                        for (var j = 0; j < self.objects[i].wrappedObjects.length; ++j)
                         {
-                            if (this.objects[i].wrappedObjects[j])
+                            if (self.objects[i].wrappedObjects[j])
                             {
-                                if (this.objects[i] instanceof Planet)
+                                if (self.objects[i] instanceof Planet)
                                 {
-                                    this.wrappedScene.planets.push(this.objects[i].wrappedObjects[j]);
+                                    self.wrappedScene.planets.push(self.objects[i].wrappedObjects[j]);
                                 }
                                 else
                                 {
-                                    this.wrappedScene.objects.push(this.objects[i].wrappedObjects[j]);
+                                    self.wrappedScene.objects.push(self.objects[i].wrappedObjects[j]);
                                 }
                             }
                         }
@@ -1203,33 +1204,31 @@ var ccpwgl = (function (ccpwgl_int)
 
             /**
              * Called when an EveSpaceScene is created or loaded.
-             *
-             * @param {ccpwlg_int.EveSpaceScene} obj New scene
              */
-            function onSceneLoaded(obj)
+            function onSceneLoaded(self, obj)
                 {
-                    this.wrappedScene = obj;
-                    if (this.sun)
+                    self.wrappedScene = obj;
+                    if (self.sun)
                     {
-                        obj.lensflares[0] = this.sun;
+                        obj.lensflares[0] = self.sun;
                     }
-                    if (this.sunDirection)
+                    if (self.sunDirection)
                     {
-                        obj.sunDirection.set(this.sunDirection);
+                        obj.sunDirection.set(self.sunDirection);
                     }
-                    if (this.sunLightColor)
+                    if (self.sunLightColor)
                     {
-                        obj.sunDiffuseColor.set(this.sunLightColor);
+                        obj.sunDiffuseColor.set(self.sunLightColor);
                     }
                     obj.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
-                    if (this.fog)
+                    if (self.fog)
                     {
-                        obj.fogStart = this.fog[0];
-                        obj.fogEnd = this.fog[1];
-                        obj.fogMax = this.fog[2];
-                        obj.fogColor.set(this.fog[3]);
+                        obj.fogStart = self.fog[0];
+                        obj.fogEnd = self.fog[1];
+                        obj.fogMax = self.fog[2];
+                        obj.fogColor.set(self.fog[3]);
                     }
-                    rebuildSceneObjects.call(this);
+                    rebuildSceneObjects(self);
                 }
 
             /**
@@ -1237,7 +1236,7 @@ var ccpwgl = (function (ccpwgl_int)
              */
             this.create = function ()
             {
-                onSceneLoaded.call(this, new ccpwgl_int.EveSpaceScene());
+                onSceneLoaded(this, new ccpwgl_int.EveSpaceScene());
             };
 
             /**
@@ -1254,7 +1253,7 @@ var ccpwgl = (function (ccpwgl_int)
                     resPath,
                     function (obj)
                     {
-                        onSceneLoaded.call(self, obj);
+                        onSceneLoaded(self, obj);
                         if (onload)
                         {
                             onload.call(self);
@@ -1284,7 +1283,7 @@ var ccpwgl = (function (ccpwgl_int)
                     resPath,
                     function ()
                     {
-                        rebuildSceneObjects.call(self);
+                        rebuildSceneObjects(self);
                         if (onload)
                         {
                             onload.call(this);
@@ -1293,7 +1292,7 @@ var ccpwgl = (function (ccpwgl_int)
                 this.objects.push(ship);
                 if (ship.wrappedObjects[0])
                 {
-                    rebuildSceneObjects.call(this);
+                    rebuildSceneObjects(this);
                 }
                 return ship;
             };
@@ -1313,7 +1312,7 @@ var ccpwgl = (function (ccpwgl_int)
                     resPath,
                     function ()
                     {
-                        rebuildSceneObjects.call(self);
+                        rebuildSceneObjects(self);
                         if (onload)
                         {
                             onload.call(this);
@@ -1322,7 +1321,7 @@ var ccpwgl = (function (ccpwgl_int)
                 this.objects.push(object);
                 if (object.wrappedObjects[0])
                 {
-                    rebuildSceneObjects.call(this);
+                    rebuildSceneObjects(this);
                 }
                 return object;
             };
@@ -1338,10 +1337,10 @@ var ccpwgl = (function (ccpwgl_int)
                 this.objects.push(object);
                 if (object.wrappedObjects[0])
                 {
-                    rebuildSceneObjects.call(this);
+                    rebuildSceneObjects(this);
                 }
                 return object;
-            }
+            };
 
             /**
              * Creates a planet.
@@ -1355,10 +1354,9 @@ var ccpwgl = (function (ccpwgl_int)
              */
             this.loadPlanet = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2)
             {
-                var self = this;
                 var object = new Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
                 this.objects.push(object);
-                rebuildSceneObjects.call(this);
+                rebuildSceneObjects(this);
                 return object;
             };
 
@@ -1409,7 +1407,7 @@ var ccpwgl = (function (ccpwgl_int)
                     throw new ReferenceError('object index out of bounds');
                 }
                 this.objects.splice(index, 1);
-                rebuildSceneObjects.call(this);
+                rebuildSceneObjects(this);
             };
 
             /**
@@ -1564,7 +1562,7 @@ var ccpwgl = (function (ccpwgl_int)
      * Creates a new empty scene. The scene will not have background nebula and will
      * use a solid color to fill the background.
      *
-     * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
+     * @param {string|float[]} background Scene background color as RGBA vector or background cubemap res path.
      * @returns {ccpwgl.Scene} Newly constructed scene.
      */
     ccpwgl.createScene = function (background)
@@ -1575,7 +1573,7 @@ var ccpwgl = (function (ccpwgl_int)
         }
         scene = new Scene();
         if (background && typeof background == 'string') {
-            var effect = ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function (obj) {
+            ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function (obj) {
                 scene.wrappedScene.backgroundEffect = obj;
                 if ('NebulaMap' in obj.parameters) {
                     obj.parameters['NebulaMap'].resourcePath = background;

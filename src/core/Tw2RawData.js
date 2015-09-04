@@ -34,4 +34,4 @@ Tw2RawData.prototype.Get = function (name)
 Tw2RawData.prototype.GetData = function (name) 
 {
     return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
-},
+};

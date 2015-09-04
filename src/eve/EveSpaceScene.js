@@ -269,6 +269,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
 EveSpaceScene.prototype.Render = function ()
 {
     this.ApplyPerFrameData();
+    var i, id;
 
     if (this.backgroundRenderingEnabled)
     {
@@ -287,8 +288,8 @@ EveSpaceScene.prototype.Render = function ()
             newProj[14] = (zf * zn) / (zn - zf);
             device.SetProjection(newProj);
             this.ApplyPerFrameData();
-            var id = mat4.identity(mat4.create());
-            for (var i = 0; i < this.planets.length; ++i)
+            id = mat4.identity(mat4.create());
+            for (i = 0; i < this.planets.length; ++i)
             {
                 if (this.planets[i].UpdateViewDependentData)
                 {
@@ -314,7 +315,7 @@ EveSpaceScene.prototype.Render = function ()
     {
         var frustum = new Tw2Frustum();
         frustum.Initialize(device.view, device.projection, device.viewportWidth);
-        for (var i = 0; i < this.objects.length; ++i)
+        for (i = 0; i < this.objects.length; ++i)
         {
             if (this.objects[i].UpdateLod)
             {
@@ -324,34 +325,38 @@ EveSpaceScene.prototype.Render = function ()
     }
 
 
-    var id = mat4.identity(mat4.create());
-    for (var i = 0; i < this.objects.length; ++i)
+    id = mat4.identity(mat4.create());
+    for (i = 0; i < this.objects.length; ++i)
     {
         if (this.objects[i].UpdateViewDependentData)
         {
             this.objects[i].UpdateViewDependentData(id);
         }
     }
-    for (var i = 0; i < this.lensflares.length; ++i)
+    for (i = 0; i < this.lensflares.length; ++i)
     {
         this.lensflares[i].PrepareRender();
     }
 
     this._batches.Clear();
 
+    for (i = 0; i < this.planets.length; ++i)
+    {
+        this.planets[i].GetZOnlyBatches(device.RM_OPAQUE, this._batches);
+    }
     this.RenderBatches(device.RM_OPAQUE, this.objects);
     this.RenderBatches(device.RM_DECAL, this.objects);
     this.RenderBatches(device.RM_TRANSPARENT, this.objects);
     this.RenderBatches(device.RM_ADDITIVE, this.objects);
 
-    for (var i = 0; i < this.lensflares.length; ++i)
+    for (i = 0; i < this.lensflares.length; ++i)
     {
         this.lensflares[i].GetBatches(device.RM_ADDITIVE, this._batches);
     }
 
     this._batches.Render();
 
-    for (var i = 0; i < this.lensflares.length; ++i)
+    for (i = 0; i < this.lensflares.length; ++i)
     {
         this.lensflares[i].UpdateOccluders();
     }
@@ -362,7 +367,7 @@ EveSpaceScene.prototype.Render = function ()
         {
             this._debugHelper = new Tw2DebugRenderer();
         }
-        for (var i = 0; i < this.objects.length; ++i)
+        for (i = 0; i < this.objects.length; ++i)
         {
             if (typeof (this.objects[i].RenderDebugInfo) != 'undefined')
             {
