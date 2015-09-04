@@ -56,3 +56,13 @@ Tw2Vector2Parameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
 };
+
+Tw2Vector2Parameter.prototype.GetValue = function()
+{
+    if (this.constantBuffer != null)
+    {
+    	return this.constantBuffer.subarray(this.offset, this.offset + this.value.length);
+    }
+    
+    return this.value;
+};
