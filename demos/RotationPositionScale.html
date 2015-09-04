@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>WebGL API Test - Position, Rotation and Scale</title>
+
+    <script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+    <script type="text/javascript" src="../src/ccpwgl.js"></script>
+
+    <script type="text/javascript">
+
+        // Declare ship globally so you can test functionality from your javascript console
+        var ship = null;
+
+        function onDocumentLoad()
+        {
+            var canvas = document.getElementById('mainCanvas');
+            ccpwgl.initialize(canvas);
+            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+
+            var camera = new TestCamera(canvas);
+            camera.minDistance = 10;
+            camera.maxDistance = 10000;
+            camera.fov = 30;
+            camera.distance = 5000;
+            camera.nearPlane = 1;
+            camera.farPlane = 10000000;
+            camera.minPitch = -0.5;
+            camera.maxPitch = 0.65;
+            ccpwgl.setCamera(camera);
+
+            // Load the data for the Confessor
+            ship = scene.loadShip('ade3_t3:amarrbase:amarr', whenLoaded);
+
+            // A callback function that is run once the ship's base javascript object has loaded.
+            // This callback adds get/setters that allow you to change the ship's rotation, position and scale.
+            // Note: Changing the ship's transforms outside of these functions will result in
+            // incorrect values being returned from the get functions.
+            function whenLoaded()
+            {
+                var rotation = [0, 0, 0]; // Values are in degrees
+                var position = [0, 0, 0];
+                var scale = [1, 1, 1];
+
+                /**
+                 *  Creates a new transform from an identity matrix and supplied arguments
+                 *  @param (rotation) vec3 array - Rotation in space [x,y,z]
+                 *  @param (position) vec3 array - Position in space [x,y,z]
+                 *  @param (scale) vec3 array - Scale [x,y,z]
+                 *  @returns {mat4} Transform matrix
+                 */
+                function createTransform(rotation, position, scale)
+                {
+                        var transform = mat4.identity(mat4.create());
+                        mat4.translate(transform, position);
+                        mat4.rotate(transform, rotation[0] * ( Math.PI / 180 ), [1, 0, 0]);
+                        mat4.rotate(transform, rotation[1] * ( Math.PI / 180 ), [0, 1, 0]);
+                        mat4.rotate(transform, rotation[2] * ( Math.PI / 180 ), [0, 0, 1]);
+                        mat4.scale(transform, scale);
+                        return transform;
+                }
+
+                // Rotation
+                Object.defineProperty(ship, 'rotation', {
+                    get: function ()
+                    {
+                        return rotation;
+                    },
+                    set: function (vec3)
+                    {
+                        try
+                        {
+                            var newTransform = createTransform(vec3, position, scale);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+
+                        rotation = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                // Position
+                Object.defineProperty(ship, 'position', {
+                    get: function ()
+                    {
+                        return position;
+                    },
+                    set: function (vec3)
+                    {
+                        try
+                        {
+                            var newTransform = createTransform(rotation, vec3, scale);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+
+                        position = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                // Scale
+                Object.defineProperty(ship, 'scale', {
+                    get: function ()
+                    {
+                        return scale;
+                    },
+                    set: function (vec3)
+                    {
+                        try
+                        {
+                            var newTransform = createTransform(rotation, position, vec3);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+
+                        scale = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+
+                // Example values
+                ship.rotation = [ 100, 10, -20];
+                ship.position = [ 0, -100, 0 ];
+                ship.scale = [ 1, 1, 1 ];
+
+            }
+
+            ccpwgl.enablePostprocessing(true);
+
+        }
+
+        onload = onDocumentLoad;
+
+    </script>
+
+</head>
+<body style="margin:0">
+<canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+</body>
+</html>
