@@ -48,3 +48,13 @@ Tw2FloatParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer[offset] = this.value;
 };
+
+Tw2FloatParameter.prototype.GetValue = function()
+{
+    if (this.constantBuffer != null)
+    {
+    	return this.constantBuffer[this.offset];
+    }
+    
+    return this.value;
+};
