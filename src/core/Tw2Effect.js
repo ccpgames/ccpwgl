@@ -342,3 +342,39 @@ Tw2Effect.prototype.Render = function (cb)
         cb(this, i);
     }
 };
+
+Tw2Effect.prototype.Get = function ()
+{
+    function convertShaderName(shaderName)
+    {
+        var newName = shaderName.split('/');
+        return newName[newName.length - 2] + "/" + newName[newName.length - 1].replace("skinned_", "");
+    }	
+    
+    var effect = {};
+    effect.name = this.name;
+    effect.shader = convertShaderName(this.effectFilePath);
+    effect.parameters = {};
+    effect.textures = {};
+    
+    for (var param in this.parameters)
+    {
+        if (this.parameters.hasOwnProperty(param))
+        {
+            if (this.parameters[param] instanceof ccpwgl_int.Tw2TextureParameter)
+            {
+                effect.textures[param] = {};
+                effect.textures[param].name = param;
+                effect.textures[param].resFilePath = this.parameters[param].resourcePath;
+            }
+            else
+            {
+                effect.parameters[param] = {};
+                effect.parameters[param].name = param;
+                effect.parameters[param].value = this.parameters[param].GetValue();
+            }
+        }
+    }
+    
+    return effect;
+}
