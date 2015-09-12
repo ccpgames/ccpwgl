@@ -345,15 +345,9 @@ Tw2Effect.prototype.Render = function (cb)
 
 Tw2Effect.prototype.Get = function ()
 {
-    function convertShaderName(shaderName)
-    {
-        var newName = shaderName.split('/');
-        return newName[newName.length - 2] + "/" + newName[newName.length - 1].replace("skinned_", "");
-    }	
-    
     var effect = {};
     effect.name = this.name;
-    effect.shader = convertShaderName(this.effectFilePath);
+    effect.shader = this.effectFilePath;
     effect.parameters = {};
     effect.textures = {};
     
@@ -375,6 +369,5 @@ Tw2Effect.prototype.Get = function ()
             }
         }
     }
-    
     return effect;
 }
