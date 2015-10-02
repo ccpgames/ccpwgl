@@ -2,7 +2,7 @@ function EveTurretData()
 {
     this.visible = true;
     this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
+    this.rotation = quat4.create();
 }
 
 function EveTurretSet()
@@ -25,6 +25,8 @@ function EveTurretSet()
     this.activeAnimation = new Tw2AnimationController();
     this.inactiveAnimation = new Tw2AnimationController();
 
+    this.parentMatrix = mat4.identity(mat4.create());
+
     this.turrets = [];
     
     this.STATE_INACTIVE = 0;
@@ -39,26 +41,24 @@ function EveTurretSet()
     
     this._perObjectDataActive = new Tw2PerObjectData();
     this._perObjectDataActive.perObjectVSData = new Tw2RawData();
-    this._perObjectDataActive.perObjectVSData.Declare('clipData', 4);
+    this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
+    this._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
     this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretWorld0', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretWorld1', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretWorld2', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPose0', 15 * 4 * 3);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPose1', 15 * 4 * 3);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPose2', 15 * 4 * 3);
+    this._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
+    this._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
+    this._perObjectDataActive.perObjectVSData.Declare('turretPoseTrans', 4 * 72);
+    this._perObjectDataActive.perObjectVSData.Declare('turretPoseRot', 4 * 72);
     this._perObjectDataActive.perObjectVSData.Create();
 
     this._perObjectDataInactive = new Tw2PerObjectData();
     this._perObjectDataInactive.perObjectVSData = new Tw2RawData();
-    this._perObjectDataInactive.perObjectVSData.Declare('clipData', 4);
+    this._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
     this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretWorld0', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretWorld1', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretWorld2', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPose0', 15 * 4 * 3);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPose1', 15 * 4 * 3);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPose2', 15 * 4 * 3);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTrans', 4 * 72);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseRot', 4 * 72);
     this._perObjectDataInactive.perObjectVSData.Create();
 
     this.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
@@ -138,7 +138,7 @@ EveTurretSet.prototype.InitializeFiringEffect = function () {
             this.firingEffect.SetMuzzleBoneID(i, model.FindBoneByName(EveTurretSet.positionBoneSkeletonNames[i]));
         }
     }
-}
+};
 
 EveTurretSet.prototype.SetLocalTransform = function (index, localTransform)
 {
@@ -151,6 +151,116 @@ EveTurretSet.prototype.SetLocalTransform = function (index, localTransform)
     else
     {
         this.turrets[index].localTransform = localTransform;
+    }
+    mat4toquat(this.turrets[index].localTransform, this.turrets[index].rotation);
+};
+
+function mat3x4toquat(mm, index, out, outIndex) {
+    index *= 12;
+    outIndex *= 4;
+    var m = mat3x4toquat._tempMat;
+    m[0] = mm[index + 0];
+    m[1] = mm[index + 4];
+    m[2] = mm[index + 8];
+    m[3] = 0;
+    m[4] = mm[index + 1];
+    m[5] = mm[index + 5];
+    m[6] = mm[index + 9];
+    m[7] = 0;
+    m[8] = mm[index + 2];
+    m[9] = mm[index + 6];
+    m[10] = mm[index + 10];
+    m[11] = 0;
+    m[12] = mm[index + 3];
+    m[13] = mm[index + 7];
+    m[14] = mm[index + 11];
+    m[15] = 1;
+    var q = mat3x4toquat._tempQuat;
+    mat4toquat(m, q);
+    out[outIndex] = q[0];
+    out[outIndex + 1] = q[1];
+    out[outIndex + 2] = q[2];
+    out[outIndex + 3] = q[3];
+}
+
+mat3x4toquat._tempMat = mat4.create();
+mat3x4toquat._tempQuat = quat4.create();
+
+
+function mat4toquat(m, out) {
+    out = out || quat4.create();
+	var trace = m[0] + m[5] + m[10] + 1.0;
+	if ( trace > 1.0) {
+		out[0] = ( m[6] - m[9] ) / ( 2.0 * Math.sqrt( trace ) );
+		out[1] = ( m[8] - m[2] ) / ( 2.0 * Math.sqrt( trace ) );
+		out[2] = ( m[1] - m[4] ) / ( 2.0 * Math.sqrt( trace ) );
+		out[3] = Math.sqrt(trace) / 2.0;
+		return out;
+	}
+	var maxi = 0;
+	var maxdiag = m[0];
+	for (var i = 1; i<3; i++)
+	{
+		if ( m[i * 4 + i] > maxdiag )
+		{
+			maxi = i;
+			maxdiag = m[i * 4 + i];
+		}
+	}
+    var S;
+	switch( maxi )
+	{
+	case 0:
+		S = 2.0 * Math.sqrt( 1.0 + m[0] - m[5] - m[10] );
+		out[0] = 0.25 * S;
+		out[1] = ( m[1] + m[4] ) / S;
+		out[2] = ( m[2] + m[8] ) / S;
+		out[3] = ( m[6] - m[9] ) / S;
+		break;
+	case 1:
+		S = 2.0 * Math.sqrt( 1.0 + m[5] - m[0] - m[10] );
+		out[0] = ( m[1] + m[4] ) / S;
+		out[1] = 0.25 * S;
+		out[2] = ( m[6] + m[9] ) / S;
+		out[3] = ( m[8] - m[2] ) / S;
+		break;
+	case 2:
+		S = 2.0 * Math.sqrt( 1.0 + m[10] - m[0] - m[5] );
+		out[0] = ( m[2] + m[8] ) / S;
+		out[1] = ( m[6] + m[9] ) / S;
+		out[2] = 0.25 * S;
+		out[3] = ( m[1] - m[4] ) / S;
+		break;
+	}
+	return out;
+}
+
+EveTurretSet.prototype._UpdatePerObjectData = function (perObjectData, transforms) {
+    mat4.transpose(this.parentMatrix, perObjectData.Get('shipMatrix'));
+    var transformCount = transforms.length / 12;
+    perObjectData.Get('turretSetData')[0] = transformCount;
+    perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
+    var translation = perObjectData.Get('turretTranslation');
+    var rotation = perObjectData.Get('turretRotation');
+    var poseTranslation = perObjectData.Get('turretPoseTrans');
+    var poseRotation = perObjectData.Get('turretPoseRot');
+    for (var i = 0; i < this.turrets.length; ++i)
+    {
+        for (var j = 0; j < transformCount; ++j) {
+            poseTranslation[(i * transformCount + j) * 4] = transforms[j * 12 + 3];
+            poseTranslation[(i * transformCount + j) * 4 + 1] = transforms[j * 12 + 7];
+            poseTranslation[(i * transformCount + j) * 4 + 2] = transforms[j * 12 + 11];
+            poseTranslation[(i * transformCount + j) * 4 + 3] = 1;
+            mat3x4toquat(transforms, j, poseRotation, i * transformCount + j);
+        }
+        translation[i * 4] = this.turrets[i].localTransform[12];
+        translation[i * 4 + 1] = this.turrets[i].localTransform[13];
+        translation[i * 4 + 2] = this.turrets[i].localTransform[14];
+        translation[i * 4 + 3] = 1;
+        rotation[i * 4] = this.turrets[i].rotation[0];
+        rotation[i * 4 + 1] = this.turrets[i].rotation[1];
+        rotation[i * 4 + 2] = this.turrets[i].rotation[2];
+        rotation[i * 4 + 3] = this.turrets[i].rotation[3];
     }
 };
 
@@ -167,16 +277,7 @@ EveTurretSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
         {
             return true;
         }
-        mat4.identity(this._perObjectDataInactive.perObjectVSData.Get('shipMatrix'));
-        this._perObjectDataInactive.perObjectVSData.Get('clipData')[0] = this.bottomClipHeight;
-        this._perObjectDataInactive.perObjectVSData.Set('turretPose0', transforms);
-        this._perObjectDataInactive.perObjectVSData.Set('turretPose1', transforms);
-        this._perObjectDataInactive.perObjectVSData.Set('turretPose2', transforms);
-        for (var i = 0; i < this.turrets.length; ++i)
-        {
-            mat4.transpose(
-                this.turrets[i].worldTransform, this._perObjectDataInactive.perObjectVSData.Get(this.worldNames[i]));
-        }
+        this._UpdatePerObjectData(this._perObjectDataInactive.perObjectVSData, transforms);
         this._perObjectDataInactive.perObjectPSData = perObjectData.perObjectPSData;
     
         var batch = new Tw2ForwardingRenderBatch();
@@ -187,22 +288,14 @@ EveTurretSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
         accumulator.Commit(batch);
 
         if (this.state == this.STATE_FIRING) {
-            var transforms = this.activeAnimation.GetBoneMatrixes(0);
+            transforms = this.activeAnimation.GetBoneMatrixes(0);
             if (transforms.length == 0) {
                 return true;
             }
-            mat4.identity(this._perObjectDataActive.perObjectVSData.Get('shipMatrix'));
-            this._perObjectDataActive.perObjectVSData.Get('clipData')[0] = this.bottomClipHeight;
-            this._perObjectDataActive.perObjectVSData.Set('turretPose0', transforms);
-            this._perObjectDataActive.perObjectVSData.Set('turretPose1', transforms);
-            this._perObjectDataActive.perObjectVSData.Set('turretPose2', transforms);
-            for (var i = 0; i < this.turrets.length; ++i) {
-                mat4.transpose(
-                    this.turrets[i].worldTransform, this._perObjectDataActive.perObjectVSData.Get(this.worldNames[i]));
-            }
+            this._UpdatePerObjectData(this._perObjectDataActive.perObjectVSData, transforms);
             this._perObjectDataActive.perObjectPSData = perObjectData.perObjectPSData;
 
-            var batch = new Tw2ForwardingRenderBatch();
+            batch = new Tw2ForwardingRenderBatch();
             batch.renderActive = true;
             batch.perObjectData = this._perObjectDataActive;
             batch.geometryProvider = this;
@@ -222,9 +315,7 @@ EveTurretSet.prototype.Update = function (dt, parentMatrix)
         this.activeAnimation.Update(dt);
         this.inactiveAnimation.Update(dt);
     }
-    for (var i = 0; i < this.turrets.length; ++i) {
-        mat4.multiply(parentMatrix, this.turrets[i].localTransform, this.turrets[i].worldTransform);
-    }
+    mat4.set(parentMatrix, this.parentMatrix);
     if (this.firingEffect)
     {
         if (this._activeTurret != -1) {
@@ -236,16 +327,18 @@ EveTurretSet.prototype.Update = function (dt, parentMatrix)
                     }
                 }
             }
+            var i;
             if (this.activeAnimation.models.length) {
                 var bones = this.activeAnimation.models[0].bonesByName;
-                for (var i = 0; i < this.firingEffect.GetPerMuzzleEffectCount() ; ++i) {
+                for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount() ; ++i) {
                     var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform;
-                    mat4.multiply(this.turrets[this._activeTurret].worldTransform, transform, this.firingEffect.GetMuzzleTransform(i));
+                    var out = this.firingEffect.GetMuzzleTransform(i);
+                    mat4.multiply(parentMatrix, mat4.multiply(this.turrets[this._activeTurret].localTransform, transform, out), out);
                 }
             }
             else {
-                for (var i = 0; i < this.firingEffect.GetPerMuzzleEffectCount() ; ++i) {
-                    mat4.set(this.turrets[this._activeTurret].worldTransform, this.firingEffect.GetMuzzleTransform(i));
+                for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount() ; ++i) {
+                    mat4.multiply(parentMatrix, this.turrets[this._activeTurret].localTransform, this.firingEffect.GetMuzzleTransform(i));
                 }
             }
         }
@@ -379,24 +472,27 @@ EveTurretSet.prototype._DoStartFiring = function () {
 }
 
 EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
-EveTurretSet._tempQuat4 = [quat4.create()];
+EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];
 
 EveTurretSet.prototype.GetClosestTurret = function () {
     var closestTurret = -1;
     var closestAngle = -2;
     var nrmToTarget = EveTurretSet._tempVec3[0];
     var nrmUp = EveTurretSet._tempQuat4[0];
-    var turretPosition = EveTurretSet._tempVec3[1];
+    var turretPosition = EveTurretSet._tempQuat4[1];
     for (var i = 0; i < this.turrets.length; ++i) {
-        turretPosition[0] = this.turrets[i].worldTransform[12];
-        turretPosition[1] = this.turrets[i].worldTransform[13];
-        turretPosition[2] = this.turrets[i].worldTransform[14];
+        turretPosition[0] = this.turrets[i].localTransform[12];
+        turretPosition[1] = this.turrets[i].localTransform[13];
+        turretPosition[2] = this.turrets[i].localTransform[14];
+        turretPosition[3] = 1;
+        mat4.multiplyVec4(this.parentMatrix, turretPosition);
         vec3.normalize(vec3.subtract(this.targetPosition, turretPosition, nrmToTarget));
         nrmUp[0] = 0;
         nrmUp[1] = 1;
         nrmUp[2] = 0;
         nrmUp[3] = 0;
-        mat4.multiplyVec4(this.turrets[i].worldTransform, nrmUp);
+        mat4.multiplyVec4(this.turrets[i].localTransform, nrmUp);
+        mat4.multiplyVec4(this.parentMatrix, nrmUp);
         var angle = vec3.dot(nrmUp, nrmToTarget);
         if (angle > closestAngle) {
             closestTurret = i;

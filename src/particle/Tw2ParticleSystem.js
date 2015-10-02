@@ -28,7 +28,6 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
 Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
 {
     var usage = Tw2VertexDeclaration.DECL_TEXCOORD;
-    var usageIndex = this.usageIndex + 8;
     switch (this.elementType)
     {
         case Tw2ParticleElementDeclaration.LIFETIME:
@@ -43,10 +42,8 @@ Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
         case Tw2ParticleElementDeclaration.MASS:
             usage = Tw2VertexDeclaration.DECL_BINORMAL;
             break;
-        default:
-            usageIndex = this.usageIndex + 8;
     }
-    return new Tw2VertexElement(usage, usageIndex, device.gl.FLOAT, this.GetDimension());
+    return new Tw2VertexElement(usage, this.usageIndex, device.gl.FLOAT, this.GetDimension());
 };
 
 
@@ -166,22 +163,8 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
         this.buffers[0] = new Float32Array(this.instanceStride[0] * this.maxParticleCount);
         this._vb = device.gl.createBuffer();
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vb);
-        device.gl.bufferData(device.gl.ARRAY_BUFFER, this.buffers[0].length * 4, device.gl.DYNAMIC_DRAW);
+        device.gl.bufferData(device.gl.ARRAY_BUFFER, this.buffers[0].length, device.gl.DYNAMIC_DRAW);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, null);
-        this._ib = device.gl.createBuffer();
-        var ib = new Uint16Array(this.maxParticleCount * 6);
-        for (var i = 0; i < this.maxParticleCount; ++i)
-        {
-            ib[i * 6] = i * 4;
-            ib[i * 6 + 1] = i * 4 + 1;
-            ib[i * 6 + 2] = i * 4 + 2;
-            ib[i * 6 + 3] = i * 4 + 2;
-            ib[i * 6 + 4] = i * 4 + 1;
-            ib[i * 6 + 5] = i * 4 + 3;
-        }
-        device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._ib);
-        device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, ib, device.gl.STATIC_DRAW);
-        device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, null);
     }
     if (this.instanceStride[1])
     {
@@ -227,18 +210,6 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
 
 Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
 {
-    var index = this.aliveCount - 1;
-    for (var j = 0; j < 2; ++j)
-    {
-        if (this.buffers[j])
-        {
-            var original = this.buffers[j].subarray(this.instanceStride[j] * index, this.instanceStride[j] * index + this.vertexStride[j]);
-            for (var i = 1; i < 4; ++i)
-            {
-                this.buffers[j].set(original, this.instanceStride[j] * index + i * this.vertexStride[j]);
-            }
-        }
-    }
     this.bufferDirty = true;
 };
 
@@ -382,17 +353,6 @@ Tw2ParticleSystem.prototype.Update = function (dt)
         if (el.dirty)
         {
             this.bufferDirty = true;
-            for (var j = 0; j < this.aliveCount; ++j)
-            {
-                for (var k = 1; k < 4; ++k)
-                {
-                    for (var m = 0; m < el.dimension; ++m)
-                    {
-                        el.buffer[el.offset + k * el.vertexStride + m] = el.buffer[el.offset + m];
-                    }
-                }
-                el.offset += el.instanceStride;
-            }
             el.dirty = false;
         }
     }
@@ -469,20 +429,12 @@ Tw2ParticleSystem.prototype._Sort = function () {
     this._sortedIndexes.sort(sortItems);
 };
 
-Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, instanceDecl, instanceStride)
-{
-    if (this.aliveCount == 0)
-    {
-        return false;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood)
-    {
-        return false;
+Tw2ParticleSystem.prototype.GetInstanceBuffer = function () {
+    if (this.aliveCount == 0) {
+        return undefined;
     }
 
     var d = device;
-
     if (this.requiresSorting && this.HasElement(Tw2ParticleElementDeclaration.POSITION) && this.buffers)
     {
         this._Sort();
@@ -498,37 +450,26 @@ Tw2ParticleSystem.prototype.Render = function (effect, instanceVB, instanceIB, i
             }
         }
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vb);
-        d.gl.bufferSubData(d.gl.ARRAY_BUFFER, 0, this._sortedBuffer.subarray(0, this.instanceStride[0] * this.aliveCount));
+        d.gl.bufferSubData(d.gl.ARRAY_BUFFER, 0, this._sortedBuffer.subarray(0, this.vertexStride[0] * this.aliveCount));
         this.bufferDirty = false;
     }
     else if (this.bufferDirty)
     {
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vb);
-        d.gl.bufferSubData(d.gl.ARRAY_BUFFER, 0, this.buffers[0].subarray(0, this.instanceStride[0] * this.aliveCount));
+        d.gl.bufferSubData(d.gl.ARRAY_BUFFER, 0, this.buffers[0].subarray(0, this.vertexStride[0] * this.aliveCount));
         this.bufferDirty = false;
     }
-
-    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, this._ib);
-
-    var passCount = effect.GetPassCount();
-    for (var pass = 0; pass < passCount; ++pass)
-    {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vb);
-        this._declaration.SetPartialDeclaration(passInput, this.vertexStride[0] * 4);
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
-        instanceDecl.SetPartialDeclaration(passInput, instanceStride);
-        d.ApplyShadowState();
-
-        d.gl.drawElements(d.gl.TRIANGLES, this.aliveCount * 6, d.gl.UNSIGNED_SHORT, 0);
-    }
-    return true;
+    return this._vb;
 };
 
-Tw2ParticleSystem.prototype.GetMaxInstanceCount = function ()
-{
-    return this.maxParticleCount;
+Tw2ParticleSystem.prototype.GetInstanceDeclaration = function () {
+    return this._declaration;
 };
 
+Tw2ParticleSystem.prototype.GetInstanceStride = function () {
+    return this.instanceStride[0];
+};
 
+Tw2ParticleSystem.prototype.GetInstanceCount = function () {
+    return this.aliveCount;
+};

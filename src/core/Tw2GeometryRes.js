@@ -155,6 +155,7 @@ function Tw2GeometryMesh()
     this.declaration = new Tw2VertexDeclaration();
     this.areas = [];
     this.buffer = null;
+    this.bufferLength = 0;
     this.bufferData = null;
     this.indexes = null;
     this.indexData = null;
@@ -179,26 +180,24 @@ function Tw2GeometryRes()
 	this.animations = [];
 
 	this.systemMirror = false;
-
-	this._instanceCount = 1;
 }
 
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
 
-Tw2GeometryRes.prototype.SetInstanceCount = function (instanceCount)
-{
-    if (this._instanceCount < instanceCount)
-    {
-        this._instanceCount = instanceCount;
-        if (this.IsGood())
-        {
-            this.Reload();
-        }
-    }
+Tw2GeometryRes.prototype.GetInstanceBuffer = function (meshIndex) {
+    return meshIndex < this.meshes.length ? this.meshes[meshIndex].buffer : undefined;
 };
 
-Tw2GeometryRes.prototype.GetInstanceCount = function () {
-    return this._instanceCount;
+Tw2GeometryRes.prototype.GetInstanceDeclaration = function (meshIndex) {
+    return this.meshes[meshIndex].declaration;
+};
+
+Tw2GeometryRes.prototype.GetInstanceStride = function (meshIndex) {
+    return this.meshes[meshIndex].declaration.stride;
+};
+
+Tw2GeometryRes.prototype.GetInstanceCount = function (meshIndex) {
+    return this.meshes[meshIndex].bufferLength * 4 / this.meshes[meshIndex].declaration.stride;
 };
 
 Tw2GeometryRes.prototype.Prepare = function (data)
@@ -369,20 +368,12 @@ Tw2GeometryRes.prototype.Prepare = function (data)
         mesh.name = reader.ReadString();
 
         var buffer = ReadVertexBuffer(mesh.declaration);
-        var tmp, i, j, k;
+        var i, j, k;
         if (buffer)
         {
+            mesh.bufferLength = buffer.length;
             mesh.buffer = device.gl.createBuffer();
             device.gl.bindBuffer(device.gl.ARRAY_BUFFER, mesh.buffer);
-            if (this._instanceCount > 1)
-            {
-                tmp = new Float32Array(buffer.length * this._instanceCount);
-                for (i = 0; i < this._instanceCount; ++i)
-                {
-                    tmp.set(buffer, buffer.length * i);
-                }
-                buffer = tmp;
-            }
             device.gl.bufferData(device.gl.ARRAY_BUFFER, buffer, device.gl.STATIC_DRAW);
         }
         else
@@ -396,21 +387,6 @@ Tw2GeometryRes.prototype.Prepare = function (data)
             mesh.indexes = device.gl.createBuffer();
             mesh.indexType = indexes.BYTES_PER_ELEMENT == 2 ? device.gl.UNSIGNED_SHORT : device.gl.UNSIGNED_INT;
             device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-
-            if (this._instanceCount > 1)
-            {
-                tmp = indexes.BYTES_PER_ELEMENT == 2 ? new Uint16Array(indexes.length * this._instanceCount) : new Uint32Array(indexes.length * this._instanceCount);
-                var offset = 0;
-                for (i = 0; i < this._instanceCount; ++i)
-                {
-                    for (j = 0; j < indexes.length; ++j)
-                    {
-                        tmp[j + offset] = indexes[j] + offset;
-                    }
-                    offset += buffer.length;
-                }
-                indexes = tmp;
-            }
             device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
         }
         else
@@ -641,6 +617,52 @@ Tw2GeometryRes.BindMeshToModel = function (mesh, model)
         }
     }
     model.meshBindings[model.meshBindings.length] = binding;
+};
+
+
+Tw2GeometryRes.prototype.RenderAreasInstanced = function (meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount) {
+    this.KeepAlive();
+    if (!this._isGood) {
+        return false;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes._isGood) {
+        return false;
+    }
+    var d = device;
+    var mesh = this.meshes[meshIx];
+    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+
+    var passCount = effect.GetPassCount();
+    var i, area;
+    for (var pass = 0; pass < passCount; ++pass) {
+        effect.ApplyPass(pass);
+        var passInput = effect.GetPassInput(pass);
+        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+        mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
+        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
+        var resetData = instanceDecl.SetPartialDeclaration(passInput, instanceStride, 8, 1);
+        d.ApplyShadowState();
+
+        for (i = 0; i < count; ++i) {
+            if (i + start < mesh.areas.length) {
+                area = mesh.areas[i + start];
+                var areaStart = area.start;
+                var acount = area.count;
+                while (i + 1 < count) {
+                    area = mesh.areas[i + 1 + start];
+                    if (area.start != areaStart + acount * 2) {
+                        break;
+                    }
+                    acount += area.count;
+                    ++i;
+                }
+                d.instancedArrays.drawElementsInstancedANGLE(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
+            }
+        }
+        instanceDecl.ResetInstanceDivisors(resetData);
+    }
+    return true;
 };
 
 Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb)

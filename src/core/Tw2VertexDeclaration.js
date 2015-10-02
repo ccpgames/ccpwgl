@@ -25,12 +25,13 @@ Tw2VertexDeclaration.DECL_BLENDWEIGHT = 6;
 Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
 
 
-function CompareDeclarationElements(a, b)
+function CompareDeclarationElements(a, b, usageOffset)
 {
+    usageOffset = usageOffset || 0;
     if (a.usage < b.usage) return -1;
     if (a.usage > b.usage) return 1;
-    if (a.usageIndex < b.usageIndex) return -1;
-    if (a.usageIndex > b.usageIndex) return 1;
+    if (a.usageIndex + usageOffset < b.usageIndex) return -1;
+    if (a.usageIndex + usageOffset > b.usageIndex) return 1;
     return 0; 
 }
 
@@ -118,8 +119,10 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
     return true;
 };
 
-Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stride)
+Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stride, usageOffset, divisor)
 {
+    var resetData = [];
+    divisor = divisor || 0;
     var index = 0;
     for (var i = 0; i < inputDecl._elementsSorted.length; ++i)
     {
@@ -131,7 +134,7 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stri
         while (true)
         {
             var input = this._elementsSorted[index];
-            var cmp = CompareDeclarationElements(input, el);
+            var cmp = CompareDeclarationElements(input, el, usageOffset);
             if (cmp == 0)
             {
                 if (input.customSetter)
@@ -148,6 +151,10 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stri
                         false,
                         stride,
                         input.offset);
+                    device.instancedArrays.vertexAttribDivisorANGLE(el.location, divisor);
+                    if (divisor) {
+                        resetData.push(el.location)
+                    }
                 }
                 break;
             }
@@ -158,9 +165,18 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stri
             index++;
             if (index >= this._elementsSorted.length)
             {
+                this.ResetInstanceDivisors(resetData);
                 return false;
             }
         }
     }
-    return true;
+    return resetData;
+};
+
+Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
+    if (resetData) {
+        for (var i = 0; i < resetData.length; ++i) {
+            device.instancedArrays.vertexAttribDivisorANGLE(resetData[i], 0);
+        }
+    }
 };

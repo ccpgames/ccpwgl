@@ -27,7 +27,7 @@ function EveSOF() {
         return isAnimated ? _get(data['generic'], 'shaderPrefixAnimated', '') : _get(data['generic'], 'shaderPrefix', '');
     }
 
-    function ModifyTextureResPath(path, name, hull, faction) {
+    function ModifyTextureResPath(path, name, area, faction) {
         if (!_get(faction, 'resPathInsert', '').length) {
             return path;
         }
@@ -40,7 +40,7 @@ function EveSOF() {
             index = pathCopy.lastIndexOf('_');
             if (index >= 0) {
                 pathCopy = pathCopy.substr(0, index) + '_' + faction['resPathInsert'] + pathCopy.substr(index);
-                var textureOverrides = _get(hull, 'textureOverrides', {});
+                var textureOverrides = _get(area, 'textureOverrides', {});
                 if ((name in  textureOverrides) && (faction.name in textureOverrides[name])) {
                     return pathCopy;
                 }
@@ -59,28 +59,31 @@ function EveSOF() {
         return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
     }
 
-    function FillMeshAreas(areas, areasName, hull, faction) {
+    function FillMeshAreas(areas, areasName, hull, faction, race) {
         var hullAreas = _get(hull, areasName, []);
         for (var i = 0; i < hullAreas.length; ++i) {
             var area = hullAreas[i];
             var effect = new Tw2Effect();
             effect.effectFilePath = data['generic']['areaShaderLocation'] + ModifyShaderPath(area.shader, hull['isSkinned']);
-            var hullParameters = _get(area, 'parameters', []);
-            for (var j = 0; j < hullParameters.length; ++j) {
-                var hullParameter = hullParameters[j];
-                var value = GetFactionMeshAreaParameters(area.name, hullParameter.name, faction);
-                if (!value) {
-                    value = _get(hullParameter, 'value', [0, 0, 0, 0]);
+            var names = _get(_get(data['generic']['shaders'], area.shader, {}), 'parameters', []);
+            for (var j = 0; j < names.length; ++j) {
+                var name = names[j];
+                var param = _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(_get(race.hullAreas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(_get(faction.areas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(area, 'parameters', {}), name);
+                if (param) {
+                    effect.parameters[name] = new Tw2Vector4Parameter(name, param);
                 }
-                effect.parameters[hullParameter.name] = new Tw2Vector4Parameter(hullParameter.name, value);
             }
+
             var hullTextures = _get(area, 'textures', []);
-            for (j = 0; j < hullTextures.length; ++j) {
-                var hullTexture = hullTextures[j];
-                var path = _get(hullTexture, 'resFilePath', '');
-                path = ModifyTextureResPath(path, hullTexture.name, hull, faction);
-                effect.parameters[hullTexture.name] = new Tw2TextureParameter(hullTexture.name, path);
+            for (j in hullTextures) {
+                var path = hullTextures[j];
+                path = ModifyTextureResPath(path, j, area, faction);
+                effect.parameters[j] = new Tw2TextureParameter(j, path);
             }
+
             effect.Initialize();
 
             var newArea = new Tw2MeshArea();
@@ -92,17 +95,18 @@ function EveSOF() {
         }
 
     }
-    function SetupMesh(ship, hull, faction) {
+    function SetupMesh(ship, hull, faction, race) {
         var mesh = new Tw2Mesh();
         mesh.geometryResPath = hull['geometryResFilePath'];
         ship.boundingSphereCenter[0] = hull.boundingSphere[0];
         ship.boundingSphereCenter[1] = hull.boundingSphere[1];
         ship.boundingSphereCenter[2] = hull.boundingSphere[2];
         ship.boundingSphereRadius = hull.boundingSphere[3];
-        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction);
-        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction);
-        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction);
-        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction);
+        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race);
+        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race);
+        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race);
+        FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race);
+        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race);
         mesh.Initialize();
         ship.mesh = mesh;
     }
@@ -129,24 +133,22 @@ function EveSOF() {
             else {
                 continue;
             }
-            var hullParameters = _get(hullDecal, 'parameters', []);
-            for (var j = 0; j < hullParameters.length; ++j) {
-                effect.parameters[hullParameters[j].name] = new Tw2Vector4Parameter(hullParameters[j].name,
-                    _get(hullParameters[j], 'value', [0, 0, 0, 0]));
+            var hullParameters = _get(hullDecal, 'parameters', {});
+            for (var j in hullParameters) {
+                effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
             }
-            var hullTextures = _get(hullDecal, 'textures', []);
-            for (j = 0; j < hullTextures.length; ++j) {
-                effect.parameters[hullTextures[j].name] = new Tw2TextureParameter(hullTextures[j].name, hullTextures[j]['resFilePath']);
+            var hullTextures = _get(hullDecal, 'textures', {});
+            for (j in hullTextures) {
+                effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
             }
             if (factionDecal) {
-                var factionParameters = _get(factionDecal, 'parameters', []);
-                for (j = 0; j < factionParameters.length; ++j) {
-                    effect.parameters[factionParameters[j].name] = new Tw2Vector4Parameter(factionParameters[j].name,
-                        _get(factionParameters[j], 'value', [0, 0, 0, 0]));
+                var factionParameters = _get(factionDecal, 'parameters', {});
+                for (j in factionParameters) {
+                    effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
                 }
-                var factionTextures = _get(factionDecal, 'textures', []);
-                for (j = 0; j < factionTextures.length; ++j) {
-                    effect.parameters[factionTextures[j].name] = new Tw2TextureParameter(factionTextures[j].name, factionTextures[j]['resFilePath']);
+                var factionTextures = _get(factionDecal, 'textures', {});
+                for (j in factionTextures) {
+                    effect.parameters[j] = new Tw2TextureParameter(j, factionTextures[j]);
                 }
             }
             effect.Initialize();
@@ -446,11 +448,11 @@ function EveSOF() {
 
     function Build(dna) {
         var parts = dna.split(':');
-        var ship = new EveShip();
         var hull = data['hull'][parts[0]];
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
-        SetupMesh(ship, hull, faction);
+        var ship = new (_get(hull, 'buildClass', 0) == 2 ? EveSpaceObject : EveShip)();
+        SetupMesh(ship, hull, faction, race);
         SetupDecals(ship, hull, faction);
         SetupSpriteSets(ship, hull, faction);
         SetupSpotlightSets(ship, hull, faction);
@@ -519,17 +521,17 @@ function EveSOF() {
     function GetTurretMaterialParameter(name, parentFaction, areaData) {
         var materialIdx = -1;
         for (var i = 0; i < data['generic']['materialPrefixes'].length; ++i) {
-            if (name.substr(0, data['generic']['materialPrefixes'][i].str.length) == data['generic']['materialPrefixes'][i].str) {
+            if (name.substr(0, data['generic']['materialPrefixes'][i].length) == data['generic']['materialPrefixes'][i]) {
                 materialIdx = i;
-                name = name.substr(data['generic']['materialPrefixes'][i].str.length);
+                name = name.substr(data['generic']['materialPrefixes'][i].length);
             }
         }
         if (materialIdx != -1) {
             var turretMaterialIndex = _get(parentFaction, 'materialUsageMtl' + (materialIdx + 1), materialIdx);
             if (turretMaterialIndex >= 0 && turretMaterialIndex < data['generic']['materialPrefixes'].length) {
-                name = data['generic']['materialPrefixes'][turretMaterialIndex].str + name;
+                name = data['generic']['materialPrefixes'][turretMaterialIndex] + name;
                 if (name in areaData.parameters) {
-                    return areaData.parameters[name].value;
+                    return areaData.parameters[name];
                 }
             }
         }

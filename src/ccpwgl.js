@@ -1,4 +1,4 @@
-﻿var ccpwgl = (function (ccpwgl_int)
+var ccpwgl = (function (ccpwgl_int)
 {
     var ccpwgl = {};
 
@@ -355,6 +355,33 @@
     };
 
     /**
+     * Returns a proper constructor function (either "loadObject" or "loadShip") appropriate for the given
+     * hull name in a callback function.
+     * @param hull {string} SOF hull name or full DNA
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter that is a
+     * constructor name for the given hull.
+     */
+    ccpwgl.getSofHullConstructor = function (hull, callback) {
+        sof.GetSofData(function (data) {
+            var c = hull.indexOf(':');
+            if (c > 0) {
+                hull = hull.substr(0, c);
+            }
+            var h = data.hull[hull];
+            var constructor = null;
+            if (h) {
+                if (h.buildClass == 2) {
+                    constructor = "loadObject";
+                }
+                else {
+                    constructor = "loadShip";
+                }
+            }
+            callback(constructor);
+        });
+    };
+
+    /**
      * Wrapper for static objects (stations, gates, asteroids, clouds, etc.).
      * Created with Scene.loadObject function.
      *
@@ -371,29 +398,36 @@
             this.transform = mat4.identity(mat4.create());
             /** Per-frame on update callback @type {!function(dt): void} **/
             this.onUpdate = null;
+            /** SOF DNA for objects constructed from SOF **/
+            this.dna = null;
+
+            function onObjectLoaded(obj) {
+                self.wrappedObjects[0] = obj;
+                if ('transform' in self.wrappedObjects[0])
+                {
+                    self.wrappedObjects[0].transform.set(self.transform);
+                }
+                else if ('translation' in self.wrappedObjects[0])
+                {
+                    self.wrappedObjects[0].translation.set(self.transform.subarray(12, 15));
+                    self.wrappedObjects[0].scaling[0] = vec3.length(self.transform);
+                    self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
+                    self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
+                }
+                if (onload)
+                {
+                    onload.call(self);
+                }
+            }
 
             var self = this;
-            ccpwgl_int.resMan.GetObject(
-                resPath,
-                function (obj)
-                {
-                    self.wrappedObjects[0] = obj;
-                    if ('transform' in self.wrappedObjects[0])
-                    {
-                        self.wrappedObjects[0].transform.set(self.transform);
-                    }
-                    else if ('translation' in self.wrappedObjects[0])
-                    {
-                        self.wrappedObjects[0].translation.set(self.transform.subarray(12, 15));
-                        self.wrappedObjects[0].scaling[0] = vec3.length(self.transform);
-                        self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
-                        self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
-                    }
-                    if (onload)
-                    {
-                        onload.call(self);
-                    }
-                });
+            if (resPath.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
+                this.dna = resPath;
+                sof.BuildFromDNA(resPath, onObjectLoaded);
+            }
+            else {
+                ccpwgl_int.resMan.GetObject(resPath, onObjectLoaded);
+            }
 
             /**
              * Check if object .red file is still loading.
@@ -1086,7 +1120,7 @@
      * Wrapper for planets. Created with Scene.loadPlanet function.
      *
      * @constructor
-     * @param {number} itemID Planet's item ID.
+     * @param {integer} itemID Planet's item ID.
      * @param {string} planetPath Res path to planet's .red template file.
      * @param {string} atmospherePath Res path to planet's .red atmosphere file.
      * @param {string} heightMap1 Res path to planet's first height map texture.
