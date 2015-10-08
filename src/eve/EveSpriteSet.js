@@ -3,6 +3,7 @@ function EveSpriteSet()
     this.name = '';
     this.sprites = [];
     this.effect = null;
+    this.display = true;
     this._time = 0;
 
     this._vertexBuffer = null;
@@ -92,7 +93,7 @@ Inherit(EveSpriteSetBatch, Tw2RenderBatch);
 
 EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
-    if (mode == device.RM_ADDITIVE)
+    if (this.display && mode == device.RM_ADDITIVE)
     {
         var batch = new EveSpriteSetBatch();
         batch.renderMode = device.RM_ADDITIVE;
