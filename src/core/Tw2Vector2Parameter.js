@@ -66,3 +66,34 @@ Tw2Vector2Parameter.prototype.GetValue = function()
     
     return this.value;
 };
+
+Tw2Vector2Parameter.prototype.GetIndexValue = function(index)
+{
+    if (typeof this.value[index] === 'undefined')
+    {
+        throw "Invalid Index";
+    }
+    
+    if (this.constantBuffer != null)
+    {
+    	return this.constantBuffer[this.offset + index];
+    }
+    
+    return this.value[index];
+};
+
+Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
+{
+    if (typeof this.value[index] === 'undefined')
+    {
+        throw "Invalid Index";
+    }
+    
+    this.value[index] = value;
+    
+    if (this.constantBuffer != null)
+    {
+        this.constantBuffer[this.offset + index] = value;
+    }
+};
+
