@@ -342,3 +342,28 @@ Tw2Effect.prototype.Render = function (cb)
         cb(this, i);
     }
 };
+
+Tw2Effect.prototype.GetParameters = function ()
+{
+    var parameters = {};
+   
+    for (var param in this.parameters)
+    {
+        if (this.parameters.hasOwnProperty(param))
+        {
+            if (this.parameters[param] instanceof ccpwgl_int.Tw2TextureParameter)
+            {
+                parameters[param] = {};
+                parameters[param].name = param;
+                parameters[param].resFilePath = this.parameters[param].resourcePath;
+            }
+            else
+            {
+                parameters[param] = {};
+                parameters[param].name = param;
+                parameters[param].value = this.parameters[param].GetValue();
+            }
+        }
+    }
+    return parameters;
+}
