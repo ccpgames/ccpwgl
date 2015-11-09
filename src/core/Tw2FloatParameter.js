@@ -58,3 +58,15 @@ Tw2FloatParameter.prototype.GetValue = function()
     
     return this.value;
 };
+
+Tw2FloatParameter.prototype.FillWith = function(number)
+{
+    if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
+    {
+        this.SetValue(number);
+        return;
+    }
+
+    throw "Expected Number"
+};
+
