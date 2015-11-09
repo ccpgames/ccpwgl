@@ -186,6 +186,7 @@ function EveSOF() {
                 if ('color' in factionSet) {
                     item.color = factionSet.color;
                 }
+
                 item.blinkPhase = _get(hullData[j], 'blinkPhase', 0);
                 item.blinkRate = _get(hullData[j], 'blinkRate', 0.1);
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
@@ -196,7 +197,7 @@ function EveSOF() {
                 if ('groupIndex' in hullData[j]) {
                     item.groupIndex = hullData[j].groupIndex; 
                 }
-                item.groupName = factionSet.name;
+                item.groupName = _get(factionSet, 'name', '');
                 if ('position' in hullData[j]) {
                     item.position = hullData[j].position;
                 }
@@ -256,6 +257,7 @@ function EveSOF() {
                     quat4.set([1, 1, 1, 1], item.flareColor);
                     quat4.set([1, 1, 1, 1], item.spriteColor);
                 }
+                item.groupName = _get(factionSet, 'name', '');
                 item.spriteScale = _get(hullData[j], 'spriteScale', [1, 1, 1]);
                 if ('transform' in hullData[j]) {
                     item.transform = hullData[j].transform;
@@ -314,6 +316,7 @@ function EveSOF() {
                 if (factionSet) {
                     quat4.set(_get(factionSet, 'color', [0, 0, 0, 0]), item.color);
                 }
+                item.groupName = _get(factionSet, 'name', '');
                 planeSet.planes.push(item);
             }
             planeSet.Initialize();
