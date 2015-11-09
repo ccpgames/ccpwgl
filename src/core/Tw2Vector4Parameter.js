@@ -99,4 +99,13 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
     }
 };
 
-
+Tw2Vector2Parameter.prototype.FillWith = function(number)
+{
+    if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
+    {
+	this.SetValue([number, number, number, number]);
+	return;
+    }
+    
+    throw "Expected Number"
+};
