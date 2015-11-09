@@ -98,3 +98,14 @@ Tw2Vector3Parameter.prototype.SetIndexValue = function(index, value)
         this.constantBuffer[this.offset + index] = value;
     }
 };
+
+Tw2Vector3Parameter.prototype.FillWith = function(number)
+{
+    if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
+    {
+	this.SetValue([number, number, number]);
+	return;
+    }
+    
+    throw "Expected Number"
+};
