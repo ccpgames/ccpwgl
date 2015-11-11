@@ -61,7 +61,7 @@ Tw2FloatParameter.prototype.GetValue = function()
 
 Tw2FloatParameter.prototype.FillWith = function(number)
 {
-    if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
+    if (number != null && isFinite(number))
     {
         this.SetValue(number);
         return;
