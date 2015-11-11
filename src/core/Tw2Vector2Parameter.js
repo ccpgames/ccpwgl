@@ -99,7 +99,7 @@ Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
 
 Tw2Vector2Parameter.prototype.FillWith = function(number)
 {
-    if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
+    if (number != null && isFinite(number))
     {
         this.SetValue(number, number);
         return;
