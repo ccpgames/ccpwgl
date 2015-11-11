@@ -257,7 +257,7 @@ function EveSOF() {
                     quat4.set([1, 1, 1, 1], item.flareColor);
                     quat4.set([1, 1, 1, 1], item.spriteColor);
                 }
-                item.groupName = _get(factionSet, 'name', '');
+                item.groupName = (factionSet) ? _get(factionSet, 'name', '') : '';
                 item.spriteScale = _get(hullData[j], 'spriteScale', [1, 1, 1]);
                 if ('transform' in hullData[j]) {
                     item.transform = hullData[j].transform;
@@ -316,7 +316,7 @@ function EveSOF() {
                 if (factionSet) {
                     quat4.set(_get(factionSet, 'color', [0, 0, 0, 0]), item.color);
                 }
-                item.groupName = _get(factionSet, 'name', '');
+                item.groupName = (factionSet) ? _get(factionSet, 'name', '') : '';
                 planeSet.planes.push(item);
             }
             planeSet.Initialize();
