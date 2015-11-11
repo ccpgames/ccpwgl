@@ -36,6 +36,11 @@ Tw2FloatParameter.prototype.Unbind = function ()
     this.constantBuffer = null;
 };
 
+Tw2FloatParameter.prototype.SetValue = function (value)
+{
+    this.value = value;
+};
+
 Tw2FloatParameter.prototype.OnValueChanged = function ()
 {
     if (this.constantBuffer != null)
@@ -58,3 +63,15 @@ Tw2FloatParameter.prototype.GetValue = function()
     
     return this.value;
 };
+
+Tw2FloatParameter.prototype.FillWith = function(number)
+{
+    if (number != null && isFinite(number))
+    {
+        this.SetValue(number);
+        return;
+    }
+
+    throw "Expected Number"
+};
+
