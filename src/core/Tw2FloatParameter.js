@@ -36,6 +36,11 @@ Tw2FloatParameter.prototype.Unbind = function ()
     this.constantBuffer = null;
 };
 
+Tw2FloatParameter.prototype.SetValue = function (value)
+{
+    this.value = value;
+};
+
 Tw2FloatParameter.prototype.OnValueChanged = function ()
 {
     if (this.constantBuffer != null)
