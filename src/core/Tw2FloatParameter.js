@@ -59,6 +59,11 @@ Tw2FloatParameter.prototype.GetValue = function()
     return this.value;
 };
 
+Tw2FloatParameter.prototype.SetValue = function (value)
+{
+    this.value = value;
+};
+
 Tw2FloatParameter.prototype.FillWith = function(number)
 {
     if (/^-?[\d.]+(?:e-?\d+)?$/.test(number))
