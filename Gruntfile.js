@@ -110,6 +110,13 @@ module.exports = function(grunt)
     {
         pkg: grunt.file.readJSON('package.json'),
 
+        concat: {
+            dist: {
+                src: ['Gruntfile.js'].concat(sourcePatterns),
+                dest: 'src/ccpwgl_int_concat.js'
+            }
+        },
+        
         jsbeautifier:
         {
             standard:
@@ -160,9 +167,11 @@ module.exports = function(grunt)
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('format', ['jsbeautifier']);
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('compile', ['uglify']);
     grunt.registerTask('default', ['compile']);
+    grunt.registerTask('concat', ['concat']);
 };
