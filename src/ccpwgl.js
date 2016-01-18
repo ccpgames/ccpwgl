@@ -508,7 +508,7 @@ var ccpwgl = (function (ccpwgl_int)
             /** Local to world space transform matrix @type {mat4} **/
             this.transform = mat4.identity(mat4.create());
             /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
-            this.boosters = null;
+            this.boosters = [null];
             /** Current siege state @type {ccpwgl.ShipSiegeState} **/
             this.siegeState = ccpwgl.ShipSiegeState.NORMAL;
             /** Internal siege state, as opposed to Ship.siegeState also includes transition states @type {number} **/
@@ -536,6 +536,7 @@ var ccpwgl = (function (ccpwgl_int)
             for (var i = 0; i < resPath.length; ++i)
             {
                 this.wrappedObjects[i] = null;
+                this.boosters[i] = null;
             }
 
             function OnShipPartLoaded(index)
@@ -550,9 +551,9 @@ var ccpwgl = (function (ccpwgl_int)
                             return;
                         }
                         self.wrappedObjects[index].transform.set(self.transform);
-                        if (self.boosters)
+                        if (self.boosters[index])
                         {
-                            self.wrappedObjects[index].boosters = self.boosters;
+                            self.wrappedObjects[index].boosters = self.boosters[index];
                             self.wrappedObjects[index].RebuildBoosterSet();
                         }
                         self.wrappedObjects[index].boosterGain = self.boosterStrength;
@@ -727,25 +728,29 @@ var ccpwgl = (function (ccpwgl_int)
             this.loadBoosters = function (resPath, onload)
             {
                 var self = this;
-                ccpwgl_int.resMan.GetObject(
-                    resPath,
-                    function (obj)
-                    {
-                        self.boosters = obj;
-                        for (var i = 0; i < self.wrappedObjects.length; ++i)
+
+                function loaded(index) {
+                    return function (obj) {
+                        self.boosters[index] = obj;
+                        if (self.wrappedObjects[index])
                         {
-                            if (self.wrappedObjects[i])
-                            {
-                                self.wrappedObjects[i].boosters = obj;
-                                self.wrappedObjects[i].RebuildBoosterSet();
+                            self.wrappedObjects[index].boosters = obj;
+                            self.wrappedObjects[index].RebuildBoosterSet();
+                        }
+                        for (var i = 0; i < self.boosters.length; ++i) {
+                            if (!self.boosters) {
+                                return;
                             }
                         }
-                        if (onload)
-                        {
+                        if (onload) {
                             onload.call(self);
                         }
                     }
-                );
+                }
+
+                for (var i = 0; i < self.wrappedObjects.length; ++i) {
+                    ccpwgl_int.resMan.GetObject(resPath, loaded(i));
+                }
             };
 
             /**
