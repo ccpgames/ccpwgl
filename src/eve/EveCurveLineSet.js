@@ -452,7 +452,7 @@ function EveCurveLineSet() {
                     vec3.set(lines[i].position1, pos1);
                     vec3.set(lines[i].color1, col1);
                     for (j = 0; j < lines[i].numOfSegments; ++j) {
-                        segmentFactor = (s + 1) / lines[i].numOfSegments;
+                        segmentFactor = (j + 1) / lines[i].numOfSegments;
                         vec3Hermite(pos2, lines[i].position1, tangent1, lines[i].position2, tangent2, segmentFactor);
                         col2[0] = lines[i].color1[0] * (1 - segmentFactor) + lines[i].color2[0] * segmentFactor;
                         col2[1] = lines[i].color1[1] * (1 - segmentFactor) + lines[i].color2[1] * segmentFactor;
