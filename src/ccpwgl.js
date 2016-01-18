@@ -553,6 +553,7 @@ var ccpwgl = (function (ccpwgl_int)
                         if (self.boosters)
                         {
                             self.wrappedObjects[index].boosters = self.boosters;
+                            self.wrappedObjects[index].RebuildBoosterSet();
                         }
                         self.wrappedObjects[index].boosterGain = self.boosterStrength;
                         switch (self.siegeState)
@@ -736,6 +737,7 @@ var ccpwgl = (function (ccpwgl_int)
                             if (self.wrappedObjects[i])
                             {
                                 self.wrappedObjects[i].boosters = obj;
+                                self.wrappedObjects[i].RebuildBoosterSet();
                             }
                         }
                         if (onload)
