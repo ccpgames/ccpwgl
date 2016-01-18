@@ -91,9 +91,9 @@ function Tw2ParticleSystem()
     
     this._stdElements = [ null, null, null, null ];
     this._elements = [];
-    //this.instanceStride = [ null, null ];
-    //this.vertexStride = [ null, null ];
-    //this.buffers = [ null, null ];
+    this.instanceStride = [ null, null ];
+    this.vertexStride = [ null, null ];
+    this.buffers = [ null, null ];
 }
 
 Tw2ParticleSystem.prototype.Initialize = function ()
