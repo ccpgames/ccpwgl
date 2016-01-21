@@ -17,10 +17,10 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
 {
     switch (this.elementType)
     {
-    case Tw2ParticleElementDeclaration.LIFETIME: return 2;
-    case Tw2ParticleElementDeclaration.POSITION: return 3;
-    case Tw2ParticleElementDeclaration.VELOCITY: return 3;
-    case Tw2ParticleElementDeclaration.MASS: return 1;
+        case Tw2ParticleElementDeclaration.LIFETIME: return 2;
+        case Tw2ParticleElementDeclaration.POSITION: return 3;
+        case Tw2ParticleElementDeclaration.VELOCITY: return 3;
+        case Tw2ParticleElementDeclaration.MASS: return 1;
     }
     return this.dimension;
 };
@@ -88,6 +88,12 @@ function Tw2ParticleSystem()
 
     this._vb = null;
     this._declaration = null;
+
+    this._stdElements = [ null, null, null, null ];
+    this._elements = [];
+    this.instanceStride = [ null, null ];
+    this.vertexStride = [ null, null ];
+    this.buffers = [ null, null ];
 }
 
 Tw2ParticleSystem.prototype.Initialize = function ()
