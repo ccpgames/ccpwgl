@@ -11,6 +11,7 @@ function EveSpaceObject()
 	this.spotlightSets = [];
 	this.planeSets = [];
 	this.curveSets = [];
+	this.curveLineSets = [];
 	
 	this.transform = mat4.create();
 	mat4.identity(this.transform);
@@ -94,6 +95,11 @@ EveSpaceObject.prototype.UpdateViewDependentData = function ()
     {
         this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
     }
+    
+    for (var c = 0; c < this.curveLineSets.length; c++)
+    {
+        this.curveLineSets[c].UpdateViewDependentData(this.transform);
+    }
 }
 
 EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
@@ -126,6 +132,11 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
     {
         this.children[i].GetBatches(mode, accumulator, this._perObjectData);
     }
+    
+    for (var c = 0; c < this.curveLineSets.length; ++c)
+    {
+        this.curveLineSets[c].GetBatches(mode, accumulator);
+    }
 };
 
 EveSpaceObject.prototype.Update = function (dt)
@@ -144,6 +155,12 @@ EveSpaceObject.prototype.Update = function (dt)
         {
             this.curveSets[i].Update(dt);
         }
+        
+        for (var c = 0; c < this.curveLineSets.length; ++c)
+    	{
+            this.curveLineSets[c].Update(dt);
+    	}
+    	
         this.animation.Update(dt);
     }
 };
