@@ -1,19 +1,40 @@
-function Tw2SamplerOverride() {
-	this.name = '';
+/**
+ * Tw2SamplerOverride
+ * @property {number} addressU
+ * @property {number} addressV
+ * @property {number} addressW
+ * @property {number} filter
+ * @property {number} mipFilter
+ * @property {number} lodBias
+ * @property {number} maxMipLevel
+ * @property {number} maxAnisotropy
+ * @constructor
+ */
+function Tw2SamplerOverride()
+{
+    this.name = '';
 
-	this.addressU = 0;
-	this.addressV = 0;
-	this.addressW = 0;
-	this.filter = 0;
-	this.mipFilter = 0;
-	this.lodBias = 0;
-	this.maxMipLevel = 0;
-	this.maxAnisotropy = 0;
+    this.addressU = 0;
+    this.addressV = 0;
+    this.addressW = 0;
+    this.filter = 0;
+    this.mipFilter = 0;
+    this.lodBias = 0;
+    this.maxMipLevel = 0;
+    this.maxAnisotropy = 0;
 
     var sampler = null;
 
-    this.GetSampler = function (originalSampler) {
-        if (!sampler) {
+    /**
+     * GetSampler
+     * @param originalSampler
+     * @returns {*}
+     * @method
+     */
+    this.GetSampler = function(originalSampler)
+    {
+        if (!sampler)
+        {
             sampler = new Tw2SamplerState();
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
@@ -61,7 +82,8 @@ function Tw2SamplerOverride() {
                 device.gl.MIRRORED_REPEAT,
                 device.gl.CLAMP_TO_EDGE,
                 device.gl.CLAMP_TO_EDGE,
-                device.gl.CLAMP_TO_EDGE];
+                device.gl.CLAMP_TO_EDGE
+            ];
             sampler.addressU = wrapModes[this.addressU];
             sampler.addressV = wrapModes[this.addressV];
             sampler.addressW = wrapModes[this.addressW];
@@ -77,17 +99,32 @@ function Tw2SamplerOverride() {
     }
 }
 
+
+/**
+ * Tw2Effect
+ * @property {string} name
+ * @property {string} effectFilePath
+ * @property {Tw2EffectRes|null} effectRes
+ * @property {Object.<string, Tw2Parameter>} parameters
+ * @property {Array} passes
+ * @property {Array} samplerOverrides
+ * @constructor
+ */
 function Tw2Effect()
 {
     this.name = '';
     this.effectFilePath = '';
     this.effectRes = null;
-	this.parameters = {};
-	this.passes = [];
+    this.parameters = {};
+    this.passes = [];
     this.samplerOverrides = [];
 }
 
-Tw2Effect.prototype.Initialize = function ()
+/**
+ * Initializes the Tw2Effect
+ * @prototype
+ */
+Tw2Effect.prototype.Initialize = function()
 {
     if (this.effectFilePath != '')
     {
@@ -100,20 +137,34 @@ Tw2Effect.prototype.Initialize = function ()
     }
 };
 
-Tw2Effect.prototype.GetEffectRes = function ()
+/**
+ * Returns the Tw2Effect's resource object
+ * @prototype
+ */
+Tw2Effect.prototype.GetEffectRes = function()
 {
     return this.effectRes;
 };
 
-Tw2Effect.prototype.RebuildCachedData = function (resource)
+/**
+ * Rebuilds Cached Data
+ * @param resource
+ * @prototype
+ */
+Tw2Effect.prototype.RebuildCachedData = function(resource)
 {
-	if (resource.IsGood())
-	{
-		this.BindParameters();
-	}
+    if (resource.IsGood())
+    {
+        this.BindParameters();
+    }
 };
 
-Tw2Effect.prototype.BindParameters = function ()
+/**
+ * BindParameters
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2Effect.prototype.BindParameters = function()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
     {
@@ -226,10 +277,12 @@ Tw2Effect.prototype.BindParameters = function ()
                 {
                     if (stageRes.samplers[n].registerIndex == p.slot)
                     {
-                        if (stageRes.samplers[n].name in this.samplerOverrides) {
+                        if (stageRes.samplers[n].name in this.samplerOverrides)
+                        {
                             p.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
                         }
-                        else {
+                        else
+                        {
                             p.sampler = stageRes.samplers[n];
                         }
                         break;
@@ -252,7 +305,12 @@ Tw2Effect.prototype.BindParameters = function ()
     return true;
 };
 
-Tw2Effect.prototype.ApplyPass = function (pass)
+/**
+ * ApplyPass
+ * @param pass
+ * @prototype
+ */
+Tw2Effect.prototype.ApplyPass = function(pass)
 {
     if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -307,33 +365,48 @@ Tw2Effect.prototype.ApplyPass = function (pass)
     }
 };
 
-Tw2Effect.prototype.GetPassCount = function ()
+/**
+ * GetPassCount
+ * @returns {number}
+ * @prototype
+ */
+Tw2Effect.prototype.GetPassCount = function()
 {
     if (this.effectRes == null || !this.effectRes.IsGood())
-	{
-		return 0;
-	}
-	return this.passes.length;
+    {
+        return 0;
+    }
+    return this.passes.length;
 };
 
-Tw2Effect.prototype.GetPassInput = function (pass)
+/**
+ * GetPassInput
+ * @param {number} pass
+ * @returns {?}
+ * @prototype
+ */
+Tw2Effect.prototype.GetPassInput = function(pass)
 {
-	if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
-	{
-		return null;
-	}
-	if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
-	{
+    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+    {
+        return null;
+    }
+    if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+    {
         return this.effectRes.passes[pass].shadowShaderProgram.input;
-	}
-	else
-	{
+    }
+    else
+    {
         return this.effectRes.passes[pass].shaderProgram.input;
     }
 };
 
-
-Tw2Effect.prototype.Render = function (cb)
+/**
+ * Render
+ * @param {function} cb - callback
+ * @prototype
+ */
+Tw2Effect.prototype.Render = function(cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)
@@ -341,4 +414,54 @@ Tw2Effect.prototype.Render = function (cb)
         this.ApplyPass(i);
         cb(this, i);
     }
+};
+
+
+/**
+ * Gets an object containing the textures currently set in the Tw2Effect
+ * - Matches sof texture objects
+ * @returns {Object.<string, Tw2TextureParameter>}
+ * @prototype
+ */
+Tw2Effect.prototype.GetTextures = function()
+{
+    var textures = {};
+
+    for (var param in this.parameters)
+    {
+        if (this.parameters.hasOwnProperty(param) && this.parameters[param] instanceof Tw2TextureParameter)
+        {
+            textures[param] = this.parameters[param].resourcePath;
+        }
+    }
+
+    return textures;
+};
+
+/**
+ * Gets an object containing all non texture parameters currently set in the Tw2Effect
+ * - Matches sof parameter object
+ * @returns {Object.<string, Tw2FloatParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2VariableParameter>}
+ * @prototype
+ */
+Tw2Effect.prototype.GetParameters = function()
+{
+    var parameters = {};
+
+    for (var param in this.parameters)
+    {
+        if (this.parameters.hasOwnProperty(param) && !(this.parameters[param] instanceof Tw2TextureParameter))
+        {
+            if (!(this.parameters[param] instanceof Tw2VariableParameter))
+            {
+                parameters[param] = this.parameters[param].GetValue();
+            }
+            else
+            {
+                parameters[param] = this.parameters[param].variableName;
+            }
+        }
+    }
+
+    return parameters;
 };
