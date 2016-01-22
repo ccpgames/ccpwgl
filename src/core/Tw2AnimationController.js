@@ -1,9 +1,23 @@
+/**
+ * Tw2Track
+ * @property {Tw2GeometryTransformTrack} trackRes
+ * @property {Tw2Bone} bone
+ * @constructor
+ */
 function Tw2Track()
 {
     this.trackRes = null;
     this.bone = null;
 }
 
+
+/**
+ * Tw2TrackGroup
+ * @property {Tw2GeometryTrackGroup} trackGroupRes
+ * @property {Tw2GeometryModel} model
+ * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
+ * @constructor
+ */
 function Tw2TrackGroup()
 {
     this.trackGroupRes = null;
@@ -11,6 +25,18 @@ function Tw2TrackGroup()
     this.transformTracks = [];
 }
 
+
+/**
+ * Tw2Animation
+ * @property {Tw2GeometryAnimation} animationRes
+ * @property {number} time
+ * @property {number} timeScale
+ * @property {boolean} cycle
+ * @property {boolean} isPlaying
+ * @property {Function} callback - Stores optional callback passed to prototypes
+ * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
+ * @constructor
+ */
 function Tw2Animation()
 {
     this.animationRes = null;
@@ -19,15 +45,29 @@ function Tw2Animation()
     this.cycle = false;
     this.isPlaying = false;
     this.callback = null;
-
     this.trackGroups = [];
 }
 
-Tw2Animation.prototype.IsFinished = function ()
+/**
+ * Checks to see if the animation has finished playing
+ * @return {boolean}
+ * @prototype
+ */
+Tw2Animation.prototype.IsFinished = function()
 {
     return !this.cycle && this.time >= this.duration;
 };
 
+
+/**
+ * Tw2Bone
+ * TODO: Identify when/ where the property bindingArrays is defined
+ * @property {Tw2GeometryBone} boneRes
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {mat4} offsetTransform
+ * @constructor
+ */
 function Tw2Bone()
 {
     this.boneRes = null;
@@ -36,6 +76,14 @@ function Tw2Bone()
     this.offsetTransform = mat4.create();
 }
 
+
+/**
+ * Tw2Model
+ * @property {Tw2GeometryModel} modelRes
+ * @property {Array.<Tw2Bone>} bones
+ * @property {Object.<string, Tw2Bone>} bonesByName - An object containing every Tw2Bone name and it's object
+ * @constructor
+ */
 function Tw2Model()
 {
     this.modelRes = null;
@@ -44,32 +92,48 @@ function Tw2Model()
 }
 
 
-
-
+/**
+ * Tw2AnimationController
+ * @param {Tw2GeometryRes} geometryResource
+ * @property {Array.<Tw2GeometryRes>} geometryResources
+ * @property {Array.<Tw2Model>} models
+ * @property {Array.<Tw2Animation>} animations
+ * @property {Array} meshBindings
+ * @property {boolean} loaded
+ * @property {boolean} update
+ * @property {mat4} _tempMat4
+ * @property {mat3} _tempMat3
+ * @property {quat4} _tempQuat4
+ * @property {vec3} _tempVec3
+ * @property _geometryResource
+ * @prototype
+ */
 function Tw2AnimationController(geometryResource)
 {
     this.geometryResources = [];
-
     this.models = [];
     this.animations = [];
     this.meshBindings = [];
     this.loaded = false;
     this.update = true;
-
     this._tempMat4 = mat4.create();
     this._tempMat3 = mat3.create();
     this._tempQuat4 = quat4.create();
     this._tempVec3 = vec3.create();
-    
     this._geometryResource = null;
-    
+
     if (typeof(geometryResource) != 'undefined')
     {
         this.SetGeometryResource(geometryResource);
     }
 }
 
-Tw2AnimationController.prototype.SetGeometryResource = function (geometryResource)
+/**
+ * Clears any existing resources and loads the supplied geometry resource
+ * @param {Tw2GeometryRes} geometryResource
+ * @prototype
+ */
+Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
 {
     this.models = [];
     this.animations = [];
@@ -79,8 +143,10 @@ Tw2AnimationController.prototype.SetGeometryResource = function (geometryResourc
     {
         this.geometryResources[i].UnregisterNotification(this);
     }
+
     this.loaded = false;
     this.geometryResources = [];
+
     if (geometryResource)
     {
         this.geometryResources.push(geometryResource);
@@ -88,7 +154,12 @@ Tw2AnimationController.prototype.SetGeometryResource = function (geometryResourc
     }
 };
 
-Tw2AnimationController.prototype.AddGeometryResource = function (geometryResource)
+/**
+ * Adds a Geometry Resource
+ * @param {Tw2GeometryRes} geometryResource
+ * @prototype
+ */
+Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
 {
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
@@ -101,7 +172,12 @@ Tw2AnimationController.prototype.AddGeometryResource = function (geometryResourc
     geometryResource.RegisterNotification(this);
 };
 
-Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
+/**
+ * Adds animations from a resource
+ * @param {Tw2GeometryRes} resource
+ * @prototype
+ */
+Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
 {
     for (var i = 0; i < resource.animations.length; ++i)
     {
@@ -169,7 +245,13 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
     }
 };
 
-Tw2AnimationController.prototype._AddModel = function (modelRes)
+/**
+ * Adds a model resource
+ * @param {Tw2GeometryModel} modelRes
+ * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
+ * @private
+ */
+Tw2AnimationController.prototype._AddModel = function(modelRes)
 {
     for (var i = 0; i < this.models.length; ++i)
     {
@@ -195,7 +277,13 @@ Tw2AnimationController.prototype._AddModel = function (modelRes)
     return model;
 };
 
-Tw2AnimationController.prototype._FindMeshBindings = function (resource)
+/**
+ * Finds a mesh binding for a supplied resource
+ * @param {Tw2GeometryRes} resource
+ * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
+ * @private
+ */
+Tw2AnimationController.prototype._FindMeshBindings = function(resource)
 {
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
@@ -207,7 +295,12 @@ Tw2AnimationController.prototype._FindMeshBindings = function (resource)
     return null;
 };
 
-Tw2AnimationController.prototype.RebuildCachedData = function (resource)
+/**
+ * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
+ * @param {Tw2GeometryRes} resource
+ * @prototype
+ */
+Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 {
     var found = false;
     for (var i = 0; i < this.geometryResources.length; ++i)
@@ -233,9 +326,16 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
     {
         this._DoRebuildCachedData(this.geometryResources[i]);
     }
-}
+};
 
-Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
+/**
+ * _DoRebuildCachedData
+ * TODO: Fix commented out code (line 339)
+ * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype (line 352)
+ * @param {Tw2GeometryRes} resource
+ * @private
+ */
+Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
 {
     var newModels = [];
     //if (resource.meshes.length)
@@ -298,7 +398,10 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
                         {
                             model.bones[n].bindingArrays = [];
                         }
-                        var arrayInfo = { 'array': meshBindings[meshIx], 'offset': k * 12};
+                        var arrayInfo = {
+                            'array': meshBindings[meshIx],
+                            'offset': k * 12
+                        };
                         model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = arrayInfo;
                         //meshBindings[meshIx][k] = model.bones[n].offsetTransform;
                         break;
@@ -325,7 +428,14 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
     }
 };
 
-Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback)
+/**
+ * Plays a specific animation
+ * @param {string} name - Animation Name
+ * @param {boolean} [cycle]
+ * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+ * @prototype
+ */
+Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
     if (this.animations.length == 0)
     {
@@ -333,7 +443,11 @@ Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback
         {
             this.pendingCommands = [];
         }
-        this.pendingCommands.push({'func': this.PlayAnimation, 'args': [name, cycle, callback]});
+        this.pendingCommands.push(
+        {
+            'func': this.PlayAnimation,
+            'args': [name, cycle, callback]
+        });
         return;
     }
     for (var i = 0; i < this.animations.length; ++i)
@@ -354,7 +468,12 @@ Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback
     }
 };
 
-Tw2AnimationController.prototype.StopAnimation = function (name)
+/**
+ * Stops a specific animation from playing
+ * @param {string} name - Animation Name
+ * @prototype
+ */
+Tw2AnimationController.prototype.StopAnimation = function(name)
 {
     for (var i = 0; i < this.animations.length; ++i)
     {
@@ -365,7 +484,11 @@ Tw2AnimationController.prototype.StopAnimation = function (name)
     }
 };
 
-Tw2AnimationController.prototype.StopAllAnimations = function ()
+/**
+ * Stops all animations from playing
+ * @prototype
+ */
+Tw2AnimationController.prototype.StopAllAnimations = function()
 {
     for (var i = 0; i < this.animations.length; ++i)
     {
@@ -373,7 +496,12 @@ Tw2AnimationController.prototype.StopAllAnimations = function ()
     }
 };
 
-Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
+/**
+ * Resets the bone transforms for the supplied models
+ * @param {Array.<Tw2Model>} models
+ * @prototype
+ */
+Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
 {
     for (var i = 0; i < this.models.length; ++i)
     {
@@ -396,7 +524,7 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
     var id = mat4.identity(mat4.create());
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
-        for (var j = 0; j < this.meshBindings[i].length; ++j )
+        for (var j = 0; j < this.meshBindings[i].length; ++j)
         {
             for (var k = 0; k * 16 < this.meshBindings[i][j].length; ++k)
             {
@@ -409,7 +537,15 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
     }
 };
 
-Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, duration)
+/**
+ * EvaluateCurve
+ * @param {Tw2GeometryCurve} curve
+ * @param {number} time
+ * @param value
+ * @param {boolean} cycle
+ * @param {number} duration
+ */
+Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, duration)
 {
     var count = curve.knots.length;
     var knot = count - 1;
@@ -497,20 +633,26 @@ Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, dura
             value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
         }
     }
-}
+};
 
-Tw2AnimationController.prototype.Update = function (dt)
+/**
+ * Internal render/update function which is called every frame
+ * TODO: Fix commented out code (line 718)
+ * @param {number} dt - Delta Time
+ * @prototype
+ */
+Tw2AnimationController.prototype.Update = function(dt)
 {
     if (this.models == null || !this.update)
     {
         return;
     }
-    
+
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
         this.geometryResources[i].KeepAlive();
     }
-    
+
 
     var tempMat = this._tempMat4;
     var updateBones = false;
@@ -571,7 +713,7 @@ Tw2AnimationController.prototype.Update = function (dt)
                     {
                         mat3.identity(scale);
                     }
-                    
+
                     mat3.toMat4(scale, track.bone.localTransform);
                     mat4.multiply(track.bone.localTransform, mat4.transpose(quat4.toMat4(orientation, tempMat)));
                     track.bone.localTransform[12] = position[0];
@@ -623,12 +765,18 @@ Tw2AnimationController.prototype.Update = function (dt)
     }
 };
 
-Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
+/**
+ * RenderDebugInfo
+ * TODO: Fix commented out code (lines 767 - 770)
+ * @param {function} debugHelper
+ * @prototype
+ */
+Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 {
     /*for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        this.geometryResources[i].RenderDebugInfo(debugHelper);
-    }*/
+     {
+     this.geometryResources[i].RenderDebugInfo(debugHelper);
+     }*/
     for (var i = 0; i < this.models.length; ++i)
     {
         for (var j = 0; j < this.models[i].bones.length; ++j)
@@ -643,14 +791,22 @@ Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
     }
 };
 
-Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometryResource)
+/**
+ * GetBoneMatrixes
+ * TODO: Matrixes is spelt wrong (should be Matrices), multiple refactors required
+ * @param {number} meshIndex
+ * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+ * @returns {Float32Array}
+ * @prototype
+ */
+Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length == 0)
     {
         return new Float32Array();
     }
 
-    if (typeof (geometryResource) == 'undefined')
+    if (typeof(geometryResource) == 'undefined')
     {
         geometryResource = this.geometryResources[0];
     }
@@ -662,13 +818,20 @@ Tw2AnimationController.prototype.GetBoneMatrixes = function (meshIndex, geometry
     return new Float32Array();
 };
 
-Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometryResource)
+/**
+ * FindModelForMesh
+ * @param {number} meshIndex
+ * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+ * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
+ * @prototype
+ */
+Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length == 0)
     {
         return null;
     }
-    if (typeof (geometryResource) == 'undefined')
+    if (typeof(geometryResource) == 'undefined')
     {
         geometryResource = this.geometryResources[0];
     }
