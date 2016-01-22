@@ -1,13 +1,36 @@
+/**
+ * Tw2EffectRes
+ * @property {Array} passes
+ * @property {Object.<string, Array>} annotations
+ * @inherits Tw2Resource
+ * @constructor
+ */
 function Tw2EffectRes()
 {
-	this._super.constructor.call(this);
+    this._super.constructor.call(this);
     this.passes = [];
     this.annotations = {};
 }
 
+/**
+ * Request Response Type
+ * @type {string}
+ * @prototype
+ */
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
-Tw2EffectRes.prototype.Prepare = function (data, xml)
+/**
+ * Prepares the effect
+ * - Creates Shaders
+ * - Sets shadow states for shaders
+ * - Parses Jessica shader annotations
+ * TODO: Fix commented out lines
+ * TODO: @param xml is redundant
+ * @param data
+ * @param xml
+ * @prototype
+ */
+Tw2EffectRes.prototype.Prepare = function(data, xml)
 {
     this.passes = [];
     this.annotations = {};
@@ -15,6 +38,11 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     var reader = new Tw2BinaryReader(new Uint8Array(data));
     var stringTable = '';
 
+    /**
+     * ReadString
+     * @returns {string}
+     * @private
+     */
     function ReadString()
     {
         var offset = reader.ReadUInt32();
@@ -26,6 +54,15 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         return stringTable.substr(offset, end - offset);
     }
 
+    /**
+     * Compiles shader
+     * @param {number} stageType
+     * @param {string} prefix
+     * @param shaderCode
+     * @param {string} path - Shader path
+     * @returns {*}
+     * @private
+     */
     function CompileShader(stageType, prefix, shaderCode, path)
     {
         var shader = device.gl.createShader(stageType == 0 ? device.gl.VERTEX_SHADER : device.gl.FRAGMENT_SHADER);
@@ -56,6 +93,15 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         return shader;
     }
 
+    /**
+     * Creates shader program
+     * @param vertexShader
+     * @param fragmentShader
+     * @param pass
+     * @param {string} path - Shader path
+     * @returns {*}
+     * @private
+     */
     function CreateProgram(vertexShader, fragmentShader, pass, path)
     {
         var program = {};
@@ -138,7 +184,8 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         return;
     }
 
-    /* var permutation = */reader.ReadUInt32();
+    /* var permutation = */
+    reader.ReadUInt32();
     var offset = reader.ReadUInt32();
     reader.cursor = 2 * 4 + headerSize * 3 * 4;
     var stringTableSize = reader.ReadUInt32();
@@ -150,7 +197,9 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
     for (var passIx = 0; passIx < passCount; ++passIx)
     {
         var pass = {};
-        pass.stages = [{}, {}];
+        pass.stages = [
+            {},
+            {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
@@ -165,9 +214,11 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             for (var inputIx = 0; inputIx < inputCount; ++inputIx)
             {
                 var usage = reader.ReadUInt8();
-                /* var registerIndex = */reader.ReadUInt8();
+                /* var registerIndex = */
+                reader.ReadUInt8();
                 var usageIndex = reader.ReadUInt8();
-                /* var usedMask = */reader.ReadUInt8();
+                /* var usedMask = */
+                reader.ReadUInt8();
                 stage.inputDefinition.elements[inputIx] = new Tw2VertexElement(usage, usageIndex, 0);
             }
             stage.inputDefinition.RebuildHash();
@@ -271,10 +322,12 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             {
                 var registerIndex = reader.ReadUInt8();
                 var samplerName = '';
-                if (version >= 4) {
+                if (version >= 4)
+                {
                     samplerName = ReadString();
                 }
-                /* var comparison = */reader.ReadUInt8();
+                /* var comparison = */
+                reader.ReadUInt8();
                 var minFilter = reader.ReadUInt8();
                 var magFilter = reader.ReadUInt8();
                 var mipFilter = reader.ReadUInt8();
@@ -283,7 +336,8 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
                 var addressW = reader.ReadUInt8();
                 var mipLODBias = reader.ReadFloat32();
                 var maxAnisotropy = reader.ReadUInt8();
-                /* var comparisonFunc = */reader.ReadUInt8();
+                /* var comparisonFunc = */
+                reader.ReadUInt8();
                 var borderColor = quat4.create();
                 borderColor[0] = reader.ReadFloat32();
                 borderColor[1] = reader.ReadFloat32();
@@ -291,7 +345,8 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
                 borderColor[3] = reader.ReadFloat32();
                 var minLOD = reader.ReadFloat32();
                 var maxLOD = reader.ReadFloat32();
-                if (version < 4) {
+                if (version < 4)
+                {
                     reader.ReadUInt8();
                 }
                 var sampler = new Tw2SamplerState();
@@ -341,7 +396,8 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
                     device.gl.MIRRORED_REPEAT,
                     device.gl.CLAMP_TO_EDGE,
                     device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE];
+                    device.gl.CLAMP_TO_EDGE
+                ];
                 sampler.addressU = wrapModes[addressU];
                 sampler.addressV = wrapModes[addressV];
                 sampler.addressW = wrapModes[addressW];
@@ -376,7 +432,11 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
         {
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
-            pass.states.push({ 'state': state, 'value': value });
+            pass.states.push(
+                {
+                    'state': state,
+                    'value': value
+                });
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
@@ -428,12 +488,25 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
             }
         }
         this.annotations[name] = annotations;
+
+        var type = (name.length - name.lastIndexOf("Map") == 3) ? this.textures : this.parameters;
+        type[name] = {};
+
+        for (var t = 0; t < annotations.length; t++)
+        {
+            type[name][annotations[t].name] = annotations[t].value;
+        }
     }
 
     this.PrepareFinished(true);
 };
 
-Tw2EffectRes.prototype.ApplyPass = function (pass)
+/**
+ * Applies an Effect Pass
+ * @param {number} pass - effect.passes index
+ * @prototype
+ */
+Tw2EffectRes.prototype.ApplyPass = function(pass)
 {
     pass = this.passes[pass];
     for (var i = 0; i < pass.states.length; ++i)
@@ -452,7 +525,47 @@ Tw2EffectRes.prototype.ApplyPass = function (pass)
     }
 };
 
+/**
+ * Finds out if a parameter name is a valid shader input
+ * @param {string} name - An Effect Parameter name
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2EffectRes.prototype.IsValidParameter = function(name)
+{
+    return (name in this.annotations);
+};
+
+/**
+ * Returns an array of valid parameter names for a specific annotation group
+ * - Compatible with pre V5 shaders
+ * @param {string} groupName - The name of an annotation group
+ * @returns {Array.< string >}
+ * @prototype
+ */
+Tw2Effect.prototype.GetParametersByGroup = function(groupName)
+{
+    var parameters = [];
+
+    for (var param in this.annotations)
+    {
+        if (this.annotations.hasOwnProperty(param))
+        {
+            for (var i = 0; i < this.annotations[param].length; i++)
+            {
+                if (this.annotations[param][i].name.toLowerCase() == "group" && this.annotations[param][i].value.toLowerCase() == groupName.toLowerCase())
+                {
+                    parameters.push(param);
+                }
+            }
+        }
+    }
+    
+    return parameters;
+};
+
 Inherit(Tw2EffectRes, Tw2Resource);
 
+// Registers shader extension constructor
 resMan.RegisterExtension('sm_hi', Tw2EffectRes);
 resMan.RegisterExtension('sm_lo', Tw2EffectRes);
