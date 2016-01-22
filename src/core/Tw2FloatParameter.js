@@ -105,4 +105,8 @@ Tw2FloatParameter.prototype.GetValue = function()
 Tw2FloatParameter.prototype.SetValue = function(value)
 {
     this.value = value;
+    if (this.constantBuffer != null)
+    {
+        this.constantBuffer.set(this.value, this.offset);
+    }
 };
