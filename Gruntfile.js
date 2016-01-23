@@ -104,7 +104,7 @@ module.exports = function(grunt)
         'particle/Tw2RandomIntegerAttributeGenerator.js'
     ];
 
-    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js'];
+    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js'];
 
     grunt.initConfig(
     {
