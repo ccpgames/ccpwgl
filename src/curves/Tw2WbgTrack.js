@@ -1,4 +1,15 @@
-function Tw2WbgTrack() {
+/**
+ * Tw2WbgTrack
+ * @property {string} name
+ * @property {string} geometryResPath
+ * @property {Object} geometryRes
+ * @property {string} group
+ * @property {number} duration
+ * @property {boolean} cycle
+ * @constructor
+ */
+function Tw2WbgTrack()
+{
     this.name = '';
     this.geometryResPath = '';
     this.geometryRes = null;
@@ -6,65 +17,118 @@ function Tw2WbgTrack() {
     this.duration = 0;
     this.cycle = false;
 
-    function SetCurves(self) {
-        if (!self.name || !self.group || !self.geometryRes) {
+    /**
+     * SetCurves
+     * @param self
+     * @private
+     */
+    function SetCurves(self)
+    {
+        if (!self.name || !self.group || !self.geometryRes)
+        {
             return;
         }
-        for (var i = 0; i < self.geometryRes.animations.length; ++i) {
+        for (var i = 0; i < self.geometryRes.animations.length; ++i)
+        {
             var animation = self.geometryRes.animations[i];
-            for (var j = 0; j < animation.trackGroups.length; ++j) {
-                if (animation.trackGroups[j].name == self.group) {
+            for (var j = 0; j < animation.trackGroups.length; ++j)
+            {
+                if (animation.trackGroups[j].name == self.group)
+                {
                     self._ApplyTracks(animation.trackGroups[j], animation.duration);
                 }
             }
         }
     }
 
-    this.Initialize = function () {
-        if (this.geometryResPath) {
+    /**
+     * Initialize
+     * @method
+     */
+    this.Initialize = function()
+    {
+        if (this.geometryResPath)
+        {
             this.geometryRes = resMan.GetResource(this.geometryResPath);
             var self = this;
             var notification = {
-                ReleaseCachedData: function () {},
-                RebuildCachedData: function () {
+                ReleaseCachedData: function() {},
+                RebuildCachedData: function()
+                {
                     SetCurves(self);
                 }
             };
             this.geometryRes.RegisterNotification(notification);
         }
     };
-    
-    this.UpdateValue = function (t) {
-        if (!this._TracksReady()) {
+
+    /**
+     * Updates a value at a specific time
+     * @param {number} time
+     * @prototype
+     */
+    this.UpdateValue = function(time)
+    {
+        if (!this._TracksReady())
+        {
             return;
         }
-        if (this.cycle) {
-            t = t % this.duration;
+        if (this.cycle)
+        {
+            time = time % this.duration;
         }
-        if (t <= this.duration && t >= 0) {
-            this._UpdateValue(t);
+        if (time <= this.duration && time >= 0)
+        {
+            this._UpdateValue(time);
         }
     }
 }
 
-function Tw2WbgTransformTrack() {
+/**
+ * Tw2WbgTransformTrack
+ * @property {vec3} translation
+ * @property {quat4} rotation
+ * @property {vec3} scale
+ * @variable positionCurve
+ * @variable rotationCurve
+ * @variable scaleCurve
+ * @variable {mat4} scaleShear
+ * @constructor
+ */
+function Tw2WbgTransformTrack()
+{
     this.translation = vec3.create();
     this.rotation = quat4.create();
     this.rotation[3] = 1;
     this.scale = vec3.create();
-
     var positionCurve = null;
     var rotationCurve = null;
     var scaleCurve = null;
+    var scaleShear = mat4.identity(mat4.create());
 
-    this._TracksReady = function () {
+    /**
+     * _TracksReady
+     * @returns {?}
+     * @private
+     */
+    this._TracksReady = function()
+    {
         return positionCurve || rotationCurve || scaleCurve;
     };
 
-    this._ApplyTracks = function (trackGroup, duration) {
-        for (var i = 0; i < trackGroup.transformTracks.length; ++i) {
+    /**
+     * _ApplyTracks
+     * @param trackGroup
+     * @param duration
+     * @private
+     */
+    this._ApplyTracks = function(trackGroup, duration)
+    {
+        for (var i = 0; i < trackGroup.transformTracks.length; ++i)
+        {
             var track = trackGroup.transformTracks[i];
-            if (track.name == this.name) {
+            if (track.name == this.name)
+            {
                 this.duration = duration;
                 positionCurve = track.position;
                 rotationCurve = track.orientation;
@@ -74,18 +138,25 @@ function Tw2WbgTransformTrack() {
         this.UpdateValue(0);
     };
 
-    var scaleShear = mat4.identity(mat4.create());
-
-    this._UpdateValue = function (t) {
-        if (positionCurve) {
-            Tw2AnimationController.EvaluateCurve(positionCurve, t, this.translation, this.cycle, this.duration);
+    /**
+     * Updates a value at a specific time
+     * @param {number} time
+     * @prototype
+     */
+    this._UpdateValue = function(time)
+    {
+        if (positionCurve)
+        {
+            Tw2AnimationController.EvaluateCurve(positionCurve, time, this.translation, this.cycle, this.duration);
         }
-        if (rotationCurve) {
-            Tw2AnimationController.EvaluateCurve(rotationCurve, t, this.rotation, this.cycle, this.duration);
+        if (rotationCurve)
+        {
+            Tw2AnimationController.EvaluateCurve(rotationCurve, time, this.rotation, this.cycle, this.duration);
             quat4.normalize(this.rotation);
         }
-        if (scaleCurve) {
-            Tw2AnimationController.EvaluateCurve(scaleCurve, t, scaleShear, this.cycle, this.duration);
+        if (scaleCurve)
+        {
+            Tw2AnimationController.EvaluateCurve(scaleCurve, time, scaleShear, this.cycle, this.duration);
         }
         this.scale[0] = scaleShear[0];
         this.scale[1] = scaleShear[5];
@@ -93,4 +164,8 @@ function Tw2WbgTransformTrack() {
     }
 }
 
+/**
+ * @type {Tw2WbgTrack}
+ * @prototype
+ */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();

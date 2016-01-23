@@ -1,4 +1,13 @@
-﻿function Tw2ScalarKey2()
+/**
+ * Tw2ScalarKey2
+ * @property {number} time
+ * @property {number} value
+ * @property {number} leftTangent
+ * @property {number} rightTangent
+ * @property {number} interpolation
+ * @constructor
+ */
+function Tw2ScalarKey2()
 {
     this.time = 0;
     this.value = 0;
@@ -7,6 +16,23 @@
     this.interpolation = 1;
 }
 
+/**
+ * Tw2ScalarCurve2
+ * @property {string} name
+ * @property {number} length
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {number} startValue
+ * @property {number} currentValue
+ * @property {number} endValue
+ * @property {number} startTangent
+ * @property {number} endTangent
+ * @property {number} interpolation
+ * @property {Array.<Tw2ScalarKey2>} keys
+ * @constructor
+ */
 function Tw2ScalarCurve2()
 {
     this.name = '';
@@ -24,16 +50,33 @@ function Tw2ScalarCurve2()
     this.keys = [];
 }
 
-Tw2ScalarCurve2.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.GetLength = function()
+{
     return this.length;
-}
+};
 
-Tw2ScalarCurve2.prototype.Initialize = function ()
+/**
+ * Initializes Curve
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.Initialize = function()
 {
     this.Sort();
-}
+};
 
-Tw2ScalarCurve2.Compare = function (a, b)
+/**
+ * Compares two curve keys' time properties
+ * @param {Tw2ScalarKey2} a
+ * @param {Tw2ScalarKey2} b
+ * @returns {number}
+ * @method
+ */
+Tw2ScalarCurve2.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -44,9 +87,13 @@ Tw2ScalarCurve2.Compare = function (a, b)
         return 1;
     }
     return 0;
-}
+};
 
-Tw2ScalarCurve2.prototype.Sort = function ()
+/**
+ * Sorts the curve's keys
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -68,14 +115,25 @@ Tw2ScalarCurve2.prototype.Sort = function ()
             }
         }
     }
-}
+};
 
-Tw2ScalarCurve2.prototype.UpdateValue = function (t)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.UpdateValue = function(time)
 {
-    this.currentValue = this.GetValueAt(t);
-}
+    this.currentValue = this.GetValueAt(time);
+};
 
-Tw2ScalarCurve2.prototype.GetValueAt = function (time)
+/**
+ * Gets a value at a specific time
+ * @param {number} time
+ * @returns {number}
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.GetValueAt = function(time)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -125,9 +183,17 @@ Tw2ScalarCurve2.prototype.GetValueAt = function (time)
         }
     }
     return this.Interpolate(time, startKey, endKey);
-}
+};
 
-Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey)
+/**
+ * Interpolate
+ * @param {number} time
+ * @param {Tw2ScalarKey2} lastKey
+ * @param {Tw2ScalarKey2} nextKey
+ * @returns {number}
+ * @prototype
+ */
+Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
 {
     var startValue = this.startValue;
     var endValue = this.endValue;
@@ -158,6 +224,7 @@ Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey)
                 deltaTime = this.length - lastKey.time;
             }
             return startValue + (endValue - startValue) * (time / deltaTime);
+
         case 2:
             var inTangent = this.startTangent;
             var outTangent = this.endTangent;
@@ -179,7 +246,7 @@ Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey)
             {
                 startValue = lastKey.value;
                 inTangent = lastKey.rightTangent;
-                deltaTime = length - lastKey.time;
+                deltaTime = this.length - lastKey.time;
             }
             var s = time / deltaTime;
             var s2 = s * s;
@@ -193,4 +260,4 @@ Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey)
             return startValue * c1 + endValue * c2 + inTangent * c3 + outTangent * c4;
     }
     return this.startValue;
-}
+};
