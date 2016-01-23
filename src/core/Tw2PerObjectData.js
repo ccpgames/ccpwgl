@@ -1,8 +1,17 @@
+/**
+ * Tw2PerObjectData
+ * TODO: Identify if @property perObjectVSData and @property perObjectPSData should be defined here
+ * @constructor
+ */
 function Tw2PerObjectData()
-{
-}
+{}
 
-Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
+/**
+ * SetPerObjectDataToDevice
+ * @param constantBufferHandles
+ * @constructor
+ */
+Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {
