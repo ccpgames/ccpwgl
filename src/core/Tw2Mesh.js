@@ -1,3 +1,13 @@
+/**
+ * Tw2MeshArea
+ * @property {string} name
+ * @property {Tw2Effect} effect
+ * @property {number} meshIndex
+ * @property {number} index
+ * @property {number} count
+ * @property {boolean} debugIsHidden
+ * @constructor
+ */
 function Tw2MeshArea()
 {
     this.name = '';
@@ -7,8 +17,25 @@ function Tw2MeshArea()
     this.count = 1;
     this.debugIsHidden = false;
 }
+
+/**
+ * Render Batch Constructor
+ * @type {RenderBatch}
+ * @prototype
+ */
 Tw2MeshArea.batchType = Tw2GeometryBatch;
 
+
+/**
+ * Tw2MeshLineArea
+ * @property {string} name
+ * @property {Tw2Effect} effect
+ * @property {number} meshIndex
+ * @property {number} index
+ * @property {number} count
+ * @property {boolean} debugIsHidden
+ * @constructor
+ */
 function Tw2MeshLineArea()
 {
     this.name = '';
@@ -18,9 +45,31 @@ function Tw2MeshLineArea()
     this.count = 1;
     this.debugIsHidden = false;
 }
+
+/**
+ * Render Batch Constructor
+ * @type {RenderBatch}
+ * @prototype
+ */
 Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
 
 
+/**
+ * Tw2Mesh
+ * @property {string} name
+ * @property {number} meshIndex
+ * @property {string} geometryResPath
+ * @property {string} lowDetailGeometryResPath
+ * @property {Tw2GeometryRes} geometryResource
+ * @property {Array.<Tw2MeshArea>} opaqueAreas
+ * @property {Array.<Tw2MeshArea>} transparentAreas
+ * @property {Array.<Tw2MeshArea>} additiveAreas
+ * @property {Array.<Tw2MeshArea>} pickableAreas
+ * @property {Array.<Tw2MeshArea>} decalAreas
+ * @property {Array.<Tw2MeshArea>} depthAreas
+ * @property {boolean} debugIsHidden
+ * @constructor
+ */
 function Tw2Mesh()
 {
     this.name = '';
@@ -30,7 +79,6 @@ function Tw2Mesh()
     this.geometryResource = null;
     this.opaqueAreas = [];
     this.transparentAreas = [];
-    this.transparentAreas = [];
     this.additiveAreas = [];
     this.pickableAreas = [];
     this.decalAreas = [];
@@ -38,7 +86,11 @@ function Tw2Mesh()
     this.debugIsHidden = false;
 }
 
-Tw2Mesh.prototype.Initialize = function ()
+/**
+ * Initializes the Tw2Mesh
+ * @prototype
+ */
+Tw2Mesh.prototype.Initialize = function()
 {
     if (this.geometryResPath != '')
     {
@@ -46,7 +98,15 @@ Tw2Mesh.prototype.Initialize = function ()
     }
 };
 
-Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
+/**
+ * Gets render batches from a mesh area array and commits them to an accumulator
+ * @param {Array.<Tw2MeshArea>} areas
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @private
+ */
+Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
 {
     for (var i = 0; i < areas.length; ++i)
     {
@@ -67,7 +127,15 @@ Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjec
     }
 };
 
-Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
+/**
+ * Gets render batches
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.geometryResource == null || this.debugIsHidden)
     {
