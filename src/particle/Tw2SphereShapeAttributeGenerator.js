@@ -1,4 +1,23 @@
-﻿function Tw2SphereShapeAttributeGenerator()
+/**
+ * Tw2SphereShapeAttributeGenerator
+ * @property {number} minRadius
+ * @property {number} maxRadius
+ * @property {number} minPhi
+ * @property {number} maxPhi
+ * @property {number} minTheta
+ * @property {number} maxTheta
+ * @property {boolean} controlPosition
+ * @property {boolean} controlVelocity
+ * @property {number} minSpeed
+ * @property {number} maxSpeed
+ * @property {number} parentVelocityFactor
+ * @property {vec3} position
+ * @property {quat4} rotation
+ * @property _position
+ * @property _velocity
+ * @constructor
+ */
+function Tw2SphereShapeAttributeGenerator()
 {
     this.minRadius = 0;
     this.maxRadius = 0;
@@ -13,12 +32,17 @@
     this.parentVelocityFactor = 1;
     this.position = vec3.create();
     this.rotation = quat4.create([0, 0, 0, 1]);
-
     this._position = null;
     this._velocity = null;
 }
 
-Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
+/**
+ * Bind
+ * @param ps
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
 {
     this._position = null;
     this._velocity = null;
@@ -36,8 +60,17 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
     return (!this.controlPosition || this._position != null) && (!this.controlVelocity || this._velocity != null);
 };
 
-Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, velocity, index)
+/**
+ * Generate
+ * @param position
+ * @param velocity
+ * @param index
+ * @prototype
+ */
+Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
+    var offset;
+
     var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI;
     var theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) / 180 * Math.PI;
 
@@ -50,7 +83,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, veloci
     if (this._velocity)
     {
         var speed = this.minSpeed + Math.random() * (this.maxSpeed - this.minSpeed);
-        var offset = this._velocity.instanceStride * index + this._velocity.startOffset;
+        offset = this._velocity.instanceStride * index + this._velocity.startOffset;
         this._velocity.buffer[offset] = rv[0] * speed;
         this._velocity.buffer[offset + 1] = rv[1] * speed;
         this._velocity.buffer[offset + 2] = rv[2] * speed;
@@ -72,7 +105,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, veloci
             rv[1] += position.buffer[position.offset + 1];
             rv[2] += position.buffer[position.offset + 2];
         }
-        var offset = this._position.instanceStride * index + this._position.startOffset;
+        offset = this._position.instanceStride * index + this._position.startOffset;
         this._position.buffer[offset] = rv[0];
         this._position.buffer[offset + 1] = rv[1];
         this._position.buffer[offset + 2] = rv[2];
