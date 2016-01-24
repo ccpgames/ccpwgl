@@ -1,11 +1,27 @@
-﻿function Tw2ParticleFluidDragForce()
+/**
+ * Tw2ParticleFluidDragForce
+ * @property {number} drag
+ * @property {vec3} _tempVec
+ * @property {vec3} _tempVec2
+ * @constructor
+ */
+function Tw2ParticleFluidDragForce()
 {
     this.drag = 0.1;
     this._tempVec = vec3.create();
     this._tempVec2 = vec3.create();
 }
 
-Tw2ParticleFluidDragForce.prototype.ApplyForce = function (position, velocity, force, dt, mass)
+/**
+ * ApplyForce
+ * @param position
+ * @param velocity
+ * @param force
+ * @param {number} dt - delta time
+ * @param mass
+ * @prototype
+ */
+Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
 {
     var speed = Math.sqrt(
         velocity.buffer[velocity.offset] * velocity.buffer[velocity.offset] +
@@ -34,5 +50,8 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function (position, velocity, f
     }
 };
 
-Tw2ParticleFluidDragForce.prototype.Update = function () { };
-
+/**
+ * Internal render/update function. It is called every frame.
+ * @prototype
+ */
+Tw2ParticleFluidDragForce.prototype.Update = function() {};

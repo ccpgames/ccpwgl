@@ -1,11 +1,25 @@
-﻿function Tw2ParticleAttractorForce()
+/**
+ * Tw2ParticleAttractorForce
+ * @property {number} magnitude
+ * @property {vec3} position
+ * @property {vec3} _tempVec
+ * @constructor
+ */
+function Tw2ParticleAttractorForce()
 {
     this.magnitude = 0;
     this.position = vec3.create();
     this._tempVec = vec3.create();
 }
 
-Tw2ParticleAttractorForce.prototype.ApplyForce = function (position, velocity, force)
+/**
+ * ApplyForce
+ * @param position
+ * @param velocity
+ * @param force
+ * @prototype
+ */
+Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
 {
     this._tempVec[0] = this.position[0] - position.buffer[position.offset];
     this._tempVec[1] = this.position[1] - position.buffer[position.offset + 1];
@@ -17,4 +31,8 @@ Tw2ParticleAttractorForce.prototype.ApplyForce = function (position, velocity, f
     force[2] += this._tempVec[2];
 };
 
-Tw2ParticleAttractorForce.prototype.Update = function () { };
+/**
+ * Internal render/update function. It is called every frame.
+ * @prototype
+ */
+Tw2ParticleAttractorForce.prototype.Update = function() {};

@@ -1,4 +1,13 @@
-﻿function Tw2RandomUniformAttributeGenerator()
+/**
+ * Tw2RandomUniformAttributeGenerator
+ * @property {number} elementType
+ * @property {string} customName
+ * @property {quat4} minRange
+ * @property {quat4} maxRange
+ * @property _element
+ * @constructor
+ */
+function Tw2RandomUniformAttributeGenerator()
 {
     this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
     this.customName = '';
@@ -7,7 +16,13 @@
     this._element = null;
 }
 
-Tw2RandomUniformAttributeGenerator.prototype.Bind = function (ps)
+/**
+ * Bind
+ * @param ps
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
 {
     for (var i = 0; i < ps._elements.length; ++i)
     {
@@ -21,7 +36,14 @@ Tw2RandomUniformAttributeGenerator.prototype.Bind = function (ps)
     return false;
 };
 
-Tw2RandomUniformAttributeGenerator.prototype.Generate = function (position, velocity, index)
+/**
+ * Generate
+ * @param position
+ * @param velocity
+ * @param index
+ * @prototype
+ */
+Tw2RandomUniformAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
     for (var i = 0; i < this._element.dimension; ++i)
     {
