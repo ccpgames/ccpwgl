@@ -1,4 +1,14 @@
-﻿function Tw2DynamicEmitter()
+/**
+ * Tw2DynamicEmitter
+ * @property {string} name
+ * @property {number} rate
+ * @property {boolean} isValid
+ * @property {null|Tw2ParticleSystem} particleSystem
+ * @property {number} _accumulatedRate
+ * @property {Array} generators
+ * @constructor
+ */
+function Tw2DynamicEmitter()
 {
     this.name = '';
     this.rate = 0;
@@ -8,17 +18,30 @@
     this.generators = [];
 }
 
-Tw2DynamicEmitter.prototype.Initialize = function ()
+/**
+ * Initialises the Emitter
+ * @prototype
+ */
+Tw2DynamicEmitter.prototype.Initialize = function()
 {
     this.Rebind();
 };
 
-Tw2DynamicEmitter.prototype.Update = function (dt)
+/**
+ * Internal render/update function. It is called every frame.
+ * @param {number} dt - Frame time.
+ * @prototype
+ */
+Tw2DynamicEmitter.prototype.Update = function(dt)
 {
     this.SpawnParticles(null, null, Math.min(dt, 0.1));
 };
 
-Tw2DynamicEmitter.prototype.Rebind = function ()
+/**
+ * Rebind
+ * @prototype
+ */
+Tw2DynamicEmitter.prototype.Rebind = function()
 {
     this.isValid = false;
     if (!this.particleSystem)
@@ -35,7 +58,14 @@ Tw2DynamicEmitter.prototype.Rebind = function ()
     this.isValid = true;
 };
 
-Tw2DynamicEmitter.prototype.SpawnParticles = function (position, velocity, rateModifier)
+/**
+ * SpawnParticles
+ * @param position
+ * @param velocity
+ * @param rateModifier
+ * @prototype
+ */
+Tw2DynamicEmitter.prototype.SpawnParticles = function(position, velocity, rateModifier)
 {
     if (!this.isValid)
     {

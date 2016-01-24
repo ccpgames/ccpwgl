@@ -1,4 +1,14 @@
-﻿function Tw2StaticEmitter()
+/**
+ * Tw2StaticEmitter
+ * @property {string} name
+ * @property {null|Tw2ParticleSystem} particleSystem
+ * @property {string} geometryResourcePath
+ * @property geometryResource
+ * @property {number} geometryIndex
+ * @property {boolean} _spawned
+ * @constructor
+ */
+function Tw2StaticEmitter()
 {
     this.name = '';
     this.particleSystem = null;
@@ -8,7 +18,11 @@
     this._spawned = false;
 }
 
-Tw2StaticEmitter.prototype.Initialize = function ()
+/**
+ * Initializes the emitter
+ * @prototype
+ */
+Tw2StaticEmitter.prototype.Initialize = function()
 {
     if (this.geometryResourcePath != '')
     {
@@ -19,7 +33,11 @@ Tw2StaticEmitter.prototype.Initialize = function ()
     this._spawned = false;
 };
 
-Tw2StaticEmitter.prototype.RebuildCachedData = function ()
+/**
+ * Rebuilds cached data
+ * @prototype
+ */
+Tw2StaticEmitter.prototype.RebuildCachedData = function()
 {
     if (this.geometryResource && this.geometryResource.meshes.length)
     {
@@ -31,8 +49,16 @@ Tw2StaticEmitter.prototype.RebuildCachedData = function ()
     }
 };
 
-Tw2StaticEmitter.prototype.Update = function (dt)
+/**
+ * Internal render/update function. It is called every frame.
+ * TODO: @param dt is redundant
+ * @param {number} dt - delta time
+ * @prototype
+ */
+Tw2StaticEmitter.prototype.Update = function(dt)
 {
+    var i;
+
     if (!this._spawned &&
         this.particleSystem &&
         this.geometryResource &&
@@ -45,7 +71,7 @@ Tw2StaticEmitter.prototype.Update = function (dt)
         var mesh = this.geometryResource.meshes[this.geometryIndex];
         var elts = this.particleSystem.elements;
         var inputs = new Array(elts.length);
-        for (var i = 0; i < elts.length; ++i)
+        for (i = 0; i < elts.length; ++i)
         {
             var d = elts[i].GetDeclaration();
             var input = mesh.declaration.FindUsage(d.usage, d.usageIndex - 8);
@@ -54,7 +80,7 @@ Tw2StaticEmitter.prototype.Update = function (dt)
                 console.error('Tw2StaticEmitter: ',
                     'input geometry res \'',
                     this.geometryResource.path,
-                    '\' mesh lacks (', d.usage, ', ', d.usageIndex, 
+                    '\' mesh lacks (', d.usage, ', ', d.usageIndex,
                     ') element required by particle system');
                 return;
             }
@@ -63,14 +89,14 @@ Tw2StaticEmitter.prototype.Update = function (dt)
                 console.error('Tw2StaticEmitter: ',
                     'input geometry res \'',
                     this.geometryResource.path,
-                    '\' mesh elements (', d.usage, ', ', d.usageIndex, 
+                    '\' mesh elements (', d.usage, ', ', d.usageIndex,
                     ') does not have required number of components');
                 return;
             }
             inputs[i] = input.offset / 4;
         }
         var vertexCount = mesh.bufferData.length / mesh.declaration.stride * 4;
-        for (var i = 0; i < vertexCount; ++i)
+        for (i = 0; i < vertexCount; ++i)
         {
             var index = this.particleSystem.BeginSpawnParticle();
             if (index == null)

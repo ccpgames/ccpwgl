@@ -1,4 +1,13 @@
-﻿function Tw2ColorKey()
+/**
+ * Tw2ColorKey
+ * @property {number} time
+ * @property {quat4} value
+ * @property {quat4} left
+ * @property {quat4} right
+ * @property {number} interpolation
+ * @constructor
+ */
+function Tw2ColorKey()
 {
     this.time = 0;
     this.value = quat4.create();
@@ -7,7 +16,19 @@
     this.interpolation = 0;
 }
 
-function Tw2ColorCurve() 
+
+/**
+ * Tw2ColorCurve
+ * @property {String} name
+ * @property {number} start
+ * @property {number} length
+ * @property {quat4} value
+ * @property {number} extrapolation
+ * @property {Array.<Tw2ColorKey>} keys
+ * @property {number} _currKey
+ * @constructor
+ */
+function Tw2ColorCurve()
 {
     this.name = '';
     this.start = 0;
@@ -18,16 +39,34 @@ function Tw2ColorCurve()
     this._currKey = 1;
 }
 
-Tw2ColorCurve.prototype.GetLength = function () {
-    return this.length;
-}
-
-Tw2ColorCurve.prototype.UpdateValue = function (t) 
+/**
+ * Returns curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2ColorCurve.prototype.GetLength = function()
 {
-    this.GetValueAt(t, this.value);
-}
+    return this.length;
+};
 
-Tw2ColorCurve.prototype.GetValueAt = function (t, value)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2ColorCurve.prototype.UpdateValue = function(time)
+{
+    this.GetValueAt(time, this.value);
+};
+
+/**
+ * Gets a value at a specific time
+ * @param {number} time
+ * @param {quat4} value
+ * @returns {quat4}
+ * @prototype
+ */
+Tw2ColorCurve.prototype.GetValueAt = function(time, value)
 {
     if (this.length == 0)
     {
@@ -38,9 +77,10 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         return value;
     }
 
+    var d;
     var firstKey = this.keys[0];
     var lastKey = this.keys[this.keys.length - 1];
-    if (t >= lastKey.time)
+    if (time >= lastKey.time)
     {
         if (this.extrapolation == 0)
         {
@@ -60,7 +100,7 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         }
         else if (this.extrapolation == 2)
         {
-            var d = t - lastKey.time;
+            d = time - lastKey.time;
             value[0] = lastKey.value[0] + d * lastKey.right[0];
             value[1] = lastKey.value[1] + d * lastKey.right[1];
             value[2] = lastKey.value[2] + d * lastKey.right[2];
@@ -69,10 +109,10 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         }
         else
         {
-            t = t % lastKey.time;
+            time = time % lastKey.time;
         }
     }
-    else if (t < 0 || t < firstKey.time)
+    else if (time < 0 || time < firstKey.time)
     {
         if (this.extrapolation == 0)
         {
@@ -84,7 +124,7 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         }
         else if (this.extrapolation == 2)
         {
-            var d = t * this.length - lastKey.time;
+            d = time * this.length - lastKey.time;
             value[0] = firstKey.value[0] + d * firstKey.left[0];
             value[1] = firstKey.value[1] + d * firstKey.left[1];
             value[2] = firstKey.value[2] + d * firstKey.left[2];
@@ -102,9 +142,9 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
     }
     var ck = this.keys[this._currKey];
     var ck_1 = this.keys[this._currKey - 1];
-    while ((t >= ck.time) || (t < ck_1.time))
+    while ((time >= ck.time) || (time < ck_1.time))
     {
-        if (t < ck_1.time)
+        if (time < ck_1.time)
         {
             this._currKey = 0;
         }
@@ -113,7 +153,7 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         ck_1 = this.keys[this._currKey - 1];
     }
 
-    var nt = (t - ck_1.time) / (ck.time - ck_1.time);
+    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
     if (ck_1.interpolation == 1)
     {
         value[0] = ck_1.value[0];
@@ -129,4 +169,4 @@ Tw2ColorCurve.prototype.GetValueAt = function (t, value)
         value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
     }
     return value;
-}
+};

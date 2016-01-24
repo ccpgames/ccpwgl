@@ -1,4 +1,13 @@
-﻿function Tw2ParticleTurbulenceForce()
+/**
+ * Tw2ParticleTurbulenceForce
+ * @property {number} noiseLevel
+ * @property {number} noiseRatio
+ * @property {vec3} amplitude
+ * @property {quat4} frequency
+ * @property {number} _time
+ * @constructor
+ */
+function Tw2ParticleTurbulenceForce()
 {
     this.noiseLevel = 3;
     this.noiseRatio = 0.5;
@@ -7,8 +16,8 @@
     this._time = 0;
 }
 
-s_noiseLookup = [];
-s_permutations = [];
+var s_noiseLookup = [];
+var s_permutations = [];
 var s_globalNoiseTemps = [];
 
 function InitializeNoise()
@@ -28,7 +37,7 @@ function InitializeNoise()
         s_permutations[index] = tmp;
     }
 
-    for (i = 0 ; i < 256; i++)
+    for (i = 0; i < 256; i++)
     {
         s_permutations[256 + i] = s_permutations[i];
         s_noiseLookup[256 + i] = s_noiseLookup[i];
@@ -40,7 +49,6 @@ function InitializeNoise()
     }
 }
 InitializeNoise();
-
 
 function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
 {
@@ -96,9 +104,21 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
     result[2] += r[2] * power;
 }
 
+/**
+ * tempNoise
+ * @type {quat4}
+ * @prototype
+ */
 Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
 
-Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, force)
+/**
+ * ApplyForce
+ * @param position
+ * @param velocity
+ * @param force
+ * @prototype
+ */
+Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
 {
     if (this.noiseLevel == 0)
     {
@@ -128,7 +148,12 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, 
     force[2] += noise[2] * this.amplitude[2] * sum;
 };
 
-Tw2ParticleTurbulenceForce.prototype.Update = function (dt)
+/**
+ * Internal render/update function. It is called every frame.
+ * @param {number} dt - delta Time
+ * @prototype
+ */
+Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
 {
     this._time += dt;
 };

@@ -1,4 +1,17 @@
-﻿function Tw2ScalarSequencer()
+/**
+ * Tw2ScalarSequencer
+ * @property {string} name
+ * @property {number} value
+ * @property {number} operator
+ * @property {Array} functions
+ * @property {number} inMinClamp
+ * @property {number} inMaxClamp
+ * @property {number} outMinClamp
+ * @property {number} outMaxClamp
+ * @property {boolean} clamping
+ * @constructor
+ */
+function Tw2ScalarSequencer()
 {
     this.name = '';
     this.value = 0;
@@ -11,29 +24,50 @@
     this.clamping = false;
 }
 
-Tw2ScalarSequencer.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2ScalarSequencer.prototype.GetLength = function()
+{
     var length = 0;
-    for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
+    for (var i = 0; i < this.functions.length; ++i)
+    {
+        if ('GetLength' in this.functions[i])
+        {
             length = Math.max(length, this.functions[i].GetLength());
         }
     }
     return length;
-}
+};
 
-Tw2ScalarSequencer.prototype.UpdateValue = function (t)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2ScalarSequencer.prototype.UpdateValue = function(time)
 {
-    this.value = this.GetValueAt(t);
-}
+    this.value = this.GetValueAt(time);
+};
 
-Tw2ScalarSequencer.prototype.GetValueAt = function (t)
+/**
+ * Gets a value at a specific time
+ * @param {number} time
+ * @returns {number}
+ * @prototype
+ */
+Tw2ScalarSequencer.prototype.GetValueAt = function(time)
 {
+    var ret, i, v;
+
     if (this.operator == 0)
     {
-        var ret = 1;
-        for (var i = 0; i < this.functions.length; ++i)
+        ret = 1;
+        for (i = 0; i < this.functions.length; ++i)
         {
-            var v = this.functions[i].GetValueAt(t);
+            v = this.functions[i].GetValueAt(time);
             if (this.clamping)
             {
                 v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
@@ -43,10 +77,10 @@ Tw2ScalarSequencer.prototype.GetValueAt = function (t)
     }
     else
     {
-        var ret = 0;
-        for (var i = 0; i < this.functions.length; ++i)
+        ret = 0;
+        for (i = 0; i < this.functions.length; ++i)
         {
-            var v = this.functions[i].GetValueAt(t);
+            v = this.functions[i].GetValueAt(time);
             if (this.clamping)
             {
                 v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
@@ -59,4 +93,4 @@ Tw2ScalarSequencer.prototype.GetValueAt = function (t)
         ret = Math.min(Math.max(ret, this.outMinClamp), this.outMaxClamp);
     }
     return ret;
-}
+};

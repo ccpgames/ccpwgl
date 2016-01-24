@@ -1,4 +1,14 @@
-﻿function Tw2YPRSequencer()
+/**
+ * Tw2YPRSequencer
+ * @property {string} name
+ * @property {quat4} value=[0,0,0,1]
+ * @property {vec3} YawPitchRoll
+ * @property YawCurve
+ * @property PitchCurve
+ * @property RollCurve
+ * @constructor
+ */
+function Tw2YPRSequencer()
 {
     this.name = '';
     this.value = quat4.create([0, 0, 0, 1]);
@@ -8,38 +18,59 @@
     this.RollCurve = null;
 }
 
-Tw2YPRSequencer.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2YPRSequencer.prototype.GetLength = function()
+{
     var length = 0;
-    if (this.YawCurve && ('GetLength' in this.YawCurve)) {
+    if (this.YawCurve && ('GetLength' in this.YawCurve))
+    {
         length = this.YawCurve.GetLength();
     }
-    if (this.PitchCurve && ('GetLength' in this.PitchCurve)) {
+    if (this.PitchCurve && ('GetLength' in this.PitchCurve))
+    {
         length = Math.max(length, this.PitchCurve.GetLength());
     }
-    if (this.RollCurve && ('GetLength' in this.RollCurve)) {
+    if (this.RollCurve && ('GetLength' in this.RollCurve))
+    {
         length = Math.max(length, this.RollCurve.GetLength());
     }
     return length;
-}
+};
 
-Tw2YPRSequencer.prototype.UpdateValue = function (t) 
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2YPRSequencer.prototype.UpdateValue = function(time)
 {
-    this.GetValueAt(t, this.value);
-}
+    this.GetValueAt(time, this.value);
+};
 
-Tw2YPRSequencer.prototype.GetValueAt = function (t, value)
+/**
+ * Gets a value at a specific time
+ * @param {number} time
+ * @param {quat4} value
+ * @returns {quat4}
+ * @prototype
+ */
+Tw2YPRSequencer.prototype.GetValueAt = function(time, value)
 {
     if (this.YawCurve)
     {
-        this.YawPitchRoll[0] = this.YawCurve.GetValueAt(t);
+        this.YawPitchRoll[0] = this.YawCurve.GetValueAt(time);
     }
     if (this.PitchCurve)
     {
-        this.YawPitchRoll[1] = this.PitchCurve.GetValueAt(t);
+        this.YawPitchRoll[1] = this.PitchCurve.GetValueAt(time);
     }
     if (this.RollCurve)
     {
-        this.YawPitchRoll[2] = this.RollCurve.GetValueAt(t);
+        this.YawPitchRoll[2] = this.RollCurve.GetValueAt(time);
     }
 
     var sinYaw = Math.sin(this.YawPitchRoll[0] / 180 * Math.PI / 2.0);
@@ -55,4 +86,4 @@ Tw2YPRSequencer.prototype.GetValueAt = function (t, value)
     value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
 
     return value;
-}
+};

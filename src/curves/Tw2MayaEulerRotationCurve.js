@@ -1,4 +1,17 @@
-﻿function Tw2MayaEulerRotationCurve() {
+/**
+ * Tw2MayaEulerRotationCurve
+ * @property {number} xIndex
+ * @property {number} yIndex
+ * @property {number} zIndex
+ * @property {null|Tw2MayaAnimationEngine} animationEngine
+ * @property {string} name
+ * @property {vec3} eulerValue
+ * @property {boolean} updateQuaternion
+ * @property {quat4} quatValue
+ * @constructor
+ */
+function Tw2MayaEulerRotationCurve()
+{
     this.xIndex = -1;
     this.yIndex = -1;
     this.zIndex = -1;
@@ -9,37 +22,64 @@
     this.quatValue = quat4.create();
 }
 
-Tw2MayaEulerRotationCurve.prototype.Initialize = function () {
+/**
+ * Initializes the Curve
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2MayaEulerRotationCurve.prototype.Initialize = function()
+{
     this.ComputeLength();
     return true;
-}
+};
 
-Tw2MayaEulerRotationCurve.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2MayaEulerRotationCurve.prototype.GetLength = function()
+{
     return this.length;
-}
+};
 
-Tw2MayaEulerRotationCurve.prototype.UpdateValue = function (t) {
-    if (this.animationEngine) {
-        if (this.xIndex) {
-            this.eulerValue[0] = this.animationEngine.Evaluate(this.xIndex, t);
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
+{
+    if (this.animationEngine)
+    {
+        if (this.xIndex)
+        {
+            this.eulerValue[0] = this.animationEngine.Evaluate(this.xIndex, time);
         }
-        if (this.yIndex) {
-            if (this.yIndex == this.xIndex) {
+        if (this.yIndex)
+        {
+            if (this.yIndex == this.xIndex)
+            {
                 this.eulerValue[1] = this.eulerValue[0];
             }
-            else {
-                this.eulerValue[1] = this.animationEngine.Evaluate(this.yIndex, t);
+            else
+            {
+                this.eulerValue[1] = this.animationEngine.Evaluate(this.yIndex, time);
             }
         }
-        if (this.zIndex) {
-            if (this.zIndex == this.xIndex) {
+        if (this.zIndex)
+        {
+            if (this.zIndex == this.xIndex)
+            {
                 this.eulerValue[2] = this.eulerValue[0];
             }
-            else {
-                this.eulerValue[2] = this.animationEngine.Evaluate(this.zIndex, t);
+            else
+            {
+                this.eulerValue[2] = this.animationEngine.Evaluate(this.zIndex, time);
             }
         }
-        if (this.updateQuaternion) {
+        if (this.updateQuaternion)
+        {
             var sinYaw = Math.sin(this.eulerValue[0] / 2);
             var cosYaw = Math.cos(this.eulerValue[0] / 2);
             var sinPitch = Math.sin(this.eulerValue[1] / 2);
@@ -52,21 +92,29 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function (t) {
             this.quatValue[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
         }
     }
-}
+};
 
-Tw2MayaEulerRotationCurve.prototype.ComputeLength = function () {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() == 0) {
+/**
+ * Computes curve Length
+ * @prototype
+ */
+Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
+{
+    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() == 0)
+    {
         return;
     }
     this.length = 0;
-    if (this.xIndex >= 0) {
+    if (this.xIndex >= 0)
+    {
         this.length = this.animationEngine.GetLength(this.xIndex);
     }
-    if (this.yIndex >= 0) {
+    if (this.yIndex >= 0)
+    {
         this.length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
     }
-    if (this.zIndex >= 0) {
+    if (this.zIndex >= 0)
+    {
         this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
     }
-}
-
+};

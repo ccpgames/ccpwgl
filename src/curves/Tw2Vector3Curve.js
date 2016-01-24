@@ -1,4 +1,13 @@
-﻿function Tw2Vector3Key()
+/**
+ * Tw2Vector3Key
+ * @property {number} time
+ * @property {vec3} value
+ * @property {vec3} leftTangent
+ * @property {vec3} rightTangent
+ * @property {number} interpolation
+ * @constructor
+ */
+function Tw2Vector3Key()
 {
     this.time = 0;
     this.value = vec3.create();
@@ -7,6 +16,23 @@
     this.interpolation = 1;
 }
 
+/**
+ * Tw2Vector3Curve
+ * @property {string} name
+ * @property {number} length
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {vec3} startValue
+ * @property {vec3} currentValue
+ * @property {vec3} endValue
+ * @property {vec3} startTangent
+ * @property {vec3} endTangent
+ * @property {number} interpolation
+ * @property {Array.<Tw2Vector3Key>} keys
+ * @constructor
+ */
 function Tw2Vector3Curve()
 {
     this.name = '';
@@ -24,16 +50,33 @@ function Tw2Vector3Curve()
     this.keys = [];
 }
 
-Tw2Vector3Curve.prototype.Initialize = function ()
+/**
+ * Initializes the Curve
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.Initialize = function()
 {
     this.Sort();
-}
+};
 
-Tw2Vector3Curve.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.GetLength = function()
+{
     return this.length;
-}
+};
 
-Tw2Vector3Curve.Compare = function (a, b)
+/**
+ * Compares two curve keys' time properties
+ * @param {Tw2Vector3Key} a
+ * @param {Tw2Vector3Key} b
+ * @returns {number}
+ * @method
+ */
+Tw2Vector3Curve.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -44,9 +87,13 @@ Tw2Vector3Curve.Compare = function (a, b)
         return 1;
     }
     return 0;
-}
+};
 
-Tw2Vector3Curve.prototype.Sort = function ()
+/**
+ * Sorts the curve's keys
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -68,14 +115,27 @@ Tw2Vector3Curve.prototype.Sort = function ()
             }
         }
     }
-}
+};
 
-Tw2Vector3Curve.prototype.UpdateValue = function (t)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.UpdateValue = function(time)
 {
-    this.GetValueAt(t, this.currentValue);
-}
+    this.GetValueAt(time, this.currentValue);
+};
 
-Tw2Vector3Curve.prototype.GetValueAt = function (time, value)
+/**
+ * Gets a value at a specific time
+ * TODO: the variable `i` is used before it has been initialized
+ * @param {number} time
+ * @param {vec3} value
+ * @returns {vec3}
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -123,7 +183,7 @@ Tw2Vector3Curve.prototype.GetValueAt = function (time, value)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
     }
-    var endKey = this.keys[i + 1];
+    var endKey = this.keys[i + 1]; // <----------------------------------------- `i` is not yet initialized
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];
@@ -134,9 +194,18 @@ Tw2Vector3Curve.prototype.GetValueAt = function (time, value)
         }
     }
     return this.Interpolate(time, startKey, endKey, value);
-}
+};
 
-Tw2Vector3Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
+/**
+ * Interpolate
+ * @param {number} time
+ * @param {Tw2Vector3Key} lastKey
+ * @param {Tw2Vector3Key} nextKey
+ * @param {vec3} value
+ * @returns {vec3}
+ * @prototype
+ */
+Tw2Vector3Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];
@@ -212,4 +281,4 @@ Tw2Vector3Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
             return value;
     }
     return value;
-}
+};
