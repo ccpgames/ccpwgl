@@ -1,4 +1,13 @@
-﻿function Tw2QuaternionKey()
+/**
+ * Tw2QuaternionKey
+ * @property {number} time
+ * @property {quat4} value
+ * @property {quat4} left
+ * @property {quat4} right
+ * @property {number} interpolation
+ * @constructor
+ */
+function Tw2QuaternionKey()
 {
     this.time = 0;
     this.value = quat4.create();
@@ -7,7 +16,19 @@
     this.interpolation = 5;
 }
 
-function Tw2RotationCurve() 
+
+/**
+ * Tw2RotationCurve
+ * @property {string} name
+ * @property {number} start
+ * @property {number} length
+ * @property {quat4} value
+ * @property {number} extrapolation
+ * @property {Array.<Tw2QuaternionKey>} keys
+ * @property {number} _currKey
+ * @constructor
+ */
+function Tw2RotationCurve()
 {
     this.name = '';
     this.start = 0;
@@ -18,33 +39,60 @@ function Tw2RotationCurve()
     this._currKey = 1;
 }
 
-Tw2RotationCurve.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2RotationCurve.prototype.GetLength = function()
+{
     return this.length;
-}
+};
 
-Tw2RotationCurve.prototype.UpdateValue = function (t) 
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2RotationCurve.prototype.UpdateValue = function(time)
 {
-    this.GetValueAt(t, this.value);
-}
+    this.GetValueAt(time, this.value);
+};
 
-Tw2RotationCurve.BICumulative = function (order, t)
+/**
+ * BICumulative
+ * @param {number} order
+ * @param t
+ * @returns {number}
+ * @method
+ */
+Tw2RotationCurve.BICumulative = function(order, t)
 {
-	if (order == 1)
-	{
-		var some = (1.0 - t);
-		return 1.0 - some * some * some;
-	}
-	else if (order == 2)
-	{
-		return 3.0 * t * t - 2.0 * t * t * t;
-	}
-	else
-	{
-		return t * t * t;
-	}
-}
+    if (order == 1)
+    {
+        var some = (1.0 - t);
+        return 1.0 - some * some * some;
+    }
+    else if (order == 2)
+    {
+        return 3.0 * t * t - 2.0 * t * t * t;
+    }
+    else
+    {
+        return t * t * t;
+    }
+};
 
-Tw2RotationCurve.QuaternionPow = function (out, inq, exponent)
+/**
+ * QuaternionPow
+ * TODO: Should this function be returning the quat4 out?
+ * @param {quat4} out
+ * @param {quat4} inq
+ * @param {number} exponent
+ * @returns {quat4}
+ * @method
+ */
+Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
 {
     if (exponent == 1)
     {
@@ -57,61 +105,83 @@ Tw2RotationCurve.QuaternionPow = function (out, inq, exponent)
     out[2] *= exponent;
     out[3] *= exponent;
     Tw2RotationCurve.QuaternionExp(out, out);
-}
+};
 
-Tw2RotationCurve.QuaternionLn = function (out, q)
+/**
+ * QuaternionLn
+ * @param {quat4} out
+ * @param {quat4} q
+ * @returns {quat4}
+ * @method
+ */
+Tw2RotationCurve.QuaternionLn = function(out, q)
 {
-	var norm = quat4.length(q);
-	if (norm > 1.0001 || norm < 0.99999)
-	{
-		out[0] = q[0];
-		out[1] = q[1];
-		out[2] = q[2];
-		out[3] = 0.0;
-	}
-	else
-	{
-		var normvec = Math.sqrt(q.x * q.x + q.y * q.y + q.z * q.z);
-		if (normvec == 0.0)
-		{
-			out[0] = 0.0;
-			out[1] = 0.0;
-			out[2] = 0.0;
-			out[3] = 0.0;
-		}
-		else
-		{
-			var theta = Math.atan2(normvec, q.w) / normvec;
-			out[0] = theta * q[0];
-			out[1] = theta * q[1];
-			out[2] = theta * q[2];
-			out[3] = 0.0;
-		}
-	}
-	return out;
-}
+    var norm = quat4.length(q);
+    if (norm > 1.0001 || norm < 0.99999)
+    {
+        out[0] = q[0];
+        out[1] = q[1];
+        out[2] = q[2];
+        out[3] = 0.0;
+    }
+    else
+    {
+        var normvec = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
+        if (normvec == 0.0)
+        {
+            out[0] = 0.0;
+            out[1] = 0.0;
+            out[2] = 0.0;
+            out[3] = 0.0;
+        }
+        else
+        {
+            var theta = Math.atan2(normvec, q[3]) / normvec;
+            out[0] = theta * q[0];
+            out[1] = theta * q[1];
+            out[2] = theta * q[2];
+            out[3] = 0.0;
+        }
+    }
+    return out;
+};
 
-Tw2RotationCurve.QuaternionExp = function (out, q)
+/**
+ * QuaternionExp
+ * @param {quat4} out
+ * @param {quat4} q
+ * @returns {quat4}
+ * @method
+ */
+Tw2RotationCurve.QuaternionExp = function(out, q)
 {
-	var norm = Math.sqrt(q.x * q.x + q.y * q.y + q.z * q.z);
-	if (norm)
-	{
-		out[0] = Math.sin(norm) * q[0] / norm;
-		out[1] = Math.sin(norm) * q[1] / norm;
-		out[2] = Math.sin(norm) * q[2] / norm;
-		out[3] = Math.cos(norm);
-	}
-	else
-	{
-		out[0] = 0.0;
-		out[1] = 0.0;
-		out[2] = 0.0;
-		out[3] = 1.0;
-	}
-	return out;
-}
+    var norm = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
+    if (norm)
+    {
+        out[0] = Math.sin(norm) * q[0] / norm;
+        out[1] = Math.sin(norm) * q[1] / norm;
+        out[2] = Math.sin(norm) * q[2] / norm;
+        out[3] = Math.cos(norm);
+    }
+    else
+    {
+        out[0] = 0.0;
+        out[1] = 0.0;
+        out[2] = 0.0;
+        out[3] = 1.0;
+    }
+    return out;
+};
 
-Tw2RotationCurve.prototype.GetValueAt = function (t, value)
+/**
+ * Gets a value at a specific time
+ * TODO: Identify what the undefined value `q0` should be
+ * @param {number} time
+ * @param {quat4} value
+ * @returns {quat4}
+ * @prototype
+ */
+Tw2RotationCurve.prototype.GetValueAt = function(time, value)
 {
     if (this.length == 0)
     {
@@ -121,7 +191,7 @@ Tw2RotationCurve.prototype.GetValueAt = function (t, value)
 
     var firstKey = this.keys[0];
     var lastKey = this.keys[this.keys.length - 1];
-    if (t >= lastKey.time)
+    if (time >= lastKey.time)
     {
         if (this.extrapolation == 0)
         {
@@ -135,10 +205,10 @@ Tw2RotationCurve.prototype.GetValueAt = function (t, value)
         }
         else
         {
-            t = t % lastKey.time;
+            time = time % lastKey.time;
         }
     }
-    else if (t < 0 || t < firstKey.time)
+    else if (time < 0 || time < firstKey.time)
     {
         if (this.extrapolation == 0)
         {
@@ -153,9 +223,9 @@ Tw2RotationCurve.prototype.GetValueAt = function (t, value)
     }
     var ck = this.keys[this._currKey];
     var ck_1 = this.keys[this._currKey - 1];
-    while ((t >= ck.time) || (t < ck_1.time))
+    while ((time >= ck.time) || (time < ck_1.time))
     {
-        if (t < ck_1.time)
+        if (time < ck_1.time)
         {
             this._currKey = 0;
         }
@@ -164,7 +234,7 @@ Tw2RotationCurve.prototype.GetValueAt = function (t, value)
         ck_1 = this.keys[this._currKey - 1];
     }
 
-    var nt = (t - ck_1.time) / (ck.time - ck_1.time);
+    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
     if (ck_1.interpolation == 1)
     {
         quat4.set(ck_1.value, value);
@@ -204,7 +274,7 @@ Tw2RotationCurve.prototype.GetValueAt = function (t, value)
     }
     else
     {
-        return quat4.slerp(quat4.slerp(ck_1.value, ck.value, nt, quat4.create()), quat4.slerp(ck_1.right, ck.left, nt, quat4.create()), 2.0 * t * (1.0 - t), value);
+        return quat4.slerp(quat4.slerp(ck_1.value, ck.value, nt, quat4.create()), quat4.slerp(ck_1.right, ck.left, nt, quat4.create()), 2.0 * time * (1.0 - time), value);
     }
     return value;
-}
+};

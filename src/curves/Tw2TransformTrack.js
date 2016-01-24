@@ -1,4 +1,20 @@
-﻿function Tw2TransformTrack()
+/**
+ * Tw2TransformTrack
+ * @property {string} name
+ * @property {string} resPath
+ * @property {Object} res
+ * @property {string} group
+ * @property {boolean} cycle
+ * @property {vec3} translation
+ * @property {quat4} rotation
+ * @property {vec3} scale
+ * @property positionCurve
+ * @property orientationCurve
+ * @property scaleCurve
+ * @property {mat4} _scaleShear
+ * @constructor
+ */
+function Tw2TransformTrack()
 {
     this.name = '';
     this.resPath = '';
@@ -14,24 +30,44 @@
     this._scaleShear = mat4.create();
 }
 
-Tw2TransformTrack.prototype.Initialize = function ()
+/**
+ * Initializes the Curve
+ * @prototype
+ */
+Tw2TransformTrack.prototype.Initialize = function()
 {
     if (this.resPath != '')
     {
         this.res = resMan.GetResource(this.resPath);
     }
-}
+};
 
-Tw2TransformTrack.prototype.GetLength = function () {
-    return this.duration;
-}
-
-Tw2TransformTrack.prototype.EvaluateCurve = function (curve, time, value, cycle, duration)
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2TransformTrack.prototype.GetLength = function()
 {
+    return this.duration;
+};
+
+/**
+ * EvaluateCurve
+ * @param curve
+ * @param {number} time
+ * @param {Array|vec3|quat4|mat4} value
+ * @param {boolean} cycle
+ * @param {number} duration
+ * @prototype
+ */
+Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, duration)
+{
+    var i;
     var count = curve.knots.length;
     var knot = count - 1;
     var t = 0;
-    for (var i = 0; i < curve.knots.length; ++i)
+    for (i = 0; i < curve.knots.length; ++i)
     {
         if (curve.knots[i] > time)
         {
@@ -42,7 +78,7 @@ Tw2TransformTrack.prototype.EvaluateCurve = function (curve, time, value, cycle,
 
     if (curve.degree == 0)
     {
-        for (var i = 0; i < curve.dimension; ++i)
+        for (i = 0; i < curve.dimension; ++i)
         {
             value[i] = curve.controls[knot * curve.dimension + i];
         }
@@ -59,7 +95,7 @@ Tw2TransformTrack.prototype.EvaluateCurve = function (curve, time, value, cycle,
         {
             t = (time - curve.knots[i - 1]) / dt;
         }
-        for (var i = 0; i < curve.dimension; ++i)
+        for (i = 0; i < curve.dimension; ++i)
         {
             value[i] = curve.controls[knot0 * curve.dimension + i] * (1 - t) + curve.controls[knot * curve.dimension + i] * t;
         }
@@ -109,14 +145,19 @@ Tw2TransformTrack.prototype.EvaluateCurve = function (curve, time, value, cycle,
         var ci_1 = ci_2 - ci;
         ci_2 = 1 - ci_2;
 
-        for (var i = 0; i < curve.dimension; ++i)
+        for (i = 0; i < curve.dimension; ++i)
         {
             value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
         }
     }
-}
+};
 
-Tw2TransformTrack.prototype.UpdateValue = function (t)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2TransformTrack.prototype.UpdateValue = function(time)
 {
     if (!this.res || !this.res.IsGood())
     {
@@ -133,26 +174,32 @@ Tw2TransformTrack.prototype.UpdateValue = function (t)
 
     if (this.cycle)
     {
-        t = t % this.duration;
+        time = time % this.duration;
     }
-    if (t > this.duration || t < 0)
+    if (time > this.duration || time < 0)
     {
         return;
     }
 
-    this.EvaluateCurve(this.positionCurve, t, this.translation, this.cycle, this.duration);
-    this.EvaluateCurve(this.orientationCurve, t, this.rotation, this.cycle, this.duration);
-    quat4.normalize(orientation);
-    this.EvaluateCurve(this.scaleCurve, t, this._scaleShear, this.cycle, this.duration);
+    this.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
+    this.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
+    quat4.normalize(this.rotation);
+    this.EvaluateCurve(this.scaleCurve, time, this._scaleShear, this.cycle, this.duration);
     this.scale[0] = vec3.length(this.scaleCurve);
     this.scale[1] = vec3.length(this.scaleCurve.subarray(3, 6));
     this.scale[2] = vec3.length(this.scaleCurve.subarray(6, 9));
-}
+};
 
-Tw2TransformTrack.prototype.FindTracks = function ()
+/**
+ * FindTracks
+ * @prototype
+ */
+Tw2TransformTrack.prototype.FindTracks = function()
 {
+    var i;
+
     var group = null;
-    for (var i = 0; i < this.res.animations.length; ++i)
+    for (i = 0; i < this.res.animations.length; ++i)
     {
         for (var j = 0; j < this.res.animations[i].trackGroups.length; ++j)
         {
@@ -168,7 +215,7 @@ Tw2TransformTrack.prototype.FindTracks = function ()
     {
         return;
     }
-    for (var i = 0; i < group.transformTracks.length; ++i)
+    for (i = 0; i < group.transformTracks.length; ++i)
     {
         if (this.name == group.transformTracks[i].name)
         {
@@ -178,4 +225,4 @@ Tw2TransformTrack.prototype.FindTracks = function ()
             break;
         }
     }
-}
+};

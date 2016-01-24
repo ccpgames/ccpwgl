@@ -1,4 +1,13 @@
-﻿function Tw2Vector2Key()
+/**
+ * Tw2Vector2Key
+ * @property {number} time
+ * @property {Float32Array} value - vec2 array
+ * @property {Float32Array} leftTangent - vec2 array
+ * @property {Float32Array} rightTangent - vec2 array
+ * @property {number} interpolation
+ * @constructor
+ */
+function Tw2Vector2Key()
 {
     this.time = 0;
     this.value = new Float32Array(2);
@@ -7,6 +16,23 @@
     this.interpolation = 1;
 }
 
+/**
+ * Tw2Vector2Curve
+ * @property {string} name
+ * @property {number} length
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {Float32Array} startValue - vec2 array
+ * @property {Float32Array} currentValue - vec2 array
+ * @property {Float32Array} endValue - vec2 array
+ * @property {Float32Array} startTangent - vec2 array
+ * @property {Float32Array} endTangent - vec2 array
+ * @property {number} interpolation
+ * @property {Array.<Tw2Vector2Key>} keys
+ * @constructor
+ */
 function Tw2Vector2Curve()
 {
     this.name = '';
@@ -24,16 +50,33 @@ function Tw2Vector2Curve()
     this.keys = [];
 }
 
-Tw2Vector2Curve.prototype.Initialize = function ()
+/**
+ * Initializes the Curve
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.Initialize = function()
 {
     this.Sort();
-}
+};
 
-Tw2Vector2Curve.prototype.GetLength = function () {
+/**
+ * Gets curve length
+ * @returns {number}
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.GetLength = function()
+{
     return this.length;
-}
+};
 
-Tw2Vector2Curve.Compare = function (a, b)
+/**
+ * Compares two curve keys' time properties
+ * @param {Tw2Vector2Key} a
+ * @param {Tw2Vector2Key} b
+ * @returns {number}
+ * @method
+ */
+Tw2Vector2Curve.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -44,9 +87,13 @@ Tw2Vector2Curve.Compare = function (a, b)
         return 1;
     }
     return 0;
-}
+};
 
-Tw2Vector2Curve.prototype.Sort = function ()
+/**
+ * Sorts the curve's keys
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -68,14 +115,27 @@ Tw2Vector2Curve.prototype.Sort = function ()
             }
         }
     }
-}
+};
 
-Tw2Vector2Curve.prototype.UpdateValue = function (t)
+/**
+ * Updates a value at a specific time
+ * @param {number} time
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.UpdateValue = function(time)
 {
-    this.GetValueAt(t, this.currentValue);
-}
+    this.GetValueAt(time, this.currentValue);
+};
 
-Tw2Vector2Curve.prototype.GetValueAt = function (time, value)
+/**
+ * Gets a value at a specific time
+ * TODO: the variable `i` is used before it has been initialized
+ * @param {number} time
+ * @param {Float32Array} value - vec2 array
+ * @returns {Float32Array} vec2 array
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -120,7 +180,7 @@ Tw2Vector2Curve.prototype.GetValueAt = function (time, value)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
     }
-    var endKey = this.keys[i + 1];
+    var endKey = this.keys[i + 1]; // <----------------------------------------- `i` is not yet initialized
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];
@@ -131,9 +191,18 @@ Tw2Vector2Curve.prototype.GetValueAt = function (time, value)
         }
     }
     return this.Interpolate(time, startKey, endKey, value);
-}
+};
 
-Tw2Vector2Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
+/**
+ * Interpolate
+ * @param {number} time
+ * @param {Tw2Vector2Key} lastKey
+ * @param {Tw2Vector2Key} nextKey
+ * @param {Float32Array} value - vec2 array
+ * @returns {Float32Array} vec2 array
+ * @prototype
+ */
+Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];
@@ -206,4 +275,4 @@ Tw2Vector2Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
             return value;
     }
     return value;
-}
+};
