@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>WebGL API Test - Material Paint</title>
+
+    <script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+    <script type="text/javascript" src="../src/ccpwgl.js"></script>
+
+    <script type="text/javascript">
+    // Variable declared globally so you can do testing in your javascript console
+    var ship = [];
+    
+    function onDocumentLoad()
+    {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, {postProcessing: true});
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+    
+        var camera = new TestCamera(canvas);
+        camera.minDistance = 10;
+        camera.maxDistance = 10000;
+        camera.fov = 30;
+        camera.distance = 5000;
+        camera.nearPlane = 1;
+        camera.farPlane = 10000000;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.65;
+        ccpwgl.setCamera(camera);
+    
+        // Load the confessor
+        ship[0] = scene.loadShip('ade3_t3:amarrbase:amarr', whenLoaded);
+        
+        // An Example Material
+        var pinkGloss =
+        {
+            "name": "pinkGloss",
+            "parameters": {
+                "DustDiffuseColor": [
+                    0.028426,
+                    0.0241576,
+                    0.0193824,
+                    1
+                ],
+                "FresnelColor": [
+                    0.0343398,
+                    0.0262412,
+                    0.0231534,
+                    1
+                ],
+                "DiffuseColor": [
+                    1.0886556,
+                    0.0262412,
+                    0.5159963,
+                    1
+                ],
+                "DustFresnelColor": [
+                    0.028426,
+                    0.0241576,
+                    0.0193824,
+                    0
+                ],
+                "Gloss": [
+                    0.8906,
+                    0.4,
+                    0,
+                    0
+                ]
+            }
+        };
+    
+        /**
+         * Applys a V5 material to a spaceObject's V5 meshArea (aka Paints part of a ship)
+         * @param (meshArea) {ccpwgl_int.Tw2MeshArea} A SpaceObject's Tw2MeshArea
+         * @param (material) {object} A specially formatted material object
+         * @param (materialIndex) {number} The material layer on the meshArea that you want the material applied to
+         * @throw meshArea is not valid (Wrong type or incompatible)
+         * @throw materialIndex is invalid
+         **/
+        function applyV5SofMaterial(meshArea, material, materialIndex)
+        {
+            // Ensure the meshArea is valid
+            if (!meshArea instanceof ccpwgl_int.Tw2MeshArea)
+            {
+                throw new Error('Invalid Tw2MeshArea')
+            }
+    
+            // Ensure the meshArea is V5 compatible
+            if (meshArea.effect.effectFilePath.search('/v5/') == -1)
+            {
+                throw new Error('Incompatible MeshArea')
+            }
+    
+            // Ensure the materialIndex is valid
+            if (materialIndex < 1 || materialIndex > 4)
+            {
+                throw new Error('Invalid Material Index');
+            }
+    
+            // Internal helper function that gets a value from an object and supplies a default if there is none
+            function _get(obj, property, defaultValue)
+            {
+                if (property in obj)
+                {
+                    return obj[property];
+                }
+                return defaultValue;
+            }
+    
+            // Internal helper function that figures out the default value for a parameter when one isn't supplied
+            function _clear(value)
+            {
+                if (Object.prototype.toString.call(value) === '[object Array]')
+                {
+                    return Array.from(new Float64Array(value.length));
+                }
+    
+                if (value.constructor.name == 'Float32Array')
+                {
+                    return Array.from(new Float64Array(value.length));
+                }
+    
+                return 0;
+            }
+    
+            // Shorten some of our variables to make them easier to remember
+            var prefix = "Mtl" + materialIndex;
+            var parameters = meshArea.effect.parameters;
+    
+            // Iterate throught our meshArea's Parameters
+            for (var param in parameters)
+            {
+                // Find the parameters we want to update/ paint
+                if (parameters.hasOwnProperty(param) && param.search(prefix) != -1)
+                {
+                    var defaultValue = _clear(parameters[param].GetValue());
+                    var unPrefixed = param.replace(prefix, '');
+                    
+                    // Update/ Paint!
+                    parameters[param].SetValue(
+                        _get(
+                            material.parameters,
+                            unPrefixed,
+                            defaultValue
+                        )
+                    );
+                }
+            }
+        }
+    
+        /**
+         * An example function which brute force applies the pinkGloss material to every opaque meshArea on our spaceObject
+         * @param (spaceObject) Our spaceship
+         */
+        function turnShipPink(spaceObject)
+        {
+            if (spaceObject.isLoaded())
+            {
+                for (var wrapped = 0; wrapped < spaceObject.wrappedObjects.length; wrapped++)
+                {
+                    var meshCategory = spaceObject.wrappedObjects[wrapped].mesh.opaqueAreas;
+    
+                    for (var i = 0; i < meshCategory.length; i++)
+                    {
+                        for (var n = 1; n < 5; n++)
+                        {
+                            applyV5SofMaterial(meshCategory[i], pinkMaterial, n);
+                        }
+                    }
+                }
+            }
+        }
+    
+        // A callback function that is run once the ship's base javascript object has loaded.
+        // Points to the ship instance
+        function whenLoaded()
+        {
+            turnShipPink(this);
+        }
+    
+    }
+    onload = onDocumentLoad;
+    </script>
+
+</head>
+<body style="margin:0">
+<canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+</body>
+</html>
