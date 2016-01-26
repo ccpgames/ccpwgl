@@ -489,13 +489,6 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
         this.annotations[name] = annotations;
 
-        var type = (name.length - name.lastIndexOf("Map") == 3) ? this.textures : this.parameters;
-        type[name] = {};
-
-        for (var t = 0; t < annotations.length; t++)
-        {
-            type[name][annotations[t].name] = annotations[t].value;
-        }
     }
 
     this.PrepareFinished(true);
