@@ -141,13 +141,15 @@ EveSpaceScene.prototype.SetEnvMapPath = function (index, path)
     }
 };
 
-EveSpaceScene.prototype.RenderBatches = function (mode, objectArray)
+EveSpaceScene.prototype.RenderBatches = function (mode, objectArray, accumulator)
 {
+    accumulator = (accumulator) ? accumulator : this._batches;
+    
     for (var i = 0; i < objectArray.length; ++i)
     {
         if (typeof (objectArray[i].GetBatches) != 'undefined')
         {
-            objectArray[i].GetBatches(mode, this._batches);
+            objectArray[i].GetBatches(mode, accumulator);
         }
     }
 };
