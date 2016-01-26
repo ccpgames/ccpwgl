@@ -38,7 +38,7 @@ module.exports = function(grunt)
         'core/Tw2Float.js',
         'core/Tw2RuntimeInstanceData.js',
 
-        'core/Tw2Postprocess.js',
+        'core/Tw2PostProcess.js',
 
         'curves/Tw2ColorCurve.js',
         'curves/Tw2ColorCurve2.js',
