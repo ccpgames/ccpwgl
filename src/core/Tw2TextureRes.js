@@ -1,23 +1,45 @@
+/**
+ * Tw2TextureRes
+ * @property {WebglTexture} texture
+ * @property {boolean} isCube
+ * @property {Array} images
+ * @property {number} width
+ * @property {number} height
+ * @property {number} _facesLoaded
+ * @property {boolean} hasMipMaps
+ * @property {number} _currentSampler
+ * @inherit Tw2Resource
+ * @constructor
+ */
 function Tw2TextureRes()
 {
-	this._super.constructor.call(this);
+    this._super.constructor.call(this);
     this.texture = null;
-	this.isCube = false;
-	this.images = [];
-	this.width = 0;
-	this.height = 0;
-	this._facesLoaded = 0;
-	this.hasMipMaps = false;
-	this._currentSampler = 0;
+    this.isCube = false;
+    this.images = [];
+    this.width = 0;
+    this.height = 0;
+    this._facesLoaded = 0;
+    this.hasMipMaps = false;
+    this._currentSampler = 0;
 }
 
-Tw2TextureRes.prototype.Prepare = function (text, xml)
+/**
+ * Prepare
+ * TODO: @param xml is redundant
+ * @param {string} text - Used to identify the type of image, options are 'cube' or anything else
+ * @param xml
+ * @prototype
+ */
+Tw2TextureRes.prototype.Prepare = function(text, xml)
 {
     var format = device.gl.RGBA;
+
     if (this.images[0].ccpGLFormat)
     {
         format = this.images[0].ccpGLFormat;
     }
+
     if (text == 'cube')
     {
         this.texture = device.gl.createTexture();
@@ -56,13 +78,27 @@ Tw2TextureRes.prototype.Prepare = function (text, xml)
     delete this.images;
 };
 
-Tw2TextureRes.prototype.IsPowerOfTwo = function (x)
+/**
+ * Finds out if a number is to the power of 2
+ * @param {number} x
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2TextureRes.prototype.IsPowerOfTwo = function(x)
 {
     return (x & (x - 1)) == 0;
 };
 
-Tw2TextureRes.prototype.DoCustomLoad = function (path)
+/**
+ * An optional method Tw2objects can have that allows them to take over the construction of it's components during resource loading
+ * @param {string} path - texture resource path
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2TextureRes.prototype.DoCustomLoad = function(path)
 {
+    var index;
+
     this.LoadStarted();
     this.images = [];
     var self = this;
@@ -81,16 +117,16 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this.isCube = true;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
-        this.images[0].onload = function ()
+        this.images[0].onload = function()
         {
             resMan._pendingLoads--;
             self.LoadFinished(true);
             resMan._prepareQueue.push([self, 'cube', null]);
         };
-        path = path.substr(0, path.length-5) + '.png';
+        path = path.substr(0, path.length - 5) + '.png';
         if (device.mipLevelSkipCount > 0)
         {
-            var index = path.lastIndexOf('.');
+            index = path.lastIndexOf('.');
             if (index >= 0)
             {
                 path = path.substr(0, index - 2) + mipExt + path.substr(index);
@@ -104,7 +140,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         this.isCube = false;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
-        this.images[0].onload = function ()
+        this.images[0].onload = function()
         {
             resMan._pendingLoads--;
             self.LoadFinished(true);
@@ -112,7 +148,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
         };
         if (device.mipLevelSkipCount > 0)
         {
-            var index = path.lastIndexOf('.');
+            index = path.lastIndexOf('.');
             if (index >= 0)
             {
                 path = path.substr(0, index - 2) + mipExt + path.substr(index);
@@ -123,7 +159,12 @@ Tw2TextureRes.prototype.DoCustomLoad = function (path)
     return true;
 };
 
-Tw2TextureRes.prototype.Unload = function ()
+/**
+ * Unloads the texture from memory
+ * @returns {boolean}
+ * @constructor
+ */
+Tw2TextureRes.prototype.Unload = function()
 {
     if (this.texture)
     {
@@ -136,14 +177,25 @@ Tw2TextureRes.prototype.Unload = function ()
     return true;
 };
 
-Tw2TextureRes.prototype.Attach = function (texture)
+/**
+ * Attach
+ * @param {WebglTexture} texture
+ * @constructor
+ */
+Tw2TextureRes.prototype.Attach = function(texture)
 {
     this.texture = texture;
     this.LoadFinished(true);
     this.PrepareFinished(true);
 };
 
-Tw2TextureRes.prototype.Bind = function (sampler, slices)
+/**
+ * Bind
+ * @param sampler
+ * @param slices
+ * @constructor
+ */
+Tw2TextureRes.prototype.Bind = function(sampler, slices)
 {
     this.KeepAlive();
     var targetType = sampler.samplerType;
@@ -172,5 +224,6 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices)
 
 Inherit(Tw2TextureRes, Tw2Resource);
 
+// Register 'png' and 'cube' extensions with the resource manager
 resMan.RegisterExtension('png', Tw2TextureRes);
 resMan.RegisterExtension('cube', Tw2TextureRes);
