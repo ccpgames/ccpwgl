@@ -1,4 +1,18 @@
-﻿function Tw2ValueBinding()
+/**
+ * Tw2ValueBinding
+ * @property {string} name
+ * @property {Object} sourceObject
+ * @property {string} sourceAttribute
+ * @property {number} _sourceElement
+ * @property {Object} destinationObject
+ * @property {string} destinationAttribute
+ * @property {number} _destinationElement
+ * @property {number} scale
+ * @property {quat4} offset
+ * @property {null|Function} _copyFunc - The function to use when updating destination attributes
+ * @constructor
+ */
+function Tw2ValueBinding()
 {
     this.name = '';
     this.sourceObject = null;
@@ -12,7 +26,11 @@
     this._destinationElement = 0;
 }
 
-Tw2ValueBinding.prototype.Initialize = function ()
+/**
+ * Initializes the Value Binding
+ * @prototypes
+ */
+Tw2ValueBinding.prototype.Initialize = function()
 {
     if (!this.sourceObject || this.sourceAttribute == '')
     {
@@ -28,6 +46,7 @@ Tw2ValueBinding.prototype.Initialize = function ()
     var destSwizzled = false;
     this._destinationElement = 0;
     var srcSwizzle = this.sourceAttribute.substr(-2);
+
     if (srcSwizzle == '.x' || srcSwizzle == '.r')
     {
         srcSwizzled = true;
@@ -56,33 +75,30 @@ Tw2ValueBinding.prototype.Initialize = function ()
     {
         if (this.sourceAttribute == 'v1')
         {
-            srcIsArray = true;
             srcSwizzled = true;
             this._sourceElement = 0;
             this.sourceAttribute = 'value';
         }
         else if (this.sourceAttribute == 'v2')
         {
-            srcIsArray = true;
             srcSwizzled = true;
             this._sourceElement = 1;
             this.sourceAttribute = 'value';
         }
         else if (this.sourceAttribute == 'v3')
         {
-            srcIsArray = true;
             srcSwizzled = true;
             this._sourceElement = 2;
             this.sourceAttribute = 'value';
         }
         else if (this.sourceAttribute == 'v4')
         {
-            srcIsArray = true;
             srcSwizzled = true;
             this._sourceElement = 3;
             this.sourceAttribute = 'value';
         }
     }
+
     var destSwizzle = this.destinationAttribute.substr(-2);
     if (destSwizzle == '.x' || destSwizzle == '.r')
     {
@@ -112,28 +128,24 @@ Tw2ValueBinding.prototype.Initialize = function ()
     {
         if (this.destinationAttribute == 'v1')
         {
-            destIsArray = true;
             destSwizzled = true;
             this._destinationElement = 0;
             this.destinationAttribute = 'value';
         }
         else if (this.destinationAttribute == 'v2')
         {
-            destIsArray = true;
             destSwizzled = true;
             this._destinationElement = 1;
             this.destinationAttribute = 'value';
         }
         else if (this.destinationAttribute == 'v3')
         {
-            destIsArray = true;
             destSwizzled = true;
             this._destinationElement = 2;
             this.destinationAttribute = 'value';
         }
         else if (this.destinationAttribute == 'v4')
         {
-            destIsArray = true;
             destSwizzled = true;
             this._destinationElement = 3;
             this.destinationAttribute = 'value';
@@ -143,8 +155,10 @@ Tw2ValueBinding.prototype.Initialize = function ()
     {
         return;
     }
+
     var srcIsArray = this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor;
     var destIsArray = this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor;
+
     if (srcIsArray == destIsArray && typeof this.sourceObject[this.sourceAttribute] == typeof this.destinationObject[this.destinationAttribute])
     {
         if (srcIsArray)
@@ -204,9 +218,13 @@ Tw2ValueBinding.prototype.Initialize = function ()
     {
         return;
     }
-}
+};
 
-Tw2ValueBinding.prototype.CopyValue = function ()
+/**
+ * CopyValue
+ * @prototype
+ */
+Tw2ValueBinding.prototype.CopyValue = function()
 {
     if (this._copyFunc)
     {
@@ -216,58 +234,98 @@ Tw2ValueBinding.prototype.CopyValue = function ()
             this.destinationObject.OnValueChanged();
         }
     }
-}
+};
 
-Tw2ValueBinding.prototype._CopyValueToValue = function ()
+/**
+ * _CopyValueToValue
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyValueToValue = function()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
-}
+};
 
-Tw2ValueBinding.prototype._CopyArray = function ()
+/**
+ * _CopyArray
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyArray = function()
 {
     var count = Math.min(this.destinationObject[this.destinationAttribute].length, this.sourceObject[this.sourceAttribute].length);
     for (var i = 0; i < count; ++i)
     {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i] * this.scale + this.offset[i];
     }
-}
+};
 
-Tw2ValueBinding.prototype._CopyElementToElement = function ()
+/**
+ * _CopyElementToElement
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyElementToElement = function()
 {
     this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
-}
+};
 
-Tw2ValueBinding.prototype._ReplicateValue = function () {
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
+/**
+ * _ReplicateValue
+ * @private
+ */
+Tw2ValueBinding.prototype._ReplicateValue = function()
+{
+    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
+    {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[i];
     }
-}
+};
 
-Tw2ValueBinding.prototype._ReplicateElement = function () {
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
+/**
+ * _CopyArray
+ * @private
+ */
+Tw2ValueBinding.prototype._ReplicateElement = function()
+{
+    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
+    {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[i];
     }
-}
+};
 
-Tw2ValueBinding.prototype._ExtractPos = function ()
+/**
+ * _ExtractPos
+ * @private
+ */
+Tw2ValueBinding.prototype._ExtractPos = function()
 {
     for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i)
     {
         this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i + 12] * this.scale + this.offset[i];
     }
-}
+};
 
-Tw2ValueBinding.prototype._CopyElementToValue = function ()
+/**
+ * _CopyElementToValue
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyElementToValue = function()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
-}
+};
 
-Tw2ValueBinding.prototype._CopyValueToElement = function ()
+/**
+ * _CopyValueToElement
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyValueToElement = function()
 {
     this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
-}
+};
 
-Tw2ValueBinding.prototype._CopyFloatToBoolean = function ()
+/**
+ * _CopyFloatToBoolean
+ * @private
+ */
+Tw2ValueBinding.prototype._CopyFloatToBoolean = function()
 {
     this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] != 0;
-}
+};
