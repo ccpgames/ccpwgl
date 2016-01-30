@@ -1,3 +1,19 @@
+/**
+ * Tw2SamplerState
+ * @property {number} registerIndex
+ * @property {string} name
+ * @property {number} minFilter
+ * @property {number} maxFilter
+ * @property {number} minFilterNoMips
+ * @property {number} addressU
+ * @property {number} addressV
+ * @property {number} addressW
+ * @property {number} anisotropy
+ * @property samplerType
+ * @property {boolean} isVolume
+ * @property {number} hash
+ * @constructor
+ */
 function Tw2SamplerState()
 {
     this.registerIndex = 0;
@@ -11,11 +27,14 @@ function Tw2SamplerState()
     this.anisotropy = 1;
     this.samplerType = device.gl.TEXTURE_2D;
     this.isVolume = false;
-    
     this.hash = 0;
 }
 
-Tw2SamplerState.prototype.ComputeHash = function ()
+/**
+ * Computes the sampler hash
+ * @prototype
+ */
+Tw2SamplerState.prototype.ComputeHash = function()
 {
     this.hash = 2166136261;
     this.hash *= 16777619;
@@ -30,7 +49,12 @@ Tw2SamplerState.prototype.ComputeHash = function ()
     this.hash ^= this.anisotropy;
 };
 
-Tw2SamplerState.prototype.Apply = function (hasMipMaps)
+/**
+ * Apply
+ * @param {boolean} hasMipMaps
+ * @prototype
+ */
+Tw2SamplerState.prototype.Apply = function(hasMipMaps)
 {
     var targetType = this.samplerType;
     var d = device;
