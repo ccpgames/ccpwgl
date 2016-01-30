@@ -1,19 +1,46 @@
+/**
+ * Tw2VariableStore
+ * @property {Object.< string, Tw2Parameter>} _variables
+ * @constructor
+ */
 function Tw2VariableStore()
 {
     this._variables = {};
 }
 
-Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type)
+/**
+ * Registers a variable
+ * @param {string} name
+ * @param {string|number|Float32Array|vec3|mat4} value
+ * @param {Tw2Parameter} type
+ * @returns {Tw2Parameter}
+ * @constructor
+ */
+Tw2VariableStore.prototype.RegisterVariableWithType = function(name, value, type)
 {
     return this._variables[name] = new type(name, value);
 };
 
-Tw2VariableStore.prototype.RegisterType = function (name, type)
+/**
+ * Registers a variable without a value
+ * @param {string} name
+ * @param {Tw2Parameter} type
+ * @returns {Tw2Parameter}
+ * @constructor
+ */
+Tw2VariableStore.prototype.RegisterType = function(name, type)
 {
     return this._variables[name] = new type(name);
 };
 
-Tw2VariableStore.prototype.RegisterVariable = function (name, value)
+/**
+ * Registers a variable without a type
+ * @param {string} name
+ * @param {string|number|Float32Array|vec3|mat4} value
+ * @returns {Tw2Parameter}
+ * @constructor
+ */
+Tw2VariableStore.prototype.RegisterVariable = function(name, value)
 {
     if (value.constructor == (new glMatrixArrayType()).constructor)
     {
