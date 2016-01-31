@@ -1,13 +1,28 @@
+/**
+ * Tw2RenderTarget
+ * @property {Tw2TextureRes} texture
+ * @property {WebglFrameBuffer} _frameBuffer
+ * @property {WebglRenderBuffer} _renderBuffer
+ * @property {number} width - width of the resulting texture
+ * @property {number} height - height of the resulting texture
+ * @property {boolean} hasDepth - Controls whether depth is considered when creating the webgl buffers
+ * @constructor
+ */
 function Tw2RenderTarget()
 {
     this.texture = null;
     this._frameBuffer = null;
+    this._renderBuffer = null;
     this.width = null;
     this.height = null;
     this.hasDepth = null;
 }
 
-Tw2RenderTarget.prototype.Destroy = function ()
+/**
+ * Destroys the render target's webgl buffers and textures
+ * @prototype
+ */
+Tw2RenderTarget.prototype.Destroy = function()
 {
     if (this.texture)
     {
@@ -26,7 +41,14 @@ Tw2RenderTarget.prototype.Destroy = function ()
     }
 };
 
-Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
+/**
+ * Creates the render target
+ * @param {number} width 
+ * @param {number} height
+ * @param {boolean} hasDepth
+ * @prototype
+ */
+Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
 {
     this.Destroy();
     this.texture = new Tw2TextureRes();
@@ -62,13 +84,21 @@ Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
     this.hasDepth = hasDepth;
 };
 
-Tw2RenderTarget.prototype.Set = function ()
+/**
+ * Sets the render target as the current frame buffer
+ * @prototype
+ */
+Tw2RenderTarget.prototype.Set = function()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, this._frameBuffer);
     device.gl.viewport(0, 0, this.width, this.height);
 };
 
-Tw2RenderTarget.prototype.Unset = function ()
+/**
+ * Unsets the render target as the current frame buffer
+ * @prototype
+ */
+Tw2RenderTarget.prototype.Unset = function()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
     device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
