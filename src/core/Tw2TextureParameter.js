@@ -1,13 +1,30 @@
+/**
+ * Tw2TextureParameter
+ * @param {string} [name=''] - Name of the texture parameter
+ * @param {string} [texturePath=''] - The texture's resource path
+ * @property {string} name
+ * @property {boolean} useAllOverrides
+ * @property {number} addressUMode
+ * @property {number} addressVMode
+ * @property {number} addressWMode
+ * @property {number} filterMode
+ * @property {number} mapFilterMode
+ * @property {number} maxAnisotropy
+ * @property {Tw2TextureRes} textureRes
+ * @property {Tw2SamplerState} _sampler
+ * @constructor
+ */
 function Tw2TextureParameter(name, texturePath)
 {
-	if (typeof(name) != 'undefined')
-	{
-		this.name = name;
-	}
-	else
-	{
-		this.name = '';
-	}
+    if (typeof(name) != 'undefined')
+    {
+        this.name = name;
+    }
+    else
+    {
+        this.name = '';
+    }
+
     this.useAllOverrides = false;
     this.addressUMode = 1;
     this.addressVMode = 1;
@@ -17,32 +34,43 @@ function Tw2TextureParameter(name, texturePath)
     this.maxAnisotropy = 4;
     this.textureRes = null;
     this._sampler = null;
-    if (typeof (texturePath) != 'undefined')
-	{
-		this.resourcePath = texturePath;
-		this.Initialize();
-	}
-	else
-	{
-		this.resourcePath = '';
+
+    if (typeof(texturePath) != 'undefined')
+    {
+        this.resourcePath = texturePath;
+        this.Initialize();
+    }
+    else
+    {
+        this.resourcePath = '';
     }
 }
 
-Tw2TextureParameter.prototype.SetTexturePath = function (texturePath)
+/**
+ * Sets the texture's resource path
+ * @param {string} texturePath
+ * @constructor
+ */
+Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
 {
-	this.resourcePath = texturePath;
-	if (this.resourcePath != '')
-	{
-		this.textureRes = resMan.GetResource(this.resourcePath);
-	}
+    this.resourcePath = texturePath;
+    if (this.resourcePath != '')
+    {
+        this.textureRes = resMan.GetResource(this.resourcePath);
+    }
 };
 
-Tw2TextureParameter.prototype.Initialize = function ()
+/**
+ * Initializes the texture parameter
+ * @prototype
+ */
+Tw2TextureParameter.prototype.Initialize = function()
 {
     if (this.resourcePath != '')
     {
         this.textureRes = resMan.GetResource(this.resourcePath);
     }
+    
     if (this.useAllOverrides)
     {
         this._sampler = new Tw2SamplerState();
@@ -79,12 +107,13 @@ Tw2TextureParameter.prototype.Initialize = function ()
             this._sampler.magFilter = device.gl.LINEAR;
         }
         var wrapModes = [
-                    0,
-                    device.gl.REPEAT,
-                    device.gl.MIRRORED_REPEAT,
-                    device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE,
-                    device.gl.CLAMP_TO_EDGE];
+            0,
+            device.gl.REPEAT,
+            device.gl.MIRRORED_REPEAT,
+            device.gl.CLAMP_TO_EDGE,
+            device.gl.CLAMP_TO_EDGE,
+            device.gl.CLAMP_TO_EDGE
+        ];
         this._sampler.addressU = wrapModes[this.addressUMode];
         this._sampler.addressV = wrapModes[this.addressVMode];
         this._sampler.addressW = wrapModes[this.addressWMode];
@@ -93,7 +122,14 @@ Tw2TextureParameter.prototype.Initialize = function ()
     }
 };
 
-Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices)
+/**
+ * Apply
+ * @param stage
+ * @param sampler
+ * @param slices
+ * @prototype
+ */
+Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
 {
     if (this.textureRes)
     {
