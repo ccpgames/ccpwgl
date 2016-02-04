@@ -40,7 +40,7 @@
             function whenLoaded()
             {
                 var rotation = [0, 0, 0]; // Values are in degrees
-                var position = [0, 0, 0];
+                var position = [0, 0, 0]; 
                 var scale = [1, 1, 1];
 
                 /**
@@ -62,7 +62,7 @@
                 }
 
                 // Rotation
-                Object.defineProperty(ship, 'rotation', {
+                Object.defineProperty(this, 'rotation', {
                     get: function ()
                     {
                         return rotation;
@@ -72,7 +72,7 @@
                         try
                         {
                             var newTransform = createTransform(vec3, position, scale);
-                            ship.setTransform(newTransform)
+                            this.setTransform(newTransform)
                         }
                         catch (err)
                         {
@@ -86,7 +86,7 @@
                 });
 
                 // Position
-                Object.defineProperty(ship, 'position', {
+                Object.defineProperty(this, 'position', {
                     get: function ()
                     {
                         return position;
@@ -96,7 +96,7 @@
                         try
                         {
                             var newTransform = createTransform(rotation, vec3, scale);
-                            ship.setTransform(newTransform)
+                            this.setTransform(newTransform)
                         }
                         catch (err)
                         {
@@ -110,7 +110,7 @@
                 });
 
                 // Scale
-                Object.defineProperty(ship, 'scale', {
+                Object.defineProperty(this, 'scale', {
                     get: function ()
                     {
                         return scale;
@@ -120,7 +120,7 @@
                         try
                         {
                             var newTransform = createTransform(rotation, position, vec3);
-                            ship.setTransform(newTransform)
+                            this.setTransform(newTransform)
                         }
                         catch (err)
                         {
@@ -134,9 +134,9 @@
                 });
 
                 // Example values
-                ship.rotation = [ 100, 10, -20];
-                ship.position = [ 0, -100, 0 ];
-                ship.scale = [ 1, 1, 1 ];
+                this.rotation = [ 100, 10, -20];
+                this.position = [ 0, -100, 0 ];
+                this.scale = [ 1, 1, 1 ];
 
             }
 
