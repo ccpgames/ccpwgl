@@ -57,7 +57,7 @@ Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
  */
 Tw2MatrixParameter.prototype.SetValue = function(value)
 {
-    this.value = value;
+    this.value = mat4.create(value);
     if (this.constantBuffer != null)
     {
         this.constantBuffer.set(this.value, this.offset);
