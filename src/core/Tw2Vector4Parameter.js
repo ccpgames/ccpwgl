@@ -1,9 +1,9 @@
 /**
  * Tw2Vector4Parameter
  * @param {string} [name='']
- * @param {quat4} [value=[1,1,1,1]]
+ * @param {quat4|Float32Array} [value=[1,1,1,1]]
  * @property {string} name
- * @property {quat4} value
+ * @property {quat4|Float32Array} value
  * @property {Array} constantBuffer
  * @property {number} offset
  * @constructor
@@ -20,7 +20,7 @@ function Tw2Vector4Parameter(name, value)
     }
     if (typeof(value) != 'undefined')
     {
-        this.value = value;
+        this.value = quat4.create(value);
     }
     else
     {
@@ -33,7 +33,7 @@ function Tw2Vector4Parameter(name, value)
 /**
  * Bind
  * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
- * @param {Array} constantBuffer
+ * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @returns {boolean}
@@ -62,12 +62,12 @@ Tw2Vector4Parameter.prototype.Unbind = function()
 
 /**
  * Sets a supplied value
- * @param {Array} value - Vector4 Array
+ * @param {quat4|Float32Array|Array} value - Vector4 Array
  * @prototype
  */
 Tw2Vector4Parameter.prototype.SetValue = function(value)
 {
-    this.value = value;
+    this.value.set(value);
     if (this.constantBuffer != null)
     {
         this.constantBuffer.set(this.value, this.offset);
@@ -89,7 +89,7 @@ Tw2Vector4Parameter.prototype.OnValueChanged = function()
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
  * TODO: @param size is currently redundant
- * @param {Array} constantBuffer
+ * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @prototype
@@ -101,17 +101,17 @@ Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value array
- * @return {Array} Vector4 Array
+ * @return {quat4|Float32Array} Vector4 Array
  * @prototype
  */
 Tw2Vector4Parameter.prototype.GetValue = function()
 {
     if (this.constantBuffer != null)
     {
-        return Array.from(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return quat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
     }
 
-    return Array.from(this.value);
+    return quat4.create(this.value);
 };
 
 /**

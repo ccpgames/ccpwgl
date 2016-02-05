@@ -1,10 +1,10 @@
 /**
  * Tw2Vector2Parameter
  * @param {string} [name='']
- * @param {Vector2} [value=[1,1]]
+ * @param {Array|Float32Array} [value=[1,1]]
  * @property {string} name
- * @property {Vector2} value
- * @property {Array} constantBuffer
+ * @property {Float32Array} value
+ * @property {Float32Array} constantBuffer
  * @property {number} offset
  * @constructor
  */
@@ -20,7 +20,7 @@ function Tw2Vector2Parameter(name, value)
     }
     if (typeof(value) != 'undefined')
     {
-        this.value = value;
+        this.value = new Float32Array(value);
     }
     else
     {
@@ -33,7 +33,7 @@ function Tw2Vector2Parameter(name, value)
 /**
  * Bind
  * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
- * @param {Array} constantBuffer
+ * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @returns {boolean}
@@ -67,7 +67,7 @@ Tw2Vector2Parameter.prototype.Unbind = function()
  */
 Tw2Vector2Parameter.prototype.SetValue = function(value)
 {
-    this.value = value;
+    this.value.set(value);
     if (this.constantBuffer != null)
     {
         this.constantBuffer.set(this.value, this.offset);
@@ -89,7 +89,7 @@ Tw2Vector2Parameter.prototype.OnValueChanged = function()
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
  * TODO: @param size is currently redundant
- * @param {Array} constantBuffer
+ * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @prototype
@@ -101,17 +101,17 @@ Tw2Vector2Parameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value array
- * @return {Array} Vector2 Array
+ * @return {Float32Array} Vector2 Array
  * @prototype
  */
 Tw2Vector2Parameter.prototype.GetValue = function()
 {
     if (this.constantBuffer != null)
     {
-        return Array.from(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return new Float32Array((this.constantBuffer.subarray(this.offset, this.offset + this.value.length)));
     }
 
-    return Array.from(this.value);
+    return new Float32Array(this.value);
 };
 
 /**
