@@ -11,7 +11,11 @@ function EveSpaceObject()
 	this.spotlightSets = [];
 	this.planeSets = [];
 	this.curveSets = [];
-	
+    this.overlayEffects = [];
+
+    this.shapeEllipsoidRadius = vec3.create();
+    this.shapeEllipsoidCenter = vec3.create();
+
 	this.transform = mat4.create();
 	mat4.identity(this.transform);
 	
@@ -20,8 +24,11 @@ function EveSpaceObject()
 	this._perObjectData = new Tw2PerObjectData();
 	this._perObjectData.perObjectVSData = new Tw2RawData();
 	this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+	this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
 	this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
 	this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+	this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+	this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
 	this._perObjectData.perObjectVSData.Declare('JointMat', 696);
 	this._perObjectData.perObjectVSData.Create();
 	
@@ -89,7 +96,23 @@ EveSpaceObject.prototype.UpdateViewDependentData = function ()
         this.children[i].UpdateViewDependentData(this.transform);
     }
     mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-
+    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+    var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter');
+    var radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
+    if (this.shapeEllipsoidRadius[0] > 0) {
+        center[0] = this.shapeEllipsoidCenter[0];
+        center[1] = this.shapeEllipsoidCenter[1];
+        center[2] = this.shapeEllipsoidCenter[2];
+        radii[0] = this.shapeEllipsoidRadius[0];
+        radii[1] = this.shapeEllipsoidRadius[1];
+        radii[2] = this.shapeEllipsoidRadius[2];
+    }
+    else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
+        vec3.subtract(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, center);
+        vec3.scale(center, 0.5 * 1.732050807);
+        vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
+        vec3.scale(radii, 0.5);
+    }
     if (this.animation.animations.length)
     {
         this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
@@ -103,28 +126,51 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
     }
 
+    var i;
     if (this.lod > 1)
     {
-        for (var i = 0; i < this.spriteSets.length; ++i)
+        for (i = 0; i < this.spriteSets.length; ++i)
         {
             this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData);
         }
-        for (var i = 0; i < this.spotlightSets.length; ++i)
+        for (i = 0; i < this.spotlightSets.length; ++i)
         {
             this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
         }
-        for (var i = 0; i < this.planeSets.length; ++i)
+        for (i = 0; i < this.planeSets.length; ++i)
         {
             this.planeSets[i].GetBatches(mode, accumulator, this._perObjectData);
         }
-        for (var i = 0; i < this.decals.length; ++i)
+        for (i = 0; i < this.decals.length; ++i)
         {
             this.decals[i].GetBatches(mode, accumulator, this._perObjectData);
         }
     }
-    for (var i = 0; i < this.children.length; ++i)
+    for (i = 0; i < this.children.length; ++i)
     {
         this.children[i].GetBatches(mode, accumulator, this._perObjectData);
+    }
+    if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
+    {
+        for (i = 0; i < this.overlayEffects.length; ++i)
+        {
+            var effects = this.overlayEffects[i].GetEffects(mode);
+            if (effects)
+            {
+                for (var j = 0; j < effects.length; ++j)
+                {
+                    var batch = new Tw2GeometryBatch();
+                    batch.renderMode = mode;
+                    batch.perObjectData = this._perObjectData;
+                    batch.geometryRes = this.mesh.geometryResource;
+                    batch.meshIx = this.mesh.meshIndex;
+                    batch.start = 0;
+                    batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
+                    batch.effect = effects[j];
+                    accumulator.Commit(batch);
+                }
+            }
+        }
     }
 };
 
@@ -132,17 +178,22 @@ EveSpaceObject.prototype.Update = function (dt)
 {
     if (this.lod > 0)
     {
-        for (var i = 0; i < this.spriteSets.length; ++i)
+        var i;
+        for (i = 0; i < this.spriteSets.length; ++i)
         {
             this.spriteSets[i].Update(dt);
         }
-        for (var i = 0; i < this.children.length; ++i)
+        for (i = 0; i < this.children.length; ++i)
         {
             this.children[i].Update(dt);
         }
-        for (var i = 0; i < this.curveSets.length; ++i)
+        for (i = 0; i < this.curveSets.length; ++i)
         {
             this.curveSets[i].Update(dt);
+        }
+        for (i = 0; i < this.overlayEffects.length; ++i)
+        {
+            this.overlayEffects[i].Update(dt);
         }
         this.animation.Update(dt);
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>Sun</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    function OnDocLoad() {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, demos.options);
+
+        var camera = new TestCamera(canvas);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 1000000;
+        camera.fov = 30;
+        camera.distance = 1000;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+        scene.loadShip('ab1_t1:amarrbase:amarr');
+        scene.loadSun('res:/fisfx/lensflare/orange_sun.red');
+        scene.setSunDirection([1, 0, 0.7]);
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+
+    }
+</script>
+
+</head>
+<body onload="OnDocLoad()">
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="loading">Loading...</div>
+</body>
+</html>

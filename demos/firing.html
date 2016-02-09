@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ship Firing</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    function OnDocLoad() {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, demos.options);
+
+        var camera = {
+            getView: function () {
+                var view = mat4.create();
+                mat4.identity(view);
+                mat4.rotateY(view, Math.PI);
+                mat4.translate(view, [0, -100, 300]);
+                return view;
+            },
+            getProjection: function (aspect) {
+                var projection = mat4.create();
+                mat4.perspective(60, aspect, 1, 1000, projection);
+                return projection;
+            }
+        };
+
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+        var ship = scene.loadShip('abc1_t1:amarrbase:amarr');
+        ship.mountTurret(1, 'res:/dx9/model/turret/Energy/Beam/M/beam_focused_F.red');
+        ship.mountTurret(2, 'res:/dx9/model/turret/Hybrid/Rail/M/Rail_250mm_T1.red');
+        ship.setBoosterStrength(0.3);
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+
+        canvas.addEventListener('mousedown', function (event) {
+            var x = event.x / canvas.clientWidth * 2 - 1;
+            var y = 1 - event.y / canvas.clientHeight * 2;
+            var viewProjInv = mat4.inverse(mat4.multiply(camera.getProjection(canvas.clientWidth / canvas.clientHeight), camera.getView()));
+            var pt = quat4.create([x, y, 0.9999, 1]);
+            mat4.multiplyVec4(viewProjInv, pt);
+            pt[0] /= pt[3];
+            pt[1] /= pt[3];
+            pt[2] /= pt[3];
+            var slot = event.button ? 2 : 1;
+            ship.setTurretTargetPosition(slot, pt);
+            ship.setTurretState(slot, ccpwgl.TurretState.FIRING);
+            event.preventDefault();
+        });
+        canvas.addEventListener('contextmenu', function (event) { event.preventDefault(); });
+
+    }
+</script>
+
+</head>
+<body onload="OnDocLoad()">
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="loading">Loading...</div>
+</body>
+</html>

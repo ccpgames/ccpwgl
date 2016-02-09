@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SOF Browser - CCPWGL Demos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var $canvas = $('#mainCanvas');
+        ccpwgl.initialize($canvas[0], demos.options);
+
+        var camera = new TestCamera($canvas[0]);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 100000;
+        camera.fov = 30;
+        camera.distance = 100;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        function loadDna(dna) {
+            try
+            {
+                scene.removeObject(0);
+            }
+            catch (e)
+            {
+            }
+            if (dna.split(':').length > 2)
+            {
+                ccpwgl.getSofHullConstructor(dna, function (constructor)
+                {
+                    if (constructor)
+                    {
+                        var obj = scene[constructor](dna);
+                        if ('setBoosterStrength' in obj)
+                        {
+                            obj.setBoosterStrength($('#booster-intensity').val() / 50);
+                        }
+                    }
+                });
+            }
+            else
+            {
+                scene.loadObject(dna);
+            }
+        }
+
+        $.when(
+                $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/typeids.json')),
+                $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/graphicids.json')),
+                $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/categories.json'))).done(function (v1, v2, v3)
+                {
+                    var typeids = v1[0];
+                    var graphicids = v2[0];
+                    var categories = v3[0];
+
+                    var $categories = $('#categories');
+                    var $groups = $('#groups');
+                    var $types = $('#types');
+
+                    function typeSelected(type)
+                    {
+                        return function (evt)
+                        {
+                            $types.find('a').removeClass('selected');
+                            $(evt.target).addClass('selected');
+                            var path = graphicids[type.graphicID].graphicFile;
+                            if ('material' in type)
+                            {
+                                path += type.material;
+                            }
+                            $('#dna').val(path);
+                        }
+                    }
+
+                    function groupSelected(group)
+                    {
+                        return function (evt)
+                        {
+                            $groups.find('a').removeClass('selected');
+                            $(evt.target).addClass('selected');
+                            $types.empty();
+                            $.each(typeids, function (id, type)
+                            {
+                                if (type.group == group)
+                                {
+                                    $types.append($('<li>').append($('<a>').text(type.name || 'N/A').click(typeSelected(type))));
+                                }
+                            })
+                        }
+                    }
+
+                    function categorySelected(category)
+                    {
+                        return function (evt)
+                        {
+                            $categories.find('a').removeClass('selected');
+                            $(evt.target).addClass('selected');
+                            $groups.empty();
+                            $types.empty();
+                            $.each(categories[category].groups, function (id, group)
+                            {
+                                $groups.append($('<li>').append($('<a>').text(group || 'N/A').click(groupSelected(id))));
+                            })
+                        }
+                    }
+
+                    $.each(categories, function (id, category)
+                    {
+                        $categories.append($('<li>').append($('<a>').text(category.name || 'N/A').click(categorySelected(id))));
+                    })
+                });
+
+
+        $('#create').click(function () {
+            var dna = $('#dna').val();
+            loadDna(dna);
+            history.pushState({'dna': dna}, 'SOF ' + dna);
+        });
+
+        $('#normal').click(function () {
+            scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
+        });
+
+        $('#siege').click(function () {
+            scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
+        });
+
+        $('#booster-intensity').change(function () {
+            scene.getObject(0).setBoosterStrength($(this).val() / 50)
+        });
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+    });
+</script>
+
+</head>
+<body>
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="toolbox">
+        <div><button id="browse" class="btn" data-pane="browse-pane">Browse</button></div>
+        <div><button id="state" class="btn" data-pane="state-pane">State</button></div>
+    </div>
+    <div id="loading">Loading...</div>
+    <div id="browse-pane" class="pane visible">
+        <div class="pane-heading">Browse</div>
+        <div class="flex-horizontal">
+            <input id="dna" type="text" class="flex-expand">
+            <button id="create" class="default">Create</button>
+        </div>
+        <ul class="sof-tree flex-expand">
+            <li id="categories">
+            </li>
+            <li id="groups">
+            </li>
+            <li id="types">
+            </li>
+        </ul>
+    </div>
+    <div id="state-pane" class="pane">
+        <div class="pane-heading">Controls</div>
+        <div>
+            <label for="booster-intensity">Boosters</label>
+            <input type="range" id="booster-intensity" style="vertical-align: middle">
+        </div>
+        <div>
+            <label>Siege State</label>
+            <button id="normal">Normal</button>
+            <button id="siege">Siege</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -244,8 +244,8 @@ EveSpaceScene.prototype.ApplyPerFrameData = function ()
     shadowMapSettings[2] = 0;
     shadowMapSettings[3] = 0;
 
-    this._perFramePS.Get('ProjectionToView')[0] = device.projection[14];
-    this._perFramePS.Get('ProjectionToView')[1] = device.projection[10];
+    this._perFramePS.Get('ProjectionToView')[0] = -device.projection[14];
+    this._perFramePS.Get('ProjectionToView')[1] = -device.projection[10] - 1;
 
     var miscSettings = this._perFramePS.Get('MiscSettings');
     miscSettings[0] = variableStore._variables['Time'].value[0];

@@ -88,6 +88,7 @@ module.exports = function(grunt)
         'eve/EveTurretFiringFX.js',
         'eve/EveSOF.js',
         'eve/EveCurveLineSet.js',
+        'eve/EveMeshOverlayEffect.js',
 
         'particle/Tw2ParticleSystem.js',
         'core/Tw2InstancedMesh.js',

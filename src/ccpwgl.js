@@ -400,6 +400,8 @@ var ccpwgl = (function (ccpwgl_int)
             this.onUpdate = null;
             /** SOF DNA for objects constructed from SOF **/
             this.dna = null;
+            /** Array of object overlay effects **/
+            this.overlays = [];
 
             function onObjectLoaded(obj) {
                 self.wrappedObjects[0] = obj;
@@ -414,6 +416,7 @@ var ccpwgl = (function (ccpwgl_int)
                     self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
                     self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
                 }
+                rebuildOverlays();
                 if (onload)
                 {
                     onload.call(self);
@@ -490,6 +493,60 @@ var ccpwgl = (function (ccpwgl_int)
             {
                 return this.transform;
             };
+
+            function rebuildOverlays()
+            {
+                if (self.wrappedObjects[0])
+                {
+                    self.wrappedObjects[0].overlayEffects = [];
+                    for (var i = 0; i < self.overlays.length; ++i)
+                    {
+                        if (self.overlays[i].overlay)
+                        {
+                            self.wrappedObjects[0].overlayEffects.push(self.overlays[i].overlay);
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Adds an overlay effect to the object.
+             *
+             * @param {string} resPath Resource path to overlay effect.
+             * @returns {number} Index of overlay effect; can be used in removeOverlay call.
+             */
+            this.addOverlay = function (resPath)
+            {
+                var index = this.overlays.length;
+                var overlay = {resPath: resPath, overlay: null};
+                this.overlays.push(overlay);
+                ccpwgl_int.resMan.GetObject(resPath, function (obj)
+                {
+                    overlay.overlay = obj;
+                    rebuildOverlays();
+                });
+                return index;
+            };
+
+            /**
+             * Removes an overlay effect from the object.
+             *
+             * @param {number} index Index of overlay effect as returned by addOverlay.
+             */
+            this.removeOverlay = function (index)
+            {
+                this.overlays.splice(index, 1);
+                rebuildOverlays();
+            };
+
+            /**
+             * Removes all overlay effects from the object.
+             */
+            this.removeAllOverlays = function ()
+            {
+                this.overlays.splice(0, this.overlays.length);
+                rebuildOverlays();
+            }
         }
 
     /**
@@ -527,6 +584,8 @@ var ccpwgl = (function (ccpwgl_int)
             this.partTransforms = [];
             /** Ship SOF DNA if the ship was constructed with SOF **/
             this.dna = undefined;
+            /** Array of object overlay effects **/
+            this.overlays = [];
             var faction = null;
 
             var self = this;
@@ -584,6 +643,7 @@ var ccpwgl = (function (ccpwgl_int)
                             {
                                 assembleT3Ship();
                             }
+                            rebuildOverlays();
                             if (onload) {
                                 onload.call(self);
                             }
@@ -598,6 +658,63 @@ var ccpwgl = (function (ccpwgl_int)
                     throw new TypeError('Invalid number of parts passed to Tech3 ship constructor');
                 }
             }
+
+            function rebuildOverlays()
+            {
+                if (self.isLoaded())
+                {
+                    for (var j = 0; j < self.wrappedObjects.length; ++j)
+                    {
+                        self.wrappedObjects[j].overlayEffects = [];
+                        for (var i = 0; i < self.overlays.length; ++i)
+                        {
+                            if (self.overlays[i].overlay)
+                            {
+                                self.wrappedObjects[j].overlayEffects.push(self.overlays[i].overlay);
+                            }
+                        }
+                    }
+                }
+            }
+
+            /**
+             * Adds an overlay effect to the object.
+             *
+             * @param {string} resPath Resource path to overlay effect.
+             * @returns {number} Index of overlay effect; can be used in removeOverlay call.
+             */
+            this.addOverlay = function (resPath)
+            {
+                var index = this.overlays.length;
+                var overlay = {resPath: resPath, overlay: null};
+                this.overlays.push(overlay);
+                ccpwgl_int.resMan.GetObject(resPath, function (obj)
+                {
+                    overlay.overlay = obj;
+                    rebuildOverlays();
+                });
+                return index;
+            };
+
+            /**
+             * Removes an overlay effect from the object.
+             *
+             * @param {number} index Index of overlay effect as returned by addOverlay.
+             */
+            this.removeOverlay = function (index)
+            {
+                this.overlays.splice(index, 1);
+                rebuildOverlays();
+            };
+
+            /**
+             * Removes all overlay effects from the object.
+             */
+            this.removeAllOverlays = function ()
+            {
+                this.overlays.splice(0, this.overlays.length);
+                rebuildOverlays();
+            };
 
             function assembleT3Ship()
                 {

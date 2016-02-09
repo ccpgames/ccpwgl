@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ship Fitting</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $canvas = $('#mainCanvas');
+        ccpwgl.initialize($canvas[0], demos.options);
+
+        var camera = new TestCamera($canvas[0]);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 100000;
+        camera.fov = 30;
+        camera.distance = 100;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        function fitTurret(ship, select, slot) {
+            return function () {
+                var res = select.val();
+                if (res) {
+                    ship.mountTurret(slot, res);
+                }
+                else {
+                    ship.removeTurret(slot);
+                }
+            };
+        }
+
+        var turrets = ['Energy/Beam/L/beam_tachyon_F.red', 'Energy/Beam/M/beam_focused_F.red', 'Energy/Beam/S/beam_dual_T2.red'];
+
+        function idle(slot) {
+            return function () {
+                scene.objects[0].setTurretState(slot, ccpwgl.TurretState.IDLE);
+            }
+        }
+
+        function offline(slot) {
+            return function () {
+                scene.objects[0].setTurretState(slot, ccpwgl.TurretState.OFFLINE);
+            }
+        }
+
+        function shipLoaded() {
+            var $fitting = $('#fitting');
+            $fitting.empty();
+            var count = this.getTurretSlotCount();
+            for (var i = 0; i < count; ++i) {
+                var $formGroup = $('<div>');
+                $('<label>').text('Slot #' + (i + 1)).attr('for', 'slot' + i).appendTo($formGroup);
+
+                var $select = $('<select>').attr('id', 'slot' + i);
+
+                $select.append($('<option>&lt;none&gt;</option>'));
+                for (var j = 0; j < turrets.length; ++j) {
+                    $select.append($('<option>').val('res:/dx9/model/turret/' + turrets[j]).text(turrets[j]));
+                }
+                $select.change(fitTurret(this, $select, i + 1));
+                $formGroup.append($select);
+                $formGroup.append($('<button>Idle</button>').click(idle(i + 1)));
+                $formGroup.append($('<button>Offline</button>').click(offline(i + 1)));
+                $fitting.append($formGroup);
+            }
+        }
+
+        function loadDna(dna) {
+            $('#fitting').empty();
+
+            try {
+                scene.removeObject(0);
+            }
+            catch (e) {
+            }
+            var obj = scene.loadShip(dna, shipLoaded);
+        }
+
+        softree($('.sof-tree'), $('#dna'), loadDna, function filter(parents) {
+            return parents[0] != 'hull' || !parents[1] || parents[1] == 'ship';
+        });
+
+        $('#create').click(function () {
+            var dna = $('#dna').val();
+            loadDna(dna);
+            history.pushState({dna: dna}, 'Ship Fitting ' + dna);
+        });
+
+        $('#idle').click(function () {
+            scene.objects[0].setTurretState(1, ccpwgl.TurretState.IDLE);
+        });
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+
+    });
+</script>
+
+</head>
+<body>
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="loading">Loading...</div>
+    <div id="toolbox">
+        <div><button id="browse" data-pane="browse-pane">Browse</button></div>
+        <div><button id="fit" data-pane="fit-pane">Fit</button></div>
+    </div>
+    <div id="browse-pane" class="pane visible">
+        <div class="pane-heading">Browse</div>
+        <div class="flex-horizontal">
+            <input id="dna" type="text" class="flex-expand" value="::">
+            <button id="create" class="default">Create</button>
+        </div>
+        <ul class="sof-tree flex-expand"></ul>
+    </div>
+    <div id="fit-pane" class="pane">
+        <div class="pane-heading">Fit</div>
+        <div id="fitting">
+        </div>
+    </div>
+</body>
+</html>

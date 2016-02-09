@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>Planets Demo</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    function OnDocLoad() {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, demos.options);
+
+        var camera = new TestCamera(canvas);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 100000;
+        camera.fov = 30;
+        camera.distance = 100;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        var planets = [
+                [40000004,
+                'res:/dx9/model/WorldObject/Planet/Template/Moon/p_moon_51.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Moon/Moon01_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Moon/Moon03_H.dds.0.png'],
+                [40000002,
+                'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png'],
+                [40000005,
+                'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_04.red',
+                undefined,
+                'res:/dx9/Model/WorldObject/planet/Terrestrial/Terrestrial01_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png'],
+                [40000007,
+                'res:/dx9/model/WorldObject/Planet/Template/SandStorm/P_SandStorm_84.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Moon/Moon01_H.dds.0.png'],
+                [40000008,
+                'res:/dx9/model/WorldObject/Planet/Template/Ocean/P_Ocean_10.red',
+                undefined,
+                'res:/dx9/Model/WorldObject/planet/Terrestrial/Terrestrial01_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png'],
+                [40000010,
+                'res:/dx9/model/WorldObject/Planet/Template/Moon/p_moon_32.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Moon/Moon02_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Moon/Moon02_H.dds.0.png'],
+                [40000011,
+                'res:/dx9/model/WorldObject/Planet/Template/Gas/P_GasGiant_48.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant02_D.dds.0.png'],
+                [40000024,
+                'res:/dx9/model/WorldObject/Planet/Template/Lava/P_Lava_44_S.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Lava/Lava02_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Lava/Lava01_H.dds.0.png'],
+                [40000100,
+                'res:/dx9/model/WorldObject/Planet/Template/Gas/P_GasGiant_12.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant03_D.dds.0.png'],
+                [40000123,
+                'res:/dx9/model/WorldObject/Planet/Template/Ice/P_Ice_61.red',
+                undefined,
+                'res:/dx9/model/worldobject/planet/Ice/Ice04_H.dds.0.png',
+                'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png']
+        ];
+        for (var i = 0; i < planets.length; ++i) {
+            var planet = scene.loadPlanet(planets[i][0], planets[i][1], planets[i][2], planets[i][3], planets[i][4]);
+            var angle = Math.PI * 2 * i / planets.length;
+            planet.setTransform(mat4.create([
+                10000, 0, 0, 0,
+                0, 10000, 0, 0,
+                0, 0, 10000, 0,
+                100000 * Math.cos(angle), 0, 100000 * Math.sin(angle), 1
+            ]));
+        }
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+
+    }
+</script>
+
+</head>
+<body onload="OnDocLoad()">
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="loading">Loading...</div>
+</body>
+</html>

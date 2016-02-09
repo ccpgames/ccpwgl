@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tech3 Ships</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    function OnDocLoad() {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, demos.options);
+
+        var camera = new TestCamera(canvas);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 100000;
+        camera.fov = 30;
+        camera.distance = 100;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        document.getElementById('create').addEventListener('click', function () {
+            var race = document.getElementById('race').value.split('/');
+            var s1 = race[1] + '_t3_' + document.getElementById('system1').value;
+            var s2 = race[1] + '_t3_' + document.getElementById('system2').value;
+            var s3 = race[1] + '_t3_' + document.getElementById('system3').value;
+            var s4 = race[1] + '_t3_' + document.getElementById('system4').value;
+            var s5 = race[1] + '_t3_' + document.getElementById('system5').value;
+
+            var prefix = 'res:/dx9/model/ship/' + race[0] + '/strategiccruiser/' + race[1] + '/';
+            var paths = [
+                    prefix + s1 + '/' + s1 + '.red',
+                    prefix + s2 + '/' + s2 + '.red',
+                    prefix + s3 + '/' + s3 + '.red',
+                    prefix + s4 + '/' + s4 + '.red',
+                    prefix + s5 + '/' + s5 + '.red'
+            ];
+
+            try {
+                scene.removeObject(0);
+            }
+            catch (e) {
+            }
+            scene.loadShip(paths);
+        });
+
+        ccpwgl.onPreRender = function () {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+        };
+
+    }
+</script>
+
+</head>
+<body onload="OnDocLoad()">
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="toolbox">
+        <div><button id="tech3" data-pane="tech3-pane">Tech III</button></div>
+    </div>
+    <div id="loading">Loading...</div>
+    <div id="tech3-pane" class="pane visible">
+        <div class="pane-heading">Tech III</div>
+        <div class="form-group">
+            <label for="race">Race:</label>
+            <select id="race" class="form-control">
+                <option value="amarr/asc1">Amarr</option>
+                <option value="caldari/csc1">Caldari</option>
+                <option value="gallente/gsc1">Gallente</option>
+                <option value="minmatar/msc1">Minmatar</option>
+            </select>
+        </div>
+       <div class="form-group">
+            <label for="system1">Electronic System:</label>
+            <select id="system1" class="form-control">
+                <option value="s1v1">v1</option>
+                <option value="s1v2">v2</option>
+                <option value="s1v3">v3</option>
+                <option value="s1v4">v4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system2">Defensive System:</label>
+            <select id="system2" class="form-control">
+                <option value="s2v1">v1</option>
+                <option value="s2v2">v2</option>
+                <option value="s2v3">v3</option>
+                <option value="s2v4">v4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system3">Engineering System:</label>
+            <select id="system3" class="form-control">
+                <option value="s3v1">v1</option>
+                <option value="s3v2">v2</option>
+                <option value="s3v3">v3</option>
+                <option value="s3v4">v4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system4">Offensive System:</label>
+            <select id="system4" class="form-control">
+                <option value="s4v1">v1</option>
+                <option value="s4v2">v2</option>
+                <option value="s4v3">v3</option>
+                <option value="s4v4">v4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system5">Propulsion System:</label>
+            <select id="system5" class="form-control">
+                <option value="s5v1">v1</option>
+                <option value="s5v2">v2</option>
+                <option value="s5v3">v3</option>
+                <option value="s5v4">v4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button id="create">Create</button>
+        </div>
+    </div>
+</body>
+</html>

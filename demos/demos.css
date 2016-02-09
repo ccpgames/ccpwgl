@@ -1,0 +1,190 @@
+html {
+    font: 17px/1.231 'Gotham A', 'Gotham B', sans-serif;
+    background: black;
+    color: #999999;
+}
+
+body {
+    background-color:black;
+    margin:0;
+}
+
+* {
+    box-sizing: border-box;
+}
+#toolbox {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 44px;
+    color:#ffffff;
+    background: #222;
+    padding: 2px;
+    border-left: solid 1px #3c3c3c;
+}
+
+#toolbox>div {
+    transform: rotate(90deg);
+    transform-origin: top left;
+    display: inline-block;
+    margin-left: 100%;
+    margin-bottom: 10px;
+}
+#toolbox>div:after {
+    content: "";
+    float: left;
+    margin-top: 100%;
+}
+#toolbox button {
+    height: 40px;
+    border-top: none;
+    border-bottom: none;
+    white-space: nowrap;
+}
+
+button, input, select {
+    padding: 4px;
+    border-radius: 3px;
+    border: 1px solid;
+    font-size: 1em;
+}
+button.default {
+    font-weight: bold;
+}
+
+.pane {
+    display: none;
+    position: fixed;
+    right: 44px;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    color:#ffffff;
+    background: linear-gradient(to right, rgba(60, 60, 60, 0.5) 0, rgba(34, 34, 34, 1) 100%);
+    margin: 0;
+    flex-direction: column;
+    border: solid 1px #3c3c3c;
+}
+
+
+@media (max-width: 1000px) {
+    .pane {
+        width: auto;
+        left: 0;
+    }
+}
+
+
+.pane.visible {
+    display: flex;
+}
+
+.pane .pane-heading {
+    border-bottom: solid 1px #3c3c3c;
+    background-color: #222;
+    padding: 7px;
+    font-weight: bold;
+}
+
+.pane>* {
+    padding: 7px;
+}
+
+
+#mainCanvas {
+    border: none;
+    position:fixed;
+    width:100%;
+    height:100%
+}
+
+.flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-expand {
+    flex-grow: 1;
+}
+
+#loading {
+    display:block;
+    position:fixed;
+    left:0;
+    bottom:0;
+}
+
+.sof-tree {
+    padding-left: 0;
+}
+.sof-tree ul {
+    padding-left: 12px;
+}
+
+.sof-tree {
+    height: 80%;
+}
+
+.sof-tree a {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    cursor: hand;
+}
+
+.sof-tree a.selected {
+    background-color: #080808;
+}
+
+.sof-tree > li {
+    display: block;
+    width: 30%;
+    float: left;
+    overflow: auto;
+    height: 100%;
+    margin-right: 3%;
+    padding: 4px;
+    border: solid 1px #080808;
+}
+
+.sof-tree li {
+    list-style: none;
+}
+.sof-tree ul {
+    display: none;
+}
+.sof-tree .node.expanded > ul {
+    display: block;
+}
+
+.sof-tree li.node.expanded a:before {
+    content: "\25BC ";
+    font-size: 8px;
+    width: 12px;
+    display: inline-block;
+}
+
+.sof-tree li.leaf a:before {
+    content: " " !important;
+    font-size: 8px;
+    width: 12px;
+    display: inline-block;
+}
+
+.sof-tree li.node a:before {
+    content: "\25BA ";
+    font-size: 8px;
+    width: 12px;
+    display: inline-block;
+}
+
+.sof-tree li.leaf a {
+    text-decoration: underline;
+}

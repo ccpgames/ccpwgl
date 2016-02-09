@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>Explosions</title>
+
+<link rel="stylesheet" href="demos.css">
+<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+<script type="text/javascript" src="../src/ccpwgl.js"></script>
+<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="demos.js"></script>
+
+<script type="text/javascript">
+    function OnDocLoad() {
+        var canvas = document.getElementById('mainCanvas');
+        ccpwgl.initialize(canvas, demos.options);
+
+        var camera = new TestCamera(canvas);
+        camera.minDistance = 0.6;
+        camera.maxDistance = 1000000;
+        camera.fov = 30;
+        camera.distance = 10000;
+        camera.nearPlane = 10;
+        camera.minPitch = -0.5;
+        camera.maxPitch = 0.35;
+        ccpwgl.setCamera(camera);
+
+        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+
+        var sizes = ['c', 'd', 'h', 'l', 'm', 's', 't'];
+        var races = ['amarr', 'angel', 'blooodraider', 'caldari', 'concord', 'gallente', 'generic', 'jove', 'minmatar', 'ore', 'rogue', 'sansha', 'sepentis', 'sleeper', 'soct', 'soe', 'talocan'];
+        var radius = 5000;
+
+        var explosions = [];
+        var currentTime = 0;
+
+        function getRandomExplosion(explodionData) {
+            var size = sizes[Math.floor(Math.random() * sizes.length)];
+            var race = races[Math.floor(Math.random() * races.length)];
+            var explosion = scene.loadObject('res:/fisfx/deathexplosion/death_' + size + '_' + race + '.red', function () {
+                this.wrappedObjects[0].Start();
+                explodionData[1] = currentTime + this.wrappedObjects[0].duration;
+            });
+            explosion.setTransform([
+                    1, 0, 0, 0,
+                    0, 1, 0, 0,
+                    0, 0, 1, 0,
+                    Math.random() * 2 * radius - radius, Math.random() * 2 * radius - radius, Math.random() * 2 * radius - radius, 1
+            ]);
+            return explosion;
+        }
+
+        function spawnExplosion() {
+            for (var i = 0; i < explosions.length;) {
+                if (currentTime > explosions[i][1]) {
+                    scene.removeObject(scene.indexOf(explosions[i][0]));
+                    explosions.splice(i, 1);
+                }
+                else {
+                    ++i;
+                }
+            }
+            var explosion = [null, 0];
+            explosion[0] = getRandomExplosion(explosion);
+            explosions.push(explosion);
+            window.setTimeout(spawnExplosion, 2000 + Math.random() * 2000);
+        }
+        spawnExplosion();
+
+        if (demos.options.postprocess)
+            ccpwgl.enablePostprocessing(true);
+
+        ccpwgl.onPreRender = function (dt) {
+            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+            currentTime += dt;
+        };
+
+    }
+</script>
+
+</head>
+<body onload="OnDocLoad()">
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="loading">Loading...</div>
+</body>
+</html>

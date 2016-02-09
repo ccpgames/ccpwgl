@@ -46,8 +46,7 @@ function EveTurretSet()
     this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
     this._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
     this._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPoseTrans', 4 * 72);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPoseRot', 4 * 72);
+    this._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
     this._perObjectDataActive.perObjectVSData.Create();
 
     this._perObjectDataInactive = new Tw2PerObjectData();
@@ -57,8 +56,7 @@ function EveTurretSet()
     this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
     this._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
     this._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTrans', 4 * 72);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseRot', 4 * 72);
+    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
     this._perObjectDataInactive.perObjectVSData.Create();
 
     this.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
@@ -142,15 +140,19 @@ EveTurretSet.prototype.InitializeFiringEffect = function () {
 
 EveTurretSet.prototype.SetLocalTransform = function (index, localTransform)
 {
+    var transform = mat4.create(localTransform);
+    vec3.normalize(transform.subarray(0, 3));
+    vec3.normalize(transform.subarray(4, 7));
+    vec3.normalize(transform.subarray(8, 11));
     if (index >= this.turrets.length)
     {
         var data = new EveTurretData();
-        data.localTransform = localTransform;
+        data.localTransform = transform;
         this.turrets[index] = data;
     }
     else
     {
-        this.turrets[index].localTransform = localTransform;
+        this.turrets[index].localTransform = transform;
     }
     mat4toquat(this.turrets[index].localTransform, this.turrets[index].rotation);
 };
@@ -242,16 +244,15 @@ EveTurretSet.prototype._UpdatePerObjectData = function (perObjectData, transform
     perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
     var translation = perObjectData.Get('turretTranslation');
     var rotation = perObjectData.Get('turretRotation');
-    var poseTranslation = perObjectData.Get('turretPoseTrans');
-    var poseRotation = perObjectData.Get('turretPoseRot');
+    var pose = perObjectData.Get('turretPoseTransAndRot');
     for (var i = 0; i < this.turrets.length; ++i)
     {
         for (var j = 0; j < transformCount; ++j) {
-            poseTranslation[(i * transformCount + j) * 4] = transforms[j * 12 + 3];
-            poseTranslation[(i * transformCount + j) * 4 + 1] = transforms[j * 12 + 7];
-            poseTranslation[(i * transformCount + j) * 4 + 2] = transforms[j * 12 + 11];
-            poseTranslation[(i * transformCount + j) * 4 + 3] = 1;
-            mat3x4toquat(transforms, j, poseRotation, i * transformCount + j);
+            pose[(i * transformCount + j) * 2 * 4] = transforms[j * 12 + 3];
+            pose[(i * transformCount + j) * 2 * 4 + 1] = transforms[j * 12 + 7];
+            pose[(i * transformCount + j) * 2 * 4 + 2] = transforms[j * 12 + 11];
+            pose[(i * transformCount + j) * 2 * 4 + 3] = 1;
+            mat3x4toquat(transforms, j, pose, (i * transformCount + j) * 2 + 1);
         }
         translation[i * 4] = this.turrets[i].localTransform[12];
         translation[i * 4 + 1] = this.turrets[i].localTransform[13];

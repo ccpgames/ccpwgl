@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>CCPWGL Demos</title>
+
+<link rel="stylesheet" href="demos.css">
+
+<style>
+#demo-list {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 20%;
+    overflow: auto;
+    padding: 4px;
+    border-right: solid 1px #3c3c3c;
+}
+
+@media (max-width: 1000px) {
+    #demo-list {
+        width: 200px;
+    }
+    #demo {
+        left: 200px;
+    }
+}
+
+#demo {
+    position: fixed;
+    left: 20%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+#demo iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
+</head>
+<body>
+    <div id="demo-list" class="flex-vertical">
+        <h1>CCPWGL Demos</h1>
+        <dl class="flex-expand">
+            <dt><a href="sof.html" target="demo">SOF browser</a></dt>
+            <dd>Shows how to load ships using Space Object Factory and how to query its data</dd>
+            <dt><a href="planets.html" target="demo">Planets</a></dt>
+            <dd>Shows how to load planets</dd>
+            <dt><a href="sun.html" target="demo">Lens flares</a></dt>
+            <dd>Shows how to load suns (lens flares)</dd>
+            <dt><a href="tech3.html" target="demo">Tech III Ships</a></dt>
+            <dd>Shows how to load Tech III composite ships</dd>
+            <dt><a href="cubeofdeath.html" target="demo">Cube of death</a></dt>
+            <dd>Performance test (multiple ships)</dd>
+            <dt><a href="fitting.html" target="demo">Ship fitting</a></dt>
+            <dd>Shows how to fit turrets on the ship</dd>
+            <dt><a href="firing.html" target="demo">Ship firing</a></dt>
+            <dd>Shows how to fire turrets</dd>
+            <dt><a href="explosions.html" target="demo">Explosions</a></dt>
+            <dd>Shows how to construct, play and remove explosions</dd>
+            <dt><a href="typeids.html" target="demo">Type IDs</a></dt>
+            <dd>Shows how to query type ID data</dd>
+        </dl>
+    </div>
+    <div id="demo"><iframe name="demo"></iframe></div>
+
+</body>
+</html>

@@ -27,19 +27,32 @@ function EveSOF() {
         return isAnimated ? _get(data['generic'], 'shaderPrefixAnimated', '') : _get(data['generic'], 'shaderPrefix', '');
     }
 
-    function ModifyTextureResPath(path, name, area, faction) {
-        if (!_get(faction, 'resPathInsert', '').length) {
-            return path;
+    function ModifyTextureResPath(path, name, area, faction, commands) {
+        var pathInsert = null;
+        if (_get(faction, 'resPathInsert', '').length)
+        {
+            pathInsert = faction.resPathInsert;
         }
-        if (name == 'PgrMap' || name == 'PgsMap' || name == 'MaterialMap' || name == 'PmdgMap') {
+        if ('respathinsert' in commands && commands.respathinsert.length == 1)
+        {
+            if (commands.respathinsert[0] == 'none')
+            {
+                return path;
+            }
+            else
+            {
+                pathInsert = commands.respathinsert[0];
+            }
+        }
+        if (name == 'MaterialMap' || name == 'PaintMaskMap' || name == 'PmdgMap') {
             var index = path.lastIndexOf('/');
             var pathCopy = path;
             if (index >= 0) {
-                pathCopy = path.substr(0, index + 1) + faction['resPathInsert'] + '/' + path.substr(index + 1);
+                pathCopy = path.substr(0, index + 1) + pathInsert + '/' + path.substr(index + 1);
             }
             index = pathCopy.lastIndexOf('_');
             if (index >= 0) {
-                pathCopy = pathCopy.substr(0, index) + '_' + faction['resPathInsert'] + pathCopy.substr(index);
+                pathCopy = pathCopy.substr(0, index) + '_' + pathInsert + pathCopy.substr(index);
                 var textureOverrides = _get(area, 'textureOverrides', {});
                 if ((name in  textureOverrides) && (faction.name in textureOverrides[name])) {
                     return pathCopy;
@@ -59,16 +72,43 @@ function EveSOF() {
         return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
     }
 
-    function FillMeshAreas(areas, areasName, hull, faction, race) {
+    function GetOverridenParameter(name, area, commands)
+    {
+        if ('mesh' in commands)
+        {
+            var prefixes = data.generic.materialPrefixes;
+            var materialIndex = null;
+            for (var m = 0; m < prefixes.length; ++m)
+            {
+                if (name.substr(0, prefixes[m].length) == prefixes[m])
+                {
+                    materialIndex = m;
+                    break;
+                }
+            }
+            if (materialIndex !== null && materialIndex < commands.mesh.length && (_get(area, 'blockedMaterials', 0) & (1 << materialIndex)) == 0)
+            {
+                var materialData = _get(data.material, commands.mesh[materialIndex], null);
+                if (materialData)
+                {
+                    var shortName = name.substr(prefixes[m].length);
+                    return _get(materialData.parameters, shortName, undefined);
+                }
+            }
+        }
+    }
+
+    function FillMeshAreas(areas, areasName, hull, faction, race, commands) {
         var hullAreas = _get(hull, areasName, []);
         for (var i = 0; i < hullAreas.length; ++i) {
             var area = hullAreas[i];
             var effect = new Tw2Effect();
             effect.effectFilePath = data['generic']['areaShaderLocation'] + ModifyShaderPath(area.shader, hull['isSkinned']);
-            var names = _get(_get(data['generic']['shaders'], area.shader, {}), 'parameters', []);
+            var names = _get(_get(data['generic']['areaShaders'], area.shader, {}), 'parameters', []);
             for (var j = 0; j < names.length; ++j) {
                 var name = names[j];
-                var param = _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
+                var param = GetOverridenParameter(name, area, commands);
+                param = param || _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(race.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(faction.areas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(area, 'parameters', {}), name);
@@ -80,7 +120,7 @@ function EveSOF() {
             var hullTextures = _get(area, 'textures', []);
             for (j in hullTextures) {
                 var path = hullTextures[j];
-                path = ModifyTextureResPath(path, j, area, faction);
+                path = ModifyTextureResPath(path, j, area, faction, commands);
                 effect.parameters[j] = new Tw2TextureParameter(j, path);
             }
 
@@ -95,20 +135,26 @@ function EveSOF() {
         }
 
     }
-    function SetupMesh(ship, hull, faction, race) {
+    function SetupMesh(ship, hull, faction, race, commands) {
         var mesh = new Tw2Mesh();
         mesh.geometryResPath = hull['geometryResFilePath'];
         ship.boundingSphereCenter[0] = hull.boundingSphere[0];
         ship.boundingSphereCenter[1] = hull.boundingSphere[1];
         ship.boundingSphereCenter[2] = hull.boundingSphere[2];
         ship.boundingSphereRadius = hull.boundingSphere[3];
-        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race);
-        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race);
-        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race);
-        FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race);
-        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race);
+        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands);
+        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, commands);
+        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, commands);
+        FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, commands);
+        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, commands);
         mesh.Initialize();
         ship.mesh = mesh;
+        if ('shapeEllipsoidCenter' in hull) {
+            ship.shapeEllipsoidCenter = hull.shapeEllipsoidCenter;
+        }
+        if ('shapeEllipsoidRadius' in hull) {
+            ship.shapeEllipsoidRadius = hull.shapeEllipsoidRadius;
+        }
     }
 
     function SetupDecals(ship, hull, faction) {
@@ -240,21 +286,14 @@ function EveSOF() {
             for (var j = 0; j < hullData.length; ++j) {
                 var item = new EveSpotlightSetItem();
                 item.name = _get(hullData[j], 'name', '');
-                if ('groupIndex' in hullData[j]){
-                    item.groupIndex = hullData[j].groupIndex;
-                }
+                item.groupIndex = _get(hullData[j], 'groupIndex', -1);
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
                 item.boosterGainInfluence = _get(hullData[j], 'boosterGainInfluence', 0);
-                var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
+                var factionSet = factionSets['group' + item.groupIndex];
                 if (factionSet) {
                     _scale(_get(factionSet, 'coneColor', [0, 0, 0, 0]), _get(hullData[j], 'coneIntensity', 0), item.coneColor);
                     _scale(_get(factionSet, 'spriteColor', [0, 0, 0, 0]), _get(hullData[j], 'spriteIntensity', 0), item.spriteColor);
                     _scale(_get(factionSet, 'flareColor', [0, 0, 0, 0]), _get(hullData[j], 'flareIntensity', 0), item.flareColor);
-                }
-                else {
-                    quat4.set([1, 1, 1, 1], item.coneColor);
-                    quat4.set([1, 1, 1, 1], item.flareColor);
-                    quat4.set([1, 1, 1, 1], item.spriteColor);
                 }
                 item.spriteScale = _get(hullData[j], 'spriteScale', [1, 1, 1]);
                 if ('transform' in hullData[j]) {
@@ -330,17 +369,51 @@ function EveSOF() {
         var raceBooster = _get(race, 'booster', {});
         _assignIfExists(booster, raceBooster, 'glowScale');
         _assignIfExists(booster, raceBooster, 'glowColor');
+        _assignIfExists(booster, raceBooster, 'warpGlowColor');
         _assignIfExists(booster, raceBooster, 'symHaloScale');
         _assignIfExists(booster, raceBooster, 'haloScaleX');
         _assignIfExists(booster, raceBooster, 'haloScaleY');
         _assignIfExists(booster, raceBooster, 'haloColor');
+        _assignIfExists(booster, raceBooster, 'warpHaloColor');
 
         booster.effect = new Tw2Effect();
-        booster.effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/Booster/Booster.fx';
-        booster.effect.parameters['Color'] = new Tw2Vector4Parameter('Color', _get(raceBooster, 'color', [0, 0, 0, 0]));
+        booster.effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/Booster/BoosterVolumetric.fx';
+        booster.effect.parameters['NoiseFunction0'] = new Tw2FloatParameter('NoiseFunction0', _get(raceBooster.shape0, 'noiseFunction', 0));
+        booster.effect.parameters['NoiseSpeed0'] = new Tw2FloatParameter('NoiseSpeed0', _get(raceBooster.shape0, 'noiseSpeed', 0));
+        booster.effect.parameters['NoiseAmplitudeStart0'] = new Tw2Vector4Parameter('NoiseAmplitudeStart0', _get(raceBooster.shape0, 'noiseAmplitureStart', [0, 0, 0, 0]));
+        booster.effect.parameters['NoiseAmplitudeEnd0'] = new Tw2Vector4Parameter('NoiseAmplitudeEnd0', _get(raceBooster.shape0, 'noiseAmplitureEnd', [0, 0, 0, 0]));
+        booster.effect.parameters['NoiseFrequency0'] = new Tw2Vector4Parameter('NoiseFrequency0', _get(raceBooster.shape0, 'noiseFrequency', [0, 0, 0, 0]));
+        booster.effect.parameters['Color0'] = new Tw2Vector4Parameter('Color0', _get(raceBooster.shape0, 'color', [0, 0, 0, 0]));
+
+        booster.effect.parameters['NoiseFunction1'] = new Tw2FloatParameter('NoiseFunction1', _get(raceBooster.shape1, 'noiseFunction', 0));
+        booster.effect.parameters['NoiseSpeed1'] = new Tw2FloatParameter('NoiseSpeed1', _get(raceBooster.shape1, 'noiseSpeed', 0));
+        booster.effect.parameters['NoiseAmplitudeStart1'] = new Tw2Vector4Parameter('NoiseAmplitudeStart1', _get(raceBooster.shape1, 'noiseAmplitureStart', [0, 0, 0, 0]));
+        booster.effect.parameters['NoiseAmplitudeEnd1'] = new Tw2Vector4Parameter('NoiseAmplitudeEnd1', _get(raceBooster.shape1, 'noiseAmplitureEnd', [0, 0, 0, 0]));
+        booster.effect.parameters['NoiseFrequency1'] = new Tw2Vector4Parameter('NoiseFrequency1', _get(raceBooster.shape1, 'noiseFrequency', [0, 0, 0, 0]));
+        booster.effect.parameters['Color1'] = new Tw2Vector4Parameter('Color1', _get(raceBooster.shape1, 'color', [0, 0, 0, 0]));
+
+        booster.effect.parameters['WarpNoiseFunction0'] = new Tw2FloatParameter('WarpNoiseFunction0', _get(raceBooster.warpShape0, 'noiseFunction', 0));
+        booster.effect.parameters['WarpNoiseSpeed0'] = new Tw2FloatParameter('WarpNoiseSpeed0', _get(raceBooster.warpShape0, 'noiseSpeed', 0));
+        booster.effect.parameters['WarpNoiseAmplitudeStart0'] = new Tw2Vector4Parameter('WarpNoiseAmplitudeStart0', _get(raceBooster.warpShape0, 'noiseAmplitureStart', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpNoiseAmplitudeEnd0'] = new Tw2Vector4Parameter('WarpNoiseAmplitudeEnd0', _get(raceBooster.warpShape0, 'noiseAmplitureEnd', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpNoiseFrequency0'] = new Tw2Vector4Parameter('WarpNoiseFrequency0', _get(raceBooster.warpShape0, 'noiseFrequency', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpColor0'] = new Tw2Vector4Parameter('WarpColor0', _get(raceBooster.warpShape0, 'color', [0, 0, 0, 0]));
+
+        booster.effect.parameters['WarpNoiseFunction1'] = new Tw2FloatParameter('WarpNoiseFunction1', _get(raceBooster.warpShape1, 'noiseFunction', 0));
+        booster.effect.parameters['WarpNoiseSpeed1'] = new Tw2FloatParameter('WarpNoiseSpeed1', _get(raceBooster.warpShape1, 'noiseSpeed', 0));
+        booster.effect.parameters['WarpNoiseAmplitudeStart1'] = new Tw2Vector4Parameter('WarpNoiseAmplitudeStart1', _get(raceBooster.warpShape1, 'noiseAmplitureStart', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpNoiseAmplitudeEnd1'] = new Tw2Vector4Parameter('WarpNoiseAmplitudeEnd1', _get(raceBooster.warpShape1, 'noiseAmplitureEnd', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpNoiseFrequency1'] = new Tw2Vector4Parameter('WarpNoiseFrequency1', _get(raceBooster.warpShape1, 'noiseFrequency', [0, 0, 0, 0]));
+        booster.effect.parameters['WarpColor1'] = new Tw2Vector4Parameter('WarpColor1', _get(raceBooster.warpShape1, 'color', [0, 0, 0, 0]));
+
+        booster.effect.parameters['ShapeAtlasSize'] = new Tw2Vector4Parameter('ShapeAtlasSize', [_get(raceBooster, 'shapeAtlasHeight', 0), _get(raceBooster, 'shapeAtlasCount', 0), 0, 0]);
         booster.effect.parameters['BoosterScale'] = new Tw2Vector4Parameter('BoosterScale', _get(raceBooster, 'scale', [1, 1, 1, 1]));
-        booster.effect.parameters['WaveMap'] = new Tw2TextureParameter('WaveMap', 'res:/Texture/Sprite/waveHiFi.dds.0.png');
-        booster.effect.parameters['DiffuseMap'] = new Tw2TextureParameter('DiffuseMap', raceBooster['textureResPath']);
+
+        booster.effect.parameters['ShapeMap'] = new Tw2TextureParameter('ShapeMap', raceBooster.shapeAtlasResPath);
+        booster.effect.parameters['GradientMap0'] = new Tw2TextureParameter('GradientMap0', raceBooster.gradient0ResPath);
+        booster.effect.parameters['GradientMap1'] = new Tw2TextureParameter('GradientMap1', raceBooster.gradient1ResPath);
+        booster.effect.parameters['NoiseMap'] = new Tw2TextureParameter('ShapeMap', "res:/Texture/Global/noise32cube_volume.dds.0.png");
+
         booster.effect.Initialize();
 
         booster.glows = new EveSpriteSet();
@@ -359,6 +432,8 @@ function EveSOF() {
             else {
                 mat4.identity(locator.transform);
             }
+            locator.atlasIndex0 = _get(items[i], 'atlasIndex0', 0);
+            locator.atlasIndex1 = _get(items[i], 'atlasIndex1', 0);
             ship.locators.push(locator);
         }
         booster.Initialize();
@@ -448,11 +523,17 @@ function EveSOF() {
 
     function Build(dna) {
         var parts = dna.split(':');
+        var commands = {};
+        for (var i = 3; i < parts.length; ++i)
+        {
+            var subparts = parts[i].split('?');
+            commands[subparts[0]] = subparts[1].split(';');
+        }
         var hull = data['hull'][parts[0]];
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
         var ship = new (_get(hull, 'buildClass', 0) == 2 ? EveSpaceObject : EveShip)();
-        SetupMesh(ship, hull, faction, race);
+        SetupMesh(ship, hull, faction, race, commands);
         SetupDecals(ship, hull, faction);
         SetupSpriteSets(ship, hull, faction);
         SetupSpotlightSets(ship, hull, faction);

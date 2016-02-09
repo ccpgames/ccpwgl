@@ -98,7 +98,7 @@ EveShip.prototype.RebuildBoosterSet = function ()
     {
         if (this.locators[i].name.substr(0, prefix.length) == prefix)
         {
-            this.boosters.Add(this.locators[i].transform);
+            this.boosters.Add(this.locators[i].transform, this.locators[i].atlasIndex0, this.locators[i].atlasIndex1);
         }
     }
     this.boosters.Rebuild();

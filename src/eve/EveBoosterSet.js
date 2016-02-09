@@ -5,6 +5,7 @@ function EveBoosterSet()
     this.glows = null;
     this.glowScale = 1.0;
     this.glowColor = [0, 0, 0, 0];
+    this.warpGlowColor = [0, 0, 0, 0];
     this.symHaloScale = 1.0;
     this.haloScaleX = 1.0;
     this.haloScaleY = 1.0;
@@ -27,6 +28,7 @@ function EveBoosterSet()
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 4, 68));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 4, 84));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 6, device.gl.FLOAT, 1, 100));
+    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 7, device.gl.FLOAT, 2, 104));
     this._decl.RebuildHash();
     
     this._perObjectData = new Tw2PerObjectData();
@@ -53,60 +55,89 @@ EveBoosterSet.prototype.Clear = function ()
     }
 };
 
-EveBoosterSet.prototype.Add = function (localMatrix)
+EveBoosterSet.prototype.Add = function (localMatrix, atlas0, atlas1)
 {
     var transform = mat4.create();
     mat4.set(localMatrix, transform);
-    this._boosterTransforms[this._boosterTransforms.length] = transform;
+    this._boosterTransforms[this._boosterTransforms.length] = {transform: transform, atlas0: atlas0, atlas1: atlas1};
     this._wavePhase[this._wavePhase.length] = Math.random();
     if (this.glows)
     {
         var pos = vec3.create([localMatrix[12], localMatrix[13], localMatrix[14]]);
         var dir = vec3.create([localMatrix[8], localMatrix[9], localMatrix[10]]);
-        var scale = vec3.length(dir);
+        var scale = Math.max(vec3.length([localMatrix[0], localMatrix[1], localMatrix[2]]), vec3.length([localMatrix[4], localMatrix[5], localMatrix[6]]));
+        vec3.normalize(dir);
+        if (scale < 3) {
+            vec3.scale(dir, scale / 3);
+        }
+        var seed = Math.random() * 0.7;
         var spritePos = vec3.create();
         vec3.subtract(pos, vec3.scale(dir, 2.5, spritePos), spritePos);
-        this.glows.Add(spritePos, 0, 0, scale * this.glowScale, scale * this.glowScale, 0, this.glowColor);
+        this.glows.Add(spritePos, seed, seed, scale * this.glowScale, scale * this.glowScale, 0, this.glowColor, this.warpGlowColor);
         vec3.subtract(pos, vec3.scale(dir, 3, spritePos), spritePos);
-        this.glows.Add(spritePos, 0, 1, scale * this.symHaloScale, scale * this.symHaloScale, 0, this.haloColor);
+        this.glows.Add(spritePos, seed, 1 + seed, scale * this.symHaloScale, scale * this.symHaloScale, 0, this.haloColor, this.warpGlowColor);
         vec3.subtract(pos, vec3.scale(dir, 3.01, spritePos), spritePos);
-        this.glows.Add(spritePos, 0, 1, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor);
+        this.glows.Add(spritePos, seed, 1 + seed, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor, this.warpGlowColor);
     }
 };
 
+EveBoosterSet._box = [
+    [[-1.0, -1.0, 0.0],
+    [1.0, -1.0, 0.0],
+    [1.0, 1.0, 0.0],
+    [-1.0, 1.0, 0.0]],
+
+    [[-1.0, -1.0, -1.0],
+    [-1.0, 1.0, -1.0],
+    [1.0, 1.0, -1.0],
+    [1.0, -1.0, -1.0]],
+
+    [[-1.0, -1.0, 0.0],
+    [-1.0, 1.0, 0.0],
+    [-1.0, 1.0, -1.0],
+    [-1.0, -1.0, -1.0]],
+
+    [[1.0, -1.0, 0.0],
+    [1.0, -1.0, -1.0],
+    [1.0, 1.0, -1.0],
+    [1.0, 1.0, 0.0]],
+
+    [[-1.0, -1.0, 0.0],
+    [-1.0, -1.0, -1.0],
+    [1.0, -1.0, -1.0],
+    [1.0, -1.0, 0.0]],
+
+    [[-1.0, 1.0, 0.0],
+    [1.0, 1.0, 0.0],
+    [1.0, 1.0, -1.0],
+    [-1.0, 1.0, -1.0]]
+];
+
 EveBoosterSet.prototype.Rebuild = function ()
 {
-    var data = new Float32Array(this._boosterTransforms.length * 4 * 6 * 26);
-    var order = [
-        [-1, -1, 0, 1, 1], 
-        [1, 1, -1, 0, 0], 
-        [-1, -1, -1, 1, 0],
-        [-1, -1, 0, 1, 1],
-        [1, 1, 0, 0, 1], 
-        [1, 1, -1, 0, 0]];
+    var data = new Float32Array(this._boosterTransforms.length * EveBoosterSet._box.length * 6 * 28);
+    var order = [0, 3, 1, 3, 2, 1];
     var index = 0;
     for (var booster = 0; booster < this._boosterTransforms.length; ++booster)
     {
         var vec = vec3.create();
-        for (var i = 0; i < 4; ++i)
-        {
-            var t = i * Math.PI / 4.0;
-            var x = Math.cos(t) * 0.5;
-            var y = Math.sin(t) * 0.5;
-            for (var j = 0; j < 6; ++j)
-            {
-                data[index++] = x * order[j][0];
-                data[index++] = y * order[j][1];
-                data[index++] = order[j][2];
-                data[index++] = order[j][3];
-                data[index++] = order[j][4];
-                data.set(this._boosterTransforms[booster], index);
+
+        for (var i = 0; i < EveBoosterSet._box.length; ++i) {
+            for (var j = 0; j < order.length; ++j) {
+                data[index++] = EveBoosterSet._box[i][order[j]][0];
+                data[index++] = EveBoosterSet._box[i][order[j]][1];
+                data[index++] = EveBoosterSet._box[i][order[j]][2];
+                data[index++] = 0;
+                data[index++] = 0;
+                data.set(this._boosterTransforms[booster].transform, index);
                 index += 16;
                 data[index++] = 0;
                 data[index++] = 1;
                 data[index++] = 1;
                 data[index++] = 1;
                 data[index++] = this._wavePhase[booster];
+                data[index++] = this._boosterTransforms[booster].atlas0;
+                data[index++] = this._boosterTransforms[booster].atlas1;
             }
         }
     }
@@ -179,12 +210,12 @@ EveBoosterSet.prototype.Render = function (overrideEffect)
     for (var pass = 0; pass < effect.GetPassCount(); ++pass)
     {
         effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 104))
+        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 112))
         {
             return false;
         }
         device.ApplyShadowState();
-        device.gl.drawArrays(device.gl.TRIANGLES, 0, this._boosterTransforms.length * 8 * 3);
+        device.gl.drawArrays(device.gl.TRIANGLES, 0, this._boosterTransforms.length * 12 * 3);
     }
     return true;
 };
