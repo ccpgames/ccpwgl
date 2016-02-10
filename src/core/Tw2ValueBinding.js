@@ -156,8 +156,8 @@ Tw2ValueBinding.prototype.Initialize = function()
         return;
     }
 
-    var srcIsArray = this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor;
-    var destIsArray = this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor;
+    var srcIsArray = (this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name == "Array");
+    var destIsArray = (this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name == "Array");
 
     if (srcIsArray == destIsArray && typeof this.sourceObject[this.sourceAttribute] == typeof this.destinationObject[this.destinationAttribute])
     {
