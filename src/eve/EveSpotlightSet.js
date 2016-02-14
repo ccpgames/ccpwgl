@@ -8,6 +8,7 @@ function EveSpotlightSetItem()
     this.spriteScale = vec3.create();
     this.boosterGainInfluence = false;
     this.boneIndex = 0;
+    this.groupIndex = -1;
 }
 
 function EveSpotlightSet()
