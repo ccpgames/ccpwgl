@@ -191,4 +191,5 @@ function EvePlaneSetItem()
     this.layer1Scroll = quat4.create([0, 0, 0, 0]);
     this.layer2Scroll = quat4.create([0, 0, 0, 0]);
     this.boneIndex = 0;
+    this.groupIndex = -1;
 }
