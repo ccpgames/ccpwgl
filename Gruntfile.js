@@ -81,7 +81,7 @@ module.exports = function(grunt)
         'eve/EveSpaceObjectDecal.js',
         'eve/EveSpaceScene.js',
         'eve/EveOccluder.js',
-        'eve/EveLensFlare.js',
+        'eve/EveLensflare.js',
         'eve/EvePlanet.js',
         'eve/EveEffectRoot.js',
         'eve/EveStretch.js',
