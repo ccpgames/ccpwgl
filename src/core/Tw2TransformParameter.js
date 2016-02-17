@@ -141,7 +141,7 @@ Tw2TransformParameter.prototype.OnModified = function()
     
     if (this._target)
     {
-        this.target.setTransform(this._transform);
+        this._target.setTransform(this._transform);
     }
 };
 
