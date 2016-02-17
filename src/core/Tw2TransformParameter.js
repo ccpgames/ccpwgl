@@ -41,7 +41,7 @@ function quatToEuler(quat)
 
 /**
  *  Converts a vec3 to quat4
- *  @array {vec3} euler
+ *  @param {vec3} euler
  *  @return {quat4}
  */
 function eulerToQuat(euler)
@@ -194,7 +194,7 @@ Tw2TransformParameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Sets an optional target spaceObject
- * @param {{}}} spaceObject
+ * @param {{}} spaceObject
  * @returns {boolean} 
  */
 Tw2TransformParameter.prototype.SetTarget = function(spaceObject)
@@ -205,16 +205,16 @@ Tw2TransformParameter.prototype.SetTarget = function(spaceObject)
         return true;
     }
     return false;
-}
+};
 
 /**
  * Gets the target
- * @returns {{}}} 
+ * @returns {{}} 
  */
 Tw2TransformParameter.prototype.GetTarget = function()
 {
     return this._target;
-}
+};
 
 /**
  * Clears the target
@@ -222,8 +222,7 @@ Tw2TransformParameter.prototype.GetTarget = function()
 Tw2TransformParameter.prototype.RemoveTarget = function()
 {
     this._target = null;
-}
-
+};
 
 /**
  * Sets scale
@@ -233,7 +232,7 @@ Tw2TransformParameter.prototype.SetScale = function(vec3)
 {     
     this.scaling.set(vec3);
     this.OnModified();
-}
+};
 
 /**
  * Gets scale
@@ -242,7 +241,7 @@ Tw2TransformParameter.prototype.SetScale = function(vec3)
 Tw2TransformParameter.prototype.GetScale = function()
 {     
     return vec3.create(this.scaling);
-}
+};
 
 /**
  * Sets position
@@ -252,7 +251,7 @@ Tw2TransformParameter.prototype.SetPosition = function(vec3)
 {     
     this.translation.set(vec3);
     this.OnModified();
-}
+};
 
 /**
  * Gets position
@@ -261,7 +260,7 @@ Tw2TransformParameter.prototype.SetPosition = function(vec3)
 Tw2TransformParameter.prototype.GetPosition = function()
 {     
     return vec3.create(this.translation);
-}
+};
  
 /**
  * Sets rotation from a vec3
@@ -271,7 +270,7 @@ Tw2TransformParameter.prototype.SetRotation = function(vec3)
 {
     this.rotation.set(eulerToQuat(vec3));
     this.OnModified();
-}
+};
 
 /**
  * Gets rotation as a vec3
@@ -280,7 +279,7 @@ Tw2TransformParameter.prototype.SetRotation = function(vec3)
 Tw2TransformParameter.prototype.GetRotation = function()
 {     
     return vec3.create(quatToEuler(this.rotation));
-}
+};
 
 /**
  * Sets rotation from a quat4
@@ -290,7 +289,7 @@ Tw2TransformParameter.prototype.SetOrientation = function(quat4)
 {
     this.rotation.set(quat4);
     this.OnModified();
-}
+};
 
 /**
  * Gets rotation as a quat4
@@ -299,7 +298,7 @@ Tw2TransformParameter.prototype.SetOrientation = function(quat4)
 Tw2TransformParameter.prototype.GetOrientation = function()
 {
     return quat4.create(this.rotation);
-}
+};
 
 /**
  * Sets rotation center
@@ -309,7 +308,7 @@ Tw2TransformParameter.prototype.SetCenter = function(vec3)
 {
     this.rotationCenter.set(vec3);
     this.OnModified();
-}
+};
 
 /**
  * Gets rotation center
@@ -318,7 +317,7 @@ Tw2TransformParameter.prototype.SetCenter = function(vec3)
 Tw2TransformParameter.prototype.GetCenter = function()
 {
     return vec3.create(this.rotationCenter);
-}
+};
 
 /**
  * Gets current transform
@@ -327,7 +326,7 @@ Tw2TransformParameter.prototype.GetCenter = function()
 Tw2TransformParameter.prototype.GetTransform = function()
 {
     return mat4.create(this._transform);
-}
+};
 
 /**
  * Gets current worldtransform
@@ -336,4 +335,4 @@ Tw2TransformParameter.prototype.GetTransform = function()
 Tw2TransformParameter.prototype.GetWorld = function()
 {
     return mat4.create(this.worldTransform);
-}
+};
