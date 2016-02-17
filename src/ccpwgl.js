@@ -948,7 +948,7 @@ var ccpwgl = (function (ccpwgl_int)
                 if (this.isLoaded())
                 {
                     var name = 'locator_turret_' + index;
-                    for (var j = 0; j < this.wrappedObjects.lenght; ++j)
+                    for (var j = 0; j < this.wrappedObjects.length; ++j)
                     {
                         var ship = this.wrappedObjects[j];
                         for (var i = 0; i < ship.turretSets.length; ++i)
