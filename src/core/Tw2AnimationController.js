@@ -330,15 +330,14 @@ Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 
 /**
  * _DoRebuildCachedData
- * TODO: Fix commented out code (line 339)
- * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype (line 352)
+ * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
  * @param {Tw2GeometryRes} resource
  * @private
  */
 Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
 {
     var newModels = [];
-    //if (resource.meshes.length)
+    if (resource.meshes.length)
     {
         for (var i = 0; i < resource.models.length; ++i)
         {
@@ -493,7 +492,7 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
             'func': this.PlayAnimation,
             'args': [name, cycle, callback]
         });
-        return;
+        return true;
     }
 
     var animation = this.GetAnimation(name);
@@ -538,7 +537,7 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
             'func': this.PlayAnimationFrom,
             'args': [name, from, cycle, callback]
         });
-        return;
+        return true;
     }
 
     var animation = this.GetAnimation(name);
@@ -600,7 +599,7 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
             'func': this.StopAnimation,
             'args': names
         });
-        return;
+        return true;
     }
 
     if (typeof names == 'string' || names instanceof String)
@@ -672,7 +671,7 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
             'func': this.StopAllAnimationsExcept,
             'args': names
         });
-        return;
+        return true;
     }
 
     if (typeof names == 'string' || names instanceof String)
