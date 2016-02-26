@@ -536,7 +536,7 @@ Tw2EffectRes.prototype.IsValidParameter = function(name)
  * @returns {Array.< string >}
  * @prototype
  */
-Tw2Effect.prototype.GetParametersByGroup = function(groupName)
+Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
 {
     var parameters = [];
 
