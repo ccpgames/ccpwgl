@@ -144,3 +144,17 @@ Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
         this.textureRes.Bind(sampler, slices);
     }
 };
+
+/**
+ * Get Value
+ * @return {string}
+ */
+ Tw2TextureParameter.prototype.GetValue = function()
+ {
+     if (this.textureRes)
+     {
+         return this.textureRes.path;
+     }
+     
+     return this.resourcePath;
+ }
