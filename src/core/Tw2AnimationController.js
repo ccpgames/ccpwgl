@@ -509,10 +509,8 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
         {
             animation.callback = callback;
         }
-
         return true;
     }
-
 };
 
 /**
@@ -583,7 +581,6 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
 /**
  * Stops an animation or an array of animations from playing
  * @param {String, Array.<string>} names - Animation Name, or Array of Animation Names
- * @return {boolean}
  * @prototype
  */
 Tw2AnimationController.prototype.StopAnimation = function(names)
@@ -599,7 +596,7 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
             'func': this.StopAnimation,
             'args': names
         });
-        return true;
+        return;
     }
 
     if (typeof names == 'string' || names instanceof String)
@@ -607,22 +604,19 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
         names = [names];
     }
 
-    if (names && Object.prototype.toString.apply(names) === '[object Array]')
+    var toStop = {};
+    
+    for (var n = 0; n < names.length; n++)
     {
-        var toStop = {};
-        for (var n = 0; n < names.length; n++)
-        {
-            toStop[names[n]] = true;
-        }
+        toStop[names[n]] = true;
+    }
 
-        for (var i = 0; i < this.animations.length; ++i)
+    for (var i = 0; i < this.animations.length; ++i)
+    {
+        if (this.animations[i].animationRes.name in toStop)
         {
-            if (this.animations[i].animationRes.name in toStop)
-            {
-                this.animations[i].isPlaying = false;
-            }
+            this.animations[i].isPlaying = false;
         }
-        return true;
     }
 };
 
@@ -655,7 +649,6 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
 /**
  * Stops all but the supplied list of animations
  * @param {String| Array.<string>} names - Animation Names
- * @returns {null|boolean}
  * @prototype
  */
 Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
@@ -671,7 +664,7 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
             'func': this.StopAllAnimationsExcept,
             'args': names
         });
-        return true;
+        return;
     }
 
     if (typeof names == 'string' || names instanceof String)
@@ -679,22 +672,19 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
         names = [names];
     }
 
-    if (names && Object.prototype.toString.apply(names) === '[object Array]')
+    var keepAnimating = {};
+    
+    for (var n = 0; n < names.length; n++)
     {
-        var keepAnimating = {};
-        for (var n = 0; n < names.length; n++)
-        {
-            keepAnimating[names[n]] = true;
-        }
+        keepAnimating[names[n]] = true;
+    }
 
-        for (var i = 0; i < this.animations.length; ++i)
+    for (var i = 0; i < this.animations.length; ++i)
+    {
+        if (!(this.animations[i].animationRes.name in keepAnimating))
         {
-            if (!(this.animations[i].animationRes.name in keepAnimating))
-            {
-                this.animations[i].isPlaying = false;
-            }
+            this.animations[i].isPlaying = false;
         }
-        return true;
     }
 };
 
