@@ -1,4 +1,9 @@
 /**
+ * A Tw2 Parameter
+ * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Tw2Parameter
+ */
+
+/**
  * Tw2FloatParameter
  * @param {string} [name='']
  * @param {number} [value=1]
