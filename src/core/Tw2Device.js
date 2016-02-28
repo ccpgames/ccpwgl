@@ -1,3 +1,8 @@
+/**
+ * RenderMode
+ * @typedef {(device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
+ */
+ 
 window.requestAnimFrame = (function()
 {
     return window.requestAnimationFrame ||
