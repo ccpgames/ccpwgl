@@ -374,7 +374,7 @@ function EveSOF() {
         _assignIfExists(booster, raceBooster, 'haloScaleX');
         _assignIfExists(booster, raceBooster, 'haloScaleY');
         _assignIfExists(booster, raceBooster, 'haloColor');
-        _assignIfExists(booster, raceBooster, 'warpHaloColor');
+        _assignIfExists(booster, raceBooster, 'warpHalpColor');
 
         booster.effect = new Tw2Effect();
         booster.effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/Booster/BoosterVolumetric.fx';
