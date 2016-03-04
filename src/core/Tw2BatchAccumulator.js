@@ -1,6 +1,6 @@
 /**
  * Render Batches
- * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch)} RenderBatch
+ * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
  */
  
 /**
