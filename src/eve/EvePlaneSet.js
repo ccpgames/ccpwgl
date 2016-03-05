@@ -1,11 +1,23 @@
-﻿function EvePlaneSet()
+/**
+ * EvePlaneSet
+ * @property {String} name
+ * @property {Array.<EvePlaneSetItem>} planes
+ * @property {Tw2Effect} effect
+ * @property {boolean} display
+ * @property {boolean} hideOnLowQuality
+ * @property {number} _time
+ * @property {WebglBuffer} _vertexBuffer
+ * @property {WebglBuffer} _indexBuffer
+ * @property {Tw2VertexDeclaration} _decl
+ * @constructor
+ */
+function EvePlaneSet()
 {
     this.name = '';
     this.planes = [];
     this.effect = null;
     this.display = true;
     this.hideOnLowQuality = false;
-
     this._time = 0;
 
     this._vertexBuffer = null;
@@ -23,12 +35,18 @@
     this._decl.RebuildHash();
 }
 
-EvePlaneSet.prototype.Initialize = function ()
+/**
+ * Initializes the plane set
+ */
+EvePlaneSet.prototype.Initialize = function()
 {
     this.RebuildBuffers();
 };
 
-EvePlaneSet.prototype.RebuildBuffers = function ()
+/**
+ * Rebuilds the plane set's buffers
+ */
+EvePlaneSet.prototype.RebuildBuffers = function()
 {
     var vertexSize = 34;
     var array = new Float32Array(this.planes.length * 4 * vertexSize);
@@ -114,13 +132,23 @@ EvePlaneSet.prototype.RebuildBuffers = function ()
     this._indexBuffer.count = this.planes.length * 6;
 };
 
+/**
+ * Plane set render batch
+ * @inherits Tw2RenderBatch
+ * @constructor
+ */
 function EvePlaneSetBatch()
 {
     this._super.constructor.call(this);
     this.planeSet = null;
 }
 
-EvePlaneSetBatch.prototype.Commit = function (overrideEffect)
+/**
+ * Commits the plan set
+ * @param {Tw2Effect} [overrideEffect]
+ * @constructor
+ */
+EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
 {
     this.planeSet.Render(overrideEffect);
 };
@@ -128,7 +156,13 @@ EvePlaneSetBatch.prototype.Commit = function (overrideEffect)
 Inherit(EvePlaneSetBatch, Tw2RenderBatch);
 
 
-EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
+/**
+ * Gets the plane set's render batches
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ */
+EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.display && mode == device.RM_ADDITIVE)
     {
@@ -140,9 +174,14 @@ EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
     }
 };
 
-EvePlaneSet.prototype.Render = function (overrideEffect)
+/**
+ * Renders the plane set
+ * @param {Tw2Effect} [overrideEffect]
+ * @constructor
+ */
+EvePlaneSet.prototype.Render = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = (!overrideEffect) ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
@@ -169,27 +208,50 @@ EvePlaneSet.prototype.Render = function (overrideEffect)
     }
 };
 
-EvePlaneSet.prototype.Update = function (dt)
+/**
+ * Per frame update
+ * @param {number} dt - Delta Time
+ */
+EvePlaneSet.prototype.Update = function(dt)
 {
     this._time += dt;
 };
 
-EvePlaneSet.prototype.Clear = function ()
+/**
+ * Clears the plane set's plane items
+ */
+EvePlaneSet.prototype.Clear = function()
 {
     this.planes = [];
 };
 
+
+/**
+ * EvePlaneSetItem
+ * @property {string} name
+ * @property {vec3} position
+ * @property {vec3} scaling
+ * @property {quat4} rotation
+ * @property {quat4} color
+ * @property {quat4} layer1Transform
+ * @property {quat4} layer2Transform
+ * @property {quat4} layer1Scroll
+ * @property {quat4} layer2Scroll
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @constructor
+ */
 function EvePlaneSetItem()
 {
     this.name = '';
-    this.position = vec3.create([0, 0, 0]);
+    this.position = vec3.create();
     this.scaling = vec3.create([1, 1, 1]);
     this.rotation = quat4.create([0, 0, 0, 1]);
     this.color = quat4.create([1, 1, 1, 1]);
     this.layer1Transform = quat4.create([1, 1, 0, 0]);
     this.layer2Transform = quat4.create([1, 1, 0, 0]);
-    this.layer1Scroll = quat4.create([0, 0, 0, 0]);
-    this.layer2Scroll = quat4.create([0, 0, 0, 0]);
+    this.layer1Scroll = quat4.create();
+    this.layer2Scroll = quat4.create();
     this.boneIndex = 0;
     this.groupIndex = -1;
 }
