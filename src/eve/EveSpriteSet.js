@@ -141,7 +141,7 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  */
 EveSpriteSet.prototype.Render = function(overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = (!overrideEffect) ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
