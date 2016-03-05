@@ -1,3 +1,16 @@
+/**
+ * Spotlight Item
+ * @property {string} name
+ * @property {mat4} transform
+ * @property {quat4} coneColor
+ * @property {quat4} spriteColor
+ * @property {quat4} flareColor
+ * @property {quat4} spriteScale
+ * @property {boolean} boosterGainInfluence
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @constructor
+ */
 function EveSpotlightSetItem()
 {
     this.name = '';
@@ -11,6 +24,20 @@ function EveSpotlightSetItem()
     this.groupIndex = -1;
 }
 
+
+/**
+ * EveSpotlightSet
+ * @property {string} name
+ * @property {boolean} display
+ * @property {Tw2Effect} coneEffect
+ * @property {Tw2Effect} glowEffect
+ * @property {Array.<EveSpotlightSetItem) spotlightItems
+ * @property {WebglBuffer} _conVertexBuffer
+ * @property {WebglBuffer} _spriteVertexBuffer
+ * @property {WebglBuffer} _indexBuffer
+ * @property {Tw2VertexDeclaration} _decl
+ * @constructor
+ */
 function EveSpotlightSet()
 {
     this.name = '';
@@ -18,11 +45,11 @@ function EveSpotlightSet()
     this.coneEffect = null;
     this.glowEffect = null;
     this.spotlightItems = [];
-    
+
     this._coneVertexBuffer = null;
     this._spriteVertexBuffer = null;
     this._indexBuffer = null;
-    
+
     this._decl = new Tw2VertexDeclaration();
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 4, 0));
     this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 4, 16));
@@ -33,12 +60,17 @@ function EveSpotlightSet()
     this._decl.RebuildHash();
 }
 
+/**
+ * Initializes the spotlight set
+ */
 EveSpotlightSet.prototype.Initialize = function()
 {
     this.Rebuild();
 };
 
-
+/**
+ * Rebuilds the spotlight set
+ */
 EveSpotlightSet.prototype.Rebuild = function()
 {
     var itemCount = this.spotlightItems.length;
@@ -52,9 +84,9 @@ EveSpotlightSet.prototype.Rebuild = function()
 
     var vertexSize = 22;
     var array = new Float32Array(coneVertexCount * vertexSize);
-    
+
     var indexes = [1, 0, 2, 3];
-    
+
     for (var i = 0; i < itemCount; ++i)
     {
         var item = this.spotlightItems[i];
@@ -67,26 +99,26 @@ EveSpotlightSet.prototype.Rebuild = function()
                 array[offset + 1] = item.coneColor[1];
                 array[offset + 2] = item.coneColor[2];
                 array[offset + 3] = item.coneColor[3];
-                
+
                 array[offset + 4] = item.transform[0];
                 array[offset + 5] = item.transform[4];
                 array[offset + 6] = item.transform[8];
                 array[offset + 7] = item.transform[12];
-                
+
                 array[offset + 8] = item.transform[1];
                 array[offset + 9] = item.transform[5];
                 array[offset + 10] = item.transform[9];
                 array[offset + 11] = item.transform[13];
-                
+
                 array[offset + 12] = item.transform[2];
                 array[offset + 13] = item.transform[6];
                 array[offset + 14] = item.transform[10];
                 array[offset + 15] = item.transform[14];
-                
+
                 array[offset + 16] = 1;
                 array[offset + 17] = 1;
                 array[offset + 18] = 1;
-                
+
                 array[offset + 19] = q * vertCount + indexes[v];
                 array[offset + 20] = item.boneIndex;
                 array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
@@ -100,11 +132,11 @@ EveSpotlightSet.prototype.Rebuild = function()
     this._coneVertexBuffer.count = itemCount * coneQuadCount * 6;
 
     var spriteQuadCount = 2;
-    var spriteVertexCount =  itemCount * spriteQuadCount * vertCount;
+    var spriteVertexCount = itemCount * spriteQuadCount * vertCount;
     array = new Float32Array(spriteVertexCount * vertexSize);
-    
+
     var indexes = [1, 0, 2, 3];
-    
+
     for (var i = 0; i < itemCount; ++i)
     {
         var item = this.spotlightItems[i];
@@ -119,7 +151,7 @@ EveSpotlightSet.prototype.Rebuild = function()
                     array[offset + 1] = item.spriteColor[1];
                     array[offset + 2] = item.spriteColor[2];
                     array[offset + 3] = item.spriteColor[3];
-                
+
                     array[offset + 16] = item.spriteScale[0];
                     array[offset + 17] = 1;
                     array[offset + 18] = 1;
@@ -130,27 +162,27 @@ EveSpotlightSet.prototype.Rebuild = function()
                     array[offset + 1] = item.flareColor[1];
                     array[offset + 2] = item.flareColor[2];
                     array[offset + 3] = item.flareColor[3];
-                
+
                     array[offset + 16] = 1;
                     array[offset + 17] = item.spriteScale[1];
                     array[offset + 18] = item.spriteScale[2];
                 }
-                
+
                 array[offset + 4] = item.transform[0];
                 array[offset + 5] = item.transform[4];
                 array[offset + 6] = item.transform[8];
                 array[offset + 7] = item.transform[12];
-                
+
                 array[offset + 8] = item.transform[1];
                 array[offset + 9] = item.transform[5];
                 array[offset + 10] = item.transform[9];
                 array[offset + 11] = item.transform[13];
-                
+
                 array[offset + 12] = item.transform[2];
                 array[offset + 13] = item.transform[6];
                 array[offset + 14] = item.transform[10];
                 array[offset + 15] = item.transform[14];
-                
+
                 array[offset + 19] = q * vertCount + indexes[v];
                 array[offset + 20] = item.boneIndex;
                 array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
@@ -181,13 +213,22 @@ EveSpotlightSet.prototype.Rebuild = function()
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, null);
 };
 
+/**
+ * Spotlight set render batch
+ * @inherits Tw2RenderBatch
+ * @constructor
+ */
 function EveSpotlightSetBatch()
 {
     this._super.constructor.call(this);
     this.spotlightSet = null;
 }
 
-EveSpotlightSetBatch.prototype.Commit = function (overrideEffect)
+/**
+ * Commits the spotlight set
+ * @param {Tw2Effect} overrideEffect
+ */
+EveSpotlightSetBatch.prototype.Commit = function(overrideEffect)
 {
     this.spotlightSet.RenderCones(overrideEffect);
     this.spotlightSet.RenderGlow(overrideEffect);
@@ -195,8 +236,13 @@ EveSpotlightSetBatch.prototype.Commit = function (overrideEffect)
 
 Inherit(EveSpotlightSetBatch, Tw2RenderBatch);
 
-
-EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
+/**
+ * Gets render batches
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ */
+EveSpotlightSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.display && mode == device.RM_ADDITIVE)
     {
@@ -208,19 +254,33 @@ EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectDat
     }
 };
 
-EveSpotlightSet.prototype.RenderCones = function (overrideEffect)
+/**
+ * Renders Spotlight set Cones
+ * @param {Tw2Effect} overrideEffect
+ */
+EveSpotlightSet.prototype.RenderCones = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.coneEffect : overrideEffect;
+    var effect = (!overrideEffect) ? this.coneEffect : overrideEffect;
     this._Render(effect, this._coneVertexBuffer);
 };
 
-EveSpotlightSet.prototype.RenderGlow = function (overrideEffect)
+/**
+ * Renders Spotlight set glows
+ * @param {Tw2Effect} overrideEffect
+ */
+EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
 {
-    var effect = typeof (overrideEffect) == 'undefined' ? this.glowEffect : overrideEffect;
+    var effect = (!overrideEffect) ? this.glowEffect : overrideEffect;
     this._Render(effect, this._spriteVertexBuffer);
 };
 
-EveSpotlightSet.prototype._Render = function (effect, buffer)
+/**
+ * Internal render function
+ * @param {Tw2Effect} effect
+ * @param {WebglBuffer} buffer
+ * @private
+ */
+EveSpotlightSet.prototype._Render = function(effect, buffer)
 {
     if (!effect || !buffer || !this._indexBuffer)
     {
