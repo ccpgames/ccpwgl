@@ -343,7 +343,7 @@ function Tw2GeometryRes()
     this.boundsSphereRadius = 0;
     this.models = [];
     this.animations = [];
-    this.systemMirror = false;
+    this.systemMirror = resMan.systemMirror;
 }
 
 /**
