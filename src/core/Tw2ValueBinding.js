@@ -48,9 +48,7 @@ Tw2ValueBinding.prototype.Initialize = function()
     }
 
     var srcSwizzled = false;
-    this._sourceElement = 0;
     var destSwizzled = false;
-    this._destinationElement = 0;
     var srcSwizzle = this.sourceAttribute.substr(-2);
 
     if (srcSwizzle == '.x' || srcSwizzle == '.r')
