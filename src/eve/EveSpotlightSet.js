@@ -31,7 +31,7 @@ function EveSpotlightSetItem()
  * @property {boolean} display
  * @property {Tw2Effect} coneEffect
  * @property {Tw2Effect} glowEffect
- * @property {Array.<EveSpotlightSetItem) spotlightItems
+ * @property {Array.<EveSpotlightSetItem>) spotlightItems
  * @property {WebglBuffer} _conVertexBuffer
  * @property {WebglBuffer} _spriteVertexBuffer
  * @property {WebglBuffer} _indexBuffer
