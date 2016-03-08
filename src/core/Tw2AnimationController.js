@@ -106,6 +106,7 @@ function Tw2Model()
  * @property {quat4} _tempQuat4
  * @property {vec3} _tempVec3
  * @property _geometryResource
+ * @property {Array} pendingCommands
  * @prototype
  */
 function Tw2AnimationController(geometryResource)
@@ -121,6 +122,7 @@ function Tw2AnimationController(geometryResource)
     this._tempQuat4 = quat4.create();
     this._tempVec3 = vec3.create();
     this._geometryResource = null;
+    this.pendingCommands = [];
 
     if (typeof(geometryResource) != 'undefined')
     {
@@ -416,7 +418,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
     this.loaded = true;
     if (this.animations.length)
     {
-        if (this.pendingCommands)
+        if (this.pendingCommands.length)
         {
             for (var i = 0; i < this.pendingCommands.length; ++i)
             {
@@ -430,7 +432,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
                 }
             }
         }
-        this.pendingCommands = null;
+        this.pendingCommands = [];
     }
 };
 
@@ -483,10 +485,6 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.PlayAnimation,
@@ -526,10 +524,6 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.PlayAnimationFrom,
@@ -587,10 +581,6 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.StopAnimation,
@@ -628,10 +618,6 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.StopAllAnimations,
@@ -655,10 +641,6 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.StopAllAnimationsExcept,
