@@ -1,5 +1,6 @@
 /**
  * EvePlanet
+ * @property {boolean} display
  * @property {EveTransform} highDetail
  * @property {Tw2Effect} effectHeight
  * @property {number} itemID
@@ -14,6 +15,7 @@
  */
 function EvePlanet()
 {
+    this.display = true;
     this.highDetail = new EveTransform();
     this.effectHeight = new Tw2Effect();
     this.itemID = 0;
@@ -209,7 +211,7 @@ EvePlanet.prototype._MeshLoaded = function()
  */
 EvePlanet.prototype.GetBatches = function(mode, accumulator)
 {
-    if (this.heightDirty && this.watchedResources.length && this.heightMapResPath1 != '')
+    if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 != '')
     {
         for (var i = 0; i < this.watchedResources.length; ++i)
         {
@@ -245,7 +247,11 @@ EvePlanet.prototype.GetBatches = function(mode, accumulator)
             originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
         }
     }
-    this.highDetail.GetBatches(mode, accumulator);
+    
+    if (this.display)
+    {
+        this.highDetail.GetBatches(mode, accumulator);
+    }
 };
 
 /**
@@ -255,7 +261,7 @@ EvePlanet.prototype.GetBatches = function(mode, accumulator)
  */
 EvePlanet.prototype.GetZOnlyBatches = function(mode, accumulator)
 {
-    if (this.zOnlyModel)
+    if (this.display && this.zOnlyModel)
     {
         this.zOnlyModel.GetBatches(mode, accumulator);
     }
