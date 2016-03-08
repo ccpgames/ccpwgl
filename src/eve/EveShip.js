@@ -1,7 +1,7 @@
 function EveShip()
 {
     this._super.constructor.call(this);
-
+    this.display = true;
     this.boosterGain = 1;
     this.boosters = null;
     this.turretSets = [];
@@ -26,25 +26,28 @@ EveShip.prototype.Initialize = function ()
 
 EveShip.prototype.GetBatches = function (mode, accumulator)
 {
-    this._super.GetBatches.call(this, mode, accumulator);
-
-    this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-    if (this.lod > 1) {
-        for (var i = 0; i < this.turretSets.length; ++i) {
-            this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
-        }
-    }
-    else {
-        for (var i = 0; i < this.turretSets.length; ++i) {
-            if (this.turretSets[i].firingEffect) {
-                this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+    if (this.display)
+        {
+        this._super.GetBatches.call(this, mode, accumulator);
+    
+        this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
+        this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
+        if (this.lod > 1) {
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
             }
         }
-    }
-    if (this.boosters)
-    {
-        this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+        else {
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                if (this.turretSets[i].firingEffect) {
+                    this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                }
+            }
+        }
+        if (this.boosters)
+        {
+            this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+        }
     }
 };
 
