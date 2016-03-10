@@ -477,10 +477,13 @@ EveTurretSet.prototype.Render = function(batch, overrideEffect)
     }
     for (; index < this.turrets.length; ++index)
     {
-        var isActive = this.state == this.STATE_FIRING && index == this._activeTurret;
-        if (batch.renderActive == isActive)
+        if (this.turrets[index].visible)
         {
-            this.geometryResource.RenderAreas(0, 0, 1, effect);
+            var isActive = this.state == this.STATE_FIRING && index == this._activeTurret;
+            if (batch.renderActive == isActive)
+            {
+                this.geometryResource.RenderAreas(0, 0, 1, effect);
+            }
         }
     }
 };
