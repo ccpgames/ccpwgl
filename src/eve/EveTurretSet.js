@@ -1,5 +1,6 @@
 /**
  * EveTurretData
+ * @property {String} name
  * @property {boolean} visible
  * @property {mat4} localTransform
  * @property {quat4} rotation
@@ -7,6 +8,7 @@
  */
 function EveTurretData()
 {
+    this.name = '';
     this.visible = true;
     this.localTransform = mat4.create();
     this.rotation = quat4.create();
@@ -206,8 +208,9 @@ EveTurretSet.prototype.InitializeFiringEffect = function()
  * Sets the local transform for a specific turret index
  * @param {number} index
  * @param {mat4} localTransform
+ * @param {String} locatorName
  */
-EveTurretSet.prototype.SetLocalTransform = function(index, localTransform)
+EveTurretSet.prototype.SetLocalTransform = function(index, localTransform, locatorName)
 {
     var transform = mat4.create(localTransform);
     vec3.normalize(transform.subarray(0, 3));
@@ -216,6 +219,7 @@ EveTurretSet.prototype.SetLocalTransform = function(index, localTransform)
     if (index >= this.turrets.length)
     {
         var data = new EveTurretData();
+        data.name = locatorName;
         data.localTransform.set(transform);
         this.turrets[index] = data;
     }
