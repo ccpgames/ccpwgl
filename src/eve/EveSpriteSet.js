@@ -46,8 +46,17 @@ EveSpriteSet.prototype.Initialize = function()
 EveSpriteSet.prototype.RebuildBuffers = function()
 {
     var vertexSize = 13;
-    var array = new Float32Array(this.sprites.length * 4 * vertexSize);
-    for (var i = 0; i < this.sprites.length; ++i)
+    var visibleItems = [];
+    for (var i = 0; i < this.sprites.length; i++)
+    {
+        if (this.sprites[i].display)
+        {
+            visibleItems.push(this.sprites[i]);
+        }
+    }
+
+    var array = new Float32Array(visibleItems.length * 4 * vertexSize);
+    for (var i = 0; i < visibleItems.length; ++i)
     {
         var offset = i * 4 * vertexSize;
         array[offset + 0 * vertexSize] = 0;
@@ -57,18 +66,18 @@ EveSpriteSet.prototype.RebuildBuffers = function()
         for (var j = 0; j < 4; ++j)
         {
             var vtxOffset = offset + j * vertexSize;
-            array[vtxOffset + 1] = this.sprites[i].boneIndex;
-            array[vtxOffset + 2] = this.sprites[i].position[0];
-            array[vtxOffset + 3] = this.sprites[i].position[1];
-            array[vtxOffset + 4] = this.sprites[i].position[2];
-            array[vtxOffset + 5] = this.sprites[i].color[0];
-            array[vtxOffset + 6] = this.sprites[i].color[1];
-            array[vtxOffset + 7] = this.sprites[i].color[2];
-            array[vtxOffset + 8] = this.sprites[i].blinkPhase;
-            array[vtxOffset + 9] = this.sprites[i].blinkRate;
-            array[vtxOffset + 10] = this.sprites[i].minScale;
-            array[vtxOffset + 11] = this.sprites[i].maxScale;
-            array[vtxOffset + 12] = this.sprites[i].falloff;
+            array[vtxOffset + 1] = visibleItems[i].boneIndex;
+            array[vtxOffset + 2] = visibleItems[i].position[0];
+            array[vtxOffset + 3] = visibleItems[i].position[1];
+            array[vtxOffset + 4] = visibleItems[i].position[2];
+            array[vtxOffset + 5] = visibleItems[i].color[0];
+            array[vtxOffset + 6] = visibleItems[i].color[1];
+            array[vtxOffset + 7] = visibleItems[i].color[2];
+            array[vtxOffset + 8] = visibleItems[i].blinkPhase;
+            array[vtxOffset + 9] = visibleItems[i].blinkRate;
+            array[vtxOffset + 10] = visibleItems[i].minScale;
+            array[vtxOffset + 11] = visibleItems[i].maxScale;
+            array[vtxOffset + 12] = visibleItems[i].falloff;
         }
     }
     this._vertexBuffer = device.gl.createBuffer();
@@ -76,8 +85,8 @@ EveSpriteSet.prototype.RebuildBuffers = function()
     device.gl.bufferData(device.gl.ARRAY_BUFFER, array, device.gl.STATIC_DRAW);
     device.gl.bindBuffer(device.gl.ARRAY_BUFFER, null);
 
-    var indexes = new Uint16Array(this.sprites.length * 6);
-    for (var i = 0; i < this.sprites.length; ++i)
+    var indexes = new Uint16Array(visibleItems.length * 6);
+    for (var i = 0; i < visibleItems.length; ++i)
     {
         var offset = i * 6;
         var vtxOffset = i * 4;
@@ -92,7 +101,7 @@ EveSpriteSet.prototype.RebuildBuffers = function()
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
     device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, null);
-    this._indexBuffer.count = this.sprites.length * 6;
+    this._indexBuffer.count = visibleItems.length * 6;
 };
 
 /**
@@ -141,7 +150,7 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  */
 EveSpriteSet.prototype.Render = function(overrideEffect)
 {
-    var effect = (!overrideEffect) ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
@@ -199,6 +208,7 @@ EveSpriteSet.prototype.Clear = function()
 EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
     var item = new EveSpriteSetItem();
+    item.display = true;
     item.position = vec3.create(pos);
     item.blinkRate = blinkRate;
     item.blinkPhase = blinkPhase;
@@ -223,6 +233,7 @@ EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxS
  */
 function EveSpriteSetItem()
 {
+    this.display = true;
     this.name = '';
     this.position = vec3.create();
     this.blinkRate = 0;
