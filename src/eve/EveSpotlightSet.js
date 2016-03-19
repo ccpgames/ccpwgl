@@ -66,13 +66,13 @@ function EveSpotlightSet()
  */
 EveSpotlightSet.prototype.Initialize = function()
 {
-    this.Rebuild();
+    this.RebuildBuffers();
 };
 
 /**
  * Rebuilds the spotlight set
  */
-EveSpotlightSet.prototype.Rebuild = function()
+EveSpotlightSet.prototype.RebuildBuffers = function()
 {
     var visibleItems = [];
     for (var i = 0; i < this.spotlightItems.length; i++)
