@@ -13,6 +13,7 @@
  */
 function EveSpotlightSetItem()
 {
+    this.display = true;
     this.name = '';
     this.transform = mat4.create();
     this.coneColor = quat4.create();
@@ -31,7 +32,7 @@ function EveSpotlightSetItem()
  * @property {boolean} display
  * @property {Tw2Effect} coneEffect
  * @property {Tw2Effect} glowEffect
- * @property {Array.<EveSpotlightSetItem>) spotlightItems
+ * @property {Array.<EveSpotlightSetItem) spotlightItems
  * @property {WebglBuffer} _conVertexBuffer
  * @property {WebglBuffer} _spriteVertexBuffer
  * @property {WebglBuffer} _indexBuffer
@@ -73,7 +74,16 @@ EveSpotlightSet.prototype.Initialize = function()
  */
 EveSpotlightSet.prototype.Rebuild = function()
 {
-    var itemCount = this.spotlightItems.length;
+    var visibleItems = [];
+    for (var i = 0; i < this.spotlightItems.length; i++)
+    {
+        if (this.spotlightItems[i].display)
+        {
+            visibleItems.push(this.spotlightItems[i]);
+        }
+    }
+
+    var itemCount = visibleItems.length;
     if (itemCount == 0)
     {
         return;
@@ -89,7 +99,7 @@ EveSpotlightSet.prototype.Rebuild = function()
 
     for (var i = 0; i < itemCount; ++i)
     {
-        var item = this.spotlightItems[i];
+        var item = visibleItems[i];
         for (var q = 0; q < coneQuadCount; ++q)
         {
             for (var v = 0; v < vertCount; ++v)
@@ -139,7 +149,7 @@ EveSpotlightSet.prototype.Rebuild = function()
 
     for (var i = 0; i < itemCount; ++i)
     {
-        var item = this.spotlightItems[i];
+        var item = visibleItems[i];
         for (var q = 0; q < spriteQuadCount; ++q)
         {
             for (var v = 0; v < vertCount; ++v)
