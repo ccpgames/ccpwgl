@@ -30,7 +30,7 @@ function EveMeshOverlayEffect()
  */
 EveMeshOverlayEffect.prototype.Update = function(dt)
 {
-    if (this.curveSet)
+    if (this.update && this.curveSet)
     {
         this.curveSet.Update(dt);
     }
@@ -43,17 +43,20 @@ EveMeshOverlayEffect.prototype.Update = function(dt)
  */
 EveMeshOverlayEffect.prototype.GetEffects = function(mode)
 {
-    switch (mode)
+    if (this.display)
     {
-        case device.RM_OPAQUE:
-            return this.opaqueEffects;
-        case device.RM_DECAL:
-            return this.decalEffects;
-        case device.RM_TRANSPARENT:
-            return this.transparentEffects;
-        case device.RM_ADDITIVE:
-            return this.additiveEffects;
-        default:
-            return null;
+        switch (mode)
+        {
+            case device.RM_OPAQUE:
+                return this.opaqueEffects;
+            case device.RM_DECAL:
+                return this.decalEffects;
+            case device.RM_TRANSPARENT:
+                return this.transparentEffects;
+            case device.RM_ADDITIVE:
+                return this.additiveEffects;
+            default:
+                return null;
+        }
     }
 };
