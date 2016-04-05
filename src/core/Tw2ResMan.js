@@ -227,16 +227,7 @@ function Tw2ResMan()
 {
     this.resourcePaths = {};
 
-    this.resourcePaths['res'] = '//developers.eveonline.com/ccpwgl/assetpath/1005132/';
-
-    if (window.location.protocol == "https:")
-    {
-        this.resourcePaths['res'] = 'https:' + this.resourcePaths['res'];
-    }
-    else
-    {
-        this.resourcePaths['res'] = 'http:' + this.resourcePaths['res'];
-    }
+    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1005132/';
 
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
