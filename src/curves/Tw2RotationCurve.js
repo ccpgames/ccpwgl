@@ -85,7 +85,6 @@ Tw2RotationCurve.BICumulative = function(order, t)
 
 /**
  * QuaternionPow
- * TODO: Should this function be returning the quat4 out?
  * @param {quat4} out
  * @param {quat4} inq
  * @param {number} exponent
@@ -105,6 +104,7 @@ Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
     out[2] *= exponent;
     out[3] *= exponent;
     Tw2RotationCurve.QuaternionExp(out, out);
+    return out;
 };
 
 /**
@@ -175,7 +175,6 @@ Tw2RotationCurve.QuaternionExp = function(out, q)
 
 /**
  * Gets a value at a specific time
- * TODO: Identify what the undefined value `q0` should be
  * @param {number} time
  * @param {quat4} value
  * @returns {quat4}
@@ -266,7 +265,7 @@ Tw2RotationCurve.prototype.GetValueAt = function(time, value)
             Tw2RotationCurve.QuaternionPow(value, value, power);
             quat4.multiply(collect, value, collect);
         }
-        return quat4.multiply(collect, q0, value);
+        return quat4.multiply(collect, ck_1.value, value);
     }
     else if (ck_1.interpolation == 5)
     {
