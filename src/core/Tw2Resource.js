@@ -1,4 +1,9 @@
 /**
+ * Tw2Res - A Tw2Resource
+ * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Tw2Res
+ */
+
+/**
  * Tw2Resource
  * @property {string} path
  * @property {boolean} _isLoading
