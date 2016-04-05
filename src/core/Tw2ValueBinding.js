@@ -4,9 +4,11 @@
  * @property {Object} sourceObject
  * @property {string} sourceAttribute
  * @property {number} _sourceElement
+ * @property {boolean} sourceIsArray
  * @property {Object} destinationObject
  * @property {string} destinationAttribute
  * @property {number} _destinationElement
+ * @property {boolean} destinationIsArray
  * @property {number} scale
  * @property {quat4} offset
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
@@ -17,13 +19,17 @@ function Tw2ValueBinding()
     this.name = '';
     this.sourceObject = null;
     this.sourceAttribute = '';
+    this._sourceElement = null;
+    this.sourceIsArray = null;
+    
     this.destinationObject = null;
     this.destinationAttribute = '';
+    this._destinationElement = null;
+    this.destinationIsArray = null;
+    
     this.scale = 1;
     this.offset = quat4.create();
     this._copyFunc = null;
-    this._sourceElement = 0;
-    this._destinationElement = 0;
 }
 
 /**
@@ -42,9 +48,7 @@ Tw2ValueBinding.prototype.Initialize = function()
     }
 
     var srcSwizzled = false;
-    this._sourceElement = 0;
     var destSwizzled = false;
-    this._destinationElement = 0;
     var srcSwizzle = this.sourceAttribute.substr(-2);
 
     if (srcSwizzle == '.x' || srcSwizzle == '.r')
@@ -156,12 +160,12 @@ Tw2ValueBinding.prototype.Initialize = function()
         return;
     }
 
-    var srcIsArray = (this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name == "Array");
-    var destIsArray = (this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name == "Array");
+    this.sourceIsArray = (this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name == "Array");
+    this.destinationIsArray = (this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name == "Array");
 
-    if (srcIsArray == destIsArray && typeof this.sourceObject[this.sourceAttribute] == typeof this.destinationObject[this.destinationAttribute])
+    if (this.sourceIsArray == this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] == typeof this.destinationObject[this.destinationAttribute])
     {
-        if (srcIsArray)
+        if (this.sourceIsArray)
         {
             if (srcSwizzled)
             {
@@ -195,11 +199,11 @@ Tw2ValueBinding.prototype.Initialize = function()
             this._copyFunc = this._CopyValueToValue;
         }
     }
-    else if (srcIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] == 'number')
+    else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] == 'number')
     {
         this._copyFunc = this._CopyElementToValue;
     }
-    else if (destIsArray && typeof this.sourceObject[this.sourceAttribute] == 'number')
+    else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] == 'number')
     {
         if (destSwizzled)
         {
