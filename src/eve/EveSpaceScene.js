@@ -101,6 +101,15 @@ EveSpaceScene.prototype.Initialize = function ()
     }
 };
 
+EveSpaceScene.prototype.SetEnvMapReflection = function(path)
+{
+    this.envMapResPath = path;
+    if (this.envMapResPath != '')
+    {
+        this.envMapRes = resMan.GetResources ( path )
+    }
+};
+
 EveSpaceScene.prototype.SetEnvMapPath = function (index, path)
 {
     switch (index)
