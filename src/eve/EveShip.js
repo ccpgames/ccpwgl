@@ -11,7 +11,6 @@
 function EveShip()
 {
     this._super.constructor.call(this);
-    this.display = true;
     this.boosterGain = 1;
     this.boosters = null;
     this.turretSets = [];
