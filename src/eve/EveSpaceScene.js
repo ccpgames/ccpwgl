@@ -106,7 +106,7 @@ EveSpaceScene.prototype.SetEnvMapReflection = function(path)
     this.envMapResPath = path;
     if (this.envMapResPath != '')
     {
-        this.envMapRes = resMan.GetResources ( path )
+        this.envMapRes = resMan.GetResource ( path )
     }
 };
 
