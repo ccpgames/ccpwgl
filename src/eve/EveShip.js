@@ -14,6 +14,9 @@ function EveShip()
     this.boosterGain = 1;
     this.boosters = null;
     this.turretSets = [];
+    
+    this.displayTurrets = true;
+    this.displayBoosters = true;
 
     this._turretSetsLocatorInfo = [];
 }
@@ -54,24 +57,29 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
 
         this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
         this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-        if (this.lod > 1)
+        
+        if (this.displayTurrets)
         {
-            for (var i = 0; i < this.turretSets.length; ++i)
+            if (this.lod > 1)
             {
-                this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
-            }
-        }
-        else
-        {
-            for (var i = 0; i < this.turretSets.length; ++i)
-            {
-                if (this.turretSets[i].firingEffect)
+                for (var i = 0; i < this.turretSets.length; ++i)
                 {
-                    this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                    this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+                }
+            }
+            else
+            {
+                for (var i = 0; i < this.turretSets.length; ++i)
+                {
+                    if (this.turretSets[i].firingEffect)
+                    {
+                        this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                    }
                 }
             }
         }
-        if (this.boosters)
+        
+        if (this.boosters && this.displayBoosters)
         {
             this.boosters.GetBatches(mode, accumulator, this._perObjectData);
         }
@@ -94,6 +102,7 @@ EveShip.prototype.Update = function(dt)
         }
         this.boosters.Update(dt, this.transform);
     }
+    
     for (var i = 0; i < this.turretSets.length; ++i)
     {
         if (i < this._turretSetsLocatorInfo.length)
