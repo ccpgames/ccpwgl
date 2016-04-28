@@ -106,6 +106,7 @@ function Tw2Model()
  * @property {quat4} _tempQuat4
  * @property {vec3} _tempVec3
  * @property _geometryResource
+ * @property {Array} pendingCommands
  * @prototype
  */
 function Tw2AnimationController(geometryResource)
@@ -121,6 +122,7 @@ function Tw2AnimationController(geometryResource)
     this._tempQuat4 = quat4.create();
     this._tempVec3 = vec3.create();
     this._geometryResource = null;
+    this.pendingCommands = [];
 
     if (typeof(geometryResource) != 'undefined')
     {
@@ -330,15 +332,14 @@ Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 
 /**
  * _DoRebuildCachedData
- * TODO: Fix commented out code (line 339)
- * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype (line 352)
+ * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
  * @param {Tw2GeometryRes} resource
  * @private
  */
 Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
 {
     var newModels = [];
-    //if (resource.meshes.length)
+    if (resource.meshes.length)
     {
         for (var i = 0; i < resource.models.length; ++i)
         {
@@ -417,67 +418,192 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
     this.loaded = true;
     if (this.animations.length)
     {
-        if (this.pendingCommands)
+        if (this.pendingCommands.length)
         {
             for (var i = 0; i < this.pendingCommands.length; ++i)
             {
-                this.pendingCommands[i].func.apply(this, this.pendingCommands[i].args);
+                if (!this.pendingCommands[i].args)
+                {
+                    this.pendingCommands[i].func.apply(this);
+                }
+                else
+                {
+                    this.pendingCommands[i].func.apply(this, this.pendingCommands[i].args);
+                }
             }
         }
-        this.pendingCommands = null;
+        this.pendingCommands = [];
     }
 };
 
 /**
- * Plays a specific animation
- * @param {string} name - Animation Name
+ * Gets a loaded Tw2Animation by it's name
+ * @param name
+ * @returns {null|Tw2Animation} Returns the animation if found
+ * @constructor
+ */
+Tw2AnimationController.prototype.GetAnimation = function(name)
+{
+    for (var i = 0; i < this.animations.length; i++)
+    {
+        if (this.animations[i].animationRes.name == name)
+        {
+            return this.animations[i];
+        }
+    }
+
+    return null;
+};
+
+/**
+ * Resets a Tw2Animation by it's name
+ * @param {String} name
+ * @return {boolean}
+ * @constructor
+ */
+Tw2AnimationController.prototype.ResetAnimation = function(name)
+{
+    var animation = this.GetAnimation(name);
+    if (animation)
+    {
+        animation.time = 0;
+        animation.isPlaying = false;
+        animation.callback = null;
+        return true;
+    }
+};
+
+/**
+ * Plays a specific animation by it's name
+ * @param {string} name - Animation's Name
  * @param {boolean} [cycle]
  * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+ * @return {boolean}
  * @prototype
  */
 Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
     if (this.animations.length == 0)
     {
-        if (!this.pendingCommands)
-        {
-            this.pendingCommands = [];
-        }
         this.pendingCommands.push(
         {
             'func': this.PlayAnimation,
             'args': [name, cycle, callback]
         });
-        return;
+        return true;
     }
-    for (var i = 0; i < this.animations.length; ++i)
+
+    var animation = this.GetAnimation(name);
+
+    if (animation)
     {
-        if (this.animations[i].animationRes.name == name)
+        animation.time = 0;
+        animation.isPlaying = true;
+        if (typeof(cycle) != 'undefined')
         {
-            this.animations[i].time = 0;
-            this.animations[i].isPlaying = true;
-            if (typeof(cycle) != 'undefined')
-            {
-                this.animations[i].cycle = cycle;
-            }
-            if (typeof(callback) != 'undefined')
-            {
-                this.animations[i].callback = callback;
-            }
+            animation.cycle = cycle;
         }
+        if (typeof(callback) != 'undefined')
+        {
+            animation.callback = callback;
+        }
+        return true;
     }
 };
 
 /**
- * Stops a specific animation from playing
- * @param {string} name - Animation Name
+ * Plays a specific animation from a specific time
+ * @param {string} name - Animation's Name
+ * @param {number} from - Time to play from
+ * @param {boolean} [cycle]
+ * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+ * @returns {boolean}
  * @prototype
  */
-Tw2AnimationController.prototype.StopAnimation = function(name)
+Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
 {
+    if (this.animations.length == 0)
+    {
+        this.pendingCommands.push(
+        {
+            'func': this.PlayAnimationFrom,
+            'args': [name, from, cycle, callback]
+        });
+        return true;
+    }
+
+    var animation = this.GetAnimation(name);
+
+    if (animation)
+    {
+        from = (from <= animation.animationRes.duration) ? from : animation.animationRes.duration;
+        animation.time = (from < 0) ? 0 : from;
+        animation.isPlaying = true;
+        if (typeof(cycle) != 'undefined')
+        {
+            animation.cycle = cycle;
+        }
+        if (typeof(callback) != 'undefined')
+        {
+            animation.callback = callback;
+        }
+
+        return true;
+    }
+};
+
+/**
+ * Gets an array of all the currently playing animations by name
+ * @returns {[]}
+ * @constructor
+ */
+Tw2AnimationController.prototype.GetPlayingAnimations = function()
+{
+    var result = [];
+
+    for (var i = 0; i < this.animations.length; i++)
+    {
+        if (this.animations[i].isPlaying)
+        {
+            result.push(this.animations[i].animationRes.name)
+        }
+    }
+
+    return result;
+};
+
+/**
+ * Stops an animation or an array of animations from playing
+ * @param {String, Array.<string>} names - Animation Name, or Array of Animation Names
+ * @prototype
+ */
+Tw2AnimationController.prototype.StopAnimation = function(names)
+{
+    if (this.animations.length == 0)
+    {
+        this.pendingCommands.push(
+        {
+            'func': this.StopAnimation,
+            'args': names
+        });
+        return;
+    }
+
+    if (typeof names == 'string' || names instanceof String)
+    {
+        names = [names];
+    }
+
+    var toStop = {};
+    
+    for (var n = 0; n < names.length; n++)
+    {
+        toStop[names[n]] = true;
+    }
+
     for (var i = 0; i < this.animations.length; ++i)
     {
-        if (this.animations[i].animationRes.name == name)
+        if (this.animations[i].animationRes.name in toStop)
         {
             this.animations[i].isPlaying = false;
         }
@@ -490,9 +616,57 @@ Tw2AnimationController.prototype.StopAnimation = function(name)
  */
 Tw2AnimationController.prototype.StopAllAnimations = function()
 {
+    if (this.animations.length == 0)
+    {
+        this.pendingCommands.push(
+        {
+            'func': this.StopAllAnimations,
+            'args': null
+        });
+        return;
+    }
+
     for (var i = 0; i < this.animations.length; ++i)
     {
         this.animations[i].isPlaying = false;
+    }
+};
+
+/**
+ * Stops all but the supplied list of animations
+ * @param {String| Array.<string>} names - Animation Names
+ * @prototype
+ */
+Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
+{
+    if (this.animations.length == 0)
+    {
+        this.pendingCommands.push(
+        {
+            'func': this.StopAllAnimationsExcept,
+            'args': names
+        });
+        return;
+    }
+
+    if (typeof names == 'string' || names instanceof String)
+    {
+        names = [names];
+    }
+
+    var keepAnimating = {};
+    
+    for (var n = 0; n < names.length; n++)
+    {
+        keepAnimating[names[n]] = true;
+    }
+
+    for (var i = 0; i < this.animations.length; ++i)
+    {
+        if (!(this.animations[i].animationRes.name in keepAnimating))
+        {
+            this.animations[i].isPlaying = false;
+        }
     }
 };
 
