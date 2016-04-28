@@ -573,6 +573,9 @@ var ccpwgl = (function (ccpwgl_int)
             /** Callback to be called when ship is loaded. Provided by Ship.setSiegeState. @type {!function(state): void} **/
             this.onInitialSeigeState = null;
             /** Current booster effect strength. **/
+            this.t3dMode = 0;
+            this.internalT3dMode = 0;
+            this.onInitialT3dMode = null;
             this.boosterStrength = 1;
             /** Cached number of turret slots. **/
             this.turretCount = undefined;
@@ -629,6 +632,10 @@ var ccpwgl = (function (ccpwgl_int)
                         if (self.onInitialSeigeState)
                         {
                             self.onInitialSeigeState.call(self, self.siegeState);
+                        }
+                        if (self.onInitialT3dMode)
+                        {
+                            self.onInitialT3dMode.call(self, self.t3dMode);
                         }
                         for (var i = 0; i < self.turrets.length; ++i)
                         {
@@ -980,28 +987,30 @@ var ccpwgl = (function (ccpwgl_int)
                 if (this.turrets[index].state != state || state == ccpwgl.TurretState.FIRING)
                 {
                     this.turrets[index].state = state;
-                    var name = 'locator_turret_' + index;
+                    var names = ['locator_turret_' + index, 'locator_xl_' + index ];
                     for (var j = 0; j < this.wrappedObjects.length; ++j)
                     {
                         if (this.wrappedObjects[j])
                         {
                             for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
                             {
-                                if (this.wrappedObjects[j].turretSets[i].locatorName == name)
-                                {
-                                    switch (state)
+                                for (k in names) {
+                                    if (this.wrappedObjects[j].turretSets[i].locatorName == names[k])
                                     {
-                                        case ccpwgl.TurretState.FIRING:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateFiring();
-                                            break;
-                                        case ccpwgl.TurretState.OFFLINE:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateDeactive();
-                                            break;
-                                        default:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateIdle();
-                                            break;
+                                        switch (state)
+                                        {
+                                            case ccpwgl.TurretState.FIRING:
+                                                this.wrappedObjects[j].turretSets[i].EnterStateFiring();
+                                                break;
+                                            case ccpwgl.TurretState.OFFLINE:
+                                                this.wrappedObjects[j].turretSets[i].EnterStateDeactive();
+                                                break;
+                                            default:
+                                                this.wrappedObjects[j].turretSets[i].EnterStateIdle();
+                                                break;
+                                        }
+                                        break;
                                     }
-                                    break;
                                 }
                             }
                         }
@@ -1052,7 +1061,11 @@ var ccpwgl = (function (ccpwgl_int)
             /** Internal helper method that mount a turret on a loaded ship **/
             function doMountTurret(slot, resPath, state, targetPosition, objectIndex)
                 {
-                    var name = 'locator_turret_' + slot;
+                    if (resPath.indexOf('/XL/') !== -1 || resPath.indexOf('/Citadel') !== -1) {
+                        var name = 'locator_xl_' + slot;
+                    } else {
+                        var name = 'locator_turret_' + slot;
+                    }
                     if (objectIndex === undefined) {
                         objectIndex = null;
                         for (var i = 0; i < self.wrappedObjects.length; ++i) {
@@ -1107,7 +1120,7 @@ var ccpwgl = (function (ccpwgl_int)
                             }
                         });
                 }
-
+            
             /**
              * Sets ship siege state. Some ships support switching between "normal" and
              * siege state having different animations for these states. This function
@@ -1202,6 +1215,140 @@ var ccpwgl = (function (ccpwgl_int)
                     if (onswitch)
                     {
                         onswitch.call(self, this.siegeState);
+                    }
+                }
+            };
+
+            // 0: Speed 1: Defense 2: Sniper
+            this.setT3dMode = function (mode, onchange)
+            {
+                function getOnChanged(index, mode, nextAnim) {
+                    return function () {
+                        self.internalT3dMode = mode;
+                        self.wrappedObjects[index].animation.StopAllAnimations();
+                        self.wrappedObjects[index].animation.PlayAnimation(nextAnim, true);
+                        if (onchange)
+                        {
+                            onchange.call(self, self.internalT3dMode);
+                        }
+                    };
+
+                }
+                if (this.t3dMode != mode)
+                {
+                    this.t3dMode = mode;
+                    for (var j = 0; j < this.wrappedObjects.length; ++j)
+                    {
+                        if (this.wrappedObjects[j])
+                        {
+                            if (mode == 1)
+                            {   
+                                switch (this.internalT3dMode)
+                                {
+                                    case 2:
+                                    case 102:
+                                        this.internalT3dMode = 101;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Sniper2Defensive',
+                                            false,
+                                            getOnChanged(j, 1, 'DefensiveModeLoop'));
+                                        break;
+                                    case 0:
+                                    case 100:
+                                        this.internalT3dMode = 101;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Speed2Defensive',
+                                            false,
+                                            getOnChanged(j, 1, 'DefensiveModeLoop'));
+                                        break;
+                                    default:
+                                        this.internalT3dMode = 101;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation('DefensiveModeLoop', true);
+                                        if (onchange)
+                                        {
+                                            onchange.call(self, self.internalT3dMode);
+                                        }
+                                }
+                            }
+                            else if (mode == 0)
+                            {
+                                switch (this.internalT3dMode)
+                                {
+                                    case 2:
+                                    case 102:
+                                        this.internalT3dMode = 100;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Sniper2Speed',
+                                            false,
+                                            getOnChanged(j, 0, 'SpeedModeLoop'));
+                                        break;
+                                    case 1:
+                                    case 101:
+                                        this.internalT3dMode = 100;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Defensive2Speed',
+                                            false,
+                                            getOnChanged(j, 0, 'SpeedModeLoop'));
+                                        break;
+                                    default:
+                                        this.internalT3dMode = 100;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation('SpeedModeLoop', true);
+                                        if (onchange)
+                                        {
+                                            onchange.call(self, self.internalT3dMode);
+                                        }
+                                }
+                            } 
+                            else
+                            {
+                                switch (this.internalT3dMode)
+                                {
+                                    case 1:
+                                    case 101:
+                                        this.internalT3dMode = 102;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Defensive2Sniper',
+                                            false,
+                                            getOnChanged(j, 2, 'SniperModeLoop'));
+                                        break;
+                                    case 0:
+                                    case 100:
+                                        this.internalT3dMode = 102;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation(
+                                            'Speed2Sniper',
+                                            false,
+                                            getOnChanged(j, 2, 'SniperModeLoop'));
+                                        break;
+                                    default:
+                                        this.internalT3dMode = 102;
+                                        this.wrappedObjects[j].animation.StopAllAnimations();
+                                        this.wrappedObjects[j].animation.PlayAnimation('SniperModeLoop', true);
+                                        if (onchange)
+                                        {
+                                            onchange.call(self, self.internalT3dMode);
+                                        }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            this.onInitialT3dMode = onchange;
+                        }
+                    }
+                }
+                else
+                {
+                    if (onchange)
+                    {
+                        onchange.call(self, this.t3dMode);
                     }
                 }
             };
