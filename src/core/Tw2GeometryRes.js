@@ -880,6 +880,10 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
     {
         effect.ApplyPass(pass);
         var passInput = effect.GetPassInput(pass);
+        if (passInput.elements.length == 0)
+        {
+            continue;
+        }
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
         mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);

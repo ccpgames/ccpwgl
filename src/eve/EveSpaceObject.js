@@ -28,6 +28,7 @@
  * @parameter {boolean} displayPlanes - toggles plane set rendering
  * @parameter {boolean} displayLines - toggles line set rendering
  * @parameter {boolean} displayOverlays - toggles overlay effect rendering
+ * @parameter {Number} displayKillCounterValue - number of kills to show on kill counter decals
  * @parameter {vec3} _tempVec
  * @parameter {Tw2PerObjectData} _perObjectData
  * @constructor
@@ -48,6 +49,7 @@ function EveSpaceObject()
     this.lineSets = [];
     this.overlayEffects = [];
     this.children = [];
+    this.effectChildren = [];
 
     this.boundingSphereCenter = vec3.create();
     this.boundingSphereRadius = 0;
@@ -66,6 +68,8 @@ function EveSpaceObject()
     this.displaySprites = true;
     this.displayOverlays = true;
     this.displayLines = true;
+
+    this.displayKillCounterValue = 0;
     
     this._tempVec = vec3.create();
 
@@ -243,7 +247,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
             {
                 for (i = 0; i < this.decals.length; ++i)
                 {
-                    this.decals[i].GetBatches(mode, accumulator, this._perObjectData);
+                    this.decals[i].GetBatches(mode, accumulator, this._perObjectData, this.displayKillCounterValue);
                 }
             }
 
@@ -258,6 +262,10 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
             for (i = 0; i < this.children.length; ++i)
             {
                 this.children[i].GetBatches(mode, accumulator, this._perObjectData);
+            }
+            for (i = 0; i < this.effectChildren.length; ++i)
+            {
+                this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
             }
         }
 
@@ -302,6 +310,10 @@ EveSpaceObject.prototype.Update = function(dt)
         for (i = 0; i < this.children.length; ++i)
         {
             this.children[i].Update(dt);
+        }
+        for (i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].Update(this.transform);
         }
         for (i = 0; i < this.curveSets.length; ++i)
         {

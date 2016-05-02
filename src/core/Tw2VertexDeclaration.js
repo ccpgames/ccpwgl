@@ -223,13 +223,22 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
             }
             else if (cmp > 0)
             {
+                if (!divisor)
+                {
+                    device.gl.disableVertexAttribArray(el.location);
+                    device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                }
                 break;
             }
             index++;
             if (index >= this._elementsSorted.length)
             {
-                this.ResetInstanceDivisors(resetData);
-                return false;
+                if (!divisor)
+                {
+                    device.gl.disableVertexAttribArray(el.location);
+                    device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                }
+                return resetData;
             }
         }
     }

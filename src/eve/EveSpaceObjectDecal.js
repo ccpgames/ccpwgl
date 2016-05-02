@@ -25,6 +25,11 @@ function EveSpaceObjectDecal()
     this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
     this._perObjectData.perObjectVSData.Create();
 
+    this._perObjectData.perObjectPSData = new Tw2RawData();
+    this._perObjectData.perObjectPSData.Declare('displayData', 4);
+    this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
+    this._perObjectData.perObjectPSData.Create();
+
     mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
 
     variableStore.RegisterType('u_DecalMatrix', Tw2MatrixParameter);
@@ -50,7 +55,7 @@ EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
     this.parentGeometry = geometryRes;
 };
 
-EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData, counter)
 {
     if (mode != device.RM_DECAL)
     {
@@ -63,30 +68,34 @@ EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjec
         if (this.parentBoneIndex >= 0) {
             var bones = perObjectData.perObjectVSData.Get('JointMat');
             var offset = this.parentBoneIndex * 12;
-            var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
-            bone[0] = bones[offset + 0];
-            bone[1] = bones[offset + 4];
-            bone[2] = bones[offset + 8];
-            bone[3] = 0;
-            bone[4] = bones[offset + 1];
-            bone[5] = bones[offset + 5];
-            bone[6] = bones[offset + 9];
-            bone[7] = 0;
-            bone[8] = bones[offset + 2];
-            bone[9] = bones[offset + 6];
-            bone[10] = bones[offset + 10];
-            bone[11] = 0;
-            bone[12] = bones[offset + 3];
-            bone[13] = bones[offset + 7];
-            bone[14] = bones[offset + 11];
-            bone[15] = 1;
-            mat4.transpose(bone);
+            if (bones[offset + 0] || bones[offset + 4] || bones[offset + 8])
+            {
+                var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
+                bone[0] = bones[offset + 0];
+                bone[1] = bones[offset + 4];
+                bone[2] = bones[offset + 8];
+                bone[3] = 0;
+                bone[4] = bones[offset + 1];
+                bone[5] = bones[offset + 5];
+                bone[6] = bones[offset + 9];
+                bone[7] = 0;
+                bone[8] = bones[offset + 2];
+                bone[9] = bones[offset + 6];
+                bone[10] = bones[offset + 10];
+                bone[11] = 0;
+                bone[12] = bones[offset + 3];
+                bone[13] = bones[offset + 7];
+                bone[14] = bones[offset + 11];
+                bone[15] = 1;
+                mat4.transpose(bone);
+            }
         }
         mat4.inverse(this._perObjectData.perObjectVSData.Get('worldMatrix'), this._perObjectData.perObjectVSData.Get('invWorldMatrix'));
         mat4.transpose(this.decalMatrix, this._perObjectData.perObjectVSData.Get('decalMatrix'));
         mat4.transpose(this.invDecalMatrix, this._perObjectData.perObjectVSData.Get('invDecalMatrix'));
 
-        this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
+        this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
+        this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
 
         batch.perObjectData = this._perObjectData;
         batch.geometryProvider = this;

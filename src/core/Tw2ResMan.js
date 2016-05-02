@@ -229,7 +229,7 @@ function Tw2ResMan()
     this.systemMirror = false;
     this.resourcePaths = {};
 
-    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1005132/';
+    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1035524/';
 
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();

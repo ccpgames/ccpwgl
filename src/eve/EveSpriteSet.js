@@ -10,26 +10,43 @@
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
-function EveSpriteSet()
+function EveSpriteSet(useQuads)
 {
     this.name = '';
     this.sprites = [];
     this.effect = null;
     this.display = true;
     this._time = 0;
+    this.useQuads = useQuads;
 
     this._vertexBuffer = null;
     this._indexBuffer = null;
+    this._instanceBuffer = null;
     this._decl = new Tw2VertexDeclaration();
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 2, 0));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 8));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 20));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 32));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 36));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 40));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 44));
-    this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 48));
+    if (!useQuads)
+    {
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 2, 0));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 8));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 20));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 32));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 36));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 40));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 44));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 48));
+    }
+    else
+    {
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 0));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 4, 12));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 2, 28));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 4, 36));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 1, device.gl.FLOAT, 4, 52));
+    }
     this._decl.RebuildHash();
+
+    this._vdecl = new Tw2VertexDeclaration();
+    this._vdecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 0));
+    this._vdecl.RebuildHash();
 }
 
 /**
@@ -45,7 +62,6 @@ EveSpriteSet.prototype.Initialize = function()
  */
 EveSpriteSet.prototype.RebuildBuffers = function()
 {
-    var vertexSize = 13;
     var visibleItems = [];
     for (var i = 0; i < this.sprites.length; i++)
     {
@@ -54,7 +70,16 @@ EveSpriteSet.prototype.RebuildBuffers = function()
             visibleItems.push(this.sprites[i]);
         }
     }
+    if (this.useQuads)
+    {
+        this._vertexBuffer = device.gl.createBuffer();
+        device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
+        device.gl.bufferData(device.gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), device.gl.STATIC_DRAW);
+        this._instanceBuffer = device.gl.createBuffer();
+        return;
+    }
 
+    var vertexSize = 13;
     var array = new Float32Array(visibleItems.length * 4 * vertexSize);
     for (var i = 0; i < visibleItems.length; ++i)
     {
@@ -112,7 +137,11 @@ EveSpriteSet.prototype.RebuildBuffers = function()
 function EveSpriteSetBatch()
 {
     this._super.constructor.call(this);
+    this.boosterGlow = false;
     this.spriteSet = null;
+    this.world = null;
+    this.boosterGain = 0;
+    this.warpIntensity = 0;
 }
 
 /**
@@ -121,7 +150,14 @@ function EveSpriteSetBatch()
  */
 EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
 {
-    this.spriteSet.Render(overrideEffect);
+    if (this.boosterGlow)
+    {
+        this.spriteSet.RenderBoosterGlow(overrideEffect, this.world, this.boosterGain, this.warpIntensity);
+    }
+    else
+    {
+        this.spriteSet.Render(overrideEffect);
+    }
 };
 
 Inherit(EveSpriteSetBatch, Tw2RenderBatch);
@@ -137,6 +173,32 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     if (this.display && mode == device.RM_ADDITIVE)
     {
         var batch = new EveSpriteSetBatch();
+        batch.renderMode = device.RM_ADDITIVE;
+        batch.spriteSet = this;
+        batch.perObjectData = perObjectData;
+        accumulator.Commit(batch);
+    }
+};
+
+/**
+ * Gets render batches for booster glows
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @param {mat4} world
+ * @param {Number} boosterGain
+ * @param {Number} warpIntensity
+ */
+EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perObjectData, world, boosterGain,
+                                                        warpIntensity)
+{
+    if (this.display && mode == device.RM_ADDITIVE)
+    {
+        var batch = new EveSpriteSetBatch();
+        batch.boosterGlow = true;
+        batch.world = world;
+        batch.boosterGain = boosterGain;
+        batch.warpIntensity = warpIntensity;
         batch.renderMode = device.RM_ADDITIVE;
         batch.spriteSet = this;
         batch.perObjectData = perObjectData;
@@ -175,6 +237,69 @@ EveSpriteSet.prototype.Render = function(overrideEffect)
         device.ApplyShadowState();
         device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
     }
+};
+
+/**
+ * Renders the sprite set as booster glow
+ * @param {Tw2Effect} overrideEffect
+ * @param {mat4} world
+ * @param {Number} boosterGain
+ * @param {Number} warpIntensity
+ */
+EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boosterGain, warpIntensity)
+{
+    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    if (!effect || !this._vertexBuffer)
+    {
+        return;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes.IsGood())
+    {
+        return;
+    }
+    device.SetStandardStates(device.RM_ADDITIVE);
+
+    var array = new Float32Array(17 * this.sprites.length);
+    var index = 0;
+    var pos = vec3.create();
+    for (var i = 0; i < this.sprites.length; ++i)
+    {
+        mat4.multiplyVec3(world, this.sprites[i].position, pos);
+        array[index++] = pos[0];
+        array[index++] = pos[1];
+        array[index++] = pos[2];
+        array[index++] = world[8];
+        array[index++] = this.sprites[i].blinkPhase;
+        array[index++] = world[9];
+        array[index++] = this.sprites[i].minScale;
+        array[index++] = this.sprites[i].maxScale;
+        array[index++] = world[10];
+        array[index++] = this.sprites[i].color[0];
+        array[index++] = this.sprites[i].color[1];
+        array[index++] = this.sprites[i].color[2];
+        array[index++] = boosterGain;
+        array[index++] = this.sprites[i].warpColor[0];
+        array[index++] = this.sprites[i].warpColor[1];
+        array[index++] = this.sprites[i].warpColor[2];
+        array[index++] = warpIntensity;
+    }
+    device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
+    device.gl.bufferData(device.gl.ARRAY_BUFFER, array, device.gl.DYNAMIC_DRAW);
+
+    for (var pass = 0; pass < effect.GetPassCount(); ++pass)
+    {
+        effect.ApplyPass(pass);
+        var passInput = effect.GetPassInput(pass);
+        device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
+        this._vdecl.SetPartialDeclaration(passInput, 4);
+        device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
+        var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
+        device.ApplyShadowState();
+        device.instancedArrays.drawArraysInstancedANGLE(device.gl.TRIANGLES, 0, 6, this.sprites.length);
+        this._decl.ResetInstanceDivisors(resetData);
+    }
+
 };
 
 /**
@@ -227,6 +352,7 @@ EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxS
  * @property {number} minScale
  * @property {number} falloff
  * @property {quat4} color
+ * @property {quat4} warpColor
  * @property {number} boneIndex
  * @property {number} groupIndex
  * @constructor
@@ -242,6 +368,7 @@ function EveSpriteSetItem()
     this.maxScale = 1;
     this.falloff = 0;
     this.color = quat4.create();
+    this.warpColor = quat4.create();
     this.boneIndex = 0;
     this.groupIndex = -1;
 }

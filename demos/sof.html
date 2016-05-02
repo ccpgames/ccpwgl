@@ -69,6 +69,10 @@
             scene.getObject(0).setBoosterStrength($(this).val() / 50)
         });
 
+        $('#kills').change(function () {
+            scene.getObject(0).setKillCount(parseInt($(this).val()));
+        });
+
         ccpwgl.onPreRender = function () {
             document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
         };
@@ -101,6 +105,10 @@
             <label>Siege State</label>
             <button id="normal">Normal</button>
             <button id="siege">Siege</button>
+        </div>
+        <div>
+            <label for="kills">Kills</label>
+            <input id="kills" type="number" value="0">
         </div>
     </div>
 </body>

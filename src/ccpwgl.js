@@ -586,6 +586,9 @@ var ccpwgl = (function (ccpwgl_int)
             this.dna = undefined;
             /** Array of object overlay effects **/
             this.overlays = [];
+            /** Kill counter **/
+            this.killCount = 0;
+
             var faction = null;
 
             var self = this;
@@ -616,6 +619,7 @@ var ccpwgl = (function (ccpwgl_int)
                             self.wrappedObjects[index].boosters = self.boosters[index];
                             self.wrappedObjects[index].RebuildBoosterSet();
                         }
+                        self.wrappedObjects[index].displayKillCounterValue = self.killCount;
                         self.wrappedObjects[index].boosterGain = self.boosterStrength;
                         switch (self.siegeState)
                         {
@@ -884,6 +888,23 @@ var ccpwgl = (function (ccpwgl_int)
                     if (this.wrappedObjects[i])
                     {
                         this.wrappedObjects[i].boosterGain = this.boosterStrength;
+                    }
+                }
+            };
+
+            /**
+             * Set number of kills for the ship (to display on the hull).
+             *
+             * @param {number} kills Number of kills (from 0).
+             */
+            this.setKillCount = function (kills)
+            {
+                this.killCount = kills;
+                for (var i = 0; i < self.wrappedObjects.length; ++i)
+                {
+                    if (this.wrappedObjects[i])
+                    {
+                        this.wrappedObjects[i].displayKillCounterValue = kills;
                     }
                 }
             };

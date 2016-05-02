@@ -274,7 +274,7 @@ EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
     if (this.glows)
     {
-        this.glows.GetBatches(mode, accumulator, perObjectData);
+        this.glows.GetBoosterGlowBatches(mode, accumulator, perObjectData, this._parentTransform, perObjectData.perObjectVSData.Get('Shipdata')[0], 0);
     }
 };
 
