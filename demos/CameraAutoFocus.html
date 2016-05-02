@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <title>WebGL API Test - Auto focus Camera on Space Object</title>
@@ -10,66 +11,71 @@
 
     <script type="text/javascript">
 
+        // Variables declared globally for developer console access
+        var ship, scene, camera, distanceScaler;
+
         function onDocumentLoad()
+        {
+            var canvas = document.getElementById('mainCanvas');
+            ccpwgl.initialize(canvas);
+            ccpwgl.enablePostprocessing(true);
+
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/a12_cube.red');
+
+            camera = new TestCamera(canvas);
+            camera.minDistance = 10;
+            camera.maxDistance = 10000;
+            camera.fov = 30;
+            camera.distance = 5000;
+            camera.nearPlane = 1;
+            camera.farPlane = 10000000;
+            camera.minPitch = -0.5;
+            camera.maxPitch = 0.65;
+            ccpwgl.setCamera(camera);
+
+            // Load the data for the Confessor
+            ship = scene.loadShip('ade3_t3:amarrbase:amarr', whenLoaded);
+
+            // Default distance scaler
+            distanceScaler = 2;
+
+            /**
+             * A function that makes a camera look at a space object from a given distance
+             * @param {Ship|SpaceObject} spaceObject - a ccpwgl space object (Ship, Object or Planet)
+             * @param {Number} distanceScaler - numeric value
+             * @throws SpaceObject is not loaded
+             */
+            function cameraLookAt(spaceObject, distanceScaler)
             {
-                var canvas = document.getElementById('mainCanvas');
-                ccpwgl.initialize(canvas);
-                var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a12_cube.red');
-
-                var camera = new TestCamera(canvas);
-                camera.minDistance = 10;
-                camera.maxDistance = 10000;
-                camera.fov = 30;
-                camera.distance = 5000;
-                camera.nearPlane = 1;
-                camera.farPlane = 10000000;
-                camera.minPitch = -0.5;
-                camera.maxPitch = 0.65;
-                ccpwgl.setCamera(camera);
-
-                // Load the data for the Confessor
-                var ship = scene.loadShip('ade3_t3:amarrbase:amarr', whenLoaded);
-
-                var distanceScaler = 2;
-
-                /**
-                 * A function that auto focuses the scene's camera to a space object
-                 * @param (spaceObject) a ccpwgl space object (Ship, Object or Planet)
-                 * @param (distanceScaler) numeric value
-                 * @throws SpaceObject is not loaded
-                 */
-                function autoFocus(spaceObject, distanceScaler)
+                // The spaceObject must be loaded to get it's bounding sphere data
+                if (!spaceObject.isLoaded())
                 {
-                    // The spaceObject must be loaded to get it's bounding sphere data
-                    if (!spaceObject.isLoaded())
-                    {
-                        throw new ccpwgl.IsStillLoadingError();
-                    }
-
-                    // Set the camera's point of interest as the space object's position in world space
-                    camera.poi[0] = spaceObject.getTransform()[12];
-                    camera.poi[1] = spaceObject.getTransform()[13];
-                    camera.poi[2] = spaceObject.getTransform()[14];
-
-                    // Get the radius of the space object
-                    var spaceObjectRadius = parseInt(spaceObject.getBoundingSphere()[1]);
-
-                    // Set the camera's minimum distance
-                    camera.minDistance = spaceObjectRadius * 0.8;
-
-                    // Set the camera's distance
-                    camera.distance = spaceObjectRadius * distanceScaler;
+                    throw new ccpwgl.IsStillLoadingError();
                 }
 
-                // A callback function that is run once the ship's base javascript object has loaded.
-                function whenLoaded()
-                {
-                    autoFocus(this, distanceScaler)
-                }
+                // Get the space Object's position
+                var objectPosition = spaceObject.getTransform().slice(12, 15);
 
-                ccpwgl.enablePostprocessing(true);
+                // Set the camera's point of interest as the space object's position in world space
+                vec3.set(objectPosition, camera.poi)
 
+                // Get the radius of the space object
+                var spaceObjectRadius = parseInt(spaceObject.getBoundingSphere()[1]);
+
+                // Set the camera's minimum distance
+                camera.minDistance = spaceObjectRadius * 0.8;
+
+                // Set the camera's distance
+                camera.distance = spaceObjectRadius * distanceScaler;
             }
+
+            // A callback function that is run once the ship's base javascript object has loaded.
+            function whenLoaded()
+            {
+                cameraLookAt(this, distanceScaler)
+            }
+                
+        }
 
         onload = onDocumentLoad;
 
