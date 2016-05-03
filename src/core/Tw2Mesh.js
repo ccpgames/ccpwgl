@@ -68,6 +68,12 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
  * @property {Array.<Tw2MeshArea>} decalAreas
  * @property {Array.<Tw2MeshArea>} depthAreas
  * @property {boolean} debugIsHidden
+ * @property {boolean} display - enables/disables all render batch accumulations
+ * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
+ * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
+ * @property {boolean} displayAdditive - enables/disables additive area batch accumulations
+ * @property {boolean} displayPickable - enables/disables pickable area batch accumulations
+ * @property {boolean} displayDecal - enables/disables decal area batch accumulations
  * @constructor
  */
 function Tw2Mesh()
@@ -77,12 +83,21 @@ function Tw2Mesh()
     this.geometryResPath = '';
     this.lowDetailGeometryResPath = '';
     this.geometryResource = null;
+
     this.opaqueAreas = [];
     this.transparentAreas = [];
     this.additiveAreas = [];
     this.pickableAreas = [];
     this.decalAreas = [];
     this.depthAreas = [];
+
+    this.display = true;
+    this.displayOpaque = true;
+    this.displayTransparent = true;
+    this.displayAdditive = true;
+    this.displayPickable = true;
+    this.displayDecal = true;
+
     this.debugIsHidden = false;
 }
 
@@ -141,21 +156,49 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
     {
         return false;
     }
-    if (mode == device.RM_OPAQUE)
+
+    if (this.display)
     {
-        this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
+
+        if (this.displayOpaque && mode == device.RM_OPAQUE)
+        {
+            this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
+        }
+        else if (this.displayDecal && mode == device.RM_DECAL)
+        {
+            this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
+        }
+        else if (this.displayTransparent && mode == device.RM_TRANSPARENT)
+        {
+            this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
+        }
+        else if (this.displayAdditive && mode == device.RM_ADDITIVE)
+        {
+            this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
+        }
     }
-    else if (mode == device.RM_DECAL)
-    {
-        this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
-    }
-    else if (mode == device.RM_TRANSPARENT)
-    {
-        this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
-    }
-    else if (mode == device.RM_ADDITIVE)
-    {
-        this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
-    }
+
     return true;
 };
+
+/**
+ * Gets pickable render batches
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @returns {boolean}
+ * @constructor
+ */
+Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
+{
+    if (this.geometryResource == null || this.debugIsHidden)
+    {
+        return false;
+    }
+
+    if (this.display && this.displayPickable)
+    {
+        this._GetAreaBatches(this.pickableAreas, device.RM_OPAQUE, accumulator, perObjectData);
+    }
+
+    return true;
+}
