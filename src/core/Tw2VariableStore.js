@@ -76,7 +76,7 @@ Tw2VariableStore.GetTw2ParameterType = function (value)
  */
 Tw2VariableStore.prototype.RegisterVariable = function (name, value)
 {
-    return this.RegisterVariableWithType(name, value, Tw2VariableStore.GetTw2ParameterConstructor(value));
+    return this.RegisterVariableWithType(name, value, Tw2VariableStore.GetTw2ParameterType(value));
 };
 
 var variableStore = new Tw2VariableStore();
