@@ -33,45 +33,45 @@ function Tw2Device()
     this.RM_DEPTH = 4;
     this.RM_FULLSCREEN = 5;
 
-    this.RS_ZENABLE = 7; /* D3DZBUFFERTYPE (or TRUE/FALSE for legacy) */
-    this.RS_FILLMODE = 8; /* D3DFILLMODE */
-    this.RS_SHADEMODE = 9; /* D3DSHADEMODE */
-    this.RS_ZWRITEENABLE = 14; /* TRUE to enable z writes */
-    this.RS_ALPHATESTENABLE = 15; /* TRUE to enable alpha tests */
-    this.RS_LASTPIXEL = 16; /* TRUE for last-pixel on lines */
-    this.RS_SRCBLEND = 19; /* D3DBLEND */
-    this.RS_DESTBLEND = 20; /* D3DBLEND */
-    this.RS_CULLMODE = 22; /* D3DCULL */
-    this.RS_ZFUNC = 23; /* D3DCMPFUNC */
-    this.RS_ALPHAREF = 24; /* D3DFIXED */
-    this.RS_ALPHAFUNC = 25; /* D3DCMPFUNC */
-    this.RS_DITHERENABLE = 26; /* TRUE to enable dithering */
-    this.RS_ALPHABLENDENABLE = 27; /* TRUE to enable alpha blending */
-    this.RS_FOGENABLE = 28; /* TRUE to enable fog blending */
-    this.RS_SPECULARENABLE = 29; /* TRUE to enable specular */
-    this.RS_FOGCOLOR = 34; /* D3DCOLOR */
-    this.RS_FOGTABLEMODE = 35; /* D3DFOGMODE */
-    this.RS_FOGSTART = 36; /* Fog start (for both vertex and pixel fog) */
-    this.RS_FOGEND = 37; /* Fog end      */
-    this.RS_FOGDENSITY = 38; /* Fog density  */
-    this.RS_RANGEFOGENABLE = 48; /* Enables range-based fog */
-    this.RS_STENCILENABLE = 52; /* BOOL enable/disable stenciling */
-    this.RS_STENCILFAIL = 53; /* D3DSTENCILOP to do if stencil test fails */
-    this.RS_STENCILZFAIL = 54; /* D3DSTENCILOP to do if stencil test passes and Z test fails */
-    this.RS_STENCILPASS = 55; /* D3DSTENCILOP to do if both stencil and Z tests pass */
-    this.RS_STENCILFUNC = 56; /* D3DCMPFUNC fn.  Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true */
-    this.RS_STENCILREF = 57; /* Reference value used in stencil test */
-    this.RS_STENCILMASK = 58; /* Mask value used in stencil test */
-    this.RS_STENCILWRITEMASK = 59; /* Write mask applied to values written to stencil buffer */
-    this.RS_TEXTUREFACTOR = 60; /* D3DCOLOR used for multi-texture blend */
-    this.RS_WRAP0 = 128; /* wrap for 1st texture coord. set */
-    this.RS_WRAP1 = 129; /* wrap for 2nd texture coord. set */
-    this.RS_WRAP2 = 130; /* wrap for 3rd texture coord. set */
-    this.RS_WRAP3 = 131; /* wrap for 4th texture coord. set */
-    this.RS_WRAP4 = 132; /* wrap for 5th texture coord. set */
-    this.RS_WRAP5 = 133; /* wrap for 6th texture coord. set */
-    this.RS_WRAP6 = 134; /* wrap for 7th texture coord. set */
-    this.RS_WRAP7 = 135; /* wrap for 8th texture coord. set */
+    this.RS_ZENABLE = 7;                    /* D3DZBUFFERTYPE (or TRUE/FALSE for legacy) */
+    this.RS_FILLMODE = 8;                   /* D3DFILLMODE */
+    this.RS_SHADEMODE = 9;                  /* D3DSHADEMODE */
+    this.RS_ZWRITEENABLE = 14;              /* TRUE to enable z writes */
+    this.RS_ALPHATESTENABLE = 15;           /* TRUE to enable alpha tests */
+    this.RS_LASTPIXEL = 16;                 /* TRUE for last-pixel on lines */
+    this.RS_SRCBLEND = 19;                  /* D3DBLEND */
+    this.RS_DESTBLEND = 20;                 /* D3DBLEND */
+    this.RS_CULLMODE = 22;                  /* D3DCULL */
+    this.RS_ZFUNC = 23;                     /* D3DCMPFUNC */
+    this.RS_ALPHAREF = 24;                  /* D3DFIXED */
+    this.RS_ALPHAFUNC = 25;                 /* D3DCMPFUNC */
+    this.RS_DITHERENABLE = 26;              /* TRUE to enable dithering */
+    this.RS_ALPHABLENDENABLE = 27;          /* TRUE to enable alpha blending */
+    this.RS_FOGENABLE = 28;                 /* TRUE to enable fog blending */
+    this.RS_SPECULARENABLE = 29;            /* TRUE to enable specular */
+    this.RS_FOGCOLOR = 34;                  /* D3DCOLOR */
+    this.RS_FOGTABLEMODE = 35;              /* D3DFOGMODE */
+    this.RS_FOGSTART = 36;                  /* Fog start (for both vertex and pixel fog) */
+    this.RS_FOGEND = 37;                    /* Fog end      */
+    this.RS_FOGDENSITY = 38;                /* Fog density  */
+    this.RS_RANGEFOGENABLE = 48;            /* Enables range-based fog */
+    this.RS_STENCILENABLE = 52;             /* BOOL enable/disable stenciling */
+    this.RS_STENCILFAIL = 53;               /* D3DSTENCILOP to do if stencil test fails */
+    this.RS_STENCILZFAIL = 54;              /* D3DSTENCILOP to do if stencil test passes and Z test fails */
+    this.RS_STENCILPASS = 55;               /* D3DSTENCILOP to do if both stencil and Z tests pass */
+    this.RS_STENCILFUNC = 56;               /* D3DCMPFUNC fn.  Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true */
+    this.RS_STENCILREF = 57;                /* Reference value used in stencil test */
+    this.RS_STENCILMASK = 58;               /* Mask value used in stencil test */
+    this.RS_STENCILWRITEMASK = 59;          /* Write mask applied to values written to stencil buffer */
+    this.RS_TEXTUREFACTOR = 60;             /* D3DCOLOR used for multi-texture blend */
+    this.RS_WRAP0 = 128;                    /* wrap for 1st texture coord. set */
+    this.RS_WRAP1 = 129;                    /* wrap for 2nd texture coord. set */
+    this.RS_WRAP2 = 130;                    /* wrap for 3rd texture coord. set */
+    this.RS_WRAP3 = 131;                    /* wrap for 4th texture coord. set */
+    this.RS_WRAP4 = 132;                    /* wrap for 5th texture coord. set */
+    this.RS_WRAP5 = 133;                    /* wrap for 6th texture coord. set */
+    this.RS_WRAP6 = 134;                    /* wrap for 7th texture coord. set */
+    this.RS_WRAP7 = 135;                    /* wrap for 8th texture coord. set */
     this.RS_CLIPPING = 136;
     this.RS_LIGHTING = 137;
     this.RS_AMBIENT = 139;
@@ -85,42 +85,42 @@ function Tw2Device()
     this.RS_EMISSIVEMATERIALSOURCE = 148;
     this.RS_VERTEXBLEND = 151;
     this.RS_CLIPPLANEENABLE = 152;
-    this.RS_POINTSIZE = 154; /* float point size */
-    this.RS_POINTSIZE_MIN = 155; /* float point size min threshold */
-    this.RS_POINTSPRITEENABLE = 156; /* BOOL point texture coord control */
-    this.RS_POINTSCALEENABLE = 157; /* BOOL point size scale enable */
-    this.RS_POINTSCALE_A = 158; /* float point attenuation A value */
-    this.RS_POINTSCALE_B = 159; /* float point attenuation B value */
-    this.RS_POINTSCALE_C = 160; /* float point attenuation C value */
-    this.RS_MULTISAMPLEANTIALIAS = 161; // BOOL - set to do FSAA with multisample buffer
-    this.RS_MULTISAMPLEMASK = 162; // DWORD - per-sample enable/disable
-    this.RS_PATCHEDGESTYLE = 163; // Sets whether patch edges will use float style tessellation
-    this.RS_DEBUGMONITORTOKEN = 165; // DEBUG ONLY - token to debug monitor
-    this.RS_POINTSIZE_MAX = 166; /* float point size max threshold */
+    this.RS_POINTSIZE = 154;                /* float point size */
+    this.RS_POINTSIZE_MIN = 155;            /* float point size min threshold */
+    this.RS_POINTSPRITEENABLE = 156;        /* BOOL point texture coord control */
+    this.RS_POINTSCALEENABLE = 157;         /* BOOL point size scale enable */
+    this.RS_POINTSCALE_A = 158;             /* float point attenuation A value */
+    this.RS_POINTSCALE_B = 159;             /* float point attenuation B value */
+    this.RS_POINTSCALE_C = 160;             /* float point attenuation C value */
+    this.RS_MULTISAMPLEANTIALIAS = 161;     // BOOL - set to do FSAA with multisample buffer
+    this.RS_MULTISAMPLEMASK = 162;          // DWORD - per-sample enable/disable
+    this.RS_PATCHEDGESTYLE = 163;           // Sets whether patch edges will use float style tessellation
+    this.RS_DEBUGMONITORTOKEN = 165;        // DEBUG ONLY - token to debug monitor
+    this.RS_POINTSIZE_MAX = 166;            /* float point size max threshold */
     this.RS_INDEXEDVERTEXBLENDENABLE = 167;
-    this.RS_COLORWRITEENABLE = 168; // per-channel write enable
-    this.RS_TWEENFACTOR = 170; // float tween factor
-    this.RS_BLENDOP = 171; // D3DBLENDOP setting
-    this.RS_POSITIONDEGREE = 172; // NPatch position interpolation degree. D3DDEGREE_LINEAR or D3DDEGREE_CUBIC (default)
-    this.RS_NORMALDEGREE = 173; // NPatch normal interpolation degree. D3DDEGREE_LINEAR (default) or D3DDEGREE_QUADRATIC
+    this.RS_COLORWRITEENABLE = 168;         // per-channel write enable
+    this.RS_TWEENFACTOR = 170;              // float tween factor
+    this.RS_BLENDOP = 171;                  // D3DBLENDOP setting
+    this.RS_POSITIONDEGREE = 172;           // NPatch position interpolation degree. D3DDEGREE_LINEAR or D3DDEGREE_CUBIC (default)
+    this.RS_NORMALDEGREE = 173;             // NPatch normal interpolation degree. D3DDEGREE_LINEAR (default) or D3DDEGREE_QUADRATIC
     this.RS_SCISSORTESTENABLE = 174;
     this.RS_SLOPESCALEDEPTHBIAS = 175;
     this.RS_ANTIALIASEDLINEENABLE = 176;
-    this.RS_TWOSIDEDSTENCILMODE = 185; /* BOOL enable/disable 2 sided stenciling */
-    this.RS_CCW_STENCILFAIL = 186; /* D3DSTENCILOP to do if ccw stencil test fails */
-    this.RS_CCW_STENCILZFAIL = 187; /* D3DSTENCILOP to do if ccw stencil test passes and Z test fails */
-    this.RS_CCW_STENCILPASS = 188; /* D3DSTENCILOP to do if both ccw stencil and Z tests pass */
-    this.RS_CCW_STENCILFUNC = 189; /* D3DCMPFUNC fn.  ccw Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true */
-    this.RS_COLORWRITEENABLE1 = 190; /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
-    this.RS_COLORWRITEENABLE2 = 191; /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
-    this.RS_COLORWRITEENABLE3 = 192; /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
-    this.RS_BLENDFACTOR = 193; /* D3DCOLOR used for a constant blend factor during alpha blending for devices that support D3DPBLENDCAPS_BLENDFACTOR */
-    this.RS_SRGBWRITEENABLE = 194; /* Enable rendertarget writes to be DE-linearized to SRGB (for formats that expose D3DUSAGE_QUERY_SRGBWRITE) */
+    this.RS_TWOSIDEDSTENCILMODE = 185;      /* BOOL enable/disable 2 sided stenciling */
+    this.RS_CCW_STENCILFAIL = 186;          /* D3DSTENCILOP to do if ccw stencil test fails */
+    this.RS_CCW_STENCILZFAIL = 187;         /* D3DSTENCILOP to do if ccw stencil test passes and Z test fails */
+    this.RS_CCW_STENCILPASS = 188;          /* D3DSTENCILOP to do if both ccw stencil and Z tests pass */
+    this.RS_CCW_STENCILFUNC = 189;          /* D3DCMPFUNC fn.  ccw Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true */
+    this.RS_COLORWRITEENABLE1 = 190;        /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
+    this.RS_COLORWRITEENABLE2 = 191;        /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
+    this.RS_COLORWRITEENABLE3 = 192;        /* Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS */
+    this.RS_BLENDFACTOR = 193;              /* D3DCOLOR used for a constant blend factor during alpha blending for devices that support D3DPBLENDCAPS_BLENDFACTOR */
+    this.RS_SRGBWRITEENABLE = 194;          /* Enable rendertarget writes to be DE-linearized to SRGB (for formats that expose D3DUSAGE_QUERY_SRGBWRITE) */
     this.RS_DEPTHBIAS = 195;
     this.RS_SEPARATEALPHABLENDENABLE = 206; /* TRUE to enable a separate blending function for the alpha channel */
-    this.RS_SRCBLENDALPHA = 207; /* SRC blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
-    this.RS_DESTBLENDALPHA = 208; /* DST blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
-    this.RS_BLENDOPALPHA = 209; /* Blending operation for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
+    this.RS_SRCBLENDALPHA = 207;            /* SRC blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
+    this.RS_DESTBLENDALPHA = 208;           /* DST blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
+    this.RS_BLENDOPALPHA = 209;             /* Blending operation for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */
 
     this.CULL_NONE = 1;
     this.CULL_CW = 2;
@@ -302,22 +302,23 @@ function Tw2Device()
         this.depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
         this.depthOffsetState.dirty = false;
 
-        this._blendTable = [-1, // --
-            this.gl.ZERO, // D3DBLEND_ZERO
-            this.gl.ONE, // D3DBLEND_ONE
-            this.gl.SRC_COLOR, // D3DBLEND_SRCCOLOR
-            this.gl.ONE_MINUS_SRC_COLOR, // D3DBLEND_INVSRCCOLOR
-            this.gl.SRC_ALPHA, // D3DBLEND_SRCALPHA
-            this.gl.ONE_MINUS_SRC_ALPHA, // D3DBLEND_INVSRCALPHA
-            this.gl.DST_ALPHA, // D3DBLEND_DESTALPHA
-            this.gl.ONE_MINUS_DST_ALPHA, // D3DBLEND_INVDESTALPHA
-            this.gl.DST_COLOR, // D3DBLEND_DESTCOLOR
-            this.gl.ONE_MINUS_DST_COLOR, // D3DBLEND_INVDESTCOLOR
-            this.gl.SRC_ALPHA_SATURATE, // D3DBLEND_SRCALPHASAT
-            -1, // D3DBLEND_BOTHSRCALPHA
-            -1, // D3DBLEND_BOTHINVSRCALPHA
-            this.gl.CONSTANT_COLOR, // D3DBLEND_BLENDFACTOR
-            this.gl.ONE_MINUS_CONSTANT_COLOR // D3DBLEND_INVBLENDFACTOR
+        this._blendTable = [
+            -1,                                 // --
+            this.gl.ZERO,                       // D3DBLEND_ZERO
+            this.gl.ONE,                        // D3DBLEND_ONE
+            this.gl.SRC_COLOR,                  // D3DBLEND_SRCCOLOR
+            this.gl.ONE_MINUS_SRC_COLOR,        // D3DBLEND_INVSRCCOLOR
+            this.gl.SRC_ALPHA,                  // D3DBLEND_SRCALPHA
+            this.gl.ONE_MINUS_SRC_ALPHA,        // D3DBLEND_INVSRCALPHA
+            this.gl.DST_ALPHA,                  // D3DBLEND_DESTALPHA
+            this.gl.ONE_MINUS_DST_ALPHA,        // D3DBLEND_INVDESTALPHA
+            this.gl.DST_COLOR,                  // D3DBLEND_DESTCOLOR
+            this.gl.ONE_MINUS_DST_COLOR,        // D3DBLEND_INVDESTCOLOR
+            this.gl.SRC_ALPHA_SATURATE,         // D3DBLEND_SRCALPHASAT
+            -1,                                 // D3DBLEND_BOTHSRCALPHA
+            -1,                                 // D3DBLEND_BOTHINVSRCALPHA
+            this.gl.CONSTANT_COLOR,             // D3DBLEND_BLENDFACTOR
+            this.gl.ONE_MINUS_CONSTANT_COLOR    // D3DBLEND_INVBLENDFACTOR
         ];
 
         this._shadowStateBuffer = new Float32Array(24);
