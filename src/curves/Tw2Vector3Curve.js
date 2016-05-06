@@ -183,7 +183,7 @@ Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
     }
-    var endKey = this.keys[i + 1]; // <----------------------------------------- `i` is not yet initialized
+    var endKey;
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];

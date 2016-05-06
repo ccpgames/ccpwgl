@@ -2,7 +2,7 @@
  * RenderMode
  * @typedef {(device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
  */
- 
+
 window.requestAnimFrame = (function()
 {
     return window.requestAnimationFrame ||
@@ -450,7 +450,7 @@ function Tw2Device()
         {
             return;
         }
-        device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._quadBuffer);
+        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
 
         for (var pass = 0; pass < effect.GetPassCount(); ++pass)
         {
@@ -460,7 +460,7 @@ function Tw2Device()
                 return false;
             }
             this.ApplyShadowState();
-            device.gl.drawArrays(device.gl.TRIANGLE_STRIP, 0, 4);
+            this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
         }
     };
 
@@ -515,7 +515,7 @@ function Tw2Device()
             vec[3] = 1;
         }
 
-        this.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._cameraQuadBuffer);
+        this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._cameraQuadBuffer);
         this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
 
         for (var pass = 0; pass < effect.GetPassCount(); ++pass)
@@ -526,7 +526,7 @@ function Tw2Device()
                 return false;
             }
             this.ApplyShadowState();
-            device.gl.drawArrays(device.gl.TRIANGLE_STRIP, 0, 4);
+            this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
         }
     };
 
@@ -750,11 +750,11 @@ function Tw2Device()
                     var invertedAlphaTest = 1;
                     var alphaTestRef = -this.alphaTestState.states[this.RS_ALPHAREF] - 1;
                     break;
-                /*case this.CMP_NOTEQUAL:
-                 var alphaTestFunc = 1;
-                 var invertedAlphaTest = 1;
-                 var alphaTestRef = this.alphaTestState.states[this.RS_ALPHAREF];
-                 break;*/
+                    /*case this.CMP_NOTEQUAL:
+                     var alphaTestFunc = 1;
+                     var invertedAlphaTest = 1;
+                     var alphaTestRef = this.alphaTestState.states[this.RS_ALPHAREF];
+                     break;*/
                 case this.CMP_GREATEREQUAL:
                     var alphaTestFunc = 0;
                     var invertedAlphaTest = 1;
@@ -767,7 +767,7 @@ function Tw2Device()
                     break;
             }
             var clipPlaneEnable = 0;
-            device.gl.uniform4f(
+            this.gl.uniform4f(
                 this.shadowHandles.shadowStateInt,
                 invertedAlphaTest,
                 alphaTestRef,
@@ -876,15 +876,15 @@ function Tw2Device()
     {
         if (this._whiteTexture == null)
         {
-            this._whiteTexture = device.gl.createTexture();
-            device.gl.bindTexture(device.gl.TEXTURE_2D, this._whiteTexture);
-            device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
-            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
-            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
-            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
-            device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
-            //device.gl.generateMipmap(device.gl.TEXTURE_2D);
-            device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+            this._whiteTexture = this.gl.createTexture();
+            this.gl.bindTexture(this.gl.TEXTURE_2D, this._whiteTexture);
+            this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
+            //this.gl.generateMipmap(this.gl.TEXTURE_2D);
+            this.gl.bindTexture(this.gl.TEXTURE_2D, null);
         }
         return this._whiteTexture;
     };
@@ -899,18 +899,18 @@ function Tw2Device()
     {
         if (this._whiteCube == null)
         {
-            this._whiteCube = device.gl.createTexture();
-            device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, this._whiteCube);
+            this._whiteCube = this.gl.createTexture();
+            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, this._whiteCube);
             for (var j = 0; j < 6; ++j)
             {
-                device.gl.texImage2D(device.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, device.gl.RGBA, 1, 1, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
+                this.gl.texImage2D(this.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
             }
-            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_S, device.gl.CLAMP_TO_EDGE);
-            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_WRAP_T, device.gl.CLAMP_TO_EDGE);
-            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MAG_FILTER, device.gl.NEAREST);
-            device.gl.texParameteri(device.gl.TEXTURE_CUBE_MAP, device.gl.TEXTURE_MIN_FILTER, device.gl.NEAREST);
-            //device.gl.generateMipmap(device.gl.TEXTURE_CUBE_MAP);
-            device.gl.bindTexture(device.gl.TEXTURE_CUBE_MAP, null);
+            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
+            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
+            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
+            //this.gl.generateMipmap(this.gl.TEXTURE_CUBE_MAP);
+            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, null);
         }
         return this._whiteCube;
     };

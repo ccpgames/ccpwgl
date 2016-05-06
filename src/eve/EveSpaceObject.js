@@ -131,7 +131,7 @@ EveSpaceObject.prototype.UpdateLod = function(frustum)
 
     if (frustum.IsSphereVisible(center, this.boundingSphereRadius))
     {
-        if (frustum.GetPixelSizeAccross(center, this.boundingSphereRadius) < 100)
+        if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100)
         {
             this.lod = 1;
         }

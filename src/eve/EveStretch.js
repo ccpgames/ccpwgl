@@ -29,7 +29,7 @@ EveStretch.prototype.Update = function (dt) {
     }
     this._time += dt;
     if (this.source) {
-        this.source.GetValueAt(t, this._sourcePosition);
+        this.source.GetValueAt(this._time, this._sourcePosition);
     }
     else if (this._useTransformsForStretch) {
         this._sourcePosition[0] = this._sourceTransform[12];
@@ -37,7 +37,7 @@ EveStretch.prototype.Update = function (dt) {
         this._sourcePosition[2] = this._sourceTransform[14];
     }
     if (this.dest) {
-        this.source.GetValueAt(t, this._destinationPosition);
+        this.source.GetValueAt(this._time, this._destinationPosition);
     }
     var directionVec = vec3.subtract(this._destinationPosition, this._sourcePosition, EveStretch._tempVec3[0]);
     var scalingLength = vec3.length(directionVec);

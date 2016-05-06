@@ -1,13 +1,18 @@
 /**
  * Tw2ObjectReader
- * TODO: Identify if @property _inputStack @property _initializeObject and @property _ids should be defined here
  * @param xmlNode
  * @property xmlNode
+ * @property {null|Array} _inputStack
+ * @property {null|Array} _initializeObjects
+ * @property {null|Array} _ids
  * @constructor
  */
 function Tw2ObjectReader(xmlNode)
 {
     this.xmlNode = xmlNode;
+    this._inputStack = null;
+    this._initializeObjects = null;
+    this._ids = null;
 }
 
 /**

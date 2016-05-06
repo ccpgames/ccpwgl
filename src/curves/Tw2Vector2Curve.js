@@ -129,7 +129,6 @@ Tw2Vector2Curve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * TODO: the variable `i` is used before it has been initialized
  * @param {number} time
  * @param {Float32Array} value - vec2 array
  * @returns {Float32Array} vec2 array
@@ -180,7 +179,7 @@ Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
     }
-    var endKey = this.keys[i + 1]; // <----------------------------------------- `i` is not yet initialized
+    var endKey;
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];
