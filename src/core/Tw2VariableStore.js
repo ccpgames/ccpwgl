@@ -40,7 +40,7 @@ Tw2VariableStore.prototype.RegisterType = function(name, type)
  */
 Tw2VariableStore.GetTw2ParameterType = function (value)
 {
-    if (value.constructor === (new glMatrixArrayType()).constructor || Object.prototype.toString.apply(value) === '[object Array]')
+    if (value.constructor === (new glMatrixArrayType()).constructor || value.constructor===[].constructor)
     {
         switch (value.length)
         {
