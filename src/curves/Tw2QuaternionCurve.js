@@ -1,5 +1,5 @@
 /**
- * Tw2QuaternionKey
+ * Tw2QuaternionKey2
  * @property {number} time
  * @property {quat4} value
  * @property {quat4} leftTangent
@@ -7,7 +7,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2QuaternionKey()
+function Tw2QuaternionKey2()
 {
     this.time = 0;
     this.value = quat4.create();
