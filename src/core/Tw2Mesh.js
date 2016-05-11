@@ -5,7 +5,7 @@
  * @property {number} meshIndex
  * @property {number} index
  * @property {number} count
- * @property {boolean} debugIsHidden
+ * @property {boolean} display
  * @constructor
  */
 function Tw2MeshArea()
@@ -15,7 +15,7 @@ function Tw2MeshArea()
     this.meshIndex = 0;
     this.index = 0;
     this.count = 1;
-    this.debugIsHidden = false;
+    this.display = true;
 }
 
 /**
@@ -33,7 +33,7 @@ Tw2MeshArea.batchType = Tw2GeometryBatch;
  * @property {number} meshIndex
  * @property {number} index
  * @property {number} count
- * @property {boolean} debugIsHidden
+ * @property {Boolean} display
  * @constructor
  */
 function Tw2MeshLineArea()
@@ -43,7 +43,7 @@ function Tw2MeshLineArea()
     this.meshIndex = 0;
     this.index = 0;
     this.count = 1;
-    this.debugIsHidden = false;
+    this.display = true;
 }
 
 /**
@@ -67,7 +67,6 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
  * @property {Array.<Tw2MeshArea>} pickableAreas
  * @property {Array.<Tw2MeshArea>} decalAreas
  * @property {Array.<Tw2MeshArea>} depthAreas
- * @property {boolean} debugIsHidden
  * @property {boolean} display - enables/disables all render batch accumulations
  * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
  * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
@@ -97,8 +96,6 @@ function Tw2Mesh()
     this.displayAdditive = true;
     this.displayPickable = true;
     this.displayDecal = true;
-
-    this.debugIsHidden = false;
 }
 
 /**
@@ -126,7 +123,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
     for (var i = 0; i < areas.length; ++i)
     {
         var area = areas[i];
-        if (area.effect == null || area.debugIsHidden)
+        if (area.effect == null || !area.display))
         {
             continue;
         }
@@ -152,7 +149,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
  */
 Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (this.geometryResource == null || this.debugIsHidden)
+    if (this.geometryResource == null)
     {
         return false;
     }
@@ -190,7 +187,7 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
  */
 Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
 {
-    if (this.geometryResource == null || this.debugIsHidden)
+    if (this.geometryResource == null)
     {
         return false;
     }
