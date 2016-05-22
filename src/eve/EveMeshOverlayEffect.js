@@ -60,3 +60,34 @@ EveMeshOverlayEffect.prototype.GetEffects = function(mode)
         }
     }
 };
+
+/**
+ * Gets Mesh Overlay resource objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveMeshOverlayEffect.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    var self = this;
+
+    function getEffectResources(effectName, out)
+    {
+        for (var i = 0; i < self[effectName].length; i++)
+        {
+            self[effectName].GetResources(out);
+        }
+    }
+
+    getEffectResources('opaqueEffects', out);
+    getEffectResources('decalEffects', out);
+    getEffectResources('transparentEffects', out);
+    getEffectResources('additiveEffects', out);
+    getEffectResources('distortionEffects', out);
+
+    return out;
+}

@@ -12,6 +12,9 @@
  * @property {Array} _notifications
  * @property {number} activeFrame
  * @property {number} doNotPurge
+ * @property {null|Function} _onLoadStarted - optional callback fired on res loading: callback(this)
+ * @property {null|Function} _onLoadFinished - optional callback fired on res loaded: callback(this, success)
+ * @property {null|Function} _onLoadPrepareFinished - optional callback fired on res prepare finish: callback(this, success)
  * @constructor
  */
 function Tw2Resource()
@@ -23,6 +26,9 @@ function Tw2Resource()
     this._notifications = [];
     this.activeFrame = 0;
     this.doNotPurge = 0;
+    this._onLoadStarted = null;
+    this._onLoadFinished = null;
+    this._onPrepareFinished = null;
 }
 
 /**
@@ -64,9 +70,15 @@ Tw2Resource.prototype.IsPurged = function()
 Tw2Resource.prototype.LoadStarted = function()
 {
     this._isLoading = true;
+
     for (var i = 0; i < this._notifications.length; ++i)
     {
         this._notifications[i].ReleaseCachedData(this);
+    }
+
+    if (this._onLoadStarted)
+    {
+        this._onLoadStarted(this);
     }
 };
 
@@ -78,9 +90,15 @@ Tw2Resource.prototype.LoadStarted = function()
 Tw2Resource.prototype.LoadFinished = function(success)
 {
     this._isLoading = false;
+
     if (!success)
     {
         this._isGood = false;
+    }
+
+    if (this._onLoadFinished)
+    {
+        this._onLoadFinished(this, success);
     }
 };
 
@@ -93,9 +111,15 @@ Tw2Resource.prototype.PrepareFinished = function(success)
 {
     this._isLoading = false;
     this._isGood = success;
+
     for (var i = 0; i < this._notifications.length; ++i)
     {
         this._notifications[i].RebuildCachedData(this);
+    }
+
+    if(this._onPrepareFinished)
+    {
+        this._onPrepareFinished(this, success);
     }
 };
 

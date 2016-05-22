@@ -70,6 +70,30 @@ EveSpotlightSet.prototype.Initialize = function()
 };
 
 /**
+ * Gets spotlight set res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpotlightSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.coneEffect !== null)
+    {
+        this.coneEffect.GetResources(out);
+    }
+
+    if (this.glowEffect !== null)
+    {
+        this.glowEffect.GetResources(out);
+    }
+    return out;
+}
+
+/**
  * Rebuilds the spotlight set
  */
 EveSpotlightSet.prototype.RebuildBuffers = function()

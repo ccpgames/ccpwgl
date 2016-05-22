@@ -44,6 +44,26 @@ EvePlaneSet.prototype.Initialize = function()
 };
 
 /**
+ * Gets plane set res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array} {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EvePlaneSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.effect !== null)
+    {
+        this.effect.GetResources(out);
+    }
+
+    return out;
+}
+
+/**
  * Rebuilds the plane set's buffers
  */
 EvePlaneSet.prototype.RebuildBuffers = function()

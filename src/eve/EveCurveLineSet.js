@@ -1,4 +1,5 @@
-function EveCurveLineSet() {
+function EveCurveLineSet()
+{
     this.lineEffect = new Tw2Effect();
     this.lineEffect.effectFilePath = "res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx";
     this.lineEffect.Initialize();
@@ -12,20 +13,21 @@ function EveCurveLineSet() {
     this.display = true;
     this.depthOffset = 0;
 
-	var perObjectData = new Tw2PerObjectData();
-	perObjectData.perObjectVSData = new Tw2RawData();
-	perObjectData.perObjectVSData.Declare('WorldMat', 16);
-	perObjectData.perObjectVSData.Create();
+    var perObjectData = new Tw2PerObjectData();
+    perObjectData.perObjectVSData = new Tw2RawData();
+    perObjectData.perObjectVSData.Declare('WorldMat', 16);
+    perObjectData.perObjectVSData.Create();
 
-	perObjectData.perObjectPSData = new Tw2RawData();
-	perObjectData.perObjectPSData.Declare('WorldMat', 16);
-	perObjectData.perObjectPSData.Create();
+    perObjectData.perObjectPSData = new Tw2RawData();
+    perObjectData.perObjectPSData.Declare('WorldMat', 16);
+    perObjectData.perObjectPSData.Create();
 
     var transform = mat4.identity(mat4.create());
     var lines = [];
     var emptyLineID = [];
 
-    this.Initialize = function () {
+    this.Initialize = function()
+    {
         mat4.identity(transform);
         mat4.translate(transform, this.translation);
         var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
@@ -38,8 +40,10 @@ function EveCurveLineSet() {
     var LINETYPE_SPHERED = 2;
     var LINETYPE_CURVED = 3;
 
-    function addLine(line) {
-        if (emptyLineID.length) {
+    function addLine(line)
+    {
+        if (emptyLineID.length)
+        {
             var index = emptyLineID.pop();
             lines[index] = line;
             return index;
@@ -47,7 +51,8 @@ function EveCurveLineSet() {
         lines.push(line);
         return lines.length - 1;
     }
-    this.AddStraightLine = function (startPosition, startColor, endPosition, endColor, lineWidth) {
+    this.AddStraightLine = function(startPosition, startColor, endPosition, endColor, lineWidth)
+    {
         var line = {
             type: LINETYPE_STRAIGHT,
             position1: startPosition,
@@ -65,7 +70,8 @@ function EveCurveLineSet() {
         };
         return addLine(line)
     };
-    this.AddCurvedLineCrt = function (startPosition, startColor, endPosition, endColor, middle, lineWidth) {
+    this.AddCurvedLineCrt = function(startPosition, startColor, endPosition, endColor, middle, lineWidth)
+    {
         var line = {
             type: LINETYPE_CURVED,
             position1: startPosition,
@@ -83,7 +89,8 @@ function EveCurveLineSet() {
         };
         return addLine(line)
     };
-    this.AddCurvedLineSph = function (startPosition, startColor, endPosition, endColor, center, middle, lineWidth) {
+    this.AddCurvedLineSph = function(startPosition, startColor, endPosition, endColor, center, middle, lineWidth)
+    {
         var phi1 = startPosition.x;
         var theta1 = startPosition.y;
         var radius1 = startPosition.z;
@@ -94,17 +101,18 @@ function EveCurveLineSet() {
         var thetaM = middle.y;
         var radiusM = middle.z;
         // is given in spherical coords, so convert them into cartesian
-        var startPnt = [ radius1 * Math.sin( phi1 ) * Math.sin( theta1 ), radius1 * Math.cos( theta1 ), radius1 * Math.cos( phi1 ) * Math.sin( theta1 ) ];
-        var endPnt = [ radius2 * Math.sin( phi2 ) * Math.sin( theta2 ), radius2 * Math.cos( theta2 ), radius2 * Math.cos( phi2 ) * Math.sin( theta2 ) ];
-        var middlePnt = [ radiusM * Math.sin( phiM ) * Math.sin( thetaM ), radiusM * Math.cos( thetaM ), radiusM * Math.cos( phiM ) * Math.sin( thetaM ) ];
+        var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
+        var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
+        var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
         // dont forget center!
         vec3.add(startPnt, center);
         vec3.add(endPnt, center);
         vec3.add(middlePnt, center);
         // add it
-        return this.AddCurvedLineCrt( startPnt, startColor, endPnt, endColor, middlePnt, lineWidth );
+        return this.AddCurvedLineCrt(startPnt, startColor, endPnt, endColor, middlePnt, lineWidth);
     };
-    this.AddSpheredLineCrt = function (startPosition, startColor, endPosition, endColor, center, lineWidth) {
+    this.AddSpheredLineCrt = function(startPosition, startColor, endPosition, endColor, center, lineWidth)
+    {
         var line = {
             type: LINETYPE_SPHERED,
             position1: startPosition,
@@ -122,7 +130,8 @@ function EveCurveLineSet() {
         };
         return addLine(line)
     };
-    this.AddSpheredLineSph = function (startPosition, startColor, endPosition, endColor, center, lineWidth) {
+    this.AddSpheredLineSph = function(startPosition, startColor, endPosition, endColor, center, lineWidth)
+    {
         var phi1 = startPosition.x;
         var theta1 = startPosition.y;
         var radius1 = startPosition.z;
@@ -130,26 +139,30 @@ function EveCurveLineSet() {
         var theta2 = endPosition.y;
         var radius2 = endPosition.z;
         // is given in spherical coords, so convert them into cartesian
-        var startPnt = [ radius1 * Math.sin( phi1 ) * Math.sin( theta1 ), radius1 * Math.cos( theta1 ), radius1 * Math.cos( phi1 ) * Math.sin( theta1 ) ];
-        var endPnt = [ radius2 * Math.sin( phi2 ) * Math.sin( theta2 ), radius2 * Math.cos( theta2 ), radius2 * Math.cos( phi2 ) * Math.sin( theta2 ) ];
+        var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
+        var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
         // dont forget center!
         vec3.add(startPnt, center);
         vec3.add(endPnt, center);
         // add it
-        return this.AddSpheredLineCrt( startPnt, startColor, endPnt, endColor, lineWidth );
+        return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, lineWidth);
     };
-    this.ChangeLineColor = function (lineID, startColor, endColor) {
+    this.ChangeLineColor = function(lineID, startColor, endColor)
+    {
         lines[lineID].color1 = startColor;
         lines[lineID].color2 = endColor;
     };
-    this.ChangeLineWidth = function (lineID, width) {
+    this.ChangeLineWidth = function(lineID, width)
+    {
         lines[lineID].width = width;
     };
-    this.ChangeLinePositionCrt = function (lineID, startPosition, endPosition) {
+    this.ChangeLinePositionCrt = function(lineID, startPosition, endPosition)
+    {
         lines[lineID].position1 = startPosition;
         lines[lineID].position2 = endPosition;
     };
-    this.ChangeLinePositionSph = function (lineID, startPosition, endPosition, center) {
+    this.ChangeLinePositionSph = function(lineID, startPosition, endPosition, center)
+    {
         var phi1 = startPosition.x;
         var theta1 = startPosition.y;
         var radius1 = startPosition.z;
@@ -157,44 +170,52 @@ function EveCurveLineSet() {
         var theta2 = endPosition.y;
         var radius2 = endPosition.z;
         // is given in spherical coords, so convert them into cartesian
-        var startPnt = [ radius1 * Math.sin( phi1 ) * Math.sin( theta1 ), radius1 * Math.cos( theta1 ), radius1 * Math.cos( phi1 ) * Math.sin( theta1 ) ];
-        var endPnt = [ radius2 * Math.sin( phi2 ) * Math.sin( theta2 ), radius2 * Math.cos( theta2 ), radius2 * Math.cos( phi2 ) * Math.sin( theta2 ) ];
+        var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
+        var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
         // dont forget center!
         vec3.add(startPnt, center);
         vec3.add(endPnt, center);
         this.ChangeLinePositionCrt(lineID, startPnt, endPnt);
     };
-    this.ChangeLineIntermediateCrt = function (lineID, intermediatePosition) {
+    this.ChangeLineIntermediateCrt = function(lineID, intermediatePosition)
+    {
         lines[lineID].intermediatePosition = intermediatePosition;
     };
-    this.ChangeLineIntermediateSph = function (lineID, intermediatePosition, center) {
+    this.ChangeLineIntermediateSph = function(lineID, intermediatePosition, center)
+    {
         var phiM = middle.x;
         var thetaM = middle.y;
         var radiusM = middle.z;
-        var middlePnt = [ radiusM * Math.sin( phiM ) * Math.sin( thetaM ), radiusM * Math.cos( thetaM ), radiusM * Math.cos( phiM ) * Math.sin( thetaM ) ];
+        var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
         vec3.add(middlePnt, center);
         lines[lineID].intermediatePosition = intermediatePosition;
     };
-    this.ChangeLineMultiColor = function (lineID, color, border) {
+    this.ChangeLineMultiColor = function(lineID, color, border)
+    {
         lines[lineID].multiColor = color;
         lines[lineID].multiColorBorder = border;
     };
-    this.ChangeLineAnimation = function (lineID, color, speed, scale) {
+    this.ChangeLineAnimation = function(lineID, color, speed, scale)
+    {
         lines[lineID].overlayColor = color;
         lines[lineID].animationSpeed = speed;
         lines[lineID].animationScale = scale;
     };
-    this.ChangeLineSegmentation = function (lineID, numOfSegments) {
-        if (lines[lineID].type != LINETYPE_STRAIGHT) {
+    this.ChangeLineSegmentation = function(lineID, numOfSegments)
+    {
+        if (lines[lineID].type != LINETYPE_STRAIGHT)
+        {
             lines[lineID].numOfSegments = numOfSegments;
         }
 
     };
-    this.RemoveLine = function (lineID) {
+    this.RemoveLine = function(lineID)
+    {
         emptyLineID.push(lineID);
         lines[lineID].type = LINETYPE_INVALID;
     };
-    this.ClearLines = function () {
+    this.ClearLines = function()
+    {
         lines = [];
         emptyLineID = [];
     };
@@ -214,17 +235,21 @@ function EveCurveLineSet() {
     declaration.stride = 4 * vertexSize;
     declaration.RebuildHash();
 
-    function lineCount() {
+    function lineCount()
+    {
         var count = 0;
-        for (var i = 0; i < lines.length; ++i) {
-            if (lines[i].type != LINETYPE_INVALID) {
+        for (var i = 0; i < lines.length; ++i)
+        {
+            if (lines[i].type != LINETYPE_INVALID)
+            {
                 count += lines[i].numOfSegments;
             }
         }
         return count;
     }
 
-    function fillColorVertices(lineData, buffer, offset) {
+    function fillColorVertices(lineData, buffer, offset)
+    {
         buffer[offset++] = lineData.multiColor[0];
         buffer[offset++] = lineData.multiColor[1];
         buffer[offset++] = lineData.multiColor[2];
@@ -236,7 +261,8 @@ function EveCurveLineSet() {
         return offset;
     }
 
-    function writeLineVerticesToBuffer(self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset) {
+    function writeLineVerticesToBuffer(self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset)
+    {
         var lineData = lines[lineID];
 
         buffer[offset++] = position1[0];
@@ -362,7 +388,8 @@ function EveCurveLineSet() {
 
     }
 
-    function vec3Hermite(out, v1, t1, v2, t2, s) {
+    function vec3Hermite(out, v1, t1, v2, t2, s)
+    {
         var k3 = 2 * s * s * s - 3 * s * s + 1;
         var k2 = -2 * s * s * s + 3 * s * s;
         var k1 = s * s * s - 2 * s * s + s;
@@ -374,9 +401,11 @@ function EveCurveLineSet() {
         return out;
     }
 
-    this.SubmitChanges = function () {
+    this.SubmitChanges = function()
+    {
         vb = null;
-        if (!lines.length) {
+        if (!lines.length)
+        {
             return;
         }
         vbSize = lineCount();
@@ -397,8 +426,10 @@ function EveCurveLineSet() {
         var pt2 = vec3.create();
         var j, tmp, segmentFactor;
 
-        for (var i = 0; i < lines.length; ++i) {
-            switch (lines[i].type) {
+        for (var i = 0; i < lines.length; ++i)
+        {
+            switch (lines[i].type)
+            {
                 case LINETYPE_INVALID:
                     break;
                 case LINETYPE_STRAIGHT:
@@ -419,7 +450,8 @@ function EveCurveLineSet() {
                     vec3.set(startDir, dir1);
                     quat4.set(lines[i].color1, col1);
 
-                    for (j = 0; j < lines[i].numOfSegments; ++j) {
+                    for (j = 0; j < lines[i].numOfSegments; ++j)
+                    {
                         segmentFactor = (j + 1) / lines[i].numOfSegments;
                         mat4.multiplyVec3(rotationMatrix, dir1, dir2);
                         col2[0] = lines[i].color1[0] * (1 - segmentFactor) + lines[i].color2[0] * segmentFactor;
@@ -451,7 +483,8 @@ function EveCurveLineSet() {
 
                     vec3.set(lines[i].position1, pos1);
                     vec3.set(lines[i].color1, col1);
-                    for (j = 0; j < lines[i].numOfSegments; ++j) {
+                    for (j = 0; j < lines[i].numOfSegments; ++j)
+                    {
                         segmentFactor = (j + 1) / lines[i].numOfSegments;
                         vec3Hermite(pos2, lines[i].position1, tangent1, lines[i].position2, tangent2, segmentFactor);
                         col2[0] = lines[i].color1[0] * (1 - segmentFactor) + lines[i].color2[0] * segmentFactor;
@@ -471,7 +504,8 @@ function EveCurveLineSet() {
             }
         }
 
-        if (vb) {
+        if (vb)
+        {
             device.gl.deleteBuffer(vb);
         }
         vb = device.gl.createBuffer();
@@ -479,11 +513,14 @@ function EveCurveLineSet() {
         device.gl.bufferData(device.gl.ARRAY_BUFFER, data, device.gl.STATIC_DRAW);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, null);
     };
-    this.GetBatches = function (mode, accumulator) {
-        if (!this.display || !vb) {
+    this.GetBatches = function(mode, accumulator)
+    {
+        if (!this.display || !vb)
+        {
             return;
         }
-        if (mode == device.RM_TRANSPARENT && !this.additive || mode == device.RM_ADDITIVE && this.additive) {
+        if (mode == device.RM_TRANSPARENT && !this.additive || mode == device.RM_ADDITIVE && this.additive)
+        {
             var batch = new Tw2ForwardingRenderBatch();
             mat4.transpose(transform, perObjectData.perObjectVSData.Get('WorldMat'));
             mat4.transpose(transform, perObjectData.perObjectPSData.Get('WorldMat'));
@@ -493,8 +530,10 @@ function EveCurveLineSet() {
             accumulator.Commit(batch);
         }
     };
-    this.Unload = function () {
-        if (vb) {
+    this.Unload = function()
+    {
+        if (vb)
+        {
             device.gl.deleteBuffer(vb);
             vb = null;
         }
@@ -502,7 +541,8 @@ function EveCurveLineSet() {
     /**
      * @return {boolean}
      */
-    this.Render = function (batch, overrideEffect) {
+    this.Render = function(batch, overrideEffect)
+    {
         var effect = overrideEffect || this.lineEffect;
         var effectRes = effect.GetEffectRes();
         if (!effectRes._isGood)
@@ -513,10 +553,12 @@ function EveCurveLineSet() {
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vb);
 
         var passCount = effect.GetPassCount();
-        for (var pass = 0; pass < passCount; ++pass) {
+        for (var pass = 0; pass < passCount; ++pass)
+        {
             effect.ApplyPass(pass);
             var passInput = effect.GetPassInput(pass);
-            if (!declaration.SetDeclaration(passInput, declaration.stride)) {
+            if (!declaration.SetDeclaration(passInput, declaration.stride))
+            {
                 return false;
             }
             d.ApplyShadowState();
@@ -525,9 +567,9 @@ function EveCurveLineSet() {
         return true;
     };
 
-    this.Update = function () {
-    };
-    this.UpdateViewDependentData = function (parentTransform) {
+    this.Update = function() {};
+    this.UpdateViewDependentData = function(parentTransform)
+    {
         mat4.identity(transform);
         mat4.translate(transform, this.translation);
         var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
@@ -537,3 +579,24 @@ function EveCurveLineSet() {
     };
 }
 
+/**
+ * Gets curve line set res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ */
+EveCurveLineSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    };
+
+    this.lineEffect.GetResources(out);
+
+    if (this.pickEffect !== null)
+    {
+        this.pickEffect.GetResources(out);
+    }
+
+    return out;
+}

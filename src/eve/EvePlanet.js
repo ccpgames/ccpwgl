@@ -29,6 +29,24 @@ function EvePlanet()
 }
 
 /**
+ * Gets planet res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EvePlanet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    this.highDetail.GetResources(out);
+    this.effectHeight.GetResources(out);
+
+    return out;
+}
+
+/**
  * Creates the planet
  * @param {number} itemID - the item id is used for randomization
  * @param {string} planetPath - .red file for a planet, or planet template
@@ -247,7 +265,7 @@ EvePlanet.prototype.GetBatches = function(mode, accumulator)
             originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
         }
     }
-    
+
     if (this.display)
     {
         this.highDetail.GetBatches(mode, accumulator);

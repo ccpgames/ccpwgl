@@ -56,22 +56,22 @@ function EveTurretSet()
     this.bottomClipHeight = 0;
     this.locatorName = '';
     this.sysBoneHeight = 0;
-    
+
     this.turrets = [];
     this.turretEffect = null;
     this.targetPosition = vec3.create();
     this.firingEffectResPath = '';
     this.firingEffect = null;
-    
+
     this.hasCyclingFiringPos = false;
     this.geometryResPath = '';
     this.geometryResource = null;
 
     this.activeAnimation = new Tw2AnimationController();
     this.inactiveAnimation = new Tw2AnimationController();
-    
+
     this.parentMatrix = mat4.identity(mat4.create());
-    
+
     this.STATE_INACTIVE = 0;
     this.STATE_IDLE = 1;
     this.STATE_FIRING = 2;
@@ -79,7 +79,7 @@ function EveTurretSet()
     this.STATE_UNPACKING = 4;
 
     this.state = this.STATE_IDLE;
-    
+
     this._perObjectDataActive = new Tw2PerObjectData();
     this._perObjectDataActive.perObjectVSData = new Tw2RawData();
     this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
@@ -146,6 +146,39 @@ EveTurretSet.prototype.Initialize = function()
         });
     }
 };
+
+/**
+ * Gets turret set res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveTurretSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.geometryResource !== null)
+    {
+        if (out.indexOf(this.geometryResource) === -1)
+        {
+            out.push(this.geometryResource);
+        }
+    }
+
+    if (this.turretEffect !== null)
+    {
+        this.turretEffect.GetResources(out);
+    }
+
+    if (this.firingEffect !== null)
+    {
+        this.firingEffect.GetResources(out);
+    }
+
+    return out;
+}
 
 /**
  * Rebuilds the turret sets cached data
@@ -576,7 +609,7 @@ EveTurretSet.prototype.EnterStateIdle = function()
 EveTurretSet.prototype.EnterStateFiring = function()
 {
     var self = this;
-    
+
     if (!this.turretEffect || this.state == this.STATE_FIRING)
     {
         this._DoStartFiring();

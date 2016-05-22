@@ -138,6 +138,40 @@ Tw2Effect.prototype.Initialize = function()
 };
 
 /**
+ * Gets all effect res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ */
+Tw2Effect.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.effectRes !== null)
+    {
+        if (out.indexOf(this.effectRes) === -1)
+        {
+            out.push(this.effectRes);
+        }
+    }
+
+    for (var param in this.parameters)
+    {
+        if (this.parameters.hasOwnProperty(param))
+        {
+            if (this.parameters[param] instanceof Tw2TextureParameter)
+            {
+                this.parameters[param].GetResource(out);
+            }
+        }
+    }
+
+    return out;
+}
+
+/**
  * Returns the Tw2Effect's resource object
  * @prototype
  */

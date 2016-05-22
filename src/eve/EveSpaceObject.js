@@ -70,7 +70,7 @@ function EveSpaceObject()
     this.displayLines = true;
 
     this.displayKillCounterValue = 0;
-    
+
     this._tempVec = vec3.create();
 
     this._perObjectData = new Tw2PerObjectData();
@@ -112,6 +112,60 @@ EveSpaceObject.prototype.Initialize = function()
         }
     }
 };
+
+/**
+ * Gets object's res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @param {Boolean} excludeChildren - True to exclude children's res objects
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    var self = this;
+
+    if (this.mesh !== null)
+    {
+        this.mesh.GetResources(out);
+    }
+
+    if (this.animation !== null)
+    {
+        this.animation.GetResources(out);
+    }
+
+    function getSetResources(setName, out)
+    {
+        for (var i = 0; i < self[setName].length; i++)
+        {
+            if ('GetResources' in self[setName][i])
+            {
+                self[setName][i].GetResources(out);
+            }
+        }
+    }
+
+    getSetResources('spriteSets', out);
+    getSetResources('turretSets', out);
+    getSetResources('decals', out);
+    getSetResources('spotlightSets', out);
+    getSetResources('planeSets', out);
+    getSetResources('lineSets', out);
+    getSetResources('overlayEffects', out);
+    getSetResources('effectChildren', out);
+
+    if (!excludeChildren)
+    {
+        getSetResources('children', out);
+    }
+
+    return out;
+}
+
 
 /**
  * Resets the lod
