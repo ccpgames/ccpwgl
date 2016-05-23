@@ -91,7 +91,7 @@ function EveCurveLineSet()
 /**
  * Initializes the Curve line set
  */
-this.Initialize = function()
+EveCurveLineSet.prototype.Initialize = function()
 {
     mat4.identity(this.transform);
     mat4.translate(this.transform, this.translation);
