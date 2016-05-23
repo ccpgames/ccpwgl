@@ -266,7 +266,7 @@ EveCurveLineSet.prototype.AddSpheredLineSph = function(startPosition, startColor
     vec3.add(startPnt, center);
     vec3.add(endPnt, center);
     // add it
-    return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, lineWidth);
+    return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, center, lineWidth);
 };
 
 /**
