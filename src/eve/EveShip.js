@@ -16,7 +16,7 @@ function EveShip()
     this.boosters = null;
     this.turretSets = [];
     this._turretSetsLocatorInfo = [];
-    
+
     this.displayTurrets = true;
     this.displayBoosters = true;
 }
@@ -45,6 +45,41 @@ EveShip.prototype.Initialize = function()
 };
 
 /**
+ * Gets ship's res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @param {Boolean} excludeChildren - True to exclude children's res objects
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveShip.prototype.GetResources = function(out, excludeChildren)
+{
+    if (out === undefined)
+    {
+        out = [];
+    };
+
+    this._super.GetResources.call(this, out, excludeChildren);
+
+    var self = this;
+
+    function getSetResources(setName, out)
+    {
+        for (var i = 0; i < self[setName].length; i++)
+        {
+            self[setName][i].GetResources(out);
+        }
+    }
+
+    getSetResources('turretSets', out);
+
+    if (this.boosters !== null)
+    {
+        this.boosters.GetResources(out);
+    }
+
+    return out;
+}
+
+/**
  * Gets render batches
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
@@ -57,7 +92,7 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
 
         this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
         this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-        
+
         if (this.displayTurrets)
         {
             if (this.lod > 1)
@@ -78,7 +113,7 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
                 }
             }
         }
-        
+
         if (this.boosters && this.displayBoosters)
         {
             this.boosters.GetBatches(mode, accumulator, this._perObjectData);
@@ -102,7 +137,7 @@ EveShip.prototype.Update = function(dt)
         }
         this.boosters.Update(dt, this.transform);
     }
-    
+
     for (var i = 0; i < this.turretSets.length; ++i)
     {
         if (i < this._turretSetsLocatorInfo.length)

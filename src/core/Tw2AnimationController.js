@@ -131,6 +131,29 @@ function Tw2AnimationController(geometryResource)
 }
 
 /**
+ * Gets all animation controller res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+
+Tw2AnimationController.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    for (var i = 0; i < this.geometryResources.length; i++)
+    {
+        if (out.indexOf(this.geometryResources[i]) === -1)
+        {
+            out.push(this.geometryResources[i]);
+        }
+    }
+    return out;
+}
+
+/**
  * Clears any existing resources and loads the supplied geometry resource
  * @param {Tw2GeometryRes} geometryResource
  * @prototype
@@ -595,7 +618,7 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
     }
 
     var toStop = {};
-    
+
     for (var n = 0; n < names.length; n++)
     {
         toStop[names[n]] = true;
@@ -655,7 +678,7 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
     }
 
     var keepAnimating = {};
-    
+
     for (var n = 0; n < names.length; n++)
     {
         keepAnimating[names[n]] = true;

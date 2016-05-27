@@ -47,6 +47,29 @@ function Tw2TextureParameter(name, texturePath)
 }
 
 /**
+ * Gets texture res object
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2TextureRes>} [out]
+ */
+Tw2TextureParameter.prototype.GetResource = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.textureRes !== null)
+    {
+        if (out.indexOf(this.textureRes) === -1)
+        {
+            out.push(this.textureRes);
+        }
+    }
+
+    return out;
+}
+
+/**
  * Sets the texture's resource path
  * @param {string} texturePath
  * @constructor
@@ -70,7 +93,7 @@ Tw2TextureParameter.prototype.Initialize = function()
     {
         this.textureRes = resMan.GetResource(this.resourcePath);
     }
-    
+
     if (this.useAllOverrides)
     {
         this._sampler = new Tw2SamplerState();
@@ -149,12 +172,12 @@ Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
  * Get Value
  * @return {string}
  */
- Tw2TextureParameter.prototype.GetValue = function()
- {
-     if (this.textureRes)
-     {
-         return this.textureRes.path;
-     }
-     
-     return this.resourcePath;
- }
+Tw2TextureParameter.prototype.GetValue = function()
+{
+    if (this.textureRes)
+    {
+        return this.textureRes.path;
+    }
+
+    return this.resourcePath;
+}

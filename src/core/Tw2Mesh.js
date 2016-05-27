@@ -111,6 +111,42 @@ Tw2Mesh.prototype.Initialize = function()
 };
 
 /**
+ * Gets Mesh res Objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+Tw2Mesh.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    var self = this;
+
+    if (out.indexOf(this.geometryResource) === -1)
+    {
+        out.push(this.geometryResource);
+    }
+
+    function getAreaResources(areaName, out)
+    {
+        for (var i = 0; i < self[areaName].length; i++)
+        {
+            self[areaName][i].effect.GetResources(out);
+        }
+    }
+
+    getAreaResources('additiveAreas', out);
+    getAreaResources('decalAreas', out);
+    getAreaResources('depthAreas', out);
+    getAreaResources('opaqueAreas', out);
+    getAreaResources('pickableAreas', out);
+    getAreaResources('transparentAreas', out);
+    return out;
+}
+
+/**
  * Gets render batches from a mesh area array and commits them to an accumulator
  * @param {Array.<Tw2MeshArea>} areas
  * @param {RenderMode} mode

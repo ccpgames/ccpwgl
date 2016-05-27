@@ -129,6 +129,35 @@ EveTransform.prototype.Initialize = function()
 };
 
 /**
+ * Gets transform res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @param {Boolean} excludeChildren - True to exclude children's res objects
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveTransform.prototype.GetResources = function(out, excludeChildren)
+{
+    if (out === undefined)
+    {
+        out = [];
+    };
+
+    if (this.mesh !== null)
+    {
+        this.mesh.GetResources(out);
+    }
+
+    if (!excludeChildren)
+    {
+        for (var i = 0; i < this.children; i++)
+        {
+            this.children[i].GetResources(out);
+        }
+    }
+
+    return out;
+}
+
+/**
  * Gets render batches for accumulation
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator

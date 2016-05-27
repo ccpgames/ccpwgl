@@ -44,6 +44,26 @@ function EveEffectRoot()
 }
 
 /**
+ * Gets effect root res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ */
+EveEffectRoot.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    };
+
+    if (this.highDetail !== null)
+    {
+        this.highDetail.GetResources(out);
+    }
+
+    return out;
+}
+
+/**
  * Internal per frame update
  * @param {number} dt - Delta Time
  */

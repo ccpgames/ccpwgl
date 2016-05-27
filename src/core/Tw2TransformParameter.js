@@ -49,7 +49,7 @@ Tw2TransformParameter.prototype.OnModified = function()
     var rotationCenterInv = mat4.create();
     mat4.identity(rotationCenterInv);
     mat4.translate(rotationCenterInv, [-this.rotationCenter[0], -this.rotationCenter[1], -this.rotationCenter[2]]);
-    
+
     var rotation = mat4.create();
     rotation[0] = 1.0 - 2.0 * this.rotation[1] * this.rotation[1] - 2 * this.rotation[2] * this.rotation[2];
     rotation[4] = 2 * this.rotation[0] * this.rotation[1] - 2 * this.rotation[2] * this.rotation[3];

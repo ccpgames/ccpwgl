@@ -58,6 +58,26 @@ EveSpriteSet.prototype.Initialize = function()
 };
 
 /**
+ * Gets Sprite Set Resource Objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpriteSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.effect !== null)
+    {
+        this.effect.GetResources(out);
+    }
+
+    return out;
+}
+
+/**
  * Rebuilds the sprite set's buffers
  */
 EveSpriteSet.prototype.RebuildBuffers = function()
@@ -190,7 +210,7 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * @param {Number} warpIntensity
  */
 EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perObjectData, world, boosterGain,
-                                                        warpIntensity)
+    warpIntensity)
 {
     if (this.display && mode == device.RM_ADDITIVE)
     {
