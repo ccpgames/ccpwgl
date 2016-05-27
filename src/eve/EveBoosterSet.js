@@ -1,4 +1,9 @@
 /**
+ * EveObjectSet
+ * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
+ */
+
+/**
  * EveBoosterSet
  * @property {boolean} display
  * @property {Tw2Effect} effect
