@@ -1,4 +1,9 @@
 /**
+ * EveObject
+ * @typedef {EveSpaceObject|EveStation|EveShip|EveTransform|EveEffectRoot|EvePlanet} EveObject
+ */
+
+/**
  * EveSpaceObject
  * @parameter {String} name
  * @parameter {Number} lod
