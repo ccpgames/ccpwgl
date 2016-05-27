@@ -70,7 +70,12 @@ EveShip.prototype.GetResources = function(out, excludeChildren)
     }
 
     getSetResources('turretSets', out);
-    getSetResources('boosters', out);
+
+    if (this.boosters !== null)
+    {
+        this.boosters.GetResources(out);
+    }
+
     return out;
 }
 
