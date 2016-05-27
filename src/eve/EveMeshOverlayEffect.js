@@ -1,4 +1,9 @@
 /**
+ * EveObjectChild
+ * @typedef {EveMeshOverlayEffect|EveChildExplosion|EveChildMesh|EveCurveLineSet|EveEffectRoot|EveTransform} EveObjectChild
+ */
+
+/**
  * Constructor for Overlay Effects
  * @property {boolean} display
  * @property {boolean} update
