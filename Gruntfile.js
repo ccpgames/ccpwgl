@@ -108,7 +108,7 @@ module.exports = function(grunt)
         'particle/Tw2RandomIntegerAttributeGenerator.js'
     ];
 
-    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js'];
+    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js', 'src/dev/**/*.js'];
 
     grunt.initConfig(
     {
@@ -119,6 +119,14 @@ module.exports = function(grunt)
             standard:
             {
                 src: ['Gruntfile.js', 'src/ccpwgl.js'].concat(sourcePatterns),
+                options:
+                {
+                    js: grunt.file.readJSON('.jsbeautifyrc')
+                }
+            },
+            dev :
+            {
+                src: ['src/dev/exports.js', 'src/dev/ccpwgl_dev.js'],
                 options:
                 {
                     js: grunt.file.readJSON('.jsbeautifyrc')
@@ -158,15 +166,35 @@ module.exports = function(grunt)
                     }
                 }
             }
+        },
+
+        concat:
+        {
+            dev:
+            {
+                src: sourceFiles.concat('dev/exports.js').map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }),
+                dest: 'src/dev/ccpwgl_dev.js',
+                options:
+                {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \nvar ccpwgl_int = (function()\n{\n',
+                    footer: '\n})();'
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('format', ['jsbeautifier']);
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('compile', ['uglify']);
     grunt.registerTask('default', ['compile']);
+    grunt.registerTask('dev', ['concat:dev', 'jsbeautifier:dev']);
 };
