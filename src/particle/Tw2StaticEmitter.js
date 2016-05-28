@@ -96,8 +96,6 @@ Tw2StaticEmitter.prototype.Update = function(dt)
 
             if (input.elements < d.elements)
             {
-                // CCPWGL: {ResMan} Input geometry mesh elements do not have the required number of components {....} [PARTICLE/ELEMENT:COMPONENT]
-
                 emitter.log('ResMan',
                     {
                         log: 'error',
