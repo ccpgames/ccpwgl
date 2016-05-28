@@ -24,8 +24,6 @@ Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
  * - Creates Shaders
  * - Sets shadow states for shaders
  * - Parses Jessica shader annotations
- * TODO: Fix commented out lines
- * TODO: @param xml is redundant
  * @param data
  * @param xml
  * @prototype
@@ -80,14 +78,17 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
         if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
         {
-            console.error(
-                'Tw2EffectRes:',
-                ' error compiling ',
-                stageType == 0 ? 'vertex' : 'fragment',
-                ' shader (effect \'',
-                path,
-                '\'): ',
-                device.gl.getShaderInfoLog(shader));
+            emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CompileShader'],
+                msg: 'Error compiling shader',
+                path: path,
+                type: 'shader.compile',
+                value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
+                data: device.gl.getShaderInfoLog(shader)
+            })
+
             return null;
         }
         return shader;
@@ -112,13 +113,15 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
 
         if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
         {
-            console.error(
-                'Tw2EffectRes:',
-                ' error linking shaders (effect \'',
-                path,
-                '\'): ',
-                device.gl.getProgramInfoLog(program.program));
-            return null;
+            emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CreateProgram'],
+                msg: 'Error linking shaders',
+                path: path,
+                type: 'shader.linkstatus',
+                data: device.gl.getProgramInfoLog(program.program)
+            });
         }
 
         device.gl.useProgram(program.program);
@@ -171,7 +174,16 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     var version = reader.ReadUInt32();
     if (version < 2 || version > 4)
     {
-        console.error('Tw2EffectRes:', ' invalid version of effect file \"', this.path, '\" (version ', version, ')');
+        emitter.log('ResMan',
+        {
+            log: 'error',
+            src: ['Tw2EffectRes', 'CreateProgram'],
+            msg: 'Invalid version of effect file',
+            type: 'shader.effectversion',
+            path: this.path,
+            value: version
+        });
+
         this.PrepareFinished(false);
         return;
     }
@@ -179,7 +191,16 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     var headerSize = reader.ReadUInt32();
     if (headerSize == 0)
     {
-        console.error('Tw2EffectRes:', ' file \"', this.path, '\" contains no compiled effects');
+        emitter.log('ResMan',
+        {
+            log: 'error',
+            src: ['Tw2EffectRes', 'CreateProgram'],
+            msg: 'File contains no compiled effects',
+            path: this.path,
+            type: 'shader.effectheadersize',
+            value: 0
+        });
+
         this.PrepareFinished(false);
         return;
     }
@@ -198,8 +219,8 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     {
         var pass = {};
         pass.stages = [
-            {},
-            {}];
+        {},
+        {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
@@ -433,10 +454,10 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
             pass.states.push(
-                {
-                    'state': state,
-                    'value': value
-                });
+            {
+                'state': state,
+                'value': value
+            });
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
@@ -553,7 +574,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
             }
         }
     }
-    
+
     return parameters;
 };
 

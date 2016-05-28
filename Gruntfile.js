@@ -5,6 +5,7 @@ module.exports = function(grunt)
     'use strict';
 
     var sourceFiles = [
+        'core/Tw2EventEmitter.js',
         'core/Tw2Frustum.js',
         'core/Tw2RawData.js',
         'core/Tw2BinaryReader.js',
