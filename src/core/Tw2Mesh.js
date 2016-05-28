@@ -159,7 +159,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
     for (var i = 0; i < areas.length; ++i)
     {
         var area = areas[i];
-        if (area.effect == null || !area.display))
+        if (area.effect == null || !area.display)
         {
             continue;
         }
