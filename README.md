@@ -11,7 +11,7 @@ If you are on Windows you will also need to install the Grunt CLI globally with 
 
 When all is set up, ```grunt [task]``` starts the build script.
 
-The default task runs the tasks "format" and "compile". "lint" is currently not in the
+The default task runs the tasks "cc", "format", "min". "lint" is currently not in the
 chain for still reporting too many errors.
 
 **Available tasks**:
