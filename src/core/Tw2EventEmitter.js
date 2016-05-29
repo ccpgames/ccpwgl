@@ -251,10 +251,12 @@ Tw2EventEmitter.prototype.log = function(eventName, eventData)
     var d = eventData;
     if (!d.log) d.log = 'log';
     this.emit(eventName, d);
+    var log = d.log;
 
     switch(d.log)
     {
         case('throw'):
+            log = 'error';
         case('error'):
         case('warn'):
             if (!Tw2EventEmitter.consoleErrors) return;
@@ -267,18 +269,18 @@ Tw2EventEmitter.prototype.log = function(eventName, eventData)
     var header = this.name.concat(': {', eventName, '}');
     var body = d.msg || '';
     if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
-    if (d.type && (d.log === 'error' || d.log === 'warn' || d.log === 'throw')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+    if (d.type && (log === 'error' || log === 'warn')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
 
     if ('data' in d)
     {
         console.group(header);
-        console[d.log](body);
+        console[log](body);
         console.dir(d.data);
         console.groupEnd();
     }
     else
     {
-        console[d.log](header, body);
+        console[log](header, body);
     }
 }
 
