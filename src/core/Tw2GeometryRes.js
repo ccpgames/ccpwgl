@@ -1,9 +1,9 @@
 /**
  * Tw2GeometryBatch
  * @property {Tw2GeometryRes} geometryRes
- * @property {number} meshIx
- * @property {number} start
- * @property {number} count
+ * @property {Number} meshIx
+ * @property {Number} start
+ * @property {Number} count
  * @property {Tw2Effect} effect
  * @inherit Tw2RenderBatch
  * @constructor
@@ -21,7 +21,6 @@ function Tw2GeometryBatch()
 /**
  * Commits the Geometry Batch for rendering
  * @param {Tw2Effect} [overrideEffect]
- * @prototype
  */
 Tw2GeometryBatch.prototype.Commit = function(overrideEffect)
 {
@@ -38,9 +37,9 @@ Inherit(Tw2GeometryBatch, Tw2RenderBatch);
 /**
  * Tw2GeometryLineBatch
  * @property {Tw2GeometryRes} geometryRes
- * @property {number} meshIx
- * @property {number} start
- * @property {number} count
+ * @property {Number} meshIx
+ * @property {Number} start
+ * @property {Number} count
  * @property {Tw2Effect|null} effect
  * @inherit Tw2RenderBatch
  * @constructor
@@ -58,7 +57,6 @@ function Tw2GeometryLineBatch()
 /**
  * Commits the Geometry Line Batch for rendering
  * @param {Tw2Effect} [overrideEffect]
- * @prototype
  */
 Tw2GeometryLineBatch.prototype.Commit = function(overrideEffect)
 {
@@ -75,12 +73,12 @@ Inherit(Tw2GeometryLineBatch, Tw2RenderBatch);
 /**
  * Tw2GeometryMeshArea
  * @property {string} name
- * @property {number} start
- * @property {number} count
+ * @property {Number} start
+ * @property {Number} count
  * @property {vec3} minBounds
  * @property {vec3} maxBounds
  * @property {vec3} boundsSpherePosition
- * @property {number} boundsSphereRadius
+ * @property {Number} boundsSphereRadius
  * @constructor
  */
 function Tw2GeometryMeshArea()
@@ -159,7 +157,7 @@ function Tw2GeometrySkeleton()
 /**
  * Tw2GeometryBone
  * @property {string} name
- * @property {number} parentIndex
+ * @property {Number} parentIndex
  * @property {vec3} position
  * @property {quat4} orientation
  * @property {mat3} scaleShear
@@ -182,9 +180,7 @@ function Tw2GeometryBone()
 
 /**
  * Updates the Bone's transform
- * TODO: fix commented out code
  * @returns {mat4}
- * @prototype
  */
 Tw2GeometryBone.prototype.UpdateTransform = function()
 {
@@ -201,7 +197,7 @@ Tw2GeometryBone.prototype.UpdateTransform = function()
 /**
  * Tw2GeometryAnimation
  * @property {string} name
- * @property {number} duration
+ * @property {Number} duration
  * @property {Array.<Tw2GeometryTrackGroup>} trackGroups
  * @constructor
  */
@@ -247,8 +243,8 @@ function Tw2GeometryTransformTrack()
 
 /**
  * Tw2GeometryCurve
- * @property {number} dimension
- * @property {number} degree
+ * @property {Number} dimension
+ * @property {Number} degree
  * @property {Float32Array} knots
  * @property {Float32Array} controls
  * @constructor
@@ -287,15 +283,15 @@ function Tw2BlendShapeData()
  * @property {Tw2VertexDeclaration} declaration
  * @property {Array.<Tw2GeometryMeshArea>} areas
  * @property {WebGLBuffer} buffer
- * @property {number} bufferLength
+ * @property {Number} bufferLength
  * @property bufferData
  * @property {WebGLBuffer} indexes
  * @property indexData
- * @property {number} indexType
+ * @property {Number} indexType
  * @property {vec3} minBounds
  * @property {vec3} maxBounds
  * @property {vec3} boundsSpherePosition
- * @property {number} boundsSphereRadius
+ * @property {Number} boundsSphereRadius
  * @property {Array} bones
  * @property {Array.<string>} boneBindings
  * @constructor
@@ -326,10 +322,10 @@ function Tw2GeometryMesh()
  * @property {vec3} minBounds
  * @property {vec3} maxBounds
  * @property {vec3} boundsSpherePosition
- * @property {number} boundsSphereRadius
+ * @property {Number} boundsSphereRadius
  * @property {Array} models
  * @property {Array} animations
- * @property {boolean} systemMirror
+ * @property {Boolean} systemMirror
  * @inherit Tw2Resource
  * @constructor
  */
@@ -349,15 +345,13 @@ function Tw2GeometryRes()
 /**
  * Request Response Type
  * @type {string}
- * @prototype
  */
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
 
 /**
  * GetInstanceBuffer
- * @param {number} meshIndex
- * @returns {?}
- * @prototype
+ * @param {Number} meshIndex
+ * @returns {*}
  */
 Tw2GeometryRes.prototype.GetInstanceBuffer = function(meshIndex)
 {
@@ -366,9 +360,8 @@ Tw2GeometryRes.prototype.GetInstanceBuffer = function(meshIndex)
 
 /**
  * GetInstanceDeclaration
- * @param {number} meshIndex
+ * @param {Number} meshIndex
  * @returns {Tw2VertexDeclaration}
- * @prototype
  */
 Tw2GeometryRes.prototype.GetInstanceDeclaration = function(meshIndex)
 {
@@ -377,9 +370,8 @@ Tw2GeometryRes.prototype.GetInstanceDeclaration = function(meshIndex)
 
 /**
  * GetInstanceStride
- * @param {number} meshIndex
- * @returns {?}
- * @prototype
+ * @param {Number} meshIndex
+ * @returns {*}
  */
 Tw2GeometryRes.prototype.GetInstanceStride = function(meshIndex)
 {
@@ -388,9 +380,8 @@ Tw2GeometryRes.prototype.GetInstanceStride = function(meshIndex)
 
 /**
  * GetInstanceCount
- * @param {number} meshIndex
- * @returns {?}
- * @prototype
+ * @param {Number} meshIndex
+ * @returns {*}
  */
 Tw2GeometryRes.prototype.GetInstanceCount = function(meshIndex)
 {
@@ -400,7 +391,6 @@ Tw2GeometryRes.prototype.GetInstanceCount = function(meshIndex)
 /**
  * Prepare
  * @param data
- * @prototype
  */
 Tw2GeometryRes.prototype.Prepare = function(data)
 {
@@ -462,6 +452,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 1:
                         if ((el.fileType & 0x10))
                         {
@@ -478,24 +469,28 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 2:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadInt32();
                         }
                         break;
+
                     case 3:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat16();
                         }
                         break;
+
                     case 4:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat32();
                         }
                         break;
+
                     case 8:
                         if ((el.fileType & 0x10))
                         {
@@ -512,6 +507,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 9:
                         if ((el.fileType & 0x10))
                         {
@@ -528,14 +524,24 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 10:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadUInt32();
                         }
                         break;
+
                     default:
-                        console.error('Tw2GeometryRes:', ' error loading wbg data (file ', self.path, ')');
+                        emitter.log('ResMan',
+                            {
+                                log: 'error',
+                                src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
+                                msg: 'Error loading wbg data',
+                                path: self.path,
+                                type: 'geometry.filetype',
+                                value: el.fileType & 0xf
+                            });
                         throw 1;
                 }
             }
@@ -815,7 +821,6 @@ Tw2GeometryRes.prototype.Prepare = function(data)
  * BindMeshToModel
  * @param {Tw2GeometryMesh} mesh
  * @param {Tw2GeometryModel} model
- * @method
  */
 Tw2GeometryRes.BindMeshToModel = function(mesh, model)
 {
@@ -827,15 +832,20 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
         var bone = model.FindBoneByName(name);
         if (bone == null)
         {
-            console.error(
-                'Tw2GeometryRes:',
-                'mesh \'',
-                binding.mesh.name,
-                '\' has invalid bone name \'',
-                name,
-                '\' for model \'',
-                model.name,
-                '\'');
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2GeometryRes', 'BindMeshToModel'],
+                    msg: 'Mesh has invalid bone name for model',
+                    path: this.path,
+                    type: 'geometry.invalidbone',
+                    data:
+                    {
+                        mesh: binding.mesh.name,
+                        bone: name,
+                        model: model.name
+                    }
+                });
         }
         else
         {
@@ -847,16 +857,15 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
 
 /**
  * RenderAreasInstanced
- * @param {number} meshIx
- * @param {number} start
- * @param {number} count
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
  * @param {Tw2Effect} effect
  * @param instanceVB
  * @param instanceDecl
  * @param instanceStride
  * @param instanceCount
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount)
 {
@@ -917,13 +926,12 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
 
 /**
  * RenderAreas
- * @param {number} meshIx
- * @param {number} start
- * @param {number} count
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
  * @param {Tw2Effect} effect
  * @param {callback} cb - callback[pass, drawElements]
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb)
 {
@@ -950,7 +958,20 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            console.error('Tw2GeometryRes:', ' error binding mesh to effect');
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2GeometryRes', 'RenderLines'],
+                    msg: 'Error binding mesh to effect',
+                    path: this.path,
+                    type: 'geometry.meshbind',
+                    data:
+                    {
+                        pass: pass,
+                        passInput: passInput,
+                        meshStride: mesh.declaration.stride
+                    }
+                });
             return false;
         }
         d.ApplyShadowState();
@@ -997,13 +1018,12 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
 
 /**
  * RenderLines
- * @param {number} meshIx
- * @param {number} start
- * @param {number} count
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
  * @param {Tw2Effect} effect
  * @param {function} cb - callback[pass, drawElements]
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb)
 {
@@ -1034,9 +1054,23 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            console.error('Tw2GeometryRes:', ' error binding mesh to effect');
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2GeometryRes', 'RenderLines'],
+                    msg: 'Error binding mesh to effect',
+                    path: this.path,
+                    type: 'geometry.meshbind',
+                    data:
+                    {
+                        pass: pass,
+                        passInput: passInput,
+                        meshStride: mesh.declaration.stride
+                    }
+                });
             return false;
         }
+
         d.ApplyShadowState();
 
         if (typeof(cb) != 'undefined')
@@ -1082,8 +1116,7 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
 /**
  * RenderDebugInfo
  * @param {function} debugHelper
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2GeometryRes.prototype.RenderDebugInfo = function(debugHelper)
 {
@@ -1111,8 +1144,7 @@ Tw2GeometryRes.prototype.RenderDebugInfo = function(debugHelper)
 
 /**
  * Unloads webgl and javascript resources
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2GeometryRes.prototype.Unload = function()
 {

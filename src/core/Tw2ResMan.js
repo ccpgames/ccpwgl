@@ -11,7 +11,6 @@ function Tw2MotherLode()
      * Finds a loaded object by it's file path
      * @param {string} path
      * @returns {Tw2LoadingObject}
-     * @method
      */
     this.Find = function(path)
     {
@@ -26,7 +25,6 @@ function Tw2MotherLode()
      * Adds a loaded object
      * @param {string} path
      * @param {Tw2LoadingObject} obj
-     * @method
      */
     this.Add = function(path, obj)
     {
@@ -36,7 +34,6 @@ function Tw2MotherLode()
     /**
      * Removes a loaded object by it's file path
      * @param {string} path
-     * @method
      */
     this.Remove = function(path)
     {
@@ -45,7 +42,6 @@ function Tw2MotherLode()
 
     /**
      * Clears the loaded object object
-     * @method
      */
     this.Clear = function()
     {
@@ -54,7 +50,6 @@ function Tw2MotherLode()
 
     /**
      * Unloads all loaded objects and then clears the loadedObject object
-     * @method
      */
     this.UnloadAndClear = function()
     {
@@ -75,10 +70,9 @@ function Tw2MotherLode()
      *     ccpwgl.setResourceUnloadPolicy()
      *     ccpwgl_int.resMan.autoPurgeResources=true
      *     ccpwgl_int.resMan.purgeTime=30
-     * @param {number} curFrame - the current frame count
-     * @param {number} frameLimit - how many frames the object can stay alive for before being purged
-     * @param {number} frameDistance - how long the resource has been alive for
-     * @method
+     * @param {Number} curFrame - the current frame count
+     * @param {Number} frameLimit - how many frames the object can stay alive for before being purged
+     * @param {Number} frameDistance - how long the resource has been alive for
      */
     this.PurgeInactive = function(curFrame, frameLimit, frameDistance)
     {
@@ -91,14 +85,25 @@ function Tw2MotherLode()
                 {
                     if (obj._isPurged)
                     {
-                        console.log('Removed purged resource ', obj.path);
+                        emitter.log('ResMan',
+                            {
+                                msg: 'Purged    ',
+                                path: obj.path,
+                                type: 'res.purged'
+                            });
+
                         delete this._loadedObjects[path];
                     }
                     if (obj._isGood && (curFrame - obj.activeFrame) % frameLimit >= frameDistance)
                     {
                         if (obj.Unload())
                         {
-                            console.info('Unloaded unused resource ', obj.path);
+                            emitter.log('ResMan',
+                                {
+                                    msg: 'Unloaded  ',
+                                    path: obj.path,
+                                    type: 'res.unused'
+                                });
                             delete this._loadedObjects[path];
                         }
                     }
@@ -112,7 +117,7 @@ function Tw2MotherLode()
  * Tw2LoadingObject
  * @property {object} object
  * @property {string} _redContents - object's .red file xml contents
- * @property {number} _inPrepare
+ * @property {Number} _inPrepare
  * @property {Array.<Object>} _objects
  * @property {Tw2ObjectReader} _constructor
  * @property {function} _constructorFunction - The constructor used to create the object once it's red contents have loaded
@@ -134,9 +139,8 @@ function Tw2LoadingObject()
  * AddObject
  * @param {Object} object
  * @param {Function} callback
- * @param {boolean} initialize
- * @returns {boolean}
- * @prototype
+ * @param {Boolean} initialize
+ * @returns {Boolean}
  */
 Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
 {
@@ -150,14 +154,20 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
  * Prepare
  * @param text
  * @param xml
- * @returns
- * @constructor
  */
 Tw2LoadingObject.prototype.Prepare = function(text, xml)
 {
     if (xml == null)
     {
-        console.error('Invalid XML for object ' + this.path);
+        emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2LoadingObject', 'Prepare'],
+                msg: 'Invalid XML',
+                path: this.path,
+                type: 'xml.invalid',
+                data: xml
+            });
         this.PrepareFinished(false);
         return;
     }
@@ -191,14 +201,29 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
         }
         catch (e)
         {
-            console.error(e);
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2LoadingObject', 'Prepare'],
+                    msg: 'Prepare error',
+                    path: this.path,
+                    type: 'res.prepare',
+                    data: e
+                })
         }
 
         this._inPrepare++;
     }
 
     resMan.motherLode.Remove(this.path);
-    console.info('Prepared ' + this.path);
+
+    emitter.log('ResMan',
+        {
+            msg: 'Prepared  ',
+            path: this.path,
+            type: 'res.prepare'
+        });
+
     this.PrepareFinished(true);
 };
 
@@ -206,22 +231,22 @@ Inherit(Tw2LoadingObject, Tw2Resource);
 
 /**
  * Resource Manager
- * @property {boolean} systemMirror - Toggles whether {@link GeometryResource} Index and Buffer data arrays are visible
+ * @property {Boolean} systemMirror - Toggles whether {@link GeometryResource} Index and Buffer data arrays are visible
  * @property {Object.<string, string>} resourcePaths
  * @property {Object} resourcePaths.res - Default resource path for current ccpwgl version
  * @property {Object.<string, Function>} _extensions - an object of registered extensions and their constructors
  * @property {Tw2MotherLode} motherLode
- * @property {number} maxPrepareTime
- * @property {number} prepareBudget
+ * @property {Number} maxPrepareTime
+ * @property {Number} prepareBudget
  * @property {Array} _prepareQueue
- * @property {boolean} autoPurgeResources=true - Sets whether resources should be purged automatically
- * @property {number} purgeTime=30 = Sets how long resources can remain inactive before they are purged
- * @property {number} activeFrame
- * @property {number} _purgeTime
- * @property {number} _purgeFrame
- * @property {number} _purgeFrameLimit
- * @property {number} _pendingLoads - a count of how many things are pending load
- * @property {number} _noLoadFrames
+ * @property {Boolean} autoPurgeResources=true - Sets whether resources should be purged automatically
+ * @property {Number} purgeTime=30 = Sets how long resources can remain inactive before they are purged
+ * @property {Number} activeFrame
+ * @property {Number} _purgeTime
+ * @property {Number} _purgeFrame
+ * @property {Number} _purgeFrameLimit
+ * @property {Number} _pendingLoads - a count of how many things are pending load
+ * @property {Number} _noLoadFrames
  * @constructor
  */
 function Tw2ResMan()
@@ -247,8 +272,8 @@ function Tw2ResMan()
 
     /**
      * IsLoading
-     * @returns {boolean}
-     * @method
+     * @returns {Boolean}
+     *
      */
     this.IsLoading = function()
     {
@@ -259,7 +284,6 @@ function Tw2ResMan()
      * Registeres extension's and their constructors
      * @param {string} extension
      * @param {Function} constructor
-     * @method
      */
     this.RegisterExtension = function(extension, constructor)
     {
@@ -300,7 +324,13 @@ function Tw2ResMan()
 
         if (!httpRequest)
         {
-            console.error('ResMan:', ' could not create an XMLHTTP instance');
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2LoadingObject', 'Prepare'],
+                    msg: 'Could not create an XMLHTTP instance',
+                    type: 'http.instance'
+                })
         }
         return httpRequest;
     };
@@ -354,7 +384,6 @@ function Tw2ResMan()
      * Returns a path suitable for logging by truncating really long file names
      * @param {string} path
      * @returns {string}
-     * @method
      */
     this.LogPathString = function(path)
     {
@@ -367,9 +396,8 @@ function Tw2ResMan()
 
     /**
      * Internal update function. It is called every frame.
-     * @param {number} dt - deltaTime
-     * @returns {boolean}
-     * @method
+     * @param {Number} dt - deltaTime
+     * @returns {Boolean}
      */
     this.PrepareLoop = function(dt)
     {
@@ -405,7 +433,15 @@ function Tw2ResMan()
             if (!result)
             {
                 now = new Date();
-                console.info('Prepared ', resMan._prepareQueue[0][0].path, ' in ', (now.getTime() - startTime) * 0.001, ' secs');
+
+                emitter.log('ResMan',
+                    {
+                        msg: 'Prepared  ',
+                        path: resMan._prepareQueue[0][0].path,
+                        time: (now.getTime() - startTime) * 0.001,
+                        type: 'res.prepared'
+                    });
+
                 resMan._prepareQueue.shift();
                 preparedCount++;
             }
@@ -456,7 +492,16 @@ function Tw2ResMan()
             }
             catch (e)
             {
-                console.error('ResMan:', ' communication error when loading  \"', obj.path, '\" (readyState ', readyState, ')');
+                emitter.log('ResMan',
+                    {
+                        log: 'error',
+                        src: ['Tw2ResMan', '_DoLoadResource'],
+                        msg: 'Communication error loading',
+                        path: obj.path,
+                        type: 'http.readystate',
+                        value: readyState
+                    });
+
                 obj.LoadFinished(false);
                 resMan._pendingLoads--;
                 return;
@@ -484,7 +529,15 @@ function Tw2ResMan()
                 }
                 else
                 {
-                    console.error('ResMan:', ' communication error when loading  \"', obj.path, '\" (code ', this.status, ')');
+                    emitter.log('ResMan',
+                        {
+                            log: 'error',
+                            src: ['Tw2ResMan', '_DoLoadResource'],
+                            msg: 'Communication error loading',
+                            path: obj.path,
+                            type: 'http.status',
+                            value: this.status
+                        });
                     obj.LoadFinished(false);
                 }
                 resMan._pendingLoads--;
@@ -497,14 +550,21 @@ function Tw2ResMan()
      * - the prefix in the resource path is replaced with it's string value from `this.resourcePaths`
      * @param {string} resPath
      * @returns {string}
-     * @method
      */
     this.BuildUrl = function(resPath)
     {
         var prefixIndex = resPath.indexOf(':/');
         if (prefixIndex == -1)
         {
-            console.error('ResMan:', ' invalid resource path: \"', resPath, '\"');
+            emitter.log('ResMan',
+                {
+                    log: 'warn',
+                    src: ['Tw2ResMan', 'BuildUrl'],
+                    msg: 'Invalid path',
+                    type: 'prefix.undefined',
+                    path: resPath
+                });
+
             return resPath;
         }
 
@@ -512,7 +572,15 @@ function Tw2ResMan()
 
         if (!(prefix in this.resourcePaths))
         {
-            console.error('ResMan:', ' invalid resource path: \"', resPath, '\"');
+            emitter.log('ResMan',
+                {
+                    log: 'warn',
+                    src: ['Tw2ResMan', 'BuildUrl'],
+                    msg: 'Invalid path',
+                    path: resPath,
+                    type: 'prefix.invalid',
+                    value: prefix
+                });
             return resPath;
         }
 
@@ -538,7 +606,14 @@ function Tw2ResMan()
 
         var httpRequest = this._CreateHttpRequest();
         httpRequest.onreadystatechange = _DoLoadResource(obj);
-        console.info('Requesting \"', this.BuildUrl(path), '\"');
+
+        emitter.log('ResMan',
+            {
+                msg: 'Requesting',
+                path: path,
+                type: 'res.requesting'
+            });
+
         httpRequest.open('GET', this.BuildUrl(path));
 
         if (obj.requestResponseType)
@@ -555,20 +630,34 @@ function Tw2ResMan()
         }
         catch (e)
         {
-            console.error('ResMan:', ' error sending resource HTTP request: ', e.toString());
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', '_LoadResource'],
+                    msg: 'Error requesting',
+                    path: path,
+                    type: 'http.request',
+                    value: e.toString()
+                })
         }
     };
 
     /**
      * Reloads a specific resource
-     * @param resource
-     * @returns resource
-     * @method
+     * @param {Tw2LoadingObject} resource
+     * @returns {Tw2LoadingObject} resource
      */
     this.ReloadResource = function(resource)
     {
         var path = resource.path;
-        console.info('ResMan:', 'reloading resource ', path);
+
+        emitter.log('ResMan',
+            {
+                msg: 'Reloading ',
+                path: path,
+                type: 'res.reload'
+            });
+
         var obj = this.motherLode.Find(path);
 
         if (obj !== null && !obj.IsPurged())
@@ -584,7 +673,6 @@ function Tw2ResMan()
      * Gets a resource
      * @param {String} path
      * @returns resource
-     * @constructor
      */
     this.GetResource = function(path)
     {
@@ -606,13 +694,28 @@ function Tw2ResMan()
 
         if (ext == null)
         {
-            console.error('ResMan:', ' unknown extension for path ', this.LogPathString(path));
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', 'ReloadResource'],
+                    msg: 'Unknown extension',
+                    type: 'extension.unknown',
+                    path: this.LogPathString(path)
+                });
             return null;
         }
 
         if (!(ext in this._extensions))
         {
-            console.error('ResMan:', ' unregistered extension  ', ext);
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', 'ReloadResource'],
+                    msg: 'Unregistered extension',
+                    type: 'extension.unregistered',
+                    path: this.LogPathString(path),
+                    value: ext
+                });
             return null;
         }
 
@@ -626,7 +729,6 @@ function Tw2ResMan()
      * Gets an object (with initialization)
      * @param {string} path
      * @param {Function} callback
-     * @method
      */
     this.GetObject = function(path, callback)
     {
@@ -637,7 +739,6 @@ function Tw2ResMan()
      * Gets an object (without initialization)
      * @param {string} path
      * @param {Function} callback
-     * @method
      */
     this.GetObjectNoInitialize = function(path, callback)
     {
@@ -648,7 +749,7 @@ function Tw2ResMan()
      * Core function for managing the processing and loading of an object
      * @param {string} path
      * @param {Function} callback
-     * @param {boolean} initialize
+     * @param {Boolean} initialize
      * @private
      */
     this._GetObject = function(path, callback, initialize)
@@ -672,7 +773,15 @@ function Tw2ResMan()
 
         var httpRequest = this._CreateHttpRequest();
         httpRequest.onreadystatechange = _DoLoadResource(res);
-        console.info('Requesting \"', this.BuildUrl(path), '\"');
+
+        emitter.log('ResMan',
+            {
+                msg: 'Requesting',
+                path: this.BuildUrl(path),
+                _path: path,
+                type: 'res.requesting'
+            });
+
         httpRequest.open('GET', this.BuildUrl(path));
         res.LoadStarted();
         obj._objectLoaded = false;
@@ -684,13 +793,21 @@ function Tw2ResMan()
         }
         catch (e)
         {
-            console.error('ResMan:', ' error sending object HTTP request: ', e.toString());
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', '_GetObject'],
+                    msg: 'Error sending object HTTP request',
+                    path: this.BuildUrl(path),
+                    _path: path,
+                    type: 'http.request',
+                    value: e.toString()
+                })
         }
     };
 
     /**
      * Clears the motherLode {@link Tw2MotherLode}
-     * @method
      */
     this.Clear = function()
     {
@@ -699,7 +816,6 @@ function Tw2ResMan()
 
     /**
      * Unloads and Clears the motherLode {@link Tw2MotherLode}
-     * @method
      */
     this.UnloadAndClear = function()
     {
