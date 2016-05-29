@@ -1,15 +1,15 @@
 /**
  * Tw2VertexElement
- * @param {number} usage - vertex data type
- * @param {number} usageIndex
- * @param {number} type
- * @param {number} elements - How many variables this vertex data type uses
- * @param {number} offset
- * @property {number} usage
- * @property {number} usageIndex
- * @property {number} type
- * @property {number} elements
- * @property {number} offset
+ * @param {Number} usage - vertex data type
+ * @param {Number} usageIndex
+ * @param {Number} type
+ * @param {Number} elements - How many variables this vertex data type uses
+ * @param {Number} offset
+ * @property {Number} usage
+ * @property {Number} usageIndex
+ * @property {Number} type
+ * @property {Number} elements
+ * @property {Number} offset
  * @property location
  * @property customSetter
  * @constructor
@@ -40,7 +40,7 @@ function Tw2VertexDeclaration()
 
 /**
  * Tw2 Vertex Declaration Types
- * @type {number}
+ * @type {Number}
  */
 Tw2VertexDeclaration.DECL_POSITION = 0;
 Tw2VertexDeclaration.DECL_COLOR = 1;
@@ -55,11 +55,10 @@ Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
  * CompareDeclarationElements
  * @param {Tw2VertexElement} a
  * @param {Tw2VertexElement} b
- * @param {number} [usageOffset=0]
- * @returns {number}
- * @function
+ * @param {Number} [usageOffset=0]
+ * @returns {Number}
  */
-function CompareDeclarationElements(a, b, usageOffset)
+Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset)
 {
     usageOffset = usageOffset || 0;
     if (a.usage < b.usage) return -1;
@@ -67,11 +66,10 @@ function CompareDeclarationElements(a, b, usageOffset)
     if (a.usageIndex + usageOffset < b.usageIndex) return -1;
     if (a.usageIndex + usageOffset > b.usageIndex) return 1;
     return 0;
-}
+};
 
 /**
  * Re-sorts elements
- * @prototype
  */
 Tw2VertexDeclaration.prototype.RebuildHash = function()
 {
@@ -80,15 +78,15 @@ Tw2VertexDeclaration.prototype.RebuildHash = function()
     {
         this._elementsSorted[i] = this.elements[i];
     }
-    this._elementsSorted.sort(CompareDeclarationElements);
+    this._elementsSorted.sort(Tw2VertexDeclaration.CompareDeclarationElements);
 };
 
 /**
  * Finds an element by it's usage type and usage index
- * @param {number} usage
- * @param {number} usageIndex
+ * @param {Number} usage
+ * @param {Number} usageIndex
  * @returns {Tw2VertexElement|null}
- * @prototype
+ *
  */
 Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
 {
@@ -117,9 +115,8 @@ Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
 /**
  * SetDeclaration
  * @param {Tw2VertexDeclaration} inputDecl
- * @param {number} stride
- * @returns {boolean}
- * @prototype
+ * @param {Number} stride
+ * @returns {Boolean}
  */
 Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
 {
@@ -140,7 +137,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
                 break;
             }
             var input = this._elementsSorted[index];
-            var cmp = CompareDeclarationElements(input, el);
+            var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el);
             if (cmp > 0)
             {
                 device.gl.disableVertexAttribArray(el.location);
@@ -175,11 +172,11 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
 /**
  * SetPartialDeclaration
  * @param {Tw2VertexDeclaration} inputDecl
- * @param {number} stride
- * @param {number} usageOffset
+ * @param {Number} stride
+ * @param {Number} usageOffset
  * @param [divisor=0]
  * @returns {Array} ResetData
- * @prototype
+ *
  */
 Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, stride, usageOffset, divisor)
 {
@@ -196,7 +193,7 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
         while (true)
         {
             var input = this._elementsSorted[index];
-            var cmp = CompareDeclarationElements(input, el, usageOffset);
+            var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el, usageOffset);
             if (cmp == 0)
             {
                 if (input.customSetter)
@@ -248,7 +245,6 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
 /**
  * ResetInstanceDivisors
  * @param {Array} resetData
- * @prototype
  */
 Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function(resetData)
 {

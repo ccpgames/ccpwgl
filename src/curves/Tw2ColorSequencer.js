@@ -1,9 +1,9 @@
 /**
  * Tw2ColorSequencer
  * @property {string} name
- * @property {number} start
+ * @property {Number} start
  * @property {quat4} value
- * @property {number} operator
+ * @property {Number} operator
  * @property {Array} functions
  * @property {quat4} _tempValue
  * @constructor
@@ -20,8 +20,7 @@ function Tw2ColorSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ColorSequencer.prototype.GetLength = function()
 {
@@ -38,8 +37,7 @@ Tw2ColorSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ColorSequencer.prototype.UpdateValue = function(time)
 {
@@ -48,10 +46,9 @@ Tw2ColorSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
 {

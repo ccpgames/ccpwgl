@@ -1,8 +1,8 @@
 /**
  * Tw2MayaVector3Curve
- * @property {number} xIndex
- * @property {number} yIndex
- * @property {number} zIndex
+ * @property {Number} xIndex
+ * @property {Number} yIndex
+ * @property {Number} zIndex
  * @property {null|Tw2MayaAnimationEngine} animationEngine
  * @property {string} name
  * @property {vec3} value
@@ -20,8 +20,7 @@ function Tw2MayaVector3Curve()
 
 /**
  * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2MayaVector3Curve.prototype.Initialize = function()
 {
@@ -31,8 +30,7 @@ Tw2MayaVector3Curve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2MayaVector3Curve.prototype.GetLength = function()
 {
@@ -41,8 +39,7 @@ Tw2MayaVector3Curve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
 {
@@ -79,7 +76,6 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaVector3Curve.prototype.ComputeLength = function()
 {

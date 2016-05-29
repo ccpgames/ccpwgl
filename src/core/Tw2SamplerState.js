@@ -1,17 +1,17 @@
 /**
  * Tw2SamplerState
- * @property {number} registerIndex
+ * @property {Number} registerIndex
  * @property {string} name
- * @property {number} minFilter
- * @property {number} maxFilter
- * @property {number} minFilterNoMips
- * @property {number} addressU
- * @property {number} addressV
- * @property {number} addressW
- * @property {number} anisotropy
+ * @property {Number} minFilter
+ * @property {Number} maxFilter
+ * @property {Number} minFilterNoMips
+ * @property {Number} addressU
+ * @property {Number} addressV
+ * @property {Number} addressW
+ * @property {Number} anisotropy
  * @property samplerType
- * @property {boolean} isVolume
- * @property {number} hash
+ * @property {Boolean} isVolume
+ * @property {Number} hash
  * @constructor
  */
 function Tw2SamplerState()
@@ -32,7 +32,6 @@ function Tw2SamplerState()
 
 /**
  * Computes the sampler hash
- * @prototype
  */
 Tw2SamplerState.prototype.ComputeHash = function()
 {
@@ -51,8 +50,7 @@ Tw2SamplerState.prototype.ComputeHash = function()
 
 /**
  * Apply
- * @param {boolean} hasMipMaps
- * @prototype
+ * @param {Boolean} hasMipMaps
  */
 Tw2SamplerState.prototype.Apply = function(hasMipMaps)
 {

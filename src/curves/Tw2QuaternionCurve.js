@@ -1,10 +1,10 @@
 /**
  * Tw2QuaternionKey2
- * @property {number} time
+ * @property {Number} time
  * @property {quat4} value
  * @property {quat4} leftTangent
  * @property {quat4} rightTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2QuaternionKey2()
@@ -20,17 +20,17 @@ function Tw2QuaternionKey2()
 /**
  * Tw2QuaternionCurve
  * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
+ * @property {Number} length
+ * @property {Boolean} cycle
+ * @property {Boolean} reversed
+ * @property {Number} timeOffset
+ * @property {Number} timeScale
  * @property {quat4} startValue
  * @property {quat4} currentValue
  * @property {quat4} endValue
  * @property {quat4} startTangent
  * @property {quat4} endTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @property {Array.<Tw2QuaternionKey>} keys
  * @constructor
  */
@@ -53,7 +53,6 @@ function Tw2QuaternionCurve()
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2QuaternionCurve.prototype.Initialize = function()
 {
@@ -62,8 +61,7 @@ Tw2QuaternionCurve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2QuaternionCurve.prototype.GetLength = function()
 {
@@ -74,8 +72,7 @@ Tw2QuaternionCurve.prototype.GetLength = function()
  * Compares two curve keys' time properties
  * @param {Tw2QuaternionKey} a
  * @param {Tw2QuaternionKey} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2QuaternionCurve.Compare = function(a, b)
 {
@@ -92,7 +89,6 @@ Tw2QuaternionCurve.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2QuaternionCurve.prototype.Sort = function()
 {
@@ -120,8 +116,7 @@ Tw2QuaternionCurve.prototype.Sort = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2QuaternionCurve.prototype.UpdateValue = function(time)
 {
@@ -130,10 +125,9 @@ Tw2QuaternionCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
 {
@@ -198,12 +192,11 @@ Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
 
 /**
  * Interpolate
- * @param {number} time
+ * @param {Number} time
  * @param {null|Tw2QuaternionKey} lastKey
  * @param {null|Tw2QuaternionKey} nextKey
  * @param {quat4} value
  * @returns {*}
- * @prototype
  */
 Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {

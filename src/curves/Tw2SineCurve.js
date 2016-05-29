@@ -1,10 +1,10 @@
 /**
  * Tw2SineCurve
  * @property {string} name
- * @property {number} value
- * @property {number} offset
- * @property {number} scale
- * @property {number} speed
+ * @property {Number} value
+ * @property {Number} offset
+ * @property {Number} scale
+ * @property {Number} speed
  * @constructor
  */
 function Tw2SineCurve()
@@ -18,8 +18,7 @@ function Tw2SineCurve()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2SineCurve.prototype.UpdateValue = function(time)
 {
@@ -28,9 +27,8 @@ Tw2SineCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * @param {Number} time
+ * @returns {Number}
  */
 Tw2SineCurve.prototype.GetValueAt = function(time)
 {

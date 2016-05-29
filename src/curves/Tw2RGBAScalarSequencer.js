@@ -18,8 +18,7 @@ function Tw2RGBAScalarSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2RGBAScalarSequencer.prototype.GetLength = function()
 {
@@ -45,8 +44,7 @@ Tw2RGBAScalarSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 {
@@ -55,10 +53,9 @@ Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
 {

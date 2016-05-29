@@ -1,10 +1,10 @@
 /**
  * Tw2ColorKey2
- * @property {number} time
+ * @property {Number} time
  * @property {quat4} value
  * @property {quat4} leftTangent
  * @property {quat4} rightTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2ColorKey2()
@@ -20,17 +20,17 @@ function Tw2ColorKey2()
 /**
  * Tw2ColorCurve2
  * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
+ * @property {Number} length
+ * @property {Boolean} cycle
+ * @property {Boolean} reversed
+ * @property {Number} timeOffset
+ * @property {Number} timeScale
  * @property {quat4} startValue=[0,0,0,1]
  * @property {quat4} currentValue=[0,0,0,1]
  * @property {quat4} endValue=[0,0,0,1]
  * @property {quat4} startTangent
  * @property {quat4} endTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @property {Array.<Tw2ColorKey2>} keys
  * @constructor
  */
@@ -53,7 +53,6 @@ function Tw2ColorCurve2()
 
 /**
  * Initializes the curve
- * @prototype
  */
 Tw2ColorCurve2.prototype.Initialize = function()
 {
@@ -62,8 +61,7 @@ Tw2ColorCurve2.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ColorCurve2.prototype.GetLength = function()
 {
@@ -74,8 +72,7 @@ Tw2ColorCurve2.prototype.GetLength = function()
  * Compares two curve keys' time properties
  * @param {Tw2ColorKey2} a
  * @param {Tw2ColorKey2} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2ColorCurve2.Compare = function(a, b)
 {
@@ -92,7 +89,6 @@ Tw2ColorCurve2.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2ColorCurve2.prototype.Sort = function()
 {
@@ -120,8 +116,7 @@ Tw2ColorCurve2.prototype.Sort = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ColorCurve2.prototype.UpdateValue = function(time)
 {
@@ -130,10 +125,9 @@ Tw2ColorCurve2.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
 {
@@ -186,7 +180,7 @@ Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
     }
-    var endKey = this.keys[i + 1];
+    var endKey;
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];
@@ -201,12 +195,11 @@ Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
 
 /**
  * Interpolate
- * @param {number} time
+ * @param {Number} time
  * @param {Tw2ColorKey2} lastKey
  * @param {Tw2ColorKey2} nextKey
  * @param {quat4} value
  * @returns {*}
- * @prototype
  */
 Tw2ColorCurve2.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {

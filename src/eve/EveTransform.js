@@ -1,12 +1,16 @@
 /**
  * EveBasicPerObjectData
- * @parameter perObjectVSData - Vertex shader data
- * @parameter perObjectPSData - Pixel shader data
- * @parameter perObjectFFEData - Fixed Function Emulation data
+ * @parameter {Tw2RawData} perObjectVSData - Vertex shader data
+ * @parameter {Tw2RawData} perObjectPSData - Pixel shader data
+ * @parameter {Tw2RawData} perObjectFFEData - Fixed Function Emulation data
  * @constructor
  */
 function EveBasicPerObjectData()
-{}
+{
+    this.perObjectVSData = null;
+    this.perObjectPSData = null;
+    this.perObjectFFEData = null;
+}
 
 /**
  * SetPerObjectDataToDevice
@@ -49,7 +53,7 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {Boolean} useDistanceBasedScale
  * @property {Array.<Tw2ParticleSystem>} particleSystems
  * @property {Array.<Tw2ParticleEmitter>} particleEmitters
- * @property {Array.<Tw2CurveSet} curveSets
+ * @property {Array.<Tw2CurveSet>} curveSets
  * @property {Array} children
  * @property {Boolean} display
  * @property {Boolean} displayMesh
@@ -132,14 +136,14 @@ EveTransform.prototype.Initialize = function()
  * Gets transform res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @param {Boolean} excludeChildren - True to exclude children's res objects
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveTransform.prototype.GetResources = function(out, excludeChildren)
 {
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     if (this.mesh !== null)
     {
@@ -155,7 +159,7 @@ EveTransform.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 /**
  * Gets render batches for accumulation
@@ -189,7 +193,7 @@ EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
             this.children[i].GetBatches(mode, accumulator, perObjectData);
         }
     }
-}
+};
 
 /**
  * Per frame update
@@ -280,6 +284,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[10] = invView[10] * finalScale[2];
             }
             break;
+
         case this.EVE_CAMERA_ROTATION:
             {
                 var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
@@ -299,6 +304,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[14] = z;
             }
             break;
+
         case this.EVE_CAMERA_ROTATION_ALIGNED:
         case this.EVE_SIMPLE_HALO:
             {
@@ -373,6 +379,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 }
             }
             break;
+
         case this.LOOK_AT_CAMERA:
             {
                 mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
@@ -400,6 +407,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[10] = invView[10] * finalScale[2];
             }
             break;
+
         default:
             mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
     }

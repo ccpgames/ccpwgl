@@ -18,8 +18,7 @@ function Tw2EulerRotation()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2EulerRotation.prototype.UpdateValue = function(time)
 {
@@ -28,10 +27,9 @@ Tw2EulerRotation.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2EulerRotation.prototype.GetValueAt = function(time, value)
 {
@@ -56,8 +54,7 @@ Tw2EulerRotation.prototype.GetValueAt = function(time, value)
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2EulerRotation.prototype.GetLength = function()
 {

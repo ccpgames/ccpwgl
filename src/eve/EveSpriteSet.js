@@ -3,10 +3,10 @@
  * @property {string} name
  * @property {Array.<EveSpriteSetItem>} sprites
  * @property {Tw2Effect} effect
- * @property {boolean} display
- * @property {number} _time
- * @property {WebGlBuffer} _vertexBuffer
- * @property {WebGlBuffer} _indexBuffer
+ * @property {Boolean} display
+ * @property {Number} _time
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
@@ -60,7 +60,7 @@ EveSpriteSet.prototype.Initialize = function()
 /**
  * Gets Sprite Set Resource Objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveSpriteSet.prototype.GetResources = function(out)
 {
@@ -75,7 +75,7 @@ EveSpriteSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Rebuilds the sprite set's buffers
@@ -324,7 +324,7 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
 
 /**
  * Per frame update
- * @param {number} dt - Delta time
+ * @param {Number} dt - Delta time
  */
 EveSpriteSet.prototype.Update = function(dt)
 {
@@ -342,11 +342,11 @@ EveSpriteSet.prototype.Clear = function()
 /**
  * Adds a sprite set item to the sprite set
  * @param {vec3} pos
- * @param {number} blinkRate
- * @param {number} blinkPhase
- * @param {number} minScale
- * @param {number} maxScale
- * @param {number} falloff
+ * @param {Number} blinkRate
+ * @param {Number} blinkPhase
+ * @param {Number} minScale
+ * @param {Number} maxScale
+ * @param {Number} falloff
  * @param {quat4} color
  * @constructor
  */
@@ -368,13 +368,13 @@ EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxS
  * EveSpriteSetItem
  * @property {string} name
  * @property {vec3} position
- * @property {number} blinkRate
- * @property {number} minScale
- * @property {number} falloff
+ * @property {Number} blinkRate
+ * @property {Number} minScale
+ * @property {Number} falloff
  * @property {quat4} color
  * @property {quat4} warpColor
- * @property {number} boneIndex
- * @property {number} groupIndex
+ * @property {Number} boneIndex
+ * @property {Number} groupIndex
  * @constructor
  */
 function EveSpriteSetItem()

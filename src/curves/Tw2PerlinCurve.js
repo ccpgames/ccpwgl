@@ -7,11 +7,9 @@ var Perlin_g1 = new Array(Perlin_B + Perlin_B + 2);
 
 /**
  * Initializes Perlin Noise
- * @method
  */
 function Perlin_init()
 {
-    var i = 0;
     var j = 0;
     var k = 0;
     for (i = 0; i < Perlin_B; i++)
@@ -38,7 +36,6 @@ function Perlin_init()
  * Perlin_noise1
  * @param arg
  * @returns {*}
- * @method
  */
 function Perlin_noise1(arg)
 {
@@ -54,9 +51,9 @@ function Perlin_noise1(arg)
     var rx0 = t - Math.floor(t);
     var rx1 = rx0 - 1;
 
-    sx = rx0 * rx0 * (3. - 2. * rx0);
-    u = rx0 * Perlin_g1[Perlin_p[bx0]];
-    v = rx1 * Perlin_g1[Perlin_p[bx1]];
+    var sx = rx0 * rx0 * (3. - 2. * rx0);
+    var u = rx0 * Perlin_g1[Perlin_p[bx0]];
+    var v = rx1 * Perlin_g1[Perlin_p[bx1]];
 
     return u + sx * (v - u);
 }
@@ -67,8 +64,7 @@ function Perlin_noise1(arg)
  * @param alpha
  * @param beta
  * @param n
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 function PerlinNoise1D(x, alpha, beta, n)
 {
@@ -87,15 +83,15 @@ function PerlinNoise1D(x, alpha, beta, n)
 /**
  * Tw2PerlinCurve
  * @property {String} name
- * @property {number} start
- * @property {number} value
- * @property {number} speed
- * @property {number} alpha
- * @property {number} beta
- * @property {number} offset
- * @property {number} scale
- * @property {number} N
- * @property {number} _startOffset
+ * @property {Number} start
+ * @property {Number} value
+ * @property {Number} speed
+ * @property {Number} alpha
+ * @property {Number} beta
+ * @property {Number} offset
+ * @property {Number} scale
+ * @property {Number} N
+ * @property {Number} _startOffset
  * @constructor
  */
 function Tw2PerlinCurve()
@@ -114,8 +110,7 @@ function Tw2PerlinCurve()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2PerlinCurve.prototype.UpdateValue = function(time)
 {
@@ -124,9 +119,8 @@ Tw2PerlinCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * @param {Number} time
+ * @returns {Number}
  */
 Tw2PerlinCurve.prototype.GetValueAt = function(time)
 {

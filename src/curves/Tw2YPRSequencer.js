@@ -20,8 +20,7 @@ function Tw2YPRSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2YPRSequencer.prototype.GetLength = function()
 {
@@ -43,8 +42,7 @@ Tw2YPRSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2YPRSequencer.prototype.UpdateValue = function(time)
 {
@@ -53,10 +51,9 @@ Tw2YPRSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2YPRSequencer.prototype.GetValueAt = function(time, value)
 {

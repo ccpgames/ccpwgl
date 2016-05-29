@@ -1,10 +1,10 @@
 /**
  * Tw2VectorKey
- * @property {number} time
+ * @property {Number} time
  * @property {vec3} value
  * @property {vec3} left
  * @property {vec3} right
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2VectorKey()
@@ -19,12 +19,12 @@ function Tw2VectorKey()
 /**
  * Tw2Vector3Curve
  * @property {string} name
- * @property {number} start
- * @property {number} length
+ * @property {Number} start
+ * @property {Number} length
  * @property {vec3} value
- * @property {number} extrapolation
+ * @property {Number} extrapolation
  * @property {Array.<Tw2VectorKey>} keys
- * @property {number} _currKey
+ * @property {Number} _currKey
  * @constructor
  */
 function Tw2VectorCurve()
@@ -40,8 +40,7 @@ function Tw2VectorCurve()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2VectorCurve.prototype.UpdateValue = function(time)
 {
@@ -50,8 +49,7 @@ Tw2VectorCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2VectorCurve.prototype.GetLength = function()
 {
@@ -60,10 +58,9 @@ Tw2VectorCurve.prototype.GetLength = function()
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2VectorCurve.prototype.GetValueAt = function(time, value)
 {

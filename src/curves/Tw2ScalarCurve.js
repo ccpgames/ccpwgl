@@ -1,10 +1,10 @@
 /**
  * Tw2ScalarKey
- * @property {number} time
- * @property {number} value
- * @property {number} left
- * @property {number} right
- * @property {number} interpolation
+ * @property {Number} time
+ * @property {Number} value
+ * @property {Number} left
+ * @property {Number} right
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2ScalarKey()
@@ -19,14 +19,14 @@ function Tw2ScalarKey()
 /**
  * Tw2ScalarCurve
  * @property {string} name
- * @property {number} start
- * @property {number} timeScale
- * @property {number} timeOffset
- * @property {number} length
- * @property {number} value
- * @property {number} extrapolation
+ * @property {Number} start
+ * @property {Number} timeScale
+ * @property {Number} timeOffset
+ * @property {Number} length
+ * @property {Number} value
+ * @property {Number} extrapolation
  * @property {Array.<Tw2ScalarKey>} keys
- * @property {number} _currKey
+ * @property {Number} _currKey
  * @constructor
  */
 function Tw2ScalarCurve()
@@ -44,8 +44,7 @@ function Tw2ScalarCurve()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ScalarCurve.prototype.GetLength = function()
 {
@@ -54,8 +53,7 @@ Tw2ScalarCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ScalarCurve.prototype.UpdateValue = function(time)
 {
@@ -65,9 +63,8 @@ Tw2ScalarCurve.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * TODO: Final return is unreachable
- * @param {number} time
+ * @param {Number} time
  * @returns {*}
- * @prototype
  */
 Tw2ScalarCurve.prototype.GetValueAt = function(time)
 {

@@ -3,13 +3,13 @@
  * @param {string} [name=''] - Name of the texture parameter
  * @param {string} [texturePath=''] - The texture's resource path
  * @property {string} name
- * @property {boolean} useAllOverrides
- * @property {number} addressUMode
- * @property {number} addressVMode
- * @property {number} addressWMode
- * @property {number} filterMode
- * @property {number} mapFilterMode
- * @property {number} maxAnisotropy
+ * @property {Boolean} useAllOverrides
+ * @property {Number} addressUMode
+ * @property {Number} addressVMode
+ * @property {Number} addressWMode
+ * @property {Number} filterMode
+ * @property {Number} mapFilterMode
+ * @property {Number} maxAnisotropy
  * @property {Tw2TextureRes} textureRes
  * @property {Tw2SamplerState} _sampler
  * @constructor
@@ -67,7 +67,7 @@ Tw2TextureParameter.prototype.GetResource = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Sets the texture's resource path
@@ -85,7 +85,6 @@ Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
 
 /**
  * Initializes the texture parameter
- * @prototype
  */
 Tw2TextureParameter.prototype.Initialize = function()
 {
@@ -150,7 +149,6 @@ Tw2TextureParameter.prototype.Initialize = function()
  * @param stage
  * @param sampler
  * @param slices
- * @prototype
  */
 Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
 {
@@ -180,4 +178,4 @@ Tw2TextureParameter.prototype.GetValue = function()
     }
 
     return this.resourcePath;
-}
+};

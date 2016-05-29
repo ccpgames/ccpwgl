@@ -1,4 +1,5 @@
-function EveSOF() {
+function EveSOF()
+{
     var data = null;
     var spriteEffectSkinned = null;
     var spriteEffect = null;
@@ -211,7 +212,7 @@ function EveSOF() {
             decal.decalEffect = effect;
             decal.name = _get(hullDecals[i], 'name', '');
             if ('groupIndex' in hullDecals[i]) {
-                    decal.groupIndex = hullDecals[i].groupIndex; 
+                decal.groupIndex = hullDecals[i].groupIndex;
             }
             decal.Initialize();
             ship.decals.push(decal);
@@ -262,7 +263,7 @@ function EveSOF() {
                 item.minScale = _get(hullData[j], 'minScale', 1);
                 item.name = _get(hullData[j], 'name', '');
                 if ('groupIndex' in hullData[j]) {
-                    item.groupIndex = hullData[j].groupIndex; 
+                    item.groupIndex = hullData[j].groupIndex;
                 }
                 item.groupName = factionSet.name;
                 if ('position' in hullData[j]) {
@@ -733,26 +734,24 @@ function EveSOF() {
     this.GetHullNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('hull'));
-       });
+        });
     };
 
     this.GetFactionNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('faction'));
-       });
+        });
     };
 
     this.GetRaceNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('race'));
-       });
+        });
     };
-    
+
     this.GetSofData = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('all'));
         })
     };
-
-    
 }

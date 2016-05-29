@@ -1,6 +1,6 @@
 /**
  * Tw2ParticleAttractorForce
- * @property {number} magnitude
+ * @property {Number} magnitude
  * @property {vec3} position
  * @property {vec3} _tempVec
  * @constructor
@@ -17,7 +17,6 @@ function Tw2ParticleAttractorForce()
  * @param position
  * @param velocity
  * @param force
- * @prototype
  */
 Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
 {
@@ -33,6 +32,5 @@ Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, fo
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2ParticleAttractorForce.prototype.Update = function() {};

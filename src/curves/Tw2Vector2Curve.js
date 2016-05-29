@@ -1,10 +1,10 @@
 /**
  * Tw2Vector2Key
- * @property {number} time
+ * @property {Number} time
  * @property {Float32Array} value - vec2 array
  * @property {Float32Array} leftTangent - vec2 array
  * @property {Float32Array} rightTangent - vec2 array
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2Vector2Key()
@@ -19,17 +19,17 @@ function Tw2Vector2Key()
 /**
  * Tw2Vector2Curve
  * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
+ * @property {Number} length
+ * @property {Boolean} cycle
+ * @property {Boolean} reversed
+ * @property {Number} timeOffset
+ * @property {Number} timeScale
  * @property {Float32Array} startValue - vec2 array
  * @property {Float32Array} currentValue - vec2 array
  * @property {Float32Array} endValue - vec2 array
  * @property {Float32Array} startTangent - vec2 array
  * @property {Float32Array} endTangent - vec2 array
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @property {Array.<Tw2Vector2Key>} keys
  * @constructor
  */
@@ -52,7 +52,6 @@ function Tw2Vector2Curve()
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2Vector2Curve.prototype.Initialize = function()
 {
@@ -61,8 +60,7 @@ Tw2Vector2Curve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2Vector2Curve.prototype.GetLength = function()
 {
@@ -73,8 +71,7 @@ Tw2Vector2Curve.prototype.GetLength = function()
  * Compares two curve keys' time properties
  * @param {Tw2Vector2Key} a
  * @param {Tw2Vector2Key} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2Vector2Curve.Compare = function(a, b)
 {
@@ -91,7 +88,6 @@ Tw2Vector2Curve.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2Vector2Curve.prototype.Sort = function()
 {
@@ -119,8 +115,7 @@ Tw2Vector2Curve.prototype.Sort = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2Vector2Curve.prototype.UpdateValue = function(time)
 {
@@ -129,10 +124,9 @@ Tw2Vector2Curve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {Float32Array} value - vec2 array
  * @returns {Float32Array} vec2 array
- * @prototype
  */
 Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
 {
@@ -194,12 +188,11 @@ Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
 
 /**
  * Interpolate
- * @param {number} time
+ * @param {Number} time
  * @param {Tw2Vector2Key} lastKey
  * @param {Tw2Vector2Key} nextKey
  * @param {Float32Array} value - vec2 array
  * @returns {Float32Array} vec2 array
- * @prototype
  */
 Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {

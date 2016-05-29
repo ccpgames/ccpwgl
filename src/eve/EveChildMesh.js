@@ -1,19 +1,19 @@
 /**
  * Mesh attachment to space object
  * @property {string} name
- * @property {boolean} display
- * @property {boolean} useSpaceObjectData
+ * @property {Boolean} display
+ * @property {Boolean} useSpaceObjectData
  * @property {Number} lowestLodVisible
  * @property {quat4} rotation
  * @property {vec3} translation
  * @property {vec3} scaling
- * @property {boolean} useSRT
- * @property {boolean} staticTransform
+ * @property {Boolean} useSRT
+ * @property {Boolean} staticTransform
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
  * @property {mat4} worldTransformLast
  * @property {Tw2Mesh} mesh
- * @property {boolean} isEffectChild
+ * @property {Boolean} isEffectChild
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
@@ -110,12 +110,10 @@ EveChildMesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 
 };
 
-
-
 /**
  * Gets child mesh res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveChildMesh.prototype.GetResources = function(out)
 {
@@ -130,4 +128,4 @@ EveChildMesh.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};

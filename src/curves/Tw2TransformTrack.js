@@ -4,7 +4,7 @@
  * @property {string} resPath
  * @property {Object} res
  * @property {string} group
- * @property {boolean} cycle
+ * @property {Boolean} cycle
  * @property {vec3} translation
  * @property {quat4} rotation
  * @property {vec3} scale
@@ -32,7 +32,6 @@ function Tw2TransformTrack()
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2TransformTrack.prototype.Initialize = function()
 {
@@ -44,8 +43,7 @@ Tw2TransformTrack.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2TransformTrack.prototype.GetLength = function()
 {
@@ -55,11 +53,10 @@ Tw2TransformTrack.prototype.GetLength = function()
 /**
  * EvaluateCurve
  * @param curve
- * @param {number} time
+ * @param {Number} time
  * @param {Array|vec3|quat4|mat4} value
- * @param {boolean} cycle
- * @param {number} duration
- * @prototype
+ * @param {Boolean} cycle
+ * @param {Number} duration
  */
 Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, duration)
 {
@@ -154,8 +151,7 @@ Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, 
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2TransformTrack.prototype.UpdateValue = function(time)
 {
@@ -192,7 +188,6 @@ Tw2TransformTrack.prototype.UpdateValue = function(time)
 
 /**
  * FindTracks
- * @prototype
  */
 Tw2TransformTrack.prototype.FindTracks = function()
 {

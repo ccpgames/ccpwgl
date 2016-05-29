@@ -24,15 +24,15 @@
  * @parameter {vec3} shapeEllipsoidCenter
  * @parameter {mat4} transform
  * @parameter {Tw2AnimationController} animation
- * @parameter {boolean} display - Toggles rendering of the whole space object
- * @parameter {boolean} displayMesh - Toggles mesh rendering
- * @parameter {boolean} displayChildren - toggles rendering of children
- * @parameter {boolean} displaySprites - Toggles sprite set rendering
- * @parameter {boolean} displayDecals - Toggles decal rendering
- * @parameter {boolean} displaySpotlights - Toggles spotlight set rendering
- * @parameter {boolean} displayPlanes - toggles plane set rendering
- * @parameter {boolean} displayLines - toggles line set rendering
- * @parameter {boolean} displayOverlays - toggles overlay effect rendering
+ * @parameter {Boolean} display - Toggles rendering of the whole space object
+ * @parameter {Boolean} displayMesh - Toggles mesh rendering
+ * @parameter {Boolean} displayChildren - toggles rendering of children
+ * @parameter {Boolean} displaySprites - Toggles sprite set rendering
+ * @parameter {Boolean} displayDecals - Toggles decal rendering
+ * @parameter {Boolean} displaySpotlights - Toggles spotlight set rendering
+ * @parameter {Boolean} displayPlanes - toggles plane set rendering
+ * @parameter {Boolean} displayLines - toggles line set rendering
+ * @parameter {Boolean} displayOverlays - toggles overlay effect rendering
  * @parameter {Number} displayKillCounterValue - number of kills to show on kill counter decals
  * @parameter {vec3} _tempVec
  * @parameter {Tw2PerObjectData} _perObjectData
@@ -122,7 +122,7 @@ EveSpaceObject.prototype.Initialize = function()
  * Gets object's res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @param {Boolean} excludeChildren - True to exclude children's res objects
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
 {
@@ -169,7 +169,7 @@ EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 
 /**
@@ -178,7 +178,7 @@ EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
 EveSpaceObject.prototype.ResetLod = function()
 {
     this.lod = 3;
-}
+};
 
 /**
  * Updates the lod
@@ -203,7 +203,7 @@ EveSpaceObject.prototype.UpdateLod = function(frustum)
     {
         this.lod = 0;
     }
-}
+};
 
 /**
  * A Per frame function that updates view dependent data
@@ -238,14 +238,14 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
 
     if (this.animation.animations.length)
     {
-        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
+        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
     }
 
     for (var s = 0; s < this.lineSets.length; ++s)
     {
         this.lineSets[s].UpdateViewDependentData(this.transform);
     }
-}
+};
 
 /**
  * Gets line render batches
@@ -258,7 +258,7 @@ EveSpaceObject.prototype.GetLineBatches = function(mode, accumulator)
     {
         this.lineSets[i].GetBatches(mode, accumulator);
     }
-}
+};
 
 /**
  * Gets render batches
@@ -389,7 +389,7 @@ EveSpaceObject.prototype.Update = function(dt)
 /**
  * Gets locator count for a specific locator group
  * @param {String} prefix
- * @returns {number}
+ * @returns {Number}
  */
 EveSpaceObject.prototype.GetLocatorCount = function(prefix)
 {

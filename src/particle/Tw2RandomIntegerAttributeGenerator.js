@@ -1,6 +1,6 @@
 /**
  * Tw2RandomIntegerAttributeGenerator
- * @property {number} elementType
+ * @property {Number} elementType
  * @property {string} customName
  * @property {quat4} minRange
  * @property {quat4} maxRange
@@ -19,8 +19,7 @@ function Tw2RandomIntegerAttributeGenerator()
 /**
  * Bind
  * @param ps
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -41,7 +40,6 @@ Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
  */
 Tw2RandomIntegerAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {

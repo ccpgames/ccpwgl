@@ -1,10 +1,10 @@
 /**
  * Tw2ParticleTurbulenceForce
- * @property {number} noiseLevel
- * @property {number} noiseRatio
+ * @property {Number} noiseLevel
+ * @property {Number} noiseRatio
  * @property {vec3} amplitude
  * @property {quat4} frequency
- * @property {number} _time
+ * @property {Number} _time
  * @constructor
  */
 function Tw2ParticleTurbulenceForce()
@@ -48,6 +48,7 @@ function InitializeNoise()
         s_globalNoiseTemps[i] = vec3.create();
     }
 }
+
 InitializeNoise();
 
 function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
@@ -107,7 +108,6 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
 /**
  * tempNoise
  * @type {quat4}
- * @prototype
  */
 Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
 
@@ -116,7 +116,6 @@ Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
  * @param position
  * @param velocity
  * @param force
- * @prototype
  */
 Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
 {
@@ -150,8 +149,7 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, f
 
 /**
  * Internal render/update function. It is called every frame.
- * @param {number} dt - delta Time
- * @prototype
+ * @param {Number} dt - delta Time
  */
 Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
 {

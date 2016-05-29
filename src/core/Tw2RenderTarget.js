@@ -3,9 +3,9 @@
  * @property {Tw2TextureRes} texture
  * @property {WebglFrameBuffer} _frameBuffer
  * @property {WebglRenderBuffer} _renderBuffer
- * @property {number} width - width of the resulting texture
- * @property {number} height - height of the resulting texture
- * @property {boolean} hasDepth - Controls whether depth is considered when creating the webgl buffers
+ * @property {Number} width - width of the resulting texture
+ * @property {Number} height - height of the resulting texture
+ * @property {Boolean} hasDepth - Controls whether depth is considered when creating the webgl buffers
  * @constructor
  */
 function Tw2RenderTarget()
@@ -20,7 +20,6 @@ function Tw2RenderTarget()
 
 /**
  * Destroys the render target's webgl buffers and textures
- * @prototype
  */
 Tw2RenderTarget.prototype.Destroy = function()
 {
@@ -43,10 +42,9 @@ Tw2RenderTarget.prototype.Destroy = function()
 
 /**
  * Creates the render target
- * @param {number} width 
- * @param {number} height
- * @param {boolean} hasDepth
- * @prototype
+ * @param {Number} width
+ * @param {Number} height
+ * @param {Boolean} hasDepth
  */
 Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
 {
@@ -86,7 +84,6 @@ Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
 
 /**
  * Sets the render target as the current frame buffer
- * @prototype
  */
 Tw2RenderTarget.prototype.Set = function()
 {
@@ -95,8 +92,7 @@ Tw2RenderTarget.prototype.Set = function()
 };
 
 /**
- * Unsets the render target as the current frame buffer
- * @prototype
+ * UnSets the render target as the current frame buffer
  */
 Tw2RenderTarget.prototype.Unset = function()
 {

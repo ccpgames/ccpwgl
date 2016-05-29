@@ -1,14 +1,14 @@
 /**
  * Tw2ScalarSequencer
  * @property {string} name
- * @property {number} value
- * @property {number} operator
+ * @property {Number} value
+ * @property {Number} operator
  * @property {Array} functions
- * @property {number} inMinClamp
- * @property {number} inMaxClamp
- * @property {number} outMinClamp
- * @property {number} outMaxClamp
- * @property {boolean} clamping
+ * @property {Number} inMinClamp
+ * @property {Number} inMaxClamp
+ * @property {Number} outMinClamp
+ * @property {Number} outMaxClamp
+ * @property {Boolean} clamping
  * @constructor
  */
 function Tw2ScalarSequencer()
@@ -26,8 +26,7 @@ function Tw2ScalarSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ScalarSequencer.prototype.GetLength = function()
 {
@@ -44,8 +43,7 @@ Tw2ScalarSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ScalarSequencer.prototype.UpdateValue = function(time)
 {
@@ -54,9 +52,8 @@ Tw2ScalarSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * @param {Number} time
+ * @returns {Number}
  */
 Tw2ScalarSequencer.prototype.GetValueAt = function(time)
 {

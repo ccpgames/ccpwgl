@@ -1,7 +1,7 @@
 /**
  * Tw2QuaternionSequencer
  * @property {string} name
- * @property {number} start
+ * @property {Number} start
  * @property {quat4} value
  * @property {Array} functions
  * @property {quat4} _tempValue
@@ -18,8 +18,7 @@ function Tw2QuaternionSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2QuaternionSequencer.prototype.GetLength = function()
 {
@@ -36,8 +35,7 @@ Tw2QuaternionSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
 {
@@ -46,10 +44,9 @@ Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2QuaternionSequencer.prototype.GetValueAt = function(time, value)
 {

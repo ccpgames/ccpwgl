@@ -1,10 +1,10 @@
 /**
  * Tw2MayaScalarCurve
- * @property {number} index
+ * @property {Number} index
  * @property {null|Tw2MayaAnimationEngine} animationEngine
  * @property {string} name
- * @property {number} value
- * @property {number} length
+ * @property {Number} value
+ * @property {Number} length
  * @constructor
  */
 function Tw2MayaScalarCurve()
@@ -18,8 +18,7 @@ function Tw2MayaScalarCurve()
 
 /**
  * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2MayaScalarCurve.prototype.Initialize = function()
 {
@@ -29,8 +28,7 @@ Tw2MayaScalarCurve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2MayaScalarCurve.prototype.GetLength = function()
 {
@@ -39,8 +37,7 @@ Tw2MayaScalarCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
 {
@@ -52,7 +49,6 @@ Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaScalarCurve.prototype.ComputeLength = function()
 {
