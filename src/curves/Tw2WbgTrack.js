@@ -4,8 +4,8 @@
  * @property {string} geometryResPath
  * @property {Object} geometryRes
  * @property {string} group
- * @property {number} duration
- * @property {boolean} cycle
+ * @property {Number} duration
+ * @property {Boolean} cycle
  * @constructor
  */
 function Tw2WbgTrack()
@@ -43,7 +43,6 @@ function Tw2WbgTrack()
 
     /**
      * Initialize
-     * @method
      */
     this.Initialize = function()
     {
@@ -64,8 +63,7 @@ function Tw2WbgTrack()
 
     /**
      * Updates a value at a specific time
-     * @param {number} time
-     * @prototype
+     * @param {Number} time
      */
     this.UpdateValue = function(time)
     {
@@ -140,8 +138,7 @@ function Tw2WbgTransformTrack()
 
     /**
      * Updates a value at a specific time
-     * @param {number} time
-     * @prototype
+     * @param {Number} time
      */
     this._UpdateValue = function(time)
     {
@@ -165,7 +162,7 @@ function Tw2WbgTransformTrack()
 }
 
 /**
+ * Inherits Tw2WbgTransformTrack's prototype
  * @type {Tw2WbgTrack}
- * @prototype
  */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();

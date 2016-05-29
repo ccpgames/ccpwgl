@@ -1,6 +1,6 @@
 /**
  * Tw2ParticleSpring
- * @property {number} springConstant
+ * @property {Number} springConstant
  * @property {vec3} position
  * @constructor
  */
@@ -15,7 +15,6 @@ function Tw2ParticleSpring()
  * @param position
  * @param velocity
  * @param force
- * @prototype
  */
 Tw2ParticleSpring.prototype.ApplyForce = function(position, velocity, force)
 {
@@ -26,6 +25,5 @@ Tw2ParticleSpring.prototype.ApplyForce = function(position, velocity, force)
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2ParticleSpring.prototype.Update = function() {};

@@ -1,10 +1,10 @@
 /**
  * Stores raw data for {@link Tw2PerObjectData} perObject objects and {@link EveSpaceScene} perFrame objects
- * @property {number} nextOffset
+ * @property {Number} nextOffset
  * @property {Float32Array} data
  * @property {Object} elements
  * @property {String} elements.offset
- * @property {number} elements.size
+ * @property {Number} elements.size
  * @property {Array|null} elements.array
  * @constructor
  */
@@ -18,8 +18,7 @@ function Tw2RawData()
 /**
  * Declares a raw data element
  * @param {String} name
- * @param {number} size
- * @prototype
+ * @param {Number} size
  */
 Tw2RawData.prototype.Declare = function(name, size)
 {
@@ -33,7 +32,6 @@ Tw2RawData.prototype.Declare = function(name, size)
 
 /**
  * Create
- * @prototype
  */
 Tw2RawData.prototype.Create = function()
 {
@@ -51,7 +49,6 @@ Tw2RawData.prototype.Create = function()
  * Sets a element value
  * @param {string} name
  * @param {Float32Array} value
- * @prototype
  */
 Tw2RawData.prototype.Set = function(name, value)
 {
@@ -61,10 +58,8 @@ Tw2RawData.prototype.Set = function(name, value)
 
 /**
  * Gets an element's array value
- * TODO: Modifying the returned value will modify the raw data, is this intentional?
  * @param {string} name
  * @return {Float32Array}
- * @prototype
  */
 Tw2RawData.prototype.Get = function(name)
 {
@@ -73,10 +68,8 @@ Tw2RawData.prototype.Get = function(name)
 
 /**
  * Gets an element's array value from the share data array
- * TODO: Modifying the returned value will modify the raw data, is this intentional?
  * @param {string} name
  * @return {Float32Array}
- * @prototype
  */
 Tw2RawData.prototype.GetData = function(name)
 {

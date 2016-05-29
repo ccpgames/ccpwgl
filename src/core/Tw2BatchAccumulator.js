@@ -2,12 +2,12 @@
  * Render Batches
  * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
  */
- 
+
 /**
  * Accumulates render batches for rendering
  * @param {function} [sorting] - An optional function for sorting the collected render batches
  * @property {Array.<RenderBatch>} batches
- * @property {number} count - How many batch array elements will be processed
+ * @property {Number} count - How many batch array elements will be processed
  * @property {function} _sortMethod - the stored sorting function
  * @constructor
  */
@@ -21,7 +21,6 @@ function Tw2BatchAccumulator(sorting)
 /**
  * Commits a batch to accumulation
  * @param {RenderBatch} batch
- * @prototype
  */
 Tw2BatchAccumulator.prototype.Commit = function(batch)
 {
@@ -30,7 +29,6 @@ Tw2BatchAccumulator.prototype.Commit = function(batch)
 
 /**
  * Clears any accumulated render batches
- * @prototype
  */
 Tw2BatchAccumulator.prototype.Clear = function()
 {
@@ -42,7 +40,6 @@ Tw2BatchAccumulator.prototype.Clear = function()
  * Renders the accumulated render batches
  * - If a sorting function has been defined the render batches will be sorted before rendering
  * @param {Tw2Effect} [overrideEffect]
- * @prototype
  */
 Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
 {
@@ -89,7 +86,6 @@ function Tw2ForwardingRenderBatch()
 /**
  * Commits the batch for rendering
  * @param {Tw2Effect} [overrideEffect]
- * @prototype
  */
 Tw2ForwardingRenderBatch.prototype.Commit = function(overrideEffect)
 {

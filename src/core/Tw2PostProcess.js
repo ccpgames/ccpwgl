@@ -1,7 +1,7 @@
 /**
  * Creates a bloom post effect
- * @property {number} width
- * @property {number} height
+ * @property {Number} width
+ * @property {Number} height
  * @property {Tw2TextureRes} texture
  * @property {Tw2RenderTarget} quadRT0
  * @property {Tw2RenderTarget} quadRT1
@@ -95,7 +95,6 @@ function Tw2PostProcess()
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2PostProcess.prototype.Render = function()
 {

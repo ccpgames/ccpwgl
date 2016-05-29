@@ -4,7 +4,7 @@
  * @property {Array} curves
  * @property {Array} hermiteSegments
  * @property {Array} bezierSegments
- * @property {number} _currentCurveIndex
+ * @property {Number} _currentCurveIndex
  * @property _evalCache
  * @constructor
  */
@@ -59,7 +59,6 @@ Tw2MayaAnimationEngine.INFINITY = 0;
  * @param curveIndex
  * @param time
  * @returns {*}
- * @prototype
  */
 Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
 {
@@ -353,8 +352,8 @@ Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, fir
 
 /**
  * Returns the total number of curves
- * @returns {number}
- * @prototype
+ * @returns {Number}
+ *
  */
 Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
 {
@@ -363,9 +362,8 @@ Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
 
 /**
  * Gets specific curve's length
- * @property {number} index
- * @returns {number}
- * @prototype
+ * @property {Number} index
+ * @returns {Number}
  */
 Tw2MayaAnimationEngine.prototype.GetLength = function(index)
 {
@@ -510,7 +508,7 @@ function ag_zeroin2(a, b, fa, fb, tol, pars)
  * @param b
  * @param tol
  * @param pars
- * @returns {?}
+ * @returns {*}
  */
 function ag_zeroin(a, b, tol, pars)
 {
@@ -534,7 +532,7 @@ function ag_zeroin(a, b, tol, pars)
  * @param b
  * @param b_closed
  * @param Roots
- * @returns {?}
+ * @returns {*}
  */
 function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
 {

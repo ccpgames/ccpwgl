@@ -1,7 +1,7 @@
 /**
  * Constructor for Overlay Effects
- * @property {boolean} display
- * @property {boolean} update
+ * @property {Boolean} display
+ * @property {Boolean} update
  * @property {Tw2CurveSet} curveSet
  * @property {string} name
  * @property {Array.<Tw2Effect>} opaqueEffects
@@ -26,7 +26,7 @@ function EveMeshOverlayEffect()
 
 /**
  * Per frame update
- * @param {number} dt - delta Time
+ * @param {Number} dt - delta Time
  */
 EveMeshOverlayEffect.prototype.Update = function(dt)
 {
@@ -64,7 +64,7 @@ EveMeshOverlayEffect.prototype.GetEffects = function(mode)
 /**
  * Gets Mesh Overlay resource objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveMeshOverlayEffect.prototype.GetResources = function(out)
 {
@@ -90,4 +90,4 @@ EveMeshOverlayEffect.prototype.GetResources = function(out)
     getEffectResources('distortionEffects', out);
 
     return out;
-}
+};

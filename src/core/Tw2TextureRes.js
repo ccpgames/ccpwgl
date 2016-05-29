@@ -1,13 +1,13 @@
 /**
  * Tw2TextureRes
  * @property {WebglTexture} texture
- * @property {boolean} isCube
+ * @property {Boolean} isCube
  * @property {Array} images
- * @property {number} width
- * @property {number} height
- * @property {number} _facesLoaded
- * @property {boolean} hasMipMaps
- * @property {number} _currentSampler
+ * @property {Number} width
+ * @property {Number} height
+ * @property {Number} _facesLoaded
+ * @property {Boolean} hasMipMaps
+ * @property {Number} _currentSampler
  * @inherit Tw2Resource
  * @constructor
  */
@@ -26,10 +26,8 @@ function Tw2TextureRes()
 
 /**
  * Prepare
- * TODO: @param xml is redundant
  * @param {string} text - Used to identify the type of image, options are 'cube' or anything else
  * @param xml
- * @prototype
  */
 Tw2TextureRes.prototype.Prepare = function(text, xml)
 {
@@ -80,9 +78,8 @@ Tw2TextureRes.prototype.Prepare = function(text, xml)
 
 /**
  * Finds out if a number is to the power of 2
- * @param {number} x
- * @returns {boolean}
- * @prototype
+ * @param {Number} x
+ * @returns {Boolean}
  */
 Tw2TextureRes.prototype.IsPowerOfTwo = function(x)
 {
@@ -92,8 +89,7 @@ Tw2TextureRes.prototype.IsPowerOfTwo = function(x)
 /**
  * An optional method Tw2objects can have that allows them to take over the construction of it's components during resource loading
  * @param {string} path - texture resource path
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2TextureRes.prototype.DoCustomLoad = function(path)
 {
@@ -161,8 +157,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
 
 /**
  * Unloads the texture from memory
- * @returns {boolean}
- * @constructor
+ * @returns {Boolean}
  */
 Tw2TextureRes.prototype.Unload = function()
 {
@@ -180,7 +175,6 @@ Tw2TextureRes.prototype.Unload = function()
 /**
  * Attach
  * @param {WebglTexture} texture
- * @constructor
  */
 Tw2TextureRes.prototype.Attach = function(texture)
 {
@@ -193,7 +187,6 @@ Tw2TextureRes.prototype.Attach = function(texture)
  * Bind
  * @param sampler
  * @param slices
- * @constructor
  */
 Tw2TextureRes.prototype.Bind = function(sampler, slices)
 {

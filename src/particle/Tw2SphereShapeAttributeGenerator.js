@@ -1,16 +1,16 @@
 /**
  * Tw2SphereShapeAttributeGenerator
- * @property {number} minRadius
- * @property {number} maxRadius
- * @property {number} minPhi
- * @property {number} maxPhi
- * @property {number} minTheta
- * @property {number} maxTheta
- * @property {boolean} controlPosition
- * @property {boolean} controlVelocity
- * @property {number} minSpeed
- * @property {number} maxSpeed
- * @property {number} parentVelocityFactor
+ * @property {Number} minRadius
+ * @property {Number} maxRadius
+ * @property {Number} minPhi
+ * @property {Number} maxPhi
+ * @property {Number} minTheta
+ * @property {Number} maxTheta
+ * @property {Boolean} controlPosition
+ * @property {Boolean} controlVelocity
+ * @property {Number} minSpeed
+ * @property {Number} maxSpeed
+ * @property {Number} parentVelocityFactor
  * @property {vec3} position
  * @property {quat4} rotation
  * @property _position
@@ -39,8 +39,7 @@ function Tw2SphereShapeAttributeGenerator()
 /**
  * Bind
  * @param ps
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -65,7 +64,6 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
  */
 Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {

@@ -3,13 +3,13 @@
  * @property {string} name
  * @property {Object} sourceObject
  * @property {string} sourceAttribute
- * @property {number} _sourceElement
- * @property {boolean} sourceIsArray
+ * @property {Number} _sourceElement
+ * @property {Boolean} sourceIsArray
  * @property {Object} destinationObject
  * @property {string} destinationAttribute
- * @property {number} _destinationElement
- * @property {boolean} destinationIsArray
- * @property {number} scale
+ * @property {Number} _destinationElement
+ * @property {Boolean} destinationIsArray
+ * @property {Number} scale
  * @property {quat4} offset
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
  * @constructor
@@ -21,12 +21,12 @@ function Tw2ValueBinding()
     this.sourceAttribute = '';
     this._sourceElement = null;
     this.sourceIsArray = null;
-    
+
     this.destinationObject = null;
     this.destinationAttribute = '';
     this._destinationElement = null;
     this.destinationIsArray = null;
-    
+
     this.scale = 1;
     this.offset = quat4.create();
     this._copyFunc = null;
@@ -34,7 +34,6 @@ function Tw2ValueBinding()
 
 /**
  * Initializes the Value Binding
- * @prototypes
  */
 Tw2ValueBinding.prototype.Initialize = function()
 {
@@ -226,7 +225,6 @@ Tw2ValueBinding.prototype.Initialize = function()
 
 /**
  * CopyValue
- * @prototype
  */
 Tw2ValueBinding.prototype.CopyValue = function()
 {

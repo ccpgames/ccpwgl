@@ -12,7 +12,6 @@ function Tw2BinaryReader(data)
 /**
  * ReadUInt8
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadUInt8 = function()
 {
@@ -22,7 +21,6 @@ Tw2BinaryReader.prototype.ReadUInt8 = function()
 /**
  * ReadInt8
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadInt8 = function()
 {
@@ -37,7 +35,6 @@ Tw2BinaryReader.prototype.ReadInt8 = function()
 /**
  * ReadUInt16
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadUInt16 = function()
 {
@@ -47,7 +44,6 @@ Tw2BinaryReader.prototype.ReadUInt16 = function()
 /**
  * ReadInt16
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadInt16 = function()
 {
@@ -62,7 +58,6 @@ Tw2BinaryReader.prototype.ReadInt16 = function()
 /**
  * ReadUInt32
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadUInt32 = function()
 {
@@ -72,7 +67,6 @@ Tw2BinaryReader.prototype.ReadUInt32 = function()
 /**
  * ReadInt32
  * @returns {*}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadInt32 = function()
 {
@@ -86,8 +80,7 @@ Tw2BinaryReader.prototype.ReadInt32 = function()
 
 /**
  * ReadFloat16
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2BinaryReader.prototype.ReadFloat16 = function()
 {
@@ -103,8 +96,7 @@ Tw2BinaryReader.prototype.ReadFloat16 = function()
 
 /**
  * ReadFloat32
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2BinaryReader.prototype.ReadFloat32 = function()
 {
@@ -123,7 +115,6 @@ Tw2BinaryReader.prototype.ReadFloat32 = function()
 /**
  * ReadString
  * @returns {string}
- * @prototype
  */
 Tw2BinaryReader.prototype.ReadString = function()
 {

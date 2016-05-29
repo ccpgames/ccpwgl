@@ -3,9 +3,9 @@
  * @param {string} [name='']
  * @param {quat4|Float32Array} [value=[1,1,1,1]]
  * @property {string} name
- * @property {quat4|Float32Array} value
+ * @property {quat4} value
  * @property {Array} constantBuffer
- * @property {number} offset
+ * @property {Number} offset
  * @constructor
  */
 function Tw2Vector4Parameter(name, value)
@@ -32,12 +32,10 @@ function Tw2Vector4Parameter(name, value)
 
 /**
  * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
+ * @param {Number} offset
+ * @param {Number} size
+ * @returns {Boolean}
  */
 Tw2Vector4Parameter.prototype.Bind = function(constantBuffer, offset, size)
 {
@@ -53,7 +51,6 @@ Tw2Vector4Parameter.prototype.Bind = function(constantBuffer, offset, size)
 
 /**
  * Unbind
- * @prototype
  */
 Tw2Vector4Parameter.prototype.Unbind = function()
 {
@@ -62,8 +59,7 @@ Tw2Vector4Parameter.prototype.Unbind = function()
 
 /**
  * Sets a supplied value
- * @param {quat4|Float32Array|Array} value - Vector4 Array
- * @prototype
+ * @param {quat4|Float32Array|Array} value
  */
 Tw2Vector4Parameter.prototype.SetValue = function(value)
 {
@@ -76,7 +72,6 @@ Tw2Vector4Parameter.prototype.SetValue = function(value)
 
 /**
  * Updates the constant buffer to the current value
- * @prototype
  */
 Tw2Vector4Parameter.prototype.OnValueChanged = function()
 {
@@ -88,11 +83,9 @@ Tw2Vector4Parameter.prototype.OnValueChanged = function()
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @prototype
+ * @param {Number} offset
+ * @param {Number} size
  */
 Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
 {
@@ -101,8 +94,7 @@ Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value array
- * @return {quat4|Float32Array} Vector4 Array
- * @prototype
+ * @return {quat4} Vector4 Array
  */
 Tw2Vector4Parameter.prototype.GetValue = function()
 {
@@ -116,10 +108,9 @@ Tw2Vector4Parameter.prototype.GetValue = function()
 
 /**
  * Returns a value from a specific index of the value array
- * @param {number} index
- * @returns {number}
+ * @param {Number} index
+ * @returns {Number}
  * @throw Invalid Index
- * @prototype
  */
 Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
 {
@@ -138,10 +129,10 @@ Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
 
 /**
  * Sets a value at a specific index of the value array
- * @param {number} index
- * @param {number} value
+ * @param {Number} index
+ * @param {Number} value
  * @throw Invalid Index
- * @prototype
+ *
  */
 Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
 {
@@ -160,8 +151,8 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
 
 /**
  * Sets all value array elements to a single value
- * @param {number} value - The value to fill the value array elements with
- * @prototype
+ * @param {Number} value - The value to fill the value array elements with
+ *
  */
 Tw2Vector4Parameter.prototype.FillWith = function(value)
 {

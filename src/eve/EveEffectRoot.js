@@ -1,17 +1,17 @@
 /**
  * EveEffectRoot
  * @property {string} name
- * @property {boolean} display
+ * @property {Boolean} display
  * @property {EveTransform|EveStretch|EveTransform} highDetail
- * @property {boolean} isPlaying
+ * @property {Boolean} isPlaying
  * @property {vec3} scaling
  * @property {quat4} rotation
  * @property {vec3} translation
  * @property {mat4} localTransform
  * @property {mat4} rotationTransform
  * @property {vec3} boundingSphereCenter
- * @property {number} boundingSphereRadius
- * @property {number} duration
+ * @property {Number} boundingSphereRadius
+ * @property {Number} duration
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
@@ -46,14 +46,14 @@ function EveEffectRoot()
 /**
  * Gets effect root res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveEffectRoot.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     if (this.highDetail !== null)
     {
@@ -61,11 +61,11 @@ EveEffectRoot.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Internal per frame update
- * @param {number} dt - Delta Time
+ * @param {Number} dt - Delta Time
  */
 EveEffectRoot.prototype.Update = function(dt)
 {
@@ -79,7 +79,7 @@ EveEffectRoot.prototype.Update = function(dt)
     mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
     mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
     mat4.scale(this.localTransform, this.scaling);
-}
+};
 
 /**
  * Gets render batches
@@ -96,7 +96,7 @@ EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
     this.highDetail.UpdateViewDependentData(this.localTransform);
     mat4.transpose(this.localTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
     this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
-}
+};
 
 /**
  * Starts playing the effectRoot's curveSets if they exist
@@ -111,7 +111,7 @@ EveEffectRoot.prototype.Start = function()
             this.highDetail.curveSets[i].Play();
         }
     }
-}
+};
 
 /**
  * Stops the effectRoot's curveSets from playing
@@ -119,4 +119,4 @@ EveEffectRoot.prototype.Start = function()
 EveEffectRoot.prototype.Stop = function()
 {
     this.isPlaying = false;
-}
+};

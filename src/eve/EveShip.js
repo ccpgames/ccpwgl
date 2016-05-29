@@ -1,11 +1,11 @@
 /**
  * EveShip
- * @property {number} boosterGain
+ * @property {Number} boosterGain
  * @property {Array.<EveBoosterSet>} boosters
  * @property {Array.<EveTurretSet>} turretSets
  * @property {Array} _turretSetsLocatorInfo
- * @property {boolean} displayTurrets - Toggles turret rendering
- * @property {boolean} displayBoosters - Toggles booster rendering
+ * @property {Boolean} displayTurrets - Toggles turret rendering
+ * @property {Boolean} displayBoosters - Toggles booster rendering
  * @inherits EveSpaceObject
  * @constructor
  */
@@ -23,7 +23,7 @@ function EveShip()
 
 /**
  * Eve Turret Set Locator Info
- * @property {boolean} isJoint
+ * @property {Boolean} isJoint
  * @property {Array.<mat4>} locatorTransforms
  */
 function EveTurretSetLocatorInfo()
@@ -48,14 +48,14 @@ EveShip.prototype.Initialize = function()
  * Gets ship's res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @param {Boolean} excludeChildren - True to exclude children's res objects
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveShip.prototype.GetResources = function(out, excludeChildren)
 {
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     this._super.GetResources.call(this, out, excludeChildren);
 
@@ -77,7 +77,7 @@ EveShip.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 /**
  * Gets render batches
@@ -123,7 +123,7 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
 
 /**
  * Per frame update
- * @param {number} dt - deltaTime
+ * @param {Number} dt - deltaTime
  */
 EveShip.prototype.Update = function(dt)
 {
@@ -167,7 +167,7 @@ EveShip.prototype.UpdateViewDependentData = function()
     {
         this.turretSets[i].UpdateViewDependentData();
     }
-}
+};
 
 /**
  * Rebuilds the ship's booster set

@@ -1,6 +1,6 @@
 /**
  * Tw2EventKey
- * @property {number} time
+ * @property {Number} time
  * @property value
  * @constructor
  */
@@ -16,10 +16,10 @@ function Tw2EventKey()
  * @property {string} name
  * @property {string} value
  * @property {Array.<Tw2EventKey>} keys
- * @property {number} extrapolation
- * @property {number} _length
- * @property {number} _time
- * @property {number} _currentKey
+ * @property {Number} extrapolation
+ * @property {Number} _length
+ * @property {Number} _time
+ * @property {Number} _currentKey
  * @constructor
  */
 function Tw2EventCurve()
@@ -37,8 +37,7 @@ function Tw2EventCurve()
  * Compares two curve keys' time properties
  * @param {Tw2EventKey} a
  * @param {Tw2EventKey} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2EventCurve.Compare = function(a, b)
 {
@@ -55,7 +54,6 @@ Tw2EventCurve.Compare = function(a, b)
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2EventCurve.prototype.Initialize = function()
 {
@@ -69,8 +67,7 @@ Tw2EventCurve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2EventCurve.prototype.GetLength = function()
 {
@@ -79,8 +76,7 @@ Tw2EventCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2EventCurve.prototype.UpdateValue = function(time)
 {

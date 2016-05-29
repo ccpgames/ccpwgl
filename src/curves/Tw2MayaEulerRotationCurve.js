@@ -1,12 +1,12 @@
 /**
  * Tw2MayaEulerRotationCurve
- * @property {number} xIndex
- * @property {number} yIndex
- * @property {number} zIndex
+ * @property {Number} xIndex
+ * @property {Number} yIndex
+ * @property {Number} zIndex
  * @property {null|Tw2MayaAnimationEngine} animationEngine
  * @property {string} name
  * @property {vec3} eulerValue
- * @property {boolean} updateQuaternion
+ * @property {Boolean} updateQuaternion
  * @property {quat4} quatValue
  * @constructor
  */
@@ -24,8 +24,7 @@ function Tw2MayaEulerRotationCurve()
 
 /**
  * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2MayaEulerRotationCurve.prototype.Initialize = function()
 {
@@ -35,8 +34,7 @@ Tw2MayaEulerRotationCurve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2MayaEulerRotationCurve.prototype.GetLength = function()
 {
@@ -45,8 +43,7 @@ Tw2MayaEulerRotationCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
 {
@@ -96,7 +93,6 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
 {

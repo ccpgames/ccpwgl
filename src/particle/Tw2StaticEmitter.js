@@ -4,8 +4,8 @@
  * @property {null|Tw2ParticleSystem} particleSystem
  * @property {string} geometryResourcePath
  * @property geometryResource
- * @property {number} geometryIndex
- * @property {boolean} _spawned
+ * @property {Number} geometryIndex
+ * @property {Boolean} _spawned
  * @constructor
  */
 function Tw2StaticEmitter()
@@ -20,7 +20,6 @@ function Tw2StaticEmitter()
 
 /**
  * Initializes the emitter
- * @prototype
  */
 Tw2StaticEmitter.prototype.Initialize = function()
 {
@@ -35,7 +34,6 @@ Tw2StaticEmitter.prototype.Initialize = function()
 
 /**
  * Rebuilds cached data
- * @prototype
  */
 Tw2StaticEmitter.prototype.RebuildCachedData = function()
 {
@@ -51,9 +49,7 @@ Tw2StaticEmitter.prototype.RebuildCachedData = function()
 
 /**
  * Internal render/update function. It is called every frame.
- * TODO: @param dt is redundant
- * @param {number} dt - delta time
- * @prototype
+ * @param {Number} dt - delta time
  */
 Tw2StaticEmitter.prototype.Update = function(dt)
 {
@@ -75,22 +71,42 @@ Tw2StaticEmitter.prototype.Update = function(dt)
         {
             var d = elts[i].GetDeclaration();
             var input = mesh.declaration.FindUsage(d.usage, d.usageIndex - 8);
+
             if (input == null)
             {
-                console.error('Tw2StaticEmitter: ',
-                    'input geometry res \'',
-                    this.geometryResource.path,
-                    '\' mesh lacks (', d.usage, ', ', d.usageIndex,
-                    ') element required by particle system');
+                emitter.log('ResMan',
+                    {
+                        log: 'error',
+                        src: ['Tw2StaticEmitter', 'Update'],
+                        msg: 'Input geometry mesh lacks element required by particle system',
+                        path: this.geometryResource.path,
+                        type: 'geometry.elements',
+                        data:
+                        {
+                            elementUsage: d.usage,
+                            elementUsageIndex: d.usageIndex
+                        }
+                    });
                 return;
             }
+
             if (input.elements < d.elements)
             {
-                console.error('Tw2StaticEmitter: ',
-                    'input geometry res \'',
-                    this.geometryResource.path,
-                    '\' mesh elements (', d.usage, ', ', d.usageIndex,
-                    ') does not have required number of components');
+                emitter.log('ResMan',
+                    {
+                        log: 'error',
+                        src: ['Tw2StaticEmitter', 'Update'],
+                        msg: 'Input geometry mesh elements do not have the required number of components',
+                        path: this.geometryResource.path,
+                        type: 'geometry.elementcomponents',
+                        data:
+                        {
+                            inputCount: input.elements,
+                            elementCount: d.elements,
+                            elementUsage: d.usage,
+                            elementUsageIndex: d.usageIndex
+                        }
+                    });
                 return;
             }
             inputs[i] = input.offset / 4;

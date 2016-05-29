@@ -1,6 +1,6 @@
 /**
  * Tw2Torque
- * @property {number} time
+ * @property {Number} time
  * @property {quat4} rot0=[0,0,0,1]
  * @property {vec3} omega0
  * @property {vec3} torque
@@ -18,10 +18,10 @@ function Tw2Torque()
 /**
  * Tw2RigidOrientation
  * @property {string} name
- * @property {number} I
- * @property {number} drag
+ * @property {Number} I
+ * @property {Number} drag
  * @property {quat4} value=[0,0,0,1]
- * @property {number} start
+ * @property {Number} start
  * @property {Array} states
  * @property {vec3} _tau
  * @property {quat4} _tauConverter
@@ -41,8 +41,7 @@ function Tw2RigidOrientation()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2RigidOrientation.prototype.UpdateValue = function(time)
 {
@@ -56,8 +55,7 @@ Tw2RigidOrientation.prototype.UpdateValue = function(time)
  * @param m
  * @param k
  * @param t
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2RigidOrientation.prototype.ExponentialDecay = function(v, a, m, k, t)
 {
@@ -66,10 +64,9 @@ Tw2RigidOrientation.prototype.ExponentialDecay = function(v, a, m, k, t)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
 {

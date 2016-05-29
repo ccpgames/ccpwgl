@@ -1,9 +1,9 @@
 /**
  * Tw2VectorSequencer
  * @property {string} name
- * @property {number} start
+ * @property {Number} start
  * @property {vec3} value
- * @property {number} operator
+ * @property {Number} operator
  * @property {Array} functions
  * @property {vec3} _tempValue
  * @constructor
@@ -20,8 +20,7 @@ function Tw2VectorSequencer()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2VectorSequencer.prototype.GetLength = function()
 {
@@ -38,8 +37,7 @@ Tw2VectorSequencer.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2VectorSequencer.prototype.UpdateValue = function(time)
 {
@@ -48,10 +46,9 @@ Tw2VectorSequencer.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
 {

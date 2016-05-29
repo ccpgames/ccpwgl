@@ -1,7 +1,7 @@
 /**
  * EveTurretData
  * @property {String} name
- * @property {boolean} visible
+ * @property {Boolean} visible
  * @property {mat4} localTransform
  * @property {quat4} rotation
  * @constructor
@@ -16,36 +16,35 @@ function EveTurretData()
 
 /**
  * EveTurretSet
- * @property {boolean} display
+ * @property {Boolean} display
  * @property {string} name
  * @property {quat4} boundingSphere
- * @property {number} bottomClipHeight
+ * @property {Number} bottomClipHeight
  * @property {string} locatorName
  * @property {Tw2Effect} turretEffect
  * @property {vec3} targetPosition
- * @property {number} sysBoneHeight
+ * @property {Number} sysBoneHeight
  * @property {string} firingEffectResPath
  * @property {EveTurretFiringFx} firingEffect
- * @property {boolean} hasCyclingFiringPos
+ * @property {Boolean} hasCyclingFiringPos
  * @property {string} geometryResPath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Tw2AnimationController} activeAnimation
  * @property {Tw2AnimationController} inactiveAnimation
  * @property {mat4} parentMatrix
  * @property {Array.<EveTurretData>} turrets
- * @property {number} STATE_INACTIVE
- * @property {number} STATE_IDLE
- * @property {number} STATE_FIRING
- * @property {number} STATE_PACKING
- * @property {number} STATE_UNPACKING
- * @property {number} state
-
+ * @property {Number} STATE_INACTIVE
+ * @property {Number} STATE_IDLE
+ * @property {Number} STATE_FIRING
+ * @property {Number} STATE_PACKING
+ * @property {Number} STATE_UNPACKING
+ * @property {Number} state
  * @property {Tw2PerObjectData} _perObjectDataActive
  * @property {Tw2PerObjectData} _perObjectDataInactive
  * @property {Array.<string>} worldNames
- * @property {number} _activeTurret
- * @property {number} _recheckTimeLeft
- * @property {number} _currentCyclingFiresPos
+ * @property {Number} _activeTurret
+ * @property {Number} _recheckTimeLeft
+ * @property {Number} _currentCyclingFiresPos
  * @constructor
  */
 function EveTurretSet()
@@ -150,7 +149,7 @@ EveTurretSet.prototype.Initialize = function()
 /**
  * Gets turret set res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveTurretSet.prototype.GetResources = function(out)
 {
@@ -178,7 +177,7 @@ EveTurretSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Rebuilds the turret sets cached data
@@ -198,10 +197,12 @@ EveTurretSet.prototype.RebuildCachedData = function()
             this.activeAnimation.PlayAnimation("Inactive", true);
             this.inactiveAnimation.PlayAnimation("Inactive", true);
             break;
+
         case this.STATE_IDLE:
             this.activeAnimation.PlayAnimation("Active", true);
             this.inactiveAnimation.PlayAnimation("Active", true);
             break;
+
         case this.STATE_FIRING:
             this.activeAnimation.PlayAnimation("Fire", false, function()
             {
@@ -209,9 +210,11 @@ EveTurretSet.prototype.RebuildCachedData = function()
             });
             this.inactiveAnimation.PlayAnimation("Active", true);
             break;
+
         case this.STATE_PACKING:
             this.EnterStateIdle();
             break;
+
         case this.STATE_UNPACKING:
             this.EnterStateDeactive();
             break;
@@ -239,7 +242,7 @@ EveTurretSet.prototype.InitializeFiringEffect = function()
 
 /**
  * Sets the local transform for a specific turret index
- * @param {number} index
+ * @param {Number} index
  * @param {mat4} localTransform
  * @param {String} locatorName
  */
@@ -387,7 +390,7 @@ EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
- * @returns {boolean}
+ * @returns {Boolean}
  */
 EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
@@ -397,7 +400,7 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
     if (mode == device.RM_OPAQUE)
     {
-        var transforms = this.inactiveAnimation.GetBoneMatrixes(0);
+        var transforms = this.inactiveAnimation.GetBoneMatrices(0);
         if (transforms.length == 0)
         {
             return true;
@@ -414,7 +417,7 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 
         if (this.state == this.STATE_FIRING)
         {
-            transforms = this.activeAnimation.GetBoneMatrixes(0);
+            transforms = this.activeAnimation.GetBoneMatrices(0);
             if (transforms.length == 0)
             {
                 return true;
@@ -438,7 +441,7 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 
 /**
  * Per frame update
- * @param {number} dt - Delta Time
+ * @param {Number} dt - Delta Time
  * @param {mat4} parentMatrix
  */
 EveTurretSet.prototype.Update = function(dt, parentMatrix)
@@ -491,7 +494,7 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
 
 /**
  * Renders the turret set
- * @param batch
+ * @param {Tw2ForwardingRenderBatch} batch
  * @param {Tw2Effect} overrideEffect
  */
 EveTurretSet.prototype.Render = function(batch, overrideEffect)
@@ -661,7 +664,7 @@ EveTurretSet.prototype.UpdateViewDependentData = function()
     {
         this.firingEffect.UpdateViewDependentData();
     }
-}
+};
 
 /**
  * Animation helper function for turret firing
@@ -681,14 +684,14 @@ EveTurretSet.prototype._DoStartFiring = function()
     this._activeTurret = turret;
     this.state = this.STATE_FIRING;
     this._recheckTimeLeft = 2;
-}
+};
 
 EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
 EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];
 
 /**
  * Helper function for finding out what turret should be firing
- * @returns {number}
+ * @returns {Number}
  */
 EveTurretSet.prototype.GetClosestTurret = function()
 {
@@ -719,4 +722,4 @@ EveTurretSet.prototype.GetClosestTurret = function()
         }
     }
     return closestTurret;
-}
+};

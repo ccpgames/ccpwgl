@@ -1,6 +1,6 @@
 /**
  * Tw2RandomUniformAttributeGenerator
- * @property {number} elementType
+ * @property {Number} elementType
  * @property {string} customName
  * @property {quat4} minRange
  * @property {quat4} maxRange
@@ -19,8 +19,7 @@ function Tw2RandomUniformAttributeGenerator()
 /**
  * Bind
  * @param ps
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -41,7 +40,6 @@ Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
  */
 Tw2RandomUniformAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {

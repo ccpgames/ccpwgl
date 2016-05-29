@@ -3,10 +3,10 @@
  * @property {string} name
  * @property {Array.<Tw2Curve>} curves
  * @property {Array} bindings
- * @property {number} scale
- * @property {boolean} playOnLoad
- * @property {boolean} isPlaying
- * @property {number} scaledTime
+ * @property {Number} scale
+ * @property {Boolean} playOnLoad
+ * @property {Boolean} isPlaying
+ * @property {Number} scaledTime
  * @constructor
  */
 function Tw2CurveSet()
@@ -22,7 +22,6 @@ function Tw2CurveSet()
 
 /**
  * Initializes the Tw2CurveSet
- * @prototype
  */
 Tw2CurveSet.prototype.Initialize = function()
 {
@@ -34,7 +33,6 @@ Tw2CurveSet.prototype.Initialize = function()
 
 /**
  * Plays the Tw2CurveSet
- * @prototype
  */
 Tw2CurveSet.prototype.Play = function()
 {
@@ -44,8 +42,7 @@ Tw2CurveSet.prototype.Play = function()
 
 /**
  * Plays the Tw2CurveSet from a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2CurveSet.prototype.PlayFrom = function(time)
 {
@@ -55,7 +52,6 @@ Tw2CurveSet.prototype.PlayFrom = function(time)
 
 /**
  * Stops the Tw2CurveSet from playing
- * @prototype
  */
 Tw2CurveSet.prototype.Stop = function()
 {
@@ -64,8 +60,7 @@ Tw2CurveSet.prototype.Stop = function()
 
 /**
  * Internal render/update function which is called every frame
- * @param {number} dt - Delta Time
- * @prototype
+ * @param {Number} dt - Delta Time
  */
 Tw2CurveSet.prototype.Update = function(dt)
 {
@@ -88,8 +83,7 @@ Tw2CurveSet.prototype.Update = function(dt)
 
 /**
  * Gets the maximum curve duration
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2CurveSet.prototype.GetMaxCurveDuration = function()
 {
