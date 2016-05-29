@@ -1,10 +1,10 @@
 /**
  * Tw2RandomConstantCurve
  * @property {string} name
- * @property {number} value
- * @property {number} min
- * @property {number} max
- * @property {boolean} hold
+ * @property {Number} value
+ * @property {Number} min
+ * @property {Number} max
+ * @property {Boolean} hold
  * @constructor
  */
 function Tw2RandomConstantCurve()
@@ -18,8 +18,7 @@ function Tw2RandomConstantCurve()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
 {
@@ -28,10 +27,8 @@ Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * TODO: @param time is redundant
- * @param {number} time
- * @returns {number}
- * @prototype
+ * @param {Number} time
+ * @returns {Number}
  */
 Tw2RandomConstantCurve.prototype.GetValueAt = function(time)
 {

@@ -2,7 +2,7 @@
  * Tw2InstancedMesh
  * @property instanceGeometryResource
  * @property {string} instanceGeometryResPath
- * @property {number} instanceMeshIndex
+ * @property {Number} instanceMeshIndex
  * @property {vec3} minBounds
  * @property {vec3} maxBounds
  * @inherit Tw2Mesh
@@ -22,7 +22,6 @@ Inherit(Tw2InstancedMesh, Tw2Mesh);
 
 /**
  * Initializes the Tw2InstancedMesh
- * @prototype
  */
 Tw2InstancedMesh.prototype.Initialize = function()
 {
@@ -68,11 +67,10 @@ Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, 
 
 /**
  * RenderAreas
- * @param {number} meshIx
- * @param {number} start
- * @param {number} count
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
  * @param {Tw2Effect} effect
- * @prototype
  */
 Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
 {
@@ -107,9 +105,9 @@ Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
  * Tw2InstancedMeshBatch
  * @property {Tw2InstancedMesh} instanceMesh
  * @property {Tw2GeometryRes} geometryRes
- * @property {number} meshIx
- * @property {number} start
- * @property {number} count
+ * @property {Number} meshIx
+ * @property {Number} start
+ * @property {Number} count
  * @property {Tw2Effect|null} effect
  * @inherit Tw2RenderBatch
  * @constructor
@@ -130,7 +128,6 @@ Inherit(Tw2InstancedMeshBatch, Tw2RenderBatch);
 /**
  * Commits the Tw2InstancedMeshBatch for rendering
  * @param {Tw2Effect} [overrideEffect]
- * @prototype
  */
 Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
 {

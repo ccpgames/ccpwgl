@@ -6,9 +6,9 @@
  * @property {quat4} spriteColor
  * @property {quat4} flareColor
  * @property {quat4} spriteScale
- * @property {boolean} boosterGainInfluence
- * @property {number} boneIndex
- * @property {number} groupIndex
+ * @property {Boolean} boosterGainInfluence
+ * @property {Number} boneIndex
+ * @property {Number} groupIndex
  * @constructor
  */
 function EveSpotlightSetItem()
@@ -29,13 +29,13 @@ function EveSpotlightSetItem()
 /**
  * EveSpotlightSet
  * @property {string} name
- * @property {boolean} display
+ * @property {Boolean} display
  * @property {Tw2Effect} coneEffect
  * @property {Tw2Effect} glowEffect
  * @property {Array.<EveSpotlightSetItem) spotlightItems
- * @property {WebglBuffer} _conVertexBuffer
- * @property {WebglBuffer} _spriteVertexBuffer
- * @property {WebglBuffer} _indexBuffer
+ * @property {WebGLBuffer} _conVertexBuffer
+ * @property {WebGLBuffer} _spriteVertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
@@ -72,7 +72,7 @@ EveSpotlightSet.prototype.Initialize = function()
 /**
  * Gets spotlight set res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EveSpotlightSet.prototype.GetResources = function(out)
 {
@@ -91,7 +91,7 @@ EveSpotlightSet.prototype.GetResources = function(out)
         this.glowEffect.GetResources(out);
     }
     return out;
-}
+};
 
 /**
  * Rebuilds the spotlight set
@@ -311,7 +311,7 @@ EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
 /**
  * Internal render function
  * @param {Tw2Effect} effect
- * @param {WebglBuffer} buffer
+ * @param {WebGLBuffer} buffer
  * @private
  */
 EveSpotlightSet.prototype._Render = function(effect, buffer)

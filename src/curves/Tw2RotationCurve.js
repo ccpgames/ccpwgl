@@ -1,10 +1,10 @@
 /**
  * Tw2QuaternionKey
- * @property {number} time
+ * @property {Number} time
  * @property {quat4} value
  * @property {quat4} left
  * @property {quat4} right
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2QuaternionKey()
@@ -20,12 +20,12 @@ function Tw2QuaternionKey()
 /**
  * Tw2RotationCurve
  * @property {string} name
- * @property {number} start
- * @property {number} length
+ * @property {Number} start
+ * @property {Number} length
  * @property {quat4} value
- * @property {number} extrapolation
+ * @property {Number} extrapolation
  * @property {Array.<Tw2QuaternionKey>} keys
- * @property {number} _currKey
+ * @property {Number} _currKey
  * @constructor
  */
 function Tw2RotationCurve()
@@ -41,8 +41,7 @@ function Tw2RotationCurve()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2RotationCurve.prototype.GetLength = function()
 {
@@ -51,8 +50,7 @@ Tw2RotationCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2RotationCurve.prototype.UpdateValue = function(time)
 {
@@ -61,10 +59,9 @@ Tw2RotationCurve.prototype.UpdateValue = function(time)
 
 /**
  * BICumulative
- * @param {number} order
+ * @param {Number} order
  * @param t
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2RotationCurve.BICumulative = function(order, t)
 {
@@ -87,9 +84,8 @@ Tw2RotationCurve.BICumulative = function(order, t)
  * QuaternionPow
  * @param {quat4} out
  * @param {quat4} inq
- * @param {number} exponent
+ * @param {Number} exponent
  * @returns {quat4}
- * @method
  */
 Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
 {
@@ -112,7 +108,6 @@ Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
  * @param {quat4} out
  * @param {quat4} q
  * @returns {quat4}
- * @method
  */
 Tw2RotationCurve.QuaternionLn = function(out, q)
 {
@@ -151,7 +146,6 @@ Tw2RotationCurve.QuaternionLn = function(out, q)
  * @param {quat4} out
  * @param {quat4} q
  * @returns {quat4}
- * @method
  */
 Tw2RotationCurve.QuaternionExp = function(out, q)
 {
@@ -175,10 +169,9 @@ Tw2RotationCurve.QuaternionExp = function(out, q)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2RotationCurve.prototype.GetValueAt = function(time, value)
 {

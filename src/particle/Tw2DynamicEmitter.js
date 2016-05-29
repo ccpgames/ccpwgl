@@ -1,10 +1,10 @@
 /**
  * Tw2DynamicEmitter
  * @property {string} name
- * @property {number} rate
- * @property {boolean} isValid
+ * @property {Number} rate
+ * @property {Boolean} isValid
  * @property {null|Tw2ParticleSystem} particleSystem
- * @property {number} _accumulatedRate
+ * @property {Number} _accumulatedRate
  * @property {Array} generators
  * @constructor
  */
@@ -20,7 +20,6 @@ function Tw2DynamicEmitter()
 
 /**
  * Initialises the Emitter
- * @prototype
  */
 Tw2DynamicEmitter.prototype.Initialize = function()
 {
@@ -29,8 +28,7 @@ Tw2DynamicEmitter.prototype.Initialize = function()
 
 /**
  * Internal render/update function. It is called every frame.
- * @param {number} dt - Frame time.
- * @prototype
+ * @param {Number} dt - Frame time.
  */
 Tw2DynamicEmitter.prototype.Update = function(dt)
 {
@@ -39,7 +37,6 @@ Tw2DynamicEmitter.prototype.Update = function(dt)
 
 /**
  * Rebind
- * @prototype
  */
 Tw2DynamicEmitter.prototype.Rebind = function()
 {
@@ -63,7 +60,6 @@ Tw2DynamicEmitter.prototype.Rebind = function()
  * @param position
  * @param velocity
  * @param rateModifier
- * @prototype
  */
 Tw2DynamicEmitter.prototype.SpawnParticles = function(position, velocity, rateModifier)
 {

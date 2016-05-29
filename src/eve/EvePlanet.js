@@ -1,15 +1,15 @@
 /**
  * EvePlanet
- * @property {boolean} display
+ * @property {Boolean} display
  * @property {EveTransform} highDetail
  * @property {Tw2Effect} effectHeight
- * @property {number} itemID
+ * @property {Number} itemID
  * @property {string} heightMapResPath1
  * @property {string} heightMapResPath2
  * @property {Tw2RenderTarget} heightMap
- * @property {boolean} heightDirty
+ * @property {Boolean} heightDirty
  * @property {Array} lockedResources
- * @property {boolean} zOnlyModel
+ * @property {Boolean} zOnlyModel
  * @property {Array.<Tw2Res>} watchedResources
  * @constructor
  */
@@ -31,7 +31,7 @@ function EvePlanet()
 /**
  * Gets planet res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array.<Tw2Res>} [out]
  */
 EvePlanet.prototype.GetResources = function(out)
 {
@@ -44,11 +44,11 @@ EvePlanet.prototype.GetResources = function(out)
     this.effectHeight.GetResources(out);
 
     return out;
-}
+};
 
 /**
  * Creates the planet
- * @param {number} itemID - the item id is used for randomization
+ * @param {Number} itemID - the item id is used for randomization
  * @param {string} planetPath - .red file for a planet, or planet template
  * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
  * @param {string} heightMap1
@@ -144,10 +144,13 @@ EvePlanet.prototype._MeshLoaded = function()
 
     for (var param in originalEffect.parameters)
     {
-        this.effectHeight.parameters[param] = originalEffect.parameters[param];
-        if ('textureRes' in originalEffect.parameters[param])
+        if (originalEffect.parameters.hasOwnProperty(param))
         {
-            this.watchedResources.push(originalEffect.parameters[param].textureRes);
+            this.effectHeight.parameters[param] = originalEffect.parameters[param];
+            if ('textureRes' in originalEffect.parameters[param])
+            {
+                this.watchedResources.push(originalEffect.parameters[param].textureRes);
+            }
         }
     }
     for (var i = 0; i < this.highDetail.children[0].children.length; ++i)
@@ -287,7 +290,7 @@ EvePlanet.prototype.GetZOnlyBatches = function(mode, accumulator)
 
 /**
  * Per frame update
- * @param {number} dt - delta time
+ * @param {Number} dt - delta time
  */
 EvePlanet.prototype.Update = function(dt)
 {

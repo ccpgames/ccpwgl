@@ -1,15 +1,18 @@
 /**
  * Tw2PerObjectData
- * TODO: Identify if @property perObjectVSData and @property perObjectPSData should be defined here
+ * @property {Tw2RawData} perObjectVSData
+ * @property {Tw2RawData} perObjectPSData
  * @constructor
  */
 function Tw2PerObjectData()
-{}
+{
+    this.perObjectVSData = null;
+    this.perObjectPSData = null;
+}
 
 /**
  * SetPerObjectDataToDevice
  * @param constantBufferHandles
- * @constructor
  */
 Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
 {

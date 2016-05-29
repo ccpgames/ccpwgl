@@ -6,12 +6,12 @@
 /**
  * Tw2Resource
  * @property {string} path
- * @property {boolean} _isLoading
- * @property {boolean} _isGood
- * @property {boolean} _isPurged
+ * @property {Boolean} _isLoading
+ * @property {Boolean} _isGood
+ * @property {Boolean} _isPurged
  * @property {Array} _notifications
- * @property {number} activeFrame
- * @property {number} doNotPurge
+ * @property {Number} activeFrame
+ * @property {Number} doNotPurge
  * @property {null|Function} _onLoadStarted - optional callback fired on res loading: callback(this)
  * @property {null|Function} _onLoadFinished - optional callback fired on res loaded: callback(this, success)
  * @property {null|Function} _onLoadPrepareFinished - optional callback fired on res prepare finish: callback(this, success)
@@ -33,8 +33,7 @@ function Tw2Resource()
 
 /**
  * Checks to see if the resource is loading
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2Resource.prototype.IsLoading = function()
 {
@@ -44,8 +43,7 @@ Tw2Resource.prototype.IsLoading = function()
 
 /**
  * Checks to see if the resource is good
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2Resource.prototype.IsGood = function()
 {
@@ -55,8 +53,7 @@ Tw2Resource.prototype.IsGood = function()
 
 /**
  * Checks to see if the resource is purged
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2Resource.prototype.IsPurged = function()
 {
@@ -65,7 +62,6 @@ Tw2Resource.prototype.IsPurged = function()
 
 /**
  * LoadStarted
- * @prototype
  */
 Tw2Resource.prototype.LoadStarted = function()
 {
@@ -84,8 +80,7 @@ Tw2Resource.prototype.LoadStarted = function()
 
 /**
  * LoadFinished
- * @param {boolean} success
- * @prototype
+ * @param {Boolean} success
  */
 Tw2Resource.prototype.LoadFinished = function(success)
 {
@@ -104,8 +99,7 @@ Tw2Resource.prototype.LoadFinished = function(success)
 
 /**
  * PrepareFinished
- * @param {boolean} success
- * @prototype
+ * @param {Boolean} success
  */
 Tw2Resource.prototype.PrepareFinished = function(success)
 {
@@ -117,7 +111,7 @@ Tw2Resource.prototype.PrepareFinished = function(success)
         this._notifications[i].RebuildCachedData(this);
     }
 
-    if(this._onPrepareFinished)
+    if (this._onPrepareFinished)
     {
         this._onPrepareFinished(this, success);
     }
@@ -125,8 +119,7 @@ Tw2Resource.prototype.PrepareFinished = function(success)
 
 /**
  * Sets resource's isGood property
- * @param {boolean} success
- * @prototype
+ * @param {Boolean} success
  */
 Tw2Resource.prototype.SetIsGood = function(success)
 {
@@ -135,13 +128,11 @@ Tw2Resource.prototype.SetIsGood = function(success)
 
 /**
  * Unload
- * @prototype
  */
 Tw2Resource.prototype.Unload = function() {};
 
 /**
  * Reloads the resource
- * @prototype
  */
 Tw2Resource.prototype.Reload = function()
 {
@@ -151,7 +142,6 @@ Tw2Resource.prototype.Reload = function()
 
 /**
  * Keeps the resource from being purged
- * @prototype
  */
 Tw2Resource.prototype.KeepAlive = function()
 {
@@ -165,7 +155,6 @@ Tw2Resource.prototype.KeepAlive = function()
 /**
  * Registers a notification
  * @param notification
- * @prototype
  */
 Tw2Resource.prototype.RegisterNotification = function(notification)
 {
@@ -188,7 +177,6 @@ Tw2Resource.prototype.RegisterNotification = function(notification)
 /**
  * Deregisters a notification
  * @param notification
- * @prototype
  */
 Tw2Resource.prototype.UnregisterNotification = function(notification)
 {

@@ -1,10 +1,10 @@
 /**
  * Tw2Vector3Key
- * @property {number} time
+ * @property {Number} time
  * @property {vec3} value
  * @property {vec3} leftTangent
  * @property {vec3} rightTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2Vector3Key()
@@ -19,17 +19,17 @@ function Tw2Vector3Key()
 /**
  * Tw2Vector3Curve
  * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
+ * @property {Number} length
+ * @property {Boolean} cycle
+ * @property {Boolean} reversed
+ * @property {Number} timeOffset
+ * @property {Number} timeScale
  * @property {vec3} startValue
  * @property {vec3} currentValue
  * @property {vec3} endValue
  * @property {vec3} startTangent
  * @property {vec3} endTangent
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @property {Array.<Tw2Vector3Key>} keys
  * @constructor
  */
@@ -52,7 +52,6 @@ function Tw2Vector3Curve()
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2Vector3Curve.prototype.Initialize = function()
 {
@@ -61,8 +60,7 @@ Tw2Vector3Curve.prototype.Initialize = function()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2Vector3Curve.prototype.GetLength = function()
 {
@@ -73,8 +71,7 @@ Tw2Vector3Curve.prototype.GetLength = function()
  * Compares two curve keys' time properties
  * @param {Tw2Vector3Key} a
  * @param {Tw2Vector3Key} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2Vector3Curve.Compare = function(a, b)
 {
@@ -91,7 +88,6 @@ Tw2Vector3Curve.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2Vector3Curve.prototype.Sort = function()
 {
@@ -119,8 +115,7 @@ Tw2Vector3Curve.prototype.Sort = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2Vector3Curve.prototype.UpdateValue = function(time)
 {
@@ -129,11 +124,9 @@ Tw2Vector3Curve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * TODO: the variable `i` is used before it has been initialized
- * @param {number} time
+ * @param {Number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
 {
@@ -198,12 +191,11 @@ Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
 
 /**
  * Interpolate
- * @param {number} time
+ * @param {Number} time
  * @param {Tw2Vector3Key} lastKey
  * @param {Tw2Vector3Key} nextKey
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2Vector3Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {

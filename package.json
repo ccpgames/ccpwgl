@@ -1,21 +1,20 @@
 {
     "name": "ccpwgl",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "CCP WebGL Library",
     "homepage": "https://github.com/ccpgames/ccpwgl",
     "bugs": "https://github.com/ccpgames/ccpwgl/issues",
-    "repository":
-    {
+    "repository": {
         "type": "git",
         "url": "https://github.com/ccpgames/ccpwgl.git"
     },
-    "dependencies":
-    {},
-    "devDependencies":
-    {
+    "dependencies": {},
+    "devDependencies": {
         "grunt": "~0.4.1",
+        "grunt-contrib-concat": "^1.0.1",
         "grunt-contrib-jshint": "~0.6.3",
         "grunt-contrib-uglify": "~0.2.2",
-        "grunt-jsbeautifier": "~0.2.0"
+        "grunt-jsbeautifier": "~0.2.0",
+        "jsdoc": "^3.4.0"
     }
 }

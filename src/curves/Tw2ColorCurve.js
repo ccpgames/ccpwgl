@@ -1,10 +1,10 @@
 /**
  * Tw2ColorKey
- * @property {number} time
+ * @property {Number} time
  * @property {quat4} value
  * @property {quat4} left
  * @property {quat4} right
- * @property {number} interpolation
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2ColorKey()
@@ -20,12 +20,12 @@ function Tw2ColorKey()
 /**
  * Tw2ColorCurve
  * @property {String} name
- * @property {number} start
- * @property {number} length
+ * @property {Number} start
+ * @property {Number} length
  * @property {quat4} value
- * @property {number} extrapolation
+ * @property {Number} extrapolation
  * @property {Array.<Tw2ColorKey>} keys
- * @property {number} _currKey
+ * @property {Number} _currKey
  * @constructor
  */
 function Tw2ColorCurve()
@@ -41,8 +41,7 @@ function Tw2ColorCurve()
 
 /**
  * Returns curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ColorCurve.prototype.GetLength = function()
 {
@@ -51,8 +50,7 @@ Tw2ColorCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ColorCurve.prototype.UpdateValue = function(time)
 {
@@ -61,10 +59,9 @@ Tw2ColorCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
+ * @param {Number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2ColorCurve.prototype.GetValueAt = function(time, value)
 {

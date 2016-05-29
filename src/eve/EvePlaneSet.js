@@ -3,11 +3,11 @@
  * @property {String} name
  * @property {Array.<EvePlaneSetItem>} planes
  * @property {Tw2Effect} effect
- * @property {boolean} display
- * @property {boolean} hideOnLowQuality
- * @property {number} _time
- * @property {WebglBuffer} _vertexBuffer
- * @property {WebglBuffer} _indexBuffer
+ * @property {Boolean} display
+ * @property {Boolean} hideOnLowQuality
+ * @property {Number} _time
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
@@ -46,7 +46,7 @@ EvePlaneSet.prototype.Initialize = function()
 /**
  * Gets plane set res objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array} {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ * @returns {Array} {Array.<Tw2Res>} [out]
  */
 EvePlaneSet.prototype.GetResources = function(out)
 {
@@ -61,7 +61,7 @@ EvePlaneSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Rebuilds the plane set's buffers
@@ -241,7 +241,7 @@ EvePlaneSet.prototype.Render = function(overrideEffect)
 
 /**
  * Per frame update
- * @param {number} dt - Delta Time
+ * @param {Number} dt - Delta Time
  */
 EvePlaneSet.prototype.Update = function(dt)
 {
@@ -268,8 +268,8 @@ EvePlaneSet.prototype.Clear = function()
  * @property {quat4} layer2Transform
  * @property {quat4} layer1Scroll
  * @property {quat4} layer2Scroll
- * @property {number} boneIndex
- * @property {number} groupIndex
+ * @property {Number} boneIndex
+ * @property {Number} groupIndex
  * @constructor
  */
 function EvePlaneSetItem()

@@ -5,25 +5,25 @@
 
 /**
  * EveBoosterSet
- * @property {boolean} display
+ * @property {Boolean} display
  * @property {Tw2Effect} effect
  * @property {Tw2Effect} glows
- * @property {number} glowScale
+ * @property {Number} glowScale
  * @property {quat4} glowColor
  * @property {quat4} warpGlowColor
- * @property {number} symHaloScale
- * @property {number} haloScaleX
- * @property {number} haloScaleY
- * @property {number} maxVel
+ * @property {Number} symHaloScale
+ * @property {Number} haloScaleX
+ * @property {Number} haloScaleY
+ * @property {Number} maxVel
  * @property {quat4} haloColor
- * @property {boolean} alwaysOn
+ * @property {Boolean} alwaysOn
  * @property {mat4} _parentTransform
  * @property {mat4} _wavePhase
  * @property {Array.<{}>} _boosterTransforms
- * @property {WebGlBuffer} _positions
+ * @property {WebGLBuffer} _positions
  * @property {Tw2VertexDeclaration} _decl
  * @property {Tw2PerObjectData} _perObjectData
- * @property {boolean} rebuildPending
+ * @property {Boolean} rebuildPending
  * @constructor
  */
 function EveBoosterSet()
@@ -99,7 +99,7 @@ EveBoosterSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Clears the booster set
@@ -117,8 +117,8 @@ EveBoosterSet.prototype.Clear = function()
 /**
  * Adds a booster
  * @param {mat4} localMatrix
- * @param {number} atlas0
- * @param {number} atlas1
+ * @param {Number} atlas0
+ * @param {Number} atlas1
  * @constructor
  */
 EveBoosterSet.prototype.Add = function(localMatrix, atlas0, atlas1)
@@ -244,7 +244,7 @@ EveBoosterSet.prototype.Rebuild = function()
 
 /**
  * Per frame update
- * @param {number} dt - DeltaTime
+ * @param {Number} dt - DeltaTime
  * @param {mat4} parentMatrix
  * @constructor
  */
@@ -311,7 +311,7 @@ EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 /**
  * Renders the accumulated batches
  * @param {Tw2Effect} [overrideEffect]
- * @returns {boolean}
+ * @returns {Boolean}
  */
 EveBoosterSet.prototype.Render = function(overrideEffect)
 {

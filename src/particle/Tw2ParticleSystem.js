@@ -2,14 +2,14 @@
  * Particle element type
  * @typedef {(Tw2ParticleElementDeclaration.LIFETIME|Tw2ParticleElementDeclaration.POSITION|Tw2ParticleElementDeclaration.VELOCITY|Tw2ParticleElementDeclaration.MASS|Tw2ParticleElementDeclaration.CUSTOM)} ParticleElementType
  */
- 
+
 /**
  * Tw2ParticleElementDeclaration
- * @property {number} elementType=4
+ * @property {Number} elementType=4
  * @property {string} customName
- * @property {number} dimension=1
- * @property {number} usageIndex
- * @property {boolean} usedByGPU
+ * @property {Number} dimension=1
+ * @property {Number} usageIndex
+ * @property {Boolean} usedByGPU
  * @constructor
  */
 function Tw2ParticleElementDeclaration()
@@ -23,38 +23,37 @@ function Tw2ParticleElementDeclaration()
 
 /**
  * Tw2 Particle Element Lifetime
- * @type {number}
+ * @type {Number}
  */
 Tw2ParticleElementDeclaration.LIFETIME = 0;
 
 /**
  * Tw2 Particle Element Position
- * @type {number}
+ * @type {Number}
  */
 Tw2ParticleElementDeclaration.POSITION = 1;
 
 /**
  * Tw2 Particle Element Velocity
- * @type {number}
+ * @type {Number}
  */
 Tw2ParticleElementDeclaration.VELOCITY = 2;
 
 /**
  * Tw2 Particle Element Mass
- * @type {number}
+ * @type {Number}
  */
 Tw2ParticleElementDeclaration.MASS = 3;
 
 /**
  * Tw2 Particle Element Custom
- * @type {number}
+ * @type {Number}
  */
 Tw2ParticleElementDeclaration.CUSTOM = 4;
 
 /**
  * Gets the dimension of an element type
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ParticleElementDeclaration.prototype.GetDimension = function()
 {
@@ -75,7 +74,6 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function()
 /**
  * GetDeclaration
  * @returns {Tw2VertexElement}
- * @prototype
  */
 Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
 {
@@ -104,15 +102,15 @@ Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
  * @param {Tw2ParticleElementDeclaration} decl
  * @property {ParticleElementType} elementType
  * @property {string} customName
- * @property {number} dimension
- * @property {number} usageIndex
- * @property {boolean} usedByGPU
+ * @property {Number} dimension
+ * @property {Number} usageIndex
+ * @property {Boolean} usedByGPU
  * @property buffer
- * @property {number} startOffset
- * @property {number} offset
- * @property {number} instanceStride
- * @property {number} vertexStride
- * @property {boolean} dirty
+ * @property {Number} startOffset
+ * @property {Number} offset
+ * @property {Number} instanceStride
+ * @property {Number} vertexStride
+ * @property {Boolean} dirty
  * @constructor
  */
 function Tr2ParticleElement(decl)
@@ -134,24 +132,24 @@ function Tr2ParticleElement(decl)
 /**
  * Tw2ParticleSystem
  * @property {string} name
- * @property {number} aliveCount
- * @property {number} maxParticleCount
+ * @property {Number} aliveCount
+ * @property {Number} maxParticleCount
  * @property emitParticleOnDeathEmitter
  * @property emitParticleDuringLifeEmitter
  * @property {Array} elements
- * @property {boolean} isValid
- * @property {boolean} requiresSorting
- * @property {boolean} updateSimulation
- * @property {boolean} applyForce
- * @property {boolean} applyAging
- * @property {boolean} isGlobal
+ * @property {Boolean} isValid
+ * @property {Boolean} requiresSorting
+ * @property {Boolean} updateSimulation
+ * @property {Boolean} applyForce
+ * @property {Boolean} applyAging
+ * @property {Boolean} isGlobal
  * @property {Array} forces
  * @property {Array} constraints
- * @property {boolean} updateBoundingBox
+ * @property {Boolean} updateBoundingBox
  * @property {vec3} aabbMin
  * @property {vec3} aabbMax
- * @property {number} peakAliveCount
- * @property {boolean} bufferDirty
+ * @property {Number} peakAliveCount
+ * @property {Boolean} bufferDirty
  * @property {WebGLBuffer} _vb
  * @property {Tw2VertexDeclaration} _declaration
  * @property {Array} _stdElements
@@ -196,7 +194,6 @@ function Tw2ParticleSystem()
 
 /**
  * Initializes the Particle System
- * @prototype
  */
 Tw2ParticleSystem.prototype.Initialize = function()
 {
@@ -205,8 +202,6 @@ Tw2ParticleSystem.prototype.Initialize = function()
 
 /**
  * Updates Element Declarations
- * TODO: fix/remove commented out code
- * @prototype
  */
 Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
 {
@@ -301,8 +296,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
 /**
  * HasElement
  * @param {ParticleElementType} type
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2ParticleSystem.prototype.HasElement = function(type)
 {
@@ -313,7 +307,6 @@ Tw2ParticleSystem.prototype.HasElement = function(type)
  * GetElement
  * @param {ParticleElementType} type
  * @returns {?}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetElement = function(type)
 {
@@ -327,7 +320,6 @@ Tw2ParticleSystem.prototype.GetElement = function(type)
 /**
  * BeginSpawnParticle
  * @returns {null|number}
- * @prototype
  */
 Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
 {
@@ -340,7 +332,6 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
 
 /**
  * EndSpawnParticle
- * @prototype
  */
 Tw2ParticleSystem.prototype.EndSpawnParticle = function()
 {
@@ -349,8 +340,7 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function()
 
 /**
  * Internal render/update function. It is called every frame.
- * @param {number} dt - delta time
- * @prototype
+ * @param {Number} dt - delta time
  */
 Tw2ParticleSystem.prototype.Update = function(dt)
 {
@@ -503,8 +493,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
  * Gets bounding box
  * @param {vec3} aabbMin
  * @param {vec3} aabbMax
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
 {
@@ -558,7 +547,7 @@ Tw2ParticleSystem.prototype._Sort = function()
      * sortItems
      * @param a
      * @param b
-     * @returns {number}
+     * @returns {Number}
      * @private
      */
     var sortItems = function(a, b)
@@ -594,7 +583,6 @@ Tw2ParticleSystem.prototype._Sort = function()
 /**
  * GetInstanceBuffer
  * @returns {WebGLBuffer}
- * @constructor
  */
 Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
 {
@@ -635,7 +623,6 @@ Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
 /**
  * GetInstanceDeclaration
  * @returns {Tw2VertexDeclaration}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
 {
@@ -644,8 +631,7 @@ Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
 
 /**
  * GetInstanceStride
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ParticleSystem.prototype.GetInstanceStride = function()
 {
@@ -654,8 +640,7 @@ Tw2ParticleSystem.prototype.GetInstanceStride = function()
 
 /**
  * GetInstanceCount
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ParticleSystem.prototype.GetInstanceCount = function()
 {

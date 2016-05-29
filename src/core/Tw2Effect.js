@@ -1,19 +1,18 @@
 /**
  * Tw2SamplerOverride
- * @property {number} addressU
- * @property {number} addressV
- * @property {number} addressW
- * @property {number} filter
- * @property {number} mipFilter
- * @property {number} lodBias
- * @property {number} maxMipLevel
- * @property {number} maxAnisotropy
+ * @property {Number} addressU
+ * @property {Number} addressV
+ * @property {Number} addressW
+ * @property {Number} filter
+ * @property {Number} mipFilter
+ * @property {Number} lodBias
+ * @property {Number} maxMipLevel
+ * @property {Number} maxAnisotropy
  * @constructor
  */
 function Tw2SamplerOverride()
 {
     this.name = '';
-
     this.addressU = 0;
     this.addressV = 0;
     this.addressW = 0;
@@ -22,14 +21,12 @@ function Tw2SamplerOverride()
     this.lodBias = 0;
     this.maxMipLevel = 0;
     this.maxAnisotropy = 0;
-
     var sampler = null;
 
     /**
      * GetSampler
      * @param originalSampler
      * @returns {*}
-     * @method
      */
     this.GetSampler = function(originalSampler)
     {
@@ -122,7 +119,6 @@ function Tw2Effect()
 
 /**
  * Initializes the Tw2Effect
- * @prototype
  */
 Tw2Effect.prototype.Initialize = function()
 {
@@ -169,11 +165,10 @@ Tw2Effect.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Returns the Tw2Effect's resource object
- * @prototype
  */
 Tw2Effect.prototype.GetEffectRes = function()
 {
@@ -183,7 +178,6 @@ Tw2Effect.prototype.GetEffectRes = function()
 /**
  * Rebuilds Cached Data
  * @param resource
- * @prototype
  */
 Tw2Effect.prototype.RebuildCachedData = function(resource)
 {
@@ -195,8 +189,7 @@ Tw2Effect.prototype.RebuildCachedData = function(resource)
 
 /**
  * BindParameters
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2Effect.prototype.BindParameters = function()
 {
@@ -341,8 +334,7 @@ Tw2Effect.prototype.BindParameters = function()
 
 /**
  * ApplyPass
- * @param pass
- * @prototype
+ * @param {Number} pass
  */
 Tw2Effect.prototype.ApplyPass = function(pass)
 {
@@ -401,8 +393,7 @@ Tw2Effect.prototype.ApplyPass = function(pass)
 
 /**
  * GetPassCount
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2Effect.prototype.GetPassCount = function()
 {
@@ -415,9 +406,8 @@ Tw2Effect.prototype.GetPassCount = function()
 
 /**
  * GetPassInput
- * @param {number} pass
- * @returns {?}
- * @prototype
+ * @param {Number} pass
+ * @returns {*}
  */
 Tw2Effect.prototype.GetPassInput = function(pass)
 {
@@ -438,7 +428,6 @@ Tw2Effect.prototype.GetPassInput = function(pass)
 /**
  * Render
  * @param {function} cb - callback
- * @prototype
  */
 Tw2Effect.prototype.Render = function(cb)
 {
@@ -455,7 +444,6 @@ Tw2Effect.prototype.Render = function(cb)
  * Gets an object containing the textures currently set in the Tw2Effect
  * - Matches sof texture objects
  * @returns {Object.<string, Tw2TextureParameter>}
- * @prototype
  */
 Tw2Effect.prototype.GetTextures = function()
 {
@@ -476,7 +464,6 @@ Tw2Effect.prototype.GetTextures = function()
  * Gets an object containing all non texture parameters currently set in the Tw2Effect
  * - Matches sof parameter object
  * @returns {Object.<string, Tw2FloatParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2VariableParameter>}
- * @prototype
  */
 Tw2Effect.prototype.GetParameters = function()
 {

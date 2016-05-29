@@ -29,10 +29,10 @@ function Tw2TrackGroup()
 /**
  * Tw2Animation
  * @property {Tw2GeometryAnimation} animationRes
- * @property {number} time
- * @property {number} timeScale
- * @property {boolean} cycle
- * @property {boolean} isPlaying
+ * @property {Number} time
+ * @property {Number} timeScale
+ * @property {Boolean} cycle
+ * @property {Boolean} isPlaying
  * @property {Function} callback - Stores optional callback passed to prototypes
  * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
  * @constructor
@@ -50,8 +50,7 @@ function Tw2Animation()
 
 /**
  * Checks to see if the animation has finished playing
- * @return {boolean}
- * @prototype
+ * @return {Boolean}
  */
 Tw2Animation.prototype.IsFinished = function()
 {
@@ -94,20 +93,19 @@ function Tw2Model()
 
 /**
  * Tw2AnimationController
- * @param {Tw2GeometryRes} geometryResource
+ * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
  * @property {Array.<Tw2Animation>} animations
  * @property {Array} meshBindings
- * @property {boolean} loaded
- * @property {boolean} update
+ * @property {Boolean} loaded
+ * @property {Boolean} update
  * @property {mat4} _tempMat4
  * @property {mat3} _tempMat3
  * @property {quat4} _tempQuat4
  * @property {vec3} _tempVec3
  * @property _geometryResource
  * @property {Array} pendingCommands
- * @prototype
  */
 function Tw2AnimationController(geometryResource)
 {
@@ -151,12 +149,11 @@ Tw2AnimationController.prototype.GetResources = function(out)
         }
     }
     return out;
-}
+};
 
 /**
  * Clears any existing resources and loads the supplied geometry resource
  * @param {Tw2GeometryRes} geometryResource
- * @prototype
  */
 Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
 {
@@ -182,7 +179,6 @@ Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource
 /**
  * Adds a Geometry Resource
  * @param {Tw2GeometryRes} geometryResource
- * @prototype
  */
 Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
 {
@@ -200,7 +196,6 @@ Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource
 /**
  * Adds animations from a resource
  * @param {Tw2GeometryRes} resource
- * @prototype
  */
 Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
 {
@@ -323,7 +318,6 @@ Tw2AnimationController.prototype._FindMeshBindings = function(resource)
 /**
  * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
  * @param {Tw2GeometryRes} resource
- * @prototype
  */
 Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 {
@@ -463,7 +457,6 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
  * Gets a loaded Tw2Animation by it's name
  * @param name
  * @returns {null|Tw2Animation} Returns the animation if found
- * @constructor
  */
 Tw2AnimationController.prototype.GetAnimation = function(name)
 {
@@ -481,8 +474,7 @@ Tw2AnimationController.prototype.GetAnimation = function(name)
 /**
  * Resets a Tw2Animation by it's name
  * @param {String} name
- * @return {boolean}
- * @constructor
+ * @return {Boolean}
  */
 Tw2AnimationController.prototype.ResetAnimation = function(name)
 {
@@ -499,10 +491,9 @@ Tw2AnimationController.prototype.ResetAnimation = function(name)
 /**
  * Plays a specific animation by it's name
  * @param {string} name - Animation's Name
- * @param {boolean} [cycle]
+ * @param {Boolean} [cycle]
  * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @return {boolean}
- * @prototype
+ * @return {Boolean}
  */
 Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
@@ -537,11 +528,10 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 /**
  * Plays a specific animation from a specific time
  * @param {string} name - Animation's Name
- * @param {number} from - Time to play from
- * @param {boolean} [cycle]
+ * @param {Number} from - Time to play from
+ * @param {Boolean} [cycle]
  * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
 {
@@ -577,8 +567,7 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
 
 /**
  * Gets an array of all the currently playing animations by name
- * @returns {[]}
- * @constructor
+ * @returns {Array}
  */
 Tw2AnimationController.prototype.GetPlayingAnimations = function()
 {
@@ -597,8 +586,7 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
 
 /**
  * Stops an animation or an array of animations from playing
- * @param {String, Array.<string>} names - Animation Name, or Array of Animation Names
- * @prototype
+ * @param {String|Array.<string>} names - Animation Name, or Array of Animation Names
  */
 Tw2AnimationController.prototype.StopAnimation = function(names)
 {
@@ -635,7 +623,6 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
 
 /**
  * Stops all animations from playing
- * @prototype
  */
 Tw2AnimationController.prototype.StopAllAnimations = function()
 {
@@ -658,7 +645,6 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
 /**
  * Stops all but the supplied list of animations
  * @param {String| Array.<string>} names - Animation Names
- * @prototype
  */
 Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 {
@@ -696,7 +682,6 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 /**
  * Resets the bone transforms for the supplied models
  * @param {Array.<Tw2Model>} models
- * @prototype
  */
 Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
 {
@@ -737,10 +722,10 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
 /**
  * EvaluateCurve
  * @param {Tw2GeometryCurve} curve
- * @param {number} time
+ * @param {Number} time
  * @param value
- * @param {boolean} cycle
- * @param {number} duration
+ * @param {Boolean} cycle
+ * @param {Number} duration
  */
 Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, duration)
 {
@@ -834,9 +819,7 @@ Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, durat
 
 /**
  * Internal render/update function which is called every frame
- * TODO: Fix commented out code (line 718)
- * @param {number} dt - Delta Time
- * @prototype
+ * @param {Number} dt - Delta Time
  */
 Tw2AnimationController.prototype.Update = function(dt)
 {
@@ -964,9 +947,7 @@ Tw2AnimationController.prototype.Update = function(dt)
 
 /**
  * RenderDebugInfo
- * TODO: Fix commented out code (lines 767 - 770)
  * @param {function} debugHelper
- * @prototype
  */
 Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 {
@@ -989,14 +970,13 @@ Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 };
 
 /**
- * GetBoneMatrixes
- * TODO: Matrixes is spelt wrong (should be Matrices), multiple refactors required
- * @param {number} meshIndex
+ * GetBoneMatrices
+ * @param {Number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Float32Array}
- * @prototype
+ *
  */
-Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryResource)
+Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length == 0)
     {
@@ -1017,10 +997,9 @@ Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryR
 
 /**
  * FindModelForMesh
- * @param {number} meshIndex
+ * @param {Number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
- * @prototype
  */
 Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
 {

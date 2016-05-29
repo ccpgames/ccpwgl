@@ -3,7 +3,7 @@
  * @property {Array.<quat4>} planes
  * @property {vec3} viewPos
  * @property {vec3} viewDir
- * @property {number} halfWidthProjection
+ * @property {Number} halfWidthProjection
  * @property {vec3} _tempVec
  * @constructor
  */
@@ -20,8 +20,7 @@ function Tw2Frustum()
  * Initializes the Tw2Frustum
  * @param {mat4} view - View Matrix
  * @param {mat4} proj - Projection Matrix
- * @param {number} viewportSize
- * @prototype
+ * @param {Number} viewportSize
  */
 Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
 {
@@ -77,9 +76,8 @@ Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
 /**
  * Checks to see if a sphere is visible within the frustum
  * @param {vec3} center
- * @param {number} radius
- * @returns {boolean}
- * @prototype
+ * @param {Number} radius
+ * @returns {Boolean}
  */
 Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
 {
@@ -96,9 +94,8 @@ Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
 /**
  * GetPixelSizeAcross
  * @param {vec3} center
- * @param {number} radius
- * @returns {number}
- * @prototype
+ * @param {Number} radius
+ * @returns {Number}
  */
 Tw2Frustum.prototype.GetPixelSizeAcross = function(center, radius)
 {

@@ -14,7 +14,14 @@ When all is set up, ```grunt [task]``` starts the build script.
 The default task runs the tasks "format" and "compile". "lint" is currently not in the
 chain for still reporting too many errors.
 
-Available tasks:
+**Available tasks**:
 * format: running jsbeautifier (based on .jsbeautifyrc)
 * lint: running jshint (based on .jshintrc)
-* compile: running uglifyjs, producing ccpwgl_int.js
+* min: running uglifyjs, producing `/dist/ccpwgl_int.min.js`
+* cc: running concat and jsbeautifier:cc producing `/dist/ccpwgl_int.js`
+* dist: running `min` and `cc` which compiles the ccpwgl_int files
+
+Documentation
+-------------
+The following command line will create jsdocs documentation in the `/docs` folder
+* > `jsdoc -c .jsdocs -d /docs` (Windows users will need to add jsdocs to their paths)

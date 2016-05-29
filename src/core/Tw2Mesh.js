@@ -2,10 +2,10 @@
  * Tw2MeshArea
  * @property {string} name
  * @property {Tw2Effect} effect
- * @property {number} meshIndex
- * @property {number} index
- * @property {number} count
- * @property {boolean} display
+ * @property {Number} meshIndex
+ * @property {Number} index
+ * @property {Number} count
+ * @property {Boolean} display
  * @constructor
  */
 function Tw2MeshArea()
@@ -21,7 +21,6 @@ function Tw2MeshArea()
 /**
  * Render Batch Constructor
  * @type {RenderBatch}
- * @prototype
  */
 Tw2MeshArea.batchType = Tw2GeometryBatch;
 
@@ -30,9 +29,9 @@ Tw2MeshArea.batchType = Tw2GeometryBatch;
  * Tw2MeshLineArea
  * @property {string} name
  * @property {Tw2Effect} effect
- * @property {number} meshIndex
- * @property {number} index
- * @property {number} count
+ * @property {Number} meshIndex
+ * @property {Number} index
+ * @property {Number} count
  * @property {Boolean} display
  * @constructor
  */
@@ -49,7 +48,6 @@ function Tw2MeshLineArea()
 /**
  * Render Batch Constructor
  * @type {RenderBatch}
- * @prototype
  */
 Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
 
@@ -57,7 +55,7 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
 /**
  * Tw2Mesh
  * @property {string} name
- * @property {number} meshIndex
+ * @property {Number} meshIndex
  * @property {string} geometryResPath
  * @property {string} lowDetailGeometryResPath
  * @property {Tw2GeometryRes} geometryResource
@@ -67,12 +65,12 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
  * @property {Array.<Tw2MeshArea>} pickableAreas
  * @property {Array.<Tw2MeshArea>} decalAreas
  * @property {Array.<Tw2MeshArea>} depthAreas
- * @property {boolean} display - enables/disables all render batch accumulations
- * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
- * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
- * @property {boolean} displayAdditive - enables/disables additive area batch accumulations
- * @property {boolean} displayPickable - enables/disables pickable area batch accumulations
- * @property {boolean} displayDecal - enables/disables decal area batch accumulations
+ * @property {Boolean} display - enables/disables all render batch accumulations
+ * @property {Boolean} displayOpaque - enables/disables opaque area batch accumulations
+ * @property {Boolean} displayTransparent - enables/disables transparent area batch accumulations
+ * @property {Boolean} displayAdditive - enables/disables additive area batch accumulations
+ * @property {Boolean} displayPickable - enables/disables pickable area batch accumulations
+ * @property {Boolean} displayDecal - enables/disables decal area batch accumulations
  * @constructor
  */
 function Tw2Mesh()
@@ -100,7 +98,6 @@ function Tw2Mesh()
 
 /**
  * Initializes the Tw2Mesh
- * @prototype
  */
 Tw2Mesh.prototype.Initialize = function()
 {
@@ -144,7 +141,7 @@ Tw2Mesh.prototype.GetResources = function(out)
     getAreaResources('pickableAreas', out);
     getAreaResources('transparentAreas', out);
     return out;
-}
+};
 
 /**
  * Gets render batches from a mesh area array and commits them to an accumulator
@@ -159,7 +156,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
     for (var i = 0; i < areas.length; ++i)
     {
         var area = areas[i];
-        if (area.effect == null || !area.display))
+        if (area.effect == null || !area.display)
         {
             continue;
         }
@@ -180,8 +177,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
- * @returns {boolean}
- * @prototype
+ * @returns {Boolean}
  */
 Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
@@ -218,7 +214,7 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * Gets pickable render batches
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
- * @returns {boolean}
+ * @returns {Boolean}
  * @constructor
  */
 Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
@@ -234,4 +230,4 @@ Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
     }
 
     return true;
-}
+};

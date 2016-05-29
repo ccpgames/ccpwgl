@@ -1,6 +1,6 @@
 /**
  * Tw2ParticleFluidDragForce
- * @property {number} drag
+ * @property {Number} drag
  * @property {vec3} _tempVec
  * @property {vec3} _tempVec2
  * @constructor
@@ -17,9 +17,8 @@ function Tw2ParticleFluidDragForce()
  * @param position
  * @param velocity
  * @param force
- * @param {number} dt - delta time
+ * @param {Number} dt - delta time
  * @param mass
- * @prototype
  */
 Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
 {
@@ -52,6 +51,5 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2ParticleFluidDragForce.prototype.Update = function() {};

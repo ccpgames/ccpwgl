@@ -1,7 +1,7 @@
 /**
  * Tw2RuntimeInstanceData
  * @property {string} name
- * @property {number} count
+ * @property {Number} count
  * @constructor
  */
 function Tw2RuntimeInstanceData()
@@ -18,8 +18,7 @@ function Tw2RuntimeInstanceData()
 
     /**
      * GetMaxInstanceCount
-     * @returns {number}
-     * @method
+     * @returns {Number}
      */
     this.GetMaxInstanceCount = function()
     {
@@ -29,7 +28,6 @@ function Tw2RuntimeInstanceData()
     /**
      * SetElementLayout
      * @param decl
-     * @method
      */
     this.SetElementLayout = function(decl)
     {
@@ -61,7 +59,6 @@ function Tw2RuntimeInstanceData()
     /**
      * SetData
      * @param data_
-     * @constructor
      */
     this.SetData = function(data_)
     {
@@ -80,7 +77,6 @@ function Tw2RuntimeInstanceData()
      * @param index
      * @param elementIndex
      * @param value
-     * @constructor
      */
     this.SetItemElement = function(index, elementIndex, value)
     {
@@ -104,7 +100,6 @@ function Tw2RuntimeInstanceData()
      * @param index
      * @param elementIndex
      * @param value
-     * @constructor
      */
     this.SetItemElementRef = function(index, elementIndex, value)
     {
@@ -117,7 +112,6 @@ function Tw2RuntimeInstanceData()
      * @param index
      * @param elementIndex
      * @returns {*}
-     * @method
      */
     this.GetItemElement = function(index, elementIndex)
     {
@@ -126,7 +120,6 @@ function Tw2RuntimeInstanceData()
 
     /**
      * UpdateData
-     * @method
      */
     this.UpdateData = function()
     {
@@ -170,7 +163,6 @@ function Tw2RuntimeInstanceData()
 
     /**
      * Unloads the webgl buffer
-     * @method
      */
     this.Unload = function()
     {
@@ -184,7 +176,6 @@ function Tw2RuntimeInstanceData()
     /**
      * GetInstanceBuffer
      * @returns {WebglArrayBuffer}
-     * @method
      */
     this.GetInstanceBuffer = function()
     {
@@ -194,7 +185,6 @@ function Tw2RuntimeInstanceData()
     /**
      * GetInstanceDeclaration
      * @returns {Tw2VertexDeclaration}
-     * @method
      */
     this.GetInstanceDeclaration = function()
     {
@@ -203,8 +193,7 @@ function Tw2RuntimeInstanceData()
 
     /**
      * GetInstanceStride
-     * @returns {number}
-     * @method
+     * @returns {Number}
      */
     this.GetInstanceStride = function()
     {
@@ -213,8 +202,7 @@ function Tw2RuntimeInstanceData()
 
     /**
      * GetInstanceCount
-     * @returns {number}
-     * @method
+     * @returns {Number}
      */
     this.GetInstanceCount = function()
     {

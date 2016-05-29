@@ -29,10 +29,9 @@ function Tw2VariableParameter(name, variableName)
 /**
  * Bind
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
+ * @param {Number} offset
+ * @param {Number} size
+ * @returns {Boolean}
  */
 Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
@@ -42,9 +41,8 @@ Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
 /**
  * Apply
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @prototype
+ * @param {Number} offset
+ * @param {Number} size
  */
 Tw2VariableParameter.prototype.Apply = function(constantBuffer, offset, size)
 {

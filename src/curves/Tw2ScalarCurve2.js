@@ -1,10 +1,10 @@
 /**
  * Tw2ScalarKey2
- * @property {number} time
- * @property {number} value
- * @property {number} leftTangent
- * @property {number} rightTangent
- * @property {number} interpolation
+ * @property {Number} time
+ * @property {Number} value
+ * @property {Number} leftTangent
+ * @property {Number} rightTangent
+ * @property {Number} interpolation
  * @constructor
  */
 function Tw2ScalarKey2()
@@ -19,17 +19,17 @@ function Tw2ScalarKey2()
 /**
  * Tw2ScalarCurve2
  * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
- * @property {number} startValue
- * @property {number} currentValue
- * @property {number} endValue
- * @property {number} startTangent
- * @property {number} endTangent
- * @property {number} interpolation
+ * @property {Number} length
+ * @property {Boolean} cycle
+ * @property {Boolean} reversed
+ * @property {Number} timeOffset
+ * @property {Number} timeScale
+ * @property {Number} startValue
+ * @property {Number} currentValue
+ * @property {Number} endValue
+ * @property {Number} startTangent
+ * @property {Number} endTangent
+ * @property {Number} interpolation
  * @property {Array.<Tw2ScalarKey2>} keys
  * @constructor
  */
@@ -52,8 +52,7 @@ function Tw2ScalarCurve2()
 
 /**
  * Gets curve length
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ScalarCurve2.prototype.GetLength = function()
 {
@@ -62,7 +61,6 @@ Tw2ScalarCurve2.prototype.GetLength = function()
 
 /**
  * Initializes Curve
- * @prototype
  */
 Tw2ScalarCurve2.prototype.Initialize = function()
 {
@@ -73,8 +71,7 @@ Tw2ScalarCurve2.prototype.Initialize = function()
  * Compares two curve keys' time properties
  * @param {Tw2ScalarKey2} a
  * @param {Tw2ScalarKey2} b
- * @returns {number}
- * @method
+ * @returns {Number}
  */
 Tw2ScalarCurve2.Compare = function(a, b)
 {
@@ -91,7 +88,6 @@ Tw2ScalarCurve2.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2ScalarCurve2.prototype.Sort = function()
 {
@@ -119,8 +115,7 @@ Tw2ScalarCurve2.prototype.Sort = function()
 
 /**
  * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * @param {Number} time
  */
 Tw2ScalarCurve2.prototype.UpdateValue = function(time)
 {
@@ -129,9 +124,8 @@ Tw2ScalarCurve2.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * @param {Number} time
+ * @returns {Number}
  */
 Tw2ScalarCurve2.prototype.GetValueAt = function(time)
 {
@@ -172,7 +166,8 @@ Tw2ScalarCurve2.prototype.GetValueAt = function(time)
     {
         return this.Interpolate(time, this.keys[this.keys.length - 1], null);
     }
-    var endKey = this.keys[i + 1];
+
+    var endKey;
     for (var i = 0; i + 1 < this.keys.length; ++i)
     {
         startKey = this.keys[i];
@@ -187,11 +182,10 @@ Tw2ScalarCurve2.prototype.GetValueAt = function(time)
 
 /**
  * Interpolate
- * @param {number} time
+ * @param {Number} time
  * @param {Tw2ScalarKey2} lastKey
  * @param {Tw2ScalarKey2} nextKey
- * @returns {number}
- * @prototype
+ * @returns {Number}
  */
 Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
 {

@@ -1,3 +1,25 @@
+/**
+ * EveStretch
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Boolean} update
+ * @property source
+ * @property dest
+ * @property sourceObject
+ * @property destObject
+ * @property {Array.<CurveSets>} curveSets
+ * @property {Tw2Float} length
+ * @property {Number} _time
+ * @property {Boolean} _useTransformsForStretch
+ * @property {vec3} _sourcePosition
+ * @property {vec3} _destinationPosition
+ * @property {Boolean} _displaySourceObject
+ * @property {mat4} _sourceTransform
+ * @property {Boolean} _displayDestObject
+ * @property {Boolean} _useTransformsForStretch
+ * @property {Boolean} _isNegZForward
+ * @constructor
+ */
 function EveStretch()
 {
     this.name = '';
@@ -21,9 +43,24 @@ function EveStretch()
     this._isNegZForward = false;
 }
 
+/**
+ * Temporary vec3 storage
+ * @type {Array.<vec3>}
+ * @private
+ */
 EveStretch._tempVec3 = [vec3.create(), vec3.create(), vec3.create()];
+
+/**
+ * Temporary Mat4 storage
+ * @type {Array.<mat4>}
+ * @private
+ */
 EveStretch._tempMat4 = [mat4.create(), mat4.create()];
 
+/**
+ * Per frame update
+ * @param {Number} dt - delta time
+ */
 EveStretch.prototype.Update = function(dt)
 {
     for (var i = 0; i < this.curveSets.length; ++i)
@@ -61,8 +98,11 @@ EveStretch.prototype.Update = function(dt)
     {
         this.destObject.Update(dt);
     }
-}
+};
 
+/**
+ * Updates view dependent data
+ */
 EveStretch.prototype.UpdateViewDependentData = function()
 {
     if (!this.display)
@@ -155,8 +195,14 @@ EveStretch.prototype.UpdateViewDependentData = function()
         }
         this.stretchObject.UpdateViewDependentData(m);
     }
-}
+};
 
+/**
+ * Gets render batches
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ */
 EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
@@ -177,24 +223,40 @@ EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
 };
 
+/**
+ * Gets source position
+ * @param {vec3} position
+ */
 EveStretch.prototype.SetSourcePosition = function(position)
 {
     this._useTransformsForStretch = false;
     this._sourcePosition = position;
-}
+};
 
+/**
+ * Sets the destination position
+ * @param {vec3} position
+ */
 EveStretch.prototype.SetDestinationPosition = function(position)
 {
     this._destinationPosition = position;
-}
+};
 
+/**
+ * Sets the source transform
+ * @param {mat4} transform
+ */
 EveStretch.prototype.SetSourceTransform = function(transform)
 {
     this._useTransformsForStretch = true;
     this._sourceTransform = transform;
-}
+};
 
+/**
+ * SetIsNegZForward
+ * @param {Boolean} isNegZForward
+ */
 EveStretch.prototype.SetIsNegZForward = function(isNegZForward)
 {
     this._isNegZForward = isNegZForward;
-}
+};

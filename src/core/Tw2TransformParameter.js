@@ -27,7 +27,6 @@ function Tw2TransformParameter(name)
 
 /**
  * Initializes the transform parameter
- * @prototype
  */
 Tw2TransformParameter.prototype.Initialize = function()
 {
@@ -36,7 +35,6 @@ Tw2TransformParameter.prototype.Initialize = function()
 
 /**
  * Updates the transform parameter's properties
- * @prototype
  */
 Tw2TransformParameter.prototype.OnModified = function()
 {
@@ -72,10 +70,9 @@ Tw2TransformParameter.prototype.OnModified = function()
 /**
  * Bind
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
+ * @param {Number} offset
+ * @param {Number} size
+ * @returns {Boolean}
  */
 Tw2TransformParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
@@ -90,7 +87,6 @@ Tw2TransformParameter.prototype.Bind = function(constantBuffer, offset, size)
 
 /**
  * A function that should be called when any of the transform parameter's properties have been changed
- * @prototype
  */
 Tw2TransformParameter.prototype.OnValueChanged = function()
 {
@@ -100,9 +96,8 @@ Tw2TransformParameter.prototype.OnValueChanged = function()
 /**
  * Apply
  * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @constructor
+ * @param {Number} offset
+ * @param {Number} size
  */
 Tw2TransformParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
