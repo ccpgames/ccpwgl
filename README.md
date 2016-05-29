@@ -17,4 +17,5 @@ chain for still reporting too many errors.
 Available tasks:
 * format: running jsbeautifier (based on .jsbeautifyrc)
 * lint: running jshint (based on .jshintrc)
-* compile: running uglifyjs, producing ccpwgl_int.js
+* compile: running uglifyjs, producing `/src/ccpwgl_int.js`
+* dev: running concat and jsbeautifier, producing `/src/dev/ccpwgl_dev.js`

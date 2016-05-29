@@ -462,6 +462,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 1:
                         if ((el.fileType & 0x10))
                         {
@@ -478,24 +479,28 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 2:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadInt32();
                         }
                         break;
+
                     case 3:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat16();
                         }
                         break;
+
                     case 4:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadFloat32();
                         }
                         break;
+
                     case 8:
                         if ((el.fileType & 0x10))
                         {
@@ -512,6 +517,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 9:
                         if ((el.fileType & 0x10))
                         {
@@ -528,14 +534,24 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                             }
                         }
                         break;
+
                     case 10:
                         for (i = 0; i < el.elements; ++i)
                         {
                             buffer[index++] = reader.ReadUInt32();
                         }
                         break;
+
                     default:
-                        console.error('Tw2GeometryRes:', ' error loading wbg data (file ', self.path, ')');
+                        emitter.log('ResMan',
+                        {
+                            log: 'error',
+                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
+                            msg: 'Error loading wbg data',
+                            path: self.path,
+                            type: 'geometry.filetype',
+                            value: el.fileType & 0xf,
+                        });
                         throw 1;
                 }
             }
@@ -827,15 +843,20 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
         var bone = model.FindBoneByName(name);
         if (bone == null)
         {
-            console.error(
-                'Tw2GeometryRes:',
-                'mesh \'',
-                binding.mesh.name,
-                '\' has invalid bone name \'',
-                name,
-                '\' for model \'',
-                model.name,
-                '\'');
+            emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'BindMeshToModel'],
+                msg: 'Mesh has invalid bone name for model',
+                path: this.path,
+                type: 'geometry.invalidbone',
+                data:
+                {
+                    mesh: binding.mesh.name,
+                    bone: name,
+                    model: model.name
+                }
+            });
         }
         else
         {
@@ -950,7 +971,20 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            console.error('Tw2GeometryRes:', ' error binding mesh to effect');
+            emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'RenderLines'],
+                msg: 'Error binding mesh to effect',
+                path: this.path,
+                type: 'geometry.meshbind',
+                data:
+                {
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }
+            });
             return false;
         }
         d.ApplyShadowState();
@@ -1034,9 +1068,23 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            console.error('Tw2GeometryRes:', ' error binding mesh to effect');
+            emitter.log('ResMan',
+                {
+                    log: 'error',
+                    src: ['Tw2GeometryRes', 'RenderLines'],
+                    msg: 'Error binding mesh to effect',
+                    path: this.path,
+                    type: 'geometry.meshbind',
+                    data:
+                    {
+                        pass: pass,
+                        passInput: passInput,
+                        meshStride: mesh.declaration.stride
+                    }
+                });
             return false;
         }
+
         d.ApplyShadowState();
 
         if (typeof(cb) != 'undefined')

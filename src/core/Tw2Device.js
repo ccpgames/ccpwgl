@@ -198,17 +198,27 @@ function Tw2Device()
     this.CreateDevice = function(canvas, params)
     {
         this.gl = null;
+        var err = null;
 
         try
         {
             this.gl = canvas.getContext("webgl", params) || canvas.getContext("experimental-webgl", params);
         }
         catch (e)
-        {}
+        {
+            err = e.toString();
+        }
 
         if (!this.gl)
         {
-            console.error("Could not initialise WebGL");
+            emitter.log('WebGL',
+            {
+                log: 'error',
+                msg: 'Could not initialise WebGL',
+                src: ['Tw2Device', 'CreateDevice'],
+                type: 'context',
+                data: err
+            })
             return false;
         }
         else
@@ -302,23 +312,22 @@ function Tw2Device()
         this.depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
         this.depthOffsetState.dirty = false;
 
-        this._blendTable = [
-            -1,                                 // --
-            this.gl.ZERO,                       // D3DBLEND_ZERO
-            this.gl.ONE,                        // D3DBLEND_ONE
-            this.gl.SRC_COLOR,                  // D3DBLEND_SRCCOLOR
-            this.gl.ONE_MINUS_SRC_COLOR,        // D3DBLEND_INVSRCCOLOR
-            this.gl.SRC_ALPHA,                  // D3DBLEND_SRCALPHA
-            this.gl.ONE_MINUS_SRC_ALPHA,        // D3DBLEND_INVSRCALPHA
-            this.gl.DST_ALPHA,                  // D3DBLEND_DESTALPHA
-            this.gl.ONE_MINUS_DST_ALPHA,        // D3DBLEND_INVDESTALPHA
-            this.gl.DST_COLOR,                  // D3DBLEND_DESTCOLOR
-            this.gl.ONE_MINUS_DST_COLOR,        // D3DBLEND_INVDESTCOLOR
-            this.gl.SRC_ALPHA_SATURATE,         // D3DBLEND_SRCALPHASAT
-            -1,                                 // D3DBLEND_BOTHSRCALPHA
-            -1,                                 // D3DBLEND_BOTHINVSRCALPHA
-            this.gl.CONSTANT_COLOR,             // D3DBLEND_BLENDFACTOR
-            this.gl.ONE_MINUS_CONSTANT_COLOR    // D3DBLEND_INVBLENDFACTOR
+        this._blendTable = [-1, // --
+            this.gl.ZERO, // D3DBLEND_ZERO
+            this.gl.ONE, // D3DBLEND_ONE
+            this.gl.SRC_COLOR, // D3DBLEND_SRCCOLOR
+            this.gl.ONE_MINUS_SRC_COLOR, // D3DBLEND_INVSRCCOLOR
+            this.gl.SRC_ALPHA, // D3DBLEND_SRCALPHA
+            this.gl.ONE_MINUS_SRC_ALPHA, // D3DBLEND_INVSRCALPHA
+            this.gl.DST_ALPHA, // D3DBLEND_DESTALPHA
+            this.gl.ONE_MINUS_DST_ALPHA, // D3DBLEND_INVDESTALPHA
+            this.gl.DST_COLOR, // D3DBLEND_DESTCOLOR
+            this.gl.ONE_MINUS_DST_COLOR, // D3DBLEND_INVDESTCOLOR
+            this.gl.SRC_ALPHA_SATURATE, // D3DBLEND_SRCALPHASAT
+            -1, // D3DBLEND_BOTHSRCALPHA
+            -1, // D3DBLEND_BOTHINVSRCALPHA
+            this.gl.CONSTANT_COLOR, // D3DBLEND_BLENDFACTOR
+            this.gl.ONE_MINUS_CONSTANT_COLOR // D3DBLEND_INVBLENDFACTOR
         ];
 
         this._shadowStateBuffer = new Float32Array(24);
@@ -330,6 +339,7 @@ function Tw2Device()
             requestAnimFrame(tick);
             self.Tick();
         }
+
         requestAnimFrame(tick);
         return true;
     };

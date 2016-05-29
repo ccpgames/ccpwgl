@@ -89,6 +89,15 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
                 }
                 catch (e)
                 {
+                    emitter.log('ResMan',
+                    {
+                        log: 'throw',
+                        src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                        msg: 'Object with undefined type',
+                        type: 'xml.type',
+                        value: type.value
+                    });
+
                     throw new Error('YAML: object with undefined type \"' + type.value + '\"');
                 }
             }
@@ -104,7 +113,20 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
                 {
                     if (typeof(object[child.nodeName]) == 'undefined')
                     {
-                        console.warn('Tw2ObjectReader:', ' object \"', type.value, '\" does not have property \"', child.nodeName, '\"');
+                        emitter.log('ResMan',
+                        {
+                            log: 'warn',
+                            src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                            msg: 'Object missing property',
+                            value: child.nodeName,
+                            type: 'xml.property',
+                            data:
+                            {
+                                object: type.value,
+                                property: child.nodeName
+                            }
+                        });
+
                         continue;
                     }
                 }
@@ -171,6 +193,16 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             }
             catch (e)
             {
+                emitter.log('ResMan',
+                    {
+                        log: 'throw',
+                        src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                        msg: 'Invalid JSON property',
+                        type: 'xml.json',
+                        value: value,
+                        data: e
+                    });
+
                 throw new Error('YAML: property \"' + value + '\" is not a valid JSON property');
             }
             if (!xmlNode.attributes.getNamedItem('notnum'))
