@@ -1,40 +1,39 @@
 /**
  * Event Emitter
  * @param {String} [name='']
- * @property {String} name
- * @property {{}} events
- * @property {{}} _public
- * @property {Function} _public.on
- * @property {Function} _public.once
- * @property {Function} _public.off
- * @property {Function} _public.delete
+ * @property {String} [name=''] - The name of the emitter
+ * @property {{}.<String, Set>} events
  * @returns {Tw2EventEmitter}
  */
 var Tw2EventEmitter = function(name)
 {
     this.name = name || '';
     this.events = {};
-    this._public = {};
-    this._public.on = this.on.bind(this);
-    this._public.once = this.once.bind(this);
-    this._public.off = this.off.bind(this);
-    this._public.delete = this.delete.bind(this);
     return this;
 }
 
 /**
- * Returns public only methods
+ * Gets public only emitter methods (`on`, `off`, `once`, `del`)
+ * @param {{}} [out={}] An optional receiving object
  * @returns {{}}
+ * 
+ * @example var public = emitter.GetPublic()
+ * // The public object now has the emitter's public functions
  */
-Tw2EventEmitter.prototype.GetPublic = function()
+Tw2EventEmitter.prototype.GetPublic = function(out)
 {
-    return this._public;
+    out || ( out = {});
+    this.inherit(out, false);
+    return out;
 }
 
 /**
  * Checks if an event has any listeners
- * @param {String} eventName
+ * @param {String} eventName - The event to check
  * @returns {boolean}
+ * 
+ * @example emitter.HasListeners('myEvent');
+ * // Returns true or false
  */
 Tw2EventEmitter.prototype.HasListeners = function(eventName)
 {
@@ -45,8 +44,15 @@ Tw2EventEmitter.prototype.HasListeners = function(eventName)
 
 /**
  * Registers an Event
- * @param  {String} eventName
+ * - Event names are case insensitive
+ * - Emits an `EventAdded` event with the event's name as an argument
+ * - When using the `on` and `once` methods an event is automatically registered
+ * @param  {String} eventName - The event to register
  * @returns {Tw2EventEmitter}
+ * 
+ * @example emitter.register('myEvent');
+ * // creates the myEvent event
+ * // emits a `EventAdded` event
  */
 Tw2EventEmitter.prototype.register = function(eventName)
 {
@@ -61,9 +67,14 @@ Tw2EventEmitter.prototype.register = function(eventName)
 };
 
 /**
- * Deregisters and event
- * @param {String} eventName
+ * Deregisters an event and removes all listeners
+ * - Emits an `EventRemoved` event with the event's name as an argument
+ * @param {String} eventName - The event to deregister
  * @returns {Tw2EventEmitter}
+ * 
+ * @example emitter.deregister('myEvent'); 
+ * // Removes all listeners from the event, and then deletes it
+ * // Emits an `EventRemoved` event 
  */
 Tw2EventEmitter.prototype.deregister = function(eventName)
 {
@@ -78,81 +89,13 @@ Tw2EventEmitter.prototype.deregister = function(eventName)
 }
 
 /**
- * Adds a listener to an event
- * - A listener can only exist on an Event once, unless using the `once` method which you probably shouldn't!
- * @param {String} eventName
- * @param {Function} listener
- * @returns {Tw2EventEmitter}
- */
-Tw2EventEmitter.prototype.on = function(eventName, listener)
-{
-    eventName = eventName.toLowerCase();
-    this.register(eventName);
-    this.events[eventName].add(listener);
-    return this;
-}
-
-/**
- * Adds a listener to an event and removes it after it's first emit
- * @param {String} eventName
- * @param {Function} listener
- * @returns {Tw2EventEmitter}
- * @throws When registering a listener once, and it is already registered
- */
-Tw2EventEmitter.prototype.once = function(eventName, listener)
-{
-    var self = this;
-    eventName = eventName.toLowerCase();
-
-    var once = function once()
-    {
-        listener.apply(undefined, arguments);
-        self.off(eventName, once);
-    };
-
-    this.on(eventName, once);
-    return this;
-}
-
-/**
- * Deletes all instances of a listener
- * @param {Function} listener
- * @returns {Tw2EventEmitter}
- */
-Tw2EventEmitter.prototype.delete = function(listener)
-{
-    const self = this;
-    for (var eventName in this.events)
-    {
-        if (this.events.hasOwnProperty(eventName))
-        {
-            self.off(eventName, listener);
-        }
-    }
-    return this;
-}
-
-/**
- * Removes a listener from an event
- * @param {String} eventName
- * @param {Function} listener
- * @returns {Tw2EventEmitter}
- */
-Tw2EventEmitter.prototype.off = function(eventName, listener)
-{
-    eventName = eventName.toLowerCase();
-
-    if (eventName in this.events)
-    {
-        this.events[eventName].delete(listener)
-    }
-    return this;
-}
-
-/**
  * Emits an event
- * @param {String} eventName
+ * @param {String} eventName - The event to emit
+ * @param {*} ...args - Any arguments to be passed to the event's listeners
  * @returns {Tw2EventEmitter}
+ * 
+ * @example emitter.emit('myEvent', arg1, arg2, arg3);
+ * // Emits the 'myEvent' event and calls all of it's listeners with: arg1, arg2, arg3
  */
 Tw2EventEmitter.prototype.emit = function(eventName)
 {
@@ -177,30 +120,131 @@ Tw2EventEmitter.prototype.emit = function(eventName)
 }
 
 /**
- * Global toggle to disable warn, error, and throw console logging
- * @type {boolean}
+ * Adds a listener to an event
+ * - A listener can only exist on an Event once unless using the `once` method, self removing listeners are preferred
+ * @param {String} eventName - The target event
+ * @param {Function} listener - The listener function to add
+ * @returns {Tw2EventEmitter}
+ * 
+ * @example emitter.on('myEvent', myListener);
+ * // Adds `myListener` to the `myEvent` event
  */
-Tw2EventEmitter.consoleErrors = true;
+Tw2EventEmitter.prototype.on = function(eventName, listener)
+{
+    eventName = eventName.toLowerCase();
+
+    this.register(eventName);
+    this.events[eventName].add(listener);
+    return this;
+}
 
 /**
- * Global toggle to disable log, info, and debug console logging
- * @type {boolean}
+ * Adds a listener to an event and removes it after it's first emit
+ * @param {String} eventName - The target event
+ * @param {Function} listener - The listener function to add for one emit only
+ * @returns {Tw2EventEmitter}
+ *
+ * @example emitter.once('myEvent', myListener);
+ * // Adds `myListener` to the `myEvent` event
+ * // After the first `myEvent` emit the listener is removed
  */
-Tw2EventEmitter.consoleLogs = true;
+Tw2EventEmitter.prototype.once = function(eventName, listener)
+{
+    var self = this;
+    eventName = eventName.toLowerCase();
+
+    var once = function once()
+    {
+        listener.apply(undefined, arguments);
+        self.off(eventName, once);
+    };
+
+    this.on(eventName, once);
+    return this;
+}
 
 /**
- * Emit wrapper that creates a console output from supplied event data
- * - Console output can be toggled with { @link<Tw2EventEmitter.consoleErrors> and @link<Tw2EventEmitter.consoleLogs> }
- * @param {String} eventName        - The event to emit
- * @param {{}} eventData            - event data
- * @param {String} [d.msg='']       - event message
- * @param {String} [d.log=log]      - console output type (log, info, debug, warn, error, throw)
- * @param {String} [d.path]         - the unmodified path for the file related to the event
- * @param {Number} [d.time]         - this time it took to process the event path (rounds to 3 decimal places)
- * @param {String} [d.type]         - a string representing the event type (for external event handlers)
- * @param {Object} [d.data]         - any values or data relevant to the event type
- * @param {Number|String} [d.value] - a value relevant to the event type
- * @param {Array.<String>} [d.src]  - an array of the functions involved in the event
+ * Removes a listener from an event
+ * @param {String} eventName - The target event
+ * @param {Function} listener - The listener to remove from an event
+ * @returns {Tw2EventEmitter}
+ *
+ * @example emitter.off('myEvent', myListener);
+ * // Removes `myListener` from the `myEvent` event
+ */
+Tw2EventEmitter.prototype.off = function(eventName, listener)
+{
+    eventName = eventName.toLowerCase();
+
+    if (eventName in this.events)
+    {
+        this.events[eventName].delete(listener)
+    }
+    return this;
+}
+
+/**
+ * Deletes a listener from all of the emitter's events
+ * @param {Function} listener - The listener to delete
+ * @returns {Tw2EventEmitter}
+ *
+ * @example emitter.del(myListener);
+ * // Removes `myListener` from every emitter event
+ */
+Tw2EventEmitter.prototype.del = function(listener)
+{
+    const self = this;
+    for (var eventName in this.events)
+    {
+        if (this.events.hasOwnProperty(eventName))
+        {
+            self.off(eventName, listener);
+        }
+    }
+    return this;
+}
+
+/**
+ * Adds bound emitter functions to a target object
+ * - No checks are made to see if these methods or property names already exist
+ * @param {{}} target - The object inheriting the emitter's functions
+ * @param {Boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
+ * @return {Tw2EventEmitter}
+ *
+ * @example emitter.inherit(myObject, true);
+ * // `myObject` now has `on`, `off`, `del` and `log` emitter methods
+ * @example emitter.inherit(myObject);
+ * // `myObject` now has `on`, `off`, `del`, `log` and `emit` emitter methods
+ */
+Tw2EventEmitter.prototype.inherit = function(target, excludeEmit)
+{
+    target['on'] = this.on.bind(emitter);
+    target['off'] = this.off.bind(emitter);
+    target['del'] = this.del.bind(emitter);
+    target['log'] = this.log.bind(emitter);
+    
+    if (!excludeEmit)
+    {
+        target['emit'] = this.emit.bind(emitter);
+    }
+    
+    return this;
+}
+
+/**
+ * An Emit wrapper that emits an event and also creates a console output from a supplied event data object
+ * - The console output replicates the existing ccpwgl console logging
+ * - Console output can be toggled globally with { @link<Tw2EventEmitter.consoleErrors> and @link<Tw2EventEmitter.consoleLogs> }
+ * @param {String}  eventName               - The event to emit
+ * @param {{}}      eventData               - event data
+ * @param {String} [eventData.msg='']       - event message
+ * @param {String} [eventData.log=log]      - desired console output type (log, info, debug, warn, error, throw)
+ * @param {String} [eventData.path]         - the unmodified path for the file related to the event
+ * @param {Number} [eventData.time]         - the time it took to process the event path (rounds to 3 decimal places)
+ * @param {String} [eventData.type]         - a string representing the unique event type
+ * @param {Object} [eventData.data]         - data relevant to the event type
+ * @param {Number|String} [eventData.value] - a single value relevant to the event type
+ * @param {Array.<String>} [eventData.src]  - an array of the functions involved in the event
  */
 Tw2EventEmitter.prototype.log = function(eventName, eventData)
 {
@@ -223,7 +267,7 @@ Tw2EventEmitter.prototype.log = function(eventName, eventData)
     var header = this.name.concat(': {', eventName, '}');
     var body = d.msg || '';
     if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
-    if (d.type && (d.log === 'error' || d.log === 'warn')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+    if (d.type && (d.log === 'error' || d.log === 'warn' || d.log === 'throw')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
 
     if ('data' in d)
     {
@@ -237,5 +281,18 @@ Tw2EventEmitter.prototype.log = function(eventName, eventData)
         console[d.log](header, body);
     }
 }
+
+/**
+ * Global toggle to disable `warn`, `error` and `throw` console logging from Emitter `log` calls
+ * @type {boolean}
+ */
+Tw2EventEmitter.consoleErrors = true;
+
+/**
+ * Global toggle to disable `log`, `info` and `debug` console logging from Emitter `log` calls
+ * @type {boolean}
+ */
+Tw2EventEmitter.consoleLogs = true;
+
 
 var emitter = new Tw2EventEmitter('CCPWGL');
