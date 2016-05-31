@@ -1,3 +1,21 @@
+/**
+ * EveSpaceObjectDecal
+ * @property {boolean} display
+ * @property {Tw2Effect} decalEffect
+ * @property {String} name=''
+ * @property {number} groupIndex
+ * @property {vec3} position
+ * @property {quat4} rotation
+ * @property {vec3} scaling
+ * @property {mat4} decalMatrix
+ * @property {mat4} invDecalMatrix
+ * @property {Tw2GeometryRes} parentGeometry
+ * @property {Array} indexBuffer
+ * @property {*} _indexBuffer
+ * @property {number} parentBoneIndex
+ * @property {Tw2PerObjectData} _perObjectData
+ * @constructor
+ */
 function EveSpaceObjectDecal()
 {
     this.display = true;
@@ -36,6 +54,9 @@ function EveSpaceObjectDecal()
     variableStore.RegisterType('u_InvDecalMatrix', Tw2MatrixParameter);
 }
 
+/**
+ * Initializes the decal
+ */
 EveSpaceObjectDecal.prototype.Initialize = function()
 {
     var indexes = new Uint16Array(this.indexBuffer);
@@ -62,25 +83,45 @@ EveSpaceObjectDecal.prototype.GetResources = function(out)
         out = [];
     }
 
+    if (this.parentGeometry !== null)
+    {
+        if (out.indexOf(this.parentGeometry) === -1)
+        {
+            out.push(this.parentGeometry);
+        }
+    }
+
     if (this.decalEffect !== null)
     {
         this.decalEffect.GetResources(out);
     }
 
     return out;
-}
+};
 
+/**
+ * Sets the parent geometry
+ * @param {Tw2GeometryRes} geometryRes
+ */
 EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
 {
     this.parentGeometry = geometryRes;
 };
 
+/**
+ * Gets batches for rendering
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @param {number} [counter=0]
+ */
 EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData, counter)
 {
     if (mode != device.RM_DECAL)
     {
         return;
     }
+
     if (this.display && this.indexBuffer.length && this.decalEffect && this.parentGeometry && this.parentGeometry.IsGood())
     {
         var batch = new Tw2ForwardingRenderBatch();
@@ -125,6 +166,11 @@ EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObject
     }
 };
 
+/**
+ * Renders the decal
+ * @param {Tw2ForwardingRenderBatch} batch
+ * @param {Tw2Effect} overrideEffect
+ */
 EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
 {
     var bkIB = this.parentGeometry.meshes[0].indexes;
