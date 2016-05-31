@@ -23,24 +23,24 @@ function vec3Hermite(out, v1, t1, v2, t2, s)
 
 /**
  * EveCurveLineSet
- * @param {String} name
- * @param {Boolean} display
- * @param {Boolean} disableDepth
- * @param {Number} lineWidthFactor
- * @param {Array} lines
- * @param {Array} emptyLineID
- * @param {vec3} translation
- * @param {quat4} rotation
- * @param {vec3} scaling
- * @param {mat4} transform
- * @param {Tw2Effect} lineEffect
- * @param {null|Tw2Effect} pickEffect
- * @param {Boolean} additive
- * @param {Tw2PerObjectData} perObjectData
- * @param {Number} _vertexSize
- * @param {WebGLBuffer} _vertexBuffer
- * @param {Number} _vertexBufferSize
- * @param {Tw2VertexDeclaration} declaration
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Boolean} disableDepth
+ * @property {Number} lineWidthFactor
+ * @property {Array} lines
+ * @property {Array} emptyLineID
+ * @property {vec3} translation
+ * @property {quat4} rotation
+ * @property {vec3} scaling
+ * @property {mat4} transform
+ * @property {Tw2Effect} lineEffect
+ * @property {null|Tw2Effect} pickEffect
+ * @property {Boolean} additive
+ * @property {Tw2PerObjectData} perObjectData
+ * @property {Number} _vertexSize
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {Number} _vertexBufferSize
+ * @property {Tw2VertexDeclaration} declaration
  * @constructor
  */
 function EveCurveLineSet()
@@ -413,7 +413,7 @@ EveCurveLineSet.prototype.ClearLines = function()
 
 /**
  * Gets line count
- * @returns {number}
+ * @returns {Number}
  * @private
  */
 EveCurveLineSet.prototype._lineCount = function()
@@ -427,7 +427,7 @@ EveCurveLineSet.prototype._lineCount = function()
         }
     }
     return count;
-}
+};
 
 /**
  * Fills color vertices
@@ -448,7 +448,7 @@ EveCurveLineSet.prototype._fillColorVertices = function(lineData, buffer, offset
     buffer[offset++] = lineData.overlayColor[2];
     buffer[offset++] = lineData.overlayColor[3];
     return offset;
-}
+};
 
 /**
  * Writes line vertices to the vertex buffer
@@ -461,7 +461,7 @@ EveCurveLineSet.prototype._fillColorVertices = function(lineData, buffer, offset
  * @param length2
  * @param {Number} lineID
  * @param buffer
- * @param {number} offset
+ * @param {Number} offset
  * @private
  */
 EveCurveLineSet.prototype._writeLineVerticesToBuffer = function(self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset)
@@ -587,7 +587,7 @@ EveCurveLineSet.prototype._writeLineVerticesToBuffer = function(self, position1,
     buffer[offset++] = color2[2];
     buffer[offset++] = color2[3];
     offset = this._fillColorVertices(lineData, buffer, offset);
-}
+};
 
 /**
  * Updates line changes
@@ -755,7 +755,7 @@ EveCurveLineSet.prototype.Unload = function()
  * Renders lines
  * @param {RenderBatch} batch
  * @param {Tw2Effect} [overrideEffect]
- * @returns {boolean}
+ * @returns {Boolean}
  */
 EveCurveLineSet.prototype.Render = function(batch, overrideEffect)
 {
@@ -817,7 +817,7 @@ EveCurveLineSet.prototype.GetResources = function(out)
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     this.lineEffect.GetResources(out);
 
@@ -827,4 +827,4 @@ EveCurveLineSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
