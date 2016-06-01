@@ -989,14 +989,13 @@ Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 };
 
 /**
- * GetBoneMatrixes
- * TODO: Matrixes is spelt wrong (should be Matrices), multiple refactors required
+ * GetBoneMatrices
  * @param {number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Float32Array}
  * @prototype
  */
-Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryResource)
+Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length == 0)
     {
