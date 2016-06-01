@@ -1,3 +1,30 @@
+/**
+ * EveLensFlare
+ * @property {String} [name='']
+ * @property {boolean} display
+ * @property {boolean} update
+ * @property {boolean} doOcclusionQueries
+ * @property {number} cameraFactor
+ * @property {vec3} position
+ * @property {Array} flares
+ * @property {Array.<EveOccluder>} occluders
+ * @property {Array.<EveOccluder>} backgroundOccluders
+ * @property {number} occlusionIntensity
+ * @property {number} backgroundOcclusionIntensity
+ * @property {Array} distanceToEdgeCurves
+ * @property {Array} distanceToCenterCurves
+ * @property {Array} radialAngleCurves
+ * @property {Array} xDistanceToCenter
+ * @property {Array} yDistanceToCenter
+ * @property {Array} bindings
+ * @property {Array.<Tw2CurveSet> curveSets
+ * @property {null|Tw2Mesh} mesh
+ * @property {quat4} _directionVar
+ * @property {quat4} _occlusionVar
+ * @property {vec3} _direction
+ * @property {mat4} _transform
+ * @constructor
+ */
 function EveLensflare()
 {
     this.name = '';
@@ -22,8 +49,8 @@ function EveLensflare()
 
     this.mesh = null;
 
-    this._directionVar = variableStore.RegisterVariable( "LensflareFxDirectionScale", quat4.create());
-    this._occlusionVar = variableStore.RegisterVariable( "LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+    this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", quat4.create());
+    this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
     this._direction = vec3.create();
     this._transform = mat4.create();
 
@@ -38,40 +65,49 @@ function EveLensflare()
     }
 }
 
+/**
+ * Internal helper function
+ * @param out
+ * @param v
+ */
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
-	var norm = vec3.normalize(v, norm);
+    var norm = vec3.normalize(v, norm);
     mat4.identity(out);
-	if (norm[2] < -0.99999)
-	{
-		return;
-	}
-	if (norm[2] > 0.99999)
-	{
-		out[5] = -1.0;
-		out[10] = -1.0;
-		return;
-	}
-	var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
-	out[0] = h * norm[1] * norm[1] - norm[2];
-	out[1] = -h * norm[0] * norm[1];
-	out[2] = norm[0];
+    if (norm[2] < -0.99999)
+    {
+        return;
+    }
+    if (norm[2] > 0.99999)
+    {
+        out[5] = -1.0;
+        out[10] = -1.0;
+        return;
+    }
+    var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
+    out[0] = h * norm[1] * norm[1] - norm[2];
+    out[1] = -h * norm[0] * norm[1];
+    out[2] = norm[0];
 
-	out[4] = out[1];
-	out[5] = h * norm[0] * norm[0] - norm[2];
-	out[6] = norm[1];
+    out[4] = out[1];
+    out[5] = h * norm[0] * norm[0] - norm[2];
+    out[6] = norm[1];
 
-	out[8] = -norm[0];
-	out[9] = -norm[1];
-	out[10] = -norm[2];
+    out[8] = -norm[0];
+    out[9] = -norm[1];
+    out[10] = -norm[2];
 };
 
-EveLensflare.prototype.PrepareRender = function ()
+/**
+ * Prepares the lensflare for rendering
+ */
+EveLensflare.prototype.PrepareRender = function()
 {
     if (!this.display)
     {
         return;
     }
+
     var cameraPos = mat4.multiplyVec3(device.viewInv, vec3.create());
     if (vec3.length(this.position) == 0)
     {
@@ -120,22 +156,28 @@ EveLensflare.prototype.PrepareRender = function ()
     var distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]);
     var radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
 
-    for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
+    for (var i = 0; i < this.distanceToEdgeCurves.length; ++i)
+    {
         this.distanceToEdgeCurves[i].UpdateValue(distanceToEdge);
     }
-    for (i = 0; i < this.distanceToCenterCurves.length; ++i) {
+    for (i = 0; i < this.distanceToCenterCurves.length; ++i)
+    {
         this.distanceToCenterCurves[i].UpdateValue(distanceToCenter);
     }
-    for (i = 0; i < this.radialAngleCurves.length; ++i) {
+    for (i = 0; i < this.radialAngleCurves.length; ++i)
+    {
         this.radialAngleCurves[i].UpdateValue(radialAngle);
     }
-    for (i = 0; i < this.xDistanceToCenter.length; ++i) {
+    for (i = 0; i < this.xDistanceToCenter.length; ++i)
+    {
         this.xDistanceToCenter[i].UpdateValue(d[0] + 10);
     }
-    for (i = 0; i < this.yDistanceToCenter.length; ++i) {
+    for (i = 0; i < this.yDistanceToCenter.length; ++i)
+    {
         this.yDistanceToCenter[i].UpdateValue(d[1] + 10);
     }
-    for (i = 0; i < this.bindings.length; ++i) {
+    for (i = 0; i < this.bindings.length; ++i)
+    {
         this.bindings[i].CopyValue();
     }
     for (i = 0; i < this.flares.length; ++i)
@@ -145,7 +187,10 @@ EveLensflare.prototype.PrepareRender = function ()
 
 };
 
-EveLensflare.prototype.UpdateOccluders = function ()
+/**
+ * Updates Occluders
+ */
+EveLensflare.prototype.UpdateOccluders = function()
 {
     if (!this.doOcclusionQueries)
     {
@@ -156,7 +201,8 @@ EveLensflare.prototype.UpdateOccluders = function ()
 
     if (!EveLensflare.occluderLevels[0].texture || EveLensflare.occluderLevels[0].width < this.occluders.length * 2)
     {
-        for (var i = 0; i < EveLensflare.occluderLevels.length; ++i) {
+        for (var i = 0; i < EveLensflare.occluderLevels.length; ++i)
+        {
             EveLensflare.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
         }
     }
@@ -232,7 +278,8 @@ EveLensflare.prototype.UpdateOccluders = function ()
     EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Unset();
 
     this.occlusionIntensity = 1;
-    for (i = 0; i < EveLensflare.occluderLevels[0].width * 2; i += 4) {
+    for (i = 0; i < EveLensflare.occluderLevels[0].width * 2; i += 4)
+    {
         this.occlusionIntensity *= pixels[i + 1] ? pixels[i] / pixels[i + 1] : 1;
     }
 
@@ -242,14 +289,21 @@ EveLensflare.prototype.UpdateOccluders = function ()
     EveLensflare.occludedLevelIndex = (EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length;
 };
 
-EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
+/**
+ * Gets render batches
+ * @param {RenderMode} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ */
+EveLensflare.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
         return;
     }
     var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
-    if (vec3.dot(viewDir, this._direction) < 0) {
+    if (vec3.dot(viewDir, this._direction) < 0)
+    {
         return;
     }
 
@@ -257,7 +311,8 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
     {
         this.flares[i].GetBatches(mode, accumulator, perObjectData);
     }
-    if (this.mesh) {
+    if (this.mesh)
+    {
         this.mesh.GetBatches(mode, accumulator, perObjectData);
     }
 };
