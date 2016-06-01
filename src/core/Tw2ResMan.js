@@ -86,11 +86,11 @@ function Tw2MotherLode()
                     if (obj._isPurged)
                     {
                         emitter.log('ResMan',
-                            {
-                                msg: 'Purged    ',
-                                path: obj.path,
-                                type: 'res.purged'
-                            });
+                        {
+                            msg: 'Purged    ',
+                            path: obj.path,
+                            type: 'res.purged'
+                        });
 
                         delete this._loadedObjects[path];
                     }
@@ -99,11 +99,11 @@ function Tw2MotherLode()
                         if (obj.Unload())
                         {
                             emitter.log('ResMan',
-                                {
-                                    msg: 'Unloaded  ',
-                                    path: obj.path,
-                                    type: 'res.unused'
-                                });
+                            {
+                                msg: 'Unloaded  ',
+                                path: obj.path,
+                                type: 'res.unused'
+                            });
                             delete this._loadedObjects[path];
                         }
                     }
@@ -160,14 +160,14 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
     if (xml == null)
     {
         emitter.log('ResMan',
-            {
-                log: 'error',
-                src: ['Tw2LoadingObject', 'Prepare'],
-                msg: 'Invalid XML',
-                path: this.path,
-                type: 'xml.invalid',
-                data: xml
-            });
+        {
+            log: 'error',
+            src: ['Tw2LoadingObject', 'Prepare'],
+            msg: 'Invalid XML',
+            path: this.path,
+            type: 'xml.invalid',
+            data: xml
+        });
         this.PrepareFinished(false);
         return;
     }
@@ -202,14 +202,14 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
         catch (e)
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2LoadingObject', 'Prepare'],
-                    msg: 'Prepare error',
-                    path: this.path,
-                    type: 'res.prepare',
-                    data: e
-                })
+            {
+                log: 'error',
+                src: ['Tw2LoadingObject', 'Prepare'],
+                msg: 'Prepare error',
+                path: this.path,
+                type: 'res.prepare',
+                data: e
+            })
         }
 
         this._inPrepare++;
@@ -218,11 +218,11 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
     resMan.motherLode.Remove(this.path);
 
     emitter.log('ResMan',
-        {
-            msg: 'Prepared  ',
-            path: this.path,
-            type: 'res.prepare'
-        });
+    {
+        msg: 'Prepared  ',
+        path: this.path,
+        type: 'res.prepare'
+    });
 
     this.PrepareFinished(true);
 };
@@ -325,12 +325,12 @@ function Tw2ResMan()
         if (!httpRequest)
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2LoadingObject', 'Prepare'],
-                    msg: 'Could not create an XMLHTTP instance',
-                    type: 'http.instance'
-                })
+            {
+                log: 'error',
+                src: ['Tw2LoadingObject', 'Prepare'],
+                msg: 'Could not create an XMLHTTP instance',
+                type: 'http.instance'
+            })
         }
         return httpRequest;
     };
@@ -435,12 +435,12 @@ function Tw2ResMan()
                 now = new Date();
 
                 emitter.log('ResMan',
-                    {
-                        msg: 'Prepared  ',
-                        path: resMan._prepareQueue[0][0].path,
-                        time: (now.getTime() - startTime) * 0.001,
-                        type: 'res.prepared'
-                    });
+                {
+                    msg: 'Prepared  ',
+                    path: resMan._prepareQueue[0][0].path,
+                    time: (now.getTime() - startTime) * 0.001,
+                    type: 'res.prepared'
+                });
 
                 resMan._prepareQueue.shift();
                 preparedCount++;
@@ -493,14 +493,14 @@ function Tw2ResMan()
             catch (e)
             {
                 emitter.log('ResMan',
-                    {
-                        log: 'error',
-                        src: ['Tw2ResMan', '_DoLoadResource'],
-                        msg: 'Communication error loading',
-                        path: obj.path,
-                        type: 'http.readystate',
-                        value: readyState
-                    });
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', '_DoLoadResource'],
+                    msg: 'Communication error loading',
+                    path: obj.path,
+                    type: 'http.readystate',
+                    value: readyState
+                });
 
                 obj.LoadFinished(false);
                 resMan._pendingLoads--;
@@ -530,14 +530,14 @@ function Tw2ResMan()
                 else
                 {
                     emitter.log('ResMan',
-                        {
-                            log: 'error',
-                            src: ['Tw2ResMan', '_DoLoadResource'],
-                            msg: 'Communication error loading',
-                            path: obj.path,
-                            type: 'http.status',
-                            value: this.status
-                        });
+                    {
+                        log: 'error',
+                        src: ['Tw2ResMan', '_DoLoadResource'],
+                        msg: 'Communication error loading',
+                        path: obj.path,
+                        type: 'http.status',
+                        value: this.status
+                    });
                     obj.LoadFinished(false);
                 }
                 resMan._pendingLoads--;
@@ -557,13 +557,13 @@ function Tw2ResMan()
         if (prefixIndex == -1)
         {
             emitter.log('ResMan',
-                {
-                    log: 'warn',
-                    src: ['Tw2ResMan', 'BuildUrl'],
-                    msg: 'Invalid path',
-                    type: 'prefix.undefined',
-                    path: resPath
-                });
+            {
+                log: 'warn',
+                src: ['Tw2ResMan', 'BuildUrl'],
+                msg: 'Invalid path',
+                type: 'prefix.undefined',
+                path: resPath
+            });
 
             return resPath;
         }
@@ -573,14 +573,14 @@ function Tw2ResMan()
         if (!(prefix in this.resourcePaths))
         {
             emitter.log('ResMan',
-                {
-                    log: 'warn',
-                    src: ['Tw2ResMan', 'BuildUrl'],
-                    msg: 'Invalid path',
-                    path: resPath,
-                    type: 'prefix.invalid',
-                    value: prefix
-                });
+            {
+                log: 'warn',
+                src: ['Tw2ResMan', 'BuildUrl'],
+                msg: 'Invalid path',
+                path: resPath,
+                type: 'prefix.invalid',
+                value: prefix
+            });
             return resPath;
         }
 
@@ -608,11 +608,11 @@ function Tw2ResMan()
         httpRequest.onreadystatechange = _DoLoadResource(obj);
 
         emitter.log('ResMan',
-            {
-                msg: 'Requesting',
-                path: path,
-                type: 'res.requesting'
-            });
+        {
+            msg: 'Requesting',
+            path: path,
+            type: 'res.requesting'
+        });
 
         httpRequest.open('GET', this.BuildUrl(path));
 
@@ -631,14 +631,14 @@ function Tw2ResMan()
         catch (e)
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2ResMan', '_LoadResource'],
-                    msg: 'Error requesting',
-                    path: path,
-                    type: 'http.request',
-                    value: e.toString()
-                })
+            {
+                log: 'error',
+                src: ['Tw2ResMan', '_LoadResource'],
+                msg: 'Error requesting',
+                path: path,
+                type: 'http.request',
+                value: e.toString()
+            })
         }
     };
 
@@ -652,11 +652,11 @@ function Tw2ResMan()
         var path = resource.path;
 
         emitter.log('ResMan',
-            {
-                msg: 'Reloading ',
-                path: path,
-                type: 'res.reload'
-            });
+        {
+            msg: 'Reloading ',
+            path: path,
+            type: 'res.reload'
+        });
 
         var obj = this.motherLode.Find(path);
 
@@ -695,27 +695,27 @@ function Tw2ResMan()
         if (ext == null)
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2ResMan', 'ReloadResource'],
-                    msg: 'Unknown extension',
-                    type: 'extension.unknown',
-                    path: this.LogPathString(path)
-                });
+            {
+                log: 'error',
+                src: ['Tw2ResMan', 'ReloadResource'],
+                msg: 'Unknown extension',
+                type: 'extension.unknown',
+                path: this.LogPathString(path)
+            });
             return null;
         }
 
         if (!(ext in this._extensions))
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2ResMan', 'ReloadResource'],
-                    msg: 'Unregistered extension',
-                    type: 'extension.unregistered',
-                    path: this.LogPathString(path),
-                    value: ext
-                });
+            {
+                log: 'error',
+                src: ['Tw2ResMan', 'ReloadResource'],
+                msg: 'Unregistered extension',
+                type: 'extension.unregistered',
+                path: this.LogPathString(path),
+                value: ext
+            });
             return null;
         }
 
@@ -775,12 +775,12 @@ function Tw2ResMan()
         httpRequest.onreadystatechange = _DoLoadResource(res);
 
         emitter.log('ResMan',
-            {
-                msg: 'Requesting',
-                path: this.BuildUrl(path),
-                _path: path,
-                type: 'res.requesting'
-            });
+        {
+            msg: 'Requesting',
+            path: this.BuildUrl(path),
+            _path: path,
+            type: 'res.requesting'
+        });
 
         httpRequest.open('GET', this.BuildUrl(path));
         res.LoadStarted();
@@ -794,15 +794,15 @@ function Tw2ResMan()
         catch (e)
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2ResMan', '_GetObject'],
-                    msg: 'Error sending object HTTP request',
-                    path: this.BuildUrl(path),
-                    _path: path,
-                    type: 'http.request',
-                    value: e.toString()
-                })
+            {
+                log: 'error',
+                src: ['Tw2ResMan', '_GetObject'],
+                msg: 'Error sending object HTTP request',
+                path: this.BuildUrl(path),
+                _path: path,
+                type: 'http.request',
+                value: e.toString()
+            })
         }
     };
 

@@ -2,7 +2,7 @@
  * Render Batches
  * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
  */
- 
+
 /**
  * Accumulates render batches for rendering
  * @param {function} [sorting] - An optional function for sorting the collected render batches

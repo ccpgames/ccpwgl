@@ -534,14 +534,14 @@ Tw2GeometryRes.prototype.Prepare = function(data)
 
                     default:
                         emitter.log('ResMan',
-                            {
-                                log: 'error',
-                                src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
-                                msg: 'Error loading wbg data',
-                                path: self.path,
-                                type: 'geometry.filetype',
-                                value: el.fileType & 0xf
-                            });
+                        {
+                            log: 'error',
+                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
+                            msg: 'Error loading wbg data',
+                            path: self.path,
+                            type: 'geometry.filetype',
+                            value: el.fileType & 0xf
+                        });
                         throw 1;
                 }
             }
@@ -833,19 +833,19 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
         if (bone == null)
         {
             emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'BindMeshToModel'],
+                msg: 'Mesh has invalid bone name for model',
+                path: this.path,
+                type: 'geometry.invalidbone',
+                data:
                 {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'BindMeshToModel'],
-                    msg: 'Mesh has invalid bone name for model',
-                    path: this.path,
-                    type: 'geometry.invalidbone',
-                    data:
-                    {
-                        mesh: binding.mesh.name,
-                        bone: name,
-                        model: model.name
-                    }
-                });
+                    mesh: binding.mesh.name,
+                    bone: name,
+                    model: model.name
+                }
+            });
         }
         else
         {
@@ -959,19 +959,19 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
             emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'RenderLines'],
+                msg: 'Error binding mesh to effect',
+                path: this.path,
+                type: 'geometry.meshbind',
+                data:
                 {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
-                    path: this.path,
-                    type: 'geometry.meshbind',
-                    data:
-                    {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }
+            });
             return false;
         }
         d.ApplyShadowState();
@@ -1055,19 +1055,19 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
             emitter.log('ResMan',
+            {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'RenderLines'],
+                msg: 'Error binding mesh to effect',
+                path: this.path,
+                type: 'geometry.meshbind',
+                data:
                 {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
-                    path: this.path,
-                    type: 'geometry.meshbind',
-                    data:
-                    {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }
+            });
             return false;
         }
 

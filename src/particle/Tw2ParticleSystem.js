@@ -2,7 +2,7 @@
  * Particle element type
  * @typedef {(Tw2ParticleElementDeclaration.LIFETIME|Tw2ParticleElementDeclaration.POSITION|Tw2ParticleElementDeclaration.VELOCITY|Tw2ParticleElementDeclaration.MASS|Tw2ParticleElementDeclaration.CUSTOM)} ParticleElementType
  */
- 
+
 /**
  * Tw2ParticleElementDeclaration
  * @property {number} elementType=4
@@ -312,7 +312,7 @@ Tw2ParticleSystem.prototype.HasElement = function(type)
 /**
  * GetElement
  * @param {ParticleElementType} type
- * @returns {?}
+ * @returns {*}
  * @prototype
  */
 Tw2ParticleSystem.prototype.GetElement = function(type)

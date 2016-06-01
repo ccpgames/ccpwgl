@@ -21,7 +21,7 @@ chain for still reporting too many errors.
 * cc: running concat and jsbeautifier:cc producing `/dist/ccpwgl_int.js`
 * dist: running `min` and `cc` which compiles the ccpwgl_int files
 
-Documentation
--------------
+Documentation (Work in progress)
+--------------------------------
 The following command line will create jsdocs documentation in the `/docs` folder
-* > `jsdoc -c .jsdocs -d /docs` (Windows users will need to add jsdocs to their paths)
+* > `jsdoc -c .jsdocs -d docs` (Windows users will need to add jsdocs to their paths)

@@ -77,15 +77,15 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2EffectRes', 'CompileShader'],
-                    msg: 'Error compiling shader',
-                    path: path,
-                    type: 'shader.compile',
-                    value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
-                    data: device.gl.getShaderInfoLog(shader)
-                });
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CompileShader'],
+                msg: 'Error compiling shader',
+                path: path,
+                type: 'shader.compile',
+                value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
+                data: device.gl.getShaderInfoLog(shader)
+            });
 
             return null;
         }
@@ -112,14 +112,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
         {
             emitter.log('ResMan',
-                {
-                    log: 'error',
-                    src: ['Tw2EffectRes', 'CreateProgram'],
-                    msg: 'Error linking shaders',
-                    path: path,
-                    type: 'shader.linkstatus',
-                    data: device.gl.getProgramInfoLog(program.program)
-                });
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CreateProgram'],
+                msg: 'Error linking shaders',
+                path: path,
+                type: 'shader.linkstatus',
+                data: device.gl.getProgramInfoLog(program.program)
+            });
         }
 
         device.gl.useProgram(program.program);
@@ -173,14 +173,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     if (version < 2 || version > 4)
     {
         emitter.log('ResMan',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'Invalid version of effect file',
-                type: 'shader.effectversion',
-                path: this.path,
-                value: version
-            });
+        {
+            log: 'error',
+            src: ['Tw2EffectRes', 'CreateProgram'],
+            msg: 'Invalid version of effect file',
+            type: 'shader.effectversion',
+            path: this.path,
+            value: version
+        });
 
         this.PrepareFinished(false);
         return;
@@ -190,14 +190,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     if (headerSize == 0)
     {
         emitter.log('ResMan',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'File contains no compiled effects',
-                path: this.path,
-                type: 'shader.effectheadersize',
-                value: 0
-            });
+        {
+            log: 'error',
+            src: ['Tw2EffectRes', 'CreateProgram'],
+            msg: 'File contains no compiled effects',
+            path: this.path,
+            type: 'shader.effectheadersize',
+            value: 0
+        });
 
         this.PrepareFinished(false);
         return;
@@ -217,8 +217,8 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     {
         var pass = {};
         pass.stages = [
-            {},
-            {}];
+        {},
+        {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
@@ -452,10 +452,10 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
             pass.states.push(
-                {
-                    'state': state,
-                    'value': value
-                });
+            {
+                'state': state,
+                'value': value
+            });
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
