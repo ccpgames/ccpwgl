@@ -5,6 +5,7 @@ module.exports = function(grunt)
     'use strict';
 
     var sourceFiles = [
+        'core/Tw2EventEmitter.js',
         'core/Tw2Frustum.js',
         'core/Tw2RawData.js',
         'core/Tw2BinaryReader.js',
@@ -107,6 +108,33 @@ module.exports = function(grunt)
         'particle/Tw2RandomIntegerAttributeGenerator.js'
     ];
 
+    // Extra files to include in beautification
+    var beautifierInclude = [
+        'GruntFile.js',
+        'src/ccpwgl.js',
+        'src/ccpwgl_int.js',
+    ]
+
+    // Files to exclude from beautification
+    var beautifierExclude = [
+        'src/core/Tw2Device.js',
+        'src/eve/EveSOF.js'
+    ];
+
+    // Creates a list of files to beautify
+    var beautifierList = sourceFiles
+        .map(
+            function(entry)
+            {
+                return 'src/' + entry;
+            })
+        .filter(
+            function(src)
+            {
+                return (beautifierExclude.indexOf(src) === -1)
+            })
+        .concat(beautifierInclude)
+
     var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js'];
 
     grunt.initConfig(
@@ -115,9 +143,19 @@ module.exports = function(grunt)
 
         jsbeautifier:
         {
+
             standard:
             {
-                src: ['Gruntfile.js', 'src/ccpwgl.js'].concat(sourcePatterns),
+                src: beautifierList,
+                options:
+                {
+                    js: grunt.file.readJSON('.jsbeautifyrc')
+                }
+            },
+
+            cc:
+            {
+                src: 'src/ccpwgl_int.js',
                 options:
                 {
                     js: grunt.file.readJSON('.jsbeautifyrc')
@@ -140,21 +178,41 @@ module.exports = function(grunt)
             {
                 files:
                 {
-                    'src/ccpwgl_int.js': sourceFiles.map(function(entry)
-                    {
-                        return 'src/' + entry;
-                    })
+                    'src/ccpwgl_int.min.js': sourceFiles.map(
+                        function(entry)
+                        {
+                            return 'src/' + entry;
+                        })
                 },
                 options:
                 {
                     wrap: 'ccpwgl_int',
                     exportAll: true,
                     mangle: false,
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\n',
                     compress:
                     {
                         sequences: true,
                         unsafe: true
                     }
+                }
+            }
+        },
+
+        concat:
+        {
+            lib:
+            {
+                src: sourceFiles.map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }).concat('.exports'),
+                dest: 'src/ccpwgl_int.js',
+                options:
+                {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\nvar ccpwgl_int = (function()\n{\n',
+                    footer: '\n})();'
                 }
             }
         }
@@ -163,9 +221,13 @@ module.exports = function(grunt)
     grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('format', ['jsbeautifier']);
     grunt.registerTask('lint', ['jshint']);
-    grunt.registerTask('compile', ['uglify']);
-    grunt.registerTask('default', ['compile']);
+    grunt.registerTask('min', ['uglify']);
+    grunt.registerTask('cc', ['concat', 'jsbeautifier:cc']);
+    grunt.registerTask('dist', ['jsbeautifier:standard', 'cc', 'min']);
+    grunt.registerTask('default', ['dist']);
+
 };
