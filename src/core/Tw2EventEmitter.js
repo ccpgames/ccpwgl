@@ -217,14 +217,14 @@ Tw2EventEmitter.prototype.del = function(listener)
  */
 Tw2EventEmitter.prototype.inherit = function(target, excludeEmit)
 {
-    target['on'] = this.on.bind(emitter);
-    target['off'] = this.off.bind(emitter);
-    target['del'] = this.del.bind(emitter);
-    target['log'] = this.log.bind(emitter);
+    target['on'] = this.on.bind(this);
+    target['off'] = this.off.bind(this);
+    target['del'] = this.del.bind(this);
+    target['log'] = this.log.bind(this);
 
     if (!excludeEmit)
     {
-        target['emit'] = this.emit.bind(emitter);
+        target['emit'] = this.emit.bind(this);
     }
 
     return this;
