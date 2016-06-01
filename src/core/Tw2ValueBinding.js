@@ -21,12 +21,12 @@ function Tw2ValueBinding()
     this.sourceAttribute = '';
     this._sourceElement = null;
     this.sourceIsArray = null;
-    
+
     this.destinationObject = null;
     this.destinationAttribute = '';
     this._destinationElement = null;
     this.destinationIsArray = null;
-    
+
     this.scale = 1;
     this.offset = quat4.create();
     this._copyFunc = null;

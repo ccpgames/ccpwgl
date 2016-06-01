@@ -62,6 +62,8 @@ function EveTurretSet()
     this.targetPosition = vec3.create();
     this.firingEffectResPath = '';
     this.firingEffect = null;
+    this.fireCallback = null;
+    this.fireCallbackPending = false;
 
     this.hasCyclingFiringPos = false;
     this.geometryResPath = '';
@@ -482,6 +484,19 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
                     mat4.multiply(parentMatrix, this.turrets[this._activeTurret].localTransform, this.firingEffect.GetMuzzleTransform(i));
                 }
             }
+            if (this.fireCallbackPending)
+            {
+                if (this.fireCallback)
+                {
+                    var cbTransforms = [];
+                    for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i)
+                    {
+                        cbTransforms.push(this.firingEffect.GetMuzzleTransform(i));
+                    }
+                    this.fireCallback(this, cbTransforms);
+                }
+                this.fireCallbackPending = false;
+            }
         }
 
         vec3.set(this.targetPosition, this.firingEffect.endPosition);
@@ -681,7 +696,12 @@ EveTurretSet.prototype._DoStartFiring = function()
     this._activeTurret = turret;
     this.state = this.STATE_FIRING;
     this._recheckTimeLeft = 2;
-}
+
+    if (this.fireCallback)
+    {
+        this.fireCallbackPending = true;
+    }
+};
 
 EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
 EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];

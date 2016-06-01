@@ -443,6 +443,7 @@ function EveSOF() {
         booster.glows.effect = new Tw2Effect();
         booster.glows.effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/Booster/BoosterGlowAnimated.fx';
         booster.glows.effect.parameters['DiffuseMap'] = new Tw2TextureParameter('DiffuseMap', 'res:/Texture/Particle/whitesharp.dds.0.png');
+        booster.glows.effect.parameters['NoiseMap'] = new Tw2TextureParameter('NoiseMap', 'res:/Texture/global/noise.dds.0.png');
         booster.glows.effect.Initialize();
 
         var items = _get(hullBooster, 'items', []);

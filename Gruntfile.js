@@ -92,6 +92,8 @@ module.exports = function(grunt)
         'eve/EveMeshOverlayEffect.js',
         'eve/EveChildMesh.js',
         'eve/EveChildExplosion.js',
+        'eve/EveMissile.js',
+        'eve/EveMissileWarhead.js',
 
         'particle/Tw2ParticleSystem.js',
         'core/Tw2InstancedMesh.js',

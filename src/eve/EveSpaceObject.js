@@ -282,7 +282,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
             {
                 for (i = 0; i < this.spriteSets.length; ++i)
                 {
-                    this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData);
+                    this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
                 }
             }
 

@@ -1,16 +1,23 @@
-var ccpwgl = (function (ccpwgl_int)
+var ccpwgl = (function(ccpwgl_int)
 {
     var ccpwgl = {};
 
     /**
      * Values for textureQuality option that can be passed to ccpwgl.initialize.
      */
-    ccpwgl.TextureQuality = { HIGH: 0, MEDIUM: 1, LOW: 2 };
+    ccpwgl.TextureQuality = {
+        HIGH: 0,
+        MEDIUM: 1,
+        LOW: 2
+    };
 
     /**
      * Values for textureQuality option that can be passed to ccpwgl.initialize.
      */
-    ccpwgl.ShaderQuality = { HIGH: 'hi', LOW: 'lo' };
+    ccpwgl.ShaderQuality = {
+        HIGH: 'hi',
+        LOW: 'lo'
+    };
 
     /**
      * Resource unload policty. Controls how cached resources are evicted from
@@ -24,7 +31,10 @@ var ccpwgl = (function (ccpwgl_int)
      * you will have to use MANUAL policy and call ccpwgl.clearCachedResources when
      * you know that all resources you need are loaded (see ccpwgl.isLoading).
      */
-    ccpwgl.ResourceUnloadPolicy = { MANUAL: 0, USAGE_BASED: 1 };
+    ccpwgl.ResourceUnloadPolicy = {
+        MANUAL: 0,
+        USAGE_BASED: 1
+    };
 
     /**
      * Scene LOD settings: with LOD_ENABLED, scene will not try to render ships/objects that
@@ -32,23 +42,33 @@ var ccpwgl = (function (ccpwgl_int)
      * for ships that too far away. Enabling LOD will help performance significantly for
      * scenes with a large number of objects. Defaults to LOD_DISABLED for compatibility.
      */
-    ccpwgl.LodSettings = { LOD_DISABLED: 0, LOD_ENABLED: 1 };
+    ccpwgl.LodSettings = {
+        LOD_DISABLED: 0,
+        LOD_ENABLED: 1
+    };
 
     /**
      * Turret states
      */
-    ccpwgl.TurretState = { IDLE: 0, OFFLINE: 1, FIRING: 2 };
+    ccpwgl.TurretState = {
+        IDLE: 0,
+        OFFLINE: 1,
+        FIRING: 2
+    };
 
     /**
      * Ship siege state
      */
-    ccpwgl.ShipSiegeState = { NORMAL: 0, SIEGE: 1 };
+    ccpwgl.ShipSiegeState = {
+        NORMAL: 0,
+        SIEGE: 1
+    };
 
     /**
      * Exception class for objects that can be thrown by ccpwgl.initialize function if
      * WebGL context is not available.
      */
-    ccpwgl.NoWebGLError = function ()
+    ccpwgl.NoWebGLError = function()
     {
         this.name = "NoWebGLError";
         this.message = "WebGL context is not available";
@@ -59,7 +79,7 @@ var ccpwgl = (function (ccpwgl_int)
     /**
      * Exception that is thrown by some methods when their object .red files is not yet loaded.
      */
-    ccpwgl.IsStillLoadingError = function ()
+    ccpwgl.IsStillLoadingError = function()
     {
         this.name = "IsStillLoadingError";
         this.message = "Cannot process the request until the object is loaded";
@@ -126,78 +146,78 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {number} dt Frame time.
      **/
     function render(dt)
+    {
+        if (updateEnabled && camera && camera.update)
         {
-            if (updateEnabled && camera && camera.update)
-            {
-                camera.update(dt);
-            }
-            if (!scene || !scene.wrappedScene)
-            {
-                if (ccpwgl.onPostRender)
-                {
-                    ccpwgl.onPostRender(dt);
-                }
-                return true;
-            }
-            if (updateEnabled)
-            {
-                if (ccpwgl.onUpdate)
-                {
-                    ccpwgl.onUpdate(dt);
-                }
-                for (var i = 0; i < scene.objects.length; ++i)
-                {
-                    if (scene.objects[i].onUpdate)
-                    {
-                        scene.objects[i].onUpdate.call(scene.objects[i], dt);
-                    }
-                }
-                scene.wrappedScene.Update(dt);
-            }
-            if (renderingEnabled)
-            {
-                var d = ccpwgl_int.device;
-                d.SetStandardStates(d.RM_OPAQUE);
-                d.gl.clearColor(clearColor[0], clearColor[1], clearColor[2], clearColor[3]);
-                d.gl.clearDepth(1.0);
-                d.gl.viewport(0, 0, d.viewportWidth, d.viewportHeight);
-                d.gl.clear(d.gl.COLOR_BUFFER_BIT | d.gl.DEPTH_BUFFER_BIT);
-
-                d.SetProjection(camera.getProjection(d.viewportWidth / d.viewportHeight));
-                d.SetView(camera.getView());
-
-                if (ccpwgl.onPreRender)
-                {
-                    ccpwgl.onPreRender(dt);
-                }
-
-                scene.wrappedScene.Render();
-
-                if (ccpwgl.onPostSceneRender)
-                {
-                    ccpwgl.onPostSceneRender(dt);
-                }
-
-                if (postprocess && postprocessingEnabled)
-                {
-                    postprocess.Render();
-                }
-                else
-                {
-                    // We have crap in back buffer alpha channel, so clear it
-                    d.gl.colorMask(false, false, false, true);
-                    d.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-                    d.gl.clear(d.gl.COLOR_BUFFER_BIT);
-                    d.gl.colorMask(true, true, true, true);
-                }
-            }
+            camera.update(dt);
+        }
+        if (!scene || !scene.wrappedScene)
+        {
             if (ccpwgl.onPostRender)
             {
                 ccpwgl.onPostRender(dt);
             }
-
             return true;
         }
+        if (updateEnabled)
+        {
+            if (ccpwgl.onUpdate)
+            {
+                ccpwgl.onUpdate(dt);
+            }
+            for (var i = 0; i < scene.objects.length; ++i)
+            {
+                if (scene.objects[i].onUpdate)
+                {
+                    scene.objects[i].onUpdate.call(scene.objects[i], dt);
+                }
+            }
+            scene.wrappedScene.Update(dt);
+        }
+        if (renderingEnabled)
+        {
+            var d = ccpwgl_int.device;
+            d.SetStandardStates(d.RM_OPAQUE);
+            d.gl.clearColor(clearColor[0], clearColor[1], clearColor[2], clearColor[3]);
+            d.gl.clearDepth(1.0);
+            d.gl.viewport(0, 0, d.viewportWidth, d.viewportHeight);
+            d.gl.clear(d.gl.COLOR_BUFFER_BIT | d.gl.DEPTH_BUFFER_BIT);
+
+            d.SetProjection(camera.getProjection(d.viewportWidth / d.viewportHeight));
+            d.SetView(camera.getView());
+
+            if (ccpwgl.onPreRender)
+            {
+                ccpwgl.onPreRender(dt);
+            }
+
+            scene.wrappedScene.Render();
+
+            if (ccpwgl.onPostSceneRender)
+            {
+                ccpwgl.onPostSceneRender(dt);
+            }
+
+            if (postprocess && postprocessingEnabled)
+            {
+                postprocess.Render();
+            }
+            else
+            {
+                // We have crap in back buffer alpha channel, so clear it
+                d.gl.colorMask(false, false, false, true);
+                d.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+                d.gl.clear(d.gl.COLOR_BUFFER_BIT);
+                d.gl.colorMask(true, true, true, true);
+            }
+        }
+        if (ccpwgl.onPostRender)
+        {
+            ccpwgl.onPostRender(dt);
+        }
+
+        return true;
+    }
 
 
     /**
@@ -225,16 +245,16 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {Object} params Optional parameters.
      * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
      */
-    ccpwgl.initialize = function (canvas, params)
+    ccpwgl.initialize = function(canvas, params)
     {
         function getOption(params, name, defaultValue)
+        {
+            if (params && name in params)
             {
-                if (params && name in params)
-                {
-                    return params[name];
-                }
-                return defaultValue;
+                return params[name];
             }
+            return defaultValue;
+        }
         var d = ccpwgl_int.device;
         d.mipLevelSkipCount = getOption(params, 'textureQuality', 0);
         d.shaderModel = getOption(params, 'shaderQuality', 'hi');
@@ -268,7 +288,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {string} namespace Resource namespace.
      * @param {string} path URL to resource root. Needs to have a trailing slash.
      */
-    ccpwgl.setResourcePath = function (namespace, path)
+    ccpwgl.setResourcePath = function(namespace, path)
     {
         ccpwgl_int.resMan.resourcePaths[namespace] = path;
     };
@@ -280,7 +300,7 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @param {boolean} enable Enable/disable postprocessing.
      */
-    ccpwgl.enablePostprocessing = function (enable)
+    ccpwgl.enablePostprocessing = function(enable)
     {
         postprocessingEnabled = enable;
         if (postprocessingEnabled && !postprocess)
@@ -300,7 +320,7 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @param {Object} newCamera Current camera object.
      */
-    ccpwgl.setCamera = function (newCamera)
+    ccpwgl.setCamera = function(newCamera)
     {
         camera = newCamera;
     };
@@ -310,7 +330,7 @@ var ccpwgl = (function (ccpwgl_int)
      * Provides a callback that is called once SOF data has been loaded.
      * @param callback Function that is called when SOF data is ready. Called with a single parameter
      */
-    ccpwgl.getSofData = function (callback)
+    ccpwgl.getSofData = function(callback)
     {
         sof.GetSofData(callback);
     };
@@ -323,7 +343,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
      * of all hull names to their descriptions.
      */
-    ccpwgl.getSofHullNames = function (callback)
+    ccpwgl.getSofHullNames = function(callback)
     {
         sof.GetHullNames(callback);
     };
@@ -336,7 +356,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
      * of all faction names to their descriptions.
      */
-    ccpwgl.getSofFactionNames = function (callback)
+    ccpwgl.getSofFactionNames = function(callback)
     {
         sof.GetFactionNames(callback);
     };
@@ -349,7 +369,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
      * of all race names to their descriptions.
      */
-    ccpwgl.getSofRaceNames = function (callback)
+    ccpwgl.getSofRaceNames = function(callback)
     {
         sof.GetRaceNames(callback);
     };
@@ -361,19 +381,25 @@ var ccpwgl = (function (ccpwgl_int)
      * @param callback Function that is called when SOF data is ready. Called with a single parameter that is a
      * constructor name for the given hull.
      */
-    ccpwgl.getSofHullConstructor = function (hull, callback) {
-        sof.GetSofData(function (data) {
+    ccpwgl.getSofHullConstructor = function(hull, callback)
+    {
+        sof.GetSofData(function(data)
+        {
             var c = hull.indexOf(':');
-            if (c > 0) {
+            if (c > 0)
+            {
                 hull = hull.substr(0, c);
             }
             var h = data.hull[hull];
             var constructor = null;
-            if (h) {
-                if (h.buildClass == 2) {
+            if (h)
+            {
+                if (h.buildClass == 2)
+                {
                     constructor = "loadObject";
                 }
-                else {
+                else
+                {
                     constructor = "loadShip";
                 }
             }
@@ -391,163 +417,172 @@ var ccpwgl = (function (ccpwgl_int)
      *   when object .red file is loaded. this will point to SpaceObject instance.
      */
     function SpaceObject(resPath, onload)
+    {
+        /** Wrapped ccpwgl_int object **/
+        this.wrappedObjects = [null];
+        /** Local to world space transform matrix @type {mat4} **/
+        this.transform = mat4.identity(mat4.create());
+        /** Per-frame on update callback @type {!function(dt): void} **/
+        this.onUpdate = null;
+        /** SOF DNA for objects constructed from SOF **/
+        this.dna = null;
+        /** Array of object overlay effects **/
+        this.overlays = [];
+
+        function onObjectLoaded(obj)
         {
-            /** Wrapped ccpwgl_int object **/
-            this.wrappedObjects = [null];
-            /** Local to world space transform matrix @type {mat4} **/
-            this.transform = mat4.identity(mat4.create());
-            /** Per-frame on update callback @type {!function(dt): void} **/
-            this.onUpdate = null;
-            /** SOF DNA for objects constructed from SOF **/
-            this.dna = null;
-            /** Array of object overlay effects **/
-            this.overlays = [];
-
-            function onObjectLoaded(obj) {
-                self.wrappedObjects[0] = obj;
-                if ('transform' in self.wrappedObjects[0])
-                {
-                    self.wrappedObjects[0].transform.set(self.transform);
-                }
-                else if ('translation' in self.wrappedObjects[0])
-                {
-                    self.wrappedObjects[0].translation.set(self.transform.subarray(12, 15));
-                    self.wrappedObjects[0].scaling[0] = vec3.length(self.transform);
-                    self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
-                    self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
-                }
-                rebuildOverlays();
-                if (onload)
-                {
-                    onload.call(self);
-                }
+            self.wrappedObjects[0] = obj;
+            if ('transform' in self.wrappedObjects[0])
+            {
+                self.wrappedObjects[0].transform.set(self.transform);
             }
-
-            var self = this;
-            if (resPath.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
-                this.dna = resPath;
-                sof.BuildFromDNA(resPath, onObjectLoaded);
+            else if ('translation' in self.wrappedObjects[0])
+            {
+                self.wrappedObjects[0].translation.set(self.transform.subarray(12, 15));
+                self.wrappedObjects[0].scaling[0] = vec3.length(self.transform);
+                self.wrappedObjects[0].scaling[1] = vec3.length(self.transform.subarray(4, 7));
+                self.wrappedObjects[0].scaling[2] = vec3.length(self.transform.subarray(8, 11));
             }
-            else {
-                ccpwgl_int.resMan.GetObject(resPath, onObjectLoaded);
-            }
-
-            /**
-             * Check if object .red file is still loading.
-             *
-             * @returns {boolean} True if object's .red file is loading; false otherwise.
-             */
-            this.isLoaded = function () { return this.wrappedObjects[0] != null; };
-
-            /**
-             * Returns object's bounding sphere if it is available. Throws an exception otherwise.
-             *
-             * @throws If object is not yet loaded or if object does not have bounding sphere
-             * information.
-             * @returns {[vec3, float]} Array with first element being sphere position in local
-             * coordinate space and second - sphere radius.
-             */
-            this.getBoundingSphere = function ()
+            rebuildOverlays();
+            if (onload)
             {
-                if (!this.isLoaded())
-                {
-                    throw new ccpwgl.IsStillLoadingError();
-                }
-                if (!('boundingSphereRadius' in this.wrappedObjects[0]))
-                {
-                    throw new TypeError('Object does not have bounding sphere information');
-                }
-                return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
-            };
-
-            /**
-             * Sets transform matrix from local coordinate space to world.
-             *
-             * @param {mat4} newTransform Transform matrix.
-             */
-            this.setTransform = function (newTransform)
-            {
-                this.transform.set(newTransform);
-                if (this.wrappedObjects[0])
-                {
-                    if ('transform' in this.wrappedObjects[0])
-                    {
-                        this.wrappedObjects[0].transform.set(this.transform);
-                    }
-                    else if ('translation' in this.wrappedObjects[0])
-                    {
-                        this.wrappedObjects[0].translation.set(this.transform.subarray(12, 15));
-                        this.wrappedObjects[0].scaling[0] = vec3.length(this.transform);
-                        this.wrappedObjects[0].scaling[1] = vec3.length(this.transform.subarray(4, 7));
-                        this.wrappedObjects[0].scaling[2] = vec3.length(this.transform.subarray(8, 11));
-                    }
-                }
-            };
-
-            /**
-             * Returns transform matrix from local coordinate space to world.
-             *
-             * @returns {mat4} Transform matrix.
-             */
-            this.getTransform = function ()
-            {
-                return this.transform;
-            };
-
-            function rebuildOverlays()
-            {
-                if (self.wrappedObjects[0])
-                {
-                    self.wrappedObjects[0].overlayEffects = [];
-                    for (var i = 0; i < self.overlays.length; ++i)
-                    {
-                        if (self.overlays[i].overlay)
-                        {
-                            self.wrappedObjects[0].overlayEffects.push(self.overlays[i].overlay);
-                        }
-                    }
-                }
-            }
-
-            /**
-             * Adds an overlay effect to the object.
-             *
-             * @param {string} resPath Resource path to overlay effect.
-             * @returns {number} Index of overlay effect; can be used in removeOverlay call.
-             */
-            this.addOverlay = function (resPath)
-            {
-                var index = this.overlays.length;
-                var overlay = {resPath: resPath, overlay: null};
-                this.overlays.push(overlay);
-                ccpwgl_int.resMan.GetObject(resPath, function (obj)
-                {
-                    overlay.overlay = obj;
-                    rebuildOverlays();
-                });
-                return index;
-            };
-
-            /**
-             * Removes an overlay effect from the object.
-             *
-             * @param {number} index Index of overlay effect as returned by addOverlay.
-             */
-            this.removeOverlay = function (index)
-            {
-                this.overlays.splice(index, 1);
-                rebuildOverlays();
-            };
-
-            /**
-             * Removes all overlay effects from the object.
-             */
-            this.removeAllOverlays = function ()
-            {
-                this.overlays.splice(0, this.overlays.length);
-                rebuildOverlays();
+                onload.call(self);
             }
         }
+
+        var self = this;
+        if (resPath.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/))
+        {
+            this.dna = resPath;
+            sof.BuildFromDNA(resPath, onObjectLoaded);
+        }
+        else
+        {
+            ccpwgl_int.resMan.GetObject(resPath, onObjectLoaded);
+        }
+
+        /**
+         * Check if object .red file is still loading.
+         *
+         * @returns {boolean} True if object's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.wrappedObjects[0] != null;
+        };
+
+        /**
+         * Returns object's bounding sphere if it is available. Throws an exception otherwise.
+         *
+         * @throws If object is not yet loaded or if object does not have bounding sphere
+         * information.
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space and second - sphere radius.
+         */
+        this.getBoundingSphere = function()
+        {
+            if (!this.isLoaded())
+            {
+                throw new ccpwgl.IsStillLoadingError();
+            }
+            if (!('boundingSphereRadius' in this.wrappedObjects[0]))
+            {
+                throw new TypeError('Object does not have bounding sphere information');
+            }
+            return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
+        };
+
+        /**
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
+        {
+            this.transform.set(newTransform);
+            if (this.wrappedObjects[0])
+            {
+                if ('transform' in this.wrappedObjects[0])
+                {
+                    this.wrappedObjects[0].transform.set(this.transform);
+                }
+                else if ('translation' in this.wrappedObjects[0])
+                {
+                    this.wrappedObjects[0].translation.set(this.transform.subarray(12, 15));
+                    this.wrappedObjects[0].scaling[0] = vec3.length(this.transform);
+                    this.wrappedObjects[0].scaling[1] = vec3.length(this.transform.subarray(4, 7));
+                    this.wrappedObjects[0].scaling[2] = vec3.length(this.transform.subarray(8, 11));
+                }
+            }
+        };
+
+        /**
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
+        {
+            return this.transform;
+        };
+
+        function rebuildOverlays()
+        {
+            if (self.wrappedObjects[0])
+            {
+                self.wrappedObjects[0].overlayEffects = [];
+                for (var i = 0; i < self.overlays.length; ++i)
+                {
+                    if (self.overlays[i].overlay)
+                    {
+                        self.wrappedObjects[0].overlayEffects.push(self.overlays[i].overlay);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Adds an overlay effect to the object.
+         *
+         * @param {string} resPath Resource path to overlay effect.
+         * @returns {number} Index of overlay effect; can be used in removeOverlay call.
+         */
+        this.addOverlay = function(resPath)
+        {
+            var index = this.overlays.length;
+            var overlay = {
+                resPath: resPath,
+                overlay: null
+            };
+            this.overlays.push(overlay);
+            ccpwgl_int.resMan.GetObject(resPath, function(obj)
+            {
+                overlay.overlay = obj;
+                rebuildOverlays();
+            });
+            return index;
+        };
+
+        /**
+         * Removes an overlay effect from the object.
+         *
+         * @param {number} index Index of overlay effect as returned by addOverlay.
+         */
+        this.removeOverlay = function(index)
+        {
+            this.overlays.splice(index, 1);
+            rebuildOverlays();
+        };
+
+        /**
+         * Removes all overlay effects from the object.
+         */
+        this.removeAllOverlays = function()
+        {
+            this.overlays.splice(0, this.overlays.length);
+            rebuildOverlays();
+        }
+    }
 
     /**
      * Wrapper for ships. On top of SpaceObject functionality it provides booster
@@ -559,491 +594,466 @@ var ccpwgl = (function (ccpwgl_int)
      *   when ship .red file is loaded. this will point to Ship instance.
      */
     function Ship(resPath, onload)
+    {
+        /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
+        this.wrappedObjects = [null];
+        /** Local to world space transform matrix @type {mat4} **/
+        this.transform = mat4.identity(mat4.create());
+        /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
+        this.boosters = [null];
+        /** Current siege state @type {ccpwgl.ShipSiegeState} **/
+        this.siegeState = ccpwgl.ShipSiegeState.NORMAL;
+        /** Internal siege state, as opposed to Ship.siegeState also includes transition states @type {number} **/
+        this.internalSiegeState = ccpwgl.ShipSiegeState.NORMAL;
+        /** Callback to be called when ship is loaded. Provided by Ship.setSiegeState. @type {!function(state): void} **/
+        this.onInitialSeigeState = null;
+        /** Current booster effect strength. **/
+        this.boosterStrength = 1;
+        /** Cached number of turret slots. **/
+        this.turretCount = undefined;
+        /** Array of mounted turrets. **/
+        this.turrets = [];
+        /** Per-frame on update callback @type {!function(dt): void} **/
+        this.onUpdate = null;
+        /** Local transforms for Tech3 ship parts **/
+        this.partTransforms = [];
+        /** Ship SOF DNA if the ship was constructed with SOF **/
+        this.dna = undefined;
+        /** Array of object overlay effects **/
+        this.overlays = [];
+        /** Kill counter **/
+        this.killCount = 0;
+        /** Function to call when turret fires  @type {!function(ship, muzzlePositions): void} **/
+        this.turretFireCallback = null;
+
+        var faction = null;
+
+        var self = this;
+        if (typeof resPath == 'string')
         {
-            /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
-            this.wrappedObjects = [null];
-            /** Local to world space transform matrix @type {mat4} **/
-            this.transform = mat4.identity(mat4.create());
-            /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
-            this.boosters = [null];
-            /** Current siege state @type {ccpwgl.ShipSiegeState} **/
-            this.siegeState = ccpwgl.ShipSiegeState.NORMAL;
-            /** Internal siege state, as opposed to Ship.siegeState also includes transition states @type {number} **/
-            this.internalSiegeState = ccpwgl.ShipSiegeState.NORMAL;
-            /** Callback to be called when ship is loaded. Provided by Ship.setSiegeState. @type {!function(state): void} **/
-            this.onInitialSeigeState = null;
-            /** Current booster effect strength. **/
-            this.boosterStrength = 1;
-            /** Cached number of turret slots. **/
-            this.turretCount = undefined;
-            /** Array of mounted turrets. **/
-            this.turrets = [];
-            /** Per-frame on update callback @type {!function(dt): void} **/
-            this.onUpdate = null;
-            /** Local transforms for Tech3 ship parts **/
-            this.partTransforms = [];
-            /** Ship SOF DNA if the ship was constructed with SOF **/
-            this.dna = undefined;
-            /** Array of object overlay effects **/
-            this.overlays = [];
-            /** Kill counter **/
-            this.killCount = 0;
+            resPath = [resPath];
+        }
+        for (var i = 0; i < resPath.length; ++i)
+        {
+            this.wrappedObjects[i] = null;
+            this.boosters[i] = null;
+        }
 
-            var faction = null;
-
-            var self = this;
-            if (typeof resPath == 'string')
+        function OnShipPartLoaded(index)
+        {
+            return function(obj)
             {
-                resPath = [resPath];
-            }
-            for (var i = 0; i < resPath.length; ++i)
-            {
-                this.wrappedObjects[i] = null;
-                this.boosters[i] = null;
-            }
-
-            function OnShipPartLoaded(index)
+                self.wrappedObjects[index] = obj;
+                if (!(obj instanceof ccpwgl_int.EveShip))
                 {
-                    return function (obj)
+                    self.wrappedObjects[index] = null;
+                    console.error('Object loaded with scene.loadShip is not a ship');
+                    return;
+                }
+                self.wrappedObjects[index].transform.set(self.transform);
+                if (self.boosters[index])
+                {
+                    self.wrappedObjects[index].boosters = self.boosters[index];
+                    self.wrappedObjects[index].RebuildBoosterSet();
+                }
+                self.wrappedObjects[index].displayKillCounterValue = self.killCount;
+                self.wrappedObjects[index].boosterGain = self.boosterStrength;
+                switch (self.siegeState)
+                {
+                    case ccpwgl.ShipSiegeState.SIEGE:
+                        self.wrappedObjects[index].animation.PlayAnimation('SiegeLoop', true);
+                        self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
+                        break;
+                    default:
+                        self.wrappedObjects[index].animation.PlayAnimation('NormalLoop', true);
+                }
+                if (self.onInitialSeigeState)
+                {
+                    self.onInitialSeigeState.call(self, self.siegeState);
+                }
+                for (var i = 0; i < self.turrets.length; ++i)
+                {
+                    if (self.turrets[i])
                     {
-                        self.wrappedObjects[index] = obj;
-                        if (!(obj instanceof ccpwgl_int.EveShip))
-                        {
-                            self.wrappedObjects[index] = null;
-                            console.error('Object loaded with scene.loadShip is not a ship');
-                            return;
-                        }
-                        self.wrappedObjects[index].transform.set(self.transform);
-                        if (self.boosters[index])
-                        {
-                            self.wrappedObjects[index].boosters = self.boosters[index];
-                            self.wrappedObjects[index].RebuildBoosterSet();
-                        }
-                        self.wrappedObjects[index].displayKillCounterValue = self.killCount;
-                        self.wrappedObjects[index].boosterGain = self.boosterStrength;
-                        switch (self.siegeState)
-                        {
-                            case ccpwgl.ShipSiegeState.SIEGE:
-                                self.wrappedObjects[index].animation.PlayAnimation('SiegeLoop', true);
-                                self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
-                                break;
-                            default:
-                                self.wrappedObjects[index].animation.PlayAnimation('NormalLoop', true);
-                        }
-                        if (self.onInitialSeigeState)
-                        {
-                            self.onInitialSeigeState.call(self, self.siegeState);
-                        }
-                        for (var i = 0; i < self.turrets.length; ++i)
-                        {
-                            if (self.turrets[i])
-                            {
-                                doMountTurret(i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target, index);
-                            }
-                        }
-                        if (self.isLoaded())
-                        {
-                            if (self.wrappedObjects.length > 1)
-                            {
-                                assembleT3Ship();
-                            }
-                            rebuildOverlays();
-                            if (onload) {
-                                onload.call(self);
-                            }
-                        }
-                    };
+                        doMountTurret(i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target, index);
+                    }
                 }
-
-            if (resPath.length > 1)
-            {
-                if (resPath.length != 5)
-                {
-                    throw new TypeError('Invalid number of parts passed to Tech3 ship constructor');
-                }
-            }
-
-            function rebuildOverlays()
-            {
                 if (self.isLoaded())
                 {
-                    for (var j = 0; j < self.wrappedObjects.length; ++j)
+                    if (self.wrappedObjects.length > 1)
                     {
-                        self.wrappedObjects[j].overlayEffects = [];
-                        for (var i = 0; i < self.overlays.length; ++i)
+                        assembleT3Ship();
+                    }
+                    rebuildOverlays();
+                    if (onload)
+                    {
+                        onload.call(self);
+                    }
+                }
+            };
+        }
+
+        if (resPath.length > 1)
+        {
+            if (resPath.length != 5)
+            {
+                throw new TypeError('Invalid number of parts passed to Tech3 ship constructor');
+            }
+        }
+
+        function rebuildOverlays()
+        {
+            if (self.isLoaded())
+            {
+                for (var j = 0; j < self.wrappedObjects.length; ++j)
+                {
+                    self.wrappedObjects[j].overlayEffects = [];
+                    for (var i = 0; i < self.overlays.length; ++i)
+                    {
+                        if (self.overlays[i].overlay)
                         {
-                            if (self.overlays[i].overlay)
-                            {
-                                self.wrappedObjects[j].overlayEffects.push(self.overlays[i].overlay);
-                            }
+                            self.wrappedObjects[j].overlayEffects.push(self.overlays[i].overlay);
                         }
                     }
                 }
             }
+        }
 
-            /**
-             * Adds an overlay effect to the object.
-             *
-             * @param {string} resPath Resource path to overlay effect.
-             * @returns {number} Index of overlay effect; can be used in removeOverlay call.
-             */
-            this.addOverlay = function (resPath)
-            {
-                var index = this.overlays.length;
-                var overlay = {resPath: resPath, overlay: null};
-                this.overlays.push(overlay);
-                ccpwgl_int.resMan.GetObject(resPath, function (obj)
-                {
-                    overlay.overlay = obj;
-                    rebuildOverlays();
-                });
-                return index;
+        /**
+         * Adds an overlay effect to the object.
+         *
+         * @param {string} resPath Resource path to overlay effect.
+         * @returns {number} Index of overlay effect; can be used in removeOverlay call.
+         */
+        this.addOverlay = function(resPath)
+        {
+            var index = this.overlays.length;
+            var overlay = {
+                resPath: resPath,
+                overlay: null
             };
-
-            /**
-             * Removes an overlay effect from the object.
-             *
-             * @param {number} index Index of overlay effect as returned by addOverlay.
-             */
-            this.removeOverlay = function (index)
+            this.overlays.push(overlay);
+            ccpwgl_int.resMan.GetObject(resPath, function(obj)
             {
-                this.overlays.splice(index, 1);
+                overlay.overlay = obj;
                 rebuildOverlays();
-            };
+            });
+            return index;
+        };
 
-            /**
-             * Removes all overlay effects from the object.
-             */
-            this.removeAllOverlays = function ()
+        /**
+         * Removes an overlay effect from the object.
+         *
+         * @param {number} index Index of overlay effect as returned by addOverlay.
+         */
+        this.removeOverlay = function(index)
+        {
+            this.overlays.splice(index, 1);
+            rebuildOverlays();
+        };
+
+        /**
+         * Removes all overlay effects from the object.
+         */
+        this.removeAllOverlays = function()
+        {
+            this.overlays.splice(0, this.overlays.length);
+            rebuildOverlays();
+        };
+
+        function assembleT3Ship()
+        {
+            var systemNames = [
+                "electronic",
+                "defensive",
+                "engineering",
+                "offensive",
+                "propulsion"
+            ];
+            var systems = [];
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
             {
-                this.overlays.splice(0, this.overlays.length);
-                rebuildOverlays();
-            };
-
-            function assembleT3Ship()
+                var found = false;
+                for (var j = 1; j < systemNames.length; ++j)
                 {
-                    var systemNames = [
-                        "electronic",
-                        "defensive",
-                        "engineering",
-                        "offensive",
-                        "propulsion"];
-                    var systems = [];
-                    for (var i = 0; i < self.wrappedObjects.length; ++i)
+                    var loc = self.wrappedObjects[i].FindLocatorTransformByName('locator_attach_' + systemNames[j]);
+                    if (loc !== null)
                     {
-                        var found = false;
-                        for (var j = 1; j < systemNames.length; ++j)
+                        if (systems[j - 1])
                         {
-                            var loc = self.wrappedObjects[i].FindLocatorTransformByName('locator_attach_' + systemNames[j]);
-                            if (loc !== null)
+                            if (i == 4)
                             {
-                                if (systems[j - 1])
-                                {
-                                    if (i == 4) {
-                                        break;
-                                    }
-                                    throw new TypeError('Invalid parts passed to Tech3 ship constructor');
-                                }
-                                systems[j - 1] = [i, loc.subarray(12, 15)];
-                                found = true;
                                 break;
                             }
+                            throw new TypeError('Invalid parts passed to Tech3 ship constructor');
                         }
-                        if (!found)
-                        {
-                            if (systems[4])
-                            {
-                                throw new TypeError('Invalid parts passed to Tech3 ship constructor');
-                            }
-                            systems[4] = [i, vec3.create()];
-                        }
-                    }
-                    var offset = vec3.create();
-                    for (i = 0; i < systems.length; ++i)
-                    {
-                        var index = systems[i][0];
-                        self.partTransforms[index] = mat4.identity(mat4.create());
-                        mat4.translate(self.partTransforms[index], offset);
-                        vec3.add(offset, systems[i][1]);
-                        mat4.multiply(self.transform, self.partTransforms[index], self.wrappedObjects[index].transform);
+                        systems[j - 1] = [i, loc.subarray(12, 15)];
+                        found = true;
+                        break;
                     }
                 }
-
-            /**
-             * Check if ship's .red file is still loading.
-             *
-             * @returns {boolean} True if ship's .red file is loading; false otherwise.
-             */
-            this.isLoaded = function ()
-            {
-                for (var i = 0; i < this.wrappedObjects.length; ++i)
+                if (!found)
                 {
-                    if (!this.wrappedObjects[i])
+                    if (systems[4])
                     {
-                        return false;
+                        throw new TypeError('Invalid parts passed to Tech3 ship constructor');
                     }
+                    systems[4] = [i, vec3.create()];
                 }
-                return true;
-            };
-
-            /**
-             * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
-             *
-             * @throws If the ship is not yet loaded.
-             * @returns {[vec3, float]} Array with first element being sphere position in local
-             * coordinate space and second - sphere radius.
-             */
-            this.getBoundingSphere = function ()
+            }
+            var offset = vec3.create();
+            for (i = 0; i < systems.length; ++i)
             {
-                if (!this.isLoaded())
+                var index = systems[i][0];
+                self.partTransforms[index] = mat4.identity(mat4.create());
+                mat4.translate(self.partTransforms[index], offset);
+                vec3.add(offset, systems[i][1]);
+                mat4.multiply(self.transform, self.partTransforms[index], self.wrappedObjects[index].transform);
+            }
+        }
+
+        /**
+         * Check if ship's .red file is still loading.
+         *
+         * @returns {boolean} True if ship's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            for (var i = 0; i < this.wrappedObjects.length; ++i)
+            {
+                if (!this.wrappedObjects[i])
                 {
-                    throw new ccpwgl.IsStillLoadingError();
+                    return false;
                 }
-                return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
-            };
+            }
+            return true;
+        };
 
-            /**
-             * Sets transform matrix from local coordinate space to world.
-             *
-             * @param {mat4} newTransform Transform matrix.
-             */
-            this.setTransform = function (newTransform)
+        /**
+         * Returns ship's bounding sphere if this ship is loaded. Throws an exception otherwise.
+         *
+         * @throws If the ship is not yet loaded.
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space and second - sphere radius.
+         */
+        this.getBoundingSphere = function()
+        {
+            if (!this.isLoaded())
             {
-                this.transform.set(newTransform);
-                var i;
-                if (this.wrappedObjects.length < 2 || !this.isLoaded())
-                {
-                    for (i = 0; i < this.wrappedObjects.length; ++i)
-                    {
-                        if (this.wrappedObjects[i])
-                        {
-                            this.wrappedObjects[i].transform.set(this.transform);
-                        }
-                    }
-                }
-                else
-                {
-                    for (i = 0; i < this.wrappedObjects.length; ++i)
-                    {
-                        mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
-                    }
-                }
-            };
+                throw new ccpwgl.IsStillLoadingError();
+            }
+            return [this.wrappedObjects[0].boundingSphereCenter, this.wrappedObjects[0].boundingSphereRadius];
+        };
 
-            /**
-             * Returns transform matrix from local coordinate space to world.
-             *
-             * @returns {mat4} Transform matrix.
-             */
-            this.getTransform = function ()
+        /**
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
+        {
+            this.transform.set(newTransform);
+            var i;
+            if (this.wrappedObjects.length < 2 || !this.isLoaded())
             {
-                return this.transform;
-            };
-
-            /**
-             * Loads boosters effect for the ship.
-             *
-             * @param {string} resPath Res paths for boosters effect.
-             * @param {!function(): void} onload Optional callback function that is called
-             *   when boosters .red file is loaded. this will point to Ship instance.
-             */
-            this.loadBoosters = function (resPath, onload)
-            {
-                var self = this;
-
-                function loaded(index) {
-                    return function (obj) {
-                        self.boosters[index] = obj;
-                        if (self.wrappedObjects[index])
-                        {
-                            self.wrappedObjects[index].boosters = obj;
-                            self.wrappedObjects[index].RebuildBoosterSet();
-                        }
-                        for (var i = 0; i < self.boosters.length; ++i) {
-                            if (!self.boosters) {
-                                return;
-                            }
-                        }
-                        if (onload) {
-                            onload.call(self);
-                        }
-                    }
-                }
-
-                for (var i = 0; i < self.wrappedObjects.length; ++i) {
-                    ccpwgl_int.resMan.GetObject(resPath, loaded(i));
-                }
-            };
-
-            /**
-             * Sets strength of boosters effect.
-             *
-             * @param {number} boosterStrength Boosters strength from 0 to 1.
-             */
-            this.setBoosterStrength = function (boosterStrength)
-            {
-                this.boosterStrength = boosterStrength;
-                for (var i = 0; i < self.wrappedObjects.length; ++i)
+                for (i = 0; i < this.wrappedObjects.length; ++i)
                 {
                     if (this.wrappedObjects[i])
                     {
-                        this.wrappedObjects[i].boosterGain = this.boosterStrength;
+                        this.wrappedObjects[i].transform.set(this.transform);
                     }
                 }
-            };
-
-            /**
-             * Set number of kills for the ship (to display on the hull).
-             *
-             * @param {number} kills Number of kills (from 0).
-             */
-            this.setKillCount = function (kills)
+            }
+            else
             {
-                this.killCount = kills;
-                for (var i = 0; i < self.wrappedObjects.length; ++i)
+                for (i = 0; i < this.wrappedObjects.length; ++i)
                 {
-                    if (this.wrappedObjects[i])
+                    mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
+                }
+            }
+        };
+
+        /**
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
+        {
+            return this.transform;
+        };
+
+        /**
+         * Loads boosters effect for the ship.
+         *
+         * @param {string} resPath Res paths for boosters effect.
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when boosters .red file is loaded. this will point to Ship instance.
+         */
+        this.loadBoosters = function(resPath, onload)
+        {
+            var self = this;
+
+            function loaded(index)
+            {
+                return function(obj)
+                {
+                    self.boosters[index] = obj;
+                    if (self.wrappedObjects[index])
                     {
-                        this.wrappedObjects[i].displayKillCounterValue = kills;
+                        self.wrappedObjects[index].boosters = obj;
+                        self.wrappedObjects[index].RebuildBoosterSet();
+                    }
+                    for (var i = 0; i < self.boosters.length; ++i)
+                    {
+                        if (!self.boosters)
+                        {
+                            return;
+                        }
+                    }
+                    if (onload)
+                    {
+                        onload.call(self);
                     }
                 }
-            };
+            }
 
-            /**
-             * Returns number of turret slots available on the ship.
-             *
-             * @throws If the ship's .red file is not yet loaded.
-             * @returns {number} Number of turret slots.
-             */
-            this.getTurretSlotCount = function ()
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
             {
-                if (this.turretCount !== undefined)
+                ccpwgl_int.resMan.GetObject(resPath, loaded(i));
+            }
+        };
+
+        /**
+         * Sets strength of boosters effect.
+         *
+         * @param {number} boosterStrength Boosters strength from 0 to 1.
+         */
+        this.setBoosterStrength = function(boosterStrength)
+        {
+            this.boosterStrength = boosterStrength;
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
+            {
+                if (this.wrappedObjects[i])
                 {
-                    return this.turretCount;
+                    this.wrappedObjects[i].boosterGain = this.boosterStrength;
                 }
-                if (!this.isLoaded())
+            }
+        };
+
+        /**
+         * Set number of kills for the ship (to display on the hull).
+         *
+         * @param {number} kills Number of kills (from 0).
+         */
+        this.setKillCount = function(kills)
+        {
+            this.killCount = kills;
+            for (var i = 0; i < self.wrappedObjects.length; ++i)
+            {
+                if (this.wrappedObjects[i])
                 {
-                    throw new ccpwgl.IsStillLoadingError();
+                    this.wrappedObjects[i].displayKillCounterValue = kills;
                 }
-                var slots = [];
-                this.turretCount = 0;
+            }
+        };
+
+        /**
+         * Returns number of turret slots available on the ship.
+         *
+         * @throws If the ship's .red file is not yet loaded.
+         * @returns {number} Number of turret slots.
+         */
+        this.getTurretSlotCount = function()
+        {
+            if (this.turretCount !== undefined)
+            {
+                return this.turretCount;
+            }
+            if (!this.isLoaded())
+            {
+                throw new ccpwgl.IsStillLoadingError();
+            }
+            var slots = [];
+            this.turretCount = 0;
+            for (var j = 0; j < this.wrappedObjects.length; ++j)
+            {
+                for (var i = 0; i < this.wrappedObjects[j].locators.length; ++i)
+                {
+                    var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObjects[j].locators[i].name);
+                    if (match)
+                    {
+                        var index = parseInt(match[1], 10);
+                        slots[index] = true;
+                    }
+                }
+            }
+            this.turretCount = slots.length - 1;
+            return this.turretCount;
+        };
+
+        /**
+         * Loads the turret and mounts it in a specified slot index.
+         *
+         * @param {number} index Slot index to mount turret in.
+         * @param {string} resPath Res path to turret .red file.
+         */
+        this.mountTurret = function(index, resPath)
+        {
+            this.turrets[index] = {
+                path: resPath,
+                state: ccpwgl.TurretState.IDLE,
+                target: vec3.create()
+            };
+            if (this.isLoaded())
+            {
+                doMountTurret(index, resPath, ccpwgl.TurretState.IDLE, this.turrets[index].target);
+            }
+        };
+
+        /**
+         * Removes turret from specified slot.
+         *
+         * @param {number} index Turret slot to clear.
+         */
+        this.removeTurret = function(index)
+        {
+            this.turrets[index] = null;
+            if (this.isLoaded())
+            {
+                var name = 'locator_turret_' + index;
                 for (var j = 0; j < this.wrappedObjects.length; ++j)
                 {
-                    for (var i = 0; i < this.wrappedObjects[j].locators.length; ++i)
+                    var ship = this.wrappedObjects[j];
+                    for (var i = 0; i < ship.turretSets.length; ++i)
                     {
-                        var match = (/^locator_turret_([0-9]+)[a-z]$/i).exec(this.wrappedObjects[j].locators[i].name);
-                        if (match)
+                        if (ship.turretSets[i].locatorName == name)
                         {
-                            var index = parseInt(match[1], 10);
-                            slots[index] = true;
+                            ship.turretSets.splice(i, 1);
+                            break;
                         }
                     }
+                    ship.RebuildTurretPositions();
                 }
-                this.turretCount = slots.length - 1;
-                return this.turretCount;
-            };
+            }
+        };
 
-            /**
-             * Loads the turret and mounts it in a specified slot index.
-             *
-             * @param {number} index Slot index to mount turret in.
-             * @param {string} resPath Res path to turret .red file.
-             */
-            this.mountTurret = function (index, resPath)
+        /**
+         * Sets turret's animation state. The specified slot must have a turret.
+         *
+         * @throws If the specified slot doesn't have turret mounted.
+         * @param {number} index Turret slot.
+         * @param {ccpwgl.TurretState} state Turret animation state.
+         */
+        this.setTurretState = function(index, state)
+        {
+            if (!this.turrets[index])
             {
-                this.turrets[index] = { path: resPath, state: ccpwgl.TurretState.IDLE, target: vec3.create() };
-                if (this.isLoaded())
-                {
-                    doMountTurret(index, resPath, ccpwgl.TurretState.IDLE, this.turrets[index].target);
-                }
-            };
-
-            /**
-             * Removes turret from specified slot.
-             *
-             * @param {number} index Turret slot to clear.
-             */
-            this.removeTurret = function (index)
+                throw new ReferenceError('turret at index ' + index + ' is not defined');
+            }
+            if (this.turrets[index].state != state || state == ccpwgl.TurretState.FIRING)
             {
-                this.turrets[index] = null;
-                if (this.isLoaded())
-                {
-                    var name = 'locator_turret_' + index;
-                    for (var j = 0; j < this.wrappedObjects.length; ++j)
-                    {
-                        var ship = this.wrappedObjects[j];
-                        for (var i = 0; i < ship.turretSets.length; ++i)
-                        {
-                            if (ship.turretSets[i].locatorName == name)
-                            {
-                                ship.turretSets.splice(i, 1);
-                                break;
-                            }
-                        }
-                        ship.RebuildTurretPositions();
-                    }
-                }
-            };
-
-            /**
-             * Sets turret's animation state. The specified slot must have a turret.
-             *
-             * @throws If the specified slot doesn't have turret mounted.
-             * @param {number} index Turret slot.
-             * @param {ccpwgl.TurretState} state Turret animation state.
-             */
-            this.setTurretState = function (index, state)
-            {
-                if (!this.turrets[index])
-                {
-                    throw new ReferenceError('turret at index ' + index + ' is not defined');
-                }
-                if (this.turrets[index].state != state || state == ccpwgl.TurretState.FIRING)
-                {
-                    this.turrets[index].state = state;
-                    var name = 'locator_turret_' + index;
-                    for (var j = 0; j < this.wrappedObjects.length; ++j)
-                    {
-                        if (this.wrappedObjects[j])
-                        {
-                            for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
-                            {
-                                if (this.wrappedObjects[j].turretSets[i].locatorName == name)
-                                {
-                                    switch (state)
-                                    {
-                                        case ccpwgl.TurretState.FIRING:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateFiring();
-                                            break;
-                                        case ccpwgl.TurretState.OFFLINE:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateDeactive();
-                                            break;
-                                        default:
-                                            this.wrappedObjects[j].turretSets[i].EnterStateIdle();
-                                            break;
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            };
-
-            /**
-             * Sets turret's target position. The specified slot must have a turret.
-             *
-             * @throws If the specified slot doesn't have turret mounted.
-             * @param {number} index Turret slot.
-             * @param {vec3} target Target position in world space.
-             */
-            this.setTurretTargetPosition = function (index, target)
-            {
-                if (!this.turrets[index])
-                {
-                    throw new ReferenceError('turret at index ' + index + ' is not defined');
-                }
-                vec3.set(target, this.turrets[index].target);
+                this.turrets[index].state = state;
                 var name = 'locator_turret_' + index;
                 for (var j = 0; j < this.wrappedObjects.length; ++j)
                 {
@@ -1053,237 +1063,327 @@ var ccpwgl = (function (ccpwgl_int)
                         {
                             if (this.wrappedObjects[j].turretSets[i].locatorName == name)
                             {
-                                vec3.set(target, this.wrappedObjects[j].turretSets[i].targetPosition);
+                                switch (state)
+                                {
+                                    case ccpwgl.TurretState.FIRING:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateFiring();
+                                        break;
+                                    case ccpwgl.TurretState.OFFLINE:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateDeactive();
+                                        break;
+                                    default:
+                                        this.wrappedObjects[j].turretSets[i].EnterStateIdle();
+                                        break;
+                                }
                                 break;
                             }
                         }
                     }
                 }
-            };
-
-            function hasLocatorPrefix(object, name) {
-                for (var j = 0; j < object.locators.length; ++j) {
-                    if (object.locators[j].name.substr(0, name.length) == name) {
-                        return true;
-                    }
-                }
-
             }
+        };
 
-            /** Internal helper method that mount a turret on a loaded ship **/
-            function doMountTurret(slot, resPath, state, targetPosition, objectIndex)
+        /**
+         * Sets turret's target position. The specified slot must have a turret.
+         *
+         * @throws If the specified slot doesn't have turret mounted.
+         * @param {number} index Turret slot.
+         * @param {vec3} target Target position in world space.
+         */
+        this.setTurretTargetPosition = function(index, target)
+        {
+            if (!this.turrets[index])
+            {
+                throw new ReferenceError('turret at index ' + index + ' is not defined');
+            }
+            vec3.set(target, this.turrets[index].target);
+            var name = 'locator_turret_' + index;
+            for (var j = 0; j < this.wrappedObjects.length; ++j)
+            {
+                if (this.wrappedObjects[j])
                 {
-                    var name = 'locator_turret_' + slot;
-                    if (objectIndex === undefined) {
-                        objectIndex = null;
-                        for (var i = 0; i < self.wrappedObjects.length; ++i) {
-                            if (self.wrappedObjects[i] && hasLocatorPrefix(self.wrappedObjects[i], name)) {
-                                objectIndex = i;
-                                break;
-                            }
-                        }
-                        if (objectIndex === null) {
-                            return;
-                        }
-                    }
-                    else {
-                        if (!hasLocatorPrefix(self.wrappedObjects[objectIndex], name)) {
-                            return;
-                        }
-                    }
-                    var ship = self.wrappedObjects[objectIndex];
-                    for (i = 0; i < ship.turretSets.length; ++i)
+                    for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
                     {
-                        if (ship.turretSets[i].locatorName == name)
+                        if (this.wrappedObjects[j].turretSets[i].locatorName == name)
                         {
-                            ship.turretSets.splice(i, 1);
+                            vec3.set(target, this.wrappedObjects[j].turretSets[i].targetPosition);
                             break;
                         }
                     }
-
-
-                    ship.RebuildTurretPositions();
-                    ccpwgl_int.resMan.GetObject(
-                        resPath,
-                        function (object)
-                        {
-                            object.locatorName = name;
-                            if (faction) {
-                                sof.SetupTurretMaterial(object, faction, faction);
-                            }
-                            ship.turretSets.push(object);
-                            ship.RebuildTurretPositions();
-                            object.targetPosition = targetPosition;
-                            switch (state)
-                            {
-                                case ccpwgl.TurretState.FIRING:
-                                    object.EnterStateFiring();
-                                    break;
-                                case ccpwgl.TurretState.OFFLINE:
-                                    object.EnterStateDeactive();
-                                    break;
-                                default:
-                                    object.EnterStateIdle();
-                                    break;
-                            }
-                        });
                 }
+            }
+        };
 
-            /**
-             * Sets ship siege state. Some ships support switching between "normal" and
-             * siege state having different animations for these states. This function
-             * switches ships animation from one state to another. If the ship .red file
-             * is not yet loaded the transition will happen once the file is loaded.
-             *
-             * @param {ccpwgl.ShipSiegeState} state State to switch to.
-             * @param {!function(state): void} onswitch Optional callback function that is called
-             *   when animation has switched to the new state. This will point to Ship instance. The
-             *   state parameter is the new siege state.
-             */
-            this.setSiegeState = function (state, onswitch)
+        this.getTurretTargetPosition = function(index)
+        {
+            if (!this.turrets[index])
             {
-                function getOnComplete(index, state, nextAnim) {
-                    return function () {
-                        self.internalSiegeState = state;
-                        self.wrappedObjects[index].animation.StopAllAnimations();
-                        self.wrappedObjects[index].animation.PlayAnimation(nextAnim, true);
-                        if (onswitch)
+                throw new ReferenceError('turret at index ' + index + ' is not defined');
+            }
+            return this.turrets[index].target;
+        };
+
+        function hasLocatorPrefix(object, name)
+        {
+            for (var j = 0; j < object.locators.length; ++j)
+            {
+                if (object.locators[j].name.substr(0, name.length) == name)
+                {
+                    return true;
+                }
+            }
+
+        }
+
+        function fireMissile(missilePath, positions)
+        {
+            console.error(missilePath);
+        }
+
+        /** Internal helper method that mount a turret on a loaded ship **/
+        function doMountTurret(slot, resPath, state, targetPosition, objectIndex)
+        {
+            var name = 'locator_turret_' + slot;
+            if (objectIndex === undefined)
+            {
+                objectIndex = null;
+                for (var i = 0; i < self.wrappedObjects.length; ++i)
+                {
+                    if (self.wrappedObjects[i] && hasLocatorPrefix(self.wrappedObjects[i], name))
+                    {
+                        objectIndex = i;
+                        break;
+                    }
+                }
+                if (objectIndex === null)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (!hasLocatorPrefix(self.wrappedObjects[objectIndex], name))
+                {
+                    return;
+                }
+            }
+            var ship = self.wrappedObjects[objectIndex];
+            for (i = 0; i < ship.turretSets.length; ++i)
+            {
+                if (ship.turretSets[i].locatorName == name)
+                {
+                    ship.turretSets.splice(i, 1);
+                    break;
+                }
+            }
+
+
+            ship.RebuildTurretPositions();
+            ccpwgl_int.resMan.GetObject(
+                resPath,
+                function(object)
+                {
+                    object.locatorName = name;
+                    if (faction)
+                    {
+                        sof.SetupTurretMaterial(object, faction, faction);
+                    }
+                    ship.turretSets.push(object);
+                    ship.RebuildTurretPositions();
+                    object.targetPosition = targetPosition;
+                    object.fireCallback = function(turretSet, positions)
+                    {
+                        if (self.turretFireCallback)
                         {
-                            onswitch.call(self, self.internalSiegeState);
+                            self.turretFireCallback(self, slot, positions);
                         }
                     };
-
-                }
-                if (this.siegeState != state)
-                {
-                    this.siegeState = state;
-                    for (var j = 0; j < this.wrappedObjects.length; ++j)
+                    switch (state)
                     {
-                        if (this.wrappedObjects[j])
+                        case ccpwgl.TurretState.FIRING:
+                            object.EnterStateFiring();
+                            break;
+                        case ccpwgl.TurretState.OFFLINE:
+                            object.EnterStateDeactive();
+                            break;
+                        default:
+                            object.EnterStateIdle();
+                            break;
+                    }
+                });
+        }
+
+        /**
+         * Sets ship siege state. Some ships support switching between "normal" and
+         * siege state having different animations for these states. This function
+         * switches ships animation from one state to another. If the ship .red file
+         * is not yet loaded the transition will happen once the file is loaded.
+         *
+         * @param {ccpwgl.ShipSiegeState} state State to switch to.
+         * @param {!function(state): void} onswitch Optional callback function that is called
+         *   when animation has switched to the new state. This will point to Ship instance. The
+         *   state parameter is the new siege state.
+         */
+        this.setSiegeState = function(state, onswitch)
+        {
+            function getOnComplete(index, state, nextAnim)
+            {
+                return function()
+                {
+                    self.internalSiegeState = state;
+                    self.wrappedObjects[index].animation.StopAllAnimations();
+                    self.wrappedObjects[index].animation.PlayAnimation(nextAnim, true);
+                    if (onswitch)
+                    {
+                        onswitch.call(self, self.internalSiegeState);
+                    }
+                };
+
+            }
+            if (this.siegeState != state)
+            {
+                this.siegeState = state;
+                for (var j = 0; j < this.wrappedObjects.length; ++j)
+                {
+                    if (this.wrappedObjects[j])
+                    {
+                        if (state == ccpwgl.ShipSiegeState.SIEGE)
                         {
-                            if (state == ccpwgl.ShipSiegeState.SIEGE)
+                            switch (this.internalSiegeState)
                             {
-                                switch (this.internalSiegeState)
-                                {
-                                    case ccpwgl.ShipSiegeState.NORMAL:
-                                    case 101:
-                                        // 101 is transforming from siege state. Ideally we'd want to switch to StartSiege
-                                        // with correct offset into animation, but we don't have that functionality yet...
-                                        this.internalSiegeState = 100;
-                                        this.wrappedObjects[j].animation.StopAllAnimations();
-                                        this.wrappedObjects[j].animation.PlayAnimation(
-                                            'StartSiege',
-                                            false,
-                                            getOnComplete(j, ccpwgl.ShipSiegeState.SIEGE, 'SiegeLoop'));
-                                        break;
-                                    default:
-                                        this.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
-                                        this.wrappedObjects[j].animation.StopAllAnimations();
-                                        this.wrappedObjects[j].animation.PlayAnimation('SiegeLoop', true);
-                                        if (onswitch)
-                                        {
-                                            onswitch.call(self, self.internalSiegeState);
-                                        }
-                                }
-                            }
-                            else
-                            {
-                                switch (this.internalSiegeState)
-                                {
-                                    case ccpwgl.ShipSiegeState.SIEGE:
-                                    case 100:
-                                        // 100 is transforming to siege state. Ideally we'd want to switch to StartSiege
-                                        // with correct offset into animation, but we don't have that functionality yet...
-                                        this.internalSiegeState = 101;
-                                        this.wrappedObjects[j].animation.StopAllAnimations();
-                                        this.wrappedObjects[j].animation.PlayAnimation(
-                                            'EndSiege',
-                                            false,
-                                            getOnComplete(j, ccpwgl.ShipSiegeState.NORMAL, 'NormalLoop'));
-                                        break;
-                                    default:
-                                        this.internalSiegeState = ccpwgl.ShipSiegeState.NORMAL;
-                                        this.wrappedObjects[j].animation.StopAllAnimations();
-                                        this.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
-                                        if (onswitch)
-                                        {
-                                            onswitch.call(self, self.internalSiegeState);
-                                        }
-                                }
+                                case ccpwgl.ShipSiegeState.NORMAL:
+                                case 101:
+                                    // 101 is transforming from siege state. Ideally we'd want to switch to StartSiege
+                                    // with correct offset into animation, but we don't have that functionality yet...
+                                    this.internalSiegeState = 100;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation(
+                                        'StartSiege',
+                                        false,
+                                        getOnComplete(j, ccpwgl.ShipSiegeState.SIEGE, 'SiegeLoop'));
+                                    break;
+                                default:
+                                    this.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation('SiegeLoop', true);
+                                    if (onswitch)
+                                    {
+                                        onswitch.call(self, self.internalSiegeState);
+                                    }
                             }
                         }
                         else
                         {
-                            this.onInitialSeigeState = onswitch;
+                            switch (this.internalSiegeState)
+                            {
+                                case ccpwgl.ShipSiegeState.SIEGE:
+                                case 100:
+                                    // 100 is transforming to siege state. Ideally we'd want to switch to StartSiege
+                                    // with correct offset into animation, but we don't have that functionality yet...
+                                    this.internalSiegeState = 101;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation(
+                                        'EndSiege',
+                                        false,
+                                        getOnComplete(j, ccpwgl.ShipSiegeState.NORMAL, 'NormalLoop'));
+                                    break;
+                                default:
+                                    this.internalSiegeState = ccpwgl.ShipSiegeState.NORMAL;
+                                    this.wrappedObjects[j].animation.StopAllAnimations();
+                                    this.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
+                                    if (onswitch)
+                                    {
+                                        onswitch.call(self, self.internalSiegeState);
+                                    }
+                            }
                         }
                     }
-                }
-                else
-                {
-                    if (onswitch)
+                    else
                     {
-                        onswitch.call(self, this.siegeState);
+                        this.onInitialSeigeState = onswitch;
                     }
                 }
-            };
-
-            /**
-             * Returns an array of ship's locators. Locators hold transforms for various
-             * ship mounts (turrets, boosters, etc.). If the ship is not yet loaded the
-             * function throws ccpwgl.IsStillLoadingError exception.
-             *
-             * @throws If the ship's .red file is not yet loaded.
-             * @returns {Array} Array of ship locators.
-             */
-            this.GetLocators = function ()
+            }
+            else
             {
-                if (!this.isLoaded())
+                if (onswitch)
                 {
-                    throw new ccpwgl.IsStillLoadingError();
+                    onswitch.call(self, this.siegeState);
                 }
-                var result = this.wrappedObjects[0].locators;
-                for (var i = 1; i < this.wrappedObjects.length; ++i)
-                {
-                    result = result.concat(this.wrappedObjects[i].locators);
-                }
-                return result;
-            };
+            }
+        };
 
-            var factions = {amarr: 'amarrbase', caldari: 'caldaribase', gallente: 'gallentebase', minmatar: 'minmatarbase'};
-
-            resPath.sort(function (x, y) {
-                x = x.toLowerCase();
-                y = y.toLowerCase();
-                if (x < y) {
-                    return -1;
-                }
-                if (x > y) {
-                    return 1;
-                }
-                return 0;
-            });
-            for (i = 0; i < resPath.length; ++i)
+        /**
+         * Returns an array of ship's locators. Locators hold transforms for various
+         * ship mounts (turrets, boosters, etc.). If the ship is not yet loaded the
+         * function throws ccpwgl.IsStillLoadingError exception.
+         *
+         * @throws If the ship's .red file is not yet loaded.
+         * @returns {Array} Array of ship locators.
+         */
+        this.GetLocators = function()
+        {
+            if (!this.isLoaded())
             {
-                if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
-                    if (i == 0) {
-                        this.dna = resPath[0];
-                        faction = this.dna.split(':')[1];
-                    }
-                    sof.BuildFromDNA(resPath[i], OnShipPartLoaded(i))
+                throw new ccpwgl.IsStillLoadingError();
+            }
+            var result = this.wrappedObjects[0].locators;
+            for (var i = 1; i < this.wrappedObjects.length; ++i)
+            {
+                result = result.concat(this.wrappedObjects[i].locators);
+            }
+            return result;
+        };
+
+        var factions = {
+            amarr: 'amarrbase',
+            caldari: 'caldaribase',
+            gallente: 'gallentebase',
+            minmatar: 'minmatarbase'
+        };
+
+        resPath.sort(function(x, y)
+        {
+            x = x.toLowerCase();
+            y = y.toLowerCase();
+            if (x < y)
+            {
+                return -1;
+            }
+            if (x > y)
+            {
+                return 1;
+            }
+            return 0;
+        });
+        for (i = 0; i < resPath.length; ++i)
+        {
+            if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/))
+            {
+                if (i == 0)
+                {
+                    this.dna = resPath[0];
+                    faction = this.dna.split(':')[1];
                 }
-                else {
-                    ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
-                    if (i == 0) {
-                        var p = resPath[0].toLowerCase();
-                        for (var f in factions) {
-                            if (p.indexOf(f) >= 0) {
-                                faction = factions[f];
-                            }
+                sof.BuildFromDNA(resPath[i], OnShipPartLoaded(i))
+            }
+            else
+            {
+                ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
+                if (i == 0)
+                {
+                    var p = resPath[0].toLowerCase();
+                    for (var f in factions)
+                    {
+                        if (p.indexOf(f) >= 0)
+                        {
+                            faction = factions[f];
                         }
                     }
                 }
             }
         }
+    }
 
     /**
      * Wrapper for planets. Created with Scene.loadPlanet function.
@@ -1296,59 +1396,62 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {string} heightMap2 Res path to planet's second height map texture.
      */
     function Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+    {
+        /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
+        this.wrappedObjects = [new ccpwgl_int.EvePlanet()];
+        this.wrappedObjects[0].Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
+        /** Per-frame on update callback @type {!function(dt): void} **/
+        this.onUpdate = null;
+
+        /**
+         * Check if planet's resources are loaded and the resulting height map is generated.
+         *
+         * @returns {boolean} True if planet is loaded; false otherwise.
+         */
+        this.isLoaded = function()
         {
-            /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
-            this.wrappedObjects = [new ccpwgl_int.EvePlanet()];
-            this.wrappedObjects[0].Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
-            /** Per-frame on update callback @type {!function(dt): void} **/
-            this.onUpdate = null;
+            return !this.wrappedObjects[0].heightDirty;
+        };
 
-            /**
-             * Check if planet's resources are loaded and the resulting height map is generated.
-             *
-             * @returns {boolean} True if planet is loaded; false otherwise.
-             */
-            this.isLoaded = function () { return !this.wrappedObjects[0].heightDirty; };
+        /**
+         * Returns planets's bounding sphere. We know it always is a unit sphere in local
+         * coordinate space.
+         *
+         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * coordinate space [0, 0, 0] and second - sphere radius (==1).
+         */
+        this.getBoundingSphere = function()
+        {
+            return [vec3.create([0, 0, 0]), 1];
+        };
 
-            /**
-             * Returns planets's bounding sphere. We know it always is a unit sphere in local
-             * coordinate space.
-             *
-             * @returns {[vec3, float]} Array with first element being sphere position in local
-             * coordinate space [0, 0, 0] and second - sphere radius (==1).
-             */
-            this.getBoundingSphere = function ()
-            {
-                return [vec3.create([0, 0, 0]), 1];
-            };
+        /**
+         * Sets transform matrix from local coordinate space to world.
+         *
+         * @param {mat4} newTransform Transform matrix.
+         */
+        this.setTransform = function(newTransform)
+        {
+            var tr = this.wrappedObjects[0].highDetail;
+            tr.translation[0] = newTransform[12];
+            tr.translation[1] = newTransform[13];
+            tr.translation[2] = newTransform[14];
+            tr.scaling[0] = vec3.length(newTransform);
+            tr.scaling[1] = vec3.length(newTransform.subarray(4));
+            tr.scaling[2] = vec3.length(newTransform.subarray(8));
+            this.wrappedObjects[0].highDetail.localTransform.set(newTransform);
+        };
 
-            /**
-             * Sets transform matrix from local coordinate space to world.
-             *
-             * @param {mat4} newTransform Transform matrix.
-             */
-            this.setTransform = function (newTransform)
-            {
-                var tr = this.wrappedObjects[0].highDetail;
-                tr.translation[0] = newTransform[12];
-                tr.translation[1] = newTransform[13];
-                tr.translation[2] = newTransform[14];
-                tr.scaling[0] = vec3.length(newTransform);
-                tr.scaling[1] = vec3.length(newTransform.subarray(4));
-                tr.scaling[2] = vec3.length(newTransform.subarray(8));
-                this.wrappedObjects[0].highDetail.localTransform.set(newTransform);
-            };
-
-            /**
-             * Returns transform matrix from local coordinate space to world.
-             *
-             * @returns {mat4} Transform matrix.
-             */
-            this.getTransform = function ()
-            {
-                return this.wrappedObjects[0].highDetail.localTransform;
-            };
-        }
+        /**
+         * Returns transform matrix from local coordinate space to world.
+         *
+         * @returns {mat4} Transform matrix.
+         */
+        this.getTransform = function()
+        {
+            return this.wrappedObjects[0].highDetail.localTransform;
+        };
+    }
 
     /**
      * Scene gathers together all objects that are rendered together. Scene can reference
@@ -1358,392 +1461,395 @@ var ccpwgl = (function (ccpwgl_int)
      * @constructor
      */
     function Scene()
-        {
-            /** Wrapped ccpwgl_int scene object @type {ccpwgl_int.EveSpaceScene} **/
-            this.wrappedScene = null;
-            /** Array of rendered objects: SpaceObject, Ship or Planet **/
-            this.objects = [];
-            /** Current wrapped ccpwgl_int lensflare @type {ccpwgl_int.EveLensflare} **/
-            this.sun = null;
-            /** Current sun direction (if null, the value is taked from scene .red file) @type {vec3} **/
-            this.sunDirection = null;
-            /** Current sun color (if null, the value is taked from scene .red file) @type {vec4} **/
-            this.sunLightColor = null;
-            /** Fog parameters (if null, the value is taked from scene .red file) @type {Array} **/
-            this.fog = null;
-            /** Current LOD setting @type {ccpwgl.LodSettings} **/
-            var lodSetting = ccpwgl.LodSettings.LOD_DISABLED;
+    {
+        /** Wrapped ccpwgl_int scene object @type {ccpwgl_int.EveSpaceScene} **/
+        this.wrappedScene = null;
+        /** Array of rendered objects: SpaceObject, Ship or Planet **/
+        this.objects = [];
+        /** Current wrapped ccpwgl_int lensflare @type {ccpwgl_int.EveLensflare} **/
+        this.sun = null;
+        /** Current sun direction (if null, the value is taked from scene .red file) @type {vec3} **/
+        this.sunDirection = null;
+        /** Current sun color (if null, the value is taked from scene .red file) @type {vec4} **/
+        this.sunLightColor = null;
+        /** Fog parameters (if null, the value is taked from scene .red file) @type {Array} **/
+        this.fog = null;
+        /** Current LOD setting @type {ccpwgl.LodSettings} **/
+        var lodSetting = ccpwgl.LodSettings.LOD_DISABLED;
 
-            /**
-             * Internal helper function that rebuilds a list of object in the wrapped
-             * scene with alread loaded objects from Scene.objects array.
-             **/
-            function rebuildSceneObjects(self)
+        /**
+         * Internal helper function that rebuilds a list of object in the wrapped
+         * scene with alread loaded objects from Scene.objects array.
+         **/
+        function rebuildSceneObjects(self)
+        {
+            if (!self.wrappedScene)
+            {
+                return;
+            }
+            self.wrappedScene.planets.splice(0, self.wrappedScene.planets.length);
+            self.wrappedScene.objects.splice(0, self.wrappedScene.objects.length);
+            for (var i = 0; i < self.objects.length; ++i)
+            {
+                for (var j = 0; j < self.objects[i].wrappedObjects.length; ++j)
                 {
-                    if (!self.wrappedScene)
+                    if (self.objects[i].wrappedObjects[j])
                     {
-                        return;
-                    }
-                    self.wrappedScene.planets.splice(0, self.wrappedScene.planets.length);
-                    self.wrappedScene.objects.splice(0, self.wrappedScene.objects.length);
-                    for (var i = 0; i < self.objects.length; ++i)
-                    {
-                        for (var j = 0; j < self.objects[i].wrappedObjects.length; ++j)
+                        if (self.objects[i] instanceof Planet)
                         {
-                            if (self.objects[i].wrappedObjects[j])
-                            {
-                                if (self.objects[i] instanceof Planet)
-                                {
-                                    self.wrappedScene.planets.push(self.objects[i].wrappedObjects[j]);
-                                }
-                                else
-                                {
-                                    self.wrappedScene.objects.push(self.objects[i].wrappedObjects[j]);
-                                }
-                            }
+                            self.wrappedScene.planets.push(self.objects[i].wrappedObjects[j]);
+                        }
+                        else
+                        {
+                            self.wrappedScene.objects.push(self.objects[i].wrappedObjects[j]);
                         }
                     }
                 }
+            }
+        }
 
-            /**
-             * Called when an EveSpaceScene is created or loaded.
-             */
-            function onSceneLoaded(self, obj)
+        /**
+         * Called when an EveSpaceScene is created or loaded.
+         */
+        function onSceneLoaded(self, obj)
+        {
+            self.wrappedScene = obj;
+            if (self.sun)
+            {
+                obj.lensflares[0] = self.sun;
+            }
+            if (self.sunDirection)
+            {
+                obj.sunDirection.set(self.sunDirection);
+            }
+            if (self.sunLightColor)
+            {
+                obj.sunDiffuseColor.set(self.sunLightColor);
+            }
+            obj.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
+            if (self.fog)
+            {
+                obj.fogStart = self.fog[0];
+                obj.fogEnd = self.fog[1];
+                obj.fogMax = self.fog[2];
+                obj.fogColor.set(self.fog[3]);
+            }
+            rebuildSceneObjects(self);
+        }
+
+        /**
+         * Creates a new empty scene.
+         */
+        this.create = function()
+        {
+            onSceneLoaded(this, new ccpwgl_int.EveSpaceScene());
+        };
+
+        /**
+         * Loads a scene from .red file.
+         *
+         * @param {string} resPath Res path to scene .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when scene .red file is loaded. this will point to Scene instance.
+         */
+        this.load = function(resPath, onload)
+        {
+            var self = this;
+            ccpwgl_int.resMan.GetObject(
+                resPath,
+                function(obj)
                 {
-                    self.wrappedScene = obj;
-                    if (self.sun)
+                    onSceneLoaded(self, obj);
+                    if (onload)
                     {
-                        obj.lensflares[0] = self.sun;
+                        onload.call(self);
+                    }
+                });
+        };
+
+        /**
+         * Check if scene's .red file is still loading.
+         *
+         * @returns {boolean} True if scene's .red file is loading; false otherwise.
+         */
+        this.isLoaded = function()
+        {
+            return this.wrappedScene != null;
+        };
+
+        /**
+         * Loads a ship from .red file and adds it to scene's objects list.
+         *
+         * @param {string} resPath Res path to ship .red file
+         * @param {!function(): void} [onload] Optional callback function that is called
+         *   when ship .red file is loaded. this will point to Ship instance.
+         * @returns {ccpwgl.Ship} A newly created ship instance.
+         */
+        this.loadShip = function(resPath, onload)
+        {
+            var self = this;
+            var ship = new Ship(
+                resPath,
+                function()
+                {
+                    rebuildSceneObjects(self);
+                    if (onload)
+                    {
+                        onload.call(this);
+                    }
+                });
+            this.objects.push(ship);
+            if (ship.wrappedObjects[0])
+            {
+                rebuildSceneObjects(this);
+            }
+            return ship;
+        };
+
+        /**
+         * Loads a space object from .red file and adds it to scene's objects list.
+         *
+         * @param {string} resPath Res path to object .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when object .red file is loaded. this will point to SpaceObject instance.
+         * @returns {ccpwgl.SpaceObject} A newly created object instance.
+         */
+        this.loadObject = function(resPath, onload)
+        {
+            var self = this;
+            var object = new SpaceObject(
+                resPath,
+                function()
+                {
+                    rebuildSceneObjects(self);
+                    if (onload)
+                    {
+                        onload.call(this);
+                    }
+                });
+            this.objects.push(object);
+            if (object.wrappedObjects[0])
+            {
+                rebuildSceneObjects(this);
+            }
+            return object;
+        };
+
+        /**
+         * Adds previously loaded, but removed object back to the scene.
+         *
+         * @param {ccpwgl.SpaceObject} object Object to add.
+         * @returns {ccpwgl.SpaceObject} Object added.
+         */
+        this.addObject = function(object)
+        {
+            this.objects.push(object);
+            if (object.wrappedObjects[0])
+            {
+                rebuildSceneObjects(this);
+            }
+            return object;
+        };
+
+        /**
+         * Creates a planet.
+         *
+         * @param {integer} itemID Planet's item ID.
+         * @param {string} planetPath Res path to planet's .red template file.
+         * @param {string} atmospherePath Res path to planet's .red atmosphere file.
+         * @param {string} heightMap1 Res path to planet's first height map texture.
+         * @param {string} heightMap2 Res path to planet's second height map texture.
+         * @returns {ccpwgl.Planet} A newly created planet instance.
+         */
+        this.loadPlanet = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+        {
+            var object = new Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
+            this.objects.push(object);
+            rebuildSceneObjects(this);
+            return object;
+        };
+
+        /**
+         * Returns object (ship or planet) at a specified index in scene's objects list.
+         *
+         * @thorws If index is out of bounds.
+         * @param {number} index Object index.
+         * @returns Object at specified index.
+         */
+        this.getObject = function(index)
+        {
+            if (index >= 0 && index < this.objects.length)
+            {
+                return this.objects[index];
+            }
+            throw new ReferenceError('object index out of bounds');
+        };
+
+        /**
+         * Returns index of an object (ship or planet) in scene's objects list.
+         *
+         * @param object Object to search for.
+         * @returns {number} Object index or -1 if the object is not found.
+         */
+        this.indexOf = function(object)
+        {
+            for (var i = 0; i < this.objects.length; ++i)
+            {
+                if (this.objects[i] === object)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        };
+
+        /**
+         * Removes object at specified index from scene's objects list.
+         *
+         * @thorws If index is out of bounds.
+         * @param {number} index Object index.
+         */
+        this.removeObject = function(index)
+        {
+            if (index >= this.objects.length)
+            {
+                throw new ReferenceError('object index out of bounds');
+            }
+            this.objects.splice(index, 1);
+            rebuildSceneObjects(this);
+        };
+
+        /**
+         * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
+         * can only be once sun in the scene. It doesn't appear in scene's object list.
+         *
+         * @param {string} resPath Res path to sun's .red file
+         * @param {!function(): void} onload Optional callback function that is called
+         *   when sun .red file is loaded. this will point to Scene instance.
+         */
+        this.loadSun = function(resPath, onload)
+        {
+            var self = this;
+            ccpwgl_int.resMan.GetObject(
+                resPath,
+                function(obj)
+                {
+                    self.sun = obj;
+                    if (self.wrappedScene)
+                    {
+                        self.wrappedScene.lensflares[0] = obj;
                     }
                     if (self.sunDirection)
                     {
-                        obj.sunDirection.set(self.sunDirection);
+                        vec3.negate(self.sunDirection, obj.position);
                     }
-                    if (self.sunLightColor)
+                    else if (self.wrappedScene)
                     {
-                        obj.sunDiffuseColor.set(self.sunLightColor);
+                        vec3.negate(self.wrappedScene.sunDirection, obj.position);
                     }
-                    obj.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
-                    if (self.fog)
+                    if (onload)
                     {
-                        obj.fogStart = self.fog[0];
-                        obj.fogEnd = self.fog[1];
-                        obj.fogMax = self.fog[2];
-                        obj.fogColor.set(self.fog[3]);
+                        onload.call(self);
                     }
-                    rebuildSceneObjects(self);
-                }
+                });
+        };
 
-            /**
-             * Creates a new empty scene.
-             */
-            this.create = function ()
+        /**
+         * Removes the sun (flare) from the scene.
+         *
+         * @throws If the scene doesn't have sun.
+         */
+        this.removeSun = function()
+        {
+            if (!this.sun)
             {
-                onSceneLoaded(this, new ccpwgl_int.EveSpaceScene());
-            };
-
-            /**
-             * Loads a scene from .red file.
-             *
-             * @param {string} resPath Res path to scene .red file
-             * @param {!function(): void} onload Optional callback function that is called
-             *   when scene .red file is loaded. this will point to Scene instance.
-             */
-            this.load = function (resPath, onload)
+                throw new ReferenceError('scene does not have a Sun');
+            }
+            this.sun = null;
+            if (this.wrappedScene)
             {
-                var self = this;
-                ccpwgl_int.resMan.GetObject(
-                    resPath,
-                    function (obj)
-                    {
-                        onSceneLoaded(self, obj);
-                        if (onload)
-                        {
-                            onload.call(self);
-                        }
-                    });
-            };
+                this.wrappedScene.lensflares = [];
+            }
+        };
 
-            /**
-             * Check if scene's .red file is still loading.
-             *
-             * @returns {boolean} True if scene's .red file is loading; false otherwise.
-             */
-            this.isLoaded = function () { return this.wrappedScene != null; };
-
-            /**
-             * Loads a ship from .red file and adds it to scene's objects list.
-             *
-             * @param {string} resPath Res path to ship .red file
-             * @param {!function(): void} [onload] Optional callback function that is called
-             *   when ship .red file is loaded. this will point to Ship instance.
-             * @returns {ccpwgl.Ship} A newly created ship instance.
-             */
-            this.loadShip = function (resPath, onload)
+        /**
+         * Sets new sun direction. This affects both lighting on objects and
+         * sun (flare) position.
+         *
+         * @param {vec3} direction Sun direction.
+         */
+        this.setSunDirection = function(direction)
+        {
+            this.sunDirection = direction;
+            if (this.wrappedScene)
             {
-                var self = this;
-                var ship = new Ship(
-                    resPath,
-                    function ()
-                    {
-                        rebuildSceneObjects(self);
-                        if (onload)
-                        {
-                            onload.call(this);
-                        }
-                    });
-                this.objects.push(ship);
-                if (ship.wrappedObjects[0])
-                {
-                    rebuildSceneObjects(this);
-                }
-                return ship;
-            };
-
-            /**
-             * Loads a space object from .red file and adds it to scene's objects list.
-             *
-             * @param {string} resPath Res path to object .red file
-             * @param {!function(): void} onload Optional callback function that is called
-             *   when object .red file is loaded. this will point to SpaceObject instance.
-             * @returns {ccpwgl.SpaceObject} A newly created object instance.
-             */
-            this.loadObject = function (resPath, onload)
+                this.wrappedScene.sunDirection.set(this.sunDirection);
+            }
+            if (this.sun)
             {
-                var self = this;
-                var object = new SpaceObject(
-                    resPath,
-                    function ()
-                    {
-                        rebuildSceneObjects(self);
-                        if (onload)
-                        {
-                            onload.call(this);
-                        }
-                    });
-                this.objects.push(object);
-                if (object.wrappedObjects[0])
-                {
-                    rebuildSceneObjects(this);
-                }
-                return object;
-            };
+                vec3.negate(direction, this.sun.position);
+            }
+        };
 
-            /**
-             * Adds previously loaded, but removed object back to the scene.
-             *
-             * @param {ccpwgl.SpaceObject} object Object to add.
-             * @returns {ccpwgl.SpaceObject} Object added.
-             */
-            this.addObject = function (object)
+        /**
+         * Sets color for the sunlight. This affects lighting on objects.
+         *
+         * @param {vec3} color Sunlight color as RGB vector.
+         */
+        this.setSunLightColor = function(color)
+        {
+            this.sunLightColor = color;
+            if (this.wrappedScene)
             {
-                this.objects.push(object);
-                if (object.wrappedObjects[0])
-                {
-                    rebuildSceneObjects(this);
-                }
-                return object;
-            };
+                this.wrappedScene.sunDiffuseColor.set(this.sunLightColor);
+            }
+        };
 
-            /**
-             * Creates a planet.
-             *
-             * @param {integer} itemID Planet's item ID.
-             * @param {string} planetPath Res path to planet's .red template file.
-             * @param {string} atmospherePath Res path to planet's .red atmosphere file.
-             * @param {string} heightMap1 Res path to planet's first height map texture.
-             * @param {string} heightMap2 Res path to planet's second height map texture.
-             * @returns {ccpwgl.Planet} A newly created planet instance.
-             */
-            this.loadPlanet = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+        /**
+         * Sets fog parameters. Fog effect helps depth perception. It does not
+         * affect planets.
+         *
+         * @param {number} startDistance Distance at which fog starts to appear.
+         * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
+         * @param {number} maxOpacity Maximum fog opacity from 0 to 1.
+         * @param {vec3} color Fog color as RGB vector.
+         */
+        this.setFog = function(startDistance, endDistance, maxOpacity, color)
+        {
+            this.fog = [startDistance, endDistance, maxOpacity, color];
+            if (this.wrappedScene)
             {
-                var object = new Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
-                this.objects.push(object);
-                rebuildSceneObjects(this);
-                return object;
-            };
+                this.wrappedScene.fogStart = startDistance;
+                this.wrappedScene.fogEnd = endDistance;
+                this.wrappedScene.fogMax = maxOpacity;
+                this.wrappedScene.fogColor.set(color);
+            }
+        };
 
-            /**
-             * Returns object (ship or planet) at a specified index in scene's objects list.
-             *
-             * @thorws If index is out of bounds.
-             * @param {number} index Object index.
-             * @returns Object at specified index.
-             */
-            this.getObject = function (index)
-            {
-                if (index >= 0 && index < this.objects.length)
-                {
-                    return this.objects[index];
-                }
-                throw new ReferenceError('object index out of bounds');
-            };
+        /**
+         * Returns current LOD setting.
+         *
+         * @returns {ccpwgl.LodSettings} Current LOD setting.
+         */
+        this.getLodSetting = function()
+        {
+            return lodSetting;
+        };
 
-            /**
-             * Returns index of an object (ship or planet) in scene's objects list.
-             *
-             * @param object Object to search for.
-             * @returns {number} Object index or -1 if the object is not found.
-             */
-            this.indexOf = function (object)
+        /**
+         * Assigns new LOD setting.
+         *
+         * @param {ccpwgl.LodSettings} setting New LOD setting.
+         */
+        this.setLodSetting = function(setting)
+        {
+            lodSetting = setting;
+            if (this.wrappedScene)
             {
-                for (var i = 0; i < this.objects.length; ++i)
-                {
-                    if (this.objects[i] === object)
-                    {
-                        return i;
-                    }
-                }
-                return -1;
-            };
-
-            /**
-             * Removes object at specified index from scene's objects list.
-             *
-             * @thorws If index is out of bounds.
-             * @param {number} index Object index.
-             */
-            this.removeObject = function (index)
-            {
-                if (index >= this.objects.length)
-                {
-                    throw new ReferenceError('object index out of bounds');
-                }
-                this.objects.splice(index, 1);
-                rebuildSceneObjects(this);
-            };
-
-            /**
-             * Loads a sun (a flare) into the scene. Due to some limitations of WebGL there
-             * can only be once sun in the scene. It doesn't appear in scene's object list.
-             *
-             * @param {string} resPath Res path to sun's .red file
-             * @param {!function(): void} onload Optional callback function that is called
-             *   when sun .red file is loaded. this will point to Scene instance.
-             */
-            this.loadSun = function (resPath, onload)
-            {
-                var self = this;
-                ccpwgl_int.resMan.GetObject(
-                    resPath,
-                    function (obj)
-                    {
-                        self.sun = obj;
-                        if (self.wrappedScene)
-                        {
-                            self.wrappedScene.lensflares[0] = obj;
-                        }
-                        if (self.sunDirection)
-                        {
-                            vec3.negate(self.sunDirection, obj.position);
-                        }
-                        else if (self.wrappedScene)
-                        {
-                            vec3.negate(self.wrappedScene.sunDirection, obj.position);
-                        }
-                        if (onload)
-                        {
-                            onload.call(self);
-                        }
-                    });
-            };
-
-            /**
-             * Removes the sun (flare) from the scene.
-             *
-             * @throws If the scene doesn't have sun.
-             */
-            this.removeSun = function ()
-            {
-                if (!this.sun)
-                {
-                    throw new ReferenceError('scene does not have a Sun');
-                }
-                this.sun = null;
-                if (this.wrappedScene)
-                {
-                    this.wrappedScene.lensflares = [];
-                }
-            };
-
-            /**
-             * Sets new sun direction. This affects both lighting on objects and
-             * sun (flare) position.
-             *
-             * @param {vec3} direction Sun direction.
-             */
-            this.setSunDirection = function (direction)
-            {
-                this.sunDirection = direction;
-                if (this.wrappedScene)
-                {
-                    this.wrappedScene.sunDirection.set(this.sunDirection);
-                }
-                if (this.sun)
-                {
-                    vec3.negate(direction, this.sun.position);
-                }
-            };
-
-            /**
-             * Sets color for the sunlight. This affects lighting on objects.
-             *
-             * @param {vec3} color Sunlight color as RGB vector.
-             */
-            this.setSunLightColor = function (color)
-            {
-                this.sunLightColor = color;
-                if (this.wrappedScene)
-                {
-                    this.wrappedScene.sunDiffuseColor.set(this.sunLightColor);
-                }
-            };
-
-            /**
-             * Sets fog parameters. Fog effect helps depth perception. It does not
-             * affect planets.
-             *
-             * @param {number} startDistance Distance at which fog starts to appear.
-             * @param {number} endDistance Distance at which fog reaches its maxOpacity opacity.
-             * @param {number} maxOpacity Maximum fog opacity from 0 to 1.
-             * @param {vec3} color Fog color as RGB vector.
-             */
-            this.setFog = function (startDistance, endDistance, maxOpacity, color)
-            {
-                this.fog = [startDistance, endDistance, maxOpacity, color];
-                if (this.wrappedScene)
-                {
-                    this.wrappedScene.fogStart = startDistance;
-                    this.wrappedScene.fogEnd = endDistance;
-                    this.wrappedScene.fogMax = maxOpacity;
-                    this.wrappedScene.fogColor.set(color);
-                }
-            };
-
-            /**
-             * Returns current LOD setting.
-             *
-             * @returns {ccpwgl.LodSettings} Current LOD setting.
-             */
-            this.getLodSetting = function ()
-            {
-                return lodSetting;
-            };
-
-            /**
-             * Assigns new LOD setting.
-             *
-             * @param {ccpwgl.LodSettings} setting New LOD setting.
-             */
-            this.setLodSetting = function (setting)
-            {
-                lodSetting = setting;
-                if (this.wrappedScene)
-                {
-                    this.wrappedScene.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
-                }
-            };
-        }
+                this.wrappedScene.EnableLod(lodSetting == ccpwgl.LodSettings.LOD_ENABLED);
+            }
+        };
+    }
 
     /**
      * Loads a new scene from .red file and makes it the current scene (the one that
@@ -1754,7 +1860,7 @@ var ccpwgl = (function (ccpwgl_int)
      *   when scene .red file is loaded. this will point to Scene instance.
      * @returns {ccpwgl.Scene} Newly constructed scene.
      */
-    ccpwgl.loadScene = function (resPath, onload)
+    ccpwgl.loadScene = function(resPath, onload)
     {
         scene = new Scene();
         scene.load(resPath, onload);
@@ -1768,17 +1874,20 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {string|float[]} background Scene background color as RGBA vector or background cubemap res path.
      * @returns {ccpwgl.Scene} Newly constructed scene.
      */
-    ccpwgl.createScene = function (background)
+    ccpwgl.createScene = function(background)
     {
         if (background && typeof background != 'string')
         {
             clearColor = background;
         }
         scene = new Scene();
-        if (background && typeof background == 'string') {
-            ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function (obj) {
+        if (background && typeof background == 'string')
+        {
+            ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function(obj)
+            {
                 scene.wrappedScene.backgroundEffect = obj;
-                if ('NebulaMap' in obj.parameters) {
+                if ('NebulaMap' in obj.parameters)
+                {
                     obj.parameters['NebulaMap'].resourcePath = background;
                     obj.parameters['NebulaMap'].Initialize();
                 }
@@ -1793,7 +1902,7 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @returns {boolean} True if any assets are still loading; false otherwise.
      */
-    ccpwgl.isLoading = function ()
+    ccpwgl.isLoading = function()
     {
         return ccpwgl_int.resMan.IsLoading();
     };
@@ -1814,7 +1923,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {boolean} enable If true scene update and update callbacks are called
      *   every frame.
      */
-    ccpwgl.enableUpdate = function (enable)
+    ccpwgl.enableUpdate = function(enable)
     {
         updateEnabled = enable;
     };
@@ -1824,7 +1933,7 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @param {boolean} enable If true scene is rendered into the canvas.
      */
-    ccpwgl.enableRendering = function (enable)
+    ccpwgl.enableRendering = function(enable)
     {
         renderingEnabled = enable;
     };
@@ -1834,7 +1943,7 @@ var ccpwgl = (function (ccpwgl_int)
      *
      * @returns {ccpwgl.ResourceUnloadPolicy} Current resource unload policy.
      */
-    ccpwgl.getResourceUnloadPolicy = function ()
+    ccpwgl.getResourceUnloadPolicy = function()
     {
         return resourceUnloadPolicy;
     };
@@ -1846,7 +1955,7 @@ var ccpwgl = (function (ccpwgl_int)
      * @param {number} timeout Optional timeout value (in seconds) when resource is unloaded
      *   from memomy if the policy is set to ccpwgl.ResourceUnloadPolicy.USAGE_BASED.
      */
-    ccpwgl.setResourceUnloadPolicy = function (policy, timeout)
+    ccpwgl.setResourceUnloadPolicy = function(policy, timeout)
     {
         resourceUnloadPolicy = policy;
         ccpwgl_int.resMan.autoPurgeResources = policy == ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
@@ -1859,10 +1968,10 @@ var ccpwgl = (function (ccpwgl_int)
     /**
      * Manually clears resource cache.
      */
-    ccpwgl.clearCachedResources = function ()
+    ccpwgl.clearCachedResources = function()
     {
         ccpwgl_int.resMan.Clear();
     };
 
     return ccpwgl;
-} (ccpwgl_int || window));
+}(ccpwgl_int || window));

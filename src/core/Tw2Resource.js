@@ -117,7 +117,7 @@ Tw2Resource.prototype.PrepareFinished = function(success)
         this._notifications[i].RebuildCachedData(this);
     }
 
-    if(this._onPrepareFinished)
+    if (this._onPrepareFinished)
     {
         this._onPrepareFinished(this, success);
     }
