@@ -416,7 +416,7 @@ Tw2Effect.prototype.GetPassCount = function()
 /**
  * GetPassInput
  * @param {number} pass
- * @returns {?}
+ * @returns {*}
  * @prototype
  */
 Tw2Effect.prototype.GetPassInput = function(pass)

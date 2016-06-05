@@ -108,7 +108,7 @@ function Tw2WbgTransformTrack()
 
     /**
      * _TracksReady
-     * @returns {?}
+     * @returns {*}
      * @private
      */
     this._TracksReady = function()

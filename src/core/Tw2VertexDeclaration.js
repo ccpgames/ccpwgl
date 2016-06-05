@@ -59,7 +59,7 @@ Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
  * @returns {number}
  * @function
  */
-function CompareDeclarationElements(a, b, usageOffset)
+Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset)
 {
     usageOffset = usageOffset || 0;
     if (a.usage < b.usage) return -1;
@@ -67,7 +67,7 @@ function CompareDeclarationElements(a, b, usageOffset)
     if (a.usageIndex + usageOffset < b.usageIndex) return -1;
     if (a.usageIndex + usageOffset > b.usageIndex) return 1;
     return 0;
-}
+};
 
 /**
  * Re-sorts elements
@@ -80,7 +80,7 @@ Tw2VertexDeclaration.prototype.RebuildHash = function()
     {
         this._elementsSorted[i] = this.elements[i];
     }
-    this._elementsSorted.sort(CompareDeclarationElements);
+    this._elementsSorted.sort(Tw2VertexDeclaration.CompareDeclarationElements);
 };
 
 /**
@@ -140,7 +140,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
                 break;
             }
             var input = this._elementsSorted[index];
-            var cmp = CompareDeclarationElements(input, el);
+            var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el);
             if (cmp > 0)
             {
                 device.gl.disableVertexAttribArray(el.location);
@@ -196,7 +196,7 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
         while (true)
         {
             var input = this._elementsSorted[index];
-            var cmp = CompareDeclarationElements(input, el, usageOffset);
+            var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el, usageOffset);
             if (cmp == 0)
             {
                 if (input.customSetter)

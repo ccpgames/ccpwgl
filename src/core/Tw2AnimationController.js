@@ -577,7 +577,7 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
 
 /**
  * Gets an array of all the currently playing animations by name
- * @returns {[]}
+ * @returns {Array}
  * @constructor
  */
 Tw2AnimationController.prototype.GetPlayingAnimations = function()
@@ -597,7 +597,7 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
 
 /**
  * Stops an animation or an array of animations from playing
- * @param {String, Array.<string>} names - Animation Name, or Array of Animation Names
+ * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
  * @prototype
  */
 Tw2AnimationController.prototype.StopAnimation = function(names)
@@ -989,14 +989,13 @@ Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 };
 
 /**
- * GetBoneMatrixes
- * TODO: Matrixes is spelt wrong (should be Matrices), multiple refactors required
+ * GetBoneMatrices
  * @param {number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Float32Array}
  * @prototype
  */
-Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryResource)
+Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length == 0)
     {

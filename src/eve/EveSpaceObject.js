@@ -238,7 +238,7 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
 
     if (this.animation.animations.length)
     {
-        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
+        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
     }
 
     for (var s = 0; s < this.lineSets.length; ++s)
