@@ -2,8 +2,10 @@
  * EveSpaceObjectDecal
  * @property {boolean} display
  * @property {Tw2Effect} decalEffect
+ * @property {Tw2Effect} pickEffect
  * @property {String} name=''
  * @property {number} groupIndex
+ * @property {boolean} pickable
  * @property {vec3} position
  * @property {quat4} rotation
  * @property {vec3} scaling
@@ -20,8 +22,11 @@ function EveSpaceObjectDecal()
 {
     this.display = true;
     this.decalEffect = null;
+    this.pickEffect = null;
     this.name = '';
     this.groupIndex = -1;
+
+    this.pickable = true;
 
     this.position = vec3.create();
     this.rotation = quat4.create();
@@ -117,12 +122,21 @@ EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
  */
 EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData, counter)
 {
-    if (mode != device.RM_DECAL)
+    switch (mode)
     {
-        return;
+        case device.RM_DECAL:
+            if (!this.decalEffect) return;
+            break;
+
+        case device.RM_PICKABLE:
+            if (!this.pickEffect || !this.pickable) return;
+            break;
+
+        default:
+            return;
     }
 
-    if (this.display && this.indexBuffer.length && this.decalEffect && this.parentGeometry && this.parentGeometry.IsGood())
+    if (this.display && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood())
     {
         var batch = new Tw2ForwardingRenderBatch();
         this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
@@ -161,7 +175,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObject
 
         batch.perObjectData = this._perObjectData;
         batch.geometryProvider = this;
-        batch.renderMode = device.RM_DECAL;
+        batch.renderMode = mode;
         accumulator.Commit(batch);
     }
 };
@@ -184,7 +198,7 @@ EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
     this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
     this.parentGeometry.meshes[0].indexType = device.gl.UNSIGNED_SHORT;
 
-    this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : this.decalEffect);
+    this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : (batch.renderMode === device.RM_DECAL) ? this.decalEffect : this.pickEffect);
     this.parentGeometry.meshes[0].indexes = bkIB;
     this.parentGeometry.meshes[0].areas[0].start = bkStart;
     this.parentGeometry.meshes[0].areas[0].count = bkCount;

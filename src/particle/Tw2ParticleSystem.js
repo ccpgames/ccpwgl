@@ -312,7 +312,7 @@ Tw2ParticleSystem.prototype.HasElement = function(type)
 /**
  * GetElement
  * @param {ParticleElementType} type
- * @returns {?}
+ * @returns {*}
  * @prototype
  */
 Tw2ParticleSystem.prototype.GetElement = function(type)

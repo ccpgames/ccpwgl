@@ -63,7 +63,9 @@ function EveCurveLineSet()
     this.lineEffect.parameters['OverlayTexMap'] = new Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
     this.lineEffect.Initialize();
     this.pickEffect = null;
+
     this.additive = false;
+    this.pickable = true;
 
     this.perObjectData = new Tw2PerObjectData();
     this.perObjectData.perObjectVSData = new Tw2RawData();
@@ -148,7 +150,7 @@ EveCurveLineSet.prototype.AddStraightLine = function(startPosition, startColor, 
 };
 
 /**
- * AddCurvedLineCrt
+ * Adds a curved line using cartesian co-ordinates
  * @param {vec3} startPosition
  * @param {quat4} startColor
  * @param {vec3} endPosition
@@ -178,7 +180,7 @@ EveCurveLineSet.prototype.AddCurvedLineCrt = function(startPosition, startColor,
 };
 
 /**
- * AddCurvedLineSph
+ * Adds a curved line using spherical co-ordinates
  * @param {vec3} startPosition
  * @param {quat4} startColor
  * @param {vec3} endPosition
@@ -212,7 +214,7 @@ EveCurveLineSet.prototype.AddCurvedLineSph = function(startPosition, startColor,
 };
 
 /**
- * AddSpheredLineCrt
+ * Adds a sphered line using cartesian co-ordinates
  * @param {vec3} startPosition
  * @param {quat4} startColor
  * @param {vec3} endPosition
@@ -242,7 +244,7 @@ EveCurveLineSet.prototype.AddSpheredLineCrt = function(startPosition, startColor
 };
 
 /**
- * AddSpheredLineSph
+ * Adds a sphered line using spherical co-ordinates
  * @param {vec3} startPosition
  * @param {quat4} startColor
  * @param {vec3} endPosition
@@ -292,7 +294,7 @@ EveCurveLineSet.prototype.ChangeLineWidth = function(lineID, width)
 };
 
 /**
- * Changes a lines start and end positions
+ * Changes a lines start and end positions using Cartesian co-ordinates
  * @param {Number} lineID
  * @param {vec3} startPosition
  * @param {vec3} endPosition
@@ -304,7 +306,7 @@ EveCurveLineSet.prototype.ChangeLinePositionCrt = function(lineID, startPosition
 };
 
 /**
- * Changes a lines start, end and center positions
+ * Changes a lines start, end and center positions using Spherical co-orindates
  * @param {Number} lineID
  * @param {vec3} startPosition
  * @param {vec3} endPosition
@@ -727,16 +729,32 @@ EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)
         return;
     }
 
-    if (mode == device.RM_TRANSPARENT && !this.additive || mode == device.RM_ADDITIVE && this.additive)
+    switch (mode)
     {
-        var batch = new Tw2ForwardingRenderBatch();
-        mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
-        mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
-        batch.perObjectData = this.perObjectData;
-        batch.geometryProvider = this;
-        batch.renderMode = mode;
-        accumulator.Commit(batch);
+        case device.RM_TRANSPARENT:
+            if (!this.lineEffect || this.additive) return;
+            break;
+
+        case device.RM_ADDITIVE:
+            if (!this.lineEffect || !this.additive) return;
+            break;
+
+        case device.RM_PICKABLE:
+            if (!this.pickEffect || !this.pickable) return;
+            break;
+
+        default:
+            return;
     }
+
+    var batch = new Tw2ForwardingRenderBatch();
+    mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
+    mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
+    batch.perObjectData = this.perObjectData;
+    batch.geometryProvider = this;
+    batch.renderMode = mode;
+    accumulator.Commit(batch);
+
 };
 
 /**
@@ -759,7 +777,7 @@ EveCurveLineSet.prototype.Unload = function()
  */
 EveCurveLineSet.prototype.Render = function(batch, overrideEffect)
 {
-    var effect = overrideEffect || this.lineEffect;
+    var effect = overrideEffect || (batch.renderMode === device.RM_PICKABLE) ? this.pickEffect : this.lineEffect;
     var effectRes = effect.GetEffectRes();
     if (!effectRes._isGood)
     {

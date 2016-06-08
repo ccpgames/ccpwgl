@@ -209,29 +209,11 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
         {
             this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
         }
+        else if (this.displayPickable && mode == device.RM_PICKABLE)
+        {
+            this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
+        }
     }
 
     return true;
 };
-
-/**
- * Gets pickable render batches
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @returns {boolean}
- * @constructor
- */
-Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
-{
-    if (this.geometryResource == null)
-    {
-        return false;
-    }
-
-    if (this.display && this.displayPickable)
-    {
-        this._GetAreaBatches(this.pickableAreas, device.RM_OPAQUE, accumulator, perObjectData);
-    }
-
-    return true;
-}
