@@ -83,13 +83,13 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
 };
 
 /**
- * GetResources
+ * GetPlanetResources
  * @param obj
  * @param visited
  * @param result
  * @constructor
  */
-EvePlanet.prototype.GetResources = function(obj, visited, result)
+EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
 {
     if (visited.indexOf(obj) != -1)
     {
@@ -107,7 +107,7 @@ EvePlanet.prototype.GetResources = function(obj, visited, result)
         {
             if (typeof(obj[prop]) == "object")
             {
-                this.GetResources(obj[prop], visited, result);
+                this.GetPlanetResources(obj[prop], visited, result);
             }
         }
     }
@@ -120,7 +120,7 @@ EvePlanet.prototype.GetResources = function(obj, visited, result)
 EvePlanet.prototype._MeshLoaded = function()
 {
     this.lockedResources = [];
-    this.GetResources(this.highDetail, [], this.lockedResources);
+    this.GetPlanetResources(this.highDetail, [], this.lockedResources);
 
     var mainMesh = this.highDetail.children[0].mesh;
     var originalEffect = null;
