@@ -399,7 +399,7 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
     }
     if (mode == device.RM_OPAQUE)
     {
-        var transforms = this.inactiveAnimation.GetBoneMatrixes(0);
+        var transforms = this.inactiveAnimation.GetBoneMatrices(0);
         if (transforms.length == 0)
         {
             return true;
@@ -416,7 +416,7 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 
         if (this.state == this.STATE_FIRING)
         {
-            transforms = this.activeAnimation.GetBoneMatrixes(0);
+            transforms = this.activeAnimation.GetBoneMatrices(0);
             if (transforms.length == 0)
             {
                 return true;

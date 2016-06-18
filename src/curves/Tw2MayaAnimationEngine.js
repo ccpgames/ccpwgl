@@ -114,7 +114,7 @@ Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
  * @param segments
  * @param firstSegment
  * @param time
- * @returns {?}
+ * @returns {*}
  * @private
  */
 Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, firstSegment, time)
@@ -248,7 +248,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
  * _EvaluateHermite
  * @param segment
  * @param time
- * @returns {?}
+ * @returns {*}
  * @private
  */
 Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
@@ -264,7 +264,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
  * @param segment
  * @param time
  * @param nextKeyTime
- * @returns {?}
+ * @returns {*}
  * @private
  */
 Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
@@ -303,7 +303,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextK
  * @param time
  * @param segments
  * @param firstSegment
- * @returns {?}
+ * @returns {*}
  * @private
  */
 Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, firstSegment)
@@ -390,7 +390,7 @@ Tw2MayaAnimationEngine.prototype.GetLength = function(index)
  * @param P
  * @param deg
  * @param s
- * @returns {?}
+ * @returns {*}
  */
 function ag_horner1(P, deg, s)
 {
@@ -407,7 +407,7 @@ function ag_horner1(P, deg, s)
  * @param fb
  * @param tol
  * @param pars
- * @returns {?}
+ * @returns {*}
  */
 function ag_zeroin2(a, b, fa, fb, tol, pars)
 {
@@ -510,7 +510,7 @@ function ag_zeroin2(a, b, fa, fb, tol, pars)
  * @param b
  * @param tol
  * @param pars
- * @returns {?}
+ * @returns {*}
  */
 function ag_zeroin(a, b, tol, pars)
 {
@@ -534,7 +534,7 @@ function ag_zeroin(a, b, tol, pars)
  * @param b
  * @param b_closed
  * @param Roots
- * @returns {?}
+ * @returns {*}
  */
 function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
 {

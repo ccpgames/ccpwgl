@@ -49,7 +49,7 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {Boolean} useDistanceBasedScale
  * @property {Array.<Tw2ParticleSystem>} particleSystems
  * @property {Array.<Tw2ParticleEmitter>} particleEmitters
- * @property {Array.<Tw2CurveSet} curveSets
+ * @property {Array.<Tw2CurveSet>} curveSets
  * @property {Array} children
  * @property {Boolean} display
  * @property {Boolean} displayMesh

@@ -238,25 +238,12 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
 
     if (this.animation.animations.length)
     {
-        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
+        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
     }
 
     for (var s = 0; s < this.lineSets.length; ++s)
     {
         this.lineSets[s].UpdateViewDependentData(this.transform);
-    }
-}
-
-/**
- * Gets line render batches
- * @param {RenderMode} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveSpaceObject.prototype.GetLineBatches = function(mode, accumulator)
-{
-    for (var i = 0; i < this.lineSets.length; ++i)
-    {
-        this.lineSets[i].GetBatches(mode, accumulator);
     }
 }
 
@@ -312,7 +299,10 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
 
             if (this.displayLines)
             {
-                this.GetLineBatches(mode, accumulator);
+                for (var i = 0; i < this.lineSets.length; ++i)
+                {
+                    this.lineSets[i].GetBatches(mode, accumulator);
+                }
             }
         }
 
@@ -455,4 +445,4 @@ EveSpaceObject.prototype.RenderDebugInfo = function(debugHelper)
  * EveStation inherits from EveSpaceObject
  * @type {EveSpaceObject}
  */
-EveStation = EveSpaceObject;
+var EveStation = EveSpaceObject;

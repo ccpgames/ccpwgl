@@ -32,6 +32,7 @@ function Tw2Device()
     this.RM_ADDITIVE = 3;
     this.RM_DEPTH = 4;
     this.RM_FULLSCREEN = 5;
+    this.RM_PICKABLE = 6;
 
     this.RS_ZENABLE = 7;                    /* D3DZBUFFERTYPE (or TRUE/FALSE for legacy) */
     this.RS_FILLMODE = 8;                   /* D3DFILLMODE */
@@ -804,6 +805,7 @@ function Tw2Device()
         switch (renderMode)
         {
             case this.RM_OPAQUE:
+            case this.RM_PICKABLE:
                 this.SetRenderState(this.RS_ZENABLE, true);
                 this.SetRenderState(this.RS_ZWRITEENABLE, true);
                 this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
