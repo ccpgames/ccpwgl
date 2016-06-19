@@ -229,7 +229,7 @@ module.exports = function(grunt)
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('min', ['uglify']);
     grunt.registerTask('cc', ['concat', 'jsbeautifier:cc']);
-    grunt.registerTask('dist', ['jsbeautifier:standard', 'cc', 'min']);
+    grunt.registerTask('dist', ['cc', 'min']);
     grunt.registerTask('default', ['dist']);
 
 };
