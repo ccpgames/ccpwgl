@@ -1,6 +1,5 @@
 function EveSOF() {
     var data = null;
-    var spriteEffectSkinned = null;
     var spriteEffect = null;
 
     function _get(obj, property, defaultValue) {
@@ -241,9 +240,9 @@ function EveSOF() {
         var hullSets = _get(hull, 'spriteSets', []);
         var factionSets = _get(faction, 'spriteSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
-            var spriteSet = new EveSpriteSet();
+            var spriteSet = new EveSpriteSet(true, hull['isSkinned'] && hullSets[i]['skinned']);
             spriteSet.name = _get(hullSets[i], 'name', '');
-            spriteSet.effect = (hull['isSkinned'] && hullSets[i]['skinned']) ? spriteEffectSkinned : spriteEffect;
+            spriteSet.effect = spriteEffect;
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
                 if (!('group' + _get(hullData[j], 'groupIndex', -1) in factionSets)) {
@@ -586,16 +585,10 @@ function EveSOF() {
             }
             if (!dataLoading) {
                 spriteEffect = new Tw2Effect();
-                spriteEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/blinkinglights.fx';
+                spriteEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/blinkinglightspool.fx';
                 spriteEffect.parameters['MainIntensity'] = new Tw2FloatParameter('MainIntensity', 1);
                 spriteEffect.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                 spriteEffect.Initialize();
-
-                spriteEffectSkinned = new Tw2Effect();
-                spriteEffectSkinned.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_blinkinglights.fx';
-                spriteEffectSkinned.parameters['MainIntensity'] = new Tw2FloatParameter('MainIntensity', 1);
-                spriteEffectSkinned.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
-                spriteEffectSkinned.Initialize();
 
                 resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function (obj) {
                     data = obj;

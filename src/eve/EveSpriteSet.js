@@ -5,12 +5,16 @@
  * @property {Tw2Effect} effect
  * @property {boolean} display
  * @property {number} _time
+ * @property {boolean} useQuads Use quad rendering (CPU transform)
+ * @property {boolean} isSkinned Use bone transforms (when useQuads is true)
  * @property {WebGlBuffer} _vertexBuffer
  * @property {WebGlBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
+ * @param {boolean} useQuads Use quad rendering (CPU transform)
+ * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
  * @constructor
  */
-function EveSpriteSet(useQuads)
+function EveSpriteSet(useQuads, isSkinned)
 {
     this.name = '';
     this.sprites = [];
@@ -18,6 +22,7 @@ function EveSpriteSet(useQuads)
     this.display = true;
     this._time = 0;
     this.useQuads = useQuads;
+    this.isSkinned = isSkinned;
 
     this._vertexBuffer = null;
     this._indexBuffer = null;
@@ -57,13 +62,19 @@ EveSpriteSet.prototype.Initialize = function()
     this.RebuildBuffers();
 };
 
-EveSpriteSet.prototype.UseQuads = function(useQuads)
+/**
+ * Use instanced rendering or "quad" rendering
+ * @param {boolean} useQuads Use quad rendering (CPU transform)
+ * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
+ */
+EveSpriteSet.prototype.UseQuads = function(useQuads, isSkinned)
 {
     if (this.useQuads == useQuads)
     {
         return;
     }
     this.useQuads = useQuads;
+    this.isSkinned = isSkinned;
 
     this._decl.elements.splice(0, this._decl.elements.length);
     if (!useQuads)
@@ -209,7 +220,7 @@ EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
     }
     else
     {
-        this.spriteSet.Render(overrideEffect, this.world);
+        this.spriteSet.Render(overrideEffect, this.world, this.perObjectData);
     }
 };
 
@@ -265,12 +276,13 @@ EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perOb
  * Renders the sprite set
  * @param {Tw2Effect} overrideEffect
  * @param {mat4} world
+ * @param {Tw2PerObjectData} perObjectData
  */
-EveSpriteSet.prototype.Render = function(overrideEffect, world)
+EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
 {
     if (this.useQuads)
     {
-        return this.RenderQuads(overrideEffect, world);
+        return this.RenderQuads(overrideEffect, world, perObjectData);
     }
     var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -366,8 +378,9 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
  * Renders the sprite set with pre-transformed quads
  * @param {Tw2Effect} overrideEffect
  * @param {mat4} world
+ * @param {Tw2PerObjectData} perObjectData
  */
-EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world)
+EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectData)
 {
     var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -384,25 +397,39 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world)
     var array = new Float32Array(17 * this.sprites.length);
     var index = 0;
     var pos = vec3.create();
+    var bones = perObjectData.perObjectVSData.Get('JointMat');
+    var sprite;
     for (var i = 0; i < this.sprites.length; ++i)
     {
-        mat4.multiplyVec3(world, this.sprites[i].position, pos);
+        sprite = this.sprites[i];
+        if (this.isSkinned)
+        {
+            var offset = sprite.boneIndex * 12;
+            pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
+            pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
+            pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
+            mat4.multiplyVec3(world, pos);
+        }
+        else
+        {
+            mat4.multiplyVec3(world, sprite.position, pos);
+        }
         array[index++] = pos[0];
         array[index++] = pos[1];
         array[index++] = pos[2];
         array[index++] = 1;
-        array[index++] = this.sprites[i].blinkPhase;
-        array[index++] = this.sprites[i].blinkRate;
-        array[index++] = this.sprites[i].minScale;
-        array[index++] = this.sprites[i].maxScale;
-        array[index++] = this.sprites[i].falloff;
-        array[index++] = this.sprites[i].color[0];
-        array[index++] = this.sprites[i].color[1];
-        array[index++] = this.sprites[i].color[2];
+        array[index++] = sprite.blinkPhase;
+        array[index++] = sprite.blinkRate;
+        array[index++] = sprite.minScale;
+        array[index++] = sprite.maxScale;
+        array[index++] = sprite.falloff;
+        array[index++] = sprite.color[0];
+        array[index++] = sprite.color[1];
+        array[index++] = sprite.color[2];
         array[index++] = 1;
-        array[index++] = this.sprites[i].warpColor[0];
-        array[index++] = this.sprites[i].warpColor[1];
-        array[index++] = this.sprites[i].warpColor[2];
+        array[index++] = sprite.warpColor[0];
+        array[index++] = sprite.warpColor[1];
+        array[index++] = sprite.warpColor[2];
         array[index++] = 1;
     }
     device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
