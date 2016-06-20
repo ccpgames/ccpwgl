@@ -219,16 +219,16 @@ Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
  * @return {*}
  *
  * @example Tw2EventEmitter.Inherit(myEmitter, myObject, true);
- * // `myObject` now has `on`, `off`, `del` and `log` emitter methods
+ * // `myObject` now has `on`, `off`, and `log` emitter methods
  * @example Tw2EventEmitter.Inherit(myEmitter, myObject);
- * // `myObject` now has `on`, `off`, `del`, `log` and `emit` emitter methods
+ * // `myObject` now has `on`, `off`, `log` and `emit` emitter methods
  */
 Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
 {
     target['on'] = emitter.on.bind(emitter);
     target['off'] = emitter.off.bind(emitter);
     target['once'] = emitter.once.bind(emitter);
-    if (!excludeEmit) target['emit'] = this.emit.bind(this);
+    if (!excludeEmit) target['emit'] = emitter.emit.bind(this);
     return target;
 };
 
