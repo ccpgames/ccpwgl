@@ -186,7 +186,7 @@ Tw2EventEmitter.RemoveListener = function(emitter, listener)
         {
             if (emitter.__events.hasOwnProperty(eventName))
             {
-                emitter.off(eventName, listener);
+                emitter.__events[eventName].delete(listener)
             }
         }
     }
@@ -209,8 +209,8 @@ Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
         eventName = eventName.toLowerCase();
         if (eventName in emitter.__events)
         {
-            emitter.__events.clear();
-            delete emitter.__events;
+            emitter.__events[eventName].clear();
+            delete emitter.__events[eventName];
             emitter.emit('EventRemoved', eventName);
         }
     }
