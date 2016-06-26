@@ -4,6 +4,12 @@
  */
 var Tw2EventEmitter = function()
 {
+    Object.defineProperty(
+        this, '__events',
+        {
+            value: {},
+            writable: false
+        });
     return this;
 };
 
