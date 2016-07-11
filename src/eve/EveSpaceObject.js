@@ -61,7 +61,7 @@ function EveSpaceObject()
     this.shapeEllipsoidRadius = vec3.create();
     this.shapeEllipsoidCenter = vec3.create();
 
-    this.transform = mat4.identity(mat4.create());
+    this.transform = mat4.create();
     this.animation = new Tw2AnimationController();
 
     this.display = true;
@@ -186,7 +186,7 @@ EveSpaceObject.prototype.ResetLod = function()
  */
 EveSpaceObject.prototype.UpdateLod = function(frustum)
 {
-    var center = mat4.multiplyVec3(this.transform, this.boundingSphereCenter, this._tempVec);
+    var center = vec3.transformMat4(this._tempVec, this.boundingSphereCenter, this.transform);
 
     if (frustum.IsSphereVisible(center, this.boundingSphereRadius))
     {
@@ -215,25 +215,21 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
         this.children[i].UpdateViewDependentData(this.transform);
     }
 
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
     var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter');
     var radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
     if (this.shapeEllipsoidRadius[0] > 0)
     {
-        center[0] = this.shapeEllipsoidCenter[0];
-        center[1] = this.shapeEllipsoidCenter[1];
-        center[2] = this.shapeEllipsoidCenter[2];
-        radii[0] = this.shapeEllipsoidRadius[0];
-        radii[1] = this.shapeEllipsoidRadius[1];
-        radii[2] = this.shapeEllipsoidRadius[2];
+        vec3.copy(center, this.shapeEllipsoidCenter);
+        vec3.copy(radii, this.shapeEllipsoidRadius);
     }
     else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
     {
-        vec3.subtract(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, center);
-        vec3.scale(center, 0.5 * 1.732050807);
-        vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
-        vec3.scale(radii, 0.5);
+        vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+        vec3.scale(center, center, 0.5 * 1.732050807);
+        vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+        vec3.scale(radii, radii, 0.5);
     }
 
     if (this.animation.animations.length)

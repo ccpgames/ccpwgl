@@ -3,7 +3,7 @@ function EvePerMuzzleData()
     this.started = false;
     this.readyToStart = false;
     this.muzzlePositionBone = null;
-    this.muzzleTransform = mat4.create();
+    this.muzzleTransform = mat4.zero();
     this.muzzlePosition = this.muzzleTransform.subarray(12, 15);
     this.currentStartDelay = 0;
     this.constantDelay = 0;

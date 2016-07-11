@@ -3,23 +3,23 @@
 <head>
     <title>WebGL API Test - Position, Rotation and Scale</title>
 
-    <script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-    <script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_gl3.min.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_int.min.js"></script>
     <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-    <script type="text/javascript" src="../src/ccpwgl.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl.js"></script>
 
     <script type="text/javascript">
 
-        // Declare ship globally so you can test functionality from your javascript console
-        var ship = null;
+        // Declare some globals so you can test functionality from your javascript console
+        var ship, scene, camera;
 
         function onDocumentLoad()
         {
             var canvas = document.getElementById('mainCanvas');
             ccpwgl.initialize(canvas);
-            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/a01_cube.red');
 
-            var camera = new TestCamera(canvas);
+            camera = new TestCamera(canvas);
             camera.minDistance = 10;
             camera.maxDistance = 10000;
             camera.fov = 30;
@@ -39,47 +39,33 @@
             // incorrect values being returned from the get functions.
             function whenLoaded()
             {
-                var rotation = [0, 0, 0]; // Values are in degrees
-                var position = [0, 0, 0]; 
-                var scale = [1, 1, 1];
+                var position = vec3.create();
+                var scale = vec3.one();
+                var orientation = quat.create();
 
                 /**
-                 *  Creates a new transform from an identity matrix and supplied arguments
-                 *  @param (rotation) vec3 array - Rotation in space [x,y,z]
-                 *  @param (position) vec3 array - Position in space [x,y,z]
-                 *  @param (scale) vec3 array - Scale [x,y,z]
+                 *  Creates a new transform
+                 *  @param {quat} orientation
+                 *  @param {vec3} position
+                 *  @param (vec3) scale
                  *  @returns {mat4} Transform matrix
                  */
-                function createTransform(rotation, position, scale)
+                function createTransform(orientation, position, scale)
                 {
-                        var transform = mat4.identity(mat4.create());
-                        mat4.translate(transform, position);
-                        mat4.rotate(transform, rotation[0] * ( Math.PI / 180 ), [1, 0, 0]);
-                        mat4.rotate(transform, rotation[1] * ( Math.PI / 180 ), [0, 1, 0]);
-                        mat4.rotate(transform, rotation[2] * ( Math.PI / 180 ), [0, 0, 1]);
-                        mat4.scale(transform, scale);
-                        return transform;
+                    return mat4.fromRotationTranslationScale(mat4.create(), orientation, position, scale);
                 }
 
                 // Rotation
                 Object.defineProperty(this, 'rotation', {
                     get: function ()
                     {
-                        return rotation;
+                        return vec3.fromQuat(orientation);
                     },
-                    set: function (vec3)
+                    set: function (v)
                     {
-                        try
-                        {
-                            var newTransform = createTransform(vec3, position, scale);
-                            this.setTransform(newTransform)
-                        }
-                        catch (err)
-                        {
-                            throw('Transform Error');
-                        }
-
-                        rotation = vec3;
+                        quat.setVec3(orientation, v);
+                        var newTransform = createTransform(orientation, position, scale);
+                        this.setTransform(newTransform)
                     },
                     enumerable: true,
                     configurable: true
@@ -91,19 +77,11 @@
                     {
                         return position;
                     },
-                    set: function (vec3)
+                    set: function (v)
                     {
-                        try
-                        {
-                            var newTransform = createTransform(rotation, vec3, scale);
-                            this.setTransform(newTransform)
-                        }
-                        catch (err)
-                        {
-                            throw('Transform Error');
-                        }
-
-                        position = vec3;
+                        vec3.copy(position, v);
+                        var newTransform = createTransform(orientation, v, scale);
+                        this.setTransform(newTransform)
                     },
                     enumerable: true,
                     configurable: true
@@ -115,19 +93,11 @@
                     {
                         return scale;
                     },
-                    set: function (vec3)
+                    set: function (v)
                     {
-                        try
-                        {
-                            var newTransform = createTransform(rotation, position, vec3);
-                            this.setTransform(newTransform)
-                        }
-                        catch (err)
-                        {
-                            throw('Transform Error');
-                        }
-
-                        scale = vec3;
+                        vec3.copy(scale, v);
+                        var newTransform = createTransform(orientation, position, v);
+                        this.setTransform(newTransform)
                     },
                     enumerable: true,
                     configurable: true

@@ -21,7 +21,6 @@ function Tw2MayaVector3Curve()
 /**
  * Initializes the Curve
  * @returns {boolean}
- * @prototype
  */
 Tw2MayaVector3Curve.prototype.Initialize = function()
 {
@@ -32,7 +31,6 @@ Tw2MayaVector3Curve.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2MayaVector3Curve.prototype.GetLength = function()
 {
@@ -42,7 +40,6 @@ Tw2MayaVector3Curve.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
 {
@@ -79,7 +76,6 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaVector3Curve.prototype.ComputeLength = function()
 {

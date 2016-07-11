@@ -2,8 +2,8 @@
  * Tw2RandomUniformAttributeGenerator
  * @property {number} elementType
  * @property {string} customName
- * @property {quat4} minRange
- * @property {quat4} maxRange
+ * @property {quat} minRange
+ * @property {quat} maxRange
  * @property _element
  * @constructor
  */
@@ -11,8 +11,8 @@ function Tw2RandomUniformAttributeGenerator()
 {
     this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
     this.customName = '';
-    this.minRange = quat4.create();
-    this.maxRange = quat4.create();
+    this.minRange = quat.zero();
+    this.maxRange = quat.zero();
     this._element = null;
 }
 
@@ -20,7 +20,6 @@ function Tw2RandomUniformAttributeGenerator()
  * Bind
  * @param ps
  * @returns {boolean}
- * @prototype
  */
 Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -41,7 +40,6 @@ Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
  */
 Tw2RandomUniformAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {

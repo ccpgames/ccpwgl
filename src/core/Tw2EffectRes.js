@@ -357,7 +357,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 var maxAnisotropy = reader.ReadUInt8();
                 /* var comparisonFunc = */
                 reader.ReadUInt8();
-                var borderColor = quat4.create();
+                var borderColor = vec4.create();
                 borderColor[0] = reader.ReadFloat32();
                 borderColor[1] = reader.ReadFloat32();
                 borderColor[2] = reader.ReadFloat32();

@@ -7,7 +7,7 @@
  * @property {string} name
  * @property {vec3} eulerValue
  * @property {boolean} updateQuaternion
- * @property {quat4} quatValue
+ * @property quat quatValue
  * @constructor
  */
 function Tw2MayaEulerRotationCurve()
@@ -19,13 +19,12 @@ function Tw2MayaEulerRotationCurve()
     this.name = '';
     this.eulerValue = vec3.create();
     this.updateQuaternion = false;
-    this.quatValue = quat4.create();
+    this.quatValue = quat.zero();
 }
 
 /**
  * Initializes the Curve
  * @returns {boolean}
- * @prototype
  */
 Tw2MayaEulerRotationCurve.prototype.Initialize = function()
 {
@@ -36,7 +35,6 @@ Tw2MayaEulerRotationCurve.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2MayaEulerRotationCurve.prototype.GetLength = function()
 {
@@ -46,7 +44,6 @@ Tw2MayaEulerRotationCurve.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
 {
@@ -96,7 +93,6 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
 {

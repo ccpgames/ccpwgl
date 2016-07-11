@@ -10,7 +10,7 @@
  * @property {number} _destinationElement
  * @property {boolean} destinationIsArray
  * @property {number} scale
- * @property {quat4} offset
+ * @property {vec4} offset
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
  * @constructor
  */
@@ -28,13 +28,12 @@ function Tw2ValueBinding()
     this.destinationIsArray = null;
 
     this.scale = 1;
-    this.offset = quat4.create();
+    this.offset = vec4.create();
     this._copyFunc = null;
 }
 
 /**
- * Initializes the Value Binding
- * @prototypes
+ * Initializes the Value Bindings
  */
 Tw2ValueBinding.prototype.Initialize = function()
 {
@@ -226,7 +225,6 @@ Tw2ValueBinding.prototype.Initialize = function()
 
 /**
  * CopyValue
- * @prototype
  */
 Tw2ValueBinding.prototype.CopyValue = function()
 {

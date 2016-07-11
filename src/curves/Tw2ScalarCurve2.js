@@ -53,7 +53,6 @@ function Tw2ScalarCurve2()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2ScalarCurve2.prototype.GetLength = function()
 {
@@ -62,7 +61,6 @@ Tw2ScalarCurve2.prototype.GetLength = function()
 
 /**
  * Initializes Curve
- * @prototype
  */
 Tw2ScalarCurve2.prototype.Initialize = function()
 {
@@ -91,7 +89,6 @@ Tw2ScalarCurve2.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2ScalarCurve2.prototype.Sort = function()
 {
@@ -120,7 +117,6 @@ Tw2ScalarCurve2.prototype.Sort = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2ScalarCurve2.prototype.UpdateValue = function(time)
 {
@@ -131,7 +127,6 @@ Tw2ScalarCurve2.prototype.UpdateValue = function(time)
  * Gets a value at a specific time
  * @param {number} time
  * @returns {number}
- * @prototype
  */
 Tw2ScalarCurve2.prototype.GetValueAt = function(time)
 {
@@ -191,7 +186,6 @@ Tw2ScalarCurve2.prototype.GetValueAt = function(time)
  * @param {Tw2ScalarKey2} lastKey
  * @param {Tw2ScalarKey2} nextKey
  * @returns {number}
- * @prototype
  */
 Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
 {

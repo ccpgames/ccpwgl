@@ -6,7 +6,7 @@
  * @property {string} group
  * @property {boolean} cycle
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scale
  * @property positionCurve
  * @property orientationCurve
@@ -22,17 +22,16 @@ function Tw2TransformTrack()
     this.group = '';
     this.cycle = false;
     this.translation = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.scale = vec3.create([1, 1, 1]);
+    this.rotation = quat.create();
+    this.scale = vec3.one();
     this.positionCurve = null;
     this.orientationCurve = null;
     this.scaleCurve = null;
-    this._scaleShear = mat4.create();
+    this._scaleShear = mat4.zero();
 }
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2TransformTrack.prototype.Initialize = function()
 {
@@ -45,7 +44,6 @@ Tw2TransformTrack.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2TransformTrack.prototype.GetLength = function()
 {
@@ -59,7 +57,6 @@ Tw2TransformTrack.prototype.GetLength = function()
  * @param {Array|vec3|quat4|mat4} value
  * @param {boolean} cycle
  * @param {number} duration
- * @prototype
  */
 Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, duration)
 {
@@ -155,7 +152,6 @@ Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, 
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2TransformTrack.prototype.UpdateValue = function(time)
 {
@@ -183,7 +179,7 @@ Tw2TransformTrack.prototype.UpdateValue = function(time)
 
     this.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
     this.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
-    quat4.normalize(this.rotation);
+    quat.normalize(this.rotation, this.rotation);
     this.EvaluateCurve(this.scaleCurve, time, this._scaleShear, this.cycle, this.duration);
     this.scale[0] = vec3.length(this.scaleCurve);
     this.scale[1] = vec3.length(this.scaleCurve.subarray(3, 6));
@@ -192,7 +188,6 @@ Tw2TransformTrack.prototype.UpdateValue = function(time)
 
 /**
  * FindTracks
- * @prototype
  */
 Tw2TransformTrack.prototype.FindTracks = function()
 {

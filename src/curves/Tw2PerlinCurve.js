@@ -115,7 +115,6 @@ function Tw2PerlinCurve()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2PerlinCurve.prototype.UpdateValue = function(time)
 {
@@ -126,7 +125,6 @@ Tw2PerlinCurve.prototype.UpdateValue = function(time)
  * Gets a value at a specific time
  * @param {number} time
  * @returns {number}
- * @prototype
  */
 Tw2PerlinCurve.prototype.GetValueAt = function(time)
 {

@@ -1,15 +1,15 @@
 /**
  * Tw2RGBAScalarSequencer
- * @property {quat4} value
- * @property {null|Tw2Curve} RedCurve
- * @property {null|Tw2Curve} GreenCurve
- * @property {null|Tw2Curve} BlueCurve
- * @property {null|Tw2Curve} AlphaCurve
+ * @property {quat} value
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} RedCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} GreenCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} BlueCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} AlphaCurve
  * @constructor
  */
 function Tw2RGBAScalarSequencer()
 {
-    this.value = quat4.create();
+    this.value = quat.zero();
     this.RedCurve = null;
     this.GreenCurve = null;
     this.BlueCurve = null;
@@ -19,7 +19,6 @@ function Tw2RGBAScalarSequencer()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2RGBAScalarSequencer.prototype.GetLength = function()
 {
@@ -46,7 +45,6 @@ Tw2RGBAScalarSequencer.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 {
@@ -56,9 +54,8 @@ Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
- * @prototype
+ * @param {quat} value
+ * @returns {quat}
  */
 Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
 {

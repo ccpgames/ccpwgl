@@ -202,15 +202,15 @@ function EveSOF() {
             effect.Initialize();
 
             var decal = new EveSpaceObjectDecal();
-            vec3.set(_get(hullDecal, 'position', [0, 0, 0]), decal.position);
-            quat4.set(_get(hullDecal, 'rotation', [0, 0, 0, 1]), decal.rotation);
-            vec3.set(_get(hullDecal, 'scaling', [1, 1, 1]), decal.scaling);
+            vec3.copy(decal.position, _get(hullDecal, 'position', [0, 0, 0]));
+            quat.copy(decal.rotation, _get(hullDecal, 'rotation', [0, 0, 0, 1]));
+            vec3.copy(decal.scaling, _get(hullDecal, 'scaling', [1, 1, 1]));
             decal.parentBoneIndex = _get(hullDecal, 'boneIndex', -1);
             decal.indexBuffer = new Uint16Array(hullDecal.indexBuffer);
             decal.decalEffect = effect;
             decal.name = _get(hullDecals[i], 'name', '');
             if ('groupIndex' in hullDecals[i]) {
-                    decal.groupIndex = hullDecals[i].groupIndex; 
+                decal.groupIndex = hullDecals[i].groupIndex;
             }
             decal.Initialize();
             ship.decals.push(decal);
@@ -261,7 +261,7 @@ function EveSOF() {
                 item.minScale = _get(hullData[j], 'minScale', 1);
                 item.name = _get(hullData[j], 'name', '');
                 if ('groupIndex' in hullData[j]) {
-                    item.groupIndex = hullData[j].groupIndex; 
+                    item.groupIndex = hullData[j].groupIndex;
                 }
                 item.groupName = factionSet.name;
                 if ('position' in hullData[j]) {
@@ -320,7 +320,8 @@ function EveSOF() {
                 if ('transform' in hullData[j]) {
                     item.transform = hullData[j].transform;
                 }
-                else {
+                else
+                {
                     mat4.identity(item.transform);
                 }
                 spotlightSet.spotlightItems.push(item);
@@ -364,16 +365,16 @@ function EveSOF() {
                 _assignIfExists(item, hullData[j], 'rotation');
                 _assignIfExists(item, hullData[j], 'scaling');
                 _assignIfExists(item, hullData[j], 'color');
-                quat4.set(_get(hullData[j], 'layer1Transform', [0, 0, 0, 0]), item.layer1Transform);
+                vec4.copy(item.layer1Transform, _get(hullData[j], 'layer1Transform', [0, 0, 0, 0]));
                 _assignIfExists(item, hullData[j], 'layer1Scroll');
-                quat4.set(_get(hullData[j], 'layer2Transform', [0, 0, 0, 0]), item.layer2Transform);
+                vec4.copy(item.layer2Transform, _get(hullData[j], 'layer2Transform', [0, 0, 0, 0]));
                 _assignIfExists(item, hullData[j], 'layer2Scroll');
                 item.boneIndex = _get(hullData[j], 'boneIndex', -1);
                 item.maskAtlasID = _get(hullData[j], 'maskMapAtlasIndex', 0);
 
                 var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
                 if (factionSet) {
-                    quat4.set(_get(factionSet, 'color', [0, 0, 0, 0]), item.color);
+                    vec4.copy(item.color, _get(factionSet, 'color', [0, 0, 0, 0]));
                 }
                 planeSet.planes.push(item);
             }
@@ -689,7 +690,7 @@ function EveSOF() {
                 if (turretArea) {
                     turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
                 }
-                quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
+                vec4.copy(params[i].value, CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name));
             }
             turretSet.turretEffect.BindParameters();
         }
@@ -727,26 +728,26 @@ function EveSOF() {
     this.GetHullNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('hull'));
-       });
+        });
     };
 
     this.GetFactionNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('faction'));
-       });
+        });
     };
 
     this.GetRaceNames = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('race'));
-       });
+        });
     };
-    
+
     this.GetSofData = function (callback) {
         this.LoadData(function () {
             callback(getDataKeys('all'));
         })
     };
 
-    
+
 }

@@ -17,22 +17,18 @@ function Tw2ParticleAttractorForce()
  * @param position
  * @param velocity
  * @param force
- * @prototype
  */
 Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
 {
     this._tempVec[0] = this.position[0] - position.buffer[position.offset];
     this._tempVec[1] = this.position[1] - position.buffer[position.offset + 1];
     this._tempVec[2] = this.position[2] - position.buffer[position.offset + 2];
-    vec3.scale(vec3.normalize(this._tempVec), this.magnitude);
-
-    force[0] += this._tempVec[0];
-    force[1] += this._tempVec[1];
-    force[2] += this._tempVec[2];
+    vec3.normalize(this._tempVec, this._tempVec);
+    vec3.scale(this._tempVec, this._tempVec, this.magnitude);
+    vec3.add(force, force, this._tempVec);
 };
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2ParticleAttractorForce.prototype.Update = function() {};

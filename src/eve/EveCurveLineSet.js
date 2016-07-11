@@ -1,27 +1,4 @@
 /**
- * vec3 Hermite
- * @param out
- * @param v1
- * @param t1
- * @param v2
- * @param t2
- * @param s
- * @returns {*}
- */
-function vec3Hermite(out, v1, t1, v2, t2, s)
-{
-    var k3 = 2 * s * s * s - 3 * s * s + 1;
-    var k2 = -2 * s * s * s + 3 * s * s;
-    var k1 = s * s * s - 2 * s * s + s;
-    var k0 = s * s * s - s * s;
-
-    out[0] = k3 * v1[0] + k2 * v2[0] + k1 * t1[0] + k0 * t2[0];
-    out[1] = k3 * v1[1] + k2 * v2[1] + k1 * t1[1] + k0 * t2[1];
-    out[2] = k3 * v1[2] + k2 * v2[2] + k1 * t1[2] + k0 * t2[2];
-    return out;
-}
-
-/**
  * EveCurveLineSet
  * @property {String} name
  * @property {Boolean} display
@@ -30,7 +7,7 @@ function vec3Hermite(out, v1, t1, v2, t2, s)
  * @property {Array} lines
  * @property {Array} emptyLineID
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scaling
  * @property {mat4} transform
  * @property {Tw2Effect} lineEffect
@@ -53,9 +30,9 @@ function EveCurveLineSet()
     this.emptyLineID = [];
 
     this.translation = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.scaling = vec3.create([1, 1, 1]);
-    this.transform = mat4.identity(mat4.create());
+    this.rotation = quat.create();
+    this.scaling = vec3.one();
+    this.transform = mat4.create();
 
     this.lineEffect = new Tw2Effect();
     this.lineEffect.effectFilePath = "res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx";
@@ -95,11 +72,8 @@ function EveCurveLineSet()
  */
 EveCurveLineSet.prototype.Initialize = function()
 {
-    mat4.identity(this.transform);
-    mat4.translate(this.transform, this.translation);
-    var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-    mat4.multiply(this.transform, rotationTransform, this.transform);
-    mat4.scale(this.transform, this.scaling);
+    // TODO: Test this conversion
+    mat4.fromRotationTranslationScale(this.transform, this.translation, this.rotation, this.scaling);
 };
 
 /**
@@ -205,10 +179,10 @@ EveCurveLineSet.prototype.AddCurvedLineSph = function(startPosition, startColor,
     var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
     var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
     var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
-    vec3.add(middlePnt, center);
+    // don't forget center!
+    vec3.add(startPnt, startPnt, center);
+    vec3.add(endPnt, endPnt, center);
+    vec3.add(middlePnt, middlePnt, center);
     // add it
     return this.AddCurvedLineCrt(startPnt, startColor, endPnt, endColor, middlePnt, lineWidth);
 };
@@ -264,9 +238,9 @@ EveCurveLineSet.prototype.AddSpheredLineSph = function(startPosition, startColor
     // is given in spherical coords, so convert them into cartesian
     var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
     var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
+    // don't forget center!
+    vec3.add(startPnt, startPnt, center);
+    vec3.add(endPnt, endPnt, center);
     // add it
     return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, center, lineWidth);
 };
@@ -323,9 +297,9 @@ EveCurveLineSet.prototype.ChangeLinePositionSph = function(lineID, startPosition
     // is given in spherical coords, so convert them into cartesian
     var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
     var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
+    // don't forget center!
+    vec3.add(startPnt, startPnt, center);
+    vec3.add(endPnt, endPnt, center);
     this.ChangeLinePositionCrt(lineID, startPnt, endPnt);
 };
 
@@ -350,8 +324,8 @@ EveCurveLineSet.prototype.ChangeLineIntermediateSph = function(lineID, intermedi
     var phiM = middle[0];
     var thetaM = middle[1];
     var radiusM = middle[2];
-    var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-    vec3.add(middlePnt, middle);
+    var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];;
+    vec3.add(middlePnt, middlePnt, middle);
     this.lines[lineID].intermediatePosition = intermediatePosition;
 };
 
@@ -611,11 +585,11 @@ EveCurveLineSet.prototype.SubmitChanges = function()
     var startDirNrm = vec3.create();
     var endDirNrm = vec3.create();
     var rotationAxis = vec3.create();
-    var rotationMatrix = mat4.create();
+    var rotationMatrix = mat4.zero();
     var dir1 = vec3.create();
     var dir2 = vec3.create();
-    var col1 = quat4.create();
-    var col2 = quat4.create();
+    var col1 = vec4.create();
+    var col2 = vec4.create();
     var pt1 = vec3.create();
     var pt2 = vec3.create();
     var j, tmp, segmentFactor;
@@ -633,29 +607,29 @@ EveCurveLineSet.prototype.SubmitChanges = function()
                 break;
 
             case EveCurveLineSet.LINETYPE_SPHERED:
-                vec3.subtract(this.lines[i].position1, this.lines[i].intermediatePosition, startDir);
-                vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, endDir);
-                vec3.normalize(startDir, startDirNrm);
-                vec3.normalize(endDir, endDirNrm);
-
-                vec3.cross(startDir, endDir, rotationAxis);
+                vec3.subtract(startDir, this.lines[i].position1, this.lines[i].intermediatePosition);
+                vec3.subtract(endDir, this.lines[i].position2, this.lines[i].intermediatePosition);
+                vec3.normalize(startDirNrm, startDir);
+                vec3.normalize(endDirNrm, endDir);
+                vec3.cross(rotationAxis, startDir, endDir);
                 var fullAngle = Math.acos(vec3.dot(startDirNrm, endDirNrm));
                 var segmentAngle = fullAngle / this.lines[i].numOfSegments;
-                mat4.rotate(mat4.identity(rotationMatrix), segmentAngle, rotationAxis);
-
-                vec3.set(startDir, dir1);
-                quat4.set(this.lines[i].color1, col1);
+                mat4.identity(rotationMatrix);
+                mat4.rotate(rotationMatrix, rotationMatrix, segmentAngle, rotationAxis);
+                vec3.copy(dir1, startDir);
+                vec4.copy(col1, this.lines[i].color1);
 
                 for (j = 0; j < this.lines[i].numOfSegments; ++j)
                 {
                     segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                    mat4.multiplyVec3(rotationMatrix, dir1, dir2);
+                    // TODO: Test this refactoring, vec3.transformMat4 implicitly sets w to 1
+                    vec3.transformMat4(dir2, dir1, rotationMatrix);
                     col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
                     col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
                     col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
                     col2[3] = this.lines[i].color1[3] * (1 - segmentFactor) + this.lines[i].color2[3] * segmentFactor;
-                    vec3.add(dir1, this.lines[i].intermediatePosition, pt1);
-                    vec3.add(dir2, this.lines[i].intermediatePosition, pt2);
+                    vec3.add(pt1, dir1, this.lines[i].intermediatePosition);
+                    vec3.add(pt2, dir2, this.lines[i].intermediatePosition);
 
                     this._writeLineVerticesToBuffer(this, pt1, col1, j / this.lines[i].numOfSegments, pt2, col2, segmentFactor, i, data, offset);
                     offset += 6 * this._vertexSize;
@@ -675,15 +649,15 @@ EveCurveLineSet.prototype.SubmitChanges = function()
                 var pos1 = vec3.create();
                 var pos2 = vec3.create();
 
-                vec3.subtract(this.lines[i].intermediatePosition, this.lines[i].position1, tangent1);
-                vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, tangent2);
+                vec3.subtract(tangent1, this.lines[i].intermediatePosition, this.lines[i].position1);
+                vec3.subtract(tangent2, this.lines[i].position2, this.lines[i].intermediatePosition);
+                vec3.copy(pos1, this.lines[i].position1);
+                vec3.copy(col1, this.lines[i].color1);
 
-                vec3.set(this.lines[i].position1, pos1);
-                vec3.set(this.lines[i].color1, col1);
                 for (j = 0; j < this.lines[i].numOfSegments; ++j)
                 {
                     segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                    vec3Hermite(pos2, this.lines[i].position1, tangent1, this.lines[i].position2, tangent2, segmentFactor);
+                    vec3.hermite(pos2, this.lines[i].position1, tangent1, this.lines[i].position2, tangent2, segmentFactor);
                     col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
                     col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
                     col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
@@ -748,8 +722,7 @@ EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)
     }
 
     var batch = new Tw2ForwardingRenderBatch();
-    mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
-    mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
+    mat4.transpose(this.perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
     batch.perObjectData = this.perObjectData;
     batch.geometryProvider = this;
     batch.renderMode = mode;
@@ -817,12 +790,9 @@ EveCurveLineSet.prototype.Update = function() {};
  */
 EveCurveLineSet.prototype.UpdateViewDependentData = function(parentTransform)
 {
-    mat4.identity(this.transform);
-    mat4.translate(this.transform, this.translation);
-    var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-    mat4.multiply(this.transform, rotationTransform, this.transform);
-    mat4.scale(this.transform, this.scaling);
-    mat4.multiply(this.transform, parentTransform);
+    // TODO: Check this refactoring
+    mat4.fromRotationTranslationScale(this.transform, this.translation, this.rotation, this.scaling);
+    mat4.multiply(this.transform, this.transform, parentTransform);
 };
 
 /**

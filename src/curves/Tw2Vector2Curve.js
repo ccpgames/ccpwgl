@@ -1,18 +1,18 @@
 /**
  * Tw2Vector2Key
  * @property {number} time
- * @property {Float32Array} value - vec2 array
- * @property {Float32Array} leftTangent - vec2 array
- * @property {Float32Array} rightTangent - vec2 array
+ * @property {vec2} value - vec2 array
+ * @property {vec2} leftTangent - vec2 array
+ * @property {vec2} rightTangent - vec2 array
  * @property {number} interpolation
  * @constructor
  */
 function Tw2Vector2Key()
 {
     this.time = 0;
-    this.value = new Float32Array(2);
-    this.leftTangent = new Float32Array(2);
-    this.rightTangent = new Float32Array(2);
+    this.value = vec2.create();
+    this.leftTangent = vec2.create();
+    this.rightTangent = vec2.create();
     this.interpolation = 1;
 }
 
@@ -24,11 +24,11 @@ function Tw2Vector2Key()
  * @property {boolean} reversed
  * @property {number} timeOffset
  * @property {number} timeScale
- * @property {Float32Array} startValue - vec2 array
- * @property {Float32Array} currentValue - vec2 array
- * @property {Float32Array} endValue - vec2 array
- * @property {Float32Array} startTangent - vec2 array
- * @property {Float32Array} endTangent - vec2 array
+ * @property {vec2} startValue - vec2 array
+ * @property {vec2} currentValue - vec2 array
+ * @property {vec2} endValue - vec2 array
+ * @property {vec2} startTangent - vec2 array
+ * @property {vec2} endTangent - vec2 array
  * @property {number} interpolation
  * @property {Array.<Tw2Vector2Key>} keys
  * @constructor
@@ -41,18 +41,17 @@ function Tw2Vector2Curve()
     this.reversed = false;
     this.timeOffset = 0;
     this.timeScale = 1;
-    this.startValue = new Float32Array(2);
-    this.currentValue = new Float32Array(2);
-    this.endValue = new Float32Array(2);
-    this.startTangent = new Float32Array(2);
-    this.endTangent = new Float32Array(2);
+    this.startValue = vec2.create();
+    this.currentValue = vec2.create();
+    this.endValue = vec2.create();
+    this.startTangent = vec2.create();
+    this.endTangent = vec2.create();
     this.interpolation = 1;
     this.keys = [];
 }
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2Vector2Curve.prototype.Initialize = function()
 {
@@ -62,7 +61,6 @@ Tw2Vector2Curve.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2Vector2Curve.prototype.GetLength = function()
 {
@@ -74,7 +72,6 @@ Tw2Vector2Curve.prototype.GetLength = function()
  * @param {Tw2Vector2Key} a
  * @param {Tw2Vector2Key} b
  * @returns {number}
- * @method
  */
 Tw2Vector2Curve.Compare = function(a, b)
 {
@@ -91,7 +88,6 @@ Tw2Vector2Curve.Compare = function(a, b)
 
 /**
  * Sorts the curve's keys
- * @prototype
  */
 Tw2Vector2Curve.prototype.Sort = function()
 {
@@ -120,7 +116,6 @@ Tw2Vector2Curve.prototype.Sort = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2Vector2Curve.prototype.UpdateValue = function(time)
 {
@@ -130,9 +125,8 @@ Tw2Vector2Curve.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {Float32Array} value - vec2 array
- * @returns {Float32Array} vec2 array
- * @prototype
+ * @param {vec2} value - vec2 array
+ * @returns {vec2} vec2 array
  */
 Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
 {
@@ -197,9 +191,8 @@ Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
  * @param {number} time
  * @param {Tw2Vector2Key} lastKey
  * @param {Tw2Vector2Key} nextKey
- * @param {Float32Array} value - vec2 array
- * @returns {Float32Array} vec2 array
- * @prototype
+ * @param {vec2} value - vec2 array
+ * @returns {vec2} vec2 array
  */
 Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {

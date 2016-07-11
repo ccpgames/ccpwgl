@@ -19,8 +19,8 @@
  * @property {Array} bindings
  * @property {Array.<Tw2CurveSet> curveSets
  * @property {null|Tw2Mesh} mesh
- * @property {quat4} _directionVar
- * @property {quat4} _occlusionVar
+ * @property {vec4} _directionVar
+ * @property {vec4} _occlusionVar
  * @property {vec3} _direction
  * @property {mat4} _transform
  * @constructor
@@ -49,10 +49,10 @@ function EveLensflare()
 
     this.mesh = null;
 
-    this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", quat4.create());
-    this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+    this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", vec4.create());
+    this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", vec4.fromValues(1, 1, 0, 0));
     this._direction = vec3.create();
-    this._transform = mat4.create();
+    this._transform = mat4.zero();
 
     if (!EveLensflare.backBuffer)
     {
@@ -67,13 +67,15 @@ function EveLensflare()
 
 /**
  * Internal helper function
- * @param out
- * @param v
+ * @param {mat4} out
+ * @param {vec3} v
  */
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
-    var norm = vec3.normalize(v, norm);
+    var norm = vec3.create();
+    vec3.normalize(norm, v);
     mat4.identity(out);
+
     if (norm[2] < -0.99999)
     {
         return;
@@ -108,10 +110,12 @@ EveLensflare.prototype.PrepareRender = function()
         return;
     }
 
-    var cameraPos = mat4.multiplyVec3(device.viewInv, vec3.create());
+    var cameraPos = vec3.create();
+    vec3.transformMat4(cameraPos, cameraPos, device.viewInv);
+
     if (vec3.length(this.position) == 0)
     {
-        var curPos = vec3.negate(cameraPos, vec3.create());
+        var curPos = vec3.negate(vec3.create(), cameraPos);
         var distScale = vec3.length(curPos);
         if (distScale > 1.5)
         {
@@ -121,35 +125,35 @@ EveLensflare.prototype.PrepareRender = function()
         {
             distScale = 2.5;
         }
-        vec3.normalize(curPos, this._direction);
+        vec3.normalize(this._direction, curPos);
     }
     else
     {
-        var invPos = vec3.negate(this.position, vec3.create());
-        vec3.normalize(invPos, this._direction);
+        var invPos = vec3.negate(vec3.create(), this.position);
+        vec3.normalize(this._direction, invPos);
     }
-    var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+    var viewDir = vec4.fromValues(0,0,1,0);
+    vec4.transformMat4(viewDir, viewDir, device.viewInv);
     var cameraSpacePos = vec3.create();
     cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
     cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
     cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
 
-    var negDirVec = vec3.negate(this._direction, vec3.create());
+    var negDirVec = vec3.negate(vec3.create(), this._direction);
     this.MatrixArcFromForward(this._transform, negDirVec);
     this._transform[12] = cameraSpacePos[0];
     this._transform[13] = cameraSpacePos[1];
     this._transform[14] = cameraSpacePos[2];
 
-    var scaleMat = mat4.scale(mat4.identity(mat4.create()), [this.occlusionIntensity, this.occlusionIntensity, 1]);
-    //mat4.multiply(this._transform, scaleMat);
-    this._directionVar.value[0] = this._direction[0];
-    this._directionVar.value[1] = this._direction[1];
-    this._directionVar.value[2] = this._direction[2];
+    // TODO: ScaleMat is redundant
+    var scaleMat = mat4.fromScaling(mat4.create(), [this.occlusionIntensity, this.occlusionIntensity, 1]);
+    //__mat4.multiply(this._transform, scaleMat);
+    vec3.copy(this._directionVar.value, this._direction);
     this._directionVar.value[3] = 1;
 
-    var d = quat4.create([this._direction[0], this._direction[1], this._direction[2], 0]);
-    mat4.multiplyVec4(device.view, d);
-    mat4.multiplyVec4(device.projection, d);
+    var d = quat.fromValues(this._direction[0], this._direction[1], this._direction[2], 0);
+    vec4.transformMat4(d, d, device.view);
+    vec4.transformMat4(d, d, device.projection);
     d[0] /= d[3];
     d[1] /= d[3];
     var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1]));
@@ -301,7 +305,8 @@ EveLensflare.prototype.GetBatches = function(mode, accumulator, perObjectData)
     {
         return;
     }
-    var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+    var viewDir = quat.fromValues(0,0,1,0);
+    vec4.transformMat4(viewDir, viewDir, device.viewInv);
     if (vec3.dot(viewDir, this._direction) < 0)
     {
         return;

@@ -81,6 +81,8 @@ EvePlaneSet.prototype.RebuildBuffers = function()
 
     var array = new Float32Array(visibleItems.length * 4 * vertexSize);
     var tempMat = mat4.create();
+    var itemTransform = mat4.create();
+
     for (var i = 0; i < visibleItems.length; ++i)
     {
         var offset = i * 4 * vertexSize;
@@ -89,10 +91,13 @@ EvePlaneSet.prototype.RebuildBuffers = function()
         array[offset + 2 * vertexSize + vertexSize - 3] = 2;
         array[offset + 3 * vertexSize + vertexSize - 3] = 3;
 
-        var itemTransform = mat4.transpose(mat4.multiply(mat4.scale(mat4.identity(mat4.create()), visibleItems[i].scaling), quat4.toMat4(visibleItems[i].rotation, tempMat)));
-        itemTransform[12] = visibleItems[i].position[0];
-        itemTransform[13] = visibleItems[i].position[1];
-        itemTransform[14] = visibleItems[i].position[2];
+        mat4.identity(itemTransform);
+        mat4.fromQuat(tempMat, visibleItems[i].rotation);
+        mat4.transpose(tempMat, tempMat);
+        mat4.scale(itemTransform, itemTransform, visibleItems[i].scaling);
+        mat4.multiply(itemTransform, itemTransform, tempMat);
+        mat4.transpose(itemTransform, itemTransform);
+        mat4.setTranslation(itemTransform, visibleItems[i].position);
 
         for (var j = 0; j < 4; ++j)
         {
@@ -262,12 +267,12 @@ EvePlaneSet.prototype.Clear = function()
  * @property {string} name
  * @property {vec3} position
  * @property {vec3} scaling
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {quat4} color
- * @property {quat4} layer1Transform
- * @property {quat4} layer2Transform
- * @property {quat4} layer1Scroll
- * @property {quat4} layer2Scroll
+ * @property {vec4} layer1Transform
+ * @property {vec4} layer2Transform
+ * @property {vec4} layer1Scroll
+ * @property {vec4} layer2Scroll
  * @property {number} boneIndex
  * @property {number} groupIndex
  * @constructor
@@ -277,13 +282,13 @@ function EvePlaneSetItem()
     this.display = true;
     this.name = '';
     this.position = vec3.create();
-    this.scaling = vec3.create([1, 1, 1]);
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.color = quat4.create([1, 1, 1, 1]);
-    this.layer1Transform = quat4.create([1, 1, 0, 0]);
-    this.layer2Transform = quat4.create([1, 1, 0, 0]);
-    this.layer1Scroll = quat4.create();
-    this.layer2Scroll = quat4.create();
+    this.scaling = vec3.one();
+    this.rotation = quat.create();
+    this.color = vec4.one();
+    this.layer1Transform = vec4.fromValues(1, 1, 0, 0);
+    this.layer2Transform = vec4.fromValues(1, 1, 0, 0);
+    this.layer1Scroll = vec4.create();
+    this.layer2Scroll = vec4.create();
     this.boneIndex = 0;
     this.groupIndex = -1;
     this.maskAtlasID = 0;

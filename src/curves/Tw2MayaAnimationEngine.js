@@ -59,7 +59,7 @@ Tw2MayaAnimationEngine.INFINITY = 0;
  * @param curveIndex
  * @param time
  * @returns {*}
- * @prototype
+
  */
 Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
 {
@@ -354,7 +354,6 @@ Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, fir
 /**
  * Returns the total number of curves
  * @returns {number}
- * @prototype
  */
 Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
 {
@@ -365,7 +364,6 @@ Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
  * Gets specific curve's length
  * @property {number} index
  * @returns {number}
- * @prototype
  */
 Tw2MayaAnimationEngine.prototype.GetLength = function(index)
 {

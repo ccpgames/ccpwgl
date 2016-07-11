@@ -159,7 +159,7 @@ function Tw2GeometrySkeleton()
  * @property {string} name
  * @property {Number} parentIndex
  * @property {vec3} position
- * @property {quat4} orientation
+ * @property {quat} orientation
  * @property {mat3} scaleShear
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
@@ -171,11 +171,12 @@ function Tw2GeometryBone()
     this.name = '';
     this.parentIndex = -1;
     this.position = vec3.create();
-    this.orientation = quat4.create();
-    this.scaleShear = mat3.create();
-    this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
-    this.worldTransformInv = mat4.create();
+    this.orientation = quat.zero();
+    this.scaleShear = mat3.zero();
+    this.localTransform = mat4.zero();
+    this.worldTransform = mat4.zero();
+    this.worldTransformInv = mat4.zero();
+    this._tempMat = mat4.create();
 }
 
 /**
@@ -184,12 +185,11 @@ function Tw2GeometryBone()
  */
 Tw2GeometryBone.prototype.UpdateTransform = function()
 {
-    mat3.toMat4(this.scaleShear, this.localTransform);
-    mat4.multiply(this.localTransform, mat4.transpose(quat4.toMat4(quat4.normalize(this.orientation))));
-    //mat4.translate(this.localTransform, this.position);
-    this.localTransform[12] = this.position[0];
-    this.localTransform[13] = this.position[1];
-    this.localTransform[14] = this.position[2];
+    mat4.setMat3(this.localTransform, this.scaleShear);
+    quat.normalize(this.orientation, this.orientation);
+    mat4.fromQuat(this._tempMat, this.orientation);
+    mat4.multiply(this.localTransform, this.localTransform, this._tempMat);
+    mat4.setTranslation(this.localTransform, this.position);
     return this.localTransform;
 };
 
@@ -621,8 +621,8 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             mesh.areas[i].name = reader.ReadString();
             mesh.areas[i].start = reader.ReadUInt32() * indexes.BYTES_PER_ELEMENT;
             mesh.areas[i].count = reader.ReadUInt32() * 3;
-            mesh.areas[i].minBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
-            mesh.areas[i].maxBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
+            mesh.areas[i].minBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+            mesh.areas[i].maxBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
         }
 
         var boneBindingCount = reader.ReadUInt8();
@@ -672,19 +672,19 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             }
             if ((flags & 1))
             {
-                vec3.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.position);
+                vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
             }
             else
             {
-                vec3.set([0, 0, 0], bone.position);
+                vec3.fill(bone.position, 0);
             }
             if ((flags & 2))
             {
-                quat4.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.orientation);
+                quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
             }
             else
             {
-                quat4.set([0, 0, 0, 1], bone.orientation);
+                quat.identity(bone.orientation);
             }
             if ((flags & 4))
             {
@@ -704,13 +704,17 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             model.skeleton.bones[j].UpdateTransform();
             if (model.skeleton.bones[j].parentIndex != -1)
             {
-                mat4.multiply(model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                mat4.multiply(
+                    model.skeleton.bones[j].worldTransform,
+                    model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform,
+                    model.skeleton.bones[j].localTransform
+                );
             }
             else
             {
-                mat4.set(model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                mat4.copy(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].localTransform);
             }
-            mat4.inverse(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].worldTransformInv);
+            mat4.invert(model.skeleton.bones[j].worldTransformInv, model.skeleton.bones[j].worldTransform);
         }
 
         var meshBindingCount = reader.ReadUInt8();

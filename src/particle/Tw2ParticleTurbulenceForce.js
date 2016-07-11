@@ -3,7 +3,7 @@
  * @property {number} noiseLevel
  * @property {number} noiseRatio
  * @property {vec3} amplitude
- * @property {quat4} frequency
+ * @property {quat} frequency
  * @property {number} _time
  * @constructor
  */
@@ -11,8 +11,8 @@ function Tw2ParticleTurbulenceForce()
 {
     this.noiseLevel = 3;
     this.noiseRatio = 0.5;
-    this.amplitude = vec3.create([1, 1, 1]);
-    this.frequency = quat4.create([1, 1, 1, 1]);
+    this.amplitude = vec3.one();
+    this.frequency = quat.one();
     this._time = 0;
 }
 
@@ -24,7 +24,7 @@ function InitializeNoise()
 {
     for (var i = 0; i < 256; i++)
     {
-        s_noiseLookup[i] = quat4.create([Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5]);
+        s_noiseLookup[i] = quat.fromValues(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
         s_permutations[i] = i;
     }
 
@@ -82,23 +82,22 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
     var b01 = s_permutations[i + b_1];
     var b11 = s_permutations[j + b_1];
 
-    var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0, s_globalNoiseTemps[0]);
-    var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0, s_globalNoiseTemps[1]);
-    var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[2]);
-    var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[3]);
-    var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[4]);
-    var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[5]);
-    var c = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[6]);
+    var c00 = vec3.lerp(s_globalNoiseTemps[0], s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0);
+    var c10 = vec3.lerp(s_globalNoiseTemps[1], s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0);
+    var c01 = vec3.lerp(s_globalNoiseTemps[2], s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0);
+    var c11 = vec3.lerp(s_globalNoiseTemps[3], s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0);
+    var c0 = vec3.lerp(s_globalNoiseTemps[4], c00, c10, t_1);
+    var c1 = vec3.lerp(s_globalNoiseTemps[5], c01, c11, t_1);
+    var c = vec3.lerp(s_globalNoiseTemps[6], c0, c1, t_2);
 
-    c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0, s_globalNoiseTemps[7]);
-    c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0, s_globalNoiseTemps[8]);
-    c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[9]);
-    c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[10]);
-    c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[11]);
-    c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[12]);
-    var d = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[13]);
-
-    var r = vec3.lerp(c, d, t_3, s_globalNoiseTemps[14]);
+    c00 = vec3.lerp(s_globalNoiseTemps[7], s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0);
+    c10 = vec3.lerp(s_globalNoiseTemps[8], s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0);
+    c01 = vec3.lerp(s_globalNoiseTemps[9], s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0);
+    c11 = vec3.lerp(s_globalNoiseTemps[10], s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0);
+    c0 = vec3.lerp(s_globalNoiseTemps[11], c00, c10, t_1);
+    c1 = vec3.lerp(s_globalNoiseTemps[12], c01, c11, t_1);
+    var d = vec3.lerp(s_globalNoiseTemps[13], c0, c1, t_2);
+    var r = vec3.lerp(s_globalNoiseTemps[14], c, d, t_3);
     result[0] += r[0] * power;
     result[1] += r[1] * power;
     result[2] += r[2] * power;
@@ -106,17 +105,15 @@ function AddNoise(pos_0, pos_1, pos_2, pos_3, power, result)
 
 /**
  * tempNoise
- * @type {quat4}
- * @prototype
+ * @type {quat}
  */
-Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
+Tw2ParticleTurbulenceForce.tempNoise = quat.zero();
 
 /**
  * ApplyForce
  * @param position
  * @param velocity
  * @param force
- * @prototype
  */
 Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
 {
@@ -151,7 +148,7 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, f
 /**
  * Internal render/update function. It is called every frame.
  * @param {number} dt - delta Time
- * @prototype
+ 
  */
 Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
 {

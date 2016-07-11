@@ -17,9 +17,10 @@ chain for still reporting too many errors.
 **Available tasks**:
 * format: running jsbeautifier (based on .jsbeautifyrc)
 * lint: running jshint (based on .jshintrc)
-* min: running uglifyjs, producing `/dist/ccpwgl_int.min.js`
-* cc: running concat and jsbeautifier:cc producing `/dist/ccpwgl_int.js`
-* dist: running `min` and `cc` which compiles the ccpwgl_int files
+* cc: Creates an unminified ccpwgl initialisation file (`/dist/ccpwgl_int.js`)
+* min: Creates a minified ccpwgl initialisation file (`/dist/ccpwgl_int.min.js`)
+* gl3: Creates the ccpwgl glMatrix files (`/dist/ccpwgl_gl3.js` and `/dist/ccpwgl_gl3.min.js`)
+* dist: Creates all distribution files (running `min` , `cc` and `gl3`)
 
 Documentation (Work in progress)
 --------------------------------

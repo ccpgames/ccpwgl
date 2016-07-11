@@ -4,7 +4,7 @@
  * @property {null|Tw2Curve} [yawCurve]
  * @property {null|Tw2Curve} [pitchCurve]
  * @property {null|Tw2Curve} [rollCurve]
- * @property {quat4} currentValue=[0,0,0,1]
+ * @property {quat} currentValue=[0,0,0,1]
  * @constructor
  */
 function Tw2EulerRotation()
@@ -13,13 +13,12 @@ function Tw2EulerRotation()
     this.yawCurve = null;
     this.pitchCurve = null;
     this.rollCurve = null;
-    this.currentValue = quat4.create([0, 0, 0, 1]);
+    this.currentValue = quat.create();
 }
 
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2EulerRotation.prototype.UpdateValue = function(time)
 {
@@ -29,9 +28,8 @@ Tw2EulerRotation.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
- * @prototype
+ * @param {quat} value
+ * @returns {quat}
  */
 Tw2EulerRotation.prototype.GetValueAt = function(time, value)
 {
@@ -57,7 +55,6 @@ Tw2EulerRotation.prototype.GetValueAt = function(time, value)
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2EulerRotation.prototype.GetLength = function()
 {

@@ -19,7 +19,6 @@ function Tw2ParticleFluidDragForce()
  * @param force
  * @param {number} dt - delta time
  * @param mass
- * @prototype
  */
 Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
 {
@@ -31,7 +30,7 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
     this._tempVec[1] = velocity.buffer[velocity.offset + 1] * -speed * this.drag;
     this._tempVec[2] = velocity.buffer[velocity.offset + 2] * -speed * this.drag;
 
-    vec3.scale(this._tempVec, dt * mass, this._tempVec2);
+    vec3.scale(this._tempVec2, this._tempVec, dt * mass);
     this._tempVec2[0] += velocity.buffer[velocity.offset];
     this._tempVec2[1] += velocity.buffer[velocity.offset + 1];
     this._tempVec2[2] += velocity.buffer[velocity.offset + 2];
@@ -46,12 +45,11 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
     }
     else
     {
-        vec3.set(this._tempVec, force);
+        vec3.copy(force, this._tempVec);
     }
 };
 
 /**
  * Internal render/update function. It is called every frame.
- * @prototype
  */
 Tw2ParticleFluidDragForce.prototype.Update = function() {};

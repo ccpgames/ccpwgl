@@ -43,7 +43,6 @@ function Tw2WbgTrack()
 
     /**
      * Initialize
-     * @method
      */
     this.Initialize = function()
     {
@@ -65,7 +64,6 @@ function Tw2WbgTrack()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     this.UpdateValue = function(time)
     {
@@ -87,7 +85,7 @@ function Tw2WbgTrack()
 /**
  * Tw2WbgTransformTrack
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scale
  * @variable positionCurve
  * @variable rotationCurve
@@ -98,13 +96,12 @@ function Tw2WbgTrack()
 function Tw2WbgTransformTrack()
 {
     this.translation = vec3.create();
-    this.rotation = quat4.create();
-    this.rotation[3] = 1;
+    this.rotation = quat.create();
     this.scale = vec3.create();
     var positionCurve = null;
     var rotationCurve = null;
     var scaleCurve = null;
-    var scaleShear = mat4.identity(mat4.create());
+    var scaleShear = mat4.create();
 
     /**
      * _TracksReady
@@ -141,7 +138,6 @@ function Tw2WbgTransformTrack()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     this._UpdateValue = function(time)
     {
@@ -152,7 +148,7 @@ function Tw2WbgTransformTrack()
         if (rotationCurve)
         {
             Tw2AnimationController.EvaluateCurve(rotationCurve, time, this.rotation, this.cycle, this.duration);
-            quat4.normalize(this.rotation);
+            quat.normalize(this.rotation, this.rotation);
         }
         if (scaleCurve)
         {
@@ -166,6 +162,5 @@ function Tw2WbgTransformTrack()
 
 /**
  * @type {Tw2WbgTrack}
- * @prototype
  */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();

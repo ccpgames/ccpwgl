@@ -38,7 +38,6 @@ function Tw2EventCurve()
  * @param {Tw2EventKey} a
  * @param {Tw2EventKey} b
  * @returns {number}
- * @method
  */
 Tw2EventCurve.Compare = function(a, b)
 {
@@ -55,7 +54,6 @@ Tw2EventCurve.Compare = function(a, b)
 
 /**
  * Initializes the Curve
- * @prototype
  */
 Tw2EventCurve.prototype.Initialize = function()
 {
@@ -70,7 +68,6 @@ Tw2EventCurve.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2EventCurve.prototype.GetLength = function()
 {
@@ -80,7 +77,6 @@ Tw2EventCurve.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2EventCurve.prototype.UpdateValue = function(time)
 {

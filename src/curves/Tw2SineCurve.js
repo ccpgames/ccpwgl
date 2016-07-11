@@ -19,7 +19,6 @@ function Tw2SineCurve()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2SineCurve.prototype.UpdateValue = function(time)
 {
@@ -30,9 +29,8 @@ Tw2SineCurve.prototype.UpdateValue = function(time)
  * Gets a value at a specific time
  * @param {number} time
  * @returns {number}
- * @prototype
  */
 Tw2SineCurve.prototype.GetValueAt = function(time)
 {
-    return Math.sin(time * Math.pi * 2 * this.speed) * this.scale + this.offset;
+    return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
 };

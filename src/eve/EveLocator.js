@@ -7,5 +7,5 @@
 function EveLocator()
 {
     this.name = '';
-    this.transform = mat4.create();
+    this.transform = mat4.zero();
 }
