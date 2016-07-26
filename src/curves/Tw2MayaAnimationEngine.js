@@ -1,6 +1,6 @@
 /**
  * Tw2MayaAnimationEngine
- * TODO: Constructor is missing the prototype `_EvaluteBezier`
+ * TODO: Complete the prototype `_EvaluteBezier`
  * @property {Array} curves
  * @property {Array} hermiteSegments
  * @property {Array} bezierSegments
@@ -273,14 +273,13 @@ Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
 
 /**
  * _EvaluateBezier
- * TODO: This function possibly has multiple errors
  * @param segment
  * @param time
- * @param nextKeyTime
+ * @param nextSegmentTime
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
+Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextSegmentTime)
 {
     var t, s;
 
