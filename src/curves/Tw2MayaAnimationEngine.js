@@ -245,6 +245,19 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
 };
 
 /**
+ * _EvaluateInfinities
+ * @param curve
+ * @param segments
+ * @param startSegment
+ * @param {time} time
+ * @param {boolean} bool
+ */
+Tw2MayaAnimationEngine.prototype._EvaluateInfinities(curve, segments, startSegment, time, bool)
+{
+    throw new Error ('_EvaluateInfinities not implimented');
+}
+
+/**
  * _EvaluateHermite
  * @param segment
  * @param time
@@ -279,10 +292,11 @@ Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextK
     }
     else
     {
-        var poly3 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
-        var poly2 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
-        var poly1 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
-        var poly0 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
+        var poly = quat4.create();
+        poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
+        poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
+        poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
+        poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
         var roots = [];
         if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) == 1)
         {
