@@ -245,17 +245,18 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
 };
 
 /**
- * _EvaluateInfinities
- * @param curve
+ * A static helper function to evaluate the infinity portion of an animation curve.
+ * The infinity portion is the parts of the animation curve outside the range of keys.
+ * @param curve - The animation curve to evaluate
  * @param segments
  * @param startSegment
  * @param {time} time
- * @param {boolean} bool
+ * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
  */
 Tw2MayaAnimationEngine.prototype._EvaluateInfinities(curve, segments, startSegment, time, bool)
 {
     throw new Error ('_EvaluateInfinities not implimented');
-}
+};
 
 /**
  * _EvaluateHermite
