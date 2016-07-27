@@ -151,6 +151,13 @@ function Tw2Device()
     this.BLEND_BOTHINVSRCALPHA = 13;
     this.BLEND_BLENDFACTOR = 14;
     this.BLEND_INVBLENDFACTOR = 15;
+    
+    // RS_BLENDOP & RS_BLENDOPALPHA ENUMS
+    this.BLENDOP_ADD = 1; 
+    this.BLENDOP_SUBTRACT = 2; 
+    this.BLENDOP_REVSUBTRACT = 3; 
+    this.BLENDOP_MIN = 4; 
+    this.BLENDOP_MAX = 5;
 
     this.gl = null;
     this.debugMode = false;
