@@ -49,7 +49,7 @@ EveMissile.prototype.UpdateViewDependentData = function()
 {
     for (var i = 0; i < this.warheads.length; ++i)
     {
-        this.warheads[i].UpdateViewDependentData(this.transform);
+        this.warheads[i].UpdateViewDependentData();
     }
 };
 
