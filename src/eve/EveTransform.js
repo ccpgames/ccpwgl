@@ -70,7 +70,6 @@ function EveTransform()
     this.name = '';
     this.mesh = null;
 
-    this.modifier = this.NONE;
     this.NONE = 0;
     this.BILLBOARD = 1;
     this.TRANSLATE_WITH_CAMERA = 2;
@@ -80,6 +79,7 @@ function EveTransform()
     this.EVE_BOOSTER = 101;
     this.EVE_SIMPLE_HALO = 102;
     this.EVE_CAMERA_ROTATION = 103;
+    this.modifier = this.NONE;
 
     this.sortValueMultiplier = 1.0;
     this.distanceBasedScaleArg1 = 0.2;
