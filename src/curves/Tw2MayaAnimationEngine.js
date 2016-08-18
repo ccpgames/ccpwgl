@@ -1,6 +1,6 @@
 /**
  * Tw2MayaAnimationEngine
- * TODO: Constructor is missing the prototype `_EvaluteBezier`
+ * TODO: Complete the prototype `_EvaluteBezier`
  * @property {Array} curves
  * @property {Array} hermiteSegments
  * @property {Array} bezierSegments
@@ -245,6 +245,20 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
 };
 
 /**
+ * A static helper function to evaluate the infinity portion of an animation curve.
+ * The infinity portion is the parts of the animation curve outside the range of keys.
+ * @param curve - The animation curve to evaluate
+ * @param segments
+ * @param startSegment
+ * @param {time} time
+ * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
+ */
+Tw2MayaAnimationEngine.prototype._EvaluateInfinities(curve, segments, startSegment, time, bool)
+{
+    throw new Error ('_EvaluateInfinities not implimented');
+};
+
+/**
  * _EvaluateHermite
  * @param segment
  * @param time
@@ -260,14 +274,13 @@ Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
 
 /**
  * _EvaluateBezier
- * TODO: This function possibly has multiple errors
  * @param segment
  * @param time
- * @param nextKeyTime
+ * @param nextSegmentTime
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
+Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextSegmentTime)
 {
     var t, s;
 
@@ -279,10 +292,11 @@ Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextK
     }
     else
     {
-        var poly3 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
-        var poly2 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
-        var poly1 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
-        var poly0 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
+        var poly = quat4.create();
+        poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
+        poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
+        poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
+        poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
         var roots = [];
         if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) == 1)
         {
