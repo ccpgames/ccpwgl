@@ -696,8 +696,8 @@ function Tw2Device()
             {
                 blendOp = this.gl.FUNC_REVERSE_SUBTRACT;
             }
-            var srcBlend = this._blendTable[this.alphaBlendState.states[this.BLENDOP_SRCBLEND]];
-            var destBlend = this._blendTable[this.alphaBlendState.states[this.BLENDOP_DESTBLEND]];
+            var srcBlend = this._blendTable[this.alphaBlendState.states[this.RS_SRCBLEND]];
+            var destBlend = this._blendTable[this.alphaBlendState.states[this.RS_DESTBLEND]];
 
             if (this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE])
             {
