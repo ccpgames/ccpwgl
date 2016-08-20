@@ -151,6 +151,13 @@ function Tw2Device()
     this.BLEND_BOTHINVSRCALPHA = 13;
     this.BLEND_BLENDFACTOR = 14;
     this.BLEND_INVBLENDFACTOR = 15;
+    
+    // RS_BLENDOP & RS_BLENDOPALPHA ENUMS
+    this.BLENDOP_ADD = 1; 
+    this.BLENDOP_SUBTRACT = 2; 
+    this.BLENDOP_REVSUBTRACT = 3; 
+    // this.BLENDOP_MIN = 4; 
+    // this.BLENDOP_MAX = 5;
 
     this.gl = null;
     this.debugMode = false;
@@ -681,11 +688,11 @@ function Tw2Device()
         if (this.alphaBlendState.dirty)
         {
             var blendOp = this.gl.FUNC_ADD;
-            if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+            if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
             {
                 blendOp = this.gl.FUNC_SUBTRACT;
             }
-            else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+            else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
             {
                 blendOp = this.gl.FUNC_REVERSE_SUBTRACT;
             }
@@ -695,11 +702,11 @@ function Tw2Device()
             if (this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE])
             {
                 var blendOpAlpha = this.gl.FUNC_ADD;
-                if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+                if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
                 {
                     blendOpAlpha = this.gl.FUNC_SUBTRACT;
                 }
-                else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+                else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
                 {
                     blendOpAlpha = this.gl.FUNC_REVERSE_SUBTRACT;
                 }
