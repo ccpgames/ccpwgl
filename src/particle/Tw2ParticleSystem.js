@@ -54,7 +54,6 @@ Tw2ParticleElementDeclaration.CUSTOM = 4;
 /**
  * Gets the dimension of an element type
  * @returns {number}
- * @prototype
  */
 Tw2ParticleElementDeclaration.prototype.GetDimension = function()
 {
@@ -62,10 +61,13 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function()
     {
         case Tw2ParticleElementDeclaration.LIFETIME:
             return 2;
+
         case Tw2ParticleElementDeclaration.POSITION:
             return 3;
+
         case Tw2ParticleElementDeclaration.VELOCITY:
             return 3;
+
         case Tw2ParticleElementDeclaration.MASS:
             return 1;
     }
@@ -75,7 +77,6 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function()
 /**
  * GetDeclaration
  * @returns {Tw2VertexElement}
- * @prototype
  */
 Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
 {
@@ -85,12 +86,15 @@ Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
         case Tw2ParticleElementDeclaration.LIFETIME:
             usage = Tw2VertexDeclaration.DECL_TANGENT;
             break;
+
         case Tw2ParticleElementDeclaration.POSITION:
             usage = Tw2VertexDeclaration.DECL_POSITION;
             break;
+
         case Tw2ParticleElementDeclaration.VELOCITY:
             usage = Tw2VertexDeclaration.DECL_NORMAL;
             break;
+
         case Tw2ParticleElementDeclaration.MASS:
             usage = Tw2VertexDeclaration.DECL_BINORMAL;
             break;
@@ -196,7 +200,7 @@ function Tw2ParticleSystem()
 
 /**
  * Initializes the Particle System
- * @prototype
+
  */
 Tw2ParticleSystem.prototype.Initialize = function()
 {
@@ -206,7 +210,7 @@ Tw2ParticleSystem.prototype.Initialize = function()
 /**
  * Updates Element Declarations
  * TODO: fix/remove commented out code
- * @prototype
+
  */
 Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
 {
@@ -302,7 +306,6 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
  * HasElement
  * @param {ParticleElementType} type
  * @returns {boolean}
- * @prototype
  */
 Tw2ParticleSystem.prototype.HasElement = function(type)
 {
@@ -313,7 +316,6 @@ Tw2ParticleSystem.prototype.HasElement = function(type)
  * GetElement
  * @param {ParticleElementType} type
  * @returns {*}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetElement = function(type)
 {
@@ -327,7 +329,6 @@ Tw2ParticleSystem.prototype.GetElement = function(type)
 /**
  * BeginSpawnParticle
  * @returns {null|number}
- * @prototype
  */
 Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
 {
@@ -340,7 +341,6 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
 
 /**
  * EndSpawnParticle
- * @prototype
  */
 Tw2ParticleSystem.prototype.EndSpawnParticle = function()
 {
@@ -350,7 +350,6 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function()
 /**
  * Internal render/update function. It is called every frame.
  * @param {number} dt - delta time
- * @prototype
  */
 Tw2ParticleSystem.prototype.Update = function(dt)
 {
@@ -429,7 +428,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
                 }
                 if (mass)
                 {
-                    vec3.scale(force, 1. / mass.buffer[mass.offset]);
+                    vec3.scale(force, force, 1 / mass.buffer[mass.offset]);
                 }
                 velocity.buffer[velocity.offset] += force[0] * dt;
                 velocity.buffer[velocity.offset + 1] += force[1] * dt;
@@ -504,7 +503,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
  * @param {vec3} aabbMin
  * @param {vec3} aabbMax
  * @returns {boolean}
- * @prototype
+
  */
 Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
 {
@@ -594,7 +593,6 @@ Tw2ParticleSystem.prototype._Sort = function()
 /**
  * GetInstanceBuffer
  * @returns {WebGLBuffer}
- * @constructor
  */
 Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
 {
@@ -635,7 +633,6 @@ Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
 /**
  * GetInstanceDeclaration
  * @returns {Tw2VertexDeclaration}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
 {
@@ -645,7 +642,6 @@ Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
 /**
  * GetInstanceStride
  * @returns {number}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetInstanceStride = function()
 {
@@ -655,7 +651,6 @@ Tw2ParticleSystem.prototype.GetInstanceStride = function()
 /**
  * GetInstanceCount
  * @returns {number}
- * @prototype
  */
 Tw2ParticleSystem.prototype.GetInstanceCount = function()
 {

@@ -21,7 +21,6 @@ function Tw2VectorSequencer()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2VectorSequencer.prototype.GetLength = function()
 {
@@ -39,7 +38,6 @@ Tw2VectorSequencer.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2VectorSequencer.prototype.UpdateValue = function(time)
 {
@@ -51,7 +49,6 @@ Tw2VectorSequencer.prototype.UpdateValue = function(time)
  * @param {number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
 {
@@ -59,32 +56,24 @@ Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
 
     if (this.operator == 0)
     {
-        value[0] = 1;
-        value[1] = 1;
-        value[2] = 1;
+        vec3.fill(value, 1);
         tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
             functions[i].GetValueAt(time, tempValue);
-            value[0] *= tempValue[0];
-            value[1] *= tempValue[1];
-            value[2] *= tempValue[2];
+            vec3.multiply(value, value, tempValue);
         }
     }
     else
     {
-        value[0] = 0;
-        value[1] = 0;
-        value[2] = 0;
+        vec3.fill(value, 0);
         tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
             functions[i].GetValueAt(time, tempValue);
-            value[0] += tempValue[0];
-            value[1] += tempValue[1];
-            value[2] += tempValue[2];
+            vec3.add(value, value, tempValue);
         }
     }
     return value;

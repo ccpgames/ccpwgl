@@ -9,8 +9,8 @@
  * @param {number} [value=1]
  * @property {string} name
  * @property {number} value
- * @property {null|Array} constantBuffer
- * @property {null|number} offset
+ * @property {Float32Array} constantBuffer
+ * @property {number} offset
  * @constructor
  */
 function Tw2FloatParameter(name, value)
@@ -37,12 +37,10 @@ function Tw2FloatParameter(name, value)
 
 /**
  * Bind
- * TODO: Idenfify if @param size should be passed to the `Apply` prototype as it is currently redundant
  * @param {Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @returns {boolean}
- * @prototype
  */
 Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
@@ -57,7 +55,6 @@ Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
 
 /**
  * Unbind
- * @prototype
  */
 Tw2FloatParameter.prototype.Unbind = function()
 {
@@ -66,7 +63,6 @@ Tw2FloatParameter.prototype.Unbind = function()
 
 /**
  * Updates the constant buffer to the current value
- * @prototype
  */
 Tw2FloatParameter.prototype.OnValueChanged = function()
 {
@@ -78,11 +74,9 @@ Tw2FloatParameter.prototype.OnValueChanged = function()
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Array} constantBuffer
  * @param {number} offset
- * @param {number} size
- * @prototype
+ * @param {number} size - unused
  */
 Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
@@ -91,7 +85,6 @@ Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value
- * @prototype
  */
 Tw2FloatParameter.prototype.GetValue = function()
 {
@@ -105,13 +98,12 @@ Tw2FloatParameter.prototype.GetValue = function()
 
 /**
  * Sets a supplied value
- * @prototype
  */
 Tw2FloatParameter.prototype.SetValue = function(value)
 {
     this.value = value;
     if (this.constantBuffer != null)
     {
-        this.constantBuffer.set(this.value, this.offset);
+        this.constantBuffer[this.offset] = this.value;
     }
 };

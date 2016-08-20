@@ -70,9 +70,9 @@ Tw2Animation.prototype.IsFinished = function()
 function Tw2Bone()
 {
     this.boneRes = null;
-    this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
-    this.offsetTransform = mat4.create();
+    this.localTransform = mat4.zero();
+    this.worldTransform = mat4.zero();
+    this.offsetTransform = mat4.zero();
 }
 
 
@@ -93,7 +93,7 @@ function Tw2Model()
 
 /**
  * Tw2AnimationController
- * @param {Tw2GeometryRes} geometryResource
+ * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
  * @property {Array.<Tw2Animation>} animations
@@ -102,11 +102,11 @@ function Tw2Model()
  * @property {boolean} update
  * @property {mat4} _tempMat4
  * @property {mat3} _tempMat3
- * @property {quat4} _tempQuat4
+ * @property {quat} _tempQuat
  * @property {vec3} _tempVec3
  * @property _geometryResource
  * @property {Array} pendingCommands
- * @prototype
+ * @constructor
  */
 function Tw2AnimationController(geometryResource)
 {
@@ -116,9 +116,9 @@ function Tw2AnimationController(geometryResource)
     this.meshBindings = [];
     this.loaded = false;
     this.update = true;
-    this._tempMat4 = mat4.create();
-    this._tempMat3 = mat3.create();
-    this._tempQuat4 = quat4.create();
+    this._tempMat4 = mat4.zero();
+    this._tempMat3 = mat3.zero();
+    this._tempQuat = quat.zero();
     this._tempVec3 = vec3.create();
     this._geometryResource = null;
     this.pendingCommands = [];
@@ -155,7 +155,6 @@ Tw2AnimationController.prototype.GetResources = function(out)
 /**
  * Clears any existing resources and loads the supplied geometry resource
  * @param {Tw2GeometryRes} geometryResource
- * @prototype
  */
 Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
 {
@@ -181,7 +180,6 @@ Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource
 /**
  * Adds a Geometry Resource
  * @param {Tw2GeometryRes} geometryResource
- * @prototype
  */
 Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
 {
@@ -199,7 +197,6 @@ Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource
 /**
  * Adds animations from a resource
  * @param {Tw2GeometryRes} resource
- * @prototype
  */
 Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
 {
@@ -322,7 +319,6 @@ Tw2AnimationController.prototype._FindMeshBindings = function(resource)
 /**
  * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
  * @param {Tw2GeometryRes} resource
- * @prototype
  */
 Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 {
@@ -354,7 +350,6 @@ Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 
 /**
  * _DoRebuildCachedData
- * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
  * @param {Tw2GeometryRes} resource
  * @private
  */
@@ -410,7 +405,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
                 meshBindings.resource = resource;
                 this.meshBindings.push(meshBindings);
             }
-            meshBindings[meshIx] = new glMatrixArrayType(resource.models[i].meshBindings[j].bones.length * 12);
+            meshBindings[meshIx] = new gl3.ARRAY_TYPE(resource.models[i].meshBindings[j].bones.length * 12);
             for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
             {
                 for (var n = 0; n < model.bones.length; ++n)
@@ -462,7 +457,6 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
  * Gets a loaded Tw2Animation by it's name
  * @param name
  * @returns {null|Tw2Animation} Returns the animation if found
- * @constructor
  */
 Tw2AnimationController.prototype.GetAnimation = function(name)
 {
@@ -481,7 +475,6 @@ Tw2AnimationController.prototype.GetAnimation = function(name)
  * Resets a Tw2Animation by it's name
  * @param {String} name
  * @return {boolean}
- * @constructor
  */
 Tw2AnimationController.prototype.ResetAnimation = function(name)
 {
@@ -501,7 +494,6 @@ Tw2AnimationController.prototype.ResetAnimation = function(name)
  * @param {boolean} [cycle]
  * @param {Function} [callback] - Optional callback which is fired once the animation has completed
  * @return {boolean}
- * @prototype
  */
 Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
@@ -540,7 +532,6 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
  * @param {boolean} [cycle]
  * @param {Function} [callback] - Optional callback which is fired once the animation has completed
  * @returns {boolean}
- * @prototype
  */
 Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
 {
@@ -577,7 +568,6 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
 /**
  * Gets an array of all the currently playing animations by name
  * @returns {Array}
- * @constructor
  */
 Tw2AnimationController.prototype.GetPlayingAnimations = function()
 {
@@ -597,7 +587,6 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
 /**
  * Stops an animation or an array of animations from playing
  * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
- * @prototype
  */
 Tw2AnimationController.prototype.StopAnimation = function(names)
 {
@@ -634,7 +623,6 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
 
 /**
  * Stops all animations from playing
- * @prototype
  */
 Tw2AnimationController.prototype.StopAllAnimations = function()
 {
@@ -657,7 +645,6 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
 /**
  * Stops all but the supplied list of animations
  * @param {String| Array.<string>} names - Animation Names
- * @prototype
  */
 Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 {
@@ -695,7 +682,6 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 /**
  * Resets the bone transforms for the supplied models
  * @param {Array.<Tw2Model>} models
- * @prototype
  */
 Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
 {
@@ -705,19 +691,20 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
         {
             var bone = this.models[i].bones[j];
             var boneRes = bone.boneRes;
-            mat4.set(boneRes.localTransform, bone.localTransform);
+            mat4.copy(bone.localTransform, boneRes.localTransform);
+
             if (boneRes.parentIndex != -1)
             {
-                mat4.multiply(bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.worldTransform);
+                mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
             }
             else
             {
-                mat4.set(bone.localTransform, bone.worldTransform);
+                mat4.copy(bone.worldTransform, bone.localTransform);
             }
             mat4.identity(bone.offsetTransform);
         }
     }
-    var id = mat4.identity(mat4.create());
+    var id = mat4.create();
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
         for (var j = 0; j < this.meshBindings[i].length; ++j)
@@ -833,9 +820,7 @@ Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, durat
 
 /**
  * Internal render/update function which is called every frame
- * TODO: Fix commented out code (line 718)
  * @param {number} dt - Delta Time
- * @prototype
  */
 Tw2AnimationController.prototype.Update = function(dt)
 {
@@ -848,7 +833,6 @@ Tw2AnimationController.prototype.Update = function(dt)
     {
         this.geometryResources[i].KeepAlive();
     }
-
 
     var tempMat = this._tempMat4;
     var updateBones = false;
@@ -875,7 +859,7 @@ Tw2AnimationController.prototype.Update = function(dt)
                     animation.time = res.duration;
                 }
             }
-            var orientation = this._tempQuat4;
+            var orientation = this._tempQuat;
             var scale = this._tempMat3;
             var position = this._tempVec3;
             for (var j = 0; j < animation.trackGroups.length; ++j)
@@ -894,7 +878,7 @@ Tw2AnimationController.prototype.Update = function(dt)
                     if (track.trackRes.orientation)
                     {
                         Tw2AnimationController.EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
-                        quat4.normalize(orientation);
+                        quat.normalize(orientation, orientation);
                     }
                     else
                     {
@@ -910,11 +894,10 @@ Tw2AnimationController.prototype.Update = function(dt)
                         mat3.identity(scale);
                     }
 
-                    mat3.toMat4(scale, track.bone.localTransform);
-                    mat4.multiply(track.bone.localTransform, mat4.transpose(quat4.toMat4(orientation, tempMat)));
-                    track.bone.localTransform[12] = position[0];
-                    track.bone.localTransform[13] = position[1];
-                    track.bone.localTransform[14] = position[2];
+                    mat4.setMat3(track.bone.localTransform, scale);
+                    mat4.fromQuat(tempMat, orientation);
+                    mat4.multiply(track.bone.localTransform, track.bone.localTransform, tempMat);
+                    mat4.setTranslation(track.bone.localTransform, position);
                     updateBones = true;
                 }
             }
@@ -929,13 +912,14 @@ Tw2AnimationController.prototype.Update = function(dt)
                 var bone = this.models[i].bones[j];
                 if (bone.boneRes.parentIndex != -1)
                 {
-                    mat4.multiply(this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform, bone.worldTransform);
+                    mat4.multiply(bone.worldTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
                 }
                 else
                 {
-                    mat4.set(bone.localTransform, bone.worldTransform);
+                    mat4.copy(bone.worldTransform, bone.localTransform);
                 }
-                mat4.multiply(bone.worldTransform, bone.boneRes.worldTransformInv, bone.offsetTransform);
+                mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
+
                 if (bone.bindingArrays)
                 {
                     for (var a = 0; a < bone.bindingArrays.length; ++a)
@@ -963,9 +947,7 @@ Tw2AnimationController.prototype.Update = function(dt)
 
 /**
  * RenderDebugInfo
- * TODO: Fix commented out code (lines 767 - 770)
  * @param {function} debugHelper
- * @prototype
  */
 Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 {
@@ -992,7 +974,6 @@ Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
  * @param {number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Float32Array}
- * @prototype
  */
 Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
@@ -1018,7 +999,6 @@ Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryR
  * @param {number} meshIndex
  * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
  * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
- * @prototype
  */
 Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
 {

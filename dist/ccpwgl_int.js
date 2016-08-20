@@ -1,93 +1,20 @@
-/* ccpwgl 2016-06-19 */
+/* ccpwgl 2016-07-11 */
 
 var ccpwgl_int = (function()
 {
     /**
      * Event Emitter
-     * @param {String} [name='']
-     * @property {String} [name=''] - The name of the emitter
-     * @property {{}} events
-     * @returns {Tw2EventEmitter}
+     * @returns {*} emitter
      */
-    var Tw2EventEmitter = function(name)
+    var Tw2EventEmitter = function()
     {
-        this.name = name || '';
-        this.events = {};
-        return this;
-    };
-
-    /**
-     * Gets public only emitter methods (`on`, `off`, `once`, `del`)
-     * @param {{}} [out={}] An optional receiving object
-     * @returns {{}}
-     *
-     * @example var public = emitter.GetPublic()
-     * // The public object now has the emitter's public functions
-     */
-    Tw2EventEmitter.prototype.GetPublic = function(out)
-    {
-        out || (out = {});
-        this.inherit(out, false);
-        return out;
-    };
-
-    /**
-     * Checks if an event has any listeners
-     * @param {String} eventName - The event to check
-     * @returns {Boolean}
-     *
-     * @example emitter.HasListeners('myEvent');
-     * // Returns true or false
-     */
-    Tw2EventEmitter.prototype.HasListeners = function(eventName)
-    {
-        if (!(eventName in this.events)) return false;
-        return (this.events[eventName].size !== 0)
-    };
-
-    /**
-     * Registers an Event
-     * - Event names are case insensitive
-     * - Emits an `EventAdded` event with the event's name as an argument
-     * - When using the `on` and `once` methods an event is automatically registered
-     * @param  {String} eventName - The event to register
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.register('myEvent');
-     * // creates the myEvent event
-     * // emits a `EventAdded` event
-     */
-    Tw2EventEmitter.prototype.register = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            this.events[eventName] = new Set();
-            this.emit('EventAdded', eventName);
-        }
-        return this;
-    };
-
-    /**
-     * Deregisters an event and removes all listeners
-     * - Emits an `EventRemoved` event with the event's name as an argument
-     * @param {String} eventName - The event to deregister
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.deregister('myEvent');
-     * // Removes all listeners from the event, and then deletes the event
-     * // Emits an `EventRemoved` event
-     */
-    Tw2EventEmitter.prototype.deregister = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (eventName in this.events)
-        {
-            this.emit('EventRemoved', eventName);
-            delete this.events[eventName];
-        }
+        Object.defineProperty(
+            this, '__events',
+            {
+                value:
+                {},
+                writable: false
+            });
         return this;
     };
 
@@ -95,30 +22,22 @@ var ccpwgl_int = (function()
      * Emits an event
      * @param {String} eventName - The event to emit
      * @param {*} ...args - Any arguments to be passed to the event's listeners
-     * @returns {Tw2EventEmitter}
+     * @returns {*} emitter object
      *
      * @example emitter.emit('myEvent', arg1, arg2, arg3);
-     * // Emits the 'myEvent' event and calls all of it's listeners with the supplied arguments
+     * // Emits the 'myEvent' event and calls each of it's listeners with the supplied arguments
      */
     Tw2EventEmitter.prototype.emit = function(eventName)
     {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            return this.register(eventName);
-        }
-
+        eventName = Tw2EventEmitter.Register(this, eventName);
         var args = Array.prototype.slice.call(arguments);
         args.splice(0, 1);
-
-        this.events[eventName].forEach(
+        this.__events[eventName].forEach(
             function(listener)
             {
                 listener.apply(undefined, args);
             }
         );
-
         return this;
     };
 
@@ -126,26 +45,24 @@ var ccpwgl_int = (function()
      * Adds a listener to an event
      * - A listener can only exist on an Event once unless using the `once` method, self removing listeners are preferred
      * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add
-     * @returns {Tw2EventEmitter}
+     * @param {Function} listener - The listener to add
+     * @returns {*} emitter object
      *
      * @example emitter.on('myEvent', myListener);
      * // Adds `myListener` to the `myEvent` event
      */
     Tw2EventEmitter.prototype.on = function(eventName, listener)
     {
-        eventName = eventName.toLowerCase();
-
-        this.register(eventName);
-        this.events[eventName].add(listener);
+        eventName = Tw2EventEmitter.Register(this, eventName);
+        this.__events[eventName].add(listener);
         return this;
     };
 
     /**
      * Adds a listener to an event and removes it after it's first emit
      * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add for one emit only
-     * @returns {Tw2EventEmitter}
+     * @param {Function} listener - The listener to add for one emit only
+     * @returns {*} emitter object
      *
      * @example emitter.once('myEvent', myListener);
      * // Adds `myListener` to the `myEvent` event
@@ -153,15 +70,13 @@ var ccpwgl_int = (function()
      */
     Tw2EventEmitter.prototype.once = function(eventName, listener)
     {
+        eventName = Tw2EventEmitter.Register(this, eventName);
         var self = this;
-        eventName = eventName.toLowerCase();
-
         var once = function once()
         {
             listener.apply(undefined, arguments);
             self.off(eventName, once);
         };
-
         this.on(eventName, once);
         return this;
     };
@@ -169,8 +84,8 @@ var ccpwgl_int = (function()
     /**
      * Removes a listener from an event
      * @param {String} eventName - The target event
-     * @param {Function} listener - The listener to remove from an event
-     * @returns {Tw2EventEmitter}
+     * @param {Function} listener - The listener to remove
+     * @returns {*} emitter object
      *
      * @example emitter.off('myEvent', myListener);
      * // Removes `myListener` from the `myEvent` event
@@ -178,66 +93,171 @@ var ccpwgl_int = (function()
     Tw2EventEmitter.prototype.off = function(eventName, listener)
     {
         eventName = eventName.toLowerCase();
-
-        if (eventName in this.events)
+        if ('__events' in this && eventName in this.__events)
         {
-            this.events[eventName].delete(listener)
+            this.__events[eventName].delete(listener)
         }
         return this;
     };
 
     /**
-     * Deletes a listener from all of the emitter's events
-     * @param {Function} listener - The listener to delete
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.del(myListener);
-     * // Removes `myListener` from every emitter event
+     * Internal helper
+     * - Adds the `__event` property to objects that don't already have it (allows for usage of Object.assign)
+     * - Adds an event name to an emitter if it doesn't already exist
+     * - Ensures that eventNames are always lower case
+     * @param {*} emitter - target emitter
+     * @param {String} eventName - event to register
+     * @returns {String} eventName
      */
-    Tw2EventEmitter.prototype.del = function(listener)
+    Tw2EventEmitter.Register = function(emitter, eventName)
     {
-        const self = this;
-        for (var eventName in this.events)
+        if (!('__events' in emitter))
         {
-            if (this.events.hasOwnProperty(eventName))
+            Object.defineProperty(emitter, '__events',
             {
-                self.off(eventName, listener);
+                value:
+                {},
+                writable: false
+            });
+        }
+
+        eventName = eventName.toLowerCase();
+        if (!(eventName in emitter.__events))
+        {
+            emitter.__events[eventName] = new Set();
+            emitter.emit('EventAdded', eventName);
+        }
+        return eventName;
+    }
+
+    /**
+     * Checks if an emitter's event has any listeners
+     * @param {*} emitter - target emitter
+     * @param {String} eventName - event to check
+     * @returns {Boolean}
+     *
+     * @example Tw2EventEmitter.HasListeners(myEmitter, 'myEvent');
+     * // Returns true or false
+     */
+    Tw2EventEmitter.HasListeners = function(emitter, eventName)
+    {
+        if (!('__events' in emitter) || !(eventName in emitter.__events))
+        {
+            return false;
+        }
+        return (emitter.__events[eventName].size !== 0)
+    };
+
+    /**
+     * Gets an array of an emitter's event names that a listener is on
+     * @param {*} emitter - target emitter
+     * @param {Function} listener - listener to check
+     * @returns {Array.<String>}
+     *
+     * @example Tw2EventEmitter.HasListener(myEmitter, myListener)
+     * // returns an array of `myEmitter`'s event names that `myListener` is on
+     */
+    Tw2EventEmitter.HasListener = function(emitter, listener)
+    {
+        var result = [];
+        if ('__events' in emitter)
+        {
+            for (var eventName in emitter.__events)
+            {
+                if (emitter.__events.hasOwnProperty(eventName))
+                {
+                    if (emitter.__events[eventName].has(listener))
+                    {
+                        result.push(eventName);
+                    }
+                }
             }
         }
-        return this;
+        return result;
+    }
+
+    /**
+     * Removes a listener completely from an emitter
+     * @param {*} emitter - target emitter
+     * @param {Function} listener - listener to delete
+     *
+     * @example Tw2EventEmitter.RemoveListener(myEmitter, myListener);
+     * // Removes `myListener` from every event on `myEmitter`
+     */
+    Tw2EventEmitter.RemoveListener = function(emitter, listener)
+    {
+        if ('__events' in emitter)
+        {
+            for (var eventName in emitter.__events)
+            {
+                if (emitter.__events.hasOwnProperty(eventName))
+                {
+                    emitter.__events[eventName].delete(listener)
+                }
+            }
+        }
     };
+
+    /**
+     * Removes an event from an emitter, and all of it's listeners
+     * @param {*} emitter
+     * @param {String} eventName
+     *
+     * @example Tw2EventEmitter.RemoveEvent(myEmitter, 'myEvent');
+     * // Removes all listeners on `myEvent`
+     * // Deletes the `myEvent` event
+     * // emits `EventRemoved` with the event name as it's argument
+     */
+    Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
+    {
+        if ('__events' in emitter)
+        {
+            eventName = eventName.toLowerCase();
+            if (eventName in emitter.__events)
+            {
+                emitter.__events[eventName].clear();
+                delete emitter.__events[eventName];
+                emitter.emit('EventRemoved', eventName);
+            }
+        }
+    }
 
     /**
      * Adds bound emitter functions to a target object
-     * - No checks are made to see if these methods or property names already exist
-     * @param {{}} target - The object inheriting the emitter's functions
+     * - No checks are made to see if these methods or property names already exist in the target object
+     * @param {*} emitter - source emitter
+     * @param {{}} target - target object
      * @param {Boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
-     * @return {Tw2EventEmitter}
+     * @return {*}
      *
-     * @example emitter.inherit(myObject, true);
-     * // `myObject` now has `on`, `off`, `del` and `log` emitter methods
-     * @example emitter.inherit(myObject);
-     * // `myObject` now has `on`, `off`, `del`, `log` and `emit` emitter methods
+     * @example Tw2EventEmitter.Inherit(myEmitter, myObject, true);
+     * // `myObject` now has `on`, `off`, and `log` emitter methods
+     * @example Tw2EventEmitter.Inherit(myEmitter, myObject);
+     * // `myObject` now has `on`, `off`, `log` and `emit` emitter methods
      */
-    Tw2EventEmitter.prototype.inherit = function(target, excludeEmit)
+    Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
     {
-        target['on'] = this.on.bind(this);
-        target['off'] = this.off.bind(this);
-        target['del'] = this.del.bind(this);
-        target['log'] = this.log.bind(this);
-
-        if (!excludeEmit)
-        {
-            target['emit'] = this.emit.bind(this);
-        }
-
-        return this;
+        target['on'] = emitter.on.bind(emitter);
+        target['off'] = emitter.off.bind(emitter);
+        target['once'] = emitter.once.bind(emitter);
+        if (!excludeEmit) target['emit'] = emitter.emit.bind(this);
+        return target;
     };
 
     /**
-     * An Emit wrapper that emits an event and also creates a console output from a supplied event data object
-     * - The console output replicates the existing ccpwgl console logging
-     * - Console output can be toggled globally with { @link<Tw2EventEmitter.consoleErrors> and @link<Tw2EventEmitter.consoleLogs> }
+     * CCPWGL Global emitter
+     * @param {String} name - Console log prefix
+     * @param {Boolean} consoleErrors - Toggle for displaying console error outputs (warn, error)
+     * @param {Boolean} consoleLogs - Toggle for displaying console log outputs (log, info, debug)
+     * @type {Tw2EventEmitter}
+     */
+    var emitter = new Tw2EventEmitter();
+    emitter.name = 'CCPWGL';
+    emitter.consoleErrors = true;
+    emitter.consoleLogs = true;
+
+    /**
+     * An Emit wrapper for the ccpwgl global emitter which emits an event and also creates a console output from a supplied event data object
      * @param {String}  eventName               - The event to emit
      * @param {{}}      eventData               - event data
      * @param {String} [eventData.msg='']       - event message
@@ -246,10 +266,12 @@ var ccpwgl_int = (function()
      * @param {Number} [eventData.time]         - the time it took to process the event path (rounds to 3 decimal places)
      * @param {String} [eventData.type]         - a string representing the unique event type
      * @param {Object} [eventData.data]         - data relevant to the event type
+     * @param {Object} [eventData.err]          - javascript error object
      * @param {Number|String} [eventData.value] - a single value relevant to the event type
+     * @param {Error} [eventData.err]           - Error Event object, if supplied the stack trace will be displayed
      * @param {Array.<String>} [eventData.src]  - an array of the functions involved in the event
      */
-    Tw2EventEmitter.prototype.log = function(eventName, eventData)
+    emitter.log = function(eventName, eventData)
     {
         var d = eventData;
         if (!d.log) d.log = 'log';
@@ -260,16 +282,16 @@ var ccpwgl_int = (function()
         {
             case ('throw'):
                 log = 'error';
-                if (!Tw2EventEmitter.consoleErrors) return;
+                if (!this.consoleErrors) return;
                 break;
 
             case ('error'):
             case ('warn'):
-                if (!Tw2EventEmitter.consoleErrors) return;
+                if (!this.consoleErrors) return;
                 break;
 
             default:
-                if (!Tw2EventEmitter.consoleLogs) return;
+                if (!this.consoleLogs) return;
         }
 
         var header = this.name.concat(': {', eventName, '}');
@@ -282,32 +304,18 @@ var ccpwgl_int = (function()
             console.group(header);
             console[log](body);
             console.dir(d.data);
+            if ('err' in d && d.err.stack) console.debug(d.err.stack);
             console.groupEnd();
         }
         else
         {
             console[log](header, body);
         }
+
     };
-
-    /**
-     * Global toggle to disable `warn`, `error` and `throw` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleErrors = true;
-
-    /**
-     * Global toggle to disable `log`, `info` and `debug` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleLogs = true;
-
-
-    var emitter = new Tw2EventEmitter('CCPWGL');
-
     /**
      * Tw2Frustum
-     * @property {Array.<quat4>} planes
+     * @property {Array.<quat>} planes
      * @property {vec3} viewPos
      * @property {vec3} viewDir
      * @property {number} halfWidthProjection
@@ -316,7 +324,7 @@ var ccpwgl_int = (function()
      */
     function Tw2Frustum()
     {
-        this.planes = [quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create()];
+        this.planes = [quat.create(), quat.create(), quat.create(), quat.create(), quat.create(), quat.create()];
         this.viewPos = vec3.create();
         this.viewDir = vec3.create();
         this.halfWidthProjection = 1;
@@ -332,15 +340,12 @@ var ccpwgl_int = (function()
      */
     Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
     {
-        var viewProj = mat4.create();
-
-        mat4.inverse(view, viewProj);
-        this.viewPos.set(viewProj.subarray(12, 14));
-        this.viewDir.set(viewProj.subarray(8, 10));
-
+        var viewProj = mat4.invert(mat4.create(), view);
+        vec3.fromArray(this.viewPos, viewProj.subarray(12, 14));
+        vec3.fromArray(this.viewDir, viewProj.subarray(8, 10));
         this.halfWidthProjection = proj[0] * viewportSize * 0.5;
+        mat4.multiply(viewProj, proj, view);
 
-        mat4.multiply(proj, view, viewProj);
         this.planes[0][0] = viewProj[2];
         this.planes[0][1] = viewProj[6];
         this.planes[0][2] = viewProj[10];
@@ -409,7 +414,7 @@ var ccpwgl_int = (function()
      */
     Tw2Frustum.prototype.GetPixelSizeAcross = function(center, radius)
     {
-        var d = vec3.subtract(this.viewPos, center, this._tempVec);
+        var d = vec3.subtract(this._tempVec, this.viewPos, center);
         var depth = vec3.dot(this.viewDir, d);
         var epsilon = 1e-5;
         if (depth < epsilon)
@@ -653,7 +658,7 @@ var ccpwgl_int = (function()
      * @param {number} usageIndex
      * @param {number} type
      * @param {number} elements - How many variables this vertex data type uses
-     * @param {number} offset
+     * @param {number} [offset=0]
      * @property {number} usage
      * @property {number} usageIndex
      * @property {number} type
@@ -1441,7 +1446,7 @@ var ccpwgl_int = (function()
      */
     Tw2VariableStore.GetTw2ParameterType = function(value)
     {
-        if (value.constructor === (new glMatrixArrayType()).constructor || value.constructor === [].constructor)
+        if (value.constructor === (new gl3.ARRAY_TYPE()).constructor || value.constructor === [].constructor)
         {
             switch (value.length)
             {
@@ -1692,7 +1697,7 @@ var ccpwgl_int = (function()
                     msg: 'Prepare error',
                     path: this.path,
                     type: 'res.prepare',
-                    data: e
+                    err: e
                 })
             }
 
@@ -1983,7 +1988,8 @@ var ccpwgl_int = (function()
                         msg: 'Communication error loading',
                         path: obj.path,
                         type: 'http.readystate',
-                        value: readyState
+                        value: readyState,
+                        err: e
                     });
 
                     obj.LoadFinished(false);
@@ -2121,7 +2127,7 @@ var ccpwgl_int = (function()
                     msg: 'Error requesting',
                     path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    err: e
                 })
             }
         };
@@ -2285,7 +2291,8 @@ var ccpwgl_int = (function()
                     path: this.BuildUrl(path),
                     _path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    value: e.toString(),
+                    err: e
                 })
             }
         };
@@ -2419,8 +2426,8 @@ var ccpwgl_int = (function()
      * @param {number} [value=1]
      * @property {string} name
      * @property {number} value
-     * @property {null|Array} constantBuffer
-     * @property {null|number} offset
+     * @property {Float32Array} constantBuffer
+     * @property {number} offset
      * @constructor
      */
     function Tw2FloatParameter(name, value)
@@ -2447,12 +2454,10 @@ var ccpwgl_int = (function()
 
     /**
      * Bind
-     * TODO: Idenfify if @param size should be passed to the `Apply` prototype as it is currently redundant
      * @param {Array} constantBuffer
      * @param {number} offset
      * @param {number} size
      * @returns {boolean}
-     * @prototype
      */
     Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
     {
@@ -2467,7 +2472,6 @@ var ccpwgl_int = (function()
 
     /**
      * Unbind
-     * @prototype
      */
     Tw2FloatParameter.prototype.Unbind = function()
     {
@@ -2476,7 +2480,6 @@ var ccpwgl_int = (function()
 
     /**
      * Updates the constant buffer to the current value
-     * @prototype
      */
     Tw2FloatParameter.prototype.OnValueChanged = function()
     {
@@ -2488,11 +2491,9 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
-     * @prototype
+     * @param {number} size - unused
      */
     Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
     {
@@ -2501,7 +2502,6 @@ var ccpwgl_int = (function()
 
     /**
      * Gets the current value
-     * @prototype
      */
     Tw2FloatParameter.prototype.GetValue = function()
     {
@@ -2515,23 +2515,22 @@ var ccpwgl_int = (function()
 
     /**
      * Sets a supplied value
-     * @prototype
      */
     Tw2FloatParameter.prototype.SetValue = function(value)
     {
         this.value = value;
         if (this.constantBuffer != null)
         {
-            this.constantBuffer.set(this.value, this.offset);
+            this.constantBuffer[this.offset] = this.value;
         }
     };
 
     /**
      * Tw2Vector2Parameter
      * @param {string} [name='']
-     * @param {Array|Float32Array} [value=[1,1]]
+     * @param {vec2|Array|Float32Array} [value=[1,1]]
      * @property {string} name
-     * @property {Float32Array} value
+     * @property {vec2} value
      * @property {Float32Array} constantBuffer
      * @property {number} offset
      * @constructor
@@ -2548,11 +2547,11 @@ var ccpwgl_int = (function()
         }
         if (typeof(value) != 'undefined')
         {
-            this.value = new Float32Array(value);
+            this.value = vec2.clone(value);
         }
         else
         {
-            this.value = new Float32Array([1, 1]);
+            this.value = vec2.one();
         }
         this.constantBuffer = null;
         this.offset = 0;
@@ -2560,7 +2559,6 @@ var ccpwgl_int = (function()
 
     /**
      * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
@@ -2595,7 +2593,7 @@ var ccpwgl_int = (function()
      */
     Tw2Vector2Parameter.prototype.SetValue = function(value)
     {
-        this.value.set(value);
+        vec2.copy(this.value, value);
         if (this.constantBuffer != null)
         {
             this.constantBuffer.set(this.value, this.offset);
@@ -2629,17 +2627,17 @@ var ccpwgl_int = (function()
 
     /**
      * Gets the current value array
-     * @return {Float32Array} Vector2 Array
+     * @return {vec2} Vector2 Array
      * @prototype
      */
     Tw2Vector2Parameter.prototype.GetValue = function()
     {
         if (this.constantBuffer != null)
         {
-            return new Float32Array((this.constantBuffer.subarray(this.offset, this.offset + this.value.length)));
+            return vec2.fromArray(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
         }
 
-        return new Float32Array(this.value);
+        return vec2.clone(this.value);
     };
 
     /**
@@ -2699,9 +2697,9 @@ var ccpwgl_int = (function()
     /**
      * Tw2Vector3Parameter
      * @param {string} [name='']
-     * @param {vec3|Float32Array} [value=[1,1,1]]
+     * @param {vec3|Array|Float32Array} [value=[1,1,1]]
      * @property {string} name
-     * @property {vec3|Float32Array} value
+     * @property {vec3} value
      * @property {Float32Array} constantBuffer
      * @property {number} offset
      * @constructor
@@ -2718,11 +2716,11 @@ var ccpwgl_int = (function()
         }
         if (typeof(value) != 'undefined')
         {
-            this.value = vec3.create(value);
+            this.value = vec3.clone(value);
         }
         else
         {
-            this.value = vec3.create([1, 1, 1]);
+            this.value = vec3.one();
         }
         this.constantBuffer = null;
         this.offset = 0;
@@ -2730,12 +2728,10 @@ var ccpwgl_int = (function()
 
     /**
      * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
      * @returns {boolean}
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.Bind = function(constantBuffer, offset, size)
     {
@@ -2751,7 +2747,6 @@ var ccpwgl_int = (function()
 
     /**
      * Unbind
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.Unbind = function()
     {
@@ -2761,11 +2756,10 @@ var ccpwgl_int = (function()
     /**
      * Sets a supplied value
      * @param {vec3|Float32Array} value - Vector3 Array
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.SetValue = function(value)
     {
-        this.value.set(value);
+        vec3.copy(this.value, value);
         if (this.constantBuffer != null)
         {
             this.constantBuffer.set(this.value, this.offset);
@@ -2786,11 +2780,9 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
-     * @prototype
+     * @param {number} size - unused
      */
     Tw2Vector3Parameter.prototype.Apply = function(constantBuffer, offset, size)
     {
@@ -2799,17 +2791,16 @@ var ccpwgl_int = (function()
 
     /**
      * Gets the current value array
-     * @return {vec3|Float32Array} Vector3 Array
-     * @prototype
+     * @return {vec3} Vector3 Array
      */
     Tw2Vector3Parameter.prototype.GetValue = function()
     {
         if (this.constantBuffer != null)
         {
-            return vec3.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+            return vec3.fromArray(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
         }
 
-        return vec3.create(this.value);
+        return vec3.clone(this.value);
     };
 
     /**
@@ -2817,7 +2808,6 @@ var ccpwgl_int = (function()
      * @param {number} index
      * @returns {number}
      * @throw Invalid Index
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.GetIndexValue = function(index)
     {
@@ -2839,7 +2829,6 @@ var ccpwgl_int = (function()
      * @param {number} index
      * @param {number} value
      * @throw Invalid Index
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.SetIndexValue = function(index, value)
     {
@@ -2859,7 +2848,6 @@ var ccpwgl_int = (function()
     /**
      * Sets all value array elements to a single value
      * @param {number} value - The value to fill the value array elements with
-     * @prototype
      */
     Tw2Vector3Parameter.prototype.FillWith = function(value)
     {
@@ -2869,10 +2857,10 @@ var ccpwgl_int = (function()
     /**
      * Tw2Vector4Parameter
      * @param {string} [name='']
-     * @param {quat4|Float32Array} [value=[1,1,1,1]]
+     * @param {vec4|Array} [value=[1,1,1,1]]
      * @property {string} name
-     * @property {quat4|Float32Array} value
-     * @property {Array} constantBuffer
+     * @property {vec4} value
+     * @property {Float32Array} constantBuffer
      * @property {number} offset
      * @constructor
      */
@@ -2888,11 +2876,11 @@ var ccpwgl_int = (function()
         }
         if (typeof(value) != 'undefined')
         {
-            this.value = quat4.create(value);
+            this.value = vec4.clone(value);
         }
         else
         {
-            this.value = quat4.create([1, 1, 1, 1]);
+            this.value = vec4.one();
         }
         this.constantBuffer = null;
         this.offset = 0;
@@ -2900,12 +2888,10 @@ var ccpwgl_int = (function()
 
     /**
      * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} size - unused
      * @returns {boolean}
-     * @prototype
      */
     Tw2Vector4Parameter.prototype.Bind = function(constantBuffer, offset, size)
     {
@@ -2921,7 +2907,6 @@ var ccpwgl_int = (function()
 
     /**
      * Unbind
-     * @prototype
      */
     Tw2Vector4Parameter.prototype.Unbind = function()
     {
@@ -2930,12 +2915,11 @@ var ccpwgl_int = (function()
 
     /**
      * Sets a supplied value
-     * @param {quat4|Float32Array|Array} value - Vector4 Array
-     * @prototype
+     * @param {vec4|Float32Array|Array} value - Vector4 Array
      */
     Tw2Vector4Parameter.prototype.SetValue = function(value)
     {
-        this.value.set(value);
+        vec4.copy(this.value, value);
         if (this.constantBuffer != null)
         {
             this.constantBuffer.set(this.value, this.offset);
@@ -2956,11 +2940,9 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
-     * @prototype
+     * @param {number} size - unused
      */
     Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
     {
@@ -2969,17 +2951,16 @@ var ccpwgl_int = (function()
 
     /**
      * Gets the current value array
-     * @return {quat4|Float32Array} Vector4 Array
-     * @prototype
+     * @return {vec4} Vector4 Array
      */
     Tw2Vector4Parameter.prototype.GetValue = function()
     {
         if (this.constantBuffer != null)
         {
-            return quat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+            return vec4.fromArray(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
         }
 
-        return quat4.create(this.value);
+        return vec4.clone(this.value);
     };
 
     /**
@@ -2987,7 +2968,6 @@ var ccpwgl_int = (function()
      * @param {number} index
      * @returns {number}
      * @throw Invalid Index
-     * @prototype
      */
     Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
     {
@@ -3009,7 +2989,6 @@ var ccpwgl_int = (function()
      * @param {number} index
      * @param {number} value
      * @throw Invalid Index
-     * @prototype
      */
     Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
     {
@@ -3029,7 +3008,6 @@ var ccpwgl_int = (function()
     /**
      * Sets all value array elements to a single value
      * @param {number} value - The value to fill the value array elements with
-     * @prototype
      */
     Tw2Vector4Parameter.prototype.FillWith = function(value)
     {
@@ -3039,9 +3017,9 @@ var ccpwgl_int = (function()
     /**
      * Tw2MatrixParameter
      * @param {string} [name='']
-     * @param {mat4|Float32Array|Array} [value=mat4.create()]
+     * @param {mat4|Float32Array|Array} [value=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]]
      * @property {string} name
-     * @property {mat4|Float32Array} value
+     * @property {mat4} value
      * @property {Float32Array} constantBuffer
      * @property {number} offset
      * @constructor
@@ -3058,11 +3036,11 @@ var ccpwgl_int = (function()
         }
         if (typeof(value) != 'undefined')
         {
-            this.value = mat4.create(value);
+            this.value = mat4.clone(value);
         }
         else
         {
-            this.value = mat4.identity(mat4.create());
+            this.value = mat4.create();
         }
         this.constantBuffer = null;
         this.offset = 0;
@@ -3070,12 +3048,10 @@ var ccpwgl_int = (function()
 
     /**
      * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
      * @returns {boolean}
-     * @prototype
      */
     Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
     {
@@ -3091,11 +3067,10 @@ var ccpwgl_int = (function()
     /**
      * Sets a supplied value
      * @param {mat4} value
-     * @prototype
      */
     Tw2MatrixParameter.prototype.SetValue = function(value)
     {
-        this.value = mat4.create(value);
+        mat4.copy(this.value, value);
         if (this.constantBuffer != null)
         {
             this.constantBuffer.set(this.value, this.offset);
@@ -3104,26 +3079,23 @@ var ccpwgl_int = (function()
 
     /**
      * Gets the current value
-     * @return {mat4|Float32Array}
-     * @prototype
+     * @return {mat4}
      */
     Tw2MatrixParameter.prototype.GetValue = function()
     {
         if (this.constantBuffer != null)
         {
-            return mat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+            return mat4.fromArray(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
         }
 
-        return mat4.create(this.value);
+        return mat4.clone(this.value);
     };
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
-     * @prototype
+     * @param {number} size - Unused
      */
     Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
     {
@@ -3375,7 +3347,7 @@ var ccpwgl_int = (function()
      * @param {string} [name='']
      * @parameter {string} name
      * @parameter {vec3} scaling=[1,1,1]
-     * @parameter {quat4} rotation=[0,0,0,1]
+     * @parameter {quat} rotation=[0,0,0,1]
      * @parameter {vec3} translation=[0,0,0]
      * @parameter {mat4} worldTransform
      * @constructor
@@ -3390,16 +3362,15 @@ var ccpwgl_int = (function()
         {
             this.name = '';
         }
-        this.scaling = vec3.create([1, 1, 1]);
-        this.rotationCenter = vec3.create([0, 0, 0]);
-        this.rotation = quat4.create([0, 0, 0, 1]);
-        this.translation = vec3.create([0, 0, 0]);
-        this.worldTransform = mat4.identity(mat4.create());
+        this.scaling = vec3.one();
+        this.rotationCenter = vec3.create();
+        this.rotation = quat.create();
+        this.translation = vec3.create();
+        this.worldTransform = mat4.create();
     }
 
     /**
      * Initializes the transform parameter
-     * @prototype
      */
     Tw2TransformParameter.prototype.Initialize = function()
     {
@@ -3408,37 +3379,11 @@ var ccpwgl_int = (function()
 
     /**
      * Updates the transform parameter's properties
-     * @prototype
      */
     Tw2TransformParameter.prototype.OnModified = function()
     {
-        mat4.identity(this.worldTransform);
-        mat4.scale(this.worldTransform, this.scaling);
-
-        var rotationCenter = mat4.create();
-        mat4.identity(rotationCenter);
-        mat4.translate(rotationCenter, this.rotationCenter);
-        var rotationCenterInv = mat4.create();
-        mat4.identity(rotationCenterInv);
-        mat4.translate(rotationCenterInv, [-this.rotationCenter[0], -this.rotationCenter[1], -this.rotationCenter[2]]);
-
-        var rotation = mat4.create();
-        rotation[0] = 1.0 - 2.0 * this.rotation[1] * this.rotation[1] - 2 * this.rotation[2] * this.rotation[2];
-        rotation[4] = 2 * this.rotation[0] * this.rotation[1] - 2 * this.rotation[2] * this.rotation[3];
-        rotation[8] = 2 * this.rotation[0] * this.rotation[2] + 2 * this.rotation[1] * this.rotation[3];
-        rotation[1] = 2 * this.rotation[0] * this.rotation[1] + 2 * this.rotation[2] * this.rotation[3];
-        rotation[5] = 1 - 2 * this.rotation[0] * this.rotation[0] - 2 * this.rotation[2] * this.rotation[2];
-        rotation[9] = 2 * this.rotation[1] * this.rotation[2] - 2 * this.rotation[0] * this.rotation[3];
-        rotation[2] = 2 * this.rotation[0] * this.rotation[2] - 2 * this.rotation[1] * this.rotation[3];
-        rotation[6] = 2 * this.rotation[1] * this.rotation[2] + 2 * this.rotation[0] * this.rotation[3];
-        rotation[10] = 1 - 2 * this.rotation[0] * this.rotation[0] - 2 * this.rotation[1] * this.rotation[1];
-        rotation[15] = 1;
-
-        mat4.multiply(this.worldTransform, rotationCenterInv);
-        mat4.multiply(this.worldTransform, rotation);
-        mat4.multiply(this.worldTransform, rotationCenter);
-        mat4.translate(this.worldTransform, this.translation);
-        mat4.transpose(this.worldTransform);
+        mat4.fromRotationTranslationScaleOrigin(this.worldTransform, this.rotation, this.translation, this.scaling, this.rotationCenter);
+        mat4.transpose(this.worldTransform, this.worldTransform);
     };
 
     /**
@@ -3447,7 +3392,6 @@ var ccpwgl_int = (function()
      * @param {number} offset
      * @param {number} size
      * @returns {boolean}
-     * @prototype
      */
     Tw2TransformParameter.prototype.Bind = function(constantBuffer, offset, size)
     {
@@ -3462,7 +3406,6 @@ var ccpwgl_int = (function()
 
     /**
      * A function that should be called when any of the transform parameter's properties have been changed
-     * @prototype
      */
     Tw2TransformParameter.prototype.OnValueChanged = function()
     {
@@ -3474,7 +3417,6 @@ var ccpwgl_int = (function()
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
-     * @constructor
      */
     Tw2TransformParameter.prototype.Apply = function(constantBuffer, offset, size)
     {
@@ -3490,7 +3432,7 @@ var ccpwgl_int = (function()
 
     /**
      * RenderMode
-     * @typedef {(device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
+     * @typedef {(number|device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
      */
 
     window.requestAnimFrame = (function()
@@ -3657,15 +3599,10 @@ var ccpwgl_int = (function()
         this._whiteCube = null;
 
         this.world = mat4.create();
-        mat4.identity(this.world);
         this.worldInverse = mat4.create();
-        mat4.identity(this.worldInverse);
         this.view = mat4.create();
-        mat4.identity(this.view);
         this.viewInv = mat4.create();
-        mat4.identity(this.viewInv);
         this.projection = mat4.create();
-        mat4.identity(this.projection);
         this.eyePosition = vec3.create();
 
         this.perObjectData = null;
@@ -3696,7 +3633,7 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                err = e.toString();
+                err = e;
             }
 
             if (!this.gl)
@@ -3707,7 +3644,7 @@ var ccpwgl_int = (function()
                     msg: 'Could not initialise WebGL',
                     src: ['Tw2Device', 'CreateDevice'],
                     type: 'context',
-                    data: err
+                    err: err
                 });
                 return false;
             }
@@ -3894,7 +3831,7 @@ var ccpwgl_int = (function()
          */
         this.SetWorld = function(matrix)
         {
-            mat4.set(matrix, this.world);
+            mat4.copy(this.world, matrix);
         };
 
         /**
@@ -3903,10 +3840,10 @@ var ccpwgl_int = (function()
          */
         this.SetView = function(matrix)
         {
-            mat4.set(matrix, this.view);
-            mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
-            mat4.inverse(this.view, this.viewInv);
-            this.eyePosition.set([this.viewInv[12], this.viewInv[13], this.viewInv[14]]);
+            mat4.copy(this.view, matrix);
+            mat4.multiply(variableStore._variables['ViewProjectionMat'].value, this.projection, this.view);
+            mat4.invert(this.viewInv, this.view);
+            vec3.set(this.eyePosition, this.viewInv[12], this.viewInv[13], this.viewInv[14]);
         };
 
         /**
@@ -3915,8 +3852,8 @@ var ccpwgl_int = (function()
          */
         this.SetProjection = function(matrix)
         {
-            mat4.set(matrix, this.projection);
-            mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
+            mat4.copy(this.projection, matrix);
+            mat4.multiply(variableStore._variables['ViewProjectionMat'].value, this.projection, this.view);
         };
 
         /**
@@ -3997,12 +3934,13 @@ var ccpwgl_int = (function()
             ];
             vertices = new Float32Array(vertices);
 
-            var projInv = mat4.inverse(this.projection, mat4.create());
+            var projInv = mat4.create();
+            mat4.invert(projInv, this.projection);
             for (var i = 0; i < 4; ++i)
             {
                 var vec = vertices.subarray(i * 6, i * 6 + 4);
-                mat4.multiplyVec4(projInv, vec);
-                vec3.scale(vec, 1 / vec[3]);
+                vec4.transformMat4(vec, vec, projInv);
+                vec3.divideScalar(vec, vec, vec[3])
                 vec[3] = 1;
             }
 
@@ -4499,6 +4437,10 @@ var ccpwgl_int = (function()
         this.perObjectData = null;
     }
 
+    /**
+     * GeometryProvider
+     * @typedef {(EveCurveLineSet|EveSpaceObjectDecal|EveTurretSet)} GeometryProvider
+     */
 
     /**
      * A render batch that uses geometry provided from an external source
@@ -4687,7 +4629,7 @@ var ccpwgl_int = (function()
      * @property {string} name
      * @property {Number} parentIndex
      * @property {vec3} position
-     * @property {quat4} orientation
+     * @property {quat} orientation
      * @property {mat3} scaleShear
      * @property {mat4} localTransform
      * @property {mat4} worldTransform
@@ -4699,11 +4641,12 @@ var ccpwgl_int = (function()
         this.name = '';
         this.parentIndex = -1;
         this.position = vec3.create();
-        this.orientation = quat4.create();
-        this.scaleShear = mat3.create();
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.worldTransformInv = mat4.create();
+        this.orientation = quat.zero();
+        this.scaleShear = mat3.zero();
+        this.localTransform = mat4.zero();
+        this.worldTransform = mat4.zero();
+        this.worldTransformInv = mat4.zero();
+        this._tempMat = mat4.create();
     }
 
     /**
@@ -4712,12 +4655,11 @@ var ccpwgl_int = (function()
      */
     Tw2GeometryBone.prototype.UpdateTransform = function()
     {
-        mat3.toMat4(this.scaleShear, this.localTransform);
-        mat4.multiply(this.localTransform, mat4.transpose(quat4.toMat4(quat4.normalize(this.orientation))));
-        //mat4.translate(this.localTransform, this.position);
-        this.localTransform[12] = this.position[0];
-        this.localTransform[13] = this.position[1];
-        this.localTransform[14] = this.position[2];
+        mat4.setMat3(this.localTransform, this.scaleShear);
+        quat.normalize(this.orientation, this.orientation);
+        mat4.fromQuat(this._tempMat, this.orientation);
+        mat4.multiply(this.localTransform, this.localTransform, this._tempMat);
+        mat4.setTranslation(this.localTransform, this.position);
         return this.localTransform;
     };
 
@@ -5149,8 +5091,8 @@ var ccpwgl_int = (function()
                 mesh.areas[i].name = reader.ReadString();
                 mesh.areas[i].start = reader.ReadUInt32() * indexes.BYTES_PER_ELEMENT;
                 mesh.areas[i].count = reader.ReadUInt32() * 3;
-                mesh.areas[i].minBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
-                mesh.areas[i].maxBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
+                mesh.areas[i].minBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+                mesh.areas[i].maxBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
             }
 
             var boneBindingCount = reader.ReadUInt8();
@@ -5200,19 +5142,19 @@ var ccpwgl_int = (function()
                 }
                 if ((flags & 1))
                 {
-                    vec3.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.position);
+                    vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
                 else
                 {
-                    vec3.set([0, 0, 0], bone.position);
+                    vec3.fill(bone.position, 0);
                 }
                 if ((flags & 2))
                 {
-                    quat4.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.orientation);
+                    quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
                 else
                 {
-                    quat4.set([0, 0, 0, 1], bone.orientation);
+                    quat.identity(bone.orientation);
                 }
                 if ((flags & 4))
                 {
@@ -5232,13 +5174,17 @@ var ccpwgl_int = (function()
                 model.skeleton.bones[j].UpdateTransform();
                 if (model.skeleton.bones[j].parentIndex != -1)
                 {
-                    mat4.multiply(model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                    mat4.multiply(
+                        model.skeleton.bones[j].worldTransform,
+                        model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform,
+                        model.skeleton.bones[j].localTransform
+                    );
                 }
                 else
                 {
-                    mat4.set(model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                    mat4.copy(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].localTransform);
                 }
-                mat4.inverse(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].worldTransformInv);
+                mat4.invert(model.skeleton.bones[j].worldTransformInv, model.skeleton.bones[j].worldTransform);
             }
 
             var meshBindingCount = reader.ReadUInt8();
@@ -6288,7 +6234,7 @@ var ccpwgl_int = (function()
                     var maxAnisotropy = reader.ReadUInt8();
                     /* var comparisonFunc = */
                     reader.ReadUInt8();
-                    var borderColor = quat4.create();
+                    var borderColor = vec4.create();
                     borderColor[0] = reader.ReadFloat32();
                     borderColor[1] = reader.ReadFloat32();
                     borderColor[2] = reader.ReadFloat32();
@@ -7304,9 +7250,9 @@ var ccpwgl_int = (function()
     function Tw2Bone()
     {
         this.boneRes = null;
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.offsetTransform = mat4.create();
+        this.localTransform = mat4.zero();
+        this.worldTransform = mat4.zero();
+        this.offsetTransform = mat4.zero();
     }
 
 
@@ -7327,7 +7273,7 @@ var ccpwgl_int = (function()
 
     /**
      * Tw2AnimationController
-     * @param {Tw2GeometryRes} geometryResource
+     * @param {Tw2GeometryRes} [geometryResource]
      * @property {Array.<Tw2GeometryRes>} geometryResources
      * @property {Array.<Tw2Model>} models
      * @property {Array.<Tw2Animation>} animations
@@ -7336,11 +7282,11 @@ var ccpwgl_int = (function()
      * @property {boolean} update
      * @property {mat4} _tempMat4
      * @property {mat3} _tempMat3
-     * @property {quat4} _tempQuat4
+     * @property {quat} _tempQuat
      * @property {vec3} _tempVec3
      * @property _geometryResource
      * @property {Array} pendingCommands
-     * @prototype
+     * @constructor
      */
     function Tw2AnimationController(geometryResource)
     {
@@ -7350,9 +7296,9 @@ var ccpwgl_int = (function()
         this.meshBindings = [];
         this.loaded = false;
         this.update = true;
-        this._tempMat4 = mat4.create();
-        this._tempMat3 = mat3.create();
-        this._tempQuat4 = quat4.create();
+        this._tempMat4 = mat4.zero();
+        this._tempMat3 = mat3.zero();
+        this._tempQuat = quat.zero();
         this._tempVec3 = vec3.create();
         this._geometryResource = null;
         this.pendingCommands = [];
@@ -7389,7 +7335,6 @@ var ccpwgl_int = (function()
     /**
      * Clears any existing resources and loads the supplied geometry resource
      * @param {Tw2GeometryRes} geometryResource
-     * @prototype
      */
     Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
     {
@@ -7415,7 +7360,6 @@ var ccpwgl_int = (function()
     /**
      * Adds a Geometry Resource
      * @param {Tw2GeometryRes} geometryResource
-     * @prototype
      */
     Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
     {
@@ -7433,7 +7377,6 @@ var ccpwgl_int = (function()
     /**
      * Adds animations from a resource
      * @param {Tw2GeometryRes} resource
-     * @prototype
      */
     Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
     {
@@ -7556,7 +7499,6 @@ var ccpwgl_int = (function()
     /**
      * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
      * @param {Tw2GeometryRes} resource
-     * @prototype
      */
     Tw2AnimationController.prototype.RebuildCachedData = function(resource)
     {
@@ -7588,7 +7530,6 @@ var ccpwgl_int = (function()
 
     /**
      * _DoRebuildCachedData
-     * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
      * @param {Tw2GeometryRes} resource
      * @private
      */
@@ -7644,7 +7585,7 @@ var ccpwgl_int = (function()
                     meshBindings.resource = resource;
                     this.meshBindings.push(meshBindings);
                 }
-                meshBindings[meshIx] = new glMatrixArrayType(resource.models[i].meshBindings[j].bones.length * 12);
+                meshBindings[meshIx] = new gl3.ARRAY_TYPE(resource.models[i].meshBindings[j].bones.length * 12);
                 for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
                 {
                     for (var n = 0; n < model.bones.length; ++n)
@@ -7696,7 +7637,6 @@ var ccpwgl_int = (function()
      * Gets a loaded Tw2Animation by it's name
      * @param name
      * @returns {null|Tw2Animation} Returns the animation if found
-     * @constructor
      */
     Tw2AnimationController.prototype.GetAnimation = function(name)
     {
@@ -7715,7 +7655,6 @@ var ccpwgl_int = (function()
      * Resets a Tw2Animation by it's name
      * @param {String} name
      * @return {boolean}
-     * @constructor
      */
     Tw2AnimationController.prototype.ResetAnimation = function(name)
     {
@@ -7735,7 +7674,6 @@ var ccpwgl_int = (function()
      * @param {boolean} [cycle]
      * @param {Function} [callback] - Optional callback which is fired once the animation has completed
      * @return {boolean}
-     * @prototype
      */
     Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
     {
@@ -7774,7 +7712,6 @@ var ccpwgl_int = (function()
      * @param {boolean} [cycle]
      * @param {Function} [callback] - Optional callback which is fired once the animation has completed
      * @returns {boolean}
-     * @prototype
      */
     Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
     {
@@ -7811,7 +7748,6 @@ var ccpwgl_int = (function()
     /**
      * Gets an array of all the currently playing animations by name
      * @returns {Array}
-     * @constructor
      */
     Tw2AnimationController.prototype.GetPlayingAnimations = function()
     {
@@ -7831,7 +7767,6 @@ var ccpwgl_int = (function()
     /**
      * Stops an animation or an array of animations from playing
      * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
-     * @prototype
      */
     Tw2AnimationController.prototype.StopAnimation = function(names)
     {
@@ -7868,7 +7803,6 @@ var ccpwgl_int = (function()
 
     /**
      * Stops all animations from playing
-     * @prototype
      */
     Tw2AnimationController.prototype.StopAllAnimations = function()
     {
@@ -7891,7 +7825,6 @@ var ccpwgl_int = (function()
     /**
      * Stops all but the supplied list of animations
      * @param {String| Array.<string>} names - Animation Names
-     * @prototype
      */
     Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
     {
@@ -7929,7 +7862,6 @@ var ccpwgl_int = (function()
     /**
      * Resets the bone transforms for the supplied models
      * @param {Array.<Tw2Model>} models
-     * @prototype
      */
     Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
     {
@@ -7939,19 +7871,20 @@ var ccpwgl_int = (function()
             {
                 var bone = this.models[i].bones[j];
                 var boneRes = bone.boneRes;
-                mat4.set(boneRes.localTransform, bone.localTransform);
+                mat4.copy(bone.localTransform, boneRes.localTransform);
+
                 if (boneRes.parentIndex != -1)
                 {
-                    mat4.multiply(bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.worldTransform);
+                    mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
                 }
                 else
                 {
-                    mat4.set(bone.localTransform, bone.worldTransform);
+                    mat4.copy(bone.worldTransform, bone.localTransform);
                 }
                 mat4.identity(bone.offsetTransform);
             }
         }
-        var id = mat4.identity(mat4.create());
+        var id = mat4.create();
         for (var i = 0; i < this.meshBindings.length; ++i)
         {
             for (var j = 0; j < this.meshBindings[i].length; ++j)
@@ -8067,9 +8000,7 @@ var ccpwgl_int = (function()
 
     /**
      * Internal render/update function which is called every frame
-     * TODO: Fix commented out code (line 718)
      * @param {number} dt - Delta Time
-     * @prototype
      */
     Tw2AnimationController.prototype.Update = function(dt)
     {
@@ -8082,7 +8013,6 @@ var ccpwgl_int = (function()
         {
             this.geometryResources[i].KeepAlive();
         }
-
 
         var tempMat = this._tempMat4;
         var updateBones = false;
@@ -8109,7 +8039,7 @@ var ccpwgl_int = (function()
                         animation.time = res.duration;
                     }
                 }
-                var orientation = this._tempQuat4;
+                var orientation = this._tempQuat;
                 var scale = this._tempMat3;
                 var position = this._tempVec3;
                 for (var j = 0; j < animation.trackGroups.length; ++j)
@@ -8128,7 +8058,7 @@ var ccpwgl_int = (function()
                         if (track.trackRes.orientation)
                         {
                             Tw2AnimationController.EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
-                            quat4.normalize(orientation);
+                            quat.normalize(orientation, orientation);
                         }
                         else
                         {
@@ -8144,11 +8074,10 @@ var ccpwgl_int = (function()
                             mat3.identity(scale);
                         }
 
-                        mat3.toMat4(scale, track.bone.localTransform);
-                        mat4.multiply(track.bone.localTransform, mat4.transpose(quat4.toMat4(orientation, tempMat)));
-                        track.bone.localTransform[12] = position[0];
-                        track.bone.localTransform[13] = position[1];
-                        track.bone.localTransform[14] = position[2];
+                        mat4.setMat3(track.bone.localTransform, scale);
+                        mat4.fromQuat(tempMat, orientation);
+                        mat4.multiply(track.bone.localTransform, track.bone.localTransform, tempMat);
+                        mat4.setTranslation(track.bone.localTransform, position);
                         updateBones = true;
                     }
                 }
@@ -8163,13 +8092,14 @@ var ccpwgl_int = (function()
                     var bone = this.models[i].bones[j];
                     if (bone.boneRes.parentIndex != -1)
                     {
-                        mat4.multiply(this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform, bone.worldTransform);
+                        mat4.multiply(bone.worldTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
                     }
                     else
                     {
-                        mat4.set(bone.localTransform, bone.worldTransform);
+                        mat4.copy(bone.worldTransform, bone.localTransform);
                     }
-                    mat4.multiply(bone.worldTransform, bone.boneRes.worldTransformInv, bone.offsetTransform);
+                    mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
+
                     if (bone.bindingArrays)
                     {
                         for (var a = 0; a < bone.bindingArrays.length; ++a)
@@ -8197,9 +8127,7 @@ var ccpwgl_int = (function()
 
     /**
      * RenderDebugInfo
-     * TODO: Fix commented out code (lines 767 - 770)
      * @param {function} debugHelper
-     * @prototype
      */
     Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
     {
@@ -8226,7 +8154,6 @@ var ccpwgl_int = (function()
      * @param {number} meshIndex
      * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
      * @returns {Float32Array}
-     * @prototype
      */
     Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
     {
@@ -8252,7 +8179,6 @@ var ccpwgl_int = (function()
      * @param {number} meshIndex
      * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
      * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
-     * @prototype
      */
     Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
     {
@@ -8506,7 +8432,7 @@ var ccpwgl_int = (function()
      * @property {number} _destinationElement
      * @property {boolean} destinationIsArray
      * @property {number} scale
-     * @property {quat4} offset
+     * @property {vec4} offset
      * @property {null|Function} _copyFunc - The function to use when updating destination attributes
      * @constructor
      */
@@ -8524,13 +8450,12 @@ var ccpwgl_int = (function()
         this.destinationIsArray = null;
 
         this.scale = 1;
-        this.offset = quat4.create();
+        this.offset = vec4.create();
         this._copyFunc = null;
     }
 
     /**
-     * Initializes the Value Binding
-     * @prototypes
+     * Initializes the Value Bindings
      */
     Tw2ValueBinding.prototype.Initialize = function()
     {
@@ -8722,7 +8647,6 @@ var ccpwgl_int = (function()
 
     /**
      * CopyValue
-     * @prototype
      */
     Tw2ValueBinding.prototype.CopyValue = function()
     {
@@ -9250,18 +9174,18 @@ var ccpwgl_int = (function()
     /**
      * Tw2ColorKey
      * @property {number} time
-     * @property {quat4} value
-     * @property {quat4} left
-     * @property {quat4} right
+     * @property {vec4} value
+     * @property {vec4} left
+     * @property {vec4} right
      * @property {number} interpolation
      * @constructor
      */
     function Tw2ColorKey()
     {
         this.time = 0;
-        this.value = quat4.create();
-        this.left = quat4.create();
-        this.right = quat4.create();
+        this.value = vec4.create()
+        this.left = vec4.create()
+        this.right = vec4.create()
         this.interpolation = 0;
     }
 
@@ -9271,7 +9195,7 @@ var ccpwgl_int = (function()
      * @property {String} name
      * @property {number} start
      * @property {number} length
-     * @property {quat4} value
+     * @property {vec4} value
      * @property {number} extrapolation
      * @property {Array.<Tw2ColorKey>} keys
      * @property {number} _currKey
@@ -9282,7 +9206,7 @@ var ccpwgl_int = (function()
         this.name = '';
         this.start = 0;
         this.length = 0;
-        this.value = quat4.create();
+        this.value = vec4.create()
         this.extrapolation = 0;
         this.keys = [];
         this._currKey = 1;
@@ -9291,7 +9215,6 @@ var ccpwgl_int = (function()
     /**
      * Returns curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ColorCurve.prototype.GetLength = function()
     {
@@ -9301,7 +9224,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ColorCurve.prototype.UpdateValue = function(time)
     {
@@ -9311,19 +9233,14 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {vec4} value
+     * @returns {vec4}
      */
     Tw2ColorCurve.prototype.GetValueAt = function(time, value)
     {
         if (this.length == 0)
         {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            value[3] = this.value[3];
-            return value;
+            return vec4.copy(value, this.value);
         }
 
         var d;
@@ -9333,28 +9250,15 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                value[0] = this.value[0];
-                value[1] = this.value[1];
-                value[2] = this.value[2];
-                value[3] = this.value[3];
-                return value;
+                return vec4.copy(value, this.value);
             }
             else if (this.extrapolation == 1)
             {
-                value[0] = lastKey.value[0];
-                value[1] = lastKey.value[1];
-                value[2] = lastKey.value[2];
-                value[3] = lastKey.value[3];
-                return value;
+                return vec4.copy(value, lastKey.value);
             }
             else if (this.extrapolation == 2)
             {
-                d = time - lastKey.time;
-                value[0] = lastKey.value[0] + d * lastKey.right[0];
-                value[1] = lastKey.value[1] + d * lastKey.right[1];
-                value[2] = lastKey.value[2] + d * lastKey.right[2];
-                value[3] = lastKey.value[3] + d * lastKey.right[3];
-                return value;
+                return vec4.scaleAndAdd(value, lastKey.value, lastKey.right, time - lastKey.time);
             }
             else
             {
@@ -9365,30 +9269,18 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                value[0] = this.value[0];
-                value[1] = this.value[1];
-                value[2] = this.value[2];
-                value[3] = this.value[3];
-                return value;
+                return vec4.copy(value, this.value);
             }
             else if (this.extrapolation == 2)
             {
-                d = time * this.length - lastKey.time;
-                value[0] = firstKey.value[0] + d * firstKey.left[0];
-                value[1] = firstKey.value[1] + d * firstKey.left[1];
-                value[2] = firstKey.value[2] + d * firstKey.left[2];
-                value[3] = firstKey.value[3] + d * firstKey.left[3];
-                return value;
+                return vec4.scaleAndAdd(value, firstKey.value, firstKey.left, time * this.length - lastKey.time);
             }
             else
             {
-                value[0] = firstKey.value[0];
-                value[1] = firstKey.value[1];
-                value[2] = firstKey.value[2];
-                value[3] = firstKey.value[3];
-                return value;
+                return vec4.copy(value, firstKey.value);
             }
         }
+
         var ck = this.keys[this._currKey];
         var ck_1 = this.keys[this._currKey - 1];
         while ((time >= ck.time) || (time < ck_1.time))
@@ -9405,10 +9297,7 @@ var ccpwgl_int = (function()
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
         if (ck_1.interpolation == 1)
         {
-            value[0] = ck_1.value[0];
-            value[1] = ck_1.value[1];
-            value[2] = ck_1.value[2];
-            value[3] = ck_1.value[3];
+            vec4.copy(value, ck_1.value);
         }
         else
         {
@@ -9423,18 +9312,18 @@ var ccpwgl_int = (function()
     /**
      * Tw2ColorKey2
      * @property {number} time
-     * @property {quat4} value
-     * @property {quat4} leftTangent
-     * @property {quat4} rightTangent
+     * @property {vec4} value
+     * @property {vec4} leftTangent
+     * @property {vec4} rightTangent
      * @property {number} interpolation
      * @constructor
      */
     function Tw2ColorKey2()
     {
         this.time = 0;
-        this.value = quat4.create();
-        this.leftTangent = quat4.create();
-        this.rightTangent = quat4.create();
+        this.value = vec4.create();
+        this.leftTangent = vec4.create();
+        this.rightTangent = vec4.create();
         this.interpolation = 1;
     }
 
@@ -9447,11 +9336,11 @@ var ccpwgl_int = (function()
      * @property {boolean} reversed
      * @property {number} timeOffset
      * @property {number} timeScale
-     * @property {quat4} startValue=[0,0,0,1]
-     * @property {quat4} currentValue=[0,0,0,1]
-     * @property {quat4} endValue=[0,0,0,1]
-     * @property {quat4} startTangent
-     * @property {quat4} endTangent
+     * @property {vec4} startValue=[0,0,0,1]
+     * @property {vec4} currentValue=[0,0,0,1]
+     * @property {vec4} endValue=[0,0,0,1]
+     * @property {vec4} startTangent
+     * @property {vec4} endTangent
      * @property {number} interpolation
      * @property {Array.<Tw2ColorKey2>} keys
      * @constructor
@@ -9464,18 +9353,17 @@ var ccpwgl_int = (function()
         this.reversed = false;
         this.timeOffset = 0;
         this.timeScale = 1;
-        this.startValue = quat4.create([0, 0, 0, 1]);
-        this.currentValue = quat4.create([0, 0, 0, 1]);
-        this.endValue = quat4.create([0, 0, 0, 1]);
-        this.startTangent = quat4.create();
-        this.endTangent = quat4.create();
+        this.startValue = vec4.fromValues(0, 0, 0, 1);
+        this.currentValue = vec4.fromValues(0, 0, 0, 1);
+        this.endValue = vec4.fromValues(0, 0, 0, 1);
+        this.startTangent = vec4.create();
+        this.endTangent = vec4.create();
         this.interpolation = 1;
         this.keys = [];
     }
 
     /**
      * Initializes the curve
-     * @prototype
      */
     Tw2ColorCurve2.prototype.Initialize = function()
     {
@@ -9485,7 +9373,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ColorCurve2.prototype.GetLength = function()
     {
@@ -9514,7 +9401,6 @@ var ccpwgl_int = (function()
 
     /**
      * Sorts the curve's keys
-     * @prototype
      */
     Tw2ColorCurve2.prototype.Sort = function()
     {
@@ -9543,7 +9429,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ColorCurve2.prototype.UpdateValue = function(time)
     {
@@ -9553,20 +9438,15 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {vec4} value
+     * @returns {vec4}
      */
     Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
     {
         time = time / this.timeScale + this.timeOffset;
         if (this.length <= 0 || time <= 0)
         {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            value[2] = this.startValue[2];
-            value[3] = this.startValue[3];
-            return value;
+            return vec4.copy(value, this.startValue);
         }
         if (time > this.length)
         {
@@ -9576,19 +9456,11 @@ var ccpwgl_int = (function()
             }
             else if (this.reversed)
             {
-                value[0] = this.startValue[0];
-                value[1] = this.startValue[1];
-                value[2] = this.startValue[2];
-                value[3] = this.startValue[3];
-                return value;
+                return vec4.copy(value, this.startValue);
             }
             else
             {
-                value[0] = this.endValue[0];
-                value[1] = this.endValue[1];
-                value[2] = this.endValue[2];
-                value[3] = this.endValue[3];
-                return value;
+                return vec4.copy(value, this.endValue);
             }
         }
         if (this.reversed)
@@ -9599,7 +9471,10 @@ var ccpwgl_int = (function()
         {
             return this.Interpolate(time, null, null, value);
         }
+
         var startKey = this.keys[0];
+        var endKey;
+
         if (time <= startKey.time)
         {
             return this.Interpolate(time, null, startKey, value);
@@ -9608,7 +9483,7 @@ var ccpwgl_int = (function()
         {
             return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
         }
-        var endKey = this.keys[i + 1];
+
         for (var i = 0; i + 1 < this.keys.length; ++i)
         {
             startKey = this.keys[i];
@@ -9626,16 +9501,12 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {Tw2ColorKey2} lastKey
      * @param {Tw2ColorKey2} nextKey
-     * @param {quat4} value
+     * @param {vec4} value
      * @returns {*}
-     * @prototype
      */
     Tw2ColorCurve2.prototype.Interpolate = function(time, lastKey, nextKey, value)
     {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        value[2] = this.startValue[2];
-        value[3] = this.startValue[3];
+        vec4.copy(value, this.startValue);
 
         var startValue = this.startValue;
         var endValue = this.endValue;
@@ -9678,26 +9549,25 @@ var ccpwgl_int = (function()
      * Tw2ColorSequencer
      * @property {string} name
      * @property {number} start
-     * @property {quat4} value
+     * @property {vec4} value
      * @property {number} operator
      * @property {Array} functions
-     * @property {quat4} _tempValue
+     * @property {vec4} _tempValue
      * @constructor
      */
     function Tw2ColorSequencer()
     {
         this.name = '';
         this.start = 0;
-        this.value = quat4.create();
+        this.value = vec4.create();
         this.operator = 0;
         this.functions = [];
-        this._tempValue = quat4.create();
+        this._tempValue = vec4.create();
     }
 
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ColorSequencer.prototype.GetLength = function()
     {
@@ -9715,7 +9585,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ColorSequencer.prototype.UpdateValue = function(time)
     {
@@ -9725,9 +9594,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {vec4} value
+     * @returns {vec4}
      */
     Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
     {
@@ -9735,36 +9603,24 @@ var ccpwgl_int = (function()
 
         if (this.operator == 0)
         {
-            value[0] = 1;
-            value[1] = 1;
-            value[2] = 1;
-            value[3] = 1;
+            vec4.fill(value, 1);
             tempValue = this._tempValue;
             functions = this.functions;
             for (i = 0; i < functions.length; ++i)
             {
                 functions[i].GetValueAt(time, tempValue);
-                value[0] *= tempValue[0];
-                value[1] *= tempValue[1];
-                value[2] *= tempValue[2];
-                value[3] *= tempValue[3];
+                vec4.multiply(value, value, tempValue);
             }
         }
         else
         {
-            value[0] = 0;
-            value[1] = 0;
-            value[2] = 0;
-            value[3] = 0;
+            vec4.fill(value, 0);
             tempValue = this._tempValue;
             functions = this.functions;
             for (i = 0; i < functions.length; ++i)
             {
                 functions[i].GetValueAt(time, tempValue);
-                value[0] += tempValue[0];
-                value[1] += tempValue[1];
-                value[2] += tempValue[2];
-                value[3] += tempValue[3];
+                vec4.add(value, value, tempValue);
             }
         }
         return value;
@@ -9776,7 +9632,7 @@ var ccpwgl_int = (function()
      * @property {null|Tw2Curve} [yawCurve]
      * @property {null|Tw2Curve} [pitchCurve]
      * @property {null|Tw2Curve} [rollCurve]
-     * @property {quat4} currentValue=[0,0,0,1]
+     * @property {quat} currentValue=[0,0,0,1]
      * @constructor
      */
     function Tw2EulerRotation()
@@ -9785,13 +9641,12 @@ var ccpwgl_int = (function()
         this.yawCurve = null;
         this.pitchCurve = null;
         this.rollCurve = null;
-        this.currentValue = quat4.create([0, 0, 0, 1]);
+        this.currentValue = quat.create();
     }
 
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2EulerRotation.prototype.UpdateValue = function(time)
     {
@@ -9801,9 +9656,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2EulerRotation.prototype.GetValueAt = function(time, value)
     {
@@ -9829,7 +9683,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2EulerRotation.prototype.GetLength = function()
     {
@@ -9889,7 +9742,6 @@ var ccpwgl_int = (function()
      * @param {Tw2EventKey} a
      * @param {Tw2EventKey} b
      * @returns {number}
-     * @method
      */
     Tw2EventCurve.Compare = function(a, b)
     {
@@ -9906,7 +9758,6 @@ var ccpwgl_int = (function()
 
     /**
      * Initializes the Curve
-     * @prototype
      */
     Tw2EventCurve.prototype.Initialize = function()
     {
@@ -9921,7 +9772,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2EventCurve.prototype.GetLength = function()
     {
@@ -9931,7 +9781,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2EventCurve.prototype.UpdateValue = function(time)
     {
@@ -10078,7 +9927,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2PerlinCurve.prototype.UpdateValue = function(time)
     {
@@ -10089,7 +9937,6 @@ var ccpwgl_int = (function()
      * Gets a value at a specific time
      * @param {number} time
      * @returns {number}
-     * @prototype
      */
     Tw2PerlinCurve.prototype.GetValueAt = function(time)
     {
@@ -10101,24 +9948,23 @@ var ccpwgl_int = (function()
      * Tw2QuaternionSequencer
      * @property {string} name
      * @property {number} start
-     * @property {quat4} value
+     * @property {quat} value
      * @property {Array} functions
-     * @property {quat4} _tempValue
+     * @property {quat} _tempValue
      * @constructor
      */
     function Tw2QuaternionSequencer()
     {
         this.name = '';
         this.start = 0;
-        this.value = quat4.create();
+        this.value = quat.zero();
         this.functions = [];
-        this._tempValue = quat4.create();
+        this._tempValue = quat.zero();
     }
 
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2QuaternionSequencer.prototype.GetLength = function()
     {
@@ -10136,7 +9982,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
     {
@@ -10146,22 +9991,18 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2QuaternionSequencer.prototype.GetValueAt = function(time, value)
     {
-        value[0] = 0;
-        value[1] = 0;
-        value[2] = 0;
-        value[3] = 1;
+        quat.identity(value);
         var tempValue = this._tempValue;
         var functions = this.functions;
         for (var i = 0; i < functions.length; ++i)
         {
             functions[i].GetValueAt(time, tempValue);
-            quat4.multiply(value, tempValue);
+            quat.multiply(value, value, tempValue);
         }
         return value;
     };
@@ -10187,7 +10028,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
     {
@@ -10196,10 +10036,8 @@ var ccpwgl_int = (function()
 
     /**
      * Gets a value at a specific time
-     * TODO: @param time is redundant
-     * @param {number} time
+     * @param {number} time - unused
      * @returns {number}
-     * @prototype
      */
     Tw2RandomConstantCurve.prototype.GetValueAt = function(time)
     {
@@ -10212,16 +10050,16 @@ var ccpwgl_int = (function()
 
     /**
      * Tw2RGBAScalarSequencer
-     * @property {quat4} value
-     * @property {null|Tw2Curve} RedCurve
-     * @property {null|Tw2Curve} GreenCurve
-     * @property {null|Tw2Curve} BlueCurve
-     * @property {null|Tw2Curve} AlphaCurve
+     * @property {quat} value
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} RedCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} GreenCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} BlueCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} AlphaCurve
      * @constructor
      */
     function Tw2RGBAScalarSequencer()
     {
-        this.value = quat4.create();
+        this.value = quat.zero();
         this.RedCurve = null;
         this.GreenCurve = null;
         this.BlueCurve = null;
@@ -10231,7 +10069,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2RGBAScalarSequencer.prototype.GetLength = function()
     {
@@ -10258,7 +10095,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
     {
@@ -10268,9 +10104,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
     {
@@ -10312,7 +10147,7 @@ var ccpwgl_int = (function()
     /**
      * Tw2Torque
      * @property {number} time
-     * @property {quat4} rot0=[0,0,0,1]
+     * @property {quat} rot0=[0,0,0,1]
      * @property {vec3} omega0
      * @property {vec3} torque
      * @constructor
@@ -10320,7 +10155,7 @@ var ccpwgl_int = (function()
     function Tw2Torque()
     {
         this.time = 0;
-        this.rot0 = quat4.create([0, 0, 0, 1]);
+        this.rot0 = quat.create();
         this.omega0 = vec3.create();
         this.torque = vec3.create();
     }
@@ -10331,11 +10166,11 @@ var ccpwgl_int = (function()
      * @property {string} name
      * @property {number} I
      * @property {number} drag
-     * @property {quat4} value=[0,0,0,1]
+     * @property {quat} value=[0,0,0,1]
      * @property {number} start
      * @property {Array} states
      * @property {vec3} _tau
-     * @property {quat4} _tauConverter
+     * @property {quat} _tauConverter
      * @constructor
      */
     function Tw2RigidOrientation()
@@ -10343,17 +10178,16 @@ var ccpwgl_int = (function()
         this.name = '';
         this.I = 1;
         this.drag = 1;
-        this.value = quat4.create([0, 0, 0, 1]);
+        this.value = quat.create();
         this.start = 0;
         this.states = [];
         this._tau = vec3.create();
-        this._tauConverter = quat4.create();
+        this._tauConverter = quat.zero();
     }
 
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2RigidOrientation.prototype.UpdateValue = function(time)
     {
@@ -10368,7 +10202,6 @@ var ccpwgl_int = (function()
      * @param k
      * @param t
      * @returns {number}
-     * @prototype
      */
     Tw2RigidOrientation.prototype.ExponentialDecay = function(v, a, m, k, t)
     {
@@ -10378,16 +10211,14 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
     {
         if (this.states.length == 0 || time < 0 || time < this.states[0].time)
         {
-            quat4.set(this.value, value);
-            return value;
+            return quat.copy(value, this.value);
         }
         var key = 0;
         if (time >= this.states[this.states.length - 1].time)
@@ -10410,7 +10241,7 @@ var ccpwgl_int = (function()
         this._tau[1] = this.ExponentialDecay(this.states[key].omega0[1], this.states[key].torque[1], this.I, this.drag, time);
         this._tau[2] = this.ExponentialDecay(this.states[key].omega0[2], this.states[key].torque[2], this.I, this.drag, time);
 
-        vec3.set(this._tau, this._tauConverter);
+        vec3.copy(this._tauConverter, this._tau);
         this._tauConverter[3] = 0;
 
         var norm = Math.sqrt(
@@ -10418,6 +10249,7 @@ var ccpwgl_int = (function()
             this._tauConverter[1] * this._tauConverter[1] +
             this._tauConverter[2] * this._tauConverter[2] +
             this._tauConverter[3] * this._tauConverter[3]);
+
         if (norm)
         {
             this._tauConverter[0] = Math.sin(norm) * this._tauConverter[0] / norm;
@@ -10427,30 +10259,27 @@ var ccpwgl_int = (function()
         }
         else
         {
-            this._tauConverter[0] = 0.0;
-            this._tauConverter[1] = 0.0;
-            this._tauConverter[2] = 0.0;
-            this._tauConverter[3] = 1.0;
+            quat.identity(this._tauConverter);
         }
-        quat4.multiply(this.states[key].rot0, this._tauConverter, value);
-        return value;
+
+        return quat.multiply(value, this.states[key].rot0, this._tauConverter);
     };
 
     /**
      * Tw2QuaternionKey
      * @property {number} time
-     * @property {quat4} value
-     * @property {quat4} left
-     * @property {quat4} right
+     * @property {quat} value
+     * @property {quat} left
+     * @property {quat} right
      * @property {number} interpolation
      * @constructor
      */
     function Tw2QuaternionKey()
     {
         this.time = 0;
-        this.value = quat4.create();
-        this.left = quat4.create();
-        this.right = quat4.create();
+        this.value = quat.zero();
+        this.left = quat.zero();
+        this.right = quat.zero();
         this.interpolation = 5;
     }
 
@@ -10460,7 +10289,7 @@ var ccpwgl_int = (function()
      * @property {string} name
      * @property {number} start
      * @property {number} length
-     * @property {quat4} value
+     * @property {quat} value
      * @property {number} extrapolation
      * @property {Array.<Tw2QuaternionKey>} keys
      * @property {number} _currKey
@@ -10471,7 +10300,7 @@ var ccpwgl_int = (function()
         this.name = '';
         this.start = 0;
         this.length = 0;
-        this.value = quat4.create();
+        this.value = quat.zero();
         this.extrapolation = 0;
         this.keys = [];
         this._currKey = 1;
@@ -10480,7 +10309,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2RotationCurve.prototype.GetLength = function()
     {
@@ -10490,7 +10318,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2RotationCurve.prototype.UpdateValue = function(time)
     {
@@ -10502,7 +10329,6 @@ var ccpwgl_int = (function()
      * @param {number} order
      * @param t
      * @returns {number}
-     * @method
      */
     Tw2RotationCurve.BICumulative = function(order, t)
     {
@@ -10523,18 +10349,16 @@ var ccpwgl_int = (function()
 
     /**
      * QuaternionPow
-     * @param {quat4} out
-     * @param {quat4} inq
+     * @param {quat} out
+     * @param {quat} inq
      * @param {number} exponent
-     * @returns {quat4}
-     * @method
+     * @returns {quat}
      */
     Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
     {
         if (exponent == 1)
         {
-            quat4.set(inq, out);
-            return out;
+            return quat.copy(out, inq);
         }
         Tw2RotationCurve.QuaternionLn(out, inq);
         out[0] *= exponent;
@@ -10547,14 +10371,13 @@ var ccpwgl_int = (function()
 
     /**
      * QuaternionLn
-     * @param {quat4} out
-     * @param {quat4} q
-     * @returns {quat4}
-     * @method
+     * @param {quat} out
+     * @param {quat} q
+     * @returns {quat}
      */
     Tw2RotationCurve.QuaternionLn = function(out, q)
     {
-        var norm = quat4.length(q);
+        var norm = quat.length(q);
         if (norm > 1.0001 || norm < 0.99999)
         {
             out[0] = q[0];
@@ -10567,10 +10390,7 @@ var ccpwgl_int = (function()
             var normvec = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
             if (normvec == 0.0)
             {
-                out[0] = 0.0;
-                out[1] = 0.0;
-                out[2] = 0.0;
-                out[3] = 0.0;
+                quat.fill(out, 0.0);
             }
             else
             {
@@ -10586,10 +10406,9 @@ var ccpwgl_int = (function()
 
     /**
      * QuaternionExp
-     * @param {quat4} out
-     * @param {quat4} q
-     * @returns {quat4}
-     * @method
+     * @param {quat} out
+     * @param {quat} q
+     * @returns {quat}
      */
     Tw2RotationCurve.QuaternionExp = function(out, q)
     {
@@ -10603,10 +10422,7 @@ var ccpwgl_int = (function()
         }
         else
         {
-            out[0] = 0.0;
-            out[1] = 0.0;
-            out[2] = 0.0;
-            out[3] = 1.0;
+            quat.identity(out);
         }
         return out;
     };
@@ -10614,16 +10430,14 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2RotationCurve.prototype.GetValueAt = function(time, value)
     {
         if (this.length == 0)
         {
-            quat4.set(this.value, value);
-            return value;
+            return quat.copy(value, this.value);
         }
 
         var firstKey = this.keys[0];
@@ -10632,13 +10446,11 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                quat4.set(this.value, value);
-                return value;
+                return quat.copy(value, this.value);
             }
             else if (this.extrapolation == 1)
             {
-                quat4.set(lastKey.value, value);
-                return value;
+                return quat.copy(value, lastKey.value);
             }
             else
             {
@@ -10649,13 +10461,11 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                quat4.set(this.value, value);
-                return value;
+                return quat.copy(value, this.value);
             }
             else
             {
-                quat4.set(firstKey.value, value);
-                return value;
+                return quat.copy(value, firstKey.value);
             }
         }
         var ck = this.keys[this._currKey];
@@ -10674,7 +10484,7 @@ var ccpwgl_int = (function()
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
         if (ck_1.interpolation == 1)
         {
-            quat4.set(ck_1.value, value);
+            quat.copy(value, ck_1.value);
         }
         else if (ck_1.interpolation == 2)
         {
@@ -10685,7 +10495,7 @@ var ccpwgl_int = (function()
         }
         else if (ck_1.interpolation == 3)
         {
-            var collect = quat4.create();
+            var collect = quat.zero();
             collect[3] = 1;
             var arr = [ck_1.value, ck_1.right, ck.left, ck.value];
             for (var i = 3; i > 0; i--)
@@ -10693,25 +10503,25 @@ var ccpwgl_int = (function()
                 var power = Tw2RotationCurve.BICumulative(i, nt);
                 if (power > 1)
                 {
-                    quat4.multiply(collect, arr[i], value);
+                    quat.multiply(value, collect, arr[i]);
                 }
                 value[0] = -arr[i - 1][0];
                 value[1] = -arr[i - 1][1];
                 value[2] = -arr[i - 1][2];
                 value[3] = arr[i - 1][3];
-                quat4.multiply(value, arr[i], value);
+                quat.multiply(value, value, arr[i]);
                 Tw2RotationCurve.QuaternionPow(value, value, power);
-                quat4.multiply(collect, value, collect);
+                quat.multiply(collect, collect, value);
             }
-            return quat4.multiply(collect, ck_1.value, value);
+            return quat.multiply(value, collect, ck_1.value);
         }
         else if (ck_1.interpolation == 5)
         {
-            return quat4.slerp(ck_1.value, ck.value, nt, value);
+            return Tw2QuaternionCurve.slerp(ck_1.value, ck.value, nt, value);
         }
         else
         {
-            return quat4.slerp(quat4.slerp(ck_1.value, ck.value, nt, quat4.create()), quat4.slerp(ck_1.right, ck.left, nt, quat4.create()), 2.0 * time * (1.0 - time), value);
+            return Tw2QuaternionCurve.slerp(Tw2QuaternionCurve.slerp(ck_1.value, ck.value, nt, quat.zero()), Tw2QuaternionCurve.slerp(ck_1.right, ck.left, nt, quat.zero()), 2.0 * time * (1.0 - time), value);
         }
         return value;
     };
@@ -10763,7 +10573,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarCurve.prototype.GetLength = function()
     {
@@ -10773,7 +10582,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ScalarCurve.prototype.UpdateValue = function(time)
     {
@@ -10785,7 +10593,6 @@ var ccpwgl_int = (function()
      * TODO: Final return is unreachable
      * @param {number} time
      * @returns {*}
-     * @prototype
      */
     Tw2ScalarCurve.prototype.GetValueAt = function(time)
     {
@@ -10931,7 +10738,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.GetLength = function()
     {
@@ -10940,7 +10746,6 @@ var ccpwgl_int = (function()
 
     /**
      * Initializes Curve
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.Initialize = function()
     {
@@ -10969,7 +10774,6 @@ var ccpwgl_int = (function()
 
     /**
      * Sorts the curve's keys
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.Sort = function()
     {
@@ -10998,7 +10802,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.UpdateValue = function(time)
     {
@@ -11009,7 +10812,6 @@ var ccpwgl_int = (function()
      * Gets a value at a specific time
      * @param {number} time
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.GetValueAt = function(time)
     {
@@ -11069,7 +10871,6 @@ var ccpwgl_int = (function()
      * @param {Tw2ScalarKey2} lastKey
      * @param {Tw2ScalarKey2} nextKey
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
     {
@@ -11169,7 +10970,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarSequencer.prototype.GetLength = function()
     {
@@ -11187,7 +10987,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2ScalarSequencer.prototype.UpdateValue = function(time)
     {
@@ -11198,7 +10997,6 @@ var ccpwgl_int = (function()
      * Gets a value at a specific time
      * @param {number} time
      * @returns {number}
-     * @prototype
      */
     Tw2ScalarSequencer.prototype.GetValueAt = function(time)
     {
@@ -11258,7 +11056,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2SineCurve.prototype.UpdateValue = function(time)
     {
@@ -11269,11 +11066,10 @@ var ccpwgl_int = (function()
      * Gets a value at a specific time
      * @param {number} time
      * @returns {number}
-     * @prototype
      */
     Tw2SineCurve.prototype.GetValueAt = function(time)
     {
-        return Math.sin(time * Math.pi * 2 * this.speed) * this.scale + this.offset;
+        return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
     };
 
     /**
@@ -11284,7 +11080,7 @@ var ccpwgl_int = (function()
      * @property {string} group
      * @property {boolean} cycle
      * @property {vec3} translation
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {vec3} scale
      * @property positionCurve
      * @property orientationCurve
@@ -11300,17 +11096,16 @@ var ccpwgl_int = (function()
         this.group = '';
         this.cycle = false;
         this.translation = vec3.create();
-        this.rotation = quat4.create([0, 0, 0, 1]);
-        this.scale = vec3.create([1, 1, 1]);
+        this.rotation = quat.create();
+        this.scale = vec3.one();
         this.positionCurve = null;
         this.orientationCurve = null;
         this.scaleCurve = null;
-        this._scaleShear = mat4.create();
+        this._scaleShear = mat4.zero();
     }
 
     /**
      * Initializes the Curve
-     * @prototype
      */
     Tw2TransformTrack.prototype.Initialize = function()
     {
@@ -11323,7 +11118,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2TransformTrack.prototype.GetLength = function()
     {
@@ -11337,7 +11131,6 @@ var ccpwgl_int = (function()
      * @param {Array|vec3|quat4|mat4} value
      * @param {boolean} cycle
      * @param {number} duration
-     * @prototype
      */
     Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, duration)
     {
@@ -11433,7 +11226,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2TransformTrack.prototype.UpdateValue = function(time)
     {
@@ -11461,7 +11253,7 @@ var ccpwgl_int = (function()
 
         this.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
         this.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
-        quat4.normalize(this.rotation);
+        quat.normalize(this.rotation, this.rotation);
         this.EvaluateCurve(this.scaleCurve, time, this._scaleShear, this.cycle, this.duration);
         this.scale[0] = vec3.length(this.scaleCurve);
         this.scale[1] = vec3.length(this.scaleCurve.subarray(3, 6));
@@ -11470,7 +11262,6 @@ var ccpwgl_int = (function()
 
     /**
      * FindTracks
-     * @prototype
      */
     Tw2TransformTrack.prototype.FindTracks = function()
     {
@@ -11508,18 +11299,18 @@ var ccpwgl_int = (function()
     /**
      * Tw2Vector2Key
      * @property {number} time
-     * @property {Float32Array} value - vec2 array
-     * @property {Float32Array} leftTangent - vec2 array
-     * @property {Float32Array} rightTangent - vec2 array
+     * @property {vec2} value - vec2 array
+     * @property {vec2} leftTangent - vec2 array
+     * @property {vec2} rightTangent - vec2 array
      * @property {number} interpolation
      * @constructor
      */
     function Tw2Vector2Key()
     {
         this.time = 0;
-        this.value = new Float32Array(2);
-        this.leftTangent = new Float32Array(2);
-        this.rightTangent = new Float32Array(2);
+        this.value = vec2.create();
+        this.leftTangent = vec2.create();
+        this.rightTangent = vec2.create();
         this.interpolation = 1;
     }
 
@@ -11531,11 +11322,11 @@ var ccpwgl_int = (function()
      * @property {boolean} reversed
      * @property {number} timeOffset
      * @property {number} timeScale
-     * @property {Float32Array} startValue - vec2 array
-     * @property {Float32Array} currentValue - vec2 array
-     * @property {Float32Array} endValue - vec2 array
-     * @property {Float32Array} startTangent - vec2 array
-     * @property {Float32Array} endTangent - vec2 array
+     * @property {vec2} startValue - vec2 array
+     * @property {vec2} currentValue - vec2 array
+     * @property {vec2} endValue - vec2 array
+     * @property {vec2} startTangent - vec2 array
+     * @property {vec2} endTangent - vec2 array
      * @property {number} interpolation
      * @property {Array.<Tw2Vector2Key>} keys
      * @constructor
@@ -11548,18 +11339,17 @@ var ccpwgl_int = (function()
         this.reversed = false;
         this.timeOffset = 0;
         this.timeScale = 1;
-        this.startValue = new Float32Array(2);
-        this.currentValue = new Float32Array(2);
-        this.endValue = new Float32Array(2);
-        this.startTangent = new Float32Array(2);
-        this.endTangent = new Float32Array(2);
+        this.startValue = vec2.create();
+        this.currentValue = vec2.create();
+        this.endValue = vec2.create();
+        this.startTangent = vec2.create();
+        this.endTangent = vec2.create();
         this.interpolation = 1;
         this.keys = [];
     }
 
     /**
      * Initializes the Curve
-     * @prototype
      */
     Tw2Vector2Curve.prototype.Initialize = function()
     {
@@ -11569,7 +11359,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2Vector2Curve.prototype.GetLength = function()
     {
@@ -11581,7 +11370,6 @@ var ccpwgl_int = (function()
      * @param {Tw2Vector2Key} a
      * @param {Tw2Vector2Key} b
      * @returns {number}
-     * @method
      */
     Tw2Vector2Curve.Compare = function(a, b)
     {
@@ -11598,7 +11386,6 @@ var ccpwgl_int = (function()
 
     /**
      * Sorts the curve's keys
-     * @prototype
      */
     Tw2Vector2Curve.prototype.Sort = function()
     {
@@ -11627,7 +11414,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2Vector2Curve.prototype.UpdateValue = function(time)
     {
@@ -11637,9 +11423,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {Float32Array} value - vec2 array
-     * @returns {Float32Array} vec2 array
-     * @prototype
+     * @param {vec2} value - vec2 array
+     * @returns {vec2} vec2 array
      */
     Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
     {
@@ -11704,9 +11489,8 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {Tw2Vector2Key} lastKey
      * @param {Tw2Vector2Key} nextKey
-     * @param {Float32Array} value - vec2 array
-     * @returns {Float32Array} vec2 array
-     * @prototype
+     * @param {vec2} value - vec2 array
+     * @returns {vec2} vec2 array
      */
     Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     {
@@ -11837,7 +11621,6 @@ var ccpwgl_int = (function()
 
     /**
      * Initializes the Curve
-     * @prototype
      */
     Tw2Vector3Curve.prototype.Initialize = function()
     {
@@ -11847,7 +11630,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2Vector3Curve.prototype.GetLength = function()
     {
@@ -11859,7 +11641,6 @@ var ccpwgl_int = (function()
      * @param {Tw2Vector3Key} a
      * @param {Tw2Vector3Key} b
      * @returns {number}
-     * @method
      */
     Tw2Vector3Curve.Compare = function(a, b)
     {
@@ -11876,7 +11657,6 @@ var ccpwgl_int = (function()
 
     /**
      * Sorts the curve's keys
-     * @prototype
      */
     Tw2Vector3Curve.prototype.Sort = function()
     {
@@ -11905,7 +11685,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2Vector3Curve.prototype.UpdateValue = function(time)
     {
@@ -11914,21 +11693,16 @@ var ccpwgl_int = (function()
 
     /**
      * Gets a value at a specific time
-     * TODO: the variable `i` is used before it has been initialized
      * @param {number} time
      * @param {vec3} value
      * @returns {vec3}
-     * @prototype
      */
     Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
     {
         time = time / this.timeScale + this.timeOffset;
         if (this.length <= 0 || time <= 0)
         {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            value[2] = this.startValue[2];
-            return value;
+            return vec3.copy(value, this.startValue);
         }
         if (time > this.length)
         {
@@ -11938,17 +11712,11 @@ var ccpwgl_int = (function()
             }
             else if (this.reversed)
             {
-                value[0] = this.startValue[0];
-                value[1] = this.startValue[1];
-                value[2] = this.startValue[2];
-                return value;
+                return vec3.copy(value, this.startValue);
             }
             else
             {
-                value[0] = this.endValue[0];
-                value[1] = this.endValue[1];
-                value[2] = this.endValue[2];
-                return value;
+                return vec3.copy(value, this.endValue);
             }
         }
         if (this.reversed)
@@ -11988,14 +11756,10 @@ var ccpwgl_int = (function()
      * @param {Tw2Vector3Key} nextKey
      * @param {vec3} value
      * @returns {vec3}
-     * @prototype
      */
     Tw2Vector3Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        value[2] = this.startValue[2];
-
+        vec3.copy(value, this.startValue);
         var startValue = this.startValue;
         var endValue = this.endValue;
         var interp = this.interpolation;
@@ -12028,6 +11792,7 @@ var ccpwgl_int = (function()
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
                 value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
                 return value;
+
             case 2:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
@@ -12111,7 +11876,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2VectorCurve.prototype.UpdateValue = function(time)
     {
@@ -12121,7 +11885,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2VectorCurve.prototype.GetLength = function()
     {
@@ -12133,7 +11896,6 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {vec3} value
      * @returns {vec3}
-     * @prototype
      */
     Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     {
@@ -12141,10 +11903,7 @@ var ccpwgl_int = (function()
 
         if (this.length == 0)
         {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            return value;
+            return vec3.copy(value, this.value);
         }
 
         var firstKey = this.keys[0];
@@ -12153,25 +11912,15 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                value[0] = this.value[0];
-                value[1] = this.value[1];
-                value[2] = this.value[2];
-                return value;
+                return vec3.copy(value, this.value);
             }
             else if (this.extrapolation == 1)
             {
-                value[0] = lastKey.value[0];
-                value[1] = lastKey.value[1];
-                value[2] = lastKey.value[2];
-                return value;
+                return vec3.copy(value, lastKey.value);
             }
             else if (this.extrapolation == 2)
             {
-                d = time - lastKey.time;
-                value[0] = lastKey.value[0] + d * lastKey.right[0];
-                value[1] = lastKey.value[1] + d * lastKey.right[1];
-                value[2] = lastKey.value[2] + d * lastKey.right[2];
-                return value;
+                return vec3.scaleAndAdd(value, lastKey.value, lastKey.right, time - lastKey.time);
             }
             else
             {
@@ -12182,25 +11931,15 @@ var ccpwgl_int = (function()
         {
             if (this.extrapolation == 0)
             {
-                value[0] = this.value[0];
-                value[1] = this.value[1];
-                value[2] = this.value[2];
-                return value;
+                return vec3.copy(value, this.value);
             }
             else if (this.extrapolation == 2)
             {
-                d = time * this.length - lastKey.time;
-                value[0] = firstKey.value[0] + d * firstKey.left[0];
-                value[1] = firstKey.value[1] + d * firstKey.left[1];
-                value[2] = firstKey.value[2] + d * firstKey.left[2];
-                return value;
+                return vec3.scaleAndAdd(value, firstKey.value, firstKey.left, time * this.length - lastKey.time);
             }
             else
             {
-                value[0] = firstKey.value[0];
-                value[1] = firstKey.value[1];
-                value[2] = firstKey.value[2];
-                return value;
+                return vec3.copy(value, firstKey.value);
             }
         }
         var ck = this.keys[this._currKey];
@@ -12219,9 +11958,7 @@ var ccpwgl_int = (function()
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
         if (ck_1.interpolation == 1)
         {
-            value[0] = ck_1.value[0];
-            value[1] = ck_1.value[1];
-            value[2] = ck_1.value[2];
+            vec3.copy(value, ck_1.value);
         }
         else if (ck_1.interpolation == 2)
         {
@@ -12266,7 +12003,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2VectorSequencer.prototype.GetLength = function()
     {
@@ -12284,7 +12020,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2VectorSequencer.prototype.UpdateValue = function(time)
     {
@@ -12296,7 +12031,6 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {vec3} value
      * @returns {vec3}
-     * @prototype
      */
     Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
     {
@@ -12304,32 +12038,24 @@ var ccpwgl_int = (function()
 
         if (this.operator == 0)
         {
-            value[0] = 1;
-            value[1] = 1;
-            value[2] = 1;
+            vec3.fill(value, 1);
             tempValue = this._tempValue;
             functions = this.functions;
             for (i = 0; i < functions.length; ++i)
             {
                 functions[i].GetValueAt(time, tempValue);
-                value[0] *= tempValue[0];
-                value[1] *= tempValue[1];
-                value[2] *= tempValue[2];
+                vec3.multiply(value, value, tempValue);
             }
         }
         else
         {
-            value[0] = 0;
-            value[1] = 0;
-            value[2] = 0;
+            vec3.fill(value, 0);
             tempValue = this._tempValue;
             functions = this.functions;
             for (i = 0; i < functions.length; ++i)
             {
                 functions[i].GetValueAt(time, tempValue);
-                value[0] += tempValue[0];
-                value[1] += tempValue[1];
-                value[2] += tempValue[2];
+                vec3.add(value, value, tempValue);
             }
         }
         return value;
@@ -12339,9 +12065,9 @@ var ccpwgl_int = (function()
      * Tw2XYZScalarSequencer
      * @property {string} name
      * @property {vec3} value
-     * @property XCurve
-     * @property YCurve
-     * @property ZCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} XCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} YCurve
+     * @property {Tw2ScalarCurve|Tw2ScalarCurve2} ZCurve
      * @constructor
      */
     function Tw2XYZScalarSequencer()
@@ -12356,7 +12082,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2XYZScalarSequencer.prototype.GetLength = function()
     {
@@ -12379,7 +12104,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2XYZScalarSequencer.prototype.UpdateValue = function(time)
     {
@@ -12391,7 +12115,6 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {vec3} value
      * @returns {vec3}
-     * @prototype
      */
     Tw2XYZScalarSequencer.prototype.GetValueAt = function(time, value)
     {
@@ -12425,7 +12148,7 @@ var ccpwgl_int = (function()
     /**
      * Tw2YPRSequencer
      * @property {string} name
-     * @property {quat4} value=[0,0,0,1]
+     * @property {quat} value=[0,0,0,1]
      * @property {vec3} YawPitchRoll
      * @property YawCurve
      * @property PitchCurve
@@ -12435,7 +12158,7 @@ var ccpwgl_int = (function()
     function Tw2YPRSequencer()
     {
         this.name = '';
-        this.value = quat4.create([0, 0, 0, 1]);
+        this.value = quat.create();
         this.YawPitchRoll = vec3.create();
         this.YawCurve = null;
         this.PitchCurve = null;
@@ -12445,7 +12168,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2YPRSequencer.prototype.GetLength = function()
     {
@@ -12468,7 +12190,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2YPRSequencer.prototype.UpdateValue = function(time)
     {
@@ -12478,9 +12199,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2YPRSequencer.prototype.GetValueAt = function(time, value)
     {
@@ -12573,7 +12293,7 @@ var ccpwgl_int = (function()
      * @param curveIndex
      * @param time
      * @returns {*}
-     * @prototype
+
      */
     Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
     {
@@ -12868,7 +12588,6 @@ var ccpwgl_int = (function()
     /**
      * Returns the total number of curves
      * @returns {number}
-     * @prototype
      */
     Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
     {
@@ -12879,7 +12598,6 @@ var ccpwgl_int = (function()
      * Gets specific curve's length
      * @property {number} index
      * @returns {number}
-     * @prototype
      */
     Tw2MayaAnimationEngine.prototype.GetLength = function(index)
     {
@@ -13185,7 +12903,6 @@ var ccpwgl_int = (function()
     /**
      * Initializes the Curve
      * @returns {boolean}
-     * @prototype
      */
     Tw2MayaScalarCurve.prototype.Initialize = function()
     {
@@ -13196,7 +12913,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2MayaScalarCurve.prototype.GetLength = function()
     {
@@ -13206,7 +12922,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
     {
@@ -13218,7 +12933,6 @@ var ccpwgl_int = (function()
 
     /**
      * Computes curve Length
-     * @prototype
      */
     Tw2MayaScalarCurve.prototype.ComputeLength = function()
     {
@@ -13255,7 +12969,6 @@ var ccpwgl_int = (function()
     /**
      * Initializes the Curve
      * @returns {boolean}
-     * @prototype
      */
     Tw2MayaVector3Curve.prototype.Initialize = function()
     {
@@ -13266,7 +12979,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2MayaVector3Curve.prototype.GetLength = function()
     {
@@ -13276,7 +12988,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
     {
@@ -13313,7 +13024,6 @@ var ccpwgl_int = (function()
 
     /**
      * Computes curve Length
-     * @prototype
      */
     Tw2MayaVector3Curve.prototype.ComputeLength = function()
     {
@@ -13345,7 +13055,7 @@ var ccpwgl_int = (function()
      * @property {string} name
      * @property {vec3} eulerValue
      * @property {boolean} updateQuaternion
-     * @property {quat4} quatValue
+     * @property quat quatValue
      * @constructor
      */
     function Tw2MayaEulerRotationCurve()
@@ -13357,13 +13067,12 @@ var ccpwgl_int = (function()
         this.name = '';
         this.eulerValue = vec3.create();
         this.updateQuaternion = false;
-        this.quatValue = quat4.create();
+        this.quatValue = quat.zero();
     }
 
     /**
      * Initializes the Curve
      * @returns {boolean}
-     * @prototype
      */
     Tw2MayaEulerRotationCurve.prototype.Initialize = function()
     {
@@ -13374,7 +13083,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2MayaEulerRotationCurve.prototype.GetLength = function()
     {
@@ -13384,7 +13092,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
     {
@@ -13434,7 +13141,6 @@ var ccpwgl_int = (function()
 
     /**
      * Computes curve Length
-     * @prototype
      */
     Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
     {
@@ -13460,18 +13166,18 @@ var ccpwgl_int = (function()
     /**
      * Tw2QuaternionKey2
      * @property {number} time
-     * @property {quat4} value
-     * @property {quat4} leftTangent
-     * @property {quat4} rightTangent
+     * @property {quat} value
+     * @property {quat} leftTangent
+     * @property {quat} rightTangent
      * @property {number} interpolation
      * @constructor
      */
     function Tw2QuaternionKey2()
     {
         this.time = 0;
-        this.value = quat4.create();
-        this.leftTangent = quat4.create();
-        this.rightTangent = quat4.create();
+        this.value = quat.zero();
+        this.leftTangent = quat.zero();
+        this.rightTangent = quat.zero();
         this.interpolation = 1;
     }
 
@@ -13484,11 +13190,11 @@ var ccpwgl_int = (function()
      * @property {boolean} reversed
      * @property {number} timeOffset
      * @property {number} timeScale
-     * @property {quat4} startValue
-     * @property {quat4} currentValue
-     * @property {quat4} endValue
-     * @property {quat4} startTangent
-     * @property {quat4} endTangent
+     * @property {quat} startValue
+     * @property {quat} currentValue
+     * @property {quat} endValue
+     * @property {quat} startTangent
+     * @property {quat} endTangent
      * @property {number} interpolation
      * @property {Array.<Tw2QuaternionKey>} keys
      * @constructor
@@ -13501,18 +13207,17 @@ var ccpwgl_int = (function()
         this.reversed = false;
         this.timeOffset = 0;
         this.timeScale = 1;
-        this.startValue = quat4.create();
-        this.currentValue = quat4.create();
-        this.endValue = quat4.create();
-        this.startTangent = quat4.create();
-        this.endTangent = quat4.create();
+        this.startValue = quat.zero()
+        this.currentValue = quat.zero()
+        this.endValue = quat.zero()
+        this.startTangent = quat.zero()
+        this.endTangent = quat.zero()
         this.interpolation = 1;
         this.keys = [];
     }
 
     /**
      * Initializes the Curve
-     * @prototype
      */
     Tw2QuaternionCurve.prototype.Initialize = function()
     {
@@ -13522,7 +13227,6 @@ var ccpwgl_int = (function()
     /**
      * Gets curve length
      * @returns {number}
-     * @prototype
      */
     Tw2QuaternionCurve.prototype.GetLength = function()
     {
@@ -13534,7 +13238,6 @@ var ccpwgl_int = (function()
      * @param {Tw2QuaternionKey} a
      * @param {Tw2QuaternionKey} b
      * @returns {number}
-     * @method
      */
     Tw2QuaternionCurve.Compare = function(a, b)
     {
@@ -13551,7 +13254,6 @@ var ccpwgl_int = (function()
 
     /**
      * Sorts the curve's keys
-     * @prototype
      */
     Tw2QuaternionCurve.prototype.Sort = function()
     {
@@ -13580,7 +13282,6 @@ var ccpwgl_int = (function()
     /**
      * Updates a value at a specific time
      * @param {number} time
-     * @prototype
      */
     Tw2QuaternionCurve.prototype.UpdateValue = function(time)
     {
@@ -13590,9 +13291,8 @@ var ccpwgl_int = (function()
     /**
      * Gets a value at a specific time
      * @param {number} time
-     * @param {quat4} value
-     * @returns {quat4}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
     {
@@ -13660,9 +13360,8 @@ var ccpwgl_int = (function()
      * @param {number} time
      * @param {null|Tw2QuaternionKey} lastKey
      * @param {null|Tw2QuaternionKey} nextKey
-     * @param {quat4} value
-     * @returns {*}
-     * @prototype
+     * @param {quat} value
+     * @returns {quat}
      */
     Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     {
@@ -13698,10 +13397,32 @@ var ccpwgl_int = (function()
                     startValue = lastKey.value;
                     deltaTime = this.length - lastKey.time;
                 }
-                quat4.slerp(startValue, endValue, time / deltaTime, value);
+                Tw2QuaternionCurve.slerp(startValue, endValue, time / deltaTime, value);
                 return value;
         }
         return value;
+    };
+
+    /**
+     * Spherical interpolation
+     * - GlMatrix v0.9.5 version
+     * - Results differ from GlMatrix v2.x slerp
+     * @param a - Operand A (receives changes if d not provided)
+     * @param b - Operand B
+     * @param c - Time
+     * @param [d] - optional receiving vector
+     * @returns {quat}
+     */
+    Tw2QuaternionCurve.slerp = function(a, b, c, d)
+    {
+        d || (d = a);
+        var e = c;
+        if (a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3] < 0) e = -1 * c;
+        d[0] = 1 - c * a[0] + e * b[0];
+        d[1] = 1 - c * a[1] + e * b[1];
+        d[2] = 1 - c * a[2] + e * b[2];
+        d[3] = 1 - c * a[3] + e * b[3];
+        return d
     };
 
     /**
@@ -13749,7 +13470,6 @@ var ccpwgl_int = (function()
 
         /**
          * Initialize
-         * @method
          */
         this.Initialize = function()
         {
@@ -13771,7 +13491,6 @@ var ccpwgl_int = (function()
         /**
          * Updates a value at a specific time
          * @param {number} time
-         * @prototype
          */
         this.UpdateValue = function(time)
         {
@@ -13793,7 +13512,7 @@ var ccpwgl_int = (function()
     /**
      * Tw2WbgTransformTrack
      * @property {vec3} translation
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {vec3} scale
      * @variable positionCurve
      * @variable rotationCurve
@@ -13804,13 +13523,12 @@ var ccpwgl_int = (function()
     function Tw2WbgTransformTrack()
     {
         this.translation = vec3.create();
-        this.rotation = quat4.create();
-        this.rotation[3] = 1;
+        this.rotation = quat.create();
         this.scale = vec3.create();
         var positionCurve = null;
         var rotationCurve = null;
         var scaleCurve = null;
-        var scaleShear = mat4.identity(mat4.create());
+        var scaleShear = mat4.create();
 
         /**
          * _TracksReady
@@ -13847,7 +13565,6 @@ var ccpwgl_int = (function()
         /**
          * Updates a value at a specific time
          * @param {number} time
-         * @prototype
          */
         this._UpdateValue = function(time)
         {
@@ -13858,7 +13575,7 @@ var ccpwgl_int = (function()
             if (rotationCurve)
             {
                 Tw2AnimationController.EvaluateCurve(rotationCurve, time, this.rotation, this.cycle, this.duration);
-                quat4.normalize(this.rotation);
+                quat.normalize(this.rotation, this.rotation);
             }
             if (scaleCurve)
             {
@@ -13872,7 +13589,6 @@ var ccpwgl_int = (function()
 
     /**
      * @type {Tw2WbgTrack}
-     * @prototype
      */
     Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
@@ -13885,7 +13601,7 @@ var ccpwgl_int = (function()
     function EveLocator()
     {
         this.name = '';
-        this.transform = mat4.create();
+        this.transform = mat4.zero();
     }
 
     /**
@@ -13899,13 +13615,13 @@ var ccpwgl_int = (function()
      * @property {Tw2Effect} effect
      * @property {Tw2Effect} glows
      * @property {number} glowScale
-     * @property {quat4} glowColor
-     * @property {quat4} warpGlowColor
+     * @property {vec4} glowColor
+     * @property {vec4} warpGlowColor
      * @property {number} symHaloScale
      * @property {number} haloScaleX
      * @property {number} haloScaleY
      * @property {number} maxVel
-     * @property {quat4} haloColor
+     * @property {vec4} haloColor
      * @property {boolean} alwaysOn
      * @property {mat4} _parentTransform
      * @property {mat4} _wavePhase
@@ -13922,17 +13638,17 @@ var ccpwgl_int = (function()
         this.effect = null;
         this.glows = null;
         this.glowScale = 1.0;
-        this.glowColor = quat4.create();
-        this.warpGlowColor = quat4.create();
+        this.glowColor = vec4.create();
+        this.warpGlowColor = vec4.create();
         this.symHaloScale = 1.0;
         this.haloScaleX = 1.0;
         this.haloScaleY = 1.0;
         this.maxVel = 250;
-        this.haloColor = quat4.create();
+        this.haloColor = vec4.create();
         this.alwaysOn = true;
 
-        this._parentTransform = mat4.create();
-        this._wavePhase = mat4.create();
+        this._parentTransform = mat4.zero();
+        this._wavePhase = mat4.zero();
         this._boosterTransforms = [];
 
         this._positions = device.gl.createBuffer();
@@ -13997,7 +13713,7 @@ var ccpwgl_int = (function()
     EveBoosterSet.prototype.Clear = function()
     {
         this._boosterTransforms = [];
-        this._wavePhase = mat4.create();
+        this._wavePhase = mat4.zero();
         if (this.glows)
         {
             this.glows.Clear();
@@ -14009,12 +13725,10 @@ var ccpwgl_int = (function()
      * @param {mat4} localMatrix
      * @param {number} atlas0
      * @param {number} atlas1
-     * @constructor
      */
     EveBoosterSet.prototype.Add = function(localMatrix, atlas0, atlas1)
     {
-        var transform = mat4.create();
-        mat4.set(localMatrix, transform);
+        var transform = mat4.clone(localMatrix);
         this._boosterTransforms[this._boosterTransforms.length] = {
             transform: transform,
             atlas0: atlas0,
@@ -14023,21 +13737,21 @@ var ccpwgl_int = (function()
         this._wavePhase[this._wavePhase.length] = Math.random();
         if (this.glows)
         {
-            var pos = vec3.create([localMatrix[12], localMatrix[13], localMatrix[14]]);
-            var dir = vec3.create([localMatrix[8], localMatrix[9], localMatrix[10]]);
+            var pos = vec3.fromTranslation(localMatrix);
+            var dir = vec3.fromValues(localMatrix[8], localMatrix[9], localMatrix[10]);
             var scale = Math.max(vec3.length([localMatrix[0], localMatrix[1], localMatrix[2]]), vec3.length([localMatrix[4], localMatrix[5], localMatrix[6]]));
-            vec3.normalize(dir);
+            vec3.normalize(dir, dir);
             if (scale < 3)
             {
-                vec3.scale(dir, scale / 3);
+                vec3.scale(dir, dir, scale / 3);
             }
             var seed = Math.random() * 0.7;
             var spritePos = vec3.create();
-            vec3.subtract(pos, vec3.scale(dir, 2.5, spritePos), spritePos);
+            vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 2.5));
             this.glows.Add(spritePos, seed, seed, scale * this.glowScale, scale * this.glowScale, 0, this.glowColor, this.warpGlowColor);
-            vec3.subtract(pos, vec3.scale(dir, 3, spritePos), spritePos);
+            vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 3));
             this.glows.Add(spritePos, seed, 1 + seed, scale * this.symHaloScale, scale * this.symHaloScale, 0, this.haloColor, this.warpGlowColor);
-            vec3.subtract(pos, vec3.scale(dir, 3.01, spritePos), spritePos);
+            vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 3.01));
             this.glows.Add(spritePos, seed, 1 + seed, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor, this.warpGlowColor);
         }
     };
@@ -14136,7 +13850,6 @@ var ccpwgl_int = (function()
      * Per frame update
      * @param {number} dt - DeltaTime
      * @param {mat4} parentMatrix
-     * @constructor
      */
     EveBoosterSet.prototype.Update = function(dt, parentMatrix)
     {
@@ -14184,7 +13897,7 @@ var ccpwgl_int = (function()
         {
             var batch = new EveBoosterBatch();
 
-            mat4.transpose(this._parentTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
+            mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this._parentTransform);
             this._perObjectData.perObjectVSData.Set('Shipdata', perObjectData.perObjectVSData.Get('Shipdata'));
             this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
             batch.perObjectData = this._perObjectData;
@@ -14566,7 +14279,7 @@ var ccpwgl_int = (function()
         var pos = vec3.create();
         for (var i = 0; i < this.sprites.length; ++i)
         {
-            mat4.multiplyVec3(world, this.sprites[i].position, pos);
+            vec3.transformMat4(pos, this.sprites[i].position, world);
             array[index++] = pos[0];
             array[index++] = pos[1];
             array[index++] = pos[2];
@@ -14637,11 +14350,11 @@ var ccpwgl_int = (function()
                 pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
                 pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
                 pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
-                mat4.multiplyVec3(world, pos);
+                vec3.transformMat4(pos, pos, world);
             }
             else
             {
-                mat4.multiplyVec3(world, sprite.position, pos);
+                vec3.transformMat4(pos, sprite.position, world);
             }
             array[index++] = pos[0];
             array[index++] = pos[1];
@@ -14704,20 +14417,19 @@ var ccpwgl_int = (function()
      * @param {number} minScale
      * @param {number} maxScale
      * @param {number} falloff
-     * @param {quat4} color
-     * @constructor
+     * @param {vec4} color
      */
     EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
     {
         var item = new EveSpriteSetItem();
         item.display = true;
-        item.position = vec3.create(pos);
+        item.position = vec3.clone(pos);
         item.blinkRate = blinkRate;
         item.blinkPhase = blinkPhase;
         item.minScale = minScale;
         item.maxScale = maxScale;
         item.falloff = falloff;
-        item.color = quat4.create(color);
+        item.color = vec4.clone(color);
         this.sprites[this.sprites.length] = item;
     };
 
@@ -14728,8 +14440,8 @@ var ccpwgl_int = (function()
      * @property {number} blinkRate
      * @property {number} minScale
      * @property {number} falloff
-     * @property {quat4} color
-     * @property {quat4} warpColor
+     * @property {vec4} color
+     * @property {vec4} warpColor
      * @property {number} boneIndex
      * @property {number} groupIndex
      * @constructor
@@ -14744,8 +14456,8 @@ var ccpwgl_int = (function()
         this.minScale = 1;
         this.maxScale = 1;
         this.falloff = 0;
-        this.color = quat4.create();
-        this.warpColor = quat4.create();
+        this.color = vec4.create();
+        this.warpColor = vec4.create();
         this.boneIndex = 0;
         this.groupIndex = -1;
     }
@@ -14754,10 +14466,10 @@ var ccpwgl_int = (function()
      * Spotlight Item
      * @property {string} name
      * @property {mat4} transform
-     * @property {quat4} coneColor
-     * @property {quat4} spriteColor
-     * @property {quat4} flareColor
-     * @property {quat4} spriteScale
+     * @property {vec4} coneColor
+     * @property {vec4} spriteColor
+     * @property {vec4} flareColor
+     * @property {vec3} spriteScale
      * @property {boolean} boosterGainInfluence
      * @property {number} boneIndex
      * @property {number} groupIndex
@@ -14767,10 +14479,10 @@ var ccpwgl_int = (function()
     {
         this.display = true;
         this.name = '';
-        this.transform = mat4.create();
-        this.coneColor = quat4.create();
-        this.spriteColor = quat4.create();
-        this.flareColor = quat4.create();
+        this.transform = mat4.zero();
+        this.coneColor = vec4.create();
+        this.spriteColor = vec4.create();
+        this.flareColor = vec4.create();
         this.spriteScale = vec3.create();
         this.boosterGainInfluence = false;
         this.boneIndex = 0;
@@ -15179,6 +14891,8 @@ var ccpwgl_int = (function()
 
         var array = new Float32Array(visibleItems.length * 4 * vertexSize);
         var tempMat = mat4.create();
+        var itemTransform = mat4.create();
+
         for (var i = 0; i < visibleItems.length; ++i)
         {
             var offset = i * 4 * vertexSize;
@@ -15187,10 +14901,13 @@ var ccpwgl_int = (function()
             array[offset + 2 * vertexSize + vertexSize - 3] = 2;
             array[offset + 3 * vertexSize + vertexSize - 3] = 3;
 
-            var itemTransform = mat4.transpose(mat4.multiply(mat4.scale(mat4.identity(mat4.create()), visibleItems[i].scaling), quat4.toMat4(visibleItems[i].rotation, tempMat)));
-            itemTransform[12] = visibleItems[i].position[0];
-            itemTransform[13] = visibleItems[i].position[1];
-            itemTransform[14] = visibleItems[i].position[2];
+            mat4.identity(itemTransform);
+            mat4.fromQuat(tempMat, visibleItems[i].rotation);
+            mat4.transpose(tempMat, tempMat);
+            mat4.scale(itemTransform, itemTransform, visibleItems[i].scaling);
+            mat4.multiply(itemTransform, itemTransform, tempMat);
+            mat4.transpose(itemTransform, itemTransform);
+            mat4.setTranslation(itemTransform, visibleItems[i].position);
 
             for (var j = 0; j < 4; ++j)
             {
@@ -15360,12 +15077,12 @@ var ccpwgl_int = (function()
      * @property {string} name
      * @property {vec3} position
      * @property {vec3} scaling
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {quat4} color
-     * @property {quat4} layer1Transform
-     * @property {quat4} layer2Transform
-     * @property {quat4} layer1Scroll
-     * @property {quat4} layer2Scroll
+     * @property {vec4} layer1Transform
+     * @property {vec4} layer2Transform
+     * @property {vec4} layer1Scroll
+     * @property {vec4} layer2Scroll
      * @property {number} boneIndex
      * @property {number} groupIndex
      * @constructor
@@ -15375,13 +15092,13 @@ var ccpwgl_int = (function()
         this.display = true;
         this.name = '';
         this.position = vec3.create();
-        this.scaling = vec3.create([1, 1, 1]);
-        this.rotation = quat4.create([0, 0, 0, 1]);
-        this.color = quat4.create([1, 1, 1, 1]);
-        this.layer1Transform = quat4.create([1, 1, 0, 0]);
-        this.layer2Transform = quat4.create([1, 1, 0, 0]);
-        this.layer1Scroll = quat4.create();
-        this.layer2Scroll = quat4.create();
+        this.scaling = vec3.one();
+        this.rotation = quat.create();
+        this.color = vec4.one();
+        this.layer1Transform = vec4.fromValues(1, 1, 0, 0);
+        this.layer2Transform = vec4.fromValues(1, 1, 0, 0);
+        this.layer1Scroll = vec4.create();
+        this.layer2Scroll = vec4.create();
         this.boneIndex = 0;
         this.groupIndex = -1;
         this.maskAtlasID = 0;
@@ -15445,12 +15162,13 @@ var ccpwgl_int = (function()
      * @property {Boolean} displayChildren
      * @property {vec3} scaling
      * @property {vec3} translation
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {mat4} localTransform
      * @property {mat4} rotationTransform
      * @property {mat4} worldTransform
      * @property {Array.<mat4>} _mat4Cache
      * @property {Array.<vec3>} _vec3Cache
+     * @property {vec3} _parentScale
      * @property {EveBasicPerObjectData} _perObjectData
      * @constructor
      */
@@ -15484,19 +15202,20 @@ var ccpwgl_int = (function()
         this.displayMesh = true;
         this.displayChildren = true;
 
-        this.scaling = vec3.create([1, 1, 1]);
-        this.translation = vec3.create([0, 0, 0]);
-        this.rotation = quat4.create([0, 0, 0, 1]);
-        this.localTransform = mat4.create();
-        this.rotationTransform = mat4.identity(mat4.create());
-        this.worldTransform = mat4.identity(mat4.create());
+        this.scaling = vec3.one();
+        this.translation = vec3.create();
+        this.rotation = quat.create();
+        this.localTransform = mat4.zero();
+        this.rotationTransform = mat4.create();
+        this.worldTransform = mat4.create();
 
-        this._mat4Cache = [mat4.create(), mat4.create()];
+        this._mat4Cache = [mat4.zero(), mat4.zero()];
         this._vec3Cache = [];
         for (var i = 0; i < 7; ++i)
         {
             this._vec3Cache[i] = vec3.create();
         }
+        this._parentScale = vec3.create();
 
         this._perObjectData = new EveBasicPerObjectData();
         this._perObjectData.perObjectFFEData = new Tw2RawData();
@@ -15510,11 +15229,8 @@ var ccpwgl_int = (function()
      */
     EveTransform.prototype.Initialize = function()
     {
-        mat4.identity(this.localTransform);
-        mat4.translate(this.localTransform, this.translation);
-        mat4.transpose(quat4.toMat4(this.rotation, this.rotationTransform));
-        mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-        mat4.scale(this.localTransform, this.scaling);
+        mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        mat4.fromQuat(this.rotationTransform, this.rotation);
     };
 
     /**
@@ -15561,8 +15277,8 @@ var ccpwgl_int = (function()
 
         if (this.displayMesh && this.mesh != null)
         {
-            mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('World'));
-            mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'));
+            mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
+            mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
             if (perObjectData)
             {
                 this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
@@ -15605,57 +15321,40 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * multiply3x3
-     */
-    mat4.multiply3x3 = function(a, b, c)
-    {
-        c || (c = b);
-        var d = b[0],
-            e = b[1];
-        b = b[2];
-        c[0] = a[0] * d + a[4] * e + a[8] * b;
-        c[1] = a[1] * d + a[5] * e + a[9] * b;
-        c[2] = a[2] * d + a[6] * e + a[10] * b;
-        return c;
-    };
-
-    /**
      * Per frame update
      * @param {Mat4} parentTransform
      */
     EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
     {
-        mat4.identity(this.localTransform);
-        mat4.translate(this.localTransform, this.translation);
-        mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
-        mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-        mat4.scale(this.localTransform, this.scaling);
+        quat.normalize(this.rotation, this.rotation);
+        mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        mat4.fromQuat(this.rotationTransform, this.rotation);
+        vec3.setScale(this._parentScale, parentTransform);
+
         switch (this.modifier)
         {
             case this.BILLBOARD:
             case this.SIMPLE_HALO:
                 {
-                    mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+                    mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
 
                     var finalScale = this._vec3Cache[0];
-                    vec3.set(this.scaling, finalScale);
-                    var parentScaleX = vec3.length(parentTransform);
-                    var parentScaleY = vec3.length(parentTransform.subarray(4));
-                    var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                    finalScale[0] *= parentScaleX;
-                    finalScale[1] *= parentScaleY;
-                    finalScale[2] *= parentScaleZ;
+                    vec3.copy(finalScale, this.scaling);
+                    vec3.multiply(finalScale, finalScale, this._parentScale);
+
                     if (this.modifier == this.SIMPLE_HALO)
                     {
                         var camPos = device.GetEyePosition();
                         var d = this._vec3Cache[1];
-                        vec3.subtract(camPos, this.worldTransform.subarray(12), d);
-                        var scale = vec3.dot(vec3.normalize(d), vec3.normalize(this.worldTransform.subarray(8), this._vec3Cache[2]));
+                        vec3.subtract(d, camPos, this.worldTransform.subarray(12));
+                        vec3.normalize(this._vec3Cache[2], this.worldTransform.subarray(8));
+                        vec3.normalize(d, d);
+                        var scale = vec3.dot(d, this._vec3Cache[2]);
                         if (scale < 0)
                         {
                             scale = 0;
                         }
-                        vec3.scale(finalScale, scale * scale);
+                        vec3.scale(finalScale, finalScale, scale * scale);
                     }
                     var invView = device.viewInv;
                     this.worldTransform[0] = invView[0] * finalScale[0];
@@ -15669,30 +15368,23 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION:
                 {
-                    var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
-
-                    mat4.identity(this.localTransform);
-                    mat4.translate(this.localTransform, newTranslation);
-                    mat4.transpose(quat4.toMat4(this.rotation, this.rotationTransform));
-                    mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-                    mat4.scale(this.localTransform, this.scaling);
-
-                    var x = this.localTransform[12];
-                    var y = this.localTransform[13];
-                    var z = this.localTransform[14];
-                    mat4.multiply(device.viewInv, this.localTransform, this.worldTransform);
-                    this.worldTransform[12] = x;
-                    this.worldTransform[13] = y;
-                    this.worldTransform[14] = z;
+                    var newTranslation = vec3.transformMat4(vec3.create(), this.translation, parentTransform);
+                    mat4.fromRotationTranslationScale(this.localTransform, this.rotation, newTranslation, this.scaling);
+                    mat4.fromQuat(this.rotationTransform, this.rotation);
+                    var temp = vec3.fromTranslation(this.localTransform)
+                    mat4.multiply(this.worldTransform, device.viewInv, this.localTransform);
+                    mat4.setTranslation(this.worldTransform, temp);
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION_ALIGNED:
             case this.EVE_SIMPLE_HALO:
                 {
                     // 3 4 3 3 3 4 3 3
-                    mat4.translate(parentTransform, this.translation, this.worldTransform);
+                    mat4.translate(this.worldTransform, parentTransform, this.translation);
 
                     var camPos = device.GetEyePosition();
                     var d = this._vec3Cache[0];
@@ -15701,82 +15393,61 @@ var ccpwgl_int = (function()
                     d[2] = camPos[2] - this.worldTransform[14];
 
                     var parentT = this._mat4Cache[0];
-                    mat4.transpose(parentTransform, parentT);
+                    mat4.transpose(parentT, parentTransform);
                     var camFwd = this._vec3Cache[1];
-                    vec3.set(d, camFwd);
-                    mat4.multiply3x3(parentT, camFwd);
-
-                    var parentScaleX = vec3.length(parentTransform);
-                    camFwd[0] /= parentScaleX;
-                    var parentScaleY = vec3.length(parentTransform.subarray(4));
-                    camFwd[1] /= parentScaleY;
-                    var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                    camFwd[2] /= parentScaleZ;
-
-                    var distCenter = vec3.length(camFwd);
-                    vec3.normalize(camFwd);
+                    vec3.copy(camFwd, d);
+                    vec3.transformMat4(camFwd, camFwd, parentT);
+                    vec3.divide(camFwd, camFwd, this._parentScale);
+                    vec3.normalize(camFwd, camFwd);
 
                     var right = this._vec3Cache[2];
                     right[0] = device.view[0];
                     right[1] = device.view[4];
                     right[2] = device.view[8];
-                    mat4.multiply3x3(parentT, right);
-                    vec3.normalize(right);
+                    vec3.transformMat4(right, right, parentT);
+                    vec3.normalize(right, right);
 
                     var up = this._vec3Cache[3];
-                    vec3.cross(camFwd, right, up);
-                    vec3.normalize(up);
+                    vec3.cross(up, camFwd, right);
+                    vec3.normalize(up, up);
 
                     var alignMat = this._mat4Cache[1];
-                    vec3.cross(up, camFwd, right);
-                    alignMat[0] = right[0];
-                    alignMat[1] = right[1];
-                    alignMat[2] = right[2];
-                    alignMat[4] = up[0];
-                    alignMat[5] = up[1];
-                    alignMat[6] = up[2];
-                    alignMat[8] = camFwd[0];
-                    alignMat[9] = camFwd[1];
-                    alignMat[10] = camFwd[2];
-                    alignMat[15] = 1;
-                    mat4.multiply(alignMat, this.rotationTransform, alignMat);
+                    vec3.cross(right, up, camFwd);
+                    mat4.setBasis(alignMat, right, up, camFwd);
+                    mat4.multiply(alignMat, alignMat, this.rotationTransform);
 
                     if (this.modifier == this.EVE_SIMPLE_HALO)
                     {
                         var forward = this._vec3Cache[4];
-                        vec3.normalize(this.worldTransform.subarray(8), forward);
+                        vec3.normalize(forward, this.worldTransform.subarray(8));
                         var dirToCamNorm = d;
-                        vec3.normalize(dirToCamNorm);
+                        vec3.normalize(dirToCamNorm, dirToCamNorm);
                         var scale = -vec3.dot(dirToCamNorm, forward);
                         if (scale < 0)
                         {
                             scale = 0;
                         }
-                        mat4.multiply(this.worldTransform, alignMat, this.worldTransform);
-                        mat4.scale(this.worldTransform, [this.scaling[0] * scale, this.scaling[1] * scale, this.scaling[2] * scale]);
+                        mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                        mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * scale, this.scaling[1] * scale, this.scaling[2] * scale]);
                     }
                     else
                     {
-                        mat4.scale(this.worldTransform, this.scaling);
-                        mat4.multiply(this.worldTransform, alignMat, this.worldTransform);
+                        mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
+                        mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
                     }
                 }
                 break;
+
             case this.LOOK_AT_CAMERA:
                 {
-                    mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+                    mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
                     var invView = this._mat4Cache[0];
-                    mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
-                    mat4.transpose(invView);
+                    mat4.lookAt(invView, device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0]);
+                    mat4.transpose(invView, invView);
 
                     var finalScale = this._vec3Cache[0];
-                    vec3.set(this.scaling, finalScale);
-                    var parentScaleX = vec3.length(parentTransform);
-                    var parentScaleY = vec3.length(parentTransform.subarray(4));
-                    var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                    finalScale[0] *= parentScaleX;
-                    finalScale[1] *= parentScaleY;
-                    finalScale[2] *= parentScaleZ;
+                    vec3.copy(finalScale, this.scaling);
+                    vec3.multiply(finalScale, finalScale, this._parentScale);
 
                     this.worldTransform[0] = invView[0] * finalScale[0];
                     this.worldTransform[1] = invView[1] * finalScale[0];
@@ -15789,9 +15460,11 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             default:
-                mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+                mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
         }
+
         for (var i = 0; i < this.children.length; ++i)
         {
             this.children[i].UpdateViewDependentData(this.worldTransform);
@@ -15803,22 +15476,22 @@ var ccpwgl_int = (function()
      * @property {String} name
      * @property {boolean} visible
      * @property {mat4} localTransform
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @constructor
      */
     function EveTurretData()
     {
         this.name = '';
         this.visible = true;
-        this.localTransform = mat4.create();
-        this.rotation = quat4.create();
+        this.localTransform = mat4.zero();
+        this.rotation = quat.zero();
     }
 
     /**
      * EveTurretSet
      * @property {boolean} display
      * @property {string} name
-     * @property {quat4} boundingSphere
+     * @property {vec4} boundingSphere
      * @property {number} bottomClipHeight
      * @property {string} locatorName
      * @property {Tw2Effect} turretEffect
@@ -15839,7 +15512,6 @@ var ccpwgl_int = (function()
      * @property {number} STATE_PACKING
      * @property {number} STATE_UNPACKING
      * @property {number} state
-
      * @property {Tw2PerObjectData} _perObjectDataActive
      * @property {Tw2PerObjectData} _perObjectDataInactive
      * @property {Array.<string>} worldNames
@@ -15852,7 +15524,7 @@ var ccpwgl_int = (function()
     {
         this.display = true;
         this.name = '';
-        this.boundingSphere = quat4.create();
+        this.boundingSphere = vec4.create();
         this.bottomClipHeight = 0;
         this.locatorName = '';
         this.sysBoneHeight = 0;
@@ -15872,7 +15544,7 @@ var ccpwgl_int = (function()
         this.activeAnimation = new Tw2AnimationController();
         this.inactiveAnimation = new Tw2AnimationController();
 
-        this.parentMatrix = mat4.identity(mat4.create());
+        this.parentMatrix = mat4.create();
 
         this.STATE_INACTIVE = 0;
         this.STATE_IDLE = 1;
@@ -16000,10 +15672,12 @@ var ccpwgl_int = (function()
                 this.activeAnimation.PlayAnimation("Inactive", true);
                 this.inactiveAnimation.PlayAnimation("Inactive", true);
                 break;
+
             case this.STATE_IDLE:
                 this.activeAnimation.PlayAnimation("Active", true);
                 this.inactiveAnimation.PlayAnimation("Active", true);
                 break;
+
             case this.STATE_FIRING:
                 this.activeAnimation.PlayAnimation("Fire", false, function()
                 {
@@ -16011,9 +15685,11 @@ var ccpwgl_int = (function()
                 });
                 this.inactiveAnimation.PlayAnimation("Active", true);
                 break;
+
             case this.STATE_PACKING:
                 this.EnterStateIdle();
                 break;
+
             case this.STATE_UNPACKING:
                 this.EnterStateDeactive();
                 break;
@@ -16047,10 +15723,10 @@ var ccpwgl_int = (function()
      */
     EveTurretSet.prototype.SetLocalTransform = function(index, localTransform, locatorName)
     {
-        var transform = mat4.create(localTransform);
-        vec3.normalize(transform.subarray(0, 3));
-        vec3.normalize(transform.subarray(4, 7));
-        vec3.normalize(transform.subarray(8, 11));
+        var transform = mat4.clone(localTransform);
+        vec3.normalize(transform.subarray(0, 3), transform.subarray(0, 3));
+        vec3.normalize(transform.subarray(4, 7), transform.subarray(4, 7));
+        vec3.normalize(transform.subarray(8, 11), transform.subarray(8, 11));
         if (index >= this.turrets.length)
         {
             var data = new EveTurretData();
@@ -16062,7 +15738,7 @@ var ccpwgl_int = (function()
         {
             this.turrets[index].localTransform.set(transform);
         }
-        mat4toquat(this.turrets[index].localTransform, this.turrets[index].rotation);
+        mat4.getRotation(this.turrets[index].rotation, this.turrets[index].localTransform);
     };
 
     function mat3x4toquat(mm, index, out, outIndex)
@@ -16087,7 +15763,7 @@ var ccpwgl_int = (function()
         m[14] = mm[index + 11];
         m[15] = 1;
         var q = mat3x4toquat._tempQuat;
-        mat4toquat(m, q);
+        mat4.getRotation(q, m);
         out[outIndex] = q[0];
         out[outIndex + 1] = q[1];
         out[outIndex + 2] = q[2];
@@ -16095,58 +15771,7 @@ var ccpwgl_int = (function()
     }
 
     mat3x4toquat._tempMat = mat4.create();
-    mat3x4toquat._tempQuat = quat4.create();
-
-
-    function mat4toquat(m, out)
-    {
-        out = out || quat4.create();
-        var trace = m[0] + m[5] + m[10] + 1.0;
-        if (trace > 1.0)
-        {
-            out[0] = (m[6] - m[9]) / (2.0 * Math.sqrt(trace));
-            out[1] = (m[8] - m[2]) / (2.0 * Math.sqrt(trace));
-            out[2] = (m[1] - m[4]) / (2.0 * Math.sqrt(trace));
-            out[3] = Math.sqrt(trace) / 2.0;
-            return out;
-        }
-        var maxi = 0;
-        var maxdiag = m[0];
-        for (var i = 1; i < 3; i++)
-        {
-            if (m[i * 4 + i] > maxdiag)
-            {
-                maxi = i;
-                maxdiag = m[i * 4 + i];
-            }
-        }
-        var S;
-        switch (maxi)
-        {
-            case 0:
-                S = 2.0 * Math.sqrt(1.0 + m[0] - m[5] - m[10]);
-                out[0] = 0.25 * S;
-                out[1] = (m[1] + m[4]) / S;
-                out[2] = (m[2] + m[8]) / S;
-                out[3] = (m[6] - m[9]) / S;
-                break;
-            case 1:
-                S = 2.0 * Math.sqrt(1.0 + m[5] - m[0] - m[10]);
-                out[0] = (m[1] + m[4]) / S;
-                out[1] = 0.25 * S;
-                out[2] = (m[6] + m[9]) / S;
-                out[3] = (m[8] - m[2]) / S;
-                break;
-            case 2:
-                S = 2.0 * Math.sqrt(1.0 + m[10] - m[0] - m[5]);
-                out[0] = (m[2] + m[8]) / S;
-                out[1] = (m[6] + m[9]) / S;
-                out[2] = 0.25 * S;
-                out[3] = (m[1] - m[4]) / S;
-                break;
-        }
-        return out;
-    }
+    mat3x4toquat._tempQuat = quat.create();
 
     /**
      * Updates per object data
@@ -16156,7 +15781,7 @@ var ccpwgl_int = (function()
      */
     EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms)
     {
-        mat4.transpose(this.parentMatrix, perObjectData.Get('shipMatrix'));
+        mat4.transpose(perObjectData.Get('shipMatrix'), this.parentMatrix);
         var transformCount = transforms.length / 12;
         perObjectData.Get('turretSetData')[0] = transformCount;
         perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
@@ -16250,7 +15875,7 @@ var ccpwgl_int = (function()
             this.activeAnimation.Update(dt);
             this.inactiveAnimation.Update(dt);
         }
-        mat4.set(parentMatrix, this.parentMatrix);
+        mat4.copy(this.parentMatrix, parentMatrix);
         if (this.firingEffect)
         {
             if (this._activeTurret != -1)
@@ -16274,14 +15899,16 @@ var ccpwgl_int = (function()
                     {
                         var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform;
                         var out = this.firingEffect.GetMuzzleTransform(i);
-                        mat4.multiply(parentMatrix, mat4.multiply(this.turrets[this._activeTurret].localTransform, transform, out), out);
+                        // TODO: Check refactoring
+                        mat4.multiply(out, this.turrets[this._activeTurret].localTransform, transform);
+                        mat4.multiply(out, parentMatrix, out);
                     }
                 }
                 else
                 {
                     for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i)
                     {
-                        mat4.multiply(parentMatrix, this.turrets[this._activeTurret].localTransform, this.firingEffect.GetMuzzleTransform(i));
+                        mat4.multiply(this.firingEffect.GetMuzzleTransform(i), parentMatrix, this.turrets[this._activeTurret].localTransform);
                     }
                 }
                 if (this.fireCallbackPending)
@@ -16299,7 +15926,7 @@ var ccpwgl_int = (function()
                 }
             }
 
-            vec3.set(this.targetPosition, this.firingEffect.endPosition);
+            vec3.copy(this.firingEffect.endPosition, this.targetPosition);
             this.firingEffect.Update(dt);
         }
     };
@@ -16504,7 +16131,7 @@ var ccpwgl_int = (function()
     };
 
     EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
-    EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];
+    EveTurretSet._tempQuat4 = [quat.zero(), quat.zero()];
 
     /**
      * Helper function for finding out what turret should be firing
@@ -16519,18 +16146,14 @@ var ccpwgl_int = (function()
         var turretPosition = EveTurretSet._tempQuat4[1];
         for (var i = 0; i < this.turrets.length; ++i)
         {
-            turretPosition[0] = this.turrets[i].localTransform[12];
-            turretPosition[1] = this.turrets[i].localTransform[13];
-            turretPosition[2] = this.turrets[i].localTransform[14];
+            vec3.setTranslation(turretPosition, this.turrets[i].localTransform);
             turretPosition[3] = 1;
-            mat4.multiplyVec4(this.parentMatrix, turretPosition);
-            vec3.normalize(vec3.subtract(this.targetPosition, turretPosition, nrmToTarget));
-            nrmUp[0] = 0;
-            nrmUp[1] = 1;
-            nrmUp[2] = 0;
-            nrmUp[3] = 0;
-            mat4.multiplyVec4(this.turrets[i].localTransform, nrmUp);
-            mat4.multiplyVec4(this.parentMatrix, nrmUp);
+            vec4.transformMat4(turretPosition, turretPosition, this.parentMatrix);
+            vec3.subtract(nrmToTarget, this.targetPosition, turretPosition);
+            vec3.normalize(nrmToTarget, nrmToTarget);
+            vec4.set(nrmUp, 0, 1, 0, 0);
+            vec4.transformMat4(nrmUp, nrmUp, this.turrets[i].localTransform);
+            vec4.transformMat4(nrmUp, nrmUp, this.parentMatrix);
             var angle = vec3.dot(nrmUp, nrmToTarget);
             if (angle > closestAngle)
             {
@@ -16604,7 +16227,7 @@ var ccpwgl_int = (function()
         this.shapeEllipsoidRadius = vec3.create();
         this.shapeEllipsoidCenter = vec3.create();
 
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         this.animation = new Tw2AnimationController();
 
         this.display = true;
@@ -16729,7 +16352,7 @@ var ccpwgl_int = (function()
      */
     EveSpaceObject.prototype.UpdateLod = function(frustum)
     {
-        var center = mat4.multiplyVec3(this.transform, this.boundingSphereCenter, this._tempVec);
+        var center = vec3.transformMat4(this._tempVec, this.boundingSphereCenter, this.transform);
 
         if (frustum.IsSphereVisible(center, this.boundingSphereRadius))
         {
@@ -16758,25 +16381,21 @@ var ccpwgl_int = (function()
             this.children[i].UpdateViewDependentData(this.transform);
         }
 
-        mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-        mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
         var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter');
         var radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
         if (this.shapeEllipsoidRadius[0] > 0)
         {
-            center[0] = this.shapeEllipsoidCenter[0];
-            center[1] = this.shapeEllipsoidCenter[1];
-            center[2] = this.shapeEllipsoidCenter[2];
-            radii[0] = this.shapeEllipsoidRadius[0];
-            radii[1] = this.shapeEllipsoidRadius[1];
-            radii[2] = this.shapeEllipsoidRadius[2];
+            vec3.copy(center, this.shapeEllipsoidCenter);
+            vec3.copy(radii, this.shapeEllipsoidRadius);
         }
         else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
         {
-            vec3.subtract(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, center);
-            vec3.scale(center, 0.5 * 1.732050807);
-            vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
-            vec3.scale(radii, 0.5);
+            vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+            vec3.scale(center, center, 0.5 * 1.732050807);
+            vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+            vec3.scale(radii, radii, 0.5);
         }
 
         if (this.animation.animations.length)
@@ -17231,7 +16850,7 @@ var ccpwgl_int = (function()
      * @property {mat4} decalMatrix
      * @property {mat4} invDecalMatrix
      * @property {Tw2GeometryRes} parentGeometry
-     * @property {Array} indexBuffer
+     * @property {Array|Unit16Array} indexBuffer
      * @property {*} _indexBuffer
      * @property {number} parentBoneIndex
      * @property {Tw2PerObjectData} _perObjectData
@@ -17248,7 +16867,7 @@ var ccpwgl_int = (function()
         this.pickable = true;
 
         this.position = vec3.create();
-        this.rotation = quat4.create();
+        this.rotation = quat.zero();
         this.scaling = vec3.create();
 
         this.decalMatrix = mat4.create();
@@ -17288,11 +16907,10 @@ var ccpwgl_int = (function()
         device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
         device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
 
-        mat4.scale(mat4.transpose(quat4.toMat4(this.rotation, this.decalMatrix)), this.scaling);
-        this.decalMatrix[12] = this.position[0];
-        this.decalMatrix[13] = this.position[1];
-        this.decalMatrix[14] = this.position[2];
-        mat4.inverse(this.decalMatrix, this.invDecalMatrix);
+        mat4.fromQuat(this.decalMatrix, this.rotation);
+        mat4.scale(this.decalMatrix, this.decalMatrix, this.scaling);
+        mat4.setTranslation(this.decalMatrix, this.position);
+        mat4.invert(this.invDecalMatrix, this.decalMatrix);
     };
 
     /**
@@ -17382,12 +17000,12 @@ var ccpwgl_int = (function()
                     bone[13] = bones[offset + 7];
                     bone[14] = bones[offset + 11];
                     bone[15] = 1;
-                    mat4.transpose(bone);
+                    mat4.transpose(bone, bone);
                 }
             }
-            mat4.inverse(this._perObjectData.perObjectVSData.Get('worldMatrix'), this._perObjectData.perObjectVSData.Get('invWorldMatrix'));
-            mat4.transpose(this.decalMatrix, this._perObjectData.perObjectVSData.Get('decalMatrix'));
-            mat4.transpose(this.invDecalMatrix, this._perObjectData.perObjectVSData.Get('invDecalMatrix'));
+            mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
+            mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
+            mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
 
             this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
             this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
@@ -17410,8 +17028,8 @@ var ccpwgl_int = (function()
         var bkStart = this.parentGeometry.meshes[0].areas[0].start;
         var bkCount = this.parentGeometry.meshes[0].areas[0].count;
         var bkIndexType = this.parentGeometry.meshes[0].indexType;
-        mat4.set(this.decalMatrix, variableStore._variables['u_DecalMatrix'].value);
-        mat4.set(this.invDecalMatrix, variableStore._variables['u_InvDecalMatrix'].value);
+        mat4.copy(variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
+        mat4.copy(variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
         this.parentGeometry.meshes[0].indexes = this._indexBuffer;
         this.parentGeometry.meshes[0].areas[0].start = 0;
         this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
@@ -17430,20 +17048,20 @@ var ccpwgl_int = (function()
      * @property {Array.<EveObject>} objects - Scene objects
      * @property {Array.<EvePlanet>} planets - Scene planets
      * @property {number} nebulaIntensity - controls nebula intensity on scene objects
-     * @property {quat4} ambientColor - unused
+     * @property {vec4} ambientColor - unused
      * @property {null|Tw2Effect} backgroundEffect
      * @property {boolean} backgroundRenderingEnabled - Toggles background effect visibility
      * @property {vec3} endMapScaling - controls the scale of the environment maps
-     * @property {quat4} envMapRotation - controls the rotation of the environment maps
+     * @property {quat} envMapRotation - controls the rotation of the environment maps
      * @property {boolean} logEnabled - toggles LOD
      * @property {number} fogStart - fog start distance
      * @property {number} fogEnd - fog end distance
      * @property {number} fogMax - fog maximum opacity
      * @property {number} fogType - fog blend type
      * @property {number} fogBlur - fog blur mode
-     * @property {quat4} fogColor - fog color
+     * @property {vec4} fogColor - fog color
      * @property {vec3} sunDirection - the direction of the scene sun
-     * @property {quat4} sunDiffuseColor - the colour of the light from the sun
+     * @property {vec4} sunDiffuseColor - the colour of the light from the sun
      * @property {String} envMapResPath - nebula reflection map path
      * @property {String} envMap1ResPath - nebula diffuse map path
      * @property {String} envMap2ResPath - nebular blur map path
@@ -17460,6 +17078,8 @@ var ccpwgl_int = (function()
      * @property {Tw2RawData} _perFrameVS
      * @property {Tw2RawData} _perFramePS
      * @property {boolean} renderDebugInfo
+     * @property {Array.<mat4>} _tempMat
+     * @property {vec3} _tempVec
      * @property {*} _debugHelper
      * @constructor
      */
@@ -17470,11 +17090,11 @@ var ccpwgl_int = (function()
         this.planets = [];
 
         this.nebulaIntensity = 1;
-        this.ambientColor = quat4.create([0.25, 0.25, 0.25, 1]);
+        this.ambientColor = vec4.fromValues(0.25, 0.25, 0.25, 1);
         this.backgroundEffect = null;
         this.backgroundRenderingEnabled = true;
-        this.envMapScaling = vec3.create([1, 1, 1]);
-        this.envMapRotation = quat4.create([0, 0, 0, 1]);
+        this.envMapScaling = vec3.one();
+        this.envMapRotation = quat.create();
 
         this.lodEnabled = false;
 
@@ -17483,10 +17103,10 @@ var ccpwgl_int = (function()
         this.fogMax = 0;
         this.fogType = 0;
         this.fogBlur = 0;
-        this.fogColor = quat4.create([0.25, 0.25, 0.25, 1]);
+        this.fogColor = vec4.fromValues(0.25, 0.25, 0.25, 1);
 
-        this.sunDirection = vec3.create([1, -1, 1]);
-        this.sunDiffuseColor = quat4.create([1, 1, 1, 1]);
+        this.sunDirection = vec3.fromValues(1, -1, 1);
+        this.sunDiffuseColor = vec4.one();
 
         this.envMapResPath = '';
         this.envMap1ResPath = '';
@@ -17531,18 +17151,18 @@ var ccpwgl_int = (function()
         this._perFramePS.Declare('SceneData.FogColor', 4);
         this._perFramePS.Declare('ViewportOffset', 2);
         this._perFramePS.Declare('ViewportSize', 2);
-
         this._perFramePS.Declare('TargetResolution', 4);
         this._perFramePS.Declare('ShadowMapSettings', 4);
         this._perFramePS.Declare('ShadowCameraRange', 4);
-
         this._perFramePS.Declare('ProjectionToView', 2);
         this._perFramePS.Declare('FovXY', 2);
-
         this._perFramePS.Declare('MiscSettings', 4);
         this._perFramePS.Create();
 
         variableStore.RegisterVariable('ShadowLightness', 0);
+
+        this._tempMat = [mat4.create(), mat4.create(), mat4.create(), mat4.create(), mat4.create()];
+        this._tempVec = vec3.create();
 
         this.renderDebugInfo = false;
         this._debugHelper = null;
@@ -17679,47 +17299,41 @@ var ccpwgl_int = (function()
      */
     EveSpaceScene.prototype.ApplyPerFrameData = function()
     {
+        // Shared
         var view = device.view;
         var projection = device.projection;
+        var dirWorld = vec3.normalize(this._tempVec, vec3.negate(this._tempVec, this.sunDirection));
+        var envMapRotationMat = mat4.transpose(this._tempMat[1], mat4.scale(this._tempMat[1], mat4.transpose(this._tempMat[1], mat4.fromQuat(this._tempMat[1], this.envMapRotation)), this.envMapScaling));
+        var viewProjectionMat = mat4.transpose(this._tempMat[2], mat4.multiply(this._tempMat[2], projection, view));
+        var viewInverseTransposeMat = mat4.invert(this._tempMat[3], view);
+        var viewMat = mat4.transpose(this._tempMat[4], view);
 
-        var viewInverseTranspose = mat4.inverse(view, mat4.create());
-        this._perFrameVS.Set('ViewInverseTransposeMat', viewInverseTranspose);
-        mat4.transpose(mat4.multiply(projection, view, this._perFrameVS.Get('ViewProjectionMat')));
-        mat4.transpose(view, this._perFrameVS.Get('ViewMat'));
-        mat4.transpose(projection, this._perFrameVS.Get('ProjectionMat'));
-
-        var envMapTransform = mat4.scale(quat4.toMat4(this.envMapRotation), this.envMapScaling, mat4.create());
-        mat4.transpose(envMapTransform);
-        this._perFrameVS.Set('EnvMapRotationMat', envMapTransform);
-        vec3.normalize(vec3.negate(this.sunDirection, this._perFrameVS.Get('SunData.DirWorld')));
+        // VS Data
+        mat4.transpose(this._perFrameVS.Get('ProjectionMat'), projection);
+        this._perFrameVS.Set('EnvMapRotationMat', envMapRotationMat);
+        this._perFrameVS.Set('ViewProjectionMat', viewProjectionMat);
+        this._perFrameVS.Set('ViewInverseTransposeMat', viewInverseTransposeMat);
+        this._perFrameVS.Set('ViewMat', viewMat);
+        this._perFrameVS.Set('SunData.DirWorld', dirWorld);
         this._perFrameVS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+
         var fogFactors = this._perFrameVS.Get('FogFactors');
         var distance = this.fogEnd - this.fogStart;
-        if (Math.abs(distance) < 1e-5)
-        {
-            distance = 1e-5;
-        }
+        if (Math.abs(distance) < 1e-5) distance = 1e-5;
         var factor = 1.0 / distance;
         fogFactors[0] = this.fogEnd * factor;
         fogFactors[1] = factor;
         fogFactors[2] = this.fogMax;
 
         var targetResolution = this._perFrameVS.Get('TargetResolution');
-        // resolution of rendertarget
+        // resolution of renderTarget
         targetResolution[0] = device.viewportWidth;
         targetResolution[1] = device.viewportHeight;
         // fov in both ways: width (x) and (height (y)
         var aspectRatio = (projection[0] ? projection[5] / projection[0] : 0.0);
         var aspectAdjustment = 1.0;
-        if (aspectRatio > 1.6)
-        {
-            aspectAdjustment = aspectRatio / 1.6;
-        }
-
+        if (aspectRatio > 1.6) aspectAdjustment = aspectRatio / 1.6;
         var fov = 2.0 * Math.atan(aspectAdjustment / projection[5]);
-
-        this._perFramePS.Get('FovXY')[0] = targetResolution[3] = fov;
-        this._perFramePS.Get('FovXY')[1] = targetResolution[2] = targetResolution[3] * aspectRatio;
 
         var viewportAdj = this._perFrameVS.Get('ViewportAdjustment');
         viewportAdj[0] = 1;
@@ -17727,17 +17341,21 @@ var ccpwgl_int = (function()
         viewportAdj[2] = 1;
         viewportAdj[3] = 1;
 
-        this._perFramePS.Set('ViewInverseTransposeMat', viewInverseTranspose);
-        mat4.transpose(view, this._perFramePS.Get('ViewMat'));
-        this._perFramePS.Set('EnvMapRotationMat', envMapTransform);
-        vec3.normalize(vec3.negate(this.sunDirection, this._perFramePS.Get('SunData.DirWorld')));
+        // PS Data
+        this._perFramePS.Get('FovXY')[0] = targetResolution[3] = fov;
+        this._perFramePS.Get('FovXY')[1] = targetResolution[2] = targetResolution[3] * aspectRatio;
+        this._perFramePS.Get('ProjectionToView')[0] = -device.projection[14];
+        this._perFramePS.Get('ProjectionToView')[1] = -device.projection[10] - 1;
+        this._perFramePS.Get('ViewportSize')[0] = device.viewportWidth;
+        this._perFramePS.Get('ViewportSize')[1] = device.viewportHeight;
+        this._perFramePS.Set('EnvMapRotationMat', envMapRotationMat);
+        this._perFramePS.Set('ViewInverseTransposeMat', viewInverseTransposeMat);
+        this._perFramePS.Set('ViewMat', viewMat);
+        this._perFramePS.Set('SunData.DirWorld', dirWorld);
         this._perFramePS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
         this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
         this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
         this._perFramePS.Set('SceneData.FogColor', this.fogColor);
-        this._perFramePS.Get('ViewportSize')[0] = device.viewportWidth;
-        this._perFramePS.Get('ViewportSize')[1] = device.viewportHeight;
-
         this._perFramePS.Get('ShadowCameraRange')[0] = 1;
 
         var targetResolution = this._perFramePS.Get('TargetResolution');
@@ -17751,9 +17369,6 @@ var ccpwgl_int = (function()
         shadowMapSettings[1] = 1;
         shadowMapSettings[2] = 0;
         shadowMapSettings[3] = 0;
-
-        this._perFramePS.Get('ProjectionToView')[0] = -device.projection[14];
-        this._perFramePS.Get('ProjectionToView')[1] = -device.projection[10] - 1;
 
         var miscSettings = this._perFramePS.Get('MiscSettings');
         miscSettings[0] = variableStore._variables['Time'].value[0];
@@ -17782,7 +17397,7 @@ var ccpwgl_int = (function()
     EveSpaceScene.prototype.Render = function()
     {
         this.ApplyPerFrameData();
-        var i, id;
+        var i;
 
         if (this.backgroundRenderingEnabled)
         {
@@ -17794,20 +17409,20 @@ var ccpwgl_int = (function()
 
             if (this.planets.length)
             {
-                var tempProj = mat4.set(device.projection, mat4.create());
-                var newProj = mat4.set(device.projection, mat4.create());
+                var tempProj = mat4.clone(device.projection);
+                var tempProj = mat4.clone(device.projection);
+                var newProj = mat4.clone(device.projection);
                 var zn = 10000;
                 var zf = 1e11;
                 newProj[10] = zf / (zn - zf);
                 newProj[14] = (zf * zn) / (zn - zf);
                 device.SetProjection(newProj);
                 this.ApplyPerFrameData();
-                id = mat4.identity(mat4.create());
                 for (i = 0; i < this.planets.length; ++i)
                 {
                     if (this.planets[i].UpdateViewDependentData)
                     {
-                        this.planets[i].UpdateViewDependentData(id);
+                        this.planets[i].UpdateViewDependentData(this._tempMat[0]);
                     }
                 }
 
@@ -17838,13 +17453,11 @@ var ccpwgl_int = (function()
             }
         }
 
-        id = mat4.identity(mat4.create());
-
         for (i = 0; i < this.objects.length; ++i)
         {
             if (this.objects[i].UpdateViewDependentData)
             {
-                this.objects[i].UpdateViewDependentData(id);
+                this.objects[i].UpdateViewDependentData(this._tempMat[0]);
             }
         }
 
@@ -17922,6 +17535,7 @@ var ccpwgl_int = (function()
      * @property {boolean} display
      * @property {number} value
      * @property {Array.<EveSpriteSet>} sprites
+     * @property {mat4} _tempMat4
      * @constructor
      */
     function EveOccluder()
@@ -17931,6 +17545,7 @@ var ccpwgl_int = (function()
         this.value = 1;
         this.sprites = [];
         variableStore.RegisterType('OccluderValue', Tw2Vector4Parameter);
+        this._tempMat4 = mat4.create();
 
         if (!EveOccluder._collectEffect)
         {
@@ -18021,18 +17636,19 @@ var ccpwgl_int = (function()
 
         batches.Render();
 
-        var worldViewProj = mat4.multiply(device.projection, device.view, mat4.create());
-        worldViewProj = mat4.multiply(worldViewProj, this.sprites[0].worldTransform);
+        var worldViewProj = mat4.multiply(this._tempMat4, device.projection, device.view);
+        mat4.multiply(worldViewProj, worldViewProj, this.sprites[0].worldTransform);
 
-        var center = quat4.create([0, 0, 0, 1]);
-        mat4.multiplyVec4(worldViewProj, center);
+        var center = vec4.fromValues(0, 0, 0, 1);
+        vec4.transformMat4(center, center, worldViewProj);
         var x0 = (center[0] / center[3] + 1) * 0.5;
         var y0 = (center[1] / center[3] + 1) * 0.5;
 
         center[0] = center[1] = 0.5;
         center[2] = 0;
         center[3] = 1;
-        mat4.multiplyVec4(worldViewProj, center);
+
+        vec4.transformMat4(center, center, worldViewProj);
         var x1 = (center[0] / center[3] + 1) * 0.5;
         var y1 = (center[1] / center[3] + 1) * 0.5;
         center[0] = x0;
@@ -18117,8 +17733,8 @@ var ccpwgl_int = (function()
      * @property {Array} bindings
      * @property {Array.<Tw2CurveSet> curveSets
      * @property {null|Tw2Mesh} mesh
-     * @property {quat4} _directionVar
-     * @property {quat4} _occlusionVar
+     * @property {vec4} _directionVar
+     * @property {vec4} _occlusionVar
      * @property {vec3} _direction
      * @property {mat4} _transform
      * @constructor
@@ -18147,10 +17763,10 @@ var ccpwgl_int = (function()
 
         this.mesh = null;
 
-        this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", quat4.create());
-        this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+        this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", vec4.create());
+        this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", vec4.fromValues(1, 1, 0, 0));
         this._direction = vec3.create();
-        this._transform = mat4.create();
+        this._transform = mat4.zero();
 
         if (!EveLensflare.backBuffer)
         {
@@ -18165,13 +17781,15 @@ var ccpwgl_int = (function()
 
     /**
      * Internal helper function
-     * @param out
-     * @param v
+     * @param {mat4} out
+     * @param {vec3} v
      */
     EveLensflare.prototype.MatrixArcFromForward = function(out, v)
     {
-        var norm = vec3.normalize(v, norm);
+        var norm = vec3.create();
+        vec3.normalize(norm, v);
         mat4.identity(out);
+
         if (norm[2] < -0.99999)
         {
             return;
@@ -18206,10 +17824,12 @@ var ccpwgl_int = (function()
             return;
         }
 
-        var cameraPos = mat4.multiplyVec3(device.viewInv, vec3.create());
+        var cameraPos = vec3.create();
+        vec3.transformMat4(cameraPos, cameraPos, device.viewInv);
+
         if (vec3.length(this.position) == 0)
         {
-            var curPos = vec3.negate(cameraPos, vec3.create());
+            var curPos = vec3.negate(vec3.create(), cameraPos);
             var distScale = vec3.length(curPos);
             if (distScale > 1.5)
             {
@@ -18219,35 +17839,35 @@ var ccpwgl_int = (function()
             {
                 distScale = 2.5;
             }
-            vec3.normalize(curPos, this._direction);
+            vec3.normalize(this._direction, curPos);
         }
         else
         {
-            var invPos = vec3.negate(this.position, vec3.create());
-            vec3.normalize(invPos, this._direction);
+            var invPos = vec3.negate(vec3.create(), this.position);
+            vec3.normalize(this._direction, invPos);
         }
-        var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+        var viewDir = vec4.fromValues(0, 0, 1, 0);
+        vec4.transformMat4(viewDir, viewDir, device.viewInv);
         var cameraSpacePos = vec3.create();
         cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
         cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
         cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
 
-        var negDirVec = vec3.negate(this._direction, vec3.create());
+        var negDirVec = vec3.negate(vec3.create(), this._direction);
         this.MatrixArcFromForward(this._transform, negDirVec);
         this._transform[12] = cameraSpacePos[0];
         this._transform[13] = cameraSpacePos[1];
         this._transform[14] = cameraSpacePos[2];
 
-        var scaleMat = mat4.scale(mat4.identity(mat4.create()), [this.occlusionIntensity, this.occlusionIntensity, 1]);
-        //mat4.multiply(this._transform, scaleMat);
-        this._directionVar.value[0] = this._direction[0];
-        this._directionVar.value[1] = this._direction[1];
-        this._directionVar.value[2] = this._direction[2];
+        // TODO: ScaleMat is redundant
+        var scaleMat = mat4.fromScaling(mat4.create(), [this.occlusionIntensity, this.occlusionIntensity, 1]);
+        //__mat4.multiply(this._transform, scaleMat);
+        vec3.copy(this._directionVar.value, this._direction);
         this._directionVar.value[3] = 1;
 
-        var d = quat4.create([this._direction[0], this._direction[1], this._direction[2], 0]);
-        mat4.multiplyVec4(device.view, d);
-        mat4.multiplyVec4(device.projection, d);
+        var d = quat.fromValues(this._direction[0], this._direction[1], this._direction[2], 0);
+        vec4.transformMat4(d, d, device.view);
+        vec4.transformMat4(d, d, device.projection);
         d[0] /= d[3];
         d[1] /= d[3];
         var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1]));
@@ -18399,7 +18019,8 @@ var ccpwgl_int = (function()
         {
             return;
         }
-        var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+        var viewDir = quat.fromValues(0, 0, 1, 0);
+        vec4.transformMat4(viewDir, viewDir, device.viewInv);
         if (vec3.dot(viewDir, this._direction) < 0)
         {
             return;
@@ -18733,7 +18354,7 @@ var ccpwgl_int = (function()
      * @property {EveTransform|EveStretch|EveTransform} highDetail
      * @property {boolean} isPlaying
      * @property {vec3} scaling
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {vec3} translation
      * @property {mat4} localTransform
      * @property {mat4} rotationTransform
@@ -18753,11 +18374,10 @@ var ccpwgl_int = (function()
         this.boundingSphereCenter = vec3.create();
         this.boundingSphereRadius = 0;
 
-        this.scaling = vec3.create([1, 1, 1]);
-        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.scaling = vec3.one();
+        this.rotation = quat.create();
         this.translation = vec3.create();
-        this.localTransform = mat4.identity(mat4.create());
-        this.rotationTransform = mat4.create();
+        this.localTransform = mat4.create();
 
         this._perObjectData = new Tw2PerObjectData();
         this._perObjectData.perObjectVSData = new Tw2RawData();
@@ -18802,11 +18422,9 @@ var ccpwgl_int = (function()
             this.highDetail.Update(dt);
         }
 
-        mat4.identity(this.localTransform);
-        mat4.translate(this.localTransform, this.translation);
-        mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
-        mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-        mat4.scale(this.localTransform, this.scaling);
+        // TODO: Check this refactoring
+        quat.normalize(this.rotation, this.rotation);
+        mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
     }
 
     /**
@@ -18822,7 +18440,7 @@ var ccpwgl_int = (function()
         }
 
         this.highDetail.UpdateViewDependentData(this.localTransform);
-        mat4.transpose(this.localTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.localTransform);
         this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
     }
 
@@ -18906,7 +18524,7 @@ var ccpwgl_int = (function()
      * @type {Array.<mat4>}
      * @private
      */
-    EveStretch._tempMat4 = [mat4.create(), mat4.create()];
+    EveStretch._tempMat4 = [mat4.zero(), mat4.zero()];
 
     /**
      * Per frame update
@@ -18925,18 +18543,16 @@ var ccpwgl_int = (function()
         }
         else if (this._useTransformsForStretch)
         {
-            this._sourcePosition[0] = this._sourceTransform[12];
-            this._sourcePosition[1] = this._sourceTransform[13];
-            this._sourcePosition[2] = this._sourceTransform[14];
+            vec3.setTranslation(this._sourcePosition, this._sourceTransform);
         }
         if (this.dest)
         {
             this.source.GetValueAt(this._time, this._destinationPosition);
         }
-        var directionVec = vec3.subtract(this._destinationPosition, this._sourcePosition, EveStretch._tempVec3[0]);
+        var directionVec = vec3.subtract(EveStretch._tempVec3[0], this._destinationPosition, this._sourcePosition);
         var scalingLength = vec3.length(directionVec);
         this.length.value = scalingLength;
-        vec3.normalize(directionVec);
+        vec3.normalize(directionVec, directionVec);
         if (this.sourceObject && this._displaySourceObject)
         {
             this.sourceObject.Update(dt);
@@ -18960,16 +18576,17 @@ var ccpwgl_int = (function()
         {
             return;
         }
-        var directionVec = vec3.subtract(this._destinationPosition, this._sourcePosition, EveStretch._tempVec3[0]);
+
+        var directionVec = vec3.subtract(EveStretch._tempVec3[0], this._destinationPosition, this._sourcePosition);
         var scalingLength = vec3.length(directionVec);
-        vec3.normalize(directionVec);
+        vec3.normalize(directionVec, directionVec);
 
         var m = EveStretch._tempMat4[0];
         if (this._useTransformsForStretch)
         {
             mat4.identity(m);
-            mat4.rotateX(m, -Math.PI / 2);
-            mat4.multiply(this._sourceTransform, m, m);
+            mat4.rotateX(m, m, -Math.PI / 2);
+            mat4.multiply(m, this._sourceTransform, m);
         }
         else
         {
@@ -18983,8 +18600,11 @@ var ccpwgl_int = (function()
             {
                 up[1] = 1;
             }
-            var x = vec3.normalize(vec3.cross(up, directionVec, EveStretch._tempVec3[1]));
-            vec3.cross(directionVec, x, up);
+
+            var x = EveStretch._tempVec3[1];
+            vec3.cross(x, up, directionVec);
+            vec3.normalize(x, x);
+            vec3.cross(up, directionVec, x);
             m[0] = x[0];
             m[1] = x[1];
             m[2] = x[2];
@@ -18995,26 +18615,24 @@ var ccpwgl_int = (function()
             m[9] = up[1];
             m[10] = up[2];
         }
+
         if (this.destObject && this._displayDestObject)
         {
-            m[12] = this._destinationPosition[0];
-            m[13] = this._destinationPosition[1];
-            m[14] = this._destinationPosition[2];
+            mat4.setTranslation(m, this._destinationPosition);
             this.destObject.UpdateViewDependentData(m);
         }
+
         if (this.sourceObject && this._displaySourceObject)
         {
             if (this._useTransformsForStretch)
             {
                 mat4.identity(m);
-                mat4.rotateX(m, -Math.PI / 2);
-                mat4.multiply(this._sourceTransform, m, m);
+                mat4.rotateX(m, m, -Math.PI / 2);
+                mat4.multiply(m, this._sourceTransform, m);
             }
             else
             {
-                m[12] = this._sourcePosition[0];
-                m[13] = this._sourcePosition[1];
-                m[14] = this._sourcePosition[2];
+                mat4.setTranslation(m, this._sourcePosition);
             }
             this.sourceObject.UpdateViewDependentData(m);
         }
@@ -19022,9 +18640,8 @@ var ccpwgl_int = (function()
         {
             if (this._useTransformsForStretch)
             {
-                mat4.identity(m);
-                mat4.scale(m, [1, 1, scalingLength]);
-                mat4.multiply(this._sourceTransform, m, m);
+                mat4.fromScaling(m, [1, 1, scalingLength]);
+                mat4.multiply(m, this._sourceTransform, m);
             }
             else
             {
@@ -19041,8 +18658,9 @@ var ccpwgl_int = (function()
                 {
                     scalingLength = -scalingLength;
                 }
-                var s = mat4.scale(mat4.identity(EveStretch._tempMat4[1]), [1, 1, scalingLength]);
-                mat4.multiply(m, s, m);
+                var s = EveStretch._tempMat4[1];
+                mat4.fromScaling(s, [1, 1, scalingLength]);
+                mat4.multiply(m, m, s);
             }
             this.stretchObject.UpdateViewDependentData(m);
         }
@@ -19117,7 +18735,7 @@ var ccpwgl_int = (function()
         this.started = false;
         this.readyToStart = false;
         this.muzzlePositionBone = null;
-        this.muzzleTransform = mat4.create();
+        this.muzzleTransform = mat4.zero();
         this.muzzlePosition = this.muzzleTransform.subarray(12, 15);
         this.currentStartDelay = 0;
         this.constantDelay = 0;
@@ -19621,9 +19239,9 @@ var ccpwgl_int = (function()
                 effect.Initialize();
 
                 var decal = new EveSpaceObjectDecal();
-                vec3.set(_get(hullDecal, 'position', [0, 0, 0]), decal.position);
-                quat4.set(_get(hullDecal, 'rotation', [0, 0, 0, 1]), decal.rotation);
-                vec3.set(_get(hullDecal, 'scaling', [1, 1, 1]), decal.scaling);
+                vec3.copy(decal.position, _get(hullDecal, 'position', [0, 0, 0]));
+                quat.copy(decal.rotation, _get(hullDecal, 'rotation', [0, 0, 0, 1]));
+                vec3.copy(decal.scaling, _get(hullDecal, 'scaling', [1, 1, 1]));
                 decal.parentBoneIndex = _get(hullDecal, 'boneIndex', -1);
                 decal.indexBuffer = new Uint16Array(hullDecal.indexBuffer);
                 decal.decalEffect = effect;
@@ -19810,9 +19428,9 @@ var ccpwgl_int = (function()
                     _assignIfExists(item, hullData[j], 'rotation');
                     _assignIfExists(item, hullData[j], 'scaling');
                     _assignIfExists(item, hullData[j], 'color');
-                    quat4.set(_get(hullData[j], 'layer1Transform', [0, 0, 0, 0]), item.layer1Transform);
+                    vec4.copy(item.layer1Transform, _get(hullData[j], 'layer1Transform', [0, 0, 0, 0]));
                     _assignIfExists(item, hullData[j], 'layer1Scroll');
-                    quat4.set(_get(hullData[j], 'layer2Transform', [0, 0, 0, 0]), item.layer2Transform);
+                    vec4.copy(item.layer2Transform, _get(hullData[j], 'layer2Transform', [0, 0, 0, 0]));
                     _assignIfExists(item, hullData[j], 'layer2Scroll');
                     item.boneIndex = _get(hullData[j], 'boneIndex', -1);
                     item.maskAtlasID = _get(hullData[j], 'maskMapAtlasIndex', 0);
@@ -19820,7 +19438,7 @@ var ccpwgl_int = (function()
                     var factionSet = factionSets['group' + _get(hullData[j], 'groupIndex', -1)];
                     if (factionSet)
                     {
-                        quat4.set(_get(factionSet, 'color', [0, 0, 0, 0]), item.color);
+                        vec4.copy(item.color, _get(factionSet, 'color', [0, 0, 0, 0]));
                     }
                     planeSet.planes.push(item);
                 }
@@ -20193,7 +19811,7 @@ var ccpwgl_int = (function()
                     {
                         turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
                     }
-                    quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
+                    vec4.copy(params[i].value, CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name));
                 }
                 turretSet.turretEffect.BindParameters();
             }
@@ -20275,29 +19893,6 @@ var ccpwgl_int = (function()
     }
 
     /**
-     * vec3 Hermite
-     * @param out
-     * @param v1
-     * @param t1
-     * @param v2
-     * @param t2
-     * @param s
-     * @returns {*}
-     */
-    function vec3Hermite(out, v1, t1, v2, t2, s)
-    {
-        var k3 = 2 * s * s * s - 3 * s * s + 1;
-        var k2 = -2 * s * s * s + 3 * s * s;
-        var k1 = s * s * s - 2 * s * s + s;
-        var k0 = s * s * s - s * s;
-
-        out[0] = k3 * v1[0] + k2 * v2[0] + k1 * t1[0] + k0 * t2[0];
-        out[1] = k3 * v1[1] + k2 * v2[1] + k1 * t1[1] + k0 * t2[1];
-        out[2] = k3 * v1[2] + k2 * v2[2] + k1 * t1[2] + k0 * t2[2];
-        return out;
-    }
-
-    /**
      * EveCurveLineSet
      * @property {String} name
      * @property {Boolean} display
@@ -20306,7 +19901,7 @@ var ccpwgl_int = (function()
      * @property {Array} lines
      * @property {Array} emptyLineID
      * @property {vec3} translation
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {vec3} scaling
      * @property {mat4} transform
      * @property {Tw2Effect} lineEffect
@@ -20329,9 +19924,9 @@ var ccpwgl_int = (function()
         this.emptyLineID = [];
 
         this.translation = vec3.create();
-        this.rotation = quat4.create([0, 0, 0, 1]);
-        this.scaling = vec3.create([1, 1, 1]);
-        this.transform = mat4.identity(mat4.create());
+        this.rotation = quat.create();
+        this.scaling = vec3.one();
+        this.transform = mat4.create();
 
         this.lineEffect = new Tw2Effect();
         this.lineEffect.effectFilePath = "res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx";
@@ -20371,11 +19966,8 @@ var ccpwgl_int = (function()
      */
     EveCurveLineSet.prototype.Initialize = function()
     {
-        mat4.identity(this.transform);
-        mat4.translate(this.transform, this.translation);
-        var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-        mat4.multiply(this.transform, rotationTransform, this.transform);
-        mat4.scale(this.transform, this.scaling);
+        // TODO: Test this conversion
+        mat4.fromRotationTranslationScale(this.transform, this.translation, this.rotation, this.scaling);
     };
 
     /**
@@ -20481,10 +20073,10 @@ var ccpwgl_int = (function()
         var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
         var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
         var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-        // dont forget center!
-        vec3.add(startPnt, center);
-        vec3.add(endPnt, center);
-        vec3.add(middlePnt, center);
+        // don't forget center!
+        vec3.add(startPnt, startPnt, center);
+        vec3.add(endPnt, endPnt, center);
+        vec3.add(middlePnt, middlePnt, center);
         // add it
         return this.AddCurvedLineCrt(startPnt, startColor, endPnt, endColor, middlePnt, lineWidth);
     };
@@ -20540,9 +20132,9 @@ var ccpwgl_int = (function()
         // is given in spherical coords, so convert them into cartesian
         var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
         var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-        // dont forget center!
-        vec3.add(startPnt, center);
-        vec3.add(endPnt, center);
+        // don't forget center!
+        vec3.add(startPnt, startPnt, center);
+        vec3.add(endPnt, endPnt, center);
         // add it
         return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, center, lineWidth);
     };
@@ -20599,9 +20191,9 @@ var ccpwgl_int = (function()
         // is given in spherical coords, so convert them into cartesian
         var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
         var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-        // dont forget center!
-        vec3.add(startPnt, center);
-        vec3.add(endPnt, center);
+        // don't forget center!
+        vec3.add(startPnt, startPnt, center);
+        vec3.add(endPnt, endPnt, center);
         this.ChangeLinePositionCrt(lineID, startPnt, endPnt);
     };
 
@@ -20626,8 +20218,8 @@ var ccpwgl_int = (function()
         var phiM = middle[0];
         var thetaM = middle[1];
         var radiusM = middle[2];
-        var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-        vec3.add(middlePnt, middle);
+        var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];;
+        vec3.add(middlePnt, middlePnt, middle);
         this.lines[lineID].intermediatePosition = intermediatePosition;
     };
 
@@ -20887,11 +20479,11 @@ var ccpwgl_int = (function()
         var startDirNrm = vec3.create();
         var endDirNrm = vec3.create();
         var rotationAxis = vec3.create();
-        var rotationMatrix = mat4.create();
+        var rotationMatrix = mat4.zero();
         var dir1 = vec3.create();
         var dir2 = vec3.create();
-        var col1 = quat4.create();
-        var col2 = quat4.create();
+        var col1 = vec4.create();
+        var col2 = vec4.create();
         var pt1 = vec3.create();
         var pt2 = vec3.create();
         var j, tmp, segmentFactor;
@@ -20909,29 +20501,29 @@ var ccpwgl_int = (function()
                     break;
 
                 case EveCurveLineSet.LINETYPE_SPHERED:
-                    vec3.subtract(this.lines[i].position1, this.lines[i].intermediatePosition, startDir);
-                    vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, endDir);
-                    vec3.normalize(startDir, startDirNrm);
-                    vec3.normalize(endDir, endDirNrm);
-
-                    vec3.cross(startDir, endDir, rotationAxis);
+                    vec3.subtract(startDir, this.lines[i].position1, this.lines[i].intermediatePosition);
+                    vec3.subtract(endDir, this.lines[i].position2, this.lines[i].intermediatePosition);
+                    vec3.normalize(startDirNrm, startDir);
+                    vec3.normalize(endDirNrm, endDir);
+                    vec3.cross(rotationAxis, startDir, endDir);
                     var fullAngle = Math.acos(vec3.dot(startDirNrm, endDirNrm));
                     var segmentAngle = fullAngle / this.lines[i].numOfSegments;
-                    mat4.rotate(mat4.identity(rotationMatrix), segmentAngle, rotationAxis);
-
-                    vec3.set(startDir, dir1);
-                    quat4.set(this.lines[i].color1, col1);
+                    mat4.identity(rotationMatrix);
+                    mat4.rotate(rotationMatrix, rotationMatrix, segmentAngle, rotationAxis);
+                    vec3.copy(dir1, startDir);
+                    vec4.copy(col1, this.lines[i].color1);
 
                     for (j = 0; j < this.lines[i].numOfSegments; ++j)
                     {
                         segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                        mat4.multiplyVec3(rotationMatrix, dir1, dir2);
+                        // TODO: Test this refactoring, vec3.transformMat4 implicitly sets w to 1
+                        vec3.transformMat4(dir2, dir1, rotationMatrix);
                         col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
                         col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
                         col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
                         col2[3] = this.lines[i].color1[3] * (1 - segmentFactor) + this.lines[i].color2[3] * segmentFactor;
-                        vec3.add(dir1, this.lines[i].intermediatePosition, pt1);
-                        vec3.add(dir2, this.lines[i].intermediatePosition, pt2);
+                        vec3.add(pt1, dir1, this.lines[i].intermediatePosition);
+                        vec3.add(pt2, dir2, this.lines[i].intermediatePosition);
 
                         this._writeLineVerticesToBuffer(this, pt1, col1, j / this.lines[i].numOfSegments, pt2, col2, segmentFactor, i, data, offset);
                         offset += 6 * this._vertexSize;
@@ -20951,15 +20543,15 @@ var ccpwgl_int = (function()
                     var pos1 = vec3.create();
                     var pos2 = vec3.create();
 
-                    vec3.subtract(this.lines[i].intermediatePosition, this.lines[i].position1, tangent1);
-                    vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, tangent2);
+                    vec3.subtract(tangent1, this.lines[i].intermediatePosition, this.lines[i].position1);
+                    vec3.subtract(tangent2, this.lines[i].position2, this.lines[i].intermediatePosition);
+                    vec3.copy(pos1, this.lines[i].position1);
+                    vec3.copy(col1, this.lines[i].color1);
 
-                    vec3.set(this.lines[i].position1, pos1);
-                    vec3.set(this.lines[i].color1, col1);
                     for (j = 0; j < this.lines[i].numOfSegments; ++j)
                     {
                         segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                        vec3Hermite(pos2, this.lines[i].position1, tangent1, this.lines[i].position2, tangent2, segmentFactor);
+                        vec3.hermite(pos2, this.lines[i].position1, tangent1, this.lines[i].position2, tangent2, segmentFactor);
                         col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
                         col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
                         col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
@@ -21024,8 +20616,7 @@ var ccpwgl_int = (function()
         }
 
         var batch = new Tw2ForwardingRenderBatch();
-        mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
-        mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
+        mat4.transpose(this.perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
         batch.perObjectData = this.perObjectData;
         batch.geometryProvider = this;
         batch.renderMode = mode;
@@ -21093,12 +20684,9 @@ var ccpwgl_int = (function()
      */
     EveCurveLineSet.prototype.UpdateViewDependentData = function(parentTransform)
     {
-        mat4.identity(this.transform);
-        mat4.translate(this.transform, this.translation);
-        var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-        mat4.multiply(this.transform, rotationTransform, this.transform);
-        mat4.scale(this.transform, this.scaling);
-        mat4.multiply(this.transform, parentTransform);
+        // TODO: Check this refactoring
+        mat4.fromRotationTranslationScale(this.transform, this.translation, this.rotation, this.scaling);
+        mat4.multiply(this.transform, this.transform, parentTransform);
     };
 
     /**
@@ -21223,7 +20811,7 @@ var ccpwgl_int = (function()
      * @property {boolean} display
      * @property {boolean} useSpaceObjectData
      * @property {Number} lowestLodVisible
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property {vec3} translation
      * @property {vec3} scaling
      * @property {boolean} useSRT
@@ -21242,18 +20830,16 @@ var ccpwgl_int = (function()
         this.display = true;
         this.useSpaceObjectData = true;
         this.lowestLodVisible = 2;
-        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.rotation = quat.create();
         this.translation = vec3.create();
-        this.scaling = vec3.create([1, 1, 1]);
+        this.scaling = vec3.one();
         this.useSRT = true;
         this.staticTransform = false;
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.worldTransformLast = mat4.create();
+        this.localTransform = mat4.zero();
+        this.worldTransform = mat4.zero();
+        this.worldTransformLast = mat4.zero();
         this.mesh = null;
-
         this.isEffectChild = true;
-
         this._perObjectData = null;
     }
 
@@ -21265,17 +20851,13 @@ var ccpwgl_int = (function()
     {
         if (this.useSRT)
         {
-            var temp = this.worldTransformLast;
-            mat4.identity(this.localTransform);
-            mat4.translate(this.localTransform, this.translation);
-            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
-            mat4.multiply(this.localTransform, temp, this.localTransform);
-            mat4.scale(this.localTransform, this.scaling);
+            // TODO: Test this refactoring
+            quat.normalize(this.rotation, this.rotation);
+            mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
         }
-        mat4.set(this.worldTransform, this.worldTransformLast);
-        mat4.multiply(this.localTransform, parentTransform, this.worldTransform)
+        mat4.copy(this.worldTransformLast, this.worldTransform);
+        mat4.multiply(this.worldTransform, this.localTransform, parentTransform);
     };
-
 
     /**
      * Gets render batches
@@ -21309,8 +20891,8 @@ var ccpwgl_int = (function()
             this._perObjectData.perObjectVSData.data.set(perObjectData.perObjectVSData.data);
             this._perObjectData.perObjectPSData.data.set(perObjectData.perObjectPSData.data);
 
-            mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.data);
-            mat4.transpose(this.worldTransformLast, this._perObjectData.perObjectVSData.data.subarray(16));
+            mat4.transpose(this._perObjectData.perObjectVSData.data, this.worldTransform);
+            mat4.translate(this._perObjectData.perObjectVSData.data.subarray(16), this.worldTransformLast);
         }
         else
         {
@@ -21321,15 +20903,12 @@ var ccpwgl_int = (function()
                 this._perObjectData.perObjectVSData.Declare('world', 16);
                 this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
             }
-            mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
-            mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
+            mat4.transpose(this._perObjectData.perObjectVSData.Get('world'), this.worldTransform);
+            mat4.invert(this._perObjectData.perObjectVSData.Get('worldInverseTranspose'), this.worldTransform);
         }
 
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-
     };
-
-
 
     /**
      * Gets child mesh res objects
@@ -21349,7 +20928,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * "Complex" explosion object. Not implemented.
@@ -21454,12 +21033,12 @@ var ccpwgl_int = (function()
     EveMissile.prototype.Update = function(dt)
     {
         var tmp = vec3.create();
-        var distance = vec3.length(vec3.subtract(this.target, this.position, tmp));
+        var distance = vec3.length(vec3.subtract(tmp, this.target, this.position));
         if (distance > 0.1)
         {
-            vec3.normalize(tmp);
-            vec3.scale(tmp, Math.min(dt * this.speed, distance));
-            vec3.add(this.position, tmp);
+            vec3.normalize(tmp, tmp);
+            vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
+            vec3.add(this.position, this.position, tmp);
         }
         for (var i = 0; i < this.curveSets.length; ++i)
         {
@@ -21500,8 +21079,8 @@ var ccpwgl_int = (function()
      */
     EveMissile.prototype.Launch = function(position, turretTransforms, target)
     {
-        vec3.set(position, this.position);
-        vec3.set(target, this.target);
+        vec3.copy(this.position, position);
+        vec3.copy(this.target, target);
         if (this.warheads.length > turretTransforms.length)
         {
             this.warheads.splice(turretTransforms.length);
@@ -21554,7 +21133,7 @@ var ccpwgl_int = (function()
         this.mesh = null;
         this.state = EveMissileWarhead.STATE_READY;
 
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         this.velocity = vec3.create();
         this.time = 0;
 
@@ -21619,8 +21198,8 @@ var ccpwgl_int = (function()
             return;
         }
 
-        mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-        mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
     };
 
     /**
@@ -21653,19 +21232,17 @@ var ccpwgl_int = (function()
     {
         if (this.state == EveMissileWarhead.STATE_IN_FLIGHT)
         {
-            var position = [this.transform[12], this.transform[13], this.transform[14]];
+            var position = vec3.fromTranslation(this.transform);
 
             var tmp = vec3.create();
             this.time += dt;
             if (this.time > this.durationEjectPhase)
             {
-                vec3.subtract(missilePosition, position, this.velocity);
-                vec3.lerp(position, missilePosition, 1 - Math.exp(-dt * 0.9999));
-                this.transform[12] = position[0];
-                this.transform[13] = position[1];
-                this.transform[14] = position[2];
+                vec3.subtract(this.velocity, missilePosition, position);
+                vec3.lerp(position, position, missilePosition, 1 - Math.exp(-dt * 0.9999));
+                mat4.setTranslation(this.transform, position);
 
-                if (vec3.length(vec3.subtract(missileTarget, position, tmp)) < this.maxExplosionDistance)
+                if (vec3.length(vec3.subtract(tmp, missileTarget, position)) < this.maxExplosionDistance)
                 {
                     console.log(position, tmp);
                     this.state = EveMissileWarhead.STATE_DEAD;
@@ -21673,34 +21250,26 @@ var ccpwgl_int = (function()
             }
             else
             {
-                vec3.scale(this.velocity, dt, tmp);
+                vec3.scale(tmp, this.velocity, dt);
                 this.transform[12] += tmp[0];
                 this.transform[13] += tmp[1];
                 this.transform[14] += tmp[2];
             }
 
 
-            var x, y;
-            var z = vec3.normalize(this.velocity, tmp);
+            var x;
+            var z = vec3.normalize(tmp, this.velocity);
             if (Math.abs(z[0]) < 0.99)
             {
-                x = vec3.cross(z, [1, 0, 0], vec3.create());
+                x = vec3.cross(vec3.create(), z, [1, 0, 0]);
             }
             else
             {
-                x = vec3.cross(z, [0, 1, 0], vec3.create());
+                x = vec3.cross(vec3.create(), z, [0, 1, 0]);
             }
-            vec3.normalize(x);
-            y = vec3.cross(x, z, vec3.create());
-            this.transform[0] = x[0];
-            this.transform[1] = x[1];
-            this.transform[2] = x[2];
-            this.transform[4] = y[0];
-            this.transform[5] = y[1];
-            this.transform[6] = y[2];
-            this.transform[8] = z[0];
-            this.transform[9] = z[1];
-            this.transform[10] = z[2];
+            vec3.normalize(x, x);
+            var y = vec3.cross(vec3.create(), x, z);
+            mat4.setBasisAxes(this.transform, x, y, z);
         }
         if (this.spriteSet)
         {
@@ -21726,7 +21295,8 @@ var ccpwgl_int = (function()
      */
     EveMissileWarhead.prototype.Launch = function(transform)
     {
-        mat4.set(this.transform, transform);
+        // TODO: Should this be mat4.copy(this.transform, transform) ?
+        mat4.copy(transform, this.transform);
 
         this.velocity[0] = transform[8] * this.startEjectVelocity;
         this.velocity[1] = transform[9] * this.startEjectVelocity;
@@ -21791,7 +21361,6 @@ var ccpwgl_int = (function()
     /**
      * Gets the dimension of an element type
      * @returns {number}
-     * @prototype
      */
     Tw2ParticleElementDeclaration.prototype.GetDimension = function()
     {
@@ -21799,10 +21368,13 @@ var ccpwgl_int = (function()
         {
             case Tw2ParticleElementDeclaration.LIFETIME:
                 return 2;
+
             case Tw2ParticleElementDeclaration.POSITION:
                 return 3;
+
             case Tw2ParticleElementDeclaration.VELOCITY:
                 return 3;
+
             case Tw2ParticleElementDeclaration.MASS:
                 return 1;
         }
@@ -21812,7 +21384,6 @@ var ccpwgl_int = (function()
     /**
      * GetDeclaration
      * @returns {Tw2VertexElement}
-     * @prototype
      */
     Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
     {
@@ -21822,12 +21393,15 @@ var ccpwgl_int = (function()
             case Tw2ParticleElementDeclaration.LIFETIME:
                 usage = Tw2VertexDeclaration.DECL_TANGENT;
                 break;
+
             case Tw2ParticleElementDeclaration.POSITION:
                 usage = Tw2VertexDeclaration.DECL_POSITION;
                 break;
+
             case Tw2ParticleElementDeclaration.VELOCITY:
                 usage = Tw2VertexDeclaration.DECL_NORMAL;
                 break;
+
             case Tw2ParticleElementDeclaration.MASS:
                 usage = Tw2VertexDeclaration.DECL_BINORMAL;
                 break;
@@ -21933,7 +21507,7 @@ var ccpwgl_int = (function()
 
     /**
      * Initializes the Particle System
-     * @prototype
+
      */
     Tw2ParticleSystem.prototype.Initialize = function()
     {
@@ -21943,7 +21517,7 @@ var ccpwgl_int = (function()
     /**
      * Updates Element Declarations
      * TODO: fix/remove commented out code
-     * @prototype
+
      */
     Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
     {
@@ -22039,7 +21613,6 @@ var ccpwgl_int = (function()
      * HasElement
      * @param {ParticleElementType} type
      * @returns {boolean}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.HasElement = function(type)
     {
@@ -22050,7 +21623,6 @@ var ccpwgl_int = (function()
      * GetElement
      * @param {ParticleElementType} type
      * @returns {*}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.GetElement = function(type)
     {
@@ -22064,7 +21636,6 @@ var ccpwgl_int = (function()
     /**
      * BeginSpawnParticle
      * @returns {null|number}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
     {
@@ -22077,7 +21648,6 @@ var ccpwgl_int = (function()
 
     /**
      * EndSpawnParticle
-     * @prototype
      */
     Tw2ParticleSystem.prototype.EndSpawnParticle = function()
     {
@@ -22087,7 +21657,6 @@ var ccpwgl_int = (function()
     /**
      * Internal render/update function. It is called every frame.
      * @param {number} dt - delta time
-     * @prototype
      */
     Tw2ParticleSystem.prototype.Update = function(dt)
     {
@@ -22166,7 +21735,7 @@ var ccpwgl_int = (function()
                     }
                     if (mass)
                     {
-                        vec3.scale(force, 1. / mass.buffer[mass.offset]);
+                        vec3.scale(force, force, 1 / mass.buffer[mass.offset]);
                     }
                     velocity.buffer[velocity.offset] += force[0] * dt;
                     velocity.buffer[velocity.offset + 1] += force[1] * dt;
@@ -22241,7 +21810,7 @@ var ccpwgl_int = (function()
      * @param {vec3} aabbMin
      * @param {vec3} aabbMax
      * @returns {boolean}
-     * @prototype
+
      */
     Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
     {
@@ -22331,7 +21900,6 @@ var ccpwgl_int = (function()
     /**
      * GetInstanceBuffer
      * @returns {WebGLBuffer}
-     * @constructor
      */
     Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
     {
@@ -22372,7 +21940,6 @@ var ccpwgl_int = (function()
     /**
      * GetInstanceDeclaration
      * @returns {Tw2VertexDeclaration}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
     {
@@ -22382,7 +21949,6 @@ var ccpwgl_int = (function()
     /**
      * GetInstanceStride
      * @returns {number}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.GetInstanceStride = function()
     {
@@ -22392,7 +21958,6 @@ var ccpwgl_int = (function()
     /**
      * GetInstanceCount
      * @returns {number}
-     * @prototype
      */
     Tw2ParticleSystem.prototype.GetInstanceCount = function()
     {
@@ -22423,7 +21988,6 @@ var ccpwgl_int = (function()
 
     /**
      * Initializes the Tw2InstancedMesh
-     * @prototype
      */
     Tw2InstancedMesh.prototype.Initialize = function()
     {
@@ -22473,7 +22037,6 @@ var ccpwgl_int = (function()
      * @param {number} start
      * @param {number} count
      * @param {Tw2Effect} effect
-     * @prototype
      */
     Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
     {
@@ -22531,7 +22094,6 @@ var ccpwgl_int = (function()
     /**
      * Commits the Tw2InstancedMeshBatch for rendering
      * @param {Tw2Effect} [overrideEffect]
-     * @prototype
      */
     Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
     {
@@ -22698,7 +22260,6 @@ var ccpwgl_int = (function()
 
     /**
      * Initialises the Emitter
-     * @prototype
      */
     Tw2DynamicEmitter.prototype.Initialize = function()
     {
@@ -22708,7 +22269,6 @@ var ccpwgl_int = (function()
     /**
      * Internal render/update function. It is called every frame.
      * @param {number} dt - Frame time.
-     * @prototype
      */
     Tw2DynamicEmitter.prototype.Update = function(dt)
     {
@@ -22717,7 +22277,6 @@ var ccpwgl_int = (function()
 
     /**
      * Rebind
-     * @prototype
      */
     Tw2DynamicEmitter.prototype.Rebind = function()
     {
@@ -22741,7 +22300,6 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param rateModifier
-     * @prototype
      */
     Tw2DynamicEmitter.prototype.SpawnParticles = function(position, velocity, rateModifier)
     {
@@ -22771,8 +22329,8 @@ var ccpwgl_int = (function()
      * Tw2RandomUniformAttributeGenerator
      * @property {number} elementType
      * @property {string} customName
-     * @property {quat4} minRange
-     * @property {quat4} maxRange
+     * @property {quat} minRange
+     * @property {quat} maxRange
      * @property _element
      * @constructor
      */
@@ -22780,8 +22338,8 @@ var ccpwgl_int = (function()
     {
         this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
         this.customName = '';
-        this.minRange = quat4.create();
-        this.maxRange = quat4.create();
+        this.minRange = quat.zero();
+        this.maxRange = quat.zero();
         this._element = null;
     }
 
@@ -22789,7 +22347,6 @@ var ccpwgl_int = (function()
      * Bind
      * @param ps
      * @returns {boolean}
-     * @prototype
      */
     Tw2RandomUniformAttributeGenerator.prototype.Bind = function(ps)
     {
@@ -22810,7 +22367,6 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param index
-     * @prototype
      */
     Tw2RandomUniformAttributeGenerator.prototype.Generate = function(position, velocity, index)
     {
@@ -22834,7 +22390,7 @@ var ccpwgl_int = (function()
      * @property {number} maxSpeed
      * @property {number} parentVelocityFactor
      * @property {vec3} position
-     * @property {quat4} rotation
+     * @property {quat} rotation
      * @property _position
      * @property _velocity
      * @constructor
@@ -22853,7 +22409,7 @@ var ccpwgl_int = (function()
         this.maxSpeed = 0;
         this.parentVelocityFactor = 1;
         this.position = vec3.create();
-        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.rotation = quat.create();
         this._position = null;
         this._velocity = null;
     }
@@ -22862,7 +22418,7 @@ var ccpwgl_int = (function()
      * Bind
      * @param ps
      * @returns {boolean}
-     * @prototype
+     
      */
     Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
     {
@@ -22887,7 +22443,7 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param index
-     * @prototype
+     
      */
     Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
     {
@@ -22901,7 +22457,7 @@ var ccpwgl_int = (function()
         rv[1] = -Math.cos(phi);
         rv[2] = Math.sin(phi) * Math.sin(theta);
 
-        quat4.multiplyVec3(this.rotation, rv);
+        quat.transformVec3(this.rotation, this.rotation, rv);
         if (this._velocity)
         {
             var speed = this.minSpeed + Math.random() * (this.maxSpeed - this.minSpeed);
@@ -22919,8 +22475,8 @@ var ccpwgl_int = (function()
 
         if (this._position)
         {
-            vec3.scale(rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
-            vec3.add(rv, this.position);
+            vec3.scale(rv, rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
+            vec3.add(rv, rv, this.position);
             if (position)
             {
                 rv[0] += position.buffer[position.offset];
@@ -22951,7 +22507,6 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param force
-     * @prototype
      */
     Tw2ParticleSpring.prototype.ApplyForce = function(position, velocity, force)
     {
@@ -22962,7 +22517,6 @@ var ccpwgl_int = (function()
 
     /**
      * Internal render/update function. It is called every frame.
-     * @prototype
      */
     Tw2ParticleSpring.prototype.Update = function() {};
 
@@ -22981,7 +22535,6 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param force
-     * @prototype
      */
     Tw2ParticleDragForce.prototype.ApplyForce = function(position, velocity, force)
     {
@@ -22992,7 +22545,6 @@ var ccpwgl_int = (function()
 
     /**
      * Internal render/update function. It is called every frame.
-     * @prototype
      */
     Tw2ParticleDragForce.prototype.Update = function() {};
 
@@ -23001,7 +22553,7 @@ var ccpwgl_int = (function()
      * @property {number} noiseLevel
      * @property {number} noiseRatio
      * @property {vec3} amplitude
-     * @property {quat4} frequency
+     * @property {quat} frequency
      * @property {number} _time
      * @constructor
      */
@@ -23009,8 +22561,8 @@ var ccpwgl_int = (function()
     {
         this.noiseLevel = 3;
         this.noiseRatio = 0.5;
-        this.amplitude = vec3.create([1, 1, 1]);
-        this.frequency = quat4.create([1, 1, 1, 1]);
+        this.amplitude = vec3.one();
+        this.frequency = quat.one();
         this._time = 0;
     }
 
@@ -23022,7 +22574,7 @@ var ccpwgl_int = (function()
     {
         for (var i = 0; i < 256; i++)
         {
-            s_noiseLookup[i] = quat4.create([Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5]);
+            s_noiseLookup[i] = quat.fromValues(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
             s_permutations[i] = i;
         }
 
@@ -23080,23 +22632,22 @@ var ccpwgl_int = (function()
         var b01 = s_permutations[i + b_1];
         var b11 = s_permutations[j + b_1];
 
-        var c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0, s_globalNoiseTemps[0]);
-        var c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0, s_globalNoiseTemps[1]);
-        var c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[2]);
-        var c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0, s_globalNoiseTemps[3]);
-        var c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[4]);
-        var c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[5]);
-        var c = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[6]);
+        var c00 = vec3.lerp(s_globalNoiseTemps[0], s_noiseLookup[b00 + a_2 + a_3], s_noiseLookup[b10 + a_2 + a_3], t_0);
+        var c10 = vec3.lerp(s_globalNoiseTemps[1], s_noiseLookup[b01 + a_2 + a_3], s_noiseLookup[b11 + a_2 + a_3], t_0);
+        var c01 = vec3.lerp(s_globalNoiseTemps[2], s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0);
+        var c11 = vec3.lerp(s_globalNoiseTemps[3], s_noiseLookup[b00 + b_2 + a_3], s_noiseLookup[b10 + b_2 + a_3], t_0);
+        var c0 = vec3.lerp(s_globalNoiseTemps[4], c00, c10, t_1);
+        var c1 = vec3.lerp(s_globalNoiseTemps[5], c01, c11, t_1);
+        var c = vec3.lerp(s_globalNoiseTemps[6], c0, c1, t_2);
 
-        c00 = vec3.lerp(s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0, s_globalNoiseTemps[7]);
-        c10 = vec3.lerp(s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0, s_globalNoiseTemps[8]);
-        c01 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[9]);
-        c11 = vec3.lerp(s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0, s_globalNoiseTemps[10]);
-        c0 = vec3.lerp(c00, c10, t_1, s_globalNoiseTemps[11]);
-        c1 = vec3.lerp(c01, c11, t_1, s_globalNoiseTemps[12]);
-        var d = vec3.lerp(c0, c1, t_2, s_globalNoiseTemps[13]);
-
-        var r = vec3.lerp(c, d, t_3, s_globalNoiseTemps[14]);
+        c00 = vec3.lerp(s_globalNoiseTemps[7], s_noiseLookup[b00 + a_2 + b_3], s_noiseLookup[b10 + a_2 + b_3], t_0);
+        c10 = vec3.lerp(s_globalNoiseTemps[8], s_noiseLookup[b01 + a_2 + b_3], s_noiseLookup[b11 + a_2 + b_3], t_0);
+        c01 = vec3.lerp(s_globalNoiseTemps[9], s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0);
+        c11 = vec3.lerp(s_globalNoiseTemps[10], s_noiseLookup[b00 + b_2 + b_3], s_noiseLookup[b10 + b_2 + b_3], t_0);
+        c0 = vec3.lerp(s_globalNoiseTemps[11], c00, c10, t_1);
+        c1 = vec3.lerp(s_globalNoiseTemps[12], c01, c11, t_1);
+        var d = vec3.lerp(s_globalNoiseTemps[13], c0, c1, t_2);
+        var r = vec3.lerp(s_globalNoiseTemps[14], c, d, t_3);
         result[0] += r[0] * power;
         result[1] += r[1] * power;
         result[2] += r[2] * power;
@@ -23104,17 +22655,15 @@ var ccpwgl_int = (function()
 
     /**
      * tempNoise
-     * @type {quat4}
-     * @prototype
+     * @type {quat}
      */
-    Tw2ParticleTurbulenceForce.tempNoise = quat4.create();
+    Tw2ParticleTurbulenceForce.tempNoise = quat.zero();
 
     /**
      * ApplyForce
      * @param position
      * @param velocity
      * @param force
-     * @prototype
      */
     Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
     {
@@ -23149,7 +22698,7 @@ var ccpwgl_int = (function()
     /**
      * Internal render/update function. It is called every frame.
      * @param {number} dt - delta Time
-     * @prototype
+     
      */
     Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
     {
@@ -23171,18 +22720,14 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param force
-     * @prototype
      */
     Tw2ParticleDirectForce.prototype.ApplyForce = function(position, velocity, force)
     {
-        force[0] += this.force[0];
-        force[1] += this.force[1];
-        force[2] += this.force[2];
+        vec3.add(force, force, this.force);
     };
 
     /**
      * Internal render/update function. It is called every frame.
-     * @prototype
      */
     Tw2ParticleDirectForce.prototype.Update = function() {};
 
@@ -23205,23 +22750,19 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param force
-     * @prototype
      */
     Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
     {
         this._tempVec[0] = this.position[0] - position.buffer[position.offset];
         this._tempVec[1] = this.position[1] - position.buffer[position.offset + 1];
         this._tempVec[2] = this.position[2] - position.buffer[position.offset + 2];
-        vec3.scale(vec3.normalize(this._tempVec), this.magnitude);
-
-        force[0] += this._tempVec[0];
-        force[1] += this._tempVec[1];
-        force[2] += this._tempVec[2];
+        vec3.normalize(this._tempVec, this._tempVec);
+        vec3.scale(this._tempVec, this._tempVec, this.magnitude);
+        vec3.add(force, force, this._tempVec);
     };
 
     /**
      * Internal render/update function. It is called every frame.
-     * @prototype
      */
     Tw2ParticleAttractorForce.prototype.Update = function() {};
 
@@ -23246,7 +22787,6 @@ var ccpwgl_int = (function()
      * @param force
      * @param {number} dt - delta time
      * @param mass
-     * @prototype
      */
     Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
     {
@@ -23258,7 +22798,7 @@ var ccpwgl_int = (function()
         this._tempVec[1] = velocity.buffer[velocity.offset + 1] * -speed * this.drag;
         this._tempVec[2] = velocity.buffer[velocity.offset + 2] * -speed * this.drag;
 
-        vec3.scale(this._tempVec, dt * mass, this._tempVec2);
+        vec3.scale(this._tempVec2, this._tempVec, dt * mass);
         this._tempVec2[0] += velocity.buffer[velocity.offset];
         this._tempVec2[1] += velocity.buffer[velocity.offset + 1];
         this._tempVec2[2] += velocity.buffer[velocity.offset + 2];
@@ -23273,13 +22813,12 @@ var ccpwgl_int = (function()
         }
         else
         {
-            vec3.set(this._tempVec, force);
+            vec3.copy(force, this._tempVec);
         }
     };
 
     /**
      * Internal render/update function. It is called every frame.
-     * @prototype
      */
     Tw2ParticleFluidDragForce.prototype.Update = function() {};
 
@@ -23287,8 +22826,8 @@ var ccpwgl_int = (function()
      * Tw2RandomIntegerAttributeGenerator
      * @property {number} elementType
      * @property {string} customName
-     * @property {quat4} minRange
-     * @property {quat4} maxRange
+     * @property {vec4} minRange
+     * @property {vec4} maxRange
      * @property _element
      * @constructor
      */
@@ -23296,8 +22835,8 @@ var ccpwgl_int = (function()
     {
         this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
         this.customName = '';
-        this.minRange = quat4.create();
-        this.maxRange = quat4.create();
+        this.minRange = vec4.create();
+        this.maxRange = vec4.create();
         this._element = null;
     }
 
@@ -23305,7 +22844,6 @@ var ccpwgl_int = (function()
      * Bind
      * @param ps
      * @returns {boolean}
-     * @prototype
      */
     Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
     {
@@ -23326,7 +22864,6 @@ var ccpwgl_int = (function()
      * @param position
      * @param velocity
      * @param index
-     * @prototype
      */
     Tw2RandomIntegerAttributeGenerator.prototype.Generate = function(position, velocity, index)
     {
@@ -23335,184 +22872,5 @@ var ccpwgl_int = (function()
             this._element.buffer[this._element.instanceStride * index + this._element.startOffset + i] = Math.floor(this.minRange[i] + Math.random() * (this.maxRange[i] - this.minRange[i]) + 0.5);
         }
     };
-
-    var exports = {};
-    exports.Tw2EventEmitter = Tw2EventEmitter;
-    exports.emitter = emitter;
-    exports.Tw2Frustum = Tw2Frustum;
-    exports.Tw2RawData = Tw2RawData;
-    exports.Tw2BinaryReader = Tw2BinaryReader;
-    exports.Tw2VertexElement = Tw2VertexElement;
-    exports.Tw2VertexDeclaration = Tw2VertexDeclaration;
-    exports.Tw2ObjectReader = Tw2ObjectReader;
-    exports.Tw2Resource = Tw2Resource;
-    //exports.Inherit = Inherit;
-    exports.Tw2VariableStore = Tw2VariableStore;
-    exports.variableStore = variableStore;
-    exports.Tw2MotherLode = Tw2MotherLode;
-    exports.Tw2LoadingObject = Tw2LoadingObject;
-    exports.Tw2ResMan = Tw2ResMan;
-    exports.resMan = resMan;
-    exports.Tw2PerObjectData = Tw2PerObjectData;
-    exports.Tw2SamplerState = Tw2SamplerState;
-    exports.Tw2FloatParameter = Tw2FloatParameter;
-    exports.Tw2Vector2Parameter = Tw2Vector2Parameter;
-    exports.Tw2Vector3Parameter = Tw2Vector3Parameter;
-    exports.Tw2Vector4Parameter = Tw2Vector4Parameter;
-    exports.Tw2MatrixParameter = Tw2MatrixParameter;
-    exports.Tw2VariableParameter = Tw2VariableParameter;
-    exports.Tw2TextureParameter = Tw2TextureParameter;
-    exports.Tw2TransformParameter = Tw2TransformParameter;
-    exports.Tw2Device = Tw2Device;
-    exports.device = device;
-    exports.Tw2BatchAccumulator = Tw2BatchAccumulator;
-    exports.Tw2RenderBatch = Tw2RenderBatch;
-    exports.Tw2ForwardingRenderBatch = Tw2ForwardingRenderBatch;
-    exports.Tw2GeometryBatch = Tw2GeometryBatch;
-    exports.Tw2GeometryLineBatch = Tw2GeometryLineBatch;
-    exports.Tw2GeometryMeshArea = Tw2GeometryMeshArea;
-    exports.Tw2GeometryMeshBinding = Tw2GeometryMeshBinding;
-    exports.Tw2GeometryModel = Tw2GeometryModel;
-    exports.Tw2GeometrySkeleton = Tw2GeometrySkeleton;
-    exports.Tw2GeometryBone = Tw2GeometryBone;
-    exports.Tw2GeometryAnimation = Tw2GeometryAnimation;
-    exports.Tw2GeometryTrackGroup = Tw2GeometryTrackGroup;
-    exports.Tw2GeometryTransformTrack = Tw2GeometryTransformTrack;
-    exports.Tw2GeometryCurve = Tw2GeometryCurve;
-    exports.Tw2BlendShapeData = Tw2BlendShapeData;
-    exports.Tw2GeometryMesh = Tw2GeometryMesh;
-    exports.Tw2GeometryRes = Tw2GeometryRes;
-    exports.Tw2TextureRes = Tw2TextureRes;
-    exports.Tw2EffectRes = Tw2EffectRes;
-    exports.Tw2SamplerOverride = Tw2SamplerOverride;
-    exports.Tw2Effect = Tw2Effect;
-    exports.Tw2MeshArea = Tw2MeshArea;
-    exports.Tw2MeshLineArea = Tw2MeshLineArea;
-    exports.Tw2Mesh = Tw2Mesh;
-    exports.Tw2Track = Tw2Track;
-    exports.Tw2TrackGroup = Tw2TrackGroup;
-    exports.Tw2Animation = Tw2Animation;
-    exports.Tw2Bone = Tw2Bone;
-    exports.Tw2Model = Tw2Model;
-    exports.Tw2AnimationController = Tw2AnimationController;
-    exports.Tw2RenderTarget = Tw2RenderTarget;
-    exports.Tw2CurveSet = Tw2CurveSet;
-    exports.Tw2ValueBinding = Tw2ValueBinding;
-    exports.Tw2Float = Tw2Float;
-    exports.Tw2RuntimeInstanceData = Tw2RuntimeInstanceData;
-    exports.Tw2PostProcess = Tw2PostProcess;
-    exports.Tw2ColorKey = Tw2ColorKey;
-    exports.Tw2ColorCurve = Tw2ColorCurve;
-    exports.Tw2ColorKey2 = Tw2ColorKey2;
-    exports.Tw2ColorCurve2 = Tw2ColorCurve2;
-    exports.Tw2ColorSequencer = Tw2ColorSequencer;
-    exports.Tw2EulerRotation = Tw2EulerRotation;
-    exports.Tw2EventKey = Tw2EventKey;
-    exports.Tw2EventCurve = Tw2EventCurve;
-    //exports.Perlin_start = Perlin_start;
-    //exports.Perlin_B = Perlin_B;
-    //exports.Perlin_BM = Perlin_BM;
-    //exports.Perlin_N = Perlin_N;
-    //exports.Perlin_p = Perlin_p;
-    //exports.Perlin_g1 = Perlin_g1;
-    //exports.Perlin_init = Perlin_init;
-    //exports.Perlin_noise1 = Perlin_noise1;
-    //exports.PerlinNoise1D = PerlinNoise1D;
-    exports.Tw2PerlinCurve = Tw2PerlinCurve;
-    exports.Tw2QuaternionSequencer = Tw2QuaternionSequencer;
-    exports.Tw2RandomConstantCurve = Tw2RandomConstantCurve;
-    exports.Tw2RGBAScalarSequencer = Tw2RGBAScalarSequencer;
-    exports.Tw2Torque = Tw2Torque;
-    exports.Tw2RigidOrientation = Tw2RigidOrientation;
-    exports.Tw2QuaternionKey = Tw2QuaternionKey;
-    exports.Tw2RotationCurve = Tw2RotationCurve;
-    exports.Tw2ScalarKey = Tw2ScalarKey;
-    exports.Tw2ScalarCurve = Tw2ScalarCurve;
-    exports.Tw2ScalarKey2 = Tw2ScalarKey2;
-    exports.Tw2ScalarCurve2 = Tw2ScalarCurve2;
-    exports.Tw2ScalarSequencer = Tw2ScalarSequencer;
-    exports.Tw2SineCurve = Tw2SineCurve;
-    exports.Tw2TransformTrack = Tw2TransformTrack;
-    exports.Tw2Vector2Key = Tw2Vector2Key;
-    exports.Tw2Vector2Curve = Tw2Vector2Curve;
-    exports.Tw2Vector3Key = Tw2Vector3Key;
-    exports.Tw2Vector3Curve = Tw2Vector3Curve;
-    exports.Tw2VectorKey = Tw2VectorKey;
-    exports.Tw2VectorCurve = Tw2VectorCurve;
-    exports.Tw2VectorSequencer = Tw2VectorSequencer;
-    exports.Tw2XYZScalarSequencer = Tw2XYZScalarSequencer;
-    exports.Tw2YPRSequencer = Tw2YPRSequencer;
-    exports.Tw2MayaAnimationEngine = Tw2MayaAnimationEngine;
-    //exports.ag_horner1 = ag_horner1;
-    //exports.ag_zeroin2 = ag_zeroin2;
-    //exports.ag_zeroin = ag_zeroin;
-    //exports.polyZeroes = polyZeroes;
-    exports.Tw2MayaScalarCurve = Tw2MayaScalarCurve;
-    exports.Tw2MayaVector3Curve = Tw2MayaVector3Curve;
-    exports.Tw2MayaEulerRotationCurve = Tw2MayaEulerRotationCurve;
-    exports.Tw2QuaternionKey2 = Tw2QuaternionKey2;
-    exports.Tw2QuaternionCurve = Tw2QuaternionCurve;
-    exports.Tw2WbgTrack = Tw2WbgTrack;
-    exports.Tw2WbgTransformTrack = Tw2WbgTransformTrack;
-    exports.EveLocator = EveLocator;
-    exports.EveBoosterSet = EveBoosterSet;
-    exports.EveBoosterBatch = EveBoosterBatch;
-    exports.EveSpriteSet = EveSpriteSet;
-    exports.EveSpriteSetBatch = EveSpriteSetBatch;
-    exports.EveSpriteSetItem = EveSpriteSetItem;
-    exports.EveSpotlightSetItem = EveSpotlightSetItem;
-    exports.EveSpotlightSet = EveSpotlightSet;
-    exports.EveSpotlightSetBatch = EveSpotlightSetBatch;
-    exports.EvePlaneSet = EvePlaneSet;
-    exports.EvePlaneSetBatch = EvePlaneSetBatch;
-    exports.EvePlaneSetItem = EvePlaneSetItem;
-    exports.EveBasicPerObjectData = EveBasicPerObjectData;
-    exports.EveTransform = EveTransform;
-    exports.EveTurretData = EveTurretData;
-    exports.EveTurretSet = EveTurretSet;
-    //exports.mat3x4toquat = mat3x4toquat;
-    //exports.mat4toquat = mat4toquat;
-    exports.EveSpaceObject = EveSpaceObject;
-    exports.EveShip = EveShip;
-    exports.EveTurretSetLocatorInfo = EveTurretSetLocatorInfo;
-    exports.EveSpaceObjectDecal = EveSpaceObjectDecal;
-    exports.EveSpaceScene = EveSpaceScene;
-    exports.EveOccluder = EveOccluder;
-    exports.EveLensflare = EveLensflare;
-    exports.EvePlanet = EvePlanet;
-    exports.EveEffectRoot = EveEffectRoot;
-    exports.EveStretch = EveStretch;
-    exports.EvePerMuzzleData = EvePerMuzzleData;
-    exports.EveTurretFiringFX = EveTurretFiringFX;
-    exports.EveSOF = EveSOF;
-    //exports.vec3Hermite = vec3Hermite;
-    exports.EveCurveLineSet = EveCurveLineSet;
-    exports.EveMeshOverlayEffect = EveMeshOverlayEffect;
-    exports.EveChildMesh = EveChildMesh;
-    exports.EveChildExplosion = EveChildExplosion;
-    exports.EveMissile = EveMissile;
-    exports.EveMissileWarhead = EveMissileWarhead;
-    exports.Tw2ParticleElementDeclaration = Tw2ParticleElementDeclaration;
-    exports.Tr2ParticleElement = Tr2ParticleElement;
-    exports.Tw2ParticleSystem = Tw2ParticleSystem;
-    exports.Tw2InstancedMesh = Tw2InstancedMesh;
-    exports.Tw2InstancedMeshBatch = Tw2InstancedMeshBatch;
-    exports.Tw2StaticEmitter = Tw2StaticEmitter;
-    exports.Tw2DynamicEmitter = Tw2DynamicEmitter;
-    exports.Tw2RandomUniformAttributeGenerator = Tw2RandomUniformAttributeGenerator;
-    exports.Tw2SphereShapeAttributeGenerator = Tw2SphereShapeAttributeGenerator;
-    exports.Tw2ParticleSpring = Tw2ParticleSpring;
-    exports.Tw2ParticleDragForce = Tw2ParticleDragForce;
-    exports.Tw2ParticleTurbulenceForce = Tw2ParticleTurbulenceForce;
-    //exports.s_noiseLookup = s_noiseLookup;
-    //exports.s_permutations = s_permutations;
-    //exports.s_globalNoiseTemps = s_globalNoiseTemps;
-    //exports.InitializeNoise = InitializeNoise;
-    //exports.AddNoise = AddNoise;
-    exports.Tw2ParticleDirectForce = Tw2ParticleDirectForce;
-    exports.Tw2ParticleAttractorForce = Tw2ParticleAttractorForce;
-    exports.Tw2ParticleFluidDragForce = Tw2ParticleFluidDragForce;
-    exports.Tw2RandomIntegerAttributeGenerator = Tw2RandomIntegerAttributeGenerator
-    return exports;
 
 })();

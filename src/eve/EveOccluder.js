@@ -4,6 +4,7 @@
  * @property {boolean} display
  * @property {number} value
  * @property {Array.<EveSpriteSet>} sprites
+ * @property {mat4} _tempMat4
  * @constructor
  */
 function EveOccluder()
@@ -13,6 +14,7 @@ function EveOccluder()
     this.value = 1;
     this.sprites = [];
     variableStore.RegisterType('OccluderValue', Tw2Vector4Parameter);
+    this._tempMat4 = mat4.create();
 
     if (!EveOccluder._collectEffect)
     {
@@ -103,18 +105,19 @@ EveOccluder.prototype.UpdateValue = function(parentTransform, index)
 
     batches.Render();
 
-    var worldViewProj = mat4.multiply(device.projection, device.view, mat4.create());
-    worldViewProj = mat4.multiply(worldViewProj, this.sprites[0].worldTransform);
+    var worldViewProj = mat4.multiply(this._tempMat4, device.projection, device.view);
+    mat4.multiply(worldViewProj, worldViewProj, this.sprites[0].worldTransform);
 
-    var center = quat4.create([0, 0, 0, 1]);
-    mat4.multiplyVec4(worldViewProj, center);
+    var center = vec4.fromValues(0,0,0,1);
+    vec4.transformMat4(center, center, worldViewProj);
     var x0 = (center[0] / center[3] + 1) * 0.5;
     var y0 = (center[1] / center[3] + 1) * 0.5;
 
     center[0] = center[1] = 0.5;
     center[2] = 0;
     center[3] = 1;
-    mat4.multiplyVec4(worldViewProj, center);
+
+    vec4.transformMat4(center, center, worldViewProj);
     var x1 = (center[0] / center[3] + 1) * 0.5;
     var y1 = (center[1] / center[3] + 1) * 0.5;
     center[0] = x0;

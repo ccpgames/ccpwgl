@@ -208,7 +208,7 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
                 msg: 'Prepare error',
                 path: this.path,
                 type: 'res.prepare',
-                data: e
+                err: e
             })
         }
 
@@ -499,7 +499,8 @@ function Tw2ResMan()
                     msg: 'Communication error loading',
                     path: obj.path,
                     type: 'http.readystate',
-                    value: readyState
+                    value: readyState,
+                    err: e
                 });
 
                 obj.LoadFinished(false);
@@ -637,7 +638,7 @@ function Tw2ResMan()
                 msg: 'Error requesting',
                 path: path,
                 type: 'http.request',
-                value: e.toString()
+                err: e
             })
         }
     };
@@ -801,7 +802,8 @@ function Tw2ResMan()
                 path: this.BuildUrl(path),
                 _path: path,
                 type: 'http.request',
-                value: e.toString()
+                value: e.toString(),
+                err: e
             })
         }
     };

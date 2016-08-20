@@ -2,26 +2,25 @@
  * Tw2ColorSequencer
  * @property {string} name
  * @property {number} start
- * @property {quat4} value
+ * @property {vec4} value
  * @property {number} operator
  * @property {Array} functions
- * @property {quat4} _tempValue
+ * @property {vec4} _tempValue
  * @constructor
  */
 function Tw2ColorSequencer()
 {
     this.name = '';
     this.start = 0;
-    this.value = quat4.create();
+    this.value = vec4.create();
     this.operator = 0;
     this.functions = [];
-    this._tempValue = quat4.create();
+    this._tempValue = vec4.create();
 }
 
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2ColorSequencer.prototype.GetLength = function()
 {
@@ -39,7 +38,6 @@ Tw2ColorSequencer.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2ColorSequencer.prototype.UpdateValue = function(time)
 {
@@ -49,9 +47,8 @@ Tw2ColorSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
- * @prototype
+ * @param {vec4} value
+ * @returns {vec4}
  */
 Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
 {
@@ -59,36 +56,24 @@ Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
 
     if (this.operator == 0)
     {
-        value[0] = 1;
-        value[1] = 1;
-        value[2] = 1;
-        value[3] = 1;
+        vec4.fill(value, 1);
         tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
             functions[i].GetValueAt(time, tempValue);
-            value[0] *= tempValue[0];
-            value[1] *= tempValue[1];
-            value[2] *= tempValue[2];
-            value[3] *= tempValue[3];
+            vec4.multiply(value, value, tempValue);
         }
     }
     else
     {
-        value[0] = 0;
-        value[1] = 0;
-        value[2] = 0;
-        value[3] = 0;
+        vec4.fill(value, 0);
         tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
             functions[i].GetValueAt(time, tempValue);
-            value[0] += tempValue[0];
-            value[1] += tempValue[1];
-            value[2] += tempValue[2];
-            value[3] += tempValue[3];
+            vec4.add(value, value, tempValue);
         }
     }
     return value;

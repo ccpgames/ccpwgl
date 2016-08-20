@@ -12,7 +12,7 @@
  * @property {number} maxSpeed
  * @property {number} parentVelocityFactor
  * @property {vec3} position
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property _position
  * @property _velocity
  * @constructor
@@ -31,7 +31,7 @@ function Tw2SphereShapeAttributeGenerator()
     this.maxSpeed = 0;
     this.parentVelocityFactor = 1;
     this.position = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.rotation = quat.create();
     this._position = null;
     this._velocity = null;
 }
@@ -40,7 +40,7 @@ function Tw2SphereShapeAttributeGenerator()
  * Bind
  * @param ps
  * @returns {boolean}
- * @prototype
+ 
  */
 Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -65,7 +65,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
+ 
  */
 Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
@@ -79,7 +79,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocit
     rv[1] = -Math.cos(phi);
     rv[2] = Math.sin(phi) * Math.sin(theta);
 
-    quat4.multiplyVec3(this.rotation, rv);
+    quat.transformVec3(this.rotation, this.rotation, rv);
     if (this._velocity)
     {
         var speed = this.minSpeed + Math.random() * (this.maxSpeed - this.minSpeed);
@@ -97,8 +97,8 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocit
 
     if (this._position)
     {
-        vec3.scale(rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
-        vec3.add(rv, this.position);
+        vec3.scale(rv, rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
+        vec3.add(rv, rv, this.position);
         if (position)
         {
             rv[0] += position.buffer[position.offset];

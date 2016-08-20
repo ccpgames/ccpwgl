@@ -39,19 +39,18 @@ function TestCamera(element)
 TestCamera.prototype.getView = function ()
 {
 	var view = mat4.create();
-    mat4.identity(view);
-    mat4.rotateY(view, -this.shift);
-    mat4.translate(view, [0, 0.0, -this.distance]);
-    mat4.rotateX(view, this.rotationY + this.additionalRotationY);
-    mat4.rotateY(view, this.rotationX + this.additionalRotationX);
-    mat4.translate(view, [-this.poi[0], -this.poi[1], -this.poi[2]]);
+    mat4.rotateY(view, view, -this.shift);
+    mat4.translate(view, view, [0, 0.0, -this.distance]);
+    mat4.rotateX(view, view, this.rotationY + this.additionalRotationY);
+    mat4.rotateY(view, view, this.rotationX + this.additionalRotationX);
+    mat4.translate(view, view, [ -this.poi[0], -this.poi[1], -this.poi[2]]);
     return view;
 }
 
 TestCamera.prototype.getProjection = function (aspect)
 {
 	var projection = mat4.create();
-	mat4.perspective(this.fov, aspect, this.nearPlane, this.farPlane > 0 ? this.farPlane : this.distance * 2, projection);
+    mat4.perspectiveGL(projection, this.fov, aspect, this.nearPlane, this.farPlane > 0 ? this.farPlane : this.distance * 2 );
     return projection;
 }
 

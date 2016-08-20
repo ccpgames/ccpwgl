@@ -33,7 +33,7 @@ function EveMissileWarhead()
     this.mesh = null;
     this.state = EveMissileWarhead.STATE_READY;
 
-    this.transform = mat4.identity(mat4.create());
+    this.transform = mat4.create();
     this.velocity = vec3.create();
     this.time = 0;
 
@@ -98,8 +98,8 @@ EveMissileWarhead.prototype.UpdateViewDependentData = function()
         return;
     }
 
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
 };
 
 /**
@@ -132,19 +132,17 @@ EveMissileWarhead.prototype.Update = function(dt, missilePosition, missileTarget
 {
     if (this.state == EveMissileWarhead.STATE_IN_FLIGHT)
     {
-        var position = [this.transform[12], this.transform[13], this.transform[14]];
+        var position = vec3.fromTranslation(this.transform);
 
         var tmp = vec3.create();
         this.time += dt;
         if (this.time > this.durationEjectPhase)
         {
-            vec3.subtract(missilePosition, position, this.velocity);
-            vec3.lerp(position, missilePosition, 1 - Math.exp(-dt * 0.9999));
-            this.transform[12] = position[0];
-            this.transform[13] = position[1];
-            this.transform[14] = position[2];
+            vec3.subtract(this.velocity, missilePosition, position);
+            vec3.lerp(position, position, missilePosition,  1 - Math.exp(-dt * 0.9999));
+            mat4.setTranslation(this.transform, position);
 
-            if (vec3.length(vec3.subtract(missileTarget, position, tmp)) < this.maxExplosionDistance)
+            if (vec3.length(vec3.subtract(tmp, missileTarget, position)) < this.maxExplosionDistance)
             {
                 console.log(position, tmp);
                 this.state = EveMissileWarhead.STATE_DEAD;
@@ -152,34 +150,26 @@ EveMissileWarhead.prototype.Update = function(dt, missilePosition, missileTarget
         }
         else
         {
-            vec3.scale(this.velocity, dt, tmp);
+            vec3.scale(tmp, this.velocity, dt);
             this.transform[12] += tmp[0];
             this.transform[13] += tmp[1];
             this.transform[14] += tmp[2];
         }
 
 
-        var x, y;
-        var z = vec3.normalize(this.velocity, tmp);
+        var x;
+        var z = vec3.normalize(tmp, this.velocity);
         if (Math.abs(z[0]) < 0.99)
         {
-            x = vec3.cross(z, [1, 0, 0], vec3.create());
+            x = vec3.cross(vec3.create(), z, [1, 0, 0]);
         }
         else
         {
-            x = vec3.cross(z, [0, 1, 0], vec3.create());
+            x = vec3.cross( vec3.create(), z, [0, 1, 0]);
         }
-        vec3.normalize(x);
-        y = vec3.cross(x, z, vec3.create());
-        this.transform[0] = x[0];
-        this.transform[1] = x[1];
-        this.transform[2] = x[2];
-        this.transform[4] = y[0];
-        this.transform[5] = y[1];
-        this.transform[6] = y[2];
-        this.transform[8] = z[0];
-        this.transform[9] = z[1];
-        this.transform[10] = z[2];
+        vec3.normalize(x, x);
+        var y = vec3.cross(vec3.create(), x, z);
+        mat4.setBasisAxes(this.transform, x, y, z);
     }
     if (this.spriteSet)
     {
@@ -205,7 +195,8 @@ EveMissileWarhead.prototype.Copy = function()
  */
 EveMissileWarhead.prototype.Launch = function(transform)
 {
-    mat4.set(this.transform, transform);
+    // TODO: Should this be mat4.copy(this.transform, transform) ?
+    mat4.copy(transform, this.transform);
 
     this.velocity[0] = transform[8] * this.startEjectVelocity;
     this.velocity[1] = transform[9] * this.startEjectVelocity;

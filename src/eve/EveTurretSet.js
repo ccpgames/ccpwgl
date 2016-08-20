@@ -3,22 +3,22 @@
  * @property {String} name
  * @property {boolean} visible
  * @property {mat4} localTransform
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @constructor
  */
 function EveTurretData()
 {
     this.name = '';
     this.visible = true;
-    this.localTransform = mat4.create();
-    this.rotation = quat4.create();
+    this.localTransform = mat4.zero();
+    this.rotation = quat.zero();
 }
 
 /**
  * EveTurretSet
  * @property {boolean} display
  * @property {string} name
- * @property {quat4} boundingSphere
+ * @property {vec4} boundingSphere
  * @property {number} bottomClipHeight
  * @property {string} locatorName
  * @property {Tw2Effect} turretEffect
@@ -39,7 +39,6 @@ function EveTurretData()
  * @property {number} STATE_PACKING
  * @property {number} STATE_UNPACKING
  * @property {number} state
-
  * @property {Tw2PerObjectData} _perObjectDataActive
  * @property {Tw2PerObjectData} _perObjectDataInactive
  * @property {Array.<string>} worldNames
@@ -52,7 +51,7 @@ function EveTurretSet()
 {
     this.display = true;
     this.name = '';
-    this.boundingSphere = quat4.create();
+    this.boundingSphere = vec4.create();
     this.bottomClipHeight = 0;
     this.locatorName = '';
     this.sysBoneHeight = 0;
@@ -72,7 +71,7 @@ function EveTurretSet()
     this.activeAnimation = new Tw2AnimationController();
     this.inactiveAnimation = new Tw2AnimationController();
 
-    this.parentMatrix = mat4.identity(mat4.create());
+    this.parentMatrix = mat4.create();
 
     this.STATE_INACTIVE = 0;
     this.STATE_IDLE = 1;
@@ -200,10 +199,12 @@ EveTurretSet.prototype.RebuildCachedData = function()
             this.activeAnimation.PlayAnimation("Inactive", true);
             this.inactiveAnimation.PlayAnimation("Inactive", true);
             break;
+
         case this.STATE_IDLE:
             this.activeAnimation.PlayAnimation("Active", true);
             this.inactiveAnimation.PlayAnimation("Active", true);
             break;
+
         case this.STATE_FIRING:
             this.activeAnimation.PlayAnimation("Fire", false, function()
             {
@@ -211,9 +212,11 @@ EveTurretSet.prototype.RebuildCachedData = function()
             });
             this.inactiveAnimation.PlayAnimation("Active", true);
             break;
+
         case this.STATE_PACKING:
             this.EnterStateIdle();
             break;
+
         case this.STATE_UNPACKING:
             this.EnterStateDeactive();
             break;
@@ -247,10 +250,10 @@ EveTurretSet.prototype.InitializeFiringEffect = function()
  */
 EveTurretSet.prototype.SetLocalTransform = function(index, localTransform, locatorName)
 {
-    var transform = mat4.create(localTransform);
-    vec3.normalize(transform.subarray(0, 3));
-    vec3.normalize(transform.subarray(4, 7));
-    vec3.normalize(transform.subarray(8, 11));
+    var transform = mat4.clone(localTransform);
+    vec3.normalize(transform.subarray(0, 3),transform.subarray(0, 3));
+    vec3.normalize(transform.subarray(4, 7),transform.subarray(4, 7));
+    vec3.normalize(transform.subarray(8, 11),transform.subarray(8, 11));
     if (index >= this.turrets.length)
     {
         var data = new EveTurretData();
@@ -262,7 +265,7 @@ EveTurretSet.prototype.SetLocalTransform = function(index, localTransform, locat
     {
         this.turrets[index].localTransform.set(transform);
     }
-    mat4toquat(this.turrets[index].localTransform, this.turrets[index].rotation);
+    mat4.getRotation(this.turrets[index].rotation, this.turrets[index].localTransform);
 };
 
 function mat3x4toquat(mm, index, out, outIndex)
@@ -287,7 +290,7 @@ function mat3x4toquat(mm, index, out, outIndex)
     m[14] = mm[index + 11];
     m[15] = 1;
     var q = mat3x4toquat._tempQuat;
-    mat4toquat(m, q);
+    mat4.getRotation(q, m);
     out[outIndex] = q[0];
     out[outIndex + 1] = q[1];
     out[outIndex + 2] = q[2];
@@ -295,58 +298,7 @@ function mat3x4toquat(mm, index, out, outIndex)
 }
 
 mat3x4toquat._tempMat = mat4.create();
-mat3x4toquat._tempQuat = quat4.create();
-
-
-function mat4toquat(m, out)
-{
-    out = out || quat4.create();
-    var trace = m[0] + m[5] + m[10] + 1.0;
-    if (trace > 1.0)
-    {
-        out[0] = (m[6] - m[9]) / (2.0 * Math.sqrt(trace));
-        out[1] = (m[8] - m[2]) / (2.0 * Math.sqrt(trace));
-        out[2] = (m[1] - m[4]) / (2.0 * Math.sqrt(trace));
-        out[3] = Math.sqrt(trace) / 2.0;
-        return out;
-    }
-    var maxi = 0;
-    var maxdiag = m[0];
-    for (var i = 1; i < 3; i++)
-    {
-        if (m[i * 4 + i] > maxdiag)
-        {
-            maxi = i;
-            maxdiag = m[i * 4 + i];
-        }
-    }
-    var S;
-    switch (maxi)
-    {
-        case 0:
-            S = 2.0 * Math.sqrt(1.0 + m[0] - m[5] - m[10]);
-            out[0] = 0.25 * S;
-            out[1] = (m[1] + m[4]) / S;
-            out[2] = (m[2] + m[8]) / S;
-            out[3] = (m[6] - m[9]) / S;
-            break;
-        case 1:
-            S = 2.0 * Math.sqrt(1.0 + m[5] - m[0] - m[10]);
-            out[0] = (m[1] + m[4]) / S;
-            out[1] = 0.25 * S;
-            out[2] = (m[6] + m[9]) / S;
-            out[3] = (m[8] - m[2]) / S;
-            break;
-        case 2:
-            S = 2.0 * Math.sqrt(1.0 + m[10] - m[0] - m[5]);
-            out[0] = (m[2] + m[8]) / S;
-            out[1] = (m[6] + m[9]) / S;
-            out[2] = 0.25 * S;
-            out[3] = (m[1] - m[4]) / S;
-            break;
-    }
-    return out;
-}
+mat3x4toquat._tempQuat = quat.create();
 
 /**
  * Updates per object data
@@ -356,7 +308,7 @@ function mat4toquat(m, out)
  */
 EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms)
 {
-    mat4.transpose(this.parentMatrix, perObjectData.Get('shipMatrix'));
+    mat4.transpose(perObjectData.Get('shipMatrix'), this.parentMatrix);
     var transformCount = transforms.length / 12;
     perObjectData.Get('turretSetData')[0] = transformCount;
     perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
@@ -450,7 +402,7 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
         this.activeAnimation.Update(dt);
         this.inactiveAnimation.Update(dt);
     }
-    mat4.set(parentMatrix, this.parentMatrix);
+    mat4.copy(this.parentMatrix, parentMatrix);
     if (this.firingEffect)
     {
         if (this._activeTurret != -1)
@@ -474,14 +426,16 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
                 {
                     var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform;
                     var out = this.firingEffect.GetMuzzleTransform(i);
-                    mat4.multiply(parentMatrix, mat4.multiply(this.turrets[this._activeTurret].localTransform, transform, out), out);
+                    // TODO: Check refactoring
+                    mat4.multiply(out, this.turrets[this._activeTurret].localTransform, transform);
+                    mat4.multiply(out, parentMatrix, out);
                 }
             }
             else
             {
                 for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i)
                 {
-                    mat4.multiply(parentMatrix, this.turrets[this._activeTurret].localTransform, this.firingEffect.GetMuzzleTransform(i));
+                    mat4.multiply(this.firingEffect.GetMuzzleTransform(i),parentMatrix, this.turrets[this._activeTurret].localTransform );
                 }
             }
             if (this.fireCallbackPending)
@@ -499,7 +453,7 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
             }
         }
 
-        vec3.set(this.targetPosition, this.firingEffect.endPosition);
+        vec3.copy(this.firingEffect.endPosition, this.targetPosition);
         this.firingEffect.Update(dt);
     }
 };
@@ -704,7 +658,7 @@ EveTurretSet.prototype._DoStartFiring = function()
 };
 
 EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
-EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];
+EveTurretSet._tempQuat4 = [quat.zero(), quat.zero()];
 
 /**
  * Helper function for finding out what turret should be firing
@@ -719,18 +673,14 @@ EveTurretSet.prototype.GetClosestTurret = function()
     var turretPosition = EveTurretSet._tempQuat4[1];
     for (var i = 0; i < this.turrets.length; ++i)
     {
-        turretPosition[0] = this.turrets[i].localTransform[12];
-        turretPosition[1] = this.turrets[i].localTransform[13];
-        turretPosition[2] = this.turrets[i].localTransform[14];
+        vec3.setTranslation(turretPosition, this.turrets[i].localTransform);
         turretPosition[3] = 1;
-        mat4.multiplyVec4(this.parentMatrix, turretPosition);
-        vec3.normalize(vec3.subtract(this.targetPosition, turretPosition, nrmToTarget));
-        nrmUp[0] = 0;
-        nrmUp[1] = 1;
-        nrmUp[2] = 0;
-        nrmUp[3] = 0;
-        mat4.multiplyVec4(this.turrets[i].localTransform, nrmUp);
-        mat4.multiplyVec4(this.parentMatrix, nrmUp);
+        vec4.transformMat4(turretPosition, turretPosition, this.parentMatrix);
+        vec3.subtract(nrmToTarget, this.targetPosition, turretPosition);
+        vec3.normalize(nrmToTarget, nrmToTarget);
+        vec4.set(nrmUp, 0,1,0,0);
+        vec4.transformMat4(nrmUp, nrmUp, this.turrets[i].localTransform);
+        vec4.transformMat4(nrmUp, nrmUp, this.parentMatrix);
         var angle = vec3.dot(nrmUp, nrmToTarget);
         if (angle > closestAngle)
         {

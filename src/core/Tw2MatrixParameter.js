@@ -1,9 +1,9 @@
 /**
  * Tw2MatrixParameter
  * @param {string} [name='']
- * @param {mat4|Float32Array|Array} [value=mat4.create()]
+ * @param {mat4|Float32Array|Array} [value=[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]]
  * @property {string} name
- * @property {mat4|Float32Array} value
+ * @property {mat4} value
  * @property {Float32Array} constantBuffer
  * @property {number} offset
  * @constructor
@@ -20,11 +20,11 @@ function Tw2MatrixParameter(name, value)
     }
     if (typeof(value) != 'undefined')
     {
-        this.value = mat4.create(value);
+        this.value = mat4.clone(value);
     }
     else
     {
-        this.value = mat4.identity(mat4.create());
+        this.value = mat4.create();
     }
     this.constantBuffer = null;
     this.offset = 0;
@@ -32,12 +32,10 @@ function Tw2MatrixParameter(name, value)
 
 /**
  * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
  * @returns {boolean}
- * @prototype
  */
 Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
@@ -53,11 +51,10 @@ Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
 /**
  * Sets a supplied value
  * @param {mat4} value
- * @prototype
  */
 Tw2MatrixParameter.prototype.SetValue = function(value)
 {
-    this.value = mat4.create(value);
+    mat4.copy(this.value, value);
     if (this.constantBuffer != null)
     {
         this.constantBuffer.set(this.value, this.offset);
@@ -66,26 +63,23 @@ Tw2MatrixParameter.prototype.SetValue = function(value)
 
 /**
  * Gets the current value
- * @return {mat4|Float32Array}
- * @prototype
+ * @return {mat4}
  */
 Tw2MatrixParameter.prototype.GetValue = function()
 {
     if (this.constantBuffer != null)
     {
-        return mat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return mat4.fromArray(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
     }
 
-    return mat4.create(this.value);
+    return mat4.clone(this.value);
 };
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
- * @param {number} size
- * @prototype
+ * @param {number} size - Unused
  */
 Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
 {

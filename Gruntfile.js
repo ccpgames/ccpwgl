@@ -1,4 +1,5 @@
 /* global node:false */
+var exp = require('./src/exports');
 
 module.exports = function(grunt)
 {
@@ -110,6 +111,23 @@ module.exports = function(grunt)
         'particle/Tw2RandomIntegerAttributeGenerator.js'
     ];
 
+    var gl3 = [
+        'math/gl3.js',
+        'math/vec3.js',
+        'math/vec4.js',
+        'math/mat3.js',
+        'math/quat.js',
+        'math/mat4.js',
+        'math/vec2.js',
+        'math/ext.js',
+        'math/box.js',
+        'math/sph.js',
+        'math/tri.js',
+        'math/ray.js'
+    ];
+
+    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js', 'src/math/**/*.js'];
+
     // Extra files to include in beautification
     var beautifierInclude = [
         'GruntFile.js',
@@ -135,9 +153,8 @@ module.exports = function(grunt)
             {
                 return (beautifierExclude.indexOf(src) === -1)
             })
-        .concat(beautifierInclude)
+        .concat(beautifierInclude);
 
-    var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js'];
 
     grunt.initConfig(
     {
@@ -145,7 +162,7 @@ module.exports = function(grunt)
 
         jsbeautifier:
         {
-
+            // Beautifies core library files (except for those on the exclusion list)
             standard:
             {
                 src: beautifierList,
@@ -155,14 +172,29 @@ module.exports = function(grunt)
                 }
             },
 
+            // Beautifies just the ccpwgl_int.js file
             cc:
             {
-                src: 'src/ccpwgl_int.js',
+                src: 'dist/ccpwgl_int.js',
                 options:
                 {
                     js: grunt.file.readJSON('.jsbeautifyrc')
                 }
-            }
+            },
+
+            // Beautifies just the gl matrix files
+            gl3:
+            {
+                src: gl3.map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }),
+                options:
+                {
+                    js: grunt.file.readJSON('.jsbeautifyrc')
+                }
+            },
         },
 
         jshint:
@@ -171,16 +203,19 @@ module.exports = function(grunt)
             {
                 jshintrc: './.jshintrc'
             },
-            all: ['Gruntfile.js', 'src/ccpwgl.js'].concat(sourcePatterns)
+            all: ['Gruntfile.js', 'src/ccpwgl.js']
+                .concat(sourcePatterns)
+                .concat(gl3)
         },
 
         uglify:
         {
+            // Creates the minified core library 'dist/ccpwgl_int.min.js' file
             lib:
             {
                 files:
                 {
-                    'src/ccpwgl_int.min.js': sourceFiles.map(
+                    'dist/ccpwgl_int.min.js': sourceFiles.map(
                         function(entry)
                         {
                             return 'src/' + entry;
@@ -198,23 +233,95 @@ module.exports = function(grunt)
                         unsafe: true
                     }
                 }
+            },
+
+            // Creates the minified gl matrix 'dist/ccpwgl_gl3.min.js' file
+            gl3:
+            {
+                files:
+                {
+                    'dist/ccpwgl_gl3.min.js': gl3.map(
+                        function(entry)
+                        {
+                            return 'src/' + entry;
+                        })
+                },
+                options:
+                {
+                    exportAll: true,
+                    mangle: true,
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\n',
+                    compress:
+                    {
+                        sequences: true,
+                        unsafe: true
+                    }
+                }
             }
         },
 
         concat:
         {
+            // Creates the core library 'dist/ccpwgl_int.js' file
             lib:
             {
                 src: sourceFiles.map(
                     function(entry)
                     {
                         return 'src/' + entry;
-                    }).concat('.exports'),
-                dest: 'src/ccpwgl_int.js',
+                    }).concat(exp.es5),
+                dest: 'dist/ccpwgl_int.js',
                 options:
                 {
                     banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\nvar ccpwgl_int = (function()\n{\n',
                     footer: '\n})();'
+                }
+            },
+
+            // Creates the gl matrix 'dist/ccpwgl_gl3.js' file
+            gl3:
+            {
+                src: gl3.map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }),
+                dest: 'dist/ccpwgl_gl3.js',
+                options:
+                {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\n'
+                }
+            },
+
+            // Creates the core library 'dist/ccpwgl_int.es6' file with es6 imports and exports
+            lib_es6:
+            {
+                src: sourceFiles.map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }).concat(exp.es6),
+                dest: 'dist/ccpwgl_int.es6',
+                options:
+                {
+                    banner: "/* <%= pkg.name %> <%= grunt.template.today('yyyy-mm-dd') %> */ \n\nimport { gl3, vec2, vec3, vec4, quat, mat3, mat4 } from './ccpwgl_gl3.es6'\n\n",
+                    footer: exp.es6
+                }
+            },
+
+            // Creates the gl matrix 'dist/ccpwgl_gl3.es6' file with es6 exports
+            gl3_es6:
+            {
+                src: gl3.map(
+                    function(entry)
+                    {
+                        return 'src/' + entry;
+                    }),
+                dest: 'dist/ccpwgl_gl3.es6',
+                options:
+                {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\n',
+                    footer: '\n\nexport { gl3, vec2, vec3, vec4, quat, mat3, mat4 };'
                 }
             }
         }
@@ -228,8 +335,10 @@ module.exports = function(grunt)
     grunt.registerTask('format', ['jsbeautifier']);
     grunt.registerTask('lint', ['jshint']);
     grunt.registerTask('min', ['uglify']);
-    grunt.registerTask('cc', ['concat', 'jsbeautifier:cc']);
-    grunt.registerTask('dist', ['cc', 'min']);
+    grunt.registerTask('es6', ['concat:lib_es6', 'concat:gl3_es6']);
+    grunt.registerTask('cc', ['concat:lib', 'jsbeautifier:cc']);
+    grunt.registerTask('gl3', ['jsbeautifier:gl3', 'concat:gl3']);
+    grunt.registerTask('dist', ['cc', 'gl3', 'min', 'es6']);
     grunt.registerTask('default', ['dist']);
 
 };

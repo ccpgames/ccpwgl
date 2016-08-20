@@ -4,10 +4,10 @@
 <head>
     <title>WebGL API Test - Auto focus Camera on Space Object</title>
 
-    <script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-    <script type="text/javascript" src="../src/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_gl3.min.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_int.min.js"></script>
     <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-    <script type="text/javascript" src="../src/ccpwgl.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl.js"></script>
 
     <script type="text/javascript">
 
@@ -57,7 +57,7 @@
                 var objectPosition = spaceObject.getTransform().slice(12, 15);
 
                 // Set the camera's point of interest as the space object's position in world space
-                vec3.set(objectPosition, camera.poi)
+                vec3.copy(camera.poi, objectPosition);
 
                 // Get the radius of the space object
                 var spaceObjectRadius = parseInt(spaceObject.getBoundingSphere()[1]);

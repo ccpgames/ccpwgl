@@ -45,7 +45,6 @@ function Tw2ScalarCurve()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2ScalarCurve.prototype.GetLength = function()
 {
@@ -55,7 +54,6 @@ Tw2ScalarCurve.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2ScalarCurve.prototype.UpdateValue = function(time)
 {
@@ -67,7 +65,6 @@ Tw2ScalarCurve.prototype.UpdateValue = function(time)
  * TODO: Final return is unreachable
  * @param {number} time
  * @returns {*}
- * @prototype
  */
 Tw2ScalarCurve.prototype.GetValueAt = function(time)
 {

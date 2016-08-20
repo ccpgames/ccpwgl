@@ -74,6 +74,10 @@ function Tw2RenderBatch()
     this.perObjectData = null;
 }
 
+/**
+ * GeometryProvider
+ * @typedef {(EveCurveLineSet|EveSpaceObjectDecal|EveTurretSet)} GeometryProvider
+ */
 
 /**
  * A render batch that uses geometry provided from an external source

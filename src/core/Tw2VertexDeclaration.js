@@ -4,7 +4,7 @@
  * @param {number} usageIndex
  * @param {number} type
  * @param {number} elements - How many variables this vertex data type uses
- * @param {number} offset
+ * @param {number} [offset=0]
  * @property {number} usage
  * @property {number} usageIndex
  * @property {number} type

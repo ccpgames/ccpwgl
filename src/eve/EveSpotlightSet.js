@@ -2,10 +2,10 @@
  * Spotlight Item
  * @property {string} name
  * @property {mat4} transform
- * @property {quat4} coneColor
- * @property {quat4} spriteColor
- * @property {quat4} flareColor
- * @property {quat4} spriteScale
+ * @property {vec4} coneColor
+ * @property {vec4} spriteColor
+ * @property {vec4} flareColor
+ * @property {vec3} spriteScale
  * @property {boolean} boosterGainInfluence
  * @property {number} boneIndex
  * @property {number} groupIndex
@@ -15,10 +15,10 @@ function EveSpotlightSetItem()
 {
     this.display = true;
     this.name = '';
-    this.transform = mat4.create();
-    this.coneColor = quat4.create();
-    this.spriteColor = quat4.create();
-    this.flareColor = quat4.create();
+    this.transform = mat4.zero();
+    this.coneColor = vec4.create();
+    this.spriteColor = vec4.create();
+    this.flareColor = vec4.create();
     this.spriteScale = vec3.create();
     this.boosterGainInfluence = false;
     this.boneIndex = 0;

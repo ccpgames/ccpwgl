@@ -27,7 +27,6 @@ function Tw2ScalarSequencer()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2ScalarSequencer.prototype.GetLength = function()
 {
@@ -45,7 +44,6 @@ Tw2ScalarSequencer.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2ScalarSequencer.prototype.UpdateValue = function(time)
 {
@@ -56,7 +54,6 @@ Tw2ScalarSequencer.prototype.UpdateValue = function(time)
  * Gets a value at a specific time
  * @param {number} time
  * @returns {number}
- * @prototype
  */
 Tw2ScalarSequencer.prototype.GetValueAt = function(time)
 {

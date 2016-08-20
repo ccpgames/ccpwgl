@@ -2,9 +2,9 @@
  * Tw2XYZScalarSequencer
  * @property {string} name
  * @property {vec3} value
- * @property XCurve
- * @property YCurve
- * @property ZCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} XCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} YCurve
+ * @property {Tw2ScalarCurve|Tw2ScalarCurve2} ZCurve
  * @constructor
  */
 function Tw2XYZScalarSequencer()
@@ -19,7 +19,6 @@ function Tw2XYZScalarSequencer()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2XYZScalarSequencer.prototype.GetLength = function()
 {
@@ -42,7 +41,6 @@ Tw2XYZScalarSequencer.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2XYZScalarSequencer.prototype.UpdateValue = function(time)
 {
@@ -54,7 +52,6 @@ Tw2XYZScalarSequencer.prototype.UpdateValue = function(time)
  * @param {number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2XYZScalarSequencer.prototype.GetValueAt = function(time, value)
 {

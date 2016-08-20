@@ -19,7 +19,6 @@ function Tw2RandomConstantCurve()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
 {
@@ -28,10 +27,8 @@ Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
- * TODO: @param time is redundant
- * @param {number} time
+ * @param {number} time - unused
  * @returns {number}
- * @prototype
  */
 Tw2RandomConstantCurve.prototype.GetValueAt = function(time)
 {

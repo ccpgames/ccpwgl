@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-<title>Cube of death</title>
-
-<link rel="stylesheet" href="demos.css">
-<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
-<script type="text/javascript" src="../src/ccpwgl.js"></script>
-<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="demos.js"></script>
+    <title>Cube of death</title>
+    <link rel="stylesheet" href="demos.css">
+    <script type="text/javascript" src="../dist/ccpwgl_gl3.min.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_int.min.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl.js"></script>
+    <script type="text/javascript" src="../src/test/TestCamera2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="demos.js"></script>
 
 <script type="text/javascript">
     function OnDocLoad() {
@@ -52,12 +51,12 @@
                                 sofData.faction[Math.floor(Math.random() * sofData.faction.length)] + ':' +
                                 sofData.race[Math.floor(Math.random() * sofData.race.length)];
                         var ship = scene.loadShip(dna);
-                        ship.setTransform(mat4.create([
+                        ship.setTransform(mat4.fromValues(
                             1, 0, 0, 0,
                             0, 1, 0, 0,
                             0, 0, 1, 0,
                             x * spacing - radius, y * spacing - radius, z * spacing - radius, 1
-                        ]));
+                        ));
                         x += 1;
                         if (x == cubeDimension) {
                             x = 0;

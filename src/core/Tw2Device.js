@@ -1,6 +1,6 @@
 /**
  * RenderMode
- * @typedef {(device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
+ * @typedef {(number|device.RM_ANY|device.RM_OPAQUE|device.RM_DECAL|device.RM_TRANSPARENT|device.RM_ADDITIVE|device.RM_DEPTH|device.RM_FULLSCREEN)} RenderMode
  */
 
 window.requestAnimFrame = (function()
@@ -174,15 +174,10 @@ function Tw2Device()
     this._whiteCube = null;
 
     this.world = mat4.create();
-    mat4.identity(this.world);
     this.worldInverse = mat4.create();
-    mat4.identity(this.worldInverse);
     this.view = mat4.create();
-    mat4.identity(this.view);
     this.viewInv = mat4.create();
-    mat4.identity(this.viewInv);
     this.projection = mat4.create();
-    mat4.identity(this.projection);
     this.eyePosition = vec3.create();
 
     this.perObjectData = null;
@@ -213,7 +208,7 @@ function Tw2Device()
         }
         catch (e)
         {
-            err = e.toString();
+            err = e;
         }
 
         if (!this.gl)
@@ -224,7 +219,7 @@ function Tw2Device()
                     msg: 'Could not initialise WebGL',
                     src: ['Tw2Device', 'CreateDevice'],
                     type: 'context',
-                    data: err
+                    err: err
                 });
             return false;
         }
@@ -411,7 +406,7 @@ function Tw2Device()
      */
     this.SetWorld = function(matrix)
     {
-        mat4.set(matrix, this.world);
+        mat4.copy(this.world, matrix);
     };
 
     /**
@@ -420,10 +415,10 @@ function Tw2Device()
      */
     this.SetView = function(matrix)
     {
-        mat4.set(matrix, this.view);
-        mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
-        mat4.inverse(this.view, this.viewInv);
-        this.eyePosition.set([this.viewInv[12], this.viewInv[13], this.viewInv[14]]);
+        mat4.copy(this.view, matrix);
+        mat4.multiply(variableStore._variables['ViewProjectionMat'].value, this.projection, this.view);
+        mat4.invert(this.viewInv, this.view);
+        vec3.set(this.eyePosition, this.viewInv[12], this.viewInv[13], this.viewInv[14]);
     };
 
     /**
@@ -432,8 +427,8 @@ function Tw2Device()
      */
     this.SetProjection = function(matrix)
     {
-        mat4.set(matrix, this.projection);
-        mat4.multiply(this.projection, this.view, variableStore._variables['ViewProjectionMat'].value);
+        mat4.copy(this.projection, matrix);
+        mat4.multiply(variableStore._variables['ViewProjectionMat'].value, this.projection, this.view);
     };
 
     /**
@@ -514,12 +509,13 @@ function Tw2Device()
         ];
         vertices = new Float32Array(vertices);
 
-        var projInv = mat4.inverse(this.projection, mat4.create());
+        var projInv = mat4.create();
+        mat4.invert(projInv, this.projection);
         for (var i = 0; i < 4; ++i)
         {
             var vec = vertices.subarray(i * 6, i * 6 + 4);
-            mat4.multiplyVec4(projInv, vec);
-            vec3.scale(vec, 1 / vec[3]);
+            vec4.transformMat4(vec, vec, projInv);
+            vec3.divideScalar(vec, vec, vec[3])
             vec[3] = 1;
         }
 

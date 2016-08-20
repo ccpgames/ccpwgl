@@ -241,7 +241,7 @@ var ccpwgl = (function(ccpwgl_int)
      * - glParams: object; WebGL context creation parameters, see
      *   https://www.khronos.org/registry/webgl/specs/1.0/#2.2. Defaults to none.
      *
-     * @param {HTMLCanvasElement} canvas HTML Canvas object that is used for WebGL output.
+     * @param {Element} canvas HTML Canvas object that is used for WebGL output.
      * @param {Object} params Optional parameters.
      * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
      */
@@ -421,7 +421,7 @@ var ccpwgl = (function(ccpwgl_int)
         /** Wrapped ccpwgl_int object **/
         this.wrappedObjects = [null];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
         /** SOF DNA for objects constructed from SOF **/
@@ -598,7 +598,7 @@ var ccpwgl = (function(ccpwgl_int)
         /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
         this.wrappedObjects = [null];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
         this.boosters = [null];
         /** Current siege state @type {ccpwgl.ShipSiegeState} **/
@@ -805,10 +805,10 @@ var ccpwgl = (function(ccpwgl_int)
             for (i = 0; i < systems.length; ++i)
             {
                 var index = systems[i][0];
-                self.partTransforms[index] = mat4.identity(mat4.create());
-                mat4.translate(self.partTransforms[index], offset);
-                vec3.add(offset, systems[i][1]);
-                mat4.multiply(self.transform, self.partTransforms[index], self.wrappedObjects[index].transform);
+                self.partTransforms[index] = mat4.create();
+                mat4.translate(self.partTransforms[index], self.partTransforms[index], offset);
+                vec3.add(offset, offset, systems[i][1]);
+                mat4.multiply(self.wrappedObjects[index].transform, self.transform, self.partTransforms[index]);
             }
         }
 
@@ -868,7 +868,7 @@ var ccpwgl = (function(ccpwgl_int)
             {
                 for (i = 0; i < this.wrappedObjects.length; ++i)
                 {
-                    mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
+                    mat4.multiply(self.wrappedObjects[i].transform, self.transform, self.partTransforms[i]);
                 }
             }
         };
@@ -1096,7 +1096,7 @@ var ccpwgl = (function(ccpwgl_int)
             {
                 throw new ReferenceError('turret at index ' + index + ' is not defined');
             }
-            vec3.set(target, this.turrets[index].target);
+            vec3.copy(this.turrets[index].target, target);
             var name = 'locator_turret_' + index;
             for (var j = 0; j < this.wrappedObjects.length; ++j)
             {
@@ -1106,7 +1106,7 @@ var ccpwgl = (function(ccpwgl_int)
                     {
                         if (this.wrappedObjects[j].turretSets[i].locatorName == name)
                         {
-                            vec3.set(target, this.wrappedObjects[j].turretSets[i].targetPosition);
+                            vec3.copy(this.wrappedObjects[j].turretSets[i].targetPosition, target);
                             break;
                         }
                     }
@@ -1414,15 +1414,15 @@ var ccpwgl = (function(ccpwgl_int)
         };
 
         /**
-         * Returns planets's bounding sphere. We know it always is a unit sphere in local
+         * Returns planet's bounding sphere. We know it always is a unit sphere in local
          * coordinate space.
          *
-         * @returns {[vec3, float]} Array with first element being sphere position in local
+         * @returns {Array.<vec3, number>}} Array with first element being sphere position in local
          * coordinate space [0, 0, 0] and second - sphere radius (==1).
          */
         this.getBoundingSphere = function()
         {
-            return [vec3.create([0, 0, 0]), 1];
+            return [vec3.create(), 1];
         };
 
         /**
@@ -1741,11 +1741,11 @@ var ccpwgl = (function(ccpwgl_int)
                     }
                     if (self.sunDirection)
                     {
-                        vec3.negate(self.sunDirection, obj.position);
+                        vec3.negate(obj.position, self.sunDirection);
                     }
                     else if (self.wrappedScene)
                     {
-                        vec3.negate(self.wrappedScene.sunDirection, obj.position);
+                        vec3.negate(obj.position, self.wrappedScene.sunDirection);
                     }
                     if (onload)
                     {
@@ -1787,7 +1787,7 @@ var ccpwgl = (function(ccpwgl_int)
             }
             if (this.sun)
             {
-                vec3.negate(direction, this.sun.position);
+                vec3.negate(this.sun.position, direction);
             }
         };
 

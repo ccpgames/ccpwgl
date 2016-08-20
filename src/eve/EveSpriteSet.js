@@ -337,7 +337,7 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
     var pos = vec3.create();
     for (var i = 0; i < this.sprites.length; ++i)
     {
-        mat4.multiplyVec3(world, this.sprites[i].position, pos);
+        vec3.transformMat4(pos, this.sprites[i].position, world);
         array[index++] = pos[0];
         array[index++] = pos[1];
         array[index++] = pos[2];
@@ -408,11 +408,11 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectDa
             pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
             pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
             pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
-            mat4.multiplyVec3(world, pos);
+            vec3.transformMat4(pos, pos, world);
         }
         else
         {
-            mat4.multiplyVec3(world, sprite.position, pos);
+            vec3.transformMat4(pos, sprite.position, world);
         }
         array[index++] = pos[0];
         array[index++] = pos[1];
@@ -475,20 +475,19 @@ EveSpriteSet.prototype.Clear = function()
  * @param {number} minScale
  * @param {number} maxScale
  * @param {number} falloff
- * @param {quat4} color
- * @constructor
+ * @param {vec4} color
  */
 EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
     var item = new EveSpriteSetItem();
     item.display = true;
-    item.position = vec3.create(pos);
+    item.position = vec3.clone(pos);
     item.blinkRate = blinkRate;
     item.blinkPhase = blinkPhase;
     item.minScale = minScale;
     item.maxScale = maxScale;
     item.falloff = falloff;
-    item.color = quat4.create(color);
+    item.color = vec4.clone(color);
     this.sprites[this.sprites.length] = item;
 };
 
@@ -499,8 +498,8 @@ EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxS
  * @property {number} blinkRate
  * @property {number} minScale
  * @property {number} falloff
- * @property {quat4} color
- * @property {quat4} warpColor
+ * @property {vec4} color
+ * @property {vec4} warpColor
  * @property {number} boneIndex
  * @property {number} groupIndex
  * @constructor
@@ -515,8 +514,8 @@ function EveSpriteSetItem()
     this.minScale = 1;
     this.maxScale = 1;
     this.falloff = 0;
-    this.color = quat4.create();
-    this.warpColor = quat4.create();
+    this.color = vec4.create();
+    this.warpColor = vec4.create();
     this.boneIndex = 0;
     this.groupIndex = -1;
 }

@@ -19,7 +19,6 @@ function Tw2MayaScalarCurve()
 /**
  * Initializes the Curve
  * @returns {boolean}
- * @prototype
  */
 Tw2MayaScalarCurve.prototype.Initialize = function()
 {
@@ -30,7 +29,6 @@ Tw2MayaScalarCurve.prototype.Initialize = function()
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2MayaScalarCurve.prototype.GetLength = function()
 {
@@ -40,7 +38,6 @@ Tw2MayaScalarCurve.prototype.GetLength = function()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
 {
@@ -52,7 +49,6 @@ Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
 
 /**
  * Computes curve Length
- * @prototype
  */
 Tw2MayaScalarCurve.prototype.ComputeLength = function()
 {

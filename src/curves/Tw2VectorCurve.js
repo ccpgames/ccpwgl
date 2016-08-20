@@ -41,7 +41,6 @@ function Tw2VectorCurve()
 /**
  * Updates a value at a specific time
  * @param {number} time
- * @prototype
  */
 Tw2VectorCurve.prototype.UpdateValue = function(time)
 {
@@ -51,7 +50,6 @@ Tw2VectorCurve.prototype.UpdateValue = function(time)
 /**
  * Gets curve length
  * @returns {number}
- * @prototype
  */
 Tw2VectorCurve.prototype.GetLength = function()
 {
@@ -63,7 +61,6 @@ Tw2VectorCurve.prototype.GetLength = function()
  * @param {number} time
  * @param {vec3} value
  * @returns {vec3}
- * @prototype
  */
 Tw2VectorCurve.prototype.GetValueAt = function(time, value)
 {
@@ -71,10 +68,7 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
 
     if (this.length == 0)
     {
-        value[0] = this.value[0];
-        value[1] = this.value[1];
-        value[2] = this.value[2];
-        return value;
+        return vec3.copy(value, this.value);
     }
 
     var firstKey = this.keys[0];
@@ -83,25 +77,15 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     {
         if (this.extrapolation == 0)
         {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            return value;
+            return vec3.copy(value, this.value);
         }
         else if (this.extrapolation == 1)
         {
-            value[0] = lastKey.value[0];
-            value[1] = lastKey.value[1];
-            value[2] = lastKey.value[2];
-            return value;
+            return vec3.copy(value, lastKey.value);
         }
         else if (this.extrapolation == 2)
         {
-            d = time - lastKey.time;
-            value[0] = lastKey.value[0] + d * lastKey.right[0];
-            value[1] = lastKey.value[1] + d * lastKey.right[1];
-            value[2] = lastKey.value[2] + d * lastKey.right[2];
-            return value;
+            return vec3.scaleAndAdd(value, lastKey.value, lastKey.right, time - lastKey.time);
         }
         else
         {
@@ -112,25 +96,15 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     {
         if (this.extrapolation == 0)
         {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            return value;
+            return vec3.copy(value, this.value);
         }
         else if (this.extrapolation == 2)
         {
-            d = time * this.length - lastKey.time;
-            value[0] = firstKey.value[0] + d * firstKey.left[0];
-            value[1] = firstKey.value[1] + d * firstKey.left[1];
-            value[2] = firstKey.value[2] + d * firstKey.left[2];
-            return value;
+            return vec3.scaleAndAdd(value, firstKey.value, firstKey.left, time * this.length - lastKey.time);
         }
         else
         {
-            value[0] = firstKey.value[0];
-            value[1] = firstKey.value[1];
-            value[2] = firstKey.value[2];
-            return value;
+            return vec3.copy(value, firstKey.value);
         }
     }
     var ck = this.keys[this._currKey];
@@ -149,9 +123,7 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     var nt = (time - ck_1.time) / (ck.time - ck_1.time);
     if (ck_1.interpolation == 1)
     {
-        value[0] = ck_1.value[0];
-        value[1] = ck_1.value[1];
-        value[2] = ck_1.value[2];
+        vec3.copy(value, ck_1.value);
     }
     else if (ck_1.interpolation == 2)
     {

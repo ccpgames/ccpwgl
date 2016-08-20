@@ -2,8 +2,8 @@
  * Tw2RandomIntegerAttributeGenerator
  * @property {number} elementType
  * @property {string} customName
- * @property {quat4} minRange
- * @property {quat4} maxRange
+ * @property {vec4} minRange
+ * @property {vec4} maxRange
  * @property _element
  * @constructor
  */
@@ -11,8 +11,8 @@ function Tw2RandomIntegerAttributeGenerator()
 {
     this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
     this.customName = '';
-    this.minRange = quat4.create();
-    this.maxRange = quat4.create();
+    this.minRange = vec4.create();
+    this.maxRange = vec4.create();
     this._element = null;
 }
 
@@ -20,7 +20,6 @@ function Tw2RandomIntegerAttributeGenerator()
  * Bind
  * @param ps
  * @returns {boolean}
- * @prototype
  */
 Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
 {
@@ -41,7 +40,6 @@ Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
  * @param position
  * @param velocity
  * @param index
- * @prototype
  */
 Tw2RandomIntegerAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {

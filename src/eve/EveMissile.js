@@ -76,12 +76,12 @@ EveMissile.prototype.GetBatches = function(mode, accumulator)
 EveMissile.prototype.Update = function(dt)
 {
     var tmp = vec3.create();
-    var distance = vec3.length(vec3.subtract(this.target, this.position, tmp));
+    var distance = vec3.length(vec3.subtract(tmp, this.target, this.position));
     if (distance > 0.1)
     {
-        vec3.normalize(tmp);
-        vec3.scale(tmp, Math.min(dt * this.speed, distance));
-        vec3.add(this.position, tmp);
+        vec3.normalize(tmp, tmp);
+        vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
+        vec3.add(this.position, this.position, tmp);
     }
     for (var i = 0; i < this.curveSets.length; ++i)
     {
@@ -122,8 +122,8 @@ EveMissile.prototype.Update = function(dt)
  */
 EveMissile.prototype.Launch = function(position, turretTransforms, target)
 {
-    vec3.set(position, this.position);
-    vec3.set(target, this.target);
+    vec3.copy(this.position, position);
+    vec3.copy(this.target, target);
     if (this.warheads.length > turretTransforms.length)
     {
         this.warheads.splice(turretTransforms.length);
