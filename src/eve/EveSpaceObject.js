@@ -24,16 +24,19 @@
  * @parameter {vec3} shapeEllipsoidCenter
  * @parameter {mat4} transform
  * @parameter {Tw2AnimationController} animation
- * @parameter {boolean} display - Toggles rendering of the whole space object
- * @parameter {boolean} displayMesh - Toggles mesh rendering
- * @parameter {boolean} displayChildren - toggles rendering of children
- * @parameter {boolean} displaySprites - Toggles sprite set rendering
- * @parameter {boolean} displayDecals - Toggles decal rendering
- * @parameter {boolean} displaySpotlights - Toggles spotlight set rendering
- * @parameter {boolean} displayPlanes - toggles plane set rendering
- * @parameter {boolean} displayLines - toggles line set rendering
- * @parameter {boolean} displayOverlays - toggles overlay effect rendering
- * @parameter {Number} displayKillCounterValue - number of kills to show on kill counter decals
+ * @parameter {boolean} display                             - Enables/ disables all batch accumulations
+ * @parameter {{}} visible                                  - Batch accumulation options for the space object's elements
+ * @parameter {boolean} visible.mesh                        - Enables/ disables mesh batch accumulation
+ * @parameter {boolean} visible.children                    - Enables/ disables child batch accumulation
+ * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child batch accumulation
+ * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite set batch accumulation
+ * @parameter {boolean} visible.decals                      - Enables/ disables decal batch accumulation
+ * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight set batch accumulation
+ * @parameter {boolean} visible.planeSets                   - Enables/ disables plane set batch accumulation
+ * @parameter {boolean} visible.lineSets                    - Enables/ disables lines set batch accumulation
+ * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect batch accumulation
+ * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
+ * @parameter {number} killCount                            - number of kills to show on kill counter decals
  * @parameter {vec3} _tempVec
  * @parameter {Tw2PerObjectData} _perObjectData
  * @constructor
@@ -65,16 +68,20 @@ function EveSpaceObject()
     this.animation = new Tw2AnimationController();
 
     this.display = true;
-    this.displayMesh = true;
-    this.displayChildren = true;
-    this.displayPlanes = true;
-    this.displaySpotlights = true;
-    this.displayDecals = true;
-    this.displaySprites = true;
-    this.displayOverlays = true;
-    this.displayLines = true;
+    this.visible = {};
+    this.visible.mesh = true;
+    this.visible.children = true;
+    this.visible.effectChildren = true;
+    this.visible.planeSets = true;
+    this.visible.spotlightSets = true;
+    this.visible.decals = true;
+    this.visible.spriteSets = true;
+    this.visible.overlayEffects = true;
+    this.visible.lineSets = true;
+    this.visible.killmarks = true;
 
-    this.displayKillCounterValue = 0;
+    this.killCount = 0;
+
 
     this._tempVec = vec3.create();
 
@@ -169,7 +176,7 @@ EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 
 /**
@@ -178,7 +185,7 @@ EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
 EveSpaceObject.prototype.ResetLod = function()
 {
     this.lod = 3;
-}
+};
 
 /**
  * Updates the lod
@@ -203,7 +210,7 @@ EveSpaceObject.prototype.UpdateLod = function(frustum)
     {
         this.lod = 0;
     }
-}
+};
 
 /**
  * A Per frame function that updates view dependent data
@@ -245,7 +252,7 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
     {
         this.lineSets[s].UpdateViewDependentData(this.transform);
     }
-}
+};
 
 /**
  * Gets render batches
@@ -256,7 +263,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.display)
     {
-        if (this.displayMesh && this.mesh != null && this.lod > 0)
+        if (this.visible.mesh && this.mesh != null && this.lod > 0)
         {
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
@@ -265,7 +272,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
         {
             var i;
 
-            if (this.displaySprites)
+            if (this.visible.spriteSets)
             {
                 for (i = 0; i < this.spriteSets.length; ++i)
                 {
@@ -273,7 +280,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
                 }
             }
 
-            if (this.displaySpotlights)
+            if (this.visible.spotlightSets)
             {
                 for (i = 0; i < this.spotlightSets.length; ++i)
                 {
@@ -281,7 +288,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
                 }
             }
 
-            if (this.displayPlanes)
+            if (this.visible.planeSets)
             {
                 for (i = 0; i < this.planeSets.length; ++i)
                 {
@@ -289,15 +296,16 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
                 }
             }
 
-            if (this.displayDecals)
+            if (this.visible.decals)
             {
                 for (i = 0; i < this.decals.length; ++i)
                 {
-                    this.decals[i].GetBatches(mode, accumulator, this._perObjectData, this.displayKillCounterValue);
+                    var killCount = (this.visible.killmarks) ? this.killCount : 0;
+                    this.decals[i].GetBatches(mode, accumulator, this._perObjectData, killCount);
                 }
             }
 
-            if (this.displayLines)
+            if (this.visible.lineSets)
             {
                 for (var i = 0; i < this.lineSets.length; ++i)
                 {
@@ -306,36 +314,43 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
             }
         }
 
-        if (this.displayChildren)
+        if (this.visible.children)
         {
             for (i = 0; i < this.children.length; ++i)
             {
                 this.children[i].GetBatches(mode, accumulator, this._perObjectData);
             }
+        }
+
+        if (this.visible.effectChildren)
+        {
             for (i = 0; i < this.effectChildren.length; ++i)
             {
                 this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
             }
         }
 
-        if (this.displayOverlays && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
+        if (this.visible.overlayEffects && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
         {
             for (i = 0; i < this.overlayEffects.length; ++i)
             {
-                var effects = this.overlayEffects[i].GetEffects(mode);
-                if (effects)
+                if (this.overlayEffects[i].display)
                 {
-                    for (var j = 0; j < effects.length; ++j)
+                    var effects = this.overlayEffects[i].GetEffects(mode);
+                    if (effects)
                     {
-                        var batch = new Tw2GeometryBatch();
-                        batch.renderMode = mode;
-                        batch.perObjectData = this._perObjectData;
-                        batch.geometryRes = this.mesh.geometryResource;
-                        batch.meshIx = this.mesh.meshIndex;
-                        batch.start = 0;
-                        batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                        batch.effect = effects[j];
-                        accumulator.Commit(batch);
+                        for (var j = 0; j < effects.length; ++j)
+                        {
+                            var batch = new Tw2GeometryBatch();
+                            batch.renderMode = mode;
+                            batch.perObjectData = this._perObjectData;
+                            batch.geometryRes = this.mesh.geometryResource;
+                            batch.meshIx = this.mesh.meshIndex;
+                            batch.start = 0;
+                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
+                            batch.effect = effects[j];
+                            accumulator.Commit(batch);
+                        }
                     }
                 }
             }
