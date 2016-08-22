@@ -95,7 +95,7 @@ EveMeshOverlayEffect.prototype.GetResources = function(out)
         {
             for (var i = 0; i < this[type].length; i++)
             {
-                this[type].GetResources(out);
+                this[type][i].GetResources(out);
             }
         }
     }
