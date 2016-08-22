@@ -253,7 +253,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
  * @param {time} time
  * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
  */
-Tw2MayaAnimationEngine.prototype._EvaluateInfinities(curve, segments, startSegment, time, bool)
+Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function(curve, segments, startSegment, time, bool)
 {
     throw new Error ('_EvaluateInfinities not implimented');
 };
