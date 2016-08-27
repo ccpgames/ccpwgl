@@ -656,7 +656,7 @@ var ccpwgl = (function(ccpwgl_int)
                     self.wrappedObjects[index].boosters = self.boosters[index];
                     self.wrappedObjects[index].RebuildBoosterSet();
                 }
-                self.wrappedObjects[index].displayKillCounterValue = self.killCount;
+                self.wrappedObjects[index].killCount = self.killCount;
                 self.wrappedObjects[index].boosterGain = self.boosterStrength;
                 switch (self.siegeState)
                 {
@@ -953,7 +953,7 @@ var ccpwgl = (function(ccpwgl_int)
             {
                 if (this.wrappedObjects[i])
                 {
-                    this.wrappedObjects[i].displayKillCounterValue = kills;
+                    this.wrappedObjects[i].killCount = kills;
                 }
             }
         };
