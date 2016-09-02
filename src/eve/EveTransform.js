@@ -51,9 +51,10 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {Array.<Tw2ParticleEmitter>} particleEmitters
  * @property {Array.<Tw2CurveSet>} curveSets
  * @property {Array} children
- * @property {Boolean} display
- * @property {Boolean} displayMesh
- * @property {Boolean} displayChildren
+ * @property {Boolean} display                                      - Enables/ disables all batch accumulations
+ * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
+ * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
+ * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
  * @property {vec3} scaling
  * @property {vec3} translation
  * @property {quat4} rotation
@@ -92,8 +93,9 @@ function EveTransform()
     this.children = [];
 
     this.display = true;
-    this.displayMesh = true;
-    this.displayChildren = true;
+    this.visible = {};
+    this.visible.mesh = true;
+    this.visible.children = true;
 
     this.scaling = vec3.create([1, 1, 1]);
     this.translation = vec3.create([0, 0, 0]);
@@ -139,7 +141,7 @@ EveTransform.prototype.GetResources = function(out, excludeChildren)
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     if (this.mesh !== null)
     {
@@ -155,7 +157,7 @@ EveTransform.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 /**
  * Gets render batches for accumulation
@@ -170,7 +172,7 @@ EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
         return;
     }
 
-    if (this.displayMesh && this.mesh != null)
+    if (this.visible.mesh && this.mesh != null)
     {
         mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('World'));
         mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'));
@@ -182,14 +184,14 @@ EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
     }
 
-    if (this.displayChildren)
+    if (this.visible.children)
     {
         for (var i = 0; i < this.children.length; ++i)
         {
             this.children[i].GetBatches(mode, accumulator, perObjectData);
         }
     }
-}
+};
 
 /**
  * Per frame update
@@ -232,7 +234,7 @@ mat4.multiply3x3 = function(a, b, c)
 
 /**
  * Per frame update
- * @param {Mat4} parentTransform
+ * @param {mat4} parentTransform
  */
 EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
 {
@@ -280,6 +282,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[10] = invView[10] * finalScale[2];
             }
             break;
+
         case this.EVE_CAMERA_ROTATION:
             {
                 var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
@@ -299,6 +302,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[14] = z;
             }
             break;
+
         case this.EVE_CAMERA_ROTATION_ALIGNED:
         case this.EVE_SIMPLE_HALO:
             {
@@ -373,6 +377,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 }
             }
             break;
+
         case this.LOOK_AT_CAMERA:
             {
                 mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
@@ -400,9 +405,11 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
                 this.worldTransform[10] = invView[10] * finalScale[2];
             }
             break;
+
         default:
             mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
     }
+
     for (var i = 0; i < this.children.length; ++i)
     {
         this.children[i].UpdateViewDependentData(this.worldTransform);

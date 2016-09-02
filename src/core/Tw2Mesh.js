@@ -66,13 +66,15 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
  * @property {Array.<Tw2MeshArea>} additiveAreas
  * @property {Array.<Tw2MeshArea>} pickableAreas
  * @property {Array.<Tw2MeshArea>} decalAreas
- * @property {Array.<Tw2MeshArea>} depthAreas
- * @property {boolean} display - enables/disables all render batch accumulations
- * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
- * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
- * @property {boolean} displayAdditive - enables/disables additive area batch accumulations
- * @property {boolean} displayPickable - enables/disables pickable area batch accumulations
- * @property {boolean} displayDecal - enables/disables decal area batch accumulations
+ * @property {Array.<Tw2MeshArea>} depthAreas       - Not supported
+ * @property {boolean} display                      - Enables/ disables all mesh batch accumulations
+ * @parameter {{}} visible                          - Batch accumulation options for the mesh's elements
+ * @property {boolean} visible.opaqueAreas          - Enables/ disables opaque area batch accumulation
+ * @property {boolean} visible.transparentAreas     - Enables/ disables transparent area batch accumulation
+ * @property {boolean} visible.additiveAreas        - Enables/ disables additive area batch accumulation
+ * @property {boolean} visible.pickableAreas        - Enables/ disables pickable area batch accumulation
+ * @property {boolean} visible.decalAreas           - Enables/ disables decal area batch accumulation
+ * @property {boolean} visible.depthAreas           - Not supported
  * @constructor
  */
 function Tw2Mesh()
@@ -91,11 +93,13 @@ function Tw2Mesh()
     this.depthAreas = [];
 
     this.display = true;
-    this.displayOpaque = true;
-    this.displayTransparent = true;
-    this.displayAdditive = true;
-    this.displayPickable = true;
-    this.displayDecal = true;
+    this.visible = {};
+    this.visible.opaqueAreas = true;
+    this.visible.transparentAreas = true;
+    this.visible.additiveAreas = true;
+    this.visible.pickableAreas = true;
+    this.visible.decalAreas = true;
+    this.visible.depthAreas = true;
 }
 
 /**
@@ -122,29 +126,24 @@ Tw2Mesh.prototype.GetResources = function(out)
         out = [];
     }
 
-    var self = this;
-
     if (out.indexOf(this.geometryResource) === -1)
     {
         out.push(this.geometryResource);
     }
 
-    function getAreaResources(areaName, out)
+    for (var type in this.visible)
     {
-        for (var i = 0; i < self[areaName].length; i++)
+        if (this.visible.hasOwnProperty(type) && this[type].length)
         {
-            self[areaName][i].effect.GetResources(out);
+            for (var i = 0; i < this[type].length; i++)
+            {
+                this[type][i].effect.GetResources(out);
+            }
         }
     }
 
-    getAreaResources('additiveAreas', out);
-    getAreaResources('decalAreas', out);
-    getAreaResources('depthAreas', out);
-    getAreaResources('opaqueAreas', out);
-    getAreaResources('pickableAreas', out);
-    getAreaResources('transparentAreas', out);
     return out;
-}
+};
 
 /**
  * Gets render batches from a mesh area array and commits them to an accumulator
@@ -193,23 +192,23 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
     if (this.display)
     {
 
-        if (this.displayOpaque && mode == device.RM_OPAQUE)
+        if (mode == device.RM_OPAQUE && this.visible.opaqueAreas)
         {
             this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
         }
-        else if (this.displayDecal && mode == device.RM_DECAL)
+        else if (mode == device.RM_DECAL && this.visible.decalAreas)
         {
             this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
         }
-        else if (this.displayTransparent && mode == device.RM_TRANSPARENT)
+        else if (mode == device.RM_TRANSPARENT && this.visible.transparentAreas)
         {
             this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
         }
-        else if (this.displayAdditive && mode == device.RM_ADDITIVE)
+        else if (mode == device.RM_ADDITIVE && this.visible.additiveAreas)
         {
             this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
         }
-        else if (this.displayPickable && mode == device.RM_PICKABLE)
+        else if (mode == device.RM_PICKABLE && this.visible.pickableAreas)
         {
             this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
         }

@@ -4,8 +4,8 @@
  * @property {Array.<EveBoosterSet>} boosters
  * @property {Array.<EveTurretSet>} turretSets
  * @property {Array} _turretSetsLocatorInfo
- * @property {boolean} displayTurrets - Toggles turret rendering
- * @property {boolean} displayBoosters - Toggles booster rendering
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
  * @inherits EveSpaceObject
  * @constructor
  */
@@ -17,8 +17,8 @@ function EveShip()
     this.turretSets = [];
     this._turretSetsLocatorInfo = [];
 
-    this.displayTurrets = true;
-    this.displayBoosters = true;
+    this.visible.turretSets = true;
+    this.visible.boosters = true;
 }
 
 /**
@@ -55,7 +55,7 @@ EveShip.prototype.GetResources = function(out, excludeChildren)
     if (out === undefined)
     {
         out = [];
-    };
+    }
 
     this._super.GetResources.call(this, out, excludeChildren);
 
@@ -77,7 +77,7 @@ EveShip.prototype.GetResources = function(out, excludeChildren)
     }
 
     return out;
-}
+};
 
 /**
  * Gets render batches
@@ -93,7 +93,7 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
         this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
         this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
 
-        if (this.displayTurrets)
+        if (this.visible.turretSets)
         {
             if (this.lod > 1)
             {
@@ -104,17 +104,17 @@ EveShip.prototype.GetBatches = function(mode, accumulator)
             }
             else
             {
-                for (var i = 0; i < this.turretSets.length; ++i)
+                for (var t = 0; t < this.turretSets.length; ++t)
                 {
-                    if (this.turretSets[i].firingEffect)
+                    if (this.turretSets[t].firingEffect)
                     {
-                        this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                        this.turretSets[t].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
                     }
                 }
             }
         }
 
-        if (this.boosters && this.displayBoosters)
+        if (this.boosters && this.visible.boosters)
         {
             this.boosters.GetBatches(mode, accumulator, this._perObjectData);
         }
@@ -151,9 +151,10 @@ EveShip.prototype.Update = function(dt)
             }
         }
     }
-    for (var i = 0; i < this.turretSets.length; ++i)
+
+    for (var t = 0; i < this.turretSets.length; ++i)
     {
-        this.turretSets[i].Update(dt, this.transform);
+        this.turretSets[t].Update(dt, this.transform);
     }
 };
 
@@ -167,7 +168,7 @@ EveShip.prototype.UpdateViewDependentData = function()
     {
         this.turretSets[i].UpdateViewDependentData();
     }
-}
+};
 
 /**
  * Rebuilds the ship's booster set
