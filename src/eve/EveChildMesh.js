@@ -101,6 +101,7 @@ EveChildMesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
             this._perObjectData.perObjectVSData = new Tw2RawData();
             this._perObjectData.perObjectVSData.Declare('world', 16);
             this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
+            this._perObjectData.perObjectVSData.Create();
         }
         mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
         mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
