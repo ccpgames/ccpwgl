@@ -51,6 +51,13 @@ function Tw2QuaternionCurve()
     this.keys = [];
 }
 
+
+Tw2QuaternionCurve.Interpolation = {
+    CONSTANT: 0,
+    SPHERICAL_LINEAR: 4
+};
+
+
 /**
  * Initializes the Curve
  * @prototype
@@ -222,7 +229,7 @@ Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, valu
     }
     switch (interp)
     {
-        case 4:
+        case Tw2QuaternionCurve.Interpolation.SPHERICAL_LINEAR:
             if (lastKey && nextKey)
             {
                 startValue = lastKey.value;

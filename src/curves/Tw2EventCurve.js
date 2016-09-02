@@ -33,6 +33,11 @@ function Tw2EventCurve()
     this._currentKey = 0;
 }
 
+Tw2EventCurve.Extrapolation = {
+    NONE: 0,
+    CYCLE: 3
+};
+
 /**
  * Compares two curve keys' time properties
  * @param {Tw2EventKey} a
@@ -94,7 +99,7 @@ Tw2EventCurve.prototype.UpdateValue = function(time)
     {
         this._currentKey = 0;
     }
-    if (this.extrapolation == 3)
+    if (this.extrapolation == Tw2EventCurve.Extrapolation.CYCLE)
     {
         var now = this._time % this._length;
         if (now < before)

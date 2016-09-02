@@ -50,6 +50,12 @@ function Tw2Vector2Curve()
     this.keys = [];
 }
 
+Tw2Vector2Curve.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1,
+    HERMITE: 2
+};
+
 /**
  * Initializes the Curve
  * @prototype
@@ -217,7 +223,7 @@ Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     }
     switch (interp)
     {
-        case 1:
+        case Tw2Vector2Curve.Interpolation.LINEAR:
             if (lastKey && nextKey)
             {
                 startValue = lastKey.value;
@@ -237,7 +243,7 @@ Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
             value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
             value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
             return value;
-        case 2:
+        case Tw2Vector2Curve.Interpolation.HERMITE:
             var inTangent = this.startTangent;
             var outTangent = this.endTangent;
             if (lastKey && nextKey)

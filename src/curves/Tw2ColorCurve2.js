@@ -51,6 +51,11 @@ function Tw2ColorCurve2()
     this.keys = [];
 }
 
+Tw2ColorCurve2.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1
+};
+
 /**
  * Initializes the curve
  * @prototype
@@ -226,7 +231,7 @@ Tw2ColorCurve2.prototype.Interpolate = function(time, lastKey, nextKey, value)
     }
     switch (interp)
     {
-        case 1:
+        case Tw2ColorCurve2.Interpolation.LINEAR:
             if (lastKey && nextKey)
             {
                 startValue = lastKey.value;

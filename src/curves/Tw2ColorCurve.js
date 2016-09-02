@@ -39,6 +39,19 @@ function Tw2ColorCurve()
     this._currKey = 1;
 }
 
+Tw2ColorCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
+};
+
+Tw2ColorCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2
+};
+
 /**
  * Returns curve length
  * @returns {number}
@@ -82,7 +95,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
     var lastKey = this.keys[this.keys.length - 1];
     if (time >= lastKey.time)
     {
-        if (this.extrapolation == 0)
+        if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
         {
             value[0] = this.value[0];
             value[1] = this.value[1];
@@ -90,7 +103,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
             value[3] = this.value[3];
             return value;
         }
-        else if (this.extrapolation == 1)
+        else if (this.extrapolation == Tw2ColorCurve.Extrapolation.CONSTANT)
         {
             value[0] = lastKey.value[0];
             value[1] = lastKey.value[1];
@@ -98,7 +111,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
             value[3] = lastKey.value[3];
             return value;
         }
-        else if (this.extrapolation == 2)
+        else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
         {
             d = time - lastKey.time;
             value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -114,7 +127,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
     }
     else if (time < 0 || time < firstKey.time)
     {
-        if (this.extrapolation == 0)
+        if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
         {
             value[0] = this.value[0];
             value[1] = this.value[1];
@@ -122,7 +135,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
             value[3] = this.value[3];
             return value;
         }
-        else if (this.extrapolation == 2)
+        else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
         {
             d = time * this.length - lastKey.time;
             value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -154,7 +167,7 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
     }
 
     var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation == 1)
+    if (ck_1.interpolation == Tw2ColorCurve.Interpolation.CONSTANT)
     {
         value[0] = ck_1.value[0];
         value[1] = ck_1.value[1];

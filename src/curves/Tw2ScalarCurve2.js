@@ -50,6 +50,12 @@ function Tw2ScalarCurve2()
     this.keys = [];
 }
 
+Tw2ScalarCurve2.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1,
+    HERMITE: 2
+};
+
 /**
  * Gets curve length
  * @returns {number}
@@ -206,7 +212,7 @@ Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
     }
     switch (interp)
     {
-        case 1:
+        case Tw2ScalarCurve2.Interpolation.LINEAR:
             if (lastKey && nextKey)
             {
                 startValue = lastKey.value;
@@ -225,7 +231,7 @@ Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
             }
             return startValue + (endValue - startValue) * (time / deltaTime);
 
-        case 2:
+        case Tw2ScalarCurve2.Interpolation.HERMITE:
             var inTangent = this.startTangent;
             var outTangent = this.endTangent;
             if (lastKey && nextKey)
