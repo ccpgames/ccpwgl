@@ -87,7 +87,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
                 }
                 catch (e)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'throw',
                         src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -111,7 +111,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
                 {
                     if (typeof(object[child.nodeName]) == 'undefined')
                     {
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'warn',
                             src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -187,7 +187,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'throw',
                     src: ['Tw2ObjectReader', 'ConstructFromNode'],

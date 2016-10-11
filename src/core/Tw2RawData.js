@@ -61,7 +61,6 @@ Tw2RawData.prototype.Set = function(name, value)
 
 /**
  * Gets an element's array value
- * TODO: Modifying the returned value will modify the raw data, is this intentional?
  * @param {string} name
  * @return {Float32Array}
  * @prototype
@@ -73,7 +72,6 @@ Tw2RawData.prototype.Get = function(name)
 
 /**
  * Gets an element's array value from the share data array
- * TODO: Modifying the returned value will modify the raw data, is this intentional?
  * @param {string} name
  * @return {Float32Array}
  * @prototype

@@ -533,7 +533,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
                         break;
 
                     default:
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'error',
                             src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
@@ -832,7 +832,7 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
         var bone = model.FindBoneByName(name);
         if (bone == null)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2GeometryRes', 'BindMeshToModel'],
@@ -958,7 +958,7 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2GeometryRes', 'RenderLines'],
@@ -1054,7 +1054,7 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
         var passInput = effect.GetPassInput(pass);
         if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2GeometryRes', 'RenderLines'],

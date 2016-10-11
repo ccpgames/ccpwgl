@@ -74,7 +74,7 @@ Tw2StaticEmitter.prototype.Update = function(dt)
 
             if (input == null)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2StaticEmitter', 'Update'],
@@ -92,7 +92,7 @@ Tw2StaticEmitter.prototype.Update = function(dt)
 
             if (input.elements < d.elements)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2StaticEmitter', 'Update'],
