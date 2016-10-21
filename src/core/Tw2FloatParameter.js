@@ -36,11 +36,10 @@ function Tw2FloatParameter(name, value)
 }
 
 /**
- * Bind
- * TODO: Idenfify if @param size should be passed to the `Apply` prototype as it is currently redundant
+ * Binds the parameter to a constant buffer
  * @param {Array} constantBuffer
  * @param {number} offset
- * @param {number} size
+ * @param {number} [size=] - unused
  * @returns {boolean}
  * @prototype
  */
@@ -56,7 +55,7 @@ Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
 };
 
 /**
- * Unbind
+ * Unbinds the parameter from it's constant buffer
  * @prototype
  */
 Tw2FloatParameter.prototype.Unbind = function()
@@ -78,10 +77,9 @@ Tw2FloatParameter.prototype.OnValueChanged = function()
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Array} constantBuffer
  * @param {number} offset
- * @param {number} size
+ * @param {number} [size=] - unused
  * @prototype
  */
 Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
@@ -112,6 +110,6 @@ Tw2FloatParameter.prototype.SetValue = function(value)
     this.value = value;
     if (this.constantBuffer != null)
     {
-        this.constantBuffer.set(this.value, this.offset);
+        this.constantBuffer[this.offset] = this.value;
     }
 };
