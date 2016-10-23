@@ -1,7 +1,7 @@
 /**
  * Tw2MatrixParameter
  * @param {string} [name='']
- * @param {mat4|Float32Array|Array} [value=mat4.create()]
+ * @param {mat4|Float32Array|Array} [value=mat4.identity(mat4.create())]
  * @property {string} name
  * @property {mat4|Float32Array} value
  * @property {Float32Array} constantBuffer
@@ -10,29 +10,14 @@
  */
 function Tw2MatrixParameter(name, value)
 {
-    if (typeof(name) != 'undefined')
-    {
-        this.name = name;
-    }
-    else
-    {
-        this.name = '';
-    }
-    if (typeof(value) != 'undefined')
-    {
-        this.value = mat4.create(value);
-    }
-    else
-    {
-        this.value = mat4.identity(mat4.create());
-    }
+    this.name = (name !== undefined) ? name : '';
+    this.value = (value !== undefined) ? mat4.create(value) : mat4.identity(mat4.create());
     this.constantBuffer = null;
     this.offset = 0;
 }
 
 /**
- * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
+ * Binds the parameter's value to a constant buffer
  * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
@@ -49,6 +34,15 @@ Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
     this.offset = offset;
     this.Apply(this.constantBuffer, this.offset, size);
 };
+
+/**
+ * Unbinds the parameter's constant buffer
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.UnBind()
+{
+    this.constantBuffer = null;
+}
 
 /**
  * Sets a supplied value
@@ -81,13 +75,24 @@ Tw2MatrixParameter.prototype.GetValue = function()
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
- * @param {number} size
+ * @param {number} [size] - unused
  * @prototype
  */
 Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
 };
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.OnValueChanged = function()
+{
+    if (this.constantBuffer !== null)
+    {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+}
