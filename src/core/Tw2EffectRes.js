@@ -76,7 +76,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
         if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CompileShader'],
@@ -111,7 +111,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
 
         if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
@@ -172,7 +172,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     var version = reader.ReadUInt32();
     if (version < 2 || version > 4)
     {
-        emitter.log('ResMan',
+        emitter.log('res.error',
         {
             log: 'error',
             src: ['Tw2EffectRes', 'CreateProgram'],
@@ -189,7 +189,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     var headerSize = reader.ReadUInt32();
     if (headerSize == 0)
     {
-        emitter.log('ResMan',
+        emitter.log('res.error',
         {
             log: 'error',
             src: ['Tw2EffectRes', 'CreateProgram'],

@@ -213,12 +213,12 @@ function Tw2Device()
         }
         catch (e)
         {
-            err = e.toString();
+            err = e;
         }
 
         if (!this.gl)
         {
-            emitter.log('WebGL',
+            emitter.log('webgl.error',
                 {
                     log: 'error',
                     msg: 'Could not initialise WebGL',

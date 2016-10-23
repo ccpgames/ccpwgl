@@ -1,309 +1,356 @@
-/* ccpwgl 2016-06-19 */
+/* ccpwgl 2016-10-11 */
 
 var ccpwgl_int = (function()
 {
     /**
      * Event Emitter
-     * @param {String} [name='']
-     * @property {String} [name=''] - The name of the emitter
-     * @property {{}} events
+     *
+     * @property {{}} _events
      * @returns {Tw2EventEmitter}
      */
-    var Tw2EventEmitter = function(name)
+    var Tw2EventEmitter = function()
     {
-        this.name = name || '';
-        this.events = {};
-        return this;
-    };
-
-    /**
-     * Gets public only emitter methods (`on`, `off`, `once`, `del`)
-     * @param {{}} [out={}] An optional receiving object
-     * @returns {{}}
-     *
-     * @example var public = emitter.GetPublic()
-     * // The public object now has the emitter's public functions
-     */
-    Tw2EventEmitter.prototype.GetPublic = function(out)
-    {
-        out || (out = {});
-        this.inherit(out, false);
-        return out;
-    };
-
-    /**
-     * Checks if an event has any listeners
-     * @param {String} eventName - The event to check
-     * @returns {Boolean}
-     *
-     * @example emitter.HasListeners('myEvent');
-     * // Returns true or false
-     */
-    Tw2EventEmitter.prototype.HasListeners = function(eventName)
-    {
-        if (!(eventName in this.events)) return false;
-        return (this.events[eventName].size !== 0)
-    };
-
-    /**
-     * Registers an Event
-     * - Event names are case insensitive
-     * - Emits an `EventAdded` event with the event's name as an argument
-     * - When using the `on` and `once` methods an event is automatically registered
-     * @param  {String} eventName - The event to register
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.register('myEvent');
-     * // creates the myEvent event
-     * // emits a `EventAdded` event
-     */
-    Tw2EventEmitter.prototype.register = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            this.events[eventName] = new Set();
-            this.emit('EventAdded', eventName);
-        }
-        return this;
-    };
-
-    /**
-     * Deregisters an event and removes all listeners
-     * - Emits an `EventRemoved` event with the event's name as an argument
-     * @param {String} eventName - The event to deregister
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.deregister('myEvent');
-     * // Removes all listeners from the event, and then deletes the event
-     * // Emits an `EventRemoved` event
-     */
-    Tw2EventEmitter.prototype.deregister = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (eventName in this.events)
-        {
-            this.emit('EventRemoved', eventName);
-            delete this.events[eventName];
-        }
-        return this;
-    };
-
-    /**
-     * Emits an event
-     * @param {String} eventName - The event to emit
-     * @param {*} ...args - Any arguments to be passed to the event's listeners
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.emit('myEvent', arg1, arg2, arg3);
-     * // Emits the 'myEvent' event and calls all of it's listeners with the supplied arguments
-     */
-    Tw2EventEmitter.prototype.emit = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            return this.register(eventName);
-        }
-
-        var args = Array.prototype.slice.call(arguments);
-        args.splice(0, 1);
-
-        this.events[eventName].forEach(
-            function(listener)
-            {
-                listener.apply(undefined, args);
-            }
-        );
-
-        return this;
+        Tw2EventEmitter.Define(this);
     };
 
     /**
      * Adds a listener to an event
-     * - A listener can only exist on an Event once unless using the `once` method, self removing listeners are preferred
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add
-     * @returns {Tw2EventEmitter}
+     * - The first argument of a called listener is always an event name
+     * - Event names are forced to lowercase
+     * - Listeners can only be on an event once, unless using the 'once' method
      *
-     * @example emitter.on('myEvent', myListener);
-     * // Adds `myListener` to the `myEvent` event
+     * @param {String} eventName  - the event to fire the listener on
+     * @param {Function} listener - the listener
+     * @returns {*} emitter       - the emitter object
+     *
+     * @example
+     * var myListener1 = function(eventName, arg1, arg2, arg3){ .... };
+     * myEmitter.on('someEvent', myListener1);
+     * // myListener1 will be called whenever 'someEvent' is emitted
      */
     Tw2EventEmitter.prototype.on = function(eventName, listener)
     {
-        eventName = eventName.toLowerCase();
-
-        this.register(eventName);
-        this.events[eventName].add(listener);
+        eventName = Tw2EventEmitter.Register(this, eventName);
+        if (this._events[eventName].indexOf(listener) == -1)
+        {
+            this._events[eventName].push(listener);
+        }
         return this;
     };
 
     /**
      * Adds a listener to an event and removes it after it's first emit
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add for one emit only
-     * @returns {Tw2EventEmitter}
+     * - Creates a temporary version of the listener which removes itself after one emit
+     * - Caveat: It is possible to have the same listener on the same event multiple times when using `once`
      *
-     * @example emitter.once('myEvent', myListener);
-     * // Adds `myListener` to the `myEvent` event
-     * // After the first `myEvent` emit the listener is removed
+     * @param {String} eventName  - the target event
+     * @param {Function} listener - the listener to add for one emit only
+     * @returns {*} emitter       - the emitter object
+     *
+     * @example
+     * myEmitter.once('someEvent', myListener1);
+     * // myListener will be fired one time only before being removed from the event
      */
     Tw2EventEmitter.prototype.once = function(eventName, listener)
     {
+        eventName = Tw2EventEmitter.Register(this, eventName);
         var self = this;
-        eventName = eventName.toLowerCase();
-
         var once = function once()
         {
             listener.apply(undefined, arguments);
             self.off(eventName, once);
         };
-
         this.on(eventName, once);
         return this;
     };
 
-    /**
-     * Removes a listener from an event
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener to remove from an event
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.off('myEvent', myListener);
-     * // Removes `myListener` from the `myEvent` event
-     */
-    Tw2EventEmitter.prototype.off = function(eventName, listener)
-    {
-        eventName = eventName.toLowerCase();
 
-        if (eventName in this.events)
+    /**
+     * Emits an event and calls any of it's listeners
+     * - An event's listeners are called with the event name, and then any other supplied arguments
+     *
+     * @param {String} eventName - the event to emit
+     * @param {*} [arguments]    - any arguments to be passed to the event's listeners
+     * @returns {*} emitter      - the emitter object
+     *
+     * @example
+     * var myListener1 = function(eventName, arg1, arg2, arg3){ .... };
+     * var myListener2 = function(eventName, arg1){ .... };
+     * myEmitter.on('someEvent', myListener);
+     * myEmitter.emit('someEvent', arg1, arg2, arg3)
+     * // myListener1 called with ('someEvent', arg1, arg2, arg3)
+     * // myListener2 called with ('someEvent', arg1);
+     */
+    Tw2EventEmitter.prototype.emit = function(eventName)
+    {
+        eventName = Tw2EventEmitter.Register(this, eventName);
+        var args = Array.prototype.slice.call(arguments);
+        for (var i = 0; i < this._events[eventName].length; i++)
         {
-            this.events[eventName].delete(listener)
+            this._events[eventName][i].apply(undefined, args);
         }
         return this;
     };
 
     /**
-     * Deletes a listener from all of the emitter's events
-     * @param {Function} listener - The listener to delete
-     * @returns {Tw2EventEmitter}
+     * Removes a listener from a specific event
      *
-     * @example emitter.del(myListener);
-     * // Removes `myListener` from every emitter event
+     * @param {String} eventName  - the target event
+     * @param {Function} listener - the listener to remove
+     * @returns {*} emitter       - the emitter object
      */
-    Tw2EventEmitter.prototype.del = function(listener)
+    Tw2EventEmitter.prototype.off = function(eventName, listener)
     {
-        const self = this;
-        for (var eventName in this.events)
+        eventName = eventName.toLowerCase();
+        if ('_events' in this && eventName in this._events)
         {
-            if (this.events.hasOwnProperty(eventName))
+            var index = this._events[eventName].indexOf(listener);
+            if (index !== -1) this._events[eventName].splice(index, 1);
+        }
+        return this;
+    };
+
+    /**
+     * Removes the supplied listener(s) from any of the emitter's events
+     *
+     * @param {*} [arguments] - the listener(s) to remove
+     * @returns {*} emitter   - the emitter object
+     *
+     * @example
+     * myEmitter.del(myListener1, myListener2)
+     * // myListener1 and myListener2 are removed from any of the emitter's events
+     */
+    Tw2EventEmitter.prototype.remove = function()
+    {
+        var args = Array.prototype.slice.call(arguments);
+        if (this._events)
+        {
+            for (var i = 0; i < args.length; i++)
             {
-                self.off(eventName, listener);
+                Tw2EventEmitter.RemoveListener(this, args[i]);
             }
         }
         return this;
     };
 
     /**
-     * Adds bound emitter functions to a target object
-     * - No checks are made to see if these methods or property names already exist
-     * @param {{}} target - The object inheriting the emitter's functions
-     * @param {Boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
-     * @return {Tw2EventEmitter}
+     * Internal helper that defines an event emitter's un-writable properties
      *
-     * @example emitter.inherit(myObject, true);
-     * // `myObject` now has `on`, `off`, `del` and `log` emitter methods
-     * @example emitter.inherit(myObject);
-     * // `myObject` now has `on`, `off`, `del`, `log` and `emit` emitter methods
+     * @param {*} emitter - target emitter
      */
-    Tw2EventEmitter.prototype.inherit = function(target, excludeEmit)
+    Tw2EventEmitter.Define = function(emitter)
     {
-        target['on'] = this.on.bind(this);
-        target['off'] = this.off.bind(this);
-        target['del'] = this.del.bind(this);
-        target['log'] = this.log.bind(this);
-
-        if (!excludeEmit)
+        Object.defineProperty(emitter, '_events',
         {
-            target['emit'] = this.emit.bind(this);
-        }
-
-        return this;
+            value:
+            {},
+            writable: false
+        });
     };
 
     /**
-     * An Emit wrapper that emits an event and also creates a console output from a supplied event data object
-     * - The console output replicates the existing ccpwgl console logging
-     * - Console output can be toggled globally with { @link<Tw2EventEmitter.consoleErrors> and @link<Tw2EventEmitter.consoleLogs> }
-     * @param {String}  eventName               - The event to emit
-     * @param {{}}      eventData               - event data
-     * @param {String} [eventData.msg='']       - event message
-     * @param {String} [eventData.log=log]      - desired console output type (log, info, debug, warn, error, throw)
-     * @param {String} [eventData.path]         - the unmodified path for the file related to the event
-     * @param {Number} [eventData.time]         - the time it took to process the event path (rounds to 3 decimal places)
-     * @param {String} [eventData.type]         - a string representing the unique event type
-     * @param {Object} [eventData.data]         - data relevant to the event type
-     * @param {Number|String} [eventData.value] - a single value relevant to the event type
-     * @param {Array.<String>} [eventData.src]  - an array of the functions involved in the event
+     * Internal helper that registers an event on an emitter
+     * - Adds the `_event` property to objects that don't already have it (allows for usage of Object.assign)
+     * - Ensures that eventName is lower case
+     * - Adds the event if it doesn't already exist
+     *
+     * @param {*} emitter          - target emitter
+     * @param {String} eventName   - event to register
+     * @returns {String} eventName - the event name, in lower case
      */
-    Tw2EventEmitter.prototype.log = function(eventName, eventData)
+    Tw2EventEmitter.Register = function(emitter, eventName)
     {
-        var d = eventData;
-        if (!d.log) d.log = 'log';
-        this.emit(eventName, d);
-        var log = d.log;
+        if (!('_events' in emitter)) Tw2EventEmitter.Define(emitter);
+        eventName = eventName.toLowerCase();
+        if (!(eventName in emitter._events)) emitter._events[eventName] = [];
+        return eventName;
+    };
 
-        switch (d.log)
+    /**
+     * Checks if an emitter's event has any listeners on it
+     *
+     * @param {*} emitter        - target emitter
+     * @param {String} eventName - event to check
+     * @returns {boolean}
+     */
+    Tw2EventEmitter.HasListeners = function(emitter, eventName)
+    {
+        if (!('_events' in emitter) || !(eventName in emitter._events)) return false;
+        return (emitter._events[eventName].length)
+    };
+
+    /**
+     * Gets an array of an emitter's events that a listener is on
+     *
+     * @param {*} emitter         - target emitter
+     * @param {Function} listener - listener to check
+     * @returns {Array.<String>}  - an array of event names the listener is on
+     */
+    Tw2EventEmitter.HasListener = function(emitter, listener)
+    {
+        var result = [];
+        if ('_events' in emitter)
+        {
+            for (var eventName in emitter._events)
+            {
+                if (emitter._events.hasOwnProperty(eventName))
+                {
+                    var index = emitter._events[eventName].indexOf(listener);
+                    if (index !== -1) result.push(eventName);
+                }
+            }
+        }
+        return result;
+    };
+
+    /**
+     * Removes a listener completely from an emitter
+     *
+     * @param {*} emitter         - target emitter
+     * @param {Function} listener - listener to remove
+     */
+    Tw2EventEmitter.RemoveListener = function(emitter, listener)
+    {
+        if ('_events' in emitter)
+        {
+            for (var eventName in emitter._events)
+            {
+                if (emitter._events.hasOwnProperty(eventName))
+                {
+                    var index = emitter._events[eventName].indexOf(listener);
+                    if (index !== -1)
+                    {
+                        emitter._events[eventName].splice(index, 1);
+                    }
+                }
+            }
+        }
+    };
+
+    /**
+     * Removes an event from an emitter, and all of it's listeners
+     *
+     * @param {*} emitter        - target emitter
+     * @param {String} eventName - the event to purge
+     */
+    Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
+    {
+        if ('_events' in emitter)
+        {
+            eventName = eventName.toLowerCase();
+            if (eventName in emitter._events) delete emitter._events[eventName];
+        }
+    };
+
+    /**
+     * Adds bound emitter functions to a target object
+     * - No checks are made to see if these methods or property names already exist in the target object
+     *
+     * @param {*} emitter                   - source emitter
+     * @param {{}} target                   - target object
+     * @param {boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
+     * @return {*}
+     */
+    Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
+    {
+        target['on'] = emitter.on.bind(emitter);
+        target['off'] = emitter.off.bind(emitter);
+        target['once'] = emitter.once.bind(emitter);
+        if (!excludeEmit) target['emit'] = emitter.emit.bind(emitter);
+        return target;
+    };
+
+    /**
+     * Tw2 Global Emitter
+     *
+     * @property {string}  consolePrefix
+     * @property {boolean} consoleErrors
+     * @property {boolean} consoleLogs
+     * @property {boolean} consoleDefault
+     * @inherits {Tw2EventEmitter}
+     */
+    var emitter = new Tw2EventEmitter();
+    emitter.consolePrefix = 'CCPWGL';
+    emitter.consoleErrors = true;
+    emitter.consoleLogs = true;
+    emitter.consoleDefault = 'log';
+
+    /**
+     * A wrapper function that takes an event and eventData object which is turned into a console report
+     * - The console outputs can be disabled by setting the `consoleErrors` and `consoleLogs` properties to false
+     * - The event is re-emitted after any console output
+     *
+     * @param {String}  eventName              - The event to emit
+     * @param {{}}      eventData              - event data
+     * @param {String} [eventData.msg=]        - event message
+     * @param {String} [eventData.log=]        - desired console output type (log, info, debug, warn, error, throw)
+     * @param {String} [eventData.path=]       - the unmodified path for the file related to the event
+     * @param {number} [eventData.time=]       - the time it took to process the event path (rounds to 3 decimal places)
+     * @param {String} [eventData.type=]       - a string representing the unique event type
+     * @param {Object} [eventData.data=]       - data relevant to the event type
+     * @param {*}      [eventData.value=]      - a single value relevant to the event type
+     * @param {Error}  [eventData.err=]        - Error Event object, if supplied the stack trace will be displayed
+     * @param {Array.<String>} [eventData.src] - an array of the functions involved in the event
+     */
+    emitter.log = function(eventName, eventData)
+    {
+        var args = Array.prototype.slice.call(arguments);
+        if (args.length)
+
+            var output = true;
+        var logType = eventData.log;
+
+        switch (logType)
         {
             case ('throw'):
-                log = 'error';
-                if (!Tw2EventEmitter.consoleErrors) return;
+                logType = 'error'; // throws use 'console.error'
+                if (!this.consoleErrors) output = false;
                 break;
 
             case ('error'):
             case ('warn'):
-                if (!Tw2EventEmitter.consoleErrors) return;
+                if (!this.consoleErrors) output = false;
+                break;
+
+            case ('debug'):
+            case ('log'):
+            case ('info'):
+                if (!this.consoleLogs) output = false;
                 break;
 
             default:
-                if (!Tw2EventEmitter.consoleLogs) return;
+                logType = this.consoleDefault; // default log type
+                if (!this.consoleLogs) output = false;
         }
 
-        var header = this.name.concat(': {', eventName, '}');
-        var body = d.msg || '';
-        if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
-        if (d.type && (log === 'error' || log === 'warn')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+        if (output)
+        {
+            var d = eventData;
+            var header = this.consolePrefix.concat(': {', eventName, '}');
+            var body = d.msg || '';
+            if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
+            if (d.type && (logType === 'error' || logType === 'warn'))
+            {
+                body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+            }
 
-        if ('data' in d)
-        {
-            console.group(header);
-            console[log](body);
-            console.dir(d.data);
-            console.groupEnd();
+            if ('data' in d || 'err' in d)
+            {
+                console.group(header);
+                console[logType](body);
+                if ('data' in d) console.dir(d.data);
+                // Correctly output error stacks
+                if ('err' in d) console.debug(d.err.stack || d.err.toString());
+                console.groupEnd();
+            }
+            else
+            {
+                console[logType](header, body);
+            }
         }
-        else
-        {
-            console[log](header, body);
-        }
+
+        this.emit(eventName, eventData);
     };
-
-    /**
-     * Global toggle to disable `warn`, `error` and `throw` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleErrors = true;
-
-    /**
-     * Global toggle to disable `log`, `info` and `debug` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleLogs = true;
-
-
-    var emitter = new Tw2EventEmitter('CCPWGL');
 
     /**
      * Tw2Frustum
@@ -487,7 +534,7 @@ var ccpwgl_int = (function()
 
     /**
      * Gets an element's array value
-     * TODO: Modifying the returned value will modify the raw data, is this intentional?
+     * - returns a reference
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -498,8 +545,8 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Gets an element's array value from the share data array
-     * TODO: Modifying the returned value will modify the raw data, is this intentional?
+     * Gets an element's array value from the shared data array
+     * - returns a reference
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -999,7 +1046,7 @@ var ccpwgl_int = (function()
                     }
                     catch (e)
                     {
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'throw',
                             src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1023,7 +1070,7 @@ var ccpwgl_int = (function()
                     {
                         if (typeof(object[child.nodeName]) == 'undefined')
                         {
-                            emitter.log('ResMan',
+                            emitter.log('res.error',
                             {
                                 log: 'warn',
                                 src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1099,7 +1146,7 @@ var ccpwgl_int = (function()
                 }
                 catch (e)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'throw',
                         src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1569,11 +1616,11 @@ var ccpwgl_int = (function()
                     {
                         if (obj._isPurged)
                         {
-                            emitter.log('ResMan',
+                            emitter.log('res.event',
                             {
-                                msg: 'Purged    ',
+                                msg: 'Unloaded  ',
                                 path: obj.path,
-                                type: 'res.purged'
+                                type: 'purged'
                             });
 
                             delete this._loadedObjects[path];
@@ -1582,11 +1629,11 @@ var ccpwgl_int = (function()
                         {
                             if (obj.Unload())
                             {
-                                emitter.log('ResMan',
+                                emitter.log('res.event',
                                 {
                                     msg: 'Unloaded  ',
                                     path: obj.path,
-                                    type: 'res.unused'
+                                    type: 'unused'
                                 });
                                 delete this._loadedObjects[path];
                             }
@@ -1643,7 +1690,7 @@ var ccpwgl_int = (function()
     {
         if (xml == null)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2LoadingObject', 'Prepare'],
@@ -1685,13 +1732,13 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2LoadingObject', 'Prepare'],
-                    msg: 'Prepare error',
+                    msg: 'Error preparing resource',
                     path: this.path,
-                    type: 'res.prepare',
+                    type: 'prepare',
                     data: e
                 })
             }
@@ -1701,11 +1748,11 @@ var ccpwgl_int = (function()
 
         resMan.motherLode.Remove(this.path);
 
-        emitter.log('ResMan',
+        emitter.log('res.event',
         {
             msg: 'Prepared  ',
             path: this.path,
-            type: 'res.prepare'
+            type: 'prepared'
         });
 
         this.PrepareFinished(true);
@@ -1808,7 +1855,7 @@ var ccpwgl_int = (function()
 
             if (!httpRequest)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2LoadingObject', 'Prepare'],
@@ -1918,12 +1965,12 @@ var ccpwgl_int = (function()
                 {
                     now = new Date();
 
-                    emitter.log('ResMan',
+                    emitter.log('res.event',
                     {
                         msg: 'Prepared  ',
                         path: resMan._prepareQueue[0][0].path,
                         time: (now.getTime() - startTime) * 0.001,
-                        type: 'res.prepared'
+                        type: 'prepared'
                     });
 
                     resMan._prepareQueue.shift();
@@ -1976,7 +2023,7 @@ var ccpwgl_int = (function()
                 }
                 catch (e)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2ResMan', '_DoLoadResource'],
@@ -2013,7 +2060,7 @@ var ccpwgl_int = (function()
                     }
                     else
                     {
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'error',
                             src: ['Tw2ResMan', '_DoLoadResource'],
@@ -2040,7 +2087,7 @@ var ccpwgl_int = (function()
             var prefixIndex = resPath.indexOf(':/');
             if (prefixIndex == -1)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'warn',
                     src: ['Tw2ResMan', 'BuildUrl'],
@@ -2048,7 +2095,6 @@ var ccpwgl_int = (function()
                     type: 'prefix.undefined',
                     path: resPath
                 });
-
                 return resPath;
             }
 
@@ -2056,13 +2102,13 @@ var ccpwgl_int = (function()
 
             if (!(prefix in this.resourcePaths))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'warn',
                     src: ['Tw2ResMan', 'BuildUrl'],
-                    msg: 'Invalid path',
+                    msg: 'Unregistered path',
                     path: resPath,
-                    type: 'prefix.invalid',
+                    type: 'prefix.unregistered',
                     value: prefix
                 });
                 return resPath;
@@ -2091,11 +2137,11 @@ var ccpwgl_int = (function()
             var httpRequest = this._CreateHttpRequest();
             httpRequest.onreadystatechange = _DoLoadResource(obj);
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Requesting',
                 path: path,
-                type: 'res.requesting'
+                type: 'request'
             });
 
             httpRequest.open('GET', this.BuildUrl(path));
@@ -2114,14 +2160,14 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', '_LoadResource'],
                     msg: 'Error requesting',
                     path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    err: e
                 })
             }
         };
@@ -2135,11 +2181,11 @@ var ccpwgl_int = (function()
         {
             var path = resource.path;
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Reloading ',
                 path: path,
-                type: 'res.reload'
+                type: 'reload'
             });
 
             var obj = this.motherLode.Find(path);
@@ -2178,12 +2224,12 @@ var ccpwgl_int = (function()
 
             if (ext == null)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', 'ReloadResource'],
-                    msg: 'Unknown extension',
-                    type: 'extension.unknown',
+                    msg: 'Undefined extension',
+                    type: 'extension.undefined',
                     path: this.LogPathString(path)
                 });
                 return null;
@@ -2191,7 +2237,7 @@ var ccpwgl_int = (function()
 
             if (!(ext in this._extensions))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', 'ReloadResource'],
@@ -2258,12 +2304,12 @@ var ccpwgl_int = (function()
             var httpRequest = this._CreateHttpRequest();
             httpRequest.onreadystatechange = _DoLoadResource(res);
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Requesting',
                 path: this.BuildUrl(path),
                 _path: path,
-                type: 'res.requesting'
+                type: 'requesting'
             });
 
             httpRequest.open('GET', this.BuildUrl(path));
@@ -2277,7 +2323,7 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', '_GetObject'],
@@ -2285,7 +2331,7 @@ var ccpwgl_int = (function()
                     path: this.BuildUrl(path),
                     _path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    err: e
                 })
             }
         };
@@ -3642,6 +3688,13 @@ var ccpwgl_int = (function()
         this.BLEND_BLENDFACTOR = 14;
         this.BLEND_INVBLENDFACTOR = 15;
 
+        // RS_BLENDOP & RS_BLENDOPALPHA ENUMS
+        this.BLENDOP_ADD = 1;
+        this.BLENDOP_SUBTRACT = 2;
+        this.BLENDOP_REVSUBTRACT = 3;
+        // this.BLENDOP_MIN = 4; 
+        // this.BLENDOP_MAX = 5;
+
         this.gl = null;
         this.debugMode = false;
         this.mipLevelSkipCount = 0;
@@ -3701,7 +3754,7 @@ var ccpwgl_int = (function()
 
             if (!this.gl)
             {
-                emitter.log('WebGL',
+                emitter.log('webgl.error',
                 {
                     log: 'error',
                     msg: 'Could not initialise WebGL',
@@ -4171,11 +4224,11 @@ var ccpwgl_int = (function()
             if (this.alphaBlendState.dirty)
             {
                 var blendOp = this.gl.FUNC_ADD;
-                if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+                if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
                 {
                     blendOp = this.gl.FUNC_SUBTRACT;
                 }
-                else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+                else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
                 {
                     blendOp = this.gl.FUNC_REVERSE_SUBTRACT;
                 }
@@ -4185,11 +4238,11 @@ var ccpwgl_int = (function()
                 if (this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE])
                 {
                     var blendOpAlpha = this.gl.FUNC_ADD;
-                    if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+                    if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
                     {
                         blendOpAlpha = this.gl.FUNC_SUBTRACT;
                     }
-                    else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+                    else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
                     {
                         blendOpAlpha = this.gl.FUNC_REVERSE_SUBTRACT;
                     }
@@ -5061,7 +5114,7 @@ var ccpwgl_int = (function()
                             break;
 
                         default:
-                            emitter.log('ResMan',
+                            emitter.log('res.error',
                             {
                                 log: 'error',
                                 src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
@@ -5360,7 +5413,7 @@ var ccpwgl_int = (function()
             var bone = model.FindBoneByName(name);
             if (bone == null)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'BindMeshToModel'],
@@ -5486,7 +5539,7 @@ var ccpwgl_int = (function()
             var passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
@@ -5582,7 +5635,7 @@ var ccpwgl_int = (function()
             var passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
@@ -6007,7 +6060,7 @@ var ccpwgl_int = (function()
             }
             if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CompileShader'],
@@ -6042,7 +6095,7 @@ var ccpwgl_int = (function()
 
             if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CreateProgram'],
@@ -6103,7 +6156,7 @@ var ccpwgl_int = (function()
         var version = reader.ReadUInt32();
         if (version < 2 || version > 4)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
@@ -6120,7 +6173,7 @@ var ccpwgl_int = (function()
         var headerSize = reader.ReadUInt32();
         if (headerSize == 0)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
@@ -7080,13 +7133,15 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2MeshArea>} additiveAreas
      * @property {Array.<Tw2MeshArea>} pickableAreas
      * @property {Array.<Tw2MeshArea>} decalAreas
-     * @property {Array.<Tw2MeshArea>} depthAreas
-     * @property {boolean} display - enables/disables all render batch accumulations
-     * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
-     * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
-     * @property {boolean} displayAdditive - enables/disables additive area batch accumulations
-     * @property {boolean} displayPickable - enables/disables pickable area batch accumulations
-     * @property {boolean} displayDecal - enables/disables decal area batch accumulations
+     * @property {Array.<Tw2MeshArea>} depthAreas       - Not supported
+     * @property {boolean} display                      - Enables/ disables all mesh batch accumulations
+     * @parameter {{}} visible                          - Batch accumulation options for the mesh's elements
+     * @property {boolean} visible.opaqueAreas          - Enables/ disables opaque area batch accumulation
+     * @property {boolean} visible.transparentAreas     - Enables/ disables transparent area batch accumulation
+     * @property {boolean} visible.additiveAreas        - Enables/ disables additive area batch accumulation
+     * @property {boolean} visible.pickableAreas        - Enables/ disables pickable area batch accumulation
+     * @property {boolean} visible.decalAreas           - Enables/ disables decal area batch accumulation
+     * @property {boolean} visible.depthAreas           - Not supported
      * @constructor
      */
     function Tw2Mesh()
@@ -7105,11 +7160,13 @@ var ccpwgl_int = (function()
         this.depthAreas = [];
 
         this.display = true;
-        this.displayOpaque = true;
-        this.displayTransparent = true;
-        this.displayAdditive = true;
-        this.displayPickable = true;
-        this.displayDecal = true;
+        this.visible = {};
+        this.visible.opaqueAreas = true;
+        this.visible.transparentAreas = true;
+        this.visible.additiveAreas = true;
+        this.visible.pickableAreas = true;
+        this.visible.decalAreas = true;
+        this.visible.depthAreas = true;
     }
 
     /**
@@ -7136,29 +7193,24 @@ var ccpwgl_int = (function()
             out = [];
         }
 
-        var self = this;
-
         if (out.indexOf(this.geometryResource) === -1)
         {
             out.push(this.geometryResource);
         }
 
-        function getAreaResources(areaName, out)
+        for (var type in this.visible)
         {
-            for (var i = 0; i < self[areaName].length; i++)
+            if (this.visible.hasOwnProperty(type) && this[type].length)
             {
-                self[areaName][i].effect.GetResources(out);
+                for (var i = 0; i < this[type].length; i++)
+                {
+                    this[type][i].effect.GetResources(out);
+                }
             }
         }
 
-        getAreaResources('additiveAreas', out);
-        getAreaResources('decalAreas', out);
-        getAreaResources('depthAreas', out);
-        getAreaResources('opaqueAreas', out);
-        getAreaResources('pickableAreas', out);
-        getAreaResources('transparentAreas', out);
         return out;
-    }
+    };
 
     /**
      * Gets render batches from a mesh area array and commits them to an accumulator
@@ -7207,23 +7259,23 @@ var ccpwgl_int = (function()
         if (this.display)
         {
 
-            if (this.displayOpaque && mode == device.RM_OPAQUE)
+            if (mode == device.RM_OPAQUE && this.visible.opaqueAreas)
             {
                 this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayDecal && mode == device.RM_DECAL)
+            else if (mode == device.RM_DECAL && this.visible.decalAreas)
             {
                 this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayTransparent && mode == device.RM_TRANSPARENT)
+            else if (mode == device.RM_TRANSPARENT && this.visible.transparentAreas)
             {
                 this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayAdditive && mode == device.RM_ADDITIVE)
+            else if (mode == device.RM_ADDITIVE && this.visible.additiveAreas)
             {
                 this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayPickable && mode == device.RM_PICKABLE)
+            else if (mode == device.RM_PICKABLE && this.visible.pickableAreas)
             {
                 this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
             }
@@ -9288,6 +9340,19 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2ColorCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2ColorCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2
+    };
+
     /**
      * Returns curve length
      * @returns {number}
@@ -9331,7 +9396,7 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
@@ -9339,7 +9404,7 @@ var ccpwgl_int = (function()
                 value[3] = this.value[3];
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.CONSTANT)
             {
                 value[0] = lastKey.value[0];
                 value[1] = lastKey.value[1];
@@ -9347,7 +9412,7 @@ var ccpwgl_int = (function()
                 value[3] = lastKey.value[3];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -9363,7 +9428,7 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
@@ -9371,7 +9436,7 @@ var ccpwgl_int = (function()
                 value[3] = this.value[3];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -9403,7 +9468,7 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2ColorCurve.Interpolation.CONSTANT)
         {
             value[0] = ck_1.value[0];
             value[1] = ck_1.value[1];
@@ -9472,6 +9537,11 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2ColorCurve2.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1
+    };
 
     /**
      * Initializes the curve
@@ -9648,7 +9718,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2ColorCurve2.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -9884,6 +9954,11 @@ var ccpwgl_int = (function()
         this._currentKey = 0;
     }
 
+    Tw2EventCurve.Extrapolation = {
+        NONE: 0,
+        CYCLE: 3
+    };
+
     /**
      * Compares two curve keys' time properties
      * @param {Tw2EventKey} a
@@ -9945,7 +10020,7 @@ var ccpwgl_int = (function()
         {
             this._currentKey = 0;
         }
-        if (this.extrapolation == 3)
+        if (this.extrapolation == Tw2EventCurve.Extrapolation.CYCLE)
         {
             var now = this._time % this._length;
             if (now < before)
@@ -10477,6 +10552,22 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2RotationCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2RotationCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        SLERP: 5,
+        SQUAD: 6
+    };
+
     /**
      * Gets curve length
      * @returns {number}
@@ -10630,12 +10721,12 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2RotationCurve.Extrapolation.NONE)
             {
                 quat4.set(this.value, value);
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2RotationCurve.Extrapolation.CONSTANT)
             {
                 quat4.set(lastKey.value, value);
                 return value;
@@ -10647,7 +10738,7 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2RotationCurve.Extrapolation.NONE)
             {
                 quat4.set(this.value, value);
                 return value;
@@ -10672,18 +10763,18 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2RotationCurve.Interpolation.CONSTANT)
         {
             quat4.set(ck_1.value, value);
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.LINEAR)
         {
             value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
             value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
             value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
             value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.HERMITE)
         {
             var collect = quat4.create();
             collect[3] = 1;
@@ -10705,7 +10796,7 @@ var ccpwgl_int = (function()
             }
             return quat4.multiply(collect, ck_1.value, value);
         }
-        else if (ck_1.interpolation == 5)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.SLERP)
         {
             return quat4.slerp(ck_1.value, ck.value, nt, value);
         }
@@ -10760,6 +10851,21 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2ScalarCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2ScalarCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        CATMULROM: 4
+    };
+
     /**
      * Gets curve length
      * @returns {number}
@@ -10801,15 +10907,15 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
             {
                 return this.value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.CONSTANT)
             {
                 return lastKey.value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 return lastKey.value + d * lastKey.right;
@@ -10821,11 +10927,11 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
             {
                 return this.value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 return firstKey.value + d * firstKey.left;
@@ -10849,15 +10955,15 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.CONSTANT)
         {
             return ck_1.value;
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.LINEAR)
         {
             return ck_1.value * (1 - nt) + ck.value * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.HERMITE)
         {
             var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
             var k2 = -2 * nt * nt * nt + 3 * nt * nt;
@@ -10927,6 +11033,12 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2ScalarCurve2.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
 
     /**
      * Gets curve length
@@ -11084,7 +11196,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2ScalarCurve2.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -11103,7 +11215,7 @@ var ccpwgl_int = (function()
                 }
                 return startValue + (endValue - startValue) * (time / deltaTime);
 
-            case 2:
+            case Tw2ScalarCurve2.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -11557,6 +11669,12 @@ var ccpwgl_int = (function()
         this.keys = [];
     }
 
+    Tw2Vector2Curve.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
+
     /**
      * Initializes the Curve
      * @prototype
@@ -11724,7 +11842,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2Vector2Curve.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -11744,7 +11862,7 @@ var ccpwgl_int = (function()
                 value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
                 return value;
-            case 2:
+            case Tw2Vector2Curve.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -11834,6 +11952,12 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2Vector3Curve.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
 
     /**
      * Initializes the Curve
@@ -12007,7 +12131,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2Vector3Curve.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -12028,7 +12152,7 @@ var ccpwgl_int = (function()
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
                 value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
                 return value;
-            case 2:
+            case Tw2Vector3Curve.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -12108,6 +12232,20 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2VectorCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2VectorCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3
+    };
+
     /**
      * Updates a value at a specific time
      * @param {number} time
@@ -12151,21 +12289,21 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
                 value[2] = this.value[2];
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.CONSTANT)
             {
                 value[0] = lastKey.value[0];
                 value[1] = lastKey.value[1];
                 value[2] = lastKey.value[2];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -12180,14 +12318,14 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
                 value[2] = this.value[2];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -12217,19 +12355,19 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2VectorCurve.Interpolation.CONSTANT)
         {
             value[0] = ck_1.value[0];
             value[1] = ck_1.value[1];
             value[2] = ck_1.value[2];
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.LINEAR)
         {
             value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
             value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
             value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.HERMITE)
         {
             var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
             var k2 = -2 * nt * nt * nt + 3 * nt * nt;
@@ -12514,7 +12652,7 @@ var ccpwgl_int = (function()
 
     /**
      * Tw2MayaAnimationEngine
-     * TODO: Constructor is missing the prototype `_EvaluteBezier`
+     * TODO: Complete the prototype `_EvaluteBezier`
      * @property {Array} curves
      * @property {Array} hermiteSegments
      * @property {Array} bezierSegments
@@ -12759,6 +12897,20 @@ var ccpwgl_int = (function()
     };
 
     /**
+     * A static helper function to evaluate the infinity portion of an animation curve.
+     * The infinity portion is the parts of the animation curve outside the range of keys.
+     * @param curve - The animation curve to evaluate
+     * @param segments
+     * @param startSegment
+     * @param {time} time
+     * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
+     */
+    Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function(curve, segments, startSegment, time, bool)
+    {
+        throw new Error('_EvaluateInfinities not implimented');
+    };
+
+    /**
      * _EvaluateHermite
      * @param segment
      * @param time
@@ -12774,14 +12926,13 @@ var ccpwgl_int = (function()
 
     /**
      * _EvaluateBezier
-     * TODO: This function possibly has multiple errors
      * @param segment
      * @param time
-     * @param nextKeyTime
+     * @param nextSegmentTime
      * @returns {*}
      * @private
      */
-    Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
+    Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextSegmentTime)
     {
         var t, s;
 
@@ -12793,10 +12944,11 @@ var ccpwgl_int = (function()
         }
         else
         {
-            var poly3 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
-            var poly2 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
-            var poly1 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
-            var poly0 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
+            var poly = quat4.create();
+            poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
+            poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
+            poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
+            poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
             var roots = [];
             if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) == 1)
             {
@@ -13510,6 +13662,13 @@ var ccpwgl_int = (function()
         this.keys = [];
     }
 
+
+    Tw2QuaternionCurve.Interpolation = {
+        CONSTANT: 0,
+        SPHERICAL_LINEAR: 4
+    };
+
+
     /**
      * Initializes the Curve
      * @prototype
@@ -13681,7 +13840,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 4:
+            case Tw2QuaternionCurve.Interpolation.SPHERICAL_LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -15440,9 +15599,10 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2ParticleEmitter>} particleEmitters
      * @property {Array.<Tw2CurveSet>} curveSets
      * @property {Array} children
-     * @property {Boolean} display
-     * @property {Boolean} displayMesh
-     * @property {Boolean} displayChildren
+     * @property {Boolean} display                                      - Enables/ disables all batch accumulations
+     * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
+     * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
+     * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
      * @property {vec3} scaling
      * @property {vec3} translation
      * @property {quat4} rotation
@@ -15459,7 +15619,6 @@ var ccpwgl_int = (function()
         this.name = '';
         this.mesh = null;
 
-        this.modifier = this.NONE;
         this.NONE = 0;
         this.BILLBOARD = 1;
         this.TRANSLATE_WITH_CAMERA = 2;
@@ -15469,6 +15628,7 @@ var ccpwgl_int = (function()
         this.EVE_BOOSTER = 101;
         this.EVE_SIMPLE_HALO = 102;
         this.EVE_CAMERA_ROTATION = 103;
+        this.modifier = this.NONE;
 
         this.sortValueMultiplier = 1.0;
         this.distanceBasedScaleArg1 = 0.2;
@@ -15481,8 +15641,9 @@ var ccpwgl_int = (function()
         this.children = [];
 
         this.display = true;
-        this.displayMesh = true;
-        this.displayChildren = true;
+        this.visible = {};
+        this.visible.mesh = true;
+        this.visible.children = true;
 
         this.scaling = vec3.create([1, 1, 1]);
         this.translation = vec3.create([0, 0, 0]);
@@ -15528,7 +15689,7 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
+        }
 
         if (this.mesh !== null)
         {
@@ -15544,7 +15705,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * Gets render batches for accumulation
@@ -15559,7 +15720,7 @@ var ccpwgl_int = (function()
             return;
         }
 
-        if (this.displayMesh && this.mesh != null)
+        if (this.visible.mesh && this.mesh != null)
         {
             mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('World'));
             mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'));
@@ -15571,14 +15732,14 @@ var ccpwgl_int = (function()
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
 
-        if (this.displayChildren)
+        if (this.visible.children)
         {
             for (var i = 0; i < this.children.length; ++i)
             {
                 this.children[i].GetBatches(mode, accumulator, perObjectData);
             }
         }
-    }
+    };
 
     /**
      * Per frame update
@@ -15621,7 +15782,7 @@ var ccpwgl_int = (function()
 
     /**
      * Per frame update
-     * @param {Mat4} parentTransform
+     * @param {mat4} parentTransform
      */
     EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
     {
@@ -15669,6 +15830,7 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION:
                 {
                     var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
@@ -15688,6 +15850,7 @@ var ccpwgl_int = (function()
                     this.worldTransform[14] = z;
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION_ALIGNED:
             case this.EVE_SIMPLE_HALO:
                 {
@@ -15762,6 +15925,7 @@ var ccpwgl_int = (function()
                     }
                 }
                 break;
+
             case this.LOOK_AT_CAMERA:
                 {
                     mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
@@ -15789,9 +15953,11 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             default:
                 mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
         }
+
         for (var i = 0; i < this.children.length; ++i)
         {
             this.children[i].UpdateViewDependentData(this.worldTransform);
@@ -16567,16 +16733,19 @@ var ccpwgl_int = (function()
      * @parameter {vec3} shapeEllipsoidCenter
      * @parameter {mat4} transform
      * @parameter {Tw2AnimationController} animation
-     * @parameter {boolean} display - Toggles rendering of the whole space object
-     * @parameter {boolean} displayMesh - Toggles mesh rendering
-     * @parameter {boolean} displayChildren - toggles rendering of children
-     * @parameter {boolean} displaySprites - Toggles sprite set rendering
-     * @parameter {boolean} displayDecals - Toggles decal rendering
-     * @parameter {boolean} displaySpotlights - Toggles spotlight set rendering
-     * @parameter {boolean} displayPlanes - toggles plane set rendering
-     * @parameter {boolean} displayLines - toggles line set rendering
-     * @parameter {boolean} displayOverlays - toggles overlay effect rendering
-     * @parameter {Number} displayKillCounterValue - number of kills to show on kill counter decals
+     * @parameter {boolean} display                             - Enables/ disables all batch accumulations
+     * @parameter {{}} visible                                  - Batch accumulation options for the space object's elements
+     * @parameter {boolean} visible.mesh                        - Enables/ disables mesh batch accumulation
+     * @parameter {boolean} visible.children                    - Enables/ disables child batch accumulation
+     * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child batch accumulation
+     * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite set batch accumulation
+     * @parameter {boolean} visible.decals                      - Enables/ disables decal batch accumulation
+     * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight set batch accumulation
+     * @parameter {boolean} visible.planeSets                   - Enables/ disables plane set batch accumulation
+     * @parameter {boolean} visible.lineSets                    - Enables/ disables lines set batch accumulation
+     * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect batch accumulation
+     * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
+     * @parameter {number} killCount                            - number of kills to show on kill counter decals
      * @parameter {vec3} _tempVec
      * @parameter {Tw2PerObjectData} _perObjectData
      * @constructor
@@ -16608,16 +16777,20 @@ var ccpwgl_int = (function()
         this.animation = new Tw2AnimationController();
 
         this.display = true;
-        this.displayMesh = true;
-        this.displayChildren = true;
-        this.displayPlanes = true;
-        this.displaySpotlights = true;
-        this.displayDecals = true;
-        this.displaySprites = true;
-        this.displayOverlays = true;
-        this.displayLines = true;
+        this.visible = {};
+        this.visible.mesh = true;
+        this.visible.children = true;
+        this.visible.effectChildren = true;
+        this.visible.planeSets = true;
+        this.visible.spotlightSets = true;
+        this.visible.decals = true;
+        this.visible.spriteSets = true;
+        this.visible.overlayEffects = true;
+        this.visible.lineSets = true;
+        this.visible.killmarks = true;
 
-        this.displayKillCounterValue = 0;
+        this.killCount = 0;
+
 
         this._tempVec = vec3.create();
 
@@ -16712,7 +16885,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
 
     /**
@@ -16721,7 +16894,7 @@ var ccpwgl_int = (function()
     EveSpaceObject.prototype.ResetLod = function()
     {
         this.lod = 3;
-    }
+    };
 
     /**
      * Updates the lod
@@ -16746,7 +16919,7 @@ var ccpwgl_int = (function()
         {
             this.lod = 0;
         }
-    }
+    };
 
     /**
      * A Per frame function that updates view dependent data
@@ -16788,7 +16961,7 @@ var ccpwgl_int = (function()
         {
             this.lineSets[s].UpdateViewDependentData(this.transform);
         }
-    }
+    };
 
     /**
      * Gets render batches
@@ -16799,7 +16972,7 @@ var ccpwgl_int = (function()
     {
         if (this.display)
         {
-            if (this.displayMesh && this.mesh != null && this.lod > 0)
+            if (this.visible.mesh && this.mesh != null && this.lod > 0)
             {
                 this.mesh.GetBatches(mode, accumulator, this._perObjectData);
             }
@@ -16808,7 +16981,7 @@ var ccpwgl_int = (function()
             {
                 var i;
 
-                if (this.displaySprites)
+                if (this.visible.spriteSets)
                 {
                     for (i = 0; i < this.spriteSets.length; ++i)
                     {
@@ -16816,7 +16989,7 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displaySpotlights)
+                if (this.visible.spotlightSets)
                 {
                     for (i = 0; i < this.spotlightSets.length; ++i)
                     {
@@ -16824,7 +16997,7 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displayPlanes)
+                if (this.visible.planeSets)
                 {
                     for (i = 0; i < this.planeSets.length; ++i)
                     {
@@ -16832,15 +17005,16 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displayDecals)
+                if (this.visible.decals)
                 {
                     for (i = 0; i < this.decals.length; ++i)
                     {
-                        this.decals[i].GetBatches(mode, accumulator, this._perObjectData, this.displayKillCounterValue);
+                        var killCount = (this.visible.killmarks) ? this.killCount : 0;
+                        this.decals[i].GetBatches(mode, accumulator, this._perObjectData, killCount);
                     }
                 }
 
-                if (this.displayLines)
+                if (this.visible.lineSets)
                 {
                     for (var i = 0; i < this.lineSets.length; ++i)
                     {
@@ -16849,36 +17023,43 @@ var ccpwgl_int = (function()
                 }
             }
 
-            if (this.displayChildren)
+            if (this.visible.children)
             {
                 for (i = 0; i < this.children.length; ++i)
                 {
                     this.children[i].GetBatches(mode, accumulator, this._perObjectData);
                 }
+            }
+
+            if (this.visible.effectChildren)
+            {
                 for (i = 0; i < this.effectChildren.length; ++i)
                 {
                     this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
                 }
             }
 
-            if (this.displayOverlays && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
+            if (this.visible.overlayEffects && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
             {
                 for (i = 0; i < this.overlayEffects.length; ++i)
                 {
-                    var effects = this.overlayEffects[i].GetEffects(mode);
-                    if (effects)
+                    if (this.overlayEffects[i].display)
                     {
-                        for (var j = 0; j < effects.length; ++j)
+                        var effects = this.overlayEffects[i].GetEffects(mode);
+                        if (effects)
                         {
-                            var batch = new Tw2GeometryBatch();
-                            batch.renderMode = mode;
-                            batch.perObjectData = this._perObjectData;
-                            batch.geometryRes = this.mesh.geometryResource;
-                            batch.meshIx = this.mesh.meshIndex;
-                            batch.start = 0;
-                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                            batch.effect = effects[j];
-                            accumulator.Commit(batch);
+                            for (var j = 0; j < effects.length; ++j)
+                            {
+                                var batch = new Tw2GeometryBatch();
+                                batch.renderMode = mode;
+                                batch.perObjectData = this._perObjectData;
+                                batch.geometryRes = this.mesh.geometryResource;
+                                batch.meshIx = this.mesh.meshIndex;
+                                batch.start = 0;
+                                batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
+                                batch.effect = effects[j];
+                                accumulator.Commit(batch);
+                            }
                         }
                     }
                 }
@@ -16996,8 +17177,8 @@ var ccpwgl_int = (function()
      * @property {Array.<EveBoosterSet>} boosters
      * @property {Array.<EveTurretSet>} turretSets
      * @property {Array} _turretSetsLocatorInfo
-     * @property {boolean} displayTurrets - Toggles turret rendering
-     * @property {boolean} displayBoosters - Toggles booster rendering
+     * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+     * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
      * @inherits EveSpaceObject
      * @constructor
      */
@@ -17009,8 +17190,8 @@ var ccpwgl_int = (function()
         this.turretSets = [];
         this._turretSetsLocatorInfo = [];
 
-        this.displayTurrets = true;
-        this.displayBoosters = true;
+        this.visible.turretSets = true;
+        this.visible.boosters = true;
     }
 
     /**
@@ -17047,7 +17228,7 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
+        }
 
         this._super.GetResources.call(this, out, excludeChildren);
 
@@ -17069,7 +17250,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * Gets render batches
@@ -17085,7 +17266,7 @@ var ccpwgl_int = (function()
             this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
             this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
 
-            if (this.displayTurrets)
+            if (this.visible.turretSets)
             {
                 if (this.lod > 1)
                 {
@@ -17096,17 +17277,17 @@ var ccpwgl_int = (function()
                 }
                 else
                 {
-                    for (var i = 0; i < this.turretSets.length; ++i)
+                    for (var t = 0; t < this.turretSets.length; ++t)
                     {
-                        if (this.turretSets[i].firingEffect)
+                        if (this.turretSets[t].firingEffect)
                         {
-                            this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                            this.turretSets[t].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
                         }
                     }
                 }
             }
 
-            if (this.boosters && this.displayBoosters)
+            if (this.boosters && this.visible.boosters)
             {
                 this.boosters.GetBatches(mode, accumulator, this._perObjectData);
             }
@@ -17143,9 +17324,10 @@ var ccpwgl_int = (function()
                 }
             }
         }
-        for (var i = 0; i < this.turretSets.length; ++i)
+
+        for (var t = 0; i < this.turretSets.length; ++i)
         {
-            this.turretSets[i].Update(dt, this.transform);
+            this.turretSets[t].Update(dt, this.transform);
         }
     };
 
@@ -17159,7 +17341,7 @@ var ccpwgl_int = (function()
         {
             this.turretSets[i].UpdateViewDependentData();
         }
-    }
+    };
 
     /**
      * Rebuilds the ship's booster set
@@ -21125,7 +21307,6 @@ var ccpwgl_int = (function()
 
     /**
      * Constructor for Overlay Effects
-     * @property {boolean} display
      * @property {boolean} update
      * @property {Tw2CurveSet} curveSet
      * @property {string} name
@@ -21133,12 +21314,18 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2Effect>} decalEffects
      * @property {Array.<Tw2Effect>} transparentEffects
      * @property {Array.<Tw2Effect>} additiveEffects
-     * @property {Array.<Tw2Effect>} distortionEffects - Currently doesn't work in ccpwgl
+     * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
+     * @property {boolean} display                     - Enables/ disables all batch accumulations
+     * @property {{}} visible                          - Batch accumulation options for the overlay effect
+     * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
+     * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
+     * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
+     * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
+     * @property {boolean} visible.distortionEffects   - Currently not supported
      * @constructor
      */
     function EveMeshOverlayEffect()
     {
-        this.display = true;
         this.update = true;
         this.curveSet = null;
         this.name = '';
@@ -21147,6 +21334,14 @@ var ccpwgl_int = (function()
         this.transparentEffects = [];
         this.additiveEffects = [];
         this.distortionEffects = [];
+
+        this.display = true;
+        this.visible = {};
+        this.visible.opaqueEffects = true;
+        this.visible.decalEffects = true;
+        this.visible.transparentEffects = true;
+        this.visible.additiveEffects = true;
+        this.visible.distortionEffects = false;
     }
 
     /**
@@ -21170,18 +21365,21 @@ var ccpwgl_int = (function()
     {
         if (this.display)
         {
-            switch (mode)
+            if (mode == device.RM_OPAQUE && this.visible.opaqueEffects)
             {
-                case device.RM_OPAQUE:
-                    return this.opaqueEffects;
-                case device.RM_DECAL:
-                    return this.decalEffects;
-                case device.RM_TRANSPARENT:
-                    return this.transparentEffects;
-                case device.RM_ADDITIVE:
-                    return this.additiveEffects;
-                default:
-                    return null;
+                return this.opaqueEffects;
+            }
+            else if (mode == device.RM_TRANSPARENT && this.visible.transparentEffects)
+            {
+                return this.transparentEffects;
+            }
+            else if (mode == device.RM_ADDITIVE && this.visible.additiveEffects)
+            {
+                return this.additiveEffects;
+            }
+            else if (mode == device.RM_DECAL && this.visible.decalEffects)
+            {
+                return this.decalEffects;
             }
         }
     };
@@ -21198,24 +21396,19 @@ var ccpwgl_int = (function()
             out = [];
         }
 
-        var self = this;
-
-        function getEffectResources(effectName, out)
+        for (var type in this.visible)
         {
-            for (var i = 0; i < self[effectName].length; i++)
+            if (this.visible.hasOwnProperty(type) && this[type].length)
             {
-                self[effectName].GetResources(out);
+                for (var i = 0; i < this[type].length; i++)
+                {
+                    this[type][i].GetResources(out);
+                }
             }
         }
 
-        getEffectResources('opaqueEffects', out);
-        getEffectResources('decalEffects', out);
-        getEffectResources('transparentEffects', out);
-        getEffectResources('additiveEffects', out);
-        getEffectResources('distortionEffects', out);
-
         return out;
-    }
+    };
 
     /**
      * Mesh attachment to space object
@@ -21320,6 +21513,7 @@ var ccpwgl_int = (function()
                 this._perObjectData.perObjectVSData = new Tw2RawData();
                 this._perObjectData.perObjectVSData.Declare('world', 16);
                 this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
+                this._perObjectData.perObjectVSData.Create();
             }
             mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
             mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
@@ -21427,7 +21621,7 @@ var ccpwgl_int = (function()
     {
         for (var i = 0; i < this.warheads.length; ++i)
         {
-            this.warheads[i].UpdateViewDependentData(this.transform);
+            this.warheads[i].UpdateViewDependentData();
         }
     };
 
@@ -22618,7 +22812,7 @@ var ccpwgl_int = (function()
 
                 if (input == null)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],
@@ -22636,7 +22830,7 @@ var ccpwgl_int = (function()
 
                 if (input.elements < d.elements)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],
