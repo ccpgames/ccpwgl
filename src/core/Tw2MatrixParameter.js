@@ -39,10 +39,10 @@ Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
  * Unbinds the parameter's constant buffer
  * @prototype
  */
-Tw2MatrixParameter.prototype.UnBind()
+Tw2MatrixParameter.prototype.UnBind = function()
 {
     this.constantBuffer = null;
-}
+};
 
 /**
  * Sets a supplied value
@@ -95,4 +95,4 @@ Tw2MatrixParameter.prototype.OnValueChanged = function()
     {
         this.constantBuffer.set(this.value, this.offset);
     }
-}
+};

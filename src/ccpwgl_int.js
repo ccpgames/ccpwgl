@@ -1,4 +1,4 @@
-/* ccpwgl 2016-10-11 */
+/* ccpwgl 2016-10-24 */
 
 var ccpwgl_int = (function()
 {
@@ -15,7 +15,7 @@ var ccpwgl_int = (function()
 
     /**
      * Adds a listener to an event
-     * - The first argument of a called listener is always an event name
+     * - The first argument of a called listener is always the event name
      * - Event names are forced to lowercase
      * - Listeners can only be on an event once, unless using the 'once' method
      *
@@ -261,7 +261,18 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Tw2 Global Emitter
+     * Global emitter
+     *
+     * @emit (res.event, eventData) - Resource events (prepare, load, unload, request)
+     * @emit (res.error, eventData) - Resource errors (any resource error)
+     *
+     * @example:
+     * var myResErrorHandler = function(eventName, eventData){ .... };
+     * ccpwgl_int.emitter.on('res.error', myErrorHandler);
+     *
+     * @example:
+     * var myResEventHandler = function(eventName, eventData){ .... };
+     * ccpwgl_int.emitter.on('res.event', myResEventHandler);
      *
      * @property {string}  consolePrefix
      * @property {boolean} consoleErrors
@@ -276,7 +287,7 @@ var ccpwgl_int = (function()
     emitter.consoleDefault = 'log';
 
     /**
-     * A wrapper function that takes an event and eventData object which is turned into a console report
+     * Creates a console output from an event name and event object, then re-emits the event.
      * - The console outputs can be disabled by setting the `consoleErrors` and `consoleLogs` properties to false
      * - The event is re-emitted after any console output
      *
@@ -294,10 +305,7 @@ var ccpwgl_int = (function()
      */
     emitter.log = function(eventName, eventData)
     {
-        var args = Array.prototype.slice.call(arguments);
-        if (args.length)
-
-            var output = true;
+        var output = true;
         var logType = eventData.log;
 
         switch (logType)
@@ -351,7 +359,6 @@ var ccpwgl_int = (function()
 
         this.emit(eventName, eventData);
     };
-
     /**
      * Tw2Frustum
      * @property {Array.<quat4>} planes
@@ -534,7 +541,6 @@ var ccpwgl_int = (function()
 
     /**
      * Gets an element's array value
-     * - returns a reference
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -545,8 +551,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Gets an element's array value from the shared data array
-     * - returns a reference
+     * Gets an element's array value from the share data array
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -2492,11 +2497,10 @@ var ccpwgl_int = (function()
     }
 
     /**
-     * Bind
-     * TODO: Idenfify if @param size should be passed to the `Apply` prototype as it is currently redundant
+     * Binds the parameter to a constant buffer
      * @param {Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size=] - unused
      * @returns {boolean}
      * @prototype
      */
@@ -2512,7 +2516,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Unbind
+     * Unbinds the parameter from it's constant buffer
      * @prototype
      */
     Tw2FloatParameter.prototype.Unbind = function()
@@ -2534,10 +2538,9 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size=] - unused
      * @prototype
      */
     Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
@@ -2568,7 +2571,7 @@ var ccpwgl_int = (function()
         this.value = value;
         if (this.constantBuffer != null)
         {
-            this.constantBuffer.set(this.value, this.offset);
+            this.constantBuffer[this.offset] = this.value;
         }
     };
 
@@ -3085,7 +3088,7 @@ var ccpwgl_int = (function()
     /**
      * Tw2MatrixParameter
      * @param {string} [name='']
-     * @param {mat4|Float32Array|Array} [value=mat4.create()]
+     * @param {mat4|Float32Array|Array} [value=mat4.identity(mat4.create())]
      * @property {string} name
      * @property {mat4|Float32Array} value
      * @property {Float32Array} constantBuffer
@@ -3094,29 +3097,14 @@ var ccpwgl_int = (function()
      */
     function Tw2MatrixParameter(name, value)
     {
-        if (typeof(name) != 'undefined')
-        {
-            this.name = name;
-        }
-        else
-        {
-            this.name = '';
-        }
-        if (typeof(value) != 'undefined')
-        {
-            this.value = mat4.create(value);
-        }
-        else
-        {
-            this.value = mat4.identity(mat4.create());
-        }
+        this.name = (name !== undefined) ? name : '';
+        this.value = (value !== undefined) ? mat4.create(value) : mat4.identity(mat4.create());
         this.constantBuffer = null;
         this.offset = 0;
     }
 
     /**
-     * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
+     * Binds the parameter's value to a constant buffer
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
@@ -3132,6 +3120,15 @@ var ccpwgl_int = (function()
         this.constantBuffer = constantBuffer;
         this.offset = offset;
         this.Apply(this.constantBuffer, this.offset, size);
+    };
+
+    /**
+     * Unbinds the parameter's constant buffer
+     * @prototype
+     */
+    Tw2MatrixParameter.prototype.UnBind = function()
+    {
+        this.constantBuffer = null;
     };
 
     /**
@@ -3165,15 +3162,26 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size] - unused
      * @prototype
      */
     Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
     {
         constantBuffer.set(this.value, offset);
+    };
+
+    /**
+     * Updates the constant buffer to the current value
+     * @prototype
+     */
+    Tw2MatrixParameter.prototype.OnValueChanged = function()
+    {
+        if (this.constantBuffer !== null)
+        {
+            this.constantBuffer.set(this.value, this.offset);
+        }
     };
 
     /**
@@ -3749,7 +3757,7 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                err = e.toString();
+                err = e;
             }
 
             if (!this.gl)
@@ -17757,6 +17765,66 @@ var ccpwgl_int = (function()
     };
 
     /**
+     * Gets scene's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveSpaceScene.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.backgroundEffect)
+        {
+            this.backgroundEffect.GetResources(out);
+        }
+
+        for (var i = 0; i < this.lensflares.length; i++)
+        {
+            this.lensflares[i].GetResources(out);
+        }
+
+        function getEnvMapResource(out, envMap)
+        {
+            if (envMap !== null && out.indexOf(envMap) === -1) out.push(envMap);
+        }
+
+        getEnvMapResource(out, this.envMapRes);
+        getEnvMapResource(out, this.envMap1Res);
+        getEnvMapResource(out, this.envMap2Res);
+        getEnvMapResource(out, this.envMap3Res);
+
+        return out;
+    };
+
+    /**
+     * Gets scene's children's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveSpaceScene.prototype.GetChildResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        for (var p = 0; p < this.planets.length; p++)
+        {
+            this.planets[p].GetResources(out);
+        }
+
+        for (var i = 0; i < this.objects.length; i++)
+        {
+            this.objects[i].GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
      * Sets the environment reflection map
      * @param {String} path
      */
@@ -18344,6 +18412,41 @@ var ccpwgl_int = (function()
             EveLensflare.occludedLevelIndex = 0;
         }
     }
+
+    /**
+     * Gets lensflares's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveLensflare.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        for (var f = 0; f < this.flares.length; f++)
+        {
+            this.flares[f].GetResources(out);
+        }
+
+        for (var o = 0; o < this.occluders.length; o++)
+        {
+            this.occluders[o].GetResources(out);
+        }
+
+        for (var b = 0; b < this.backgroundOccluders.length; b++)
+        {
+            this.backgroundOccluders[b].GetResources(out);
+        }
+
+        return out;
+    };
 
     /**
      * Internal helper function
