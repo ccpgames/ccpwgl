@@ -70,7 +70,7 @@ function EveLensflare()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveLensflare.prototype.GetResources(out)
+EveLensflare.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -87,18 +87,18 @@ EveLensflare.prototype.GetResources(out)
         this.flares[f].GetResources(out);
     }
  
-    for (let o = 0; o < this.occluders.length; o++)
+    for (var o = 0; o < this.occluders.length; o++)
     {
         this.occluders[o].GetResources(out);
     }
 
-    for (let b = 0; b < this.backgroundOccluders.length; b++)
+    for (var b = 0; b < this.backgroundOccluders.length; b++)
     {
         this.backgroundOccluders[b].GetResources(out);
     }
  
     return out;
-}
+};
 
 /**
  * Internal helper function

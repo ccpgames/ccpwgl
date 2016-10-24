@@ -153,7 +153,7 @@ EveSpaceScene.prototype.Initialize = function()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceScene.prototype.GetResources(out)
+EveSpaceScene.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -181,14 +181,14 @@ EveSpaceScene.prototype.GetResources(out)
     getEnvMapResource(out, this.envMap3Res);
 
     return out;
-}
+};
 
 /**
- * Gets scene's childrens' res objects
+ * Gets scene's children's res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceScene.prototype.GetChildResources(out)
+EveSpaceScene.prototype.GetChildResources = function(out)
 {
     if (out === undefined)
     {
@@ -200,13 +200,13 @@ EveSpaceScene.prototype.GetChildResources(out)
         this.planets[p].GetResources(out);
     }
 
-    for (let i = 0; i < this.objects.length; i++)
+    for (var i = 0; i < this.objects.length; i++)
     {
         this.objects[i].GetResources(out);
     }
 
     return out;
-}
+};
 
 /**
  * Sets the environment reflection map
