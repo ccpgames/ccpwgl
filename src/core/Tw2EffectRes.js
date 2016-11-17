@@ -121,6 +121,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 type: 'shader.linkstatus',
                 data: device.gl.getProgramInfoLog(program.program)
             });
+            return null;
         }
 
         device.gl.useProgram(program.program);

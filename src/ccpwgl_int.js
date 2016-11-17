@@ -6368,6 +6368,7 @@ var ccpwgl_int = (function()
                     type: 'shader.linkstatus',
                     data: device.gl.getProgramInfoLog(program.program)
                 });
+                return null;
             }
 
             device.gl.useProgram(program.program);
