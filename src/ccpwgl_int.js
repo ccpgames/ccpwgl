@@ -1,4 +1,4 @@
-/* ccpwgl 2016-10-24 */
+/* ccpwgl 2016-11-17 */
 
 var ccpwgl_int = (function()
 {
@@ -976,15 +976,281 @@ var ccpwgl_int = (function()
         this.xmlNode = xmlNode;
         this._inputStack = null;
         this._initializeObjects = null;
-        this._ids = null;
+        this._ids = {};
+        this._reader = null;
+
+        if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) != 'binred')
+        {
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2ObjectReader', 'constructor'],
+                msg: 'Invalid Binary',
+                path: this.path,
+                type: 'redbin.invalid',
+                data: xmlNode
+            });
+            return;
+        }
+        this._reader = new Tw2BinaryReader(new Uint8Array(xmlNode));
+        this._reader.cursor += 6;
+
+        this._stringTable = [];
+        var count = this._reader.ReadUInt32();
+        for (var i = 0; i < count; ++i)
+        {
+            var len = this._reader.ReadUInt16();
+            this._stringTable.push(String.fromCharCode.apply(null, this._reader.data.subarray(this._reader.cursor, this._reader.cursor + len)));
+            this._reader.cursor += len;
+        }
+
+        this._start = this._reader.cursor;
     }
+
+    Tw2ObjectReader.ElementRawType = {
+        NULL: 0,
+        BOOL: 1,
+        INT: 2,
+        UINT: 3,
+        FLOAT: 4,
+        STRING: 5,
+        ARRAY: 6,
+        MAPPING: 7,
+        OBJECT: 8,
+        TYPED_ARRAY: 9,
+        TYPED_MAPPING: 10
+    };
+
+    Tw2ObjectReader.ElementSize = {
+        SMALL: 0,
+        MEDIUM: 1 << 4,
+        LARGE: 2 << 4
+    };
+
+    Tw2ObjectReader.ID_BIT = 1 << 6;
+    Tw2ObjectReader.REFERENCE_BIT = 1 << 7;
+
+    Tw2ObjectReader.ElementTypes = {
+        NULL: Tw2ObjectReader.ElementRawType.NULL | Tw2ObjectReader.ElementSize.SMALL,
+
+        BOOL: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.SMALL,
+        FALSE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.MEDIUM,
+        TRUE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.LARGE,
+
+        INT8: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.SMALL,
+        UINT8: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.SMALL,
+        INT16: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.MEDIUM,
+        UINT16: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.MEDIUM,
+        INT32: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.LARGE,
+        UINT32: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.LARGE,
+
+        FLOAT16: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.SMALL,
+        FLOAT32: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.MEDIUM,
+        FLOAT64: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.LARGE
+    };
+
+    Tw2ObjectReader.TypedArrays = {
+        2: Int8Array,
+        3: Uint8Array,
+        18: Int16Array,
+        19: Uint16Array,
+        34: Int32Array,
+        35: Uint32Array,
+        4: Float32Array,
+        20: Float32Array,
+        36: Float64Array
+    };
+
+
+    Tw2ObjectReader.prototype._ConstructObject = function(data)
+    {
+        if (data.type == 'json')
+        {
+            return data;
+        }
+        try
+        {
+            var object = eval("new " + data.type + "()");
+        }
+        catch (e)
+        {
+            emitter.log('res.error',
+            {
+                log: 'throw',
+                src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                msg: 'Object with undefined type',
+                type: 'xml.type',
+                value: data.type
+            });
+
+            throw new Error('YAML: object with undefined type \"' + data.type + '\"');
+        }
+        for (var k in data)
+        {
+            if (data.hasOwnProperty(k) && k != 'type')
+            {
+                object[k] = data[k];
+            }
+        }
+        if ('Initialize' in object)
+        {
+            object.Initialize();
+        }
+        return object;
+    };
+
+
+    Tw2ObjectReader.prototype._ReadUint = function(type)
+    {
+        switch (type & 0x30)
+        {
+            case Tw2ObjectReader.ElementSize.SMALL:
+                return this._reader.ReadUInt8();
+            case Tw2ObjectReader.ElementSize.MEDIUM:
+                return this._reader.ReadUInt16();
+            default:
+                return this._reader.ReadUInt32();
+        }
+    };
+
+    Tw2ObjectReader.prototype._ReadElementData = function(type)
+    {
+        var offset, i, result, count, elementType;
+        switch (type & 0xf)
+        {
+            case Tw2ObjectReader.ElementRawType.NULL:
+                return null;
+            case Tw2ObjectReader.ElementRawType.BOOL:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadUInt8() != 0;
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return false;
+                    default:
+                        return true;
+                }
+            case Tw2ObjectReader.ElementRawType.INT:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadInt8();
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return this._reader.ReadInt16();
+                    default:
+                        return this._reader.ReadInt32();
+                }
+            case Tw2ObjectReader.ElementRawType.UINT:
+                return this._ReadUint(type);
+            case Tw2ObjectReader.ElementRawType.FLOAT:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadFloat16();
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return this._reader.ReadFloat32();
+                    default:
+                        throw Error('float64 values are not yet supported');
+                }
+            case Tw2ObjectReader.ElementRawType.STRING:
+                offset = this._ReadUint(type);
+                return this._stringTable[offset];
+            case Tw2ObjectReader.ElementRawType.ARRAY:
+                count = this._ReadUint(type);
+                result = [];
+                for (i = 0; i < count; ++i)
+                    result.push(this._ReadElement());
+                return result;
+            case Tw2ObjectReader.ElementRawType.MAPPING:
+                count = this._ReadUint(type);
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+                return result;
+            case Tw2ObjectReader.ElementRawType.OBJECT:
+                count = this._ReadUint(type);
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+                return this._ConstructObject(result);
+            case Tw2ObjectReader.ElementRawType.TYPED_ARRAY:
+                count = this._ReadUint(type);
+                elementType = this._reader.ReadUInt8();
+                result = [];
+                for (i = 0; i < count; ++i)
+                    result.push(this._ReadElementData(elementType));
+                if (elementType in Tw2ObjectReader.TypedArrays)
+                {
+                    result = new Tw2ObjectReader.TypedArrays[elementType](result);
+                }
+                return result;
+            case Tw2ObjectReader.ElementRawType.TYPED_MAPPING:
+                count = this._ReadUint(type);
+                elementType = this._reader.ReadUInt8();
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElementData(elementType);
+                return result;
+        }
+    };
+
+    Tw2ObjectReader.prototype._ReadElement = function()
+    {
+        var type = this._reader.ReadUInt8();
+        if (type == Tw2ObjectReader.REFERENCE_BIT)
+        {
+            return this._ids[this._reader.ReadUInt16()];
+        }
+        var id;
+        if ((type & Tw2ObjectReader.ID_BIT) != 0)
+        {
+            id = this._reader.ReadUInt16();
+        }
+        var result = this._ReadElementData(type & 0x3F);
+        if ((type & Tw2ObjectReader.ID_BIT) != 0)
+        {
+            this._ids[id] = result;
+        }
+        return result;
+    };
+
+    Tw2ObjectReader.prototype.Construct = function()
+    {
+        this._reader.cursor = this._start;
+        return this._ReadElement();
+    };
+
 
     /**
      * Construct
      * @param initialize
      * @returns {Function}
      */
-    Tw2ObjectReader.prototype.Construct = function(initialize)
+    /*Tw2ObjectReader.prototype.Construct = function(initialize)
     {
         this._inputStack = [];
         this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
@@ -996,6 +1262,8 @@ var ccpwgl_int = (function()
             return self.ConstructFromNode(initialize, true);
         };
     };
+    */
+
 
     /**
      * ConstructFromNode
@@ -1433,7 +1701,6 @@ var ccpwgl_int = (function()
      * Inherit
      * @param derived
      * @param base
-     * @constructor
      */
     function Inherit(derived, base)
     {
@@ -1693,7 +1960,7 @@ var ccpwgl_int = (function()
      */
     Tw2LoadingObject.prototype.Prepare = function(text, xml)
     {
-        if (xml == null)
+        if (text == null)
         {
             emitter.log('res.error',
             {
@@ -1702,7 +1969,7 @@ var ccpwgl_int = (function()
                 msg: 'Invalid XML',
                 path: this.path,
                 type: 'xml.invalid',
-                data: xml
+                data: text
             });
             this.PrepareFinished(false);
             return;
@@ -1710,7 +1977,7 @@ var ccpwgl_int = (function()
 
         if (this._inPrepare === null)
         {
-            this._redContents = xml;
+            this._redContents = text;
             this._constructor = new Tw2ObjectReader(this._redContents);
             this._constructorFunction = null;
             this._inPrepare = 0;
@@ -1718,22 +1985,9 @@ var ccpwgl_int = (function()
 
         while (this._inPrepare < this._objects.length)
         {
-            if (!this._constructorFunction)
-            {
-                var initialize = this._objects[this._inPrepare]._initialize;
-                this._constructorFunction = this._constructor.Construct(initialize);
-            }
-
-            if (!this._constructorFunction())
-            {
-                return true;
-            }
-
-            this._constructorFunction = null;
-
             try
             {
-                this._objects[this._inPrepare]._loadCallback(this._constructor.result);
+                this._objects[this._inPrepare]._loadCallback(this._constructor.Construct());
             }
             catch (e)
             {
@@ -1790,7 +2044,7 @@ var ccpwgl_int = (function()
         this.systemMirror = false;
         this.resourcePaths = {};
 
-        this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1035524/';
+        this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/';
 
         this._extensions = {};
         this.motherLode = new Tw2MotherLode();
@@ -2318,6 +2572,7 @@ var ccpwgl_int = (function()
             });
 
             httpRequest.open('GET', this.BuildUrl(path));
+            httpRequest.responseType = 'arraybuffer';
             res.LoadStarted();
             obj._objectLoaded = false;
 
@@ -6061,7 +6316,8 @@ var ccpwgl_int = (function()
             }
             else
             {
-                var source = prefix + String.fromCharCode.apply(null, shaderCode);
+
+                var source = prefix + (typeof shaderCode == 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
                 source = source.substr(0, source.length - 1);
                 device.gl.shaderSource(shader, source);
                 device.gl.compileShader(shader);
@@ -6162,7 +6418,7 @@ var ccpwgl_int = (function()
         }
 
         var version = reader.ReadUInt32();
-        if (version < 2 || version > 4)
+        if (version < 2 || version > 5)
         {
             emitter.log('res.error',
             {
@@ -6178,31 +6434,73 @@ var ccpwgl_int = (function()
             return;
         }
 
-        var headerSize = reader.ReadUInt32();
-        if (headerSize == 0)
+        var headerSize, stringTableSize;
+        var stringTableOffset = 0;
+
+        if (version < 5)
         {
-            emitter.log('res.error',
+            headerSize = reader.ReadUInt32();
+            if (headerSize == 0)
             {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'File contains no compiled effects',
-                path: this.path,
-                type: 'shader.effectheadersize',
-                value: 0
-            });
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
-            this.PrepareFinished(false);
-            return;
+                this.PrepareFinished(false);
+                return;
+            }
+            /* var permutation = */
+            reader.ReadUInt32();
+            var offset = reader.ReadUInt32();
+            reader.cursor = 2 * 4 + headerSize * 3 * 4;
+            stringTableSize = reader.ReadUInt32();
+            stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+
+            reader.cursor = offset;
         }
+        else
+        {
+            stringTableSize = reader.ReadUInt32();
+            stringTableOffset = reader.cursor;
+            stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+            reader.cursor += stringTableSize;
+            var permutationCount = reader.ReadUInt8();
+            for (var perm = 0; perm < permutationCount; ++perm)
+            {
+                reader.ReadUInt32();
+                reader.ReadUInt8();
+                reader.ReadUInt32();
+                var cnt = reader.ReadUInt8();
+                for (var j = 0; j < cnt; ++j)
+                {
+                    reader.ReadUInt32();
+                }
+            }
+            headerSize = reader.ReadUInt32();
+            if (headerSize == 0)
+            {
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
-        /* var permutation = */
-        reader.ReadUInt32();
-        var offset = reader.ReadUInt32();
-        reader.cursor = 2 * 4 + headerSize * 3 * 4;
-        var stringTableSize = reader.ReadUInt32();
-        stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
-
-        reader.cursor = offset;
+                this.PrepareFinished(false);
+                return;
+            }
+            reader.ReadUInt32();
+            reader.cursor = reader.ReadUInt32();
+        }
 
         var passCount = reader.ReadUInt8();
         for (var passIx = 0; passIx < passCount; ++passIx)
@@ -6234,13 +6532,27 @@ var ccpwgl_int = (function()
                 }
                 stage.inputDefinition.RebuildHash();
 
-                var shaderSize = reader.ReadUInt32();
-                var shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
-                reader.cursor += shaderSize;
+                var shaderSize, shaderCode, shadowShaderSize, shadowShaderCode;
 
-                var shadowShaderSize = reader.ReadUInt32();
-                var shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
-                reader.cursor += shadowShaderSize;
+                if (version < 5)
+                {
+                    shaderSize = reader.ReadUInt32();
+                    shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
+                    reader.cursor += shaderSize;
+
+                    shadowShaderSize = reader.ReadUInt32();
+                    shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
+                    reader.cursor += shadowShaderSize;
+                }
+                else
+                {
+                    shaderSize = reader.ReadUInt32();
+                    var so = reader.ReadUInt32();
+                    shaderCode = stringTable.substr(so, shaderSize);
+                    shadowShaderSize = reader.ReadUInt32();
+                    so = reader.ReadUInt32();
+                    shadowShaderCode = stringTable.substr(so, shadowShaderSize);
+                }
 
                 stage.shader = CompileShader(stageType, "", shaderCode, this.path);
                 if (stage.shader == null)
@@ -6308,11 +6620,24 @@ var ccpwgl_int = (function()
 
                 var constantValueSize = reader.ReadUInt32() / 4;
                 stage.constantValues = new Float32Array(constantValueSize);
-                for (var i = 0; i < constantValueSize; ++i)
+                if (version < 5)
                 {
-                    stage.constantValues[i] = reader.ReadFloat32();
+                    for (var i = 0; i < constantValueSize; ++i)
+                    {
+                        stage.constantValues[i] = reader.ReadFloat32();
+                    }
                 }
-
+                else
+                {
+                    var co = reader.ReadUInt32();
+                    var bo = reader.cursor;
+                    reader.cursor = stringTableOffset + co;
+                    for (var i = 0; i < constantValueSize; ++i)
+                    {
+                        stage.constantValues[i] = reader.ReadFloat32();
+                    }
+                    reader.cursor = bo;
+                }
                 stage.constantSize = Math.max(stage.constantSize, constantValueSize);
 
                 var textureCount = reader.ReadUInt8();
@@ -16796,6 +17121,7 @@ var ccpwgl_int = (function()
         this.visible.overlayEffects = true;
         this.visible.lineSets = true;
         this.visible.killmarks = true;
+        this._customMasks = [];
 
         this.killCount = 0;
 
@@ -16810,6 +17136,10 @@ var ccpwgl_int = (function()
         this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
         this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
         this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
         this._perObjectData.perObjectVSData.Declare('JointMat', 696);
         this._perObjectData.perObjectVSData.Create();
 
@@ -16818,13 +17148,19 @@ var ccpwgl_int = (function()
         this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
         this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
         this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        this._perObjectData.perObjectPSData.Declare('customMaskMatrix', 16);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
         this._perObjectData.perObjectPSData.Create();
 
         this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
         this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
         this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
         this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
     }
 
     /**
@@ -16929,6 +17265,26 @@ var ccpwgl_int = (function()
         }
     };
 
+    EveSpaceObject.prototype.AddCustomMask = function(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
+    {
+        var transform = mat4.create();
+
+        mat4.scale(mat4.transpose(quat4.toMat4(rotation, transform)), scaling);
+        transform[12] = position[0];
+        transform[13] = position[1];
+        transform[14] = position[2];
+        mat4.inverse(transform, transform);
+        mat4.transpose(transform, transform);
+
+        this._customMasks.push(
+        {
+            transform: transform,
+            maskData: quat4.create([1, isMirrored ? 1 : 0, 0, 0]),
+            materialID: quat4.create([sourceMaterial, 0, 0, 0]),
+            targets: targetMaterials
+        });
+    };
+
     /**
      * A Per frame function that updates view dependent data
      */
@@ -16958,6 +17314,15 @@ var ccpwgl_int = (function()
             vec3.scale(center, 0.5 * 1.732050807);
             vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
             vec3.scale(radii, 0.5);
+        }
+
+
+        for (i = 0; i < this._customMasks.length; ++i)
+        {
+            this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this._customMasks[i].transform);
+            this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskData1' : 'CustomMaskData0', this._customMasks[i].maskData);
+            this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this._customMasks[i].materialID);
+            this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', this._customMasks[i].targets);
         }
 
         if (this.animation.animations.length)
@@ -17094,7 +17459,7 @@ var ccpwgl_int = (function()
             }
             for (i = 0; i < this.effectChildren.length; ++i)
             {
-                this.effectChildren[i].Update(this.transform);
+                this.effectChildren[i].Update(this.transform, dt);
             }
             for (i = 0; i < this.curveSets.length; ++i)
             {
@@ -17333,9 +17698,9 @@ var ccpwgl_int = (function()
             }
         }
 
-        for (var t = 0; i < this.turretSets.length; ++i)
+        for (i = 0; i < this.turretSets.length; ++i)
         {
-            this.turretSets[t].Update(dt, this.transform);
+            this.turretSets[i].Update(dt, this.transform);
         }
     };
 
@@ -19012,11 +19377,11 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * EveEffectRoot
+     * EveEffectRoot root objects for FX, can be put into scene's objects array
      * @property {string} name
      * @property {boolean} display
-     * @property {EveTransform|EveStretch|EveTransform} highDetail
-     * @property {boolean} isPlaying
+     * @property {[{}]} curveSets
+     * @property {[{}]} effectChildren
      * @property {vec3} scaling
      * @property {quat4} rotation
      * @property {vec3} translation
@@ -19032,27 +19397,46 @@ var ccpwgl_int = (function()
     {
         this.name = '';
         this.display = true;
-        this.highDetail = null;
-        this.isPlaying = false;
-        this.duration = 0;
+
+        this.curveSets = [];
         this.boundingSphereCenter = vec3.create();
         this.boundingSphereRadius = 0;
 
         this.scaling = vec3.create([1, 1, 1]);
         this.rotation = quat4.create([0, 0, 0, 1]);
         this.translation = vec3.create();
+
+        this.duration = 0;
+
+        this.effectChildren = [];
+
         this.localTransform = mat4.identity(mat4.create());
         this.rotationTransform = mat4.create();
 
         this._perObjectData = new Tw2PerObjectData();
         this._perObjectData.perObjectVSData = new Tw2RawData();
         this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
         this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
         this._perObjectData.perObjectVSData.Declare('JointMat', 696);
         this._perObjectData.perObjectVSData.Create();
 
         this._perObjectData.perObjectPSData = new Tw2RawData();
         this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
         this._perObjectData.perObjectPSData.Create();
     }
 
@@ -19066,15 +19450,14 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
-
-        if (this.highDetail !== null)
-        {
-            this.highDetail.GetResources(out);
         }
 
+        for (var i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].GetResources(out);
+        }
         return out;
-    }
+    };
 
     /**
      * Internal per frame update
@@ -19082,17 +19465,21 @@ var ccpwgl_int = (function()
      */
     EveEffectRoot.prototype.Update = function(dt)
     {
-        if (this.highDetail)
-        {
-            this.highDetail.Update(dt);
-        }
-
         mat4.identity(this.localTransform);
         mat4.translate(this.localTransform, this.translation);
         mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
         mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
         mat4.scale(this.localTransform, this.scaling);
-    }
+
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Update(dt);
+        }
+        for (i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].Update(this.localTransform, dt);
+        }
+    };
 
     /**
      * Gets render batches
@@ -19101,38 +19488,37 @@ var ccpwgl_int = (function()
      */
     EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
     {
-        if (!this.display || !this.isPlaying || !this.highDetail)
+        if (!this.display)
         {
             return;
         }
-
-        this.highDetail.UpdateViewDependentData(this.localTransform);
-        mat4.transpose(this.localTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-        this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
-    }
+        for (var i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+    };
 
     /**
      * Starts playing the effectRoot's curveSets if they exist
      */
     EveEffectRoot.prototype.Start = function()
     {
-        if (this.highDetail)
+        for (var i = 0; i < this.curveSets.length; ++i)
         {
-            this.isPlaying = true;
-            for (var i = 0; i < this.highDetail.curveSets.length; ++i)
-            {
-                this.highDetail.curveSets[i].Play();
-            }
+            this.curveSets[i].Play();
         }
-    }
+    };
 
     /**
      * Stops the effectRoot's curveSets from playing
      */
     EveEffectRoot.prototype.Stop = function()
     {
-        this.isPlaying = false;
-    }
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Stop();
+        }
+    };
 
     /**
      * EveStretch
@@ -19666,22 +20052,6 @@ var ccpwgl_int = (function()
             return defaultValue;
         }
 
-        function GetFactionMeshAreaParameters(areaName, paramName, faction)
-        {
-            var areas = _get(faction, 'areas',
-            {});
-            if (areaName in areas)
-            {
-                var area = _get(areas, areaName,
-                {});
-                if (paramName in _get(area, 'parameters',
-                    {}))
-                {
-                    return _get(area.parameters[paramName], 'value', [0, 0, 0, 0]);
-                }
-            }
-        }
-
         /**
          * @return {string}
          */
@@ -19742,33 +20112,75 @@ var ccpwgl_int = (function()
             return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
         }
 
-        function GetOverridenParameter(name, area, commands)
+        function FindPrefix(prefixes, name)
         {
+            for (var m = 0; m < prefixes.length; ++m)
+            {
+                if (name.substr(0, prefixes[m].length) == prefixes[m])
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+        function GetOverridenParameter(name, area, commands, race)
+        {
+            var prefixes, materialIndex, materialData, shortName;
             if ('mesh' in commands)
             {
-                var prefixes = data.generic.materialPrefixes;
-                var materialIndex = null;
-                for (var m = 0; m < prefixes.length; ++m)
-                {
-                    if (name.substr(0, prefixes[m].length) == prefixes[m])
-                    {
-                        materialIndex = m;
-                        break;
-                    }
-                }
+                prefixes = data.generic.materialPrefixes;
+                materialIndex = FindPrefix(prefixes, name);
                 if (materialIndex !== null && materialIndex < commands.mesh.length && (_get(area, 'blockedMaterials', 0) & (1 << materialIndex)) == 0)
                 {
-                    var materialData = _get(data.material, commands.mesh[materialIndex], null);
+                    materialData = _get(data.material, commands.mesh[materialIndex], null);
                     if (materialData)
                     {
-                        var shortName = name.substr(prefixes[m].length);
+                        shortName = name.substr(prefixes[materialIndex].length);
                         return _get(materialData.parameters, shortName, undefined);
                     }
                 }
             }
+            prefixes = data.generic.patternMaterialPrefixes;
+            materialIndex = FindPrefix(prefixes, name);
+            if ('pattern' in commands)
+            {
+                if (materialIndex !== null && 1 + materialIndex < commands.pattern.length)
+                {
+                    materialData = _get(data.material, commands.pattern[1 + materialIndex], null);
+                    if (materialData)
+                    {
+                        shortName = name.substr(prefixes[materialIndex].length);
+                        return _get(materialData.parameters, shortName, undefined);
+                    }
+                }
+            }
+
+            if (materialIndex !== null)
+            {
+                materialData = _get(data.material, race.defaultPatternLayer1MaterialName, null);
+                if (materialData)
+                {
+                    shortName = name.substr(prefixes[materialIndex].length);
+                    return _get(materialData.parameters, shortName, undefined);
+                }
+            }
         }
 
-        function FillMeshAreas(areas, areasName, hull, faction, race, commands, shaderOverride)
+        function GetAddressMode(projectionType)
+        {
+            switch (projectionType)
+            {
+                case 2:
+                    return 4;
+                case 1:
+                    return 3;
+                default:
+                    return 1;
+            }
+        }
+
+        function FillMeshAreas(areas, areasName, hull, faction, race, pattern, commands, shaderOverride)
         {
             var hullAreas = _get(hull, areasName, []);
             for (var i = 0; i < hullAreas.length; ++i)
@@ -19781,7 +20193,7 @@ var ccpwgl_int = (function()
                 for (var j = 0; j < names.length; ++j)
                 {
                     var name = names[j];
-                    var param = GetOverridenParameter(name, area, commands);
+                    var param = GetOverridenParameter(name, area, commands, race);
                     param = param || _get(_get(_get(data.generic.hullAreas, area.name,
                     {}), 'parameters',
                     {}), name);
@@ -19802,9 +20214,40 @@ var ccpwgl_int = (function()
                 var hullTextures = _get(area, 'textures', []);
                 for (j in hullTextures)
                 {
-                    var path = hullTextures[j];
-                    path = ModifyTextureResPath(path, j, area, faction, commands);
-                    effect.parameters[j] = new Tw2TextureParameter(j, path);
+                    if (hullTextures.hasOwnProperty(j))
+                    {
+                        var path = hullTextures[j];
+                        path = ModifyTextureResPath(path, j, area, faction, commands);
+                        effect.parameters[j] = new Tw2TextureParameter(j, path);
+                    }
+                }
+
+                for (j = 0; j < pattern.layers.length; ++j)
+                {
+                    if (pattern.layers[j] && !(pattern.layers[j].textureName in effect.parameters))
+                    {
+                        var patternTex = new Tw2TextureParameter(pattern.layers[j].textureName);
+                        patternTex.resourcePath = pattern.layers[j].textureResFilePath;
+                        patternTex.useAllOverrides = true;
+                        patternTex.addressUMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeU', 0));
+                        patternTex.addressVMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeV', 0));
+                        patternTex.Initialize();
+                        effect.parameters[pattern.layers[j].textureName] = patternTex;
+                    }
+                }
+
+                var defaultTextures = _get(_get(data['generic']['areaShaders'], area.shader,
+                {}), 'defaultTextures',
+                {});
+                for (var texName in defaultTextures)
+                {
+                    if (defaultTextures.hasOwnProperty(texName))
+                    {
+                        if (!(texName in effect.parameters))
+                        {
+                            effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                        }
+                    }
                 }
 
                 effect.Initialize();
@@ -19819,7 +20262,7 @@ var ccpwgl_int = (function()
 
         }
 
-        function SetupMesh(ship, hull, faction, race, commands)
+        function SetupMesh(ship, hull, faction, race, commands, pattern)
         {
             var mesh = new Tw2Mesh();
             mesh.geometryResPath = hull['geometryResFilePath'];
@@ -19827,11 +20270,11 @@ var ccpwgl_int = (function()
             ship.boundingSphereCenter[1] = hull.boundingSphere[1];
             ship.boundingSphereCenter[2] = hull.boundingSphere[2];
             ship.boundingSphereRadius = hull.boundingSphere[3];
-            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, commands);
+            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, pattern, commands);
             mesh.Initialize();
             ship.mesh = mesh;
             if ('shapeEllipsoidCenter' in hull)
@@ -19841,6 +20284,103 @@ var ccpwgl_int = (function()
             if ('shapeEllipsoidRadius' in hull)
             {
                 ship.shapeEllipsoidRadius = hull.shapeEllipsoidRadius;
+            }
+        }
+
+        function SetupPattern(hull, race, commands)
+        {
+            var pattern = {
+                patterns: [],
+                layers: []
+            };
+            if ('pattern' in commands)
+            {
+                var p = {};
+                for (var k = 0; k < data.pattern.length; ++k)
+                {
+                    if (data.pattern[k].name == commands.pattern[0])
+                    {
+                        p = data.pattern[k];
+                        break;
+                    }
+                }
+                var layer = _get(p, 'layer1', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                layer = _get(p, 'layer2', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                var projections = _get(p, 'projections', []);
+                for (var i = 0; i < projections.length; ++i)
+                {
+                    if (projections[i].name == hull.name)
+                    {
+                        p = projections[i];
+                        layer = _get(p, 'transformLayer1', null);
+                        if (layer)
+                        {
+                            pattern.patterns.push(layer)
+                        }
+                        layer = _get(p, 'transformLayer2', null);
+                        if (layer)
+                        {
+                            pattern.patterns.push(layer)
+                        }
+                    }
+                }
+            }
+            else if (_get(hull, 'defaultPattern'))
+            {
+                p = _get(hull, 'defaultPattern',
+                {});
+                layer = _get(p, 'transformLayer1', null);
+                if (layer)
+                {
+                    pattern.patterns.push(layer)
+                }
+                layer = _get(p, 'transformLayer2', null);
+                if (layer)
+                {
+                    pattern.patterns.push(layer)
+                }
+                p = _get(race, 'defaultPattern',
+                {});
+                layer = _get(p, 'layer1', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                layer = _get(p, 'layer2', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+            }
+            return pattern;
+        }
+
+        function SetupCustomMasks(ship, pattern)
+        {
+            for (var i = 0; i < pattern.patterns.length; ++i)
+            {
+                if (pattern.patterns[i] && pattern.layers[i])
+                {
+                    var p = pattern.patterns[i];
+                    var l = pattern.layers[i];
+                    ship.AddCustomMask(
+                        _get(p, 'position', vec3.create([0, 0, 0])),
+                        _get(p, 'scaling', vec3.create([1, 1, 1])),
+                        _get(p, 'rotation', quat4.create([0, 0, 0, 1])),
+                        _get(p, 'isMirrored', false),
+                        _get(l, 'materialSource', 0),
+                        quat4.create([_get(l, 'isTargetMtl1', true) ? 1 : 0, _get(l, 'isTargetMtl2', true) ? 1 : 0,
+                            _get(l, 'isTargetMtl3', true) ? 1 : 0, _get(l, 'isTargetMtl4', true) ? 1 : 0
+                        ]));
+                }
             }
         }
 
@@ -19877,13 +20417,19 @@ var ccpwgl_int = (function()
                 {});
                 for (var j in hullParameters)
                 {
-                    effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                    if (hullParameters.hasOwnProperty(j))
+                    {
+                        effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                    }
                 }
                 var hullTextures = _get(hullDecal, 'textures',
                 {});
                 for (j in hullTextures)
                 {
-                    effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                    if (hullTextures.hasOwnProperty(j))
+                    {
+                        effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                    }
                 }
                 if (factionDecal)
                 {
@@ -19891,18 +20437,36 @@ var ccpwgl_int = (function()
                     {});
                     for (j in factionParameters)
                     {
-                        effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                        if (factionParameters.hasOwnProperty(j))
+                        {
+                            effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                        }
                     }
                     var factionTextures = _get(factionDecal, 'textures',
                     {});
                     for (j in factionTextures)
                     {
-                        if (!(j in effect.parameters))
+                        if (factionTextures.hasOwnProperty(j) && !(j in effect.parameters))
                         {
                             effect.parameters[j] = new Tw2TextureParameter(j, factionTextures[j]);
                         }
                     }
                 }
+
+                var defaultTextures = _get(_get(data['generic']['decalShaders'], hullDecal.shader,
+                {}), 'defaultTextures',
+                {});
+                for (var texName in defaultTextures)
+                {
+                    if (defaultTextures.hasOwnProperty(texName))
+                    {
+                        if (!(texName in effect.parameters))
+                        {
+                            effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                        }
+                    }
+                }
+
                 effect.Initialize();
 
                 var decal = new EveSpaceObjectDecal();
@@ -19933,7 +20497,7 @@ var ccpwgl_int = (function()
                 mesh.geometryResPath = him.geometryResPath;
                 mesh.Initialize();
 
-                FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands, him.shader);
+                FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands, him.shader);
 
                 var child = new EveChildMesh();
                 child.mesh = mesh;
@@ -20320,7 +20884,9 @@ var ccpwgl_int = (function()
             var faction = data['faction'][parts[1]];
             var race = data['race'][parts[2]];
             var ship = new(_get(hull, 'buildClass', 0) == 2 ? EveSpaceObject : EveShip)();
-            SetupMesh(ship, hull, faction, race, commands);
+            var pattern = SetupPattern(hull, race, commands);
+            SetupMesh(ship, hull, faction, race, commands, pattern);
+            SetupCustomMasks(ship, pattern);
             SetupDecals(ship, hull, faction);
             SetupSpriteSets(ship, hull, faction);
             SetupSpotlightSets(ship, hull, faction);
@@ -20464,21 +21030,24 @@ var ccpwgl_int = (function()
                 var params = turretSet.turretEffect.parameters;
                 for (var i in params)
                 {
-                    if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype)
+                    if (params.hasOwnProperty(i))
                     {
-                        continue;
+                        if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype)
+                        {
+                            continue;
+                        }
+                        var parentValue = null;
+                        var turretValue = null;
+                        if (parentArea)
+                        {
+                            parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                        }
+                        if (turretArea)
+                        {
+                            turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                        }
+                        quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
                     }
-                    var parentValue = null;
-                    var turretValue = null;
-                    if (parentArea)
-                    {
-                        parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                    }
-                    if (turretArea)
-                    {
-                        turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                    }
-                    quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
                 }
                 turretSet.turretEffect.BindParameters();
             }
@@ -20514,7 +21083,10 @@ var ccpwgl_int = (function()
                 var names = {};
                 for (var i in data[name])
                 {
-                    names[i] = data[name][i].description || '';
+                    if (data[name].hasOwnProperty(i))
+                    {
+                        names[i] = data[name][i].description || '';
+                    }
                 }
                 return names;
             }
@@ -21529,7 +22101,7 @@ var ccpwgl_int = (function()
      * @property {mat4} worldTransformLast
      * @property {Tw2Mesh} mesh
      * @property {boolean} isEffectChild
-     * @property {Tw2PerObjectData} _perObjectData
+     * @property {Tw2PerObjectData|EveBasicPerObjectData} _perObjectData
      * @constructor
      */
     function EveChildMesh()
@@ -21569,7 +22141,7 @@ var ccpwgl_int = (function()
             mat4.scale(this.localTransform, this.scaling);
         }
         mat4.set(this.worldTransform, this.worldTransformLast);
-        mat4.multiply(this.localTransform, parentTransform, this.worldTransform)
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform)
     };
 
 
@@ -21612,14 +22184,14 @@ var ccpwgl_int = (function()
         {
             if (!this._perObjectData)
             {
-                this._perObjectData = new Tw2PerObjectData();
-                this._perObjectData.perObjectVSData = new Tw2RawData();
-                this._perObjectData.perObjectVSData.Declare('world', 16);
-                this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
-                this._perObjectData.perObjectVSData.Create();
+                this._perObjectData = new EveBasicPerObjectData();
+                this._perObjectData.perObjectFFEData = new Tw2RawData();
+                this._perObjectData.perObjectFFEData.Declare('world', 16);
+                this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+                this._perObjectData.perObjectFFEData.Create();
             }
-            mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
-            mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
+            mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+            mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
         }
 
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
@@ -21646,7 +22218,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * "Complex" explosion object. Not implemented.
@@ -21673,6 +22245,356 @@ var ccpwgl_int = (function()
      */
     EveChildExplosion.prototype.GetBatches = function(mode, accumulator, perObjectData) {};
 
+    /**
+     * Mesh attachment to space object and oriented towards the camera
+     * @property {string} name
+     * @property {boolean} display
+     * @property {Number} lowestLodVisible
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {Tw2Mesh} mesh
+     * @property {boolean} isEffectChild
+     * @property {EveBasicPerObjectData} _perObjectData
+     * @constructor
+     */
+    function EveChildBillboard()
+    {
+        this.name = '';
+        this.display = true;
+        this.mesh = null;
+
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.staticTransform = false;
+
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.lowestLodVisible = 2;
+        this.useSRT = true;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+
+        this.isEffectChild = true;
+
+        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData.perObjectFFEData = new Tw2RawData();
+        this._perObjectData.perObjectFFEData.Declare('world', 16);
+        this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+        this._perObjectData.perObjectFFEData.Create();
+    }
+
+    /**
+     * Updates mesh transform
+     * @param {mat4} parentTransform
+     */
+    EveChildBillboard.prototype.Update = function(parentTransform)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        var invView = mat4.create();
+        mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
+        mat4.transpose(invView);
+
+        var finalScale = vec3.create();
+        vec3.set(this.scaling, finalScale);
+        var parentScaleX = vec3.length(parentTransform);
+        var parentScaleY = vec3.length(parentTransform.subarray(4));
+        var parentScaleZ = vec3.length(parentTransform.subarray(8));
+        finalScale[0] *= parentScaleX;
+        finalScale[1] *= parentScaleY;
+        finalScale[2] *= parentScaleZ;
+
+        this.worldTransform[0] = invView[0] * finalScale[0];
+        this.worldTransform[1] = invView[1] * finalScale[0];
+        this.worldTransform[2] = invView[2] * finalScale[0];
+        this.worldTransform[4] = invView[4] * finalScale[1];
+        this.worldTransform[5] = invView[5] * finalScale[1];
+        this.worldTransform[6] = invView[6] * finalScale[1];
+        this.worldTransform[8] = invView[8] * finalScale[2];
+        this.worldTransform[9] = invView[9] * finalScale[2];
+        this.worldTransform[10] = invView[10] * finalScale[2];
+    };
+
+
+    /**
+     * Gets render batches
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     */
+    EveChildBillboard.prototype.GetBatches = function(mode, accumulator)
+    {
+        if (!this.display || !this.mesh)
+        {
+            return;
+        }
+        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
+
+        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildBillboard.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
+     * Particle system attachment to space object
+     * @property {string} name
+     * @property {boolean} display
+     * @property {Number} lowestLodVisible
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {Tw2Mesh} mesh
+     * @property {[{]} particleEmitters
+     * @property {[Tw2ParticleSystem]} particleSystems
+     * @property {boolean} isEffectChild
+     * @property {EveBasicPerObjectData} _perObjectData
+     * @constructor
+     */
+    function EveChildParticleSystem()
+    {
+        this.name = '';
+        this.display = true;
+        this.lowestLodVisible = 2;
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.useSRT = true;
+        this.staticTransform = false;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+        this.mesh = null;
+
+        this.particleEmitters = [];
+        this.particleSystems = [];
+
+        this.isEffectChild = true;
+
+        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData.perObjectFFEData = new Tw2RawData();
+        this._perObjectData.perObjectFFEData.Declare('world', 16);
+        this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+        this._perObjectData.perObjectFFEData.Create();
+    }
+
+    /**
+     * Updates object transform and ticks particle systems and emitters
+     * @param {mat4} parentTransform
+     * @param {Number} dt
+     */
+    EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        for (var i = 0; i < this.particleEmitters.length; ++i)
+        {
+            this.particleEmitters[i].Update(dt);
+        }
+        for (i = 0; i < this.particleSystems.length; ++i)
+        {
+            this.particleSystems[i].Update(dt);
+        }
+    };
+
+
+    /**
+     * Gets render batches
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     */
+    EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
+    {
+        if (!this.display || !this.mesh)
+        {
+            return;
+        }
+        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
+
+        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildParticleSystem.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
+     * Container for other child effects
+     * @property {string} name
+     * @property {boolean} display
+     * @parameter {Array.<{}>} objects
+     * @parameter {Array.<{}>} curveSets
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {boolean} isEffectChild
+     * @constructor
+     */
+    function EveChildContainer()
+    {
+        this.name = '';
+        this.display = true;
+        this.objects = [];
+        this.curveSets = [];
+
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.useSRT = true;
+        this.staticTransform = false;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+
+        this.isEffectChild = true;
+    }
+
+    /**
+     * Updates container transform, curve sets and all children
+     * @param {mat4} parentTransform
+     * @param {Number} dt
+     */
+    EveChildContainer.prototype.Update = function(parentTransform, dt)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Update(dt);
+        }
+        for (i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].Update(this.worldTransform, dt);
+        }
+    };
+
+
+    /**
+     * Gets render batches from children
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     * @param {Tw2PerObjectData} perObjectData
+     */
+    EveChildContainer.prototype.GetBatches = function(mode, accumulator, perObjectData)
+    {
+        if (!this.display)
+        {
+            return;
+        }
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].GetBatches(mode, accumulator, perObjectData);
+        }
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildContainer.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].GetResources(out);
+        }
+        return out;
+    };
     /**
      * EveMissile
      * @property {String} name

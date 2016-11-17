@@ -79,6 +79,7 @@ function EveSpaceObject()
     this.visible.overlayEffects = true;
     this.visible.lineSets = true;
     this.visible.killmarks = true;
+    this._customMasks = [];
 
     this.killCount = 0;
 
@@ -93,6 +94,10 @@ function EveSpaceObject()
     this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
     this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
     this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
     this._perObjectData.perObjectVSData.Declare('JointMat', 696);
     this._perObjectData.perObjectVSData.Create();
 
@@ -101,13 +106,19 @@ function EveSpaceObject()
     this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
     this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
     this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-    this._perObjectData.perObjectPSData.Declare('customMaskMatrix', 16);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
     this._perObjectData.perObjectPSData.Create();
 
     this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
     this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
     this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
     this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+
+    mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
+    mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
 }
 
 /**
@@ -212,6 +223,21 @@ EveSpaceObject.prototype.UpdateLod = function(frustum)
     }
 };
 
+EveSpaceObject.prototype.AddCustomMask = function (position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
+{
+    var transform = mat4.create();
+
+    mat4.scale(mat4.transpose(quat4.toMat4(rotation, transform)), scaling);
+    transform[12] = position[0];
+    transform[13] = position[1];
+    transform[14] = position[2];
+    mat4.inverse(transform, transform);
+    mat4.transpose(transform, transform);
+
+    this._customMasks.push({transform: transform, maskData: quat4.create([1, isMirrored ? 1 : 0, 0, 0]),
+        materialID: quat4.create([sourceMaterial, 0, 0, 0]), targets: targetMaterials});
+};
+
 /**
  * A Per frame function that updates view dependent data
  */
@@ -241,6 +267,15 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
         vec3.scale(center, 0.5 * 1.732050807);
         vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
         vec3.scale(radii, 0.5);
+    }
+
+
+    for (i = 0; i < this._customMasks.length; ++i)
+    {
+        this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this._customMasks[i].transform);
+        this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskData1' : 'CustomMaskData0', this._customMasks[i].maskData);
+        this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this._customMasks[i].materialID);
+        this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', this._customMasks[i].targets);
     }
 
     if (this.animation.animations.length)
@@ -377,7 +412,7 @@ EveSpaceObject.prototype.Update = function(dt)
         }
         for (i = 0; i < this.effectChildren.length; ++i)
         {
-            this.effectChildren[i].Update(this.transform);
+            this.effectChildren[i].Update(this.transform, dt);
         }
         for (i = 0; i < this.curveSets.length; ++i)
         {

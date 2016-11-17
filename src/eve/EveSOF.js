@@ -9,16 +9,6 @@ function EveSOF() {
         return defaultValue;
     }
 
-    function GetFactionMeshAreaParameters(areaName, paramName, faction) {
-        var areas = _get(faction, 'areas', {});
-        if (areaName in areas) {
-            var area = _get(areas, areaName, {});
-            if (paramName in _get(area, 'parameters', {})) {
-                return _get(area.parameters[paramName], 'value', [0, 0, 0, 0]);
-            }
-        }
-    }
-
     /**
      * @return {string}
      */
@@ -71,33 +61,75 @@ function EveSOF() {
         return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
     }
 
-    function GetOverridenParameter(name, area, commands)
+    function FindPrefix(prefixes, name)
     {
+        for (var m = 0; m < prefixes.length; ++m)
+        {
+            if (name.substr(0, prefixes[m].length) == prefixes[m])
+            {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    function GetOverridenParameter(name, area, commands, race)
+    {
+        var prefixes, materialIndex, materialData, shortName;
         if ('mesh' in commands)
         {
-            var prefixes = data.generic.materialPrefixes;
-            var materialIndex = null;
-            for (var m = 0; m < prefixes.length; ++m)
-            {
-                if (name.substr(0, prefixes[m].length) == prefixes[m])
-                {
-                    materialIndex = m;
-                    break;
-                }
-            }
+            prefixes = data.generic.materialPrefixes;
+            materialIndex = FindPrefix(prefixes, name);
             if (materialIndex !== null && materialIndex < commands.mesh.length && (_get(area, 'blockedMaterials', 0) & (1 << materialIndex)) == 0)
             {
-                var materialData = _get(data.material, commands.mesh[materialIndex], null);
+                materialData = _get(data.material, commands.mesh[materialIndex], null);
                 if (materialData)
                 {
-                    var shortName = name.substr(prefixes[m].length);
+                    shortName = name.substr(prefixes[materialIndex].length);
                     return _get(materialData.parameters, shortName, undefined);
                 }
             }
         }
+        prefixes = data.generic.patternMaterialPrefixes;
+        materialIndex = FindPrefix(prefixes, name);
+        if ('pattern' in commands)
+        {
+            if (materialIndex !== null && 1 + materialIndex < commands.pattern.length)
+            {
+                materialData = _get(data.material, commands.pattern[1 + materialIndex], null);
+                if (materialData)
+                {
+                    shortName = name.substr(prefixes[materialIndex].length);
+                    return _get(materialData.parameters, shortName, undefined);
+                }
+            }
+        }
+
+        if (materialIndex !== null)
+        {
+            materialData = _get(data.material, race.defaultPatternLayer1MaterialName, null);
+            if (materialData)
+            {
+                shortName = name.substr(prefixes[materialIndex].length);
+                return _get(materialData.parameters, shortName, undefined);
+            }
+        }
     }
 
-    function FillMeshAreas(areas, areasName, hull, faction, race, commands, shaderOverride) {
+    function GetAddressMode(projectionType)
+    {
+        switch (projectionType)
+        {
+            case 2:
+                return 4;
+            case 1:
+                return 3;
+            default:
+                return 1;
+        }
+    }
+
+    function FillMeshAreas(areas, areasName, hull, faction, race, pattern, commands, shaderOverride) {
         var hullAreas = _get(hull, areasName, []);
         for (var i = 0; i < hullAreas.length; ++i) {
             var area = hullAreas[i];
@@ -106,7 +138,7 @@ function EveSOF() {
             var names = _get(_get(data['generic']['areaShaders'], area.shader, {}), 'parameters', []);
             for (var j = 0; j < names.length; ++j) {
                 var name = names[j];
-                var param = GetOverridenParameter(name, area, commands);
+                var param = GetOverridenParameter(name, area, commands, race);
                 param = param || _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(race.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(faction.areas, area.name, {}), 'parameters', {}), name);
@@ -118,9 +150,38 @@ function EveSOF() {
 
             var hullTextures = _get(area, 'textures', []);
             for (j in hullTextures) {
-                var path = hullTextures[j];
-                path = ModifyTextureResPath(path, j, area, faction, commands);
-                effect.parameters[j] = new Tw2TextureParameter(j, path);
+                if (hullTextures.hasOwnProperty(j))
+                {
+                    var path = hullTextures[j];
+                    path = ModifyTextureResPath(path, j, area, faction, commands);
+                    effect.parameters[j] = new Tw2TextureParameter(j, path);
+                }
+            }
+
+            for (j = 0; j < pattern.layers.length; ++j)
+            {
+                if (pattern.layers[j] && !(pattern.layers[j].textureName in effect.parameters))
+                {
+                    var patternTex = new Tw2TextureParameter(pattern.layers[j].textureName);
+                    patternTex.resourcePath = pattern.layers[j].textureResFilePath;
+                    patternTex.useAllOverrides = true;
+                    patternTex.addressUMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeU', 0));
+                    patternTex.addressVMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeV', 0));
+                    patternTex.Initialize();
+                    effect.parameters[pattern.layers[j].textureName] = patternTex;
+                }
+            }
+
+            var defaultTextures = _get(_get(data['generic']['areaShaders'], area.shader, {}), 'defaultTextures', {});
+            for (var texName in defaultTextures)
+            {
+                if (defaultTextures.hasOwnProperty(texName))
+                {
+                    if (!(texName in effect.parameters))
+                    {
+                        effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                    }
+                }
             }
 
             effect.Initialize();
@@ -134,18 +195,18 @@ function EveSOF() {
         }
 
     }
-    function SetupMesh(ship, hull, faction, race, commands) {
+    function SetupMesh(ship, hull, faction, race, commands, pattern) {
         var mesh = new Tw2Mesh();
         mesh.geometryResPath = hull['geometryResFilePath'];
         ship.boundingSphereCenter[0] = hull.boundingSphere[0];
         ship.boundingSphereCenter[1] = hull.boundingSphere[1];
         ship.boundingSphereCenter[2] = hull.boundingSphere[2];
         ship.boundingSphereRadius = hull.boundingSphere[3];
-        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands);
-        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, commands);
-        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, commands);
-        FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, commands);
-        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, commands);
+        FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands);
+        FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, pattern, commands);
+        FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, pattern, commands);
+        FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, pattern, commands);
+        FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, pattern, commands);
         mesh.Initialize();
         ship.mesh = mesh;
         if ('shapeEllipsoidCenter' in hull) {
@@ -153,6 +214,95 @@ function EveSOF() {
         }
         if ('shapeEllipsoidRadius' in hull) {
             ship.shapeEllipsoidRadius = hull.shapeEllipsoidRadius;
+        }
+    }
+
+    function SetupPattern(hull, race, commands) {
+        var pattern = {patterns: [], layers: []};
+        if ('pattern' in commands)
+        {
+            var p = {};
+            for (var k = 0; k < data.pattern.length; ++k)
+            {
+                if (data.pattern[k].name == commands.pattern[0])
+                {
+                    p = data.pattern[k];
+                    break;
+                }
+            }
+            var layer = _get(p, 'layer1', null);
+            if (layer)
+            {
+                pattern.layers.push(layer)
+            }
+            layer = _get(p, 'layer2', null);
+            if (layer)
+            {
+                pattern.layers.push(layer)
+            }
+            var projections = _get(p, 'projections', []);
+            for (var i = 0; i < projections.length; ++i)
+            {
+                if (projections[i].name == hull.name)
+                {
+                    p = projections[i];
+                    layer = _get(p, 'transformLayer1', null);
+                    if (layer)
+                    {
+                        pattern.patterns.push(layer)
+                    }
+                    layer = _get(p, 'transformLayer2', null);
+                    if (layer)
+                    {
+                        pattern.patterns.push(layer)
+                    }
+                }
+            }
+        }
+        else if (_get(hull, 'defaultPattern'))
+        {
+            p = _get(hull, 'defaultPattern', {});
+            layer = _get(p, 'transformLayer1', null);
+            if (layer)
+            {
+                pattern.patterns.push(layer)
+            }
+            layer = _get(p, 'transformLayer2', null);
+            if (layer)
+            {
+                pattern.patterns.push(layer)
+            }
+            p = _get(race, 'defaultPattern', {});
+            layer = _get(p, 'layer1', null);
+            if (layer)
+            {
+                pattern.layers.push(layer)
+            }
+            layer = _get(p, 'layer2', null);
+            if (layer)
+            {
+                pattern.layers.push(layer)
+            }
+        }
+        return pattern;
+    }
+
+    function SetupCustomMasks(ship, pattern) {
+        for (var i = 0; i < pattern.patterns.length; ++i)
+        {
+            if (pattern.patterns[i] && pattern.layers[i])
+            {
+                var p = pattern.patterns[i];
+                var l = pattern.layers[i];
+                ship.AddCustomMask(
+                    _get(p, 'position', vec3.create([0, 0, 0])),
+                    _get(p, 'scaling', vec3.create([1, 1, 1])),
+                    _get(p, 'rotation', quat4.create([0, 0, 0, 1])),
+                    _get(p, 'isMirrored', false),
+                    _get(l, 'materialSource', 0),
+                    quat4.create([_get(l, 'isTargetMtl1', true) ? 1 : 0, _get(l, 'isTargetMtl2', true) ? 1 : 0,
+                        _get(l, 'isTargetMtl3', true) ? 1 : 0, _get(l, 'isTargetMtl4', true) ? 1 : 0]));
+            }
         }
     }
 
@@ -180,25 +330,44 @@ function EveSOF() {
             }
             var hullParameters = _get(hullDecal, 'parameters', {});
             for (var j in hullParameters) {
-                effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                if (hullParameters.hasOwnProperty(j)) {
+                    effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                }
             }
             var hullTextures = _get(hullDecal, 'textures', {});
             for (j in hullTextures) {
-                effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                if (hullTextures.hasOwnProperty(j)) {
+                    effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                }
             }
             if (factionDecal) {
                 var factionParameters = _get(factionDecal, 'parameters', {});
                 for (j in factionParameters) {
-                    effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                    if (factionParameters.hasOwnProperty(j)) {
+                        effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                    }
                 }
                 var factionTextures = _get(factionDecal, 'textures', {});
                 for (j in factionTextures) {
-                    if (!(j in effect.parameters))
+                    if (factionTextures.hasOwnProperty(j) && !(j in effect.parameters))
                     {
                         effect.parameters[j] = new Tw2TextureParameter(j, factionTextures[j]);
                     }
                 }
             }
+
+            var defaultTextures = _get(_get(data['generic']['decalShaders'], hullDecal.shader, {}), 'defaultTextures', {});
+            for (var texName in defaultTextures)
+            {
+                if (defaultTextures.hasOwnProperty(texName))
+                {
+                    if (!(texName in effect.parameters))
+                    {
+                        effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                    }
+                }
+            }
+
             effect.Initialize();
 
             var decal = new EveSpaceObjectDecal();
@@ -228,7 +397,7 @@ function EveSOF() {
             mesh.geometryResPath = him.geometryResPath;
             mesh.Initialize();
 
-            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands, him.shader);
+            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands, him.shader);
 
             var child = new EveChildMesh();
             child.mesh = mesh;
@@ -563,7 +732,9 @@ function EveSOF() {
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
         var ship = new (_get(hull, 'buildClass', 0) == 2 ? EveSpaceObject : EveShip)();
-        SetupMesh(ship, hull, faction, race, commands);
+        var pattern = SetupPattern(hull, race, commands);
+        SetupMesh(ship, hull, faction, race, commands, pattern);
+        SetupCustomMasks(ship, pattern);
         SetupDecals(ship, hull, faction);
         SetupSpriteSets(ship, hull, faction);
         SetupSpotlightSets(ship, hull, faction);
@@ -678,18 +849,20 @@ function EveSOF() {
         if (turretSet.turretEffect) {
             var params = turretSet.turretEffect.parameters;
             for (var i in params) {
-                if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype) {
-                    continue;
+                if (params.hasOwnProperty(i)) {
+                    if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype) {
+                        continue;
+                    }
+                    var parentValue = null;
+                    var turretValue = null;
+                    if (parentArea) {
+                        parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                    }
+                    if (turretArea) {
+                        turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                    }
+                    quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
                 }
-                var parentValue = null;
-                var turretValue = null;
-                if (parentArea) {
-                    parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                }
-                if (turretArea) {
-                    turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                }
-                quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
             }
             turretSet.turretEffect.BindParameters();
         }
@@ -716,7 +889,9 @@ function EveSOF() {
         if (name !== 'all') {
             var names = {};
             for (var i in data[name]) {
-                names[i] = data[name][i].description || '';
+                if (data[name].hasOwnProperty(i)) {
+                    names[i] = data[name][i].description || '';
+                }
             }
             return names;
         } else {

@@ -14,7 +14,7 @@
  * @property {mat4} worldTransformLast
  * @property {Tw2Mesh} mesh
  * @property {boolean} isEffectChild
- * @property {Tw2PerObjectData} _perObjectData
+ * @property {Tw2PerObjectData|EveBasicPerObjectData} _perObjectData
  * @constructor
  */
 function EveChildMesh()
@@ -54,7 +54,7 @@ EveChildMesh.prototype.Update = function(parentTransform)
         mat4.scale(this.localTransform, this.scaling);
     }
     mat4.set(this.worldTransform, this.worldTransformLast);
-    mat4.multiply(this.localTransform, parentTransform, this.worldTransform)
+    mat4.multiply(parentTransform, this.localTransform, this.worldTransform)
 };
 
 
@@ -97,14 +97,14 @@ EveChildMesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
     {
         if (!this._perObjectData)
         {
-            this._perObjectData = new Tw2PerObjectData();
-            this._perObjectData.perObjectVSData = new Tw2RawData();
-            this._perObjectData.perObjectVSData.Declare('world', 16);
-            this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
-            this._perObjectData.perObjectVSData.Create();
+            this._perObjectData = new EveBasicPerObjectData();
+            this._perObjectData.perObjectFFEData = new Tw2RawData();
+            this._perObjectData.perObjectFFEData.Declare('world', 16);
+            this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+            this._perObjectData.perObjectFFEData.Create();
         }
-        mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
-        mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
+        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
     }
 
     this.mesh.GetBatches(mode, accumulator, this._perObjectData);
@@ -131,4 +131,4 @@ EveChildMesh.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};

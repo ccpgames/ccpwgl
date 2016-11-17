@@ -157,7 +157,7 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
  */
 Tw2LoadingObject.prototype.Prepare = function(text, xml)
 {
-    if (xml == null)
+    if (text == null)
     {
         emitter.log('res.error',
         {
@@ -166,7 +166,7 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
             msg: 'Invalid XML',
             path: this.path,
             type: 'xml.invalid',
-            data: xml
+            data: text
         });
         this.PrepareFinished(false);
         return;
@@ -174,7 +174,7 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
 
     if (this._inPrepare === null)
     {
-        this._redContents = xml;
+        this._redContents = text;
         this._constructor = new Tw2ObjectReader(this._redContents);
         this._constructorFunction = null;
         this._inPrepare = 0;
@@ -182,22 +182,9 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
 
     while (this._inPrepare < this._objects.length)
     {
-        if (!this._constructorFunction)
-        {
-            var initialize = this._objects[this._inPrepare]._initialize;
-            this._constructorFunction = this._constructor.Construct(initialize);
-        }
-
-        if (!this._constructorFunction())
-        {
-            return true;
-        }
-
-        this._constructorFunction = null;
-
         try
         {
-            this._objects[this._inPrepare]._loadCallback(this._constructor.result);
+            this._objects[this._inPrepare]._loadCallback(this._constructor.Construct());
         }
         catch (e)
         {
@@ -254,7 +241,7 @@ function Tw2ResMan()
     this.systemMirror = false;
     this.resourcePaths = {};
 
-    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1035524/';
+    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/';
 
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
@@ -782,6 +769,7 @@ function Tw2ResMan()
         });
 
         httpRequest.open('GET', this.BuildUrl(path));
+        httpRequest.responseType = 'arraybuffer';
         res.LoadStarted();
         obj._objectLoaded = false;
 

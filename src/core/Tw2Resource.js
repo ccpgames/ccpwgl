@@ -208,7 +208,6 @@ Tw2Resource.prototype.UnregisterNotification = function(notification)
  * Inherit
  * @param derived
  * @param base
- * @constructor
  */
 function Inherit(derived, base)
 {

@@ -1,9 +1,9 @@
 /**
- * EveEffectRoot
+ * EveEffectRoot root objects for FX, can be put into scene's objects array
  * @property {string} name
  * @property {boolean} display
- * @property {EveTransform|EveStretch|EveTransform} highDetail
- * @property {boolean} isPlaying
+ * @property {[{}]} curveSets
+ * @property {[{}]} effectChildren
  * @property {vec3} scaling
  * @property {quat4} rotation
  * @property {vec3} translation
@@ -19,27 +19,46 @@ function EveEffectRoot()
 {
     this.name = '';
     this.display = true;
-    this.highDetail = null;
-    this.isPlaying = false;
-    this.duration = 0;
+
+    this.curveSets = [];
     this.boundingSphereCenter = vec3.create();
     this.boundingSphereRadius = 0;
 
     this.scaling = vec3.create([1, 1, 1]);
     this.rotation = quat4.create([0, 0, 0, 1]);
     this.translation = vec3.create();
+
+    this.duration = 0;
+
+    this.effectChildren = [];
+
     this.localTransform = mat4.identity(mat4.create());
     this.rotationTransform = mat4.create();
 
     this._perObjectData = new Tw2PerObjectData();
     this._perObjectData.perObjectVSData = new Tw2RawData();
     this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
     this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+    this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+    this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
     this._perObjectData.perObjectVSData.Declare('JointMat', 696);
     this._perObjectData.perObjectVSData.Create();
 
     this._perObjectData.perObjectPSData = new Tw2RawData();
     this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
     this._perObjectData.perObjectPSData.Create();
 }
 
@@ -53,15 +72,14 @@ EveEffectRoot.prototype.GetResources = function(out)
     if (out === undefined)
     {
         out = [];
-    };
-
-    if (this.highDetail !== null)
-    {
-        this.highDetail.GetResources(out);
     }
 
+    for (var i = 0; i < this.effectChildren.length; ++i)
+    {
+        this.effectChildren[i].GetResources(out);
+    }
     return out;
-}
+};
 
 /**
  * Internal per frame update
@@ -69,17 +87,21 @@ EveEffectRoot.prototype.GetResources = function(out)
  */
 EveEffectRoot.prototype.Update = function(dt)
 {
-    if (this.highDetail)
-    {
-        this.highDetail.Update(dt);
-    }
-
     mat4.identity(this.localTransform);
     mat4.translate(this.localTransform, this.translation);
     mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
     mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
     mat4.scale(this.localTransform, this.scaling);
-}
+
+    for (var i = 0; i < this.curveSets.length; ++i)
+    {
+        this.curveSets[i].Update(dt);
+    }
+    for (i = 0; i < this.effectChildren.length; ++i)
+    {
+        this.effectChildren[i].Update(this.localTransform, dt);
+    }
+};
 
 /**
  * Gets render batches
@@ -88,35 +110,34 @@ EveEffectRoot.prototype.Update = function(dt)
  */
 EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
 {
-    if (!this.display || !this.isPlaying || !this.highDetail)
+    if (!this.display)
     {
         return;
     }
-
-    this.highDetail.UpdateViewDependentData(this.localTransform);
-    mat4.transpose(this.localTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-    this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
-}
+    for (var i = 0; i < this.effectChildren.length; ++i)
+    {
+        this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+    }
+};
 
 /**
  * Starts playing the effectRoot's curveSets if they exist
  */
 EveEffectRoot.prototype.Start = function()
 {
-    if (this.highDetail)
+    for (var i = 0; i < this.curveSets.length; ++i)
     {
-        this.isPlaying = true;
-        for (var i = 0; i < this.highDetail.curveSets.length; ++i)
-        {
-            this.highDetail.curveSets[i].Play();
-        }
+        this.curveSets[i].Play();
     }
-}
+};
 
 /**
  * Stops the effectRoot's curveSets from playing
  */
 EveEffectRoot.prototype.Stop = function()
 {
-    this.isPlaying = false;
-}
+    for (var i = 0; i < this.curveSets.length; ++i)
+    {
+        this.curveSets[i].Stop();
+    }
+};

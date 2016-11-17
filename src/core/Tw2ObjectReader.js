@@ -12,15 +12,281 @@ function Tw2ObjectReader(xmlNode)
     this.xmlNode = xmlNode;
     this._inputStack = null;
     this._initializeObjects = null;
-    this._ids = null;
+    this._ids = {};
+    this._reader = null;
+
+    if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) != 'binred')
+    {
+        emitter.log('res.error',
+        {
+            log: 'error',
+            src: ['Tw2ObjectReader', 'constructor'],
+            msg: 'Invalid Binary',
+            path: this.path,
+            type: 'redbin.invalid',
+            data: xmlNode
+        });
+        return;
+    }
+    this._reader = new Tw2BinaryReader(new Uint8Array(xmlNode));
+    this._reader.cursor += 6;
+
+    this._stringTable = [];
+    var count = this._reader.ReadUInt32();
+    for (var i = 0; i < count; ++i)
+    {
+        var len = this._reader.ReadUInt16();
+        this._stringTable.push(String.fromCharCode.apply(null, this._reader.data.subarray(this._reader.cursor, this._reader.cursor + len)));
+        this._reader.cursor += len;
+    }
+
+    this._start = this._reader.cursor;
 }
+
+Tw2ObjectReader.ElementRawType = {
+    NULL: 0,
+    BOOL: 1,
+    INT: 2,
+    UINT: 3,
+    FLOAT: 4,
+    STRING: 5,
+    ARRAY: 6,
+    MAPPING: 7,
+    OBJECT: 8,
+    TYPED_ARRAY: 9,
+    TYPED_MAPPING: 10
+};
+
+Tw2ObjectReader.ElementSize = {
+    SMALL: 0,
+    MEDIUM: 1 << 4,
+    LARGE: 2 << 4
+};
+
+Tw2ObjectReader.ID_BIT = 1 << 6;
+Tw2ObjectReader.REFERENCE_BIT = 1 << 7;
+
+Tw2ObjectReader.ElementTypes = {
+    NULL: Tw2ObjectReader.ElementRawType.NULL | Tw2ObjectReader.ElementSize.SMALL,
+
+    BOOL: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.SMALL,
+    FALSE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.MEDIUM,
+    TRUE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.LARGE,
+
+    INT8: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.SMALL,
+    UINT8: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.SMALL,
+    INT16: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.MEDIUM,
+    UINT16: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.MEDIUM,
+    INT32: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.LARGE,
+    UINT32: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.LARGE,
+
+    FLOAT16: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.SMALL,
+    FLOAT32: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.MEDIUM,
+    FLOAT64: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+    SHORT_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+    MEDIUM_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+    LARGE_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.LARGE
+};
+
+Tw2ObjectReader.TypedArrays = {
+    2: Int8Array,
+    3: Uint8Array,
+    18: Int16Array,
+    19: Uint16Array,
+    34: Int32Array,
+    35: Uint32Array,
+    4: Float32Array,
+    20: Float32Array,
+    36: Float64Array
+};
+
+
+Tw2ObjectReader.prototype._ConstructObject = function (data)
+{
+    if (data.type == 'json')
+    {
+        return data;
+    }
+    try
+    {
+        var object = eval("new " + data.type + "()");
+    }
+    catch (e)
+    {
+        emitter.log('res.error',
+        {
+            log: 'throw',
+            src: ['Tw2ObjectReader', 'ConstructFromNode'],
+            msg: 'Object with undefined type',
+            type: 'xml.type',
+            value: data.type
+        });
+
+        throw new Error('YAML: object with undefined type \"' + data.type + '\"');
+    }
+    for (var k in data)
+    {
+        if (data.hasOwnProperty(k) && k != 'type')
+        {
+            object[k] = data[k];
+        }
+    }
+    if ('Initialize' in object)
+    {
+        object.Initialize();
+    }
+    return object;
+};
+
+
+Tw2ObjectReader.prototype._ReadUint = function (type)
+{
+    switch (type & 0x30)
+    {
+        case Tw2ObjectReader.ElementSize.SMALL:
+            return this._reader.ReadUInt8();
+        case Tw2ObjectReader.ElementSize.MEDIUM:
+            return this._reader.ReadUInt16();
+        default:
+            return this._reader.ReadUInt32();
+    }
+};
+
+Tw2ObjectReader.prototype._ReadElementData = function (type)
+{
+    var offset, i, result, count, elementType;
+    switch (type & 0xf)
+    {
+        case Tw2ObjectReader.ElementRawType.NULL:
+            return null;
+        case Tw2ObjectReader.ElementRawType.BOOL:
+            switch (type & 0x30)
+            {
+                case Tw2ObjectReader.ElementSize.SMALL:
+                    return this._reader.ReadUInt8() != 0;
+                case Tw2ObjectReader.ElementSize.MEDIUM:
+                    return false;
+                default:
+                    return true;
+            }
+        case Tw2ObjectReader.ElementRawType.INT:
+            switch (type & 0x30)
+            {
+                case Tw2ObjectReader.ElementSize.SMALL:
+                    return this._reader.ReadInt8();
+                case Tw2ObjectReader.ElementSize.MEDIUM:
+                    return this._reader.ReadInt16();
+                default:
+                    return this._reader.ReadInt32();
+            }
+        case Tw2ObjectReader.ElementRawType.UINT:
+            return this._ReadUint(type);
+        case Tw2ObjectReader.ElementRawType.FLOAT:
+            switch (type & 0x30)
+            {
+                case Tw2ObjectReader.ElementSize.SMALL:
+                    return this._reader.ReadFloat16();
+                case Tw2ObjectReader.ElementSize.MEDIUM:
+                    return this._reader.ReadFloat32();
+                default:
+                    throw Error('float64 values are not yet supported');
+            }
+        case Tw2ObjectReader.ElementRawType.STRING:
+            offset = this._ReadUint(type);
+            return this._stringTable[offset];
+        case Tw2ObjectReader.ElementRawType.ARRAY:
+            count = this._ReadUint(type);
+            result = [];
+            for (i = 0; i < count; ++i)
+                result.push(this._ReadElement());
+            return result;
+        case Tw2ObjectReader.ElementRawType.MAPPING:
+            count = this._ReadUint(type);
+            result = {};
+            for (i = 0; i < count; ++i)
+                result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+            return result;
+        case Tw2ObjectReader.ElementRawType.OBJECT:
+            count = this._ReadUint(type);
+            result = {};
+            for (i = 0; i < count; ++i)
+                result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+            return this._ConstructObject(result);
+        case Tw2ObjectReader.ElementRawType.TYPED_ARRAY:
+            count = this._ReadUint(type);
+            elementType = this._reader.ReadUInt8();
+            result = [];
+            for (i = 0; i < count; ++i)
+                result.push(this._ReadElementData(elementType));
+            if (elementType in Tw2ObjectReader.TypedArrays)
+            {
+                result = new Tw2ObjectReader.TypedArrays[elementType](result);
+            }
+            return result;
+        case Tw2ObjectReader.ElementRawType.TYPED_MAPPING:
+            count = this._ReadUint(type);
+            elementType = this._reader.ReadUInt8();
+            result = {};
+            for (i = 0; i < count; ++i)
+                result[this._stringTable[this._ReadUint(type)]] = this._ReadElementData(elementType);
+            return result;
+    }
+};
+
+Tw2ObjectReader.prototype._ReadElement = function()
+{
+    var type = this._reader.ReadUInt8();
+    if (type == Tw2ObjectReader.REFERENCE_BIT)
+    {
+        return this._ids[this._reader.ReadUInt16()];
+    }
+    var id;
+    if ((type & Tw2ObjectReader.ID_BIT) != 0)
+    {
+        id = this._reader.ReadUInt16();
+    }
+    var result = this._ReadElementData(type & 0x3F);
+    if ((type & Tw2ObjectReader.ID_BIT) != 0)
+    {
+        this._ids[id] = result;
+    }
+    return result;
+};
+
+Tw2ObjectReader.prototype.Construct = function()
+{
+    this._reader.cursor = this._start;
+    return this._ReadElement();
+};
+
 
 /**
  * Construct
  * @param initialize
  * @returns {Function}
  */
-Tw2ObjectReader.prototype.Construct = function(initialize)
+/*Tw2ObjectReader.prototype.Construct = function(initialize)
 {
     this._inputStack = [];
     this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
@@ -32,6 +298,8 @@ Tw2ObjectReader.prototype.Construct = function(initialize)
         return self.ConstructFromNode(initialize, true);
     };
 };
+*/
+
 
 /**
  * ConstructFromNode

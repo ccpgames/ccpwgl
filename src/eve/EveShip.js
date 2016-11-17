@@ -152,9 +152,9 @@ EveShip.prototype.Update = function(dt)
         }
     }
 
-    for (var t = 0; i < this.turretSets.length; ++i)
+    for (i = 0; i < this.turretSets.length; ++i)
     {
-        this.turretSets[t].Update(dt, this.transform);
+        this.turretSets[i].Update(dt, this.transform);
     }
 };
 
