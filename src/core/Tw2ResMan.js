@@ -166,7 +166,6 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
             msg: 'Invalid XML',
             path: this.path,
             type: 'xml.invalid',
-            data: text
         });
         this.PrepareFinished(false);
         return;
@@ -195,7 +194,7 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
                 msg: 'Error preparing resource',
                 path: this.path,
                 type: 'prepare',
-                data: e
+                err: e
             })
         }
 
