@@ -20,21 +20,16 @@ function EveChildBillboard()
 {
     this.name = '';
     this.display = true;
-    this.mesh = null;
-
+    this.lowestLodVisible = 2;
+    this.rotation = quat4.create([0, 0, 0, 1]);
     this.translation = vec3.create();
     this.scaling = vec3.create([1, 1, 1]);
-    this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
-    this.staticTransform = false;
-
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.lowestLodVisible = 2;
     this.useSRT = true;
+    this.staticTransform = false;
     this.localTransform = mat4.create();
     this.worldTransform = mat4.create();
     this.worldTransformLast = mat4.create();
-
+    this.mesh = null;
     this.isEffectChild = true;
 
     this._perObjectData = new EveBasicPerObjectData();
