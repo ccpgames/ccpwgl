@@ -386,7 +386,7 @@ function EveSOF() {
         }
     }
 
-    function SetupInstancedMeshes(ship, hull, faction, race, commands)
+    function SetupInstancedMeshes(ship, hull, faction, race, commands, pattern)
     {
         var instancedMeshes = _get(hull, 'instancedMeshes', []);
         for (var i = 0; i < instancedMeshes.length; ++i)
@@ -743,7 +743,7 @@ function EveSOF() {
         SetupLocators(ship, hull);
         var curves = SetupAnimations(ship, hull);
         SetupChildren(ship, hull, curves[0], curves[1]);
-        SetupInstancedMeshes(ship, hull, faction, race, commands);
+        SetupInstancedMeshes(ship, hull, faction, race, commands, pattern);
 
         ship.Initialize();
         return ship;
