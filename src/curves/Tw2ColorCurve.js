@@ -39,23 +39,44 @@ function Tw2ColorCurve()
     this._currKey = 1;
 }
 
-Tw2ColorCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
-
-Tw2ColorCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2
+/**
+ * Initializes the Curve
+ */
+Tw2ColorCurve.prototype.Initialize = function()
+{
+    this.Sort();
 };
 
 /**
- * Returns curve length
+ * Sorts the curve's keys
+ */
+Tw2ColorCurve.prototype.Sort()
+{
+    if (this.keys.length)
+    {
+        this.keys.sort(Tw2ColorCurve.Compare);
+    }
+}
+
+/**
+ * Compares two curve keys' time properties
+ *
+ * @param {Tw2ColorKey} a
+ * @param {Tw2ColorKey} b
  * @returns {number}
- * @prototype
+ * @static
+ */
+Tw2ColorCurve.Compare = function(a, b)
+{
+    if (a.time < b.time) return -1;
+    if (a.time > b.time) return 1;
+    return 0;
+}
+
+/**
+ * Returns curve length
+ 
+ * @returns {number}
  */
 Tw2ColorCurve.prototype.GetLength = function()
 {
@@ -64,8 +85,8 @@ Tw2ColorCurve.prototype.GetLength = function()
 
 /**
  * Updates a value at a specific time
+ *
  * @param {number} time
- * @prototype
  */
 Tw2ColorCurve.prototype.UpdateValue = function(time)
 {
@@ -74,10 +95,10 @@ Tw2ColorCurve.prototype.UpdateValue = function(time)
 
 /**
  * Gets a value at a specific time
+ *
  * @param {number} time
  * @param {quat4} value
  * @returns {quat4}
- * @prototype
  */
 Tw2ColorCurve.prototype.GetValueAt = function(time, value)
 {
@@ -182,4 +203,17 @@ Tw2ColorCurve.prototype.GetValueAt = function(time, value)
         value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
     }
     return value;
+};
+
+Tw2ColorCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
+};
+
+Tw2ColorCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2
 };
