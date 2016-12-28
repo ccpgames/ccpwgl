@@ -28,9 +28,9 @@ function EveSpotlightSetItem()
     this.boosterGainInfluence = false;
     this.boneIndex = 0;
     this.groupIndex = -1;
-    this.coneIntensity = 0;
-    this.spriteIntensity = 0;
-    this.flareIntensity = 0;
+    this.coneIntensity = 1;
+    this.spriteIntensity = 1;
+    this.flareIntensity = 1;
 }
 
 
