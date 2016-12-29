@@ -1,14 +1,19 @@
 /**
  * Spotlight Item
- * @property {string} name
- * @property {mat4} transform
- * @property {quat4} coneColor
- * @property {quat4} spriteColor
- * @property {quat4} flareColor
- * @property {quat4} spriteScale
- * @property {boolean} boosterGainInfluence
- * @property {number} boneIndex
- * @property {number} groupIndex
+ * - If a spotlight's properties are changed, it's parent's RebuildBuffers method must be called to apply these changes
+ *
+ * @property {string} name                  - The spotlight's name
+ * @property {mat4} transform               - The spotlight's transform
+ * @property {quat4} coneColor              - Colour of the spotlight's cone
+ * @property {quat4} spriteColor            - Colour of the spotlight's sprite texture
+ * @property {quat4} flareColor             - Colour of the spotlight's flare
+ * @property {quat4} spriteScale            - The size of the spotlight
+ * @property {boolean} boosterGainInfluence - If true, the spotlight can change size on booster gain
+ * @property {number} boneIndex             - The spotlight's bone index
+ * @property {number} groupIndex            - The sof faction group that the spotlight belongs to
+ * @property {number} coneIntensity         - Scales the spotlight's cone colour, set by an object's sof Faction
+ * @property {number} spriteIntensity       - Scales the spotlight's sprite colour, set by an object's sof Faction
+ * @property {number} flareIntensity        - Scales the spotlight's flare colour, set by an object's sof Faction
  * @constructor
  */
 function EveSpotlightSetItem()
@@ -23,20 +28,24 @@ function EveSpotlightSetItem()
     this.boosterGainInfluence = false;
     this.boneIndex = 0;
     this.groupIndex = -1;
+    this.coneIntensity = 1;
+    this.spriteIntensity = 1;
+    this.flareIntensity = 1;
 }
 
 
 /**
  * EveSpotlightSet
- * @property {string} name
- * @property {boolean} display
- * @property {Tw2Effect} coneEffect
- * @property {Tw2Effect} glowEffect
- * @property {Array.<EveSpotlightSetItem) spotlightItems
- * @property {WebglBuffer} _conVertexBuffer
- * @property {WebglBuffer} _spriteVertexBuffer
- * @property {WebglBuffer} _indexBuffer
- * @property {Tw2VertexDeclaration} _decl
+ *
+ * @property {string} name                               - The spotlight set's name
+ * @property {boolean} display                           - controls the visibility of the spotlight set, and all it's children
+ * @property {Tw2Effect} coneEffect                      - The spotlight set's cone effect
+ * @property {Tw2Effect} glowEffect                      - The spotlight set's glow effect
+ * @property {Array.<EveSpotlightSetItem) spotlightItems - The spotlight set's children
+ * @property {WebglBuffer} _coneVertexBuffer             - Webgl buffer for the spotlight set's cone vertices
+ * @property {WebglBuffer} _spriteVertexBuffer           - Webgl buffer for the spotlight set's sprite/glow vertices
+ * @property {WebglBuffer} _indexBuffer                  - Webgl buffer for the spotlight set
+ * @property {Tw2VertexDeclaration} _decl                - The spotlight set's vertex declarations
  * @constructor
  */
 function EveSpotlightSet()
@@ -70,7 +79,8 @@ EveSpotlightSet.prototype.Initialize = function()
 };
 
 /**
- * Gets spotlight set res objects
+ * Gets the spotlight set's resources
+ *
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
@@ -91,10 +101,10 @@ EveSpotlightSet.prototype.GetResources = function(out)
         this.glowEffect.GetResources(out);
     }
     return out;
-}
+};
 
 /**
- * Rebuilds the spotlight set
+ * Rebuilds the spotlight set's buffers
  */
 EveSpotlightSet.prototype.RebuildBuffers = function()
 {
@@ -129,9 +139,9 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
             for (var v = 0; v < vertCount; ++v)
             {
                 var offset = (i * coneQuadCount * vertCount + vertCount * q + v) * vertexSize;
-                array[offset] = item.coneColor[0];
-                array[offset + 1] = item.coneColor[1];
-                array[offset + 2] = item.coneColor[2];
+                array[offset + 0] = item.coneColor[0] * item.coneIntensity;
+                array[offset + 1] = item.coneColor[1] * item.coneIntensity;
+                array[offset + 2] = item.coneColor[2] * item.coneIntensity;
                 array[offset + 3] = item.coneColor[3];
 
                 array[offset + 4] = item.transform[0];
@@ -181,9 +191,9 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
                 var offset = (i * spriteQuadCount * vertCount + vertCount * q + v) * vertexSize;
                 if (q % 2 == 0)
                 {
-                    array[offset] = item.spriteColor[0];
-                    array[offset + 1] = item.spriteColor[1];
-                    array[offset + 2] = item.spriteColor[2];
+                    array[offset + 0] = item.spriteColor[0] * item.spriteIntensity;
+                    array[offset + 1] = item.spriteColor[1] * item.spriteIntensity;
+                    array[offset + 2] = item.spriteColor[2] * item.spriteIntensity;
                     array[offset + 3] = item.spriteColor[3];
 
                     array[offset + 16] = item.spriteScale[0];
@@ -192,9 +202,9 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
                 }
                 else
                 {
-                    array[offset] = item.flareColor[0];
-                    array[offset + 1] = item.flareColor[1];
-                    array[offset + 2] = item.flareColor[2];
+                    array[offset + 0] = item.flareColor[0] * item.flareIntensity;
+                    array[offset + 1] = item.flareColor[1] * item.flareIntensity;
+                    array[offset + 2] = item.flareColor[2] * item.flareIntensity;
                     array[offset + 3] = item.flareColor[3];
 
                     array[offset + 16] = 1;
@@ -248,7 +258,8 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
 };
 
 /**
- * Spotlight set render batch
+ * EveSpotlightSetBatch
+ *
  * @inherits Tw2RenderBatch
  * @constructor
  */
@@ -259,7 +270,8 @@ function EveSpotlightSetBatch()
 }
 
 /**
- * Commits the spotlight set
+ * Commits the spotlight set for rendering
+ *
  * @param {Tw2Effect} overrideEffect
  */
 EveSpotlightSetBatch.prototype.Commit = function(overrideEffect)
@@ -271,7 +283,8 @@ EveSpotlightSetBatch.prototype.Commit = function(overrideEffect)
 Inherit(EveSpotlightSetBatch, Tw2RenderBatch);
 
 /**
- * Gets render batches
+ * Gets the spotlight set's render batches
+ *
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
@@ -289,8 +302,9 @@ EveSpotlightSet.prototype.GetBatches = function(mode, accumulator, perObjectData
 };
 
 /**
- * Renders Spotlight set Cones
- * @param {Tw2Effect} overrideEffect
+ * Renders the spotlight set's cone effect
+ *
+ * @param {Tw2Effect} [overrideEffect] - An optional Tw2Effect which can be passed to override the current cone effect
  */
 EveSpotlightSet.prototype.RenderCones = function(overrideEffect)
 {
@@ -299,8 +313,9 @@ EveSpotlightSet.prototype.RenderCones = function(overrideEffect)
 };
 
 /**
- * Renders Spotlight set glows
- * @param {Tw2Effect} overrideEffect
+ * Renders the spotlight set's glow effect
+ *
+ * @param {Tw2Effect} overrideEffect - An optional Tw2Effect which can be passed to override the current glow effect
  */
 EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
 {
@@ -310,8 +325,9 @@ EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
 
 /**
  * Internal render function
- * @param {Tw2Effect} effect
- * @param {WebglBuffer} buffer
+ *
+ * @param {Tw2Effect} effect   - The Tw2Effect to render
+ * @param {WebglBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
  * @private
  */
 EveSpotlightSet.prototype._Render = function(effect, buffer)
