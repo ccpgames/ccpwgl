@@ -479,12 +479,18 @@ function EveSOF() {
                 item.groupIndex = _get(hullData[j], 'groupIndex', -1);
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
                 item.boosterGainInfluence = _get(hullData[j], 'boosterGainInfluence', 0);
+                
+                item.coneIntensity = _get(hullData[j], 'coneIntensity', 0);
+                item.spriteIntensity = _get(hullData[j], 'spriteIntensity', 0);
+                item.flareIntensity = _get(hullData[j], 'flareIntensity', 0);
+                
                 var factionSet = factionSets['group' + item.groupIndex];
                 if (factionSet) {
-                    _scale(_get(factionSet, 'coneColor', [0, 0, 0, 0]), _get(hullData[j], 'coneIntensity', 0), item.coneColor);
-                    _scale(_get(factionSet, 'spriteColor', [0, 0, 0, 0]), _get(hullData[j], 'spriteIntensity', 0), item.spriteColor);
-                    _scale(_get(factionSet, 'flareColor', [0, 0, 0, 0]), _get(hullData[j], 'flareIntensity', 0), item.flareColor);
+                    quat4.set(_get(factionSet, 'coneColor', [0, 0, 0, 0]), item.coneColor);
+                    quat4.set(_get(factionSet, 'spriteColor', [0, 0, 0, 0]), item.spriteColor);
+                    quat4.set(_get(factionSet, 'flareColor', [0, 0, 0, 0]), item.flareColor);
                 }
+                
                 item.spriteScale = _get(hullData[j], 'spriteScale', [1, 1, 1]);
                 if ('transform' in hullData[j]) {
                     item.transform = hullData[j].transform;
