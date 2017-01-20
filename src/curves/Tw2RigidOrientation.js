@@ -75,7 +75,7 @@ Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
 {
     if (this.states.length == 0 || time < 0 || time < this.states[0].time)
     {
-        quat4.set(this.value, value);
+        quat4.set(this.start, value);
         return value;
     }
     var key = 0;
