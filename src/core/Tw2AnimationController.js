@@ -55,7 +55,7 @@ function Tw2Animation()
  */
 Tw2Animation.prototype.IsFinished = function()
 {
-    return !this.cycle && this.time >= this.duration;
+    return !this.cycle && this.time >= this.animationRes.duration;
 };
 
 
