@@ -44,17 +44,20 @@ Tw2VariableStore.GetTw2ParameterType = function(value)
     {
         switch (value.length)
         {
-            case (16):
+            case 16:
                 return Tw2MatrixParameter;
 
-            case (4):
+            case 4:
                 return Tw2Vector4Parameter;
 
-            case (3):
+            case 3:
                 return Tw2Vector3Parameter;
 
-            case (2):
+            case 2:
                 return Tw2Vector2Parameter;
+                
+            case 1:
+                return Tw2FloatParameter;
         }
     }
     else if (typeof(value) == 'number')
