@@ -25,7 +25,14 @@ function Tw2FloatParameter(name, value)
     }
     if (typeof(value) != 'undefined')
     {
-        this.value = value;
+        if (value.constructor == (new glMatrixArrayType()).constructor || value.constructor == [].constructor)
+        {
+            this.value = value[0];
+        }
+        else
+        {
+            this.value = value;
+        }
     }
     else
     {
