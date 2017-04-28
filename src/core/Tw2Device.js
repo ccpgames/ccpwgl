@@ -244,9 +244,7 @@ function Tw2Device()
         this.msaaSamples = this.gl.getParameter(this.gl.SAMPLES);
         this.antialiasing = this.msaaSamples > 1;
 
-        this.anisotropicFilter = this.gl.getExtension('EXT_texture_filter_anisotropic') ||
-            this.gl.getExtension('MOZ_EXT_texture_filter_anisotropic') ||
-            this.gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic');
+        this.anisotropicFilter = this.GetExtension('EXT_texture_filter_anisotropic');
         if (this.anisotropicFilter)
         {
             this.anisotropicFilter.maxAnisotropy = this.gl.getParameter(this.anisotropicFilter.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
@@ -900,15 +898,7 @@ function Tw2Device()
     {
         if (this._whiteTexture == null)
         {
-            this._whiteTexture = this.gl.createTexture();
-            this.gl.bindTexture(this.gl.TEXTURE_2D, this._whiteTexture);
-            this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array([0, 0, 0, 0]));
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
-            //this.gl.generateMipmap(this.gl.TEXTURE_2D);
-            this.gl.bindTexture(this.gl.TEXTURE_2D, null);
+            this._whiteTexture = this.CreateSolidColorTexture([0,0,0,0]);
         }
         return this._whiteTexture;
     };
@@ -936,6 +926,50 @@ function Tw2Device()
         }
         return this._whiteCube;
     };
+    
+    /**
+     * Gets a gl extension
+     * @param {string} extension - The gl extension name
+     * @returns{*}
+     */
+    this.GetExtension = function(extension)
+    {
+        for (let prefix in Tw2Device.VENDOR_PREFIXES) 
+        {
+            if (Tw2Device.VENDOR_PREFIXES.hasOwnProperty(prefix)) 
+            {
+                let ext = this.gl.getExtension(Tw2Device.VENDOR_PREFIXES[prefix] + extension);
+                if (ext) return ext;
+            }
+        }
+
+        return null;
+    }
+    
+    /**
+     * Creates a solid colored texture
+     * @param {vec4|Array} [rgba] - The colour to create, if obmitted defaults to completely transparent
+     * @returns {WebGLTexture}
+     */
+    this.CreateSolidTexture = function(rgba)
+    {
+        rgba = rgba || [ 0, 0, 0, 0 ];
+        let texture = this.gl.createTexture();
+        this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
+        this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array(rgba));
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
+        this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
+        this.gl.bindTexture(this.gl.TEXTURE_2D, null);
+        return texture;
+    }
 }
+
+/**
+  * Vendor gl extension prefixes
+  * @type {Array}
+  */
+Tw2Device.VENDOR_PREFIXES = [ '', 'MOZ_', 'WEBKIT_' ];
 
 var device = new Tw2Device();
