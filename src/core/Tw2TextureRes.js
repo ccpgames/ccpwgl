@@ -129,6 +129,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
                 type: 'http.error',
                 path: self.path
             })
+            delete self.images;
         }
         this.images[0].onload = function()
         {
@@ -165,6 +166,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
                 type: 'http.error',
                 path: self.path
             })
+            delete self.images;
         }
         this.images[0].onload = function()
         {
