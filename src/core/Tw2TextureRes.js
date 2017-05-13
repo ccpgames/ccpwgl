@@ -117,6 +117,20 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = true;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
+        this.images[0].onerror = function()
+        {
+            resMan._pendingLoads--;
+            self.LoadFinished(false);
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2TextureRes', 'DoCustomLoad'],
+                msg: 'Error loading resource',
+                type: 'http.error',
+                path: self.path
+            })
+            delete self.images;
+        };
         this.images[0].onload = function()
         {
             resMan._pendingLoads--;
@@ -140,6 +154,20 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = false;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
+        this.images[0].onerror = function()
+        {
+            resMan._pendingLoads--;
+            self.LoadFinished(false);
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2TextureRes', 'DoCustomLoad'],
+                msg: 'Error loading resource',
+                type: 'http.error',
+                path: self.path
+            })
+            delete self.images;
+        };
         this.images[0].onload = function()
         {
             resMan._pendingLoads--;
