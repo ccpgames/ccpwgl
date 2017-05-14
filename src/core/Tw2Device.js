@@ -928,6 +928,17 @@ function Tw2Device()
     };
     
     /**
+     * Checks if a frame buffer is complete
+     *
+     * @param frameBuffer
+     * @returns {boolean}
+     */
+    this.IsFrameBufferComplete = function(frameBuffer)
+    {
+        return this.gl.checkFramebufferStatus(frameBuffer) === this.gl.FRAMEBUFFER_COMPLETE;
+    }
+
+    /**
      * Gets a gl extension
      * @param {string} extension - The gl extension name
      * @returns{*}
