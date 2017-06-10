@@ -117,6 +117,20 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = true;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
+        this.images[0].onerror = function()
+        {
+            resMan._pendingLoads--;
+            self.LoadFinished(false);
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2TextureRes', 'DoCustomLoad'],
+                msg: 'Error loading resource',
+                type: 'http.error',
+                path: self.path
+            })
+            delete self.images;
+        };
         this.images[0].onload = function()
         {
             resMan._pendingLoads--;
@@ -140,6 +154,20 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = false;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
+        this.images[0].onerror = function()
+        {
+            resMan._pendingLoads--;
+            self.LoadFinished(false);
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2TextureRes', 'DoCustomLoad'],
+                msg: 'Error loading resource',
+                type: 'http.error',
+                path: self.path
+            })
+            delete self.images;
+        };
         this.images[0].onload = function()
         {
             resMan._pendingLoads--;
@@ -221,6 +249,81 @@ Tw2TextureRes.prototype.Bind = function(sampler, slices)
         this._currentSampler = sampler.hash;
     }
 };
+
+
+/**
+ * Creates a png base 64 blob from the textureRes' WebGLTexture
+ * @param {number} [width=this.width]   - Optional width override
+ * @param {number} [height=this.height] - Optional height override
+ * @returns {null|string}               - png base64 blob
+ */
+Tw2TextureRes.prototype.CreateBlobFromTexture  = function(width, height)
+{
+    if (!this.texture) return null;
+    return Tw2TextureRes.CreateBlobFromTexture(this.texture, width != undefined ? width : this.width, height != undefined ? height : this.height);
+};
+
+/**
+ * Creates an HTML Image element from the textureRes' WebGLTexture
+ * @param {number} [width=this.width]   - Optional width override
+ * @param {number} [height=this.height] - Optional height override
+ * @returns {null|HTMLElement}          - an HTML IMG element
+ */
+Tw2TextureRes.prototype.CreateImageFromTexture = function(width, height)
+{
+    if (!this.texture) return null;
+    return Tw2TextureRes.CreateImageFromTexture(this.texture, width != undefined ? width : this.width, height != undefined ? height : this.height);
+};
+
+/**
+ * Creates a png base 64 blob from a WebGLTexture
+ * @param {WebGLTexture} texture - The texture to convert
+ * @param {number} [width]       - Optional image width, else uses textureRes width, or a default width
+ * @param {number} [height]      - Optional image height, else uses textureRes height, or a default height
+ * @returns {string}             - png base64 blob
+ */
+Tw2TextureRes.CreateBlobFromTexture  = function(texture, width, height)
+{
+    width = width || Tw2TextureRes.DEFAULT_IMAGE_WIDTH;
+    height = height || Tw2TextureRes.DEFAULT_IMAGE_HEIGHT;
+    var gl = device.gl;
+
+    var fb = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+    var data = new Uint8Array(width * height * 4);
+    gl.readPixels(0, 0, width, height, gl.RGBA, gl.UNSIGNED_BYTE, data);
+    gl.deleteFramebuffer(fb);
+
+    var canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    var context = canvas.getContext('2d');
+    var imageData = context.createImageData(width, height);
+    imageData.data.set(data);
+    context.putImageData(imageData, 0, 0);
+    return canvas.toDataURL();
+};
+
+/**
+ * Creates an Html IMG element from a WebGLTexture
+ * @param {WebGLTexture} texture - The texture to convert
+ * @param {number} [width]       - Optional image width, else uses textureRes width, or a default width
+ * @param {number} [height]      - Optional image height, else uses textureRes height, or a default height
+ * @returns {HtmlElement}        - an HTML IMG element
+ */
+Tw2TextureRes.CreateImageFromTexture = function(texture, width, height)
+{
+    var img = new Image();
+    img.src = Tw2TextureRes.CreateBlobFromTexture(texture, width, height);
+    return img;
+};
+
+// Default image sizes to use when creating an HTML Image element from a textureRes that has no width or height
+Tw2TextureRes.DEFAULT_IMAGE_WIDTH = 512;
+Tw2TextureRes.DEFAULT_IMAGE_HEIGHT = 512;
+
+
 
 Inherit(Tw2TextureRes, Tw2Resource);
 
