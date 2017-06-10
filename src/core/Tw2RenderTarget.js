@@ -42,10 +42,10 @@ Tw2RenderTarget.prototype.Destroy = function()
 };
 
 /**
- * Creates the render target
- * @param {number} width 
- * @param {number} height
- * @param {boolean} hasDepth
+ * Creates the render target's texture
+ * @param {number} width     - The resulting texture's width
+ * @param {number} height    - The resulting texture's height
+ * @param {boolean} hasDepth - Optional flag to enable a depth buffer
  * @prototype
  */
 Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
@@ -64,6 +64,7 @@ Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
     device.gl.bindTexture(device.gl.TEXTURE_2D, null);
 
     this._renderBuffer = null;
+    
     if (hasDepth)
     {
         this._renderBuffer = device.gl.createRenderbuffer();
@@ -72,15 +73,17 @@ Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
     }
 
     device.gl.framebufferTexture2D(device.gl.FRAMEBUFFER, device.gl.COLOR_ATTACHMENT0, device.gl.TEXTURE_2D, this.texture.texture, 0);
+    
     if (hasDepth)
     {
         device.gl.framebufferRenderbuffer(device.gl.FRAMEBUFFER, device.gl.DEPTH_ATTACHMENT, device.gl.RENDERBUFFER, this._renderBuffer);
     }
+    
     device.gl.bindRenderbuffer(device.gl.RENDERBUFFER, null);
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
 
-    this.width = width;
-    this.height = height;
+    this.texture.width = this.width = width;
+    this.texture.height = this.height = height;
     this.hasDepth = hasDepth;
 };
 
