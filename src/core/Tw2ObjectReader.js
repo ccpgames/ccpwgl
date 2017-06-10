@@ -145,13 +145,28 @@ Tw2ObjectReader.prototype._ConstructObject = function (data)
 
         throw new Error('YAML: object with undefined type \"' + data.type + '\"');
     }
+   
     for (var k in data)
     {
         if (data.hasOwnProperty(k) && k != 'type')
         {
-            object[k] = data[k];
+            if (object[k] && data[k].constructor == Object)
+            {
+                for (var key in data[k])
+                {
+                    if (data[k].hasOwnProperty(key))
+                    {
+                        object[k][key] = data[k][key];
+                    }
+                }
+            }
+            else
+            {
+                object[k] = data[k];
+            }
         }
     }
+    
     if ('Initialize' in object)
     {
         object.Initialize();
