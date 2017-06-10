@@ -144,12 +144,16 @@ EvePlanet.prototype._MeshLoaded = function()
 
     for (var param in originalEffect.parameters)
     {
-        this.effectHeight.parameters[param] = originalEffect.parameters[param];
-        if ('textureRes' in originalEffect.parameters[param])
+        if (originalEffect.parameters.hasOwnProperty(param))
         {
-            this.watchedResources.push(originalEffect.parameters[param].textureRes);
+            this.effectHeight.parameters[param] = originalEffect.parameters[param];
+            if ('textureRes' in originalEffect.parameters[param])
+            {
+                this.watchedResources.push(originalEffect.parameters[param].textureRes);
+            }
         }
     }
+
     for (var i = 0; i < this.highDetail.children[0].children.length; ++i)
     {
         mainMesh = this.highDetail.children[0].children[i].mesh;
