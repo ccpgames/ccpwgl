@@ -898,7 +898,7 @@ function Tw2Device()
     {
         if (this._whiteTexture == null)
         {
-            this._whiteTexture = this.CreateSolidColorTexture([0,0,0,0]);
+            this._whiteTexture = this.CreateSolidTexture([0,0,0,0]);
         }
         return this._whiteTexture;
     };
@@ -936,7 +936,7 @@ function Tw2Device()
     this.IsFrameBufferComplete = function(frameBuffer)
     {
         return this.gl.checkFramebufferStatus(frameBuffer) === this.gl.FRAMEBUFFER_COMPLETE;
-    }
+    };
 
     /**
      * Gets a gl extension
@@ -945,17 +945,17 @@ function Tw2Device()
      */
     this.GetExtension = function(extension)
     {
-        for (let prefix in Tw2Device.VENDOR_PREFIXES) 
+        for (var prefix in Tw2Device.VENDOR_PREFIXES)
         {
             if (Tw2Device.VENDOR_PREFIXES.hasOwnProperty(prefix)) 
             {
-                let ext = this.gl.getExtension(Tw2Device.VENDOR_PREFIXES[prefix] + extension);
+                var ext = this.gl.getExtension(Tw2Device.VENDOR_PREFIXES[prefix] + extension);
                 if (ext) return ext;
             }
         }
 
         return null;
-    }
+    };
     
     /**
      * Creates a solid colored texture
@@ -965,7 +965,7 @@ function Tw2Device()
     this.CreateSolidTexture = function(rgba)
     {
         rgba = rgba || [ 0, 0, 0, 0 ];
-        let texture = this.gl.createTexture();
+        var texture = this.gl.createTexture();
         this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
         this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array(rgba));
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
@@ -974,7 +974,7 @@ function Tw2Device()
         this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
         this.gl.bindTexture(this.gl.TEXTURE_2D, null);
         return texture;
-    }
+    };
 }
 
 /**

@@ -50,13 +50,13 @@ Tw2ColorCurve.prototype.Initialize = function()
 /**
  * Sorts the curve's keys
  */
-Tw2ColorCurve.prototype.Sort()
+Tw2ColorCurve.prototype.Sort = function()
 {
     if (this.keys.length)
     {
         this.keys.sort(Tw2ColorCurve.Compare);
     }
-}
+};
 
 /**
  * Compares two curve keys' time properties
@@ -71,7 +71,7 @@ Tw2ColorCurve.Compare = function(a, b)
     if (a.time < b.time) return -1;
     if (a.time > b.time) return 1;
     return 0;
-}
+};
 
 /**
  * Returns curve length
