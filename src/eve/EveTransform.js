@@ -13,7 +13,7 @@ function EveBasicPerObjectData()
  * @param constantBufferHandles
  * @constructor
  */
-EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
+EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {
@@ -57,9 +57,8 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
  * @property {vec3} scaling
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {mat4} localTransform
- * @property {mat4} rotationTransform
  * @property {mat4} worldTransform
  * @property {Array.<mat4>} _mat4Cache
  * @property {Array.<vec3>} _vec3Cache
@@ -71,16 +70,7 @@ function EveTransform()
     this.name = '';
     this.mesh = null;
 
-    this.NONE = 0;
-    this.BILLBOARD = 1;
-    this.TRANSLATE_WITH_CAMERA = 2;
-    this.LOOK_AT_CAMERA = 3;
-    this.SIMPLE_HALO = 4;
-    this.EVE_CAMERA_ROTATION_ALIGNED = 100;
-    this.EVE_BOOSTER = 101;
-    this.EVE_SIMPLE_HALO = 102;
-    this.EVE_CAMERA_ROTATION = 103;
-    this.modifier = this.NONE;
+    this.modifier = EveTransform.Modifier.NONE;
 
     this.sortValueMultiplier = 1.0;
     this.distanceBasedScaleArg1 = 0.2;
@@ -97,37 +87,44 @@ function EveTransform()
     this.visible.mesh = true;
     this.visible.children = true;
 
-    this.scaling = vec3.create([1, 1, 1]);
-    this.translation = vec3.create([0, 0, 0]);
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.scaling = vec3.fromValues(1, 1, 1);
+    this.translation = vec3.create();
+    this.rotation = quat.create();
     this.localTransform = mat4.create();
-    this.rotationTransform = mat4.identity(mat4.create());
-    this.worldTransform = mat4.identity(mat4.create());
-
-    this._mat4Cache = [mat4.create(), mat4.create()];
-    this._vec3Cache = [];
-    for (var i = 0; i < 7; ++i)
-    {
-        this._vec3Cache[i] = vec3.create();
-    }
+    this.worldTransform = mat4.create();
 
     this._perObjectData = new EveBasicPerObjectData();
     this._perObjectData.perObjectFFEData = new Tw2RawData();
     this._perObjectData.perObjectFFEData.Declare('World', 16);
     this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
     this._perObjectData.perObjectFFEData.Create();
+
+    var scratch = EveTransform.scratch;
+    if (!scratch.vec3_0)
+    {
+        scratch.vec3_0 = vec3.create();scratch.vec3_1 = vec3.create();scratch.vec3_2 = vec3.create();
+        scratch.vec3_3 = vec3.create();scratch.vec3_4 = vec3.create();scratch.vec3_5 = vec3.create();
+        scratch.vec3_6 = vec3.create();scratch.vec3_7 = vec3.create();
+        scratch.mat4_0 = mat4.create();scratch.mat4_1 = mat4.create();scratch.mat4_2 = mat4.create();
+    }
 }
+
+/**
+ * Scratch variables
+ */
+EveTransform.scratch = {
+    vec3_0: null, vec3_1: null, vec3_2: null,
+    vec3_3: null, vec3_4: null, vec3_5: null,
+    vec3_6: null, vec3_7: null,
+    mat4_0: null, mat4_1: null, mat4_2: null
+};
 
 /**
  * Initializes the EveTransform
  */
-EveTransform.prototype.Initialize = function()
+EveTransform.prototype.Initialize = function ()
 {
-    mat4.identity(this.localTransform);
-    mat4.translate(this.localTransform, this.translation);
-    mat4.transpose(quat4.toMat4(this.rotation, this.rotationTransform));
-    mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-    mat4.scale(this.localTransform, this.scaling);
+    mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
 };
 
 /**
@@ -136,7 +133,7 @@ EveTransform.prototype.Initialize = function()
  * @param {Boolean} excludeChildren - True to exclude children's res objects
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveTransform.prototype.GetResources = function(out, excludeChildren)
+EveTransform.prototype.GetResources = function (out, excludeChildren)
 {
     if (out === undefined)
     {
@@ -165,17 +162,17 @@ EveTransform.prototype.GetResources = function(out, excludeChildren)
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
         return;
     }
 
-    if (this.visible.mesh && this.mesh != null)
+    if (this.visible.mesh && this.mesh !== null)
     {
-        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('World'));
-        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'));
+        mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
+        mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
         if (perObjectData)
         {
             this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
@@ -197,7 +194,7 @@ EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * Per frame update
  * @param {Number} dt - delta time
  */
-EveTransform.prototype.Update = function(dt)
+EveTransform.prototype.Update = function (dt)
 {
     for (var i = 0; i < this.children.length; ++i)
     {
@@ -220,7 +217,7 @@ EveTransform.prototype.Update = function(dt)
 /**
  * multiply3x3
  */
-mat4.multiply3x3 = function(a, b, c)
+EveTransform.Multiply3x3 = function (a, b, c)
 {
     c || (c = b);
     var d = b[0],
@@ -236,182 +233,145 @@ mat4.multiply3x3 = function(a, b, c)
  * Per frame update
  * @param {mat4} parentTransform
  */
-EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
+EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
 {
-    mat4.identity(this.localTransform);
-    mat4.translate(this.localTransform, this.translation);
-    mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
-    mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-    mat4.scale(this.localTransform, this.scaling);
+    var finalScale, d, temp, camPos, scale, invView,
+        scratch = EveTransform.scratch,
+        parentScale = scratch.vec3_7;
+
+    quat.normalize(this.rotation, this.rotation);
+    mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+    mat4.getScaling(parentScale, parentTransform);
+
     switch (this.modifier)
     {
-        case this.BILLBOARD:
-        case this.SIMPLE_HALO:
-            {
-                mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+        case EveTransform.Modifier.BILLBOARD:
+        case EveTransform.Modifier.SIMPLE_HALO:
+            mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+            finalScale = vec3.multiply(scratch.vec3_0, this.scaling, parentScale);
 
-                var finalScale = this._vec3Cache[0];
-                vec3.set(this.scaling, finalScale);
-                var parentScaleX = vec3.length(parentTransform);
-                var parentScaleY = vec3.length(parentTransform.subarray(4));
-                var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                finalScale[0] *= parentScaleX;
-                finalScale[1] *= parentScaleY;
-                finalScale[2] *= parentScaleZ;
-                if (this.modifier == this.SIMPLE_HALO)
-                {
-                    var camPos = device.GetEyePosition();
-                    var d = this._vec3Cache[1];
-                    vec3.subtract(camPos, this.worldTransform.subarray(12), d);
-                    var scale = vec3.dot(vec3.normalize(d), vec3.normalize(this.worldTransform.subarray(8), this._vec3Cache[2]));
-                    if (scale < 0)
-                    {
-                        scale = 0;
-                    }
-                    vec3.scale(finalScale, scale * scale);
-                }
-                var invView = device.viewInv;
-                this.worldTransform[0] = invView[0] * finalScale[0];
-                this.worldTransform[1] = invView[1] * finalScale[0];
-                this.worldTransform[2] = invView[2] * finalScale[0];
-                this.worldTransform[4] = invView[4] * finalScale[1];
-                this.worldTransform[5] = invView[5] * finalScale[1];
-                this.worldTransform[6] = invView[6] * finalScale[1];
-                this.worldTransform[8] = invView[8] * finalScale[2];
-                this.worldTransform[9] = invView[9] * finalScale[2];
-                this.worldTransform[10] = invView[10] * finalScale[2];
+            if (this.modifier === EveTransform.Modifier.SIMPLE_HALO)
+            {
+                camPos = device.GetEyePosition();
+                d = vec3.subtract(scratch.vec3_1, camPos, this.worldTransform.subarray(12));
+                temp = scratch.vec3_2;
+                vec3.normalize(temp, this.worldTransform.subarray(8));
+                vec3.normalize(d, d);
+                scale = vec3.dot(d, temp);
+                if (scale < 0) scale = 0;
+                vec3.scale(finalScale, finalScale, scale * scale);
+            }
+
+            invView = device.viewInverse;
+            this.worldTransform[0] = invView[0] * finalScale[0];
+            this.worldTransform[1] = invView[1] * finalScale[0];
+            this.worldTransform[2] = invView[2] * finalScale[0];
+            this.worldTransform[4] = invView[4] * finalScale[1];
+            this.worldTransform[5] = invView[5] * finalScale[1];
+            this.worldTransform[6] = invView[6] * finalScale[1];
+            this.worldTransform[8] = invView[8] * finalScale[2];
+            this.worldTransform[9] = invView[9] * finalScale[2];
+            this.worldTransform[10] = invView[10] * finalScale[2];
+            break;
+
+        case EveTransform.Modifier.EVE_CAMERA_ROTATION:
+            var newTranslation = vec3.transformMat4(scratch.vec3_0, this.translation, parentTransform);
+            mat4.fromRotationTranslationScale(this.localTransform, this.rotation, newTranslation, this.scaling);
+            mat4.multiply(this.worldTransform, device.viewInverse, this.localTransform);
+            this.worldTransform[12] = this.localTransform[12];
+            this.worldTransform[13] = this.localTransform[13];
+            this.worldTransform[14] = this.localTransform[14];
+            break;
+
+        case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
+        case EveTransform.Modifier.EVE_SIMPLE_HALO:
+            // 3 4 3 3 3 4 3 3
+            mat4.translate(this.worldTransform, parentTransform, this.translation);
+            camPos = device.GetEyePosition();
+            d = scratch.vec3_0;
+            d[0] = camPos[0] - this.worldTransform[12];
+            d[1] = camPos[1] - this.worldTransform[13];
+            d[2] = camPos[2] - this.worldTransform[14];
+
+            var parentT = mat4.transpose(scratch.mat4_0, parentTransform);
+            var camFwd = vec3.copy(scratch.vec3_1, d);
+            vec3.transformMat4(camFwd, camFwd, parentT);
+            vec3.divide(camFwd, camFwd, parentScale);
+            vec3.normalize(camFwd, camFwd);
+
+            var right = vec3.set(scratch.vec3_2, device.view[0], device.view[4], device.view[8]);
+            vec3.transformMat4(right, right, parentT);
+            vec3.normalize(right, right);
+
+            var up = vec3.cross(scratch.vec3_3, camFwd, right);
+            vec3.normalize(up, up);
+
+            vec3.cross(right, up, camFwd);
+
+            var alignMat = scratch.mat4_1;
+            alignMat[0] = right[0];
+            alignMat[1] = right[1];
+            alignMat[2] = right[2];
+            alignMat[4] = up[0];
+            alignMat[5] = up[1];
+            alignMat[6] = up[2];
+            alignMat[8] = camFwd[0];
+            alignMat[9] = camFwd[1];
+            alignMat[10] = camFwd[2];
+            alignMat[15] = 1;
+            var rotationTransform = mat4.fromQuat(scratch.mat4_2, this.rotation);
+            mat4.multiply(alignMat, alignMat, rotationTransform);
+
+            if (this.modifier === EveTransform.Modifier.EVE_SIMPLE_HALO)
+            {
+                var forward = vec3.normalize(scratch.vec3_4, this.worldTransform.subarray(8));
+                var dirToCamNorm = vec3.normalize(d, d);
+                scale = -vec3.dot(dirToCamNorm, forward);
+                if (scale < 0) scale = 0;
+                mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * scale, this.scaling[1] * scale, this.scaling[2] * scale]);
+            }
+            else
+            {
+                mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
+                mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
             }
             break;
 
-        case this.EVE_CAMERA_ROTATION:
-            {
-                var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
-
-                mat4.identity(this.localTransform);
-                mat4.translate(this.localTransform, newTranslation);
-                mat4.transpose(quat4.toMat4(this.rotation, this.rotationTransform));
-                mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-                mat4.scale(this.localTransform, this.scaling);
-
-                var x = this.localTransform[12];
-                var y = this.localTransform[13];
-                var z = this.localTransform[14];
-                mat4.multiply(device.viewInv, this.localTransform, this.worldTransform);
-                this.worldTransform[12] = x;
-                this.worldTransform[13] = y;
-                this.worldTransform[14] = z;
-            }
-            break;
-
-        case this.EVE_CAMERA_ROTATION_ALIGNED:
-        case this.EVE_SIMPLE_HALO:
-            {
-                // 3 4 3 3 3 4 3 3
-                mat4.translate(parentTransform, this.translation, this.worldTransform);
-
-                var camPos = device.GetEyePosition();
-                var d = this._vec3Cache[0];
-                d[0] = camPos[0] - this.worldTransform[12];
-                d[1] = camPos[1] - this.worldTransform[13];
-                d[2] = camPos[2] - this.worldTransform[14];
-
-                var parentT = this._mat4Cache[0];
-                mat4.transpose(parentTransform, parentT);
-                var camFwd = this._vec3Cache[1];
-                vec3.set(d, camFwd);
-                mat4.multiply3x3(parentT, camFwd);
-
-                var parentScaleX = vec3.length(parentTransform);
-                camFwd[0] /= parentScaleX;
-                var parentScaleY = vec3.length(parentTransform.subarray(4));
-                camFwd[1] /= parentScaleY;
-                var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                camFwd[2] /= parentScaleZ;
-
-                var distCenter = vec3.length(camFwd);
-                vec3.normalize(camFwd);
-
-                var right = this._vec3Cache[2];
-                right[0] = device.view[0];
-                right[1] = device.view[4];
-                right[2] = device.view[8];
-                mat4.multiply3x3(parentT, right);
-                vec3.normalize(right);
-
-                var up = this._vec3Cache[3];
-                vec3.cross(camFwd, right, up);
-                vec3.normalize(up);
-
-                var alignMat = this._mat4Cache[1];
-                vec3.cross(up, camFwd, right);
-                alignMat[0] = right[0];
-                alignMat[1] = right[1];
-                alignMat[2] = right[2];
-                alignMat[4] = up[0];
-                alignMat[5] = up[1];
-                alignMat[6] = up[2];
-                alignMat[8] = camFwd[0];
-                alignMat[9] = camFwd[1];
-                alignMat[10] = camFwd[2];
-                alignMat[15] = 1;
-                mat4.multiply(alignMat, this.rotationTransform, alignMat);
-
-                if (this.modifier == this.EVE_SIMPLE_HALO)
-                {
-                    var forward = this._vec3Cache[4];
-                    vec3.normalize(this.worldTransform.subarray(8), forward);
-                    var dirToCamNorm = d;
-                    vec3.normalize(dirToCamNorm);
-                    var scale = -vec3.dot(dirToCamNorm, forward);
-                    if (scale < 0)
-                    {
-                        scale = 0;
-                    }
-                    mat4.multiply(this.worldTransform, alignMat, this.worldTransform);
-                    mat4.scale(this.worldTransform, [this.scaling[0] * scale, this.scaling[1] * scale, this.scaling[2] * scale]);
-                }
-                else
-                {
-                    mat4.scale(this.worldTransform, this.scaling);
-                    mat4.multiply(this.worldTransform, alignMat, this.worldTransform);
-                }
-            }
-            break;
-
-        case this.LOOK_AT_CAMERA:
-            {
-                mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
-                var invView = this._mat4Cache[0];
-                mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
-                mat4.transpose(invView);
-
-                var finalScale = this._vec3Cache[0];
-                vec3.set(this.scaling, finalScale);
-                var parentScaleX = vec3.length(parentTransform);
-                var parentScaleY = vec3.length(parentTransform.subarray(4));
-                var parentScaleZ = vec3.length(parentTransform.subarray(8));
-                finalScale[0] *= parentScaleX;
-                finalScale[1] *= parentScaleY;
-                finalScale[2] *= parentScaleZ;
-
-                this.worldTransform[0] = invView[0] * finalScale[0];
-                this.worldTransform[1] = invView[1] * finalScale[0];
-                this.worldTransform[2] = invView[2] * finalScale[0];
-                this.worldTransform[4] = invView[4] * finalScale[1];
-                this.worldTransform[5] = invView[5] * finalScale[1];
-                this.worldTransform[6] = invView[6] * finalScale[1];
-                this.worldTransform[8] = invView[8] * finalScale[2];
-                this.worldTransform[9] = invView[9] * finalScale[2];
-                this.worldTransform[10] = invView[10] * finalScale[2];
-            }
+        case EveTransform.Modifier.LOOK_AT_CAMERA:
+            mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+            invView = mat4.lookAt(scratch.mat4_0, device.viewInverse.subarray(12), this.worldTransform.subarray(12), [0,1,0]);
+            mat4.transpose(invView, invView);
+            finalScale = vec3.multiply(scratch.vec3_0, this.scaling, parentScale);
+            this.worldTransform[0] = invView[0] * finalScale[0];
+            this.worldTransform[1] = invView[1] * finalScale[0];
+            this.worldTransform[2] = invView[2] * finalScale[0];
+            this.worldTransform[4] = invView[4] * finalScale[1];
+            this.worldTransform[5] = invView[5] * finalScale[1];
+            this.worldTransform[6] = invView[6] * finalScale[1];
+            this.worldTransform[8] = invView[8] * finalScale[2];
+            this.worldTransform[9] = invView[9] * finalScale[2];
+            this.worldTransform[10] = invView[10] * finalScale[2];
             break;
 
         default:
-            mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+            mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
     }
 
     for (var i = 0; i < this.children.length; ++i)
     {
         this.children[i].UpdateViewDependentData(this.worldTransform);
     }
+};
+
+EveTransform.Modifier = {
+    NONE: 0,
+    BILLBOARD: 1,
+    TRANSLATE_WITH_CAMERA: 2,
+    LOOK_AT_CAMERA: 3,
+    SIMPLE_HALO: 4,
+    EVE_CAMERA_ROTATION_ALIGNED: 100,
+    EVE_BOOSTER: 101,
+    EVE_SIMPLE_HALO: 102,
+    EVE_CAMERA_ROTATION: 103
 };

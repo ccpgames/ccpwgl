@@ -1,31 +1,19 @@
 /**
  * Tw2Vector2Parameter
  * @param {string} [name='']
- * @param {Array|Float32Array} [value=[1,1]]
+ * @param {vec2|Float32Array} [value=[1,1]]
  * @property {string} name
- * @property {Float32Array} value
+ * @property {vec2} value
  * @property {Float32Array} constantBuffer
  * @property {number} offset
  * @constructor
  */
 function Tw2Vector2Parameter(name, value)
 {
-    if (typeof(name) != 'undefined')
-    {
-        this.name = name;
-    }
-    else
-    {
-        this.name = '';
-    }
-    if (typeof(value) != 'undefined')
-    {
-        this.value = new Float32Array(value);
-    }
-    else
-    {
-        this.value = new Float32Array([1, 1]);
-    }
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? vec2.clone(value) : vec2.fromValues(1,1);
+    this.constantBuffer = null;
+    this.offset = 0;
     this.constantBuffer = null;
     this.offset = 0;
 }
@@ -41,7 +29,7 @@ function Tw2Vector2Parameter(name, value)
  */
 Tw2Vector2Parameter.prototype.Bind = function(constantBuffer, offset, size)
 {
-    if (this.constantBuffer != null || size < 2)
+    if (this.constantBuffer !== null || size < 2)
     {
         return false;
     }
@@ -62,13 +50,13 @@ Tw2Vector2Parameter.prototype.Unbind = function()
 
 /**
  * Sets a supplied value
- * @param {Array} value - Vector2 Array
+ * @param {vec2} value - Vector2 Array
  * @prototype
  */
 Tw2Vector2Parameter.prototype.SetValue = function(value)
 {
-    this.value.set(value);
-    if (this.constantBuffer != null)
+    vec2.copy(this.value, value);
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -80,7 +68,7 @@ Tw2Vector2Parameter.prototype.SetValue = function(value)
  */
 Tw2Vector2Parameter.prototype.OnValueChanged = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -101,17 +89,17 @@ Tw2Vector2Parameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value array
- * @return {Float32Array} Vector2 Array
+ * @return {vec2} Vector2 Array
  * @prototype
  */
 Tw2Vector2Parameter.prototype.GetValue = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
-        return new Float32Array((this.constantBuffer.subarray(this.offset, this.offset + this.value.length)));
+        return vec2.clone((this.constantBuffer.subarray(this.offset, this.offset + this.value.length)));
     }
 
-    return new Float32Array(this.value);
+    return  vec2.clone(this.value);
 };
 
 /**
@@ -125,10 +113,10 @@ Tw2Vector2Parameter.prototype.GetIndexValue = function(index)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         return this.constantBuffer[this.offset + index];
     }
@@ -147,12 +135,12 @@ Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
     this.value[index] = value;
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer[this.offset + index] = value;
     }

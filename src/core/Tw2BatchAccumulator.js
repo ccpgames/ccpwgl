@@ -46,13 +46,13 @@ Tw2BatchAccumulator.prototype.Clear = function()
  */
 Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
 {
-    if (typeof(this._sortMethod) != 'undefined')
+    if (typeof(this._sortMethod) !== 'undefined')
     {
         this.batches.sort(this._sortMethod);
     }
     for (var i = 0; i < this.count; ++i)
     {
-        if (this.batches[i].renderMode != device.RM_ANY)
+        if (this.batches[i].renderMode !== device.RM_ANY)
         {
             device.SetStandardStates(this.batches[i].renderMode);
         }

@@ -15,7 +15,7 @@
  */
 function Tw2FloatParameter(name, value)
 {
-    if (typeof(name) != 'undefined')
+    if (typeof(name) !== 'undefined')
     {
         this.name = name;
     }
@@ -23,9 +23,9 @@ function Tw2FloatParameter(name, value)
     {
         this.name = '';
     }
-    if (typeof(value) != 'undefined')
+    if (typeof(value) !== 'undefined')
     {
-        if (value.constructor == (new glMatrixArrayType()).constructor || value.constructor == [].constructor)
+        if (value.constructor === (new glMatrix.ARRAY_TYPE()).constructor || value.constructor === [].constructor)
         {
             this.value = value[0];
         }
@@ -52,7 +52,7 @@ function Tw2FloatParameter(name, value)
  */
 Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
-    if (this.constantBuffer != null || size < 1)
+    if (this.constantBuffer !== null || size < 1)
     {
         return false;
     }
@@ -76,7 +76,7 @@ Tw2FloatParameter.prototype.Unbind = function()
  */
 Tw2FloatParameter.prototype.OnValueChanged = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer[this.offset] = this.value;
     }
@@ -100,7 +100,7 @@ Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
  */
 Tw2FloatParameter.prototype.GetValue = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         return this.constantBuffer[this.offset];
     }
@@ -115,7 +115,7 @@ Tw2FloatParameter.prototype.GetValue = function()
 Tw2FloatParameter.prototype.SetValue = function(value)
 {
     this.value = value;
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer[this.offset] = this.value;
     }

@@ -1,115 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SOF Browser - CCPWGL Demos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>SOF Browser - CCPWGL Demos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
-<link rel="stylesheet" href="demos.css">
-<script type="text/javascript" src="../src/external/glMatrix-0.9.5.min.js"></script>
-<script type="text/javascript" src="../src/ccpwgl_int.js"></script>
-<script type="text/javascript" src="../src/ccpwgl.js"></script>
-<script type="text/javascript" src="../src/test/TestCamera2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="demos.js"></script>
+    <link rel="stylesheet" href="demos.css">
+    <script type="text/javascript" src="../dist/external/glMatrix-2.4.0.min.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl.js"></script>
+    <script type="text/javascript" src="TestCamera2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="demos.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function () {
-        var $canvas = $('#mainCanvas');
-        ccpwgl.initialize($canvas[0], demos.options);
+        $(document).ready(function ()
+        {
+            var $canvas = $('#mainCanvas');
+            ccpwgl.initialize($canvas[0], demos.options);
 
-        var camera = new TestCamera($canvas[0]);
-        camera.minDistance = 0.6;
-        camera.maxDistance = 100000;
-        camera.fov = 30;
-        camera.distance = 100;
-        camera.nearPlane = 10;
-        camera.minPitch = -0.5;
-        camera.maxPitch = 0.35;
-        ccpwgl.setCamera(camera);
+            var camera = TestCamera.Create($canvas[0], { distance: 100 });
+            ccpwgl.setCamera(camera);
 
-        var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
-        if (demos.options.postprocess)
-            ccpwgl.enablePostprocessing(true);
+            if (demos.options.postprocess)
+                ccpwgl.enablePostprocessing(true);
 
-        function loadDna(dna) {
-            ccpwgl.getSofHullConstructor(dna, function (constructor) {
-                if (constructor) {
-                    try {
-                        scene.removeObject(0);
+            function loadDna(dna)
+            {
+                ccpwgl.getSofHullConstructor(dna, function (constructor)
+                {
+                    if (constructor)
+                    {
+                        try
+                        {
+                            scene.removeObject(0);
+                        }
+                        catch (e)
+                        {
+                        }
+                        var obj = scene[constructor](dna);
+                        if ('setBoosterStrength' in obj)
+                        {
+                            obj.setBoosterStrength($('#booster-intensity').val() / 50);
+                        }
                     }
-                    catch (e) {
-                    }
-                    var obj = scene[constructor](dna);
-                    if ('setBoosterStrength' in obj) {
-                        obj.setBoosterStrength($('#booster-intensity').val() / 50);
-                    }
-                }
+                });
+            }
+
+            softree($('.sof-tree'), $('#dna'), loadDna);
+
+            $('#create').click(function ()
+            {
+                var dna = $('#dna').val();
+                loadDna(dna);
+                history.pushState({'dna': dna}, 'SOF ' + dna);
             });
-        }
 
-        softree($('.sof-tree'), $('#dna'), loadDna);
+            $('#normal').click(function ()
+            {
+                scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
+            });
 
-        $('#create').click(function () {
-            var dna = $('#dna').val();
-            loadDna(dna);
-            history.pushState({'dna': dna}, 'SOF ' + dna);
+            $('#siege').click(function ()
+            {
+                scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
+            });
+
+            $('#booster-intensity').change(function ()
+            {
+                scene.getObject(0).setBoosterStrength($(this).val() / 50)
+            });
+
+            $('#kills').change(function ()
+            {
+                scene.getObject(0).setKillCount(parseInt($(this).val()));
+            });
+
+            ccpwgl.onPreRender = function ()
+            {
+                document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+            };
         });
-
-        $('#normal').click(function () {
-            scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
-        });
-
-        $('#siege').click(function () {
-            scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
-        });
-
-        $('#booster-intensity').change(function () {
-            scene.getObject(0).setBoosterStrength($(this).val() / 50)
-        });
-
-        $('#kills').change(function () {
-            scene.getObject(0).setKillCount(parseInt($(this).val()));
-        });
-
-        ccpwgl.onPreRender = function () {
-            document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
-        };
-    });
-</script>
+    </script>
 
 </head>
 <body>
-    <canvas id="mainCanvas" width="500" height="500"></canvas>
-    <div id="toolbox">
-        <div><button id="browse" class="btn" data-pane="browse-pane">Browse</button></div>
-        <div><button id="state" class="btn" data-pane="state-pane">State</button></div>
+<canvas id="mainCanvas" width="500" height="500"></canvas>
+<div id="toolbox">
+    <div>
+        <button id="browse" class="btn" data-pane="browse-pane">Browse</button>
     </div>
-    <div id="loading">Loading...</div>
-    <div id="browse-pane" class="pane visible">
-        <div class="pane-heading">Browse</div>
-        <div class="flex-horizontal">
-            <input id="dna" type="text" class="flex-expand" value="::">
-            <button id="create" class="default">Create</button>
-        </div>
-        <ul class="sof-tree flex-expand"></ul>
+    <div>
+        <button id="state" class="btn" data-pane="state-pane">State</button>
     </div>
-    <div id="state-pane" class="pane">
-        <div class="pane-heading">Controls</div>
-        <div>
-            <label for="booster-intensity">Boosters</label>
-            <input type="range" id="booster-intensity" style="vertical-align: middle">
-        </div>
-        <div>
-            <label>Siege State</label>
-            <button id="normal">Normal</button>
-            <button id="siege">Siege</button>
-        </div>
-        <div>
-            <label for="kills">Kills</label>
-            <input id="kills" type="number" value="0">
-        </div>
+</div>
+<div id="loading">Loading...</div>
+<div id="browse-pane" class="pane visible">
+    <div class="pane-heading">Browse</div>
+    <div class="flex-horizontal">
+        <input id="dna" type="text" class="flex-expand" value="::">
+        <button id="create" class="default">Create</button>
     </div>
+    <ul class="sof-tree flex-expand"></ul>
+</div>
+<div id="state-pane" class="pane">
+    <div class="pane-heading">Controls</div>
+    <div>
+        <label for="booster-intensity">Boosters</label>
+        <input type="range" id="booster-intensity" style="vertical-align: middle">
+    </div>
+    <div>
+        <label>Siege State</label>
+        <button id="normal">Normal</button>
+        <button id="siege">Siege</button>
+    </div>
+    <div>
+        <label for="kills">Kills</label>
+        <input id="kills" type="number" value="0">
+    </div>
+</div>
 </body>
 </html>

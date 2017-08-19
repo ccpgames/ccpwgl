@@ -16,7 +16,7 @@
  */
 function Tw2TextureParameter(name, texturePath)
 {
-    if (typeof(name) != 'undefined')
+    if (typeof(name) !== 'undefined')
     {
         this.name = name;
     }
@@ -35,7 +35,7 @@ function Tw2TextureParameter(name, texturePath)
     this.textureRes = null;
     this._sampler = null;
 
-    if (typeof(texturePath) != 'undefined')
+    if (typeof(texturePath) !== 'undefined')
     {
         this.resourcePath = texturePath;
         this.Initialize();
@@ -77,7 +77,7 @@ Tw2TextureParameter.prototype.GetResource = function(out)
 Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
 {
     this.resourcePath = texturePath;
-    if (this.resourcePath != '')
+    if (this.resourcePath !== '')
     {
         this.textureRes = resMan.GetResource(this.resourcePath);
     }
@@ -89,7 +89,7 @@ Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
  */
 Tw2TextureParameter.prototype.Initialize = function()
 {
-    if (this.resourcePath != '')
+    if (this.resourcePath !== '')
     {
         this.textureRes = resMan.GetResource(this.resourcePath);
     }
@@ -97,7 +97,7 @@ Tw2TextureParameter.prototype.Initialize = function()
     if (this.useAllOverrides)
     {
         this._sampler = new Tw2SamplerState();
-        if (this.filterMode == 1)
+        if (this.filterMode === 1)
         {
             switch (this.mipFilterMode)
             {
@@ -129,17 +129,10 @@ Tw2TextureParameter.prototype.Initialize = function()
             this._sampler.minFilterNoMips = device.gl.LINEAR;
             this._sampler.magFilter = device.gl.LINEAR;
         }
-        var wrapModes = [
-            0,
-            device.gl.REPEAT,
-            device.gl.MIRRORED_REPEAT,
-            device.gl.CLAMP_TO_EDGE,
-            device.gl.CLAMP_TO_EDGE,
-            device.gl.CLAMP_TO_EDGE
-        ];
-        this._sampler.addressU = wrapModes[this.addressUMode];
-        this._sampler.addressV = wrapModes[this.addressVMode];
-        this._sampler.addressW = wrapModes[this.addressWMode];
+
+        this._sampler.addressU = device.wrapModes[this.addressUMode];
+        this._sampler.addressV = device.wrapModes[this.addressVMode];
+        this._sampler.addressW = device.wrapModes[this.addressWMode];
         this._sampler.anisotropy = this.maxAnisotropy;
         this._sampler.ComputeHash();
     }
@@ -180,4 +173,4 @@ Tw2TextureParameter.prototype.GetValue = function()
     }
 
     return this.resourcePath;
-}
+};

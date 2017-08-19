@@ -1,7 +1,7 @@
 /**
  * Tw2MatrixParameter
  * @param {string} [name='']
- * @param {mat4|Float32Array|Array} [value=mat4.identity(mat4.create())]
+ * @param {mat4|Float32Array|Array} [value=mat4.create()]
  * @property {string} name
  * @property {mat4|Float32Array} value
  * @property {Float32Array} constantBuffer
@@ -11,7 +11,7 @@
 function Tw2MatrixParameter(name, value)
 {
     this.name = (name !== undefined) ? name : '';
-    this.value = (value !== undefined) ? mat4.create(value) : mat4.identity(mat4.create());
+    this.value = (value !== undefined) ? mat4.clone(value) : mat4.create();
     this.constantBuffer = null;
     this.offset = 0;
 }
@@ -26,7 +26,7 @@ function Tw2MatrixParameter(name, value)
  */
 Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
-    if (this.constantBuffer != null || size < 16)
+    if (this.constantBuffer !== null || size < 16)
     {
         return false;
     }
@@ -51,8 +51,8 @@ Tw2MatrixParameter.prototype.UnBind = function()
  */
 Tw2MatrixParameter.prototype.SetValue = function(value)
 {
-    this.value = mat4.create(value);
-    if (this.constantBuffer != null)
+    mat4.copy(this.value, value);
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -65,12 +65,12 @@ Tw2MatrixParameter.prototype.SetValue = function(value)
  */
 Tw2MatrixParameter.prototype.GetValue = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
-        return mat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return mat4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
     }
 
-    return mat4.create(this.value);
+    return mat4.clone(this.value);
 };
 
 /**

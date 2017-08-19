@@ -41,27 +41,34 @@ function EveStretch()
     this._displayDestObject = true;
     this._useTransformsForStretch = false;
     this._isNegZForward = false;
+
+    var scratch = EveStretch.scratch;
+    if (!scratch.vec3_0)
+    {
+        scratch.vec3_0 = vec3.create();
+        scratch.vec3_1 = vec3.create();
+        scratch.vec3_2 = vec3.create();
+        scratch.mat4_0 = mat4.create();
+        scratch.mat4_1 = mat4.create();
+    }
 }
 
 /**
- * Temporary vec3 storage
- * @type {Array.<vec3>}
- * @private
+ * Scratch variables
  */
-EveStretch._tempVec3 = [vec3.create(), vec3.create(), vec3.create()];
-
-/**
- * Temporary Mat4 storage
- * @type {Array.<mat4>}
- * @private
- */
-EveStretch._tempMat4 = [mat4.create(), mat4.create()];
+EveStretch.scratch = {
+    vec3_0 : null,
+    vec3_1 : null,
+    vec3_2 : null,
+    mat4_0 : null,
+    mat4_1 : null
+};
 
 /**
  * Per frame update
  * @param {number} dt - delta time
  */
-EveStretch.prototype.Update = function(dt)
+EveStretch.prototype.Update = function (dt)
 {
     for (var i = 0; i < this.curveSets.length; ++i)
     {
@@ -82,10 +89,11 @@ EveStretch.prototype.Update = function(dt)
     {
         this.source.GetValueAt(this._time, this._destinationPosition);
     }
-    var directionVec = vec3.subtract(this._destinationPosition, this._sourcePosition, EveStretch._tempVec3[0]);
-    var scalingLength = vec3.length(directionVec);
-    this.length.value = scalingLength;
-    vec3.normalize(directionVec);
+
+    var directionVec = vec3.subtract(EveStretch.scratch.vec3_0, this._destinationPosition, this._sourcePosition);
+    this.length.value = vec3.length(directionVec);
+    vec3.normalize(directionVec, directionVec);
+
     if (this.sourceObject && this._displaySourceObject)
     {
         this.sourceObject.Update(dt);
@@ -103,27 +111,29 @@ EveStretch.prototype.Update = function(dt)
 /**
  * Updates view dependent data
  */
-EveStretch.prototype.UpdateViewDependentData = function()
+EveStretch.prototype.UpdateViewDependentData = function ()
 {
     if (!this.display)
     {
         return;
     }
-    var directionVec = vec3.subtract(this._destinationPosition, this._sourcePosition, EveStretch._tempVec3[0]);
-    var scalingLength = vec3.length(directionVec);
-    vec3.normalize(directionVec);
 
-    var m = EveStretch._tempMat4[0];
+    var scratch = EveStretch.scratch;
+    var directionVec = vec3.subtract(scratch.vec3_0, this._destinationPosition, this._sourcePosition);
+    var scalingLength = vec3.length(directionVec);
+    vec3.normalize(directionVec, directionVec);
+
+    var m = mat4.identity(scratch.mat4_0),
+        x = vec3.set(scratch.vec3_1, 0, 0, 0),
+        up = vec3.set(scratch.vec3_2, 0, 0, 0);
+
     if (this._useTransformsForStretch)
     {
-        mat4.identity(m);
-        mat4.rotateX(m, -Math.PI / 2);
-        mat4.multiply(this._sourceTransform, m, m);
+        mat4.rotateX(m, m, -Math.PI / 2);
+        mat4.multiply(m, this._sourceTransform, m);
     }
     else
     {
-        mat4.identity(m);
-        var up = EveStretch._tempVec3[2];
         if (Math.abs(directionVec[1]) > 0.9)
         {
             up[2] = 1;
@@ -132,8 +142,9 @@ EveStretch.prototype.UpdateViewDependentData = function()
         {
             up[1] = 1;
         }
-        var x = vec3.normalize(vec3.cross(up, directionVec, EveStretch._tempVec3[1]));
-        vec3.cross(directionVec, x, up);
+        vec3.cross(x, up, directionVec);
+        vec3.normalize(x, x);
+        vec3.cross(up, directionVec, x);
         m[0] = x[0];
         m[1] = x[1];
         m[2] = x[2];
@@ -156,8 +167,8 @@ EveStretch.prototype.UpdateViewDependentData = function()
         if (this._useTransformsForStretch)
         {
             mat4.identity(m);
-            mat4.rotateX(m, -Math.PI / 2);
-            mat4.multiply(this._sourceTransform, m, m);
+            mat4.rotateX(m, m, -Math.PI / 2);
+            mat4.multiply(m, this._sourceTransform, m);
         }
         else
         {
@@ -172,8 +183,8 @@ EveStretch.prototype.UpdateViewDependentData = function()
         if (this._useTransformsForStretch)
         {
             mat4.identity(m);
-            mat4.scale(m, [1, 1, scalingLength]);
-            mat4.multiply(this._sourceTransform, m, m);
+            mat4.scale(m, m, [1, 1, scalingLength]);
+            mat4.multiply(m, this._sourceTransform, m);
         }
         else
         {
@@ -190,8 +201,9 @@ EveStretch.prototype.UpdateViewDependentData = function()
             {
                 scalingLength = -scalingLength;
             }
-            var s = mat4.scale(mat4.identity(EveStretch._tempMat4[1]), [1, 1, scalingLength]);
-            mat4.multiply(m, s, m);
+            var s = mat4.identity(scratch.mat4_1);
+            mat4.scale(s, s, [1, 1, scalingLength]);
+            mat4.multiply(m, m, s);
         }
         this.stretchObject.UpdateViewDependentData(m);
     }
@@ -203,7 +215,7 @@ EveStretch.prototype.UpdateViewDependentData = function()
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveStretch.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
@@ -227,7 +239,7 @@ EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * Gets source position
  * @param {vec3} position
  */
-EveStretch.prototype.SetSourcePosition = function(position)
+EveStretch.prototype.SetSourcePosition = function (position)
 {
     this._useTransformsForStretch = false;
     this._sourcePosition = position;
@@ -237,7 +249,7 @@ EveStretch.prototype.SetSourcePosition = function(position)
  * Sets the destination position
  * @param {vec3} position
  */
-EveStretch.prototype.SetDestinationPosition = function(position)
+EveStretch.prototype.SetDestinationPosition = function (position)
 {
     this._destinationPosition = position;
 };
@@ -246,7 +258,7 @@ EveStretch.prototype.SetDestinationPosition = function(position)
  * Sets the source transform
  * @param {mat4} transform
  */
-EveStretch.prototype.SetSourceTransform = function(transform)
+EveStretch.prototype.SetSourceTransform = function (transform)
 {
     this._useTransformsForStretch = true;
     this._sourceTransform = transform;
@@ -256,7 +268,7 @@ EveStretch.prototype.SetSourceTransform = function(transform)
  * SetIsNegZForward
  * @param {boolean} isNegZForward
  */
-EveStretch.prototype.SetIsNegZForward = function(isNegZForward)
+EveStretch.prototype.SetIsNegZForward = function (isNegZForward)
 {
     this._isNegZForward = isNegZForward;
 };

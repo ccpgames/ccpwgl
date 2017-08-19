@@ -62,7 +62,7 @@ Tw2ScalarSequencer.prototype.GetValueAt = function(time)
 {
     var ret, i, v;
 
-    if (this.operator == 0)
+    if (this.operator === 0)
     {
         ret = 1;
         for (i = 0; i < this.functions.length; ++i)

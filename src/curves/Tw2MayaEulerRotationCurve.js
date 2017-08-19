@@ -7,7 +7,7 @@
  * @property {string} name
  * @property {vec3} eulerValue
  * @property {boolean} updateQuaternion
- * @property {quat4} quatValue
+ * @property {quat} quatValue
  * @constructor
  */
 function Tw2MayaEulerRotationCurve()
@@ -19,7 +19,7 @@ function Tw2MayaEulerRotationCurve()
     this.name = '';
     this.eulerValue = vec3.create();
     this.updateQuaternion = false;
-    this.quatValue = quat4.create();
+    this.quatValue = quat.create();
 }
 
 /**
@@ -58,7 +58,7 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
         }
         if (this.yIndex)
         {
-            if (this.yIndex == this.xIndex)
+            if (this.yIndex === this.xIndex)
             {
                 this.eulerValue[1] = this.eulerValue[0];
             }
@@ -69,7 +69,7 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
         }
         if (this.zIndex)
         {
-            if (this.zIndex == this.xIndex)
+            if (this.zIndex === this.xIndex)
             {
                 this.eulerValue[2] = this.eulerValue[0];
             }
@@ -100,7 +100,7 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
  */
 Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
 {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() == 0)
+    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {
         return;
     }

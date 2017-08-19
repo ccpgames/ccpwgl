@@ -6,7 +6,7 @@
  * @property {string} group
  * @property {boolean} cycle
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scale
  * @property positionCurve
  * @property orientationCurve
@@ -22,12 +22,11 @@ function Tw2TransformTrack()
     this.group = '';
     this.cycle = false;
     this.translation = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.scale = vec3.create([1, 1, 1]);
+    this.rotation = quat.create();
+    this.scale = vec3.fromValues(0,0,0);
     this.positionCurve = null;
     this.orientationCurve = null;
     this.scaleCurve = null;
-    this._scaleShear = mat4.create();
 }
 
 /**
@@ -36,7 +35,7 @@ function Tw2TransformTrack()
  */
 Tw2TransformTrack.prototype.Initialize = function()
 {
-    if (this.resPath != '')
+    if (this.resPath !== '')
     {
         this.res = resMan.GetResource(this.resPath);
     }
@@ -50,106 +49,6 @@ Tw2TransformTrack.prototype.Initialize = function()
 Tw2TransformTrack.prototype.GetLength = function()
 {
     return this.duration;
-};
-
-/**
- * EvaluateCurve
- * @param curve
- * @param {number} time
- * @param {Array|vec3|quat4|mat4} value
- * @param {boolean} cycle
- * @param {number} duration
- * @prototype
- */
-Tw2TransformTrack.prototype.EvaluateCurve = function(curve, time, value, cycle, duration)
-{
-    var i;
-    var count = curve.knots.length;
-    var knot = count - 1;
-    var t = 0;
-    for (i = 0; i < curve.knots.length; ++i)
-    {
-        if (curve.knots[i] > time)
-        {
-            knot = i;
-            break;
-        }
-    }
-
-    if (curve.degree == 0)
-    {
-        for (i = 0; i < curve.dimension; ++i)
-        {
-            value[i] = curve.controls[knot * curve.dimension + i];
-        }
-    }
-    else if (curve.degree == 1)
-    {
-        var knot0 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
-        var dt = curve.knots[knot] - curve.knots[knot0];
-        if (dt < 0)
-        {
-            dt += duration;
-        }
-        if (dt > 0)
-        {
-            t = (time - curve.knots[i - 1]) / dt;
-        }
-        for (i = 0; i < curve.dimension; ++i)
-        {
-            value[i] = curve.controls[knot0 * curve.dimension + i] * (1 - t) + curve.controls[knot * curve.dimension + i] * t;
-        }
-    }
-    else
-    {
-        var k_2 = cycle ? (knot + count - 2) % count : knot == 0 ? 0 : knot - 2;
-        var k_1 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
-
-        var p1 = (k_2) * curve.dimension;
-        var p2 = (k_1) * curve.dimension;
-        var p3 = knot * curve.dimension;
-
-        var ti_2 = curve.knots[k_2];
-        var ti_1 = curve.knots[k_1];
-        var ti = curve.knots[knot];
-        var ti1 = curve.knots[(knot + 1) % count];
-        if (ti_2 > ti)
-        {
-            ti += duration;
-            ti1 += duration;
-            time += duration;
-        }
-        if (ti_1 > ti)
-        {
-            ti += duration;
-            ti1 += duration;
-            time += duration;
-        }
-        if (ti1 < ti)
-        {
-            ti1 += duration;
-        }
-
-        var tmti_1 = (time - ti_1);
-        var tmti_2 = (time - ti_2);
-        var dL0 = ti - ti_1;
-        var dL1_1 = ti - ti_2;
-        var dL1_2 = ti1 - ti_1;
-
-        var L0 = tmti_1 / dL0;
-        var L1_1 = tmti_2 / dL1_1;
-        var L1_2 = tmti_1 / dL1_2;
-
-        var ci_2 = (L1_1 + L0) - L0 * L1_1;
-        var ci = L0 * L1_2;
-        var ci_1 = ci_2 - ci;
-        ci_2 = 1 - ci_2;
-
-        for (i = 0; i < curve.dimension; ++i)
-        {
-            value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
-        }
-    }
 };
 
 /**
@@ -181,13 +80,12 @@ Tw2TransformTrack.prototype.UpdateValue = function(time)
         return;
     }
 
-    this.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
-    this.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
-    quat4.normalize(this.rotation);
-    this.EvaluateCurve(this.scaleCurve, time, this._scaleShear, this.cycle, this.duration);
-    this.scale[0] = vec3.length(this.scaleCurve);
-    this.scale[1] = vec3.length(this.scaleCurve.subarray(3, 6));
-    this.scale[2] = vec3.length(this.scaleCurve.subarray(6, 9));
+    var scaleShear = Tw2TransformTrack.scratch.mat4_0;
+    Tw2AnimationController.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
+    Tw2AnimationController.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
+    quat.normalize(this.rotation);
+    Tw2AnimationController.EvaluateCurve(this.scaleCurve, time, scaleShear, this.cycle, this.duration);
+    mat4.getScaling(this.scale, this.scaleCurve);
 };
 
 /**
@@ -203,7 +101,7 @@ Tw2TransformTrack.prototype.FindTracks = function()
     {
         for (var j = 0; j < this.res.animations[i].trackGroups.length; ++j)
         {
-            if (this.res.animations[i].trackGroups[j].name == this.group)
+            if (this.res.animations[i].trackGroups[j].name === this.group)
             {
                 this.duration = this.res.animations[i].duration;
                 group = this.res.animations[i].trackGroups[j];
@@ -217,7 +115,7 @@ Tw2TransformTrack.prototype.FindTracks = function()
     }
     for (i = 0; i < group.transformTracks.length; ++i)
     {
-        if (this.name == group.transformTracks[i].name)
+        if (this.name === group.transformTracks[i].name)
         {
             this.positionCurve = group.transformTracks[i].position;
             this.orientationCurve = group.transformTracks[i].orientation;
@@ -225,4 +123,11 @@ Tw2TransformTrack.prototype.FindTracks = function()
             break;
         }
     }
+};
+
+/**
+ * Scratch variables
+ */
+Tw2TransformTrack.scratch = {
+    mat4_0 : mat4.create()
 };

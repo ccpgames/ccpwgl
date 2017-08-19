@@ -27,7 +27,7 @@ var Tw2EventEmitter = function()
 Tw2EventEmitter.prototype.on = function(eventName, listener)
 {
     eventName = Tw2EventEmitter.Register(this, eventName);
-    if (this._events[eventName].indexOf(listener) == -1)
+    if (this._events[eventName].indexOf(listener) === -1)
     {
         this._events[eventName].push(listener);
     }

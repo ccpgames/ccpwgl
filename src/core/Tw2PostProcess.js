@@ -107,12 +107,12 @@ Tw2PostProcess.prototype.Render = function()
     {
         return;
     }
-    if (this.texture == null)
+    if (this.texture === null)
     {
         this.texture = new Tw2TextureRes();
         this.texture.Attach(device.gl.createTexture());
     }
-    if (width != this.width || height != this.height)
+    if (width !== this.width || height !== this.height)
     {
         device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
         device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, width, height, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
@@ -168,7 +168,7 @@ Tw2PostProcess.prototype.Render = function()
     for (i = 0; i < this.steps.length; ++i)
     {
         step = this.steps[i];
-        if (step.rt != null)
+        if (step.rt !== null)
         {
             step.rt.Set();
         }

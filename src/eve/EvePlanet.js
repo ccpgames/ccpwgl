@@ -44,7 +44,7 @@ EvePlanet.prototype.GetResources = function(out)
     this.effectHeight.GetResources(out);
 
     return out;
-}
+};
 
 /**
  * Creates the planet
@@ -79,7 +79,7 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
     resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function(obj)
     {
         self.zOnlyModel = obj;
-    })
+    });
 };
 
 /**
@@ -91,12 +91,12 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
  */
 EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
 {
-    if (visited.indexOf(obj) != -1)
+    if (visited.indexOf(obj) !== -1)
     {
         return;
     }
     visited.push(obj);
-    if (obj && typeof(obj['doNotPurge']) != typeof(undefined))
+    if (obj && typeof(obj['doNotPurge']) !== typeof(undefined))
     {
         result.push(obj);
         return;
@@ -105,7 +105,7 @@ EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
     {
         if (obj.hasOwnProperty(prop))
         {
-            if (typeof(obj[prop]) == "object")
+            if (typeof(obj[prop]) === "object")
             {
                 this.GetPlanetResources(obj[prop], visited, result);
             }
@@ -233,7 +233,7 @@ EvePlanet.prototype._MeshLoaded = function()
  */
 EvePlanet.prototype.GetBatches = function(mode, accumulator)
 {
-    if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 != '')
+    if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '')
     {
         for (var i = 0; i < this.watchedResources.length; ++i)
         {

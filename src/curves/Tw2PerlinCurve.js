@@ -54,9 +54,9 @@ function Perlin_noise1(arg)
     var rx0 = t - Math.floor(t);
     var rx1 = rx0 - 1;
 
-    sx = rx0 * rx0 * (3. - 2. * rx0);
-    u = rx0 * Perlin_g1[Perlin_p[bx0]];
-    v = rx1 * Perlin_g1[Perlin_p[bx1]];
+    var sx = rx0 * rx0 * (3.0 - 2.0 * rx0);
+    var u = rx0 * Perlin_g1[Perlin_p[bx0]];
+    var v = rx1 * Perlin_g1[Perlin_p[bx1]];
 
     return u + sx * (v - u);
 }
