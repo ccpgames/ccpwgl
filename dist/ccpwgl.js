@@ -534,9 +534,9 @@ var ccpwgl = (function(ccpwgl_int)
                 }
                 else if ('translation' in tr)
                 {
-                    mat4.getTranslation(tr.translation, tr);
-                    mat4.getScaling(tr.scaling, tr);
-                    //mat4.getRotation(tr.rotation, tr);
+                    mat4.getTranslation(tr.translation, this.transform);
+                    mat4.getScaling(tr.scaling, this.transform);
+                    //mat4.getRotation(tr.rotation, this.transform);
                 }
             }
         };
