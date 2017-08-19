@@ -7,13 +7,7 @@
         "vec4" : false,
         "quat" : false,
         "mat3" : false,
-        "mat4" : false,
-        "glMatrixArrayType": false,
-        "_mat3": false,
-        "_mat4": false,
-        "_quat4": false,
-        "_vec3": false,
-        "$" : false
+        "mat4" : false
     },
 
   "esversion" : 5,
