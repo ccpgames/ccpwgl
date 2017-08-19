@@ -2,20 +2,21 @@
  * Tw2ColorSequencer
  * @property {string} name
  * @property {number} start
- * @property {quat4} value
+ * @property {vec4} value
  * @property {number} operator
  * @property {Array} functions
- * @property {quat4} _tempValue
  * @constructor
  */
 function Tw2ColorSequencer()
 {
     this.name = '';
     this.start = 0;
-    this.value = quat4.create();
+    this.value = vec4.create();
     this.operator = 0;
     this.functions = [];
-    this._tempValue = quat4.create();
+
+    var scratch = Tw2ColorSequencer.scratch;
+    if (!scratch.vec4_0) scratch.vec4_0 = vec4.create();
 }
 
 /**
@@ -23,7 +24,7 @@ function Tw2ColorSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2ColorSequencer.prototype.GetLength = function()
+Tw2ColorSequencer.prototype.GetLength = function ()
 {
     var length = 0;
     for (var i = 0; i < this.functions.length; ++i)
@@ -41,7 +42,7 @@ Tw2ColorSequencer.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2ColorSequencer.prototype.UpdateValue = function(time)
+Tw2ColorSequencer.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -49,21 +50,21 @@ Tw2ColorSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {vec4} value
+ * @returns {vec4}
  * @prototype
  */
-Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
+Tw2ColorSequencer.prototype.GetValueAt = function (time, value)
 {
-    var tempValue, functions, i;
+    var functions, i;
+    var tempValue = Tw2ColorSequencer.scratch.vec4_0;
 
-    if (this.operator == 0)
+    if (this.operator === 0)
     {
         value[0] = 1;
         value[1] = 1;
         value[2] = 1;
         value[3] = 1;
-        tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
@@ -80,7 +81,6 @@ Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
         value[1] = 0;
         value[2] = 0;
         value[3] = 0;
-        tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
@@ -92,4 +92,11 @@ Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
         }
     }
     return value;
+};
+
+/**
+ * Scratch variable
+ */
+Tw2ColorSequencer.scratch = {
+    vec4: null
 };

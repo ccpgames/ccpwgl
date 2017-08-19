@@ -38,7 +38,7 @@ function Tw2SamplerOverride()
             sampler = new Tw2SamplerState();
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
-            if (this.filter == 1)
+            if (this.filter === 1)
             {
                 switch (this.mipFilter)
                 {
@@ -68,7 +68,7 @@ function Tw2SamplerOverride()
                 }
                 sampler.minFilterNoMips = device.gl.LINEAR;
             }
-            if (this.filter == 1)
+            if (this.filter === 1)
             {
                 sampler.magFilter = device.gl.NEAREST;
             }
@@ -87,7 +87,7 @@ function Tw2SamplerOverride()
             sampler.addressU = wrapModes[this.addressU];
             sampler.addressV = wrapModes[this.addressV];
             sampler.addressW = wrapModes[this.addressW];
-            if (this.filter == 3 || this.mipFilter == 3)
+            if (this.filter === 3 || this.mipFilter === 3)
             {
                 sampler.anisotropy = Math.max(this.maxAnisotropy, 1);
             }
@@ -96,7 +96,7 @@ function Tw2SamplerOverride()
             sampler.ComputeHash();
         }
         return sampler;
-    }
+    };
 }
 
 
@@ -126,7 +126,7 @@ function Tw2Effect()
  */
 Tw2Effect.prototype.Initialize = function()
 {
-    if (this.effectFilePath != '')
+    if (this.effectFilePath !== '')
     {
         var path = this.effectFilePath;
         var dot = path.lastIndexOf('.');
@@ -200,7 +200,7 @@ Tw2Effect.prototype.RebuildCachedData = function(resource)
  */
 Tw2Effect.prototype.BindParameters = function()
 {
-    if (this.effectRes == null || !this.effectRes.IsGood())
+    if (this.effectRes === null || !this.effectRes.IsGood())
     {
         return false;
     }
@@ -234,11 +234,11 @@ Tw2Effect.prototype.BindParameters = function()
             {
                 var constant = stageRes.constants[k];
                 var name = constant.name;
-                if (name == 'PerFrameVS' ||
-                    name == 'PerObjectVS' ||
-                    name == 'PerFramePS' ||
-                    name == 'PerObjectPS' ||
-                    name == 'PerObjectPSInt')
+                if (name === 'PerFrameVS' ||
+                    name === 'PerObjectVS' ||
+                    name === 'PerFramePS' ||
+                    name === 'PerObjectPS' ||
+                    name === 'PerObjectPSInt')
                 {
                     continue;
                 }
@@ -309,7 +309,7 @@ Tw2Effect.prototype.BindParameters = function()
                 p.sampler = null;
                 for (var n = 0; n < stageRes.samplers.length; ++n)
                 {
-                    if (stageRes.samplers[n].registerIndex == p.slot)
+                    if (stageRes.samplers[n].registerIndex === p.slot)
                     {
                         if (stageRes.samplers[n].name in this.samplerOverrides)
                         {
@@ -322,7 +322,7 @@ Tw2Effect.prototype.BindParameters = function()
                         break;
                     }
                 }
-                if (j == 0)
+                if (j === 0)
                 {
                     p.slot += 12;
                 }
@@ -346,7 +346,7 @@ Tw2Effect.prototype.BindParameters = function()
  */
 Tw2Effect.prototype.ApplyPass = function(pass)
 {
-    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+    if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
         return;
     }
@@ -377,11 +377,11 @@ Tw2Effect.prototype.ApplyPass = function(pass)
             tex.parameter.Apply(tex.slot, tex.sampler, program.volumeSlices[tex.sampler.registerIndex]);
         }
     }
-    if (program.constantBufferHandles[0] != null)
+    if (program.constantBufferHandles[0] !== null)
     {
         d.gl.uniform4fv(program.constantBufferHandles[0], p.stages[0].constantBuffer);
     }
-    if (program.constantBufferHandles[7] != null)
+    if (program.constantBufferHandles[7] !== null)
     {
         d.gl.uniform4fv(program.constantBufferHandles[7], p.stages[1].constantBuffer);
     }
@@ -406,7 +406,7 @@ Tw2Effect.prototype.ApplyPass = function(pass)
  */
 Tw2Effect.prototype.GetPassCount = function()
 {
-    if (this.effectRes == null || !this.effectRes.IsGood())
+    if (this.effectRes === null || !this.effectRes.IsGood())
     {
         return 0;
     }
@@ -421,7 +421,7 @@ Tw2Effect.prototype.GetPassCount = function()
  */
 Tw2Effect.prototype.GetPassInput = function(pass)
 {
-    if (this.effectRes == null || !this.effectRes.IsGood() || pass >= this.passes.length)
+    if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
         return null;
     }

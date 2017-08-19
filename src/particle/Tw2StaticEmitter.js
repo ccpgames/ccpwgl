@@ -23,7 +23,7 @@ function Tw2StaticEmitter()
  */
 Tw2StaticEmitter.prototype.Initialize = function()
 {
-    if (this.geometryResourcePath != '')
+    if (this.geometryResourcePath !== '')
     {
         this.geometryResource = resMan.GetResource(this.geometryResourcePath);
         this.geometryResource.systemMirror = true;
@@ -72,7 +72,7 @@ Tw2StaticEmitter.prototype.Update = function(dt)
             var d = elts[i].GetDeclaration();
             var input = mesh.declaration.FindUsage(d.usage, d.usageIndex - 8);
 
-            if (input == null)
+            if (input === null)
             {
                 emitter.log('res.error',
                 {
@@ -115,7 +115,7 @@ Tw2StaticEmitter.prototype.Update = function(dt)
         for (i = 0; i < vertexCount; ++i)
         {
             var index = this.particleSystem.BeginSpawnParticle();
-            if (index == null)
+            if (index === null)
             {
                 break;
             }

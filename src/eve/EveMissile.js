@@ -28,6 +28,9 @@ function EveMissile()
 
     this.warheadExplosionCallback = null;
     this.missileFinishedCallback = null;
+
+    var scratch = EveMissile.scratch;
+    if (!scratch.vec3_0) scratch.vec3_0 = vec3.create();
 }
 
 /**
@@ -75,13 +78,14 @@ EveMissile.prototype.GetBatches = function(mode, accumulator)
  */
 EveMissile.prototype.Update = function(dt)
 {
-    var tmp = vec3.create();
-    var distance = vec3.length(vec3.subtract(this.target, this.position, tmp));
+    var tmp = EveMissile.scratch.vec3_0;
+    vec3.subtract(tmp, this.target, this.position);
+    var distance = vec3.length(tmp);
     if (distance > 0.1)
     {
-        vec3.normalize(tmp);
-        vec3.scale(tmp, Math.min(dt * this.speed, distance));
-        vec3.add(this.position, tmp);
+        vec3.normalize(tmp, tmp);
+        vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
+        vec3.add(tmp, tmp, this.position);
     }
     for (var i = 0; i < this.curveSets.length; ++i)
     {
@@ -92,7 +96,7 @@ EveMissile.prototype.Update = function(dt)
     {
         var state = this.warheads[i].state;
         this.warheads[i].Update(dt, this.position, this.target);
-        if (state != EveMissileWarhead.STATE_DEAD && this.warheads[i].state == EveMissileWarhead.STATE_DEAD)
+        if (state !== EveMissileWarhead.STATE_DEAD && this.warheads[i].state === EveMissileWarhead.STATE_DEAD)
         {
             if (this.warheadExplosionCallback)
             {
@@ -105,7 +109,7 @@ EveMissile.prototype.Update = function(dt)
     {
         for (i = 0; i < this.warheads.length; ++i)
         {
-            if (this.warheads[i].state != EveMissileWarhead.STATE_DEAD)
+            if (this.warheads[i].state !== EveMissileWarhead.STATE_DEAD)
             {
                 return;
             }
@@ -122,8 +126,8 @@ EveMissile.prototype.Update = function(dt)
  */
 EveMissile.prototype.Launch = function(position, turretTransforms, target)
 {
-    vec3.set(position, this.position);
-    vec3.set(target, this.target);
+    vec3.copy(this.position, position);
+    vec3.copy(this.target, target);
     if (this.warheads.length > turretTransforms.length)
     {
         this.warheads.splice(turretTransforms.length);
@@ -140,3 +144,11 @@ EveMissile.prototype.Launch = function(position, turretTransforms, target)
         this.warheads[0].Launch(turretTransforms[i]);
     }
 };
+
+/**
+ * Scratch variables
+ */
+EveMissile.scratch = {
+    vec3_0:null
+};
+

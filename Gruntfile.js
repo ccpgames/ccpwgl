@@ -116,9 +116,9 @@ module.exports = function(grunt)
     // Extra files to include in beautification
     var beautifierInclude = [
         'GruntFile.js',
-        'src/ccpwgl.js',
-        'src/ccpwgl_int.js',
-    ]
+        'dist/ccpwgl.js',
+        'dist/ccpwgl_int.js'
+    ];
 
     // Files to exclude from beautification
     var beautifierExclude = [
@@ -136,9 +136,9 @@ module.exports = function(grunt)
         .filter(
             function(src)
             {
-                return (beautifierExclude.indexOf(src) === -1)
+                return (beautifierExclude.indexOf(src) === -1);
             })
-        .concat(beautifierInclude)
+        .concat(beautifierInclude);
 
     var sourcePatterns = ['src/core/**/*.js', 'src/eve/**/*.js', 'src/particle/**/*.js', 'src/curves/**/*.js'];
 
@@ -148,7 +148,6 @@ module.exports = function(grunt)
 
         jsbeautifier:
         {
-
             standard:
             {
                 src: beautifierList,
@@ -160,7 +159,7 @@ module.exports = function(grunt)
 
             cc:
             {
-                src: 'src/ccpwgl_int.js',
+                src: 'dist/ccpwgl_int.js',
                 options:
                 {
                     js: grunt.file.readJSON('.jsbeautifyrc')
@@ -183,7 +182,7 @@ module.exports = function(grunt)
             {
                 files:
                 {
-                    'src/ccpwgl_int.min.js': sourceFiles.map(
+                    'dist/ccpwgl_int.min.js': sourceFiles.map(
                         function(entry)
                         {
                             return 'src/' + entry;
@@ -213,7 +212,7 @@ module.exports = function(grunt)
                     {
                         return 'src/' + entry;
                     }).concat('.exports'),
-                dest: 'src/ccpwgl_int.js',
+                dest: 'dist/ccpwgl_int.js',
                 options:
                 {
                     banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */ \n\nvar ccpwgl_int = (function()\n{\n',

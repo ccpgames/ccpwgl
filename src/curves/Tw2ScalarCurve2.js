@@ -165,7 +165,7 @@ Tw2ScalarCurve2.prototype.GetValueAt = function(time)
     {
         time = this.length - time;
     }
-    if (this.keys.length == 0)
+    if (this.keys.length === 0)
     {
         return this.Interpolate(time, null, null);
     }
@@ -205,7 +205,7 @@ Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
     var endValue = this.endValue;
     var interp = this.interpolation;
     var deltaTime = this.length;
-    if (lastKey != null)
+    if (lastKey !== null)
     {
         interp = lastKey.interpolation;
         time -= lastKey.time;

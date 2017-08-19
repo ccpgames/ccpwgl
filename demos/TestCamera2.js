@@ -1,7 +1,13 @@
+/**
+ * Test Camera
+ * @param {HTMLCanvasElement|Element} element
+ * @constructor
+ */
 function TestCamera(element)
 {
 	this.distance = 1;
 	this.minDistance = -1;
+	this.maxDistance = 1000000;
 	this.fov = 60;
 	this.rotationX = 0;
 	this.rotationY = 0;
@@ -35,25 +41,76 @@ function TestCamera(element)
     window.addEventListener('mousewheel', function (e) { return self._WheelHandler(e, element); }, false);
 }
 
+/**
+ * Creates a test camera for demonstrations
+ * 
+ * @param {HTMLCanvasElement|Element} canvas
+ * @param {*} [options]
+ * @returns {TestCamera}
+ */
+TestCamera.Create = function(canvas, options)
+{
+    function get(src, srcAttr, defaultValue)
+    {
+        return src && srcAttr in src ? src[srcAttr] : defaultValue;
+    }
+
+    var camera = new TestCamera(canvas);
+    camera.fov = get(options, 'fov', 30);
+    camera.distance = get(options, 'distance', 1000);
+    camera.maxDistance = get(options, 'maxDistance', 1000000);
+    camera.minDistance = get(options, 'minDistance', 0.6);
+    camera.rotationX = get(options, 'rotationX', 0);
+    camera.rotationY = get(options, 'rotationY', 0);
+    vec3.copy(camera.poi, get(options, 'poi', [0,0,0]));
+    camera.nearPlane = get(options, 'nearPlane', 1);
+    camera.farPlane = get(options, 'farPlane', 100000);
+    camera.minPitch = get(options, 'minPitch', -0.5);
+    camera.maxPitch = get(options, 'maxPitch', 0.35);
+    return camera;
+};
+
+/**
+ * Sets the cameras poi to an object, and adjusts the distance to suit
+ *
+ * @param {SpaceObject|Ship|Planet} obj
+ * @param {number} [distanceMultiplier]
+ * @param {number} [minDistance]
+ * @returns {boolean}
+ */
+TestCamera.prototype.focus = function(obj, distanceMultiplier, minDistance)
+{
+    try
+    {
+        mat4.getTranslation(this.poi, obj.getTransform());
+        this.distance = Math.max(obj.getBoundingSphere()[1] * (distanceMultiplier || 1), (minDistance || 0));
+        console.log(this.distance);
+        return true;
+    }
+    catch(err)
+    {
+        return false;
+    }
+};
 
 TestCamera.prototype.getView = function ()
 {
-	var view = mat4.create();
+    var view = mat4.create();
     mat4.identity(view);
-    mat4.rotateY(view, -this.shift);
-    mat4.translate(view, [0, 0.0, -this.distance]);
-    mat4.rotateX(view, this.rotationY + this.additionalRotationY);
-    mat4.rotateY(view, this.rotationX + this.additionalRotationX);
-    mat4.translate(view, [-this.poi[0], -this.poi[1], -this.poi[2]]);
+    mat4.rotateY(view, view, -this.shift);
+    mat4.translate(view, view, [0, 0.0, -this.distance]);
+    mat4.rotateX(view, view, this.rotationY + this.additionalRotationY);
+    mat4.rotateY(view, view, this.rotationX + this.additionalRotationX);
+    mat4.translate(view, view, [-this.poi[0], -this.poi[1], -this.poi[2]]);
     return view;
-}
+};
 
 TestCamera.prototype.getProjection = function (aspect)
 {
-	var projection = mat4.create();
-	mat4.perspective(this.fov, aspect, this.nearPlane, this.farPlane > 0 ? this.farPlane : this.distance * 2, projection);
-    return projection;
-}
+    var fH = Math.tan(this.fov / 360 * Math.PI) * this.nearPlane;
+    var fW = fH * aspect;
+    return mat4.frustum(mat4.create(), -fW, fW, -fH, fH, this.nearPlane,  this.farPlane > 0 ? this.farPlane : this.distance * 2);
+};
 
 TestCamera.prototype.update = function (dt)
 {
@@ -69,7 +126,7 @@ TestCamera.prototype.update = function (dt)
     {
         this.rotationY = Math.PI / 2;
     }
-    if (this.shiftStage == 2)
+    if (this.shiftStage === 2)
     {
         this.shift += this.shift * dt * 5;
         if (Math.abs(this.shift) > 2)
@@ -79,7 +136,7 @@ TestCamera.prototype.update = function (dt)
             //this._shiftOut = false;
         }
     }
-    else if (this.shiftStage == 1)
+    else if (this.shiftStage === 1)
     {
         this.shift -= this.shift * Math.min(dt, 0.5) * 2;
     }
@@ -87,7 +144,7 @@ TestCamera.prototype.update = function (dt)
 
 TestCamera.prototype._DragStart = function (event)
 {
-    if (!event.touches && !this.onShift && event.button != 0)
+    if (!event.touches && !this.onShift && event.button !== 0)
     {
         return;
     }
@@ -97,12 +154,12 @@ TestCamera.prototype._DragStart = function (event)
     }
 
     var self = this;
-    if (this._moveEvent == null)
+    if (this._moveEvent === null)
     {
         document.addEventListener("mousemove", this._moveEvent = function (event) { self._DragMove(event); }, true);
         document.addEventListener("touchmove", this._moveEvent, true);
     }
-    if (this._upEvent == null)
+    if (this._upEvent === null)
     {
         document.addEventListener("mouseup", this._upEvent = function (event) { self._DragStop(event); }, true);
         document.addEventListener("touchend", this._upEvent, true);
@@ -121,7 +178,7 @@ TestCamera.prototype._DragStart = function (event)
     this._rotationSpeedY = 0;
     this._lastRotationY = this.rotationY;
     this._measureRotation = setTimeout(function () { self._MeasureRotation(); }, 500);
-}
+};
 
 TestCamera.prototype._MeasureRotation = function ()
 {
@@ -129,7 +186,7 @@ TestCamera.prototype._MeasureRotation = function ()
     this._lastRotationX = this.rotationX;
     this._lastRotationY = this.rotationY;
 	this._measureRotation = setTimeout(function() { self._MeasureRotation(); }, 500);
-}
+};
 
 TestCamera.prototype._DragMove = function (event)
 {
@@ -184,7 +241,7 @@ TestCamera.prototype._DragMove = function (event)
         event.screenX = event.touches[0].screenX;
         event.screenY = event.touches[0].screenY;
     }
-    if (typeof (event.screenX) != 'undefined')
+    if (typeof (event.screenX) !== 'undefined')
     {
         var dRotation = -(this._dragX - event.screenX) * 0.01;
         this.rotationX += dRotation;
@@ -246,7 +303,7 @@ TestCamera.prototype._WheelHandler = function (event, element)
     {
         source = event.target;
     }
-    if (source != element)
+    if (source !== element)
     {
         return false;
     }
@@ -284,4 +341,4 @@ TestCamera.prototype._WheelHandler = function (event, element)
         event.preventDefault();
     event.returnValue = false;
     return false;
-}
+};

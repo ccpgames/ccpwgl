@@ -1,18 +1,18 @@
 /**
  * Tw2QuaternionKey2
  * @property {number} time
- * @property {quat4} value
- * @property {quat4} leftTangent
- * @property {quat4} rightTangent
+ * @property {quat} value
+ * @property {vec4} leftTangent
+ * @property {vec4} rightTangent
  * @property {number} interpolation
  * @constructor
  */
 function Tw2QuaternionKey2()
 {
     this.time = 0;
-    this.value = quat4.create();
-    this.leftTangent = quat4.create();
-    this.rightTangent = quat4.create();
+    this.value = quat.create();
+    this.leftTangent = vec4.create();
+    this.rightTangent = vec4.create();
     this.interpolation = 1;
 }
 
@@ -25,11 +25,11 @@ function Tw2QuaternionKey2()
  * @property {boolean} reversed
  * @property {number} timeOffset
  * @property {number} timeScale
- * @property {quat4} startValue
- * @property {quat4} currentValue
- * @property {quat4} endValue
- * @property {quat4} startTangent
- * @property {quat4} endTangent
+ * @property {quat} startValue
+ * @property {quat} currentValue
+ * @property {quat} endValue
+ * @property {vec4} startTangent
+ * @property {vec4} endTangent
  * @property {number} interpolation
  * @property {Array.<Tw2QuaternionKey>} keys
  * @constructor
@@ -42,11 +42,11 @@ function Tw2QuaternionCurve()
     this.reversed = false;
     this.timeOffset = 0;
     this.timeScale = 1;
-    this.startValue = quat4.create();
-    this.currentValue = quat4.create();
-    this.endValue = quat4.create();
-    this.startTangent = quat4.create();
-    this.endTangent = quat4.create();
+    this.startValue = quat.create();
+    this.currentValue = quat.create();
+    this.endValue = quat.create();
+    this.startTangent = vec4.create();
+    this.endTangent = vec4.create();
     this.interpolation = 1;
     this.keys = [];
 }
@@ -57,6 +57,26 @@ Tw2QuaternionCurve.Interpolation = {
     SPHERICAL_LINEAR: 4
 };
 
+/**
+ * Spherical interpolation
+ * - GlMatrix v0.9.5 version
+ * @param a - Operand A (receives changes if d not provided)
+ * @param b - Operand B
+ * @param c - Time
+ * @param [d] - optional receiving vector
+ * @returns {quat}
+ */
+Tw2QuaternionCurve.slerp = function(a, b, c, d)
+{
+    d || (d = a);
+    var e = c;
+    if (a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3] < 0) e = -1 * c;
+    d[0] = 1 - c * a[0] + e * b[0];
+    d[1] = 1 - c * a[1] + e * b[1];
+    d[2] = 1 - c * a[2] + e * b[2];
+    d[3] = 1 - c * a[3] + e * b[3];
+    return d;
+};
 
 /**
  * Initializes the Curve
@@ -138,8 +158,8 @@ Tw2QuaternionCurve.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {quat} value
+ * @returns {quat}
  * @prototype
  */
 Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
@@ -177,7 +197,7 @@ Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
     {
         time = this.length - time;
     }
-    if (this.keys.length == 0)
+    if (this.keys.length === 0)
     {
         return this.Interpolate(time, null, null, value);
     }
@@ -208,7 +228,7 @@ Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
  * @param {number} time
  * @param {null|Tw2QuaternionKey} lastKey
  * @param {null|Tw2QuaternionKey} nextKey
- * @param {quat4} value
+ * @param {quat} value
  * @returns {*}
  * @prototype
  */
@@ -222,7 +242,7 @@ Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, valu
     var endValue = this.endValue;
     var interp = this.interpolation;
     var deltaTime = this.length;
-    if (lastKey != null)
+    if (lastKey !== null)
     {
         interp = lastKey.interpolation;
         time -= lastKey.time;
@@ -246,7 +266,7 @@ Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, valu
                 startValue = lastKey.value;
                 deltaTime = this.length - lastKey.time;
             }
-            quat4.slerp(startValue, endValue, time / deltaTime, value);
+            Tw2QuaternionCurve.slerp(startValue, endValue, time / deltaTime, value);
             return value;
     }
     return value;

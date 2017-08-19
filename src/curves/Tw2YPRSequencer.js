@@ -1,7 +1,7 @@
 /**
  * Tw2YPRSequencer
  * @property {string} name
- * @property {quat4} value=[0,0,0,1]
+ * @property {quat} value
  * @property {vec3} YawPitchRoll
  * @property YawCurve
  * @property PitchCurve
@@ -11,7 +11,7 @@
 function Tw2YPRSequencer()
 {
     this.name = '';
-    this.value = quat4.create([0, 0, 0, 1]);
+    this.value = quat.create();
     this.YawPitchRoll = vec3.create();
     this.YawCurve = null;
     this.PitchCurve = null;
@@ -54,8 +54,8 @@ Tw2YPRSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {quat} value
+ * @returns {quat}
  * @prototype
  */
 Tw2YPRSequencer.prototype.GetValueAt = function(time, value)

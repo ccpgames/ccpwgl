@@ -169,13 +169,13 @@ EveTurretFiringFX.prototype.Update = function(dt)
 
 EveTurretFiringFX.prototype.PrepareFiring = function(delay, muzzleID)
 {
-    if (typeof(muzzleID) == 'undefined')
+    if (typeof(muzzleID) === 'undefined')
     {
         muzzleID = -1;
     }
     for (var i = 0; i < this.stretch.length; ++i)
     {
-        if (muzzleID < 0 || muzzleID == i)
+        if (muzzleID < 0 || muzzleID === i)
         {
             this._perMuzzleData[i].currentStartDelay = delay + this._perMuzzleData[i].constantDelay;
             this._perMuzzleData[i].started = false;
@@ -199,15 +199,15 @@ EveTurretFiringFX.prototype.StartMuzzleEffect = function(muzzleID)
     for (var i = 0; i < stretch.curveSets.length; ++i)
     {
         var curveSet = stretch.curveSets[i];
-        if (curveSet.name == 'play_start')
+        if (curveSet.name === 'play_start')
         {
             curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
         }
-        else if (curveSet.name == 'play_loop')
+        else if (curveSet.name === 'play_loop')
         {
             curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
         }
-        else if (curveSet.name == 'play_stop')
+        else if (curveSet.name === 'play_stop')
         {
             curveSet.Stop();
         }
@@ -224,15 +224,15 @@ EveTurretFiringFX.prototype.StopFiring = function()
         for (var i = 0; i < stretch.curveSets.length; ++i)
         {
             var curveSet = stretch.curveSets[i];
-            if (curveSet.name == 'play_start')
+            if (curveSet.name === 'play_start')
             {
                 curveSet.Stop();
             }
-            else if (curveSet.name == 'play_loop')
+            else if (curveSet.name === 'play_loop')
             {
                 curveSet.Stop();
             }
-            else if (curveSet.name == 'play_stop')
+            else if (curveSet.name === 'play_stop')
             {
                 curveSet.Play();
             }

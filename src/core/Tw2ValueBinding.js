@@ -10,7 +10,7 @@
  * @property {number} _destinationElement
  * @property {boolean} destinationIsArray
  * @property {number} scale
- * @property {quat4} offset
+ * @property {quat} offset
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
  * @constructor
  */
@@ -28,7 +28,7 @@ function Tw2ValueBinding()
     this.destinationIsArray = null;
 
     this.scale = 1;
-    this.offset = quat4.create();
+    this.offset = quat.create();
     this._copyFunc = null;
 }
 
@@ -38,11 +38,11 @@ function Tw2ValueBinding()
  */
 Tw2ValueBinding.prototype.Initialize = function()
 {
-    if (!this.sourceObject || this.sourceAttribute == '')
+    if (!this.sourceObject || this.sourceAttribute === '')
     {
         return;
     }
-    if (!this.destinationObject || this.destinationAttribute == '')
+    if (!this.destinationObject || this.destinationAttribute === '')
     {
         return;
     }
@@ -51,51 +51,51 @@ Tw2ValueBinding.prototype.Initialize = function()
     var destSwizzled = false;
     var srcSwizzle = this.sourceAttribute.substr(-2);
 
-    if (srcSwizzle == '.x' || srcSwizzle == '.r')
+    if (srcSwizzle === '.x' || srcSwizzle === '.r')
     {
         srcSwizzled = true;
         this._sourceElement = 0;
         this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
     }
-    else if (srcSwizzle == '.y' || srcSwizzle == '.g')
+    else if (srcSwizzle === '.y' || srcSwizzle === '.g')
     {
         srcSwizzled = true;
         this._sourceElement = 1;
         this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
     }
-    else if (srcSwizzle == '.z' || srcSwizzle == '.b')
+    else if (srcSwizzle === '.z' || srcSwizzle === '.b')
     {
         srcSwizzled = true;
         this._sourceElement = 2;
         this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
     }
-    else if (srcSwizzle == '.w' || srcSwizzle == '.a')
+    else if (srcSwizzle === '.w' || srcSwizzle === '.a')
     {
         srcSwizzled = true;
         this._sourceElement = 3;
         this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
     }
-    else if (this.sourceObject.constructor == (new Tw2Vector4Parameter()).constructor)
+    else if (this.sourceObject.constructor === (new Tw2Vector4Parameter()).constructor)
     {
-        if (this.sourceAttribute == 'v1')
+        if (this.sourceAttribute === 'v1')
         {
             srcSwizzled = true;
             this._sourceElement = 0;
             this.sourceAttribute = 'value';
         }
-        else if (this.sourceAttribute == 'v2')
+        else if (this.sourceAttribute === 'v2')
         {
             srcSwizzled = true;
             this._sourceElement = 1;
             this.sourceAttribute = 'value';
         }
-        else if (this.sourceAttribute == 'v3')
+        else if (this.sourceAttribute === 'v3')
         {
             srcSwizzled = true;
             this._sourceElement = 2;
             this.sourceAttribute = 'value';
         }
-        else if (this.sourceAttribute == 'v4')
+        else if (this.sourceAttribute === 'v4')
         {
             srcSwizzled = true;
             this._sourceElement = 3;
@@ -104,51 +104,51 @@ Tw2ValueBinding.prototype.Initialize = function()
     }
 
     var destSwizzle = this.destinationAttribute.substr(-2);
-    if (destSwizzle == '.x' || destSwizzle == '.r')
+    if (destSwizzle === '.x' || destSwizzle === '.r')
     {
         destSwizzled = true;
         this._destinationElement = 0;
         this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
     }
-    else if (destSwizzle == '.y' || destSwizzle == '.g')
+    else if (destSwizzle === '.y' || destSwizzle === '.g')
     {
         destSwizzled = true;
         this._destinationElement = 1;
         this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
     }
-    else if (destSwizzle == '.z' || destSwizzle == '.b')
+    else if (destSwizzle === '.z' || destSwizzle === '.b')
     {
         destSwizzled = true;
         this._destinationElement = 2;
         this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
     }
-    else if (destSwizzle == '.w' || destSwizzle == '.a')
+    else if (destSwizzle === '.w' || destSwizzle === '.a')
     {
         destSwizzled = true;
         this._destinationElement = 3;
         this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
     }
-    else if (this.destinationObject.constructor == (new Tw2Vector4Parameter()).constructor)
+    else if (this.destinationObject.constructor === (new Tw2Vector4Parameter()).constructor)
     {
-        if (this.destinationAttribute == 'v1')
+        if (this.destinationAttribute === 'v1')
         {
             destSwizzled = true;
             this._destinationElement = 0;
             this.destinationAttribute = 'value';
         }
-        else if (this.destinationAttribute == 'v2')
+        else if (this.destinationAttribute === 'v2')
         {
             destSwizzled = true;
             this._destinationElement = 1;
             this.destinationAttribute = 'value';
         }
-        else if (this.destinationAttribute == 'v3')
+        else if (this.destinationAttribute === 'v3')
         {
             destSwizzled = true;
             this._destinationElement = 2;
             this.destinationAttribute = 'value';
         }
-        else if (this.destinationAttribute == 'v4')
+        else if (this.destinationAttribute === 'v4')
         {
             destSwizzled = true;
             this._destinationElement = 3;
@@ -160,10 +160,10 @@ Tw2ValueBinding.prototype.Initialize = function()
         return;
     }
 
-    this.sourceIsArray = (this.sourceObject[this.sourceAttribute].constructor == (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name == "Array");
-    this.destinationIsArray = (this.destinationObject[this.destinationAttribute].constructor == (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name == "Array");
+    this.sourceIsArray = (this.sourceObject[this.sourceAttribute].constructor === (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name === "Array");
+    this.destinationIsArray = (this.destinationObject[this.destinationAttribute].constructor === (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name === "Array");
 
-    if (this.sourceIsArray == this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] == typeof this.destinationObject[this.destinationAttribute])
+    if (this.sourceIsArray === this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === typeof this.destinationObject[this.destinationAttribute])
     {
         if (this.sourceIsArray)
         {
@@ -184,7 +184,7 @@ Tw2ValueBinding.prototype.Initialize = function()
                 {
                     this._copyFunc = this._CopyArray;
                 }
-                else if (this.sourceObject[this.sourceAttribute].length == 16)
+                else if (this.sourceObject[this.sourceAttribute].length === 16)
                 {
                     this._copyFunc = this._ExtractPos;
                 }
@@ -199,11 +199,11 @@ Tw2ValueBinding.prototype.Initialize = function()
             this._copyFunc = this._CopyValueToValue;
         }
     }
-    else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] == 'number')
+    else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] === 'number')
     {
         this._copyFunc = this._CopyElementToValue;
     }
-    else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] == 'number')
+    else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === 'number')
     {
         if (destSwizzled)
         {
@@ -214,7 +214,7 @@ Tw2ValueBinding.prototype.Initialize = function()
             this._copyFunc = this._ReplicateValue;
         }
     }
-    else if (typeof this.sourceObject[this.sourceAttribute] == 'number' && typeof this.destinationObject[this.destinationAttribute] == 'boolean')
+    else if (typeof this.sourceObject[this.sourceAttribute] === 'number' && typeof this.destinationObject[this.destinationAttribute] === 'boolean')
     {
         this._copyFunc = this._CopyFloatToBoolean;
     }
@@ -331,5 +331,5 @@ Tw2ValueBinding.prototype._CopyValueToElement = function()
  */
 Tw2ValueBinding.prototype._CopyFloatToBoolean = function()
 {
-    this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] != 0;
+    this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] !== 0;
 };

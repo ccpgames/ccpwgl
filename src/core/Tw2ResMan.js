@@ -157,7 +157,7 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
  */
 Tw2LoadingObject.prototype.Prepare = function(text, xml)
 {
-    if (text == null)
+    if (text === null)
     {
         emitter.log('res.error',
         {
@@ -329,7 +329,7 @@ function Tw2ResMan()
      */
     function _NormalizePath(path)
     {
-        if (path.substr(0, 5) == 'str:/')
+        if (path.substr(0, 5) === 'str:/')
         {
             return path;
         }
@@ -346,10 +346,10 @@ function Tw2ResMan()
      */
     function _GetPathExt(path)
     {
-        if (path.substr(0, 5) == 'str:/')
+        if (path.substr(0, 5) === 'str:/')
         {
             var slash = path.indexOf('/', 5);
-            if (slash == -1)
+            if (slash === -1)
             {
                 return null;
             }
@@ -358,7 +358,7 @@ function Tw2ResMan()
         else
         {
             var dot = path.lastIndexOf('.');
-            if (dot == -1)
+            if (dot === -1)
             {
                 return null;
             }
@@ -373,7 +373,7 @@ function Tw2ResMan()
      */
     this.LogPathString = function(path)
     {
-        if (path.substr(0, 5) == 'str:/' && path.length > 64)
+        if (path.substr(0, 5) === 'str:/' && path.length > 64)
         {
             return path.substr(0, 64) + '...';
         }
@@ -387,7 +387,7 @@ function Tw2ResMan()
      */
     this.PrepareLoop = function(dt)
     {
-        if (this._prepareQueue.length == 0 && this._pendingLoads == 0)
+        if (this._prepareQueue.length === 0 && this._pendingLoads === 0)
         {
             if (this._noLoadFrames < 2)
             {
@@ -401,8 +401,7 @@ function Tw2ResMan()
 
         resMan.prepareBudget = resMan.maxPrepareTime;
 
-        var now = new Date();
-        var startTime = now.getTime();
+        var startTime = device.Clock.now();
         var preparedCount = 0;
 
         while (resMan._prepareQueue.length)
@@ -418,13 +417,13 @@ function Tw2ResMan()
             }
             if (!result)
             {
-                now = new Date();
+                now = device.Clock.now();
 
                 emitter.log('res.event',
                 {
                     msg: 'Prepared  ',
                     path: resMan._prepareQueue[0][0].path,
-                    time: (now.getTime() - startTime) * 0.001,
+                    time: (now - startTime) * 0.001,
                     type: 'prepared'
                 });
 
@@ -432,8 +431,8 @@ function Tw2ResMan()
                 preparedCount++;
             }
 
-            now = new Date();
-            resMan.prepareBudget -= (now.getTime() - startTime) * 0.001;
+            now = device.Clock.now();
+            resMan.prepareBudget -= (now - startTime) * 0.001;
 
             if (resMan.prepareBudget < 0)
             {
@@ -540,7 +539,7 @@ function Tw2ResMan()
     this.BuildUrl = function(resPath)
     {
         var prefixIndex = resPath.indexOf(':/');
-        if (prefixIndex == -1)
+        if (prefixIndex === -1)
         {
             emitter.log('res.error',
             {
@@ -677,7 +676,7 @@ function Tw2ResMan()
 
         var ext = _GetPathExt(path);
 
-        if (ext == null)
+        if (ext === null)
         {
             emitter.log('res.error',
             {

@@ -10,22 +10,8 @@
  */
 function Tw2Vector3Parameter(name, value)
 {
-    if (typeof(name) != 'undefined')
-    {
-        this.name = name;
-    }
-    else
-    {
-        this.name = '';
-    }
-    if (typeof(value) != 'undefined')
-    {
-        this.value = vec3.create(value);
-    }
-    else
-    {
-        this.value = vec3.create([1, 1, 1]);
-    }
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? vec3.clone(value) : vec3.fromValues(1,1,1);
     this.constantBuffer = null;
     this.offset = 0;
 }
@@ -41,7 +27,7 @@ function Tw2Vector3Parameter(name, value)
  */
 Tw2Vector3Parameter.prototype.Bind = function(constantBuffer, offset, size)
 {
-    if (this.constantBuffer != null || size < 3)
+    if (this.constantBuffer !== null || size < 3)
     {
         return false;
     }
@@ -67,8 +53,8 @@ Tw2Vector3Parameter.prototype.Unbind = function()
  */
 Tw2Vector3Parameter.prototype.SetValue = function(value)
 {
-    this.value.set(value);
-    if (this.constantBuffer != null)
+    vec3.copy(this.value, value);
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -80,7 +66,7 @@ Tw2Vector3Parameter.prototype.SetValue = function(value)
  */
 Tw2Vector3Parameter.prototype.OnValueChanged = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -106,12 +92,12 @@ Tw2Vector3Parameter.prototype.Apply = function(constantBuffer, offset, size)
  */
 Tw2Vector3Parameter.prototype.GetValue = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
-        return vec3.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return vec3.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
     }
 
-    return vec3.create(this.value);
+    return vec3.clone(this.value);
 };
 
 /**
@@ -128,7 +114,7 @@ Tw2Vector3Parameter.prototype.GetIndexValue = function(index)
         throw "Invalid Index";
     }
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         return this.constantBuffer[this.offset + index];
     }
@@ -152,7 +138,7 @@ Tw2Vector3Parameter.prototype.SetIndexValue = function(index, value)
 
     this.value[index] = value;
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer[this.offset + index] = value;
     }
