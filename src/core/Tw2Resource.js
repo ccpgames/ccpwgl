@@ -171,7 +171,7 @@ Tw2Resource.prototype.RegisterNotification = function(notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {
-        if (this._notifications[i] == notification)
+        if (this._notifications[i] === notification)
         {
             return;
         }
@@ -194,7 +194,7 @@ Tw2Resource.prototype.UnregisterNotification = function(notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {
-        if (this._notifications[i] == notification)
+        if (this._notifications[i] === notification)
         {
             this._notifications.splice(i, 1);
             return;

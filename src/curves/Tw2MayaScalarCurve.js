@@ -56,7 +56,7 @@ Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
  */
 Tw2MayaScalarCurve.prototype.ComputeLength = function()
 {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() == 0)
+    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {
         return;
     }

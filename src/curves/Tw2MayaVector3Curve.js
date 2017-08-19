@@ -54,7 +54,7 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
         }
         if (this.yIndex)
         {
-            if (this.yIndex == this.xIndex)
+            if (this.yIndex === this.xIndex)
             {
                 this.value[1] = this.value[0];
             }
@@ -65,7 +65,7 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
         }
         if (this.zIndex)
         {
-            if (this.zIndex == this.xIndex)
+            if (this.zIndex === this.xIndex)
             {
                 this.value[2] = this.value[0];
             }
@@ -83,7 +83,7 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
  */
 Tw2MayaVector3Curve.prototype.ComputeLength = function()
 {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() == 0)
+    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {
         return;
     }

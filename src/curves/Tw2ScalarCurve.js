@@ -89,7 +89,7 @@ Tw2ScalarCurve.prototype.GetValueAt = function(time)
     var d;
 
     time = time / this.timeScale - this.timeOffset;
-    if (this.length == 0)
+    if (this.length === 0)
     {
         return this.value;
     }
@@ -98,15 +98,15 @@ Tw2ScalarCurve.prototype.GetValueAt = function(time)
     var lastKey = this.keys[this.keys.length - 1];
     if (time >= lastKey.time)
     {
-        if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
+        if (this.extrapolation === Tw2ScalarCurve.Extrapolation.NONE)
         {
             return this.value;
         }
-        else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.CONSTANT)
+        else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.CONSTANT)
         {
             return lastKey.value;
         }
-        else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
+        else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.GRADIENT)
         {
             d = time - lastKey.time;
             return lastKey.value + d * lastKey.right;
@@ -118,11 +118,11 @@ Tw2ScalarCurve.prototype.GetValueAt = function(time)
     }
     else if (time < 0 || time < firstKey.time)
     {
-        if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
+        if (this.extrapolation === Tw2ScalarCurve.Extrapolation.NONE)
         {
             return this.value;
         }
-        else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
+        else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.GRADIENT)
         {
             d = time * this.length - lastKey.time;
             return firstKey.value + d * firstKey.left;
@@ -146,15 +146,15 @@ Tw2ScalarCurve.prototype.GetValueAt = function(time)
     }
 
     var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.CONSTANT)
+    if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.CONSTANT)
     {
         return ck_1.value;
     }
-    else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.LINEAR)
+    else if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.LINEAR)
     {
         return ck_1.value * (1 - nt) + ck.value * nt;
     }
-    else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.HERMITE)
+    else if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.HERMITE)
     {
         var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
         var k2 = -2 * nt * nt * nt + 3 * nt * nt;

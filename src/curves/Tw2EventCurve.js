@@ -99,7 +99,7 @@ Tw2EventCurve.prototype.UpdateValue = function(time)
     {
         this._currentKey = 0;
     }
-    if (this.extrapolation == Tw2EventCurve.Extrapolation.CYCLE)
+    if (this.extrapolation === Tw2EventCurve.Extrapolation.CYCLE)
     {
         var now = this._time % this._length;
         if (now < before)

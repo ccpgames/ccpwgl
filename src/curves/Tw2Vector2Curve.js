@@ -1,18 +1,18 @@
 /**
  * Tw2Vector2Key
  * @property {number} time
- * @property {Float32Array} value - vec2 array
- * @property {Float32Array} leftTangent - vec2 array
- * @property {Float32Array} rightTangent - vec2 array
+ * @property {vec2} value - vec2 array
+ * @property {vec2} leftTangent - vec2 array
+ * @property {vec2} rightTangent - vec2 array
  * @property {number} interpolation
  * @constructor
  */
 function Tw2Vector2Key()
 {
     this.time = 0;
-    this.value = new Float32Array(2);
-    this.leftTangent = new Float32Array(2);
-    this.rightTangent = new Float32Array(2);
+    this.value = vec2.create();
+    this.leftTangent = vec2.create();
+    this.rightTangent = vec2.create();
     this.interpolation = 1;
 }
 
@@ -24,11 +24,11 @@ function Tw2Vector2Key()
  * @property {boolean} reversed
  * @property {number} timeOffset
  * @property {number} timeScale
- * @property {Float32Array} startValue - vec2 array
- * @property {Float32Array} currentValue - vec2 array
- * @property {Float32Array} endValue - vec2 array
- * @property {Float32Array} startTangent - vec2 array
- * @property {Float32Array} endTangent - vec2 array
+ * @property {vec2} startValue - vec2 array
+ * @property {vec2} currentValue - vec2 array
+ * @property {vec2} endValue - vec2 array
+ * @property {vec2} startTangent - vec2 array
+ * @property {vec2} endTangent - vec2 array
  * @property {number} interpolation
  * @property {Array.<Tw2Vector2Key>} keys
  * @constructor
@@ -41,11 +41,11 @@ function Tw2Vector2Curve()
     this.reversed = false;
     this.timeOffset = 0;
     this.timeScale = 1;
-    this.startValue = new Float32Array(2);
-    this.currentValue = new Float32Array(2);
-    this.endValue = new Float32Array(2);
-    this.startTangent = new Float32Array(2);
-    this.endTangent = new Float32Array(2);
+    this.startValue = vec2.create();
+    this.currentValue = vec2.create();
+    this.endValue = vec2.create();
+    this.startTangent = vec2.create();
+    this.endTangent = vec2.create();
     this.interpolation = 1;
     this.keys = [];
 }
@@ -172,7 +172,7 @@ Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
     {
         time = this.length - time;
     }
-    if (this.keys.length == 0)
+    if (this.keys.length === 0)
     {
         return this.Interpolate(time, null, null, value);
     }
@@ -216,7 +216,7 @@ Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     var endValue = this.endValue;
     var interp = this.interpolation;
     var deltaTime = this.length;
-    if (lastKey != null)
+    if (lastKey !== null)
     {
         interp = lastKey.interpolation;
         time -= lastKey.time;

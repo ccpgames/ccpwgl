@@ -1,3 +1,5 @@
+/* global vec3, mat4 */
+
 /**
  * EveObject
  * @typedef {EveSpaceObject|EveStation|EveShip|EveTransform|EveEffectRoot|EvePlanet} EveObject
@@ -37,7 +39,6 @@
  * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect batch accumulation
  * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
  * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {vec3} _tempVec
  * @parameter {Tw2PerObjectData} _perObjectData
  * @constructor
  */
@@ -64,7 +65,7 @@ function EveSpaceObject()
     this.shapeEllipsoidRadius = vec3.create();
     this.shapeEllipsoidCenter = vec3.create();
 
-    this.transform = mat4.identity(mat4.create());
+    this.transform = mat4.create();
     this.animation = new Tw2AnimationController();
 
     this.display = true;
@@ -82,9 +83,6 @@ function EveSpaceObject()
     this._customMasks = [];
 
     this.killCount = 0;
-
-
-    this._tempVec = vec3.create();
 
     this._perObjectData = new Tw2PerObjectData();
     this._perObjectData.perObjectVSData = new Tw2RawData();
@@ -120,6 +118,11 @@ function EveSpaceObject()
     mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
     mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
 }
+
+/**
+ * Scratch variables
+ */
+EveSpaceObject.scratch = { vec3_0 : vec3.create() };
 
 /**
  * Initializes the EveSpaceObject
@@ -204,7 +207,7 @@ EveSpaceObject.prototype.ResetLod = function()
  */
 EveSpaceObject.prototype.UpdateLod = function(frustum)
 {
-    var center = mat4.multiplyVec3(this.transform, this.boundingSphereCenter, this._tempVec);
+    var center = vec3.transformMat4(EveSpaceObject.scratch.vec3_0, this.boundingSphereCenter, this.transform);
 
     if (frustum.IsSphereVisible(center, this.boundingSphereRadius))
     {
@@ -225,17 +228,16 @@ EveSpaceObject.prototype.UpdateLod = function(frustum)
 
 EveSpaceObject.prototype.AddCustomMask = function (position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
 {
-    var transform = mat4.create();
-
-    mat4.scale(mat4.transpose(quat4.toMat4(rotation, transform)), scaling);
-    transform[12] = position[0];
-    transform[13] = position[1];
-    transform[14] = position[2];
-    mat4.inverse(transform, transform);
+    var transform = mat4.fromRotationTranslationScale(mat4.create(), rotation, position, scaling);
+    mat4.invert(transform, transform);
     mat4.transpose(transform, transform);
 
-    this._customMasks.push({transform: transform, maskData: quat4.create([1, isMirrored ? 1 : 0, 0, 0]),
-        materialID: quat4.create([sourceMaterial, 0, 0, 0]), targets: targetMaterials});
+    this._customMasks.push({
+        transform: transform,
+        maskData: vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
+        materialID: vec4.fromValues(sourceMaterial, 0, 0, 0),
+        targets: targetMaterials
+    });
 };
 
 /**
@@ -248,8 +250,8 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
         this.children[i].UpdateViewDependentData(this.transform);
     }
 
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-    mat4.transpose(this.transform, this._perObjectData.perObjectVSData.Get('WorldMatLast'));
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+    mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
     var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter');
     var radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
     if (this.shapeEllipsoidRadius[0] > 0)
@@ -263,10 +265,10 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
     }
     else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
     {
-        vec3.subtract(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, center);
-        vec3.scale(center, 0.5 * 1.732050807);
-        vec3.add(this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds, radii);
-        vec3.scale(radii, 0.5);
+        vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+        vec3.scale(center, center, 0.5 * 1.732050807);
+        vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+        vec3.scale(radii, radii, 0.5);
     }
 
 
@@ -298,7 +300,7 @@ EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.display)
     {
-        if (this.visible.mesh && this.mesh != null && this.lod > 0)
+        if (this.visible.mesh && this.mesh !== null && this.lod > 0)
         {
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
@@ -436,7 +438,7 @@ EveSpaceObject.prototype.GetLocatorCount = function(prefix)
     var count = 0;
     for (var i = 0; i < this.locators.length; ++i)
     {
-        if (this.locators[i].name.substr(0, prefix.length) == prefix)
+        if (this.locators[i].name.substr(0, prefix.length) === prefix)
         {
             ++count;
         }
@@ -452,11 +454,11 @@ EveSpaceObject.prototype.GetLocatorCount = function(prefix)
 EveSpaceObject.prototype.FindLocatorJointByName = function(name)
 {
     var model = this.animation.FindModelForMesh(0);
-    if (model != null)
+    if (model !== null)
     {
         for (var i = 0; i < model.bones.length; ++i)
         {
-            if (model.bones[i].boneRes.name == name)
+            if (model.bones[i].boneRes.name === name)
             {
                 return model.bones[i].worldTransform;
             }
@@ -474,7 +476,7 @@ EveSpaceObject.prototype.FindLocatorTransformByName = function(name)
 {
     for (var i = 0; i < this.locators.length; ++i)
     {
-        if (this.locators[i].name == name)
+        if (this.locators[i].name === name)
         {
             return this.locators[i].transform;
         }

@@ -15,7 +15,7 @@ function Tw2ObjectReader(xmlNode)
     this._ids = {};
     this._reader = null;
 
-    if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) != 'binred')
+    if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) !== 'binred')
     {
         emitter.log('res.error',
         {
@@ -124,13 +124,15 @@ Tw2ObjectReader.TypedArrays = {
 
 Tw2ObjectReader.prototype._ConstructObject = function (data)
 {
-    if (data.type == 'json')
+    var object;
+
+    if (data.type === 'json')
     {
         return data;
     }
     try
     {
-        var object = eval("new " + data.type + "()");
+        object = eval("new " + data.type + "()");
     }
     catch (e)
     {
@@ -145,12 +147,12 @@ Tw2ObjectReader.prototype._ConstructObject = function (data)
 
         throw new Error('YAML: object with undefined type \"' + data.type + '\"');
     }
-   
+
     for (var k in data)
     {
-        if (data.hasOwnProperty(k) && k != 'type')
+        if (data.hasOwnProperty(k) && k !== 'type')
         {
-            if (object[k] && data[k].constructor == Object)
+            if (object[k] && data[k].constructor === Object)
             {
                 for (var key in data[k])
                 {
@@ -166,7 +168,7 @@ Tw2ObjectReader.prototype._ConstructObject = function (data)
             }
         }
     }
-    
+
     if ('Initialize' in object)
     {
         object.Initialize();
@@ -199,7 +201,7 @@ Tw2ObjectReader.prototype._ReadElementData = function (type)
             switch (type & 0x30)
             {
                 case Tw2ObjectReader.ElementSize.SMALL:
-                    return this._reader.ReadUInt8() != 0;
+                    return this._reader.ReadUInt8() !== 0;
                 case Tw2ObjectReader.ElementSize.MEDIUM:
                     return false;
                 default:
@@ -272,17 +274,17 @@ Tw2ObjectReader.prototype._ReadElementData = function (type)
 Tw2ObjectReader.prototype._ReadElement = function()
 {
     var type = this._reader.ReadUInt8();
-    if (type == Tw2ObjectReader.REFERENCE_BIT)
+    if (type === Tw2ObjectReader.REFERENCE_BIT)
     {
         return this._ids[this._reader.ReadUInt16()];
     }
     var id;
-    if ((type & Tw2ObjectReader.ID_BIT) != 0)
+    if ((type & Tw2ObjectReader.ID_BIT) !== 0)
     {
         id = this._reader.ReadUInt16();
     }
     var result = this._ReadElementData(type & 0x3F);
-    if ((type & Tw2ObjectReader.ID_BIT) != 0)
+    if ((type & Tw2ObjectReader.ID_BIT) !== 0)
     {
         this._ids[id] = result;
     }
@@ -324,11 +326,10 @@ Tw2ObjectReader.prototype.Construct = function()
  */
 Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
 {
-    var now = new Date();
-    var startTime = now.getTime();
+    var startTime = device.Clock.now();
     while (this._inputStack.length)
     {
-        var endTime = now.getTime();
+        var endTime = device.Clock.now();
         if (async && resMan.prepareBudget < (endTime - startTime) * 0.001)
         {
             return false;
@@ -337,9 +338,9 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
         var xmlNode = inputData[0];
         var parent = inputData[1];
         var index = inputData[2];
-        if (xmlNode == null)
+        if (xmlNode === null)
         {
-            if (initialize && typeof(parent.Initialize) != 'undefined')
+            if (initialize && typeof(parent.Initialize) !== 'undefined')
             {
                 this._initializeObjects.push(parent);
                 //parent.Initialize();
@@ -358,7 +359,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
         if (type)
         {
             var object = null;
-            if (type.value == 'dict')
+            if (type.value === 'dict')
             {
                 object = {};
             }
@@ -386,13 +387,13 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             for (var i = 0; i < xmlNode.childNodes.length; ++i)
             {
                 var child = xmlNode.childNodes[xmlNode.childNodes.length - 1 - i];
-                if (child.nodeName == '#text')
+                if (child.nodeName === '#text')
                 {
                     continue;
                 }
-                if (type.value != 'dict')
+                if (type.value !== 'dict')
                 {
-                    if (typeof(object[child.nodeName]) == 'undefined')
+                    if (typeof(object[child.nodeName]) === 'undefined')
                     {
                         emitter.log('res.error',
                         {
@@ -427,7 +428,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             for (var i = 0; i < xmlNode.childNodes.length; ++i)
             {
                 var child = xmlNode.childNodes[xmlNode.childNodes.length - 1 - i];
-                if (child.nodeName == '#text')
+                if (child.nodeName === '#text')
                 {
                     continue;
                 }
@@ -436,7 +437,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             for (var i = 0; i < xmlNode.childNodes.length; ++i)
             {
                 var child = xmlNode.childNodes[xmlNode.childNodes.length - 1 - i];
-                if (child.nodeName == '#text')
+                if (child.nodeName === '#text')
                 {
                     continue;
                 }
@@ -455,7 +456,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
         for (var i = 0; i < xmlNode.childNodes.length; ++i)
         {
             var child = xmlNode.childNodes[i];
-            if (child.nodeName == '#text')
+            if (child.nodeName === '#text')
             {
                 value += child.data;
             }

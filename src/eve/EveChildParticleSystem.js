@@ -3,7 +3,7 @@
  * @property {string} name
  * @property {boolean} display
  * @property {Number} lowestLodVisible
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} translation
  * @property {vec3} scaling
  * @property {boolean} useSRT
@@ -23,9 +23,9 @@ function EveChildParticleSystem()
     this.name = '';
     this.display = true;
     this.lowestLodVisible = 2;
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.rotation = quat.create();
     this.translation = vec3.create();
-    this.scaling = vec3.create([1, 1, 1]);
+    this.scaling = vec3.fromValues(1, 1, 1);
     this.useSRT = true;
     this.staticTransform = false;
     this.localTransform = mat4.create();
@@ -54,15 +54,12 @@ EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
 {
     if (this.useSRT)
     {
-        var temp = this.worldTransformLast;
-        mat4.identity(this.localTransform);
-        mat4.translate(this.localTransform, this.translation);
-        mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
-        mat4.multiply(this.localTransform, temp, this.localTransform);
-        mat4.scale(this.localTransform, this.scaling);
+        quat.normalize(this.rotation, this.rotation);
+        mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
     }
-    mat4.set(this.worldTransform, this.worldTransformLast);
-    mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+    mat4.copy(this.worldTransformLast, this.worldTransform);
+    mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
 
     for (var i = 0; i < this.particleEmitters.length; ++i)
     {
@@ -86,11 +83,9 @@ EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
     {
         return;
     }
-    mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
-    mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
-
+    mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
+    mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
     this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-
 };
 
 

@@ -1,6 +1,6 @@
 /**
  * Tw2Frustum
- * @property {Array.<quat4>} planes
+ * @property {Array.<vec4>} planes
  * @property {vec3} viewPos
  * @property {vec3} viewDir
  * @property {number} halfWidthProjection
@@ -9,7 +9,7 @@
  */
 function Tw2Frustum()
 {
-    this.planes = [quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create(), quat4.create()];
+    this.planes = [vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create()];
     this.viewPos = vec3.create();
     this.viewDir = vec3.create();
     this.halfWidthProjection = 1;
@@ -27,13 +27,13 @@ Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
 {
     var viewProj = mat4.create();
 
-    mat4.inverse(view, viewProj);
+    mat4.invert(view, viewProj);
     this.viewPos.set(viewProj.subarray(12, 14));
     this.viewDir.set(viewProj.subarray(8, 10));
 
     this.halfWidthProjection = proj[0] * viewportSize * 0.5;
 
-    mat4.multiply(proj, view, viewProj);
+    mat4.multiply(viewProj, proj, view);
     this.planes[0][0] = viewProj[2];
     this.planes[0][1] = viewProj[6];
     this.planes[0][2] = viewProj[10];
@@ -102,7 +102,7 @@ Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
  */
 Tw2Frustum.prototype.GetPixelSizeAcross = function(center, radius)
 {
-    var d = vec3.subtract(this.viewPos, center, this._tempVec);
+    var d = vec3.subtract(this._tempVec, this.viewPos, center);
     var depth = vec3.dot(this.viewDir, d);
     var epsilon = 1e-5;
     if (depth < epsilon)

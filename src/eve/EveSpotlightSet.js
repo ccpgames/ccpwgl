@@ -4,10 +4,10 @@
  *
  * @property {string} name                  - The spotlight's name
  * @property {mat4} transform               - The spotlight's transform
- * @property {quat4} coneColor              - Colour of the spotlight's cone
- * @property {quat4} spriteColor            - Colour of the spotlight's sprite texture
- * @property {quat4} flareColor             - Colour of the spotlight's flare
- * @property {quat4} spriteScale            - The size of the spotlight
+ * @property {vec4} coneColor              - Colour of the spotlight's cone
+ * @property {vec4} spriteColor            - Colour of the spotlight's sprite texture
+ * @property {vec4} flareColor             - Colour of the spotlight's flare
+ * @property {vec4} spriteScale            - The size of the spotlight
  * @property {boolean} boosterGainInfluence - If true, the spotlight can change size on booster gain
  * @property {number} boneIndex             - The spotlight's bone index
  * @property {number} groupIndex            - The sof faction group that the spotlight belongs to
@@ -21,9 +21,9 @@ function EveSpotlightSetItem()
     this.display = true;
     this.name = '';
     this.transform = mat4.create();
-    this.coneColor = quat4.create();
-    this.spriteColor = quat4.create();
-    this.flareColor = quat4.create();
+    this.coneColor = vec4.create();
+    this.spriteColor = vec4.create();
+    this.flareColor = vec4.create();
     this.spriteScale = vec3.create();
     this.boosterGainInfluence = false;
     this.boneIndex = 0;
@@ -118,7 +118,7 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
     }
 
     var itemCount = visibleItems.length;
-    if (itemCount == 0)
+    if (itemCount === 0)
     {
         return;
     }
@@ -189,7 +189,7 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
             for (var v = 0; v < vertCount; ++v)
             {
                 var offset = (i * spriteQuadCount * vertCount + vertCount * q + v) * vertexSize;
-                if (q % 2 == 0)
+                if (q % 2 === 0)
                 {
                     array[offset + 0] = item.spriteColor[0] * item.spriteIntensity;
                     array[offset + 1] = item.spriteColor[1] * item.spriteIntensity;
@@ -291,7 +291,7 @@ Inherit(EveSpotlightSetBatch, Tw2RenderBatch);
  */
 EveSpotlightSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (this.display && mode == device.RM_ADDITIVE)
+    if (this.display && mode === device.RM_ADDITIVE)
     {
         var batch = new EveSpotlightSetBatch();
         batch.renderMode = device.RM_ADDITIVE;

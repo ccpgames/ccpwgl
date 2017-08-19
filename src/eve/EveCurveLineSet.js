@@ -1,27 +1,4 @@
 /**
- * vec3 Hermite
- * @param out
- * @param v1
- * @param t1
- * @param v2
- * @param t2
- * @param s
- * @returns {*}
- */
-function vec3Hermite(out, v1, t1, v2, t2, s)
-{
-    var k3 = 2 * s * s * s - 3 * s * s + 1;
-    var k2 = -2 * s * s * s + 3 * s * s;
-    var k1 = s * s * s - 2 * s * s + s;
-    var k0 = s * s * s - s * s;
-
-    out[0] = k3 * v1[0] + k2 * v2[0] + k1 * t1[0] + k0 * t2[0];
-    out[1] = k3 * v1[1] + k2 * v2[1] + k1 * t1[1] + k0 * t2[1];
-    out[2] = k3 * v1[2] + k2 * v2[2] + k1 * t1[2] + k0 * t2[2];
-    return out;
-}
-
-/**
  * EveCurveLineSet
  * @property {String} name
  * @property {Boolean} display
@@ -30,7 +7,7 @@ function vec3Hermite(out, v1, t1, v2, t2, s)
  * @property {Array} lines
  * @property {Array} emptyLineID
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scaling
  * @property {mat4} transform
  * @property {Tw2Effect} lineEffect
@@ -53,9 +30,9 @@ function EveCurveLineSet()
     this.emptyLineID = [];
 
     this.translation = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.scaling = vec3.create([1, 1, 1]);
-    this.transform = mat4.identity(mat4.create());
+    this.rotation = quat.create();
+    this.scaling = vec3.fromValues(1, 1, 1);
+    this.transform = mat4.create();
 
     this.lineEffect = new Tw2Effect();
     this.lineEffect.effectFilePath = "res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx";
@@ -88,18 +65,33 @@ function EveCurveLineSet()
     this.declaration.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 2, device.gl.FLOAT, 4, 88));
     this.declaration.stride = 4 * this._vertexSize;
     this.declaration.RebuildHash();
+
+    var scratch = EveCurveLineSet.scratch;
+    if (!scratch.vec3_0)
+    {
+        scratch.vec3_0 = vec3.create(); // start direction
+        scratch.vec3_1 = vec3.create(); // end direction
+        scratch.vec3_2 = vec3.create(); // start direction normalized
+        scratch.vec3_3 = vec3.create(); // end direction normalized
+        scratch.vec3_4 = vec3.create(); // rotationAxis
+        scratch.vec3_5 = vec3.create(); // direction1
+        scratch.vec3_6 = vec3.create(); // direction2
+        scratch.vec3_7 = vec3.create(); // position 1
+        scratch.vec3_8 = vec3.create(); // position 2
+        scratch.vec3_9 = vec3.create(); // tangent1
+        scratch.vec3_10 = vec3.create(); // tangent2
+        scratch.vec4_0 = vec4.create(); // color 1
+        scratch.vec4_1 = vec4.create(); // color 2
+        scratch.mat4_0 = mat4.create(); // rotationMatrix
+    }
 }
 
 /**
  * Initializes the Curve line set
  */
-EveCurveLineSet.prototype.Initialize = function()
+EveCurveLineSet.prototype.Initialize = function ()
 {
-    mat4.identity(this.transform);
-    mat4.translate(this.transform, this.translation);
-    var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-    mat4.multiply(this.transform, rotationTransform, this.transform);
-    mat4.scale(this.transform, this.scaling);
+    mat4.fromRotationTranslationScale(this.transform, this.rotation, this.translation, this.scaling);
 };
 
 /**
@@ -108,7 +100,7 @@ EveCurveLineSet.prototype.Initialize = function()
  * @returns {Number} Line index
  * @private
  */
-EveCurveLineSet.prototype._addLine = function(line)
+EveCurveLineSet.prototype._addLine = function (line)
 {
     if (this.emptyLineID.length)
     {
@@ -125,159 +117,140 @@ EveCurveLineSet.prototype._addLine = function(line)
  * @param {vec3} startPosition
  * @param {quat3} startColor
  * @param {vec3} endPosition
- * @param {quat4} endColor
+ * @param {quat} endColor
  * @param {Number} lineWidth
  * @returns {Number} line index
  */
-EveCurveLineSet.prototype.AddStraightLine = function(startPosition, startColor, endPosition, endColor, lineWidth)
+EveCurveLineSet.prototype.AddStraightLine = function (startPosition, startColor, endPosition, endColor, lineWidth)
 {
     var line = {
         type: EveCurveLineSet.LINETYPE_STRAIGHT,
-        position1: startPosition,
-        color1: startColor,
-        position2: endPosition,
-        color2: endColor,
-        intermediatePosition: [0, 0, 0],
+        position1: vec3.clone(startPosition),
+        color1: vec4.clone(startColor),
+        position2: vec3.clone(endPosition),
+        color2: vec4.clone(endColor),
+        intermediatePosition: vec3.create(),
         width: lineWidth,
-        multiColor: [0, 0, 0, 0],
+        multiColor: vec4.create(),
         multiColorBorder: -1,
-        overlayColor: [0, 0, 0, 0],
+        overlayColor: vec4.create(),
         animationSpeed: 0,
         animationScale: 1,
         numOfSegments: 1
     };
-    return this._addLine(line)
+    return this._addLine(line);
 };
 
 /**
  * Adds a curved line using cartesian co-ordinates
  * @param {vec3} startPosition
- * @param {quat4} startColor
+ * @param {quat} startColor
  * @param {vec3} endPosition
- * @param {quat4} endColor
+ * @param {quat} endColor
  * @param {vec3} middle
  * @param {Number} lineWidth
  * @returns {Number} line index
  */
-EveCurveLineSet.prototype.AddCurvedLineCrt = function(startPosition, startColor, endPosition, endColor, middle, lineWidth)
+EveCurveLineSet.prototype.AddCurvedLineCrt = function (startPosition, startColor, endPosition, endColor, middle, lineWidth)
 {
     var line = {
         type: EveCurveLineSet.LINETYPE_CURVED,
-        position1: startPosition,
-        color1: startColor,
-        position2: endPosition,
-        color2: endColor,
-        intermediatePosition: middle,
+        position1: vec3.clone(startPosition),
+        color1: vec4.clone(startColor),
+        position2: vec3.clone(endPosition),
+        color2: vec4.clone(endColor),
+        intermediatePosition: vec3.clone(middle),
         width: lineWidth,
-        multiColor: [0, 0, 0, 0],
+        multiColor: vec4.create(),
         multiColorBorder: -1,
-        overlayColor: [0, 0, 0, 0],
+        overlayColor: vec4.create(),
         animationSpeed: 0,
         animationScale: 1,
         numOfSegments: 20
     };
-    return this._addLine(line)
+    return this._addLine(line);
 };
 
 /**
  * Adds a curved line using spherical co-ordinates
  * @param {vec3} startPosition
- * @param {quat4} startColor
+ * @param {quat} startColor
  * @param {vec3} endPosition
- * @param {quat4} endColor
+ * @param {quat} endColor
  * @param {vec3} center
  * @param {vec3} middle
  * @param {Number} lineWidth
  * @returns {Number} line index
  */
-EveCurveLineSet.prototype.AddCurvedLineSph = function(startPosition, startColor, endPosition, endColor, center, middle, lineWidth)
+EveCurveLineSet.prototype.AddCurvedLineSph = function (startPosition, startColor, endPosition, endColor, center, middle, lineWidth)
 {
-    var phi1 = startPosition[0];
-    var theta1 = startPosition[1];
-    var radius1 = startPosition[2];
-    var phi2 = endPosition[0];
-    var theta2 = endPosition[1];
-    var radius2 = endPosition[2];
-    var phiM = middle[0];
-    var thetaM = middle[1];
-    var radiusM = middle[2];
-    // is given in spherical coords, so convert them into cartesian
-    var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
-    var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-    var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
-    vec3.add(middlePnt, center);
-    // add it
-    return this.AddCurvedLineCrt(startPnt, startColor, endPnt, endColor, middlePnt, lineWidth);
+    return this.AddCurvedLineCrt(
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        startColor,
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
+        endColor,
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), middle, center),
+        lineWidth);
 };
 
 /**
  * Adds a sphered line using cartesian co-ordinates
  * @param {vec3} startPosition
- * @param {quat4} startColor
+ * @param {quat} startColor
  * @param {vec3} endPosition
- * @param {quat4} endColor
+ * @param {quat} endColor
  * @param {vec3} center
  * @param {Number} lineWidth
  * @returns {Number} line index
  */
-EveCurveLineSet.prototype.AddSpheredLineCrt = function(startPosition, startColor, endPosition, endColor, center, lineWidth)
+EveCurveLineSet.prototype.AddSpheredLineCrt = function (startPosition, startColor, endPosition, endColor, center, lineWidth)
 {
     var line = {
         type: EveCurveLineSet.LINETYPE_SPHERED,
-        position1: startPosition,
-        color1: startColor,
-        position2: endPosition,
-        color2: endColor,
-        intermediatePosition: center,
+        position1: vec3.clone(startPosition),
+        color1: vec4.clone(startColor),
+        position2: vec3.clone(endPosition),
+        color2: vec4.clone(endColor),
+        intermediatePosition: vec3.clone(center),
         width: lineWidth,
-        multiColor: [0, 0, 0, 0],
+        multiColor: vec4.create(),
         multiColorBorder: -1,
-        overlayColor: [0, 0, 0, 0],
+        overlayColor: vec4.create(),
         animationSpeed: 0,
         animationScale: 1,
         numOfSegments: 20
     };
-    return this._addLine(line)
+    return this._addLine(line);
 };
 
 /**
  * Adds a sphered line using spherical co-ordinates
  * @param {vec3} startPosition
- * @param {quat4} startColor
+ * @param {quat} startColor
  * @param {vec3} endPosition
- * @param {quat4} endColor
+ * @param {quat} endColor
  * @param {vec3} center
  * @param {Number} lineWidth
  * @returns {Number} line index
  */
-EveCurveLineSet.prototype.AddSpheredLineSph = function(startPosition, startColor, endPosition, endColor, center, lineWidth)
+EveCurveLineSet.prototype.AddSpheredLineSph = function (startPosition, startColor, endPosition, endColor, center, lineWidth)
 {
-    var phi1 = startPosition[0];
-    var theta1 = startPosition[1];
-    var radius1 = startPosition[2];
-    var phi2 = endPosition[0];
-    var theta2 = endPosition[1];
-    var radius2 = endPosition[2];
-    // is given in spherical coords, so convert them into cartesian
-    var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
-    var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
-    // add it
-    return this.AddSpheredLineCrt(startPnt, startColor, endPnt, endColor, center, lineWidth);
+    return this.AddSpheredLineCrt(
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        startColor,
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
+        endColor,
+        center,
+        lineWidth);
 };
 
 /**
  * Changes a line's colors
  * @param {Number} lineID
- * @param {quat4} startColor
- * @param {quat4} endColor
+ * @param {quat} startColor
+ * @param {quat} endColor
  */
-EveCurveLineSet.prototype.ChangeLineColor = function(lineID, startColor, endColor)
+EveCurveLineSet.prototype.ChangeLineColor = function (lineID, startColor, endColor)
 {
     this.lines[lineID].color1 = startColor;
     this.lines[lineID].color2 = endColor;
@@ -288,7 +261,7 @@ EveCurveLineSet.prototype.ChangeLineColor = function(lineID, startColor, endColo
  * @param {Number} lineID
  * @param {Number} width
  */
-EveCurveLineSet.prototype.ChangeLineWidth = function(lineID, width)
+EveCurveLineSet.prototype.ChangeLineWidth = function (lineID, width)
 {
     this.lines[lineID].width = width;
 };
@@ -299,7 +272,7 @@ EveCurveLineSet.prototype.ChangeLineWidth = function(lineID, width)
  * @param {vec3} startPosition
  * @param {vec3} endPosition
  */
-EveCurveLineSet.prototype.ChangeLinePositionCrt = function(lineID, startPosition, endPosition)
+EveCurveLineSet.prototype.ChangeLinePositionCrt = function (lineID, startPosition, endPosition)
 {
     this.lines[lineID].position1 = startPosition;
     this.lines[lineID].position2 = endPosition;
@@ -312,21 +285,13 @@ EveCurveLineSet.prototype.ChangeLinePositionCrt = function(lineID, startPosition
  * @param {vec3} endPosition
  * @param {vec3} center
  */
-EveCurveLineSet.prototype.ChangeLinePositionSph = function(lineID, startPosition, endPosition, center)
+EveCurveLineSet.prototype.ChangeLinePositionSph = function (lineID, startPosition, endPosition, center)
 {
-    var phi1 = startPosition[0];
-    var theta1 = startPosition[1];
-    var radius1 = startPosition[2];
-    var phi2 = endPosition[0];
-    var theta2 = endPosition[1];
-    var radius2 = endPosition[2];
-    // is given in spherical coords, so convert them into cartesian
-    var startPnt = [radius1 * Math.sin(phi1) * Math.sin(theta1), radius1 * Math.cos(theta1), radius1 * Math.cos(phi1) * Math.sin(theta1)];
-    var endPnt = [radius2 * Math.sin(phi2) * Math.sin(theta2), radius2 * Math.cos(theta2), radius2 * Math.cos(phi2) * Math.sin(theta2)];
-    // dont forget center!
-    vec3.add(startPnt, center);
-    vec3.add(endPnt, center);
-    this.ChangeLinePositionCrt(lineID, startPnt, endPnt);
+    this.ChangeLinePositionCrt(
+        lineID,
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center)
+    );
 };
 
 /**
@@ -334,7 +299,7 @@ EveCurveLineSet.prototype.ChangeLinePositionSph = function(lineID, startPosition
  * @param {Number} lineID
  * @param {vec3} intermediatePosition
  */
-EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function(lineID, intermediatePosition)
+EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function (lineID, intermediatePosition)
 {
     this.lines[lineID].intermediatePosition = intermediatePosition;
 };
@@ -345,23 +310,18 @@ EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function(lineID, intermedi
  * @param {vec3} intermediatePosition
  * @param {vec3} middle
  */
-EveCurveLineSet.prototype.ChangeLineIntermediateSph = function(lineID, intermediatePosition, middle)
+EveCurveLineSet.prototype.ChangeLineIntermediateSph = function (lineID, intermediatePosition, middle)
 {
-    var phiM = middle[0];
-    var thetaM = middle[1];
-    var radiusM = middle[2];
-    var middlePnt = [radiusM * Math.sin(phiM) * Math.sin(thetaM), radiusM * Math.cos(thetaM), radiusM * Math.cos(phiM) * Math.sin(thetaM)];
-    vec3.add(middlePnt, middle);
-    this.lines[lineID].intermediatePosition = intermediatePosition;
+    EveCurveLineSet.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
 };
 
 /**
  * Changes line multi color parameters
  * @param {Number} lineID
- * @param {quat4} color
+ * @param {quat} color
  * @param {Number} border
  */
-EveCurveLineSet.prototype.ChangeLineMultiColor = function(lineID, color, border)
+EveCurveLineSet.prototype.ChangeLineMultiColor = function (lineID, color, border)
 {
     this.lines[lineID].multiColor = color;
     this.lines[lineID].multiColorBorder = border;
@@ -370,11 +330,11 @@ EveCurveLineSet.prototype.ChangeLineMultiColor = function(lineID, color, border)
 /**
  * Changes a line's animation parameters
  * @param {Number} lineID
- * @param {quat4} color
+ * @param {quat} color
  * @param {Number} speed
  * @param {Number} scale
  */
-EveCurveLineSet.prototype.ChangeLineAnimation = function(lineID, color, speed, scale)
+EveCurveLineSet.prototype.ChangeLineAnimation = function (lineID, color, speed, scale)
 {
     this.lines[lineID].overlayColor = color;
     this.lines[lineID].animationSpeed = speed;
@@ -386,9 +346,9 @@ EveCurveLineSet.prototype.ChangeLineAnimation = function(lineID, color, speed, s
  * @param {Number} lineID
  * @param {Number} numOfSegments
  */
-EveCurveLineSet.prototype.ChangeLineSegmentation = function(lineID, numOfSegments)
+EveCurveLineSet.prototype.ChangeLineSegmentation = function (lineID, numOfSegments)
 {
-    if (this.lines[lineID].type != EveCurveLineSet.LINETYPE_STRAIGHT)
+    if (this.lines[lineID].type !== EveCurveLineSet.LINETYPE_STRAIGHT)
     {
         this.lines[lineID].numOfSegments = numOfSegments;
     }
@@ -398,7 +358,7 @@ EveCurveLineSet.prototype.ChangeLineSegmentation = function(lineID, numOfSegment
  * Removes a line
  * @param {Number} lineID
  */
-EveCurveLineSet.prototype.RemoveLine = function(lineID)
+EveCurveLineSet.prototype.RemoveLine = function (lineID)
 {
     this.emptyLineID.push(lineID);
     this.lines[lineID].type = EveCurveLineSet.LINETYPE_INVALID;
@@ -407,7 +367,7 @@ EveCurveLineSet.prototype.RemoveLine = function(lineID)
 /**
  * Clears all lines
  */
-EveCurveLineSet.prototype.ClearLines = function()
+EveCurveLineSet.prototype.ClearLines = function ()
 {
     this.lines = [];
     this.emptyLineID = [];
@@ -418,12 +378,12 @@ EveCurveLineSet.prototype.ClearLines = function()
  * @returns {Number}
  * @private
  */
-EveCurveLineSet.prototype._lineCount = function()
+EveCurveLineSet.prototype._lineCount = function ()
 {
     var count = 0;
     for (var i = 0; i < this.lines.length; ++i)
     {
-        if (this.lines[i].type != EveCurveLineSet.LINETYPE_INVALID)
+        if (this.lines[i].type !== EveCurveLineSet.LINETYPE_INVALID)
         {
             count += this.lines[i].numOfSegments;
         }
@@ -439,7 +399,7 @@ EveCurveLineSet.prototype._lineCount = function()
  * @returns {*}
  * @private
  */
-EveCurveLineSet.prototype._fillColorVertices = function(lineData, buffer, offset)
+EveCurveLineSet.prototype._fillColorVertices = function (lineData, buffer, offset)
 {
     buffer[offset++] = lineData.multiColor[0];
     buffer[offset++] = lineData.multiColor[1];
@@ -456,17 +416,17 @@ EveCurveLineSet.prototype._fillColorVertices = function(lineData, buffer, offset
  * Writes line vertices to the vertex buffer
  * @param {EveCurveLineSet} self
  * @param {vec3} position1
- * @param {quat4} color1
+ * @param {quat} color1
  * @param length1
  * @param {vec3} position2
- * @param {quat4} color2
+ * @param {quat} color2
  * @param length2
  * @param {Number} lineID
  * @param buffer
  * @param {Number} offset
  * @private
  */
-EveCurveLineSet.prototype._writeLineVerticesToBuffer = function(self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset)
+EveCurveLineSet.prototype._writeLineVerticesToBuffer = function (self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset)
 {
     var lineData = this.lines[lineID];
 
@@ -592,10 +552,32 @@ EveCurveLineSet.prototype._writeLineVerticesToBuffer = function(self, position1,
 };
 
 /**
+ * Scratch variables
+ */
+EveCurveLineSet.scratch = {
+    vec3_0: null,
+    vec3_1: null,
+    vec3_2: null,
+    vec3_3: null,
+    vec3_4: null,
+    vec3_5: null,
+    vec3_6: null,
+    vec3_7: null,
+    vec3_8: null,
+    vec3_9: null,
+    vec3_10: null,
+    vec4_0: null,
+    vec4_1: null,
+    mat4_0: null
+};
+
+/**
  * Updates line changes
  */
-EveCurveLineSet.prototype.SubmitChanges = function()
+EveCurveLineSet.prototype.SubmitChanges = function ()
 {
+    var scratch = EveCurveLineSet.scratch;
+
     this._vertexBuffer = null;
     if (!this.lines.length)
     {
@@ -606,57 +588,63 @@ EveCurveLineSet.prototype.SubmitChanges = function()
     var data = new Float32Array(this._vertexBufferSize * 6 * this._vertexSize);
     var offset = 0;
 
-    var startDir = vec3.create();
-    var endDir = vec3.create();
-    var startDirNrm = vec3.create();
-    var endDirNrm = vec3.create();
-    var rotationAxis = vec3.create();
-    var rotationMatrix = mat4.create();
-    var dir1 = vec3.create();
-    var dir2 = vec3.create();
-    var col1 = quat4.create();
-    var col2 = quat4.create();
+    var startDir = scratch.vec3_0,
+        endDir = scratch.vec3_1,
+        startDirNrm = scratch.vec3_2,
+        endDirNrm = scratch.vec3_3,
+        rotationAxis = scratch.vec3_4,
+        dir1 = scratch.vec3_5,
+        dir2 = scratch.vec3_6,
+        pos1 = scratch.vec3_7,
+        pos2 = scratch.vec3_8,
+        tangent1 = scratch.vec3_9,
+        tangent2 = scratch.vec3_10,
+        col1 = scratch.vec4_0,
+        col2 = scratch.vec4_1,
+        rotationMatrix = scratch.mat4_0;
+
     var pt1 = vec3.create();
     var pt2 = vec3.create();
     var j, tmp, segmentFactor;
 
     for (var i = 0; i < this.lines.length; ++i)
     {
-        switch (this.lines[i].type)
+        var item = this.lines[i];
+
+        switch (item.type)
         {
             case EveCurveLineSet.LINETYPE_INVALID:
                 break;
 
             case EveCurveLineSet.LINETYPE_STRAIGHT:
-                this._writeLineVerticesToBuffer(this, this.lines[i].position1, this.lines[i].color1, 0, this.lines[i].position2, this.lines[i].color2, 1, i, data, offset);
+                this._writeLineVerticesToBuffer(this, item.position1, item.color1, 0, item.position2, item.color2, 1, i, data, offset);
                 offset += 6 * this._vertexSize;
                 break;
 
             case EveCurveLineSet.LINETYPE_SPHERED:
-                vec3.subtract(this.lines[i].position1, this.lines[i].intermediatePosition, startDir);
-                vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, endDir);
-                vec3.normalize(startDir, startDirNrm);
-                vec3.normalize(endDir, endDirNrm);
+                vec3.subtract(startDir, item.position1, item.intermediatePosition);
+                vec3.subtract(endDir, item.position2, item.intermediatePosition);
+                vec3.normalize(startDirNrm, startDir);
+                vec3.normalize(endDirNrm, endDir);
+                vec3.cross(rotationAxis, startDir, endDir);
 
-                vec3.cross(startDir, endDir, rotationAxis);
                 var fullAngle = Math.acos(vec3.dot(startDirNrm, endDirNrm));
-                var segmentAngle = fullAngle / this.lines[i].numOfSegments;
-                mat4.rotate(mat4.identity(rotationMatrix), segmentAngle, rotationAxis);
-
-                vec3.set(startDir, dir1);
-                quat4.set(this.lines[i].color1, col1);
+                var segmentAngle = fullAngle / item.numOfSegments;
+                mat4.identity(rotationMatrix);
+                mat4.rotate(rotationMatrix, rotationMatrix, segmentAngle, rotationAxis);
+                vec3.copy(dir1, startDir);
+                vec4.copy(col1, item.color1);
 
                 for (j = 0; j < this.lines[i].numOfSegments; ++j)
                 {
-                    segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                    mat4.multiplyVec3(rotationMatrix, dir1, dir2);
-                    col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
-                    col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
-                    col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
-                    col2[3] = this.lines[i].color1[3] * (1 - segmentFactor) + this.lines[i].color2[3] * segmentFactor;
-                    vec3.add(dir1, this.lines[i].intermediatePosition, pt1);
-                    vec3.add(dir2, this.lines[i].intermediatePosition, pt2);
-
+                    segmentFactor = (j + 1) / item.numOfSegments;
+                    vec3.transformMat4(dir2, rotationMatrix, dir1);
+                    col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
+                    col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
+                    col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
+                    col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
+                    vec3.add(pos1, dir1, item.intermediatePosition);
+                    vec3.add(pos2, dir2, item.intermediatePosition);
                     this._writeLineVerticesToBuffer(this, pt1, col1, j / this.lines[i].numOfSegments, pt2, col2, segmentFactor, i, data, offset);
                     offset += 6 * this._vertexSize;
 
@@ -670,24 +658,19 @@ EveCurveLineSet.prototype.SubmitChanges = function()
                 break;
 
             case EveCurveLineSet.LINETYPE_CURVED:
-                var tangent1 = vec3.create();
-                var tangent2 = vec3.create();
-                var pos1 = vec3.create();
-                var pos2 = vec3.create();
+                vec3.subtract(tangent1, item.intermediatePosition, item.position1);
+                vec3.subtract(tangent2, item.position2, item.intermediatePosition);
+                vec3.copy(pos1, item.position1);
+                vec3.copy(col1, item.color1);
 
-                vec3.subtract(this.lines[i].intermediatePosition, this.lines[i].position1, tangent1);
-                vec3.subtract(this.lines[i].position2, this.lines[i].intermediatePosition, tangent2);
-
-                vec3.set(this.lines[i].position1, pos1);
-                vec3.set(this.lines[i].color1, col1);
-                for (j = 0; j < this.lines[i].numOfSegments; ++j)
+                for (j = 0; j < item.numOfSegments; ++j)
                 {
-                    segmentFactor = (j + 1) / this.lines[i].numOfSegments;
-                    vec3Hermite(pos2, this.lines[i].position1, tangent1, this.lines[i].position2, tangent2, segmentFactor);
-                    col2[0] = this.lines[i].color1[0] * (1 - segmentFactor) + this.lines[i].color2[0] * segmentFactor;
-                    col2[1] = this.lines[i].color1[1] * (1 - segmentFactor) + this.lines[i].color2[1] * segmentFactor;
-                    col2[2] = this.lines[i].color1[2] * (1 - segmentFactor) + this.lines[i].color2[2] * segmentFactor;
-                    col2[3] = this.lines[i].color1[3] * (1 - segmentFactor) + this.lines[i].color2[3] * segmentFactor;
+                    segmentFactor = (j + 1) / item.numOfSegments;
+                    vec3.hermite(pos2, item.position1, tangent1, item.position2, tangent2, segmentFactor);
+                    col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
+                    col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
+                    col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
+                    col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
                     this._writeLineVerticesToBuffer(this, pos1, col1, j / this.lines[i].numOfSegments, pos2, col2, segmentFactor, i, data, offset);
                     offset += 6 * this._vertexSize;
 
@@ -722,7 +705,7 @@ EveCurveLineSet.LINETYPE_CURVED = 3;
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)
+EveCurveLineSet.prototype.GetBatches = function (mode, accumulator)
 {
     if (!this.display || !this._vertexBuffer)
     {
@@ -748,8 +731,8 @@ EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)
     }
 
     var batch = new Tw2ForwardingRenderBatch();
-    mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
-    mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
+    mat4.transpose(this.perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+    mat4.transpose(this.perObjectData.perObjectPSData.Get('WorldMat'), this.transform);
     batch.perObjectData = this.perObjectData;
     batch.geometryProvider = this;
     batch.renderMode = mode;
@@ -760,7 +743,7 @@ EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)
 /**
  * Unloads the curve line set vertex buffer
  */
-EveCurveLineSet.prototype.Unload = function()
+EveCurveLineSet.prototype.Unload = function ()
 {
     if (this._vertexBuffer)
     {
@@ -775,7 +758,7 @@ EveCurveLineSet.prototype.Unload = function()
  * @param {Tw2Effect} [overrideEffect]
  * @returns {Boolean}
  */
-EveCurveLineSet.prototype.Render = function(batch, overrideEffect)
+EveCurveLineSet.prototype.Render = function (batch, overrideEffect)
 {
     var effect = overrideEffect || (batch.renderMode === device.RM_PICKABLE) ? this.pickEffect : this.lineEffect;
     var effectRes = effect.GetEffectRes();
@@ -809,20 +792,16 @@ EveCurveLineSet.prototype.Render = function(batch, overrideEffect)
 /**
  * Per frame update
  */
-EveCurveLineSet.prototype.Update = function() {};
+EveCurveLineSet.prototype.Update = function () {};
 
 /**
  * Per frame view dependent data update
  * @param {mat4} parentTransform
  */
-EveCurveLineSet.prototype.UpdateViewDependentData = function(parentTransform)
+EveCurveLineSet.prototype.UpdateViewDependentData = function (parentTransform)
 {
-    mat4.identity(this.transform);
-    mat4.translate(this.transform, this.translation);
-    var rotationTransform = mat4.transpose(quat4.toMat4(this.rotation, mat4.create()));
-    mat4.multiply(this.transform, rotationTransform, this.transform);
-    mat4.scale(this.transform, this.scaling);
-    mat4.multiply(this.transform, parentTransform);
+    mat4.fromRotationTranslationScale(this.transform, this.rotation, this.translation, this.scaling);
+    mat4.multiply(this.transform, this.transform, parentTransform);
 };
 
 /**
@@ -830,7 +809,7 @@ EveCurveLineSet.prototype.UpdateViewDependentData = function(parentTransform)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
  */
-EveCurveLineSet.prototype.GetResources = function(out)
+EveCurveLineSet.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -844,5 +823,44 @@ EveCurveLineSet.prototype.GetResources = function(out)
         this.pickEffect.GetResources(out);
     }
 
+    return out;
+};
+
+/**
+ * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
+ *
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
+ * @returns {vec3} out          - receiving vec3
+ */
+EveCurveLineSet.cartFromSpherical = function(out, spherical)
+{
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta);
+    out[1] = radius * Math.cos(theta);
+    out[2] = radius * Math.cos(phi) * Math.sin(theta);
+    return out;
+};
+
+/**
+ * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
+ *
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
+ * @param {vec3} center         - center
+ * @returns {vec3} out          - receiving vec3
+ */
+EveCurveLineSet.cartFromSphericalAndCenter = function(out, spherical, center)
+{
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
+    out[1] = radius * Math.cos(theta) + center[1];
+    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
     return out;
 };
