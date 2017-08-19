@@ -466,7 +466,7 @@ EveSpaceScene.prototype.Render = function ()
     if (this.lodEnabled)
     {
         var frustum = scratch.frustum;
-        frustum.Initialize(device.view, device.projection, device.viewportWidth);
+        frustum.Initialize(device.view, device.projection, device.viewportWidth, device.viewInverse, device.viewProjection);
         for (i = 0; i < this.objects.length; ++i)
         {
             if (this.objects[i].UpdateLod)

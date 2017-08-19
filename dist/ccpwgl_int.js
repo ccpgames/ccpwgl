@@ -365,7 +365,6 @@ var ccpwgl_int = (function()
      * @property {vec3} viewPos
      * @property {vec3} viewDir
      * @property {number} halfWidthProjection
-     * @property {vec3} _tempVec
      * @constructor
      */
     function Tw2Frustum()
@@ -374,27 +373,35 @@ var ccpwgl_int = (function()
         this.viewPos = vec3.create();
         this.viewDir = vec3.create();
         this.halfWidthProjection = 1;
-        this._tempVec = vec3.create();
     }
+
+    /**
+     * Scratch variables
+     */
+    Tw2Frustum.scratch = {
+        mat4_0: mat4.create(),
+        vec3_0: vec3.create()
+    };
 
     /**
      * Initializes the Tw2Frustum
      * @param {mat4} view - View Matrix
      * @param {mat4} proj - Projection Matrix
      * @param {number} viewportSize
+     * @param {mat4} [viewInverse] Optional viewInverse matrix
+     * @param {mat4} [viewProjection] Optional viewProjection matrix
      * @prototype
      */
-    Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize)
+    Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize, viewInverse, viewProjection)
     {
-        var viewProj = mat4.create();
+        var mat4_0 = Tw2Frustum.scratch.mat4_0;
 
-        mat4.invert(view, viewProj);
-        this.viewPos.set(viewProj.subarray(12, 14));
-        this.viewDir.set(viewProj.subarray(8, 10));
-
+        var viewInv = viewInverse ? viewInverse : mat4.invert(mat4_0, view);
+        this.viewPos.set(viewInv.subarray(12, 14));
+        this.viewDir.set(viewInv.subarray(8, 10));
         this.halfWidthProjection = proj[0] * viewportSize * 0.5;
 
-        mat4.multiply(viewProj, proj, view);
+        var viewProj = viewProjection ? viewProjection : mat4.multiply(mat4_0, proj, view);
         this.planes[0][0] = viewProj[2];
         this.planes[0][1] = viewProj[6];
         this.planes[0][2] = viewProj[10];
@@ -463,7 +470,7 @@ var ccpwgl_int = (function()
      */
     Tw2Frustum.prototype.GetPixelSizeAcross = function(center, radius)
     {
-        var d = vec3.subtract(this._tempVec, this.viewPos, center);
+        var d = vec3.subtract(Tw2Frustum.scratch.vec3_0, this.viewPos, center);
         var depth = vec3.dot(this.viewDir, d);
         var epsilon = 1e-5;
         if (depth < epsilon)
@@ -9155,7 +9162,7 @@ var ccpwgl_int = (function()
             this._sourceElement = 3;
             this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
         }
-        else if (this.sourceObject.constructor === (new Tw2Vector4Parameter()).constructor)
+        else if (this.sourceObject instanceof Tw2Vector4Parameter)
         {
             if (this.sourceAttribute === 'v1')
             {
@@ -9208,7 +9215,7 @@ var ccpwgl_int = (function()
             this._destinationElement = 3;
             this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
         }
-        else if (this.destinationObject.constructor === (new Tw2Vector4Parameter()).constructor)
+        else if (this.destinationObject instanceof Tw2Vector4Parameter)
         {
             if (this.destinationAttribute === 'v1')
             {
@@ -9240,8 +9247,8 @@ var ccpwgl_int = (function()
             return;
         }
 
-        this.sourceIsArray = (this.sourceObject[this.sourceAttribute].constructor === (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name === "Array");
-        this.destinationIsArray = (this.destinationObject[this.destinationAttribute].constructor === (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name === "Array");
+        this.sourceIsArray = (this.sourceObject[this.sourceAttribute] instanceof Float32Array || Array.isArray(this.sourceObject[this.sourceAttribute]));
+        this.destinationIsArray = (this.destinationObject[this.destinationAttribute] instanceof Float32Array || Array.isArray(this.destinationObject[this.destinationAttribute]));
 
         if (this.sourceIsArray === this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === typeof this.destinationObject[this.destinationAttribute])
         {
@@ -18674,7 +18681,7 @@ var ccpwgl_int = (function()
         if (this.lodEnabled)
         {
             var frustum = scratch.frustum;
-            frustum.Initialize(device.view, device.projection, device.viewportWidth);
+            frustum.Initialize(device.view, device.projection, device.viewportWidth, device.viewInverse, device.viewProjection);
             for (i = 0; i < this.objects.length; ++i)
             {
                 if (this.objects[i].UpdateLod)

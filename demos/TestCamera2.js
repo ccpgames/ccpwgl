@@ -63,8 +63,8 @@ TestCamera.Create = function(canvas, options)
     camera.rotationX = get(options, 'rotationX', 0);
     camera.rotationY = get(options, 'rotationY', 0);
     vec3.copy(camera.poi, get(options, 'poi', [0,0,0]));
-    camera.nearPlane = get(options, 'nearPlane', 1);
-    camera.farPlane = get(options, 'farPlane', 100000);
+    camera.nearPlane = get(options, 'nearPlane', 0.1);
+    camera.farPlane = get(options, 'farPlane', 1000000);
     camera.minPitch = get(options, 'minPitch', -0.5);
     camera.maxPitch = get(options, 'maxPitch', 0.35);
     return camera;

@@ -75,7 +75,7 @@ Tw2ValueBinding.prototype.Initialize = function()
         this._sourceElement = 3;
         this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
     }
-    else if (this.sourceObject.constructor === (new Tw2Vector4Parameter()).constructor)
+    else if (this.sourceObject instanceof Tw2Vector4Parameter)
     {
         if (this.sourceAttribute === 'v1')
         {
@@ -128,7 +128,7 @@ Tw2ValueBinding.prototype.Initialize = function()
         this._destinationElement = 3;
         this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
     }
-    else if (this.destinationObject.constructor === (new Tw2Vector4Parameter()).constructor)
+    else if (this.destinationObject instanceof Tw2Vector4Parameter)
     {
         if (this.destinationAttribute === 'v1')
         {
@@ -160,8 +160,8 @@ Tw2ValueBinding.prototype.Initialize = function()
         return;
     }
 
-    this.sourceIsArray = (this.sourceObject[this.sourceAttribute].constructor === (new Float32Array()).constructor || this.sourceObject[this.sourceAttribute].constructor.name === "Array");
-    this.destinationIsArray = (this.destinationObject[this.destinationAttribute].constructor === (new Float32Array()).constructor || this.destinationObject[this.destinationAttribute].constructor.name === "Array");
+    this.sourceIsArray = (this.sourceObject[this.sourceAttribute] instanceof Float32Array || Array.isArray(this.sourceObject[this.sourceAttribute]));
+    this.destinationIsArray = (this.destinationObject[this.destinationAttribute] instanceof Float32Array || Array.isArray(this.destinationObject[this.destinationAttribute]));
 
     if (this.sourceIsArray === this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === typeof this.destinationObject[this.destinationAttribute])
     {
