@@ -18,15 +18,16 @@ function Tw2Device()
     this.previousTime = null;
 
     this.eyePosition = vec3.create();
+    this.targetResolution = vec4.create();
     this.world = mat4.create();
     this.view = mat4.create();
     this.viewInverse = mat4.create();
+    this.viewTranspose = mat4.create();
     this.projection = mat4.create();
+    this.projectionInverse = mat4.create();
+    this.projectionTranspose = mat4.create();
     this.viewProjection = mat4.create();
-    //this.viewTranspose = mat4.create();
-    //this.projectionInverse = mat4.create();
-    //this.projectionTranspose = mat4.create();
-    //this.viewProjectionTranspose = mat4.create();
+    this.viewProjectionTranspose = mat4.create();
 
     this.canvas = null;
     this.viewportAspect = 0;
@@ -356,27 +357,33 @@ Tw2Device.prototype.SetView = function(matrix)
 {
     mat4.copy(this.view, matrix);
     mat4.invert(this.viewInverse, this.view);
-    mat4.multiply(this.viewProjection, this.projection, this.view);
+    mat4.transpose(this.viewTranspose, this.view);
     mat4.getTranslation(this.eyePosition, this.viewInverse);
-    mat4.copy(this.viewProjection, variableStore._variables["ViewProjectionMat"]);
-    //mat4.transpose(this.viewTranspose, this.view);
-    //mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+
+    mat4.multiply(this.viewProjection, this.projection, this.view);
+    mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+    mat4.copy(variableStore._variables["ViewProjectionMat"], this.viewProjection);
 };
 
 /**
  * Sets projection matrix
  *
  * @param {mat4} matrix
+ * @param {boolean} [forceUpdateViewProjection]
  */
-Tw2Device.prototype.SetProjection = function(matrix)
+Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
 {
     mat4.copy(this.projection, matrix);
-    mat4.multiply(this.viewProjection, this.projection, this.view);
-    mat4.copy(variableStore._variables["ViewProjectionMat"].value, this.viewProjection);
-    //mat4.transpose(this.projectionTranspose, this.projection);
-    //mat4.invert(this.projectionInverse, this.projection);
-    //this.GetTargetResolution(this.targetResolution);
-    //mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+    mat4.transpose(this.projectionTranspose, this.projection);
+    mat4.invert(this.projectionInverse, this.projection);
+    this.GetTargetResolution(this.targetResolution);
+
+    if (forceUpdateViewProjection)
+    {
+        mat4.multiply(this.viewProjection, this.projection, this.view);
+        mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+        mat4.copy(variableStore._variables["ViewProjectionMat"].value, this.viewProjection);
+    }
 };
 
 /**
@@ -465,8 +472,7 @@ Tw2Device.prototype.RenderCameraSpaceQuad = function(effect)
         1.0, -1.0, 0.0, 1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 1.0, 0.0, 0.0
     ]);
 
-    // TODO: return to calculating per frame and accessible
-    var projInv = mat4.invert(mat4.create(), this.projection);
+    var projInv = this.projectionInverse;
     for (var i = 0; i < 4; ++i)
     {
         var vec = vertices.subarray(i * 6, i * 6 + 4);
@@ -913,6 +919,7 @@ Tw2Device.prototype.CreateSolidTexture = function(rgba)
 
 /**
  * Device clock
+ * - Todo: Add performance timing (Currently doesn't work with boosterSets)
  */
 Tw2Device.prototype.Clock = Date; //window["performance"] && window["performance"].now ? window["performance"] : Date;
 

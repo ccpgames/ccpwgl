@@ -3777,15 +3777,16 @@ var ccpwgl_int = (function()
         this.previousTime = null;
 
         this.eyePosition = vec3.create();
+        this.targetResolution = vec4.create();
         this.world = mat4.create();
         this.view = mat4.create();
         this.viewInverse = mat4.create();
+        this.viewTranspose = mat4.create();
         this.projection = mat4.create();
+        this.projectionInverse = mat4.create();
+        this.projectionTranspose = mat4.create();
         this.viewProjection = mat4.create();
-        //this.viewTranspose = mat4.create();
-        //this.projectionInverse = mat4.create();
-        //this.projectionTranspose = mat4.create();
-        //this.viewProjectionTranspose = mat4.create();
+        this.viewProjectionTranspose = mat4.create();
 
         this.canvas = null;
         this.viewportAspect = 0;
@@ -4115,27 +4116,33 @@ var ccpwgl_int = (function()
     {
         mat4.copy(this.view, matrix);
         mat4.invert(this.viewInverse, this.view);
-        mat4.multiply(this.viewProjection, this.projection, this.view);
+        mat4.transpose(this.viewTranspose, this.view);
         mat4.getTranslation(this.eyePosition, this.viewInverse);
-        mat4.copy(this.viewProjection, variableStore._variables["ViewProjectionMat"]);
-        //mat4.transpose(this.viewTranspose, this.view);
-        //mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+
+        mat4.multiply(this.viewProjection, this.projection, this.view);
+        mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+        mat4.copy(variableStore._variables["ViewProjectionMat"], this.viewProjection);
     };
 
     /**
      * Sets projection matrix
      *
      * @param {mat4} matrix
+     * @param {boolean} [forceUpdateViewProjection]
      */
-    Tw2Device.prototype.SetProjection = function(matrix)
+    Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
     {
         mat4.copy(this.projection, matrix);
-        mat4.multiply(this.viewProjection, this.projection, this.view);
-        mat4.copy(variableStore._variables["ViewProjectionMat"].value, this.viewProjection);
-        //mat4.transpose(this.projectionTranspose, this.projection);
-        //mat4.invert(this.projectionInverse, this.projection);
-        //this.GetTargetResolution(this.targetResolution);
-        //mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+        mat4.transpose(this.projectionTranspose, this.projection);
+        mat4.invert(this.projectionInverse, this.projection);
+        this.GetTargetResolution(this.targetResolution);
+
+        if (forceUpdateViewProjection)
+        {
+            mat4.multiply(this.viewProjection, this.projection, this.view);
+            mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+            mat4.copy(variableStore._variables["ViewProjectionMat"].value, this.viewProjection);
+        }
     };
 
     /**
@@ -4224,8 +4231,7 @@ var ccpwgl_int = (function()
             1.0, -1.0, 0.0, 1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 1.0, 0.0, 0.0
         ]);
 
-        // TODO: return to calculating per frame and accessible
-        var projInv = mat4.invert(mat4.create(), this.projection);
+        var projInv = this.projectionInverse;
         for (var i = 0; i < 4; ++i)
         {
             var vec = vertices.subarray(i * 6, i * 6 + 4);
@@ -4672,6 +4678,7 @@ var ccpwgl_int = (function()
 
     /**
      * Device clock
+     * - Todo: Add performance timing (Currently doesn't work with boosterSets)
      */
     Tw2Device.prototype.Clock = Date; //window["performance"] && window["performance"].now ? window["performance"] : Date;
 
@@ -14757,55 +14764,6 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Internal helper
-     * @type {Array}
-     * @private
-     */
-    EveBoosterSet._box = [
-        [
-            [-1.0, -1.0, 0.0],
-            [1.0, -1.0, 0.0],
-            [1.0, 1.0, 0.0],
-            [-1.0, 1.0, 0.0]
-        ],
-
-        [
-            [-1.0, -1.0, -1.0],
-            [-1.0, 1.0, -1.0],
-            [1.0, 1.0, -1.0],
-            [1.0, -1.0, -1.0]
-        ],
-
-        [
-            [-1.0, -1.0, 0.0],
-            [-1.0, 1.0, 0.0],
-            [-1.0, 1.0, -1.0],
-            [-1.0, -1.0, -1.0]
-        ],
-
-        [
-            [1.0, -1.0, 0.0],
-            [1.0, -1.0, -1.0],
-            [1.0, 1.0, -1.0],
-            [1.0, 1.0, 0.0]
-        ],
-
-        [
-            [-1.0, -1.0, 0.0],
-            [-1.0, -1.0, -1.0],
-            [1.0, -1.0, -1.0],
-            [1.0, -1.0, 0.0]
-        ],
-
-        [
-            [-1.0, 1.0, 0.0],
-            [1.0, 1.0, 0.0],
-            [1.0, 1.0, -1.0],
-            [-1.0, 1.0, -1.0]
-        ]
-    ];
-
-    /**
      * Rebuilds the boosters
      */
     EveBoosterSet.prototype.Rebuild = function()
@@ -14918,6 +14876,55 @@ var ccpwgl_int = (function()
         }
         return true;
     };
+
+    /**
+     * Internal helper
+     * @type {Array}
+     * @private
+     */
+    EveBoosterSet._box = [
+        [
+            [-1.0, -1.0, 0.0],
+            [1.0, -1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [-1.0, 1.0, 0.0]
+        ],
+
+        [
+            [-1.0, -1.0, -1.0],
+            [-1.0, 1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, -1.0, -1.0]
+        ],
+
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, 1.0, 0.0],
+            [-1.0, 1.0, -1.0],
+            [-1.0, -1.0, -1.0]
+        ],
+
+        [
+            [1.0, -1.0, 0.0],
+            [1.0, -1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, 1.0, 0.0]
+        ],
+
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, -1.0, -1.0],
+            [1.0, -1.0, -1.0],
+            [1.0, -1.0, 0.0]
+        ],
+
+        [
+            [-1.0, 1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [1.0, 1.0, -1.0],
+            [-1.0, 1.0, -1.0]
+        ]
+    ];
 
     /**
      * EveSpriteSetItem
@@ -18315,22 +18322,19 @@ var ccpwgl_int = (function()
 
         this.renderDebugInfo = false;
         this._debugHelper = null;
-
-        variableStore.RegisterVariable('ShadowLightness', 0);
-        if (!EveSpaceScene.EmptyTexture) EveSpaceScene.EmptyTexture = resMan.GetResource('res:/texture/global/black.dds.0.png');
     }
-
-    /**
-     * Empty texture
-     * @type {null}
-     */
-    EveSpaceScene.EmptyTexture = null;
 
     /**
      * Initializes the space scene
      */
     EveSpaceScene.prototype.Initialize = function()
     {
+        variableStore.RegisterVariable('ShadowLightness', 0);
+        if (!EveSpaceScene.EmptyTexture)
+        {
+            EveSpaceScene.EmptyTexture = resMan.GetResource('res:/texture/global/black.dds.0.png');
+        }
+
         if (this.envMapResPath !== '')
         {
             this.envMapRes = resMan.GetResource(this.envMapResPath);
@@ -18523,181 +18527,67 @@ var ccpwgl_int = (function()
         mat4_0: mat4.create(),
         mat4_1: mat4.create(),
         mat4_2: mat4.create(),
-        mat4_3: mat4.create(),
-        mat4_4: mat4.create(),
         mat4_ID: mat4.create(),
         frustum: new Tw2Frustum()
     };
 
-    /**
-     * Applies per frame data, similar to an object's UpdateViewDependentData prototype
-     * TODO: Return math functions to Tw2Device to save having to calculate them elsewhere
-     */
     EveSpaceScene.prototype.ApplyPerFrameData = function()
     {
         var d = device,
-            s = EveSpaceScene.scratch,
-            view = d.view,
-            projection = d.projection;
+            s = EveSpaceScene.scratch;
 
-        var viewInverseTranspose = mat4.invert(s.mat4_2, view);
-        this._perFrameVS.Set('ViewInverseTransposeMat', viewInverseTranspose);
-        var viewProjectionTranspose = mat4.multiply(s.mat4_3, projection, view);
-        mat4.transpose(this._perFrameVS.Get('ViewProjectionMat'), viewProjectionTranspose);
-        mat4.transpose(this._perFrameVS.Get('ViewMat'), view);
-        mat4.transpose(this._perFrameVS.Get('ProjectionMat'), projection);
-
-        var envMapTransform = s.mat4_4;
+        // Nebula
+        var envMapTransform = s.mat4_2;
         mat4.fromQuat(envMapTransform, this.envMapRotation);
         mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
         mat4.transpose(envMapTransform, envMapTransform);
-        this._perFrameVS.Set('EnvMapRotationMat', envMapTransform);
 
+        // Sun
         var sunDir = vec3.negate(s.vec3_0, this.sunDirection);
         vec3.normalize(sunDir, sunDir);
-        this._perFrameVS.Set('SunData.DirWorld', sunDir);
-        this._perFrameVS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
 
-        var fogFactors = this._perFrameVS.Get('FogFactors');
+        // Fog
         var distance = this.fogEnd - this.fogStart;
         if (Math.abs(distance) < 1e-5) distance = 1e-5;
-        var factor = 1.0 / distance;
-        fogFactors[0] = this.fogEnd * factor;
-        fogFactors[1] = factor;
-        fogFactors[2] = this.fogMax;
+        var f = 1.0 / distance;
 
-        var targetResolution = this._perFrameVS.Get('TargetResolution');
-        targetResolution[0] = device.viewportWidth;
-        targetResolution[1] = device.viewportHeight;
+        this._perFrameVS.Set('FogFactors', [this.fogEnd * f, f, this.visible.fog ? this.fogMax : 0, 1]);
+        this._perFrameVS.Set('ViewportAdjustment', [1, 1, 1, 1]);
+        this._perFrameVS.Set('MiscSettings', [d.currentTime, 0, d.viewportWidth, d.viewportHeight]);
+        this._perFrameVS.Set('SunData.DirWorld', sunDir);
+        this._perFrameVS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+        this._perFrameVS.Set('TargetResolution', d.targetResolution);
+        this._perFrameVS.Set('ViewInverseTransposeMat', d.viewInverse);
+        this._perFrameVS.Set('ViewProjectionMat', d.viewProjectionTranspose);
+        this._perFrameVS.Set('ViewMat', d.viewTranspose);
+        this._perFrameVS.Set('ProjectionMat', d.projectionTranspose);
+        this._perFramePS.Set('FovXY', [d.targetResolution[3], d.targetResolution[2]]);
+        this._perFramePS.Set('ShadowMapSettings', [1, 1, 0, 0]);
+        this._perFramePS.Set('TargetResolution', d.targetResolution);
+        this._perFrameVS.Set('EnvMapRotationMat', envMapTransform);
+        device.perFrameVSData = this._perFrameVS;
 
-        var aspectRatio = (projection[0] ? projection[5] / projection[0] : 0.0);
-        var aspectAdjustment = 1.0;
-        if (aspectRatio > 1.6) aspectAdjustment = aspectRatio / 1.6;
-        var fov = 2.0 * Math.atan(aspectAdjustment / projection[5]);
-
-        this._perFramePS.Get('FovXY')[0] = targetResolution[3] = fov;
-        this._perFramePS.Get('FovXY')[1] = targetResolution[2] = targetResolution[3] * aspectRatio;
-
-        var viewportAdj = this._perFrameVS.Get('ViewportAdjustment');
-        viewportAdj[0] = 1;
-        viewportAdj[1] = 1;
-        viewportAdj[2] = 1;
-        viewportAdj[3] = 1;
-
-        this._perFramePS.Set('ViewInverseTransposeMat', viewInverseTranspose);
-        mat4.transpose(this._perFramePS.Get('ViewMat'), view);
+        this._perFramePS.Set('ViewInverseTransposeMat', d.viewInverse);
+        this._perFramePS.Set('ViewMat', d.viewTranspose);
         this._perFramePS.Set('EnvMapRotationMat', envMapTransform);
         this._perFramePS.Set('SunData.DirWorld', sunDir);
         this._perFramePS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
         this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
-        this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
+        this._perFramePS.Set('MiscSettings', [d.currentTime, this.fogType, this.fogBlur, 1]);
         this._perFramePS.Set('SceneData.FogColor', this.fogColor);
-        this._perFramePS.Get('ViewportSize')[0] = device.viewportWidth;
-        this._perFramePS.Get('ViewportSize')[1] = device.viewportHeight;
+        this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
+        this._perFramePS.Get('ViewportSize')[0] = d.viewportWidth;
+        this._perFramePS.Get('ViewportSize')[1] = d.viewportHeight;
         this._perFramePS.Get('ShadowCameraRange')[0] = 1;
-
-        targetResolution = this._perFramePS.Get('TargetResolution');
-        targetResolution[0] = device.viewportWidth;
-        targetResolution[1] = device.viewportHeight;
-        targetResolution[3] = fov;
-        targetResolution[2] = targetResolution[3] * aspectRatio;
-
-        var shadowMapSettings = this._perFramePS.Get('ShadowMapSettings');
-        shadowMapSettings[0] = 1;
-        shadowMapSettings[1] = 1;
-        shadowMapSettings[2] = 0;
-        shadowMapSettings[3] = 0;
-
-        this._perFramePS.Get('ProjectionToView')[0] = -device.projection[14];
-        this._perFramePS.Get('ProjectionToView')[1] = -device.projection[10] - 1;
-
-        var miscSettings = this._perFramePS.Get('MiscSettings');
-        miscSettings[0] = variableStore._variables['Time'].value[0];
-        miscSettings[1] = this.fogType;
-        miscSettings[2] = this.fogBlur;
-        miscSettings[3] = 1;
-
-        miscSettings = this._perFrameVS.Get('MiscSettings');
-        miscSettings[0] = variableStore._variables['Time'].value[0];
-        miscSettings[1] = 0;
-        miscSettings[2] = variableStore._variables['ViewportSize'].value[0];
-        miscSettings[3] = variableStore._variables['ViewportSize'].value[1];
-
-        this._envMapHandle.textureRes = this.envMapRes;
-        this._envMap1Handle.textureRes = this.envMap1Res;
-        this._envMap2Handle.textureRes = this.envMap2Res;
-        this._envMap3Handle.textureRes = this.envMap3Res;
-
-        device.perFrameVSData = this._perFrameVS;
+        this._perFramePS.Get('ProjectionToView')[0] = -d.projection[14];
+        this._perFramePS.Get('ProjectionToView')[1] = -d.projection[10] - 1;
         device.perFramePSData = this._perFramePS;
-    };
 
-
-    /*
-    EveSpaceScene.prototype.ApplyPerFrameDataNew = function ()
-    {
-        var d = device,
-            v = variableStore._variables,
-            s = EveSpaceScene.scratch;
-
-        // Environment
-        var envMapRotationMat = mat4.fromQuat(s.mat4_0, this.envMapRotation);
-        mat4.scale(envMapRotationMat, envMapRotationMat, this.envMapScaling);
-        mat4.transpose(envMapRotationMat, envMapRotationMat);
-        // Sun
-        var dirWorld = vec3.negate(s.vec3_0, this.sunDirection);
-        vec3.normalize(dirWorld, dirWorld);
-        // Fog
-        var distance = this.fogEnd - this.fogStart;
-        if (Math.abs(distance) < 1e-5) distance = 1e-5;
-        var factor = 1.0 / distance;
-
-        var viewInverse = d.viewInverse,
-            projectionTranspose = d.projectionTranspose,
-            viewProjectionTranspose = d.viewProjectionTranspose,
-            viewTranspose = d.viewTranspose,
-            targetResolution = d.targetResolution;
-
-        // Vertex Data
-        var vs = this._perFrameVS;
-        mat4.copy(vs.Get('ViewInverseTransposeMat'), viewInverse);
-        mat4.copy(vs.Get('ProjectionMat'), projectionTranspose);
-        mat4.copy(vs.Get('ViewProjectionMat'), viewProjectionTranspose);
-        mat4.copy(vs.Get('ViewMat'), viewTranspose);
-        mat4.copy(vs.Get('EnvMapRotationMat'), envMapRotationMat);
-        vec4.copy(vs.Get('TargetResolution'), targetResolution);
-        vec4.copy(vs.Get('ViewportAdjustment'), [1, 1, 1, 1]);
-        vec4.copy(vs.Get('MiscSettings'), [d.time, 0, d.viewportWidth, d.viewportHeight]);
-        vec4.copy(vs.Get('SunData.DiffuseColor'), this.sunDiffuseColor);
-        vec3.copy(vs.Get('FogFactors'), [this.fogEnd * factor, factor, this.visible.fog ? this.fogMax : 0]);
-        vec3.copy(vs.Get('SunData.DirWorld'), dirWorld);
-        d.perFrameVSData = vs;
-
-        // Pixel Data
-        var ps = this._perFramePS;
-        mat4.copy(ps.Get('ViewMat'), viewTranspose);
-        mat4.copy(ps.Get('ViewInverseTransposeMat'), viewInverse);
-        mat4.copy(ps.Get('EnvMapRotationMat'), envMapRotationMat);
-        vec4.copy(ps.Get('TargetResolution'), targetResolution);
-        vec4.copy(ps.Get('ShadowMapSettings'), [1, 1, 0, 0]);
-        vec4.copy(ps.Get('SceneData.FogColor'), this.fogColor);
-        vec4.copy(ps.Get('MiscSettings'), [d.time, this.fogType, this.fogBlur, 1]);
-        vec4.copy(ps.Get('SceneData.AmbientColor'), this.ambientColor);
-        vec4.copy(ps.Get('SunData.DiffuseColor'), this.sunDiffuseColor);
-        vec3.copy(ps.Get('SunData.DirWorld'), dirWorld);
-        vec2.copy(ps.Get('FovXY'), [targetResolution[3], targetResolution[2]]);
-        vec2.copy(ps.Get('ViewportSize'), [d.viewportWidth, d.viewportHeight]);
-        vec2.copy(ps.Get('ProjectionToView'), [-d.projection[14], -d.projection[10] - 1]);
-        ps.Get('ShadowCameraRange')[0] = 1;
-        ps.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
-        d.perFramePSData = ps;
-
-        this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : EveSpaceScene.EmptyTexture;
+        this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : Tw2Device.EmptyTexture;
         this._envMap1Handle.textureRes = this.envMap1Res;
         this._envMap2Handle.textureRes = this.envMap2Res;
         this._envMap3Handle.textureRes = this.envMap3Res;
     };
-    */
 
     /**
      * Updates children's view dependent data and renders them
@@ -18706,24 +18596,25 @@ var ccpwgl_int = (function()
     {
         this.ApplyPerFrameData();
         var i,
+            d = device,
             scratch = EveSpaceScene.scratch,
             id = mat4.identity(scratch.mat4_ID);
 
         if (this.backgroundRenderingEnabled && this.backgroundEffect)
         {
-            device.SetStandardStates(device.RM_FULLSCREEN);
-            device.RenderCameraSpaceQuad(this.backgroundEffect);
+            d.SetStandardStates(d.RM_FULLSCREEN);
+            d.RenderCameraSpaceQuad(this.backgroundEffect);
         }
 
         if (this.visible.planets && this.planets.length)
         {
-            var tempProj = mat4.copy(scratch.mat4_0, device.projection);
-            var newProj = mat4.copy(scratch.mat4_1, device.projection);
+            var tempProj = mat4.copy(scratch.mat4_0, d.projection);
+            var newProj = mat4.copy(scratch.mat4_1, d.projection);
             var zn = 10000;
             var zf = 1e11;
             newProj[10] = zf / (zn - zf);
             newProj[14] = (zf * zn) / (zn - zf);
-            device.SetProjection(newProj);
+            d.SetProjection(newProj, true);
             this.ApplyPerFrameData();
 
             for (i = 0; i < this.planets.length; ++i)
@@ -18736,21 +18627,21 @@ var ccpwgl_int = (function()
 
             this._batches.Clear();
 
-            device.gl.depthRange(0.9, 1);
-            this.RenderBatches(device.RM_OPAQUE, this.planets);
-            this.RenderBatches(device.RM_DECAL, this.planets);
-            this.RenderBatches(device.RM_TRANSPARENT, this.planets);
-            this.RenderBatches(device.RM_ADDITIVE, this.planets);
+            d.gl.depthRange(0.9, 1);
+            this.RenderBatches(d.RM_OPAQUE, this.planets);
+            this.RenderBatches(d.RM_DECAL, this.planets);
+            this.RenderBatches(d.RM_TRANSPARENT, this.planets);
+            this.RenderBatches(d.RM_ADDITIVE, this.planets);
             this._batches.Render();
-            device.SetProjection(tempProj);
+            d.SetProjection(tempProj, true);
             this.ApplyPerFrameData();
-            device.gl.depthRange(0, 0.9);
+            d.gl.depthRange(0, 0.9);
         }
 
         if (this.lodEnabled)
         {
             var frustum = scratch.frustum;
-            frustum.Initialize(device.view, device.projection, device.viewportWidth, device.viewInverse, device.viewProjection);
+            frustum.Initialize(d.view, d.projection, d.viewportWidth, d.viewInverse, d.viewProjection);
             for (i = 0; i < this.objects.length; ++i)
             {
                 if (this.objects[i].UpdateLod)
@@ -18785,23 +18676,23 @@ var ccpwgl_int = (function()
         {
             for (i = 0; i < this.planets.length; ++i)
             {
-                this.planets[i].GetZOnlyBatches(device.RM_OPAQUE, this._batches);
+                this.planets[i].GetZOnlyBatches(d.RM_OPAQUE, this._batches);
             }
         }
 
         if (this.visible.objects)
         {
-            this.RenderBatches(device.RM_OPAQUE, this.objects);
-            this.RenderBatches(device.RM_DECAL, this.objects);
-            this.RenderBatches(device.RM_TRANSPARENT, this.objects);
-            this.RenderBatches(device.RM_ADDITIVE, this.objects);
+            this.RenderBatches(d.RM_OPAQUE, this.objects);
+            this.RenderBatches(d.RM_DECAL, this.objects);
+            this.RenderBatches(d.RM_TRANSPARENT, this.objects);
+            this.RenderBatches(d.RM_ADDITIVE, this.objects);
         }
 
         if (this.visible.lensflares)
         {
             for (i = 0; i < this.lensflares.length; ++i)
             {
-                this.lensflares[i].GetBatches(device.RM_ADDITIVE, this._batches);
+                this.lensflares[i].GetBatches(d.RM_ADDITIVE, this._batches);
             }
         }
 
@@ -18853,6 +18744,12 @@ var ccpwgl_int = (function()
             }
         }
     };
+
+    /**
+     * Empty texture
+     * @type {null}
+     */
+    EveSpaceScene.EmptyTexture = null;
 
     /**
      * EveOccluder
