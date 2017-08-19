@@ -183,7 +183,7 @@ EveShip.prototype.RebuildBoosterSet = function()
     var prefix = 'locator_booster';
     for (var i = 0; i < this.locators.length; ++i)
     {
-        if (this.locators[i].name.substr(0, prefix.length) == prefix)
+        if (this.locators[i].name.substr(0, prefix.length) === prefix)
         {
             this.boosters.Add(this.locators[i].transform, this.locators[i].atlasIndex0, this.locators[i].atlasIndex1);
         }
@@ -206,7 +206,7 @@ EveShip.prototype.RebuildTurretPositions = function()
         {
             var locatorName = name + String.fromCharCode('a'.charCodeAt(0) + j);
             var locatorTransform = this.FindLocatorJointByName(locatorName);
-            if (locatorTransform != null)
+            if (locatorTransform !== null)
             {
                 locator.isJoint = true;
             }
@@ -214,7 +214,7 @@ EveShip.prototype.RebuildTurretPositions = function()
             {
                 locatorTransform = this.FindLocatorTransformByName(locatorName);
             }
-            if (locatorTransform != null)
+            if (locatorTransform !== null)
             {
                 this.turretSets[i].SetLocalTransform(j, locatorTransform, locatorName);
                 locator.locatorTransforms[locator.locatorTransforms.length] = locatorTransform;

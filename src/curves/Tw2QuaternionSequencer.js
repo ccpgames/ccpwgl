@@ -2,18 +2,16 @@
  * Tw2QuaternionSequencer
  * @property {string} name
  * @property {number} start
- * @property {quat4} value
+ * @property {quat} value
  * @property {Array} functions
- * @property {quat4} _tempValue
  * @constructor
  */
 function Tw2QuaternionSequencer()
 {
     this.name = '';
     this.start = 0;
-    this.value = quat4.create();
+    this.value = quat.create();
     this.functions = [];
-    this._tempValue = quat4.create();
 }
 
 /**
@@ -47,22 +45,26 @@ Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {quat} value
+ * @returns {quat}
  * @prototype
  */
 Tw2QuaternionSequencer.prototype.GetValueAt = function(time, value)
 {
-    value[0] = 0;
-    value[1] = 0;
-    value[2] = 0;
-    value[3] = 1;
-    var tempValue = this._tempValue;
+    quat.identity(value, value);
+    var tempValue = Tw2QuaternionSequencer.scratch.quat_0;
     var functions = this.functions;
     for (var i = 0; i < functions.length; ++i)
     {
         functions[i].GetValueAt(time, tempValue);
-        quat4.multiply(value, tempValue);
+        quat.multiply(value, value, tempValue);
     }
     return value;
+};
+
+/**
+ * Scratch variables
+ */
+Tw2QuaternionSequencer.scratch = {
+    quat_0: quat.create()
 };

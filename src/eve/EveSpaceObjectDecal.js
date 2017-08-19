@@ -7,7 +7,7 @@
  * @property {number} groupIndex
  * @property {boolean} pickable
  * @property {vec3} position
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scaling
  * @property {mat4} decalMatrix
  * @property {mat4} invDecalMatrix
@@ -29,7 +29,7 @@ function EveSpaceObjectDecal()
     this.pickable = true;
 
     this.position = vec3.create();
-    this.rotation = quat4.create();
+    this.rotation = quat.create();
     this.scaling = vec3.create();
 
     this.decalMatrix = mat4.create();
@@ -69,11 +69,8 @@ EveSpaceObjectDecal.prototype.Initialize = function()
     device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
     device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
 
-    mat4.scale(mat4.transpose(quat4.toMat4(this.rotation, this.decalMatrix)), this.scaling);
-    this.decalMatrix[12] = this.position[0];
-    this.decalMatrix[13] = this.position[1];
-    this.decalMatrix[14] = this.position[2];
-    mat4.inverse(this.decalMatrix, this.invDecalMatrix);
+    mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
+    mat4.invert(this.invDecalMatrix, this.decalMatrix);
 };
 
 /**
@@ -163,12 +160,12 @@ EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObject
                 bone[13] = bones[offset + 7];
                 bone[14] = bones[offset + 11];
                 bone[15] = 1;
-                mat4.transpose(bone);
+                mat4.transpose(bone, bone);
             }
         }
-        mat4.inverse(this._perObjectData.perObjectVSData.Get('worldMatrix'), this._perObjectData.perObjectVSData.Get('invWorldMatrix'));
-        mat4.transpose(this.decalMatrix, this._perObjectData.perObjectVSData.Get('decalMatrix'));
-        mat4.transpose(this.invDecalMatrix, this._perObjectData.perObjectVSData.Get('invDecalMatrix'));
+        mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
 
         this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
         this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
@@ -191,8 +188,8 @@ EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
     var bkStart = this.parentGeometry.meshes[0].areas[0].start;
     var bkCount = this.parentGeometry.meshes[0].areas[0].count;
     var bkIndexType = this.parentGeometry.meshes[0].indexType;
-    mat4.set(this.decalMatrix, variableStore._variables['u_DecalMatrix'].value);
-    mat4.set(this.invDecalMatrix, variableStore._variables['u_InvDecalMatrix'].value);
+    mat4.copy(variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
+    mat4.copy(variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
     this.parentGeometry.meshes[0].indexes = this._indexBuffer;
     this.parentGeometry.meshes[0].areas[0].start = 0;
     this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;

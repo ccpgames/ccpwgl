@@ -3,7 +3,7 @@
  * @property {string} name
  * @property {boolean} display
  * @property {Number} lowestLodVisible
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} translation
  * @property {vec3} scaling
  * @property {boolean} useSRT
@@ -21,9 +21,9 @@ function EveChildBillboard()
     this.name = '';
     this.display = true;
     this.lowestLodVisible = 2;
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.rotation = quat.create();
     this.translation = vec3.create();
-    this.scaling = vec3.create([1, 1, 1]);
+    this.scaling = vec3.fromValues(1, 1, 1);
     this.useSRT = true;
     this.staticTransform = false;
     this.localTransform = mat4.create();
@@ -40,45 +40,45 @@ function EveChildBillboard()
 }
 
 /**
+ * Scratch variables
+ */
+EveChildBillboard.scratch = {
+    mat4_0: mat4.create(),
+    vec3_0: vec3.create()
+};
+
+/**
  * Updates mesh transform
  * @param {mat4} parentTransform
  */
 EveChildBillboard.prototype.Update = function(parentTransform)
 {
+    var viewInverse = EveChildBillboard.scratch.mat4_0,
+        finalScale = EveChildBillboard.scratch.vec3_0;
+
     if (this.useSRT)
     {
-        var temp = this.worldTransformLast;
-        mat4.identity(this.localTransform);
-        mat4.translate(this.localTransform, this.translation);
-        mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
-        mat4.multiply(this.localTransform, temp, this.localTransform);
-        mat4.scale(this.localTransform, this.scaling);
+        quat.normalize(this.rotation, this.rotation);
+        mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
     }
-    mat4.set(this.worldTransform, this.worldTransformLast);
-    mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
 
-    var invView = mat4.create();
-    mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
-    mat4.transpose(invView);
+    mat4.copy(this.worldTransformLast, this.worldTransform);
+    mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
 
-    var finalScale = vec3.create();
-    vec3.set(this.scaling, finalScale);
-    var parentScaleX = vec3.length(parentTransform);
-    var parentScaleY = vec3.length(parentTransform.subarray(4));
-    var parentScaleZ = vec3.length(parentTransform.subarray(8));
-    finalScale[0] *= parentScaleX;
-    finalScale[1] *= parentScaleY;
-    finalScale[2] *= parentScaleZ;
+    mat4.lookAt(viewInverse, device.eyePosition, this.worldTransform.subarray(12), [0, 1, 0]);
+    mat4.transpose(viewInverse, viewInverse);
+    mat4.getScaling(finalScale, parentTransform);
+    vec3.multiply(finalScale, finalScale, this.scaling);
 
-    this.worldTransform[0] = invView[0] * finalScale[0];
-    this.worldTransform[1] = invView[1] * finalScale[0];
-    this.worldTransform[2] = invView[2] * finalScale[0];
-    this.worldTransform[4] = invView[4] * finalScale[1];
-    this.worldTransform[5] = invView[5] * finalScale[1];
-    this.worldTransform[6] = invView[6] * finalScale[1];
-    this.worldTransform[8] = invView[8] * finalScale[2];
-    this.worldTransform[9] = invView[9] * finalScale[2];
-    this.worldTransform[10] = invView[10] * finalScale[2];
+    this.worldTransform[0] = viewInverse[0] * finalScale[0];
+    this.worldTransform[1] = viewInverse[1] * finalScale[0];
+    this.worldTransform[2] = viewInverse[2] * finalScale[0];
+    this.worldTransform[4] = viewInverse[4] * finalScale[1];
+    this.worldTransform[5] = viewInverse[5] * finalScale[1];
+    this.worldTransform[6] = viewInverse[6] * finalScale[1];
+    this.worldTransform[8] = viewInverse[8] * finalScale[2];
+    this.worldTransform[9] = viewInverse[9] * finalScale[2];
+    this.worldTransform[10] = viewInverse[10] * finalScale[2];
 };
 
 
@@ -93,13 +93,10 @@ EveChildBillboard.prototype.GetBatches = function(mode, accumulator)
     {
         return;
     }
-    mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
-    mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
-
+    mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
+    mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
     this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-
 };
-
 
 
 /**

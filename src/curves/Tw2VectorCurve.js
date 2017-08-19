@@ -83,7 +83,7 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
 {
     var d;
 
-    if (this.length == 0)
+    if (this.length === 0)
     {
         value[0] = this.value[0];
         value[1] = this.value[1];
@@ -95,21 +95,21 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     var lastKey = this.keys[this.keys.length - 1];
     if (time >= lastKey.time)
     {
-        if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
+        if (this.extrapolation === Tw2VectorCurve.Extrapolation.NONE)
         {
             value[0] = this.value[0];
             value[1] = this.value[1];
             value[2] = this.value[2];
             return value;
         }
-        else if (this.extrapolation == Tw2VectorCurve.Extrapolation.CONSTANT)
+        else if (this.extrapolation === Tw2VectorCurve.Extrapolation.CONSTANT)
         {
             value[0] = lastKey.value[0];
             value[1] = lastKey.value[1];
             value[2] = lastKey.value[2];
             return value;
         }
-        else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
+        else if (this.extrapolation === Tw2VectorCurve.Extrapolation.GRADIENT)
         {
             d = time - lastKey.time;
             value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -124,14 +124,14 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     }
     else if (time < 0 || time < firstKey.time)
     {
-        if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
+        if (this.extrapolation === Tw2VectorCurve.Extrapolation.NONE)
         {
             value[0] = this.value[0];
             value[1] = this.value[1];
             value[2] = this.value[2];
             return value;
         }
-        else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
+        else if (this.extrapolation === Tw2VectorCurve.Extrapolation.GRADIENT)
         {
             d = time * this.length - lastKey.time;
             value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -161,19 +161,19 @@ Tw2VectorCurve.prototype.GetValueAt = function(time, value)
     }
 
     var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation == Tw2VectorCurve.Interpolation.CONSTANT)
+    if (ck_1.interpolation === Tw2VectorCurve.Interpolation.CONSTANT)
     {
         value[0] = ck_1.value[0];
         value[1] = ck_1.value[1];
         value[2] = ck_1.value[2];
     }
-    else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.LINEAR)
+    else if (ck_1.interpolation === Tw2VectorCurve.Interpolation.LINEAR)
     {
         value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
         value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
         value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
     }
-    else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.HERMITE)
+    else if (ck_1.interpolation === Tw2VectorCurve.Interpolation.HERMITE)
     {
         var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
         var k2 = -2 * nt * nt * nt + 3 * nt * nt;

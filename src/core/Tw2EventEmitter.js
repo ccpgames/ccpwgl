@@ -27,7 +27,7 @@ var Tw2EventEmitter = function()
 Tw2EventEmitter.prototype.on = function(eventName, listener)
 {
     eventName = Tw2EventEmitter.Register(this, eventName);
-    if (this._events[eventName].indexOf(listener) == -1)
+    if (this._events[eventName].indexOf(listener) === -1)
     {
         this._events[eventName].push(listener);
     }
@@ -137,10 +137,11 @@ Tw2EventEmitter.prototype.remove = function()
 Tw2EventEmitter.Define = function(emitter)
 {
     Object.defineProperty(emitter, '_events',
-        {
-            value: {},
-            writable: false
-        });
+    {
+        value:
+        {},
+        writable: false
+    });
 };
 
 /**
@@ -315,9 +316,9 @@ emitter.log = function(eventName, eventData)
             if (!this.consoleErrors) output = false;
             break;
 
-        case('debug'):
-        case('log'):
-        case('info'):
+        case ('debug'):
+        case ('log'):
+        case ('info'):
             if (!this.consoleLogs) output = false;
             break;
 

@@ -93,19 +93,16 @@ function Tw2Model()
 
 /**
  * Tw2AnimationController
- * @param {Tw2GeometryRes} geometryResource
+ * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
  * @property {Array.<Tw2Animation>} animations
  * @property {Array} meshBindings
  * @property {boolean} loaded
  * @property {boolean} update
- * @property {mat4} _tempMat4
- * @property {mat3} _tempMat3
- * @property {quat4} _tempQuat4
- * @property {vec3} _tempVec3
  * @property _geometryResource
  * @property {Array} pendingCommands
+ * @property {Function} [onLoaded] an optional callback fired when any commands are cleared
  * @prototype
  */
 function Tw2AnimationController(geometryResource)
@@ -116,18 +113,25 @@ function Tw2AnimationController(geometryResource)
     this.meshBindings = [];
     this.loaded = false;
     this.update = true;
-    this._tempMat4 = mat4.create();
-    this._tempMat3 = mat3.create();
-    this._tempQuat4 = quat4.create();
-    this._tempVec3 = vec3.create();
     this._geometryResource = null;
     this.pendingCommands = [];
+    this.onPendingCleared = null;
 
-    if (typeof(geometryResource) != 'undefined')
+    if (typeof(geometryResource) !== 'undefined')
     {
         this.SetGeometryResource(geometryResource);
     }
 }
+
+/**
+ * Scratch variables
+ */
+Tw2AnimationController.scratch = {
+    vec3_0: vec3.create(),
+    quat_0: quat.create(),
+    mat3_0: mat3.create(),
+    mat4_0: mat4.create()
+};
 
 /**
  * Gets all animation controller res objects
@@ -150,7 +154,7 @@ Tw2AnimationController.prototype.GetResources = function(out)
         }
     }
     return out;
-}
+};
 
 /**
  * Clears any existing resources and loads the supplied geometry resource
@@ -187,7 +191,7 @@ Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource
 {
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
-        if (this.geometryResources[i] == geometryResource)
+        if (this.geometryResources[i] === geometryResource)
         {
             return;
         }
@@ -208,7 +212,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
         var animation = null;
         for (var j = 0; j < this.animations.length; ++j)
         {
-            if (this.animations[j].animationRes == resource.animations[i])
+            if (this.animations[j].animationRes === resource.animations[i])
             {
                 animation = this.animations[i];
 
@@ -226,7 +230,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
             var found = false;
             for (var k = 0; k < animation.trackGroups.length; ++k)
             {
-                if (animation.trackGroups[k].trackGroupRes == animation.animationRes.trackGroups[j])
+                if (animation.trackGroups[k].trackGroupRes === animation.animationRes.trackGroups[j])
                 {
                     found = true;
                     break;
@@ -239,13 +243,13 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
             var model = null;
             for (var k = 0; k < this.models.length; ++k)
             {
-                if (this.models[k].modelRes.name == animation.animationRes.trackGroups[j].name)
+                if (this.models[k].modelRes.name === animation.animationRes.trackGroups[j].name)
                 {
                     model = this.models[k];
                     break;
                 }
             }
-            if (model != null)
+            if (model !== null)
             {
                 var group = new Tw2TrackGroup();
                 group.trackGroupRes = animation.animationRes.trackGroups[j];
@@ -253,7 +257,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
                 {
                     for (var m = 0; m < model.bones.length; ++m)
                     {
-                        if (model.bones[m].boneRes.name == group.trackGroupRes.transformTracks[k].name)
+                        if (model.bones[m].boneRes.name === group.trackGroupRes.transformTracks[k].name)
                         {
                             var track = new Tw2Track();
                             track.trackRes = group.trackGroupRes.transformTracks[k];
@@ -279,7 +283,7 @@ Tw2AnimationController.prototype._AddModel = function(modelRes)
 {
     for (var i = 0; i < this.models.length; ++i)
     {
-        if (this.models[i].modelRes.name == modelRes.name)
+        if (this.models[i].modelRes.name === modelRes.name)
         {
             return null;
         }
@@ -287,7 +291,7 @@ Tw2AnimationController.prototype._AddModel = function(modelRes)
     var model = new Tw2Model();
     model.modelRes = modelRes;
     var skeleton = modelRes.skeleton;
-    if (skeleton != null)
+    if (skeleton !== null)
     {
         for (var j = 0; j < skeleton.bones.length; ++j)
         {
@@ -311,7 +315,7 @@ Tw2AnimationController.prototype._FindMeshBindings = function(resource)
 {
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
-        if (this.meshBindings[i].resource == resource)
+        if (this.meshBindings[i].resource === resource)
         {
             return this.meshBindings[i];
         }
@@ -329,7 +333,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function(resource)
     var found = false;
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
-        if (this.geometryResources[i] == resource)
+        if (this.geometryResources[i] === resource)
         {
             found = true;
             break;
@@ -377,7 +381,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
         this.AddAnimationsFromRes(this.geometryResources[i], this.models);
     }
 
-    if (resource.models.length == 0)
+    if (resource.models.length === 0)
     {
         for (var i = 0; i < resource.meshes.length; ++i)
         {
@@ -390,13 +394,13 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
         var model = null;
         for (var j = 0; j < this.models.length; ++j)
         {
-            if (this.models[j].modelRes.name == resource.models[i].name)
+            if (this.models[j].modelRes.name === resource.models[i].name)
             {
                 model = this.models[j];
                 break;
             }
         }
-        if (model == null)
+        if (model === null)
         {
             continue;
         }
@@ -404,18 +408,18 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
         {
             var meshIx = resource.meshes.indexOf(resource.models[i].meshBindings[j].mesh);
             var meshBindings = this._FindMeshBindings(resource);
-            if (meshBindings == null)
+            if (meshBindings === null)
             {
                 meshBindings = [];
                 meshBindings.resource = resource;
                 this.meshBindings.push(meshBindings);
             }
-            meshBindings[meshIx] = new glMatrixArrayType(resource.models[i].meshBindings[j].bones.length * 12);
+            meshBindings[meshIx] = new glMatrix.ARRAY_TYPE(resource.models[i].meshBindings[j].bones.length * 12);
             for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
             {
                 for (var n = 0; n < model.bones.length; ++n)
                 {
-                    if (model.bones[n].boneRes.name == resource.models[i].meshBindings[j].bones[k].name)
+                    if (model.bones[n].boneRes.name === resource.models[i].meshBindings[j].bones[k].name)
                     {
                         if (!model.bones[n].bindingArrays)
                         {
@@ -455,6 +459,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
             }
         }
         this.pendingCommands = [];
+        if (this.onPendingCleared) this.onPendingCleared(this);
     }
 };
 
@@ -468,7 +473,7 @@ Tw2AnimationController.prototype.GetAnimation = function(name)
 {
     for (var i = 0; i < this.animations.length; i++)
     {
-        if (this.animations[i].animationRes.name == name)
+        if (this.animations[i].animationRes.name === name)
         {
             return this.animations[i];
         }
@@ -505,7 +510,7 @@ Tw2AnimationController.prototype.ResetAnimation = function(name)
  */
 Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
-    if (this.animations.length == 0)
+    if (this.animations.length === 0)
     {
         this.pendingCommands.push(
         {
@@ -521,11 +526,11 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
     {
         animation.time = 0;
         animation.isPlaying = true;
-        if (typeof(cycle) != 'undefined')
+        if (typeof(cycle) !== 'undefined')
         {
             animation.cycle = cycle;
         }
-        if (typeof(callback) != 'undefined')
+        if (typeof(callback) !== 'undefined')
         {
             animation.callback = callback;
         }
@@ -544,7 +549,7 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
  */
 Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
 {
-    if (this.animations.length == 0)
+    if (this.animations.length === 0)
     {
         this.pendingCommands.push(
         {
@@ -561,11 +566,11 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
         from = (from <= animation.animationRes.duration) ? from : animation.animationRes.duration;
         animation.time = (from < 0) ? 0 : from;
         animation.isPlaying = true;
-        if (typeof(cycle) != 'undefined')
+        if (typeof(cycle) !== 'undefined')
         {
             animation.cycle = cycle;
         }
-        if (typeof(callback) != 'undefined')
+        if (typeof(callback) !== 'undefined')
         {
             animation.callback = callback;
         }
@@ -601,7 +606,7 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
  */
 Tw2AnimationController.prototype.StopAnimation = function(names)
 {
-    if (this.animations.length == 0)
+    if (this.animations.length === 0)
     {
         this.pendingCommands.push(
         {
@@ -611,7 +616,7 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
         return;
     }
 
-    if (typeof names == 'string' || names instanceof String)
+    if (typeof names === 'string' || names instanceof String)
     {
         names = [names];
     }
@@ -638,7 +643,7 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
  */
 Tw2AnimationController.prototype.StopAllAnimations = function()
 {
-    if (this.animations.length == 0)
+    if (this.animations.length === 0)
     {
         this.pendingCommands.push(
         {
@@ -661,7 +666,7 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
  */
 Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 {
-    if (this.animations.length == 0)
+    if (this.animations.length === 0)
     {
         this.pendingCommands.push(
         {
@@ -671,7 +676,7 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
         return;
     }
 
-    if (typeof names == 'string' || names instanceof String)
+    if (typeof names === 'string' || names instanceof String)
     {
         names = [names];
     }
@@ -705,19 +710,19 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
         {
             var bone = this.models[i].bones[j];
             var boneRes = bone.boneRes;
-            mat4.set(boneRes.localTransform, bone.localTransform);
-            if (boneRes.parentIndex != -1)
+            mat4.copy(bone.localTransform, boneRes.localTransform);
+            if (boneRes.parentIndex !== -1)
             {
-                mat4.multiply(bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.worldTransform);
+                mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
             }
             else
             {
-                mat4.set(bone.localTransform, bone.worldTransform);
+                mat4.set(bone.worldTransform, bone.localTransform);
             }
             mat4.identity(bone.offsetTransform);
         }
     }
-    var id = mat4.identity(mat4.create());
+    var id = mat4.create();
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
         for (var j = 0; j < this.meshBindings[i].length; ++j)
@@ -755,16 +760,16 @@ Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, durat
         }
     }
 
-    if (curve.degree == 0)
+    if (curve.degree === 0)
     {
         for (var i = 0; i < curve.dimension; ++i)
         {
             value[i] = curve.controls[knot * curve.dimension + i];
         }
     }
-    else if (curve.degree == 1)
+    else if (curve.degree === 1)
     {
-        var knot0 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
+        var knot0 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
         var dt = curve.knots[knot] - curve.knots[knot0];
         if (dt < 0)
         {
@@ -781,8 +786,8 @@ Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, durat
     }
     else
     {
-        var k_2 = cycle ? (knot + count - 2) % count : knot == 0 ? 0 : knot - 2;
-        var k_1 = cycle ? (knot + count - 1) % count : knot == 0 ? 0 : knot - 1;
+        var k_2 = cycle ? (knot + count - 2) % count : knot === 0 ? 0 : knot - 2;
+        var k_1 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
 
         var p1 = (k_2) * curve.dimension;
         var p2 = (k_1) * curve.dimension;
@@ -839,7 +844,7 @@ Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, durat
  */
 Tw2AnimationController.prototype.Update = function(dt)
 {
-    if (this.models == null || !this.update)
+    if (this.models === null || !this.update)
     {
         return;
     }
@@ -849,8 +854,8 @@ Tw2AnimationController.prototype.Update = function(dt)
         this.geometryResources[i].KeepAlive();
     }
 
-
-    var tempMat = this._tempMat4;
+    var scratch = Tw2AnimationController.scratch;
+    var tempMat = scratch.mat4_0;
     var updateBones = false;
     for (var i = 0; i < this.animations.length; ++i)
     {
@@ -861,7 +866,7 @@ Tw2AnimationController.prototype.Update = function(dt)
             animation.time += dt * animation.timeScale;
             if (animation.time > res.duration)
             {
-                if (animation.callback != null)
+                if (animation.callback !== null)
                 {
                     animation.callback(this, animation);
                 }
@@ -875,9 +880,9 @@ Tw2AnimationController.prototype.Update = function(dt)
                     animation.time = res.duration;
                 }
             }
-            var orientation = this._tempQuat4;
-            var scale = this._tempMat3;
-            var position = this._tempVec3;
+            var orientation = scratch.quat_0;
+            var scale = scratch.mat3_0;
+            var position = scratch.vec3_0;
             for (var j = 0; j < animation.trackGroups.length; ++j)
             {
                 for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k)
@@ -894,12 +899,11 @@ Tw2AnimationController.prototype.Update = function(dt)
                     if (track.trackRes.orientation)
                     {
                         Tw2AnimationController.EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
-                        quat4.normalize(orientation);
+                        quat.normalize(orientation, orientation);
                     }
                     else
                     {
-                        orientation[0] = orientation[1] = orientation[2] = 0;
-                        orientation[3] = 1;
+                        quat.identity(orientation);
                     }
                     if (track.trackRes.scaleShear)
                     {
@@ -910,8 +914,20 @@ Tw2AnimationController.prototype.Update = function(dt)
                         mat3.identity(scale);
                     }
 
-                    mat3.toMat4(scale, track.bone.localTransform);
-                    mat4.multiply(track.bone.localTransform, mat4.transpose(quat4.toMat4(orientation, tempMat)));
+                    var l = track.bone.localTransform;
+                    l[0] = scale[0];
+                    l[1] = scale[1];
+                    l[2] = scale[2];
+                    l[4] = scale[3];
+                    l[5] = scale[4];
+                    l[6] = scale[5];
+                    l[8] = scale[6];
+                    l[9] = scale[7];
+                    l[10] = scale[8];
+                    l[3] = l[7] = l[11] = l[12] = l[13] = l[14] = 0;
+                    l[15] = 1;
+
+                    mat4.multiply(track.bone.localTransform, track.bone.localTransform, mat4.fromQuat(tempMat, orientation));
                     track.bone.localTransform[12] = position[0];
                     track.bone.localTransform[13] = position[1];
                     track.bone.localTransform[14] = position[2];
@@ -927,15 +943,15 @@ Tw2AnimationController.prototype.Update = function(dt)
             for (var j = 0; j < this.models[i].bones.length; ++j)
             {
                 var bone = this.models[i].bones[j];
-                if (bone.boneRes.parentIndex != -1)
+                if (bone.boneRes.parentIndex !== -1)
                 {
-                    mat4.multiply(this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform, bone.worldTransform);
+                    mat4.multiply(bone.worldTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
                 }
                 else
                 {
-                    mat4.set(bone.localTransform, bone.worldTransform);
+                    mat4.copy(bone.worldTransform, bone.localTransform);
                 }
-                mat4.multiply(bone.worldTransform, bone.boneRes.worldTransformInv, bone.offsetTransform);
+                mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
                 if (bone.bindingArrays)
                 {
                     for (var a = 0; a < bone.bindingArrays.length; ++a)
@@ -996,12 +1012,12 @@ Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
  */
 Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
-    if (this.geometryResources.length == 0)
+    if (this.geometryResources.length === 0)
     {
         return new Float32Array();
     }
 
-    if (typeof(geometryResource) == 'undefined')
+    if (typeof(geometryResource) === 'undefined')
     {
         geometryResource = this.geometryResources[0];
     }
@@ -1022,11 +1038,11 @@ Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryR
  */
 Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
 {
-    if (this.geometryResources.length == 0)
+    if (this.geometryResources.length === 0)
     {
         return null;
     }
-    if (typeof(geometryResource) == 'undefined')
+    if (typeof(geometryResource) === 'undefined')
     {
         geometryResource = this.geometryResources[0];
     }
@@ -1039,7 +1055,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometry
     {
         for (var j = 0; j < this.models[i].modelRes.meshBindings.length; ++i)
         {
-            if (this.models[i].modelRes.meshBindings[j].mesh == mesh)
+            if (this.models[i].modelRes.meshBindings[j].mesh === mesh)
             {
                 return this.models[i];
             }

@@ -27,7 +27,7 @@ Inherit(Tw2InstancedMesh, Tw2Mesh);
 Tw2InstancedMesh.prototype.Initialize = function()
 {
     this._super.Initialize.call(this);
-    if (this.instanceGeometryResPath != '')
+    if (this.instanceGeometryResPath !== '')
     {
         this.instanceGeometryResource = resMan.GetResource(this.instanceGeometryResPath);
     }
@@ -43,14 +43,10 @@ Tw2InstancedMesh.prototype.Initialize = function()
  */
 Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
 {
-    if (!device.instancedArrays)
-    {
-        return;
-    }
     for (var i = 0; i < areas.length; ++i)
     {
         var area = areas[i];
-        if (area.effect == null || area.debugIsHidden)
+        if (area.effect === null || area.debugIsHidden)
         {
             continue;
         }
@@ -134,7 +130,7 @@ Inherit(Tw2InstancedMeshBatch, Tw2RenderBatch);
  */
 Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (this.instanceMesh && effect)
     {
         this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, effect);

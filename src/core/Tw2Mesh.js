@@ -108,7 +108,7 @@ function Tw2Mesh()
  */
 Tw2Mesh.prototype.Initialize = function()
 {
-    if (this.geometryResPath != '')
+    if (this.geometryResPath !== '')
     {
         this.geometryResource = resMan.GetResource(this.geometryResPath);
     }
@@ -158,7 +158,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
     for (var i = 0; i < areas.length; ++i)
     {
         var area = areas[i];
-        if (area.effect == null || !area.display)
+        if (area.effect === null || !area.display)
         {
             continue;
         }
@@ -184,7 +184,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
  */
 Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (this.geometryResource == null)
+    if (this.geometryResource === null)
     {
         return false;
     }
@@ -192,23 +192,23 @@ Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
     if (this.display)
     {
 
-        if (mode == device.RM_OPAQUE && this.visible.opaqueAreas)
+        if (mode === device.RM_OPAQUE && this.visible.opaqueAreas)
         {
             this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
         }
-        else if (mode == device.RM_DECAL && this.visible.decalAreas)
+        else if (mode === device.RM_DECAL && this.visible.decalAreas)
         {
             this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
         }
-        else if (mode == device.RM_TRANSPARENT && this.visible.transparentAreas)
+        else if (mode === device.RM_TRANSPARENT && this.visible.transparentAreas)
         {
             this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
         }
-        else if (mode == device.RM_ADDITIVE && this.visible.additiveAreas)
+        else if (mode === device.RM_ADDITIVE && this.visible.additiveAreas)
         {
             this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
         }
-        else if (mode == device.RM_PICKABLE && this.visible.pickableAreas)
+        else if (mode === device.RM_PICKABLE && this.visible.pickableAreas)
         {
             this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
         }

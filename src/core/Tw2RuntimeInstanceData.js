@@ -143,7 +143,7 @@ function Tw2RuntimeInstanceData()
         {
             for (j = 0; j < declaration.elements.length; ++j)
             {
-                if (declaration.elements[j].elements == 1)
+                if (declaration.elements[j].elements === 1)
                 {
                     vbData[offset++] = data[i][j];
                 }

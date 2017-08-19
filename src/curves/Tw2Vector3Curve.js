@@ -176,7 +176,7 @@ Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
     {
         time = this.length - time;
     }
-    if (this.keys.length == 0)
+    if (this.keys.length === 0)
     {
         return this.Interpolate(time, null, null, value);
     }
@@ -221,7 +221,7 @@ Tw2Vector3Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
     var endValue = this.endValue;
     var interp = this.interpolation;
     var deltaTime = this.length;
-    if (lastKey != null)
+    if (lastKey !== null)
     {
         interp = lastKey.interpolation;
         time -= lastKey.time;

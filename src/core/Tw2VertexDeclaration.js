@@ -95,9 +95,9 @@ Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
     for (var i = 0; i < this._elementsSorted.length; ++i)
     {
         var e = this._elementsSorted[i];
-        if (e.usage == usage)
+        if (e.usage === usage)
         {
-            if (e.usageIndex == usageIndex)
+            if (e.usageIndex === usageIndex)
             {
                 return e;
             }
@@ -147,7 +147,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
                 device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
                 break;
             }
-            if (cmp == 0)
+            if (cmp === 0)
             {
                 if (input.customSetter)
                 {
@@ -197,7 +197,7 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
         {
             var input = this._elementsSorted[index];
             var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el, usageOffset);
-            if (cmp == 0)
+            if (cmp === 0)
             {
                 if (input.customSetter)
                 {
@@ -213,10 +213,10 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, strid
                         false,
                         stride,
                         input.offset);
-                    device.instancedArrays.vertexAttribDivisorANGLE(el.location, divisor);
+                    device.ext.vertexAttribDivisor(el.location, divisor);
                     if (divisor)
                     {
-                        resetData.push(el.location)
+                        resetData.push(el.location);
                     }
                 }
                 break;
@@ -256,7 +256,7 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function(resetData)
     {
         for (var i = 0; i < resetData.length; ++i)
         {
-            device.instancedArrays.vertexAttribDivisorANGLE(resetData[i], 0);
+            device.ext.vertexAttribDivisor(resetData[i], 0);
         }
     }
 };

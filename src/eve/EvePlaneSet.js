@@ -1,4 +1,60 @@
 /**
+ * Plane set render batch
+ * @inherits Tw2RenderBatch
+ * @constructor
+ */
+function EvePlaneSetBatch()
+{
+    this._super.constructor.call(this);
+    this.planeSet = null;
+}
+
+/**
+ * Commits the plan set
+ * @param {Tw2Effect} [overrideEffect]
+ * @constructor
+ */
+EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
+{
+    this.planeSet.Render(overrideEffect);
+};
+
+Inherit(EvePlaneSetBatch, Tw2RenderBatch);
+
+
+/**
+ * EvePlaneSetItem
+ * @property {string} name
+ * @property {vec3} position
+ * @property {vec3} scaling
+ * @property {quat} rotation
+ * @property {vec4} color
+ * @property {vec4} layer1Transform
+ * @property {vec4} layer2Transform
+ * @property {vec4} layer1Scroll
+ * @property {vec4} layer2Scroll
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @constructor
+ */
+function EvePlaneSetItem()
+{
+    this.display = true;
+    this.name = '';
+    this.position = vec3.create();
+    this.scaling = vec3.fromValues(1, 1, 1);
+    this.rotation = quat.create();
+    this.color = vec4.fromValues(1, 1, 1, 1);
+    this.layer1Transform = vec4.fromValues(1, 1, 0, 0);
+    this.layer2Transform = vec4.fromValues(1, 1, 0, 0);
+    this.layer1Scroll = quat.create();
+    this.layer2Scroll = quat.create();
+    this.boneIndex = 0;
+    this.groupIndex = -1;
+    this.maskAtlasID = 0;
+}
+
+/**
  * EvePlaneSet
  * @property {String} name
  * @property {Array.<EvePlaneSetItem>} planes
@@ -61,7 +117,7 @@ EvePlaneSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Rebuilds the plane set's buffers
@@ -70,6 +126,7 @@ EvePlaneSet.prototype.RebuildBuffers = function()
 {
     var vertexSize = 35;
     var visibleItems = [];
+    var mat4_0 = EvePlaneSet.scratch.mat4_0;
 
     for (var n = 0; n < this.planes.length; n++)
     {
@@ -80,7 +137,6 @@ EvePlaneSet.prototype.RebuildBuffers = function()
     }
 
     var array = new Float32Array(visibleItems.length * 4 * vertexSize);
-    var tempMat = mat4.create();
     for (var i = 0; i < visibleItems.length; ++i)
     {
         var offset = i * 4 * vertexSize;
@@ -89,10 +145,7 @@ EvePlaneSet.prototype.RebuildBuffers = function()
         array[offset + 2 * vertexSize + vertexSize - 3] = 2;
         array[offset + 3 * vertexSize + vertexSize - 3] = 3;
 
-        var itemTransform = mat4.transpose(mat4.multiply(mat4.scale(mat4.identity(mat4.create()), visibleItems[i].scaling), quat4.toMat4(visibleItems[i].rotation, tempMat)));
-        itemTransform[12] = visibleItems[i].position[0];
-        itemTransform[13] = visibleItems[i].position[1];
-        itemTransform[14] = visibleItems[i].position[2];
+        var itemTransform = mat4.fromRotationTranslationScale(mat4_0, visibleItems[i].rotation, visibleItems[i].position, visibleItems[i].scaling);
 
         for (var j = 0; j < 4; ++j)
         {
@@ -164,30 +217,6 @@ EvePlaneSet.prototype.RebuildBuffers = function()
 };
 
 /**
- * Plane set render batch
- * @inherits Tw2RenderBatch
- * @constructor
- */
-function EvePlaneSetBatch()
-{
-    this._super.constructor.call(this);
-    this.planeSet = null;
-}
-
-/**
- * Commits the plan set
- * @param {Tw2Effect} [overrideEffect]
- * @constructor
- */
-EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
-{
-    this.planeSet.Render(overrideEffect);
-};
-
-Inherit(EvePlaneSetBatch, Tw2RenderBatch);
-
-
-/**
  * Gets the plane set's render batches
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
@@ -195,7 +224,7 @@ Inherit(EvePlaneSetBatch, Tw2RenderBatch);
  */
 EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (this.display && mode == device.RM_ADDITIVE)
+    if (this.display && mode === device.RM_ADDITIVE)
     {
         var batch = new EvePlaneSetBatch();
         batch.renderMode = device.RM_ADDITIVE;
@@ -256,35 +285,9 @@ EvePlaneSet.prototype.Clear = function()
     this.planes = [];
 };
 
-
 /**
- * EvePlaneSetItem
- * @property {string} name
- * @property {vec3} position
- * @property {vec3} scaling
- * @property {quat4} rotation
- * @property {quat4} color
- * @property {quat4} layer1Transform
- * @property {quat4} layer2Transform
- * @property {quat4} layer1Scroll
- * @property {quat4} layer2Scroll
- * @property {number} boneIndex
- * @property {number} groupIndex
- * @constructor
+ * Scratch variables
  */
-function EvePlaneSetItem()
-{
-    this.display = true;
-    this.name = '';
-    this.position = vec3.create();
-    this.scaling = vec3.create([1, 1, 1]);
-    this.rotation = quat4.create([0, 0, 0, 1]);
-    this.color = quat4.create([1, 1, 1, 1]);
-    this.layer1Transform = quat4.create([1, 1, 0, 0]);
-    this.layer2Transform = quat4.create([1, 1, 0, 0]);
-    this.layer1Scroll = quat4.create();
-    this.layer2Scroll = quat4.create();
-    this.boneIndex = 0;
-    this.groupIndex = -1;
-    this.maskAtlasID = 0;
-}
+EvePlaneSet.scratch = {
+    mat4_0: mat4.create()
+};

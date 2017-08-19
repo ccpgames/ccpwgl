@@ -5,7 +5,6 @@
  * @property {vec3} value
  * @property {number} operator
  * @property {Array} functions
- * @property {vec3} _tempValue
  * @constructor
  */
 function Tw2VectorSequencer()
@@ -15,7 +14,6 @@ function Tw2VectorSequencer()
     this.value = vec3.create();
     this.operator = 0;
     this.functions = [];
-    this._tempValue = vec3.create();
 }
 
 /**
@@ -55,21 +53,21 @@ Tw2VectorSequencer.prototype.UpdateValue = function(time)
  */
 Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
 {
-    var tempValue, functions, i;
+    var v0 = Tw2VectorSequencer.scratch.vec3_0;
+    var functions, i;
 
-    if (this.operator == 0)
+    if (this.operator === 0)
     {
         value[0] = 1;
         value[1] = 1;
         value[2] = 1;
-        tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
-            functions[i].GetValueAt(time, tempValue);
-            value[0] *= tempValue[0];
-            value[1] *= tempValue[1];
-            value[2] *= tempValue[2];
+            functions[i].GetValueAt(time, v0);
+            value[0] *= v0[0];
+            value[1] *= v0[1];
+            value[2] *= v0[2];
         }
     }
     else
@@ -77,15 +75,21 @@ Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
         value[0] = 0;
         value[1] = 0;
         value[2] = 0;
-        tempValue = this._tempValue;
         functions = this.functions;
         for (i = 0; i < functions.length; ++i)
         {
-            functions[i].GetValueAt(time, tempValue);
-            value[0] += tempValue[0];
-            value[1] += tempValue[1];
-            value[2] += tempValue[2];
+            functions[i].GetValueAt(time, v0);
+            value[0] += v0[0];
+            value[1] += v0[1];
+            value[2] += v0[2];
         }
     }
     return value;
+};
+
+/**
+ * Scratch variables
+ */
+Tw2VectorSequencer.scratch = {
+    vec3_0: vec3.create()
 };

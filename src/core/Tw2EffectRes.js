@@ -61,16 +61,15 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
      */
     function CompileShader(stageType, prefix, shaderCode, path)
     {
-        var shader = device.gl.createShader(stageType == 0 ? device.gl.VERTEX_SHADER : device.gl.FRAGMENT_SHADER);
+        var shader = device.gl.createShader(stageType === 0 ? device.gl.VERTEX_SHADER : device.gl.FRAGMENT_SHADER);
 
-        if (device.useBinaryShaders)
+        if (device.ext.ShaderBinary)
         {
-            device.shaderBinary.shaderBinary(shader, shaderCode);
+            device.ext.ShaderBinary.shaderBinary(shader, shaderCode);
         }
         else
         {
-
-            var source = prefix + (typeof shaderCode == 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
+            var source = prefix + (typeof shaderCode === 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
             source = source.substr(0, source.length - 1);
             device.gl.shaderSource(shader, source);
             device.gl.compileShader(shader);
@@ -194,7 +193,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     if (version < 5)
     {
         headerSize = reader.ReadUInt32();
-        if (headerSize == 0)
+        if (headerSize === 0)
         {
             emitter.log('res.error',
             {
@@ -237,7 +236,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             }
         }
         headerSize = reader.ReadUInt32();
-        if (headerSize == 0)
+        if (headerSize === 0)
         {
             emitter.log('res.error',
             {
@@ -309,7 +308,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             }
 
             stage.shader = CompileShader(stageType, "", shaderCode, this.path);
-            if (stage.shader == null)
+            if (stage.shader === null)
             {
                 this.PrepareFinished(false);
                 return;
@@ -317,7 +316,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
 
             if (validShadowShader)
             {
-                if (shadowShaderSize == 0)
+                if (shadowShaderSize === 0)
                 {
                     stage.shadowShader = CompileShader(stageType, "\n#define PS\n", shaderCode, this.path);
                 }
@@ -325,7 +324,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 {
                     stage.shadowShader = CompileShader(stageType, "", shadowShaderCode, this.path);
                 }
-                if (stage.shadowShader == null)
+                if (stage.shadowShader === null)
                 {
                     validShadowShader = false;
                 }
@@ -357,10 +356,10 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 constant.isAutoregister = reader.ReadUInt8();
                 stage.constants[constantIx] = constant;
 
-                if (constant.name == 'PerFrameVS' ||
-                    constant.name == 'PerObjectVS' ||
-                    constant.name == 'PerFramePS' ||
-                    constant.name == 'PerObjectPS')
+                if (constant.name === 'PerFrameVS' ||
+                    constant.name === 'PerObjectVS' ||
+                    constant.name === 'PerFramePS' ||
+                    constant.name === 'PerObjectPS')
                 {
                     continue;
                 }
@@ -428,7 +427,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 var maxAnisotropy = reader.ReadUInt8();
                 /* var comparisonFunc = */
                 reader.ReadUInt8();
-                var borderColor = quat4.create();
+                var borderColor = quat.create();
                 borderColor[0] = reader.ReadFloat32();
                 borderColor[1] = reader.ReadFloat32();
                 borderColor[2] = reader.ReadFloat32();
@@ -442,7 +441,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 var sampler = new Tw2SamplerState();
                 sampler.registerIndex = registerIndex;
                 sampler.name = samplerName;
-                if (minFilter == 1)
+                if (minFilter === 1)
                 {
                     switch (mipFilter)
                     {
@@ -472,7 +471,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                     }
                     sampler.minFilterNoMips = device.gl.LINEAR;
                 }
-                if (magFilter == 1)
+                if (magFilter === 1)
                 {
                     sampler.magFilter = device.gl.NEAREST;
                 }
@@ -491,16 +490,16 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 sampler.addressU = wrapModes[addressU];
                 sampler.addressV = wrapModes[addressV];
                 sampler.addressW = wrapModes[addressW];
-                if (minFilter == 3 || magFilter == 3 || mipFilter == 3)
+                if (minFilter === 3 || magFilter === 3 || mipFilter === 3)
                 {
                     sampler.anisotropy = Math.max(maxAnisotropy, 1);
                 }
                 for (var n = 0; n < stage.textures.length; ++n)
                 {
-                    if (stage.textures[n].registerIndex == sampler.registerIndex)
+                    if (stage.textures[n].registerIndex === sampler.registerIndex)
                     {
-                        sampler.samplerType = stage.textures[n].type == 4 ? device.gl.TEXTURE_CUBE_MAP : device.gl.TEXTURE_2D;
-                        sampler.isVolume = stage.textures[n].type == 3;
+                        sampler.samplerType = stage.textures[n].type === 4 ? device.gl.TEXTURE_CUBE_MAP : device.gl.TEXTURE_2D;
+                        sampler.isVolume = stage.textures[n].type === 3;
                         break;
                     }
                 }
@@ -530,7 +529,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
-        if (pass.shaderProgram == null)
+        if (pass.shaderProgram === null)
         {
             this.PrepareFinished(false);
             return;
@@ -538,7 +537,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (validShadowShader)
         {
             pass.shadowShaderProgram = CreateProgram(pass.stages[0].shadowShader, pass.stages[1].shadowShader, pass, this.path);
-            if (pass.shadowShaderProgram == null)
+            if (pass.shadowShaderProgram === null)
             {
                 pass.shadowShaderProgram = pass.shaderProgram;
             }
@@ -565,7 +564,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             switch (annotations[annotationIx].type)
             {
                 case 0:
-                    annotations[annotationIx].value = reader.ReadUInt32() != 0;
+                    annotations[annotationIx].value = reader.ReadUInt32() !== 0;
                     break;
                 case 1:
                     annotations[annotationIx].value = reader.ReadInt32();
@@ -633,7 +632,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
         {
             for (var i = 0; i < this.annotations[param].length; i++)
             {
-                if (this.annotations[param][i].name.toLowerCase() == "group" && this.annotations[param][i].value.toLowerCase() == groupName.toLowerCase())
+                if (this.annotations[param][i].name.toLowerCase() === "group" && this.annotations[param][i].value.toLowerCase() === groupName.toLowerCase())
                 {
                     parameters.push(param);
                 }

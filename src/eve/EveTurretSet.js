@@ -3,7 +3,7 @@
  * @property {String} name
  * @property {boolean} visible
  * @property {mat4} localTransform
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @constructor
  */
 function EveTurretData()
@@ -11,14 +11,14 @@ function EveTurretData()
     this.name = '';
     this.visible = true;
     this.localTransform = mat4.create();
-    this.rotation = quat4.create();
+    this.rotation = quat.create();
 }
 
 /**
  * EveTurretSet
  * @property {boolean} display
  * @property {string} name
- * @property {quat4} boundingSphere
+ * @property {quat} boundingSphere
  * @property {number} bottomClipHeight
  * @property {string} locatorName
  * @property {Tw2Effect} turretEffect
@@ -52,7 +52,7 @@ function EveTurretSet()
 {
     this.display = true;
     this.name = '';
-    this.boundingSphere = quat4.create();
+    this.boundingSphere = quat.create();
     this.bottomClipHeight = 0;
     this.locatorName = '';
     this.sysBoneHeight = 0;
@@ -72,7 +72,7 @@ function EveTurretSet()
     this.activeAnimation = new Tw2AnimationController();
     this.inactiveAnimation = new Tw2AnimationController();
 
-    this.parentMatrix = mat4.identity(mat4.create());
+    this.parentMatrix = mat4.create();
 
     this.STATE_INACTIVE = 0;
     this.STATE_IDLE = 1;
@@ -129,7 +129,7 @@ EveTurretSet.positionBoneSkeletonNames = [
  */
 EveTurretSet.prototype.Initialize = function()
 {
-    if (this.turretEffect && this.geometryResPath != '')
+    if (this.turretEffect && this.geometryResPath !== '')
     {
         this.geometryResource = resMan.GetResource(this.geometryResPath);
         this.activeAnimation.SetGeometryResource(this.geometryResource);
@@ -139,7 +139,7 @@ EveTurretSet.prototype.Initialize = function()
             this.geometryResource.RegisterNotification(this);
         }
     }
-    if (this.firingEffectResPath != '')
+    if (this.firingEffectResPath !== '')
     {
         var self = this;
         resMan.GetObject(this.firingEffectResPath, function(object)
@@ -180,7 +180,7 @@ EveTurretSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Rebuilds the turret sets cached data
@@ -247,10 +247,10 @@ EveTurretSet.prototype.InitializeFiringEffect = function()
  */
 EveTurretSet.prototype.SetLocalTransform = function(index, localTransform, locatorName)
 {
-    var transform = mat4.create(localTransform);
-    vec3.normalize(transform.subarray(0, 3));
-    vec3.normalize(transform.subarray(4, 7));
-    vec3.normalize(transform.subarray(8, 11));
+    var transform = mat4.clone(localTransform);
+    vec3.normalize(transform.subarray(0, 3), transform.subarray(0, 3));
+    vec3.normalize(transform.subarray(4, 7), transform.subarray(4, 7));
+    vec3.normalize(transform.subarray(8, 11), transform.subarray(8, 11));
     if (index >= this.turrets.length)
     {
         var data = new EveTurretData();
@@ -295,12 +295,12 @@ function mat3x4toquat(mm, index, out, outIndex)
 }
 
 mat3x4toquat._tempMat = mat4.create();
-mat3x4toquat._tempQuat = quat4.create();
+mat3x4toquat._tempQuat = quat.create();
 
 
 function mat4toquat(m, out)
 {
-    out = out || quat4.create();
+    out = out || quat.create();
     var trace = m[0] + m[5] + m[10] + 1.0;
     if (trace > 1.0)
     {
@@ -356,7 +356,7 @@ function mat4toquat(m, out)
  */
 EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms)
 {
-    mat4.transpose(this.parentMatrix, perObjectData.Get('shipMatrix'));
+    mat4.transpose(perObjectData.Get('shipMatrix'), this.parentMatrix);
     var transformCount = transforms.length / 12;
     perObjectData.Get('turretSetData')[0] = transformCount;
     perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
@@ -393,14 +393,14 @@ EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms
  */
 EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (!this.turretEffect || this.geometryResource == null || !this.display)
+    if (!this.turretEffect || this.geometryResource === null || !this.display)
     {
         return false;
     }
-    if (mode == device.RM_OPAQUE)
+    if (mode === device.RM_OPAQUE)
     {
         var transforms = this.inactiveAnimation.GetBoneMatrices(0);
-        if (transforms.length == 0)
+        if (transforms.length === 0)
         {
             return true;
         }
@@ -414,10 +414,10 @@ EveTurretSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
         batch.geometryProvider = this;
         accumulator.Commit(batch);
 
-        if (this.state == this.STATE_FIRING)
+        if (this.state === this.STATE_FIRING)
         {
             transforms = this.activeAnimation.GetBoneMatrices(0);
-            if (transforms.length == 0)
+            if (transforms.length === 0)
             {
                 return true;
             }
@@ -450,14 +450,14 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
         this.activeAnimation.Update(dt);
         this.inactiveAnimation.Update(dt);
     }
-    mat4.set(parentMatrix, this.parentMatrix);
+    mat4.copy(this.parentMatrix, parentMatrix);
     if (this.firingEffect)
     {
-        if (this._activeTurret != -1)
+        if (this._activeTurret !== -1)
         {
             if (this.firingEffect.isLoopFiring)
             {
-                if (this.state == this.STATE_FIRING)
+                if (this.state === this.STATE_FIRING)
                 {
                     this._recheckTimeLeft -= dt;
                     if (this._recheckTimeLeft <= 0)
@@ -474,14 +474,15 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
                 {
                     var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform;
                     var out = this.firingEffect.GetMuzzleTransform(i);
-                    mat4.multiply(parentMatrix, mat4.multiply(this.turrets[this._activeTurret].localTransform, transform, out), out);
+                    mat4.multiply(out, this.turrets[this._activeTurret].localTransform, transform);
+                    mat4.multiply(out, out, parentMatrix);
                 }
             }
             else
             {
                 for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i)
                 {
-                    mat4.multiply(parentMatrix, this.turrets[this._activeTurret].localTransform, this.firingEffect.GetMuzzleTransform(i));
+                    mat4.multiply(this.firingEffect.GetMuzzleTransform(i), parentMatrix, this.turrets[this._activeTurret].localTransform);
                 }
             }
             if (this.fireCallbackPending)
@@ -499,7 +500,7 @@ EveTurretSet.prototype.Update = function(dt, parentMatrix)
             }
         }
 
-        vec3.set(this.targetPosition, this.firingEffect.endPosition);
+        vec3.copy(this.firingEffect.endPosition, this.targetPosition);
         this.firingEffect.Update(dt);
     }
 };
@@ -527,8 +528,8 @@ EveTurretSet.prototype.Render = function(batch, overrideEffect)
     {
         if (this.turrets[index].visible)
         {
-            var isActive = this.state == this.STATE_FIRING && index == this._activeTurret;
-            if (batch.renderActive == isActive)
+            var isActive = this.state === this.STATE_FIRING && index === this._activeTurret;
+            if (batch.renderActive === isActive)
             {
                 this.geometryResource.RenderAreas(0, 0, 1, effect);
             }
@@ -541,7 +542,7 @@ EveTurretSet.prototype.Render = function(batch, overrideEffect)
  */
 EveTurretSet.prototype.EnterStateDeactive = function()
 {
-    if (this.state == this.STATE_INACTIVE || this.state == this.STATE_PACKING)
+    if (this.state === this.STATE_INACTIVE || this.state === this.STATE_PACKING)
     {
         return;
     }
@@ -579,7 +580,7 @@ EveTurretSet.prototype.EnterStateDeactive = function()
 EveTurretSet.prototype.EnterStateIdle = function()
 {
     var self = this;
-    if (this.state == this.STATE_IDLE || this.state == this.STATE_UNPACKING)
+    if (this.state === this.STATE_IDLE || this.state === this.STATE_UNPACKING)
     {
         return;
     }
@@ -587,7 +588,7 @@ EveTurretSet.prototype.EnterStateIdle = function()
     {
         this.activeAnimation.StopAllAnimations();
         this.inactiveAnimation.StopAllAnimations();
-        if (this.state == this.STATE_FIRING)
+        if (this.state === this.STATE_FIRING)
         {
             this.activeAnimation.PlayAnimation("Active", true);
             this.inactiveAnimation.PlayAnimation("Active", true);
@@ -625,7 +626,7 @@ EveTurretSet.prototype.EnterStateFiring = function()
 {
     var self = this;
 
-    if (!this.turretEffect || this.state == this.STATE_FIRING)
+    if (!this.turretEffect || this.state === this.STATE_FIRING)
     {
         this._DoStartFiring();
         if (this.turretEffect)
@@ -639,7 +640,7 @@ EveTurretSet.prototype.EnterStateFiring = function()
     }
     this.activeAnimation.StopAllAnimations();
     this.inactiveAnimation.StopAllAnimations();
-    if (this.state == this.STATE_INACTIVE)
+    if (this.state === this.STATE_INACTIVE)
     {
         this.activeAnimation.PlayAnimation("Deploy", false, function()
         {
@@ -704,7 +705,7 @@ EveTurretSet.prototype._DoStartFiring = function()
 };
 
 EveTurretSet._tempVec3 = [vec3.create(), vec3.create()];
-EveTurretSet._tempQuat4 = [quat4.create(), quat4.create()];
+EveTurretSet._tempQuat4 = [quat.create(), quat.create()];
 
 /**
  * Helper function for finding out what turret should be firing
@@ -723,14 +724,15 @@ EveTurretSet.prototype.GetClosestTurret = function()
         turretPosition[1] = this.turrets[i].localTransform[13];
         turretPosition[2] = this.turrets[i].localTransform[14];
         turretPosition[3] = 1;
-        mat4.multiplyVec4(this.parentMatrix, turretPosition);
-        vec3.normalize(vec3.subtract(this.targetPosition, turretPosition, nrmToTarget));
+        vec4.transformMat4(turretPosition, turretPosition, this.parentMatrix);
+        vec3.subtract(nrmToTarget, this.targetPosition, turretPosition);
+        vec3.normalize(nrmToTarget, nrmToTarget);
         nrmUp[0] = 0;
         nrmUp[1] = 1;
         nrmUp[2] = 0;
         nrmUp[3] = 0;
-        mat4.multiplyVec4(this.turrets[i].localTransform, nrmUp);
-        mat4.multiplyVec4(this.parentMatrix, nrmUp);
+        vec4.transformMat4(nrmUp, nrmUp, this.turrets[i].localTransform);
+        vec4.transformMat4(nrmUp, nrmUp, this.parentMatrix);
         var angle = vec3.dot(nrmUp, nrmToTarget);
         if (angle > closestAngle)
         {
@@ -739,4 +741,4 @@ EveTurretSet.prototype.GetClosestTurret = function()
         }
     }
     return closestTurret;
-}
+};

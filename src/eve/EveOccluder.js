@@ -77,6 +77,15 @@ function EveOccluder()
 }
 
 /**
+ * Scratch parameters
+ */
+EveOccluder.scratch = {
+    mat4_0: mat4.create(),
+    vec4_0: vec4.create(),
+    batches: new Tw2BatchAccumulator()
+};
+
+/**
  * UpdateValues
  * @param {mat4} parentTransform
  * @param {number} index
@@ -92,29 +101,29 @@ EveOccluder.prototype.UpdateValue = function(parentTransform, index)
         return;
     }
 
-    var batches = new Tw2BatchAccumulator();
+    var scratch = EveOccluder.scratch;
+    var batches = scratch.batches;
+    batches.Clear();
+
     for (var i = 0; i < this.sprites.length; ++i)
     {
         this.sprites[i].UpdateViewDependentData(parentTransform);
         this.sprites[i].GetBatches(device.RM_DECAL, batches);
     }
 
-    variableStore._variables['OccluderValue'].value.set([(1 << (index * 2)) / 255., (2 << (index * 2)) / 255., 0, 0]);
-
+    variableStore._variables['OccluderValue'].value.set([(1 << (index * 2)) / 255.0, (2 << (index * 2)) / 255.0, 0, 0]);
     batches.Render();
 
-    var worldViewProj = mat4.multiply(device.projection, device.view, mat4.create());
-    worldViewProj = mat4.multiply(worldViewProj, this.sprites[0].worldTransform);
-
-    var center = quat4.create([0, 0, 0, 1]);
-    mat4.multiplyVec4(worldViewProj, center);
+    var worldViewProj = mat4.copy(scratch.mat4_0, device.viewProjection);
+    mat4.multiply(worldViewProj, worldViewProj, this.sprites[0].worldTransform);
+    var center = vec4.set(scratch.vec4_0, 0, 0, 0, 1);
+    vec4.transformMat4(center, center, worldViewProj);
     var x0 = (center[0] / center[3] + 1) * 0.5;
     var y0 = (center[1] / center[3] + 1) * 0.5;
-
     center[0] = center[1] = 0.5;
     center[2] = 0;
     center[3] = 1;
-    mat4.multiplyVec4(worldViewProj, center);
+    vec4.transformMat4(center, center, worldViewProj);
     var x1 = (center[0] / center[3] + 1) * 0.5;
     var y1 = (center[1] / center[3] + 1) * 0.5;
     center[0] = x0;

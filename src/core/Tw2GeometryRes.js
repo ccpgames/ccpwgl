@@ -24,7 +24,7 @@ function Tw2GeometryBatch()
  */
 Tw2GeometryBatch.prototype.Commit = function(overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (this.geometryRes && effect)
     {
         this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
@@ -60,7 +60,7 @@ function Tw2GeometryLineBatch()
  */
 Tw2GeometryLineBatch.prototype.Commit = function(overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (this.geometryRes && effect)
     {
         this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
@@ -128,13 +128,13 @@ function Tw2GeometryModel()
  */
 Tw2GeometryModel.prototype.FindBoneByName = function(name)
 {
-    if (this.skeleton == null)
+    if (this.skeleton === null)
     {
         return null;
     }
     for (var b = 0; b < this.skeleton.bones.length; ++b)
     {
-        if (this.skeleton.bones[b].name == name)
+        if (this.skeleton.bones[b].name === name)
         {
             return this.skeleton.bones[b];
         }
@@ -159,7 +159,7 @@ function Tw2GeometrySkeleton()
  * @property {string} name
  * @property {Number} parentIndex
  * @property {vec3} position
- * @property {quat4} orientation
+ * @property {quat} orientation
  * @property {mat3} scaleShear
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
@@ -171,7 +171,7 @@ function Tw2GeometryBone()
     this.name = '';
     this.parentIndex = -1;
     this.position = vec3.create();
-    this.orientation = quat4.create();
+    this.orientation = quat.create();
     this.scaleShear = mat3.create();
     this.localTransform = mat4.create();
     this.worldTransform = mat4.create();
@@ -179,14 +179,37 @@ function Tw2GeometryBone()
 }
 
 /**
+ * Scratch variables
+ */
+Tw2GeometryBone.scratch = {
+    mat4_0: mat4.create()
+};
+
+/**
  * Updates the Bone's transform
  * @returns {mat4}
  */
 Tw2GeometryBone.prototype.UpdateTransform = function()
 {
-    mat3.toMat4(this.scaleShear, this.localTransform);
-    mat4.multiply(this.localTransform, mat4.transpose(quat4.toMat4(quat4.normalize(this.orientation))));
-    //mat4.translate(this.localTransform, this.position);
+    // Mat4 to mat4
+    var l = this.localTransform,
+        scale = this.scaleShear;
+
+    l[0] = scale[0];
+    l[1] = scale[1];
+    l[2] = scale[2];
+    l[4] = scale[3];
+    l[5] = scale[4];
+    l[6] = scale[5];
+    l[8] = scale[6];
+    l[9] = scale[7];
+    l[10] = scale[8];
+    l[3] = l[7] = l[11] = l[12] = l[13] = l[14] = 0;
+    l[15] = 1;
+
+    quat.normalize(this.orientation, this.orientation);
+    var rm = mat4.fromQuat(Tw2GeometryBone.scratch.mat4_0, this.orientation);
+    mat4.multiply(this.localTransform, this.localTransform, rm);
     this.localTransform[12] = this.position[0];
     this.localTransform[13] = this.position[1];
     this.localTransform[14] = this.position[2];
@@ -423,7 +446,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
         declaration.RebuildHash();
         declaration.stride = vertexSize * 4;
         var vertexCount = reader.ReadUInt32();
-        if (vertexCount == 0)
+        if (vertexCount === 0)
         {
             return null;
         }
@@ -559,7 +582,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
         var ibType = reader.ReadUInt8();
         var indexCount = reader.ReadUInt32();
         var indexes, i;
-        if (ibType == 0)
+        if (ibType === 0)
         {
             indexes = new Uint16Array(indexCount);
             for (i = 0; i < indexCount; ++i)
@@ -605,7 +628,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
         if (indexes)
         {
             mesh.indexes = device.gl.createBuffer();
-            mesh.indexType = indexes.BYTES_PER_ELEMENT == 2 ? device.gl.UNSIGNED_SHORT : device.gl.UNSIGNED_INT;
+            mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? device.gl.UNSIGNED_SHORT : device.gl.UNSIGNED_INT;
             device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
             device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
         }
@@ -621,8 +644,8 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             mesh.areas[i].name = reader.ReadString();
             mesh.areas[i].start = reader.ReadUInt32() * indexes.BYTES_PER_ELEMENT;
             mesh.areas[i].count = reader.ReadUInt32() * 3;
-            mesh.areas[i].minBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
-            mesh.areas[i].maxBounds = vec3.create([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()]);
+            mesh.areas[i].minBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+            mesh.areas[i].maxBounds = vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
         }
 
         var boneBindingCount = reader.ReadUInt8();
@@ -666,25 +689,25 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             bone.name = reader.ReadString();
             var flags = reader.ReadUInt8();
             bone.parentIndex = reader.ReadUInt8();
-            if (bone.parentIndex == 255)
+            if (bone.parentIndex === 255)
             {
                 bone.parentIndex = -1;
             }
             if ((flags & 1))
             {
-                vec3.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.position);
+                vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
             }
             else
             {
-                vec3.set([0, 0, 0], bone.position);
+                vec3.set(bone.position, 0, 0, 0);
             }
             if ((flags & 2))
             {
-                quat4.set([reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32()], bone.orientation);
+                quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
             }
             else
             {
-                quat4.set([0, 0, 0, 1], bone.orientation);
+                quat.identity(bone.orientation);
             }
             if ((flags & 4))
             {
@@ -702,15 +725,15 @@ Tw2GeometryRes.prototype.Prepare = function(data)
         for (j = 0; j < model.skeleton.bones.length; ++j)
         {
             model.skeleton.bones[j].UpdateTransform();
-            if (model.skeleton.bones[j].parentIndex != -1)
+            if (model.skeleton.bones[j].parentIndex !== -1)
             {
-                mat4.multiply(model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                mat4.multiply(model.skeleton.bones[j].worldTransform, model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform);
             }
             else
             {
-                mat4.set(model.skeleton.bones[j].localTransform, model.skeleton.bones[j].worldTransform);
+                mat4.copy(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].localTransform);
             }
-            mat4.inverse(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].worldTransformInv);
+            mat4.invert(model.skeleton.bones[j].worldTransformInv, model.skeleton.bones[j].worldTransform);
         }
 
         var meshBindingCount = reader.ReadUInt8();
@@ -733,7 +756,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
     function ReadCurve()
     {
         var type = reader.ReadUInt8();
-        if (type == 0)
+        if (type === 0)
         {
             return null;
         }
@@ -769,7 +792,7 @@ Tw2GeometryRes.prototype.Prepare = function(data)
             group.name = reader.ReadString();
             for (var m = 0; m < this.models.length; ++m)
             {
-                if (this.models[m].name == group.name)
+                if (this.models[m].name === group.name)
                 {
                     group.model = this.models[m];
                     break;
@@ -830,7 +853,7 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
     {
         var name = binding.mesh.boneBindings[b];
         var bone = model.FindBoneByName(name);
-        if (bone == null)
+        if (bone === null)
         {
             emitter.log('res.error',
             {
@@ -874,6 +897,7 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
     {
         return false;
     }
+
     var effectRes = effect.GetEffectRes();
     if (!effectRes._isGood)
     {
@@ -889,7 +913,7 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
     {
         effect.ApplyPass(pass);
         var passInput = effect.GetPassInput(pass);
-        if (passInput.elements.length == 0)
+        if (passInput.elements.length === 0)
         {
             continue;
         }
@@ -909,14 +933,14 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
                 while (i + 1 < count)
                 {
                     area = mesh.areas[i + 1 + start];
-                    if (area.start != areaStart + acount * 2)
+                    if (area.start !== areaStart + acount * 2)
                     {
                         break;
                     }
                     acount += area.count;
                     ++i;
                 }
-                d.instancedArrays.drawElementsInstancedANGLE(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
+                d.ext.drawElementsInstanced(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
             }
         }
         instanceDecl.ResetInstanceDivisors(resetData);
@@ -976,7 +1000,7 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
         }
         d.ApplyShadowState();
 
-        if (typeof(cb) != 'undefined')
+        if (typeof(cb) !== 'undefined')
         {
             var drawElements = [];
             for (i = 0; i < count; ++i)
@@ -1001,7 +1025,7 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
                     while (i + 1 < count)
                     {
                         area = mesh.areas[i + 1 + start];
-                        if (area.start != areaStart + acount * 2)
+                        if (area.start !== areaStart + acount * 2)
                         {
                             break;
                         }
@@ -1073,7 +1097,7 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
 
         d.ApplyShadowState();
 
-        if (typeof(cb) != 'undefined')
+        if (typeof(cb) !== 'undefined')
         {
             var drawElements = [];
             for (i = 0; i < count; ++i)
@@ -1098,7 +1122,7 @@ Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb
                     while (i + 1 < count)
                     {
                         area = mesh.areas[i + 1 + start];
-                        if (area.start != areaStart + acount * 2)
+                        if (area.start !== areaStart + acount * 2)
                         {
                             break;
                         }

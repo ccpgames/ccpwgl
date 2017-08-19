@@ -77,7 +77,7 @@ Tw2DynamicEmitter.prototype.SpawnParticles = function(position, velocity, rateMo
     for (var i = 0; i < count; ++i)
     {
         var index = this.particleSystem.BeginSpawnParticle();
-        if (index == null)
+        if (index === null)
         {
             break;
         }

@@ -2,9 +2,9 @@
  * Tw2XYZScalarSequencer
  * @property {string} name
  * @property {vec3} value
- * @property XCurve
- * @property YCurve
- * @property ZCurve
+ * @property {*} XCurve
+ * @property {*} YCurve
+ * @property {*} ZCurve
  * @constructor
  */
 function Tw2XYZScalarSequencer()

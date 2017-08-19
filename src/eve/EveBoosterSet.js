@@ -3,20 +3,45 @@
  * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
  */
 
+
+/**
+ * Booster render batch
+ * @constructor
+ */
+function EveBoosterBatch()
+{
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
+    this.boosters = null;
+}
+
+/**
+ * Commits the batch
+ * @param {Tw2Effect} [overrideEffect]
+ */
+EveBoosterBatch.prototype.Commit = function(overrideEffect)
+{
+    this.boosters.Render(overrideEffect);
+};
+
+
 /**
  * EveBoosterSet
  * @property {boolean} display
  * @property {Tw2Effect} effect
  * @property {Tw2Effect} glows
  * @property {number} glowScale
- * @property {quat4} glowColor
- * @property {quat4} warpGlowColor
+ * @property {vec4} glowColor
+ * @property {vec4} warpGlowColor
+ * @property {vec4} warpHaloColor
  * @property {number} symHaloScale
  * @property {number} haloScaleX
  * @property {number} haloScaleY
  * @property {number} maxVel
- * @property {quat4} haloColor
+ * @property {vec4} haloColor
  * @property {boolean} alwaysOn
+ * @property {vec4} trailSize
+ * @property {vec4} trailColor
  * @property {mat4} _parentTransform
  * @property {mat4} _wavePhase
  * @property {Array.<{}>} _boosterTransforms
@@ -32,14 +57,18 @@ function EveBoosterSet()
     this.effect = null;
     this.glows = null;
     this.glowScale = 1.0;
-    this.glowColor = quat4.create();
-    this.warpGlowColor = quat4.create();
+    this.glowColor = vec4.create();
+    this.warpGlowColor = vec4.create();
+    this.warpHaloColor = vec4.create();
     this.symHaloScale = 1.0;
     this.haloScaleX = 1.0;
     this.haloScaleY = 1.0;
     this.maxVel = 250;
-    this.haloColor = quat4.create();
+    this.haloColor = vec4.create();
     this.alwaysOn = true;
+
+    this.trailColor = vec4.create();
+    this.trailSize = vec4.create();
 
     this._parentTransform = mat4.create();
     this._wavePhase = mat4.create();
@@ -99,7 +128,7 @@ EveBoosterSet.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Clears the booster set
@@ -115,6 +144,15 @@ EveBoosterSet.prototype.Clear = function()
 };
 
 /**
+ * Scratch variables
+ */
+EveBoosterSet.scratch = {
+    vec3_0: vec3.create(),
+    vec3_1: vec3.create(),
+    vec3_2: vec3.create()
+};
+
+/**
  * Adds a booster
  * @param {mat4} localMatrix
  * @param {number} atlas0
@@ -123,31 +161,28 @@ EveBoosterSet.prototype.Clear = function()
  */
 EveBoosterSet.prototype.Add = function(localMatrix, atlas0, atlas1)
 {
-    var transform = mat4.create();
-    mat4.set(localMatrix, transform);
+    var scratch = EveBoosterSet.scratch;
+
     this._boosterTransforms[this._boosterTransforms.length] = {
-        transform: transform,
+        transform: mat4.clone(localMatrix),
         atlas0: atlas0,
         atlas1: atlas1
     };
     this._wavePhase[this._wavePhase.length] = Math.random();
     if (this.glows)
     {
-        var pos = vec3.create([localMatrix[12], localMatrix[13], localMatrix[14]]);
-        var dir = vec3.create([localMatrix[8], localMatrix[9], localMatrix[10]]);
+        var pos = vec3.set(scratch.vec3_0, localMatrix[12], localMatrix[13], localMatrix[14]);
+        var dir = vec3.set(scratch.vec3_1, localMatrix[8], localMatrix[9], localMatrix[10]);
         var scale = Math.max(vec3.length([localMatrix[0], localMatrix[1], localMatrix[2]]), vec3.length([localMatrix[4], localMatrix[5], localMatrix[6]]));
-        vec3.normalize(dir);
-        if (scale < 3)
-        {
-            vec3.scale(dir, scale / 3);
-        }
+        vec3.normalize(dir, dir);
+        if (scale < 3) vec3.scale(dir, dir, scale / 3);
         var seed = Math.random() * 0.7;
-        var spritePos = vec3.create();
-        vec3.subtract(pos, vec3.scale(dir, 2.5, spritePos), spritePos);
+        var spritePos = scratch.vec3_2;
+        vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 2.5));
         this.glows.Add(spritePos, seed, seed, scale * this.glowScale, scale * this.glowScale, 0, this.glowColor, this.warpGlowColor);
-        vec3.subtract(pos, vec3.scale(dir, 3, spritePos), spritePos);
+        vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 3));
         this.glows.Add(spritePos, seed, 1 + seed, scale * this.symHaloScale, scale * this.symHaloScale, 0, this.haloColor, this.warpGlowColor);
-        vec3.subtract(pos, vec3.scale(dir, 3.01, spritePos), spritePos);
+        vec3.subtract(spritePos, pos, vec3.scale(spritePos, dir, 3.01));
         this.glows.Add(spritePos, seed, 1 + seed, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor, this.warpGlowColor);
     }
 };
@@ -257,27 +292,6 @@ EveBoosterSet.prototype.Update = function(dt, parentMatrix)
     this._parentTransform = parentMatrix;
 };
 
-
-/**
- * Booster render batch
- * @constructor
- */
-function EveBoosterBatch()
-{
-    this.renderMode = device.RM_ANY;
-    this.perObjectData = null;
-    this.boosters = null;
-}
-
-/**
- * Commits the batch
- * @param {Tw2Effect} [overrideEffect]
- */
-EveBoosterBatch.prototype.Commit = function(overrideEffect)
-{
-    this.boosters.Render(overrideEffect);
-};
-
 /**
  * Gets render batches
  * @param {RenderMode} mode
@@ -286,15 +300,14 @@ EveBoosterBatch.prototype.Commit = function(overrideEffect)
  */
 EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
-    if (!this.display || mode != device.RM_ADDITIVE)
+    if (!this.display || mode !== device.RM_ADDITIVE)
     {
         return;
     }
     if (this.effect && this._boosterTransforms.length)
     {
         var batch = new EveBoosterBatch();
-
-        mat4.transpose(this._parentTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
+        mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this._parentTransform);
         this._perObjectData.perObjectVSData.Set('Shipdata', perObjectData.perObjectVSData.Get('Shipdata'));
         this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
         batch.perObjectData = this._perObjectData;
@@ -315,7 +328,7 @@ EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  */
 EveBoosterSet.prototype.Render = function(overrideEffect)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     var effectRes = effect.GetEffectRes();
     if (!effectRes.IsGood())
     {

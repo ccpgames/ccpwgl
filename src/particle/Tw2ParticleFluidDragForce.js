@@ -8,8 +8,6 @@
 function Tw2ParticleFluidDragForce()
 {
     this.drag = 0.1;
-    this._tempVec = vec3.create();
-    this._tempVec2 = vec3.create();
 }
 
 /**
@@ -23,21 +21,25 @@ function Tw2ParticleFluidDragForce()
  */
 Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
 {
+    var v0 = Tw2ParticleFluidDragForce.scratch.vec3_0,
+        v1 = Tw2ParticleFluidDragForce.scratch.vec3_1;
+
     var speed = Math.sqrt(
         velocity.buffer[velocity.offset] * velocity.buffer[velocity.offset] +
         velocity.buffer[velocity.offset + 1] * velocity.buffer[velocity.offset + 1] +
         velocity.buffer[velocity.offset + 2] * velocity.buffer[velocity.offset + 2]);
-    this._tempVec[0] = velocity.buffer[velocity.offset] * -speed * this.drag;
-    this._tempVec[1] = velocity.buffer[velocity.offset + 1] * -speed * this.drag;
-    this._tempVec[2] = velocity.buffer[velocity.offset + 2] * -speed * this.drag;
 
-    vec3.scale(this._tempVec, dt * mass, this._tempVec2);
-    this._tempVec2[0] += velocity.buffer[velocity.offset];
-    this._tempVec2[1] += velocity.buffer[velocity.offset + 1];
-    this._tempVec2[2] += velocity.buffer[velocity.offset + 2];
-    var dot = velocity.buffer[velocity.offset] * this._tempVec2[0] +
-        velocity.buffer[velocity.offset + 1] * this._tempVec2[1] +
-        velocity.buffer[velocity.offset + 2] * this._tempVec2[2];
+    v0[0] = velocity.buffer[velocity.offset] * -speed * this.drag;
+    v0[1] = velocity.buffer[velocity.offset + 1] * -speed * this.drag;
+    v0[2] = velocity.buffer[velocity.offset + 2] * -speed * this.drag;
+
+    vec3.scale(v1, v0, dt * mass);
+    v1[0] += velocity.buffer[velocity.offset];
+    v1[1] += velocity.buffer[velocity.offset + 1];
+    v1[2] += velocity.buffer[velocity.offset + 2];
+    var dot = velocity.buffer[velocity.offset] * v1[0] +
+        velocity.buffer[velocity.offset + 1] * v1[1] +
+        velocity.buffer[velocity.offset + 2] * v1[2];
     if (dot < 0)
     {
         force[0] = -velocity.buffer[velocity.offset] / dt / mass;
@@ -46,7 +48,7 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
     }
     else
     {
-        vec3.set(this._tempVec, force);
+        vec3.copy(force, v0);
     }
 };
 
@@ -55,3 +57,11 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
  * @prototype
  */
 Tw2ParticleFluidDragForce.prototype.Update = function() {};
+
+/**
+ * Scratch variables
+ */
+Tw2ParticleFluidDragForce.scratch = {
+    vec3_0: vec3.create(),
+    vec3_1: vec3.create()
+};

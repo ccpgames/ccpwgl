@@ -5,7 +5,7 @@
  * @property {[{}]} curveSets
  * @property {[{}]} effectChildren
  * @property {vec3} scaling
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} translation
  * @property {mat4} localTransform
  * @property {mat4} rotationTransform
@@ -24,15 +24,15 @@ function EveEffectRoot()
     this.boundingSphereCenter = vec3.create();
     this.boundingSphereRadius = 0;
 
-    this.scaling = vec3.create([1, 1, 1]);
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.scaling = vec3.fromValues(1, 1, 1);
+    this.rotation = quat.create();
     this.translation = vec3.create();
 
     this.duration = 0;
 
     this.effectChildren = [];
 
-    this.localTransform = mat4.identity(mat4.create());
+    this.localTransform = mat4.create();
     this.rotationTransform = mat4.create();
 
     this._perObjectData = new Tw2PerObjectData();
@@ -87,11 +87,8 @@ EveEffectRoot.prototype.GetResources = function(out)
  */
 EveEffectRoot.prototype.Update = function(dt)
 {
-    mat4.identity(this.localTransform);
-    mat4.translate(this.localTransform, this.translation);
-    mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
-    mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
-    mat4.scale(this.localTransform, this.scaling);
+    quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
+    mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
 
     for (var i = 0; i < this.curveSets.length; ++i)
     {

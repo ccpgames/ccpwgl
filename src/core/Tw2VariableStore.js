@@ -40,7 +40,7 @@ Tw2VariableStore.prototype.RegisterType = function(name, type)
  */
 Tw2VariableStore.GetTw2ParameterType = function(value)
 {
-    if (value.constructor === (new glMatrixArrayType()).constructor || value.constructor === [].constructor)
+    if (value.constructor === (new glMatrix.ARRAY_TYPE()).constructor || value.constructor === [].constructor)
     {
         switch (value.length)
         {
@@ -55,16 +55,16 @@ Tw2VariableStore.GetTw2ParameterType = function(value)
 
             case 2:
                 return Tw2Vector2Parameter;
-                
+
             case 1:
                 return Tw2FloatParameter;
         }
     }
-    else if (typeof(value) == 'number')
+    else if (typeof(value) === 'number')
     {
         return Tw2FloatParameter;
     }
-    else if (typeof(value) == 'string')
+    else if (typeof(value) === 'string')
     {
         return Tw2TextureParameter;
     }

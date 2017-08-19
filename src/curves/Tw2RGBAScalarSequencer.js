@@ -1,15 +1,15 @@
 /**
  * Tw2RGBAScalarSequencer
- * @property {quat4} value
- * @property {null|Tw2Curve} RedCurve
- * @property {null|Tw2Curve} GreenCurve
- * @property {null|Tw2Curve} BlueCurve
- * @property {null|Tw2Curve} AlphaCurve
+ * @property {vec4} value
+ * @property {*} RedCurve
+ * @property {*} GreenCurve
+ * @property {*} BlueCurve
+ * @property {*} AlphaCurve
  * @constructor
  */
 function Tw2RGBAScalarSequencer()
 {
-    this.value = quat4.create();
+    this.value = vec4.create();
     this.RedCurve = null;
     this.GreenCurve = null;
     this.BlueCurve = null;
@@ -56,15 +56,15 @@ Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {vec4} value
+ * @returns {vec4}
  * @prototype
  */
 Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
 {
     if (this.RedCurve)
     {
-        value[0] = this.RedCurve.GetValueAt(time)
+        value[0] = this.RedCurve.GetValueAt(time);
     }
     else
     {
@@ -72,7 +72,7 @@ Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
     }
     if (this.GreenCurve)
     {
-        value[1] = this.GreenCurve.GetValueAt(time)
+        value[1] = this.GreenCurve.GetValueAt(time);
     }
     else
     {
@@ -80,7 +80,7 @@ Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
     }
     if (this.BlueCurve)
     {
-        value[2] = this.BlueCurve.GetValueAt(time)
+        value[2] = this.BlueCurve.GetValueAt(time);
     }
     else
     {
@@ -88,7 +88,7 @@ Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
     }
     if (this.AlphaCurve)
     {
-        value[3] = this.AlphaCurve.GetValueAt(time)
+        value[3] = this.AlphaCurve.GetValueAt(time);
     }
     else
     {
