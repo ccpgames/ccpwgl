@@ -1,4 +1,4 @@
-/* ccpwgl 2017-08-20 */
+/* ccpwgl 2017-08-21 */
 
 var ccpwgl_int = (function()
 {
@@ -6331,6 +6331,20 @@ var ccpwgl_int = (function()
             this.isCube = true;
             this.images[0] = new Image();
             this.images[0].crossOrigin = 'anonymous';
+            this.images[0].onerror = function()
+            {
+                resMan._pendingLoads--;
+                self.LoadFinished(false);
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
+                delete self.images;
+            };
             this.images[0].onload = function()
             {
                 resMan._pendingLoads--;
@@ -6354,6 +6368,20 @@ var ccpwgl_int = (function()
             this.isCube = false;
             this.images[0] = new Image();
             this.images[0].crossOrigin = 'anonymous';
+            this.images[0].onerror = function()
+            {
+                resMan._pendingLoads--;
+                self.LoadFinished(false);
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
+                delete self.images;
+            };
             this.images[0].onload = function()
             {
                 resMan._pendingLoads--;
