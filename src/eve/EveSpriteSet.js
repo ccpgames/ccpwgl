@@ -377,7 +377,7 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
     var pos = EveSpriteSet.scratch.vec3_0;
     for (var i = 0; i < this.sprites.length; ++i)
     {
-        vec3.transformMat4(pos, world, this.sprites[i].position);
+        vec3.transformMat4(pos, this.sprites[i].position, world);
         array[index++] = pos[0];
         array[index++] = pos[1];
         array[index++] = pos[2];
@@ -452,7 +452,7 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectDa
         }
         else
         {
-            vec3.transformMat4(pos, world, sprite.position);
+            vec3.transformMat4(pos, sprite.position, world);
         }
         array[index++] = pos[0];
         array[index++] = pos[1];

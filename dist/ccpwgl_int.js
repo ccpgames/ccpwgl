@@ -1,4 +1,4 @@
-/* ccpwgl 2017-08-21 */
+/* ccpwgl 2017-08-22 */
 
 var ccpwgl_int = (function()
 {
@@ -15333,7 +15333,7 @@ var ccpwgl_int = (function()
         var pos = EveSpriteSet.scratch.vec3_0;
         for (var i = 0; i < this.sprites.length; ++i)
         {
-            vec3.transformMat4(pos, world, this.sprites[i].position);
+            vec3.transformMat4(pos, this.sprites[i].position, world);
             array[index++] = pos[0];
             array[index++] = pos[1];
             array[index++] = pos[2];
@@ -15408,7 +15408,7 @@ var ccpwgl_int = (function()
             }
             else
             {
-                vec3.transformMat4(pos, world, sprite.position);
+                vec3.transformMat4(pos, sprite.position, world);
             }
             array[index++] = pos[0];
             array[index++] = pos[1];
@@ -22032,7 +22032,7 @@ var ccpwgl_int = (function()
                     for (j = 0; j < this.lines[i].numOfSegments; ++j)
                     {
                         segmentFactor = (j + 1) / item.numOfSegments;
-                        vec3.transformMat4(dir2, rotationMatrix, dir1);
+                        vec3.transformMat4(dir2, dir1, rotationMatrix);
                         col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
                         col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
                         col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;

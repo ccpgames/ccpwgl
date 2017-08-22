@@ -619,7 +619,7 @@ EveCurveLineSet.prototype.SubmitChanges = function()
                 for (j = 0; j < this.lines[i].numOfSegments; ++j)
                 {
                     segmentFactor = (j + 1) / item.numOfSegments;
-                    vec3.transformMat4(dir2, rotationMatrix, dir1);
+                    vec3.transformMat4(dir2, dir1, rotationMatrix);
                     col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
                     col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
                     col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
