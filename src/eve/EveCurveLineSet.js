@@ -584,8 +584,6 @@ EveCurveLineSet.prototype.SubmitChanges = function()
         col2 = scratch.vec4_1,
         rotationMatrix = scratch.mat4_0;
 
-    var pt1 = vec3.create();
-    var pt2 = vec3.create();
     var j, tmp, segmentFactor;
 
     for (var i = 0; i < this.lines.length; ++i)
@@ -626,7 +624,7 @@ EveCurveLineSet.prototype.SubmitChanges = function()
                     col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
                     vec3.add(pos1, dir1, item.intermediatePosition);
                     vec3.add(pos2, dir2, item.intermediatePosition);
-                    this._writeLineVerticesToBuffer(this, pt1, col1, j / this.lines[i].numOfSegments, pt2, col2, segmentFactor, i, data, offset);
+                    this._writeLineVerticesToBuffer(this, pos1, col1, j / this.lines[i].numOfSegments, pos2, col2, segmentFactor, i, data, offset);
                     offset += 6 * this._vertexSize;
 
                     tmp = dir1;
