@@ -142,6 +142,22 @@ var ccpwgl = (function(ccpwgl_int)
     var sof = new ccpwgl_int.EveSOF();
 
     /**
+     * Creates a perspective matrix
+     *
+     * @param out
+     * @param fovY
+     * @param aspect
+     * @param near
+     * @param far
+     */
+    ccpwgl.perspective = function(out, fovY, aspect, near, far)
+    {
+        var fH = Math.tan(fovY / 360 * Math.PI) * near;
+        var fW = fH * aspect;
+        return mat4.frustum(out, -fW, fW, -fH, fH, near, far);
+    };
+
+    /**
      * Internal render/update function. Is called every frame.
      * @param {number} dt Frame time.
      **/
@@ -219,12 +235,12 @@ var ccpwgl = (function(ccpwgl_int)
         return true;
     }
 
-
     /**
      * Initializes WebGL library. This function needs to be called before most of other
      * function from this module. The function accepts a canvas object that is to be used
      * outputting WebGL graphics and optional parameters that are passed as a map (object).
      * The parameters can be:
+     * - webgl2: {boolean} enables webgl2 context creation
      * - textureQuality: one of ccpwgl.TextureQuality members, texture quality (size of loaded
      *   textures) with HIGH being the original size, MEDIUM - half the original size, LOW - a quater.
      *   Setting a lower texture quality results in smaller download sizes and possibly better
@@ -243,6 +259,7 @@ var ccpwgl = (function(ccpwgl_int)
      *
      * @param {HTMLCanvasElement} canvas HTML Canvas object that is used for WebGL output.
      * @param {Object} params Optional parameters.
+     * @returns {number} webgl version (0: none, 1: webgl, 2: webgl2)
      * @throws {NoWebGLError} If WebGL context is not available (IE or older browsers for example).
      */
     ccpwgl.initialize = function(canvas, params)
@@ -259,18 +276,28 @@ var ccpwgl = (function(ccpwgl_int)
         d.mipLevelSkipCount = getOption(params, 'textureQuality', 0);
         d.shaderModel = getOption(params, 'shaderQuality', 'hi');
         d.enableAnisotropicFiltering = getOption(params, 'anisotropicFilter', true);
-        var glParams = getOption(params, 'glParams', undefined);
-        if (!d.CreateDevice(canvas, glParams))
-        {
-            throw new ccpwgl.NoWebGLError();
-        }
-        d.Schedule(render);
 
+        var glParams = getOption(params, 'glParams',
+        {});
+        glParams.webgl2 = !params || params.webgl2 === undefined ? false : params.webgl2;
+
+        var webglVersion = d.CreateDevice(canvas, glParams);
+
+        if (!webglVersion) throw new ccpwgl.NoWebGLError();
+
+        d.Schedule(render);
         postprocessingEnabled = getOption(params, 'postprocessing', false);
-        if (postprocessingEnabled)
+        if (postprocessingEnabled) postprocess = new ccpwgl_int.Tw2PostProcess();
+
+        function tick()
         {
-            postprocess = new ccpwgl_int.Tw2PostProcess();
+            d.RequestAnimationFrame(tick);
+            d.Tick();
         }
+
+        d.RequestAnimationFrame(tick);
+
+        return webglVersion;
     };
 
     /**
@@ -421,7 +448,7 @@ var ccpwgl = (function(ccpwgl_int)
         /** Wrapped ccpwgl_int object **/
         this.wrappedObjects = [null];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
         /** SOF DNA for objects constructed from SOF **/
@@ -502,16 +529,16 @@ var ccpwgl = (function(ccpwgl_int)
             this.transform.set(newTransform);
             if (this.wrappedObjects[0])
             {
-                if ('transform' in this.wrappedObjects[0])
+                var tr = this.wrappedObjects[0];
+                if ('transform' in tr)
                 {
-                    this.wrappedObjects[0].transform.set(this.transform);
+                    mat4.copy(tr.transform, this.transform);
                 }
-                else if ('translation' in this.wrappedObjects[0])
+                else if ('translation' in tr)
                 {
-                    this.wrappedObjects[0].translation.set(this.transform.subarray(12, 15));
-                    this.wrappedObjects[0].scaling[0] = vec3.length(this.transform);
-                    this.wrappedObjects[0].scaling[1] = vec3.length(this.transform.subarray(4, 7));
-                    this.wrappedObjects[0].scaling[2] = vec3.length(this.transform.subarray(8, 11));
+                    mat4.getTranslation(tr.translation, this.transform);
+                    mat4.getScaling(tr.scaling, this.transform);
+                    //mat4.getRotation(tr.rotation, this.transform);
                 }
             }
         };
@@ -598,7 +625,7 @@ var ccpwgl = (function(ccpwgl_int)
         /** Wrapped ccpwgl_int ship object @type {ccpwgl_int.EveShip} **/
         this.wrappedObjects = [null];
         /** Local to world space transform matrix @type {mat4} **/
-        this.transform = mat4.identity(mat4.create());
+        this.transform = mat4.create();
         /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
         this.boosters = [null];
         /** Current siege state @type {ccpwgl.ShipSiegeState} **/
@@ -805,10 +832,10 @@ var ccpwgl = (function(ccpwgl_int)
             for (i = 0; i < systems.length; ++i)
             {
                 var index = systems[i][0];
-                self.partTransforms[index] = mat4.identity(mat4.create());
-                mat4.translate(self.partTransforms[index], offset);
-                vec3.add(offset, systems[i][1]);
-                mat4.multiply(self.transform, self.partTransforms[index], self.wrappedObjects[index].transform);
+                self.partTransforms[index] = mat4.create();
+                mat4.translate(self.partTransforms[index], self.partTransforms[index], offset);
+                vec3.add(offset, offset, systems[i][1]);
+                mat4.multiply(self.wrappedObjects[index].transform, self.transform, self.partTransforms[index]);
             }
         }
 
@@ -860,7 +887,7 @@ var ccpwgl = (function(ccpwgl_int)
                 {
                     if (this.wrappedObjects[i])
                     {
-                        this.wrappedObjects[i].transform.set(this.transform);
+                        mat4.copy(this.wrappedObjects[0].transform, this.transform);
                     }
                 }
             }
@@ -868,7 +895,7 @@ var ccpwgl = (function(ccpwgl_int)
             {
                 for (i = 0; i < this.wrappedObjects.length; ++i)
                 {
-                    mat4.multiply(self.transform, self.partTransforms[i], self.wrappedObjects[i].transform);
+                    mat4.multiply(self.wrappedObjects[i].transform, self.transform, self.partTransforms[i]);
                 }
             }
         };
@@ -1096,7 +1123,7 @@ var ccpwgl = (function(ccpwgl_int)
             {
                 throw new ReferenceError('turret at index ' + index + ' is not defined');
             }
-            vec3.set(target, this.turrets[index].target);
+            vec3.copy(this.turrets[index].target, target);
             var name = 'locator_turret_' + index;
             for (var j = 0; j < this.wrappedObjects.length; ++j)
             {
@@ -1104,9 +1131,9 @@ var ccpwgl = (function(ccpwgl_int)
                 {
                     for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
                     {
-                        if (this.wrappedObjects[j].turretSets[i].locatorName == name)
+                        if (this.wrappedObjects[j].turretSets[i].locatorName === name)
                         {
-                            vec3.set(target, this.wrappedObjects[j].turretSets[i].targetPosition);
+                            vec3.copy(this.wrappedObjects[j].turretSets[i].targetPosition, target);
                             break;
                         }
                     }
@@ -1127,7 +1154,7 @@ var ccpwgl = (function(ccpwgl_int)
         {
             for (var j = 0; j < object.locators.length; ++j)
             {
-                if (object.locators[j].name.substr(0, name.length) == name)
+                if (object.locators[j].name.substr(0, name.length) === name)
                 {
                     return true;
                 }
@@ -1418,11 +1445,12 @@ var ccpwgl = (function(ccpwgl_int)
          * coordinate space.
          *
          * @returns {[vec3, float]} Array with first element being sphere position in local
-         * coordinate space [0, 0, 0] and second - sphere radius (==1).
+         * coordinate space and the second it's radius
          */
         this.getBoundingSphere = function()
         {
-            return [vec3.create([0, 0, 0]), 1];
+            var tr = this.wrappedObjects[0].highDetail;
+            return [vec3.clone(tr.translation), Math.max(tr.scaling[0], tr.scaling[1], tr.scaling[2])];
         };
 
         /**
@@ -1433,23 +1461,21 @@ var ccpwgl = (function(ccpwgl_int)
         this.setTransform = function(newTransform)
         {
             var tr = this.wrappedObjects[0].highDetail;
-            tr.translation[0] = newTransform[12];
-            tr.translation[1] = newTransform[13];
-            tr.translation[2] = newTransform[14];
-            tr.scaling[0] = vec3.length(newTransform);
-            tr.scaling[1] = vec3.length(newTransform.subarray(4));
-            tr.scaling[2] = vec3.length(newTransform.subarray(8));
-            this.wrappedObjects[0].highDetail.localTransform.set(newTransform);
+            mat4.getTranslation(tr.translation, newTransform);
+            mat4.getScaling(tr.scaling, newTransform);
+            mat4.copy(tr.localTransform, newTransform);
         };
 
         /**
          * Returns transform matrix from local coordinate space to world.
          *
+         * @param {mat4} out
          * @returns {mat4} Transform matrix.
          */
-        this.getTransform = function()
+        this.getTransform = function(out)
         {
-            return this.wrappedObjects[0].highDetail.localTransform;
+            out = out || mat4.create();
+            return mat4.clone(this.wrappedObjects[0].highDetail.localTransform);
         };
     }
 
@@ -1741,11 +1767,11 @@ var ccpwgl = (function(ccpwgl_int)
                     }
                     if (self.sunDirection)
                     {
-                        vec3.negate(self.sunDirection, obj.position);
+                        vec3.negate(obj.position, self.sunDirection);
                     }
                     else if (self.wrappedScene)
                     {
-                        vec3.negate(self.wrappedScene.sunDirection, obj.position);
+                        vec3.negate(obj.position, self.wrappedScene.sunDirection);
                     }
                     if (onload)
                     {
@@ -1787,7 +1813,7 @@ var ccpwgl = (function(ccpwgl_int)
             }
             if (this.sun)
             {
-                vec3.negate(direction, this.sun.position);
+                vec3.negate(this.sun.position, direction);
             }
         };
 

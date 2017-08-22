@@ -1,7 +1,7 @@
 /**
  * Tw2Torque
  * @property {number} time
- * @property {quat4} rot0=[0,0,0,1]
+ * @property {quat} rot0
  * @property {vec3} omega0
  * @property {vec3} torque
  * @constructor
@@ -9,7 +9,7 @@
 function Tw2Torque()
 {
     this.time = 0;
-    this.rot0 = quat4.create([0, 0, 0, 1]);
+    this.rot0 = quat.create();
     this.omega0 = vec3.create();
     this.torque = vec3.create();
 }
@@ -20,11 +20,9 @@ function Tw2Torque()
  * @property {string} name
  * @property {number} I
  * @property {number} drag
- * @property {quat4} value=[0,0,0,1]
+ * @property {quat} value
  * @property {number} start
  * @property {Array} states
- * @property {vec3} _tau
- * @property {quat4} _tauConverter
  * @constructor
  */
 function Tw2RigidOrientation()
@@ -32,11 +30,9 @@ function Tw2RigidOrientation()
     this.name = '';
     this.I = 1;
     this.drag = 1;
-    this.value = quat4.create([0, 0, 0, 1]);
+    this.value = quat.create();
     this.start = 0;
     this.states = [];
-    this._tau = vec3.create();
-    this._tauConverter = quat4.create();
 }
 
 /**
@@ -59,7 +55,7 @@ Tw2RigidOrientation.prototype.UpdateValue = function(time)
  * @returns {number}
  * @prototype
  */
-Tw2RigidOrientation.prototype.ExponentialDecay = function(v, a, m, k, t)
+Tw2RigidOrientation.ExponentialDecay = function(v, a, m, k, t)
 {
     return a * t / k + m * (v * k - a) / (k * k) * (1.0 - Math.pow(Math.E, -k * t / m));
 };
@@ -67,15 +63,18 @@ Tw2RigidOrientation.prototype.ExponentialDecay = function(v, a, m, k, t)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {quat} value
+ * @returns {quat}
  * @prototype
  */
 Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
 {
-    if (this.states.length == 0 || time < 0 || time < this.states[0].time)
+    var tau = Tw2RigidOrientation.scratch.vec3_0,
+        tauConverter = Tw2RigidOrientation.scratch.quat_0;
+
+    if (this.states.length === 0 || time < 0 || time < this.states[0].time)
     {
-        quat4.set(this.value, value);
+        quat.copy(value, this.value);
         return value;
     }
     var key = 0;
@@ -95,32 +94,42 @@ Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
     }
     time -= this.states[key].time;
 
-    this._tau[0] = this.ExponentialDecay(this.states[key].omega0[0], this.states[key].torque[0], this.I, this.drag, time);
-    this._tau[1] = this.ExponentialDecay(this.states[key].omega0[1], this.states[key].torque[1], this.I, this.drag, time);
-    this._tau[2] = this.ExponentialDecay(this.states[key].omega0[2], this.states[key].torque[2], this.I, this.drag, time);
+    tau[0] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[0], this.states[key].torque[0], this.I, this.drag, time);
+    tau[1] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[1], this.states[key].torque[1], this.I, this.drag, time);
+    tau[2] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[2], this.states[key].torque[2], this.I, this.drag, time);
 
-    vec3.set(this._tau, this._tauConverter);
-    this._tauConverter[3] = 0;
+    tauConverter[0] = tau[0];
+    tauConverter[1] = tau[1];
+    tauConverter[2] = tau[2];
+    tauConverter[3] = 0;
 
     var norm = Math.sqrt(
-        this._tauConverter[0] * this._tauConverter[0] +
-        this._tauConverter[1] * this._tauConverter[1] +
-        this._tauConverter[2] * this._tauConverter[2] +
-        this._tauConverter[3] * this._tauConverter[3]);
+        tauConverter[0] * tauConverter[0] +
+        tauConverter[1] * tauConverter[1] +
+        tauConverter[2] * tauConverter[2] +
+        tauConverter[3] * tauConverter[3]);
     if (norm)
     {
-        this._tauConverter[0] = Math.sin(norm) * this._tauConverter[0] / norm;
-        this._tauConverter[1] = Math.sin(norm) * this._tauConverter[1] / norm;
-        this._tauConverter[2] = Math.sin(norm) * this._tauConverter[2] / norm;
-        this._tauConverter[3] = Math.cos(norm);
+        tauConverter[0] = Math.sin(norm) * tauConverter[0] / norm;
+        tauConverter[1] = Math.sin(norm) * tauConverter[1] / norm;
+        tauConverter[2] = Math.sin(norm) * tauConverter[2] / norm;
+        tauConverter[3] = Math.cos(norm);
     }
     else
     {
-        this._tauConverter[0] = 0.0;
-        this._tauConverter[1] = 0.0;
-        this._tauConverter[2] = 0.0;
-        this._tauConverter[3] = 1.0;
+        tauConverter[0] = 0.0;
+        tauConverter[1] = 0.0;
+        tauConverter[2] = 0.0;
+        tauConverter[3] = 1.0;
     }
-    quat4.multiply(this.states[key].rot0, this._tauConverter, value);
+    quat.multiply(value, this.states[key].rot0, tauConverter);
     return value;
+};
+
+/**
+ * Scratch variables
+ */
+Tw2RigidOrientation.scratch = {
+    vec3_0: vec3.create(),
+    quat_0: quat.create()
 };

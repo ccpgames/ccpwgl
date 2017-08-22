@@ -1,31 +1,17 @@
 /**
  * Tw2Vector4Parameter
  * @param {string} [name='']
- * @param {quat4|Float32Array} [value=[1,1,1,1]]
+ * @param {vec4|Float32Array} [value=[1,1,1,1]]
  * @property {string} name
- * @property {quat4|Float32Array} value
+ * @property {vec4|Float32Array} value
  * @property {Array} constantBuffer
  * @property {number} offset
  * @constructor
  */
 function Tw2Vector4Parameter(name, value)
 {
-    if (typeof(name) != 'undefined')
-    {
-        this.name = name;
-    }
-    else
-    {
-        this.name = '';
-    }
-    if (typeof(value) != 'undefined')
-    {
-        this.value = quat4.create(value);
-    }
-    else
-    {
-        this.value = quat4.create([1, 1, 1, 1]);
-    }
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? vec4.clone(value) : vec4.fromValues(1, 1, 1);
     this.constantBuffer = null;
     this.offset = 0;
 }
@@ -41,7 +27,7 @@ function Tw2Vector4Parameter(name, value)
  */
 Tw2Vector4Parameter.prototype.Bind = function(constantBuffer, offset, size)
 {
-    if (this.constantBuffer != null || size < 4)
+    if (this.constantBuffer !== null || size < 4)
     {
         return false;
     }
@@ -62,13 +48,13 @@ Tw2Vector4Parameter.prototype.Unbind = function()
 
 /**
  * Sets a supplied value
- * @param {quat4|Float32Array|Array} value - Vector4 Array
+ * @param {vec4|Float32Array|Array} value - Vector4 Array
  * @prototype
  */
 Tw2Vector4Parameter.prototype.SetValue = function(value)
 {
-    this.value.set(value);
-    if (this.constantBuffer != null)
+    vec4.copy(this.value, value);
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -80,7 +66,7 @@ Tw2Vector4Parameter.prototype.SetValue = function(value)
  */
 Tw2Vector4Parameter.prototype.OnValueChanged = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer.set(this.value, this.offset);
     }
@@ -101,17 +87,17 @@ Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
 
 /**
  * Gets the current value array
- * @return {quat4|Float32Array} Vector4 Array
+ * @return {vec4|Float32Array} Vector4 Array
  * @prototype
  */
 Tw2Vector4Parameter.prototype.GetValue = function()
 {
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
-        return quat4.create(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+        return vec4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
     }
 
-    return quat4.create(this.value);
+    return vec4.clone(this.value);
 };
 
 /**
@@ -128,7 +114,7 @@ Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
         throw "Invalid Index";
     }
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         return this.constantBuffer[this.offset + index];
     }
@@ -152,7 +138,7 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
 
     this.value[index] = value;
 
-    if (this.constantBuffer != null)
+    if (this.constantBuffer !== null)
     {
         this.constantBuffer[this.offset + index] = value;
     }

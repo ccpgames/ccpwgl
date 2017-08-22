@@ -19,8 +19,8 @@
  * @property {Array} bindings
  * @property {Array.<Tw2CurveSet> curveSets
  * @property {null|Tw2Mesh} mesh
- * @property {quat4} _directionVar
- * @property {quat4} _occlusionVar
+ * @property {quat} _directionVar
+ * @property {quat} _occlusionVar
  * @property {vec3} _direction
  * @property {mat4} _transform
  * @constructor
@@ -49,8 +49,8 @@ function EveLensflare()
 
     this.mesh = null;
 
-    this._directionVar = variableStore.RegisterVariable("LensflareFxDirectionScale", quat4.create());
-    this._occlusionVar = variableStore.RegisterVariable("LensflareFxOccScale", quat4.create([1, 1, 0, 0]));
+    this._directionVar = variableStore.RegisterVariable('LensflareFxDirectionScale', vec4.create());
+    this._occlusionVar = variableStore.RegisterVariable('LensflareFxOccScale', vec4.fromValues(1, 1, 0, 0));
     this._direction = vec3.create();
     this._transform = mat4.create();
 
@@ -76,17 +76,17 @@ EveLensflare.prototype.GetResources = function(out)
     {
         out = [];
     }
-    
+
     if (this.mesh !== null)
     {
         this.mesh.GetResources(out);
     }
-    
+
     for (var f = 0; f < this.flares.length; f++)
     {
         this.flares[f].GetResources(out);
     }
- 
+
     for (var o = 0; o < this.occluders.length; o++)
     {
         this.occluders[o].GetResources(out);
@@ -96,7 +96,7 @@ EveLensflare.prototype.GetResources = function(out)
     {
         this.backgroundOccluders[b].GetResources(out);
     }
- 
+
     return out;
 };
 
@@ -107,7 +107,7 @@ EveLensflare.prototype.GetResources = function(out)
  */
 EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
-    var norm = vec3.normalize(v, norm);
+    var norm = vec3.normalize(vec3.create(), v);
     mat4.identity(out);
     if (norm[2] < -0.99999)
     {
@@ -134,6 +134,19 @@ EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 };
 
 /**
+ * Scratch variables
+ */
+EveLensflare.scratch = {
+    vec3_0: vec3.create(),
+    vec3_1: vec3.create(),
+    vec3_2: vec3.create(),
+    vec3_3: vec3.create(),
+    vec4_0: vec4.create(),
+    vec4_1: mat4.create(),
+    mat4_0: mat4.create()
+};
+
+/**
  * Prepares the lensflare for rendering
  */
 EveLensflare.prototype.PrepareRender = function()
@@ -143,53 +156,56 @@ EveLensflare.prototype.PrepareRender = function()
         return;
     }
 
-    var cameraPos = mat4.multiplyVec3(device.viewInv, vec3.create());
-    if (vec3.length(this.position) == 0)
+    var scratch = EveLensflare.scratch;
+    var cameraPos = vec3.set(scratch.vec3_0, 0, 0, 0),
+        negPos = scratch.vec3_1,
+        cameraSpacePos = scratch.vec3_2,
+        negDirVec = scratch.vec3_3,
+        viewDir = vec4.set(scratch.vec4_0, 0, 0, 1, 0),
+        d = scratch.vec4_1,
+        scaleMat = mat4.identity(scratch.mat4_0);
+
+    vec3.transformMat4(cameraPos, cameraPos, device.viewInverse);
+
+    if (vec3.length(this.position) === 0)
     {
-        var curPos = vec3.negate(cameraPos, vec3.create());
-        var distScale = vec3.length(curPos);
-        if (distScale > 1.5)
-        {
-            distScale = 1 / Math.log(distScale);
-        }
-        else
-        {
-            distScale = 2.5;
-        }
-        vec3.normalize(curPos, this._direction);
+        vec3.negate(negPos, cameraPos);
+        var distScale = vec3.length(negPos);
+        distScale = distScale > 1.5 ? 1 / Math.log(distScale) : 2.5;
     }
     else
     {
-        var invPos = vec3.negate(this.position, vec3.create());
-        vec3.normalize(invPos, this._direction);
+        vec3.negate(negPos, this.position);
+        vec3.normalize(this._direction, negPos);
     }
-    var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
-    var cameraSpacePos = vec3.create();
+
+    vec4.transformMat4(viewDir, viewDir, device.viewInverse);
     cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
     cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
     cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
 
-    var negDirVec = vec3.negate(this._direction, vec3.create());
-    this.MatrixArcFromForward(this._transform, negDirVec);
+    vec3.negate(negDirVec, this._direction);
+    EveLensflare.prototype.MatrixArcFromForward(this._transform, negDirVec);
     this._transform[12] = cameraSpacePos[0];
     this._transform[13] = cameraSpacePos[1];
     this._transform[14] = cameraSpacePos[2];
 
-    var scaleMat = mat4.scale(mat4.identity(mat4.create()), [this.occlusionIntensity, this.occlusionIntensity, 1]);
-    //mat4.multiply(this._transform, scaleMat);
+    mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
+    //mat4.multiply(scaleMat, scaleMat, this._transform);
     this._directionVar.value[0] = this._direction[0];
     this._directionVar.value[1] = this._direction[1];
     this._directionVar.value[2] = this._direction[2];
     this._directionVar.value[3] = 1;
 
-    var d = quat4.create([this._direction[0], this._direction[1], this._direction[2], 0]);
-    mat4.multiplyVec4(device.view, d);
-    mat4.multiplyVec4(device.projection, d);
+    vec4.set(d, this._direction[0], this._direction[1], this._direction[2], 0);
+    vec4.transformMat4(d, d, device.view);
+    vec4.transformMat4(d, d, device.projection);
     d[0] /= d[3];
     d[1] /= d[3];
-    var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1]));
-    var distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]);
-    var radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
+
+    var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1])),
+        distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]),
+        radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
 
     for (var i = 0; i < this.distanceToEdgeCurves.length; ++i)
     {
@@ -259,7 +275,7 @@ EveLensflare.prototype.UpdateOccluders = function()
     if (device.antialiasing)
     {
         samples = device.msaaSamples;
-        device.gl.sampleCoverage(1. / samples, false);
+        device.gl.sampleCoverage(1.0 / samples, false);
     }
     for (var i = 0; i < this.occluders.length; ++i)
     {
@@ -286,7 +302,7 @@ EveLensflare.prototype.UpdateOccluders = function()
             EveLensflare.backBuffer.Attach(device.gl.createTexture());
         }
         device.gl.bindTexture(device.gl.TEXTURE_2D, EveLensflare.backBuffer.texture);
-        if (EveLensflare.backBuffer.width != device.viewportWidth || EveLensflare.backBuffer.height != device.viewportHeight)
+        if (EveLensflare.backBuffer.width !== device.viewportWidth || EveLensflare.backBuffer.height !== device.viewportHeight)
         {
             device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, device.viewportWidth, device.viewportHeight, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
             device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.LINEAR);
@@ -336,7 +352,9 @@ EveLensflare.prototype.GetBatches = function(mode, accumulator, perObjectData)
     {
         return;
     }
-    var viewDir = mat4.multiplyVec4(device.viewInv, quat4.create([0, 0, 1, 0]));
+
+    var viewDir = vec4.set(EveLensflare.scratch.vec4_0, 0, 0, 1, 0);
+    vec4.transformMat4(viewDir, viewDir, device.viewInverse);
     if (vec3.dot(viewDir, this._direction) < 0)
     {
         return;

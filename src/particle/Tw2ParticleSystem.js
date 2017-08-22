@@ -222,7 +222,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
 
     this.aliveCount = 0;
 
-    if (this.elements.length == 0)
+    if (this.elements.length === 0)
     {
         return;
     }
@@ -241,13 +241,13 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
         //el.buffer = this.buffers[bufferIndex];
         el.startOffset = this.vertexStride[bufferIndex];
         el.offset = el.startOffset;
-        if (this.elements[i].elementType != Tw2ParticleElementDeclaration.CUSTOM)
+        if (this.elements[i].elementType !== Tw2ParticleElementDeclaration.CUSTOM)
         {
             this._stdElements[this.elements[i].elementType] = el;
         }
         this.vertexStride[bufferIndex] += el.dimension;
         this._elements.push(el);
-        if (bufferIndex == 0)
+        if (bufferIndex === 0)
         {
             var d = this.elements[i].GetDeclaration();
             d.offset = el.startOffset * 4;
@@ -306,7 +306,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
  */
 Tw2ParticleSystem.prototype.HasElement = function(type)
 {
-    return this._stdElements[type] != null;
+    return this._stdElements[type] !== null;
 };
 
 /**
@@ -401,7 +401,9 @@ Tw2ParticleSystem.prototype.Update = function(dt)
         }
         lifetime.dirty = true;
     }
-    var tmpVec3 = vec3.create();
+
+    var v0 = Tw2ParticleSystem.scratch.vec3_0;
+
     if (this.updateSimulation && this.HasElement(Tw2ParticleElementDeclaration.POSITION) && this.HasElement(Tw2ParticleElementDeclaration.VELOCITY))
     {
         var hasForces = this.applyForce && this.forces.length;
@@ -421,7 +423,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
                 {
                     amass = mass.buffer[mass.offset];
                 }
-                var force = tmpVec3;
+                var force = v0;
                 force[0] = force[1] = force[2] = 0;
                 for (j = 0; j < this.forces.length; ++j)
                 {
@@ -429,7 +431,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
                 }
                 if (mass)
                 {
-                    vec3.scale(force, 1. / mass.buffer[mass.offset]);
+                    vec3.scale(force, force, 1 / mass.buffer[mass.offset]);
                 }
                 velocity.buffer[velocity.offset] += force[0] * dt;
                 velocity.buffer[velocity.offset + 1] += force[1] * dt;
@@ -538,7 +540,7 @@ Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
  */
 Tw2ParticleSystem.prototype._Sort = function()
 {
-    var eye = device.viewInv;
+    var eye = mat4.multiply(mat4.create(), device.projection, device.view); //device.viewInverse;
     var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
     var count = this.aliveCount;
     var distances = this._distancesBuffer;
@@ -598,7 +600,7 @@ Tw2ParticleSystem.prototype._Sort = function()
  */
 Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
 {
-    if (this.aliveCount == 0)
+    if (this.aliveCount === 0)
     {
         return undefined;
     }
@@ -660,4 +662,11 @@ Tw2ParticleSystem.prototype.GetInstanceStride = function()
 Tw2ParticleSystem.prototype.GetInstanceCount = function()
 {
     return this.aliveCount;
+};
+
+/**
+ * Scratch variables
+ */
+Tw2ParticleSystem.scratch = {
+    vec3_0: vec3.create()
 };

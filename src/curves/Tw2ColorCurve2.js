@@ -1,18 +1,18 @@
 /**
  * Tw2ColorKey2
  * @property {number} time
- * @property {quat4} value
- * @property {quat4} leftTangent
- * @property {quat4} rightTangent
+ * @property {vec4} value
+ * @property {vec4} leftTangent
+ * @property {vec4} rightTangent
  * @property {number} interpolation
  * @constructor
  */
 function Tw2ColorKey2()
 {
     this.time = 0;
-    this.value = quat4.create();
-    this.leftTangent = quat4.create();
-    this.rightTangent = quat4.create();
+    this.value = vec4.create();
+    this.leftTangent = vec4.create();
+    this.rightTangent = vec4.create();
     this.interpolation = 1;
 }
 
@@ -25,11 +25,11 @@ function Tw2ColorKey2()
  * @property {boolean} reversed
  * @property {number} timeOffset
  * @property {number} timeScale
- * @property {quat4} startValue=[0,0,0,1]
- * @property {quat4} currentValue=[0,0,0,1]
- * @property {quat4} endValue=[0,0,0,1]
- * @property {quat4} startTangent
- * @property {quat4} endTangent
+ * @property {vec4} startValue=[0,0,0,1]
+ * @property {vec4} currentValue=[0,0,0,1]
+ * @property {vec4} endValue=[0,0,0,1]
+ * @property {vec4} startTangent
+ * @property {vec4} endTangent
  * @property {number} interpolation
  * @property {Array.<Tw2ColorKey2>} keys
  * @constructor
@@ -42,11 +42,11 @@ function Tw2ColorCurve2()
     this.reversed = false;
     this.timeOffset = 0;
     this.timeScale = 1;
-    this.startValue = quat4.create([0, 0, 0, 1]);
-    this.currentValue = quat4.create([0, 0, 0, 1]);
-    this.endValue = quat4.create([0, 0, 0, 1]);
-    this.startTangent = quat4.create();
-    this.endTangent = quat4.create();
+    this.startValue = vec4.fromValues(0, 0, 0, 1);
+    this.currentValue = vec4.fromValues(0, 0, 0, 1);
+    this.endValue = vec4.fromValues(0, 0, 0, 1);
+    this.startTangent = vec4.create();
+    this.endTangent = vec4.create();
     this.interpolation = 1;
     this.keys = [];
 }
@@ -136,8 +136,8 @@ Tw2ColorCurve2.prototype.UpdateValue = function(time)
 /**
  * Gets a value at a specific time
  * @param {number} time
- * @param {quat4} value
- * @returns {quat4}
+ * @param {vec4} value
+ * @returns {vec4}
  * @prototype
  */
 Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
@@ -178,7 +178,7 @@ Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
     {
         time = this.length - time;
     }
-    if (this.keys.length == 0)
+    if (this.keys.length === 0)
     {
         return this.Interpolate(time, null, null, value);
     }
@@ -209,7 +209,7 @@ Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
  * @param {number} time
  * @param {Tw2ColorKey2} lastKey
  * @param {Tw2ColorKey2} nextKey
- * @param {quat4} value
+ * @param {vec4} value
  * @returns {*}
  * @prototype
  */
@@ -224,7 +224,7 @@ Tw2ColorCurve2.prototype.Interpolate = function(time, lastKey, nextKey, value)
     var endValue = this.endValue;
     var interp = this.interpolation;
     var deltaTime = this.length;
-    if (lastKey != null)
+    if (lastKey !== null)
     {
         interp = lastKey.interpolation;
         time -= lastKey.time;

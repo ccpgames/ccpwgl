@@ -9,8 +9,14 @@ function Tw2ParticleAttractorForce()
 {
     this.magnitude = 0;
     this.position = vec3.create();
-    this._tempVec = vec3.create();
 }
+
+/**
+ * Scratch variables
+ */
+Tw2ParticleAttractorForce.scratch = {
+    vec3_0: vec3.create()
+};
 
 /**
  * ApplyForce
@@ -21,14 +27,15 @@ function Tw2ParticleAttractorForce()
  */
 Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
 {
-    this._tempVec[0] = this.position[0] - position.buffer[position.offset];
-    this._tempVec[1] = this.position[1] - position.buffer[position.offset + 1];
-    this._tempVec[2] = this.position[2] - position.buffer[position.offset + 2];
-    vec3.scale(vec3.normalize(this._tempVec), this.magnitude);
+    var v0 = Tw2ParticleAttractorForce.scratch.vec3_0;
 
-    force[0] += this._tempVec[0];
-    force[1] += this._tempVec[1];
-    force[2] += this._tempVec[2];
+    v0[0] = this.position[0] - position.buffer[position.offset];
+    v0[1] = this.position[1] - position.buffer[position.offset + 1];
+    v0[2] = this.position[2] - position.buffer[position.offset + 2];
+
+    vec3.normalize(v0, v0);
+    vec3.scale(v0, v0, this.magnitude);
+    vec3.add(force, force, v0);
 };
 
 /**

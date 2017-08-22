@@ -1,6 +1,9 @@
 CCP WebGL Library
 ======
 
+This project now uses the glMatrix v2.4.0 library and is no longer compatible with the previously used version (0.9.x)
+
+
 Building
 ------
 

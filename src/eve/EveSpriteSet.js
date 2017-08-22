@@ -1,4 +1,67 @@
 /**
+ * EveSpriteSetItem
+ * @property {string} name
+ * @property {vec3} position
+ * @property {number} blinkRate
+ * @property {number} minScale
+ * @property {number} falloff
+ * @property {vec4} color
+ * @property {vec4} warpColor
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @constructor
+ */
+function EveSpriteSetItem()
+{
+    this.display = true;
+    this.name = '';
+    this.position = vec3.create();
+    this.blinkRate = 0;
+    this.blinkPhase = 0;
+    this.minScale = 1;
+    this.maxScale = 1;
+    this.falloff = 0;
+    this.color = vec4.create();
+    this.warpColor = vec4.create();
+    this.boneIndex = 0;
+    this.groupIndex = -1;
+}
+
+/**
+ * Sprite set render batch
+ * @inherits Tw2RenderBatch
+ * @constructor
+ */
+function EveSpriteSetBatch()
+{
+    this._super.constructor.call(this);
+    this.boosterGlow = false;
+    this.spriteSet = null;
+    this.world = null;
+    this.boosterGain = 0;
+    this.warpIntensity = 0;
+}
+
+/**
+ * Commits the sprite set
+ * @param {Tw2Effect} overrideEffect
+ */
+EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
+{
+    if (this.boosterGlow)
+    {
+        this.spriteSet.RenderBoosterGlow(overrideEffect, this.world, this.boosterGain, this.warpIntensity);
+    }
+    else
+    {
+        this.spriteSet.Render(overrideEffect, this.world, this.perObjectData);
+    }
+};
+
+Inherit(EveSpriteSetBatch, Tw2RenderBatch);
+
+
+/**
  * EveSpriteSet
  * @property {string} name
  * @property {Array.<EveSpriteSetItem>} sprites
@@ -69,10 +132,11 @@ EveSpriteSet.prototype.Initialize = function()
  */
 EveSpriteSet.prototype.UseQuads = function(useQuads, isSkinned)
 {
-    if (this.useQuads == useQuads)
+    if (this.useQuads === useQuads)
     {
         return;
     }
+
     this.useQuads = useQuads;
     this.isSkinned = isSkinned;
 
@@ -125,14 +189,6 @@ EveSpriteSet.prototype.GetResources = function(out)
  */
 EveSpriteSet.prototype.RebuildBuffers = function()
 {
-    var visibleItems = [];
-    for (var i = 0; i < this.sprites.length; i++)
-    {
-        if (this.sprites[i].display)
-        {
-            visibleItems.push(this.sprites[i]);
-        }
-    }
     if (this.useQuads)
     {
         this._vertexBuffer = device.gl.createBuffer();
@@ -140,6 +196,15 @@ EveSpriteSet.prototype.RebuildBuffers = function()
         device.gl.bufferData(device.gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), device.gl.STATIC_DRAW);
         this._instanceBuffer = device.gl.createBuffer();
         return;
+    }
+
+    var visibleItems = [];
+    for (var i = 0; i < this.sprites.length; i++)
+    {
+        if (this.sprites[i].display)
+        {
+            visibleItems.push(this.sprites[i]);
+        }
     }
 
     var offset, vtxOffset;
@@ -194,39 +259,6 @@ EveSpriteSet.prototype.RebuildBuffers = function()
 };
 
 /**
- * Sprite set render batch
- * @inherits Tw2RenderBatch
- * @constructor
- */
-function EveSpriteSetBatch()
-{
-    this._super.constructor.call(this);
-    this.boosterGlow = false;
-    this.spriteSet = null;
-    this.world = null;
-    this.boosterGain = 0;
-    this.warpIntensity = 0;
-}
-
-/**
- * Commits the sprite set
- * @param {Tw2Effect} overrideEffect
- */
-EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
-{
-    if (this.boosterGlow)
-    {
-        this.spriteSet.RenderBoosterGlow(overrideEffect, this.world, this.boosterGain, this.warpIntensity);
-    }
-    else
-    {
-        this.spriteSet.Render(overrideEffect, this.world, this.perObjectData);
-    }
-};
-
-Inherit(EveSpriteSetBatch, Tw2RenderBatch);
-
-/**
  * Gets render batches
  * @param {RenderMode} mode
  * @param {Tw2BatchAccumulator} accumulator
@@ -235,7 +267,7 @@ Inherit(EveSpriteSetBatch, Tw2RenderBatch);
  */
 EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData, world)
 {
-    if (this.display && mode == device.RM_ADDITIVE)
+    if (this.display && mode === device.RM_ADDITIVE)
     {
         var batch = new EveSpriteSetBatch();
         batch.world = world;
@@ -255,10 +287,9 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData, w
  * @param {Number} boosterGain
  * @param {Number} warpIntensity
  */
-EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perObjectData, world, boosterGain,
-    warpIntensity)
+EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perObjectData, world, boosterGain, warpIntensity)
 {
-    if (this.display && mode == device.RM_ADDITIVE)
+    if (this.display && mode === device.RM_ADDITIVE)
     {
         var batch = new EveSpriteSetBatch();
         batch.boosterGlow = true;
@@ -284,7 +315,7 @@ EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
     {
         return this.RenderQuads(overrideEffect, world, perObjectData);
     }
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
@@ -312,6 +343,13 @@ EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
 };
 
 /**
+ * Scratch variables
+ */
+EveSpriteSet.scratch = {
+    vec3_0: vec3.create()
+};
+
+/**
  * Renders the sprite set as booster glow
  * @param {Tw2Effect} overrideEffect
  * @param {mat4} world
@@ -320,24 +358,26 @@ EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
  */
 EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boosterGain, warpIntensity)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
     }
+
     var effectRes = effect.GetEffectRes();
     if (!effectRes.IsGood())
     {
         return;
     }
+
     device.SetStandardStates(device.RM_ADDITIVE);
 
     var array = new Float32Array(17 * this.sprites.length);
     var index = 0;
-    var pos = vec3.create();
+    var pos = EveSpriteSet.scratch.vec3_0;
     for (var i = 0; i < this.sprites.length; ++i)
     {
-        mat4.multiplyVec3(world, this.sprites[i].position, pos);
+        vec3.transformMat4(pos, world, this.sprites[i].position);
         array[index++] = pos[0];
         array[index++] = pos[1];
         array[index++] = pos[2];
@@ -368,10 +408,9 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
         var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
         device.ApplyShadowState();
-        device.instancedArrays.drawArraysInstancedANGLE(device.gl.TRIANGLES, 0, 6, this.sprites.length);
+        device.ext.drawArraysInstanced(device.gl.TRIANGLES, 0, 6, this.sprites.length);
         this._decl.ResetInstanceDivisors(resetData);
     }
-
 };
 
 /**
@@ -382,11 +421,12 @@ EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boost
  */
 EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectData)
 {
-    var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
+    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
     {
         return;
     }
+
     var effectRes = effect.GetEffectRes();
     if (!effectRes.IsGood())
     {
@@ -396,7 +436,7 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectDa
 
     var array = new Float32Array(17 * this.sprites.length);
     var index = 0;
-    var pos = vec3.create();
+    var pos = EveSpriteSet.scratch.vec3_0;
     var bones = perObjectData.perObjectVSData.Get('JointMat');
     var sprite;
     for (var i = 0; i < this.sprites.length; ++i)
@@ -408,11 +448,11 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectDa
             pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
             pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
             pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
-            mat4.multiplyVec3(world, pos);
+            vec3.transformMat4(pos, pos, world);
         }
         else
         {
-            mat4.multiplyVec3(world, sprite.position, pos);
+            vec3.transformMat4(pos, world, sprite.position);
         }
         array[index++] = pos[0];
         array[index++] = pos[1];
@@ -444,10 +484,9 @@ EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectDa
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
         var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
         device.ApplyShadowState();
-        device.instancedArrays.drawArraysInstancedANGLE(device.gl.TRIANGLES, 0, 6, this.sprites.length);
+        device.ext.drawArraysInstanced(device.gl.TRIANGLES, 0, 6, this.sprites.length);
         this._decl.ResetInstanceDivisors(resetData);
     }
-
 };
 
 /**
@@ -475,48 +514,19 @@ EveSpriteSet.prototype.Clear = function()
  * @param {number} minScale
  * @param {number} maxScale
  * @param {number} falloff
- * @param {quat4} color
+ * @param {vec4} color
  * @constructor
  */
 EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
     var item = new EveSpriteSetItem();
     item.display = true;
-    item.position = vec3.create(pos);
+    vec3.copy(item.position, pos);
     item.blinkRate = blinkRate;
     item.blinkPhase = blinkPhase;
     item.minScale = minScale;
     item.maxScale = maxScale;
     item.falloff = falloff;
-    item.color = quat4.create(color);
-    this.sprites[this.sprites.length] = item;
+    vec4.copy(item.color, color);
+    this.sprites.push(item);
 };
-
-/**
- * EveSpriteSetItem
- * @property {string} name
- * @property {vec3} position
- * @property {number} blinkRate
- * @property {number} minScale
- * @property {number} falloff
- * @property {quat4} color
- * @property {quat4} warpColor
- * @property {number} boneIndex
- * @property {number} groupIndex
- * @constructor
- */
-function EveSpriteSetItem()
-{
-    this.display = true;
-    this.name = '';
-    this.position = vec3.create();
-    this.blinkRate = 0;
-    this.blinkPhase = 0;
-    this.minScale = 1;
-    this.maxScale = 1;
-    this.falloff = 0;
-    this.color = quat4.create();
-    this.warpColor = quat4.create();
-    this.boneIndex = 0;
-    this.groupIndex = -1;
-}

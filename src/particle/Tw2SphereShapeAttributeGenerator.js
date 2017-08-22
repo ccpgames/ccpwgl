@@ -12,7 +12,7 @@
  * @property {number} maxSpeed
  * @property {number} parentVelocityFactor
  * @property {vec3} position
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property _position
  * @property _velocity
  * @constructor
@@ -31,7 +31,7 @@ function Tw2SphereShapeAttributeGenerator()
     this.maxSpeed = 0;
     this.parentVelocityFactor = 1;
     this.position = vec3.create();
-    this.rotation = quat4.create([0, 0, 0, 1]);
+    this.rotation = quat.create();
     this._position = null;
     this._velocity = null;
 }
@@ -48,16 +48,16 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
     this._velocity = null;
     for (var i = 0; i < ps._elements.length; ++i)
     {
-        if (ps._elements[i].elementType == Tw2ParticleElementDeclaration.POSITION && this.controlPosition)
+        if (ps._elements[i].elementType === Tw2ParticleElementDeclaration.POSITION && this.controlPosition)
         {
             this._position = ps._elements[i];
         }
-        else if (ps._elements[i].elementType == Tw2ParticleElementDeclaration.VELOCITY && this.controlVelocity)
+        else if (ps._elements[i].elementType === Tw2ParticleElementDeclaration.VELOCITY && this.controlVelocity)
         {
             this._velocity = ps._elements[i];
         }
     }
-    return (!this.controlPosition || this._position != null) && (!this.controlVelocity || this._velocity != null);
+    return (!this.controlPosition || this._position !== null) && (!this.controlVelocity || this._velocity !== null);
 };
 
 /**
@@ -70,16 +70,15 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
 Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
 {
     var offset;
-
     var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI;
     var theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) / 180 * Math.PI;
 
-    var rv = vec3.create();
+    var rv = Tw2SphereShapeAttributeGenerator.scratch.vec3_0;
     rv[0] = Math.sin(phi) * Math.cos(theta);
     rv[1] = -Math.cos(phi);
     rv[2] = Math.sin(phi) * Math.sin(theta);
 
-    quat4.multiplyVec3(this.rotation, rv);
+    vec3.transformQuat(rv, rv, this.rotation);
     if (this._velocity)
     {
         var speed = this.minSpeed + Math.random() * (this.maxSpeed - this.minSpeed);
@@ -97,8 +96,8 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocit
 
     if (this._position)
     {
-        vec3.scale(rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
-        vec3.add(rv, this.position);
+        vec3.scale(rv, rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
+        vec3.add(rv, rv, this.position);
         if (position)
         {
             rv[0] += position.buffer[position.offset];
@@ -110,4 +109,11 @@ Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocit
         this._position.buffer[offset + 1] = rv[1];
         this._position.buffer[offset + 2] = rv[2];
     }
+};
+
+/**
+ * Scratch variables
+ */
+Tw2SphereShapeAttributeGenerator.scratch = {
+    vec3_0: vec3.create()
 };

@@ -33,7 +33,7 @@ function Tw2WbgTrack()
             var animation = self.geometryRes.animations[i];
             for (var j = 0; j < animation.trackGroups.length; ++j)
             {
-                if (animation.trackGroups[j].name == self.group)
+                if (animation.trackGroups[j].name === self.group)
                 {
                     self._ApplyTracks(animation.trackGroups[j], animation.duration);
                 }
@@ -81,30 +81,30 @@ function Tw2WbgTrack()
         {
             this._UpdateValue(time);
         }
-    }
+    };
 }
 
 /**
  * Tw2WbgTransformTrack
  * @property {vec3} translation
- * @property {quat4} rotation
+ * @property {quat} rotation
  * @property {vec3} scale
- * @variable positionCurve
- * @variable rotationCurve
- * @variable scaleCurve
+ * @variable {*} positionCurve
+ * @variable {*} rotationCurve
+ * @variable {*} scaleCurve
  * @variable {mat4} scaleShear
  * @constructor
  */
 function Tw2WbgTransformTrack()
 {
     this.translation = vec3.create();
-    this.rotation = quat4.create();
+    this.rotation = quat.create();
     this.rotation[3] = 1;
     this.scale = vec3.create();
     var positionCurve = null;
     var rotationCurve = null;
     var scaleCurve = null;
-    var scaleShear = mat4.identity(mat4.create());
+    var scaleShear = mat4.create();
 
     /**
      * _TracksReady
@@ -127,7 +127,7 @@ function Tw2WbgTransformTrack()
         for (var i = 0; i < trackGroup.transformTracks.length; ++i)
         {
             var track = trackGroup.transformTracks[i];
-            if (track.name == this.name)
+            if (track.name === this.name)
             {
                 this.duration = duration;
                 positionCurve = track.position;
@@ -152,7 +152,7 @@ function Tw2WbgTransformTrack()
         if (rotationCurve)
         {
             Tw2AnimationController.EvaluateCurve(rotationCurve, time, this.rotation, this.cycle, this.duration);
-            quat4.normalize(this.rotation);
+            quat.normalize(this.rotation, this.rotation);
         }
         if (scaleCurve)
         {
@@ -161,7 +161,7 @@ function Tw2WbgTransformTrack()
         this.scale[0] = scaleShear[0];
         this.scale[1] = scaleShear[5];
         this.scale[2] = scaleShear[10];
-    }
+    };
 }
 
 /**

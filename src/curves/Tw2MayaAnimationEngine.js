@@ -91,7 +91,7 @@ Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
     }
     if (time < segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
     {
-        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.PRE_INFINITY] == Tw2MayaAnimationEngine.INFINITY)
+        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.PRE_INFINITY] === Tw2MayaAnimationEngine.INFINITY)
         {
             return segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
         }
@@ -99,7 +99,7 @@ Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
     }
     if (time > animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME])
     {
-        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.POST_INFINITY] == Tw2MayaAnimationEngine.INFINITY)
+        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.POST_INFINITY] === Tw2MayaAnimationEngine.INFINITY)
         {
             return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
         }
@@ -131,7 +131,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
         if (this._evalCache[this._currentCurveIndex] < animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS - 1] && time > segments[lastSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
         {
             nextSegment = firstSegment + this._evalCache[this._currentCurveIndex] + 1;
-            if (time == segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
+            if (time === segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
             {
                 this._evalCache[this._currentCurveIndex]++;
                 return segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
@@ -154,7 +154,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
                 index = this._evalCache[this._currentCurveIndex];
                 withinInterval = true;
             }
-            else if (time == segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
+            else if (time === segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME])
             {
                 this._evalCache[this._currentCurveIndex]--;
                 return segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
@@ -166,9 +166,9 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
     {
         var result = this._Find(animCurve, time, segments, firstSegment);
         index = result[1];
-        if (result[0] || index == 0)
+        if (result[0] || index === 0)
         {
-            if (index == animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS])
+            if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS])
             {
                 index--;
                 this._evalCache[this._currentCurveIndex] = index;
@@ -180,18 +180,18 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
                 return segments[firstSegment + index][Tw2MayaAnimationEngine.AnimSegment.VALUE];
             }
         }
-        else if (index == animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1)
+        else if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1)
         {
             this._evalCache[this._currentCurveIndex] = 0;
             return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
         }
     }
 
-    if (this._evalCache[this._currentCurveIndex] != index - 1)
+    if (this._evalCache[this._currentCurveIndex] !== index - 1)
     {
         this._evalCache[this._currentCurveIndex] = index - 1;
         lastSegment = firstSegment + this._evalCache[this._currentCurveIndex];
-        if (nextSegment == null)
+        if (nextSegment === null)
         {
             nextSegment = firstSegment + index;
         }
@@ -255,7 +255,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, f
  */
 Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function(curve, segments, startSegment, time, bool)
 {
-    throw new Error ('_EvaluateInfinities not implimented');
+    throw new Error('_EvaluateInfinities not implemented');
 };
 
 /**
@@ -292,13 +292,13 @@ Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextS
     }
     else
     {
-        var poly = quat4.create();
+        var poly = vec4.create();
         poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
         poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
         poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
         poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
         var roots = [];
-        if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) == 1)
+        if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) === 1)
         {
             t = roots[0];
         }
@@ -456,7 +456,7 @@ function ag_zeroin2(a, b, fa, fb, tol, pars)
         /* convergence test */
         del = 2.0 * machtol * Math.abs(b) + 0.5 * tol;
         m = 0.5 * (c - b);
-        test = ((Math.abs(m) > del) && (fb != 0.0));
+        test = ((Math.abs(m) > del) && (fb !== 0.0));
         if (test)
         {
             if ((Math.abs(e) < del) || (Math.abs(fa) <= Math.abs(fb)))
@@ -468,7 +468,7 @@ function ag_zeroin2(a, b, fa, fb, tol, pars)
             else
             {
                 s = fb / fa;
-                if (a == c)
+                if (a === c)
                 {
                     /* linear interpolation */
                     p = 2.0 * m * s;
@@ -584,12 +584,12 @@ function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
     /* determine true degree */
     while (Math.abs(p[deg]) < tol) deg--;
 
-    /* Identically zero poly already caught so constant fn != 0 */
+    /* Identically zero poly already caught so constant fn !== 0 */
     nr = 0;
-    if (deg == 0) return (nr);
+    if (deg === 0) return (nr);
 
     /* check for linear case */
-    if (deg == 1)
+    if (deg === 1)
     {
         Roots[0] = -p[0] / p[1];
         left_ok = (a_closed) ? (a < Roots[0] + tol) : (a < Roots[0] - tol);
@@ -613,13 +613,13 @@ function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
 
         /* find roots of derivative */
         ndr = polyZeroes(d, deg - 1, a, 0, b, 0, dr);
-        if (ndr.length == 0) return (0);
+        if (ndr.length === 0) return (0);
 
         /* find roots between roots of the derivative */
         for (i = skip = 0; i <= ndr; i++)
         {
             if (nr > deg) return (nr);
-            if (i == 0)
+            if (i === 0)
             {
                 s = a;
                 ps = ag_horner1(p, deg, s);
@@ -630,7 +630,7 @@ function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
                 s = e;
                 ps = pe;
             }
-            if (i == ndr)
+            if (i === ndr)
             {
                 e = b;
                 skip = 0;
@@ -642,7 +642,7 @@ function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
             {
                 if (Math.abs(pe) < tol)
                 {
-                    if (i != ndr || b_closed)
+                    if (i !== ndr || b_closed)
                     {
                         Roots[nr++] = e;
                         skip = 1;

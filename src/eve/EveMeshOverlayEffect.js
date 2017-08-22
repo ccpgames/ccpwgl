@@ -58,19 +58,19 @@ EveMeshOverlayEffect.prototype.GetEffects = function(mode)
 {
     if (this.display)
     {
-        if (mode == device.RM_OPAQUE && this.visible.opaqueEffects)
+        if (mode === device.RM_OPAQUE && this.visible.opaqueEffects)
         {
             return this.opaqueEffects;
         }
-        else if (mode == device.RM_TRANSPARENT && this.visible.transparentEffects)
+        else if (mode === device.RM_TRANSPARENT && this.visible.transparentEffects)
         {
             return this.transparentEffects;
         }
-        else if (mode == device.RM_ADDITIVE && this.visible.additiveEffects)
+        else if (mode === device.RM_ADDITIVE && this.visible.additiveEffects)
         {
             return this.additiveEffects;
         }
-        else if (mode == device.RM_DECAL && this.visible.decalEffects)
+        else if (mode === device.RM_DECAL && this.visible.decalEffects)
         {
             return this.decalEffects;
         }

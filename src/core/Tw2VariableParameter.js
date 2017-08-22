@@ -8,7 +8,7 @@
  */
 function Tw2VariableParameter(name, variableName)
 {
-    if (typeof(name) != 'undefined')
+    if (typeof(name) !== 'undefined')
     {
         this.name = name;
     }
@@ -16,7 +16,7 @@ function Tw2VariableParameter(name, variableName)
     {
         this.name = '';
     }
-    if (typeof(variableName) != 'undefined')
+    if (typeof(variableName) !== 'undefined')
     {
         this.variableName = variableName;
     }
@@ -48,7 +48,7 @@ Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
  */
 Tw2VariableParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
-    if (typeof(variableStore._variables[this.variableName]) != 'undefined')
+    if (typeof(variableStore._variables[this.variableName]) !== 'undefined')
     {
         variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
     }
