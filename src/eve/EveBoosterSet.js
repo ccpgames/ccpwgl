@@ -1,3 +1,10 @@
+import {vec3, vec4, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+
 /**
  * EveObjectSet
  * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
@@ -8,7 +15,7 @@
  * Booster render batch
  * @constructor
  */
-function EveBoosterBatch()
+export function EveBoosterBatch()
 {
     this.renderMode = device.RM_ANY;
     this.perObjectData = null;
@@ -19,7 +26,7 @@ function EveBoosterBatch()
  * Commits the batch
  * @param {Tw2Effect} [overrideEffect]
  */
-EveBoosterBatch.prototype.Commit = function(overrideEffect)
+EveBoosterBatch.prototype.Commit = function (overrideEffect)
 {
     this.boosters.Render(overrideEffect);
 };
@@ -45,13 +52,13 @@ EveBoosterBatch.prototype.Commit = function(overrideEffect)
  * @property {mat4} _parentTransform
  * @property {mat4} _wavePhase
  * @property {Array.<{}>} _boosterTransforms
- * @property {WebGlBuffer} _positions
+ * @property {WebGLBuffer} _positions
  * @property {Tw2VertexDeclaration} _decl
  * @property {Tw2PerObjectData} _perObjectData
  * @property {boolean} rebuildPending
  * @constructor
  */
-function EveBoosterSet()
+export function EveBoosterSet()
 {
     this.display = true;
     this.effect = null;
@@ -100,7 +107,7 @@ function EveBoosterSet()
 /**
  * Initializes the booster set
  */
-EveBoosterSet.prototype.Initialize = function()
+EveBoosterSet.prototype.Initialize = function ()
 {
     this.rebuildPending = true;
 };
@@ -110,7 +117,7 @@ EveBoosterSet.prototype.Initialize = function()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
  */
-EveBoosterSet.prototype.GetResources = function(out)
+EveBoosterSet.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -133,7 +140,7 @@ EveBoosterSet.prototype.GetResources = function(out)
 /**
  * Clears the booster set
  */
-EveBoosterSet.prototype.Clear = function()
+EveBoosterSet.prototype.Clear = function ()
 {
     this._boosterTransforms = [];
     this._wavePhase = mat4.create();
@@ -159,7 +166,7 @@ EveBoosterSet.scratch = {
  * @param {number} atlas1
  * @constructor
  */
-EveBoosterSet.prototype.Add = function(localMatrix, atlas0, atlas1)
+EveBoosterSet.prototype.Add = function (localMatrix, atlas0, atlas1)
 {
     var scratch = EveBoosterSet.scratch;
 
@@ -190,7 +197,7 @@ EveBoosterSet.prototype.Add = function(localMatrix, atlas0, atlas1)
 /**
  * Rebuilds the boosters
  */
-EveBoosterSet.prototype.Rebuild = function()
+EveBoosterSet.prototype.Rebuild = function ()
 {
     var data = new Float32Array(this._boosterTransforms.length * EveBoosterSet._box.length * 6 * 28);
     var order = [0, 3, 1, 3, 2, 1];
@@ -234,7 +241,7 @@ EveBoosterSet.prototype.Rebuild = function()
  * @param {mat4} parentMatrix
  * @constructor
  */
-EveBoosterSet.prototype.Update = function(dt, parentMatrix)
+EveBoosterSet.prototype.Update = function (dt, parentMatrix)
 {
     if (this.glows)
     {
@@ -245,11 +252,11 @@ EveBoosterSet.prototype.Update = function(dt, parentMatrix)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display || mode !== device.RM_ADDITIVE)
     {
@@ -277,7 +284,7 @@ EveBoosterSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * @param {Tw2Effect} [overrideEffect]
  * @returns {boolean}
  */
-EveBoosterSet.prototype.Render = function(overrideEffect)
+EveBoosterSet.prototype.Render = function (overrideEffect)
 {
     var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     var effectRes = effect.GetEffectRes();

@@ -1,3 +1,7 @@
+import {emitter} from './Tw2EventEmitter';
+import {resMan} from './Tw2ResMan';
+import {Tw2BinaryReader} from './Tw2BinaryReader';
+
 /**
  * Tw2ObjectReader
  * @param xmlNode
@@ -7,7 +11,7 @@
  * @property {null|Array} _ids
  * @constructor
  */
-function Tw2ObjectReader(xmlNode)
+export function Tw2ObjectReader(xmlNode)
 {
     this.xmlNode = xmlNode;
     this._inputStack = null;
@@ -18,14 +22,14 @@ function Tw2ObjectReader(xmlNode)
     if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) !== 'binred')
     {
         emitter.log('res.error',
-        {
-            log: 'error',
-            src: ['Tw2ObjectReader', 'constructor'],
-            msg: 'Invalid Binary',
-            path: this.path,
-            type: 'redbin.invalid',
-            data: xmlNode
-        });
+            {
+                log: 'error',
+                src: ['Tw2ObjectReader', 'constructor'],
+                msg: 'Invalid Binary',
+                path: this.path,
+                type: 'redbin.invalid',
+                data: xmlNode
+            });
         return;
     }
     this._reader = new Tw2BinaryReader(new Uint8Array(xmlNode));
@@ -122,7 +126,7 @@ Tw2ObjectReader.TypedArrays = {
 };
 
 
-Tw2ObjectReader.prototype._ConstructObject = function(data)
+Tw2ObjectReader.prototype._ConstructObject = function (data)
 {
     var object;
 
@@ -130,22 +134,24 @@ Tw2ObjectReader.prototype._ConstructObject = function(data)
     {
         return data;
     }
+
     try
     {
-        object = eval("new " + data.type + "()");
+        const Constructor = resMan.GetConstructor(data.type);
+        object = new Constructor();
     }
     catch (e)
     {
         emitter.log('res.error',
-        {
-            log: 'throw',
-            src: ['Tw2ObjectReader', 'ConstructFromNode'],
-            msg: 'Object with undefined type',
-            type: 'xml.type',
-            value: data.type
-        });
+            {
+                log: 'throw',
+                src: ['Tw2ObjectReader', '_ConstructObject'],
+                msg: 'Object with undefined type',
+                type: 'xml.type',
+                value: data.type
+            });
 
-        throw new Error('YAML: object with undefined type \"' + data.type + '\"');
+        throw new Error('YAML: object with undefined type \'' + data.type + '\'');
     }
 
     for (var k in data)
@@ -177,7 +183,7 @@ Tw2ObjectReader.prototype._ConstructObject = function(data)
 };
 
 
-Tw2ObjectReader.prototype._ReadUint = function(type)
+Tw2ObjectReader.prototype._ReadUint = function (type)
 {
     switch (type & 0x30)
     {
@@ -190,7 +196,7 @@ Tw2ObjectReader.prototype._ReadUint = function(type)
     }
 };
 
-Tw2ObjectReader.prototype._ReadElementData = function(type)
+Tw2ObjectReader.prototype._ReadElementData = function (type)
 {
     var offset, i, result, count, elementType;
     switch (type & 0xf)
@@ -271,7 +277,7 @@ Tw2ObjectReader.prototype._ReadElementData = function(type)
     }
 };
 
-Tw2ObjectReader.prototype._ReadElement = function()
+Tw2ObjectReader.prototype._ReadElement = function ()
 {
     var type = this._reader.ReadUInt8();
     if (type === Tw2ObjectReader.REFERENCE_BIT)
@@ -291,7 +297,7 @@ Tw2ObjectReader.prototype._ReadElement = function()
     return result;
 };
 
-Tw2ObjectReader.prototype.Construct = function()
+Tw2ObjectReader.prototype.Construct = function ()
 {
     this._reader.cursor = this._start;
     return this._ReadElement();
@@ -324,12 +330,12 @@ Tw2ObjectReader.prototype.Construct = function()
  * @param async
  * @returns {Boolean}
  */
-Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
+Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
 {
-    var startTime = device.Clock.now();
+    var startTime = Date.now();
     while (this._inputStack.length)
     {
-        var endTime = device.Clock.now();
+        var endTime = Date.now();
         if (async && resMan.prepareBudget < (endTime - startTime) * 0.001)
         {
             return false;
@@ -367,20 +373,21 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             {
                 try
                 {
-                    object = eval("new " + type.value + "()");
+                    const Constructor = resMan.GetConstructor(type.value);
+                    object = new Constructor();
                 }
                 catch (e)
                 {
                     emitter.log('res.error',
-                    {
-                        log: 'throw',
-                        src: ['Tw2ObjectReader', 'ConstructFromNode'],
-                        msg: 'Object with undefined type',
-                        type: 'xml.type',
-                        value: type.value
-                    });
+                        {
+                            log: 'throw',
+                            src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                            msg: 'Object with undefined type',
+                            type: 'xml.type',
+                            value: type.value
+                        });
 
-                    throw new Error('YAML: object with undefined type \"' + type.value + '\"');
+                    throw new Error('YAML: object with undefined type \'' + type.value + '\'');
                 }
             }
             this._inputStack.push([null, object, null]);
@@ -396,14 +403,13 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
                     if (typeof(object[child.nodeName]) === 'undefined')
                     {
                         emitter.log('res.error',
-                        {
-                            log: 'warn',
-                            src: ['Tw2ObjectReader', 'ConstructFromNode'],
-                            msg: 'Object "' + type.value + '" missing property: ' + child.nodeName,
-                            value: child.nodeName,
-                            type: 'xml.property',
-                            value: child.nodeName
-                        });
+                            {
+                                log: 'warn',
+                                src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                                msg: 'Object "' + type.value + '" missing property: ' + child.nodeName,
+                                value: child.nodeName,
+                                type: 'xml.property',
+                            });
 
                         continue;
                     }
@@ -472,16 +478,16 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
             catch (e)
             {
                 emitter.log('res.error',
-                {
-                    log: 'throw',
-                    src: ['Tw2ObjectReader', 'ConstructFromNode'],
-                    msg: 'Invalid JSON property',
-                    type: 'xml.json',
-                    value: value,
-                    data: e
-                });
+                    {
+                        log: 'throw',
+                        src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                        msg: 'Invalid JSON property',
+                        type: 'xml.json',
+                        value: value,
+                        data: e
+                    });
 
-                throw new Error('YAML: property \"' + value + '\" is not a valid JSON property');
+                throw new Error('YAML: property \'' + value + '\' is not a valid JSON property');
             }
             if (!xmlNode.attributes.getNamedItem('notnum'))
             {
@@ -532,7 +538,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
     }
     while (this._initializeObjects.length)
     {
-        var endTime = now.getTime();
+        var endTime = Date.now();
         if (async && resMan.prepareBudget < (endTime - startTime) * 0.001)
         {
             return false;

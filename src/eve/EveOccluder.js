@@ -1,3 +1,14 @@
+import {vec4, mat4} from '../math';
+import {device} from '../core';
+import {variableStore} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2Vector3Parameter} from '../core';
+import {Tw2Vector4Parameter} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2BatchAccumulator} from '../core';
+
 /**
  * EveOccluder
  * @property {String} name=''
@@ -6,7 +17,7 @@
  * @property {Array.<EveSpriteSet>} sprites
  * @constructor
  */
-function EveOccluder()
+export function EveOccluder()
 {
     this.name = '';
     this.display = true;
@@ -90,7 +101,7 @@ EveOccluder.scratch = {
  * @param {mat4} parentTransform
  * @param {number} index
  */
-EveOccluder.prototype.UpdateValue = function(parentTransform, index)
+EveOccluder.prototype.UpdateValue = function (parentTransform, index)
 {
     if (!this.display)
     {
@@ -141,7 +152,7 @@ EveOccluder.prototype.UpdateValue = function(parentTransform, index)
  * @param total
  * @param samples
  */
-EveOccluder.prototype.CollectSamples = function(tex, index, total, samples)
+EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
 {
     var effect = EveOccluder._collectEffect;
     var effectRes = effect.GetEffectRes();
@@ -170,9 +181,9 @@ EveOccluder.prototype.CollectSamples = function(tex, index, total, samples)
 /**
  * Gets Mesh Overlay resource objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2Res>} [out]
+ * @returns {Array.<Resource>} [out]
  */
-EveOccluder.prototype.GetResources = function(out)
+EveOccluder.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {

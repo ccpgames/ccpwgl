@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2ParticleAttractorForce
  * @property {number} magnitude
@@ -5,7 +7,7 @@
  * @property {vec3} _tempVec
  * @constructor
  */
-function Tw2ParticleAttractorForce()
+export function Tw2ParticleAttractorForce()
 {
     this.magnitude = 0;
     this.position = vec3.create();
@@ -25,7 +27,7 @@ Tw2ParticleAttractorForce.scratch = {
  * @param force
  * @prototype
  */
-Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, force)
+Tw2ParticleAttractorForce.prototype.ApplyForce = function (position, velocity, force)
 {
     var v0 = Tw2ParticleAttractorForce.scratch.vec3_0;
 
@@ -42,4 +44,4 @@ Tw2ParticleAttractorForce.prototype.ApplyForce = function(position, velocity, fo
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2ParticleAttractorForce.prototype.Update = function() {};
+Tw2ParticleAttractorForce.prototype.Update = function () {};

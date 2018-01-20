@@ -1,3 +1,8 @@
+import {vec3, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+
 /**
  * Particle element type
  * @typedef {(Tw2ParticleElementDeclaration.LIFETIME|Tw2ParticleElementDeclaration.POSITION|Tw2ParticleElementDeclaration.VELOCITY|Tw2ParticleElementDeclaration.MASS|Tw2ParticleElementDeclaration.CUSTOM)} ParticleElementType
@@ -12,7 +17,7 @@
  * @property {boolean} usedByGPU
  * @constructor
  */
-function Tw2ParticleElementDeclaration()
+export function Tw2ParticleElementDeclaration()
 {
     this.elementType = 4;
     this.customName = '';
@@ -56,7 +61,7 @@ Tw2ParticleElementDeclaration.CUSTOM = 4;
  * @returns {number}
  * @prototype
  */
-Tw2ParticleElementDeclaration.prototype.GetDimension = function()
+Tw2ParticleElementDeclaration.prototype.GetDimension = function ()
 {
     switch (this.elementType)
     {
@@ -77,7 +82,7 @@ Tw2ParticleElementDeclaration.prototype.GetDimension = function()
  * @returns {Tw2VertexElement}
  * @prototype
  */
-Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
+Tw2ParticleElementDeclaration.prototype.GetDeclaration = function ()
 {
     var usage = Tw2VertexDeclaration.DECL_TEXCOORD;
     switch (this.elementType)
@@ -115,7 +120,7 @@ Tw2ParticleElementDeclaration.prototype.GetDeclaration = function()
  * @property {boolean} dirty
  * @constructor
  */
-function Tr2ParticleElement(decl)
+export function Tr2ParticleElement(decl)
 {
     this.elementType = decl.elementType;
     this.customName = decl.customName;
@@ -161,7 +166,7 @@ function Tr2ParticleElement(decl)
  * @property {Array} buffers
  * @constructor
  */
-function Tw2ParticleSystem()
+export function Tw2ParticleSystem()
 {
     this.name = '';
     this.aliveCount = 0;
@@ -198,7 +203,7 @@ function Tw2ParticleSystem()
  * Initializes the Particle System
  * @prototype
  */
-Tw2ParticleSystem.prototype.Initialize = function()
+Tw2ParticleSystem.prototype.Initialize = function ()
 {
     this.UpdateElementDeclaration();
 };
@@ -208,7 +213,7 @@ Tw2ParticleSystem.prototype.Initialize = function()
  * TODO: fix/remove commented out code
  * @prototype
  */
-Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
+Tw2ParticleSystem.prototype.UpdateElementDeclaration = function ()
 {
     var bufferIndex, i;
 
@@ -304,7 +309,7 @@ Tw2ParticleSystem.prototype.UpdateElementDeclaration = function()
  * @returns {boolean}
  * @prototype
  */
-Tw2ParticleSystem.prototype.HasElement = function(type)
+Tw2ParticleSystem.prototype.HasElement = function (type)
 {
     return this._stdElements[type] !== null;
 };
@@ -315,7 +320,7 @@ Tw2ParticleSystem.prototype.HasElement = function(type)
  * @returns {*}
  * @prototype
  */
-Tw2ParticleSystem.prototype.GetElement = function(type)
+Tw2ParticleSystem.prototype.GetElement = function (type)
 {
     if (this._stdElements[type])
     {
@@ -329,7 +334,7 @@ Tw2ParticleSystem.prototype.GetElement = function(type)
  * @returns {null|number}
  * @prototype
  */
-Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
+Tw2ParticleSystem.prototype.BeginSpawnParticle = function ()
 {
     if (!this.isValid || this.aliveCount >= this.maxParticleCount)
     {
@@ -342,7 +347,7 @@ Tw2ParticleSystem.prototype.BeginSpawnParticle = function()
  * EndSpawnParticle
  * @prototype
  */
-Tw2ParticleSystem.prototype.EndSpawnParticle = function()
+Tw2ParticleSystem.prototype.EndSpawnParticle = function ()
 {
     this.bufferDirty = true;
 };
@@ -352,7 +357,7 @@ Tw2ParticleSystem.prototype.EndSpawnParticle = function()
  * @param {number} dt - delta time
  * @prototype
  */
-Tw2ParticleSystem.prototype.Update = function(dt)
+Tw2ParticleSystem.prototype.Update = function (dt)
 {
     var position, velocity, j, i;
 
@@ -508,7 +513,7 @@ Tw2ParticleSystem.prototype.Update = function(dt)
  * @returns {boolean}
  * @prototype
  */
-Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
+Tw2ParticleSystem.prototype.GetBoundingBox = function (aabbMin, aabbMax)
 {
     if (this.aliveCount && this.HasElement(Tw2ParticleElementDeclaration.POSITION))
     {
@@ -538,7 +543,7 @@ Tw2ParticleSystem.prototype.GetBoundingBox = function(aabbMin, aabbMax)
  * _Sort
  * @private
  */
-Tw2ParticleSystem.prototype._Sort = function()
+Tw2ParticleSystem.prototype._Sort = function ()
 {
     var eye = mat4.multiply(mat4.create(), device.projection, device.view); //device.viewInverse;
     var position = this.GetElement(Tw2ParticleElementDeclaration.POSITION);
@@ -563,7 +568,7 @@ Tw2ParticleSystem.prototype._Sort = function()
      * @returns {number}
      * @private
      */
-    var sortItems = function(a, b)
+    var sortItems = function (a, b)
     {
         if (a >= count && b >= count)
         {
@@ -598,7 +603,7 @@ Tw2ParticleSystem.prototype._Sort = function()
  * @returns {WebGLBuffer}
  * @constructor
  */
-Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
+Tw2ParticleSystem.prototype.GetInstanceBuffer = function ()
 {
     if (this.aliveCount === 0)
     {
@@ -639,7 +644,7 @@ Tw2ParticleSystem.prototype.GetInstanceBuffer = function()
  * @returns {Tw2VertexDeclaration}
  * @prototype
  */
-Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
+Tw2ParticleSystem.prototype.GetInstanceDeclaration = function ()
 {
     return this._declaration;
 };
@@ -649,7 +654,7 @@ Tw2ParticleSystem.prototype.GetInstanceDeclaration = function()
  * @returns {number}
  * @prototype
  */
-Tw2ParticleSystem.prototype.GetInstanceStride = function()
+Tw2ParticleSystem.prototype.GetInstanceStride = function ()
 {
     return this.instanceStride[0];
 };
@@ -659,7 +664,7 @@ Tw2ParticleSystem.prototype.GetInstanceStride = function()
  * @returns {number}
  * @prototype
  */
-Tw2ParticleSystem.prototype.GetInstanceCount = function()
+Tw2ParticleSystem.prototype.GetInstanceCount = function ()
 {
     return this.aliveCount;
 };

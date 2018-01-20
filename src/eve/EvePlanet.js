@@ -1,3 +1,12 @@
+import {device} from '../core';
+import {resMan} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2RenderTarget} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2FloatParameter} from '../core';
+import {EveTransform} from './EveTransform';
+
+
 /**
  * EvePlanet
  * @property {boolean} display
@@ -10,10 +19,10 @@
  * @property {boolean} heightDirty
  * @property {Array} lockedResources
  * @property {boolean} zOnlyModel
- * @property {Array.<Tw2Res>} watchedResources
+ * @property {Array.<Resource>} watchedResources
  * @constructor
  */
-function EvePlanet()
+export function EvePlanet()
 {
     this.display = true;
     this.highDetail = new EveTransform();
@@ -33,7 +42,7 @@ function EvePlanet()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EvePlanet.prototype.GetResources = function(out)
+EvePlanet.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -54,7 +63,7 @@ EvePlanet.prototype.GetResources = function(out)
  * @param {string} heightMap1
  * @param {string} heightMap2
  */
-EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2)
 {
     this.itemID = itemID;
     this.heightMapResPath1 = heightMap1;
@@ -62,7 +71,7 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
     this.highDetail.children = [];
     var self = this;
 
-    resMan.GetObject(planetPath, function(obj)
+    resMan.GetObject(planetPath, function (obj)
     {
         self.highDetail.children.unshift(obj);
         self._MeshLoaded();
@@ -70,13 +79,13 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
 
     if (atmospherePath)
     {
-        resMan.GetObject(atmospherePath, function(obj)
+        resMan.GetObject(atmospherePath, function (obj)
         {
             self.highDetail.children.push(obj);
         });
     }
     this.heightDirty = true;
-    resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function(obj)
+    resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj)
     {
         self.zOnlyModel = obj;
     });
@@ -89,7 +98,7 @@ EvePlanet.prototype.Create = function(itemID, planetPath, atmospherePath, height
  * @param result
  * @constructor
  */
-EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
+EvePlanet.prototype.GetPlanetResources = function (obj, visited, result)
 {
     if (visited.indexOf(obj) !== -1)
     {
@@ -105,7 +114,7 @@ EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
     {
         if (obj.hasOwnProperty(prop))
         {
-            if (typeof(obj[prop]) === "object")
+            if (typeof(obj[prop]) === 'object')
             {
                 this.GetPlanetResources(obj[prop], visited, result);
             }
@@ -117,7 +126,7 @@ EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
  * Internal helper function that fires when the planet's mesh has loaded
  * @private
  */
-EvePlanet.prototype._MeshLoaded = function()
+EvePlanet.prototype._MeshLoaded = function ()
 {
     this.lockedResources = [];
     this.GetPlanetResources(this.highDetail, [], this.lockedResources);
@@ -137,7 +146,7 @@ EvePlanet.prototype._MeshLoaded = function()
     }
     else
     {
-        resPath = "res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx";
+        resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
     }
     resPath = resPath.replace('.fx', 'BlitHeight.fx');
     this.watchedResources = [];
@@ -228,10 +237,10 @@ EvePlanet.prototype._MeshLoaded = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EvePlanet.prototype.GetBatches = function(mode, accumulator)
+EvePlanet.prototype.GetBatches = function (mode, accumulator)
 {
     if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '')
     {
@@ -278,10 +287,10 @@ EvePlanet.prototype.GetBatches = function(mode, accumulator)
 
 /**
  * Gets z buffer only batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EvePlanet.prototype.GetZOnlyBatches = function(mode, accumulator)
+EvePlanet.prototype.GetZOnlyBatches = function (mode, accumulator)
 {
     if (this.display && this.zOnlyModel)
     {
@@ -293,7 +302,7 @@ EvePlanet.prototype.GetZOnlyBatches = function(mode, accumulator)
  * Per frame update
  * @param {number} dt - delta time
  */
-EvePlanet.prototype.Update = function(dt)
+EvePlanet.prototype.Update = function (dt)
 {
     this.highDetail.Update(dt);
 };
@@ -302,7 +311,7 @@ EvePlanet.prototype.Update = function(dt)
  * Updates view dependent data
  * @param {mat4} parentTransform
  */
-EvePlanet.prototype.UpdateViewDependentData = function(parentTransform)
+EvePlanet.prototype.UpdateViewDependentData = function (parentTransform)
 {
     this.highDetail.UpdateViewDependentData(parentTransform);
     if (this.zOnlyModel)

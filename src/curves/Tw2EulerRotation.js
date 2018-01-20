@@ -1,3 +1,5 @@
+import {quat} from '../math';
+
 /**
  * Tw2EulerRotation
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {quat} currentValue=[0,0,0,1]
  * @constructor
  */
-function Tw2EulerRotation()
+export function Tw2EulerRotation()
 {
     this.name = '';
     this.yawCurve = null;
@@ -21,7 +23,7 @@ function Tw2EulerRotation()
  * @param {number} time
  * @prototype
  */
-Tw2EulerRotation.prototype.UpdateValue = function(time)
+Tw2EulerRotation.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.currentValue);
 };
@@ -33,7 +35,7 @@ Tw2EulerRotation.prototype.UpdateValue = function(time)
  * @returns {quat}
  * @prototype
  */
-Tw2EulerRotation.prototype.GetValueAt = function(time, value)
+Tw2EulerRotation.prototype.GetValueAt = function (time, value)
 {
     var yaw = this.yawCurve ? this.yawCurve.GetValueAt(time) : 0.0;
     var pitch = this.pitchCurve ? this.pitchCurve.GetValueAt(time) : 0.0;
@@ -59,7 +61,7 @@ Tw2EulerRotation.prototype.GetValueAt = function(time, value)
  * @returns {number}
  * @prototype
  */
-Tw2EulerRotation.prototype.GetLength = function()
+Tw2EulerRotation.prototype.GetLength = function ()
 {
     var length = 0;
     if (this.yawCurve && ('GetLength' in this.yawCurve))

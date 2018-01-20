@@ -1,3 +1,6 @@
+import {vec3, mat4} from '../math';
+import {Tw2Float} from '../core';
+
 /**
  * EveStretch
  * @property {String} name
@@ -20,7 +23,7 @@
  * @property {boolean} _isNegZForward
  * @constructor
  */
-function EveStretch()
+export function EveStretch()
 {
     this.name = '';
     this.display = true;
@@ -58,7 +61,7 @@ EveStretch.scratch = {
  * Per frame update
  * @param {number} dt - delta time
  */
-EveStretch.prototype.Update = function(dt)
+EveStretch.prototype.Update = function (dt)
 {
     for (var i = 0; i < this.curveSets.length; ++i)
     {
@@ -101,7 +104,7 @@ EveStretch.prototype.Update = function(dt)
 /**
  * Updates view dependent data
  */
-EveStretch.prototype.UpdateViewDependentData = function()
+EveStretch.prototype.UpdateViewDependentData = function ()
 {
     if (!this.display)
     {
@@ -201,11 +204,11 @@ EveStretch.prototype.UpdateViewDependentData = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveStretch.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
@@ -229,7 +232,7 @@ EveStretch.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * Gets source position
  * @param {vec3} position
  */
-EveStretch.prototype.SetSourcePosition = function(position)
+EveStretch.prototype.SetSourcePosition = function (position)
 {
     this._useTransformsForStretch = false;
     this._sourcePosition = position;
@@ -239,7 +242,7 @@ EveStretch.prototype.SetSourcePosition = function(position)
  * Sets the destination position
  * @param {vec3} position
  */
-EveStretch.prototype.SetDestinationPosition = function(position)
+EveStretch.prototype.SetDestinationPosition = function (position)
 {
     this._destinationPosition = position;
 };
@@ -248,7 +251,7 @@ EveStretch.prototype.SetDestinationPosition = function(position)
  * Sets the source transform
  * @param {mat4} transform
  */
-EveStretch.prototype.SetSourceTransform = function(transform)
+EveStretch.prototype.SetSourceTransform = function (transform)
 {
     this._useTransformsForStretch = true;
     this._sourceTransform = transform;
@@ -258,7 +261,7 @@ EveStretch.prototype.SetSourceTransform = function(transform)
  * SetIsNegZForward
  * @param {boolean} isNegZForward
  */
-EveStretch.prototype.SetIsNegZForward = function(isNegZForward)
+EveStretch.prototype.SetIsNegZForward = function (isNegZForward)
 {
     this._isNegZForward = isNegZForward;
 };

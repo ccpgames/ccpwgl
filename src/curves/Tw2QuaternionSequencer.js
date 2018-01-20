@@ -1,3 +1,5 @@
+import {quat} from '../math';
+
 /**
  * Tw2QuaternionSequencer
  * @property {string} name
@@ -6,7 +8,7 @@
  * @property {Array} functions
  * @constructor
  */
-function Tw2QuaternionSequencer()
+export function Tw2QuaternionSequencer()
 {
     this.name = '';
     this.start = 0;
@@ -19,7 +21,7 @@ function Tw2QuaternionSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2QuaternionSequencer.prototype.GetLength = function()
+Tw2QuaternionSequencer.prototype.GetLength = function ()
 {
     var length = 0;
     for (var i = 0; i < this.functions.length; ++i)
@@ -37,7 +39,7 @@ Tw2QuaternionSequencer.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
+Tw2QuaternionSequencer.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -49,7 +51,7 @@ Tw2QuaternionSequencer.prototype.UpdateValue = function(time)
  * @returns {quat}
  * @prototype
  */
-Tw2QuaternionSequencer.prototype.GetValueAt = function(time, value)
+Tw2QuaternionSequencer.prototype.GetValueAt = function (time, value)
 {
     quat.identity(value, value);
     var tempValue = Tw2QuaternionSequencer.scratch.quat_0;

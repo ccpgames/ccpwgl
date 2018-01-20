@@ -1,3 +1,12 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {resMan} from '../core';
+import {variableStore} from '../core';
+import {Tw2BatchAccumulator} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2Frustum} from '../core';
+
+
 /**
  * EveSpaceScene
  * @property {string} name
@@ -46,7 +55,7 @@
  * @property {*} _debugHelper
  * @constructor
  */
-function EveSpaceScene()
+export function EveSpaceScene()
 {
     this.name = '';
 
@@ -61,16 +70,16 @@ function EveSpaceScene()
 
     var self = this;
     Object.defineProperty(this.visible, 'nebula',
-    {
-        get: function()
         {
-            return !!self.backgroundRenderingEnabled;
-        },
-        set: function(bool)
-        {
-            self.backgroundRenderingEnabled = bool;
-        }
-    });
+            get: function ()
+            {
+                return !!self.backgroundRenderingEnabled;
+            },
+            set: function (bool)
+            {
+                self.backgroundRenderingEnabled = bool;
+            }
+        });
 
     this.lensflares = [];
     this.objects = [];
@@ -155,7 +164,7 @@ function EveSpaceScene()
 /**
  * Initializes the space scene
  */
-EveSpaceScene.prototype.Initialize = function()
+EveSpaceScene.prototype.Initialize = function ()
 {
     variableStore.RegisterVariable('ShadowLightness', 0);
     if (!EveSpaceScene.EmptyTexture)
@@ -189,7 +198,7 @@ EveSpaceScene.prototype.Initialize = function()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceScene.prototype.GetResources = function(out)
+EveSpaceScene.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -224,7 +233,7 @@ EveSpaceScene.prototype.GetResources = function(out)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceScene.prototype.GetChildResources = function(out)
+EveSpaceScene.prototype.GetChildResources = function (out)
 {
     if (out === undefined)
     {
@@ -248,7 +257,7 @@ EveSpaceScene.prototype.GetChildResources = function(out)
  * Sets the environment reflection map
  * @param {String} path
  */
-EveSpaceScene.prototype.SetEnvMapReflection = function(path)
+EveSpaceScene.prototype.SetEnvMapReflection = function (path)
 {
     this.envMapResPath = path;
 
@@ -263,7 +272,7 @@ EveSpaceScene.prototype.SetEnvMapReflection = function(path)
  * @param {number} index
  * @param {String} path
  */
-EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
+EveSpaceScene.prototype.SetEnvMapPath = function (index, path)
 {
     switch (index)
     {
@@ -307,11 +316,11 @@ EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
 
 /**
  * Gets batches for rendering
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Array.<EveObject>} objectArray
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveSpaceScene.prototype.RenderBatches = function(mode, objectArray, accumulator)
+EveSpaceScene.prototype.RenderBatches = function (mode, objectArray, accumulator)
 {
     accumulator = (accumulator) ? accumulator : this._batches;
 
@@ -328,7 +337,7 @@ EveSpaceScene.prototype.RenderBatches = function(mode, objectArray, accumulator)
  * Enables LOD
  * @param {boolean} enable
  */
-EveSpaceScene.prototype.EnableLod = function(enable)
+EveSpaceScene.prototype.EnableLod = function (enable)
 {
     this.lodEnabled = enable;
 
@@ -359,7 +368,7 @@ EveSpaceScene.scratch = {
     frustum: new Tw2Frustum()
 };
 
-EveSpaceScene.prototype.ApplyPerFrameData = function()
+EveSpaceScene.prototype.ApplyPerFrameData = function ()
 {
     var d = device,
         s = EveSpaceScene.scratch;
@@ -411,7 +420,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     this._perFramePS.Get('ProjectionToView')[1] = -d.projection[10] - 1;
     device.perFramePSData = this._perFramePS;
 
-    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : Tw2Device.EmptyTexture;
+    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : EveSpaceScene.EmptyTexture;
     this._envMap1Handle.textureRes = this.envMap1Res;
     this._envMap2Handle.textureRes = this.envMap2Res;
     this._envMap3Handle.textureRes = this.envMap3Res;
@@ -420,7 +429,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
 /**
  * Updates children's view dependent data and renders them
  */
-EveSpaceScene.prototype.Render = function()
+EveSpaceScene.prototype.Render = function ()
 {
     this.ApplyPerFrameData();
     var i,
@@ -555,7 +564,7 @@ EveSpaceScene.prototype.Render = function()
  * Per frame update that is called per frame
  * @param {number} dt - delta time
  */
-EveSpaceScene.prototype.Update = function(dt)
+EveSpaceScene.prototype.Update = function (dt)
 {
     for (var i = 0; i < this.planets.length; ++i)
     {

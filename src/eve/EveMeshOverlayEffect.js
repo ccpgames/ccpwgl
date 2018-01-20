@@ -1,3 +1,5 @@
+import {device} from '../core';
+
 /**
  * Constructor for Overlay Effects
  * @property {boolean} update
@@ -41,7 +43,7 @@ function EveMeshOverlayEffect()
  * Per frame update
  * @param {number} dt - delta Time
  */
-EveMeshOverlayEffect.prototype.Update = function(dt)
+EveMeshOverlayEffect.prototype.Update = function (dt)
 {
     if (this.update && this.curveSet)
     {
@@ -51,10 +53,10 @@ EveMeshOverlayEffect.prototype.Update = function(dt)
 
 /**
  * Gets effects
- * @param {RenderMode} mode
+ * @param {number} mode
  * @returns {Array.<Tw2Effect>}
  */
-EveMeshOverlayEffect.prototype.GetEffects = function(mode)
+EveMeshOverlayEffect.prototype.GetEffects = function (mode)
 {
     if (this.display)
     {
@@ -82,7 +84,7 @@ EveMeshOverlayEffect.prototype.GetEffects = function(mode)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveMeshOverlayEffect.prototype.GetResources = function(out)
+EveMeshOverlayEffect.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {

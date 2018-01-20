@@ -1,11 +1,17 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+
+
 /**
  * Plane set render batch
- * @inherits Tw2RenderBatch
  * @constructor
  */
-function EvePlaneSetBatch()
+export function EvePlaneSetBatch()
 {
-    this._super.constructor.call(this);
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
     this.planeSet = null;
 }
 
@@ -14,12 +20,10 @@ function EvePlaneSetBatch()
  * @param {Tw2Effect} [overrideEffect]
  * @constructor
  */
-EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
+EvePlaneSetBatch.prototype.Commit = function (overrideEffect)
 {
     this.planeSet.Render(overrideEffect);
 };
-
-Inherit(EvePlaneSetBatch, Tw2RenderBatch);
 
 
 /**
@@ -37,7 +41,7 @@ Inherit(EvePlaneSetBatch, Tw2RenderBatch);
  * @property {number} groupIndex
  * @constructor
  */
-function EvePlaneSetItem()
+export function EvePlaneSetItem()
 {
     this.display = true;
     this.name = '';
@@ -62,12 +66,12 @@ function EvePlaneSetItem()
  * @property {boolean} display
  * @property {boolean} hideOnLowQuality
  * @property {number} _time
- * @property {WebglBuffer} _vertexBuffer
- * @property {WebglBuffer} _indexBuffer
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
-function EvePlaneSet()
+export function EvePlaneSet()
 {
     this.name = '';
     this.planes = [];
@@ -94,7 +98,7 @@ function EvePlaneSet()
 /**
  * Initializes the plane set
  */
-EvePlaneSet.prototype.Initialize = function()
+EvePlaneSet.prototype.Initialize = function ()
 {
     this.RebuildBuffers();
 };
@@ -104,7 +108,7 @@ EvePlaneSet.prototype.Initialize = function()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array} {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EvePlaneSet.prototype.GetResources = function(out)
+EvePlaneSet.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -122,7 +126,7 @@ EvePlaneSet.prototype.GetResources = function(out)
 /**
  * Rebuilds the plane set's buffers
  */
-EvePlaneSet.prototype.RebuildBuffers = function()
+EvePlaneSet.prototype.RebuildBuffers = function ()
 {
     var vertexSize = 35;
     var visibleItems = [];
@@ -218,11 +222,11 @@ EvePlaneSet.prototype.RebuildBuffers = function()
 
 /**
  * Gets the plane set's render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (this.display && mode === device.RM_ADDITIVE)
     {
@@ -239,7 +243,7 @@ EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
  * @param {Tw2Effect} [overrideEffect]
  * @constructor
  */
-EvePlaneSet.prototype.Render = function(overrideEffect)
+EvePlaneSet.prototype.Render = function (overrideEffect)
 {
     var effect = (!overrideEffect) ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -272,7 +276,7 @@ EvePlaneSet.prototype.Render = function(overrideEffect)
  * Per frame update
  * @param {number} dt - Delta Time
  */
-EvePlaneSet.prototype.Update = function(dt)
+EvePlaneSet.prototype.Update = function (dt)
 {
     this._time += dt;
 };
@@ -280,7 +284,7 @@ EvePlaneSet.prototype.Update = function(dt)
 /**
  * Clears the plane set's plane items
  */
-EvePlaneSet.prototype.Clear = function()
+EvePlaneSet.prototype.Clear = function ()
 {
     this.planes = [];
 };

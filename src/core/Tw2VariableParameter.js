@@ -1,3 +1,5 @@
+import {variableStore} from './Tw2VariableStore';
+
 /**
  * Tw2VariableParameter
  * @param {string} [name=''] Parameter name
@@ -34,7 +36,7 @@ function Tw2VariableParameter(name, variableName)
  * @returns {boolean}
  * @prototype
  */
-Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
+Tw2VariableParameter.prototype.Bind = function (constantBuffer, offset, size)
 {
     return false;
 };
@@ -46,7 +48,7 @@ Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
  * @param {number} size
  * @prototype
  */
-Tw2VariableParameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     if (typeof(variableStore._variables[this.variableName]) !== 'undefined')
     {

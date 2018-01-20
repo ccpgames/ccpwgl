@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {Tw2RawData} from '../core';
+import {EveBasicPerObjectData} from './EveTransform';
+
 /**
  * Particle system attachment to space object
  * @property {string} name
@@ -18,7 +22,7 @@
  * @property {EveBasicPerObjectData} _perObjectData
  * @constructor
  */
-function EveChildParticleSystem()
+export function EveChildParticleSystem()
 {
     this.name = '';
     this.display = true;
@@ -50,7 +54,7 @@ function EveChildParticleSystem()
  * @param {mat4} parentTransform
  * @param {Number} dt
  */
-EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
+EveChildParticleSystem.prototype.Update = function (parentTransform, dt)
 {
     if (this.useSRT)
     {
@@ -74,10 +78,10 @@ EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
+EveChildParticleSystem.prototype.GetBatches = function (mode, accumulator)
 {
     if (!this.display || !this.mesh)
     {
@@ -89,13 +93,12 @@ EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
 };
 
 
-
 /**
  * Gets child mesh res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveChildParticleSystem.prototype.GetResources = function(out)
+EveChildParticleSystem.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {

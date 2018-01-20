@@ -1,4 +1,27 @@
-function EveSOF()
+import {vec3, vec4, quat, mat4} from '../math';
+import {resMan} from '../core';
+import {Tw2FloatParameter} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2Vector4Parameter} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2Mesh} from '../core';
+import {Tw2MeshArea} from '../core';
+import {Tw2InstancedMesh} from '../core';
+import {Tw2CurveSet} from '../core';
+import {Tw2ValueBinding} from '../core';
+import {Tw2ScalarCurve2, Tw2ScalarKey2} from '../curves';
+import {EveBoosterSet} from './EveBoosterSet';
+import {EveChildMesh} from './EveChildMesh';
+import {EveLocator} from './EveLocator';
+import {EvePlaneSet, EvePlaneSetItem} from './EvePlaneSet';
+import {EveSpaceObjectDecal} from './EveSpaceObjectDecal';
+import {EveSpotlightSet, EveSpotlightSetItem} from './EveSpotlightSet';
+import {EveSpriteSet, EveSpriteSetItem} from './EveSpriteSet';
+import {EveSpaceObject} from './EveSpaceObject';
+import {EveShip} from './EveShip';
+
+
+export function EveSOF()
 {
     var data = null;
     var spriteEffect = null;
@@ -51,7 +74,7 @@ function EveSOF()
             {
                 pathCopy = pathCopy.substr(0, index) + '_' + pathInsert + pathCopy.substr(index);
                 var textureOverrides = _get(area, 'textureOverrides',
-                {});
+                    {});
                 if ((name in textureOverrides) && (faction.name in textureOverrides[name]))
                 {
                     return pathCopy;
@@ -149,22 +172,15 @@ function EveSOF()
             var effect = new Tw2Effect();
             effect.effectFilePath = data['generic']['areaShaderLocation'] + ModifyShaderPath(shaderOverride ? shaderOverride : area.shader, hull['isSkinned']);
             var names = _get(_get(data['generic']['areaShaders'], area.shader,
-            {}), 'parameters', []);
+                {}), 'parameters', []);
             for (var j = 0; j < names.length; ++j)
             {
                 var name = names[j];
                 var param = GetOverridenParameter(name, area, commands, race);
-                param = param || _get(_get(_get(data.generic.hullAreas, area.name,
-                {}), 'parameters',
-                {}), name);
-                param = param || _get(_get(_get(race.hullAreas, area.name,
-                {}), 'parameters',
-                {}), name);
-                param = param || _get(_get(_get(faction.areas, area.name,
-                {}), 'parameters',
-                {}), name);
-                param = param || _get(_get(area, 'parameters',
-                {}), name);
+                param = param || _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(_get(race.hullAreas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(_get(faction.areas, area.name, {}), 'parameters', {}), name);
+                param = param || _get(_get(area, 'parameters', {}), name);
                 if (param)
                 {
                     effect.parameters[name] = new Tw2Vector4Parameter(name, param);
@@ -196,9 +212,7 @@ function EveSOF()
                 }
             }
 
-            var defaultTextures = _get(_get(data['generic']['areaShaders'], area.shader,
-            {}), 'defaultTextures',
-            {});
+            var defaultTextures = _get(_get(data['generic']['areaShaders'], area.shader, {}), 'defaultTextures', {});
             for (var texName in defaultTextures)
             {
                 if (defaultTextures.hasOwnProperty(texName))
@@ -295,8 +309,7 @@ function EveSOF()
         }
         else if (_get(hull, 'defaultPattern'))
         {
-            p = _get(hull, 'defaultPattern',
-            {});
+            p = _get(hull, 'defaultPattern', {});
             layer = _get(p, 'transformLayer1', null);
             if (layer)
             {
@@ -307,8 +320,7 @@ function EveSOF()
             {
                 pattern.patterns.push(layer)
             }
-            p = _get(race, 'defaultPattern',
-            {});
+            p = _get(race, 'defaultPattern', {});
             layer = _get(p, 'layer1', null);
             if (layer)
             {
@@ -375,8 +387,7 @@ function EveSOF()
             {
                 continue;
             }
-            var hullParameters = _get(hullDecal, 'parameters',
-            {});
+            var hullParameters = _get(hullDecal, 'parameters', {});
             for (var j in hullParameters)
             {
                 if (hullParameters.hasOwnProperty(j))
@@ -384,8 +395,7 @@ function EveSOF()
                     effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
                 }
             }
-            var hullTextures = _get(hullDecal, 'textures',
-            {});
+            var hullTextures = _get(hullDecal, 'textures', {});
             for (j in hullTextures)
             {
                 if (hullTextures.hasOwnProperty(j))
@@ -395,8 +405,7 @@ function EveSOF()
             }
             if (factionDecal)
             {
-                var factionParameters = _get(factionDecal, 'parameters',
-                {});
+                var factionParameters = _get(factionDecal, 'parameters', {});
                 for (j in factionParameters)
                 {
                     if (factionParameters.hasOwnProperty(j))
@@ -404,8 +413,7 @@ function EveSOF()
                         effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
                     }
                 }
-                var factionTextures = _get(factionDecal, 'textures',
-                {});
+                var factionTextures = _get(factionDecal, 'textures', {});
                 for (j in factionTextures)
                 {
                     if (factionTextures.hasOwnProperty(j) && !(j in effect.parameters))
@@ -416,8 +424,8 @@ function EveSOF()
             }
 
             var defaultTextures = _get(_get(data['generic']['decalShaders'], hullDecal.shader,
-            {}), 'defaultTextures',
-            {});
+                {}), 'defaultTextures',
+                {});
             for (var texName in defaultTextures)
             {
                 if (defaultTextures.hasOwnProperty(texName))
@@ -471,7 +479,7 @@ function EveSOF()
     {
         var hullSets = _get(hull, 'spriteSets', []);
         var factionSets = _get(faction, 'spriteSets',
-        {});
+            {});
         for (var i = 0; i < hullSets.length; ++i)
         {
             var spriteSet = new EveSpriteSet(true, !!(hull['isSkinned'] && hullSets[i]['skinned']));
@@ -517,7 +525,7 @@ function EveSOF()
     {
         var hullSets = _get(hull, 'spotlightSets', []);
         var factionSets = _get(faction, 'spotlightSets',
-        {});
+            {});
         for (var i = 0; i < hullSets.length; ++i)
         {
             var spotlightSet = new EveSpotlightSet();
@@ -589,8 +597,7 @@ function EveSOF()
     function SetupPlaneSets(ship, hull, faction)
     {
         var hullSets = _get(hull, 'planeSets', []);
-        var factionSets = _get(faction, 'planeSets',
-        {});
+        var factionSets = _get(faction, 'planeSets', {});
         for (var i = 0; i < hullSets.length; ++i)
         {
             var planeSet = new EvePlaneSet();
@@ -645,8 +652,7 @@ function EveSOF()
         }
         var booster = new EveBoosterSet();
         var hullBooster = hull['booster'];
-        var raceBooster = _get(race, 'booster',
-        {});
+        var raceBooster = _get(race, 'booster', {});
         _assignIfExists(booster, raceBooster, 'glowScale');
         _assignIfExists(booster, raceBooster, 'symHaloScale');
         _assignIfExists(booster, raceBooster, 'haloScaleX');
@@ -694,7 +700,7 @@ function EveSOF()
         booster.effect.parameters['ShapeMap'] = new Tw2TextureParameter('ShapeMap', raceBooster.shapeAtlasResPath);
         booster.effect.parameters['GradientMap0'] = new Tw2TextureParameter('GradientMap0', raceBooster.gradient0ResPath);
         booster.effect.parameters['GradientMap1'] = new Tw2TextureParameter('GradientMap1', raceBooster.gradient1ResPath);
-        booster.effect.parameters['NoiseMap'] = new Tw2TextureParameter('ShapeMap', "res:/Texture/Global/noise32cube_volume.dds.0.png");
+        booster.effect.parameters['NoiseMap'] = new Tw2TextureParameter('ShapeMap', 'res:/Texture/Global/noise32cube_volume.dds.0.png');
 
         booster.effect.Initialize();
 
@@ -770,7 +776,7 @@ function EveSOF()
     {
         function onChildLoaded(child)
         {
-            return function(obj)
+            return function (obj)
             {
                 if (obj.isEffectChild)
                 {
@@ -845,7 +851,7 @@ function EveSOF()
         var hull = data['hull'][parts[0]];
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
-        var ship = new(_get(hull, 'buildClass', 0) === 2 ? EveSpaceObject : EveShip)();
+        var ship = new (_get(hull, 'buildClass', 0) === 2 ? EveSpaceObject : EveShip)();
         var pattern = SetupPattern(hull, race, commands);
         SetupMesh(ship, hull, faction, race, commands, pattern);
         SetupCustomMasks(ship, pattern);
@@ -863,7 +869,7 @@ function EveSOF()
         return ship;
     }
 
-    this.LoadData = function(callback)
+    this.LoadData = function (callback)
     {
         if (data === null)
         {
@@ -879,7 +885,7 @@ function EveSOF()
                 spriteEffect.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                 spriteEffect.Initialize();
 
-                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function(obj)
+                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function (obj)
                 {
                     data = obj;
                     for (var i = 0; i < pendingLoads.length; ++i)
@@ -900,11 +906,11 @@ function EveSOF()
         }
     };
 
-    this.BuildFromDNA = function(dna, callback)
+    this.BuildFromDNA = function (dna, callback)
     {
         if (data === null)
         {
-            this.LoadData(function()
+            this.LoadData(function ()
             {
                 var result = Build(dna);
                 if (callback)
@@ -1015,11 +1021,11 @@ function EveSOF()
         }
     }
 
-    this.SetupTurretMaterial = function(turretSet, parentFactionName, turretFactionName, callback)
+    this.SetupTurretMaterial = function (turretSet, parentFactionName, turretFactionName, callback)
     {
         if (data === null)
         {
-            this.LoadData(function()
+            this.LoadData(function ()
             {
                 SetupTurretMaterial(turretSet, parentFactionName, turretFactionName);
                 if (callback)
@@ -1058,33 +1064,33 @@ function EveSOF()
         }
     }
 
-    this.GetHullNames = function(callback)
+    this.GetHullNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('hull'));
         });
     };
 
-    this.GetFactionNames = function(callback)
+    this.GetFactionNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('faction'));
         });
     };
 
-    this.GetRaceNames = function(callback)
+    this.GetRaceNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('race'));
         });
     };
 
-    this.GetSofData = function(callback)
+    this.GetSofData = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('all'));
         });

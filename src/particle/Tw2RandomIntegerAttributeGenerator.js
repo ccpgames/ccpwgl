@@ -1,4 +1,5 @@
-/* global vec4 */
+import {vec4} from '../math';
+import {Tw2ParticleElementDeclaration} from './Tw2ParticleSystem';
 
 /**
  * Tw2RandomIntegerAttributeGenerator
@@ -9,7 +10,7 @@
  * @property _element
  * @constructor
  */
-function Tw2RandomIntegerAttributeGenerator()
+export function Tw2RandomIntegerAttributeGenerator()
 {
     this.elementType = Tw2ParticleElementDeclaration.CUSTOM;
     this.customName = '';
@@ -24,7 +25,7 @@ function Tw2RandomIntegerAttributeGenerator()
  * @returns {boolean}
  * @prototype
  */
-Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
+Tw2RandomIntegerAttributeGenerator.prototype.Bind = function (ps)
 {
     for (var i = 0; i < ps._elements.length; ++i)
     {
@@ -45,7 +46,7 @@ Tw2RandomIntegerAttributeGenerator.prototype.Bind = function(ps)
  * @param index
  * @prototype
  */
-Tw2RandomIntegerAttributeGenerator.prototype.Generate = function(position, velocity, index)
+Tw2RandomIntegerAttributeGenerator.prototype.Generate = function (position, velocity, index)
 {
     for (var i = 0; i < this._element.dimension; ++i)
     {

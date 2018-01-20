@@ -1,9 +1,11 @@
+import {vec3} from '../math';
+
 /**
  * Tw2ParticleDirectForce
  * @property {vec3} force
  * @constructor
  */
-function Tw2ParticleDirectForce()
+export function Tw2ParticleDirectForce()
 {
     this.force = vec3.create();
 }
@@ -15,7 +17,7 @@ function Tw2ParticleDirectForce()
  * @param force
  * @prototype
  */
-Tw2ParticleDirectForce.prototype.ApplyForce = function(position, velocity, force)
+Tw2ParticleDirectForce.prototype.ApplyForce = function (position, velocity, force)
 {
     force[0] += this.force[0];
     force[1] += this.force[1];
@@ -26,4 +28,4 @@ Tw2ParticleDirectForce.prototype.ApplyForce = function(position, velocity, force
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2ParticleDirectForce.prototype.Update = function() {};
+Tw2ParticleDirectForce.prototype.Update = function () {};

@@ -1,3 +1,5 @@
+import {vec2} from '../math';
+
 /**
  * Tw2Vector2Parameter
  * @param {string} [name='']
@@ -8,12 +10,10 @@
  * @property {number} offset
  * @constructor
  */
-function Tw2Vector2Parameter(name, value)
+export function Tw2Vector2Parameter(name, value)
 {
     this.name = name !== 'undefined' ? name : '';
     this.value = value !== undefined ? vec2.clone(value) : vec2.fromValues(1, 1);
-    this.constantBuffer = null;
-    this.offset = 0;
     this.constantBuffer = null;
     this.offset = 0;
 }
@@ -27,7 +27,7 @@ function Tw2Vector2Parameter(name, value)
  * @returns {boolean}
  * @prototype
  */
-Tw2Vector2Parameter.prototype.Bind = function(constantBuffer, offset, size)
+Tw2Vector2Parameter.prototype.Bind = function (constantBuffer, offset, size)
 {
     if (this.constantBuffer !== null || size < 2)
     {
@@ -43,7 +43,7 @@ Tw2Vector2Parameter.prototype.Bind = function(constantBuffer, offset, size)
  * Unbind
  * @prototype
  */
-Tw2Vector2Parameter.prototype.Unbind = function()
+Tw2Vector2Parameter.prototype.Unbind = function ()
 {
     this.constantBuffer = null;
 };
@@ -53,7 +53,7 @@ Tw2Vector2Parameter.prototype.Unbind = function()
  * @param {vec2} value - Vector2 Array
  * @prototype
  */
-Tw2Vector2Parameter.prototype.SetValue = function(value)
+Tw2Vector2Parameter.prototype.SetValue = function (value)
 {
     vec2.copy(this.value, value);
     if (this.constantBuffer !== null)
@@ -66,7 +66,7 @@ Tw2Vector2Parameter.prototype.SetValue = function(value)
  * Updates the constant buffer to the current value
  * @prototype
  */
-Tw2Vector2Parameter.prototype.OnValueChanged = function()
+Tw2Vector2Parameter.prototype.OnValueChanged = function ()
 {
     if (this.constantBuffer !== null)
     {
@@ -82,7 +82,7 @@ Tw2Vector2Parameter.prototype.OnValueChanged = function()
  * @param {number} size
  * @prototype
  */
-Tw2Vector2Parameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2Vector2Parameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
 };
@@ -92,7 +92,7 @@ Tw2Vector2Parameter.prototype.Apply = function(constantBuffer, offset, size)
  * @return {vec2} Vector2 Array
  * @prototype
  */
-Tw2Vector2Parameter.prototype.GetValue = function()
+Tw2Vector2Parameter.prototype.GetValue = function ()
 {
     if (this.constantBuffer !== null)
     {
@@ -109,7 +109,7 @@ Tw2Vector2Parameter.prototype.GetValue = function()
  * @throw Invalid Index
  * @prototype
  */
-Tw2Vector2Parameter.prototype.GetIndexValue = function(index)
+Tw2Vector2Parameter.prototype.GetIndexValue = function (index)
 {
     if (typeof this.value[index] === 'undefined')
     {
@@ -131,7 +131,7 @@ Tw2Vector2Parameter.prototype.GetIndexValue = function(index)
  * @throw Invalid Index
  * @prototype
  */
-Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
+Tw2Vector2Parameter.prototype.SetIndexValue = function (index, value)
 {
     if (typeof this.value[index] === 'undefined')
     {
@@ -151,7 +151,7 @@ Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
  * @param {number} value - The value to fill the value array elements with
  * @prototype
  */
-Tw2Vector2Parameter.prototype.FillWith = function(value)
+Tw2Vector2Parameter.prototype.FillWith = function (value)
 {
     this.SetValue([value, value]);
 };

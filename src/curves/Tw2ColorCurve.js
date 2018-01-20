@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2ColorKey
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ColorKey()
+export function Tw2ColorKey()
 {
     this.time = 0;
     this.value = vec4.create();
@@ -28,7 +30,7 @@ function Tw2ColorKey()
  * @property {number} _currKey
  * @constructor
  */
-function Tw2ColorCurve()
+export function Tw2ColorCurve()
 {
     this.name = '';
     this.start = 0;
@@ -42,7 +44,7 @@ function Tw2ColorCurve()
 /**
  * Initializes the Curve
  */
-Tw2ColorCurve.prototype.Initialize = function()
+Tw2ColorCurve.prototype.Initialize = function ()
 {
     this.Sort();
 };
@@ -50,7 +52,7 @@ Tw2ColorCurve.prototype.Initialize = function()
 /**
  * Sorts the curve's keys
  */
-Tw2ColorCurve.prototype.Sort = function()
+Tw2ColorCurve.prototype.Sort = function ()
 {
     if (this.keys.length)
     {
@@ -66,7 +68,7 @@ Tw2ColorCurve.prototype.Sort = function()
  * @returns {number}
  * @static
  */
-Tw2ColorCurve.Compare = function(a, b)
+Tw2ColorCurve.Compare = function (a, b)
 {
     if (a.time < b.time) return -1;
     if (a.time > b.time) return 1;
@@ -75,10 +77,10 @@ Tw2ColorCurve.Compare = function(a, b)
 
 /**
  * Returns curve length
- 
+
  * @returns {number}
  */
-Tw2ColorCurve.prototype.GetLength = function()
+Tw2ColorCurve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -88,7 +90,7 @@ Tw2ColorCurve.prototype.GetLength = function()
  *
  * @param {number} time
  */
-Tw2ColorCurve.prototype.UpdateValue = function(time)
+Tw2ColorCurve.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -100,7 +102,7 @@ Tw2ColorCurve.prototype.UpdateValue = function(time)
  * @param {vec4} value
  * @returns {vec4}
  */
-Tw2ColorCurve.prototype.GetValueAt = function(time, value)
+Tw2ColorCurve.prototype.GetValueAt = function (time, value)
 {
     if (this.length === 0)
     {

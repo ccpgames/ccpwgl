@@ -1,3 +1,7 @@
+import {emitter} from './Tw2EventEmitter';
+import {Tw2Resource} from './Tw2Resource';
+import {Tw2ObjectReader} from './Tw2ObjectReader';
+
 /**
  * Manages loaded resources
  * @property {Object} _loadedObjects
@@ -12,7 +16,7 @@ function Tw2MotherLode()
      * @param {string} path
      * @returns {Tw2LoadingObject}
      */
-    this.Find = function(path)
+    this.Find = function (path)
     {
         if (path in this._loadedObjects)
         {
@@ -26,7 +30,7 @@ function Tw2MotherLode()
      * @param {string} path
      * @param {Tw2LoadingObject} obj
      */
-    this.Add = function(path, obj)
+    this.Add = function (path, obj)
     {
         this._loadedObjects[path] = obj;
     };
@@ -35,7 +39,7 @@ function Tw2MotherLode()
      * Removes a loaded object by it's file path
      * @param {string} path
      */
-    this.Remove = function(path)
+    this.Remove = function (path)
     {
         delete this._loadedObjects[path];
     };
@@ -43,7 +47,7 @@ function Tw2MotherLode()
     /**
      * Clears the loaded object object
      */
-    this.Clear = function()
+    this.Clear = function ()
     {
         this._loadedObjects = {};
     };
@@ -51,7 +55,7 @@ function Tw2MotherLode()
     /**
      * Unloads all loaded objects and then clears the loadedObject object
      */
-    this.UnloadAndClear = function()
+    this.UnloadAndClear = function ()
     {
         for (var path in this._loadedObjects)
         {
@@ -74,7 +78,7 @@ function Tw2MotherLode()
      * @param {Number} frameLimit - how many frames the object can stay alive for before being purged
      * @param {Number} frameDistance - how long the resource has been alive for
      */
-    this.PurgeInactive = function(curFrame, frameLimit, frameDistance)
+    this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
     {
         for (var path in this._loadedObjects)
         {
@@ -86,11 +90,11 @@ function Tw2MotherLode()
                     if (obj._isPurged)
                     {
                         emitter.log('res.event',
-                        {
-                            msg: 'Unloaded  ',
-                            path: obj.path,
-                            type: 'purged'
-                        });
+                            {
+                                msg: 'Unloaded  ',
+                                path: obj.path,
+                                type: 'purged'
+                            });
 
                         delete this._loadedObjects[path];
                     }
@@ -99,11 +103,11 @@ function Tw2MotherLode()
                         if (obj.Unload())
                         {
                             emitter.log('res.event',
-                            {
-                                msg: 'Unloaded  ',
-                                path: obj.path,
-                                type: 'unused'
-                            });
+                                {
+                                    msg: 'Unloaded  ',
+                                    path: obj.path,
+                                    type: 'unused'
+                                });
                             delete this._loadedObjects[path];
                         }
                     }
@@ -122,17 +126,20 @@ function Tw2MotherLode()
  * @property {Tw2ObjectReader} _constructor
  * @property {function} _constructorFunction - The constructor used to create the object once it's red contents have loaded
  * @inherit Tw2Resource
- * @constructor
+ * @class
  */
-function Tw2LoadingObject()
+export class Tw2LoadingObject extends Tw2Resource
 {
-    this._super.constructor.call(this);
-    this.object = null;
-    this._redContents = null;
-    this._inPrepare = null;
-    this._objects = [];
-    this._constructor = null;
-    this._constructorFunction = null;
+    constructor()
+    {
+        super();
+        this.object = null;
+        this._redContents = null;
+        this._inPrepare = null;
+        this._objects = [];
+        this._constructor = null;
+        this._constructorFunction = null;
+    }
 }
 
 /**
@@ -142,7 +149,7 @@ function Tw2LoadingObject()
  * @param {Boolean} initialize
  * @returns {Boolean}
  */
-Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
+Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
 {
     object._loadCallback = callback;
     object._initialize = initialize;
@@ -155,18 +162,18 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
  * @param text
  * @param xml
  */
-Tw2LoadingObject.prototype.Prepare = function(text, xml)
+Tw2LoadingObject.prototype.Prepare = function (text, xml)
 {
     if (text === null)
     {
         emitter.log('res.error',
-        {
-            log: 'error',
-            src: ['Tw2LoadingObject', 'Prepare'],
-            msg: 'Invalid XML',
-            path: this.path,
-            type: 'xml.invalid',
-        });
+            {
+                log: 'error',
+                src: ['Tw2LoadingObject', 'Prepare'],
+                msg: 'Invalid XML',
+                path: this.path,
+                type: 'xml.invalid',
+            });
         this.PrepareFinished(false);
         return;
     }
@@ -188,14 +195,14 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
         catch (e)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2LoadingObject', 'Prepare'],
-                msg: 'Error preparing resource',
-                path: this.path,
-                type: 'prepare',
-                err: e
-            })
+                {
+                    log: 'error',
+                    src: ['Tw2LoadingObject', 'Prepare'],
+                    msg: 'Error preparing resource',
+                    path: this.path,
+                    type: 'prepare',
+                    err: e
+                });
         }
 
         this._inPrepare++;
@@ -204,16 +211,15 @@ Tw2LoadingObject.prototype.Prepare = function(text, xml)
     resMan.motherLode.Remove(this.path);
 
     emitter.log('res.event',
-    {
-        msg: 'Prepared  ',
-        path: this.path,
-        type: 'prepared'
-    });
+        {
+            msg: 'Prepared  ',
+            path: this.path,
+            type: 'prepared'
+        });
 
     this.PrepareFinished(true);
 };
 
-Inherit(Tw2LoadingObject, Tw2Resource);
 
 /**
  * Resource Manager
@@ -237,22 +243,24 @@ Inherit(Tw2LoadingObject, Tw2Resource);
  */
 function Tw2ResMan()
 {
-    this.systemMirror = false;
-    this.resourcePaths = {};
-
-    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/';
-
-    this._extensions = {};
     this.motherLode = new Tw2MotherLode();
+
+    this.systemMirror = false;
     this.maxPrepareTime = 0.05;
     this.prepareBudget = 0;
-    this._prepareQueue = [];
     this.autoPurgeResources = true;
     this.activeFrame = 0;
+    this.purgeTime = 30;
+
+    this._extensions = {};
+    this._resourcePaths = {};
+    this._constructors = {};
+    this._missingConstructors = [];
+
+    this._prepareQueue = [];
     this._purgeTime = 0;
     this._purgeFrame = 0;
     this._purgeFrameLimit = 1000;
-    this.purgeTime = 30;
     this._pendingLoads = 0;
     this._noLoadFrames = 0;
 
@@ -261,19 +269,9 @@ function Tw2ResMan()
      * @returns {Boolean}
      *
      */
-    this.IsLoading = function()
+    this.IsLoading = function ()
     {
         return this._noLoadFrames < 2;
-    };
-
-    /**
-     * Registeres extension's and their constructors
-     * @param {string} extension
-     * @param {Function} constructor
-     */
-    this.RegisterExtension = function(extension, constructor)
-    {
-        this._extensions[extension] = constructor;
     };
 
     /**
@@ -281,7 +279,7 @@ function Tw2ResMan()
      * @returns {XMLHttpRequest|ActiveXObject}
      * @private
      */
-    this._CreateHttpRequest = function()
+    this._CreateHttpRequest = function ()
     {
         var httpRequest = null;
 
@@ -311,12 +309,12 @@ function Tw2ResMan()
         if (!httpRequest)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2LoadingObject', 'Prepare'],
-                msg: 'Could not create an XMLHTTP instance',
-                type: 'http.instance'
-            })
+                {
+                    log: 'error',
+                    src: ['Tw2LoadingObject', 'Prepare'],
+                    msg: 'Could not create an XMLHTTP instance',
+                    type: 'http.instance'
+                });
         }
         return httpRequest;
     };
@@ -371,7 +369,7 @@ function Tw2ResMan()
      * @param {string} path
      * @returns {string}
      */
-    this.LogPathString = function(path)
+    this.LogPathString = function (path)
     {
         if (path.substr(0, 5) === 'str:/' && path.length > 64)
         {
@@ -385,7 +383,7 @@ function Tw2ResMan()
      * @param {Number} dt - deltaTime
      * @returns {Boolean}
      */
-    this.PrepareLoop = function(dt)
+    this.PrepareLoop = function (dt)
     {
         if (this._prepareQueue.length === 0 && this._pendingLoads === 0)
         {
@@ -401,8 +399,9 @@ function Tw2ResMan()
 
         resMan.prepareBudget = resMan.maxPrepareTime;
 
-        var startTime = device.Clock.now();
+        var startTime = Date.now();
         var preparedCount = 0;
+        var now;
 
         while (resMan._prepareQueue.length)
         {
@@ -417,21 +416,21 @@ function Tw2ResMan()
             }
             if (!result)
             {
-                now = device.Clock.now();
+                now = Date.now();
 
                 emitter.log('res.event',
-                {
-                    msg: 'Prepared  ',
-                    path: resMan._prepareQueue[0][0].path,
-                    time: (now - startTime) * 0.001,
-                    type: 'prepared'
-                });
+                    {
+                        msg: 'Prepared  ',
+                        path: resMan._prepareQueue[0][0].path,
+                        time: (now - startTime) * 0.001,
+                        type: 'prepared'
+                    });
 
                 resMan._prepareQueue.shift();
                 preparedCount++;
             }
 
-            now = device.Clock.now();
+            now = Date.now();
             resMan.prepareBudget -= (now - startTime) * 0.001;
 
             if (resMan.prepareBudget < 0)
@@ -467,7 +466,7 @@ function Tw2ResMan()
      */
     function _DoLoadResource(obj)
     {
-        return function()
+        return function ()
         {
             var readyState = 0;
 
@@ -478,14 +477,14 @@ function Tw2ResMan()
             catch (e)
             {
                 emitter.log('res.error',
-                {
-                    log: 'error',
-                    src: ['Tw2ResMan', '_DoLoadResource'],
-                    msg: 'Communication error loading',
-                    path: obj.path,
-                    type: 'http.readystate',
-                    value: readyState
-                });
+                    {
+                        log: 'error',
+                        src: ['Tw2ResMan', '_DoLoadResource'],
+                        msg: 'Communication error loading',
+                        path: obj.path,
+                        type: 'http.readystate',
+                        value: readyState
+                    });
 
                 obj.LoadFinished(false);
                 resMan._pendingLoads--;
@@ -515,14 +514,14 @@ function Tw2ResMan()
                 else
                 {
                     emitter.log('res.error',
-                    {
-                        log: 'error',
-                        src: ['Tw2ResMan', '_DoLoadResource'],
-                        msg: 'Communication error loading',
-                        path: obj.path,
-                        type: 'http.status',
-                        value: this.status
-                    });
+                        {
+                            log: 'error',
+                            src: ['Tw2ResMan', '_DoLoadResource'],
+                            msg: 'Communication error loading',
+                            path: obj.path,
+                            type: 'http.status',
+                            value: this.status
+                        });
                     obj.LoadFinished(false);
                 }
                 resMan._pendingLoads--;
@@ -532,43 +531,43 @@ function Tw2ResMan()
 
     /**
      * Builds a url from a resource path
-     * - the prefix in the resource path is replaced with it's string value from `this.resourcePaths`
+     * - the prefix in the resource path is replaced with it's string value from `this._resourcePaths`
      * @param {string} resPath
      * @returns {string}
      */
-    this.BuildUrl = function(resPath)
+    this.BuildUrl = function (resPath)
     {
         var prefixIndex = resPath.indexOf(':/');
         if (prefixIndex === -1)
         {
             emitter.log('res.error',
-            {
-                log: 'warn',
-                src: ['Tw2ResMan', 'BuildUrl'],
-                msg: 'Invalid path',
-                type: 'prefix.undefined',
-                path: resPath
-            });
+                {
+                    log: 'warn',
+                    src: ['Tw2ResMan', 'BuildUrl'],
+                    msg: 'Invalid path',
+                    type: 'prefix.undefined',
+                    path: resPath
+                });
             return resPath;
         }
 
         var prefix = resPath.substr(0, prefixIndex);
 
-        if (!(prefix in this.resourcePaths))
+        if (!(prefix in this._resourcePaths))
         {
             emitter.log('res.error',
-            {
-                log: 'warn',
-                src: ['Tw2ResMan', 'BuildUrl'],
-                msg: 'Unregistered path',
-                path: resPath,
-                type: 'prefix.unregistered',
-                value: prefix
-            });
+                {
+                    log: 'warn',
+                    src: ['Tw2ResMan', 'BuildUrl'],
+                    msg: 'Unregistered path',
+                    path: resPath,
+                    type: 'prefix.unregistered',
+                    value: prefix
+                });
             return resPath;
         }
 
-        return this.resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
+        return this._resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
     };
 
     /**
@@ -577,7 +576,7 @@ function Tw2ResMan()
      * @returns {*}
      * @private
      */
-    this._LoadResource = function(obj)
+    this._LoadResource = function (obj)
     {
         obj._isPurged = false;
         var path = obj.path;
@@ -592,11 +591,11 @@ function Tw2ResMan()
         httpRequest.onreadystatechange = _DoLoadResource(obj);
 
         emitter.log('res.event',
-        {
-            msg: 'Requesting',
-            path: path,
-            type: 'request'
-        });
+            {
+                msg: 'Requesting',
+                path: path,
+                type: 'request'
+            });
 
         httpRequest.open('GET', this.BuildUrl(path));
 
@@ -615,14 +614,14 @@ function Tw2ResMan()
         catch (e)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2ResMan', '_LoadResource'],
-                msg: 'Error requesting',
-                path: path,
-                type: 'http.request',
-                err: e
-            })
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', '_LoadResource'],
+                    msg: 'Error requesting',
+                    path: path,
+                    type: 'http.request',
+                    err: e
+                });
         }
     };
 
@@ -631,16 +630,16 @@ function Tw2ResMan()
      * @param {Tw2LoadingObject} resource
      * @returns {Tw2LoadingObject} resource
      */
-    this.ReloadResource = function(resource)
+    this.ReloadResource = function (resource)
     {
         var path = resource.path;
 
         emitter.log('res.event',
-        {
-            msg: 'Reloading ',
-            path: path,
-            type: 'reload'
-        });
+            {
+                msg: 'Reloading ',
+                path: path,
+                type: 'reload'
+            });
 
         var obj = this.motherLode.Find(path);
 
@@ -658,7 +657,7 @@ function Tw2ResMan()
      * @param {String} path
      * @returns resource
      */
-    this.GetResource = function(path)
+    this.GetResource = function (path)
     {
         var obj;
 
@@ -679,27 +678,27 @@ function Tw2ResMan()
         if (ext === null)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2ResMan', 'ReloadResource'],
-                msg: 'Undefined extension',
-                type: 'extension.undefined',
-                path: this.LogPathString(path)
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', 'ReloadResource'],
+                    msg: 'Undefined extension',
+                    type: 'extension.undefined',
+                    path: this.LogPathString(path)
+                });
             return null;
         }
 
         if (!(ext in this._extensions))
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2ResMan', 'ReloadResource'],
-                msg: 'Unregistered extension',
-                type: 'extension.unregistered',
-                path: this.LogPathString(path),
-                value: ext
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', 'ReloadResource'],
+                    msg: 'Unregistered extension',
+                    type: 'extension.unregistered',
+                    path: this.LogPathString(path),
+                    value: ext
+                });
             return null;
         }
 
@@ -714,7 +713,7 @@ function Tw2ResMan()
      * @param {string} path
      * @param {Function} callback
      */
-    this.GetObject = function(path, callback)
+    this.GetObject = function (path, callback)
     {
         this._GetObject(path, callback, true);
     };
@@ -724,7 +723,7 @@ function Tw2ResMan()
      * @param {string} path
      * @param {Function} callback
      */
-    this.GetObjectNoInitialize = function(path, callback)
+    this.GetObjectNoInitialize = function (path, callback)
     {
         this._GetObject(path, callback, false);
     };
@@ -736,7 +735,7 @@ function Tw2ResMan()
      * @param {Boolean} initialize
      * @private
      */
-    this._GetObject = function(path, callback, initialize)
+    this._GetObject = function (path, callback, initialize)
     {
         path = _NormalizePath(path);
 
@@ -759,12 +758,12 @@ function Tw2ResMan()
         httpRequest.onreadystatechange = _DoLoadResource(res);
 
         emitter.log('res.event',
-        {
-            msg: 'Requesting',
-            path: this.BuildUrl(path),
-            _path: path,
-            type: 'requesting'
-        });
+            {
+                msg: 'Requesting',
+                path: this.BuildUrl(path),
+                _path: path,
+                type: 'requesting'
+            });
 
         httpRequest.open('GET', this.BuildUrl(path));
         httpRequest.responseType = 'arraybuffer';
@@ -779,22 +778,22 @@ function Tw2ResMan()
         catch (e)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2ResMan', '_GetObject'],
-                msg: 'Error sending object HTTP request',
-                path: this.BuildUrl(path),
-                _path: path,
-                type: 'http.request',
-                err: e
-            })
+                {
+                    log: 'error',
+                    src: ['Tw2ResMan', '_GetObject'],
+                    msg: 'Error sending object HTTP request',
+                    path: this.BuildUrl(path),
+                    _path: path,
+                    type: 'http.request',
+                    err: e
+                });
         }
     };
 
     /**
      * Clears the motherLode {@link Tw2MotherLode}
      */
-    this.Clear = function()
+    this.Clear = function ()
     {
         this.motherLode.Clear();
     };
@@ -802,11 +801,177 @@ function Tw2ResMan()
     /**
      * Unloads and Clears the motherLode {@link Tw2MotherLode}
      */
-    this.UnloadAndClear = function()
+    this.UnloadAndClear = function ()
     {
         this.motherLode.UnloadAndClear();
-    }
+    };
+
+    /**
+     * Passes key:values from an object or array of objects to an internal function
+     * @param {*} target
+     * @param {string} funcName
+     * @param {Array|{}} obj
+     * @returns {boolean}
+     */
+    const _toKeyValue = function (target, funcName, obj)
+    {
+        if (obj && funcName && funcName in target)
+        {
+            obj = Array.isArray(obj) ? obj : [obj];
+            for (let i = 0; i < obj.length; i++)
+            {
+                for (let key in obj[i])
+                {
+                    if (obj[i].hasOwnProperty(key))
+                    {
+                        target[funcName](key, obj[i][key]);
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    };
+
+    /**
+     * Registers a library constructor
+     * @param {string} name
+     * @param {function} Constructor
+     * @returns {?Function}}
+     */
+    this.RegisterConstructor = function (name, Constructor)
+    {
+        if (name && Constructor && typeof Constructor === 'function')
+        {
+            this._constructors[name] = Constructor;
+            return Constructor;
+        }
+        return null;
+    };
+
+    /**
+     * Registers library constructors from an object or array of objects
+     * @param obj
+     */
+    this.RegisterConstructors = function (obj)
+    {
+        _toKeyValue(this, 'RegisterConstructor', obj);
+    };
+
+    /**
+     * Gets a library constructor by name
+     * @param {string} name
+     * @returns {?Function}
+     */
+    this.GetConstructor = function (name)
+    {
+        if (name && name in this._constructors)
+        {
+            return this._constructors[name];
+        }
+        else if (name)
+        {
+            if (this._missingConstructors.indexOf(name) === -1)
+            {
+                this._missingConstructors.push(name);
+            }
+        }
+        return null;
+    };
+
+    /**
+     * Registers extension's and their constructors
+     * @param {string} extension
+     * @param {Function} Constructor
+     * @returns {boolean}
+     */
+    this.RegisterExtension = function (extension, Constructor)
+    {
+        if (!extension || !Constructor || typeof Constructor !== 'function')
+        {
+            return false;
+        }
+
+        this._extensions[extension] = Constructor;
+        return true;
+    };
+
+    /**
+     * Registers extensions from an object or array of objects
+     * @param obj
+     */
+    this.RegisterExtensions = function (obj)
+    {
+        _toKeyValue(this, 'RegisterExtension', obj);
+    };
+
+    /**
+     * Gets a resource constructor from it's extension
+     * @param {string} extension
+     * @returns {?Function}}
+     */
+    this.GetExtension = function (extension)
+    {
+        return extension && extension in this._extensions ? this._extensions[extension] : null;
+    };
+
+    /**
+     * Registers a resource path
+     * @param {string} prefix
+     * @param {Function} path
+     * @returns {boolean}
+     */
+    this.RegisterResourcePath = function (prefix, path)
+    {
+        if (!prefix || !path)
+        {
+            return false;
+        }
+
+        this._resourcePaths[prefix] = path;
+        return true;
+    };
+
+    /**
+     * Registers resource paths from an object or array of objects
+     * @param obj
+     */
+    this.RegisterResourcePaths = function (obj)
+    {
+        _toKeyValue(this, 'RegisterResourcePath', obj);
+    };
+
+    /**
+     * Gets a resource path from its prefix
+     * @param {string} prefix
+     * @returns {?string}}
+     */
+    this.GetResourcePath = function (prefix)
+    {
+        return prefix && prefix in this._resourcePaths ? this._resourcePaths[prefix] : null;
+    };
+
+    /**
+     * Register
+     * @param {{}} opt
+     * @param {{}} opt.resMan
+     * @param {boolean} opt.systemMirror
+     * @param {boolean} opt.autoPurgeResources
+     * @param {number} opt.autoPurgeTimer
+     * @param {{}} opt.resourcePaths
+     * @param {{}} opt.extensions
+     * @param {{}} opt.constructors
+     */
+    this.Register = function (opt)
+    {
+        if (opt)
+        {
+            this.RegisterConstructors(opt.constructors);
+            this.RegisterResourcePaths(opt.resourcePaths);
+            this.RegisterExtensions(opt.extensions);
+        }
+    };
 }
 
 // Global instance of Tw2ResMan
-var resMan = new Tw2ResMan();
+export const resMan = new Tw2ResMan();

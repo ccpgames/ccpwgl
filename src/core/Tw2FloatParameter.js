@@ -1,6 +1,6 @@
 /**
  * A Tw2 Parameter
- * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Tw2Parameter
+ * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
  */
 
 /**
@@ -13,7 +13,7 @@
  * @property {null|number} offset
  * @constructor
  */
-function Tw2FloatParameter(name, value)
+export function Tw2FloatParameter(name, value)
 {
     if (typeof(name) !== 'undefined')
     {
@@ -25,7 +25,7 @@ function Tw2FloatParameter(name, value)
     }
     if (typeof(value) !== 'undefined')
     {
-        if (value.constructor === (new glMatrix.ARRAY_TYPE()).constructor || value.constructor === [].constructor)
+        if (value.constructor.name.toUpperCase().includes('ARRAY'))
         {
             this.value = value[0];
         }
@@ -50,7 +50,7 @@ function Tw2FloatParameter(name, value)
  * @returns {boolean}
  * @prototype
  */
-Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
+Tw2FloatParameter.prototype.Bind = function (constantBuffer, offset, size)
 {
     if (this.constantBuffer !== null || size < 1)
     {
@@ -65,7 +65,7 @@ Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
  * Unbinds the parameter from it's constant buffer
  * @prototype
  */
-Tw2FloatParameter.prototype.Unbind = function()
+Tw2FloatParameter.prototype.Unbind = function ()
 {
     this.constantBuffer = null;
 };
@@ -74,7 +74,7 @@ Tw2FloatParameter.prototype.Unbind = function()
  * Updates the constant buffer to the current value
  * @prototype
  */
-Tw2FloatParameter.prototype.OnValueChanged = function()
+Tw2FloatParameter.prototype.OnValueChanged = function ()
 {
     if (this.constantBuffer !== null)
     {
@@ -89,7 +89,7 @@ Tw2FloatParameter.prototype.OnValueChanged = function()
  * @param {number} [size=] - unused
  * @prototype
  */
-Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2FloatParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     constantBuffer[offset] = this.value;
 };
@@ -98,7 +98,7 @@ Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
  * Gets the current value
  * @prototype
  */
-Tw2FloatParameter.prototype.GetValue = function()
+Tw2FloatParameter.prototype.GetValue = function ()
 {
     if (this.constantBuffer !== null)
     {
@@ -112,7 +112,7 @@ Tw2FloatParameter.prototype.GetValue = function()
  * Sets a supplied value
  * @prototype
  */
-Tw2FloatParameter.prototype.SetValue = function(value)
+Tw2FloatParameter.prototype.SetValue = function (value)
 {
     this.value = value;
     if (this.constantBuffer !== null)

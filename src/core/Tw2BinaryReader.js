@@ -3,7 +3,7 @@
  * @param data
  * @constructor
  */
-function Tw2BinaryReader(data)
+export function Tw2BinaryReader(data)
 {
     this.data = data;
     this.cursor = 0;
@@ -14,7 +14,7 @@ function Tw2BinaryReader(data)
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadUInt8 = function()
+Tw2BinaryReader.prototype.ReadUInt8 = function ()
 {
     return this.data[this.cursor++];
 };
@@ -24,7 +24,7 @@ Tw2BinaryReader.prototype.ReadUInt8 = function()
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadInt8 = function()
+Tw2BinaryReader.prototype.ReadInt8 = function ()
 {
     var val = this.data[this.cursor++];
     if (val > 0x7F)
@@ -39,7 +39,7 @@ Tw2BinaryReader.prototype.ReadInt8 = function()
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadUInt16 = function()
+Tw2BinaryReader.prototype.ReadUInt16 = function ()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8);
 };
@@ -49,7 +49,7 @@ Tw2BinaryReader.prototype.ReadUInt16 = function()
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadInt16 = function()
+Tw2BinaryReader.prototype.ReadInt16 = function ()
 {
     var val = this.data[this.cursor++] + (this.data[this.cursor++] << 8);
     if (val > 0x7FFF)
@@ -64,7 +64,7 @@ Tw2BinaryReader.prototype.ReadInt16 = function()
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadUInt32 = function()
+Tw2BinaryReader.prototype.ReadUInt32 = function ()
 {
     return this.data[this.cursor++] + (this.data[this.cursor++] << 8) + (this.data[this.cursor++] << 16) + ((this.data[this.cursor++] << 24) >>> 0);
 };
@@ -74,7 +74,7 @@ Tw2BinaryReader.prototype.ReadUInt32 = function()
  * @returns {*}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadInt32 = function()
+Tw2BinaryReader.prototype.ReadInt32 = function ()
 {
     var val = this.data[this.cursor++] + (this.data[this.cursor++] << 8) + (this.data[this.cursor++] << 16) + ((this.data[this.cursor++] << 24) >>> 0);
     if (val > 0x7FFFFFFF)
@@ -89,7 +89,7 @@ Tw2BinaryReader.prototype.ReadInt32 = function()
  * @returns {number}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadFloat16 = function()
+Tw2BinaryReader.prototype.ReadFloat16 = function ()
 {
     var b2 = this.data[this.cursor++],
         b1 = this.data[this.cursor++];
@@ -106,7 +106,7 @@ Tw2BinaryReader.prototype.ReadFloat16 = function()
  * @returns {number}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadFloat32 = function()
+Tw2BinaryReader.prototype.ReadFloat32 = function ()
 {
     var b4 = this.data[this.cursor++],
         b3 = this.data[this.cursor++],
@@ -125,7 +125,7 @@ Tw2BinaryReader.prototype.ReadFloat32 = function()
  * @returns {string}
  * @prototype
  */
-Tw2BinaryReader.prototype.ReadString = function()
+Tw2BinaryReader.prototype.ReadString = function ()
 {
     var length = this.data[this.cursor++];
     var str = '';

@@ -1,3 +1,8 @@
+import {vec3, quat, mat4} from '../math';
+import {Tw2RawData} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {EveBasicPerObjectData} from './EveTransform';
+
 /**
  * Mesh attachment to space object
  * @property {string} name
@@ -17,7 +22,7 @@
  * @property {Tw2PerObjectData|EveBasicPerObjectData} _perObjectData
  * @constructor
  */
-function EveChildMesh()
+export function EveChildMesh()
 {
     this.name = '';
     this.display = true;
@@ -42,7 +47,7 @@ function EveChildMesh()
  * Updates mesh transform
  * @param {mat4} parentTransform
  */
-EveChildMesh.prototype.Update = function(parentTransform)
+EveChildMesh.prototype.Update = function (parentTransform)
 {
     if (this.useSRT)
     {
@@ -57,11 +62,11 @@ EveChildMesh.prototype.Update = function(parentTransform)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveChildMesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveChildMesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display || !this.mesh)
     {
@@ -109,13 +114,12 @@ EveChildMesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 };
 
 
-
 /**
  * Gets child mesh res objects
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveChildMesh.prototype.GetResources = function(out)
+EveChildMesh.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {

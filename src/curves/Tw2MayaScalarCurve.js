@@ -7,7 +7,7 @@
  * @property {number} length
  * @constructor
  */
-function Tw2MayaScalarCurve()
+export function Tw2MayaScalarCurve()
 {
     this.index = -1;
     this.animationEngine = null;
@@ -21,7 +21,7 @@ function Tw2MayaScalarCurve()
  * @returns {boolean}
  * @prototype
  */
-Tw2MayaScalarCurve.prototype.Initialize = function()
+Tw2MayaScalarCurve.prototype.Initialize = function ()
 {
     this.ComputeLength();
     return true;
@@ -32,7 +32,7 @@ Tw2MayaScalarCurve.prototype.Initialize = function()
  * @returns {number}
  * @prototype
  */
-Tw2MayaScalarCurve.prototype.GetLength = function()
+Tw2MayaScalarCurve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -42,7 +42,7 @@ Tw2MayaScalarCurve.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
+Tw2MayaScalarCurve.prototype.UpdateValue = function (time)
 {
     if (this.animationEngine)
     {
@@ -54,7 +54,7 @@ Tw2MayaScalarCurve.prototype.UpdateValue = function(time)
  * Computes curve Length
  * @prototype
  */
-Tw2MayaScalarCurve.prototype.ComputeLength = function()
+Tw2MayaScalarCurve.prototype.ComputeLength = function ()
 {
     if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {

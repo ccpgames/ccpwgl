@@ -4,10 +4,8 @@
     <title>Planets Demo</title>
 
     <link rel="stylesheet" href="demos.css">
-    <script type="text/javascript" src="../dist/external/glMatrix-2.4.0.min.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl_int.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl.js"></script>
-    <script type="text/javascript" src="TestCamera2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="demos.js"></script>
 
@@ -18,12 +16,12 @@
 
         function OnDocLoad()
         {
+            var mat4 = ccpwgl_int.math.mat4;
+
             var canvas = document.getElementById('mainCanvas');
             ccpwgl.initialize(canvas, demos.options);
 
-            var camera = TestCamera.Create(canvas)
-            ccpwgl.setCamera(camera);
-
+            var camera = ccpwgl.createCamera(canvas, undefined, true);
             var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)

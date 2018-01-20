@@ -3,7 +3,7 @@
  * @property {number} drag
  * @constructor
  */
-function Tw2ParticleDragForce()
+export function Tw2ParticleDragForce()
 {
     this.drag = 0.1;
 }
@@ -15,7 +15,7 @@ function Tw2ParticleDragForce()
  * @param force
  * @prototype
  */
-Tw2ParticleDragForce.prototype.ApplyForce = function(position, velocity, force)
+Tw2ParticleDragForce.prototype.ApplyForce = function (position, velocity, force)
 {
     force[0] += velocity.buffer[velocity.offset] * -this.drag;
     force[1] += velocity.buffer[velocity.offset + 1] * -this.drag;
@@ -26,4 +26,4 @@ Tw2ParticleDragForce.prototype.ApplyForce = function(position, velocity, force)
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2ParticleDragForce.prototype.Update = function() {};
+Tw2ParticleDragForce.prototype.Update = function () {};

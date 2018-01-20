@@ -1,3 +1,6 @@
+import {vec3, quat} from '../math';
+import {Tw2ParticleElementDeclaration} from './Tw2ParticleSystem';
+
 /**
  * Tw2SphereShapeAttributeGenerator
  * @property {number} minRadius
@@ -17,7 +20,7 @@
  * @property _velocity
  * @constructor
  */
-function Tw2SphereShapeAttributeGenerator()
+export function Tw2SphereShapeAttributeGenerator()
 {
     this.minRadius = 0;
     this.maxRadius = 0;
@@ -42,7 +45,7 @@ function Tw2SphereShapeAttributeGenerator()
  * @returns {boolean}
  * @prototype
  */
-Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
+Tw2SphereShapeAttributeGenerator.prototype.Bind = function (ps)
 {
     this._position = null;
     this._velocity = null;
@@ -67,7 +70,7 @@ Tw2SphereShapeAttributeGenerator.prototype.Bind = function(ps)
  * @param index
  * @prototype
  */
-Tw2SphereShapeAttributeGenerator.prototype.Generate = function(position, velocity, index)
+Tw2SphereShapeAttributeGenerator.prototype.Generate = function (position, velocity, index)
 {
     var offset;
     var phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI;

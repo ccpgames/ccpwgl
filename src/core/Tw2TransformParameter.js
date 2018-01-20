@@ -1,3 +1,5 @@
+import {vec3, quat, mat4} from '../math';
+
 /**
  * Tw2TransformParameter
  * @param {string} [name='']
@@ -8,7 +10,7 @@
  * @parameter {mat4} worldTransform
  * @constructor
  */
-function Tw2TransformParameter(name)
+export function Tw2TransformParameter(name)
 {
     if (typeof(name) !== 'undefined')
     {
@@ -29,7 +31,7 @@ function Tw2TransformParameter(name)
  * Initializes the transform parameter
  * @prototype
  */
-Tw2TransformParameter.prototype.Initialize = function()
+Tw2TransformParameter.prototype.Initialize = function ()
 {
     this.OnModified();
 };
@@ -38,7 +40,7 @@ Tw2TransformParameter.prototype.Initialize = function()
  * Updates the transform parameter's properties
  * @prototype
  */
-Tw2TransformParameter.prototype.OnModified = function()
+Tw2TransformParameter.prototype.OnModified = function ()
 {
     mat4.fromRotationTranslationScaleOrigin(this.worldTransform, this.rotation, this.translation, this.scaling, this.rotationCenter);
     mat4.transpose(this.worldTransform, this.worldTransform);
@@ -52,7 +54,7 @@ Tw2TransformParameter.prototype.OnModified = function()
  * @returns {boolean}
  * @prototype
  */
-Tw2TransformParameter.prototype.Bind = function(constantBuffer, offset, size)
+Tw2TransformParameter.prototype.Bind = function (constantBuffer, offset, size)
 {
     if (this.constantBuffer !== null || size < 16)
     {
@@ -67,7 +69,7 @@ Tw2TransformParameter.prototype.Bind = function(constantBuffer, offset, size)
  * A function that should be called when any of the transform parameter's properties have been changed
  * @prototype
  */
-Tw2TransformParameter.prototype.OnValueChanged = function()
+Tw2TransformParameter.prototype.OnValueChanged = function ()
 {
     this.OnModified();
 };
@@ -79,7 +81,7 @@ Tw2TransformParameter.prototype.OnValueChanged = function()
  * @param {number} size
  * @constructor
  */
-Tw2TransformParameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size)
 {
     if (size >= 16)
     {

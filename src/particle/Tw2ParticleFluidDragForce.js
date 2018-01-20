@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2ParticleFluidDragForce
  * @property {number} drag
@@ -5,7 +7,7 @@
  * @property {vec3} _tempVec2
  * @constructor
  */
-function Tw2ParticleFluidDragForce()
+export function Tw2ParticleFluidDragForce()
 {
     this.drag = 0.1;
 }
@@ -19,7 +21,7 @@ function Tw2ParticleFluidDragForce()
  * @param mass
  * @prototype
  */
-Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, force, dt, mass)
+Tw2ParticleFluidDragForce.prototype.ApplyForce = function (position, velocity, force, dt, mass)
 {
     var v0 = Tw2ParticleFluidDragForce.scratch.vec3_0,
         v1 = Tw2ParticleFluidDragForce.scratch.vec3_1;
@@ -56,7 +58,7 @@ Tw2ParticleFluidDragForce.prototype.ApplyForce = function(position, velocity, fo
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2ParticleFluidDragForce.prototype.Update = function() {};
+Tw2ParticleFluidDragForce.prototype.Update = function () {};
 
 /**
  * Scratch variables

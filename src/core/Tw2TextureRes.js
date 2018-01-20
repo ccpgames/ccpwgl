@@ -1,3 +1,8 @@
+import {emitter} from './Tw2EventEmitter';
+import {device} from './Tw2Device';
+import {resMan} from './Tw2ResMan';
+import {Tw2Resource} from './Tw2Resource';
+
 /**
  * Tw2TextureRes
  * @property {WebglTexture} texture
@@ -9,19 +14,22 @@
  * @property {boolean} hasMipMaps
  * @property {number} _currentSampler
  * @inherit Tw2Resource
- * @constructor
+ * @class
  */
-function Tw2TextureRes()
+export class Tw2TextureRes extends Tw2Resource
 {
-    this._super.constructor.call(this);
-    this.texture = null;
-    this.isCube = false;
-    this.images = [];
-    this.width = 0;
-    this.height = 0;
-    this._facesLoaded = 0;
-    this.hasMipMaps = false;
-    this._currentSampler = 0;
+    constructor()
+    {
+        super();
+        this.texture = null;
+        this.isCube = false;
+        this.images = [];
+        this.width = 0;
+        this.height = 0;
+        this._facesLoaded = 0;
+        this.hasMipMaps = false;
+        this._currentSampler = 0;
+    }
 }
 
 /**
@@ -31,7 +39,7 @@ function Tw2TextureRes()
  * @param xml
  * @prototype
  */
-Tw2TextureRes.prototype.Prepare = function(text, xml)
+Tw2TextureRes.prototype.Prepare = function (text, xml)
 {
     var format = device.gl.RGBA;
 
@@ -84,7 +92,7 @@ Tw2TextureRes.prototype.Prepare = function(text, xml)
  * @returns {boolean}
  * @prototype
  */
-Tw2TextureRes.prototype.IsPowerOfTwo = function(x)
+Tw2TextureRes.prototype.IsPowerOfTwo = function (x)
 {
     return (x & (x - 1)) === 0;
 };
@@ -95,7 +103,7 @@ Tw2TextureRes.prototype.IsPowerOfTwo = function(x)
  * @returns {boolean}
  * @prototype
  */
-Tw2TextureRes.prototype.DoCustomLoad = function(path)
+Tw2TextureRes.prototype.DoCustomLoad = function (path)
 {
     var index;
 
@@ -117,21 +125,21 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = true;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
-        this.images[0].onerror = function()
+        this.images[0].onerror = function ()
         {
             resMan._pendingLoads--;
             self.LoadFinished(false);
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: self.path
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
             delete self.images;
         };
-        this.images[0].onload = function()
+        this.images[0].onload = function ()
         {
             resMan._pendingLoads--;
             self.LoadFinished(true);
@@ -154,21 +162,21 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
         this.isCube = false;
         this.images[0] = new Image();
         this.images[0].crossOrigin = 'anonymous';
-        this.images[0].onerror = function()
+        this.images[0].onerror = function ()
         {
             resMan._pendingLoads--;
             self.LoadFinished(false);
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: self.path
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
             delete self.images;
         };
-        this.images[0].onload = function()
+        this.images[0].onload = function ()
         {
             resMan._pendingLoads--;
             self.LoadFinished(true);
@@ -192,7 +200,7 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
  * @returns {boolean}
  * @constructor
  */
-Tw2TextureRes.prototype.Unload = function()
+Tw2TextureRes.prototype.Unload = function ()
 {
     if (this.texture)
     {
@@ -210,7 +218,7 @@ Tw2TextureRes.prototype.Unload = function()
  * @param {WebglTexture} texture
  * @constructor
  */
-Tw2TextureRes.prototype.Attach = function(texture)
+Tw2TextureRes.prototype.Attach = function (texture)
 {
     this.texture = texture;
     this.LoadFinished(true);
@@ -223,7 +231,7 @@ Tw2TextureRes.prototype.Attach = function(texture)
  * @param slices
  * @constructor
  */
-Tw2TextureRes.prototype.Bind = function(sampler, slices)
+Tw2TextureRes.prototype.Bind = function (sampler, slices)
 {
     this.KeepAlive();
     var targetType = sampler.samplerType;
@@ -249,9 +257,3 @@ Tw2TextureRes.prototype.Bind = function(sampler, slices)
         this._currentSampler = sampler.hash;
     }
 };
-
-Inherit(Tw2TextureRes, Tw2Resource);
-
-// Register 'png' and 'cube' extensions with the resource manager
-resMan.RegisterExtension('png', Tw2TextureRes);
-resMan.RegisterExtension('cube', Tw2TextureRes);

@@ -1,4 +1,6 @@
-function EvePerMuzzleData()
+import {vec3, mat4} from '../math';
+
+export function EvePerMuzzleData()
 {
     this.started = false;
     this.readyToStart = false;
@@ -10,7 +12,7 @@ function EvePerMuzzleData()
     this.elapsedTime = 0;
 }
 
-function EveTurretFiringFX()
+export function EveTurretFiringFX()
 {
     this.name = '';
     this.display = true;
@@ -32,7 +34,7 @@ function EveTurretFiringFX()
     this._perMuzzleData = [];
 }
 
-EveTurretFiringFX.prototype.Initialize = function()
+EveTurretFiringFX.prototype.Initialize = function ()
 {
     this._firingDuration = this.GetCurveDuration();
     for (var i = 0; i < this.stretch.length; ++i)
@@ -71,9 +73,9 @@ EveTurretFiringFX.prototype.Initialize = function()
     {
         this._perMuzzleData[7].constantDelay = this.firingDelay8;
     }
-}
+};
 
-EveTurretFiringFX.prototype.GetCurveDuration = function()
+EveTurretFiringFX.prototype.GetCurveDuration = function ()
 {
     var maxDuration = 0;
     for (var i = 0; i < this.stretch.length; ++i)
@@ -85,19 +87,19 @@ EveTurretFiringFX.prototype.GetCurveDuration = function()
         }
     }
     return maxDuration;
-}
+};
 
-EveTurretFiringFX.prototype.GetPerMuzzleEffectCount = function()
+EveTurretFiringFX.prototype.GetPerMuzzleEffectCount = function ()
 {
     return this.stretch.length;
-}
+};
 
-EveTurretFiringFX.prototype.SetMuzzleBoneID = function(index, bone)
+EveTurretFiringFX.prototype.SetMuzzleBoneID = function (index, bone)
 {
     this._perMuzzleData[index].muzzlePositionBone = bone;
-}
+};
 
-EveTurretFiringFX.prototype.GetBatches = function(mode, accumulator, perObjectData)
+EveTurretFiringFX.prototype.GetBatches = function (mode, accumulator, perObjectData)
 {
     if (!this.display || !this.isFiring)
     {
@@ -110,14 +112,14 @@ EveTurretFiringFX.prototype.GetBatches = function(mode, accumulator, perObjectDa
             this.stretch[i].GetBatches(mode, accumulator, perObjectData);
         }
     }
-}
+};
 
-EveTurretFiringFX.prototype.GetMuzzleTransform = function(index)
+EveTurretFiringFX.prototype.GetMuzzleTransform = function (index)
 {
     return this._perMuzzleData[index].muzzleTransform;
-}
+};
 
-EveTurretFiringFX.prototype.Update = function(dt)
+EveTurretFiringFX.prototype.Update = function (dt)
 {
     var retVal = false;
     for (var i = 0; i < this.stretch.length; ++i)
@@ -165,9 +167,9 @@ EveTurretFiringFX.prototype.Update = function(dt)
         }
         this.stretch[i].Update(dt);
     }
-}
+};
 
-EveTurretFiringFX.prototype.PrepareFiring = function(delay, muzzleID)
+EveTurretFiringFX.prototype.PrepareFiring = function (delay, muzzleID)
 {
     if (typeof(muzzleID) === 'undefined')
     {
@@ -191,9 +193,9 @@ EveTurretFiringFX.prototype.PrepareFiring = function(delay, muzzleID)
         }
     }
     this.isFiring = true;
-}
+};
 
-EveTurretFiringFX.prototype.StartMuzzleEffect = function(muzzleID)
+EveTurretFiringFX.prototype.StartMuzzleEffect = function (muzzleID)
 {
     var stretch = this.stretch[muzzleID];
     for (var i = 0; i < stretch.curveSets.length; ++i)
@@ -214,9 +216,9 @@ EveTurretFiringFX.prototype.StartMuzzleEffect = function(muzzleID)
     }
     this._perMuzzleData[muzzleID].started = true;
     this._perMuzzleData[muzzleID].readyToStart = false;
-}
+};
 
-EveTurretFiringFX.prototype.StopFiring = function()
+EveTurretFiringFX.prototype.StopFiring = function ()
 {
     for (var j = 0; j < this.stretch.length; ++j)
     {
@@ -243,12 +245,12 @@ EveTurretFiringFX.prototype.StopFiring = function()
         this._perMuzzleData[j].elapsedTime = 0;
     }
     this.isFiring = false;
-}
+};
 
-EveTurretFiringFX.prototype.UpdateViewDependentData = function()
+EveTurretFiringFX.prototype.UpdateViewDependentData = function ()
 {
     for (var j = 0; j < this.stretch.length; ++j)
     {
         this.stretch[j].UpdateViewDependentData();
     }
-}
+};

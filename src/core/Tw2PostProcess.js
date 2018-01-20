@@ -1,3 +1,11 @@
+import {device} from './Tw2Device';
+import {Tw2RenderTarget} from './Tw2RenderTarget';
+import {Tw2Effect} from './Tw2Effect';
+import {Tw2TextureParameter} from './Tw2TextureParameter';
+import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
+import {Tw2FloatParameter} from './Tw2FloatParameter';
+import {Tw2TextureRes} from './Tw2TextureRes';
+
 /**
  * Creates a bloom post effect
  * @property {number} width
@@ -8,7 +16,7 @@
  * @property {Array.<Tw2Effect|Object>} steps
  * @constructor
  */
-function Tw2PostProcess()
+export function Tw2PostProcess()
 {
     this.width = 0;
     this.height = 0;
@@ -23,9 +31,9 @@ function Tw2PostProcess()
         'effect': new Tw2Effect(),
         'rt': this.quadRT1,
         'inputs':
-        {
-            'BlitCurrent': null
-        }
+            {
+                'BlitCurrent': null
+            }
     };
     this.steps[0].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx';
     this.steps[0].effect.Initialize();
@@ -37,9 +45,9 @@ function Tw2PostProcess()
         'effect': new Tw2Effect(),
         'rt': this.quadRT0,
         'inputs':
-        {
-            'BlitCurrent': this.quadRT1
-        }
+            {
+                'BlitCurrent': this.quadRT1
+            }
     };
     this.steps[1].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx';
     this.steps[1].effect.Initialize();
@@ -52,9 +60,9 @@ function Tw2PostProcess()
         'effect': new Tw2Effect(),
         'rt': this.quadRT1,
         'inputs':
-        {
-            'BlitCurrent': this.quadRT0
-        }
+            {
+                'BlitCurrent': this.quadRT0
+            }
     };
     this.steps[2].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx';
     this.steps[2].effect.Initialize();
@@ -66,9 +74,9 @@ function Tw2PostProcess()
         'effect': new Tw2Effect(),
         'rt': this.quadRT0,
         'inputs':
-        {
-            'BlitCurrent': this.quadRT1
-        }
+            {
+                'BlitCurrent': this.quadRT1
+            }
     };
     this.steps[3].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx';
     this.steps[3].effect.Initialize();
@@ -80,10 +88,10 @@ function Tw2PostProcess()
         'effect': new Tw2Effect(),
         'rt': null,
         'inputs':
-        {
-            'BlitCurrent': this.quadRT0,
-            'BlitOriginal': null
-        }
+            {
+                'BlitCurrent': this.quadRT0,
+                'BlitOriginal': null
+            }
     };
     this.steps[4].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx';
     this.steps[4].effect.Initialize();
@@ -97,7 +105,7 @@ function Tw2PostProcess()
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2PostProcess.prototype.Render = function()
+Tw2PostProcess.prototype.Render = function ()
 {
     var step, i;
 

@@ -7,7 +7,7 @@
  * @property {boolean} hold
  * @constructor
  */
-function Tw2RandomConstantCurve()
+export function Tw2RandomConstantCurve()
 {
     this.name = '';
     this.value = 0;
@@ -21,7 +21,7 @@ function Tw2RandomConstantCurve()
  * @param {number} time
  * @prototype
  */
-Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
+Tw2RandomConstantCurve.prototype.UpdateValue = function (time)
 {
     this.value = this.GetValueAt(time);
 };
@@ -33,7 +33,7 @@ Tw2RandomConstantCurve.prototype.UpdateValue = function(time)
  * @returns {number}
  * @prototype
  */
-Tw2RandomConstantCurve.prototype.GetValueAt = function(time)
+Tw2RandomConstantCurve.prototype.GetValueAt = function (time)
 {
     if (!this.hold)
     {

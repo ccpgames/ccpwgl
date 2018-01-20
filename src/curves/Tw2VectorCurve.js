@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2VectorKey
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2VectorKey()
+export function Tw2VectorKey()
 {
     this.time = 0;
     this.value = vec3.create();
@@ -27,7 +29,7 @@ function Tw2VectorKey()
  * @property {number} _currKey
  * @constructor
  */
-function Tw2VectorCurve()
+export function Tw2VectorCurve()
 {
     this.name = '';
     this.start = 0;
@@ -57,7 +59,7 @@ Tw2VectorCurve.Interpolation = {
  * @param {number} time
  * @prototype
  */
-Tw2VectorCurve.prototype.UpdateValue = function(time)
+Tw2VectorCurve.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -67,7 +69,7 @@ Tw2VectorCurve.prototype.UpdateValue = function(time)
  * @returns {number}
  * @prototype
  */
-Tw2VectorCurve.prototype.GetLength = function()
+Tw2VectorCurve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -79,7 +81,7 @@ Tw2VectorCurve.prototype.GetLength = function()
  * @returns {vec3}
  * @prototype
  */
-Tw2VectorCurve.prototype.GetValueAt = function(time, value)
+Tw2VectorCurve.prototype.GetValueAt = function (time, value)
 {
     var d;
 

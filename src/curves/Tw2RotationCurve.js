@@ -1,3 +1,6 @@
+import {vec4, quat} from '../math';
+import {Tw2QuaternionCurve} from './Tw2QuaternionCurve';
+
 /**
  * Tw2QuaternionKey
  * @property {number} time
@@ -7,7 +10,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2QuaternionKey()
+export function Tw2QuaternionKey()
 {
     this.time = 0;
     this.value = quat.create();
@@ -60,7 +63,7 @@ Tw2RotationCurve.Interpolation = {
  * @returns {number}
  * @prototype
  */
-Tw2RotationCurve.prototype.GetLength = function()
+Tw2RotationCurve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -70,7 +73,7 @@ Tw2RotationCurve.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2RotationCurve.prototype.UpdateValue = function(time)
+Tw2RotationCurve.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -82,7 +85,7 @@ Tw2RotationCurve.prototype.UpdateValue = function(time)
  * @returns {number}
  * @method
  */
-Tw2RotationCurve.BICumulative = function(order, t)
+Tw2RotationCurve.BICumulative = function (order, t)
 {
     if (order === 1)
     {
@@ -107,7 +110,7 @@ Tw2RotationCurve.BICumulative = function(order, t)
  * @returns {quat}
  * @method
  */
-Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
+Tw2RotationCurve.QuaternionPow = function (out, inq, exponent)
 {
     if (exponent === 1)
     {
@@ -130,7 +133,7 @@ Tw2RotationCurve.QuaternionPow = function(out, inq, exponent)
  * @returns {quat}
  * @method
  */
-Tw2RotationCurve.QuaternionLn = function(out, q)
+Tw2RotationCurve.QuaternionLn = function (out, q)
 {
     var norm = quat.length(q);
     if (norm > 1.0001 || norm < 0.99999)
@@ -169,7 +172,7 @@ Tw2RotationCurve.QuaternionLn = function(out, q)
  * @returns {quat}
  * @method
  */
-Tw2RotationCurve.QuaternionExp = function(out, q)
+Tw2RotationCurve.QuaternionExp = function (out, q)
 {
     var norm = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
     if (norm)
@@ -196,7 +199,7 @@ Tw2RotationCurve.QuaternionExp = function(out, q)
  * @returns {quat}
  * @prototype
  */
-Tw2RotationCurve.prototype.GetValueAt = function(time, value)
+Tw2RotationCurve.prototype.GetValueAt = function (time, value)
 {
     if (this.length === 0)
     {

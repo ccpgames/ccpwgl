@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2XYZScalarSequencer
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {*} ZCurve
  * @constructor
  */
-function Tw2XYZScalarSequencer()
+export function Tw2XYZScalarSequencer()
 {
     this.name = '';
     this.value = vec3.create();
@@ -21,7 +23,7 @@ function Tw2XYZScalarSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2XYZScalarSequencer.prototype.GetLength = function()
+Tw2XYZScalarSequencer.prototype.GetLength = function ()
 {
     var length = 0;
     if (this.XCurve && ('GetLength' in this.XCurve))
@@ -44,7 +46,7 @@ Tw2XYZScalarSequencer.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2XYZScalarSequencer.prototype.UpdateValue = function(time)
+Tw2XYZScalarSequencer.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -56,7 +58,7 @@ Tw2XYZScalarSequencer.prototype.UpdateValue = function(time)
  * @returns {vec3}
  * @prototype
  */
-Tw2XYZScalarSequencer.prototype.GetValueAt = function(time, value)
+Tw2XYZScalarSequencer.prototype.GetValueAt = function (time, value)
 {
     if (this.XCurve)
     {

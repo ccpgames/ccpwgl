@@ -1,6 +1,8 @@
+import {resMan} from './Tw2ResMan';
+
 /**
- * Tw2Res - A Tw2Resource
- * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Tw2Res
+ * Resource - A Tw2Resource
+ * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Resource
  */
 
 /**
@@ -17,18 +19,21 @@
  * @property {null|Function} _onLoadPrepareFinished - optional callback fired on res prepare finish: callback(this, success)
  * @constructor
  */
-function Tw2Resource()
+export class Tw2Resource
 {
-    this.path = '';
-    this._isLoading = false;
-    this._isGood = false;
-    this._isPurged = false;
-    this._notifications = [];
-    this.activeFrame = 0;
-    this.doNotPurge = 0;
-    this._onLoadStarted = null;
-    this._onLoadFinished = null;
-    this._onPrepareFinished = null;
+    constructor()
+    {
+        this.path = '';
+        this._isLoading = false;
+        this._isGood = false;
+        this._isPurged = false;
+        this._notifications = [];
+        this.activeFrame = 0;
+        this.doNotPurge = 0;
+        this._onLoadStarted = null;
+        this._onLoadFinished = null;
+        this._onPrepareFinished = null;
+    }
 }
 
 /**
@@ -36,7 +41,7 @@ function Tw2Resource()
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsLoading = function()
+Tw2Resource.prototype.IsLoading = function ()
 {
     this.KeepAlive();
     return this._isLoading;
@@ -47,7 +52,7 @@ Tw2Resource.prototype.IsLoading = function()
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsGood = function()
+Tw2Resource.prototype.IsGood = function ()
 {
     this.KeepAlive();
     return this._isGood;
@@ -58,7 +63,7 @@ Tw2Resource.prototype.IsGood = function()
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsPurged = function()
+Tw2Resource.prototype.IsPurged = function ()
 {
     return this._isPurged;
 };
@@ -67,7 +72,7 @@ Tw2Resource.prototype.IsPurged = function()
  * LoadStarted
  * @prototype
  */
-Tw2Resource.prototype.LoadStarted = function()
+Tw2Resource.prototype.LoadStarted = function ()
 {
     this._isLoading = true;
 
@@ -87,7 +92,7 @@ Tw2Resource.prototype.LoadStarted = function()
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.LoadFinished = function(success)
+Tw2Resource.prototype.LoadFinished = function (success)
 {
     this._isLoading = false;
 
@@ -107,7 +112,7 @@ Tw2Resource.prototype.LoadFinished = function(success)
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.PrepareFinished = function(success)
+Tw2Resource.prototype.PrepareFinished = function (success)
 {
     this._isLoading = false;
     this._isGood = success;
@@ -128,7 +133,7 @@ Tw2Resource.prototype.PrepareFinished = function(success)
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.SetIsGood = function(success)
+Tw2Resource.prototype.SetIsGood = function (success)
 {
     this._isGood = success;
 };
@@ -137,13 +142,13 @@ Tw2Resource.prototype.SetIsGood = function(success)
  * Unload
  * @prototype
  */
-Tw2Resource.prototype.Unload = function() {};
+Tw2Resource.prototype.Unload = function () {};
 
 /**
  * Reloads the resource
  * @prototype
  */
-Tw2Resource.prototype.Reload = function()
+Tw2Resource.prototype.Reload = function ()
 {
     this.Unload();
     resMan.ReloadResource(this);
@@ -153,7 +158,7 @@ Tw2Resource.prototype.Reload = function()
  * Keeps the resource from being purged
  * @prototype
  */
-Tw2Resource.prototype.KeepAlive = function()
+Tw2Resource.prototype.KeepAlive = function ()
 {
     this.activeFrame = resMan.activeFrame;
     if (this._isPurged)
@@ -167,7 +172,7 @@ Tw2Resource.prototype.KeepAlive = function()
  * @param notification
  * @prototype
  */
-Tw2Resource.prototype.RegisterNotification = function(notification)
+Tw2Resource.prototype.RegisterNotification = function (notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {
@@ -190,7 +195,7 @@ Tw2Resource.prototype.RegisterNotification = function(notification)
  * @param notification
  * @prototype
  */
-Tw2Resource.prototype.UnregisterNotification = function(notification)
+Tw2Resource.prototype.UnregisterNotification = function (notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {
@@ -201,26 +206,3 @@ Tw2Resource.prototype.UnregisterNotification = function(notification)
         }
     }
 };
-
-
-
-/**
- * Inherit
- * @param derived
- * @param base
- */
-function Inherit(derived, base)
-{
-    for (var i in base.prototype)
-    {
-        if (base.prototype.hasOwnProperty(i))
-        {
-            if (!(i in derived.prototype))
-            {
-                derived.prototype[i] = base.prototype[i];
-            }
-        }
-    }
-
-    derived.prototype._super = base.prototype;
-}

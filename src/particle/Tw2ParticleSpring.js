@@ -1,10 +1,12 @@
+import {vec3} from '../math';
+
 /**
  * Tw2ParticleSpring
  * @property {number} springConstant
  * @property {vec3} position
  * @constructor
  */
-function Tw2ParticleSpring()
+export function Tw2ParticleSpring()
 {
     this.springConstant = 0;
     this.position = vec3.create();
@@ -17,7 +19,7 @@ function Tw2ParticleSpring()
  * @param force
  * @prototype
  */
-Tw2ParticleSpring.prototype.ApplyForce = function(position, velocity, force)
+Tw2ParticleSpring.prototype.ApplyForce = function (position, velocity, force)
 {
     force[0] += (this.position[0] - position.buffer[position.offset]) * this.springConstant;
     force[1] += (this.position[1] - position.buffer[position.offset + 1]) * this.springConstant;
@@ -28,4 +30,4 @@ Tw2ParticleSpring.prototype.ApplyForce = function(position, velocity, force)
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2ParticleSpring.prototype.Update = function() {};
+Tw2ParticleSpring.prototype.Update = function () {};

@@ -1,3 +1,6 @@
+import {resMan} from './Tw2ResMan';
+import {device} from './Tw2Device';
+
 /**
  * Tw2TextureParameter
  * @param {string} [name=''] - Name of the texture parameter
@@ -14,7 +17,7 @@
  * @property {Tw2SamplerState} _sampler
  * @constructor
  */
-function Tw2TextureParameter(name, texturePath)
+export function Tw2TextureParameter(name, texturePath)
 {
     if (typeof(name) !== 'undefined')
     {
@@ -51,7 +54,7 @@ function Tw2TextureParameter(name, texturePath)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2TextureRes>} [out]
  */
-Tw2TextureParameter.prototype.GetResource = function(out)
+Tw2TextureParameter.prototype.GetResource = function (out)
 {
     if (out === undefined)
     {
@@ -74,7 +77,7 @@ Tw2TextureParameter.prototype.GetResource = function(out)
  * @param {string} texturePath
  * @constructor
  */
-Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
+Tw2TextureParameter.prototype.SetTexturePath = function (texturePath)
 {
     this.resourcePath = texturePath;
     if (this.resourcePath !== '')
@@ -87,7 +90,7 @@ Tw2TextureParameter.prototype.SetTexturePath = function(texturePath)
  * Initializes the texture parameter
  * @prototype
  */
-Tw2TextureParameter.prototype.Initialize = function()
+Tw2TextureParameter.prototype.Initialize = function ()
 {
     if (this.resourcePath !== '')
     {
@@ -145,7 +148,7 @@ Tw2TextureParameter.prototype.Initialize = function()
  * @param slices
  * @prototype
  */
-Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
+Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices)
 {
     if (this.textureRes)
     {
@@ -165,7 +168,7 @@ Tw2TextureParameter.prototype.Apply = function(stage, sampler, slices)
  * Get Value
  * @return {string}
  */
-Tw2TextureParameter.prototype.GetValue = function()
+Tw2TextureParameter.prototype.GetValue = function ()
 {
     if (this.textureRes)
     {

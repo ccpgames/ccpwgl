@@ -1,3 +1,5 @@
+import {device} from './Tw2Device';
+
 /**
  * Tw2SamplerState
  * @property {number} registerIndex
@@ -14,7 +16,7 @@
  * @property {number} hash
  * @constructor
  */
-function Tw2SamplerState()
+export function Tw2SamplerState()
 {
     this.registerIndex = 0;
     this.name = '';
@@ -34,7 +36,7 @@ function Tw2SamplerState()
  * Computes the sampler hash
  * @prototype
  */
-Tw2SamplerState.prototype.ComputeHash = function()
+Tw2SamplerState.prototype.ComputeHash = function ()
 {
     this.hash = 2166136261;
     this.hash *= 16777619;
@@ -54,7 +56,7 @@ Tw2SamplerState.prototype.ComputeHash = function()
  * @param {boolean} hasMipMaps
  * @prototype
  */
-Tw2SamplerState.prototype.Apply = function(hasMipMaps)
+Tw2SamplerState.prototype.Apply = function (hasMipMaps)
 {
     var targetType = this.samplerType;
     var d = device;

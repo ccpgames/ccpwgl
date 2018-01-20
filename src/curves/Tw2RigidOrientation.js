@@ -1,3 +1,5 @@
+import {vec3, quat} from '../math';
+
 /**
  * Tw2Torque
  * @property {number} time
@@ -6,7 +8,7 @@
  * @property {vec3} torque
  * @constructor
  */
-function Tw2Torque()
+export function Tw2Torque()
 {
     this.time = 0;
     this.rot0 = quat.create();
@@ -25,7 +27,7 @@ function Tw2Torque()
  * @property {Array} states
  * @constructor
  */
-function Tw2RigidOrientation()
+export function Tw2RigidOrientation()
 {
     this.name = '';
     this.I = 1;
@@ -40,7 +42,7 @@ function Tw2RigidOrientation()
  * @param {number} time
  * @prototype
  */
-Tw2RigidOrientation.prototype.UpdateValue = function(time)
+Tw2RigidOrientation.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -55,7 +57,7 @@ Tw2RigidOrientation.prototype.UpdateValue = function(time)
  * @returns {number}
  * @prototype
  */
-Tw2RigidOrientation.ExponentialDecay = function(v, a, m, k, t)
+Tw2RigidOrientation.ExponentialDecay = function (v, a, m, k, t)
 {
     return a * t / k + m * (v * k - a) / (k * k) * (1.0 - Math.pow(Math.E, -k * t / m));
 };
@@ -67,7 +69,7 @@ Tw2RigidOrientation.ExponentialDecay = function(v, a, m, k, t)
  * @returns {quat}
  * @prototype
  */
-Tw2RigidOrientation.prototype.GetValueAt = function(time, value)
+Tw2RigidOrientation.prototype.GetValueAt = function (time, value)
 {
     var tau = Tw2RigidOrientation.scratch.vec3_0,
         tauConverter = Tw2RigidOrientation.scratch.quat_0;

@@ -1,3 +1,5 @@
+import {vec3, quat} from '../math';
+
 /**
  * Tw2YPRSequencer
  * @property {string} name
@@ -8,7 +10,7 @@
  * @property RollCurve
  * @constructor
  */
-function Tw2YPRSequencer()
+export function Tw2YPRSequencer()
 {
     this.name = '';
     this.value = quat.create();
@@ -23,7 +25,7 @@ function Tw2YPRSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2YPRSequencer.prototype.GetLength = function()
+Tw2YPRSequencer.prototype.GetLength = function ()
 {
     var length = 0;
     if (this.YawCurve && ('GetLength' in this.YawCurve))
@@ -46,7 +48,7 @@ Tw2YPRSequencer.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2YPRSequencer.prototype.UpdateValue = function(time)
+Tw2YPRSequencer.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -58,7 +60,7 @@ Tw2YPRSequencer.prototype.UpdateValue = function(time)
  * @returns {quat}
  * @prototype
  */
-Tw2YPRSequencer.prototype.GetValueAt = function(time, value)
+Tw2YPRSequencer.prototype.GetValueAt = function (time, value)
 {
     if (this.YawCurve)
     {

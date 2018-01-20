@@ -1,3 +1,5 @@
+import {vec2} from '../math';
+
 /**
  * Tw2Vector2Key
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2Vector2Key()
+export function Tw2Vector2Key()
 {
     this.time = 0;
     this.value = vec2.create();
@@ -33,7 +35,7 @@ function Tw2Vector2Key()
  * @property {Array.<Tw2Vector2Key>} keys
  * @constructor
  */
-function Tw2Vector2Curve()
+export function Tw2Vector2Curve()
 {
     this.name = '';
     this.length = 0;
@@ -60,7 +62,7 @@ Tw2Vector2Curve.Interpolation = {
  * Initializes the Curve
  * @prototype
  */
-Tw2Vector2Curve.prototype.Initialize = function()
+Tw2Vector2Curve.prototype.Initialize = function ()
 {
     this.Sort();
 };
@@ -70,7 +72,7 @@ Tw2Vector2Curve.prototype.Initialize = function()
  * @returns {number}
  * @prototype
  */
-Tw2Vector2Curve.prototype.GetLength = function()
+Tw2Vector2Curve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -82,7 +84,7 @@ Tw2Vector2Curve.prototype.GetLength = function()
  * @returns {number}
  * @method
  */
-Tw2Vector2Curve.Compare = function(a, b)
+Tw2Vector2Curve.Compare = function (a, b)
 {
     if (a.time < b.time)
     {
@@ -99,7 +101,7 @@ Tw2Vector2Curve.Compare = function(a, b)
  * Sorts the curve's keys
  * @prototype
  */
-Tw2Vector2Curve.prototype.Sort = function()
+Tw2Vector2Curve.prototype.Sort = function ()
 {
     if (this.keys.length)
     {
@@ -128,7 +130,7 @@ Tw2Vector2Curve.prototype.Sort = function()
  * @param {number} time
  * @prototype
  */
-Tw2Vector2Curve.prototype.UpdateValue = function(time)
+Tw2Vector2Curve.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.currentValue);
 };
@@ -140,7 +142,7 @@ Tw2Vector2Curve.prototype.UpdateValue = function(time)
  * @returns {Float32Array} vec2 array
  * @prototype
  */
-Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
+Tw2Vector2Curve.prototype.GetValueAt = function (time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -207,7 +209,7 @@ Tw2Vector2Curve.prototype.GetValueAt = function(time, value)
  * @returns {Float32Array} vec2 array
  * @prototype
  */
-Tw2Vector2Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
+Tw2Vector2Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];

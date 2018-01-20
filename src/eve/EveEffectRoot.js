@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+
 /**
  * EveEffectRoot root objects for FX, can be put into scene's objects array
  * @property {string} name
@@ -15,7 +19,7 @@
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
-function EveEffectRoot()
+export function EveEffectRoot()
 {
     this.name = '';
     this.display = true;
@@ -67,7 +71,7 @@ function EveEffectRoot()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
  */
-EveEffectRoot.prototype.GetResources = function(out)
+EveEffectRoot.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -85,7 +89,7 @@ EveEffectRoot.prototype.GetResources = function(out)
  * Internal per frame update
  * @param {number} dt - Delta Time
  */
-EveEffectRoot.prototype.Update = function(dt)
+EveEffectRoot.prototype.Update = function (dt)
 {
     quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
     mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
@@ -102,10 +106,10 @@ EveEffectRoot.prototype.Update = function(dt)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
+EveEffectRoot.prototype.GetBatches = function (mode, accumulator)
 {
     if (!this.display)
     {
@@ -120,7 +124,7 @@ EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
 /**
  * Starts playing the effectRoot's curveSets if they exist
  */
-EveEffectRoot.prototype.Start = function()
+EveEffectRoot.prototype.Start = function ()
 {
     for (var i = 0; i < this.curveSets.length; ++i)
     {
@@ -131,7 +135,7 @@ EveEffectRoot.prototype.Start = function()
 /**
  * Stops the effectRoot's curveSets from playing
  */
-EveEffectRoot.prototype.Stop = function()
+EveEffectRoot.prototype.Stop = function ()
 {
     for (var i = 0; i < this.curveSets.length; ++i)
     {

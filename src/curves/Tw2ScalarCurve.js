@@ -7,7 +7,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ScalarKey()
+export function Tw2ScalarKey()
 {
     this.time = 0;
     this.value = 0;
@@ -29,7 +29,7 @@ function Tw2ScalarKey()
  * @property {number} _currKey
  * @constructor
  */
-function Tw2ScalarCurve()
+export function Tw2ScalarCurve()
 {
     this.name = '';
     this.start = 0;
@@ -62,7 +62,7 @@ Tw2ScalarCurve.Interpolation = {
  * @returns {number}
  * @prototype
  */
-Tw2ScalarCurve.prototype.GetLength = function()
+Tw2ScalarCurve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -72,7 +72,7 @@ Tw2ScalarCurve.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2ScalarCurve.prototype.UpdateValue = function(time)
+Tw2ScalarCurve.prototype.UpdateValue = function (time)
 {
     this.value = this.GetValueAt(time);
 };
@@ -84,7 +84,7 @@ Tw2ScalarCurve.prototype.UpdateValue = function(time)
  * @returns {*}
  * @prototype
  */
-Tw2ScalarCurve.prototype.GetValueAt = function(time)
+Tw2ScalarCurve.prototype.GetValueAt = function (time)
 {
     var d;
 

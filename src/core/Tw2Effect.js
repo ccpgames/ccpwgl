@@ -1,3 +1,8 @@
+import {device} from './Tw2Device';
+import {resMan} from './Tw2ResMan';
+import {variableStore} from './Tw2VariableStore';
+import {Tw2SamplerState} from './Tw2SamplerState';
+
 /**
  * Tw2SamplerOverride
  * @property {number} addressU
@@ -10,7 +15,7 @@
  * @property {number} maxAnisotropy
  * @constructor
  */
-function Tw2SamplerOverride()
+export function Tw2SamplerOverride()
 {
     this.name = '';
 
@@ -31,7 +36,7 @@ function Tw2SamplerOverride()
      * @returns {*}
      * @method
      */
-    this.GetSampler = function(originalSampler)
+    this.GetSampler = function (originalSampler)
     {
         if (!sampler)
         {
@@ -105,12 +110,12 @@ function Tw2SamplerOverride()
  * @property {string} name
  * @property {string} effectFilePath
  * @property {Tw2EffectRes|null} effectRes
- * @property {Object.<string, Tw2Parameter>} parameters
+ * @property {Object.<string, Parameter>} parameters
  * @property {Array} passes
  * @property {Array} samplerOverrides
  * @constructor
  */
-function Tw2Effect()
+export function Tw2Effect()
 {
     this.name = '';
     this.effectFilePath = '';
@@ -124,14 +129,14 @@ function Tw2Effect()
  * Initializes the Tw2Effect
  * @prototype
  */
-Tw2Effect.prototype.Initialize = function()
+Tw2Effect.prototype.Initialize = function ()
 {
     if (this.effectFilePath !== '')
     {
         var path = this.effectFilePath;
         var dot = path.lastIndexOf('.');
         var ext = path.substr(dot);
-        path = path.toLowerCase().substr(0, dot).replace("/effect/", device.effectDir) + ".sm_" + device.shaderModel;
+        path = path.toLowerCase().substr(0, dot).replace('/effect/', device.effectDir) + '.sm_' + device.shaderModel;
         this.effectRes = resMan.GetResource(path);
         this.effectRes.RegisterNotification(this);
     }
@@ -142,7 +147,7 @@ Tw2Effect.prototype.Initialize = function()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
  */
-Tw2Effect.prototype.GetResources = function(out)
+Tw2Effect.prototype.GetResources = function (out)
 {
     if (out === undefined)
     {
@@ -169,13 +174,13 @@ Tw2Effect.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Returns the Tw2Effect's resource object
  * @prototype
  */
-Tw2Effect.prototype.GetEffectRes = function()
+Tw2Effect.prototype.GetEffectRes = function ()
 {
     return this.effectRes;
 };
@@ -185,7 +190,7 @@ Tw2Effect.prototype.GetEffectRes = function()
  * @param resource
  * @prototype
  */
-Tw2Effect.prototype.RebuildCachedData = function(resource)
+Tw2Effect.prototype.RebuildCachedData = function (resource)
 {
     if (resource.IsGood())
     {
@@ -198,7 +203,7 @@ Tw2Effect.prototype.RebuildCachedData = function(resource)
  * @returns {boolean}
  * @prototype
  */
-Tw2Effect.prototype.BindParameters = function()
+Tw2Effect.prototype.BindParameters = function ()
 {
     if (this.effectRes === null || !this.effectRes.IsGood())
     {
@@ -344,7 +349,7 @@ Tw2Effect.prototype.BindParameters = function()
  * @param pass
  * @prototype
  */
-Tw2Effect.prototype.ApplyPass = function(pass)
+Tw2Effect.prototype.ApplyPass = function (pass)
 {
     if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -404,7 +409,7 @@ Tw2Effect.prototype.ApplyPass = function(pass)
  * @returns {number}
  * @prototype
  */
-Tw2Effect.prototype.GetPassCount = function()
+Tw2Effect.prototype.GetPassCount = function ()
 {
     if (this.effectRes === null || !this.effectRes.IsGood())
     {
@@ -419,7 +424,7 @@ Tw2Effect.prototype.GetPassCount = function()
  * @returns {*}
  * @prototype
  */
-Tw2Effect.prototype.GetPassInput = function(pass)
+Tw2Effect.prototype.GetPassInput = function (pass)
 {
     if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -440,7 +445,7 @@ Tw2Effect.prototype.GetPassInput = function(pass)
  * @param {function} cb - callback
  * @prototype
  */
-Tw2Effect.prototype.Render = function(cb)
+Tw2Effect.prototype.Render = function (cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)
@@ -457,7 +462,7 @@ Tw2Effect.prototype.Render = function(cb)
  * @returns {Object.<string, Tw2TextureParameter>}
  * @prototype
  */
-Tw2Effect.prototype.GetTextures = function()
+Tw2Effect.prototype.GetTextures = function ()
 {
     var textures = {};
 
@@ -478,7 +483,7 @@ Tw2Effect.prototype.GetTextures = function()
  * @returns {Object.<string, Tw2FloatParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2VariableParameter>}
  * @prototype
  */
-Tw2Effect.prototype.GetParameters = function()
+Tw2Effect.prototype.GetParameters = function ()
 {
     var parameters = {};
 

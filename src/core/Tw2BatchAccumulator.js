@@ -1,3 +1,5 @@
+import {device} from './Tw2Device';
+
 /**
  * Render Batches
  * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
@@ -11,7 +13,7 @@
  * @property {function} _sortMethod - the stored sorting function
  * @constructor
  */
-function Tw2BatchAccumulator(sorting)
+export function Tw2BatchAccumulator(sorting)
 {
     this.batches = [];
     this.count = 0;
@@ -23,7 +25,7 @@ function Tw2BatchAccumulator(sorting)
  * @param {RenderBatch} batch
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Commit = function(batch)
+Tw2BatchAccumulator.prototype.Commit = function (batch)
 {
     this.batches[this.count++] = batch;
 };
@@ -32,7 +34,7 @@ Tw2BatchAccumulator.prototype.Commit = function(batch)
  * Clears any accumulated render batches
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Clear = function()
+Tw2BatchAccumulator.prototype.Clear = function ()
 {
     this.count = 0;
     this.batches = [];
@@ -44,7 +46,7 @@ Tw2BatchAccumulator.prototype.Clear = function()
  * @param {Tw2Effect} [overrideEffect]
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
+Tw2BatchAccumulator.prototype.Render = function (overrideEffect)
 {
     if (typeof(this._sortMethod) !== 'undefined')
     {
@@ -64,26 +66,33 @@ Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
 
 /**
  * A standard render batch
- * @property {RenderMode} renderMode
+ * @property {number} renderMode
  * @property {Tw2PerObjectData} perObjectData
- * @constructor
+ * @class
  */
-function Tw2RenderBatch()
+export class Tw2RenderBatch
 {
-    this.renderMode = device.RM_ANY;
-    this.perObjectData = null;
+    constructor()
+    {
+        this.renderMode = device.RM_ANY;
+        this.perObjectData = null;
+    }
 }
 
 
 /**
  * A render batch that uses geometry provided from an external source
- * @property {GeometryProvider} geometryProvider
+ * @property {*} geometryProvider
  * @inherits Tw2RenderBatch
- * @constructor
+ * @class
  */
-function Tw2ForwardingRenderBatch()
+export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
 {
-    this.geometryProvider = null;
+    constructor()
+    {
+        super();
+        this.geometryProvider = null;
+    }
 }
 
 /**
@@ -91,7 +100,7 @@ function Tw2ForwardingRenderBatch()
  * @param {Tw2Effect} [overrideEffect]
  * @prototype
  */
-Tw2ForwardingRenderBatch.prototype.Commit = function(overrideEffect)
+Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect)
 {
     if (this.geometryProvider)
     {
@@ -99,4 +108,3 @@ Tw2ForwardingRenderBatch.prototype.Commit = function(overrideEffect)
     }
 };
 
-Inherit(Tw2ForwardingRenderBatch, Tw2RenderBatch);

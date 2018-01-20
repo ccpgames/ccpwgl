@@ -1,17 +1,21 @@
+import {device} from './Tw2Device';
+
 /**
  * Tw2PerObjectData
- * TODO: Identify if @property perObjectVSData and @property perObjectPSData should be defined here
  * @constructor
  */
-function Tw2PerObjectData()
-{}
+export function Tw2PerObjectData()
+{
+    this.perObjectVSData = null;
+    this.perObjectPSData = null;
+}
 
 /**
  * SetPerObjectDataToDevice
  * @param constantBufferHandles
  * @constructor
  */
-Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
+Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {

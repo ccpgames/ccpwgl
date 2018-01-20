@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2MayaVector3Curve
  * @property {number} xIndex
@@ -8,7 +10,7 @@
  * @property {vec3} value
  * @constructor
  */
-function Tw2MayaVector3Curve()
+export function Tw2MayaVector3Curve()
 {
     this.xIndex = -1;
     this.yIndex = -1;
@@ -23,7 +25,7 @@ function Tw2MayaVector3Curve()
  * @returns {boolean}
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.Initialize = function()
+Tw2MayaVector3Curve.prototype.Initialize = function ()
 {
     this.ComputeLength();
     return true;
@@ -34,7 +36,7 @@ Tw2MayaVector3Curve.prototype.Initialize = function()
  * @returns {number}
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.GetLength = function()
+Tw2MayaVector3Curve.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -44,7 +46,7 @@ Tw2MayaVector3Curve.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
+Tw2MayaVector3Curve.prototype.UpdateValue = function (time)
 {
     if (this.animationEngine)
     {
@@ -81,7 +83,7 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
  * Computes curve Length
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.ComputeLength = function()
+Tw2MayaVector3Curve.prototype.ComputeLength = function ()
 {
     if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {

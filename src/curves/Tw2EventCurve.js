@@ -4,7 +4,7 @@
  * @property value
  * @constructor
  */
-function Tw2EventKey()
+export function Tw2EventKey()
 {
     this.time = 0;
     this.value = '';
@@ -22,7 +22,7 @@ function Tw2EventKey()
  * @property {number} _currentKey
  * @constructor
  */
-function Tw2EventCurve()
+export function Tw2EventCurve()
 {
     this.name = '';
     this.value = '';
@@ -45,7 +45,7 @@ Tw2EventCurve.Extrapolation = {
  * @returns {number}
  * @method
  */
-Tw2EventCurve.Compare = function(a, b)
+Tw2EventCurve.Compare = function (a, b)
 {
     if (a.time < b.time)
     {
@@ -62,7 +62,7 @@ Tw2EventCurve.Compare = function(a, b)
  * Initializes the Curve
  * @prototype
  */
-Tw2EventCurve.prototype.Initialize = function()
+Tw2EventCurve.prototype.Initialize = function ()
 {
     this.keys.sort(Tw2EventCurve.Compare);
     this._length = 0;
@@ -77,7 +77,7 @@ Tw2EventCurve.prototype.Initialize = function()
  * @returns {number}
  * @prototype
  */
-Tw2EventCurve.prototype.GetLength = function()
+Tw2EventCurve.prototype.GetLength = function ()
 {
     return this._length;
 };
@@ -87,7 +87,7 @@ Tw2EventCurve.prototype.GetLength = function()
  * @param {number} time
  * @prototype
  */
-Tw2EventCurve.prototype.UpdateValue = function(time)
+Tw2EventCurve.prototype.UpdateValue = function (time)
 {
     if (this._length <= 0)
     {

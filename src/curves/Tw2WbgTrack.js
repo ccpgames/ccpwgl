@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {resMan} from '../core';
+import {Tw2AnimationController} from '../core';
+
 /**
  * Tw2WbgTrack
  * @property {string} name
@@ -8,7 +12,7 @@
  * @property {boolean} cycle
  * @constructor
  */
-function Tw2WbgTrack()
+export function Tw2WbgTrack()
 {
     this.name = '';
     this.geometryResPath = '';
@@ -45,15 +49,15 @@ function Tw2WbgTrack()
      * Initialize
      * @method
      */
-    this.Initialize = function()
+    this.Initialize = function ()
     {
         if (this.geometryResPath)
         {
             this.geometryRes = resMan.GetResource(this.geometryResPath);
             var self = this;
             var notification = {
-                ReleaseCachedData: function() {},
-                RebuildCachedData: function()
+                ReleaseCachedData: function () {},
+                RebuildCachedData: function ()
                 {
                     SetCurves(self);
                 }
@@ -67,7 +71,7 @@ function Tw2WbgTrack()
      * @param {number} time
      * @prototype
      */
-    this.UpdateValue = function(time)
+    this.UpdateValue = function (time)
     {
         if (!this._TracksReady())
         {
@@ -95,7 +99,7 @@ function Tw2WbgTrack()
  * @variable {mat4} scaleShear
  * @constructor
  */
-function Tw2WbgTransformTrack()
+export function Tw2WbgTransformTrack()
 {
     this.translation = vec3.create();
     this.rotation = quat.create();
@@ -111,7 +115,7 @@ function Tw2WbgTransformTrack()
      * @returns {*}
      * @private
      */
-    this._TracksReady = function()
+    this._TracksReady = function ()
     {
         return positionCurve || rotationCurve || scaleCurve;
     };
@@ -122,7 +126,7 @@ function Tw2WbgTransformTrack()
      * @param duration
      * @private
      */
-    this._ApplyTracks = function(trackGroup, duration)
+    this._ApplyTracks = function (trackGroup, duration)
     {
         for (var i = 0; i < trackGroup.transformTracks.length; ++i)
         {
@@ -143,7 +147,7 @@ function Tw2WbgTransformTrack()
      * @param {number} time
      * @prototype
      */
-    this._UpdateValue = function(time)
+    this._UpdateValue = function (time)
     {
         if (positionCurve)
         {

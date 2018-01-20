@@ -1,10 +1,14 @@
+import {device} from './Tw2Device';
+import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
+import {Tw2ParticleElementDeclaration} from '../particle';
+
 /**
  * Tw2RuntimeInstanceData
  * @property {string} name
  * @property {number} count
  * @constructor
  */
-function Tw2RuntimeInstanceData()
+export function Tw2RuntimeInstanceData()
 {
     this.name = '';
     this.count = 0;
@@ -21,7 +25,7 @@ function Tw2RuntimeInstanceData()
      * @returns {number}
      * @method
      */
-    this.GetMaxInstanceCount = function()
+    this.GetMaxInstanceCount = function ()
     {
         return data ? data.length : 1;
     };
@@ -31,7 +35,7 @@ function Tw2RuntimeInstanceData()
      * @param decl
      * @method
      */
-    this.SetElementLayout = function(decl)
+    this.SetElementLayout = function (decl)
     {
         if (vb)
         {
@@ -63,7 +67,7 @@ function Tw2RuntimeInstanceData()
      * @param data_
      * @constructor
      */
-    this.SetData = function(data_)
+    this.SetData = function (data_)
     {
         if (!declaration)
         {
@@ -82,7 +86,7 @@ function Tw2RuntimeInstanceData()
      * @param value
      * @constructor
      */
-    this.SetItemElement = function(index, elementIndex, value)
+    this.SetItemElement = function (index, elementIndex, value)
     {
         if (declaration.elements[elementIndex].elements > 1)
         {
@@ -106,7 +110,7 @@ function Tw2RuntimeInstanceData()
      * @param value
      * @constructor
      */
-    this.SetItemElementRef = function(index, elementIndex, value)
+    this.SetItemElementRef = function (index, elementIndex, value)
     {
         data[index][elementIndex] = value;
         dataDirty = true;
@@ -119,7 +123,7 @@ function Tw2RuntimeInstanceData()
      * @returns {*}
      * @method
      */
-    this.GetItemElement = function(index, elementIndex)
+    this.GetItemElement = function (index, elementIndex)
     {
         return data[index][elementIndex];
     };
@@ -128,7 +132,7 @@ function Tw2RuntimeInstanceData()
      * UpdateData
      * @method
      */
-    this.UpdateData = function()
+    this.UpdateData = function ()
     {
         if (!dataDirty || !declaration)
         {
@@ -172,7 +176,7 @@ function Tw2RuntimeInstanceData()
      * Unloads the webgl buffer
      * @method
      */
-    this.Unload = function()
+    this.Unload = function ()
     {
         if (vb)
         {
@@ -186,7 +190,7 @@ function Tw2RuntimeInstanceData()
      * @returns {WebglArrayBuffer}
      * @method
      */
-    this.GetInstanceBuffer = function()
+    this.GetInstanceBuffer = function ()
     {
         return vb;
     };
@@ -196,7 +200,7 @@ function Tw2RuntimeInstanceData()
      * @returns {Tw2VertexDeclaration}
      * @method
      */
-    this.GetInstanceDeclaration = function()
+    this.GetInstanceDeclaration = function ()
     {
         return declaration;
     };
@@ -206,7 +210,7 @@ function Tw2RuntimeInstanceData()
      * @returns {number}
      * @method
      */
-    this.GetInstanceStride = function()
+    this.GetInstanceStride = function ()
     {
         return vertexStride * 4;
     };
@@ -216,7 +220,7 @@ function Tw2RuntimeInstanceData()
      * @returns {number}
      * @method
      */
-    this.GetInstanceCount = function()
+    this.GetInstanceCount = function ()
     {
         return count;
     };

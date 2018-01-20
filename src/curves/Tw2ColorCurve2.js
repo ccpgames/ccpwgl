@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2ColorKey2
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ColorKey2()
+export function Tw2ColorKey2()
 {
     this.time = 0;
     this.value = vec4.create();
@@ -34,7 +36,7 @@ function Tw2ColorKey2()
  * @property {Array.<Tw2ColorKey2>} keys
  * @constructor
  */
-function Tw2ColorCurve2()
+export function Tw2ColorCurve2()
 {
     this.name = '';
     this.length = 0;
@@ -60,7 +62,7 @@ Tw2ColorCurve2.Interpolation = {
  * Initializes the curve
  * @prototype
  */
-Tw2ColorCurve2.prototype.Initialize = function()
+Tw2ColorCurve2.prototype.Initialize = function ()
 {
     this.Sort();
 };
@@ -70,7 +72,7 @@ Tw2ColorCurve2.prototype.Initialize = function()
  * @returns {number}
  * @prototype
  */
-Tw2ColorCurve2.prototype.GetLength = function()
+Tw2ColorCurve2.prototype.GetLength = function ()
 {
     return this.length;
 };
@@ -82,7 +84,7 @@ Tw2ColorCurve2.prototype.GetLength = function()
  * @returns {number}
  * @method
  */
-Tw2ColorCurve2.Compare = function(a, b)
+Tw2ColorCurve2.Compare = function (a, b)
 {
     if (a.time < b.time)
     {
@@ -99,7 +101,7 @@ Tw2ColorCurve2.Compare = function(a, b)
  * Sorts the curve's keys
  * @prototype
  */
-Tw2ColorCurve2.prototype.Sort = function()
+Tw2ColorCurve2.prototype.Sort = function ()
 {
     if (this.keys.length)
     {
@@ -128,7 +130,7 @@ Tw2ColorCurve2.prototype.Sort = function()
  * @param {number} time
  * @prototype
  */
-Tw2ColorCurve2.prototype.UpdateValue = function(time)
+Tw2ColorCurve2.prototype.UpdateValue = function (time)
 {
     this.GetValueAt(time, this.currentValue);
 };
@@ -140,7 +142,7 @@ Tw2ColorCurve2.prototype.UpdateValue = function(time)
  * @returns {vec4}
  * @prototype
  */
-Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
+Tw2ColorCurve2.prototype.GetValueAt = function (time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -213,7 +215,7 @@ Tw2ColorCurve2.prototype.GetValueAt = function(time, value)
  * @returns {*}
  * @prototype
  */
-Tw2ColorCurve2.prototype.Interpolate = function(time, lastKey, nextKey, value)
+Tw2ColorCurve2.prototype.Interpolate = function (time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];

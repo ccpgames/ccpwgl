@@ -1,14 +1,17 @@
+import {device} from './Tw2Device';
+import {Tw2TextureRes} from './Tw2TextureRes';
+
 /**
  * Tw2RenderTarget
  * @property {Tw2TextureRes} texture
- * @property {WebglFrameBuffer} _frameBuffer
- * @property {WebglRenderBuffer} _renderBuffer
+ * @property {WebGLFramebuffer} _frameBuffer
+ * @property {WebGLRenderbuffer} _renderBuffer
  * @property {number} width - width of the resulting texture
  * @property {number} height - height of the resulting texture
  * @property {boolean} hasDepth - Controls whether depth is considered when creating the webgl buffers
  * @constructor
  */
-function Tw2RenderTarget()
+export function Tw2RenderTarget()
 {
     this.texture = null;
     this._frameBuffer = null;
@@ -22,7 +25,7 @@ function Tw2RenderTarget()
  * Destroys the render target's webgl buffers and textures
  * @prototype
  */
-Tw2RenderTarget.prototype.Destroy = function()
+Tw2RenderTarget.prototype.Destroy = function ()
 {
     if (this.texture)
     {
@@ -48,7 +51,7 @@ Tw2RenderTarget.prototype.Destroy = function()
  * @param {boolean} hasDepth - Optional flag to enable a depth buffer
  * @prototype
  */
-Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
+Tw2RenderTarget.prototype.Create = function (width, height, hasDepth)
 {
     this.Destroy();
     this.texture = new Tw2TextureRes();
@@ -91,7 +94,7 @@ Tw2RenderTarget.prototype.Create = function(width, height, hasDepth)
  * Sets the render target as the current frame buffer
  * @prototype
  */
-Tw2RenderTarget.prototype.Set = function()
+Tw2RenderTarget.prototype.Set = function ()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, this._frameBuffer);
     device.gl.viewport(0, 0, this.width, this.height);
@@ -101,7 +104,7 @@ Tw2RenderTarget.prototype.Set = function()
  * Unsets the render target as the current frame buffer
  * @prototype
  */
-Tw2RenderTarget.prototype.Unset = function()
+Tw2RenderTarget.prototype.Unset = function ()
 {
     device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
     device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);

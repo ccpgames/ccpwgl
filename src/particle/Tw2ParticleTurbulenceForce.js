@@ -1,3 +1,5 @@
+import {vec3, vec4} from '../math';
+
 /**
  * Tw2ParticleTurbulenceForce
  * @property {number} noiseLevel
@@ -7,7 +9,7 @@
  * @property {number} _time
  * @constructor
  */
-function Tw2ParticleTurbulenceForce()
+export function Tw2ParticleTurbulenceForce()
 {
     this.noiseLevel = 3;
     this.noiseRatio = 0.5;
@@ -27,7 +29,7 @@ function Tw2ParticleTurbulenceForce()
  * @param result
  * @returns {*}
  */
-Tw2ParticleTurbulenceForce.AddNoise = (function()
+Tw2ParticleTurbulenceForce.AddNoise = (function ()
 {
     var s_noiseLookup = [];
     var s_permutations = [];
@@ -130,7 +132,7 @@ Tw2ParticleTurbulenceForce.AddNoise = (function()
  * @param force
  * @prototype
  */
-Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, force)
+Tw2ParticleTurbulenceForce.prototype.ApplyForce = function (position, velocity, force)
 {
     if (this.noiseLevel === 0)
     {
@@ -165,7 +167,7 @@ Tw2ParticleTurbulenceForce.prototype.ApplyForce = function(position, velocity, f
  * @param {number} dt - delta Time
  * @prototype
  */
-Tw2ParticleTurbulenceForce.prototype.Update = function(dt)
+Tw2ParticleTurbulenceForce.prototype.Update = function (dt)
 {
     this._time += dt;
 };
