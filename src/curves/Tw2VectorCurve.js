@@ -59,7 +59,7 @@ Tw2VectorCurve.Interpolation = {
  * @param {number} time
  * @prototype
  */
-Tw2VectorCurve.prototype.UpdateValue = function (time)
+Tw2VectorCurve.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -69,7 +69,7 @@ Tw2VectorCurve.prototype.UpdateValue = function (time)
  * @returns {number}
  * @prototype
  */
-Tw2VectorCurve.prototype.GetLength = function ()
+Tw2VectorCurve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -81,7 +81,7 @@ Tw2VectorCurve.prototype.GetLength = function ()
  * @returns {vec3}
  * @prototype
  */
-Tw2VectorCurve.prototype.GetValueAt = function (time, value)
+Tw2VectorCurve.prototype.GetValueAt = function(time, value)
 {
     var d;
 

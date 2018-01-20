@@ -61,7 +61,7 @@ Tw2ScalarCurve2.Interpolation = {
  * @returns {number}
  * @prototype
  */
-Tw2ScalarCurve2.prototype.GetLength = function ()
+Tw2ScalarCurve2.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -70,7 +70,7 @@ Tw2ScalarCurve2.prototype.GetLength = function ()
  * Initializes Curve
  * @prototype
  */
-Tw2ScalarCurve2.prototype.Initialize = function ()
+Tw2ScalarCurve2.prototype.Initialize = function()
 {
     this.Sort();
 };
@@ -82,7 +82,7 @@ Tw2ScalarCurve2.prototype.Initialize = function ()
  * @returns {number}
  * @method
  */
-Tw2ScalarCurve2.Compare = function (a, b)
+Tw2ScalarCurve2.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -99,7 +99,7 @@ Tw2ScalarCurve2.Compare = function (a, b)
  * Sorts the curve's keys
  * @prototype
  */
-Tw2ScalarCurve2.prototype.Sort = function ()
+Tw2ScalarCurve2.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -128,7 +128,7 @@ Tw2ScalarCurve2.prototype.Sort = function ()
  * @param {number} time
  * @prototype
  */
-Tw2ScalarCurve2.prototype.UpdateValue = function (time)
+Tw2ScalarCurve2.prototype.UpdateValue = function(time)
 {
     this.currentValue = this.GetValueAt(time);
 };
@@ -139,7 +139,7 @@ Tw2ScalarCurve2.prototype.UpdateValue = function (time)
  * @returns {number}
  * @prototype
  */
-Tw2ScalarCurve2.prototype.GetValueAt = function (time)
+Tw2ScalarCurve2.prototype.GetValueAt = function(time)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -199,7 +199,7 @@ Tw2ScalarCurve2.prototype.GetValueAt = function (time)
  * @returns {number}
  * @prototype
  */
-Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey)
+Tw2ScalarCurve2.prototype.Interpolate = function(time, lastKey, nextKey)
 {
     var startValue = this.startValue;
     var endValue = this.endValue;

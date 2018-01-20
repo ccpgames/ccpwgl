@@ -56,7 +56,7 @@ EveChildBillboard.scratch = {
  * Updates mesh transform
  * @param {mat4} parentTransform
  */
-EveChildBillboard.prototype.Update = function (parentTransform)
+EveChildBillboard.prototype.Update = function(parentTransform)
 {
     var viewInverse = EveChildBillboard.scratch.mat4_0,
         finalScale = EveChildBillboard.scratch.vec3_0;
@@ -92,7 +92,7 @@ EveChildBillboard.prototype.Update = function (parentTransform)
  * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveChildBillboard.prototype.GetBatches = function (mode, accumulator)
+EveChildBillboard.prototype.GetBatches = function(mode, accumulator)
 {
     if (!this.display || !this.mesh)
     {
@@ -109,7 +109,7 @@ EveChildBillboard.prototype.GetBatches = function (mode, accumulator)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveChildBillboard.prototype.GetResources = function (out)
+EveChildBillboard.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {

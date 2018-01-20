@@ -23,7 +23,7 @@ export function Tw2RGBAScalarSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2RGBAScalarSequencer.prototype.GetLength = function ()
+Tw2RGBAScalarSequencer.prototype.GetLength = function()
 {
     var length = 0;
     if (this.RedCurve && ('GetLength' in this.RedCurve))
@@ -50,7 +50,7 @@ Tw2RGBAScalarSequencer.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2RGBAScalarSequencer.prototype.UpdateValue = function (time)
+Tw2RGBAScalarSequencer.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -62,7 +62,7 @@ Tw2RGBAScalarSequencer.prototype.UpdateValue = function (time)
  * @returns {vec4}
  * @prototype
  */
-Tw2RGBAScalarSequencer.prototype.GetValueAt = function (time, value)
+Tw2RGBAScalarSequencer.prototype.GetValueAt = function(time, value)
 {
     if (this.RedCurve)
     {

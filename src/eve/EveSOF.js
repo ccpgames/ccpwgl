@@ -776,7 +776,7 @@ export function EveSOF()
     {
         function onChildLoaded(child)
         {
-            return function (obj)
+            return function(obj)
             {
                 if (obj.isEffectChild)
                 {
@@ -869,7 +869,7 @@ export function EveSOF()
         return ship;
     }
 
-    this.LoadData = function (callback)
+    this.LoadData = function(callback)
     {
         if (data === null)
         {
@@ -885,7 +885,7 @@ export function EveSOF()
                 spriteEffect.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                 spriteEffect.Initialize();
 
-                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function (obj)
+                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function(obj)
                 {
                     data = obj;
                     for (var i = 0; i < pendingLoads.length; ++i)
@@ -906,11 +906,11 @@ export function EveSOF()
         }
     };
 
-    this.BuildFromDNA = function (dna, callback)
+    this.BuildFromDNA = function(dna, callback)
     {
         if (data === null)
         {
-            this.LoadData(function ()
+            this.LoadData(function()
             {
                 var result = Build(dna);
                 if (callback)
@@ -1021,11 +1021,11 @@ export function EveSOF()
         }
     }
 
-    this.SetupTurretMaterial = function (turretSet, parentFactionName, turretFactionName, callback)
+    this.SetupTurretMaterial = function(turretSet, parentFactionName, turretFactionName, callback)
     {
         if (data === null)
         {
-            this.LoadData(function ()
+            this.LoadData(function()
             {
                 SetupTurretMaterial(turretSet, parentFactionName, turretFactionName);
                 if (callback)
@@ -1064,33 +1064,33 @@ export function EveSOF()
         }
     }
 
-    this.GetHullNames = function (callback)
+    this.GetHullNames = function(callback)
     {
-        this.LoadData(function ()
+        this.LoadData(function()
         {
             callback(getDataKeys('hull'));
         });
     };
 
-    this.GetFactionNames = function (callback)
+    this.GetFactionNames = function(callback)
     {
-        this.LoadData(function ()
+        this.LoadData(function()
         {
             callback(getDataKeys('faction'));
         });
     };
 
-    this.GetRaceNames = function (callback)
+    this.GetRaceNames = function(callback)
     {
-        this.LoadData(function ()
+        this.LoadData(function()
         {
             callback(getDataKeys('race'));
         });
     };
 
-    this.GetSofData = function (callback)
+    this.GetSofData = function(callback)
     {
-        this.LoadData(function ()
+        this.LoadData(function()
         {
             callback(getDataKeys('all'));
         });

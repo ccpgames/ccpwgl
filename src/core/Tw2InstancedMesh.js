@@ -47,7 +47,7 @@ export class Tw2InstancedMesh extends Tw2Mesh
  * @param {Tw2PerObjectData} perObjectData
  * @private
  */
-Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
+Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
 {
     for (var i = 0; i < areas.length; ++i)
     {
@@ -76,7 +76,7 @@ Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator,
  * @param {Tw2Effect} effect
  * @prototype
  */
-Tw2InstancedMesh.prototype.RenderAreas = function (meshIx, start, count, effect)
+Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
 {
     if (this.geometryResource)
     {
@@ -135,7 +135,7 @@ export class Tw2InstancedMeshBatch extends Tw2RenderBatch
  * @param {Tw2Effect} [overrideEffect]
  * @prototype
  */
-Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect)
+Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
 {
     var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (this.instanceMesh && effect)

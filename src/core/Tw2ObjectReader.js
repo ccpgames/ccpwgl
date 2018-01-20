@@ -126,7 +126,7 @@ Tw2ObjectReader.TypedArrays = {
 };
 
 
-Tw2ObjectReader.prototype._ConstructObject = function (data)
+Tw2ObjectReader.prototype._ConstructObject = function(data)
 {
     var object;
 
@@ -183,7 +183,7 @@ Tw2ObjectReader.prototype._ConstructObject = function (data)
 };
 
 
-Tw2ObjectReader.prototype._ReadUint = function (type)
+Tw2ObjectReader.prototype._ReadUint = function(type)
 {
     switch (type & 0x30)
     {
@@ -196,7 +196,7 @@ Tw2ObjectReader.prototype._ReadUint = function (type)
     }
 };
 
-Tw2ObjectReader.prototype._ReadElementData = function (type)
+Tw2ObjectReader.prototype._ReadElementData = function(type)
 {
     var offset, i, result, count, elementType;
     switch (type & 0xf)
@@ -277,7 +277,7 @@ Tw2ObjectReader.prototype._ReadElementData = function (type)
     }
 };
 
-Tw2ObjectReader.prototype._ReadElement = function ()
+Tw2ObjectReader.prototype._ReadElement = function()
 {
     var type = this._reader.ReadUInt8();
     if (type === Tw2ObjectReader.REFERENCE_BIT)
@@ -297,7 +297,7 @@ Tw2ObjectReader.prototype._ReadElement = function ()
     return result;
 };
 
-Tw2ObjectReader.prototype.Construct = function ()
+Tw2ObjectReader.prototype.Construct = function()
 {
     this._reader.cursor = this._start;
     return this._ReadElement();
@@ -330,7 +330,7 @@ Tw2ObjectReader.prototype.Construct = function ()
  * @param async
  * @returns {Boolean}
  */
-Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async)
+Tw2ObjectReader.prototype.ConstructFromNode = function(initialize, async)
 {
     var startTime = Date.now();
     while (this._inputStack.length)

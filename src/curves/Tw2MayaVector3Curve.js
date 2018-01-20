@@ -25,7 +25,7 @@ export function Tw2MayaVector3Curve()
  * @returns {boolean}
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.Initialize = function ()
+Tw2MayaVector3Curve.prototype.Initialize = function()
 {
     this.ComputeLength();
     return true;
@@ -36,7 +36,7 @@ Tw2MayaVector3Curve.prototype.Initialize = function ()
  * @returns {number}
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.GetLength = function ()
+Tw2MayaVector3Curve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -46,7 +46,7 @@ Tw2MayaVector3Curve.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.UpdateValue = function (time)
+Tw2MayaVector3Curve.prototype.UpdateValue = function(time)
 {
     if (this.animationEngine)
     {
@@ -83,7 +83,7 @@ Tw2MayaVector3Curve.prototype.UpdateValue = function (time)
  * Computes curve Length
  * @prototype
  */
-Tw2MayaVector3Curve.prototype.ComputeLength = function ()
+Tw2MayaVector3Curve.prototype.ComputeLength = function()
 {
     if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {

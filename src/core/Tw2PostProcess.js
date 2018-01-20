@@ -105,7 +105,7 @@ export function Tw2PostProcess()
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2PostProcess.prototype.Render = function ()
+Tw2PostProcess.prototype.Render = function()
 {
     var step, i;
 

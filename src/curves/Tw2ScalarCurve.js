@@ -62,7 +62,7 @@ Tw2ScalarCurve.Interpolation = {
  * @returns {number}
  * @prototype
  */
-Tw2ScalarCurve.prototype.GetLength = function ()
+Tw2ScalarCurve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -72,7 +72,7 @@ Tw2ScalarCurve.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2ScalarCurve.prototype.UpdateValue = function (time)
+Tw2ScalarCurve.prototype.UpdateValue = function(time)
 {
     this.value = this.GetValueAt(time);
 };
@@ -84,7 +84,7 @@ Tw2ScalarCurve.prototype.UpdateValue = function (time)
  * @returns {*}
  * @prototype
  */
-Tw2ScalarCurve.prototype.GetValueAt = function (time)
+Tw2ScalarCurve.prototype.GetValueAt = function(time)
 {
     var d;
 

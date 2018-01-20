@@ -3,7 +3,7 @@ import * as core from './core';
 import * as curves from './curves';
 import * as eve from './eve';
 import * as particle from './particle';
-import { resMan } from './core';
+import {resMan} from './core';
 
 /**
  * Register globals
@@ -34,4 +34,4 @@ export * from './core';
 export * from './curves';
 export * from './eve';
 export * from './particle';
-export { math };
+export {math};

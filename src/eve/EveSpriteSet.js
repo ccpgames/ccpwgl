@@ -51,7 +51,7 @@ export function EveSpriteSetBatch()
  * Commits the sprite set
  * @param {Tw2Effect} overrideEffect
  */
-EveSpriteSetBatch.prototype.Commit = function (overrideEffect)
+EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
 {
     if (this.boosterGlow)
     {
@@ -123,7 +123,7 @@ export function EveSpriteSet(useQuads, isSkinned)
 /**
  * Initializes the sprite set
  */
-EveSpriteSet.prototype.Initialize = function ()
+EveSpriteSet.prototype.Initialize = function()
 {
     this.RebuildBuffers();
 };
@@ -133,7 +133,7 @@ EveSpriteSet.prototype.Initialize = function ()
  * @param {boolean} useQuads Use quad rendering (CPU transform)
  * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
  */
-EveSpriteSet.prototype.UseQuads = function (useQuads, isSkinned)
+EveSpriteSet.prototype.UseQuads = function(useQuads, isSkinned)
 {
     if (this.useQuads === useQuads)
     {
@@ -172,7 +172,7 @@ EveSpriteSet.prototype.UseQuads = function (useQuads, isSkinned)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpriteSet.prototype.GetResources = function (out)
+EveSpriteSet.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -190,7 +190,7 @@ EveSpriteSet.prototype.GetResources = function (out)
 /**
  * Rebuilds the sprite set's buffers
  */
-EveSpriteSet.prototype.RebuildBuffers = function ()
+EveSpriteSet.prototype.RebuildBuffers = function()
 {
     if (this.useQuads)
     {
@@ -268,7 +268,7 @@ EveSpriteSet.prototype.RebuildBuffers = function ()
  * @param {Tw2PerObjectData} perObjectData
  * @param {mat4} world
  */
-EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData, world)
+EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData, world)
 {
     if (this.display && mode === device.RM_ADDITIVE)
     {
@@ -290,7 +290,7 @@ EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData, 
  * @param {Number} boosterGain
  * @param {Number} warpIntensity
  */
-EveSpriteSet.prototype.GetBoosterGlowBatches = function (mode, accumulator, perObjectData, world, boosterGain, warpIntensity)
+EveSpriteSet.prototype.GetBoosterGlowBatches = function(mode, accumulator, perObjectData, world, boosterGain, warpIntensity)
 {
     if (this.display && mode === device.RM_ADDITIVE)
     {
@@ -312,7 +312,7 @@ EveSpriteSet.prototype.GetBoosterGlowBatches = function (mode, accumulator, perO
  * @param {mat4} world
  * @param {Tw2PerObjectData} perObjectData
  */
-EveSpriteSet.prototype.Render = function (overrideEffect, world, perObjectData)
+EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
 {
     if (this.useQuads)
     {
@@ -359,7 +359,7 @@ EveSpriteSet.scratch = {
  * @param {Number} boosterGain
  * @param {Number} warpIntensity
  */
-EveSpriteSet.prototype.RenderBoosterGlow = function (overrideEffect, world, boosterGain, warpIntensity)
+EveSpriteSet.prototype.RenderBoosterGlow = function(overrideEffect, world, boosterGain, warpIntensity)
 {
     var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -422,7 +422,7 @@ EveSpriteSet.prototype.RenderBoosterGlow = function (overrideEffect, world, boos
  * @param {mat4} world
  * @param {Tw2PerObjectData} perObjectData
  */
-EveSpriteSet.prototype.RenderQuads = function (overrideEffect, world, perObjectData)
+EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectData)
 {
     var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -496,7 +496,7 @@ EveSpriteSet.prototype.RenderQuads = function (overrideEffect, world, perObjectD
  * Per frame update
  * @param {number} dt - Delta time
  */
-EveSpriteSet.prototype.Update = function (dt)
+EveSpriteSet.prototype.Update = function(dt)
 {
     this._time += dt;
 };
@@ -504,7 +504,7 @@ EveSpriteSet.prototype.Update = function (dt)
 /**
  * Clears the sprite set's sprites
  */
-EveSpriteSet.prototype.Clear = function ()
+EveSpriteSet.prototype.Clear = function()
 {
     this.sprites = [];
 };
@@ -520,7 +520,7 @@ EveSpriteSet.prototype.Clear = function ()
  * @param {vec4} color
  * @constructor
  */
-EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
+EveSpriteSet.prototype.Add = function(pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color)
 {
     var item = new EveSpriteSetItem();
     item.display = true;

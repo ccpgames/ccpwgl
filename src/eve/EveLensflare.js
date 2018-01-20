@@ -77,7 +77,7 @@ export function EveLensflare()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveLensflare.prototype.GetResources = function (out)
+EveLensflare.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -112,7 +112,7 @@ EveLensflare.prototype.GetResources = function (out)
  * @param out
  * @param v
  */
-EveLensflare.prototype.MatrixArcFromForward = function (out, v)
+EveLensflare.prototype.MatrixArcFromForward = function(out, v)
 {
     var norm = vec3.normalize(vec3.create(), v);
     mat4.identity(out);
@@ -156,7 +156,7 @@ EveLensflare.scratch = {
 /**
  * Prepares the lensflare for rendering
  */
-EveLensflare.prototype.PrepareRender = function ()
+EveLensflare.prototype.PrepareRender = function()
 {
     if (!this.display)
     {
@@ -248,7 +248,7 @@ EveLensflare.prototype.PrepareRender = function ()
 /**
  * Updates Occluders
  */
-EveLensflare.prototype.UpdateOccluders = function ()
+EveLensflare.prototype.UpdateOccluders = function()
 {
     if (!this.doOcclusionQueries)
     {
@@ -353,7 +353,7 @@ EveLensflare.prototype.UpdateOccluders = function ()
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveLensflare.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
     {

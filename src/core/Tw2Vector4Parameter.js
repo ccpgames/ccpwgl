@@ -26,7 +26,7 @@ export function Tw2Vector4Parameter(name, value)
  * @returns {boolean}
  * @prototype
  */
-Tw2Vector4Parameter.prototype.Bind = function (constantBuffer, offset, size)
+Tw2Vector4Parameter.prototype.Bind = function(constantBuffer, offset, size)
 {
     if (this.constantBuffer !== null || size < 4)
     {
@@ -42,7 +42,7 @@ Tw2Vector4Parameter.prototype.Bind = function (constantBuffer, offset, size)
  * Unbind
  * @prototype
  */
-Tw2Vector4Parameter.prototype.Unbind = function ()
+Tw2Vector4Parameter.prototype.Unbind = function()
 {
     this.constantBuffer = null;
 };
@@ -52,7 +52,7 @@ Tw2Vector4Parameter.prototype.Unbind = function ()
  * @param {vec4|Float32Array|Array} value - Vector4 Array
  * @prototype
  */
-Tw2Vector4Parameter.prototype.SetValue = function (value)
+Tw2Vector4Parameter.prototype.SetValue = function(value)
 {
     vec4.copy(this.value, value);
     if (this.constantBuffer !== null)
@@ -65,7 +65,7 @@ Tw2Vector4Parameter.prototype.SetValue = function (value)
  * Updates the constant buffer to the current value
  * @prototype
  */
-Tw2Vector4Parameter.prototype.OnValueChanged = function ()
+Tw2Vector4Parameter.prototype.OnValueChanged = function()
 {
     if (this.constantBuffer !== null)
     {
@@ -81,7 +81,7 @@ Tw2Vector4Parameter.prototype.OnValueChanged = function ()
  * @param {number} size
  * @prototype
  */
-Tw2Vector4Parameter.prototype.Apply = function (constantBuffer, offset, size)
+Tw2Vector4Parameter.prototype.Apply = function(constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
 };
@@ -91,7 +91,7 @@ Tw2Vector4Parameter.prototype.Apply = function (constantBuffer, offset, size)
  * @return {vec4|Float32Array} Vector4 Array
  * @prototype
  */
-Tw2Vector4Parameter.prototype.GetValue = function ()
+Tw2Vector4Parameter.prototype.GetValue = function()
 {
     if (this.constantBuffer !== null)
     {
@@ -108,7 +108,7 @@ Tw2Vector4Parameter.prototype.GetValue = function ()
  * @throw Invalid Index
  * @prototype
  */
-Tw2Vector4Parameter.prototype.GetIndexValue = function (index)
+Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
 {
     if (typeof this.value[index] === 'undefined')
     {
@@ -130,7 +130,7 @@ Tw2Vector4Parameter.prototype.GetIndexValue = function (index)
  * @throw Invalid Index
  * @prototype
  */
-Tw2Vector4Parameter.prototype.SetIndexValue = function (index, value)
+Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
 {
     if (typeof this.value[index] === 'undefined')
     {
@@ -150,7 +150,7 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function (index, value)
  * @param {number} value - The value to fill the value array elements with
  * @prototype
  */
-Tw2Vector4Parameter.prototype.FillWith = function (value)
+Tw2Vector4Parameter.prototype.FillWith = function(value)
 {
     this.SetValue([value, value, value, value]);
 };

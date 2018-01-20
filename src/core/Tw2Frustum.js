@@ -33,7 +33,7 @@ Tw2Frustum.scratch = {
  * @param {mat4} [viewProjection] Optional viewProjection matrix
  * @prototype
  */
-Tw2Frustum.prototype.Initialize = function (view, proj, viewportSize, viewInverse, viewProjection)
+Tw2Frustum.prototype.Initialize = function(view, proj, viewportSize, viewInverse, viewProjection)
 {
     var mat4_0 = Tw2Frustum.scratch.mat4_0;
 
@@ -90,7 +90,7 @@ Tw2Frustum.prototype.Initialize = function (view, proj, viewportSize, viewInvers
  * @returns {boolean}
  * @prototype
  */
-Tw2Frustum.prototype.IsSphereVisible = function (center, radius)
+Tw2Frustum.prototype.IsSphereVisible = function(center, radius)
 {
     for (var i = 0; i < 6; ++i)
     {
@@ -109,7 +109,7 @@ Tw2Frustum.prototype.IsSphereVisible = function (center, radius)
  * @returns {number}
  * @prototype
  */
-Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius)
+Tw2Frustum.prototype.GetPixelSizeAcross = function(center, radius)
 {
     var d = vec3.subtract(Tw2Frustum.scratch.vec3_0, this.viewPos, center);
     var depth = vec3.dot(this.viewDir, d);

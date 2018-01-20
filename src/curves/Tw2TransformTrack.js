@@ -37,7 +37,7 @@ export function Tw2TransformTrack()
  * Initializes the Curve
  * @prototype
  */
-Tw2TransformTrack.prototype.Initialize = function ()
+Tw2TransformTrack.prototype.Initialize = function()
 {
     if (this.resPath !== '')
     {
@@ -50,7 +50,7 @@ Tw2TransformTrack.prototype.Initialize = function ()
  * @returns {number}
  * @prototype
  */
-Tw2TransformTrack.prototype.GetLength = function ()
+Tw2TransformTrack.prototype.GetLength = function()
 {
     return this.duration;
 };
@@ -60,7 +60,7 @@ Tw2TransformTrack.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2TransformTrack.prototype.UpdateValue = function (time)
+Tw2TransformTrack.prototype.UpdateValue = function(time)
 {
     if (!this.res || !this.res.IsGood())
     {
@@ -96,7 +96,7 @@ Tw2TransformTrack.prototype.UpdateValue = function (time)
  * FindTracks
  * @prototype
  */
-Tw2TransformTrack.prototype.FindTracks = function ()
+Tw2TransformTrack.prototype.FindTracks = function()
 {
     var i;
 

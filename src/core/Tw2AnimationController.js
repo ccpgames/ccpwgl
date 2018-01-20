@@ -55,7 +55,7 @@ export function Tw2Animation()
  * @return {boolean}
  * @prototype
  */
-Tw2Animation.prototype.IsFinished = function ()
+Tw2Animation.prototype.IsFinished = function()
 {
     return !this.cycle && this.time >= this.animationRes.duration;
 };
@@ -141,7 +141,7 @@ Tw2AnimationController.scratch = {
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
 
-Tw2AnimationController.prototype.GetResources = function (out)
+Tw2AnimationController.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -163,7 +163,7 @@ Tw2AnimationController.prototype.GetResources = function (out)
  * @param {Tw2GeometryRes} geometryResource
  * @prototype
  */
-Tw2AnimationController.prototype.SetGeometryResource = function (geometryResource)
+Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
 {
     this.models = [];
     this.animations = [];
@@ -189,7 +189,7 @@ Tw2AnimationController.prototype.SetGeometryResource = function (geometryResourc
  * @param {Tw2GeometryRes} geometryResource
  * @prototype
  */
-Tw2AnimationController.prototype.AddGeometryResource = function (geometryResource)
+Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
 {
     for (var i = 0; i < this.geometryResources.length; ++i)
     {
@@ -207,7 +207,7 @@ Tw2AnimationController.prototype.AddGeometryResource = function (geometryResourc
  * @param {Tw2GeometryRes} resource
  * @prototype
  */
-Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
+Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
 {
     for (var i = 0; i < resource.animations.length; ++i)
     {
@@ -281,7 +281,7 @@ Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource)
  * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
  * @private
  */
-Tw2AnimationController.prototype._AddModel = function (modelRes)
+Tw2AnimationController.prototype._AddModel = function(modelRes)
 {
     for (var i = 0; i < this.models.length; ++i)
     {
@@ -313,7 +313,7 @@ Tw2AnimationController.prototype._AddModel = function (modelRes)
  * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
  * @private
  */
-Tw2AnimationController.prototype._FindMeshBindings = function (resource)
+Tw2AnimationController.prototype._FindMeshBindings = function(resource)
 {
     for (var i = 0; i < this.meshBindings.length; ++i)
     {
@@ -330,7 +330,7 @@ Tw2AnimationController.prototype._FindMeshBindings = function (resource)
  * @param {Tw2GeometryRes} resource
  * @prototype
  */
-Tw2AnimationController.prototype.RebuildCachedData = function (resource)
+Tw2AnimationController.prototype.RebuildCachedData = function(resource)
 {
     var found = false;
     for (var i = 0; i < this.geometryResources.length; ++i)
@@ -364,7 +364,7 @@ Tw2AnimationController.prototype.RebuildCachedData = function (resource)
  * @param {Tw2GeometryRes} resource
  * @private
  */
-Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
+Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
 {
     var newModels = [];
     if (resource.meshes.length)
@@ -471,7 +471,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function (resource)
  * @returns {null|Tw2Animation} Returns the animation if found
  * @constructor
  */
-Tw2AnimationController.prototype.GetAnimation = function (name)
+Tw2AnimationController.prototype.GetAnimation = function(name)
 {
     for (var i = 0; i < this.animations.length; i++)
     {
@@ -490,7 +490,7 @@ Tw2AnimationController.prototype.GetAnimation = function (name)
  * @return {boolean}
  * @constructor
  */
-Tw2AnimationController.prototype.ResetAnimation = function (name)
+Tw2AnimationController.prototype.ResetAnimation = function(name)
 {
     var animation = this.GetAnimation(name);
     if (animation)
@@ -510,7 +510,7 @@ Tw2AnimationController.prototype.ResetAnimation = function (name)
  * @return {boolean}
  * @prototype
  */
-Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback)
+Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
 {
     if (this.animations.length === 0)
     {
@@ -549,7 +549,7 @@ Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback
  * @returns {boolean}
  * @prototype
  */
-Tw2AnimationController.prototype.PlayAnimationFrom = function (name, from, cycle, callback)
+Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
 {
     if (this.animations.length === 0)
     {
@@ -586,7 +586,7 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function (name, from, cycle
  * @returns {Array}
  * @constructor
  */
-Tw2AnimationController.prototype.GetPlayingAnimations = function ()
+Tw2AnimationController.prototype.GetPlayingAnimations = function()
 {
     var result = [];
 
@@ -606,7 +606,7 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function ()
  * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
  * @prototype
  */
-Tw2AnimationController.prototype.StopAnimation = function (names)
+Tw2AnimationController.prototype.StopAnimation = function(names)
 {
     if (this.animations.length === 0)
     {
@@ -643,7 +643,7 @@ Tw2AnimationController.prototype.StopAnimation = function (names)
  * Stops all animations from playing
  * @prototype
  */
-Tw2AnimationController.prototype.StopAllAnimations = function ()
+Tw2AnimationController.prototype.StopAllAnimations = function()
 {
     if (this.animations.length === 0)
     {
@@ -666,7 +666,7 @@ Tw2AnimationController.prototype.StopAllAnimations = function ()
  * @param {String| Array.<string>} names - Animation Names
  * @prototype
  */
-Tw2AnimationController.prototype.StopAllAnimationsExcept = function (names)
+Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
 {
     if (this.animations.length === 0)
     {
@@ -704,7 +704,7 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function (names)
  * @param {Array.<Tw2Model>} models
  * @prototype
  */
-Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
+Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
 {
     for (var i = 0; i < this.models.length; ++i)
     {
@@ -748,7 +748,7 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models)
  * @param {boolean} cycle
  * @param {number} duration
  */
-Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, duration)
+Tw2AnimationController.EvaluateCurve = function(curve, time, value, cycle, duration)
 {
     var count = curve.knots.length;
     var knot = count - 1;
@@ -844,7 +844,7 @@ Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, dura
  * @param {number} dt - Delta Time
  * @prototype
  */
-Tw2AnimationController.prototype.Update = function (dt)
+Tw2AnimationController.prototype.Update = function(dt)
 {
     if (this.models === null || !this.update)
     {
@@ -985,7 +985,7 @@ Tw2AnimationController.prototype.Update = function (dt)
  * @param {function} debugHelper
  * @prototype
  */
-Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
+Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
 {
     /*for (var i = 0; i < this.geometryResources.length; ++i)
      {
@@ -1012,7 +1012,7 @@ Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper)
  * @returns {Float32Array}
  * @prototype
  */
-Tw2AnimationController.prototype.GetBoneMatrices = function (meshIndex, geometryResource)
+Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length === 0)
     {
@@ -1038,7 +1038,7 @@ Tw2AnimationController.prototype.GetBoneMatrices = function (meshIndex, geometry
  * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
  * @prototype
  */
-Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometryResource)
+Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
 {
     if (this.geometryResources.length === 0)
     {

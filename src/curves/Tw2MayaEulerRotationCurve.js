@@ -29,7 +29,7 @@ export function Tw2MayaEulerRotationCurve()
  * @returns {boolean}
  * @prototype
  */
-Tw2MayaEulerRotationCurve.prototype.Initialize = function ()
+Tw2MayaEulerRotationCurve.prototype.Initialize = function()
 {
     this.ComputeLength();
     return true;
@@ -40,7 +40,7 @@ Tw2MayaEulerRotationCurve.prototype.Initialize = function ()
  * @returns {number}
  * @prototype
  */
-Tw2MayaEulerRotationCurve.prototype.GetLength = function ()
+Tw2MayaEulerRotationCurve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -50,7 +50,7 @@ Tw2MayaEulerRotationCurve.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2MayaEulerRotationCurve.prototype.UpdateValue = function (time)
+Tw2MayaEulerRotationCurve.prototype.UpdateValue = function(time)
 {
     if (this.animationEngine)
     {
@@ -100,7 +100,7 @@ Tw2MayaEulerRotationCurve.prototype.UpdateValue = function (time)
  * Computes curve Length
  * @prototype
  */
-Tw2MayaEulerRotationCurve.prototype.ComputeLength = function ()
+Tw2MayaEulerRotationCurve.prototype.ComputeLength = function()
 {
     if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0)
     {

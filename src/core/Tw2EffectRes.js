@@ -39,7 +39,7 @@ Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
  * @param data
  * @param xml
  */
-Tw2EffectRes.prototype.Prepare = function (data, xml)
+Tw2EffectRes.prototype.Prepare = function(data, xml)
 {
     this.passes = [];
     this.annotations = {};
@@ -600,7 +600,7 @@ Tw2EffectRes.prototype.Prepare = function (data, xml)
  * Applies an Effect Pass
  * @param {Number} pass - effect.passes index
  */
-Tw2EffectRes.prototype.ApplyPass = function (pass)
+Tw2EffectRes.prototype.ApplyPass = function(pass)
 {
     pass = this.passes[pass];
     for (var i = 0; i < pass.states.length; ++i)
@@ -624,7 +624,7 @@ Tw2EffectRes.prototype.ApplyPass = function (pass)
  * @param {string} name - An Effect Parameter name
  * @returns {Boolean}
  */
-Tw2EffectRes.prototype.IsValidParameter = function (name)
+Tw2EffectRes.prototype.IsValidParameter = function(name)
 {
     return (name in this.annotations);
 };
@@ -635,7 +635,7 @@ Tw2EffectRes.prototype.IsValidParameter = function (name)
  * @param {string} groupName - The name of an annotation group
  * @returns {Array.< string >}
  */
-Tw2EffectRes.prototype.GetParametersByGroup = function (groupName)
+Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
 {
     var parameters = [];
 
@@ -655,7 +655,3 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName)
 
     return parameters;
 };
-
-// Registers shader extension constructor
-resMan.RegisterExtension('sm_hi', Tw2EffectRes);
-resMan.RegisterExtension('sm_lo', Tw2EffectRes);

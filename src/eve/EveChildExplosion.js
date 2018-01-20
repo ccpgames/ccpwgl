@@ -13,7 +13,7 @@ export function EveChildExplosion()
  * Updates explosion transform
  * @param {mat4} parentTransform
  */
-EveChildExplosion.prototype.Update = function (parentTransform) {};
+EveChildExplosion.prototype.Update = function(parentTransform) {};
 
 /**
  * Gets render batches
@@ -21,4 +21,4 @@ EveChildExplosion.prototype.Update = function (parentTransform) {};
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveChildExplosion.prototype.GetBatches = function (mode, accumulator, perObjectData) {};
+EveChildExplosion.prototype.GetBatches = function(mode, accumulator, perObjectData) {};

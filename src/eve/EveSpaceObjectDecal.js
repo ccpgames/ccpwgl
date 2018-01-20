@@ -71,7 +71,7 @@ export function EveSpaceObjectDecal()
 /**
  * Initializes the decal
  */
-EveSpaceObjectDecal.prototype.Initialize = function ()
+EveSpaceObjectDecal.prototype.Initialize = function()
 {
     var indexes = new Uint16Array(this.indexBuffer);
     this._indexBuffer = device.gl.createBuffer();
@@ -87,7 +87,7 @@ EveSpaceObjectDecal.prototype.Initialize = function ()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceObjectDecal.prototype.GetResources = function (out)
+EveSpaceObjectDecal.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -114,7 +114,7 @@ EveSpaceObjectDecal.prototype.GetResources = function (out)
  * Sets the parent geometry
  * @param {Tw2GeometryRes} geometryRes
  */
-EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
+EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
 {
     this.parentGeometry = geometryRes;
 };
@@ -126,7 +126,7 @@ EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes)
  * @param {Tw2PerObjectData} perObjectData
  * @param {number} [counter=0]
  */
-EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData, counter)
+EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData, counter)
 {
     switch (mode)
     {
@@ -191,7 +191,7 @@ EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjec
  * @param {Tw2ForwardingRenderBatch} batch
  * @param {Tw2Effect} overrideEffect
  */
-EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect)
+EveSpaceObjectDecal.prototype.Render = function(batch, overrideEffect)
 {
     var bkIB = this.parentGeometry.meshes[0].indexes;
     var bkStart = this.parentGeometry.meshes[0].areas[0].start;

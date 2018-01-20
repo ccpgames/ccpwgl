@@ -26,7 +26,7 @@ export function Tw2MatrixParameter(name, value)
  * @returns {boolean}
  * @prototype
  */
-Tw2MatrixParameter.prototype.Bind = function (constantBuffer, offset, size)
+Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
 {
     if (this.constantBuffer !== null || size < 16)
     {
@@ -41,7 +41,7 @@ Tw2MatrixParameter.prototype.Bind = function (constantBuffer, offset, size)
  * Unbinds the parameter's constant buffer
  * @prototype
  */
-Tw2MatrixParameter.prototype.UnBind = function ()
+Tw2MatrixParameter.prototype.UnBind = function()
 {
     this.constantBuffer = null;
 };
@@ -51,7 +51,7 @@ Tw2MatrixParameter.prototype.UnBind = function ()
  * @param {mat4} value
  * @prototype
  */
-Tw2MatrixParameter.prototype.SetValue = function (value)
+Tw2MatrixParameter.prototype.SetValue = function(value)
 {
     mat4.copy(this.value, value);
     if (this.constantBuffer !== null)
@@ -65,7 +65,7 @@ Tw2MatrixParameter.prototype.SetValue = function (value)
  * @return {mat4|Float32Array}
  * @prototype
  */
-Tw2MatrixParameter.prototype.GetValue = function ()
+Tw2MatrixParameter.prototype.GetValue = function()
 {
     if (this.constantBuffer !== null)
     {
@@ -82,7 +82,7 @@ Tw2MatrixParameter.prototype.GetValue = function ()
  * @param {number} [size] - unused
  * @prototype
  */
-Tw2MatrixParameter.prototype.Apply = function (constantBuffer, offset, size)
+Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
     constantBuffer.set(this.value, offset);
 };
@@ -91,7 +91,7 @@ Tw2MatrixParameter.prototype.Apply = function (constantBuffer, offset, size)
  * Updates the constant buffer to the current value
  * @prototype
  */
-Tw2MatrixParameter.prototype.OnValueChanged = function ()
+Tw2MatrixParameter.prototype.OnValueChanged = function()
 {
     if (this.constantBuffer !== null)
     {

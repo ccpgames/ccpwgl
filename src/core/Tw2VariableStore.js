@@ -24,7 +24,7 @@ function Tw2VariableStore()
  * @returns {Parameter}
  * @constructor
  */
-Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type)
+Tw2VariableStore.prototype.RegisterVariableWithType = function(name, value, type)
 {
     return this._variables[name] = new type(name, value);
 };
@@ -36,7 +36,7 @@ Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, typ
  * @returns {Parameter}
  * @constructor
  */
-Tw2VariableStore.prototype.RegisterType = function (name, type)
+Tw2VariableStore.prototype.RegisterType = function(name, type)
 {
     return this._variables[name] = new type(name);
 };
@@ -46,7 +46,7 @@ Tw2VariableStore.prototype.RegisterType = function (name, type)
  * @param {Number|String|Array.<Number>|Float32Array} value
  * @returns {null|Parameter}
  */
-Tw2VariableStore.GetTw2ParameterType = function (value)
+Tw2VariableStore.GetTw2ParameterType = function(value)
 {
     if (value && value.constructor.name.toUpperCase().includes('ARRAY'))
     {
@@ -85,7 +85,7 @@ Tw2VariableStore.GetTw2ParameterType = function (value)
  * @returns {Parameter}
  * @constructor
  */
-Tw2VariableStore.prototype.RegisterVariable = function (name, value)
+Tw2VariableStore.prototype.RegisterVariable = function(name, value)
 {
     const Type = Tw2VariableStore.GetTw2ParameterType(value);
     return Type ? this.RegisterVariableWithType(name, value, Type) : null;
@@ -95,7 +95,7 @@ Tw2VariableStore.prototype.RegisterVariable = function (name, value)
  * Registers variables from an object or array of objects
  * @param obj
  */
-Tw2VariableStore.prototype.RegisterVariables = function (obj)
+Tw2VariableStore.prototype.RegisterVariables = function(obj)
 {
     if (obj)
     {

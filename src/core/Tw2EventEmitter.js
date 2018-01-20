@@ -27,7 +27,7 @@ export class Tw2EventEmitter
  * myEmitter.on('someEvent', myListener1);
  * // myListener1 will be called whenever 'someEvent' is emitted
  */
-Tw2EventEmitter.prototype.on = function (eventName, listener)
+Tw2EventEmitter.prototype.on = function(eventName, listener)
 {
     eventName = Tw2EventEmitter.Register(this, eventName);
     if (this._events[eventName].indexOf(listener) === -1)
@@ -50,7 +50,7 @@ Tw2EventEmitter.prototype.on = function (eventName, listener)
  * myEmitter.once('someEvent', myListener1);
  * // myListener will be fired one time only before being removed from the event
  */
-Tw2EventEmitter.prototype.once = function (eventName, listener)
+Tw2EventEmitter.prototype.once = function(eventName, listener)
 {
     eventName = Tw2EventEmitter.Register(this, eventName);
     var self = this;
@@ -80,7 +80,7 @@ Tw2EventEmitter.prototype.once = function (eventName, listener)
  * // myListener1 called with ('someEvent', arg1, arg2, arg3)
  * // myListener2 called with ('someEvent', arg1);
  */
-Tw2EventEmitter.prototype.emit = function (eventName)
+Tw2EventEmitter.prototype.emit = function(eventName)
 {
     eventName = Tw2EventEmitter.Register(this, eventName);
     var args = Array.prototype.slice.call(arguments);
@@ -98,7 +98,7 @@ Tw2EventEmitter.prototype.emit = function (eventName)
  * @param {Function} listener - the listener to remove
  * @returns {*} emitter       - the emitter object
  */
-Tw2EventEmitter.prototype.off = function (eventName, listener)
+Tw2EventEmitter.prototype.off = function(eventName, listener)
 {
     eventName = eventName.toLowerCase();
     if ('_events' in this && eventName in this._events)
@@ -119,7 +119,7 @@ Tw2EventEmitter.prototype.off = function (eventName, listener)
  * myEmitter.del(myListener1, myListener2)
  * // myListener1 and myListener2 are removed from any of the emitter's events
  */
-Tw2EventEmitter.prototype.remove = function ()
+Tw2EventEmitter.prototype.remove = function()
 {
     var args = Array.prototype.slice.call(arguments);
     if (this._events)
@@ -137,7 +137,7 @@ Tw2EventEmitter.prototype.remove = function ()
  *
  * @param {*} emitter - target emitter
  */
-Tw2EventEmitter.Define = function (emitter)
+Tw2EventEmitter.Define = function(emitter)
 {
     Object.defineProperty(emitter, '_events',
         {
@@ -157,7 +157,7 @@ Tw2EventEmitter.Define = function (emitter)
  * @param {String} eventName   - event to register
  * @returns {String} eventName - the event name, in lower case
  */
-Tw2EventEmitter.Register = function (emitter, eventName)
+Tw2EventEmitter.Register = function(emitter, eventName)
 {
     if (!('_events' in emitter)) Tw2EventEmitter.Define(emitter);
     eventName = eventName.toLowerCase();
@@ -172,7 +172,7 @@ Tw2EventEmitter.Register = function (emitter, eventName)
  * @param {String} eventName - event to check
  * @returns {boolean}
  */
-Tw2EventEmitter.HasListeners = function (emitter, eventName)
+Tw2EventEmitter.HasListeners = function(emitter, eventName)
 {
     if (!('_events' in emitter) || !(eventName in emitter._events)) return false;
     return (emitter._events[eventName].length)
@@ -185,7 +185,7 @@ Tw2EventEmitter.HasListeners = function (emitter, eventName)
  * @param {Function} listener - listener to check
  * @returns {Array.<String>}  - an array of event names the listener is on
  */
-Tw2EventEmitter.HasListener = function (emitter, listener)
+Tw2EventEmitter.HasListener = function(emitter, listener)
 {
     var result = [];
     if ('_events' in emitter)
@@ -208,7 +208,7 @@ Tw2EventEmitter.HasListener = function (emitter, listener)
  * @param {*} emitter         - target emitter
  * @param {Function} listener - listener to remove
  */
-Tw2EventEmitter.RemoveListener = function (emitter, listener)
+Tw2EventEmitter.RemoveListener = function(emitter, listener)
 {
     if ('_events' in emitter)
     {
@@ -232,7 +232,7 @@ Tw2EventEmitter.RemoveListener = function (emitter, listener)
  * @param {*} emitter        - target emitter
  * @param {String} eventName - the event to purge
  */
-Tw2EventEmitter.RemoveEvent = function (emitter, eventName)
+Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
 {
     if ('_events' in emitter)
     {
@@ -250,7 +250,7 @@ Tw2EventEmitter.RemoveEvent = function (emitter, eventName)
  * @param {boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
  * @return {*}
  */
-Tw2EventEmitter.Inherit = function (emitter, target, excludeEmit)
+Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
 {
     target['on'] = emitter.on.bind(emitter);
     target['off'] = emitter.off.bind(emitter);
@@ -302,7 +302,7 @@ emitter.consoleDefault = 'log';
  * @param {Error}  [eventData.err=]        - Error Event object, if supplied the stack trace will be displayed
  * @param {Array.<String>} [eventData.src] - an array of the functions involved in the event
  */
-emitter.log = function (eventName, eventData)
+emitter.log = function(eventName, eventData)
 {
     var output = true;
     var logType = eventData.log;

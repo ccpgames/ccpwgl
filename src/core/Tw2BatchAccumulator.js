@@ -25,7 +25,7 @@ export function Tw2BatchAccumulator(sorting)
  * @param {RenderBatch} batch
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Commit = function (batch)
+Tw2BatchAccumulator.prototype.Commit = function(batch)
 {
     this.batches[this.count++] = batch;
 };
@@ -34,7 +34,7 @@ Tw2BatchAccumulator.prototype.Commit = function (batch)
  * Clears any accumulated render batches
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Clear = function ()
+Tw2BatchAccumulator.prototype.Clear = function()
 {
     this.count = 0;
     this.batches = [];
@@ -46,7 +46,7 @@ Tw2BatchAccumulator.prototype.Clear = function ()
  * @param {Tw2Effect} [overrideEffect]
  * @prototype
  */
-Tw2BatchAccumulator.prototype.Render = function (overrideEffect)
+Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
 {
     if (typeof(this._sortMethod) !== 'undefined')
     {
@@ -100,7 +100,7 @@ export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
  * @param {Tw2Effect} [overrideEffect]
  * @prototype
  */
-Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect)
+Tw2ForwardingRenderBatch.prototype.Commit = function(overrideEffect)
 {
     if (this.geometryProvider)
     {

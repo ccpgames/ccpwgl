@@ -36,7 +36,7 @@ export function Tw2SamplerOverride()
      * @returns {*}
      * @method
      */
-    this.GetSampler = function (originalSampler)
+    this.GetSampler = function(originalSampler)
     {
         if (!sampler)
         {
@@ -129,7 +129,7 @@ export function Tw2Effect()
  * Initializes the Tw2Effect
  * @prototype
  */
-Tw2Effect.prototype.Initialize = function ()
+Tw2Effect.prototype.Initialize = function()
 {
     if (this.effectFilePath !== '')
     {
@@ -147,7 +147,7 @@ Tw2Effect.prototype.Initialize = function ()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
  */
-Tw2Effect.prototype.GetResources = function (out)
+Tw2Effect.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -180,7 +180,7 @@ Tw2Effect.prototype.GetResources = function (out)
  * Returns the Tw2Effect's resource object
  * @prototype
  */
-Tw2Effect.prototype.GetEffectRes = function ()
+Tw2Effect.prototype.GetEffectRes = function()
 {
     return this.effectRes;
 };
@@ -190,7 +190,7 @@ Tw2Effect.prototype.GetEffectRes = function ()
  * @param resource
  * @prototype
  */
-Tw2Effect.prototype.RebuildCachedData = function (resource)
+Tw2Effect.prototype.RebuildCachedData = function(resource)
 {
     if (resource.IsGood())
     {
@@ -203,7 +203,7 @@ Tw2Effect.prototype.RebuildCachedData = function (resource)
  * @returns {boolean}
  * @prototype
  */
-Tw2Effect.prototype.BindParameters = function ()
+Tw2Effect.prototype.BindParameters = function()
 {
     if (this.effectRes === null || !this.effectRes.IsGood())
     {
@@ -349,7 +349,7 @@ Tw2Effect.prototype.BindParameters = function ()
  * @param pass
  * @prototype
  */
-Tw2Effect.prototype.ApplyPass = function (pass)
+Tw2Effect.prototype.ApplyPass = function(pass)
 {
     if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -409,7 +409,7 @@ Tw2Effect.prototype.ApplyPass = function (pass)
  * @returns {number}
  * @prototype
  */
-Tw2Effect.prototype.GetPassCount = function ()
+Tw2Effect.prototype.GetPassCount = function()
 {
     if (this.effectRes === null || !this.effectRes.IsGood())
     {
@@ -424,7 +424,7 @@ Tw2Effect.prototype.GetPassCount = function ()
  * @returns {*}
  * @prototype
  */
-Tw2Effect.prototype.GetPassInput = function (pass)
+Tw2Effect.prototype.GetPassInput = function(pass)
 {
     if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length)
     {
@@ -445,7 +445,7 @@ Tw2Effect.prototype.GetPassInput = function (pass)
  * @param {function} cb - callback
  * @prototype
  */
-Tw2Effect.prototype.Render = function (cb)
+Tw2Effect.prototype.Render = function(cb)
 {
     var count = this.GetPassCount();
     for (var i = 0; i < count; ++i)
@@ -462,7 +462,7 @@ Tw2Effect.prototype.Render = function (cb)
  * @returns {Object.<string, Tw2TextureParameter>}
  * @prototype
  */
-Tw2Effect.prototype.GetTextures = function ()
+Tw2Effect.prototype.GetTextures = function()
 {
     var textures = {};
 
@@ -483,7 +483,7 @@ Tw2Effect.prototype.GetTextures = function ()
  * @returns {Object.<string, Tw2FloatParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2VariableParameter>}
  * @prototype
  */
-Tw2Effect.prototype.GetParameters = function ()
+Tw2Effect.prototype.GetParameters = function()
 {
     var parameters = {};
 

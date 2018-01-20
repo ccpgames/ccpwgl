@@ -41,7 +41,7 @@ export class Tw2Resource
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsLoading = function ()
+Tw2Resource.prototype.IsLoading = function()
 {
     this.KeepAlive();
     return this._isLoading;
@@ -52,7 +52,7 @@ Tw2Resource.prototype.IsLoading = function ()
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsGood = function ()
+Tw2Resource.prototype.IsGood = function()
 {
     this.KeepAlive();
     return this._isGood;
@@ -63,7 +63,7 @@ Tw2Resource.prototype.IsGood = function ()
  * @returns {boolean}
  * @prototype
  */
-Tw2Resource.prototype.IsPurged = function ()
+Tw2Resource.prototype.IsPurged = function()
 {
     return this._isPurged;
 };
@@ -72,7 +72,7 @@ Tw2Resource.prototype.IsPurged = function ()
  * LoadStarted
  * @prototype
  */
-Tw2Resource.prototype.LoadStarted = function ()
+Tw2Resource.prototype.LoadStarted = function()
 {
     this._isLoading = true;
 
@@ -92,7 +92,7 @@ Tw2Resource.prototype.LoadStarted = function ()
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.LoadFinished = function (success)
+Tw2Resource.prototype.LoadFinished = function(success)
 {
     this._isLoading = false;
 
@@ -112,7 +112,7 @@ Tw2Resource.prototype.LoadFinished = function (success)
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.PrepareFinished = function (success)
+Tw2Resource.prototype.PrepareFinished = function(success)
 {
     this._isLoading = false;
     this._isGood = success;
@@ -133,7 +133,7 @@ Tw2Resource.prototype.PrepareFinished = function (success)
  * @param {boolean} success
  * @prototype
  */
-Tw2Resource.prototype.SetIsGood = function (success)
+Tw2Resource.prototype.SetIsGood = function(success)
 {
     this._isGood = success;
 };
@@ -142,13 +142,13 @@ Tw2Resource.prototype.SetIsGood = function (success)
  * Unload
  * @prototype
  */
-Tw2Resource.prototype.Unload = function () {};
+Tw2Resource.prototype.Unload = function() {};
 
 /**
  * Reloads the resource
  * @prototype
  */
-Tw2Resource.prototype.Reload = function ()
+Tw2Resource.prototype.Reload = function()
 {
     this.Unload();
     resMan.ReloadResource(this);
@@ -158,7 +158,7 @@ Tw2Resource.prototype.Reload = function ()
  * Keeps the resource from being purged
  * @prototype
  */
-Tw2Resource.prototype.KeepAlive = function ()
+Tw2Resource.prototype.KeepAlive = function()
 {
     this.activeFrame = resMan.activeFrame;
     if (this._isPurged)
@@ -172,7 +172,7 @@ Tw2Resource.prototype.KeepAlive = function ()
  * @param notification
  * @prototype
  */
-Tw2Resource.prototype.RegisterNotification = function (notification)
+Tw2Resource.prototype.RegisterNotification = function(notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {
@@ -195,7 +195,7 @@ Tw2Resource.prototype.RegisterNotification = function (notification)
  * @param notification
  * @prototype
  */
-Tw2Resource.prototype.UnregisterNotification = function (notification)
+Tw2Resource.prototype.UnregisterNotification = function(notification)
 {
     for (var i = 0; i < this._notifications.length; ++i)
     {

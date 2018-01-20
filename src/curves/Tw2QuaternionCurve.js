@@ -68,7 +68,7 @@ Tw2QuaternionCurve.Interpolation = {
  * @param [d] - optional receiving vector
  * @returns {quat}
  */
-Tw2QuaternionCurve.slerp = function (a, b, c, d)
+Tw2QuaternionCurve.slerp = function(a, b, c, d)
 {
     d || (d = a);
     var e = c;
@@ -84,7 +84,7 @@ Tw2QuaternionCurve.slerp = function (a, b, c, d)
  * Initializes the Curve
  * @prototype
  */
-Tw2QuaternionCurve.prototype.Initialize = function ()
+Tw2QuaternionCurve.prototype.Initialize = function()
 {
     this.Sort();
 };
@@ -94,7 +94,7 @@ Tw2QuaternionCurve.prototype.Initialize = function ()
  * @returns {number}
  * @prototype
  */
-Tw2QuaternionCurve.prototype.GetLength = function ()
+Tw2QuaternionCurve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -106,7 +106,7 @@ Tw2QuaternionCurve.prototype.GetLength = function ()
  * @returns {number}
  * @method
  */
-Tw2QuaternionCurve.Compare = function (a, b)
+Tw2QuaternionCurve.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -123,7 +123,7 @@ Tw2QuaternionCurve.Compare = function (a, b)
  * Sorts the curve's keys
  * @prototype
  */
-Tw2QuaternionCurve.prototype.Sort = function ()
+Tw2QuaternionCurve.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -152,7 +152,7 @@ Tw2QuaternionCurve.prototype.Sort = function ()
  * @param {number} time
  * @prototype
  */
-Tw2QuaternionCurve.prototype.UpdateValue = function (time)
+Tw2QuaternionCurve.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.currentValue);
 };
@@ -164,7 +164,7 @@ Tw2QuaternionCurve.prototype.UpdateValue = function (time)
  * @returns {quat}
  * @prototype
  */
-Tw2QuaternionCurve.prototype.GetValueAt = function (time, value)
+Tw2QuaternionCurve.prototype.GetValueAt = function(time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -234,7 +234,7 @@ Tw2QuaternionCurve.prototype.GetValueAt = function (time, value)
  * @returns {*}
  * @prototype
  */
-Tw2QuaternionCurve.prototype.Interpolate = function (time, lastKey, nextKey, value)
+Tw2QuaternionCurve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];

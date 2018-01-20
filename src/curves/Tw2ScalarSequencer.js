@@ -29,7 +29,7 @@ export function Tw2ScalarSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2ScalarSequencer.prototype.GetLength = function ()
+Tw2ScalarSequencer.prototype.GetLength = function()
 {
     var length = 0;
     for (var i = 0; i < this.functions.length; ++i)
@@ -47,7 +47,7 @@ Tw2ScalarSequencer.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2ScalarSequencer.prototype.UpdateValue = function (time)
+Tw2ScalarSequencer.prototype.UpdateValue = function(time)
 {
     this.value = this.GetValueAt(time);
 };
@@ -58,7 +58,7 @@ Tw2ScalarSequencer.prototype.UpdateValue = function (time)
  * @returns {number}
  * @prototype
  */
-Tw2ScalarSequencer.prototype.GetValueAt = function (time)
+Tw2ScalarSequencer.prototype.GetValueAt = function(time)
 {
     var ret, i, v;
 

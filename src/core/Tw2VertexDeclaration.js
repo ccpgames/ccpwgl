@@ -61,7 +61,7 @@ Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
  * @returns {number}
  * @function
  */
-Tw2VertexDeclaration.CompareDeclarationElements = function (a, b, usageOffset)
+Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset)
 {
     usageOffset = usageOffset || 0;
     if (a.usage < b.usage) return -1;
@@ -75,7 +75,7 @@ Tw2VertexDeclaration.CompareDeclarationElements = function (a, b, usageOffset)
  * Re-sorts elements
  * @prototype
  */
-Tw2VertexDeclaration.prototype.RebuildHash = function ()
+Tw2VertexDeclaration.prototype.RebuildHash = function()
 {
     this._elementsSorted = [];
     for (var i = 0; i < this.elements.length; ++i)
@@ -92,7 +92,7 @@ Tw2VertexDeclaration.prototype.RebuildHash = function ()
  * @returns {Tw2VertexElement|null}
  * @prototype
  */
-Tw2VertexDeclaration.prototype.FindUsage = function (usage, usageIndex)
+Tw2VertexDeclaration.prototype.FindUsage = function(usage, usageIndex)
 {
     for (var i = 0; i < this._elementsSorted.length; ++i)
     {
@@ -123,7 +123,7 @@ Tw2VertexDeclaration.prototype.FindUsage = function (usage, usageIndex)
  * @returns {boolean}
  * @prototype
  */
-Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
+Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
 {
     var index = 0;
     for (var i = 0; i < inputDecl._elementsSorted.length; ++i)
@@ -183,7 +183,7 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function (inputDecl, stride)
  * @returns {Array} ResetData
  * @prototype
  */
-Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stride, usageOffset, divisor)
+Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, stride, usageOffset, divisor)
 {
     var resetData = [];
     divisor = divisor || 0;
@@ -252,7 +252,7 @@ Tw2VertexDeclaration.prototype.SetPartialDeclaration = function (inputDecl, stri
  * @param {Array} resetData
  * @prototype
  */
-Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData)
+Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function(resetData)
 {
     if (resetData)
     {

@@ -22,7 +22,7 @@ export function EveBasicPerObjectData()
  * @param constantBufferHandles
  * @constructor
  */
-EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
+EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {
@@ -129,7 +129,7 @@ EveTransform.scratch = {
 /**
  * Initializes the EveTransform
  */
-EveTransform.prototype.Initialize = function ()
+EveTransform.prototype.Initialize = function()
 {
     mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
 };
@@ -140,7 +140,7 @@ EveTransform.prototype.Initialize = function ()
  * @param {Boolean} excludeChildren - True to exclude children's res objects
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveTransform.prototype.GetResources = function (out, excludeChildren)
+EveTransform.prototype.GetResources = function(out, excludeChildren)
 {
     if (out === undefined)
     {
@@ -169,7 +169,7 @@ EveTransform.prototype.GetResources = function (out, excludeChildren)
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveTransform.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
@@ -201,7 +201,7 @@ EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData)
  * Per frame update
  * @param {Number} dt - delta time
  */
-EveTransform.prototype.Update = function (dt)
+EveTransform.prototype.Update = function(dt)
 {
     for (var i = 0; i < this.children.length; ++i)
     {
@@ -224,7 +224,7 @@ EveTransform.prototype.Update = function (dt)
 /**
  * multiply3x3
  */
-EveTransform.Multiply3x3 = function (a, b, c)
+EveTransform.Multiply3x3 = function(a, b, c)
 {
     c || (c = b);
     var d = b[0],
@@ -240,7 +240,7 @@ EveTransform.Multiply3x3 = function (a, b, c)
  * Per frame update
  * @param {mat4} parentTransform
  */
-EveTransform.prototype.UpdateViewDependentData = function (parentTransform)
+EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
 {
     var finalScale, d, temp, camPos, scale, invView,
         scratch = EveTransform.scratch,

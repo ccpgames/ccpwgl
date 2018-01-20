@@ -62,7 +62,7 @@ Tw2Vector3Curve.Interpolation = {
  * Initializes the Curve
  * @prototype
  */
-Tw2Vector3Curve.prototype.Initialize = function ()
+Tw2Vector3Curve.prototype.Initialize = function()
 {
     this.Sort();
 };
@@ -72,7 +72,7 @@ Tw2Vector3Curve.prototype.Initialize = function ()
  * @returns {number}
  * @prototype
  */
-Tw2Vector3Curve.prototype.GetLength = function ()
+Tw2Vector3Curve.prototype.GetLength = function()
 {
     return this.length;
 };
@@ -84,7 +84,7 @@ Tw2Vector3Curve.prototype.GetLength = function ()
  * @returns {number}
  * @method
  */
-Tw2Vector3Curve.Compare = function (a, b)
+Tw2Vector3Curve.Compare = function(a, b)
 {
     if (a.time < b.time)
     {
@@ -101,7 +101,7 @@ Tw2Vector3Curve.Compare = function (a, b)
  * Sorts the curve's keys
  * @prototype
  */
-Tw2Vector3Curve.prototype.Sort = function ()
+Tw2Vector3Curve.prototype.Sort = function()
 {
     if (this.keys.length)
     {
@@ -130,7 +130,7 @@ Tw2Vector3Curve.prototype.Sort = function ()
  * @param {number} time
  * @prototype
  */
-Tw2Vector3Curve.prototype.UpdateValue = function (time)
+Tw2Vector3Curve.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.currentValue);
 };
@@ -143,7 +143,7 @@ Tw2Vector3Curve.prototype.UpdateValue = function (time)
  * @returns {vec3}
  * @prototype
  */
-Tw2Vector3Curve.prototype.GetValueAt = function (time, value)
+Tw2Vector3Curve.prototype.GetValueAt = function(time, value)
 {
     time = time / this.timeScale + this.timeOffset;
     if (this.length <= 0 || time <= 0)
@@ -213,7 +213,7 @@ Tw2Vector3Curve.prototype.GetValueAt = function (time, value)
  * @returns {vec3}
  * @prototype
  */
-Tw2Vector3Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
+Tw2Vector3Curve.prototype.Interpolate = function(time, lastKey, nextKey, value)
 {
     value[0] = this.startValue[0];
     value[1] = this.startValue[1];

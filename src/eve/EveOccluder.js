@@ -101,7 +101,7 @@ EveOccluder.scratch = {
  * @param {mat4} parentTransform
  * @param {number} index
  */
-EveOccluder.prototype.UpdateValue = function (parentTransform, index)
+EveOccluder.prototype.UpdateValue = function(parentTransform, index)
 {
     if (!this.display)
     {
@@ -152,7 +152,7 @@ EveOccluder.prototype.UpdateValue = function (parentTransform, index)
  * @param total
  * @param samples
  */
-EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
+EveOccluder.prototype.CollectSamples = function(tex, index, total, samples)
 {
     var effect = EveOccluder._collectEffect;
     var effectRes = effect.GetEffectRes();
@@ -183,7 +183,7 @@ EveOccluder.prototype.CollectSamples = function (tex, index, total, samples)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Resource>} [out]
  */
-EveOccluder.prototype.GetResources = function (out)
+EveOccluder.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {

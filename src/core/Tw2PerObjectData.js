@@ -15,7 +15,7 @@ export function Tw2PerObjectData()
  * @param constantBufferHandles
  * @constructor
  */
-Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles)
+Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function(constantBufferHandles)
 {
     if (this.perObjectVSData && constantBufferHandles[3])
     {

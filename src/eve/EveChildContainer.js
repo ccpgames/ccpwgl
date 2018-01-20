@@ -41,7 +41,7 @@ export function EveChildContainer()
  * @param {mat4} parentTransform
  * @param {Number} dt
  */
-EveChildContainer.prototype.Update = function (parentTransform, dt)
+EveChildContainer.prototype.Update = function(parentTransform, dt)
 {
     if (this.useSRT)
     {
@@ -69,7 +69,7 @@ EveChildContainer.prototype.Update = function (parentTransform, dt)
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveChildContainer.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveChildContainer.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (!this.display)
     {
@@ -87,7 +87,7 @@ EveChildContainer.prototype.GetBatches = function (mode, accumulator, perObjectD
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveChildContainer.prototype.GetResources = function (out)
+EveChildContainer.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {

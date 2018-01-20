@@ -23,7 +23,7 @@ export function Tw2VectorSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2VectorSequencer.prototype.GetLength = function ()
+Tw2VectorSequencer.prototype.GetLength = function()
 {
     var length = 0;
     for (var i = 0; i < this.functions.length; ++i)
@@ -41,7 +41,7 @@ Tw2VectorSequencer.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2VectorSequencer.prototype.UpdateValue = function (time)
+Tw2VectorSequencer.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -53,7 +53,7 @@ Tw2VectorSequencer.prototype.UpdateValue = function (time)
  * @returns {vec3}
  * @prototype
  */
-Tw2VectorSequencer.prototype.GetValueAt = function (time, value)
+Tw2VectorSequencer.prototype.GetValueAt = function(time, value)
 {
     var v0 = Tw2VectorSequencer.scratch.vec3_0;
     var functions, i;

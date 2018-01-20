@@ -36,7 +36,7 @@ export function Tw2SamplerState()
  * Computes the sampler hash
  * @prototype
  */
-Tw2SamplerState.prototype.ComputeHash = function ()
+Tw2SamplerState.prototype.ComputeHash = function()
 {
     this.hash = 2166136261;
     this.hash *= 16777619;
@@ -56,7 +56,7 @@ Tw2SamplerState.prototype.ComputeHash = function ()
  * @param {boolean} hasMipMaps
  * @prototype
  */
-Tw2SamplerState.prototype.Apply = function (hasMipMaps)
+Tw2SamplerState.prototype.Apply = function(hasMipMaps)
 {
     var targetType = this.samplerType;
     var d = device;

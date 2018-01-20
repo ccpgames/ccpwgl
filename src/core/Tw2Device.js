@@ -78,25 +78,25 @@ function Tw2Device()
  * @param {Object} [params]
  * @returns {boolean}
  */
-Tw2Device.prototype.CreateDevice = function (canvas, params)
+Tw2Device.prototype.CreateDevice = function(canvas, params)
 {
     this.gl = null;
     this.glVersion = Tw2Device.WebglVersion.NONE;
     this.effectDir = '/effect.gles2/';
     this.ext = {
-        drawElementsInstanced: function ()
+        drawElementsInstanced: function()
         {
             return false;
         },
-        drawArraysInstanced: function ()
+        drawArraysInstanced: function()
         {
             return false;
         },
-        vertexAttribDivisor: function ()
+        vertexAttribDivisor: function()
         {
             return false;
         },
-        hasInstancedArrays: function ()
+        hasInstancedArrays: function()
         {
             return false;
         }
@@ -121,19 +121,19 @@ Tw2Device.prototype.CreateDevice = function (canvas, params)
     {
         case Tw2Device.WebglVersion.WEBGL2:
             this.ext = {
-                drawElementsInstanced: function (mode, count, type, offset, instanceCount)
+                drawElementsInstanced: function(mode, count, type, offset, instanceCount)
                 {
                     gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
                 },
-                drawArraysInstanced: function (mode, first, count, instanceCount)
+                drawArraysInstanced: function(mode, first, count, instanceCount)
                 {
                     gl.drawArraysInstanced(mode, first, count, instanceCount);
                 },
-                vertexAttribDivisor: function (location, divisor)
+                vertexAttribDivisor: function(location, divisor)
                 {
                     gl.vertexAttribDivisor(location, divisor);
                 },
-                hasInstancedArrays: function ()
+                hasInstancedArrays: function()
                 {
                     return true;
                 }
@@ -149,19 +149,19 @@ Tw2Device.prototype.CreateDevice = function (canvas, params)
             if (instancedArrays)
             {
                 this.ext = {
-                    drawElementsInstanced: function (mode, count, type, offset, instanceCount)
+                    drawElementsInstanced: function(mode, count, type, offset, instanceCount)
                     {
                         instancedArrays['drawElementsInstancedANGLE'](mode, count, type, offset, instanceCount);
                     },
-                    drawArraysInstanced: function (mode, first, count, instanceCount)
+                    drawArraysInstanced: function(mode, first, count, instanceCount)
                     {
                         instancedArrays['drawArraysInstancedANGLE'](mode, first, count, instanceCount);
                     },
-                    vertexAttribDivisor: function (location, divisor)
+                    vertexAttribDivisor: function(location, divisor)
                     {
                         instancedArrays['vertexAttribDivisorANGLE'](location, divisor);
                     },
-                    hasInstancedArrays: function ()
+                    hasInstancedArrays: function()
                     {
                         return true;
                     }
@@ -290,7 +290,7 @@ Tw2Device.prototype.CreateDevice = function (canvas, params)
  * Schedule
  * @param render
  */
-Tw2Device.prototype.Schedule = function (render)
+Tw2Device.prototype.Schedule = function(render)
 {
     this._scheduled[this._scheduled.length] = render;
 };
@@ -298,7 +298,7 @@ Tw2Device.prototype.Schedule = function (render)
 /**
  * Handles resize events
  */
-Tw2Device.prototype.Resize = function ()
+Tw2Device.prototype.Resize = function()
 {
     if (!this.canvas) return;
 
@@ -316,7 +316,7 @@ Tw2Device.prototype.Resize = function ()
 /**
  * Tick
  */
-Tw2Device.prototype.Tick = function ()
+Tw2Device.prototype.Tick = function()
 {
     if (this.canvas.clientWidth !== this.viewportWidth || this.canvas.clientHeight !== this.viewportHeight)
     {
@@ -357,7 +357,7 @@ Tw2Device.prototype.Tick = function ()
  * Sets World transform matrix
  * @param {mat4} matrix
  */
-Tw2Device.prototype.SetWorld = function (matrix)
+Tw2Device.prototype.SetWorld = function(matrix)
 {
     mat4.copy(this.world, matrix);
     //mat4.inverse(this.worldInverse, this.world);
@@ -367,7 +367,7 @@ Tw2Device.prototype.SetWorld = function (matrix)
  * Sets view matrix
  * @param {mat4} matrix
  */
-Tw2Device.prototype.SetView = function (matrix)
+Tw2Device.prototype.SetView = function(matrix)
 {
     mat4.copy(this.view, matrix);
     mat4.invert(this.viewInverse, this.view);
@@ -385,7 +385,7 @@ Tw2Device.prototype.SetView = function (matrix)
  * @param {mat4} matrix
  * @param {boolean} [forceUpdateViewProjection]
  */
-Tw2Device.prototype.SetProjection = function (matrix, forceUpdateViewProjection)
+Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
 {
     mat4.copy(this.projection, matrix);
     mat4.transpose(this.projectionTranspose, this.projection);
@@ -405,7 +405,7 @@ Tw2Device.prototype.SetProjection = function (matrix, forceUpdateViewProjection)
  * @param {vec4} out
  * @returns {vec4} out
  */
-Tw2Device.prototype.GetTargetResolution = function (out)
+Tw2Device.prototype.GetTargetResolution = function(out)
 {
     var aspectRatio = this.projection[0] ? this.projection[5] / this.projection[0] : 0.0;
     var aspectAdjustment = 1.0;
@@ -422,7 +422,7 @@ Tw2Device.prototype.GetTargetResolution = function (out)
  * GetEyePosition
  * @return {vec3}
  */
-Tw2Device.prototype.GetEyePosition = function ()
+Tw2Device.prototype.GetEyePosition = function()
 {
     return this.eyePosition;
 };
@@ -431,7 +431,7 @@ Tw2Device.prototype.GetEyePosition = function ()
  * RenderFullScreenQuad
  * @param {Tw2Effect} effect
  */
-Tw2Device.prototype.RenderFullScreenQuad = function (effect)
+Tw2Device.prototype.RenderFullScreenQuad = function(effect)
 {
     if (!effect) return;
     var effectRes = effect.GetEffectRes();
@@ -452,7 +452,7 @@ Tw2Device.prototype.RenderFullScreenQuad = function (effect)
  * Renders a Texture to the screen
  * @param texture
  */
-Tw2Device.prototype.RenderTexture = (function ()
+Tw2Device.prototype.RenderTexture = (function()
 {
     var blitEffect = null;
     return function RenderTexture(texture)
@@ -475,7 +475,7 @@ Tw2Device.prototype.RenderTexture = (function ()
  * RenderCameraSpaceQuad
  * @param {Tw2Effect} effect
  */
-Tw2Device.prototype.RenderCameraSpaceQuad = function (effect)
+Tw2Device.prototype.RenderCameraSpaceQuad = function(effect)
 {
     if (!effect) return;
     var effectRes = effect.GetEffectRes();
@@ -511,7 +511,7 @@ Tw2Device.prototype.RenderCameraSpaceQuad = function (effect)
  * @param value
  * @return {Number}
  */
-Tw2Device.prototype._DwordToFloat = function (value)
+Tw2Device.prototype._DwordToFloat = function(value)
 {
     var b4 = (value & 0xff);
     var b3 = (value & 0xff00) >> 8;
@@ -528,7 +528,7 @@ Tw2Device.prototype._DwordToFloat = function (value)
  * Returns whether or not Alpha Test is enabled
  * return {Boolean}
  */
-Tw2Device.prototype.IsAlphaTestEnabled = function ()
+Tw2Device.prototype.IsAlphaTestEnabled = function()
 {
     return this.alphaTestState.states[this.RS_ALPHATESTENABLE];
 };
@@ -538,7 +538,7 @@ Tw2Device.prototype.IsAlphaTestEnabled = function ()
  * @param state
  * @param value
  */
-Tw2Device.prototype.SetRenderState = function (state, value)
+Tw2Device.prototype.SetRenderState = function(state, value)
 {
     this._currentRenderMode = this.RM_ANY;
     var gl = this.gl;
@@ -629,7 +629,7 @@ Tw2Device.prototype.SetRenderState = function (state, value)
 /**
  * ApplyShadowState
  */
-Tw2Device.prototype.ApplyShadowState = function ()
+Tw2Device.prototype.ApplyShadowState = function()
 {
     if (this.alphaBlendState.dirty)
     {
@@ -749,7 +749,7 @@ Tw2Device.prototype.ApplyShadowState = function ()
  * Sets a render mode
  * @param {number} renderMode
  */
-Tw2Device.prototype.SetStandardStates = function (renderMode)
+Tw2Device.prototype.SetStandardStates = function(renderMode)
 {
     if (this._currentRenderMode === renderMode) return;
 
@@ -841,7 +841,7 @@ Tw2Device.prototype.SetStandardStates = function (renderMode)
  * Gets a fallback texture
  * @returns {*}
  */
-Tw2Device.prototype.GetFallbackTexture = (function ()
+Tw2Device.prototype.GetFallbackTexture = (function()
 {
     var whiteTexture = null;
     return function GetFallbackTexture()
@@ -858,7 +858,7 @@ Tw2Device.prototype.GetFallbackTexture = (function ()
  * Gets a fallback cube map
  * @returns {*}
  */
-Tw2Device.prototype.GetFallbackCubeMap = (function ()
+Tw2Device.prototype.GetFallbackCubeMap = (function()
 {
     var whiteCube = null;
     return function GetFallbackCubeMap()
@@ -888,7 +888,7 @@ Tw2Device.prototype.GetFallbackCubeMap = (function ()
  * @param frameBuffer
  * @returns {boolean}
  */
-Tw2Device.prototype.IsFrameBufferComplete = function (frameBuffer)
+Tw2Device.prototype.IsFrameBufferComplete = function(frameBuffer)
 {
     return this.gl.checkFramebufferStatus(frameBuffer) === this.gl.FRAMEBUFFER_COMPLETE;
 };
@@ -898,7 +898,7 @@ Tw2Device.prototype.IsFrameBufferComplete = function (frameBuffer)
  * @param {string} extension - The gl extension name
  * @returns{*}
  */
-Tw2Device.prototype.GetExtension = function (extension)
+Tw2Device.prototype.GetExtension = function(extension)
 {
     for (var prefix in Tw2Device.WebglVendorPrefixes)
     {
@@ -917,7 +917,7 @@ Tw2Device.prototype.GetExtension = function (extension)
  * @param {vec4|Array} [rgba] - The colour to create, if obmitted defaults to completely transparent
  * @returns {WebGLTexture}
  */
-Tw2Device.prototype.CreateSolidTexture = function (rgba)
+Tw2Device.prototype.CreateSolidTexture = function(rgba)
 {
     rgba = rgba || [0, 0, 0, 0];
     var texture = this.gl.createTexture();
@@ -945,14 +945,14 @@ var timeOuts;
  * @param {HTMLElement} element
  * @returns {number} id
  */
-Tw2Device.prototype.RequestAnimationFrame = (function ()
+Tw2Device.prototype.RequestAnimationFrame = (function()
 {
     var requestFrame = window.requestAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         window.msRequestAnimationFrame ||
-        function (/* function FrameRequestCallback */ callback, /* DOMElement Element */ element)
+        function(/* function FrameRequestCallback */ callback, /* DOMElement Element */ element)
         {
             if (!timeOuts) timeOuts = [];
             timeOuts.push(window.setTimeout(callback, 1000 / 60));
@@ -969,14 +969,14 @@ Tw2Device.prototype.RequestAnimationFrame = (function ()
  * Cancels an animation frame by it's id
  * @param {number} id
  */
-Tw2Device.prototype.CancelAnimationFrame = (function ()
+Tw2Device.prototype.CancelAnimationFrame = (function()
 {
     var cancelFrame = window.cancelAnimationFrame ||
         window.webkitRequestAnimationFrame ||
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         window.msRequestAnimationFrame ||
-        function (id)
+        function(id)
         {
             if (!timeOuts) timeOuts = [];
             if (timeOuts[id] !== undefined)
@@ -1001,7 +1001,7 @@ Tw2Device.prototype.CancelAnimationFrame = (function ()
  * @param {*} [contextNames]
  * @returns {*}
  */
-Tw2Device.CreateContext = function (canvas, params, contextNames)
+Tw2Device.CreateContext = function(canvas, params, contextNames)
 {
     contextNames = Array.isArray(contextNames) ? contextNames : [contextNames];
     for (var i = 0; i < contextNames.length; i++)

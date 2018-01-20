@@ -135,7 +135,7 @@ EveSpaceObject.scratch = {
 /**
  * Initializes the EveSpaceObject
  */
-EveSpaceObject.prototype.Initialize = function ()
+EveSpaceObject.prototype.Initialize = function()
 {
     if (this.mesh)
     {
@@ -153,7 +153,7 @@ EveSpaceObject.prototype.Initialize = function ()
  * @param {Boolean} excludeChildren - True to exclude children's res objects
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpaceObject.prototype.GetResources = function (out, excludeChildren)
+EveSpaceObject.prototype.GetResources = function(out, excludeChildren)
 {
     if (out === undefined)
     {
@@ -204,7 +204,7 @@ EveSpaceObject.prototype.GetResources = function (out, excludeChildren)
 /**
  * Resets the lod
  */
-EveSpaceObject.prototype.ResetLod = function ()
+EveSpaceObject.prototype.ResetLod = function()
 {
     this.lod = 3;
 };
@@ -213,7 +213,7 @@ EveSpaceObject.prototype.ResetLod = function ()
  * Updates the lod
  * @param {Tw2Frustum} frustum
  */
-EveSpaceObject.prototype.UpdateLod = function (frustum)
+EveSpaceObject.prototype.UpdateLod = function(frustum)
 {
     var center = vec3.transformMat4(EveSpaceObject.scratch.vec3_0, this.boundingSphereCenter, this.transform);
 
@@ -234,7 +234,7 @@ EveSpaceObject.prototype.UpdateLod = function (frustum)
     }
 };
 
-EveSpaceObject.prototype.AddCustomMask = function (position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
+EveSpaceObject.prototype.AddCustomMask = function(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
 {
     var transform = mat4.fromRotationTranslationScale(mat4.create(), rotation, position, scaling);
     mat4.invert(transform, transform);
@@ -252,7 +252,7 @@ EveSpaceObject.prototype.AddCustomMask = function (position, scaling, rotation, 
 /**
  * A Per frame function that updates view dependent data
  */
-EveSpaceObject.prototype.UpdateViewDependentData = function ()
+EveSpaceObject.prototype.UpdateViewDependentData = function()
 {
     for (var i = 0; i < this.children.length; ++i)
     {
@@ -305,7 +305,7 @@ EveSpaceObject.prototype.UpdateViewDependentData = function ()
  * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
+EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.display)
     {
@@ -408,7 +408,7 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
  * Per frame update
  * @param {Number} dt - delta time
  */
-EveSpaceObject.prototype.Update = function (dt)
+EveSpaceObject.prototype.Update = function(dt)
 {
     if (this.lod > 0)
     {
@@ -442,7 +442,7 @@ EveSpaceObject.prototype.Update = function (dt)
  * @param {String} prefix
  * @returns {number}
  */
-EveSpaceObject.prototype.GetLocatorCount = function (prefix)
+EveSpaceObject.prototype.GetLocatorCount = function(prefix)
 {
     var count = 0;
     for (var i = 0; i < this.locators.length; ++i)
@@ -460,7 +460,7 @@ EveSpaceObject.prototype.GetLocatorCount = function (prefix)
  * @param {String} name
  * @returns {null|mat4}
  */
-EveSpaceObject.prototype.FindLocatorJointByName = function (name)
+EveSpaceObject.prototype.FindLocatorJointByName = function(name)
 {
     var model = this.animation.FindModelForMesh(0);
     if (model !== null)
@@ -481,7 +481,7 @@ EveSpaceObject.prototype.FindLocatorJointByName = function (name)
  * @param {String} name
  * @returns {null|mat4}
  */
-EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
+EveSpaceObject.prototype.FindLocatorTransformByName = function(name)
 {
     for (var i = 0; i < this.locators.length; ++i)
     {
@@ -497,7 +497,7 @@ EveSpaceObject.prototype.FindLocatorTransformByName = function (name)
  * RenderDebugInfo
  * @param debugHelper
  */
-EveSpaceObject.prototype.RenderDebugInfo = function (debugHelper)
+EveSpaceObject.prototype.RenderDebugInfo = function(debugHelper)
 {
     this.animation.RenderDebugInfo(debugHelper);
 };

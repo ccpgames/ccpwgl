@@ -24,7 +24,7 @@ export function Tw2CurveSet()
  * Initializes the Tw2CurveSet
  * @prototype
  */
-Tw2CurveSet.prototype.Initialize = function ()
+Tw2CurveSet.prototype.Initialize = function()
 {
     if (this.playOnLoad)
     {
@@ -36,7 +36,7 @@ Tw2CurveSet.prototype.Initialize = function ()
  * Plays the Tw2CurveSet
  * @prototype
  */
-Tw2CurveSet.prototype.Play = function ()
+Tw2CurveSet.prototype.Play = function()
 {
     this.isPlaying = true;
     this.scaledTime = 0;
@@ -47,7 +47,7 @@ Tw2CurveSet.prototype.Play = function ()
  * @param {number} time
  * @prototype
  */
-Tw2CurveSet.prototype.PlayFrom = function (time)
+Tw2CurveSet.prototype.PlayFrom = function(time)
 {
     this.isPlaying = true;
     this.scaledTime = time;
@@ -57,7 +57,7 @@ Tw2CurveSet.prototype.PlayFrom = function (time)
  * Stops the Tw2CurveSet from playing
  * @prototype
  */
-Tw2CurveSet.prototype.Stop = function ()
+Tw2CurveSet.prototype.Stop = function()
 {
     this.isPlaying = false;
 };
@@ -67,7 +67,7 @@ Tw2CurveSet.prototype.Stop = function ()
  * @param {number} dt - Delta Time
  * @prototype
  */
-Tw2CurveSet.prototype.Update = function (dt)
+Tw2CurveSet.prototype.Update = function(dt)
 {
     if (this.isPlaying)
     {
@@ -91,7 +91,7 @@ Tw2CurveSet.prototype.Update = function (dt)
  * @returns {number}
  * @prototype
  */
-Tw2CurveSet.prototype.GetMaxCurveDuration = function ()
+Tw2CurveSet.prototype.GetMaxCurveDuration = function()
 {
     var length = 0;
     for (var i = 0; i < this.curves.length; ++i)

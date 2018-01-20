@@ -79,7 +79,7 @@ export function EveSpotlightSet()
 /**
  * Initializes the spotlight set
  */
-EveSpotlightSet.prototype.Initialize = function ()
+EveSpotlightSet.prototype.Initialize = function()
 {
     this.RebuildBuffers();
 };
@@ -90,7 +90,7 @@ EveSpotlightSet.prototype.Initialize = function ()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveSpotlightSet.prototype.GetResources = function (out)
+EveSpotlightSet.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -112,7 +112,7 @@ EveSpotlightSet.prototype.GetResources = function (out)
 /**
  * Rebuilds the spotlight set's buffers
  */
-EveSpotlightSet.prototype.RebuildBuffers = function ()
+EveSpotlightSet.prototype.RebuildBuffers = function()
 {
     var visibleItems = [];
     for (var i = 0; i < this.spotlightItems.length; i++)
@@ -281,7 +281,7 @@ export function EveSpotlightSetBatch()
  *
  * @param {Tw2Effect} overrideEffect
  */
-EveSpotlightSetBatch.prototype.Commit = function (overrideEffect)
+EveSpotlightSetBatch.prototype.Commit = function(overrideEffect)
 {
     this.spotlightSet.RenderCones(overrideEffect);
     this.spotlightSet.RenderGlow(overrideEffect);
@@ -295,7 +295,7 @@ EveSpotlightSetBatch.prototype.Commit = function (overrideEffect)
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EveSpotlightSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.display && mode === device.RM_ADDITIVE)
     {
@@ -312,7 +312,7 @@ EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectDat
  *
  * @param {Tw2Effect} [overrideEffect] - An optional Tw2Effect which can be passed to override the current cone effect
  */
-EveSpotlightSet.prototype.RenderCones = function (overrideEffect)
+EveSpotlightSet.prototype.RenderCones = function(overrideEffect)
 {
     var effect = (!overrideEffect) ? this.coneEffect : overrideEffect;
     this._Render(effect, this._coneVertexBuffer);
@@ -323,7 +323,7 @@ EveSpotlightSet.prototype.RenderCones = function (overrideEffect)
  *
  * @param {Tw2Effect} overrideEffect - An optional Tw2Effect which can be passed to override the current glow effect
  */
-EveSpotlightSet.prototype.RenderGlow = function (overrideEffect)
+EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
 {
     var effect = (!overrideEffect) ? this.glowEffect : overrideEffect;
     this._Render(effect, this._spriteVertexBuffer);
@@ -336,7 +336,7 @@ EveSpotlightSet.prototype.RenderGlow = function (overrideEffect)
  * @param {WebGLBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
  * @private
  */
-EveSpotlightSet.prototype._Render = function (effect, buffer)
+EveSpotlightSet.prototype._Render = function(effect, buffer)
 {
     if (!effect || !buffer || !this._indexBuffer)
     {

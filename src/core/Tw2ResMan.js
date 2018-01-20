@@ -16,7 +16,7 @@ function Tw2MotherLode()
      * @param {string} path
      * @returns {Tw2LoadingObject}
      */
-    this.Find = function (path)
+    this.Find = function(path)
     {
         if (path in this._loadedObjects)
         {
@@ -30,7 +30,7 @@ function Tw2MotherLode()
      * @param {string} path
      * @param {Tw2LoadingObject} obj
      */
-    this.Add = function (path, obj)
+    this.Add = function(path, obj)
     {
         this._loadedObjects[path] = obj;
     };
@@ -39,7 +39,7 @@ function Tw2MotherLode()
      * Removes a loaded object by it's file path
      * @param {string} path
      */
-    this.Remove = function (path)
+    this.Remove = function(path)
     {
         delete this._loadedObjects[path];
     };
@@ -47,7 +47,7 @@ function Tw2MotherLode()
     /**
      * Clears the loaded object object
      */
-    this.Clear = function ()
+    this.Clear = function()
     {
         this._loadedObjects = {};
     };
@@ -55,7 +55,7 @@ function Tw2MotherLode()
     /**
      * Unloads all loaded objects and then clears the loadedObject object
      */
-    this.UnloadAndClear = function ()
+    this.UnloadAndClear = function()
     {
         for (var path in this._loadedObjects)
         {
@@ -78,7 +78,7 @@ function Tw2MotherLode()
      * @param {Number} frameLimit - how many frames the object can stay alive for before being purged
      * @param {Number} frameDistance - how long the resource has been alive for
      */
-    this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
+    this.PurgeInactive = function(curFrame, frameLimit, frameDistance)
     {
         for (var path in this._loadedObjects)
         {
@@ -149,7 +149,7 @@ export class Tw2LoadingObject extends Tw2Resource
  * @param {Boolean} initialize
  * @returns {Boolean}
  */
-Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
+Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
 {
     object._loadCallback = callback;
     object._initialize = initialize;
@@ -162,7 +162,7 @@ Tw2LoadingObject.prototype.AddObject = function (object, callback, initialize)
  * @param text
  * @param xml
  */
-Tw2LoadingObject.prototype.Prepare = function (text, xml)
+Tw2LoadingObject.prototype.Prepare = function(text, xml)
 {
     if (text === null)
     {
@@ -269,7 +269,7 @@ function Tw2ResMan()
      * @returns {Boolean}
      *
      */
-    this.IsLoading = function ()
+    this.IsLoading = function()
     {
         return this._noLoadFrames < 2;
     };
@@ -279,7 +279,7 @@ function Tw2ResMan()
      * @returns {XMLHttpRequest|ActiveXObject}
      * @private
      */
-    this._CreateHttpRequest = function ()
+    this._CreateHttpRequest = function()
     {
         var httpRequest = null;
 
@@ -369,7 +369,7 @@ function Tw2ResMan()
      * @param {string} path
      * @returns {string}
      */
-    this.LogPathString = function (path)
+    this.LogPathString = function(path)
     {
         if (path.substr(0, 5) === 'str:/' && path.length > 64)
         {
@@ -383,7 +383,7 @@ function Tw2ResMan()
      * @param {Number} dt - deltaTime
      * @returns {Boolean}
      */
-    this.PrepareLoop = function (dt)
+    this.PrepareLoop = function(dt)
     {
         if (this._prepareQueue.length === 0 && this._pendingLoads === 0)
         {
@@ -466,7 +466,7 @@ function Tw2ResMan()
      */
     function _DoLoadResource(obj)
     {
-        return function ()
+        return function()
         {
             var readyState = 0;
 
@@ -535,7 +535,7 @@ function Tw2ResMan()
      * @param {string} resPath
      * @returns {string}
      */
-    this.BuildUrl = function (resPath)
+    this.BuildUrl = function(resPath)
     {
         var prefixIndex = resPath.indexOf(':/');
         if (prefixIndex === -1)
@@ -576,7 +576,7 @@ function Tw2ResMan()
      * @returns {*}
      * @private
      */
-    this._LoadResource = function (obj)
+    this._LoadResource = function(obj)
     {
         obj._isPurged = false;
         var path = obj.path;
@@ -630,7 +630,7 @@ function Tw2ResMan()
      * @param {Tw2LoadingObject} resource
      * @returns {Tw2LoadingObject} resource
      */
-    this.ReloadResource = function (resource)
+    this.ReloadResource = function(resource)
     {
         var path = resource.path;
 
@@ -657,7 +657,7 @@ function Tw2ResMan()
      * @param {String} path
      * @returns resource
      */
-    this.GetResource = function (path)
+    this.GetResource = function(path)
     {
         var obj;
 
@@ -713,7 +713,7 @@ function Tw2ResMan()
      * @param {string} path
      * @param {Function} callback
      */
-    this.GetObject = function (path, callback)
+    this.GetObject = function(path, callback)
     {
         this._GetObject(path, callback, true);
     };
@@ -723,7 +723,7 @@ function Tw2ResMan()
      * @param {string} path
      * @param {Function} callback
      */
-    this.GetObjectNoInitialize = function (path, callback)
+    this.GetObjectNoInitialize = function(path, callback)
     {
         this._GetObject(path, callback, false);
     };
@@ -735,7 +735,7 @@ function Tw2ResMan()
      * @param {Boolean} initialize
      * @private
      */
-    this._GetObject = function (path, callback, initialize)
+    this._GetObject = function(path, callback, initialize)
     {
         path = _NormalizePath(path);
 
@@ -793,7 +793,7 @@ function Tw2ResMan()
     /**
      * Clears the motherLode {@link Tw2MotherLode}
      */
-    this.Clear = function ()
+    this.Clear = function()
     {
         this.motherLode.Clear();
     };
@@ -801,7 +801,7 @@ function Tw2ResMan()
     /**
      * Unloads and Clears the motherLode {@link Tw2MotherLode}
      */
-    this.UnloadAndClear = function ()
+    this.UnloadAndClear = function()
     {
         this.motherLode.UnloadAndClear();
     };
@@ -813,7 +813,7 @@ function Tw2ResMan()
      * @param {Array|{}} obj
      * @returns {boolean}
      */
-    const _toKeyValue = function (target, funcName, obj)
+    const _toKeyValue = function(target, funcName, obj)
     {
         if (obj && funcName && funcName in target)
         {
@@ -839,7 +839,7 @@ function Tw2ResMan()
      * @param {function} Constructor
      * @returns {?Function}}
      */
-    this.RegisterConstructor = function (name, Constructor)
+    this.RegisterConstructor = function(name, Constructor)
     {
         if (name && Constructor && typeof Constructor === 'function')
         {
@@ -853,7 +853,7 @@ function Tw2ResMan()
      * Registers library constructors from an object or array of objects
      * @param obj
      */
-    this.RegisterConstructors = function (obj)
+    this.RegisterConstructors = function(obj)
     {
         _toKeyValue(this, 'RegisterConstructor', obj);
     };
@@ -861,19 +861,29 @@ function Tw2ResMan()
     /**
      * Gets a library constructor by name
      * @param {string} name
+     * @param {boolean} [skipDebug]
      * @returns {?Function}
      */
-    this.GetConstructor = function (name)
+    this.GetConstructor = function(name, skipDebug)
     {
         if (name && name in this._constructors)
         {
             return this._constructors[name];
         }
-        else if (name)
+        else if (name && !skipDebug)
         {
             if (this._missingConstructors.indexOf(name) === -1)
             {
                 this._missingConstructors.push(name);
+            }
+
+            if (name.includes('Tw2'))
+            {
+                return this.GetConstructor(name.replace('Tw2', 'Tr2'), true);
+            }
+            else if (name.includes('Tr2'))
+            {
+                return this.GetConstructor(name.replace('Tr2', 'Tw2'), true);
             }
         }
         return null;
@@ -885,7 +895,7 @@ function Tw2ResMan()
      * @param {Function} Constructor
      * @returns {boolean}
      */
-    this.RegisterExtension = function (extension, Constructor)
+    this.RegisterExtension = function(extension, Constructor)
     {
         if (!extension || !Constructor || typeof Constructor !== 'function')
         {
@@ -900,7 +910,7 @@ function Tw2ResMan()
      * Registers extensions from an object or array of objects
      * @param obj
      */
-    this.RegisterExtensions = function (obj)
+    this.RegisterExtensions = function(obj)
     {
         _toKeyValue(this, 'RegisterExtension', obj);
     };
@@ -910,7 +920,7 @@ function Tw2ResMan()
      * @param {string} extension
      * @returns {?Function}}
      */
-    this.GetExtension = function (extension)
+    this.GetExtension = function(extension)
     {
         return extension && extension in this._extensions ? this._extensions[extension] : null;
     };
@@ -921,7 +931,7 @@ function Tw2ResMan()
      * @param {Function} path
      * @returns {boolean}
      */
-    this.RegisterResourcePath = function (prefix, path)
+    this.RegisterResourcePath = function(prefix, path)
     {
         if (!prefix || !path)
         {
@@ -936,7 +946,7 @@ function Tw2ResMan()
      * Registers resource paths from an object or array of objects
      * @param obj
      */
-    this.RegisterResourcePaths = function (obj)
+    this.RegisterResourcePaths = function(obj)
     {
         _toKeyValue(this, 'RegisterResourcePath', obj);
     };
@@ -946,7 +956,7 @@ function Tw2ResMan()
      * @param {string} prefix
      * @returns {?string}}
      */
-    this.GetResourcePath = function (prefix)
+    this.GetResourcePath = function(prefix)
     {
         return prefix && prefix in this._resourcePaths ? this._resourcePaths[prefix] : null;
     };
@@ -962,7 +972,7 @@ function Tw2ResMan()
      * @param {{}} opt.extensions
      * @param {{}} opt.constructors
      */
-    this.Register = function (opt)
+    this.Register = function(opt)
     {
         if (opt)
         {

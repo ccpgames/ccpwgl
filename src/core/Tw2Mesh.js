@@ -114,7 +114,7 @@ export class Tw2Mesh
  * Initializes the Tw2Mesh
  * @prototype
  */
-Tw2Mesh.prototype.Initialize = function ()
+Tw2Mesh.prototype.Initialize = function()
 {
     if (this.geometryResPath !== '')
     {
@@ -127,7 +127,7 @@ Tw2Mesh.prototype.Initialize = function ()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-Tw2Mesh.prototype.GetResources = function (out)
+Tw2Mesh.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -161,7 +161,7 @@ Tw2Mesh.prototype.GetResources = function (out)
  * @param {Tw2PerObjectData} perObjectData
  * @private
  */
-Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjectData)
+Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
 {
     for (var i = 0; i < areas.length; ++i)
     {
@@ -190,7 +190,7 @@ Tw2Mesh.prototype._GetAreaBatches = function (areas, mode, accumulator, perObjec
  * @returns {boolean}
  * @prototype
  */
-Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData)
+Tw2Mesh.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.geometryResource === null)
     {

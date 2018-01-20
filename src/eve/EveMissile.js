@@ -37,7 +37,7 @@ function EveMissile()
  * Gets missile res objects
  * @param {Array} out - Receiving array
  */
-EveMissile.prototype.GetResources = function (out)
+EveMissile.prototype.GetResources = function(out)
 {
     for (var i = 0; i < this.warheads.length; ++i)
     {
@@ -48,7 +48,7 @@ EveMissile.prototype.GetResources = function (out)
 /**
  * Per frame view dependent data update
  */
-EveMissile.prototype.UpdateViewDependentData = function ()
+EveMissile.prototype.UpdateViewDependentData = function()
 {
     for (var i = 0; i < this.warheads.length; ++i)
     {
@@ -61,7 +61,7 @@ EveMissile.prototype.UpdateViewDependentData = function ()
  * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveMissile.prototype.GetBatches = function (mode, accumulator)
+EveMissile.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.display)
     {
@@ -76,7 +76,7 @@ EveMissile.prototype.GetBatches = function (mode, accumulator)
  * Per frame update
  * @param {Number} dt - Time since previous frame
  */
-EveMissile.prototype.Update = function (dt)
+EveMissile.prototype.Update = function(dt)
 {
     var tmp = EveMissile.scratch.vec3_0;
     vec3.subtract(tmp, this.target, this.position);
@@ -124,7 +124,7 @@ EveMissile.prototype.Update = function (dt)
  * @param {Array} turretTransforms - Turret muzzle local to world transforms
  * @param {vec3} target - Target position
  */
-EveMissile.prototype.Launch = function (position, turretTransforms, target)
+EveMissile.prototype.Launch = function(position, turretTransforms, target)
 {
     vec3.copy(this.position, position);
     vec3.copy(this.target, target);

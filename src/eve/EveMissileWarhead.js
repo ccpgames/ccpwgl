@@ -68,7 +68,7 @@ EveMissileWarhead.STATE_DEAD = 2;
 /**
  * Initializes the warhead
  */
-EveMissileWarhead.prototype.Initialize = function ()
+EveMissileWarhead.prototype.Initialize = function()
 {
     if (this.spriteSet)
     {
@@ -80,7 +80,7 @@ EveMissileWarhead.prototype.Initialize = function ()
  * Gets warhead res objects
  * @param {Array} out - Receiving array
  */
-EveMissileWarhead.prototype.GetResources = function (out)
+EveMissileWarhead.prototype.GetResources = function(out)
 {
     if (this.mesh)
     {
@@ -95,7 +95,7 @@ EveMissileWarhead.prototype.GetResources = function (out)
 /**
  * Per frame view dependent data update
  */
-EveMissileWarhead.prototype.UpdateViewDependentData = function ()
+EveMissileWarhead.prototype.UpdateViewDependentData = function()
 {
     if (!this.display || this.state === EveMissileWarhead.STATE_DEAD)
     {
@@ -110,7 +110,7 @@ EveMissileWarhead.prototype.UpdateViewDependentData = function ()
  * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveMissileWarhead.prototype.GetBatches = function (mode, accumulator)
+EveMissileWarhead.prototype.GetBatches = function(mode, accumulator)
 {
     if (this.display && this.mesh && this.state !== EveMissileWarhead.STATE_DEAD)
     {
@@ -141,7 +141,7 @@ EveMissileWarhead.scratch = {
  * @param {vec3} missilePosition - Missile position
  * @param {vec3} missileTarget - Missile target position
  */
-EveMissileWarhead.prototype.Update = function (dt, missilePosition, missileTarget)
+EveMissileWarhead.prototype.Update = function(dt, missilePosition, missileTarget)
 {
     if (this.state === EveMissileWarhead.STATE_IN_FLIGHT)
     {
@@ -209,7 +209,7 @@ EveMissileWarhead.prototype.Update = function (dt, missilePosition, missileTarge
  * Creates a copy of the warhead
  * @returns {EveMissileWarhead} copy of this object
  */
-EveMissileWarhead.prototype.Copy = function ()
+EveMissileWarhead.prototype.Copy = function()
 {
     var warhead = new EveMissileWarhead();
     warhead.mesh = this.mesh;
@@ -221,7 +221,7 @@ EveMissileWarhead.prototype.Copy = function ()
  * Sets up the warhead for rendering
  * @param {mat4} transform - Initial local to world transform
  */
-EveMissileWarhead.prototype.Launch = function (transform)
+EveMissileWarhead.prototype.Launch = function(transform)
 {
     mat4.copy(this.transform, transform);
     this.velocity[0] = transform[8] * this.startEjectVelocity;

@@ -63,7 +63,7 @@ Tw2MayaAnimationEngine.INFINITY = 0;
  * @returns {*}
  * @prototype
  */
-Tw2MayaAnimationEngine.prototype.Evaluate = function (curveIndex, time)
+Tw2MayaAnimationEngine.prototype.Evaluate = function(curveIndex, time)
 {
     if (this.curves.length <= curveIndex)
     {
@@ -119,7 +119,7 @@ Tw2MayaAnimationEngine.prototype.Evaluate = function (curveIndex, time)
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._EvaluateImpl = function (animCurve, segments, firstSegment, time)
+Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, firstSegment, time)
 {
     var withinInterval = false;
     var nextSegment = null;
@@ -255,7 +255,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateImpl = function (animCurve, segments, 
  * @param {time} time
  * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
  */
-Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function (curve, segments, startSegment, time, bool)
+Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function(curve, segments, startSegment, time, bool)
 {
     throw new Error('_EvaluateInfinities not implemented');
 };
@@ -267,7 +267,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function (curve, segments
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._EvaluateHermite = function (segment, time)
+Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
 {
     var t = time - segment[Tw2MayaAnimationEngine.HermiteSegment.TIME];
     var coeff = segment[Tw2MayaAnimationEngine.HermiteSegment.COEFF];
@@ -282,7 +282,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateHermite = function (segment, time)
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._EvaluateBezier = function (segment, time, nextSegmentTime)
+Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextSegmentTime)
 {
     var t, s;
 
@@ -322,7 +322,7 @@ Tw2MayaAnimationEngine.prototype._EvaluateBezier = function (segment, time, next
  * @returns {*}
  * @private
  */
-Tw2MayaAnimationEngine.prototype._Find = function (animCurve, time, segments, firstSegment)
+Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, firstSegment)
 {
     var len, mid, low, high;
 
@@ -373,7 +373,7 @@ Tw2MayaAnimationEngine.prototype._Find = function (animCurve, time, segments, fi
  * @returns {number}
  * @prototype
  */
-Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function ()
+Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function()
 {
     return this.curves.length;
 };
@@ -384,7 +384,7 @@ Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function ()
  * @returns {number}
  * @prototype
  */
-Tw2MayaAnimationEngine.prototype.GetLength = function (index)
+Tw2MayaAnimationEngine.prototype.GetLength = function(index)
 {
     if (index < 0 || index >= this.curves.length)
     {

@@ -20,7 +20,7 @@ export function EvePlaneSetBatch()
  * @param {Tw2Effect} [overrideEffect]
  * @constructor
  */
-EvePlaneSetBatch.prototype.Commit = function (overrideEffect)
+EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
 {
     this.planeSet.Render(overrideEffect);
 };
@@ -98,7 +98,7 @@ export function EvePlaneSet()
 /**
  * Initializes the plane set
  */
-EvePlaneSet.prototype.Initialize = function ()
+EvePlaneSet.prototype.Initialize = function()
 {
     this.RebuildBuffers();
 };
@@ -108,7 +108,7 @@ EvePlaneSet.prototype.Initialize = function ()
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array} {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EvePlaneSet.prototype.GetResources = function (out)
+EvePlaneSet.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {
@@ -126,7 +126,7 @@ EvePlaneSet.prototype.GetResources = function (out)
 /**
  * Rebuilds the plane set's buffers
  */
-EvePlaneSet.prototype.RebuildBuffers = function ()
+EvePlaneSet.prototype.RebuildBuffers = function()
 {
     var vertexSize = 35;
     var visibleItems = [];
@@ -226,7 +226,7 @@ EvePlaneSet.prototype.RebuildBuffers = function ()
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
-EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
+EvePlaneSet.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
     if (this.display && mode === device.RM_ADDITIVE)
     {
@@ -243,7 +243,7 @@ EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData)
  * @param {Tw2Effect} [overrideEffect]
  * @constructor
  */
-EvePlaneSet.prototype.Render = function (overrideEffect)
+EvePlaneSet.prototype.Render = function(overrideEffect)
 {
     var effect = (!overrideEffect) ? this.effect : overrideEffect;
     if (!effect || !this._vertexBuffer)
@@ -276,7 +276,7 @@ EvePlaneSet.prototype.Render = function (overrideEffect)
  * Per frame update
  * @param {number} dt - Delta Time
  */
-EvePlaneSet.prototype.Update = function (dt)
+EvePlaneSet.prototype.Update = function(dt)
 {
     this._time += dt;
 };
@@ -284,7 +284,7 @@ EvePlaneSet.prototype.Update = function (dt)
 /**
  * Clears the plane set's plane items
  */
-EvePlaneSet.prototype.Clear = function ()
+EvePlaneSet.prototype.Clear = function()
 {
     this.planes = [];
 };

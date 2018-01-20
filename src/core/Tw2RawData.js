@@ -21,7 +21,7 @@ export function Tw2RawData()
  * @param {number} size
  * @prototype
  */
-Tw2RawData.prototype.Declare = function (name, size)
+Tw2RawData.prototype.Declare = function(name, size)
 {
     this.elements[name] = {
         'offset': this.nextOffset,
@@ -35,7 +35,7 @@ Tw2RawData.prototype.Declare = function (name, size)
  * Create
  * @prototype
  */
-Tw2RawData.prototype.Create = function ()
+Tw2RawData.prototype.Create = function()
 {
     this.data = new Float32Array(this.nextOffset);
     for (var el in this.elements)
@@ -53,7 +53,7 @@ Tw2RawData.prototype.Create = function ()
  * @param {Float32Array} value
  * @prototype
  */
-Tw2RawData.prototype.Set = function (name, value)
+Tw2RawData.prototype.Set = function(name, value)
 {
     var el = this.elements[name];
     this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
@@ -65,7 +65,7 @@ Tw2RawData.prototype.Set = function (name, value)
  * @return {Float32Array}
  * @prototype
  */
-Tw2RawData.prototype.Get = function (name)
+Tw2RawData.prototype.Get = function(name)
 {
     return this.elements[name].array;
 };
@@ -76,7 +76,7 @@ Tw2RawData.prototype.Get = function (name)
  * @return {Float32Array}
  * @prototype
  */
-Tw2RawData.prototype.GetData = function (name)
+Tw2RawData.prototype.GetData = function(name)
 {
     return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
 };

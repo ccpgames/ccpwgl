@@ -54,7 +54,7 @@ export function EveChildParticleSystem()
  * @param {mat4} parentTransform
  * @param {Number} dt
  */
-EveChildParticleSystem.prototype.Update = function (parentTransform, dt)
+EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
 {
     if (this.useSRT)
     {
@@ -81,7 +81,7 @@ EveChildParticleSystem.prototype.Update = function (parentTransform, dt)
  * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
-EveChildParticleSystem.prototype.GetBatches = function (mode, accumulator)
+EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
 {
     if (!this.display || !this.mesh)
     {
@@ -98,7 +98,7 @@ EveChildParticleSystem.prototype.GetBatches = function (mode, accumulator)
  * @param {Array} [out=[]] - Optional receiving array
  * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
  */
-EveChildParticleSystem.prototype.GetResources = function (out)
+EveChildParticleSystem.prototype.GetResources = function(out)
 {
     if (out === undefined)
     {

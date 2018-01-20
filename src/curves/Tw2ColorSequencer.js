@@ -23,7 +23,7 @@ export function Tw2ColorSequencer()
  * @returns {number}
  * @prototype
  */
-Tw2ColorSequencer.prototype.GetLength = function ()
+Tw2ColorSequencer.prototype.GetLength = function()
 {
     var length = 0;
     for (var i = 0; i < this.functions.length; ++i)
@@ -41,7 +41,7 @@ Tw2ColorSequencer.prototype.GetLength = function ()
  * @param {number} time
  * @prototype
  */
-Tw2ColorSequencer.prototype.UpdateValue = function (time)
+Tw2ColorSequencer.prototype.UpdateValue = function(time)
 {
     this.GetValueAt(time, this.value);
 };
@@ -60,7 +60,7 @@ Tw2ColorSequencer.scratch = {
  * @returns {vec4}
  * @prototype
  */
-Tw2ColorSequencer.prototype.GetValueAt = function (time, value)
+Tw2ColorSequencer.prototype.GetValueAt = function(time, value)
 {
     var functions, i;
     var tempValue = Tw2ColorSequencer.scratch.vec4_0;

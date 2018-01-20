@@ -117,7 +117,7 @@ export function Tw2PerlinCurve()
  * @param {number} time
  * @prototype
  */
-Tw2PerlinCurve.prototype.UpdateValue = function (time)
+Tw2PerlinCurve.prototype.UpdateValue = function(time)
 {
     this.value = this.GetValueAt(time);
 };
@@ -128,7 +128,7 @@ Tw2PerlinCurve.prototype.UpdateValue = function (time)
  * @returns {number}
  * @prototype
  */
-Tw2PerlinCurve.prototype.GetValueAt = function (time)
+Tw2PerlinCurve.prototype.GetValueAt = function(time)
 {
     time -= this._startOffset;
     return ((PerlinNoise1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2) * this.scale + this.offset;
