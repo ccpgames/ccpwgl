@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {resMan} from '../core';
+import {Tw2AnimationController} from '../core';
+
 /**
  * Tw2WbgTrack
  * @property {string} name
@@ -8,7 +12,7 @@
  * @property {boolean} cycle
  * @constructor
  */
-function Tw2WbgTrack()
+export function Tw2WbgTrack()
 {
     this.name = '';
     this.geometryResPath = '';
@@ -95,7 +99,7 @@ function Tw2WbgTrack()
  * @variable {mat4} scaleShear
  * @constructor
  */
-function Tw2WbgTransformTrack()
+export function Tw2WbgTransformTrack()
 {
     this.translation = vec3.create();
     this.rotation = quat.create();

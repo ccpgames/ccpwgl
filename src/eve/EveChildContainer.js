@@ -1,3 +1,5 @@
+import {vec3, quat, mat4} from '../math';
+
 /**
  * Container for other child effects
  * @property {string} name
@@ -15,7 +17,7 @@
  * @property {boolean} isEffectChild
  * @constructor
  */
-function EveChildContainer()
+export function EveChildContainer()
 {
     this.name = '';
     this.display = true;
@@ -63,7 +65,7 @@ EveChildContainer.prototype.Update = function(parentTransform, dt)
 
 /**
  * Gets render batches from children
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
@@ -78,7 +80,6 @@ EveChildContainer.prototype.GetBatches = function(mode, accumulator, perObjectDa
         this.objects[i].GetBatches(mode, accumulator, perObjectData);
     }
 };
-
 
 
 /**

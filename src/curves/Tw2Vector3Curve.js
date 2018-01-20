@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2Vector3Key
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2Vector3Key()
+export function Tw2Vector3Key()
 {
     this.time = 0;
     this.value = vec3.create();
@@ -33,7 +35,7 @@ function Tw2Vector3Key()
  * @property {Array.<Tw2Vector3Key>} keys
  * @constructor
  */
-function Tw2Vector3Curve()
+export function Tw2Vector3Curve()
 {
     this.name = '';
     this.length = 0;

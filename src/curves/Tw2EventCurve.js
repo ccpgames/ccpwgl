@@ -4,7 +4,7 @@
  * @property value
  * @constructor
  */
-function Tw2EventKey()
+export function Tw2EventKey()
 {
     this.time = 0;
     this.value = '';
@@ -22,7 +22,7 @@ function Tw2EventKey()
  * @property {number} _currentKey
  * @constructor
  */
-function Tw2EventCurve()
+export function Tw2EventCurve()
 {
     this.name = '';
     this.value = '';

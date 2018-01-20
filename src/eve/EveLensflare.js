@@ -1,3 +1,10 @@
+import {vec3, vec4, mat4} from '../math';
+import {variableStore} from '../core';
+import {device} from '../core';
+import {Tw2TextureRes} from '../core';
+import {Tw2RenderTarget} from '../core';
+
+
 /**
  * EveLensFlare
  * @property {String} [name='']
@@ -25,7 +32,7 @@
  * @property {mat4} _transform
  * @constructor
  */
-function EveLensflare()
+export function EveLensflare()
 {
     this.name = '';
     this.display = true;
@@ -342,7 +349,7 @@ EveLensflare.prototype.UpdateOccluders = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

@@ -1,3 +1,12 @@
+import {device} from '../core';
+import {resMan} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2RenderTarget} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2FloatParameter} from '../core';
+import {EveTransform} from './EveTransform';
+
+
 /**
  * EvePlanet
  * @property {boolean} display
@@ -10,10 +19,10 @@
  * @property {boolean} heightDirty
  * @property {Array} lockedResources
  * @property {boolean} zOnlyModel
- * @property {Array.<Tw2Res>} watchedResources
+ * @property {Array.<Resource>} watchedResources
  * @constructor
  */
-function EvePlanet()
+export function EvePlanet()
 {
     this.display = true;
     this.highDetail = new EveTransform();
@@ -105,7 +114,7 @@ EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
     {
         if (obj.hasOwnProperty(prop))
         {
-            if (typeof(obj[prop]) === "object")
+            if (typeof(obj[prop]) === 'object')
             {
                 this.GetPlanetResources(obj[prop], visited, result);
             }
@@ -137,7 +146,7 @@ EvePlanet.prototype._MeshLoaded = function()
     }
     else
     {
-        resPath = "res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx";
+        resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
     }
     resPath = resPath.replace('.fx', 'BlitHeight.fx');
     this.watchedResources = [];
@@ -228,7 +237,7 @@ EvePlanet.prototype._MeshLoaded = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EvePlanet.prototype.GetBatches = function(mode, accumulator)
@@ -278,7 +287,7 @@ EvePlanet.prototype.GetBatches = function(mode, accumulator)
 
 /**
  * Gets z buffer only batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EvePlanet.prototype.GetZOnlyBatches = function(mode, accumulator)

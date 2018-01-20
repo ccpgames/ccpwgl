@@ -1,3 +1,5 @@
+import {quat} from '../math';
+
 /**
  * Tw2QuaternionSequencer
  * @property {string} name
@@ -6,7 +8,7 @@
  * @property {Array} functions
  * @constructor
  */
-function Tw2QuaternionSequencer()
+export function Tw2QuaternionSequencer()
 {
     this.name = '';
     this.start = 0;

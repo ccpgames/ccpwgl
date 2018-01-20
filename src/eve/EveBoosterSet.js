@@ -1,3 +1,10 @@
+import {vec3, vec4, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+
 /**
  * EveObjectSet
  * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
@@ -8,7 +15,7 @@
  * Booster render batch
  * @constructor
  */
-function EveBoosterBatch()
+export function EveBoosterBatch()
 {
     this.renderMode = device.RM_ANY;
     this.perObjectData = null;
@@ -45,13 +52,13 @@ EveBoosterBatch.prototype.Commit = function(overrideEffect)
  * @property {mat4} _parentTransform
  * @property {mat4} _wavePhase
  * @property {Array.<{}>} _boosterTransforms
- * @property {WebGlBuffer} _positions
+ * @property {WebGLBuffer} _positions
  * @property {Tw2VertexDeclaration} _decl
  * @property {Tw2PerObjectData} _perObjectData
  * @property {boolean} rebuildPending
  * @constructor
  */
-function EveBoosterSet()
+export function EveBoosterSet()
 {
     this.display = true;
     this.effect = null;
@@ -245,7 +252,7 @@ EveBoosterSet.prototype.Update = function(dt, parentMatrix)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

@@ -4,10 +4,13 @@
  * @property {{}} _events
  * @returns {Tw2EventEmitter}
  */
-var Tw2EventEmitter = function()
+export class Tw2EventEmitter
 {
-    Tw2EventEmitter.Define(this);
-};
+    constructor()
+    {
+        Tw2EventEmitter.Define(this);
+    }
+}
 
 /**
  * Adds a listener to an event
@@ -137,11 +140,11 @@ Tw2EventEmitter.prototype.remove = function()
 Tw2EventEmitter.Define = function(emitter)
 {
     Object.defineProperty(emitter, '_events',
-    {
-        value:
-        {},
-        writable: false
-    });
+        {
+            value:
+                {},
+            writable: false
+        });
 };
 
 /**
@@ -273,10 +276,10 @@ Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
  * @property {string}  consolePrefix
  * @property {boolean} consoleErrors
  * @property {boolean} consoleLogs
- * @property {boolean} consoleDefault
+ * @property {string} consoleDefault
  * @inherits {Tw2EventEmitter}
  */
-var emitter = new Tw2EventEmitter();
+export const emitter = new Tw2EventEmitter();
 emitter.consolePrefix = 'CCPWGL';
 emitter.consoleErrors = true;
 emitter.consoleLogs = true;

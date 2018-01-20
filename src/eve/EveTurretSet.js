@@ -1,3 +1,14 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {resMan} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2AnimationController} from '../core';
+import {Tw2ForwardingRenderBatch} from '../core';
+
+
 /**
  * EveTurretData
  * @property {String} name
@@ -6,13 +17,14 @@
  * @property {quat} rotation
  * @constructor
  */
-function EveTurretData()
+export function EveTurretData()
 {
     this.name = '';
     this.visible = true;
     this.localTransform = mat4.create();
     this.rotation = quat.create();
 }
+
 
 /**
  * EveTurretSet
@@ -25,7 +37,7 @@ function EveTurretData()
  * @property {vec3} targetPosition
  * @property {number} sysBoneHeight
  * @property {string} firingEffectResPath
- * @property {EveTurretFiringFx} firingEffect
+ * @property {EveTurretFiringFX} firingEffect
  * @property {boolean} hasCyclingFiringPos
  * @property {string} geometryResPath
  * @property {Tw2GeometryRes} geometryResource
@@ -39,7 +51,6 @@ function EveTurretData()
  * @property {number} STATE_PACKING
  * @property {number} STATE_UNPACKING
  * @property {number} state
-
  * @property {Tw2PerObjectData} _perObjectDataActive
  * @property {Tw2PerObjectData} _perObjectDataInactive
  * @property {Array.<string>} worldNames
@@ -48,7 +59,7 @@ function EveTurretData()
  * @property {number} _currentCyclingFiresPos
  * @constructor
  */
-function EveTurretSet()
+export function EveTurretSet()
 {
     this.display = true;
     this.name = '';
@@ -114,14 +125,14 @@ function EveTurretSet()
  * @type {string[]}
  */
 EveTurretSet.positionBoneSkeletonNames = [
-    "Pos_Fire01",
-    "Pos_Fire02",
-    "Pos_Fire03",
-    "Pos_Fire04",
-    "Pos_Fire05",
-    "Pos_Fire06",
-    "Pos_Fire07",
-    "Pos_Fire08"
+    'Pos_Fire01',
+    'Pos_Fire02',
+    'Pos_Fire03',
+    'Pos_Fire04',
+    'Pos_Fire05',
+    'Pos_Fire06',
+    'Pos_Fire07',
+    'Pos_Fire08'
 ];
 
 /**
@@ -197,19 +208,19 @@ EveTurretSet.prototype.RebuildCachedData = function()
     switch (this.state)
     {
         case this.STATE_INACTIVE:
-            this.activeAnimation.PlayAnimation("Inactive", true);
-            this.inactiveAnimation.PlayAnimation("Inactive", true);
+            this.activeAnimation.PlayAnimation('Inactive', true);
+            this.inactiveAnimation.PlayAnimation('Inactive', true);
             break;
         case this.STATE_IDLE:
-            this.activeAnimation.PlayAnimation("Active", true);
-            this.inactiveAnimation.PlayAnimation("Active", true);
+            this.activeAnimation.PlayAnimation('Active', true);
+            this.inactiveAnimation.PlayAnimation('Active', true);
             break;
         case this.STATE_FIRING:
-            this.activeAnimation.PlayAnimation("Fire", false, function()
+            this.activeAnimation.PlayAnimation('Fire', false, function()
             {
-                self.activeAnimation.PlayAnimation("Active", true);
+                self.activeAnimation.PlayAnimation('Active', true);
             });
-            this.inactiveAnimation.PlayAnimation("Active", true);
+            this.inactiveAnimation.PlayAnimation('Active', true);
             break;
         case this.STATE_PACKING:
             this.EnterStateIdle();
@@ -386,7 +397,7 @@ EveTurretSet.prototype._UpdatePerObjectData = function(perObjectData, transforms
 
 /**
  * Gets turret set render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @returns {boolean}
@@ -551,15 +562,15 @@ EveTurretSet.prototype.EnterStateDeactive = function()
     {
         this.activeAnimation.StopAllAnimations();
         this.inactiveAnimation.StopAllAnimations();
-        this.activeAnimation.PlayAnimation("Pack", false, function()
+        this.activeAnimation.PlayAnimation('Pack', false, function()
         {
             self.state = self.STATE_INACTIVE;
-            self.activeAnimation.PlayAnimation("Inactive", true);
+            self.activeAnimation.PlayAnimation('Inactive', true);
         });
-        this.inactiveAnimation.PlayAnimation("Pack", false, function()
+        this.inactiveAnimation.PlayAnimation('Pack', false, function()
         {
             self.state = self.STATE_INACTIVE;
-            self.inactiveAnimation.PlayAnimation("Inactive", true);
+            self.inactiveAnimation.PlayAnimation('Inactive', true);
         });
         this.state = this.STATE_PACKING;
     }
@@ -590,20 +601,20 @@ EveTurretSet.prototype.EnterStateIdle = function()
         this.inactiveAnimation.StopAllAnimations();
         if (this.state === this.STATE_FIRING)
         {
-            this.activeAnimation.PlayAnimation("Active", true);
-            this.inactiveAnimation.PlayAnimation("Active", true);
+            this.activeAnimation.PlayAnimation('Active', true);
+            this.inactiveAnimation.PlayAnimation('Active', true);
         }
         else
         {
-            this.activeAnimation.PlayAnimation("Deploy", false, function()
+            this.activeAnimation.PlayAnimation('Deploy', false, function()
             {
                 self.state = self.STATE_IDLE;
-                self.activeAnimation.PlayAnimation("Active", true);
+                self.activeAnimation.PlayAnimation('Active', true);
             });
-            this.inactiveAnimation.PlayAnimation("Deploy", false, function()
+            this.inactiveAnimation.PlayAnimation('Deploy', false, function()
             {
                 self.state = self.STATE_IDLE;
-                self.inactiveAnimation.PlayAnimation("Active", true);
+                self.inactiveAnimation.PlayAnimation('Active', true);
             });
         }
         this.state = this.STATE_UNPACKING;
@@ -631,9 +642,9 @@ EveTurretSet.prototype.EnterStateFiring = function()
         this._DoStartFiring();
         if (this.turretEffect)
         {
-            this.activeAnimation.PlayAnimation("Fire", false, function()
+            this.activeAnimation.PlayAnimation('Fire', false, function()
             {
-                self.activeAnimation.PlayAnimation("Active", true);
+                self.activeAnimation.PlayAnimation('Active', true);
             });
         }
         return;
@@ -642,28 +653,28 @@ EveTurretSet.prototype.EnterStateFiring = function()
     this.inactiveAnimation.StopAllAnimations();
     if (this.state === this.STATE_INACTIVE)
     {
-        this.activeAnimation.PlayAnimation("Deploy", false, function()
+        this.activeAnimation.PlayAnimation('Deploy', false, function()
         {
             self._DoStartFiring();
-            self.activeAnimation.PlayAnimation("Fire", false, function()
+            self.activeAnimation.PlayAnimation('Fire', false, function()
             {
-                self.activeAnimation.PlayAnimation("Active", true);
+                self.activeAnimation.PlayAnimation('Active', true);
             });
         });
-        this.inactiveAnimation.PlayAnimation("Deploy", false, function()
+        this.inactiveAnimation.PlayAnimation('Deploy', false, function()
         {
-            self.inactiveAnimation.PlayAnimation("Active", true);
+            self.inactiveAnimation.PlayAnimation('Active', true);
         });
         this.state = this.STATE_UNPACKING;
     }
     else
     {
         this._DoStartFiring();
-        this.activeAnimation.PlayAnimation("Fire", false, function()
+        this.activeAnimation.PlayAnimation('Fire', false, function()
         {
-            self.activeAnimation.PlayAnimation("Active", true);
+            self.activeAnimation.PlayAnimation('Active', true);
         });
-        this.inactiveAnimation.PlayAnimation("Active", true);
+        this.inactiveAnimation.PlayAnimation('Active', true);
     }
 };
 

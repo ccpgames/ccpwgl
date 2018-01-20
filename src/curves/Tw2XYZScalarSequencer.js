@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2XYZScalarSequencer
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {*} ZCurve
  * @constructor
  */
-function Tw2XYZScalarSequencer()
+export function Tw2XYZScalarSequencer()
 {
     this.name = '';
     this.value = vec3.create();

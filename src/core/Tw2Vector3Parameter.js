@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2Vector3Parameter
  * @param {string} [name='']
@@ -8,7 +10,7 @@
  * @property {number} offset
  * @constructor
  */
-function Tw2Vector3Parameter(name, value)
+export function Tw2Vector3Parameter(name, value)
 {
     this.name = name !== 'undefined' ? name : '';
     this.value = value !== undefined ? vec3.clone(value) : vec3.fromValues(1, 1, 1);
@@ -18,7 +20,6 @@ function Tw2Vector3Parameter(name, value)
 
 /**
  * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
@@ -111,7 +112,7 @@ Tw2Vector3Parameter.prototype.GetIndexValue = function(index)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
     if (this.constantBuffer !== null)
@@ -133,7 +134,7 @@ Tw2Vector3Parameter.prototype.SetIndexValue = function(index, value)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
     this.value[index] = value;

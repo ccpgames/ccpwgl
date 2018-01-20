@@ -1,3 +1,13 @@
+import {quat} from '../math';
+import {resMan} from './Tw2ResMan';
+import {device} from './Tw2Device';
+import {emitter} from './Tw2EventEmitter';
+import {Tw2Resource} from './Tw2Resource';
+import {Tw2BinaryReader} from './Tw2BinaryReader';
+import {Tw2SamplerState} from './Tw2SamplerState';
+import {Tw2VertexElement} from './Tw2VertexDeclaration';
+import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
+
 /**
  * Tw2EffectRes
  * @property {Array} passes
@@ -5,11 +15,14 @@
  * @inherits Tw2Resource
  * @constructor
  */
-function Tw2EffectRes()
+export class Tw2EffectRes extends Tw2Resource
 {
-    this._super.constructor.call(this);
-    this.passes = [];
-    this.annotations = {};
+    constructor()
+    {
+        super();
+        this.passes = [];
+        this.annotations = {};
+    }
 }
 
 /**
@@ -77,15 +90,15 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CompileShader'],
-                msg: 'Error compiling shader',
-                path: path,
-                type: 'shader.compile',
-                value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
-                data: device.gl.getShaderInfoLog(shader)
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CompileShader'],
+                    msg: 'Error compiling shader',
+                    path: path,
+                    type: 'shader.compile',
+                    value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
+                    data: device.gl.getShaderInfoLog(shader)
+                });
 
             return null;
         }
@@ -112,14 +125,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'Error linking shaders',
-                path: path,
-                type: 'shader.linkstatus',
-                data: device.gl.getProgramInfoLog(program.program)
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'Error linking shaders',
+                    path: path,
+                    type: 'shader.linkstatus',
+                    data: device.gl.getProgramInfoLog(program.program)
+                });
             return null;
         }
 
@@ -127,23 +140,23 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         program.constantBufferHandles = [];
         for (var j = 0; j < 16; ++j)
         {
-            program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, "cb" + j);
+            program.constantBufferHandles[j] = device.gl.getUniformLocation(program.program, 'cb' + j);
         }
         program.samplerHandles = [];
         for (var j = 0; j < 16; ++j)
         {
-            program.samplerHandles[j] = device.gl.getUniformLocation(program.program, "s" + j);
+            program.samplerHandles[j] = device.gl.getUniformLocation(program.program, 's' + j);
             device.gl.uniform1i(program.samplerHandles[j], j);
         }
         for (var j = 0; j < 16; ++j)
         {
-            program.samplerHandles[j + 12] = device.gl.getUniformLocation(program.program, "vs" + j);
+            program.samplerHandles[j + 12] = device.gl.getUniformLocation(program.program, 'vs' + j);
             device.gl.uniform1i(program.samplerHandles[j + 12], j + 12);
         }
         program.input = new Tw2VertexDeclaration();
         for (var j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
         {
-            var location = device.gl.getAttribLocation(program.program, "attr" + j);
+            var location = device.gl.getAttribLocation(program.program, 'attr' + j);
             if (location >= 0)
             {
                 var el = new Tw2VertexElement(
@@ -155,16 +168,16 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
         program.input.RebuildHash();
 
-        program.shadowStateInt = device.gl.getUniformLocation(program.program, "ssi");
-        program.shadowStateFloat = device.gl.getUniformLocation(program.program, "ssf");
-        program.shadowStateYFlip = device.gl.getUniformLocation(program.program, "ssyf");
+        program.shadowStateInt = device.gl.getUniformLocation(program.program, 'ssi');
+        program.shadowStateFloat = device.gl.getUniformLocation(program.program, 'ssf');
+        program.shadowStateYFlip = device.gl.getUniformLocation(program.program, 'ssyf');
         device.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
         program.volumeSlices = [];
         for (var j = 0; j < pass.stages[1].samplers.length; ++j)
         {
             if (pass.stages[1].samplers[j].isVolume)
             {
-                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, "s" + pass.stages[1].samplers[j].registerIndex + "sl");
+                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = device.gl.getUniformLocation(program.program, 's' + pass.stages[1].samplers[j].registerIndex + 'sl');
             }
         }
         return program;
@@ -174,14 +187,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     if (version < 2 || version > 5)
     {
         emitter.log('res.error',
-        {
-            log: 'error',
-            src: ['Tw2EffectRes', 'CreateProgram'],
-            msg: 'Invalid version of effect file',
-            type: 'shader.effectversion',
-            path: this.path,
-            value: version
-        });
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CreateProgram'],
+                msg: 'Invalid version of effect file',
+                type: 'shader.effectversion',
+                path: this.path,
+                value: version
+            });
 
         this.PrepareFinished(false);
         return;
@@ -196,14 +209,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (headerSize === 0)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'File contains no compiled effects',
-                path: this.path,
-                type: 'shader.effectheadersize',
-                value: 0
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
             this.PrepareFinished(false);
             return;
@@ -239,14 +252,14 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         if (headerSize === 0)
         {
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'File contains no compiled effects',
-                path: this.path,
-                type: 'shader.effectheadersize',
-                value: 0
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
             this.PrepareFinished(false);
             return;
@@ -260,8 +273,8 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     {
         var pass = {};
         pass.stages = [
-        {},
-        {}];
+            {},
+            {}];
         var stageCount = reader.ReadUInt8();
         var validShadowShader = true;
         for (var stageIx = 0; stageIx < stageCount; ++stageIx)
@@ -318,7 +331,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             {
                 if (shadowShaderSize === 0)
                 {
-                    stage.shadowShader = CompileShader(stageType, "\n#define PS\n", shaderCode, this.path);
+                    stage.shadowShader = CompileShader(stageType, '\n#define PS\n', shaderCode, this.path);
                 }
                 else
                 {
@@ -522,10 +535,10 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             var state = reader.ReadUInt32();
             var value = reader.ReadUInt32();
             pass.states.push(
-            {
-                'state': state,
-                'value': value
-            });
+                {
+                    'state': state,
+                    'value': value
+                });
         }
 
         pass.shaderProgram = CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, this.path);
@@ -632,7 +645,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
         {
             for (var i = 0; i < this.annotations[param].length; i++)
             {
-                if (this.annotations[param][i].name.toLowerCase() === "group" && this.annotations[param][i].value.toLowerCase() === groupName.toLowerCase())
+                if (this.annotations[param][i].name.toLowerCase() === 'group' && this.annotations[param][i].value.toLowerCase() === groupName.toLowerCase())
                 {
                     parameters.push(param);
                 }
@@ -642,9 +655,3 @@ Tw2EffectRes.prototype.GetParametersByGroup = function(groupName)
 
     return parameters;
 };
-
-Inherit(Tw2EffectRes, Tw2Resource);
-
-// Registers shader extension constructor
-resMan.RegisterExtension('sm_hi', Tw2EffectRes);
-resMan.RegisterExtension('sm_lo', Tw2EffectRes);

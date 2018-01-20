@@ -1,3 +1,5 @@
+import {vec2} from '../math';
+
 /**
  * Tw2Vector2Parameter
  * @param {string} [name='']
@@ -8,12 +10,10 @@
  * @property {number} offset
  * @constructor
  */
-function Tw2Vector2Parameter(name, value)
+export function Tw2Vector2Parameter(name, value)
 {
     this.name = name !== 'undefined' ? name : '';
     this.value = value !== undefined ? vec2.clone(value) : vec2.fromValues(1, 1);
-    this.constantBuffer = null;
-    this.offset = 0;
     this.constantBuffer = null;
     this.offset = 0;
 }

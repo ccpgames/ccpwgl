@@ -1,20 +1,21 @@
 {
   "name": "ccpwgl",
-  "version": "0.1.0",
-  "description": "CCP WebGL Library",
+  "liscence" : "MIT",
+  "version": "0.2.0",
+  "description": "ccpwgl",
   "homepage": "https://github.com/ccpgames/ccpwgl",
   "bugs": "https://github.com/ccpgames/ccpwgl/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/ccpgames/ccpwgl.git"
   },
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-concat": "^1.0.1",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-jsbeautifier": "~0.2.0",
-    "jsdoc": "^3.4.0"
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.5.0",
+    "gl-matrix": "2.4.0",
+    "webgl-debug": "^2.0.0",
+    "webpack": "^3.1.0"
   }
 }

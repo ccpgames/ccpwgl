@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
     <link rel="stylesheet" href="demos.css">
-    <script type="text/javascript" src="../dist/external/glMatrix-2.4.0.min.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl_int.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl.js"></script>
-    <script type="text/javascript" src="TestCamera2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="demos.js"></script>
 
@@ -16,12 +14,12 @@
 
         $(document).ready(function ()
         {
+            console.dir(ccpwgl_int);
+
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            var camera = TestCamera.Create($canvas[0]);
-            ccpwgl.setCamera(camera);
-
+            var camera = ccpwgl.createCamera($canvas[0], undefined, true);
             var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)

@@ -1,11 +1,17 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+
+
 /**
  * Plane set render batch
- * @inherits Tw2RenderBatch
  * @constructor
  */
-function EvePlaneSetBatch()
+export function EvePlaneSetBatch()
 {
-    this._super.constructor.call(this);
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
     this.planeSet = null;
 }
 
@@ -18,8 +24,6 @@ EvePlaneSetBatch.prototype.Commit = function(overrideEffect)
 {
     this.planeSet.Render(overrideEffect);
 };
-
-Inherit(EvePlaneSetBatch, Tw2RenderBatch);
 
 
 /**
@@ -37,7 +41,7 @@ Inherit(EvePlaneSetBatch, Tw2RenderBatch);
  * @property {number} groupIndex
  * @constructor
  */
-function EvePlaneSetItem()
+export function EvePlaneSetItem()
 {
     this.display = true;
     this.name = '';
@@ -62,12 +66,12 @@ function EvePlaneSetItem()
  * @property {boolean} display
  * @property {boolean} hideOnLowQuality
  * @property {number} _time
- * @property {WebglBuffer} _vertexBuffer
- * @property {WebglBuffer} _indexBuffer
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @constructor
  */
-function EvePlaneSet()
+export function EvePlaneSet()
 {
     this.name = '';
     this.planes = [];
@@ -218,7 +222,7 @@ EvePlaneSet.prototype.RebuildBuffers = function()
 
 /**
  * Gets the plane set's render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

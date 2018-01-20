@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+
 /**
  * EveEffectRoot root objects for FX, can be put into scene's objects array
  * @property {string} name
@@ -15,7 +19,7 @@
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
-function EveEffectRoot()
+export function EveEffectRoot()
 {
     this.name = '';
     this.display = true;
@@ -102,7 +106,7 @@ EveEffectRoot.prototype.Update = function(dt)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveEffectRoot.prototype.GetBatches = function(mode, accumulator)

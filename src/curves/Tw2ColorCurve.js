@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2ColorKey
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ColorKey()
+export function Tw2ColorKey()
 {
     this.time = 0;
     this.value = vec4.create();
@@ -28,7 +30,7 @@ function Tw2ColorKey()
  * @property {number} _currKey
  * @constructor
  */
-function Tw2ColorCurve()
+export function Tw2ColorCurve()
 {
     this.name = '';
     this.start = 0;
@@ -75,7 +77,7 @@ Tw2ColorCurve.Compare = function(a, b)
 
 /**
  * Returns curve length
- 
+
  * @returns {number}
  */
 Tw2ColorCurve.prototype.GetLength = function()

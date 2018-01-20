@@ -7,7 +7,7 @@
  * @property {number} speed
  * @constructor
  */
-function Tw2SineCurve()
+export function Tw2SineCurve()
 {
     this.name = '';
     this.value = 0;

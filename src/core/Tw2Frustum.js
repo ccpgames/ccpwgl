@@ -1,3 +1,5 @@
+import {vec3, vec4, mat4} from '../math';
+
 /**
  * Tw2Frustum
  * @property {Array.<vec4>} planes
@@ -6,7 +8,7 @@
  * @property {number} halfWidthProjection
  * @constructor
  */
-function Tw2Frustum()
+export function Tw2Frustum()
 {
     this.planes = [vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create()];
     this.viewPos = vec3.create();

@@ -1,3 +1,5 @@
+import {vec3, quat} from '../math';
+
 /**
  * Tw2Torque
  * @property {number} time
@@ -6,7 +8,7 @@
  * @property {vec3} torque
  * @constructor
  */
-function Tw2Torque()
+export function Tw2Torque()
 {
     this.time = 0;
     this.rot0 = quat.create();
@@ -25,7 +27,7 @@ function Tw2Torque()
  * @property {Array} states
  * @constructor
  */
-function Tw2RigidOrientation()
+export function Tw2RigidOrientation()
 {
     this.name = '';
     this.I = 1;

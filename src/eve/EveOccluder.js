@@ -1,3 +1,14 @@
+import {vec4, mat4} from '../math';
+import {device} from '../core';
+import {variableStore} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2Vector3Parameter} from '../core';
+import {Tw2Vector4Parameter} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2BatchAccumulator} from '../core';
+
 /**
  * EveOccluder
  * @property {String} name=''
@@ -6,7 +17,7 @@
  * @property {Array.<EveSpriteSet>} sprites
  * @constructor
  */
-function EveOccluder()
+export function EveOccluder()
 {
     this.name = '';
     this.display = true;
@@ -170,7 +181,7 @@ EveOccluder.prototype.CollectSamples = function(tex, index, total, samples)
 /**
  * Gets Mesh Overlay resource objects
  * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2Res>} [out]
+ * @returns {Array.<Resource>} [out]
  */
 EveOccluder.prototype.GetResources = function(out)
 {

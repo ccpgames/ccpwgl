@@ -7,7 +7,7 @@
  * @property {boolean} hold
  * @constructor
  */
-function Tw2RandomConstantCurve()
+export function Tw2RandomConstantCurve()
 {
     this.name = '';
     this.value = 0;

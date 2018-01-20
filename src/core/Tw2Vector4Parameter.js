@@ -1,14 +1,16 @@
+import {vec4} from '../math';
+
 /**
  * Tw2Vector4Parameter
  * @param {string} [name='']
  * @param {vec4|Float32Array} [value=[1,1,1,1]]
  * @property {string} name
  * @property {vec4|Float32Array} value
- * @property {Array} constantBuffer
+ * @property {Float32Array} constantBuffer
  * @property {number} offset
  * @constructor
  */
-function Tw2Vector4Parameter(name, value)
+export function Tw2Vector4Parameter(name, value)
 {
     this.name = name !== 'undefined' ? name : '';
     this.value = value !== undefined ? vec4.clone(value) : vec4.fromValues(1, 1, 1);
@@ -18,7 +20,6 @@ function Tw2Vector4Parameter(name, value)
 
 /**
  * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
  * @param {number} size
@@ -111,7 +112,7 @@ Tw2Vector4Parameter.prototype.GetIndexValue = function(index)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
     if (this.constantBuffer !== null)
@@ -133,7 +134,7 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function(index, value)
 {
     if (typeof this.value[index] === 'undefined')
     {
-        throw "Invalid Index";
+        throw 'Invalid Index';
     }
 
     this.value[index] = value;

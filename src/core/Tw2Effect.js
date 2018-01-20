@@ -1,3 +1,8 @@
+import {device} from './Tw2Device';
+import {resMan} from './Tw2ResMan';
+import {variableStore} from './Tw2VariableStore';
+import {Tw2SamplerState} from './Tw2SamplerState';
+
 /**
  * Tw2SamplerOverride
  * @property {number} addressU
@@ -10,7 +15,7 @@
  * @property {number} maxAnisotropy
  * @constructor
  */
-function Tw2SamplerOverride()
+export function Tw2SamplerOverride()
 {
     this.name = '';
 
@@ -105,12 +110,12 @@ function Tw2SamplerOverride()
  * @property {string} name
  * @property {string} effectFilePath
  * @property {Tw2EffectRes|null} effectRes
- * @property {Object.<string, Tw2Parameter>} parameters
+ * @property {Object.<string, Parameter>} parameters
  * @property {Array} passes
  * @property {Array} samplerOverrides
  * @constructor
  */
-function Tw2Effect()
+export function Tw2Effect()
 {
     this.name = '';
     this.effectFilePath = '';
@@ -131,7 +136,7 @@ Tw2Effect.prototype.Initialize = function()
         var path = this.effectFilePath;
         var dot = path.lastIndexOf('.');
         var ext = path.substr(dot);
-        path = path.toLowerCase().substr(0, dot).replace("/effect/", device.effectDir) + ".sm_" + device.shaderModel;
+        path = path.toLowerCase().substr(0, dot).replace('/effect/', device.effectDir) + '.sm_' + device.shaderModel;
         this.effectRes = resMan.GetResource(path);
         this.effectRes.RegisterNotification(this);
     }
@@ -169,7 +174,7 @@ Tw2Effect.prototype.GetResources = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Returns the Tw2Effect's resource object

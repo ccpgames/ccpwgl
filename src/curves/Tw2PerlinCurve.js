@@ -98,7 +98,7 @@ function PerlinNoise1D(x, alpha, beta, n)
  * @property {number} _startOffset
  * @constructor
  */
-function Tw2PerlinCurve()
+export function Tw2PerlinCurve()
 {
     this.name = '';
     this.start = 0;

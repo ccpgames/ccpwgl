@@ -9,7 +9,7 @@
  * @property {number} scaledTime
  * @constructor
  */
-function Tw2CurveSet()
+export function Tw2CurveSet()
 {
     this.name = '';
     this.curves = [];

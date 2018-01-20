@@ -1,3 +1,8 @@
+import {vec3, vec4} from '../math';
+import {device} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+import {Tw2VertexElement} from '../core';
+
 /**
  * EveSpriteSetItem
  * @property {string} name
@@ -11,7 +16,7 @@
  * @property {number} groupIndex
  * @constructor
  */
-function EveSpriteSetItem()
+export function EveSpriteSetItem()
 {
     this.display = true;
     this.name = '';
@@ -29,12 +34,12 @@ function EveSpriteSetItem()
 
 /**
  * Sprite set render batch
- * @inherits Tw2RenderBatch
  * @constructor
  */
-function EveSpriteSetBatch()
+export function EveSpriteSetBatch()
 {
-    this._super.constructor.call(this);
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
     this.boosterGlow = false;
     this.spriteSet = null;
     this.world = null;
@@ -58,8 +63,6 @@ EveSpriteSetBatch.prototype.Commit = function(overrideEffect)
     }
 };
 
-Inherit(EveSpriteSetBatch, Tw2RenderBatch);
-
 
 /**
  * EveSpriteSet
@@ -70,14 +73,14 @@ Inherit(EveSpriteSetBatch, Tw2RenderBatch);
  * @property {number} _time
  * @property {boolean} useQuads Use quad rendering (CPU transform)
  * @property {boolean} isSkinned Use bone transforms (when useQuads is true)
- * @property {WebGlBuffer} _vertexBuffer
- * @property {WebGlBuffer} _indexBuffer
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
  * @property {Tw2VertexDeclaration} _decl
  * @param {boolean} useQuads Use quad rendering (CPU transform)
  * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
  * @constructor
  */
-function EveSpriteSet(useQuads, isSkinned)
+export function EveSpriteSet(useQuads, isSkinned)
 {
     this.name = '';
     this.sprites = [];
@@ -126,7 +129,7 @@ EveSpriteSet.prototype.Initialize = function()
 };
 
 /**
- * Use instanced rendering or "quad" rendering
+ * Use instanced rendering or 'quad' rendering
  * @param {boolean} useQuads Use quad rendering (CPU transform)
  * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
  */
@@ -260,7 +263,7 @@ EveSpriteSet.prototype.RebuildBuffers = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @param {mat4} world
@@ -280,7 +283,7 @@ EveSpriteSet.prototype.GetBatches = function(mode, accumulator, perObjectData, w
 
 /**
  * Gets render batches for booster glows
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @param {mat4} world

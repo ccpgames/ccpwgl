@@ -1,3 +1,5 @@
+import {mat4} from '../math';
+
 /**
  * Tw2MatrixParameter
  * @param {string} [name='']
@@ -8,7 +10,7 @@
  * @property {number} offset
  * @constructor
  */
-function Tw2MatrixParameter(name, value)
+export function Tw2MatrixParameter(name, value)
 {
     this.name = (name !== undefined) ? name : '';
     this.value = (value !== undefined) ? mat4.clone(value) : mat4.create();

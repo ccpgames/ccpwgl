@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2ColorKey2
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ColorKey2()
+export function Tw2ColorKey2()
 {
     this.time = 0;
     this.value = vec4.create();
@@ -34,7 +36,7 @@ function Tw2ColorKey2()
  * @property {Array.<Tw2ColorKey2>} keys
  * @constructor
  */
-function Tw2ColorCurve2()
+export function Tw2ColorCurve2()
 {
     this.name = '';
     this.length = 0;

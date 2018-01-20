@@ -1,3 +1,7 @@
+import {vec3, mat4} from '../math';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+
 /**
  * EveMissileWarhead
  * @property {String} name
@@ -18,7 +22,7 @@
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
-function EveMissileWarhead()
+export function EveMissileWarhead()
 {
     this.name = '';
     this.display = true;
@@ -103,7 +107,7 @@ EveMissileWarhead.prototype.UpdateViewDependentData = function()
 
 /**
  * Accumulates render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveMissileWarhead.prototype.GetBatches = function(mode, accumulator)

@@ -1,3 +1,9 @@
+import {vec3, vec4, mat4} from '../math';
+import {device} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+
+
 /**
  * Spotlight Item
  * - If a spotlight's properties are changed, it's parent's RebuildBuffers method must be called to apply these changes
@@ -16,7 +22,7 @@
  * @property {number} flareIntensity        - Scales the spotlight's flare colour, set by an object's sof Faction
  * @constructor
  */
-function EveSpotlightSetItem()
+export function EveSpotlightSetItem()
 {
     this.display = true;
     this.name = '';
@@ -42,13 +48,13 @@ function EveSpotlightSetItem()
  * @property {Tw2Effect} coneEffect                      - The spotlight set's cone effect
  * @property {Tw2Effect} glowEffect                      - The spotlight set's glow effect
  * @property {Array.<EveSpotlightSetItem) spotlightItems - The spotlight set's children
- * @property {WebglBuffer} _coneVertexBuffer             - Webgl buffer for the spotlight set's cone vertices
- * @property {WebglBuffer} _spriteVertexBuffer           - Webgl buffer for the spotlight set's sprite/glow vertices
- * @property {WebglBuffer} _indexBuffer                  - Webgl buffer for the spotlight set
+ * @property {WebGLBuffer} _coneVertexBuffer             - Webgl buffer for the spotlight set's cone vertices
+ * @property {WebGLBuffer} _spriteVertexBuffer           - Webgl buffer for the spotlight set's sprite/glow vertices
+ * @property {WebGLBuffer} _indexBuffer                  - Webgl buffer for the spotlight set
  * @property {Tw2VertexDeclaration} _decl                - The spotlight set's vertex declarations
  * @constructor
  */
-function EveSpotlightSet()
+export function EveSpotlightSet()
 {
     this.name = '';
     this.display = true;
@@ -263,9 +269,10 @@ EveSpotlightSet.prototype.RebuildBuffers = function()
  * @inherits Tw2RenderBatch
  * @constructor
  */
-function EveSpotlightSetBatch()
+export function EveSpotlightSetBatch()
 {
-    this._super.constructor.call(this);
+    this.renderMode = device.RM_ANY;
+    this.perObjectData = null;
     this.spotlightSet = null;
 }
 
@@ -280,12 +287,11 @@ EveSpotlightSetBatch.prototype.Commit = function(overrideEffect)
     this.spotlightSet.RenderGlow(overrideEffect);
 };
 
-Inherit(EveSpotlightSetBatch, Tw2RenderBatch);
 
 /**
  * Gets the spotlight set's render batches
  *
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */
@@ -327,7 +333,7 @@ EveSpotlightSet.prototype.RenderGlow = function(overrideEffect)
  * Internal render function
  *
  * @param {Tw2Effect} effect   - The Tw2Effect to render
- * @param {WebglBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
+ * @param {WebGLBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
  * @private
  */
 EveSpotlightSet.prototype._Render = function(effect, buffer)

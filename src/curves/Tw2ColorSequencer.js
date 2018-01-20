@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2ColorSequencer
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {Array} functions
  * @constructor
  */
-function Tw2ColorSequencer()
+export function Tw2ColorSequencer()
 {
     this.name = '';
     this.start = 0;

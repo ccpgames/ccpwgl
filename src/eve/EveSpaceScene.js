@@ -1,3 +1,12 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {resMan} from '../core';
+import {variableStore} from '../core';
+import {Tw2BatchAccumulator} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2Frustum} from '../core';
+
+
 /**
  * EveSpaceScene
  * @property {string} name
@@ -46,7 +55,7 @@
  * @property {*} _debugHelper
  * @constructor
  */
-function EveSpaceScene()
+export function EveSpaceScene()
 {
     this.name = '';
 
@@ -61,16 +70,16 @@ function EveSpaceScene()
 
     var self = this;
     Object.defineProperty(this.visible, 'nebula',
-    {
-        get: function()
         {
-            return !!self.backgroundRenderingEnabled;
-        },
-        set: function(bool)
-        {
-            self.backgroundRenderingEnabled = bool;
-        }
-    });
+            get: function()
+            {
+                return !!self.backgroundRenderingEnabled;
+            },
+            set: function(bool)
+            {
+                self.backgroundRenderingEnabled = bool;
+            }
+        });
 
     this.lensflares = [];
     this.objects = [];
@@ -307,7 +316,7 @@ EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
 
 /**
  * Gets batches for rendering
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Array.<EveObject>} objectArray
  * @param {Tw2BatchAccumulator} accumulator
  */
@@ -411,7 +420,7 @@ EveSpaceScene.prototype.ApplyPerFrameData = function()
     this._perFramePS.Get('ProjectionToView')[1] = -d.projection[10] - 1;
     device.perFramePSData = this._perFramePS;
 
-    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : Tw2Device.EmptyTexture;
+    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : EveSpaceScene.EmptyTexture;
     this._envMap1Handle.textureRes = this.envMap1Res;
     this._envMap2Handle.textureRes = this.envMap2Res;
     this._envMap3Handle.textureRes = this.envMap3Res;

@@ -1,3 +1,6 @@
+import {resMan} from './Tw2ResMan';
+import {device} from './Tw2Device';
+
 /**
  * Tw2TextureParameter
  * @param {string} [name=''] - Name of the texture parameter
@@ -14,7 +17,7 @@
  * @property {Tw2SamplerState} _sampler
  * @constructor
  */
-function Tw2TextureParameter(name, texturePath)
+export function Tw2TextureParameter(name, texturePath)
 {
     if (typeof(name) !== 'undefined')
     {

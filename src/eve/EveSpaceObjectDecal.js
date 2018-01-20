@@ -1,3 +1,12 @@
+import {vec3, quat, mat4} from '../math';
+import {device} from '../core';
+import {variableStore} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2MatrixParameter} from '../core';
+import {Tw2ForwardingRenderBatch} from '../core';
+
+
 /**
  * EveSpaceObjectDecal
  * @property {boolean} display
@@ -18,7 +27,7 @@
  * @property {Tw2PerObjectData} _perObjectData
  * @constructor
  */
-function EveSpaceObjectDecal()
+export function EveSpaceObjectDecal()
 {
     this.display = true;
     this.decalEffect = null;
@@ -112,7 +121,7 @@ EveSpaceObjectDecal.prototype.SetParentGeometry = function(geometryRes)
 
 /**
  * Gets batches for rendering
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @param {number} [counter=0]

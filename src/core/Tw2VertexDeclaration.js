@@ -1,3 +1,5 @@
+import {device} from './Tw2Device';
+
 /**
  * Tw2VertexElement
  * @param {number} usage - vertex data type
@@ -14,7 +16,7 @@
  * @property customSetter
  * @constructor
  */
-function Tw2VertexElement(usage, usageIndex, type, elements, offset)
+export function Tw2VertexElement(usage, usageIndex, type, elements, offset)
 {
     this.usage = usage;
     this.usageIndex = usageIndex;
@@ -32,7 +34,7 @@ function Tw2VertexElement(usage, usageIndex, type, elements, offset)
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @constructor
  */
-function Tw2VertexDeclaration()
+export function Tw2VertexDeclaration()
 {
     this.elements = [];
     this._elementsSorted = [];

@@ -1,6 +1,6 @@
 /**
  * A Tw2 Parameter
- * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Tw2Parameter
+ * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
  */
 
 /**
@@ -13,7 +13,7 @@
  * @property {null|number} offset
  * @constructor
  */
-function Tw2FloatParameter(name, value)
+export function Tw2FloatParameter(name, value)
 {
     if (typeof(name) !== 'undefined')
     {
@@ -25,7 +25,7 @@ function Tw2FloatParameter(name, value)
     }
     if (typeof(value) !== 'undefined')
     {
-        if (value.constructor === (new glMatrix.ARRAY_TYPE()).constructor || value.constructor === [].constructor)
+        if (value.constructor.name.toUpperCase().includes('ARRAY'))
         {
             this.value = value[0];
         }

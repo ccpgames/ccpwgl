@@ -1,3 +1,15 @@
+import {vec3, vec4, mat4} from '../math/index';
+import {variableStore} from './Tw2VariableStore';
+import {resMan} from './Tw2ResMan';
+import {emitter} from './Tw2EventEmitter';
+import {Tw2MatrixParameter} from './Tw2MatrixParameter';
+import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
+import {Tw2Effect} from './Tw2Effect';
+import {Tw2VertexElement} from './Tw2VertexDeclaration';
+import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
+
+const WebGLDebugUtil = require('webgl-debug');
+
 /**
  * Tw2Device
  * - creates WebGL context
@@ -37,11 +49,11 @@ function Tw2Device()
     this.shadowHandles = null;
     this.wrapModes = [];
     this.perObjectData = null;
-    this.effectDir = "/effect.gles2/";
+    this.effectDir = '/effect.gles2/';
     this.debugMode = false;
 
     this.mipLevelSkipCount = 0;
-    this.shaderModel = "hi";
+    this.shaderModel = 'hi';
     this.enableAnisotropicFiltering = true;
 
     this._scheduled = [];
@@ -50,12 +62,14 @@ function Tw2Device()
     this._currentRenderMode = null;
     this._onResize = null;
 
-    variableStore.RegisterVariable("WorldMat", this.world);
-    variableStore.RegisterVariable("ViewMat", this.view);
-    variableStore.RegisterVariable("ProjectionMat", this.projection);
-    variableStore.RegisterType("ViewProjectionMat", Tw2MatrixParameter);
-    variableStore.RegisterType("ViewportSize", Tw2Vector4Parameter);
-    variableStore.RegisterType("Time", Tw2Vector4Parameter);
+    this.utils = WebGLDebugUtil;
+
+    variableStore.RegisterVariable('WorldMat', this.world);
+    variableStore.RegisterVariable('ViewMat', this.view);
+    variableStore.RegisterVariable('ProjectionMat', this.projection);
+    variableStore.RegisterType('ViewProjectionMat', Tw2MatrixParameter);
+    variableStore.RegisterType('ViewportSize', Tw2Vector4Parameter);
+    variableStore.RegisterType('Time', Tw2Vector4Parameter);
 }
 
 /**
@@ -68,7 +82,7 @@ Tw2Device.prototype.CreateDevice = function(canvas, params)
 {
     this.gl = null;
     this.glVersion = Tw2Device.WebglVersion.NONE;
-    this.effectDir = "/effect.gles2/";
+    this.effectDir = '/effect.gles2/';
     this.ext = {
         drawElementsInstanced: function()
         {
@@ -159,12 +173,12 @@ Tw2Device.prototype.CreateDevice = function(canvas, params)
             return false;
     }
 
-    emitter.log("webgl",
-    {
-        log: "warn",
-        type: "Context created",
-        value: this.glVersion
-    });
+    emitter.log('webgl',
+        {
+            log: 'warn',
+            type: 'Context created',
+            value: this.glVersion
+        });
 
     // Optional extensions
     this.ext.CompressedTexture = this.GetExtension('compressed_texture_s3tc');
@@ -190,11 +204,11 @@ Tw2Device.prototype.CreateDevice = function(canvas, params)
 
     if (this.debugMode)
     {
-        this.gl = WebGLDebugUtils.makeDebugContext(this.gl);
+        this.gl = this.utils.makeDebugContext(this.gl);
     }
 
     // Quality
-    this.alphaBlendBackBuffer = !params || typeof(params.alpha) === "undefined" || params.alpha;
+    this.alphaBlendBackBuffer = !params || typeof(params.alpha) === 'undefined' || params.alpha;
     this.msaaSamples = this.gl.getParameter(this.gl.SAMPLES);
     this.antialiasing = this.msaaSamples > 1;
 
@@ -314,13 +328,13 @@ Tw2Device.prototype.Tick = function()
     this.dt = this.previousTime === null ? 0 : (now - this.previousTime) * 0.001;
     this.previousTime = now;
 
-    var time = variableStore._variables["Time"].value;
+    var time = variableStore._variables['Time'].value;
     time[3] = time[0];
     time[0] = this.currentTime;
     time[1] = this.currentTime - Math.floor(this.currentTime);
     time[2] = this.frameCounter;
 
-    var viewportSize = variableStore._variables["ViewportSize"].value;
+    var viewportSize = variableStore._variables['ViewportSize'].value;
     viewportSize[0] = this.viewportWidth;
     viewportSize[1] = this.viewportHeight;
     viewportSize[2] = this.viewportWidth;
@@ -362,7 +376,7 @@ Tw2Device.prototype.SetView = function(matrix)
 
     mat4.multiply(this.viewProjection, this.projection, this.view);
     mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-    mat4.copy(variableStore._variables["ViewProjectionMat"], this.viewProjection);
+    mat4.copy(variableStore._variables['ViewProjectionMat'], this.viewProjection);
 };
 
 /**
@@ -382,12 +396,12 @@ Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
     {
         mat4.multiply(this.viewProjection, this.projection, this.view);
         mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-        mat4.copy(variableStore._variables["ViewProjectionMat"].value, this.viewProjection);
+        mat4.copy(variableStore._variables['ViewProjectionMat'].value, this.viewProjection);
     }
 };
 
 /**
- * Gets the device"s target resolution
+ * Gets the device's target resolution
  * @param {vec4} out
  * @returns {vec4} out
  */
@@ -446,13 +460,13 @@ Tw2Device.prototype.RenderTexture = (function()
         if (blitEffect === null)
         {
             blitEffect = new Tw2Effect();
-            blitEffect.effectFilePath = "res:/graphics/effect/managed/space/system/blit.fx";
+            blitEffect.effectFilePath = 'res:/graphics/effect/managed/space/system/blit.fx';
             var param = new Tw2TextureParameter();
-            param.name = "BlitSource";
+            param.name = 'BlitSource';
             blitEffect.parameters[param.name] = param;
             blitEffect.Initialize();
         }
-        blitEffect.parameters["BlitSource"].textureRes = texture;
+        blitEffect.parameters['BlitSource'].textureRes = texture;
         this.RenderFullScreenQuad(blitEffect);
     };
 })();
@@ -701,11 +715,11 @@ Tw2Device.prototype.ApplyShadowState = function()
                 alphaTestRef = -this.alphaTestState.states[this.RS_ALPHAREF] - 1;
                 break;
 
-                /*case this.CMP_NOTEQUAL:
-                 var alphaTestFunc = 1;
-                 var invertedAlphaTest = 1;
-                 var alphaTestRef = this.alphaTestState.states[this.RS_ALPHAREF];
-                 break;*/
+            /*case this.CMP_NOTEQUAL:
+             var alphaTestFunc = 1;
+             var invertedAlphaTest = 1;
+             var alphaTestRef = this.alphaTestState.states[this.RS_ALPHAREF];
+             break;*/
 
             case this.CMP_GREATEREQUAL:
                 alphaTestFunc = 0;
@@ -921,7 +935,7 @@ Tw2Device.prototype.CreateSolidTexture = function(rgba)
  * Device clock
  * - Todo: Add performance timing (Currently doesn't work with boosterSets)
  */
-Tw2Device.prototype.Clock = Date; //window["performance"] && window["performance"].now ? window["performance"] : Date;
+Tw2Device.prototype.Clock = Date; //window['performance'] && window['performance'].now ? window['performance'] : Date;
 
 var timeOuts;
 
@@ -938,7 +952,7 @@ Tw2Device.prototype.RequestAnimationFrame = (function()
         window.mozRequestAnimationFrame ||
         window.oRequestAnimationFrame ||
         window.msRequestAnimationFrame ||
-        function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element)
+        function(/* function FrameRequestCallback */ callback, /* DOMElement Element */ element)
         {
             if (!timeOuts) timeOuts = [];
             timeOuts.push(window.setTimeout(callback, 1000 / 60));
@@ -979,7 +993,6 @@ Tw2Device.prototype.CancelAnimationFrame = (function()
     };
 })();
 
-
 /**
  * Creates a gl context
  *
@@ -1006,9 +1019,9 @@ Tw2Device.CreateContext = function(canvas, params, contextNames)
 };
 
 // Webgl details
-Tw2Device.WebglVendorPrefixes = ["", "MOZ_", "WEBKIT_", "WEBGL_"];
-Tw2Device.WebglContextNames = ["webgl", "experimental-webgl"];
-Tw2Device.Webgl2ContextNames = ["webgl2", "experimental-webgl2"];
+Tw2Device.WebglVendorPrefixes = ["", 'MOZ_', 'WEBKIT_', 'WEBGL_'];
+Tw2Device.WebglContextNames = ['webgl', 'experimental-webgl'];
+Tw2Device.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'];
 Tw2Device.WebglVersion = {
     NONE: 0,
     WEBGL: 1,
@@ -1150,5 +1163,4 @@ Tw2Device.prototype.BLENDOP_REVSUBTRACT = 3;
 Tw2Device.prototype.BLENDOP_MIN = 4;
 Tw2Device.prototype.BLENDOP_MAX = 5;
 
-
-var device = new Tw2Device();
+export const device = new Tw2Device();

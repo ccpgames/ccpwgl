@@ -1,3 +1,6 @@
+import {quat} from '../math';
+import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
+
 /**
  * Tw2ValueBinding
  * @property {string} name
@@ -14,7 +17,7 @@
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
  * @constructor
  */
-function Tw2ValueBinding()
+export function Tw2ValueBinding()
 {
     this.name = '';
     this.sourceObject = null;

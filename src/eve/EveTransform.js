@@ -1,3 +1,8 @@
+import {vec3, quat, mat4} from '../math';
+import {device} from '../core';
+import {Tw2RawData} from '../core';
+
+
 /**
  * EveBasicPerObjectData
  * @parameter perObjectVSData - Vertex shader data
@@ -5,8 +10,12 @@
  * @parameter perObjectFFEData - Fixed Function Emulation data
  * @constructor
  */
-function EveBasicPerObjectData()
-{}
+export function EveBasicPerObjectData()
+{
+    this.perObjectVSData = null;
+    this.perObjectPSData = null;
+    this.perObjectFFEData = null;
+}
 
 /**
  * SetPerObjectDataToDevice
@@ -48,7 +57,7 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {Number} distanceBasedScaleArg2
  * @property {Boolean} useDistanceBasedScale
  * @property {Array.<Tw2ParticleSystem>} particleSystems
- * @property {Array.<Tw2ParticleEmitter>} particleEmitters
+ * @property {Array.<Tw2StaticEmitter|Tw2DynamicEmitter>} particleEmitters
  * @property {Array.<Tw2CurveSet>} curveSets
  * @property {Array} children
  * @property {Boolean} display                                      - Enables/ disables all batch accumulations
@@ -65,7 +74,7 @@ EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function(constantBuff
  * @property {EveBasicPerObjectData} _perObjectData
  * @constructor
  */
-function EveTransform()
+export function EveTransform()
 {
     this.name = '';
     this.mesh = null;
@@ -156,7 +165,7 @@ EveTransform.prototype.GetResources = function(out, excludeChildren)
 
 /**
  * Gets render batches for accumulation
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

@@ -1,3 +1,5 @@
+import {device} from './Tw2Device';
+
 /**
  * Tw2SamplerState
  * @property {number} registerIndex
@@ -14,7 +16,7 @@
  * @property {number} hash
  * @constructor
  */
-function Tw2SamplerState()
+export function Tw2SamplerState()
 {
     this.registerIndex = 0;
     this.name = '';

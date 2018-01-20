@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {resMan} from '../core';
+import {Tw2AnimationController} from '../core';
+
 /**
  * Tw2TransformTrack
  * @property {string} name
@@ -14,7 +18,7 @@
  * @property {mat4} _scaleShear
  * @constructor
  */
-function Tw2TransformTrack()
+export function Tw2TransformTrack()
 {
     this.name = '';
     this.resPath = '';

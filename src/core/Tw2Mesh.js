@@ -1,3 +1,8 @@
+import {resMan} from './Tw2ResMan';
+import {device} from './Tw2Device';
+import {Tw2GeometryBatch} from './Tw2GeometryRes';
+import {Tw2GeometryLineBatch} from './Tw2GeometryRes';
+
 /**
  * Tw2MeshArea
  * @property {string} name
@@ -8,7 +13,7 @@
  * @property {boolean} display
  * @constructor
  */
-function Tw2MeshArea()
+export function Tw2MeshArea()
 {
     this.name = '';
     this.effect = null;
@@ -36,7 +41,7 @@ Tw2MeshArea.batchType = Tw2GeometryBatch;
  * @property {Boolean} display
  * @constructor
  */
-function Tw2MeshLineArea()
+export function Tw2MeshLineArea()
 {
     this.name = '';
     this.effect = null;
@@ -75,31 +80,34 @@ Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;
  * @property {boolean} visible.pickableAreas        - Enables/ disables pickable area batch accumulation
  * @property {boolean} visible.decalAreas           - Enables/ disables decal area batch accumulation
  * @property {boolean} visible.depthAreas           - Not supported
- * @constructor
+ * @class
  */
-function Tw2Mesh()
+export class Tw2Mesh
 {
-    this.name = '';
-    this.meshIndex = 0;
-    this.geometryResPath = '';
-    this.lowDetailGeometryResPath = '';
-    this.geometryResource = null;
+    constructor()
+    {
+        this.name = '';
+        this.meshIndex = 0;
+        this.geometryResPath = '';
+        this.lowDetailGeometryResPath = '';
+        this.geometryResource = null;
 
-    this.opaqueAreas = [];
-    this.transparentAreas = [];
-    this.additiveAreas = [];
-    this.pickableAreas = [];
-    this.decalAreas = [];
-    this.depthAreas = [];
+        this.opaqueAreas = [];
+        this.transparentAreas = [];
+        this.additiveAreas = [];
+        this.pickableAreas = [];
+        this.decalAreas = [];
+        this.depthAreas = [];
 
-    this.display = true;
-    this.visible = {};
-    this.visible.opaqueAreas = true;
-    this.visible.transparentAreas = true;
-    this.visible.additiveAreas = true;
-    this.visible.pickableAreas = true;
-    this.visible.decalAreas = true;
-    this.visible.depthAreas = true;
+        this.display = true;
+        this.visible = {};
+        this.visible.opaqueAreas = true;
+        this.visible.transparentAreas = true;
+        this.visible.additiveAreas = true;
+        this.visible.pickableAreas = true;
+        this.visible.decalAreas = true;
+        this.visible.depthAreas = true;
+    }
 }
 
 /**
@@ -148,7 +156,7 @@ Tw2Mesh.prototype.GetResources = function(out)
 /**
  * Gets render batches from a mesh area array and commits them to an accumulator
  * @param {Array.<Tw2MeshArea>} areas
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @private
@@ -176,7 +184,7 @@ Tw2Mesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObject
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @returns {boolean}

@@ -1,9 +1,9 @@
 /**
- * "Complex" explosion object. Not implemented.
+ * 'Complex' explosion object. Not implemented.
  * @property {boolean} isEffectChild
  * @constructor
  */
-function EveChildExplosion()
+export function EveChildExplosion()
 {
     // will be implemented soon(tm)
     this.isEffectChild = true;
@@ -17,7 +17,7 @@ EveChildExplosion.prototype.Update = function(parentTransform) {};
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

@@ -1,30 +1,37 @@
 CCP WebGL Library
 ======
+An implementation of CCP Games graphics engine in webgl
 
-This project now uses the glMatrix v2.4.0 library and is no longer compatible with the previously used version (0.9.x)
+Core files
+-----
+* `dist/ccpwgl_int.js`      - ccp webgl core library
+* `dist/ccpwgl_int.min.js`  - minified ccp webgl core library
+* `dist/ccpwgl.js`          - An example implementation of the ccp webgl library (_required for demos_)
 
+Demos
+-----
+* `demo/index.html`         - A collection of ccpwgl demonstrations
+* `demo/sof.html`           - Shows how to load ships using Space Object Factory and how to query its data
+* `demo/planets.html`       - Shows how to load planets
+* `demo/sun.html`           - Shows how to load suns (lens flares)
+* `demo/tech3.html`         - Shows how to load Tech III composite ships
+* `demo/cubeofdeath.html`   - Performance test (multiple ships)
+* `demo/fitting.html`       - Shows how to fit turrets on the ship
+* `demo/firing.html`        - Shows how to fire turrets
+* `demo/explosions.html`    - Shows how to construct, play and remove explosions
+* `demo/typeids.html`       - Shows how to query type ID data
 
-Building
+Updates
+-----
+* This project now uses webpack instead of grunt
+* The glMatrix library is now included in the library to simplify dependencies
+
+Installation
 ------
+1) Install  [Node.js](http://www.nodejs.org) along with the node package manager
+2) Clone `git clone https://github.com/ccpgames/ccpwgl.git`
+3) Run `npm install` once from your ccpwgl folder
 
-Building ccpwgl requires [Node.js](http://www.nodejs.org) and [Grunt](http://www.gruntjs.com) installed.
-After installing, run ```npm install``` once, which downloads the dependencies.
-
-If you are on Windows you will also need to install the Grunt CLI globally with ```npm install -g grunt-cli```.
-
-When all is set up, ```grunt [task]``` starts the build script.
-
-The default task runs the tasks "cc", "format", "min". "lint" is currently not in the
-chain for still reporting too many errors.
-
-**Available tasks**:
-* format: running jsbeautifier (based on .jsbeautifyrc)
-* lint: running jshint (based on .jshintrc)
-* min: running uglifyjs, producing `/dist/ccpwgl_int.min.js`
-* cc: running concat and jsbeautifier:cc producing `/dist/ccpwgl_int.js`
-* dist: running `min` and `cc` which compiles the ccpwgl_int files
-
-Documentation (Work in progress)
---------------------------------
-The following command line will create jsdoc html documentation in the `/docs` folder
-* > `jsdoc -c .jsdocs -d docs` (Windows users will need to add jsdocs to their path variables)
+Build
+-----
+1) Run `webpack` from your ccpwgl folder to build the `ccpwgl_int.js` and `ccpwgl_int.min.js` files

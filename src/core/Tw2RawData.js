@@ -8,7 +8,7 @@
  * @property {Array|null} elements.array
  * @constructor
  */
-function Tw2RawData()
+export function Tw2RawData()
 {
     this.nextOffset = 0;
     this.data = null;

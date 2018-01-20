@@ -1,4 +1,6 @@
-function EvePerMuzzleData()
+import {vec3, mat4} from '../math';
+
+export function EvePerMuzzleData()
 {
     this.started = false;
     this.readyToStart = false;
@@ -10,7 +12,7 @@ function EvePerMuzzleData()
     this.elapsedTime = 0;
 }
 
-function EveTurretFiringFX()
+export function EveTurretFiringFX()
 {
     this.name = '';
     this.display = true;
@@ -71,7 +73,7 @@ EveTurretFiringFX.prototype.Initialize = function()
     {
         this._perMuzzleData[7].constantDelay = this.firingDelay8;
     }
-}
+};
 
 EveTurretFiringFX.prototype.GetCurveDuration = function()
 {
@@ -85,17 +87,17 @@ EveTurretFiringFX.prototype.GetCurveDuration = function()
         }
     }
     return maxDuration;
-}
+};
 
 EveTurretFiringFX.prototype.GetPerMuzzleEffectCount = function()
 {
     return this.stretch.length;
-}
+};
 
 EveTurretFiringFX.prototype.SetMuzzleBoneID = function(index, bone)
 {
     this._perMuzzleData[index].muzzlePositionBone = bone;
-}
+};
 
 EveTurretFiringFX.prototype.GetBatches = function(mode, accumulator, perObjectData)
 {
@@ -110,12 +112,12 @@ EveTurretFiringFX.prototype.GetBatches = function(mode, accumulator, perObjectDa
             this.stretch[i].GetBatches(mode, accumulator, perObjectData);
         }
     }
-}
+};
 
 EveTurretFiringFX.prototype.GetMuzzleTransform = function(index)
 {
     return this._perMuzzleData[index].muzzleTransform;
-}
+};
 
 EveTurretFiringFX.prototype.Update = function(dt)
 {
@@ -165,7 +167,7 @@ EveTurretFiringFX.prototype.Update = function(dt)
         }
         this.stretch[i].Update(dt);
     }
-}
+};
 
 EveTurretFiringFX.prototype.PrepareFiring = function(delay, muzzleID)
 {
@@ -191,7 +193,7 @@ EveTurretFiringFX.prototype.PrepareFiring = function(delay, muzzleID)
         }
     }
     this.isFiring = true;
-}
+};
 
 EveTurretFiringFX.prototype.StartMuzzleEffect = function(muzzleID)
 {
@@ -214,7 +216,7 @@ EveTurretFiringFX.prototype.StartMuzzleEffect = function(muzzleID)
     }
     this._perMuzzleData[muzzleID].started = true;
     this._perMuzzleData[muzzleID].readyToStart = false;
-}
+};
 
 EveTurretFiringFX.prototype.StopFiring = function()
 {
@@ -243,7 +245,7 @@ EveTurretFiringFX.prototype.StopFiring = function()
         this._perMuzzleData[j].elapsedTime = 0;
     }
     this.isFiring = false;
-}
+};
 
 EveTurretFiringFX.prototype.UpdateViewDependentData = function()
 {
@@ -251,4 +253,4 @@ EveTurretFiringFX.prototype.UpdateViewDependentData = function()
     {
         this.stretch[j].UpdateViewDependentData();
     }
-}
+};

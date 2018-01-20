@@ -1,6 +1,8 @@
+import {resMan} from './Tw2ResMan';
+
 /**
- * Tw2Res - A Tw2Resource
- * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Tw2Res
+ * Resource - A Tw2Resource
+ * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Resource
  */
 
 /**
@@ -17,18 +19,21 @@
  * @property {null|Function} _onLoadPrepareFinished - optional callback fired on res prepare finish: callback(this, success)
  * @constructor
  */
-function Tw2Resource()
+export class Tw2Resource
 {
-    this.path = '';
-    this._isLoading = false;
-    this._isGood = false;
-    this._isPurged = false;
-    this._notifications = [];
-    this.activeFrame = 0;
-    this.doNotPurge = 0;
-    this._onLoadStarted = null;
-    this._onLoadFinished = null;
-    this._onPrepareFinished = null;
+    constructor()
+    {
+        this.path = '';
+        this._isLoading = false;
+        this._isGood = false;
+        this._isPurged = false;
+        this._notifications = [];
+        this.activeFrame = 0;
+        this.doNotPurge = 0;
+        this._onLoadStarted = null;
+        this._onLoadFinished = null;
+        this._onPrepareFinished = null;
+    }
 }
 
 /**
@@ -201,26 +206,3 @@ Tw2Resource.prototype.UnregisterNotification = function(notification)
         }
     }
 };
-
-
-
-/**
- * Inherit
- * @param derived
- * @param base
- */
-function Inherit(derived, base)
-{
-    for (var i in base.prototype)
-    {
-        if (base.prototype.hasOwnProperty(i))
-        {
-            if (!(i in derived.prototype))
-            {
-                derived.prototype[i] = base.prototype[i];
-            }
-        }
-    }
-
-    derived.prototype._super = base.prototype;
-}

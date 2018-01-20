@@ -1,3 +1,5 @@
+import {quat} from '../math';
+
 /**
  * Tw2EulerRotation
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {quat} currentValue=[0,0,0,1]
  * @constructor
  */
-function Tw2EulerRotation()
+export function Tw2EulerRotation()
 {
     this.name = '';
     this.yawCurve = null;

@@ -1,3 +1,8 @@
+import {emitter} from './Tw2EventEmitter';
+import {device} from './Tw2Device';
+import {resMan} from './Tw2ResMan';
+import {Tw2Resource} from './Tw2Resource';
+
 /**
  * Tw2TextureRes
  * @property {WebglTexture} texture
@@ -9,19 +14,22 @@
  * @property {boolean} hasMipMaps
  * @property {number} _currentSampler
  * @inherit Tw2Resource
- * @constructor
+ * @class
  */
-function Tw2TextureRes()
+export class Tw2TextureRes extends Tw2Resource
 {
-    this._super.constructor.call(this);
-    this.texture = null;
-    this.isCube = false;
-    this.images = [];
-    this.width = 0;
-    this.height = 0;
-    this._facesLoaded = 0;
-    this.hasMipMaps = false;
-    this._currentSampler = 0;
+    constructor()
+    {
+        super();
+        this.texture = null;
+        this.isCube = false;
+        this.images = [];
+        this.width = 0;
+        this.height = 0;
+        this._facesLoaded = 0;
+        this.hasMipMaps = false;
+        this._currentSampler = 0;
+    }
 }
 
 /**
@@ -122,13 +130,13 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
             resMan._pendingLoads--;
             self.LoadFinished(false);
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: self.path
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
             delete self.images;
         };
         this.images[0].onload = function()
@@ -159,13 +167,13 @@ Tw2TextureRes.prototype.DoCustomLoad = function(path)
             resMan._pendingLoads--;
             self.LoadFinished(false);
             emitter.log('res.error',
-            {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: self.path
-            });
+                {
+                    log: 'error',
+                    src: ['Tw2TextureRes', 'DoCustomLoad'],
+                    msg: 'Error loading resource',
+                    type: 'http.error',
+                    path: self.path
+                });
             delete self.images;
         };
         this.images[0].onload = function()
@@ -249,9 +257,3 @@ Tw2TextureRes.prototype.Bind = function(sampler, slices)
         this._currentSampler = sampler.hash;
     }
 };
-
-Inherit(Tw2TextureRes, Tw2Resource);
-
-// Register 'png' and 'cube' extensions with the resource manager
-resMan.RegisterExtension('png', Tw2TextureRes);
-resMan.RegisterExtension('cube', Tw2TextureRes);

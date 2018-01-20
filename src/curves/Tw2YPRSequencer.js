@@ -1,3 +1,5 @@
+import {vec3, quat} from '../math';
+
 /**
  * Tw2YPRSequencer
  * @property {string} name
@@ -8,7 +10,7 @@
  * @property RollCurve
  * @constructor
  */
-function Tw2YPRSequencer()
+export function Tw2YPRSequencer()
 {
     this.name = '';
     this.value = quat.create();

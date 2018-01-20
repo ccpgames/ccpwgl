@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2VectorSequencer
  * @property {string} name
@@ -7,7 +9,7 @@
  * @property {Array} functions
  * @constructor
  */
-function Tw2VectorSequencer()
+export function Tw2VectorSequencer()
 {
     this.name = '';
     this.start = 0;

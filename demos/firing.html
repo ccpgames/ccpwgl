@@ -4,16 +4,18 @@
     <title>Ship Firing</title>
 
     <link rel="stylesheet" href="demos.css">
-    <script type="text/javascript" src="../dist/external/glMatrix-2.4.0.min.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl_int.js"></script>
     <script type="text/javascript" src="../dist/ccpwgl.js"></script>
-    <script type="text/javascript" src="TestCamera2.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="demos.js"></script>
 
     <script type="text/javascript">
         function OnDocLoad()
         {
+            var vec4 = ccpwgl_int.math.vec4,
+                quat = ccpwgl_int.math.quat,
+                mat4 = ccpwgl_int.math.mat4;
+
             var canvas = document.getElementById('mainCanvas');
             ccpwgl.initialize(canvas, demos.options);
 

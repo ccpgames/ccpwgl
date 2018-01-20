@@ -7,7 +7,7 @@
  * @property {number} length
  * @constructor
  */
-function Tw2MayaScalarCurve()
+export function Tw2MayaScalarCurve()
 {
     this.index = -1;
     this.animationEngine = null;

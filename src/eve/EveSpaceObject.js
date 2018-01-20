@@ -1,3 +1,8 @@
+import {vec3, vec4, mat4} from '../math';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2AnimationController} from '../core';
+
 /**
  * EveObject
  * @typedef {EveSpaceObject|EveStation|EveShip|EveTransform|EveEffectRoot|EvePlanet} EveObject
@@ -38,83 +43,86 @@
  * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
  * @parameter {number} killCount                            - number of kills to show on kill counter decals
  * @parameter {Tw2PerObjectData} _perObjectData
- * @constructor
+ * @class
  */
-function EveSpaceObject()
+export class EveSpaceObject
 {
-    this.name = '';
-    this.lod = 3;
-    this.mesh = null;
-    this.locators = [];
+    constructor()
+    {
+        this.name = '';
+        this.lod = 3;
+        this.mesh = null;
+        this.locators = [];
 
-    this.spriteSets = [];
-    this.turretSets = [];
-    this.decals = [];
-    this.spotlightSets = [];
-    this.planeSets = [];
-    this.curveSets = [];
-    this.lineSets = [];
-    this.overlayEffects = [];
-    this.children = [];
-    this.effectChildren = [];
+        this.spriteSets = [];
+        this.turretSets = [];
+        this.decals = [];
+        this.spotlightSets = [];
+        this.planeSets = [];
+        this.curveSets = [];
+        this.lineSets = [];
+        this.overlayEffects = [];
+        this.children = [];
+        this.effectChildren = [];
 
-    this.boundingSphereCenter = vec3.create();
-    this.boundingSphereRadius = 0;
-    this.shapeEllipsoidRadius = vec3.create();
-    this.shapeEllipsoidCenter = vec3.create();
+        this.boundingSphereCenter = vec3.create();
+        this.boundingSphereRadius = 0;
+        this.shapeEllipsoidRadius = vec3.create();
+        this.shapeEllipsoidCenter = vec3.create();
 
-    this.transform = mat4.create();
-    this.animation = new Tw2AnimationController();
+        this.transform = mat4.create();
+        this.animation = new Tw2AnimationController();
 
-    this.display = true;
-    this.visible = {};
-    this.visible.mesh = true;
-    this.visible.children = true;
-    this.visible.effectChildren = true;
-    this.visible.planeSets = true;
-    this.visible.spotlightSets = true;
-    this.visible.decals = true;
-    this.visible.spriteSets = true;
-    this.visible.overlayEffects = true;
-    this.visible.lineSets = true;
-    this.visible.killmarks = true;
-    this._customMasks = [];
+        this.display = true;
+        this.visible = {};
+        this.visible.mesh = true;
+        this.visible.children = true;
+        this.visible.effectChildren = true;
+        this.visible.planeSets = true;
+        this.visible.spotlightSets = true;
+        this.visible.decals = true;
+        this.visible.spriteSets = true;
+        this.visible.overlayEffects = true;
+        this.visible.lineSets = true;
+        this.visible.killmarks = true;
+        this._customMasks = [];
 
-    this.killCount = 0;
+        this.killCount = 0;
 
-    this._perObjectData = new Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-    this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-    this._perObjectData.perObjectVSData.Create();
+        this._perObjectData = new Tw2PerObjectData();
+        this._perObjectData.perObjectVSData = new Tw2RawData();
+        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
+        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
+        this._perObjectData.perObjectVSData.Declare('JointMat', 696);
+        this._perObjectData.perObjectVSData.Create();
 
-    this._perObjectData.perObjectPSData = new Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-    this._perObjectData.perObjectPSData.Create();
+        this._perObjectData.perObjectPSData = new Tw2RawData();
+        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
+        this._perObjectData.perObjectPSData.Create();
 
-    this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+        this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
+        this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
+        this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
+        this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
 
-    mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-    mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
+    }
 }
 
 /**
@@ -233,12 +241,12 @@ EveSpaceObject.prototype.AddCustomMask = function(position, scaling, rotation, i
     mat4.transpose(transform, transform);
 
     this._customMasks.push(
-    {
-        transform: transform,
-        maskData: vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
-        materialID: vec4.fromValues(sourceMaterial, 0, 0, 0),
-        targets: targetMaterials
-    });
+        {
+            transform: transform,
+            maskData: vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
+            materialID: vec4.fromValues(sourceMaterial, 0, 0, 0),
+            targets: targetMaterials
+        });
 };
 
 /**
@@ -294,7 +302,7 @@ EveSpaceObject.prototype.UpdateViewDependentData = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveSpaceObject.prototype.GetBatches = function(mode, accumulator)
@@ -495,7 +503,7 @@ EveSpaceObject.prototype.RenderDebugInfo = function(debugHelper)
 };
 
 /**
- * EveStation inherits from EveSpaceObject
+ * EveStation
  * @type {EveSpaceObject}
  */
-var EveStation = EveSpaceObject;
+export const EveStation = EveSpaceObject;

@@ -1,3 +1,8 @@
+import {vec3} from '../math';
+import {resMan} from './Tw2ResMan';
+import {Tw2Mesh} from './Tw2Mesh';
+import {Tw2RenderBatch} from './Tw2BatchAccumulator';
+
 /**
  * Tw2InstancedMesh
  * @property instanceGeometryResource
@@ -8,35 +13,36 @@
  * @inherit Tw2Mesh
  * @constructor
  */
-function Tw2InstancedMesh()
+export class Tw2InstancedMesh extends Tw2Mesh
 {
-    this._super.constructor.call(this);
-    this.instanceGeometryResource = null;
-    this.instanceGeometryResPath = '';
-    this.instanceMeshIndex = 0;
-    this.minBounds = vec3.create();
-    this.maxBounds = vec3.create();
-}
-
-Inherit(Tw2InstancedMesh, Tw2Mesh);
-
-/**
- * Initializes the Tw2InstancedMesh
- * @prototype
- */
-Tw2InstancedMesh.prototype.Initialize = function()
-{
-    this._super.Initialize.call(this);
-    if (this.instanceGeometryResPath !== '')
+    constructor()
     {
-        this.instanceGeometryResource = resMan.GetResource(this.instanceGeometryResPath);
+        super();
+        this.instanceGeometryResource = null;
+        this.instanceGeometryResPath = '';
+        this.instanceMeshIndex = 0;
+        this.minBounds = vec3.create();
+        this.maxBounds = vec3.create();
     }
-};
+
+    /**
+     * Initializes the Tw2InstancedMesh
+     * @prototype
+     */
+    Initialize()
+    {
+        super.Initialize();
+        if (this.instanceGeometryResPath !== '')
+        {
+            this.instanceGeometryResource = resMan.GetResource(this.instanceGeometryResPath);
+        }
+    }
+}
 
 /**
  * _GetAreaBatches
  * @param {Array.<Tw2MeshArea>} areas
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  * @private
@@ -108,20 +114,21 @@ Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
  * @property {number} count
  * @property {Tw2Effect|null} effect
  * @inherit Tw2RenderBatch
- * @constructor
+ * @class
  */
-function Tw2InstancedMeshBatch()
+export class Tw2InstancedMeshBatch extends Tw2RenderBatch
 {
-    this._super.constructor.call(this);
-    this.instanceMesh = null;
-    this.geometryRes = null;
-    this.meshIx = 0;
-    this.start = 0;
-    this.count = 1;
-    this.effect = null;
+    constructor()
+    {
+        super();
+        this.instanceMesh = null;
+        this.geometryRes = null;
+        this.meshIx = 0;
+        this.start = 0;
+        this.count = 1;
+        this.effect = null;
+    }
 }
-
-Inherit(Tw2InstancedMeshBatch, Tw2RenderBatch);
 
 /**
  * Commits the Tw2InstancedMeshBatch for rendering

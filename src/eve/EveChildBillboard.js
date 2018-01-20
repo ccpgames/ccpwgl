@@ -1,3 +1,8 @@
+import {vec3, quat, mat4} from '../math';
+import {device} from '../core';
+import {Tw2RawData} from '../core';
+import {EveBasicPerObjectData} from './EveTransform';
+
 /**
  * Mesh attachment to space object and oriented towards the camera
  * @property {string} name
@@ -16,7 +21,7 @@
  * @property {EveBasicPerObjectData} _perObjectData
  * @constructor
  */
-function EveChildBillboard()
+export function EveChildBillboard()
 {
     this.name = '';
     this.display = true;
@@ -84,7 +89,7 @@ EveChildBillboard.prototype.Update = function(parentTransform)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveChildBillboard.prototype.GetBatches = function(mode, accumulator)

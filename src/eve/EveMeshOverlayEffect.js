@@ -1,3 +1,5 @@
+import {device} from '../core';
+
 /**
  * Constructor for Overlay Effects
  * @property {boolean} update
@@ -51,7 +53,7 @@ EveMeshOverlayEffect.prototype.Update = function(dt)
 
 /**
  * Gets effects
- * @param {RenderMode} mode
+ * @param {number} mode
  * @returns {Array.<Tw2Effect>}
  */
 EveMeshOverlayEffect.prototype.GetEffects = function(mode)

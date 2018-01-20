@@ -7,7 +7,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ScalarKey()
+export function Tw2ScalarKey()
 {
     this.time = 0;
     this.value = 0;
@@ -29,7 +29,7 @@ function Tw2ScalarKey()
  * @property {number} _currKey
  * @constructor
  */
-function Tw2ScalarCurve()
+export function Tw2ScalarCurve()
 {
     this.name = '';
     this.start = 0;

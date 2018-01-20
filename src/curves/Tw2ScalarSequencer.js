@@ -11,7 +11,7 @@
  * @property {boolean} clamping
  * @constructor
  */
-function Tw2ScalarSequencer()
+export function Tw2ScalarSequencer()
 {
     this.name = '';
     this.value = 0;

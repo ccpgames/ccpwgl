@@ -3,7 +3,7 @@
  * @param data
  * @constructor
  */
-function Tw2BinaryReader(data)
+export function Tw2BinaryReader(data)
 {
     this.data = data;
     this.cursor = 0;

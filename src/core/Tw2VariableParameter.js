@@ -1,3 +1,5 @@
+import {variableStore} from './Tw2VariableStore';
+
 /**
  * Tw2VariableParameter
  * @param {string} [name=''] Parameter name

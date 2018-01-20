@@ -1,10 +1,14 @@
+import {device} from './Tw2Device';
+import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
+import {Tw2ParticleElementDeclaration} from '../particle';
+
 /**
  * Tw2RuntimeInstanceData
  * @property {string} name
  * @property {number} count
  * @constructor
  */
-function Tw2RuntimeInstanceData()
+export function Tw2RuntimeInstanceData()
 {
     this.name = '';
     this.count = 0;

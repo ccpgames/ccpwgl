@@ -1,3 +1,6 @@
+import {vec3} from '../math';
+import {EveMissileWarhead} from './EveMissileWarhead';
+
 /**
  * EveMissile
  * @property {String} name
@@ -55,7 +58,7 @@ EveMissile.prototype.UpdateViewDependentData = function()
 
 /**
  * Accumulates render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveMissile.prototype.GetBatches = function(mode, accumulator)

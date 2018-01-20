@@ -1,3 +1,5 @@
+import {vec3, quat} from '../math';
+
 /**
  * Tw2MayaEulerRotationCurve
  * @property {number} xIndex
@@ -10,7 +12,7 @@
  * @property {quat} quatValue
  * @constructor
  */
-function Tw2MayaEulerRotationCurve()
+export function Tw2MayaEulerRotationCurve()
 {
     this.xIndex = -1;
     this.yIndex = -1;

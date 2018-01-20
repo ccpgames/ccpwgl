@@ -1,3 +1,5 @@
+import {vec3} from '../math';
+
 /**
  * Tw2MayaVector3Curve
  * @property {number} xIndex
@@ -8,7 +10,7 @@
  * @property {vec3} value
  * @constructor
  */
-function Tw2MayaVector3Curve()
+export function Tw2MayaVector3Curve()
 {
     this.xIndex = -1;
     this.yIndex = -1;

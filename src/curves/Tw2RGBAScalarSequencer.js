@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2RGBAScalarSequencer
  * @property {vec4} value
@@ -7,7 +9,7 @@
  * @property {*} AlphaCurve
  * @constructor
  */
-function Tw2RGBAScalarSequencer()
+export function Tw2RGBAScalarSequencer()
 {
     this.value = vec4.create();
     this.RedCurve = null;

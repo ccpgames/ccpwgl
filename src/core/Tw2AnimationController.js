@@ -1,10 +1,12 @@
+import {vec3, quat, mat3, mat4} from '../math';
+
 /**
  * Tw2Track
  * @property {Tw2GeometryTransformTrack} trackRes
  * @property {Tw2Bone} bone
  * @constructor
  */
-function Tw2Track()
+export function Tw2Track()
 {
     this.trackRes = null;
     this.bone = null;
@@ -18,7 +20,7 @@ function Tw2Track()
  * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
  * @constructor
  */
-function Tw2TrackGroup()
+export function Tw2TrackGroup()
 {
     this.trackGroupRes = null;
     this.model = null;
@@ -37,7 +39,7 @@ function Tw2TrackGroup()
  * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
  * @constructor
  */
-function Tw2Animation()
+export function Tw2Animation()
 {
     this.animationRes = null;
     this.time = 0;
@@ -67,7 +69,7 @@ Tw2Animation.prototype.IsFinished = function()
  * @property {mat4} offsetTransform
  * @constructor
  */
-function Tw2Bone()
+export function Tw2Bone()
 {
     this.boneRes = null;
     this.localTransform = mat4.create();
@@ -83,7 +85,7 @@ function Tw2Bone()
  * @property {Object.<string, Tw2Bone>} bonesByName - An object containing every Tw2Bone name and it's object
  * @constructor
  */
-function Tw2Model()
+export function Tw2Model()
 {
     this.modelRes = null;
     this.bones = [];
@@ -105,7 +107,7 @@ function Tw2Model()
  * @property {Function} [onLoaded] an optional callback fired when any commands are cleared
  * @prototype
  */
-function Tw2AnimationController(geometryResource)
+export function Tw2AnimationController(geometryResource)
 {
     this.geometryResources = [];
     this.models = [];
@@ -414,7 +416,7 @@ Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
                 meshBindings.resource = resource;
                 this.meshBindings.push(meshBindings);
             }
-            meshBindings[meshIx] = new glMatrix.ARRAY_TYPE(resource.models[i].meshBindings[j].bones.length * 12);
+            meshBindings[meshIx] = new Float32Array(resource.models[i].meshBindings[j].bones.length * 12);
             for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
             {
                 for (var n = 0; n < model.bones.length; ++n)
@@ -513,10 +515,10 @@ Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
     if (this.animations.length === 0)
     {
         this.pendingCommands.push(
-        {
-            'func': this.PlayAnimation,
-            'args': [name, cycle, callback]
-        });
+            {
+                'func': this.PlayAnimation,
+                'args': [name, cycle, callback]
+            });
         return true;
     }
 
@@ -552,10 +554,10 @@ Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle,
     if (this.animations.length === 0)
     {
         this.pendingCommands.push(
-        {
-            'func': this.PlayAnimationFrom,
-            'args': [name, from, cycle, callback]
-        });
+            {
+                'func': this.PlayAnimationFrom,
+                'args': [name, from, cycle, callback]
+            });
         return true;
     }
 
@@ -609,10 +611,10 @@ Tw2AnimationController.prototype.StopAnimation = function(names)
     if (this.animations.length === 0)
     {
         this.pendingCommands.push(
-        {
-            'func': this.StopAnimation,
-            'args': names
-        });
+            {
+                'func': this.StopAnimation,
+                'args': names
+            });
         return;
     }
 
@@ -646,10 +648,10 @@ Tw2AnimationController.prototype.StopAllAnimations = function()
     if (this.animations.length === 0)
     {
         this.pendingCommands.push(
-        {
-            'func': this.StopAllAnimations,
-            'args': null
-        });
+            {
+                'func': this.StopAllAnimations,
+                'args': null
+            });
         return;
     }
 
@@ -669,10 +671,10 @@ Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
     if (this.animations.length === 0)
     {
         this.pendingCommands.push(
-        {
-            'func': this.StopAllAnimationsExcept,
-            'args': names
-        });
+            {
+                'func': this.StopAllAnimationsExcept,
+                'args': names
+            });
         return;
     }
 

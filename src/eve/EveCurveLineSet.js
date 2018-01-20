@@ -1,3 +1,13 @@
+import {vec3, vec4, quat, mat4} from '../math';
+import {device} from '../core';
+import {Tw2Effect} from '../core';
+import {Tw2TextureParameter} from '../core';
+import {Tw2PerObjectData} from '../core';
+import {Tw2RawData} from '../core';
+import {Tw2VertexElement} from '../core';
+import {Tw2VertexDeclaration} from '../core';
+
+
 /**
  * EveCurveLineSet
  * @property {String} name
@@ -20,7 +30,7 @@
  * @property {Tw2VertexDeclaration} declaration
  * @constructor
  */
-function EveCurveLineSet()
+export function EveCurveLineSet()
 {
     this.name = '';
     this.display = true;
@@ -35,7 +45,7 @@ function EveCurveLineSet()
     this.transform = mat4.create();
 
     this.lineEffect = new Tw2Effect();
-    this.lineEffect.effectFilePath = "res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx";
+    this.lineEffect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx';
     this.lineEffect.parameters['TexMap'] = new Tw2TextureParameter('TexMap', 'res:/texture/global/white.dds.0.png');
     this.lineEffect.parameters['OverlayTexMap'] = new Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
     this.lineEffect.Initialize();
@@ -681,7 +691,7 @@ EveCurveLineSet.LINETYPE_CURVED = 3;
 
 /**
  * Accumulates render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveCurveLineSet.prototype.GetBatches = function(mode, accumulator)

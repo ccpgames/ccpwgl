@@ -7,7 +7,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2ScalarKey2()
+export function Tw2ScalarKey2()
 {
     this.time = 0;
     this.value = 0;
@@ -33,7 +33,7 @@ function Tw2ScalarKey2()
  * @property {Array.<Tw2ScalarKey2>} keys
  * @constructor
  */
-function Tw2ScalarCurve2()
+export function Tw2ScalarCurve2()
 {
     this.name = '';
     this.length = 0;

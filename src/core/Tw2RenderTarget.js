@@ -1,14 +1,17 @@
+import {device} from './Tw2Device';
+import {Tw2TextureRes} from './Tw2TextureRes';
+
 /**
  * Tw2RenderTarget
  * @property {Tw2TextureRes} texture
- * @property {WebglFrameBuffer} _frameBuffer
- * @property {WebglRenderBuffer} _renderBuffer
+ * @property {WebGLFramebuffer} _frameBuffer
+ * @property {WebGLRenderbuffer} _renderBuffer
  * @property {number} width - width of the resulting texture
  * @property {number} height - height of the resulting texture
  * @property {boolean} hasDepth - Controls whether depth is considered when creating the webgl buffers
  * @constructor
  */
-function Tw2RenderTarget()
+export function Tw2RenderTarget()
 {
     this.texture = null;
     this._frameBuffer = null;

@@ -1,3 +1,6 @@
+import {vec3, mat4} from '../math';
+import {Tw2Float} from '../core';
+
 /**
  * EveStretch
  * @property {String} name
@@ -20,7 +23,7 @@
  * @property {boolean} _isNegZForward
  * @constructor
  */
-function EveStretch()
+export function EveStretch()
 {
     this.name = '';
     this.display = true;
@@ -201,7 +204,7 @@ EveStretch.prototype.UpdateViewDependentData = function()
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  * @param {Tw2PerObjectData} perObjectData
  */

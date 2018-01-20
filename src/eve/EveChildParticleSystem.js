@@ -1,3 +1,7 @@
+import {vec3, quat, mat4} from '../math';
+import {Tw2RawData} from '../core';
+import {EveBasicPerObjectData} from './EveTransform';
+
 /**
  * Particle system attachment to space object
  * @property {string} name
@@ -18,7 +22,7 @@
  * @property {EveBasicPerObjectData} _perObjectData
  * @constructor
  */
-function EveChildParticleSystem()
+export function EveChildParticleSystem()
 {
     this.name = '';
     this.display = true;
@@ -74,7 +78,7 @@ EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
 
 /**
  * Gets render batches
- * @param {RenderMode} mode
+ * @param {number} mode
  * @param {Tw2BatchAccumulator} accumulator
  */
 EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
@@ -87,7 +91,6 @@ EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
     mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
     this.mesh.GetBatches(mode, accumulator, this._perObjectData);
 };
-
 
 
 /**

@@ -1,3 +1,5 @@
+import {vec3, quat, mat4} from '../math';
+
 /**
  * Tw2TransformParameter
  * @param {string} [name='']
@@ -8,7 +10,7 @@
  * @parameter {mat4} worldTransform
  * @constructor
  */
-function Tw2TransformParameter(name)
+export function Tw2TransformParameter(name)
 {
     if (typeof(name) !== 'undefined')
     {

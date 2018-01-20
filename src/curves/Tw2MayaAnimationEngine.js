@@ -1,3 +1,5 @@
+import {vec4} from '../math';
+
 /**
  * Tw2MayaAnimationEngine
  * TODO: Complete the prototype `_EvaluteBezier`
@@ -8,7 +10,7 @@
  * @property _evalCache
  * @constructor
  */
-function Tw2MayaAnimationEngine()
+export function Tw2MayaAnimationEngine()
 {
     this.curves = [];
     this.hermiteSegments = [];
@@ -334,7 +336,8 @@ Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, fir
     {
         low = 0;
         high = len - 1;
-        do {
+        do
+        {
             mid = (low + high) >> 1;
             if (mid < (len - 1))
             {

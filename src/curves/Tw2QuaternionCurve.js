@@ -1,3 +1,5 @@
+import {vec4, quat} from '../math';
+
 /**
  * Tw2QuaternionKey2
  * @property {number} time
@@ -7,7 +9,7 @@
  * @property {number} interpolation
  * @constructor
  */
-function Tw2QuaternionKey2()
+export function Tw2QuaternionKey2()
 {
     this.time = 0;
     this.value = quat.create();
@@ -34,7 +36,7 @@ function Tw2QuaternionKey2()
  * @property {Array.<Tw2QuaternionKey>} keys
  * @constructor
  */
-function Tw2QuaternionCurve()
+export function Tw2QuaternionCurve()
 {
     this.name = '';
     this.length = 0;
