@@ -1,10 +1,11 @@
 import {vec3, vec4, quat} from '../../math';
 
 /**
- * Tw2Key base class
+ * Tw2CurveKey base class
  *
  * @property {string} name
  * @property {number} time
+ * @class
  */
 export class Tw2CurveKey
 {
@@ -152,7 +153,7 @@ Tw2Curve.curveType = null;
 
 /**
  * The curve's Key constructor
- * @type {?|Tw2CurveKey|Tw2Curve}
+ * @type {?|Tw2CurveKey}
  */
 Tw2Curve.Key = null;
 
@@ -175,7 +176,7 @@ Tw2Curve.Extrapolation = null;
 Tw2Curve.Type = {
     CURVE: 1,
     CURVE2: 2,
-    CURVE_MAYA: 4,
+    CURVE_MAYA: 3,
     SEQUENCER: 100,
     SEQUENCER2: 101,
 };
