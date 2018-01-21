@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 47);
+/******/ 	return __webpack_require__(__webpack_require__.s = 51);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,7 +84,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _num = __webpack_require__(48);
+var _num = __webpack_require__(28);
 
 Object.keys(_num).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(49);
+var _vec = __webpack_require__(52);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -108,7 +108,7 @@ Object.keys(_vec).forEach(function (key) {
   });
 });
 
-var _vec2 = __webpack_require__(27);
+var _vec2 = __webpack_require__(32);
 
 Object.keys(_vec2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -120,7 +120,7 @@ Object.keys(_vec2).forEach(function (key) {
   });
 });
 
-var _vec3 = __webpack_require__(28);
+var _vec3 = __webpack_require__(33);
 
 Object.keys(_vec3).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(55);
+var _quat = __webpack_require__(58);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(56);
+var _mat = __webpack_require__(59);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(57);
+var _mat2 = __webpack_require__(60);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(58);
+var _noise = __webpack_require__(61);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -176,6 +176,18 @@ Object.keys(_noise).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _noise[key];
+    }
+  });
+});
+
+var _curve = __webpack_require__(62);
+
+Object.keys(_curve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _curve[key];
     }
   });
 });
@@ -191,7 +203,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 Object.keys(_Tw2Device).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -203,7 +215,7 @@ Object.keys(_Tw2Device).forEach(function (key) {
   });
 });
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
 Object.keys(_Tw2ResMan).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -215,7 +227,7 @@ Object.keys(_Tw2ResMan).forEach(function (key) {
   });
 });
 
-var _Tw2VariableStore = __webpack_require__(13);
+var _Tw2VariableStore = __webpack_require__(16);
 
 Object.keys(_Tw2VariableStore).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -227,7 +239,7 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(61);
+var _Tw2AnimationController = __webpack_require__(65);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +251,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(20);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +263,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2CurveSet = __webpack_require__(62);
+var _Tw2CurveSet = __webpack_require__(66);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -263,7 +275,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2Effect = __webpack_require__(18);
+var _Tw2Effect = __webpack_require__(21);
 
 Object.keys(_Tw2Effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +287,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2EffectRes = __webpack_require__(63);
+var _Tw2EffectRes = __webpack_require__(67);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +299,7 @@ Object.keys(_Tw2EffectRes).forEach(function (key) {
   });
 });
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
 Object.keys(_Tw2EventEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +311,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(64);
+var _Tw2Float = __webpack_require__(68);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -311,7 +323,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(15);
+var _Tw2FloatParameter = __webpack_require__(18);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +335,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(65);
+var _Tw2Frustum = __webpack_require__(69);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -335,7 +347,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(32);
+var _Tw2GeometryRes = __webpack_require__(37);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -347,7 +359,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(66);
+var _Tw2InstancedMesh = __webpack_require__(70);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -359,7 +371,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(14);
+var _Tw2MatrixParameter = __webpack_require__(17);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -371,7 +383,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(33);
+var _Tw2Mesh = __webpack_require__(38);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -383,7 +395,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2ObjectReader = __webpack_require__(31);
+var _Tw2ObjectReader = __webpack_require__(36);
 
 Object.keys(_Tw2ObjectReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -395,7 +407,7 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(67);
+var _Tw2PerObjectData = __webpack_require__(71);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +419,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PostProcess = __webpack_require__(68);
+var _Tw2PostProcess = __webpack_require__(72);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -419,7 +431,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(69);
+var _Tw2RawData = __webpack_require__(73);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -431,7 +443,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(34);
+var _Tw2RenderTarget = __webpack_require__(39);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -443,7 +455,7 @@ Object.keys(_Tw2RenderTarget).forEach(function (key) {
   });
 });
 
-var _Tw2Resource = __webpack_require__(9);
+var _Tw2Resource = __webpack_require__(11);
 
 Object.keys(_Tw2Resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -455,7 +467,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(70);
+var _Tw2RuntimeInstanceData = __webpack_require__(74);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -467,7 +479,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerState = __webpack_require__(19);
+var _Tw2SamplerState = __webpack_require__(22);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -479,7 +491,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(16);
+var _Tw2TextureParameter = __webpack_require__(19);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -491,7 +503,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(21);
+var _Tw2TextureRes = __webpack_require__(24);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -503,7 +515,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(87);
+var _Tw2TransformParameter = __webpack_require__(91);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -515,7 +527,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(88);
+var _Tw2ValueBinding = __webpack_require__(92);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -527,7 +539,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(89);
+var _Tw2VariableParameter = __webpack_require__(93);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -539,7 +551,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(30);
+var _Tw2Vector2Parameter = __webpack_require__(35);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -551,7 +563,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(29);
+var _Tw2Vector3Parameter = __webpack_require__(34);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -563,7 +575,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(8);
+var _Tw2Vector4Parameter = __webpack_require__(10);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -575,7 +587,7 @@ Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -597,25 +609,246 @@ Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Tw2Curve = exports.Tw2CurveKey = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Key base class
+ *
+ * @property {string} name
+ * @property {number} time
+ */
+var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
+    _classCallCheck(this, Tw2CurveKey);
+
+    this.name = '';
+    this.time = 0;
+};
+
+/**
+ * Tw2Curve base class
+ *
+ * @property {string} name
+ * @property {number} length
+ * @class
+ */
+
+
+var Tw2Curve = exports.Tw2Curve = function () {
+    function Tw2Curve() {
+        _classCallCheck(this, Tw2Curve);
+
+        this.name = '';
+    }
+
+    /**
+     * Initializes the Curve
+     */
+
+
+    _createClass(Tw2Curve, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.Sort();
+        }
+
+        /**
+         * Sorts the curve
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort() {}
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return 0;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {}
+
+        /**
+         * Compares curve keys
+         * @param {Tw2CurveKey} a
+         * @param {Tw2CurveKey} b
+         * @returns {number}
+         */
+
+    }], [{
+        key: 'Compare',
+        value: function Compare(a, b) {
+            if (a.time < b.time) return -1;
+            if (a.time > b.time) return 1;
+            return 0;
+        }
+
+        /**
+         * Sorts legacy curve keys
+         * @param {*} curve
+         * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort(curve) {
+            var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : curve.keys;
+
+            curve._length = 0;
+            if (keys && keys.length) {
+                keys.sort(Tw2Curve.Compare);
+                curve.length = keys[keys.length - 1].time;
+            }
+        }
+
+        /**
+         * Sorts curve keys
+         * @param {*} curve
+         */
+
+    }, {
+        key: 'Sort2',
+        value: function Sort2(curve) {
+            curve._length = 0;
+            if (curve.keys && curve.keys.length) {
+                curve.keys.sort(Tw2Curve.Compare);
+                var back = curve.keys[curve.keys.length - 1];
+
+                if (back.time > curve._length) {
+                    var preLength = curve._length,
+                        endValue = curve.endValue,
+                        endTangent = curve.endTangent;
+
+                    curve._length = back.time;
+                    curve.endValue = back.value;
+                    curve.endTangent = back.leftTangent;
+
+                    if (preLength > 0) {
+                        back.time = preLength;
+                        back.value = endValue;
+                        back.leftTangent = endTangent;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return Tw2Curve;
+}();
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2Curve.inputDimension = null;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2Curve.outputDimension = null;
+
+/**
+ * The curve's current value property
+ * @type {null}
+ */
+Tw2Curve.valueProperty = null;
+
+/**
+ * The curve's type
+ * @type {?number}
+ */
+Tw2Curve.curveType = null;
+
+/**
+ * The curve's Key constructor
+ * @type {?|Tw2CurveKey|Tw2Curve}
+ */
+Tw2Curve.Key = null;
+
+/**
+ * Interpolation types
+ * @type {?{ string: number}}
+ */
+Tw2Curve.Interpolation = null;
+
+/**
+ * Extrapolation types
+ * @type {?{ string: number}}
+ */
+Tw2Curve.Extrapolation = null;
+
+/**
+ * Curve types
+ * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
+ */
+Tw2Curve.Type = {
+    CURVE: 1,
+    CURVE2: 2,
+    CURVE_MAYA: 4,
+    SEQUENCER: 100,
+    SEQUENCER2: 101
+};
+
+/**
+ * Class globals
+ * @type {*}
+ */
+Tw2Curve.global = {
+    vec3_0: _math.vec3.create(),
+    vec4_0: _math.vec4.create(),
+    quat_0: _math.quat.create(),
+    quat_1: _math.quat.create()
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.device = undefined;
 
 var _index = __webpack_require__(0);
 
-var _Tw2VariableStore = __webpack_require__(13);
+var _Tw2VariableStore = __webpack_require__(16);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2MatrixParameter = __webpack_require__(14);
+var _Tw2MatrixParameter = __webpack_require__(17);
 
-var _Tw2Vector4Parameter = __webpack_require__(8);
+var _Tw2Vector4Parameter = __webpack_require__(10);
 
-var _Tw2Effect = __webpack_require__(18);
+var _Tw2Effect = __webpack_require__(21);
 
-var _Tw2VertexDeclaration = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
-var WebGLDebugUtil = __webpack_require__(59);
+var WebGLDebugUtil = __webpack_require__(63);
 
 /**
  * Tw2Device
@@ -1648,7 +1881,7 @@ Tw2Device.prototype.BLENDOP_MAX = 5;
 var device = exports.device = new Tw2Device();
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1659,11 +1892,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.resMan = exports.Tw2LoadingObject = undefined;
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2ObjectReader = __webpack_require__(31);
+var _Tw2ObjectReader = __webpack_require__(36);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2522,7 +2755,7 @@ function Tw2ResMan() {
 var resMan = exports.resMan = new Tw2ResMan();
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2600,7 +2833,101 @@ function equals(a, b) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2CurveSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _curves = __webpack_require__(14);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2CurveSequencer base class
+ *
+ * @class
+ */
+var Tw2CurveSequencer = exports.Tw2CurveSequencer = function (_Tw2Curve) {
+    _inherits(Tw2CurveSequencer, _Tw2Curve);
+
+    function Tw2CurveSequencer() {
+        _classCallCheck(this, Tw2CurveSequencer);
+
+        return _possibleConstructorReturn(this, (Tw2CurveSequencer.__proto__ || Object.getPrototypeOf(Tw2CurveSequencer)).call(this));
+    }
+
+    /**
+     * Legacy sequencer sorting
+     * @param {Tw2CurveSequencer} sequencer
+     */
+
+
+    _createClass(Tw2CurveSequencer, null, [{
+        key: 'Sort',
+        value: function Sort(sequencer) {
+            var curves = sequencer['functions'];
+            if (curves && curves.length) {
+                for (var i = 0; i < curves.length; i++) {
+                    if (curves[i] && 'Sort' in curves[i]) curves[i].Sort();
+                }
+            }
+        }
+
+        /**
+         * Standard sequencer sorting
+         * @param {Tw2CurveSequencer} sequencer
+         */
+
+    }, {
+        key: 'Sort2',
+        value: function Sort2(sequencer) {
+            var names = sequencer.constructor.childProperties;
+            if (names) {
+                for (var i = 0; i < names.length; i++) {
+                    var curve = sequencer[names[i]];
+                    if (curve && 'Sort' in curve) curve.Sort();
+                }
+            }
+        }
+    }]);
+
+    return Tw2CurveSequencer;
+}(_curves.Tw2Curve);
+
+/**
+ * The sequencer's curve property names
+ * @type {?Array.<string>}
+ */
+
+
+Tw2CurveSequencer.childProperties = null;
+
+/**
+ * The sequencer's curve array
+ * @type {?string}
+ */
+Tw2CurveSequencer.childArray = null;
+
+/**
+ * Operator types
+ * @type {null}
+ */
+Tw2CurveSequencer.Operator = null;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2938,20 +3265,20 @@ emitter.log = function (eventName, eventData) {
 };
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(31);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2", function() { return __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2d", function() { return __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__; });
@@ -3002,7 +3329,7 @@ THE SOFTWARE. */
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3084,7 +3411,7 @@ var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
 Tw2ParticleForce.global = null;
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3235,7 +3562,7 @@ Tw2Vector4Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3246,7 +3573,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2Resource = undefined;
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3435,7 +3762,7 @@ Tw2Resource.prototype.UnregisterNotification = function (notification) {
 };
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3447,7 +3774,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2VertexElement = Tw2VertexElement;
 exports.Tw2VertexDeclaration = Tw2VertexDeclaration;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 /**
  * Tw2VertexElement
@@ -3661,7 +3988,7 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
 };
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3682,7 +4009,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Tw2ParticleElement
  *
  * @param {Tw2ParticleElementDeclaration} decl
- * @property {ParticleElementType} elementType
+ * @property {number} elementType
  * @property {string} customName
  * @property {number} dimension
  * @property {number} usageIndex
@@ -3811,7 +4138,198 @@ Tw2ParticleElementDeclaration.Type = {
 };
 
 /***/ }),
-/* 12 */
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2Curve = __webpack_require__(2);
+
+Object.keys(_Tw2Curve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Curve[key];
+    }
+  });
+});
+
+var _Tw2ColorCurve = __webpack_require__(26);
+
+Object.keys(_Tw2ColorCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ColorCurve[key];
+    }
+  });
+});
+
+var _Tw2ColorCurve2 = __webpack_require__(94);
+
+Object.keys(_Tw2ColorCurve2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ColorCurve2[key];
+    }
+  });
+});
+
+var _Tw2EventCurve = __webpack_require__(95);
+
+Object.keys(_Tw2EventCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2EventCurve[key];
+    }
+  });
+});
+
+var _Tw2PerlinCurve = __webpack_require__(96);
+
+Object.keys(_Tw2PerlinCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2PerlinCurve[key];
+    }
+  });
+});
+
+var _Tw2QuaternionCurve = __webpack_require__(97);
+
+Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2QuaternionCurve[key];
+    }
+  });
+});
+
+var _Tw2RandomConstantCurve = __webpack_require__(98);
+
+Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2RandomConstantCurve[key];
+    }
+  });
+});
+
+var _Tw2RigidOrientation = __webpack_require__(99);
+
+Object.keys(_Tw2RigidOrientation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2RigidOrientation[key];
+    }
+  });
+});
+
+var _Tw2RotationCurve = __webpack_require__(100);
+
+Object.keys(_Tw2RotationCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2RotationCurve[key];
+    }
+  });
+});
+
+var _Tw2ScalarCurve = __webpack_require__(101);
+
+Object.keys(_Tw2ScalarCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ScalarCurve[key];
+    }
+  });
+});
+
+var _Tw2ScalarCurve2 = __webpack_require__(102);
+
+Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ScalarCurve2[key];
+    }
+  });
+});
+
+var _Tw2SineCurve = __webpack_require__(103);
+
+Object.keys(_Tw2SineCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2SineCurve[key];
+    }
+  });
+});
+
+var _Tw2Vector2Curve = __webpack_require__(104);
+
+Object.keys(_Tw2Vector2Curve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Vector2Curve[key];
+    }
+  });
+});
+
+var _Tw2Vector3Curve = __webpack_require__(105);
+
+Object.keys(_Tw2Vector3Curve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Vector3Curve[key];
+    }
+  });
+});
+
+var _Tw2VectorCurve = __webpack_require__(106);
+
+Object.keys(_Tw2VectorCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2VectorCurve[key];
+    }
+  });
+});
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4182,7 +4700,7 @@ EveTransform.Modifier = {
 };
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4193,17 +4711,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.variableStore = undefined;
 
-var _Tw2MatrixParameter = __webpack_require__(14);
+var _Tw2MatrixParameter = __webpack_require__(17);
 
-var _Tw2Vector4Parameter = __webpack_require__(8);
+var _Tw2Vector4Parameter = __webpack_require__(10);
 
-var _Tw2Vector3Parameter = __webpack_require__(29);
+var _Tw2Vector3Parameter = __webpack_require__(34);
 
-var _Tw2Vector2Parameter = __webpack_require__(30);
+var _Tw2Vector2Parameter = __webpack_require__(35);
 
-var _Tw2FloatParameter = __webpack_require__(15);
+var _Tw2FloatParameter = __webpack_require__(18);
 
-var _Tw2TextureParameter = __webpack_require__(16);
+var _Tw2TextureParameter = __webpack_require__(19);
 
 /**
  * Tw2VariableStore
@@ -4309,7 +4827,7 @@ Tw2VariableStore.prototype.Register = function (opt) {
 var variableStore = exports.variableStore = new Tw2VariableStore();
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4411,7 +4929,7 @@ Tw2MatrixParameter.prototype.OnValueChanged = function () {
 };
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4525,7 +5043,7 @@ Tw2FloatParameter.prototype.SetValue = function (value) {
 };
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4536,9 +5054,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2TextureParameter = Tw2TextureParameter;
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 /**
  * Tw2TextureParameter
@@ -4692,7 +5210,7 @@ Tw2TextureParameter.prototype.GetValue = function () {
 };
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4825,7 +5343,7 @@ Tw2BinaryReader.prototype.ReadString = function () {
 };
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4837,13 +5355,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2SamplerOverride = Tw2SamplerOverride;
 exports.Tw2Effect = Tw2Effect;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2VariableStore = __webpack_require__(13);
+var _Tw2VariableStore = __webpack_require__(16);
 
-var _Tw2SamplerState = __webpack_require__(19);
+var _Tw2SamplerState = __webpack_require__(22);
 
 /**
  * Tw2SamplerOverride
@@ -5247,7 +5765,7 @@ Tw2Effect.prototype.GetParameters = function () {
 };
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5258,7 +5776,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2SamplerState = Tw2SamplerState;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 /**
  * Tw2SamplerState
@@ -5328,7 +5846,7 @@ Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
 };
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5340,7 +5858,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ForwardingRenderBatch = exports.Tw2RenderBatch = undefined;
 exports.Tw2BatchAccumulator = Tw2BatchAccumulator;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -5455,7 +5973,7 @@ Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5466,13 +5984,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2TextureRes = undefined;
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5711,7 +6229,7 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices) {
 };
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5767,7 +6285,246 @@ var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = func
 }();
 
 /***/ }),
-/* 23 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2ColorCurve = exports.Tw2ColorKey = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2ColorKey
+ *
+ * @property {vec4} value
+ * @property {vec4} left
+ * @property {vec4} right
+ * @property {number} interpolation
+ * @class
+ */
+var Tw2ColorKey = exports.Tw2ColorKey = function (_Tw2CurveKey) {
+    _inherits(Tw2ColorKey, _Tw2CurveKey);
+
+    function Tw2ColorKey() {
+        _classCallCheck(this, Tw2ColorKey);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ColorKey.__proto__ || Object.getPrototypeOf(Tw2ColorKey)).call(this));
+
+        _this.value = _math.vec4.create();
+        _this.left = _math.vec4.create();
+        _this.right = _math.vec4.create();
+        _this.interpolation = 0;
+        return _this;
+    }
+
+    return Tw2ColorKey;
+}(_Tw2Curve2.Tw2CurveKey);
+
+/**
+ * Tw2ColorCurve
+ *
+ * @property {number} start
+ * @property {vec4} currentValue
+ * @property {number} extrapolation
+ * @property {Array.<Tw2ColorKey>} keys
+ * @property {number} _currentKey
+ * @class
+ */
+
+
+var Tw2ColorCurve = exports.Tw2ColorCurve = function (_Tw2Curve) {
+    _inherits(Tw2ColorCurve, _Tw2Curve);
+
+    function Tw2ColorCurve() {
+        _classCallCheck(this, Tw2ColorCurve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2ColorCurve.__proto__ || Object.getPrototypeOf(Tw2ColorCurve)).call(this));
+
+        _this2.start = 0;
+        _this2.value = _math.vec4.create();
+        _this2.extrapolation = 0;
+        _this2.keys = [];
+        _this2._currentKey = 1;
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2ColorCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec4} value
+         * @returns {vec4} value
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            if (this._length === 0) {
+                return _math.vec4.copy(value, this.value);
+            }
+
+            var firstKey = this.keys[0],
+                lastKey = this.keys[this.keys.length - 1];
+
+            if (time >= lastKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2ColorCurve.Extrapolation.NONE:
+                        return _math.vec4.copy(value, this.value);
+
+                    case Tw2ColorCurve.Extrapolation.CONSTANT:
+                        return _math.vec4.copy(value, lastKey.value);
+
+                    case Tw2ColorCurve.Extrapolation.GRADIENT:
+                        return _math.vec4.scaleAndAdd(value, lastKey.value, lastKey.right, time - lastKey.time);
+
+                    default:
+                        time = time % lastKey.time;
+                }
+            } else if (time < 0 || time < firstKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2ColorCurve.Extrapolation.NONE:
+                        return _math.vec4.copy(value, this.value);
+
+                    case Tw2ColorCurve.Extrapolation.GRADIENT:
+                        return _math.vec4.scaleAndAdd(value, firstKey.value, firstKey.left, time * this._length - lastKey.time);
+
+                    default:
+                        return _math.vec4.copy(value, firstKey.value);
+                }
+            }
+
+            var ck = this.keys[this._currentKey],
+                ck_1 = this.keys[this._currentKey - 1];
+
+            while (time >= ck.time || time < ck_1.time) {
+                if (time < ck_1.time) this._currentKey = 0;
+                this._currentKey++;
+                ck = this.keys[this._currentKey];
+                ck_1 = this.keys[this._currentKey - 1];
+            }
+
+            var nt = (time - ck_1.time) / (ck.time - ck_1.time);
+
+            switch (ck_1.interpolation) {
+                case Tw2ColorCurve.Interpolation.CONSTANT:
+                    return _math.vec4.copy(value, ck_1.value);
+
+                default:
+                    value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
+                    value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
+                    value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
+                    value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2ColorCurve;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2ColorCurve.inputDimension = 4;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2ColorCurve.ouputDimension = 4;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2ColorCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2ColorCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2ColorKey}
+ */
+Tw2ColorCurve.Key = Tw2ColorKey;
+
+/**
+ * Extrapolation types
+ * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+ */
+Tw2ColorCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
+};
+
+/**
+ * Interpolation types
+ * @type {{NONE: number, CONSTANT: number, LINEAR: number}}
+ */
+Tw2ColorCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2
+};
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6218,7 +6975,51 @@ EveSpaceObject.prototype.RenderDebugInfo = function (debugHelper) {
 var EveStation = exports.EveStation = EveSpaceObject;
 
 /***/ }),
-/* 24 */
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var num = exports.num = {};
+
+/**
+ * biCumulative
+ *
+ * @param {number} t
+ * @param {number} order
+ * @returns {number}
+ */
+num.biCumulative = function (t, order) {
+    if (order === 1) {
+        var some = 1.0 - t;
+        return 1.0 - some * some * some;
+    } else if (order === 2) {
+        return 3.0 * t * t - 2.0 * t * t * t;
+    } else {
+        return t * t * t;
+    }
+};
+
+/**
+ * Exponential decay
+ * 
+ * @param {number} omega0
+ * @param {number} torque
+ * @param {number} I - inertia
+ * @param {number} d - drag
+ * @param {number} time - time
+ * @returns {number}
+ */
+num.exponentialDecay = function (omega0, torque, I, d, time) {
+    return torque * time / d + I * (omega0 * d - torque) / (d * d) * (1.0 - Math.pow(Math.E, -d * time / I));
+};
+
+/***/ }),
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6253,7 +7054,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["multiplyScalarAndAdd"] = multiplyScalarAndAdd;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7026,7 +7827,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 25 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7070,7 +7871,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -7866,7 +8667,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 26 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7902,7 +8703,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -8528,7 +9329,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 27 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8539,12 +9340,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec3 = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
+
+var _num = __webpack_require__(28);
 
 exports.vec3 = _glMatrix.vec3;
 
+/**
+ * Exponential decay
+ *
+ * @param {vec3} out
+ * @param {vec3} omega0
+ * @param {vec3} torque
+ * @param {number} I
+ * @param {number} drag
+ * @param {number} time
+ * @returns {vec3} out
+ */
+
+_glMatrix.vec3.exponentialDecay = function (out, omega0, torque, I, drag, time) {
+  out[0] = _num.num.exponentialDecay(omega0[0], torque[0], I, drag, time);
+  out[1] = _num.num.exponentialDecay(omega0[1], torque[1], I, drag, time);
+  out[2] = _num.num.exponentialDecay(omega0[2], torque[2], I, drag, time);
+  return out;
+};
+
 /***/ }),
-/* 28 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8555,12 +9377,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec4 = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
 
 exports.vec4 = _glMatrix.vec4;
 
 /***/ }),
-/* 29 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8711,7 +9533,7 @@ Tw2Vector3Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 30 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8863,7 +9685,7 @@ Tw2Vector2Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 31 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8874,11 +9696,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2ObjectReader = Tw2ObjectReader;
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2BinaryReader = __webpack_require__(17);
+var _Tw2BinaryReader = __webpack_require__(20);
 
 /**
  * Tw2ObjectReader
@@ -9349,7 +10171,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async) {
 };
 
 /***/ }),
-/* 32 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9373,19 +10195,19 @@ exports.Tw2GeometryMesh = Tw2GeometryMesh;
 
 var _math = __webpack_require__(0);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource3 = __webpack_require__(9);
+var _Tw2Resource3 = __webpack_require__(11);
 
-var _Tw2BinaryReader = __webpack_require__(17);
+var _Tw2BinaryReader = __webpack_require__(20);
 
-var _Tw2BatchAccumulator = __webpack_require__(20);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
-var _Tw2VertexDeclaration = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10439,7 +11261,7 @@ Tw2GeometryRes.prototype.Unload = function () {
 };
 
 /***/ }),
-/* 33 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10452,11 +11274,11 @@ exports.Tw2Mesh = undefined;
 exports.Tw2MeshArea = Tw2MeshArea;
 exports.Tw2MeshLineArea = Tw2MeshLineArea;
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2GeometryRes = __webpack_require__(32);
+var _Tw2GeometryRes = __webpack_require__(37);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10657,7 +11479,7 @@ Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData) {
 };
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10668,9 +11490,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2RenderTarget = Tw2RenderTarget;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2TextureRes = __webpack_require__(21);
+var _Tw2TextureRes = __webpack_require__(24);
 
 /**
  * Tw2RenderTarget
@@ -10772,7 +11594,7 @@ Tw2RenderTarget.prototype.Unset = function () {
 };
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10782,7 +11604,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(71);
+var _emitters = __webpack_require__(75);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10794,7 +11616,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(74);
+var _forces = __webpack_require__(78);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10806,7 +11628,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(81);
+var _generators = __webpack_require__(85);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10818,7 +11640,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(85);
+var _constraints = __webpack_require__(89);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10830,7 +11652,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(86);
+var _Tw2ParticleSystem = __webpack_require__(90);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10842,7 +11664,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(11);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10855,7 +11677,7 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
 });
 
 /***/ }),
-/* 36 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10907,7 +11729,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 37 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10917,595 +11739,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorCurve = __webpack_require__(90);
+var _curves = __webpack_require__(14);
 
-Object.keys(_Tw2ColorCurve).forEach(function (key) {
+Object.keys(_curves).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Tw2ColorCurve[key];
+      return _curves[key];
     }
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(91);
+var _sequencers = __webpack_require__(107);
 
-Object.keys(_Tw2ColorCurve2).forEach(function (key) {
+Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Tw2ColorCurve2[key];
+      return _sequencers[key];
     }
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(92);
+var _tracks = __webpack_require__(116);
 
-Object.keys(_Tw2EventCurve).forEach(function (key) {
+Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Tw2EventCurve[key];
+      return _tracks[key];
     }
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(93);
+var _maya = __webpack_require__(119);
 
-Object.keys(_Tw2PerlinCurve).forEach(function (key) {
+Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Tw2PerlinCurve[key];
-    }
-  });
-});
-
-var _Tw2QuaternionCurve = __webpack_require__(38);
-
-Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2QuaternionCurve[key];
-    }
-  });
-});
-
-var _Tw2RandomConstantCurve = __webpack_require__(94);
-
-Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2RandomConstantCurve[key];
-    }
-  });
-});
-
-var _Tw2RigidOrientation = __webpack_require__(95);
-
-Object.keys(_Tw2RigidOrientation).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2RigidOrientation[key];
-    }
-  });
-});
-
-var _Tw2RotationCurve = __webpack_require__(96);
-
-Object.keys(_Tw2RotationCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2RotationCurve[key];
-    }
-  });
-});
-
-var _Tw2ScalarCurve = __webpack_require__(97);
-
-Object.keys(_Tw2ScalarCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ScalarCurve[key];
-    }
-  });
-});
-
-var _Tw2ScalarCurve2 = __webpack_require__(98);
-
-Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ScalarCurve2[key];
-    }
-  });
-});
-
-var _Tw2SineCurve = __webpack_require__(99);
-
-Object.keys(_Tw2SineCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2SineCurve[key];
-    }
-  });
-});
-
-var _Tw2Vector2Curve = __webpack_require__(100);
-
-Object.keys(_Tw2Vector2Curve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2Vector2Curve[key];
-    }
-  });
-});
-
-var _Tw2Vector3Curve = __webpack_require__(101);
-
-Object.keys(_Tw2Vector3Curve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2Vector3Curve[key];
-    }
-  });
-});
-
-var _Tw2VectorCurve = __webpack_require__(102);
-
-Object.keys(_Tw2VectorCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2VectorCurve[key];
-    }
-  });
-});
-
-var _Tw2MayaAnimationEngine = __webpack_require__(103);
-
-Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2MayaAnimationEngine[key];
-    }
-  });
-});
-
-var _Tw2MayaEulerRotationCurve = __webpack_require__(104);
-
-Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2MayaEulerRotationCurve[key];
-    }
-  });
-});
-
-var _Tw2MayaScalarCurve = __webpack_require__(105);
-
-Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2MayaScalarCurve[key];
-    }
-  });
-});
-
-var _Tw2MayaVector3Curve = __webpack_require__(106);
-
-Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2MayaVector3Curve[key];
-    }
-  });
-});
-
-var _Tw2ColorSequencer = __webpack_require__(107);
-
-Object.keys(_Tw2ColorSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ColorSequencer[key];
-    }
-  });
-});
-
-var _Tw2EulerRotation = __webpack_require__(108);
-
-Object.keys(_Tw2EulerRotation).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2EulerRotation[key];
-    }
-  });
-});
-
-var _Tw2QuaternionSequencer = __webpack_require__(109);
-
-Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2QuaternionSequencer[key];
-    }
-  });
-});
-
-var _Tw2RGBAScalarSequencer = __webpack_require__(110);
-
-Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2RGBAScalarSequencer[key];
-    }
-  });
-});
-
-var _Tw2ScalarSequencer = __webpack_require__(111);
-
-Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ScalarSequencer[key];
-    }
-  });
-});
-
-var _Tw2VectorSequencer = __webpack_require__(112);
-
-Object.keys(_Tw2VectorSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2VectorSequencer[key];
-    }
-  });
-});
-
-var _Tw2XYZScalarSequencer = __webpack_require__(113);
-
-Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2XYZScalarSequencer[key];
-    }
-  });
-});
-
-var _Tw2YPRSequencer = __webpack_require__(114);
-
-Object.keys(_Tw2YPRSequencer).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2YPRSequencer[key];
-    }
-  });
-});
-
-var _Tw2WbgTrack = __webpack_require__(115);
-
-Object.keys(_Tw2WbgTrack).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2WbgTrack[key];
-    }
-  });
-});
-
-var _Tw2TransformTrack = __webpack_require__(116);
-
-Object.keys(_Tw2TransformTrack).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2TransformTrack[key];
+      return _maya[key];
     }
   });
 });
 
 /***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2QuaternionKey2 = Tw2QuaternionKey2;
-exports.Tw2QuaternionCurve = Tw2QuaternionCurve;
-
-var _math = __webpack_require__(0);
-
-/**
- * Tw2QuaternionKey2
- * @property {number} time
- * @property {quat} value
- * @property {vec4} leftTangent
- * @property {vec4} rightTangent
- * @property {number} interpolation
- * @constructor
- */
-function Tw2QuaternionKey2() {
-    this.time = 0;
-    this.value = _math.quat.create();
-    this.leftTangent = _math.vec4.create();
-    this.rightTangent = _math.vec4.create();
-    this.interpolation = 1;
-}
-
-/**
- * Tw2QuaternionCurve
- * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
- * @property {quat} startValue
- * @property {quat} currentValue
- * @property {quat} endValue
- * @property {vec4} startTangent
- * @property {vec4} endTangent
- * @property {number} interpolation
- * @property {Array.<Tw2QuaternionKey>} keys
- * @constructor
- */
-function Tw2QuaternionCurve() {
-    this.name = '';
-    this.length = 0;
-    this.cycle = false;
-    this.reversed = false;
-    this.timeOffset = 0;
-    this.timeScale = 1;
-    this.startValue = _math.quat.create();
-    this.currentValue = _math.quat.create();
-    this.endValue = _math.quat.create();
-    this.startTangent = _math.vec4.create();
-    this.endTangent = _math.vec4.create();
-    this.interpolation = 1;
-    this.keys = [];
-}
-
-Tw2QuaternionCurve.Interpolation = {
-    CONSTANT: 0,
-    SPHERICAL_LINEAR: 4
-};
-
-/**
- * Spherical interpolation
- * - GlMatrix v0.9.5 version
- * @param a - Operand A (receives changes if d not provided)
- * @param b - Operand B
- * @param c - Time
- * @param [d] - optional receiving vector
- * @returns {quat}
- */
-Tw2QuaternionCurve.slerp = function (a, b, c, d) {
-    d || (d = a);
-    var e = c;
-    if (a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3] < 0) e = -1 * c;
-    d[0] = 1 - c * a[0] + e * b[0];
-    d[1] = 1 - c * a[1] + e * b[1];
-    d[2] = 1 - c * a[2] + e * b[2];
-    d[3] = 1 - c * a[3] + e * b[3];
-    return d;
-};
-
-/**
- * Initializes the Curve
- * @prototype
- */
-Tw2QuaternionCurve.prototype.Initialize = function () {
-    this.Sort();
-};
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2QuaternionCurve.prototype.GetLength = function () {
-    return this.length;
-};
-
-/**
- * Compares two curve keys' time properties
- * @param {Tw2QuaternionKey} a
- * @param {Tw2QuaternionKey} b
- * @returns {number}
- * @method
- */
-Tw2QuaternionCurve.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
-    }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
-
-/**
- * Sorts the curve's keys
- * @prototype
- */
-Tw2QuaternionCurve.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2QuaternionCurve.Compare);
-        var back = this.keys[this.keys.length - 1];
-        if (back.time > this.length) {
-            var preLength = this.length;
-            var endValue = this.endValue;
-            var endTangent = this.endTangent;
-            this.length = back.time;
-            this.endValue = back.value;
-            this.endTangent = back.leftTangent;
-            if (preLength > 0) {
-                back.time = preLength;
-                back.value = endValue;
-                back.leftTangent = endTangent;
-            }
-        }
-    }
-};
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2QuaternionCurve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.currentValue);
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
- */
-Tw2QuaternionCurve.prototype.GetValueAt = function (time, value) {
-    time = time / this.timeScale + this.timeOffset;
-    if (this.length <= 0 || time <= 0) {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        value[2] = this.startValue[2];
-        return value;
-    }
-    if (time > this.length) {
-        if (this.cycle) {
-            time = time % this.length;
-        } else if (this.reversed) {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            value[2] = this.startValue[2];
-            return value;
-        } else {
-            value[0] = this.endValue[0];
-            value[1] = this.endValue[1];
-            value[2] = this.endValue[2];
-            return value;
-        }
-    }
-    if (this.reversed) {
-        time = this.length - time;
-    }
-    if (this.keys.length === 0) {
-        return this.Interpolate(time, null, null, value);
-    }
-    var startKey = this.keys[0];
-    if (time <= startKey.time) {
-        return this.Interpolate(time, null, startKey, value);
-    } else if (time >= this.keys[this.keys.length - 1].time) {
-        return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
-    }
-    var endKey = this.keys[0];
-    for (var i = 0; i + 1 < this.keys.length; ++i) {
-        startKey = this.keys[i];
-        endKey = this.keys[i + 1];
-        if (startKey.time <= time && endKey.time > time) {
-            break;
-        }
-    }
-    return this.Interpolate(time, startKey, endKey, value);
-};
-
-/**
- * Interpolate
- * @param {number} time
- * @param {null|Tw2QuaternionKey} lastKey
- * @param {null|Tw2QuaternionKey} nextKey
- * @param {quat} value
- * @returns {*}
- * @prototype
- */
-Tw2QuaternionCurve.prototype.Interpolate = function (time, lastKey, nextKey, value) {
-    value[0] = this.startValue[0];
-    value[1] = this.startValue[1];
-    value[2] = this.startValue[2];
-
-    var startValue = this.startValue;
-    var endValue = this.endValue;
-    var interp = this.interpolation;
-    var deltaTime = this.length;
-    if (lastKey !== null) {
-        interp = lastKey.interpolation;
-        time -= lastKey.time;
-    }
-    switch (interp) {
-        case Tw2QuaternionCurve.Interpolation.SPHERICAL_LINEAR:
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                endValue = nextKey.value;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                deltaTime = this.length - lastKey.time;
-            }
-            Tw2QuaternionCurve.slerp(startValue, endValue, time / deltaTime, value);
-            return value;
-    }
-    return value;
-};
-
-/***/ }),
-/* 39 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11520,7 +11803,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(12);
+var _EveTransform = __webpack_require__(15);
 
 /**
  * Mesh attachment to space object
@@ -11638,7 +11921,7 @@ EveChildMesh.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 40 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11663,7 +11946,7 @@ function EveLocator() {
 }
 
 /***/ }),
-/* 41 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11961,7 +12244,7 @@ EveBoosterSet.prototype.Render = function (overrideEffect) {
 EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
 
 /***/ }),
-/* 42 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12247,7 +12530,7 @@ EvePlaneSet.scratch = {
 };
 
 /***/ }),
-/* 43 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12593,7 +12876,7 @@ EveSpotlightSet.prototype._Render = function (effect, buffer) {
 };
 
 /***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13089,7 +13372,7 @@ EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, max
 };
 
 /***/ }),
-/* 45 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13295,7 +13578,7 @@ EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect) {
 };
 
 /***/ }),
-/* 46 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13312,7 +13595,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 exports.EveTurretSetLocatorInfo = EveTurretSetLocatorInfo;
 
-var _EveSpaceObject2 = __webpack_require__(23);
+var _EveSpaceObject2 = __webpack_require__(27);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -13541,7 +13824,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 47 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13564,19 +13847,19 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curves = __webpack_require__(37);
+var _curve = __webpack_require__(42);
 
-Object.keys(_curves).forEach(function (key) {
+Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
         enumerable: true,
         get: function get() {
-            return _curves[key];
+            return _curve[key];
         }
     });
 });
 
-var _eve = __webpack_require__(117);
+var _eve = __webpack_require__(124);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13588,7 +13871,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(35);
+var _particle = __webpack_require__(40);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13606,7 +13889,7 @@ var math = _interopRequireWildcard(_math);
 
 var core = _interopRequireWildcard(_core);
 
-var curves = _interopRequireWildcard(_curves);
+var curves = _interopRequireWildcard(_curve);
 
 var eve = _interopRequireWildcard(_eve);
 
@@ -13637,19 +13920,7 @@ _core.resMan.Register({
 exports.math = math;
 
 /***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var num = exports.num = {};
-
-/***/ }),
-/* 49 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13660,12 +13931,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec2 = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
 
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 50 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13694,7 +13965,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
 /* harmony export (immutable) */ __webpack_exports__["multiplyScalar"] = multiplyScalar;
 /* harmony export (immutable) */ __webpack_exports__["multiplyScalarAndAdd"] = multiplyScalarAndAdd;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -14135,7 +14406,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 51 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14163,7 +14434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["multiplyScalarAndAdd"] = multiplyScalarAndAdd;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -14637,7 +14908,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14686,7 +14957,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["multiplyScalarAndAdd"] = multiplyScalarAndAdd;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16375,7 +16646,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16395,10 +16666,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["fromMat3"] = fromMat3;
 /* harmony export (immutable) */ __webpack_exports__["fromEuler"] = fromEuler;
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(31);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17066,7 +17337,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17105,7 +17376,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony export (immutable) */ __webpack_exports__["exactEquals"] = exactEquals;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17709,23 +17980,101 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.quat = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
 
 exports.quat = _glMatrix.quat;
 
+/**
+ * QuaternionExp
+ *
+ * @param {quat} out
+ * @param {quat|vec3} a
+ * @returns {quat}
+ */
+
+_glMatrix.quat.exp = function (out, a) {
+    var norm = Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
+    if (norm) {
+        out[0] = Math.sin(norm) * a[0] / norm;
+        out[1] = Math.sin(norm) * a[1] / norm;
+        out[2] = Math.sin(norm) * a[2] / norm;
+        out[3] = Math.cos(norm);
+    } else {
+        out[0] = 0.0;
+        out[1] = 0.0;
+        out[2] = 0.0;
+        out[3] = 1.0;
+    }
+    return out;
+};
+
+/**
+ * QuaternionLn
+ *
+ * @param {quat} out
+ * @param {quat} q
+ * @returns {quat}
+ */
+_glMatrix.quat.ln = function (out, q) {
+    var norm = _glMatrix.quat.length(q);
+    if (norm > 1.0001 || norm < 0.99999) {
+        out[0] = q[0];
+        out[1] = q[1];
+        out[2] = q[2];
+        out[3] = 0.0;
+    } else {
+        norm = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
+        if (norm) {
+            var theta = Math.atan2(norm, q[3]) / norm;
+            out[0] = theta * q[0];
+            out[1] = theta * q[1];
+            out[2] = theta * q[2];
+            out[3] = 0.0;
+        } else {
+            out[0] = 0.0;
+            out[1] = 0.0;
+            out[2] = 0.0;
+            out[3] = 0.0;
+        }
+    }
+    return out;
+};
+
+/**
+ * QuaternionPow
+ *
+ * @param {quat} out
+ * @param {quat} inq
+ * @param {number} exponent
+ * @returns {quat}
+ */
+_glMatrix.quat.pow = function (out, inq, exponent) {
+    if (exponent === 1) {
+        return _glMatrix.quat.copy(out, inq);
+    }
+
+    _glMatrix.quat.ln(out, inq);
+    out[0] *= exponent;
+    out[1] *= exponent;
+    out[2] *= exponent;
+    out[3] *= exponent;
+    _glMatrix.quat.exp(out, out);
+    return out;
+};
+
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17736,12 +18085,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat3 = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
 
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 57 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17752,12 +18101,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat4 = undefined;
 
-var _glMatrix = __webpack_require__(6);
+var _glMatrix = __webpack_require__(8);
 
 exports.mat4 = _glMatrix.mat4;
 
 /***/ }),
-/* 58 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17768,15 +18117,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.noise = undefined;
 
-var _vec = __webpack_require__(27);
+var _vec = __webpack_require__(32);
 
-var _vec2 = __webpack_require__(28);
+var _vec2 = __webpack_require__(33);
 
 var noise = exports.noise = {};
 
 /**
  * Generates turbulent noise
- * - Todo: Identify actual noise generation type
  *
  * @param {vec4} out
  * @param {number} pos_0
@@ -17797,8 +18145,6 @@ noise.turbulence = function () {
      * Initializes noise
      */
     function initialize() {
-        if (s_initialized) return;
-
         for (var _i = 0; _i < 256; _i++) {
             s_noiseLookup[_i] = _vec2.vec4.fromValues(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
             s_permutations[_i] = _i;
@@ -17886,8 +18232,452 @@ noise.turbulence = function () {
     };
 }();
 
+/**
+ * Perlin_noise1
+ *
+ * @param {number} a
+ * @returns {number}
+ */
+noise.perlin1 = function () {
+    var p_initialized = false,
+        p_B = 0x100,
+        p_BM = 0xff,
+        p_N = 0x1000,
+        p_p = null,
+        p_g1 = null;
+
+    /**
+     * Initializes Perlin Noise
+     */
+    function initialize() {
+        p_p = new Array(p_B + p_B + 2);
+        p_g1 = new Array(p_B + p_B + 2);
+
+        var i = 0,
+            j = 0,
+            k = 0;
+
+        for (i = 0; i < p_B; i++) {
+            p_p[i] = i;
+            p_g1[i] = Math.random() * 2 - 1;
+        }
+
+        while (--i) {
+            k = p_p[i];
+            p_p[i] = p_p[j = Math.floor(Math.random() * p_B)];
+            p_p[j] = k;
+        }
+
+        for (i = 0; i < p_B + 2; i++) {
+            p_p[p_B + i] = p_p[i];
+            p_g1[p_B + i] = p_g1[i];
+        }
+
+        p_initialized = true;
+    }
+
+    return function perlin1(a) {
+        if (!p_initialized) initialize();
+
+        var t = a + p_N,
+            bx0 = Math.floor(t) & p_BM,
+            bx1 = bx0 + 1 & p_BM,
+            rx0 = t - Math.floor(t),
+            rx1 = rx0 - 1;
+
+        var sx = rx0 * rx0 * (3.0 - 2.0 * rx0),
+            u = rx0 * p_g1[p_p[bx0]],
+            v = rx1 * p_g1[p_p[bx1]];
+
+        return u + sx * (v - u);
+    };
+}();
+
+/**
+ * PerlinNoise1D
+ *
+ * @param x
+ * @param alpha
+ * @param beta
+ * @param n
+ * @returns {number}
+ */
+noise.perlin1D = function (x, alpha, beta, n) {
+    var sum = 0,
+        p = x,
+        scale = 1;
+
+    for (var i = 0; i < n; ++i) {
+        sum += noise.perlin1(p) / scale;
+        scale *= alpha;
+        p *= beta;
+    }
+    return sum;
+};
+
 /***/ }),
-/* 59 */
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var curve = exports.curve = {};
+
+/**
+ * Evaluates a curve
+ *
+ * @param {{}} curve
+ * @param {Array} curve.knots
+ * @param {number} curve.degree
+ * @param {Array} curve.controls
+ * @param {number} curve.dimension
+ * @param {number} time
+ * @param {*} value
+ * @param {boolean} cycle
+ * @param {number} duration
+ */
+curve.evaluate = function (curve, time, value, cycle, duration) {
+    var count = curve.knots.length;
+    var knot = count - 1;
+    var t = 0;
+    for (var i = 0; i < curve.knots.length; ++i) {
+        if (curve.knots[i] > time) {
+            knot = i;
+            break;
+        }
+    }
+
+    if (curve.degree === 0) {
+        for (var _i = 0; _i < curve.dimension; ++_i) {
+            value[_i] = curve.controls[knot * curve.dimension + _i];
+        }
+    } else if (curve.degree === 1) {
+        var knot0 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
+        var dt = curve.knots[knot] - curve.knots[knot0];
+
+        if (dt < 0) {
+            dt += duration;
+        }
+
+        if (dt > 0) {
+            t = (time - curve.knots[curve.knots.length - 1]) / dt;
+        }
+
+        for (var _i2 = 0; _i2 < curve.dimension; ++_i2) {
+            value[_i2] = curve.controls[knot0 * curve.dimension + _i2] * (1 - t) + curve.controls[knot * curve.dimension + _i2] * t;
+        }
+    } else {
+        var k_2 = cycle ? (knot + count - 2) % count : knot === 0 ? 0 : knot - 2;
+        var k_1 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
+
+        var p1 = k_2 * curve.dimension;
+        var p2 = k_1 * curve.dimension;
+        var p3 = knot * curve.dimension;
+
+        var ti_2 = curve.knots[k_2];
+        var ti_1 = curve.knots[k_1];
+        var ti = curve.knots[knot];
+        var ti1 = curve.knots[(knot + 1) % count];
+
+        if (ti_2 > ti) {
+            ti += duration;
+            ti1 += duration;
+            time += duration;
+        }
+
+        if (ti_1 > ti) {
+            ti += duration;
+            ti1 += duration;
+            time += duration;
+        }
+
+        if (ti1 < ti) {
+            ti1 += duration;
+        }
+
+        var tmti_1 = time - ti_1;
+        var tmti_2 = time - ti_2;
+        var dL0 = ti - ti_1;
+        var dL1_1 = ti - ti_2;
+        var dL1_2 = ti1 - ti_1;
+
+        var L0 = tmti_1 / dL0;
+        var L1_1 = tmti_2 / dL1_1;
+        var L1_2 = tmti_1 / dL1_2;
+
+        var ci_2 = L1_1 + L0 - L0 * L1_1;
+        var ci = L0 * L1_2;
+        var ci_1 = ci_2 - ci;
+        ci_2 = 1 - ci_2;
+
+        for (var _i3 = 0; _i3 < curve.dimension; ++_i3) {
+            value[_i3] = ci_2 * curve.controls[p1 + _i3] + ci_1 * curve.controls[p2 + _i3] + ci * curve.controls[p3 + _i3];
+        }
+    }
+};
+
+/**
+ * ag_horner1
+ *
+ * @param P
+ * @param deg
+ * @param s
+ * @returns {*}
+ */
+curve.ag_horner1 = function (P, deg, s) {
+    var h = P[deg];
+    while (--deg >= 0) {
+        h = s * h + P[deg];
+    }return h;
+};
+
+/**
+ * ag_zeroin2
+ *
+ * @param a
+ * @param b
+ * @param fa
+ * @param fb
+ * @param tol
+ * @param pars
+ * @returns {*}
+ */
+curve.ag_zeroin2 = function (a, b, fa, fb, tol, pars) {
+    var test = void 0;
+    var c = void 0,
+        d = void 0,
+        e = void 0,
+        fc = void 0,
+        del = void 0,
+        m = void 0,
+        machtol = void 0,
+        p = void 0,
+        q = void 0,
+        r = void 0,
+        s = void 0;
+
+    /* initialization */
+    machtol = 1.192092896e-07;
+    var label1 = true;
+
+    /* start iteration */
+    while (true) {
+        if (label1) {
+            c = a;
+            fc = fa;
+            d = b - a;
+            e = d;
+        }
+
+        if (Math.abs(fc) < Math.abs(fb)) {
+            a = b;
+            b = c;
+            c = a;
+            fa = fb;
+            fb = fc;
+            fc = fa;
+        }
+        label1 = false;
+
+        /* convergence test */
+        del = 2.0 * machtol * Math.abs(b) + 0.5 * tol;
+        m = 0.5 * (c - b);
+        test = Math.abs(m) > del && fb !== 0.0;
+        if (test) {
+            if (Math.abs(e) < del || Math.abs(fa) <= Math.abs(fb)) {
+                /* bisection */
+                d = m;
+                e = d;
+            } else {
+                s = fb / fa;
+                if (a === c) {
+                    /* linear interpolation */
+                    p = 2.0 * m * s;
+                    q = 1.0 - s;
+                } else {
+                    /* inverse quadratic interpolation */
+                    q = fa / fc;
+                    r = fb / fc;
+                    p = s * (2.0 * m * q * (q - r) - (b - a) * (r - 1.0));
+                    q = (q - 1.0) * (r - 1.0) * (s - 1.0);
+                }
+                /* adjust the sign */
+                if (p > 0.0) q = -q;else p = -p;
+                /* check if interpolation is acceptable */
+                s = e;
+                e = d;
+                if (2.0 * p < 3.0 * m * q - Math.abs(del * q) && p < Math.abs(0.5 * s * q)) {
+                    d = p / q;
+                } else {
+                    d = m;
+                    e = d;
+                }
+            }
+            /* complete step */
+            a = b;
+            fa = fb;
+            if (Math.abs(d) > del) b += d;else if (m > 0.0) b += del;else b -= del;
+            fb = curve.ag_horner1(pars.p, pars.deg, b);
+            if (fb * (fc / Math.abs(fc)) > 0.0) {
+                label1 = true;
+            }
+        } else {
+            break;
+        }
+    }
+    return b;
+};
+
+/**
+ * ag_zeroin
+ *
+ * @param a
+ * @param b
+ * @param tol
+ * @param pars
+ * @returns {*}
+ */
+curve.ag_zeroin = function (a, b, tol, pars) {
+    var fa = void 0,
+        fb = void 0;
+
+    fa = curve.ag_horner1(pars.p, pars.deg, a);
+    if (Math.abs(fa) < 1.192092896e-07) return a;
+
+    fb = curve.ag_horner1(pars.p, pars.deg, b);
+    if (Math.abs(fb) < 1.192092896e-07) return b;
+
+    return curve.ag_zeroin2(a, b, fa, fb, tol, pars);
+};
+
+/**
+ * polyZeroes
+ *
+ * @param Poly
+ * @param deg
+ * @param a
+ * @param a_closed
+ * @param b
+ * @param b_closed
+ * @param Roots
+ * @returns {*}
+ */
+curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
+    var i = void 0,
+        left_ok = void 0,
+        right_ok = void 0,
+        nr = void 0,
+        ndr = void 0,
+        skip = void 0;
+
+    var e = void 0,
+        f = void 0,
+        s = void 0,
+        pe = void 0,
+        ps = void 0,
+        tol = void 0,
+        p = void 0,
+        p_x = new Array(22),
+        d = void 0,
+        d_x = new Array(22),
+        dr = void 0,
+        dr_x = new Array(22);
+
+    var ply = {
+        p: [],
+        deg: 0
+    };
+
+    e = pe = 0.0;
+    f = 0.0;
+
+    for (i = 0; i < deg + 1; ++i) {
+        f += Math.abs(Poly[i]);
+    }
+    tol = (Math.abs(a) + Math.abs(b)) * (deg + 1) * 1.192092896e-07;
+
+    /* Zero polynomial to tolerance? */
+    if (f <= tol) return -1;
+
+    p = p_x;
+    d = d_x;
+    dr = dr_x;
+    for (i = 0; i < deg + 1; ++i) {
+        p[i] = 1.0 / f * Poly[i];
+    }
+
+    /* determine true degree */
+    while (Math.abs(p[deg]) < tol) {
+        deg--;
+    } /* Identically zero poly already caught so constant fn !== 0 */
+    nr = 0;
+    if (deg === 0) return nr;
+
+    /* check for linear case */
+    if (deg === 1) {
+        Roots[0] = -p[0] / p[1];
+        left_ok = a_closed ? a < Roots[0] + tol : a < Roots[0] - tol;
+        right_ok = b_closed ? b > Roots[0] - tol : b > Roots[0] + tol;
+        nr = left_ok && right_ok ? 1 : 0;
+        if (nr) {
+            if (a_closed && Roots[0] < a) Roots[0] = a;else if (b_closed && Roots[0] > b) Roots[0] = b;
+        }
+        return nr;
+    }
+    /* handle non-linear case */
+    else {
+            ply.p = p;
+            ply.deg = deg;
+
+            /* compute derivative */
+            for (i = 1; i <= deg; i++) {
+                d[i - 1] = i * p[i];
+            } /* find roots of derivative */
+            ndr = curve.polyZeroes(d, deg - 1, a, 0, b, 0, dr);
+            if (ndr.length === 0) return 0;
+
+            /* find roots between roots of the derivative */
+            for (i = skip = 0; i <= ndr; i++) {
+                if (nr > deg) return nr;
+                if (i === 0) {
+                    s = a;
+                    ps = curve.ag_horner1(p, deg, s);
+                    if (Math.abs(ps) <= tol && a_closed) Roots[nr++] = a;
+                } else {
+                    s = e;
+                    ps = pe;
+                }
+                if (i === ndr) {
+                    e = b;
+                    skip = 0;
+                } else e = dr[i];
+                pe = curve.ag_horner1(p, deg, e);
+                if (skip) skip = 0;else {
+                    if (Math.abs(pe) < tol) {
+                        if (i !== ndr || b_closed) {
+                            Roots[nr++] = e;
+                            skip = 1;
+                        }
+                    } else if (ps < 0 && pe > 0 || ps > 0 && pe < 0) {
+                        Roots[nr++] = curve.ag_zeroin(s, e, 0.0, ply);
+                        if (nr > 1 && Roots[nr - 2] >= Roots[nr - 1] - tol) {
+                            Roots[nr - 2] = (Roots[nr - 2] + Roots[nr - 1]) * 0.5;
+                            nr--;
+                        }
+                    }
+                }
+            }
+        }
+
+    return nr;
+};
+
+/***/ }),
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -19090,10 +19880,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(64)))
 
 /***/ }),
-/* 60 */
+/* 64 */
 /***/ (function(module, exports) {
 
 var g;
@@ -19120,7 +19910,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 61 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20021,7 +20811,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
 };
 
 /***/ }),
-/* 62 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20125,7 +20915,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 63 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20138,19 +20928,19 @@ exports.Tw2EffectRes = undefined;
 
 var _math = __webpack_require__(0);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2EventEmitter = __webpack_require__(5);
+var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2BinaryReader = __webpack_require__(17);
+var _Tw2BinaryReader = __webpack_require__(20);
 
-var _Tw2SamplerState = __webpack_require__(19);
+var _Tw2SamplerState = __webpack_require__(22);
 
-var _Tw2VertexDeclaration = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20710,7 +21500,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 64 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20730,7 +21520,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 65 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20861,7 +21651,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20878,11 +21668,11 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _math = __webpack_require__(0);
 
-var _Tw2ResMan = __webpack_require__(3);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Mesh2 = __webpack_require__(33);
+var _Tw2Mesh2 = __webpack_require__(38);
 
-var _Tw2BatchAccumulator = __webpack_require__(20);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21036,7 +21826,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 67 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21047,7 +21837,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2PerObjectData = Tw2PerObjectData;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
 /**
  * Tw2PerObjectData
@@ -21073,7 +21863,7 @@ Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHa
 };
 
 /***/ }),
-/* 68 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21084,19 +21874,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2PostProcess = Tw2PostProcess;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2RenderTarget = __webpack_require__(34);
+var _Tw2RenderTarget = __webpack_require__(39);
 
-var _Tw2Effect = __webpack_require__(18);
+var _Tw2Effect = __webpack_require__(21);
 
-var _Tw2TextureParameter = __webpack_require__(16);
+var _Tw2TextureParameter = __webpack_require__(19);
 
-var _Tw2Vector4Parameter = __webpack_require__(8);
+var _Tw2Vector4Parameter = __webpack_require__(10);
 
-var _Tw2FloatParameter = __webpack_require__(15);
+var _Tw2FloatParameter = __webpack_require__(18);
 
-var _Tw2TextureRes = __webpack_require__(21);
+var _Tw2TextureRes = __webpack_require__(24);
 
 /**
  * Creates a bloom post effect
@@ -21258,7 +22048,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21344,7 +22134,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21355,11 +22145,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2RuntimeInstanceData = Tw2RuntimeInstanceData;
 
-var _Tw2Device = __webpack_require__(2);
+var _Tw2Device = __webpack_require__(3);
 
-var _Tw2VertexDeclaration = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
-var _particle = __webpack_require__(35);
+var _particle = __webpack_require__(40);
 
 /**
  * Tw2RuntimeInstanceData
@@ -21557,7 +22347,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21567,7 +22357,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(72);
+var _Tw2StaticEmitter = __webpack_require__(76);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21579,7 +22369,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(73);
+var _Tw2DynamicEmitter = __webpack_require__(77);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21592,7 +22382,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21607,7 +22397,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(36);
+var _Tw2ParticleEmitter2 = __webpack_require__(41);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21751,7 +22541,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 73 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21764,7 +22554,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(36);
+var _Tw2ParticleEmitter2 = __webpack_require__(41);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21876,7 +22666,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 74 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21886,7 +22676,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(75);
+var _Tw2ParticleAttractorForce = __webpack_require__(79);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21898,7 +22688,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(76);
+var _Tw2ParticleDirectForce = __webpack_require__(80);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21910,7 +22700,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(77);
+var _Tw2ParticleDragForce = __webpack_require__(81);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21922,7 +22712,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(78);
+var _Tw2ParticleFluidDragForce = __webpack_require__(82);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21934,7 +22724,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(79);
+var _Tw2ParticleSpring = __webpack_require__(83);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21946,7 +22736,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(80);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(84);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21959,7 +22749,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 75 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21974,7 +22764,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22033,7 +22823,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 76 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22048,7 +22838,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22096,7 +22886,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 77 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22109,7 +22899,7 @@ exports.Tw2ParticleDragForce = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22157,7 +22947,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 78 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22172,7 +22962,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22243,7 +23033,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 79 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22258,7 +23048,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22308,7 +23098,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 80 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22323,7 +23113,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(7);
+var _Tw2ParticleForce2 = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22415,7 +23205,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 81 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22425,7 +23215,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(82);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(86);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22437,7 +23227,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(83);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(87);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22449,7 +23239,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(84);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(88);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22462,7 +23252,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22477,9 +23267,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(11);
+var _Tw2ParticleElement = __webpack_require__(13);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(22);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(25);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22553,7 +23343,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22568,9 +23358,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(11);
+var _Tw2ParticleElement = __webpack_require__(13);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(22);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(25);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22644,7 +23434,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 84 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22659,9 +23449,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(11);
+var _Tw2ParticleElement = __webpack_require__(13);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(22);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(25);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22791,14 +23581,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 85 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 86 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22815,7 +23605,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(11);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23365,7 +24155,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 87 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23459,7 +24249,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 88 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23475,7 +24265,7 @@ exports.Tw2ValueBinding = Tw2ValueBinding;
 
 var _math = __webpack_require__(0);
 
-var _Tw2Vector4Parameter = __webpack_require__(8);
+var _Tw2Vector4Parameter = __webpack_require__(10);
 
 /**
  * Tw2ValueBinding
@@ -23735,13 +24525,13 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 89 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Tw2VariableStore = __webpack_require__(13);
+var _Tw2VariableStore = __webpack_require__(16);
 
 /**
  * Tw2VariableParameter
@@ -23790,7 +24580,7 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
 };
 
 /***/ }),
-/* 90 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23799,236 +24589,53 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2ColorKey = Tw2ColorKey;
-exports.Tw2ColorCurve = Tw2ColorCurve;
+exports.Tw2ColorCurve2 = exports.Tw2ColorKey2 = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-/**
- * Tw2ColorKey
- * @property {number} time
- * @property {vec4} value
- * @property {vec4} left
- * @property {vec4} right
- * @property {number} interpolation
- * @constructor
- */
-function Tw2ColorKey() {
-    this.time = 0;
-    this.value = _math.vec4.create();
-    this.left = _math.vec4.create();
-    this.right = _math.vec4.create();
-    this.interpolation = 0;
-}
+var _Tw2Curve2 = __webpack_require__(2);
 
-/**
- * Tw2ColorCurve
- * @property {String} name
- * @property {number} start
- * @property {number} length
- * @property {vec4} value
- * @property {number} extrapolation
- * @property {Array.<Tw2ColorKey>} keys
- * @property {number} _currKey
- * @constructor
- */
-function Tw2ColorCurve() {
-    this.name = '';
-    this.start = 0;
-    this.length = 0;
-    this.value = _math.vec4.create();
-    this.extrapolation = 0;
-    this.keys = [];
-    this._currKey = 1;
-}
+var _Tw2ColorCurve = __webpack_require__(26);
 
-/**
- * Initializes the Curve
- */
-Tw2ColorCurve.prototype.Initialize = function () {
-    this.Sort();
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * Sorts the curve's keys
- */
-Tw2ColorCurve.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2ColorCurve.Compare);
-    }
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-/**
- * Compares two curve keys' time properties
- *
- * @param {Tw2ColorKey} a
- * @param {Tw2ColorKey} b
- * @returns {number}
- * @static
- */
-Tw2ColorCurve.Compare = function (a, b) {
-    if (a.time < b.time) return -1;
-    if (a.time > b.time) return 1;
-    return 0;
-};
-
-/**
- * Returns curve length
-
- * @returns {number}
- */
-Tw2ColorCurve.prototype.GetLength = function () {
-    return this.length;
-};
-
-/**
- * Updates a value at a specific time
- *
- * @param {number} time
- */
-Tw2ColorCurve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
-
-/**
- * Gets a value at a specific time
- *
- * @param {number} time
- * @param {vec4} value
- * @returns {vec4}
- */
-Tw2ColorCurve.prototype.GetValueAt = function (time, value) {
-    if (this.length === 0) {
-        value[0] = this.value[0];
-        value[1] = this.value[1];
-        value[2] = this.value[2];
-        value[3] = this.value[3];
-        return value;
-    }
-
-    var d;
-    var firstKey = this.keys[0];
-    var lastKey = this.keys[this.keys.length - 1];
-    if (time >= lastKey.time) {
-        if (this.extrapolation === Tw2ColorCurve.Extrapolation.NONE) {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            value[3] = this.value[3];
-            return value;
-        } else if (this.extrapolation === Tw2ColorCurve.Extrapolation.CONSTANT) {
-            value[0] = lastKey.value[0];
-            value[1] = lastKey.value[1];
-            value[2] = lastKey.value[2];
-            value[3] = lastKey.value[3];
-            return value;
-        } else if (this.extrapolation === Tw2ColorCurve.Extrapolation.GRADIENT) {
-            d = time - lastKey.time;
-            value[0] = lastKey.value[0] + d * lastKey.right[0];
-            value[1] = lastKey.value[1] + d * lastKey.right[1];
-            value[2] = lastKey.value[2] + d * lastKey.right[2];
-            value[3] = lastKey.value[3] + d * lastKey.right[3];
-            return value;
-        } else {
-            time = time % lastKey.time;
-        }
-    } else if (time < 0 || time < firstKey.time) {
-        if (this.extrapolation === Tw2ColorCurve.Extrapolation.NONE) {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            value[3] = this.value[3];
-            return value;
-        } else if (this.extrapolation === Tw2ColorCurve.Extrapolation.GRADIENT) {
-            d = time * this.length - lastKey.time;
-            value[0] = firstKey.value[0] + d * firstKey.left[0];
-            value[1] = firstKey.value[1] + d * firstKey.left[1];
-            value[2] = firstKey.value[2] + d * firstKey.left[2];
-            value[3] = firstKey.value[3] + d * firstKey.left[3];
-            return value;
-        } else {
-            value[0] = firstKey.value[0];
-            value[1] = firstKey.value[1];
-            value[2] = firstKey.value[2];
-            value[3] = firstKey.value[3];
-            return value;
-        }
-    }
-    var ck = this.keys[this._currKey];
-    var ck_1 = this.keys[this._currKey - 1];
-    while (time >= ck.time || time < ck_1.time) {
-        if (time < ck_1.time) {
-            this._currKey = 0;
-        }
-        this._currKey++;
-        ck = this.keys[this._currKey];
-        ck_1 = this.keys[this._currKey - 1];
-    }
-
-    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation === Tw2ColorCurve.Interpolation.CONSTANT) {
-        value[0] = ck_1.value[0];
-        value[1] = ck_1.value[1];
-        value[2] = ck_1.value[2];
-        value[3] = ck_1.value[3];
-    } else {
-        value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
-        value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
-        value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
-        value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
-    }
-    return value;
-};
-
-Tw2ColorCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
-
-Tw2ColorCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2
-};
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2ColorKey2 = Tw2ColorKey2;
-exports.Tw2ColorCurve2 = Tw2ColorCurve2;
-
-var _math = __webpack_require__(0);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * Tw2ColorKey2
+ *
  * @property {number} time
  * @property {vec4} value
  * @property {vec4} leftTangent
  * @property {vec4} rightTangent
  * @property {number} interpolation
- * @constructor
+ * @class
  */
-function Tw2ColorKey2() {
-    this.time = 0;
-    this.value = _math.vec4.create();
-    this.leftTangent = _math.vec4.create();
-    this.rightTangent = _math.vec4.create();
-    this.interpolation = 1;
-}
+var Tw2ColorKey2 = exports.Tw2ColorKey2 = function (_Tw2CurveKey) {
+    _inherits(Tw2ColorKey2, _Tw2CurveKey);
+
+    function Tw2ColorKey2() {
+        _classCallCheck(this, Tw2ColorKey2);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ColorKey2.__proto__ || Object.getPrototypeOf(Tw2ColorKey2)).call(this));
+
+        _this.value = _math.vec4.create();
+        _this.leftTangent = _math.vec4.create();
+        _this.rightTangent = _math.vec4.create();
+        _this.interpolation = 1;
+        return _this;
+    }
+
+    return Tw2ColorKey2;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
  * Tw2ColorCurve2
- * @property {string} name
- * @property {number} length
+ *
  * @property {boolean} cycle
  * @property {boolean} reversed
  * @property {number} timeOffset
@@ -24040,496 +24647,209 @@ function Tw2ColorKey2() {
  * @property {vec4} endTangent
  * @property {number} interpolation
  * @property {Array.<Tw2ColorKey2>} keys
- * @constructor
+ * @class
  */
-function Tw2ColorCurve2() {
-    this.name = '';
-    this.length = 0;
-    this.cycle = false;
-    this.reversed = false;
-    this.timeOffset = 0;
-    this.timeScale = 1;
-    this.startValue = _math.vec4.fromValues(0, 0, 0, 1);
-    this.currentValue = _math.vec4.fromValues(0, 0, 0, 1);
-    this.endValue = _math.vec4.fromValues(0, 0, 0, 1);
-    this.startTangent = _math.vec4.create();
-    this.endTangent = _math.vec4.create();
-    this.interpolation = 1;
-    this.keys = [];
-}
 
+
+var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = function (_Tw2Curve) {
+    _inherits(Tw2ColorCurve2, _Tw2Curve);
+
+    function Tw2ColorCurve2() {
+        _classCallCheck(this, Tw2ColorCurve2);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2ColorCurve2.__proto__ || Object.getPrototypeOf(Tw2ColorCurve2)).call(this));
+
+        _this2.cycle = false;
+        _this2.reversed = false;
+        _this2.timeOffset = 0;
+        _this2.timeScale = 1;
+        _this2.startValue = _math.vec4.fromValues(0, 0, 0, 1);
+        _this2.currentValue = _math.vec4.fromValues(0, 0, 0, 1);
+        _this2.endValue = _math.vec4.fromValues(0, 0, 0, 1);
+        _this2.startTangent = _math.vec4.create();
+        _this2.endTangent = _math.vec4.create();
+        _this2.interpolation = 1;
+        _this2.keys = [];
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2ColorCurve2, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort2(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec4} value
+         * @returns {vec4}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            time = time / this.timeScale + this.timeOffset;
+            if (this._length <= 0 || time <= 0) {
+                return _math.vec4.copy(value, this.startValue);
+            }
+
+            if (time > this._length) {
+                if (this.cycle) {
+                    time = time % this._length;
+                } else if (this.reversed) {
+                    return _math.vec4.copy(value, this.startValue);
+                } else {
+                    return _math.vec4.copy(value, this.endValue);
+                }
+            }
+
+            if (this.reversed) {
+                time = this._length - time;
+            }
+
+            if (this.keys.length === 0) {
+                return this.Interpolate(time, null, null, value);
+            }
+
+            var startKey = this.keys[0];
+            if (time <= startKey.time) {
+                return this.Interpolate(time, null, startKey, value);
+            } else if (time >= this.keys[this.keys.length - 1].time) {
+                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            }
+
+            var endKey = void 0;
+            for (var i = 0; i + 1 < this.keys.length; ++i) {
+                startKey = this.keys[i];
+                endKey = this.keys[i + 1];
+                if (startKey.time <= time && endKey.time > time) {
+                    break;
+                }
+            }
+
+            return this.Interpolate(time, startKey, endKey, value);
+        }
+
+        /**
+         * Interpolate
+         * @param {number} time
+         * @param {Tw2ColorKey2} lastKey
+         * @param {Tw2ColorKey2} nextKey
+         * @param {vec4} value
+         * @returns {vec4} value
+         */
+
+    }, {
+        key: 'Interpolate',
+        value: function Interpolate(time, lastKey, nextKey, value) {
+            _math.vec4.copy(value, this.startValue);
+
+            var startValue = this.startValue,
+                endValue = this.endValue,
+                interp = this.interpolation,
+                deltaTime = this._length;
+
+            if (lastKey !== null) {
+                interp = lastKey.interpolation;
+                time -= lastKey.time;
+            }
+
+            switch (interp) {
+                case Tw2ColorCurve2.Interpolation.LINEAR:
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        deltaTime = this._length - lastKey.time;
+                    }
+                    value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
+                    value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
+                    value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
+                    value[3] = startValue[3] + (endValue[3] - startValue[3]) * (time / deltaTime);
+                    return value;
+
+                default:
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2ColorCurve2;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2ColorCurve2.inputDimension = 4;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2ColorCurve2.outputDimension = 4;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2ColorCurve2.valueProperty = 'currentValue';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2ColorCurve2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2ColorKey2}
+ */
+Tw2ColorCurve2.Key = Tw2ColorKey2;
+
+/**
+ * Interpolation types
+ * @type {{CONSTANT: number, LINEAR: number}}
+ */
 Tw2ColorCurve2.Interpolation = {
     CONSTANT: 0,
     LINEAR: 1
-};
-
-/**
- * Initializes the curve
- * @prototype
- */
-Tw2ColorCurve2.prototype.Initialize = function () {
-    this.Sort();
-};
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2ColorCurve2.prototype.GetLength = function () {
-    return this.length;
-};
-
-/**
- * Compares two curve keys' time properties
- * @param {Tw2ColorKey2} a
- * @param {Tw2ColorKey2} b
- * @returns {number}
- * @method
- */
-Tw2ColorCurve2.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
-    }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
-
-/**
- * Sorts the curve's keys
- * @prototype
- */
-Tw2ColorCurve2.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2ColorCurve2.Compare);
-        var back = this.keys[this.keys.length - 1];
-        if (back.time > this.length) {
-            var preLength = this.length;
-            var endValue = this.endValue;
-            var endTangent = this.endTangent;
-            this.length = back.time;
-            this.endValue = back.value;
-            this.endTangent = back.leftTangent;
-            if (preLength > 0) {
-                back.time = preLength;
-                back.value = endValue;
-                back.leftTangent = endTangent;
-            }
-        }
-    }
-};
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2ColorCurve2.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.currentValue);
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec4} value
- * @returns {vec4}
- * @prototype
- */
-Tw2ColorCurve2.prototype.GetValueAt = function (time, value) {
-    time = time / this.timeScale + this.timeOffset;
-    if (this.length <= 0 || time <= 0) {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        value[2] = this.startValue[2];
-        value[3] = this.startValue[3];
-        return value;
-    }
-    if (time > this.length) {
-        if (this.cycle) {
-            time = time % this.length;
-        } else if (this.reversed) {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            value[2] = this.startValue[2];
-            value[3] = this.startValue[3];
-            return value;
-        } else {
-            value[0] = this.endValue[0];
-            value[1] = this.endValue[1];
-            value[2] = this.endValue[2];
-            value[3] = this.endValue[3];
-            return value;
-        }
-    }
-    if (this.reversed) {
-        time = this.length - time;
-    }
-    if (this.keys.length === 0) {
-        return this.Interpolate(time, null, null, value);
-    }
-    var startKey = this.keys[0];
-    if (time <= startKey.time) {
-        return this.Interpolate(time, null, startKey, value);
-    } else if (time >= this.keys[this.keys.length - 1].time) {
-        return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
-    }
-    var endKey = this.keys[i + 1];
-    for (var i = 0; i + 1 < this.keys.length; ++i) {
-        startKey = this.keys[i];
-        endKey = this.keys[i + 1];
-        if (startKey.time <= time && endKey.time > time) {
-            break;
-        }
-    }
-    return this.Interpolate(time, startKey, endKey, value);
-};
-
-/**
- * Interpolate
- * @param {number} time
- * @param {Tw2ColorKey2} lastKey
- * @param {Tw2ColorKey2} nextKey
- * @param {vec4} value
- * @returns {*}
- * @prototype
- */
-Tw2ColorCurve2.prototype.Interpolate = function (time, lastKey, nextKey, value) {
-    value[0] = this.startValue[0];
-    value[1] = this.startValue[1];
-    value[2] = this.startValue[2];
-    value[3] = this.startValue[3];
-
-    var startValue = this.startValue;
-    var endValue = this.endValue;
-    var interp = this.interpolation;
-    var deltaTime = this.length;
-    if (lastKey !== null) {
-        interp = lastKey.interpolation;
-        time -= lastKey.time;
-    }
-    switch (interp) {
-        case Tw2ColorCurve2.Interpolation.LINEAR:
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                endValue = nextKey.value;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                deltaTime = this.length - lastKey.time;
-            }
-            value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
-            value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
-            value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
-            value[3] = startValue[3] + (endValue[3] - startValue[3]) * (time / deltaTime);
-            return value;
-    }
-    return value;
-};
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2EventKey = Tw2EventKey;
-exports.Tw2EventCurve = Tw2EventCurve;
-/**
- * Tw2EventKey
- * @property {number} time
- * @property value
- * @constructor
- */
-function Tw2EventKey() {
-    this.time = 0;
-    this.value = '';
-}
-
-/**
- * Tw2EventCurve
- * @property {string} name
- * @property {string} value
- * @property {Array.<Tw2EventKey>} keys
- * @property {number} extrapolation
- * @property {number} _length
- * @property {number} _time
- * @property {number} _currentKey
- * @constructor
- */
-function Tw2EventCurve() {
-    this.name = '';
-    this.value = '';
-    this.keys = [];
-    this.extrapolation = 0;
-    this._length = 0;
-    this._time = 0;
-    this._currentKey = 0;
-}
-
-Tw2EventCurve.Extrapolation = {
-    NONE: 0,
-    CYCLE: 3
-};
-
-/**
- * Compares two curve keys' time properties
- * @param {Tw2EventKey} a
- * @param {Tw2EventKey} b
- * @returns {number}
- * @method
- */
-Tw2EventCurve.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
-    }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
-
-/**
- * Initializes the Curve
- * @prototype
- */
-Tw2EventCurve.prototype.Initialize = function () {
-    this.keys.sort(Tw2EventCurve.Compare);
-    this._length = 0;
-    if (this.keys.length) {
-        this._length = this.keys[this.keys.length - 1].time;
-    }
-};
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2EventCurve.prototype.GetLength = function () {
-    return this._length;
-};
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2EventCurve.prototype.UpdateValue = function (time) {
-    if (this._length <= 0) {
-        return;
-    }
-    var before = this._time;
-    this._time = time;
-    if (this._time < before) {
-        this._currentKey = 0;
-    }
-    if (this.extrapolation === Tw2EventCurve.Extrapolation.CYCLE) {
-        var now = this._time % this._length;
-        if (now < before) {
-            this._currentKey = 0;
-        }
-        this._time = now;
-    }
-    while (this._currentKey < this.keys.length && this._time >= this.keys[this._currentKey].time) {
-        this.value = this.keys[this._currentKey].value;
-        ++this._currentKey;
-    }
-};
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2PerlinCurve = Tw2PerlinCurve;
-var Perlin_start = true;
-var Perlin_B = 0x100;
-var Perlin_BM = 0xff;
-var Perlin_N = 0x1000;
-var Perlin_p = new Array(Perlin_B + Perlin_B + 2);
-var Perlin_g1 = new Array(Perlin_B + Perlin_B + 2);
-
-/**
- * Initializes Perlin Noise
- * @method
- */
-function Perlin_init() {
-    var i = 0;
-    var j = 0;
-    var k = 0;
-    for (i = 0; i < Perlin_B; i++) {
-        Perlin_p[i] = i;
-        Perlin_g1[i] = Math.random() * 2 - 1;
-    }
-
-    while (--i) {
-        k = Perlin_p[i];
-        Perlin_p[i] = Perlin_p[j = Math.floor(Math.random() * Perlin_B)];
-        Perlin_p[j] = k;
-    }
-
-    for (i = 0; i < Perlin_B + 2; i++) {
-        Perlin_p[Perlin_B + i] = Perlin_p[i];
-        Perlin_g1[Perlin_B + i] = Perlin_g1[i];
-    }
-}
-
-/**
- * Perlin_noise1
- * @param arg
- * @returns {*}
- * @method
- */
-function Perlin_noise1(arg) {
-    if (Perlin_start) {
-        Perlin_start = false;
-        Perlin_init();
-    }
-
-    var t = arg + Perlin_N;
-    var bx0 = Math.floor(t) & Perlin_BM;
-    var bx1 = bx0 + 1 & Perlin_BM;
-    var rx0 = t - Math.floor(t);
-    var rx1 = rx0 - 1;
-
-    var sx = rx0 * rx0 * (3.0 - 2.0 * rx0);
-    var u = rx0 * Perlin_g1[Perlin_p[bx0]];
-    var v = rx1 * Perlin_g1[Perlin_p[bx1]];
-
-    return u + sx * (v - u);
-}
-
-/**
- * PerlinNoise1D
- * @param x
- * @param alpha
- * @param beta
- * @param n
- * @returns {number}
- * @method
- */
-function PerlinNoise1D(x, alpha, beta, n) {
-    var sum = 0;
-    var p = x;
-    var scale = 1;
-    for (var i = 0; i < n; ++i) {
-        sum += Perlin_noise1(p) / scale;
-        scale *= alpha;
-        p *= beta;
-    }
-    return sum;
-}
-
-/**
- * Tw2PerlinCurve
- * @property {String} name
- * @property {number} start
- * @property {number} value
- * @property {number} speed
- * @property {number} alpha
- * @property {number} beta
- * @property {number} offset
- * @property {number} scale
- * @property {number} N
- * @property {number} _startOffset
- * @constructor
- */
-function Tw2PerlinCurve() {
-    this.name = '';
-    this.start = 0;
-    this.value = 0;
-    this.speed = 1;
-    this.alpha = 1.1;
-    this.beta = 2;
-    this.offset = 0;
-    this.scale = 1;
-    this.N = 3;
-    this._startOffset = Math.random() * 100;
-}
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2PerlinCurve.prototype.UpdateValue = function (time) {
-    this.value = this.GetValueAt(time);
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
- */
-Tw2PerlinCurve.prototype.GetValueAt = function (time) {
-    time -= this._startOffset;
-    return (PerlinNoise1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2 * this.scale + this.offset;
-};
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2RandomConstantCurve = Tw2RandomConstantCurve;
-/**
- * Tw2RandomConstantCurve
- * @property {string} name
- * @property {number} value
- * @property {number} min
- * @property {number} max
- * @property {boolean} hold
- * @constructor
- */
-function Tw2RandomConstantCurve() {
-    this.name = '';
-    this.value = 0;
-    this.min = 0;
-    this.max = 1;
-    this.hold = true;
-}
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2RandomConstantCurve.prototype.UpdateValue = function (time) {
-    this.value = this.GetValueAt(time);
-};
-
-/**
- * Gets a value at a specific time
- * TODO: @param time is redundant
- * @param {number} time
- * @returns {number}
- * @prototype
- */
-Tw2RandomConstantCurve.prototype.GetValueAt = function (time) {
-    if (!this.hold) {
-        this.value = this.min + (this.max - this.min) * Math.random();
-    }
-    return this.value;
 };
 
 /***/ }),
@@ -24542,126 +24862,166 @@ Tw2RandomConstantCurve.prototype.GetValueAt = function (time) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Torque = Tw2Torque;
-exports.Tw2RigidOrientation = Tw2RigidOrientation;
+exports.Tw2EventCurve = exports.Tw2EventKey = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/**
- * Tw2Torque
- * @property {number} time
- * @property {quat} rot0
- * @property {vec3} omega0
- * @property {vec3} torque
- * @constructor
- */
-function Tw2Torque() {
-    this.time = 0;
-    this.rot0 = _math.quat.create();
-    this.omega0 = _math.vec3.create();
-    this.torque = _math.vec3.create();
-}
+var _Tw2Curve2 = __webpack_require__(2);
+
+var _Tw2ColorCurve = __webpack_require__(26);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2RigidOrientation
- * @property {string} name
- * @property {number} I
- * @property {number} drag
- * @property {quat} value
- * @property {number} start
- * @property {Array} states
- * @constructor
+ * Tw2EventKey
+ *
+ * @property {string} value
+ * @class
  */
-function Tw2RigidOrientation() {
-    this.name = '';
-    this.I = 1;
-    this.drag = 1;
-    this.value = _math.quat.create();
-    this.start = 0;
-    this.states = [];
-}
+var Tw2EventKey = exports.Tw2EventKey = function (_Tw2CurveKey) {
+    _inherits(Tw2EventKey, _Tw2CurveKey);
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2RigidOrientation.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+    function Tw2EventKey() {
+        _classCallCheck(this, Tw2EventKey);
 
-/**
- * ExponentialDecay
- * @param v
- * @param a
- * @param m
- * @param k
- * @param t
- * @returns {number}
- * @prototype
- */
-Tw2RigidOrientation.ExponentialDecay = function (v, a, m, k, t) {
-    return a * t / k + m * (v * k - a) / (k * k) * (1.0 - Math.pow(Math.E, -k * t / m));
-};
+        var _this = _possibleConstructorReturn(this, (Tw2EventKey.__proto__ || Object.getPrototypeOf(Tw2EventKey)).call(this));
 
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
- */
-Tw2RigidOrientation.prototype.GetValueAt = function (time, value) {
-    var tau = Tw2RigidOrientation.scratch.vec3_0,
-        tauConverter = Tw2RigidOrientation.scratch.quat_0;
-
-    if (this.states.length === 0 || time < 0 || time < this.states[0].time) {
-        _math.quat.copy(value, this.value);
-        return value;
+        _this.value = '';
+        return _this;
     }
-    var key = 0;
-    if (time >= this.states[this.states.length - 1].time) {
-        key = this.states.length - 1;
-    } else {
-        for (; key + 1 < this.states.length; ++key) {
-            if (time >= this.states[key].time && time < this.states[key + 1].time) {
-                break;
+
+    return Tw2EventKey;
+}(_Tw2Curve2.Tw2CurveKey);
+
+/**
+ * Tw2EventCurve
+ *
+ * @property {number} length
+ * @property {string} value
+ * @property {Array.<Tw2EventKey>} keys
+ * @property {number} extrapolation
+ * @property {number} _time
+ * @property {number} _currentKey
+ * @class
+ */
+
+
+var Tw2EventCurve = exports.Tw2EventCurve = function (_Tw2Curve) {
+    _inherits(Tw2EventCurve, _Tw2Curve);
+
+    function Tw2EventCurve() {
+        _classCallCheck(this, Tw2EventCurve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2EventCurve.__proto__ || Object.getPrototypeOf(Tw2EventCurve)).call(this));
+
+        _this2.value = '';
+        _this2.keys = [];
+        _this2.extrapolation = 0;
+        _this2._time = 0;
+        _this2._currentKey = 0;
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2EventCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Gets a value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (this._length <= 0) {
+                return this.value;
+            }
+
+            var before = this._time;
+            this._time = time;
+            if (this._time < before) {
+                this._currentKey = 0;
+            }
+
+            if (this.extrapolation === Tw2EventCurve.Extrapolation.CYCLE) {
+                var now = this._time % this._length;
+                if (now < before) this._currentKey = 0;
+                this._time = now;
+            }
+
+            while (this._currentKey < this.keys.length && this._time >= this.keys[this._currentKey].time) {
+                this.value = this.keys[this._currentKey].value;
+                ++this._currentKey;
             }
         }
-    }
-    time -= this.states[key].time;
+    }]);
 
-    tau[0] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[0], this.states[key].torque[0], this.I, this.drag, time);
-    tau[1] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[1], this.states[key].torque[1], this.I, this.drag, time);
-    tau[2] = Tw2RigidOrientation.ExponentialDecay(this.states[key].omega0[2], this.states[key].torque[2], this.I, this.drag, time);
-
-    tauConverter[0] = tau[0];
-    tauConverter[1] = tau[1];
-    tauConverter[2] = tau[2];
-    tauConverter[3] = 0;
-
-    var norm = Math.sqrt(tauConverter[0] * tauConverter[0] + tauConverter[1] * tauConverter[1] + tauConverter[2] * tauConverter[2] + tauConverter[3] * tauConverter[3]);
-    if (norm) {
-        tauConverter[0] = Math.sin(norm) * tauConverter[0] / norm;
-        tauConverter[1] = Math.sin(norm) * tauConverter[1] / norm;
-        tauConverter[2] = Math.sin(norm) * tauConverter[2] / norm;
-        tauConverter[3] = Math.cos(norm);
-    } else {
-        tauConverter[0] = 0.0;
-        tauConverter[1] = 0.0;
-        tauConverter[2] = 0.0;
-        tauConverter[3] = 1.0;
-    }
-    _math.quat.multiply(value, this.states[key].rot0, tauConverter);
-    return value;
-};
+    return Tw2EventCurve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Scratch variables
+ * The curve's dimension
+ * @type {number}
  */
-Tw2RigidOrientation.scratch = {
-    vec3_0: _math.vec3.create(),
-    quat_0: _math.quat.create()
+
+
+_Tw2ColorCurve.Tw2ColorCurve.dimension = -1;
+
+/**
+ *
+ * @type {number}
+ */
+Tw2EventCurve.outputDimension = -1;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2EventCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2EventCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2EventKey}
+ */
+Tw2EventCurve.Key = Tw2EventKey;
+
+/**
+ * Extrapolation types
+ * @type {{NONE: number, CYCLE: number}}
+ */
+Tw2EventCurve.Extrapolation = {
+    NONE: 0,
+    CYCLE: 3
 };
 
 /***/ }),
@@ -24672,260 +25032,103 @@ Tw2RigidOrientation.scratch = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2QuaternionKey = Tw2QuaternionKey;
+exports.Tw2PerlinCurve = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-var _Tw2QuaternionCurve = __webpack_require__(38);
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2QuaternionKey
- * @property {number} time
- * @property {quat} value
- * @property {vec4} left
- * @property {vec4} right
- * @property {number} interpolation
- * @constructor
- */
-function Tw2QuaternionKey() {
-    this.time = 0;
-    this.value = _math.quat.create();
-    this.left = _math.vec4.create();
-    this.right = _math.vec4.create();
-    this.interpolation = 5;
-}
-
-/**
- * Tw2RotationCurve
- * @property {string} name
+ * Tw2PerlinCurve
+ *
  * @property {number} start
- * @property {number} length
- * @property {quat} value
- * @property {number} extrapolation
- * @property {Array.<Tw2QuaternionKey>} keys
- * @property {number} _currKey
- * @constructor
+ * @property {number} speed
+ * @property {number} alpha
+ * @property {number} beta
+ * @property {number} offset
+ * @property {number} scale
+ * @property {number} N
+ * @property {number} _startOffset
+ * @class
  */
-function Tw2RotationCurve() {
-    this.name = '';
-    this.start = 0;
-    this.length = 0;
-    this.value = _math.quat.create();
-    this.extrapolation = 0;
-    this.keys = [];
-    this._currKey = 1;
-}
+var Tw2PerlinCurve = exports.Tw2PerlinCurve = function (_Tw2Curve) {
+  _inherits(Tw2PerlinCurve, _Tw2Curve);
 
-Tw2RotationCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
+  function Tw2PerlinCurve() {
+    _classCallCheck(this, Tw2PerlinCurve);
 
-Tw2RotationCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2,
-    HERMITE: 3,
-    SLERP: 5,
-    SQUAD: 6
-};
+    var _this = _possibleConstructorReturn(this, (Tw2PerlinCurve.__proto__ || Object.getPrototypeOf(Tw2PerlinCurve)).call(this));
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2RotationCurve.prototype.GetLength = function () {
-    return this.length;
-};
+    _this.value = 0;
+    _this.start = 0;
+    _this.speed = 1;
+    _this.alpha = 1.1;
+    _this.beta = 2;
+    _this.offset = 0;
+    _this.scale = 1;
+    _this.N = 3;
+    _this._startOffset = Math.random() * 100;
+    return _this;
+  }
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2RotationCurve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+  /**
+   * Updates the current value at the given time
+   * @param {number} time
+   */
 
-/**
- * BICumulative
- * @param {number} order
- * @param t
- * @returns {number}
- * @method
- */
-Tw2RotationCurve.BICumulative = function (order, t) {
-    if (order === 1) {
-        var some = 1.0 - t;
-        return 1.0 - some * some * some;
-    } else if (order === 2) {
-        return 3.0 * t * t - 2.0 * t * t * t;
-    } else {
-        return t * t * t;
-    }
-};
 
-/**
- * QuaternionPow
- * @param {quat} out
- * @param {quat} inq
- * @param {number} exponent
- * @returns {quat}
- * @method
- */
-Tw2RotationCurve.QuaternionPow = function (out, inq, exponent) {
-    if (exponent === 1) {
-        _math.quat.copy(out, inq);
-        return out;
-    }
-    Tw2RotationCurve.QuaternionLn(out, inq);
-    out[0] *= exponent;
-    out[1] *= exponent;
-    out[2] *= exponent;
-    out[3] *= exponent;
-    Tw2RotationCurve.QuaternionExp(out, out);
-    return out;
-};
-
-/**
- * QuaternionLn
- * @param {quat} out
- * @param {quat} q
- * @returns {quat}
- * @method
- */
-Tw2RotationCurve.QuaternionLn = function (out, q) {
-    var norm = _math.quat.length(q);
-    if (norm > 1.0001 || norm < 0.99999) {
-        out[0] = q[0];
-        out[1] = q[1];
-        out[2] = q[2];
-        out[3] = 0.0;
-    } else {
-        var normvec = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
-        if (normvec === 0.0) {
-            out[0] = 0.0;
-            out[1] = 0.0;
-            out[2] = 0.0;
-            out[3] = 0.0;
-        } else {
-            var theta = Math.atan2(normvec, q[3]) / normvec;
-            out[0] = theta * q[0];
-            out[1] = theta * q[1];
-            out[2] = theta * q[2];
-            out[3] = 0.0;
-        }
-    }
-    return out;
-};
-
-/**
- * QuaternionExp
- * @param {quat} out
- * @param {quat} q
- * @returns {quat}
- * @method
- */
-Tw2RotationCurve.QuaternionExp = function (out, q) {
-    var norm = Math.sqrt(q[0] * q[0] + q[1] * q[1] + q[2] * q[2]);
-    if (norm) {
-        out[0] = Math.sin(norm) * q[0] / norm;
-        out[1] = Math.sin(norm) * q[1] / norm;
-        out[2] = Math.sin(norm) * q[2] / norm;
-        out[3] = Math.cos(norm);
-    } else {
-        out[0] = 0.0;
-        out[1] = 0.0;
-        out[2] = 0.0;
-        out[3] = 1.0;
-    }
-    return out;
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
- */
-Tw2RotationCurve.prototype.GetValueAt = function (time, value) {
-    if (this.length === 0) {
-        return _math.quat.copy(value, this.value);
+  _createClass(Tw2PerlinCurve, [{
+    key: 'UpdateValue',
+    value: function UpdateValue(time) {
+      this.value = this.GetValueAt(time);
     }
 
-    var scratch = Tw2RotationCurve.scratch;
-    var firstKey = this.keys[0];
-    var lastKey = this.keys[this.keys.length - 1];
-    if (time >= lastKey.time) {
-        if (this.extrapolation === Tw2RotationCurve.Extrapolation.NONE) {
-            return _math.quat.copy(value, this.value);
-        } else if (this.extrapolation === Tw2RotationCurve.Extrapolation.CONSTANT) {
-            return _math.quat.copy(value, lastKey.value);
-        } else {
-            time = time % lastKey.time;
-        }
-    } else if (time < 0 || time < firstKey.time) {
-        if (this.extrapolation === Tw2RotationCurve.Extrapolation.NONE) {
-            return _math.quat.copy(value, this.value);
-        } else {
-            return _math.quat.set(firstKey.value, value);
-        }
-    }
-    var ck = this.keys[this._currKey];
-    var ck_1 = this.keys[this._currKey - 1];
-    while (time >= ck.time || time < ck_1.time) {
-        if (time < ck_1.time) {
-            this._currKey = 0;
-        }
-        this._currKey++;
-        ck = this.keys[this._currKey];
-        ck_1 = this.keys[this._currKey - 1];
-    }
+    /**
+     * Gets a value at a specific time
+     * @param {number} time
+     * @returns {number}
+     */
 
-    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation === Tw2RotationCurve.Interpolation.CONSTANT) {
-        _math.quat.copy(value, ck_1.value);
-    } else if (ck_1.interpolation === Tw2RotationCurve.Interpolation.LINEAR) {
-        value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
-        value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
-        value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
-        value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
-    } else if (ck_1.interpolation === Tw2RotationCurve.Interpolation.HERMITE) {
-        var collect = _math.quat.identity(scratch.quat_0);
-        var arr = [ck_1.value, ck_1.right, ck.left, ck.value];
-        for (var i = 3; i > 0; i--) {
-            var power = Tw2RotationCurve.BICumulative(i, nt);
-            if (power > 1) _math.quat.multiply(value, collect, arr[i]);
-            value[0] = -arr[i - 1][0];
-            value[1] = -arr[i - 1][1];
-            value[2] = -arr[i - 1][2];
-            value[3] = arr[i - 1][3];
-            _math.quat.multiply(value, value, arr[i]);
-            Tw2RotationCurve.QuaternionPow(value, value, power);
-            _math.quat.multiply(collect, collect, value);
-        }
-        return _math.quat.multiply(value, collect, ck_1.value);
-    } else if (ck_1.interpolation === Tw2RotationCurve.Interpolation.SLERP) {
-        return _Tw2QuaternionCurve.Tw2QuaternionCurve.slerp(ck_1.value, ck.value, nt, value);
-    } else {
-        return _Tw2QuaternionCurve.Tw2QuaternionCurve.slerp(_Tw2QuaternionCurve.Tw2QuaternionCurve.slerp(ck_1.value, ck.value, nt, scratch.quat_0), _Tw2QuaternionCurve.Tw2QuaternionCurve.slerp(ck_1.right, ck.left, nt, scratch.quat_1), 2.0 * time * (1.0 - time), value);
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt(time) {
+      time -= this._startOffset;
+      return (_math.noise.perlin1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2 * this.scale + this.offset;
     }
-    return value;
-};
+  }]);
+
+  return Tw2PerlinCurve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Scratch variables
+ * The curve's dimension
+ * @type {number}
  */
-Tw2RotationCurve.scratch = {
-    quat_0: _math.quat.create(),
-    quat_1: _math.quat.create()
-};
+
+
+Tw2PerlinCurve.outputDimension = 1;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2PerlinCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 
 /***/ }),
 /* 97 */
@@ -24937,151 +25140,272 @@ Tw2RotationCurve.scratch = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2ScalarKey = Tw2ScalarKey;
-exports.Tw2ScalarCurve = Tw2ScalarCurve;
+exports.Tw2QuaternionCurve = exports.Tw2QuaternionKey2 = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2ScalarKey
- * @property {number} time
- * @property {number} value
- * @property {number} left
- * @property {number} right
+ * Tw2QuaternionKey2
+ *
+ * @property {quat} value
+ * @property {vec4} leftTangent
+ * @property {vec4} rightTangent
  * @property {number} interpolation
- * @constructor
+ * @class
  */
-function Tw2ScalarKey() {
-    this.time = 0;
-    this.value = 0;
-    this.left = 0;
-    this.right = 0;
-    this.interpolation = 0;
-}
+var Tw2QuaternionKey2 = exports.Tw2QuaternionKey2 = function (_Tw2CurveKey) {
+    _inherits(Tw2QuaternionKey2, _Tw2CurveKey);
+
+    function Tw2QuaternionKey2() {
+        _classCallCheck(this, Tw2QuaternionKey2);
+
+        var _this = _possibleConstructorReturn(this, (Tw2QuaternionKey2.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey2)).call(this));
+
+        _this.value = _math.quat.create();
+        _this.leftTangent = _math.vec4.create();
+        _this.rightTangent = _math.vec4.create();
+        _this.interpolation = 1;
+        return _this;
+    }
+
+    return Tw2QuaternionKey2;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Tw2ScalarCurve
- * @property {string} name
- * @property {number} start
- * @property {number} timeScale
+ * Tw2QuaternionCurve
+ *
+ * @property {boolean} cycle
+ * @property {boolean} reversed
  * @property {number} timeOffset
- * @property {number} length
- * @property {number} value
- * @property {number} extrapolation
- * @property {Array.<Tw2ScalarKey>} keys
- * @property {number} _currKey
- * @constructor
+ * @property {number} timeScale
+ * @property {quat} startValue
+ * @property {quat} currentValue
+ * @property {quat} endValue
+ * @property {vec4} startTangent
+ * @property {vec4} endTangent
+ * @property {number} interpolation
+ * @property {Array.<Tw2QuaternionKey>} keys
+ * @class
  */
-function Tw2ScalarCurve() {
-    this.name = '';
-    this.start = 0;
-    this.timeScale = 1;
-    this.timeOffset = 0;
-    this.length = 0;
-    this.value = 0;
-    this.extrapolation = 0;
-    this.keys = [];
-    this._currKey = 1;
-}
 
-Tw2ScalarCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
 
-Tw2ScalarCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2,
-    HERMITE: 3,
-    CATMULROM: 4
-};
+var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
+    _inherits(Tw2QuaternionCurve, _Tw2Curve);
+
+    function Tw2QuaternionCurve() {
+        _classCallCheck(this, Tw2QuaternionCurve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2QuaternionCurve.__proto__ || Object.getPrototypeOf(Tw2QuaternionCurve)).call(this));
+
+        _this2.cycle = false;
+        _this2.reversed = false;
+        _this2.timeOffset = 0;
+        _this2.timeScale = 1;
+        _this2.startValue = _math.quat.create();
+        _this2.currentValue = _math.quat.create();
+        _this2.endValue = _math.quat.create();
+        _this2.startTangent = _math.vec4.create();
+        _this2.endTangent = _math.vec4.create();
+        _this2.interpolation = 1;
+        _this2.keys = [];
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2QuaternionCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort2(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            time = time / this.timeScale + this.timeOffset;
+
+            if (this._length <= 0 || time <= 0) {
+                value[0] = this.startValue[0];
+                value[1] = this.startValue[1];
+                value[2] = this.startValue[2];
+                return value;
+            }
+
+            if (time > this._length) {
+                if (this.cycle) {
+                    time = time % this._length;
+                } else if (this.reversed) {
+                    value[0] = this.startValue[0];
+                    value[1] = this.startValue[1];
+                    value[2] = this.startValue[2];
+                    return value;
+                } else {
+                    value[0] = this.endValue[0];
+                    value[1] = this.endValue[1];
+                    value[2] = this.endValue[2];
+                    return value;
+                }
+            }
+
+            if (this.reversed) {
+                time = this._length - time;
+            }
+
+            if (this.keys.length === 0) {
+                return this.Interpolate(time, null, null, value);
+            }
+
+            var startKey = this.keys[0];
+            if (time <= startKey.time) {
+                return this.Interpolate(time, null, startKey, value);
+            } else if (time >= this.keys[this.keys.length - 1].time) {
+                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            }
+
+            var endKey = void 0;
+            for (var i = 0; i + 1 < this.keys.length; ++i) {
+                startKey = this.keys[i];
+                endKey = this.keys[i + 1];
+                if (startKey.time <= time && endKey.time > time) break;
+            }
+
+            return this.Interpolate(time, startKey, endKey, value);
+        }
+
+        /**
+         * Interpolate
+         * @param {number} time
+         * @param {null|Tw2QuaternionKey} lastKey
+         * @param {null|Tw2QuaternionKey} nextKey
+         * @param {quat} value
+         * @returns {*}
+         */
+
+    }, {
+        key: 'Interpolate',
+        value: function Interpolate(time, lastKey, nextKey, value) {
+            value[0] = this.startValue[0];
+            value[1] = this.startValue[1];
+            value[2] = this.startValue[2];
+
+            var startValue = this.startValue,
+                endValue = this.endValue,
+                interp = this.interpolation,
+                deltaTime = this._length;
+
+            if (lastKey !== null) {
+                interp = lastKey.interpolation;
+                time -= lastKey.time;
+            }
+
+            switch (interp) {
+                case Tw2QuaternionCurve.Interpolation.SPHERICAL_LINEAR:
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        deltaTime = this._length - lastKey.time;
+                    }
+
+                    _math.quat.slerp(value, startValue, endValue, time / deltaTime);
+                    return value;
+
+                default:
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2QuaternionCurve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * The curve's child dimension
+ * @type {number}
  */
-Tw2ScalarCurve.prototype.GetLength = function () {
-    return this.length;
-};
+
+
+Tw2QuaternionCurve.inputDimension = 4;
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The curve's dimension
+ * @type {number}
  */
-Tw2ScalarCurve.prototype.UpdateValue = function (time) {
-    this.value = this.GetValueAt(time);
-};
+Tw2QuaternionCurve.outputDimension = 4;
 
 /**
- * Gets a value at a specific time
- * TODO: Final return is unreachable
- * @param {number} time
- * @returns {*}
- * @prototype
+ * The curve's current value property
+ * @type {string}
  */
-Tw2ScalarCurve.prototype.GetValueAt = function (time) {
-    var d;
+Tw2QuaternionCurve.valueProperty = 'currentValue';
 
-    time = time / this.timeScale - this.timeOffset;
-    if (this.length === 0) {
-        return this.value;
-    }
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2QuaternionCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
 
-    var firstKey = this.keys[0];
-    var lastKey = this.keys[this.keys.length - 1];
-    if (time >= lastKey.time) {
-        if (this.extrapolation === Tw2ScalarCurve.Extrapolation.NONE) {
-            return this.value;
-        } else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.CONSTANT) {
-            return lastKey.value;
-        } else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.GRADIENT) {
-            d = time - lastKey.time;
-            return lastKey.value + d * lastKey.right;
-        } else {
-            time = time % lastKey.time;
-        }
-    } else if (time < 0 || time < firstKey.time) {
-        if (this.extrapolation === Tw2ScalarCurve.Extrapolation.NONE) {
-            return this.value;
-        } else if (this.extrapolation === Tw2ScalarCurve.Extrapolation.GRADIENT) {
-            d = time * this.length - lastKey.time;
-            return firstKey.value + d * firstKey.left;
-        } else {
-            return firstKey.value;
-        }
-    }
-    var ck = this.keys[this._currKey];
-    var ck_1 = this.keys[this._currKey - 1];
-    while (time >= ck.time || time < ck_1.time) {
-        if (time < ck_1.time) {
-            this._currKey = 0;
-        }
-        this._currKey++;
-        ck = this.keys[this._currKey];
-        ck_1 = this.keys[this._currKey - 1];
-    }
+/**
+ * The curve's key constructor
+ * @type {Tw2QuaternionKey2}
+ */
+Tw2QuaternionCurve.Key = Tw2QuaternionKey2;
 
-    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.CONSTANT) {
-        return ck_1.value;
-    } else if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.LINEAR) {
-        return ck_1.value * (1 - nt) + ck.value * nt;
-    } else if (ck_1.interpolation === Tw2ScalarCurve.Interpolation.HERMITE) {
-        var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
-        var k2 = -2 * nt * nt * nt + 3 * nt * nt;
-        var k1 = nt * nt * nt - 2 * nt * nt + nt;
-        var k0 = nt * nt * nt - nt * nt;
-        return k3 * ck_1.value + k2 * ck.value + k1 * ck_1.right + k0 * ck.left;
-    } else {
-        var sq = Math.sqrt(ck_1.value / ck.value);
-        var exponent = Math.exp(-time / ck_1.right);
-        var ret = 1.0 + (sq - 1.0) * exponent;
-        return ret * ret * ck.value;
-    }
-
-    return this.value;
+/**
+ * Interpolation types
+ * @type {{CONSTANT: number, SPHERICAL_LINEAR: number}}
+ */
+Tw2QuaternionCurve.Interpolation = {
+    CONSTANT: 0,
+    SPHERICAL_LINEAR: 4
 };
 
 /***/ }),
@@ -25092,239 +25416,89 @@ Tw2ScalarCurve.prototype.GetValueAt = function (time) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2ScalarKey2 = Tw2ScalarKey2;
-exports.Tw2ScalarCurve2 = Tw2ScalarCurve2;
-/**
- * Tw2ScalarKey2
- * @property {number} time
- * @property {number} value
- * @property {number} leftTangent
- * @property {number} rightTangent
- * @property {number} interpolation
- * @constructor
- */
-function Tw2ScalarKey2() {
-    this.time = 0;
-    this.value = 0;
-    this.leftTangent = 0;
-    this.rightTangent = 0;
-    this.interpolation = 1;
-}
+exports.Tw2RandomConstantCurve = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2ScalarCurve2
- * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
- * @property {number} startValue
+ * Tw2RandomConstantCurve
+ *
  * @property {number} currentValue
- * @property {number} endValue
- * @property {number} startTangent
- * @property {number} endTangent
- * @property {number} interpolation
- * @property {Array.<Tw2ScalarKey2>} keys
- * @constructor
+ * @property {number} min
+ * @property {number} max
+ * @property {boolean} hold
+ * @class
  */
-function Tw2ScalarCurve2() {
-    this.name = '';
-    this.length = 0;
-    this.cycle = false;
-    this.reversed = false;
-    this.timeOffset = 0;
-    this.timeScale = 1;
-    this.startValue = 0;
-    this.currentValue = 0;
-    this.endValue = 0;
-    this.startTangent = 0;
-    this.endTangent = 0;
-    this.interpolation = 1;
-    this.keys = [];
-}
+var Tw2RandomConstantCurve = exports.Tw2RandomConstantCurve = function (_Tw2Curve) {
+  _inherits(Tw2RandomConstantCurve, _Tw2Curve);
 
-Tw2ScalarCurve2.Interpolation = {
-    CONSTANT: 0,
-    LINEAR: 1,
-    HERMITE: 2
-};
+  function Tw2RandomConstantCurve() {
+    _classCallCheck(this, Tw2RandomConstantCurve);
+
+    var _this = _possibleConstructorReturn(this, (Tw2RandomConstantCurve.__proto__ || Object.getPrototypeOf(Tw2RandomConstantCurve)).call(this));
+
+    _this.value = 0;
+    _this.min = 0;
+    _this.max = 1;
+    _this.hold = true;
+    return _this;
+  }
+
+  /**
+   * Updates the current value at the given time
+   */
+
+
+  _createClass(Tw2RandomConstantCurve, [{
+    key: 'UpdateValue',
+    value: function UpdateValue() {
+      this.value = this.GetValueAt();
+    }
+
+    /**
+     * Gets a value at a specific time
+     * @returns {number}
+     */
+
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt() {
+      return this.hold ? this.value : this.min + (this.max - this.min) * Math.random();
+    }
+  }]);
+
+  return Tw2RandomConstantCurve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * The curve's dimension
+ * @type {number}
  */
-Tw2ScalarCurve2.prototype.GetLength = function () {
-    return this.length;
-};
+
+
+Tw2RandomConstantCurve.outputDimension = 1;
 
 /**
- * Initializes Curve
- * @prototype
+ * The curve's current value property
+ * @type {string}
  */
-Tw2ScalarCurve2.prototype.Initialize = function () {
-    this.Sort();
-};
+Tw2RandomConstantCurve.valueProperty = 'value';
 
 /**
- * Compares two curve keys' time properties
- * @param {Tw2ScalarKey2} a
- * @param {Tw2ScalarKey2} b
- * @returns {number}
- * @method
+ * The curve's type
+ * @type {number}
  */
-Tw2ScalarCurve2.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
-    }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
-
-/**
- * Sorts the curve's keys
- * @prototype
- */
-Tw2ScalarCurve2.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2ScalarCurve2.Compare);
-        var back = this.keys[this.keys.length - 1];
-        if (back.time > this.length) {
-            var preLength = this.length;
-            var endValue = this.endValue;
-            var endTangent = this.endTangent;
-            this.length = back.time;
-            this.endValue = back.value;
-            this.endTangent = back.leftTangent;
-            if (preLength > 0) {
-                back.time = preLength;
-                back.value = endValue;
-                back.leftTangent = endTangent;
-            }
-        }
-    }
-};
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2ScalarCurve2.prototype.UpdateValue = function (time) {
-    this.currentValue = this.GetValueAt(time);
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
- */
-Tw2ScalarCurve2.prototype.GetValueAt = function (time) {
-    time = time / this.timeScale + this.timeOffset;
-    if (this.length <= 0 || time <= 0) {
-        return this.startValue;
-    }
-    if (time > this.length) {
-        if (this.cycle) {
-            time = time % this.length;
-        } else if (this.reversed) {
-            return this.startValue;
-        } else {
-            return this.endValue;
-        }
-    }
-    if (this.reversed) {
-        time = this.length - time;
-    }
-    if (this.keys.length === 0) {
-        return this.Interpolate(time, null, null);
-    }
-    var startKey = this.keys[0];
-    if (time <= startKey.time) {
-        return this.Interpolate(time, null, startKey);
-    } else if (time >= this.keys[this.keys.length - 1].time) {
-        return this.Interpolate(time, this.keys[this.keys.length - 1], null);
-    }
-    var endKey = this.keys[i + 1];
-    for (var i = 0; i + 1 < this.keys.length; ++i) {
-        startKey = this.keys[i];
-        endKey = this.keys[i + 1];
-        if (startKey.time <= time && endKey.time > time) {
-            break;
-        }
-    }
-    return this.Interpolate(time, startKey, endKey);
-};
-
-/**
- * Interpolate
- * @param {number} time
- * @param {Tw2ScalarKey2} lastKey
- * @param {Tw2ScalarKey2} nextKey
- * @returns {number}
- * @prototype
- */
-Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey) {
-    var startValue = this.startValue;
-    var endValue = this.endValue;
-    var interp = this.interpolation;
-    var deltaTime = this.length;
-    if (lastKey !== null) {
-        interp = lastKey.interpolation;
-        time -= lastKey.time;
-    }
-    switch (interp) {
-        case Tw2ScalarCurve2.Interpolation.LINEAR:
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                endValue = nextKey.value;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                deltaTime = this.length - lastKey.time;
-            }
-            return startValue + (endValue - startValue) * (time / deltaTime);
-
-        case Tw2ScalarCurve2.Interpolation.HERMITE:
-            var inTangent = this.startTangent;
-            var outTangent = this.endTangent;
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                deltaTime = this.length - lastKey.time;
-            }
-            var s = time / deltaTime;
-            var s2 = s * s;
-            var s3 = s2 * s;
-
-            var c2 = -2.0 * s3 + 3.0 * s2;
-            var c1 = 1.0 - c2;
-            var c4 = s3 - s2;
-            var c3 = s + c4 - s2;
-
-            return startValue * c1 + endValue * c2 + inTangent * c3 + outTangent * c4;
-    }
-    return this.startValue;
-};
+Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 
 /***/ }),
 /* 99 */
@@ -25334,44 +25508,182 @@ Tw2ScalarCurve2.prototype.Interpolate = function (time, lastKey, nextKey) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.Tw2SineCurve = Tw2SineCurve;
+exports.Tw2RigidOrientation = exports.Tw2Torque = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2SineCurve
+ * Tw2Torque
+ *
+ * @property {quat} rot0
+ * @property {vec3} omega0
+ * @property {vec3} torque
+ * @class
+ */
+var Tw2Torque = exports.Tw2Torque = function (_Tw2CurveKey) {
+    _inherits(Tw2Torque, _Tw2CurveKey);
+
+    function Tw2Torque() {
+        _classCallCheck(this, Tw2Torque);
+
+        var _this = _possibleConstructorReturn(this, (Tw2Torque.__proto__ || Object.getPrototypeOf(Tw2Torque)).call(this));
+
+        _this.rot0 = _math.quat.create();
+        _this.omega0 = _math.vec3.create();
+        _this.torque = _math.vec3.create();
+        return _this;
+    }
+
+    return Tw2Torque;
+}(_Tw2Curve2.Tw2CurveKey);
+
+/**
+ * Tw2RigidOrientation
+ *
  * @property {string} name
- * @property {number} value
- * @property {number} offset
- * @property {number} scale
- * @property {number} speed
- * @constructor
+ * @property {number} I
+ * @property {number} drag
+ * @property {quat} value
+ * @property {number} start
+ * @property {Array.<Tw2Torque>} states
+ * @property {number} _length
+ * @class
  */
-function Tw2SineCurve() {
-  this.name = '';
-  this.value = 0;
-  this.offset = 0;
-  this.scale = 1;
-  this.speed = 1;
-}
+
+
+var Tw2RigidOrientation = exports.Tw2RigidOrientation = function (_Tw2Curve) {
+    _inherits(Tw2RigidOrientation, _Tw2Curve);
+
+    function Tw2RigidOrientation() {
+        _classCallCheck(this, Tw2RigidOrientation);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2RigidOrientation.__proto__ || Object.getPrototypeOf(Tw2RigidOrientation)).call(this));
+
+        _this2.name = '';
+        _this2.I = 1;
+        _this2.drag = 1;
+        _this2.value = _math.quat.create();
+        _this2.start = 0;
+        _this2.states = [];
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2RigidOrientation, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this, this.states);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            if (this.states.length === 0 || time < 0 || time < this.states[0].time) {
+                return _math.quat.copy(value, this.value);
+            }
+
+            var key = 0;
+            if (time >= this.states[this.states.length - 1].time) {
+                key = this.states.length - 1;
+            } else {
+                for (; key + 1 < this.states.length; ++key) {
+                    if (time >= this.states[key].time && time < this.states[key + 1].time) {
+                        break;
+                    }
+                }
+            }
+
+            var vec3_0 = _Tw2Curve2.Tw2Curve.global.vec3_0,
+                quat_0 = _Tw2Curve2.Tw2Curve.global.quat_0;
+
+            var ck = this.states[key];
+            _math.vec3.exponentialDecay(vec3_0, ck.omega0, ck.torque, this.I, this.drag, time - ck.time);
+            _math.quat.exp(quat_0, vec3_0);
+            _math.quat.multiply(value, this.states[key].rot0, quat_0);
+            return value;
+        }
+    }]);
+
+    return Tw2RigidOrientation;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The curve's dimension
+ * @type {number}
  */
-Tw2SineCurve.prototype.UpdateValue = function (time) {
-  this.value = this.GetValueAt(time);
-};
+
+
+Tw2RigidOrientation.inputDimension = 4;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * The curve's dimension
+ * @type {number}
  */
-Tw2SineCurve.prototype.GetValueAt = function (time) {
-  return Math.sin(time * Math.pi * 2 * this.speed) * this.scale + this.offset;
-};
+Tw2RigidOrientation.outputDimension = 4;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2RigidOrientation.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2Torque}
+ */
+Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
 /* 100 */
@@ -25383,253 +25695,256 @@ Tw2SineCurve.prototype.GetValueAt = function (time) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Vector2Key = Tw2Vector2Key;
-exports.Tw2Vector2Curve = Tw2Vector2Curve;
+exports.Tw2RotationCurve = exports.Tw2QuaternionKey = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2Vector2Key
+ * Tw2QuaternionKey
+ *
  * @property {number} time
- * @property {vec2} value - vec2 array
- * @property {vec2} leftTangent - vec2 array
- * @property {vec2} rightTangent - vec2 array
+ * @property {quat} value
+ * @property {vec4} leftTangent
+ * @property {vec4} rightTangent
  * @property {number} interpolation
- * @constructor
+ * @class
  */
-function Tw2Vector2Key() {
-    this.time = 0;
-    this.value = _math.vec2.create();
-    this.leftTangent = _math.vec2.create();
-    this.rightTangent = _math.vec2.create();
-    this.interpolation = 1;
-}
+var Tw2QuaternionKey = exports.Tw2QuaternionKey = function (_Tw2CurveKey) {
+    _inherits(Tw2QuaternionKey, _Tw2CurveKey);
+
+    function Tw2QuaternionKey() {
+        _classCallCheck(this, Tw2QuaternionKey);
+
+        var _this = _possibleConstructorReturn(this, (Tw2QuaternionKey.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey)).call(this));
+
+        _this.value = _math.quat.create();
+        _this.left = _math.vec4.create();
+        _this.right = _math.vec4.create();
+        _this.interpolation = 5;
+        return _this;
+    }
+
+    return Tw2QuaternionKey;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Tw2Vector2Curve
- * @property {string} name
+ * Tw2RotationCurve
+ *
+ * @property {number} start
  * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
- * @property {number} timeScale
- * @property {vec2} startValue - vec2 array
- * @property {vec2} currentValue - vec2 array
- * @property {vec2} endValue - vec2 array
- * @property {vec2} startTangent - vec2 array
- * @property {vec2} endTangent - vec2 array
- * @property {number} interpolation
- * @property {Array.<Tw2Vector2Key>} keys
- * @constructor
+ * @property {quat} value
+ * @property {number} extrapolation
+ * @property {Array.<Tw2QuaternionKey>} keys
+ * @property {number} _currentKey
+ * @property {number} _length
+ * @class
  */
-function Tw2Vector2Curve() {
-    this.name = '';
-    this.length = 0;
-    this.cycle = false;
-    this.reversed = false;
-    this.timeOffset = 0;
-    this.timeScale = 1;
-    this.startValue = _math.vec2.create();
-    this.currentValue = _math.vec2.create();
-    this.endValue = _math.vec2.create();
-    this.startTangent = _math.vec2.create();
-    this.endTangent = _math.vec2.create();
-    this.interpolation = 1;
-    this.keys = [];
-}
 
-Tw2Vector2Curve.Interpolation = {
-    CONSTANT: 0,
-    LINEAR: 1,
-    HERMITE: 2
-};
 
-/**
- * Initializes the Curve
- * @prototype
- */
-Tw2Vector2Curve.prototype.Initialize = function () {
-    this.Sort();
-};
+var Tw2RotationCurve = exports.Tw2RotationCurve = function (_Tw2Curve) {
+    _inherits(Tw2RotationCurve, _Tw2Curve);
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2Vector2Curve.prototype.GetLength = function () {
-    return this.length;
-};
+    function Tw2RotationCurve() {
+        _classCallCheck(this, Tw2RotationCurve);
 
-/**
- * Compares two curve keys' time properties
- * @param {Tw2Vector2Key} a
- * @param {Tw2Vector2Key} b
- * @returns {number}
- * @method
- */
-Tw2Vector2Curve.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
+        var _this2 = _possibleConstructorReturn(this, (Tw2RotationCurve.__proto__ || Object.getPrototypeOf(Tw2RotationCurve)).call(this));
+
+        _this2.start = 0;
+        _this2.value = _math.quat.create();
+        _this2.extrapolation = 0;
+        _this2.keys = [];
+        _this2._currentKey = 1;
+        _this2._length = 0;
+        return _this2;
     }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
 
-/**
- * Sorts the curve's keys
- * @prototype
- */
-Tw2Vector2Curve.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2Vector2Curve.Compare);
-        var back = this.keys[this.keys.length - 1];
-        if (back.time > this.length) {
-            var preLength = this.length;
-            var endValue = this.endValue;
-            var endTangent = this.endTangent;
-            this.length = back.time;
-            this.endValue = back.value;
-            this.endTangent = back.leftTangent;
-            if (preLength > 0) {
-                back.time = preLength;
-                back.value = endValue;
-                back.leftTangent = endTangent;
+    /**
+     * Sorts the curve's children
+     */
+
+
+    _createClass(Tw2RotationCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            if (this._length === 0) {
+                return _math.quat.copy(value, this.value);
+            }
+
+            var scratch = _Tw2Curve2.Tw2Curve.global,
+                firstKey = this.keys[0],
+                lastKey = this.keys[this.keys.length - 1];
+
+            if (time >= lastKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2RotationCurve.Extrapolation.NONE:
+                        return _math.quat.copy(value, this.value);
+
+                    case Tw2RotationCurve.Extrapolation.CONSTANT:
+                        return _math.quat.copy(value, lastKey.value);
+
+                    default:
+                        time = time % lastKey.time;
+                }
+            } else if (time < 0 || time < firstKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2RotationCurve.Extrapolation.NONE:
+                        return _math.quat.copy(value, this.value);
+
+                    default:
+                        return _math.quat.copy(value, firstKey.value);
+                }
+            }
+
+            var ck = this.keys[this._currentKey],
+                ck_1 = this.keys[this._currentKey - 1];
+
+            while (time >= ck.time || time < ck_1.time) {
+                if (time < ck_1.time) this._currentKey = 0;
+                this._currentKey++;
+                ck = this.keys[this._currentKey];
+                ck_1 = this.keys[this._currentKey - 1];
+            }
+
+            var nt = (time - ck_1.time) / (ck.time - ck_1.time);
+            switch (ck_1.interpolation) {
+                case Tw2RotationCurve.Interpolation.CONSTANT:
+                    return _math.quat.copy(value, ck_1.value);
+
+                case Tw2RotationCurve.Interpolation.LINEAR:
+                    value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
+                    value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
+                    value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
+                    value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
+                    return value;
+
+                case Tw2RotationCurve.Interpolation.HERMITE:
+                    var collect = _math.quat.identity(scratch.quat_0),
+                        arr = [ck_1.value, ck_1.right, ck.left, ck.value];
+
+                    for (var i = 3; i > 0; i--) {
+                        var power = _math.num.biCumulative(nt, i);
+                        if (power > 1) _math.quat.multiply(value, collect, arr[i]);
+                        value[0] = -arr[i - 1][0];
+                        value[1] = -arr[i - 1][1];
+                        value[2] = -arr[i - 1][2];
+                        value[3] = arr[i - 1][3];
+                        _math.quat.multiply(value, value, arr[i]);
+                        _math.quat.pow(value, value, power);
+                        _math.quat.multiply(collect, collect, value);
+                    }
+                    return _math.quat.multiply(value, collect, ck_1.value);
+
+                case Tw2RotationCurve.Interpolation.SLERP:
+                    return _math.quat.slerp(value, ck_1.value, ck.value, nt);
+
+                default:
+                    return _math.quat.sqlerp(value, ck_1.value, ck_1.right, ck.left, ck.value, nt);
             }
         }
-    }
+    }]);
+
+    return Tw2RotationCurve;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2RotationCurve.outputDimention = 4;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2RotationCurve.inputDimension = 4;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2RotationCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2RotationCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2QuaternionKey}
+ */
+Tw2RotationCurve.Child = Tw2QuaternionKey;
+
+/**
+ * Extrapolation types
+ * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+ */
+Tw2RotationCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
 };
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * Interpolation types
+ * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, SLERP: number, SQUAD: number}}
  */
-Tw2Vector2Curve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.currentValue);
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {Float32Array} value - vec2 array
- * @returns {Float32Array} vec2 array
- * @prototype
- */
-Tw2Vector2Curve.prototype.GetValueAt = function (time, value) {
-    time = time / this.timeScale + this.timeOffset;
-    if (this.length <= 0 || time <= 0) {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        return value;
-    }
-    if (time > this.length) {
-        if (this.cycle) {
-            time = time % this.length;
-        } else if (this.reversed) {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            return value;
-        } else {
-            value[0] = this.endValue[0];
-            value[1] = this.endValue[1];
-            return value;
-        }
-    }
-    if (this.reversed) {
-        time = this.length - time;
-    }
-    if (this.keys.length === 0) {
-        return this.Interpolate(time, null, null, value);
-    }
-    var startKey = this.keys[0];
-    if (time <= startKey.time) {
-        return this.Interpolate(time, null, startKey, value);
-    } else if (time >= this.keys[this.keys.length - 1].time) {
-        return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
-    }
-    var endKey;
-    for (var i = 0; i + 1 < this.keys.length; ++i) {
-        startKey = this.keys[i];
-        endKey = this.keys[i + 1];
-        if (startKey.time <= time && endKey.time > time) {
-            break;
-        }
-    }
-    return this.Interpolate(time, startKey, endKey, value);
-};
-
-/**
- * Interpolate
- * @param {number} time
- * @param {Tw2Vector2Key} lastKey
- * @param {Tw2Vector2Key} nextKey
- * @param {Float32Array} value - vec2 array
- * @returns {Float32Array} vec2 array
- * @prototype
- */
-Tw2Vector2Curve.prototype.Interpolate = function (time, lastKey, nextKey, value) {
-    value[0] = this.startValue[0];
-    value[1] = this.startValue[1];
-
-    var startValue = this.startValue;
-    var endValue = this.endValue;
-    var interp = this.interpolation;
-    var deltaTime = this.length;
-    if (lastKey !== null) {
-        interp = lastKey.interpolation;
-        time -= lastKey.time;
-    }
-    switch (interp) {
-        case Tw2Vector2Curve.Interpolation.LINEAR:
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                endValue = nextKey.value;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                deltaTime = this.length - lastKey.time;
-            }
-            value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
-            value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
-            return value;
-        case Tw2Vector2Curve.Interpolation.HERMITE:
-            var inTangent = this.startTangent;
-            var outTangent = this.endTangent;
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                deltaTime = this.length - lastKey.time;
-            }
-            var s = time / deltaTime;
-            var s2 = s * s;
-            var s3 = s2 * s;
-
-            var c2 = -2.0 * s3 + 3.0 * s2;
-            var c1 = 1.0 - c2;
-            var c4 = s3 - s2;
-            var c3 = s + c4 - s2;
-
-            value[0] = startValue[0] * c1 + endValue[0] * c2 + inTangent[0] * c3 + outTangent[0] * c4;
-            value[1] = startValue[1] * c1 + endValue[1] * c2 + inTangent[1] * c3 + outTangent[1] * c4;
-            return value;
-    }
-    return value;
+Tw2RotationCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2,
+    HERMITE: 3,
+    SLERP: 5,
+    SQUAD: 6
 };
 
 /***/ }),
@@ -25642,260 +25957,247 @@ Tw2Vector2Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Vector3Key = Tw2Vector3Key;
-exports.Tw2Vector3Curve = Tw2Vector3Curve;
+exports.Tw2ScalarCurve = exports.Tw2ScalarKey = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2Vector3Key
- * @property {number} time
- * @property {vec3} value
- * @property {vec3} leftTangent
- * @property {vec3} rightTangent
+ * Tw2ScalarKey
+ *
+ * @property {number} value
+ * @property {number} left
+ * @property {number} right
  * @property {number} interpolation
- * @constructor
+ * @class
  */
-function Tw2Vector3Key() {
-    this.time = 0;
-    this.value = _math.vec3.create();
-    this.leftTangent = _math.vec3.create();
-    this.rightTangent = _math.vec3.create();
-    this.interpolation = 1;
-}
+var Tw2ScalarKey = exports.Tw2ScalarKey = function (_Tw2CurveKey) {
+    _inherits(Tw2ScalarKey, _Tw2CurveKey);
+
+    function Tw2ScalarKey() {
+        _classCallCheck(this, Tw2ScalarKey);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ScalarKey.__proto__ || Object.getPrototypeOf(Tw2ScalarKey)).call(this));
+
+        _this.value = 0;
+        _this.left = 0;
+        _this.right = 0;
+        _this.interpolation = 0;
+        return _this;
+    }
+
+    return Tw2ScalarKey;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Tw2Vector3Curve
- * @property {string} name
- * @property {number} length
- * @property {boolean} cycle
- * @property {boolean} reversed
- * @property {number} timeOffset
+ * Tw2ScalarCurve
+ *
+ * @property {number} start
  * @property {number} timeScale
- * @property {vec3} startValue
- * @property {vec3} currentValue
- * @property {vec3} endValue
- * @property {vec3} startTangent
- * @property {vec3} endTangent
- * @property {number} interpolation
- * @property {Array.<Tw2Vector3Key>} keys
- * @constructor
+ * @property {number} timeOffset
+ * @property {number} value
+ * @property {number} extrapolation
+ * @property {Array.<Tw2ScalarKey>} keys
+ * @property {number} _currentKey
+ * @property {number} _length
+ * @class
  */
-function Tw2Vector3Curve() {
-    this.name = '';
-    this.length = 0;
-    this.cycle = false;
-    this.reversed = false;
-    this.timeOffset = 0;
-    this.timeScale = 1;
-    this.startValue = _math.vec3.create();
-    this.currentValue = _math.vec3.create();
-    this.endValue = _math.vec3.create();
-    this.startTangent = _math.vec3.create();
-    this.endTangent = _math.vec3.create();
-    this.interpolation = 1;
-    this.keys = [];
-}
 
-Tw2Vector3Curve.Interpolation = {
-    CONSTANT: 0,
-    LINEAR: 1,
-    HERMITE: 2
-};
 
-/**
- * Initializes the Curve
- * @prototype
- */
-Tw2Vector3Curve.prototype.Initialize = function () {
-    this.Sort();
-};
+var Tw2ScalarCurve = exports.Tw2ScalarCurve = function (_Tw2Curve) {
+    _inherits(Tw2ScalarCurve, _Tw2Curve);
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2Vector3Curve.prototype.GetLength = function () {
-    return this.length;
-};
+    function Tw2ScalarCurve() {
+        _classCallCheck(this, Tw2ScalarCurve);
 
-/**
- * Compares two curve keys' time properties
- * @param {Tw2Vector3Key} a
- * @param {Tw2Vector3Key} b
- * @returns {number}
- * @method
- */
-Tw2Vector3Curve.Compare = function (a, b) {
-    if (a.time < b.time) {
-        return -1;
+        var _this2 = _possibleConstructorReturn(this, (Tw2ScalarCurve.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve)).call(this));
+
+        _this2.start = 0;
+        _this2.timeScale = 1;
+        _this2.timeOffset = 0;
+        _this2.value = 0;
+        _this2.extrapolation = 0;
+        _this2.keys = [];
+        _this2._currentKey = 1;
+        _this2._length = 0;
+        return _this2;
     }
-    if (a.time > b.time) {
-        return 1;
-    }
-    return 0;
-};
 
-/**
- * Sorts the curve's keys
- * @prototype
- */
-Tw2Vector3Curve.prototype.Sort = function () {
-    if (this.keys.length) {
-        this.keys.sort(Tw2Vector3Curve.Compare);
-        var back = this.keys[this.keys.length - 1];
-        if (back.time > this.length) {
-            var preLength = this.length;
-            var endValue = this.endValue;
-            var endTangent = this.endTangent;
-            this.length = back.time;
-            this.endValue = back.value;
-            this.endTangent = back.leftTangent;
-            if (preLength > 0) {
-                back.time = preLength;
-                back.value = endValue;
-                back.leftTangent = endTangent;
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2ScalarCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.value = this.GetValueAt(time);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time) {
+            time = time / this.timeScale - this.timeOffset;
+
+            if (this._length === 0) {
+                return this.value;
+            }
+
+            var firstKey = this.keys[0],
+                lastKey = this.keys[this.keys.length - 1];
+
+            if (time >= lastKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2ScalarCurve.Extrapolation.NONE:
+                        return this.value;
+
+                    case Tw2ScalarCurve.Extrapolation.CONSTANT:
+                        return lastKey.value;
+
+                    case Tw2ScalarCurve.Extrapolation.GRADIENT:
+                        return lastKey.value + (time - lastKey.time) * lastKey.right;
+
+                    default:
+                        time = time % lastKey.time;
+                }
+            } else if (time < 0 || time < firstKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2ScalarCurve.Extrapolation.NONE:
+                        return this.value;
+
+                    case Tw2ScalarCurve.Extrapolation.GRADIENT:
+                        return firstKey.value + (time * this._length - lastKey.time) * firstKey.left;
+
+                    default:
+                        return firstKey.value;
+                }
+            }
+
+            var ck = this.keys[this._currentKey],
+                ck_1 = this.keys[this._currentKey - 1];
+
+            while (time >= ck.time || time < ck_1.time) {
+                if (time < ck_1.time) this._currentKey = 0;
+                this._currentKey++;
+                ck = this.keys[this._currentKey];
+                ck_1 = this.keys[this._currentKey - 1];
+            }
+
+            var nt = (time - ck_1.time) / (ck.time - ck_1.time);
+            switch (ck_1.interpolation) {
+                case Tw2ScalarCurve.Interpolation.CONSTANT:
+                    return ck_1.value;
+
+                case Tw2ScalarCurve.Interpolation.LINEAR:
+                    return ck_1.value * (1 - nt) + ck.value * nt;
+
+                case Tw2ScalarCurve.Interpolation.HERMITE:
+                    var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1,
+                        k2 = -2 * nt * nt * nt + 3 * nt * nt,
+                        k1 = nt * nt * nt - 2 * nt * nt + nt,
+                        k0 = nt * nt * nt - nt * nt;
+                    return k3 * ck_1.value + k2 * ck.value + k1 * ck_1.right + k0 * ck.left;
+
+                default:
+                    var sq = Math.sqrt(ck_1.value / ck.value),
+                        exponent = Math.exp(-time / ck_1.right),
+                        ret = 1.0 + (sq - 1.0) * exponent;
+                    return ret * ret * ck.value;
             }
         }
-    }
+    }]);
+
+    return Tw2ScalarCurve;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+
+
+Tw2ScalarCurve.inputDimension = 1;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2ScalarCurve.outputDimension = 1;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2ScalarCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2ScalarCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2ScalarKey}
+ */
+Tw2ScalarCurve.Key = Tw2ScalarKey;
+
+/**
+ * Extrapolation types
+ * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+ */
+Tw2ScalarCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
 };
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * Interpolation types
+ * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, CATMULROM: number}}
  */
-Tw2Vector3Curve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.currentValue);
-};
-
-/**
- * Gets a value at a specific time
- * TODO: the variable `i` is used before it has been initialized
- * @param {number} time
- * @param {vec3} value
- * @returns {vec3}
- * @prototype
- */
-Tw2Vector3Curve.prototype.GetValueAt = function (time, value) {
-    time = time / this.timeScale + this.timeOffset;
-    if (this.length <= 0 || time <= 0) {
-        value[0] = this.startValue[0];
-        value[1] = this.startValue[1];
-        value[2] = this.startValue[2];
-        return value;
-    }
-    if (time > this.length) {
-        if (this.cycle) {
-            time = time % this.length;
-        } else if (this.reversed) {
-            value[0] = this.startValue[0];
-            value[1] = this.startValue[1];
-            value[2] = this.startValue[2];
-            return value;
-        } else {
-            value[0] = this.endValue[0];
-            value[1] = this.endValue[1];
-            value[2] = this.endValue[2];
-            return value;
-        }
-    }
-    if (this.reversed) {
-        time = this.length - time;
-    }
-    if (this.keys.length === 0) {
-        return this.Interpolate(time, null, null, value);
-    }
-    var startKey = this.keys[0];
-    if (time <= startKey.time) {
-        return this.Interpolate(time, null, startKey, value);
-    } else if (time >= this.keys[this.keys.length - 1].time) {
-        return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
-    }
-    var endKey;
-    for (var i = 0; i + 1 < this.keys.length; ++i) {
-        startKey = this.keys[i];
-        endKey = this.keys[i + 1];
-        if (startKey.time <= time && endKey.time > time) {
-            break;
-        }
-    }
-    return this.Interpolate(time, startKey, endKey, value);
-};
-
-/**
- * Interpolate
- * @param {number} time
- * @param {Tw2Vector3Key} lastKey
- * @param {Tw2Vector3Key} nextKey
- * @param {vec3} value
- * @returns {vec3}
- * @prototype
- */
-Tw2Vector3Curve.prototype.Interpolate = function (time, lastKey, nextKey, value) {
-    value[0] = this.startValue[0];
-    value[1] = this.startValue[1];
-    value[2] = this.startValue[2];
-
-    var startValue = this.startValue;
-    var endValue = this.endValue;
-    var interp = this.interpolation;
-    var deltaTime = this.length;
-    if (lastKey !== null) {
-        interp = lastKey.interpolation;
-        time -= lastKey.time;
-    }
-    switch (interp) {
-        case Tw2Vector3Curve.Interpolation.LINEAR:
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                endValue = nextKey.value;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                deltaTime = this.length - lastKey.time;
-            }
-            value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
-            value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
-            value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
-            return value;
-        case Tw2Vector3Curve.Interpolation.HERMITE:
-            var inTangent = this.startTangent;
-            var outTangent = this.endTangent;
-            if (lastKey && nextKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time - lastKey.time;
-            } else if (nextKey) {
-                endValue = nextKey.value;
-                outTangent = nextKey.leftTangent;
-                deltaTime = nextKey.time;
-            } else if (lastKey) {
-                startValue = lastKey.value;
-                inTangent = lastKey.rightTangent;
-                deltaTime = this.length - lastKey.time;
-            }
-            var s = time / deltaTime;
-            var s2 = s * s;
-            var s3 = s2 * s;
-
-            var c2 = -2.0 * s3 + 3.0 * s2;
-            var c1 = 1.0 - c2;
-            var c4 = s3 - s2;
-            var c3 = s + c4 - s2;
-
-            value[0] = startValue[0] * c1 + endValue[0] * c2 + inTangent[0] * c3 + outTangent[0] * c4;
-            value[1] = startValue[1] * c1 + endValue[1] * c2 + inTangent[1] * c3 + outTangent[1] * c4;
-            value[2] = startValue[2] * c1 + endValue[2] * c2 + inTangent[2] * c3 + outTangent[2] * c4;
-            return value;
-    }
-    return value;
+Tw2ScalarCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2,
+    HERMITE: 3,
+    CATMULROM: 4
 };
 
 /***/ }),
@@ -25908,170 +26210,286 @@ Tw2Vector3Curve.prototype.Interpolate = function (time, lastKey, nextKey, value)
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2VectorKey = Tw2VectorKey;
-exports.Tw2VectorCurve = Tw2VectorCurve;
+exports.Tw2ScalarCurve2 = exports.Tw2ScalarKey2 = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2VectorKey
- * @property {number} time
- * @property {vec3} value
- * @property {vec3} left
- * @property {vec3} right
+ * Tw2ScalarKey2
+ *
+ * @property {number} value
+ * @property {number} leftTangent
+ * @property {number} rightTangent
  * @property {number} interpolation
- * @constructor
+ * @class
  */
-function Tw2VectorKey() {
-    this.time = 0;
-    this.value = _math.vec3.create();
-    this.left = _math.vec3.create();
-    this.right = _math.vec3.create();
-    this.interpolation = 0;
-}
+var Tw2ScalarKey2 = exports.Tw2ScalarKey2 = function (_Tw2CurveKey) {
+    _inherits(Tw2ScalarKey2, _Tw2CurveKey);
+
+    function Tw2ScalarKey2() {
+        _classCallCheck(this, Tw2ScalarKey2);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ScalarKey2.__proto__ || Object.getPrototypeOf(Tw2ScalarKey2)).call(this));
+
+        _this.value = 0;
+        _this.leftTangent = 0;
+        _this.rightTangent = 0;
+        _this.interpolation = 1;
+        return _this;
+    }
+
+    return Tw2ScalarKey2;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Tw2Vector3Curve
- * @property {string} name
- * @property {number} start
+ * Tw2ScalarCurve2
+ *
  * @property {number} length
- * @property {vec3} value
- * @property {number} extrapolation
- * @property {Array.<Tw2VectorKey>} keys
- * @property {number} _currKey
- * @constructor
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {number} startValue
+ * @property {number} currentValue
+ * @property {number} endValue
+ * @property {number} startTangent
+ * @property {number} endTangent
+ * @property {number} interpolation
+ * @property {Array.<Tw2ScalarKey2>} keys
+ * @property {number} _length
+ * @class
  */
-function Tw2VectorCurve() {
-    this.name = '';
-    this.start = 0;
-    this.length = 0;
-    this.value = _math.vec3.create();
-    this.extrapolation = 0;
-    this.keys = [];
-    this._currKey = 1;
-}
 
-Tw2VectorCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
 
-Tw2VectorCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2,
-    HERMITE: 3
-};
+var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = function (_Tw2Curve) {
+    _inherits(Tw2ScalarCurve2, _Tw2Curve);
+
+    function Tw2ScalarCurve2() {
+        _classCallCheck(this, Tw2ScalarCurve2);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2ScalarCurve2.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve2)).call(this));
+
+        _this2.cycle = false;
+        _this2.reversed = false;
+        _this2.timeOffset = 0;
+        _this2.timeScale = 1;
+        _this2.startValue = 0;
+        _this2.currentValue = 0;
+        _this2.endValue = 0;
+        _this2.startTangent = 0;
+        _this2.endTangent = 0;
+        _this2.interpolation = 1;
+        _this2.keys = [];
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2ScalarCurve2, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort2(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.currentValue = this.GetValueAt(time);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time) {
+            time = time / this.timeScale + this.timeOffset;
+            if (this._length <= 0 || time <= 0) {
+                return this.startValue;
+            }
+
+            if (time > this._length) {
+                if (this.cycle) {
+                    time = time % this._length;
+                } else if (this.reversed) {
+                    return this.startValue;
+                } else {
+                    return this.endValue;
+                }
+            }
+
+            if (this.reversed) {
+                time = this._length - time;
+            }
+
+            if (this.keys.length === 0) {
+                return this.Interpolate(time, null, null);
+            }
+
+            var startKey = this.keys[0];
+            if (time <= startKey.time) {
+                return this.Interpolate(time, null, startKey);
+            } else if (time >= this.keys[this.keys.length - 1].time) {
+                return this.Interpolate(time, this.keys[this.keys.length - 1], null);
+            }
+
+            var endKey = void 0;
+            for (var i = 0; i + 1 < this.keys.length; ++i) {
+                startKey = this.keys[i];
+                endKey = this.keys[i + 1];
+                if (startKey.time <= time && endKey.time > time) break;
+            }
+
+            return this.Interpolate(time, startKey, endKey);
+        }
+
+        /**
+         * Interpolate
+         * @param {number} time
+         * @param {Tw2ScalarKey2} lastKey
+         * @param {Tw2ScalarKey2} nextKey
+         * @returns {number}
+         */
+
+    }, {
+        key: 'Interpolate',
+        value: function Interpolate(time, lastKey, nextKey) {
+            var startValue = this.startValue,
+                endValue = this.endValue,
+                interp = this.interpolation,
+                deltaTime = this._length;
+
+            if (lastKey !== null) {
+                interp = lastKey.interpolation;
+                time -= lastKey.time;
+            }
+
+            switch (interp) {
+                case Tw2ScalarCurve2.Interpolation.LINEAR:
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        deltaTime = this._length - lastKey.time;
+                    }
+                    return startValue + (endValue - startValue) * (time / deltaTime);
+
+                case Tw2ScalarCurve2.Interpolation.HERMITE:
+                    var inTangent = this.startTangent,
+                        outTangent = this.endTangent;
+
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        deltaTime = this._length - lastKey.time;
+                    }
+
+                    var s = time / deltaTime,
+                        s2 = s * s,
+                        s3 = s2 * s;
+
+                    var c2 = -2.0 * s3 + 3.0 * s2,
+                        c1 = 1.0 - c2,
+                        c4 = s3 - s2,
+                        c3 = s + c4 - s2;
+
+                    return startValue * c1 + endValue * c2 + inTangent * c3 + outTangent * c4;
+
+                default:
+                    return this.startValue;
+            }
+        }
+    }]);
+
+    return Tw2ScalarCurve2;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The curve's child dimension
+ * @type {number}
  */
-Tw2VectorCurve.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+
+
+Tw2ScalarCurve2.inputDimension = 1;
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * The curve's dimension
+ * @type {number}
  */
-Tw2VectorCurve.prototype.GetLength = function () {
-    return this.length;
-};
+Tw2ScalarCurve2.outputDimension = 1;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec3} value
- * @returns {vec3}
- * @prototype
+ * The curve's current value property
+ * @type {string}
  */
-Tw2VectorCurve.prototype.GetValueAt = function (time, value) {
-    var d;
+Tw2ScalarCurve2.valueProperty = 'currentValue';
 
-    if (this.length === 0) {
-        value[0] = this.value[0];
-        value[1] = this.value[1];
-        value[2] = this.value[2];
-        return value;
-    }
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2ScalarCurve2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
 
-    var firstKey = this.keys[0];
-    var lastKey = this.keys[this.keys.length - 1];
-    if (time >= lastKey.time) {
-        if (this.extrapolation === Tw2VectorCurve.Extrapolation.NONE) {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            return value;
-        } else if (this.extrapolation === Tw2VectorCurve.Extrapolation.CONSTANT) {
-            value[0] = lastKey.value[0];
-            value[1] = lastKey.value[1];
-            value[2] = lastKey.value[2];
-            return value;
-        } else if (this.extrapolation === Tw2VectorCurve.Extrapolation.GRADIENT) {
-            d = time - lastKey.time;
-            value[0] = lastKey.value[0] + d * lastKey.right[0];
-            value[1] = lastKey.value[1] + d * lastKey.right[1];
-            value[2] = lastKey.value[2] + d * lastKey.right[2];
-            return value;
-        } else {
-            time = time % lastKey.time;
-        }
-    } else if (time < 0 || time < firstKey.time) {
-        if (this.extrapolation === Tw2VectorCurve.Extrapolation.NONE) {
-            value[0] = this.value[0];
-            value[1] = this.value[1];
-            value[2] = this.value[2];
-            return value;
-        } else if (this.extrapolation === Tw2VectorCurve.Extrapolation.GRADIENT) {
-            d = time * this.length - lastKey.time;
-            value[0] = firstKey.value[0] + d * firstKey.left[0];
-            value[1] = firstKey.value[1] + d * firstKey.left[1];
-            value[2] = firstKey.value[2] + d * firstKey.left[2];
-            return value;
-        } else {
-            value[0] = firstKey.value[0];
-            value[1] = firstKey.value[1];
-            value[2] = firstKey.value[2];
-            return value;
-        }
-    }
-    var ck = this.keys[this._currKey];
-    var ck_1 = this.keys[this._currKey - 1];
-    while (time >= ck.time || time < ck_1.time) {
-        if (time < ck_1.time) {
-            this._currKey = 0;
-        }
-        this._currKey++;
-        ck = this.keys[this._currKey];
-        ck_1 = this.keys[this._currKey - 1];
-    }
+/**
+ * The curve's key constructor
+ * @type {Tw2ScalarKey2}
+ */
+Tw2ScalarCurve2.Key = Tw2ScalarKey2;
 
-    var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-    if (ck_1.interpolation === Tw2VectorCurve.Interpolation.CONSTANT) {
-        value[0] = ck_1.value[0];
-        value[1] = ck_1.value[1];
-        value[2] = ck_1.value[2];
-    } else if (ck_1.interpolation === Tw2VectorCurve.Interpolation.LINEAR) {
-        value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
-        value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
-        value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
-    } else if (ck_1.interpolation === Tw2VectorCurve.Interpolation.HERMITE) {
-        var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
-        var k2 = -2 * nt * nt * nt + 3 * nt * nt;
-        var k1 = nt * nt * nt - 2 * nt * nt + nt;
-        var k0 = nt * nt * nt - nt * nt;
-
-        value[0] = k3 * ck_1.value[0] + k2 * ck.value[0] + k1 * ck_1.right[0] + k0 * ck.left[0];
-        value[1] = k3 * ck_1.value[1] + k2 * ck.value[1] + k1 * ck_1.right[1] + k0 * ck.left[1];
-        value[2] = k3 * ck_1.value[2] + k2 * ck.value[2] + k1 * ck_1.right[2] + k0 * ck.left[2];
-    }
-    return value;
+/**
+ * Interpolation types
+ * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+ */
+Tw2ScalarCurve2.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1,
+    HERMITE: 2
 };
 
 /***/ }),
@@ -26082,570 +26500,91 @@ Tw2VectorCurve.prototype.GetValueAt = function (time, value) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2MayaAnimationEngine = Tw2MayaAnimationEngine;
+exports.Tw2SineCurve = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/**
- * Tw2MayaAnimationEngine
- * TODO: Complete the prototype `_EvaluteBezier`
- * @property {Array} curves
- * @property {Array} hermiteSegments
- * @property {Array} bezierSegments
- * @property {number} _currentCurveIndex
- * @property _evalCache
- * @constructor
- */
-function Tw2MayaAnimationEngine() {
-    this.curves = [];
-    this.hermiteSegments = [];
-    this.bezierSegments = [];
-    this._currentCurveIndex = 0;
-    this._evalCache = null;
-}
+var _Tw2Curve2 = __webpack_require__(2);
 
-Tw2MayaAnimationEngine.AnimCurveFields = {
-    NUM_SEGMENTS: 0,
-    SEGMENT_OFFSET: 1,
-    END_TIME: 2,
-    END_VALUE: 3,
-    IN_TANGENT: 4,
-    OUT_TANGENT: 5,
-    PRE_INFINITY: 6,
-    POST_INFINITY: 7,
-    IS_WEIGHTED: 8
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-Tw2MayaAnimationEngine.AnimSegment = {
-    TIME: 0,
-    VALUE: 1
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-Tw2MayaAnimationEngine.HermiteSegment = {
-    TIME: 0,
-    VALUE: 1,
-    COEFF: 2,
-    IS_STEP: 3,
-    IS_STEP_NEXT: 4
-};
-
-Tw2MayaAnimationEngine.BezierSegment = {
-    TIME: 0,
-    VALUE: 1,
-    COEFF: 2,
-    POLYY: 3,
-    IS_STEP: 4,
-    IS_STEP_NEXT: 5,
-    IS_LINEAR: 6
-};
-
-Tw2MayaAnimationEngine.INFINITY = 0;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Evaluate
- * @param curveIndex
- * @param time
- * @returns {*}
- * @prototype
+ * Tw2SineCurve
+ *
+ * @property {string} name
+ * @property {number} value
+ * @property {number} offset
+ * @property {number} scale
+ * @property {number} speed
  */
-Tw2MayaAnimationEngine.prototype.Evaluate = function (curveIndex, time) {
-    if (this.curves.length <= curveIndex) {
-        return 0;
-    }
-    this._currentCurveIndex = curveIndex;
-    if (!this._evalCache) {
-        this._evalCache = new Array(this.curves.length);
-        for (var i = 0; i < this._evalCache.length; ++i) {
-            this._evalCache[i] = -1;
-        }
+var Tw2SineCurve = exports.Tw2SineCurve = function (_Tw2Curve) {
+  _inherits(Tw2SineCurve, _Tw2Curve);
+
+  function Tw2SineCurve() {
+    _classCallCheck(this, Tw2SineCurve);
+
+    var _this = _possibleConstructorReturn(this, (Tw2SineCurve.__proto__ || Object.getPrototypeOf(Tw2SineCurve)).call(this));
+
+    _this.value = 0;
+    _this.offset = 0;
+    _this.scale = 1;
+    _this.speed = 1;
+    return _this;
+  }
+
+  /**
+   * Updates the current value at the given time
+   * @param {number} time
+   */
+
+
+  _createClass(Tw2SineCurve, [{
+    key: 'UpdateValue',
+    value: function UpdateValue(time) {
+      this.value = this.GetValueAt(time);
     }
 
-    var animCurve = this.curves[curveIndex];
-    var firstSegment = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET];
-    var segments = null;
+    /**
+     * Gets a value at a specific time
+     * @param {number} time
+     * @returns {number}
+     */
 
-    if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
-        segments = this.bezierSegments;
-    } else {
-        segments = this.hermiteSegments;
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt(time) {
+      return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
     }
-    if (time < segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.PRE_INFINITY] === Tw2MayaAnimationEngine.INFINITY) {
-            return segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
-        }
-        return this._EvaluateInfinities(animCurve, segments, firstSegment, time, true);
-    }
-    if (time > animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME]) {
-        if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.POST_INFINITY] === Tw2MayaAnimationEngine.INFINITY) {
-            return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
-        }
-        return this._EvaluateInfinities(animCurve, segments, firstSegment, time, false);
-    }
-    return this._EvaluateImpl(animCurve, segments, firstSegment, time);
-};
+  }]);
+
+  return Tw2SineCurve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * _EvaluateImpl
- * @param animCurve
- * @param segments
- * @param firstSegment
- * @param time
- * @returns {*}
- * @private
+ * THe curve's dimension
+ * @type {number}
  */
-Tw2MayaAnimationEngine.prototype._EvaluateImpl = function (animCurve, segments, firstSegment, time) {
-    var withinInterval = false;
-    var nextSegment = null;
-    var lastSegment = null;
-    var index;
-    var value = 0;
 
-    if (this._evalCache[this._currentCurveIndex] >= 0) {
-        lastSegment = firstSegment + this._evalCache[this._currentCurveIndex];
-        if (this._evalCache[this._currentCurveIndex] < animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS - 1] && time > segments[lastSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-            nextSegment = firstSegment + this._evalCache[this._currentCurveIndex] + 1;
-            if (time === segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-                this._evalCache[this._currentCurveIndex]++;
-                return segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
-            } else if (time < segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-                index = this._evalCache[this._currentCurveIndex] + 1;
-                withinInterval = true;
-            } else {
-                nextSegment = null;
-            }
-        } else if (this._evalCache[this._currentCurveIndex] > 0 && time < segments[lastSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-            var prevSegment = firstSegment + this._evalCache[this._currentCurveIndex] - 1;
-            if (time > segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-                index = this._evalCache[this._currentCurveIndex];
-                withinInterval = true;
-            } else if (time === segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
-                this._evalCache[this._currentCurveIndex]--;
-                return segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
-            }
-        }
-    }
 
-    if (!withinInterval) {
-        var result = this._Find(animCurve, time, segments, firstSegment);
-        index = result[1];
-        if (result[0] || index === 0) {
-            if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS]) {
-                index--;
-                this._evalCache[this._currentCurveIndex] = index;
-                return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
-            } else {
-                this._evalCache[this._currentCurveIndex] = index;
-                return segments[firstSegment + index][Tw2MayaAnimationEngine.AnimSegment.VALUE];
-            }
-        } else if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1) {
-            this._evalCache[this._currentCurveIndex] = 0;
-            return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
-        }
-    }
-
-    if (this._evalCache[this._currentCurveIndex] !== index - 1) {
-        this._evalCache[this._currentCurveIndex] = index - 1;
-        lastSegment = firstSegment + this._evalCache[this._currentCurveIndex];
-        if (nextSegment === null) {
-            nextSegment = firstSegment + index;
-        }
-    }
-
-    if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
-        var bSegment = segments[lastSegment];
-        if (bSegment[Tw2MayaAnimationEngine.BezierSegment.IS_STEP]) {
-            return bSegment[Tw2MayaAnimationEngine.BezierSegment.VALUE];
-        } else if (bSegment[Tw2MayaAnimationEngine.BezierSegment.IS_STEP_NEXT]) {
-            if (nextSegment === null) {
-                return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
-            }
-            return segments[nextSegment][Tw2MayaAnimationEngine.BezierSegment.VALUE];
-        } else {
-            var nextKeyTime = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME];
-            if (this._evalCache[this._currentCurveIndex] + 1 < animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS]) {
-                nextKeyTime = segments[nextSegment][Tw2MayaAnimationEngine.BezierSegment.TIME];
-            }
-            return this._EvaluateBezier(bSegment, time, nextKeyTime);
-        }
-    } else {
-        var hSegment = segments[lastSegment];
-        if (hSegment[Tw2MayaAnimationEngine.HermiteSegment.IS_STEP]) {
-            return hSegment[Tw2MayaAnimationEngine.HermiteSegment.VALUE];
-        } else if (hSegment[Tw2MayaAnimationEngine.HermiteSegment.IS_STEP_NEXT]) {
-            if (nextSegment === null) {
-                return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
-            }
-            return segments[nextSegment][Tw2MayaAnimationEngine.HermiteSegment.VALUE];
-        } else {
-            return this._EvaluateHermite(hSegment, time);
-        }
-    }
-};
+Tw2SineCurve.outputDimension = 1;
 
 /**
- * A static helper function to evaluate the infinity portion of an animation curve.
- * The infinity portion is the parts of the animation curve outside the range of keys.
- * @param curve - The animation curve to evaluate
- * @param segments
- * @param startSegment
- * @param {time} time
- * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
+ * The curve's current value property
+ * @type {string}
  */
-Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function (curve, segments, startSegment, time, bool) {
-    throw new Error('_EvaluateInfinities not implemented');
-};
+Tw2SineCurve.valueProperty = 'value';
 
 /**
- * _EvaluateHermite
- * @param segment
- * @param time
- * @returns {*}
- * @private
+ * The curve's type
+ * @type {number}
  */
-Tw2MayaAnimationEngine.prototype._EvaluateHermite = function (segment, time) {
-    var t = time - segment[Tw2MayaAnimationEngine.HermiteSegment.TIME];
-    var coeff = segment[Tw2MayaAnimationEngine.HermiteSegment.COEFF];
-    return t * (t * (t * coeff[0] + coeff[1]) + coeff[2]) + coeff[3];
-};
-
-/**
- * _EvaluateBezier
- * @param segment
- * @param time
- * @param nextSegmentTime
- * @returns {*}
- * @private
- */
-Tw2MayaAnimationEngine.prototype._EvaluateBezier = function (segment, time, nextSegmentTime) {
-    var t, s;
-
-    s = (time - segment[Tw2MayaAnimationEngine.BezierSegment.TIME]) / (nextSegmentTime - segment[Tw2MayaAnimationEngine.BezierSegment.TIME]);
-
-    if (segment[Tw2MayaAnimationEngine.BezierSegment.IS_LINEAR]) {
-        t = s;
-    } else {
-        var poly = _math.vec4.create();
-        poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
-        poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
-        poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
-        poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
-        var roots = [];
-        if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) === 1) {
-            t = roots[0];
-        } else {
-            t = 0.0;
-        }
-    }
-    var poly = segment[Tw2MayaAnimationEngine.BezierSegment.POLYY];
-    return t * (t * (t * poly[3] + poly[2]) + poly[1]) + poly[0];
-};
-
-/**
- * _Find
- * @param animCurve
- * @param time
- * @param segments
- * @param firstSegment
- * @returns {*}
- * @private
- */
-Tw2MayaAnimationEngine.prototype._Find = function (animCurve, time, segments, firstSegment) {
-    var len, mid, low, high;
-
-    /* use a binary search to find the key */
-    var index = 0;
-    len = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1;
-    var segment = null;
-    var stime = 0.0;
-
-    if (len > 0) {
-        low = 0;
-        high = len - 1;
-        do {
-            mid = low + high >> 1;
-            if (mid < len - 1) {
-                segment = firstSegment + mid;
-                stime = segments[segment][Tw2MayaAnimationEngine.AnimSegment.TIME];
-            } else {
-                stime = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME];
-            }
-
-            if (time < stime) {
-                high = mid - 1;
-            } else if (time > stime) {
-                low = mid + 1;
-            } else {
-                index = mid;
-                return [true, index];
-            }
-        } while (low <= high);
-        index = low;
-    }
-    return [false, index];
-};
-
-/**
- * Returns the total number of curves
- * @returns {number}
- * @prototype
- */
-Tw2MayaAnimationEngine.prototype.GetNumberOfCurves = function () {
-    return this.curves.length;
-};
-
-/**
- * Gets specific curve's length
- * @property {number} index
- * @returns {number}
- * @prototype
- */
-Tw2MayaAnimationEngine.prototype.GetLength = function (index) {
-    if (index < 0 || index >= this.curves.length) {
-        return 0;
-    }
-    var curve = this.curves[index];
-    if (curve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
-        var firstSegment = this.bezierSegments[curve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET]];
-    } else {
-        var firstSegment = this.hermiteSegments[curve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET]];
-    }
-    return curve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME] - firstSegment[Tw2MayaAnimationEngine.AnimSegment.TIME];
-};
-
-/**
- * ag_horner1
- * @param P
- * @param deg
- * @param s
- * @returns {*}
- */
-function ag_horner1(P, deg, s) {
-    var h = P[deg];
-    while (--deg >= 0) {
-        h = s * h + P[deg];
-    }return h;
-}
-
-/**
- * ag_zeroin2
- * @param a
- * @param b
- * @param fa
- * @param fb
- * @param tol
- * @param pars
- * @returns {*}
- */
-function ag_zeroin2(a, b, fa, fb, tol, pars) {
-    var test;
-    var c, d, e, fc, del, m, machtol, p, q, r, s;
-
-    /* initialization */
-    machtol = 1.192092896e-07;
-    var label1 = true;
-
-    /* start iteration */
-    while (true) {
-        if (label1) {
-            c = a;
-            fc = fa;
-            d = b - a;
-            e = d;
-        }
-        if (Math.abs(fc) < Math.abs(fb)) {
-            a = b;
-            b = c;
-            c = a;
-            fa = fb;
-            fb = fc;
-            fc = fa;
-        }
-        label1 = false;
-
-        /* convergence test */
-        del = 2.0 * machtol * Math.abs(b) + 0.5 * tol;
-        m = 0.5 * (c - b);
-        test = Math.abs(m) > del && fb !== 0.0;
-        if (test) {
-            if (Math.abs(e) < del || Math.abs(fa) <= Math.abs(fb)) {
-                /* bisection */
-                d = m;
-                e = d;
-            } else {
-                s = fb / fa;
-                if (a === c) {
-                    /* linear interpolation */
-                    p = 2.0 * m * s;
-                    q = 1.0 - s;
-                } else {
-                    /* inverse quadratic interpolation */
-                    q = fa / fc;
-                    r = fb / fc;
-                    p = s * (2.0 * m * q * (q - r) - (b - a) * (r - 1.0));
-                    q = (q - 1.0) * (r - 1.0) * (s - 1.0);
-                }
-                /* adjust the sign */
-                if (p > 0.0) q = -q;else p = -p;
-                /* check if interpolation is acceptable */
-                s = e;
-                e = d;
-                if (2.0 * p < 3.0 * m * q - Math.abs(del * q) && p < Math.abs(0.5 * s * q)) {
-                    d = p / q;
-                } else {
-                    d = m;
-                    e = d;
-                }
-            }
-            /* complete step */
-            a = b;
-            fa = fb;
-            if (Math.abs(d) > del) b += d;else if (m > 0.0) b += del;else b -= del;
-            fb = ag_horner1(pars.p, pars.deg, b);
-            if (fb * (fc / Math.abs(fc)) > 0.0) {
-                label1 = true;
-            }
-        } else {
-            break;
-        }
-    }
-    return b;
-}
-
-/**
- * ag_zeroin
- * @param a
- * @param b
- * @param tol
- * @param pars
- * @returns {*}
- */
-function ag_zeroin(a, b, tol, pars) {
-    var fa, fb;
-
-    fa = ag_horner1(pars.p, pars.deg, a);
-    if (Math.abs(fa) < 1.192092896e-07) return a;
-
-    fb = ag_horner1(pars.p, pars.deg, b);
-    if (Math.abs(fb) < 1.192092896e-07) return b;
-
-    return ag_zeroin2(a, b, fa, fb, tol, pars);
-}
-
-/**
- * polyZeroes
- * @param Poly
- * @param deg
- * @param a
- * @param a_closed
- * @param b
- * @param b_closed
- * @param Roots
- * @returns {*}
- */
-function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots) {
-    var i, left_ok, right_ok, nr, ndr, skip;
-    var e,
-        f,
-        s,
-        pe,
-        ps,
-        tol,
-        p,
-        p_x = new Array(22),
-        d,
-        d_x = new Array(22),
-        dr,
-        dr_x = new Array(22);
-    var ply = {
-        p: [],
-        deg: 0
-    };
-
-    e = pe = 0.0;
-    f = 0.0;
-
-    for (i = 0; i < deg + 1; ++i) {
-        f += Math.abs(Poly[i]);
-    }
-    tol = (Math.abs(a) + Math.abs(b)) * (deg + 1) * 1.192092896e-07;
-
-    /* Zero polynomial to tolerance? */
-    if (f <= tol) return -1;
-
-    p = p_x;
-    d = d_x;
-    dr = dr_x;
-    for (i = 0; i < deg + 1; ++i) {
-        p[i] = 1.0 / f * Poly[i];
-    }
-
-    /* determine true degree */
-    while (Math.abs(p[deg]) < tol) {
-        deg--;
-    } /* Identically zero poly already caught so constant fn !== 0 */
-    nr = 0;
-    if (deg === 0) return nr;
-
-    /* check for linear case */
-    if (deg === 1) {
-        Roots[0] = -p[0] / p[1];
-        left_ok = a_closed ? a < Roots[0] + tol : a < Roots[0] - tol;
-        right_ok = b_closed ? b > Roots[0] - tol : b > Roots[0] + tol;
-        nr = left_ok && right_ok ? 1 : 0;
-        if (nr) {
-            if (a_closed && Roots[0] < a) Roots[0] = a;else if (b_closed && Roots[0] > b) Roots[0] = b;
-        }
-        return nr;
-    }
-    /* handle non-linear case */
-    else {
-            ply.p = p;
-            ply.deg = deg;
-
-            /* compute derivative */
-            for (i = 1; i <= deg; i++) {
-                d[i - 1] = i * p[i];
-            } /* find roots of derivative */
-            ndr = polyZeroes(d, deg - 1, a, 0, b, 0, dr);
-            if (ndr.length === 0) return 0;
-
-            /* find roots between roots of the derivative */
-            for (i = skip = 0; i <= ndr; i++) {
-                if (nr > deg) return nr;
-                if (i === 0) {
-                    s = a;
-                    ps = ag_horner1(p, deg, s);
-                    if (Math.abs(ps) <= tol && a_closed) Roots[nr++] = a;
-                } else {
-                    s = e;
-                    ps = pe;
-                }
-                if (i === ndr) {
-                    e = b;
-                    skip = 0;
-                } else e = dr[i];
-                pe = ag_horner1(p, deg, e);
-                if (skip) skip = 0;else {
-                    if (Math.abs(pe) < tol) {
-                        if (i !== ndr || b_closed) {
-                            Roots[nr++] = e;
-                            skip = 1;
-                        }
-                    } else if (ps < 0 && pe > 0 || ps > 0 && pe < 0) {
-                        Roots[nr++] = ag_zeroin(s, e, 0.0, ply);
-                        if (nr > 1 && Roots[nr - 2] >= Roots[nr - 1] - tol) {
-                            Roots[nr - 2] = (Roots[nr - 2] + Roots[nr - 1]) * 0.5;
-                            nr--;
-                        }
-                    }
-                }
-            }
-        }
-
-    return nr;
-}
+Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 
 /***/ }),
 /* 104 */
@@ -26657,109 +26596,296 @@ function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2MayaEulerRotationCurve = Tw2MayaEulerRotationCurve;
+exports.Tw2Vector2Curve = exports.Tw2Vector2Key = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-/**
- * Tw2MayaEulerRotationCurve
- * @property {number} xIndex
- * @property {number} yIndex
- * @property {number} zIndex
- * @property {null|Tw2MayaAnimationEngine} animationEngine
- * @property {string} name
- * @property {vec3} eulerValue
- * @property {boolean} updateQuaternion
- * @property {quat} quatValue
- * @constructor
- */
-function Tw2MayaEulerRotationCurve() {
-    this.xIndex = -1;
-    this.yIndex = -1;
-    this.zIndex = -1;
-    this.animationEngine = null;
-    this.name = '';
-    this.eulerValue = _math.vec3.create();
-    this.updateQuaternion = false;
-    this.quatValue = _math.quat.create();
-}
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * Tw2Vector2Key
+ *
+ * @property {vec2} value
+ * @property {vec2} leftTangent
+ * @property {vec2} rightTangent
+ * @property {number} interpolation
+ * @class
  */
-Tw2MayaEulerRotationCurve.prototype.Initialize = function () {
-    this.ComputeLength();
-    return true;
-};
+var Tw2Vector2Key = exports.Tw2Vector2Key = function (_Tw2CurveKey) {
+    _inherits(Tw2Vector2Key, _Tw2CurveKey);
+
+    function Tw2Vector2Key() {
+        _classCallCheck(this, Tw2Vector2Key);
+
+        var _this = _possibleConstructorReturn(this, (Tw2Vector2Key.__proto__ || Object.getPrototypeOf(Tw2Vector2Key)).call(this));
+
+        _this.value = _math.vec2.create();
+        _this.leftTangent = _math.vec2.create();
+        _this.rightTangent = _math.vec2.create();
+        _this.interpolation = 1;
+        return _this;
+    }
+
+    return Tw2Vector2Key;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * Tw2Vector2Curve
+ *
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {vec2} startValue - vec2 array
+ * @property {vec2} currentValue - vec2 array
+ * @property {vec2} endValue - vec2 array
+ * @property {vec2} startTangent - vec2 array
+ * @property {vec2} endTangent - vec2 array
+ * @property {number} interpolation
+ * @property {Array.<Tw2Vector2Key>} keys
+ * @property {number} _length
+ * @class
  */
-Tw2MayaEulerRotationCurve.prototype.GetLength = function () {
-    return this.length;
-};
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2MayaEulerRotationCurve.prototype.UpdateValue = function (time) {
-    if (this.animationEngine) {
-        if (this.xIndex) {
-            this.eulerValue[0] = this.animationEngine.Evaluate(this.xIndex, time);
+
+var Tw2Vector2Curve = exports.Tw2Vector2Curve = function (_Tw2Curve) {
+    _inherits(Tw2Vector2Curve, _Tw2Curve);
+
+    function Tw2Vector2Curve() {
+        _classCallCheck(this, Tw2Vector2Curve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2Vector2Curve.__proto__ || Object.getPrototypeOf(Tw2Vector2Curve)).call(this));
+
+        _this2.cycle = false;
+        _this2.reversed = false;
+        _this2.timeOffset = 0;
+        _this2.timeScale = 1;
+        _this2.startValue = _math.vec2.create();
+        _this2.currentValue = _math.vec2.create();
+        _this2.endValue = _math.vec2.create();
+        _this2.startTangent = _math.vec2.create();
+        _this2.endTangent = _math.vec2.create();
+        _this2.interpolation = 1;
+        _this2.keys = [];
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2Vector2Curve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort2(this);
         }
-        if (this.yIndex) {
-            if (this.yIndex === this.xIndex) {
-                this.eulerValue[1] = this.eulerValue[0];
-            } else {
-                this.eulerValue[1] = this.animationEngine.Evaluate(this.yIndex, time);
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec2} value - vec2 array
+         * @returns {vec2} vec2 array
+         * @prototype
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            time = time / this.timeScale + this.timeOffset;
+            if (this._length <= 0 || time <= 0) {
+                return _math.vec2.copy(value, this.startValue);
+            }
+
+            if (time > this._length) {
+                if (this.cycle) {
+                    time = time % this._length;
+                } else if (this.reversed) {
+                    return _math.vec2.copy(value, this.startValue);
+                } else {
+                    return _math.vec2.copy(value, this.endValue);
+                }
+            }
+
+            if (this.reversed) {
+                time = this._length - time;
+            }
+
+            if (this.keys.length === 0) {
+                return this.Interpolate(time, null, null, value);
+            }
+
+            var startKey = this.keys[0];
+            if (time <= startKey.time) {
+                return this.Interpolate(time, null, startKey, value);
+            } else if (time >= this.keys[this.keys.length - 1].time) {
+                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            }
+
+            var endKey = void 0;
+            for (var i = 0; i + 1 < this.keys.length; ++i) {
+                startKey = this.keys[i];
+                endKey = this.keys[i + 1];
+                if (startKey.time <= time && endKey.time > time) break;
+            }
+
+            return this.Interpolate(time, startKey, endKey, value);
+        }
+
+        /**
+         * Interpolate
+         * @param {number} time
+         * @param {Tw2Vector2Key} lastKey
+         * @param {Tw2Vector2Key} nextKey
+         * @param {vec2} value - vec2 array
+         * @returns {vec2} vec2 array
+         */
+
+    }, {
+        key: 'Interpolate',
+        value: function Interpolate(time, lastKey, nextKey, value) {
+            _math.vec2.copy(value, this.startValue);
+
+            var startValue = this.startValue,
+                endValue = this.endValue,
+                interp = this.interpolation,
+                deltaTime = this._length;
+
+            if (lastKey !== null) {
+                interp = lastKey.interpolation;
+                time -= lastKey.time;
+            }
+
+            switch (interp) {
+                case Tw2Vector2Curve.Interpolation.LINEAR:
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        deltaTime = this._length - lastKey.time;
+                    }
+                    value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
+                    value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
+                    return value;
+
+                case Tw2Vector2Curve.Interpolation.HERMITE:
+                    var inTangent = this.startTangent,
+                        outTangent = this.endTangent;
+
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        deltaTime = this._length - lastKey.time;
+                    }
+
+                    var s = time / deltaTime,
+                        s2 = s * s,
+                        s3 = s2 * s;
+
+                    var c2 = -2.0 * s3 + 3.0 * s2,
+                        c1 = 1.0 - c2,
+                        c4 = s3 - s2,
+                        c3 = s + c4 - s2;
+
+                    value[0] = startValue[0] * c1 + endValue[0] * c2 + inTangent[0] * c3 + outTangent[0] * c4;
+                    value[1] = startValue[1] * c1 + endValue[1] * c2 + inTangent[1] * c3 + outTangent[1] * c4;
+                    return value;
+
+                default:
+                    return value;
             }
         }
-        if (this.zIndex) {
-            if (this.zIndex === this.xIndex) {
-                this.eulerValue[2] = this.eulerValue[0];
-            } else {
-                this.eulerValue[2] = this.animationEngine.Evaluate(this.zIndex, time);
-            }
-        }
-        if (this.updateQuaternion) {
-            var sinYaw = Math.sin(this.eulerValue[0] / 2);
-            var cosYaw = Math.cos(this.eulerValue[0] / 2);
-            var sinPitch = Math.sin(this.eulerValue[1] / 2);
-            var cosPitch = Math.cos(this.eulerValue[1] / 2);
-            var sinRoll = Math.sin(this.eulerValue[2] / 2);
-            var cosRoll = Math.cos(this.eulerValue[2] / 2);
-            this.quatValue[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
-            this.quatValue[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
-            this.quatValue[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
-            this.quatValue[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
-        }
-    }
-};
+    }]);
+
+    return Tw2Vector2Curve;
+}(_Tw2Curve2.Tw2Curve);
 
 /**
- * Computes curve Length
- * @prototype
+ * The curve's child dimension
+ * @type {number}
  */
-Tw2MayaEulerRotationCurve.prototype.ComputeLength = function () {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) {
-        return;
-    }
-    this.length = 0;
-    if (this.xIndex >= 0) {
-        this.length = this.animationEngine.GetLength(this.xIndex);
-    }
-    if (this.yIndex >= 0) {
-        this.length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
-    }
-    if (this.zIndex >= 0) {
-        this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
-    }
+
+
+Tw2Vector2Curve.inputDimension = 2;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2Vector2Curve.outputDimension = 2;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2Vector2Curve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2Vector2Curve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2Vector2Key}
+ */
+Tw2Vector2Curve.Key = Tw2Vector2Key;
+
+/**
+ * Interpolation types
+ * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+ */
+Tw2Vector2Curve.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1,
+    HERMITE: 2
 };
 
 /***/ }),
@@ -26772,65 +26898,299 @@ Tw2MayaEulerRotationCurve.prototype.ComputeLength = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2MayaScalarCurve = Tw2MayaScalarCurve;
-/**
- * Tw2MayaScalarCurve
- * @property {number} index
- * @property {null|Tw2MayaAnimationEngine} animationEngine
- * @property {string} name
- * @property {number} value
- * @property {number} length
- * @constructor
- */
-function Tw2MayaScalarCurve() {
-    this.index = -1;
-    this.animationEngine = null;
-    this.name = '';
-    this.value = 0;
-    this.length = 0;
-}
+exports.Tw2Vector3Curve = exports.Tw2Vector3Key = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * Tw2Vector3Key
+ *
+ * @property {number} time
+ * @property {vec3} value
+ * @property {vec3} leftTangent
+ * @property {vec3} rightTangent
+ * @property {number} interpolation
+ * @class
  */
-Tw2MayaScalarCurve.prototype.Initialize = function () {
-    this.ComputeLength();
-    return true;
-};
+var Tw2Vector3Key = exports.Tw2Vector3Key = function (_Tw2CurveKey) {
+    _inherits(Tw2Vector3Key, _Tw2CurveKey);
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2MayaScalarCurve.prototype.GetLength = function () {
-    return this.length;
-};
+    function Tw2Vector3Key() {
+        _classCallCheck(this, Tw2Vector3Key);
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2MayaScalarCurve.prototype.UpdateValue = function (time) {
-    if (this.animationEngine) {
-        this.value = this.animationEngine.Evaluate(this.index, time);
+        var _this = _possibleConstructorReturn(this, (Tw2Vector3Key.__proto__ || Object.getPrototypeOf(Tw2Vector3Key)).call(this));
+
+        _this.value = _math.vec3.create();
+        _this.leftTangent = _math.vec3.create();
+        _this.rightTangent = _math.vec3.create();
+        _this.interpolation = 1;
+        return _this;
     }
-};
+
+    return Tw2Vector3Key;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Computes curve Length
- * @prototype
+ * Tw2Vector3Curve
+ *
+ * @property {boolean} cycle
+ * @property {boolean} reversed
+ * @property {number} timeOffset
+ * @property {number} timeScale
+ * @property {vec3} startValue
+ * @property {vec3} currentValue
+ * @property {vec3} endValue
+ * @property {vec3} startTangent
+ * @property {vec3} endTangent
+ * @property {number} interpolation
+ * @property {Array.<Tw2Vector3Key>} keys
+ * @property {number} _length
+ * @class
  */
-Tw2MayaScalarCurve.prototype.ComputeLength = function () {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) {
-        return;
+
+
+var Tw2Vector3Curve = exports.Tw2Vector3Curve = function (_Tw2Curve) {
+    _inherits(Tw2Vector3Curve, _Tw2Curve);
+
+    function Tw2Vector3Curve() {
+        _classCallCheck(this, Tw2Vector3Curve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2Vector3Curve.__proto__ || Object.getPrototypeOf(Tw2Vector3Curve)).call(this));
+
+        _this2.cycle = false;
+        _this2.reversed = false;
+        _this2.timeOffset = 0;
+        _this2.timeScale = 1;
+        _this2.startValue = _math.vec3.create();
+        _this2.currentValue = _math.vec3.create();
+        _this2.endValue = _math.vec3.create();
+        _this2.startTangent = _math.vec3.create();
+        _this2.endTangent = _math.vec3.create();
+        _this2.interpolation = 1;
+        _this2.keys = [];
+        _this2._length = 0;
+        return _this2;
     }
-    if (this.index >= 0) {
-        this.length = this.animationEngine.GetLength(this.index);
-    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2Vector3Curve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort2(this);
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec3} value
+         * @returns {vec3}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            time = time / this.timeScale + this.timeOffset;
+            if (this._length <= 0 || time <= 0) {
+                return _math.vec3.copy(value, this.startValue);
+            }
+
+            if (time > this._length) {
+                if (this.cycle) {
+                    time = time % this._length;
+                } else if (this.reversed) {
+                    return _math.vec3.copy(value, this.startValue);
+                } else {
+                    return _math.vec3.copy(value, this.endValue);
+                }
+            }
+
+            if (this.reversed) {
+                time = this._length - time;
+            }
+
+            if (this.keys.length === 0) {
+                return this.Interpolate(time, null, null, value);
+            }
+
+            var startKey = this.keys[0];
+            if (time <= startKey.time) {
+                return this.Interpolate(time, null, startKey, value);
+            } else if (time >= this.keys[this.keys.length - 1].time) {
+                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            }
+
+            var endKey = void 0;
+            for (var i = 0; i + 1 < this.keys.length; ++i) {
+                startKey = this.keys[i];
+                endKey = this.keys[i + 1];
+                if (startKey.time <= time && endKey.time > time) break;
+            }
+
+            return this.Interpolate(time, startKey, endKey, value);
+        }
+
+        /**
+         * Interpolate
+         * @param {number} time
+         * @param {Tw2Vector3Key} lastKey
+         * @param {Tw2Vector3Key} nextKey
+         * @param {vec3} value
+         * @returns {vec3}
+         */
+
+    }, {
+        key: 'Interpolate',
+        value: function Interpolate(time, lastKey, nextKey, value) {
+            _math.vec3.copy(value, this.startValue);
+
+            var startValue = this.startValue,
+                endValue = this.endValue,
+                interp = this.interpolation,
+                deltaTime = this._length;
+
+            if (lastKey !== null) {
+                interp = lastKey.interpolation;
+                time -= lastKey.time;
+            }
+
+            switch (interp) {
+                case Tw2Vector3Curve.Interpolation.LINEAR:
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        deltaTime = this._length - lastKey.time;
+                    }
+
+                    value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
+                    value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
+                    value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
+                    return value;
+
+                case Tw2Vector3Curve.Interpolation.HERMITE:
+                    var inTangent = this.startTangent,
+                        outTangent = this.endTangent;
+
+                    if (lastKey && nextKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time - lastKey.time;
+                    } else if (nextKey) {
+                        endValue = nextKey.value;
+                        outTangent = nextKey.leftTangent;
+                        deltaTime = nextKey.time;
+                    } else if (lastKey) {
+                        startValue = lastKey.value;
+                        inTangent = lastKey.rightTangent;
+                        deltaTime = this._length - lastKey.time;
+                    }
+
+                    var s = time / deltaTime,
+                        s2 = s * s,
+                        s3 = s2 * s;
+
+                    var c2 = -2.0 * s3 + 3.0 * s2,
+                        c1 = 1.0 - c2,
+                        c4 = s3 - s2,
+                        c3 = s + c4 - s2;
+
+                    value[0] = startValue[0] * c1 + endValue[0] * c2 + inTangent[0] * c3 + outTangent[0] * c4;
+                    value[1] = startValue[1] * c1 + endValue[1] * c2 + inTangent[1] * c3 + outTangent[1] * c4;
+                    value[2] = startValue[2] * c1 + endValue[2] * c2 + inTangent[2] * c3 + outTangent[2] * c4;
+                    return value;
+
+                default:
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2Vector3Curve;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2Vector3Curve.inputDimension = 3;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2Vector3Curve.outputDimension = 3;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2Vector3Curve.valueProperty = 'currentValue';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2Vector3Curve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2Vector3Key}
+ */
+Tw2Vector3Curve.Key = Tw2Vector3Key;
+
+/**
+ * Interpolation types
+ * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+ */
+Tw2Vector3Curve.Interpolation = {
+    CONSTANT: 0,
+    LINEAR: 1,
+    HERMITE: 2
 };
 
 /***/ }),
@@ -26843,93 +27203,249 @@ Tw2MayaScalarCurve.prototype.ComputeLength = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2MayaVector3Curve = Tw2MayaVector3Curve;
+exports.Tw2VectorCurve = exports.Tw2VectorKey = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _Tw2Curve2 = __webpack_require__(2);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2MayaVector3Curve
- * @property {number} xIndex
- * @property {number} yIndex
- * @property {number} zIndex
- * @property {null|Tw2MayaAnimationEngine} animationEngine
- * @property {string} name
+ * Tw2VectorKey
+ *
  * @property {vec3} value
- * @constructor
+ * @property {vec3} left
+ * @property {vec3} right
+ * @property {number} interpolation
+ * @inherits Tw2CurveKey
+ * @class
  */
-function Tw2MayaVector3Curve() {
-    this.xIndex = -1;
-    this.yIndex = -1;
-    this.zIndex = -1;
-    this.animationEngine = null;
-    this.name = '';
-    this.value = _math.vec3.create();
-}
+var Tw2VectorKey = exports.Tw2VectorKey = function (_Tw2CurveKey) {
+    _inherits(Tw2VectorKey, _Tw2CurveKey);
+
+    function Tw2VectorKey() {
+        _classCallCheck(this, Tw2VectorKey);
+
+        var _this = _possibleConstructorReturn(this, (Tw2VectorKey.__proto__ || Object.getPrototypeOf(Tw2VectorKey)).call(this));
+
+        _this.value = _math.vec3.create();
+        _this.left = _math.vec3.create();
+        _this.right = _math.vec3.create();
+        _this.interpolation = 0;
+        return _this;
+    }
+
+    return Tw2VectorKey;
+}(_Tw2Curve2.Tw2CurveKey);
 
 /**
- * Initializes the Curve
- * @returns {boolean}
- * @prototype
+ * Tw2Vector3Curve
+ *
+ * @property {string} name
+ * @property {number} start
+ * @property {vec3} value
+ * @property {number} extrapolation
+ * @property {Array.<Tw2VectorKey>} keys
+ * @property {number} _currentKey
+ * @property {number} _length
+ * @class
  */
-Tw2MayaVector3Curve.prototype.Initialize = function () {
-    this.ComputeLength();
-    return true;
-};
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2MayaVector3Curve.prototype.GetLength = function () {
-    return this.length;
-};
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2MayaVector3Curve.prototype.UpdateValue = function (time) {
-    if (this.animationEngine) {
-        if (this.xIndex) {
-            this.value[0] = this.animationEngine.Evaluate(this.xIndex, time);
+var Tw2VectorCurve = exports.Tw2VectorCurve = function (_Tw2Curve) {
+    _inherits(Tw2VectorCurve, _Tw2Curve);
+
+    function Tw2VectorCurve() {
+        _classCallCheck(this, Tw2VectorCurve);
+
+        var _this2 = _possibleConstructorReturn(this, (Tw2VectorCurve.__proto__ || Object.getPrototypeOf(Tw2VectorCurve)).call(this));
+
+        _this2.start = 0;
+        _this2.value = _math.vec3.create();
+        _this2.extrapolation = 0;
+        _this2.keys = [];
+        _this2._currentKey = 1;
+        _this2._length = 0;
+        return _this2;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2VectorCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2Curve2.Tw2Curve.Sort(this);
         }
-        if (this.yIndex) {
-            if (this.yIndex === this.xIndex) {
-                this.value[1] = this.value[0];
-            } else {
-                this.value[1] = this.animationEngine.Evaluate(this.yIndex, time);
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec3} value
+         * @returns {vec3}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            if (this._length === 0) {
+                return _math.vec3.copy(value, this.value);
+            }
+
+            var firstKey = this.keys[0],
+                lastKey = this.keys[this.keys.length - 1];
+
+            if (time >= lastKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2VectorCurve.Extrapolation.NONE:
+                        return _math.vec3.copy(value, this.value);
+
+                    case Tw2VectorCurve.Extrapolation.CONSTANT:
+                        return _math.vec3.copy(value, lastKey.value);
+
+                    case Tw2VectorCurve.Extrapolation.GRADIENT:
+                        return _math.vec3.scaleAndAdd(value, lastKey.value, lastKey.right, time - lastKey.time);
+
+                    default:
+                        time = time % lastKey.time;
+                }
+            } else if (time < 0 || time < firstKey.time) {
+                switch (this.extrapolation) {
+                    case Tw2VectorCurve.Extrapolation.NONE:
+                        return _math.vec3.copy(value, this.value);
+
+                    case Tw2VectorCurve.Extrapolation.GRADIENT:
+                        return _math.vec3.scaleAndAdd(value, firstKey.value, firstKey.left, d);
+
+                    default:
+                        return _math.vec3.copy(value, firstKey.value);
+                }
+            }
+
+            var ck = this.keys[this._currentKey],
+                ck_1 = this.keys[this._currentKey - 1];
+
+            while (time >= ck.time || time < ck_1.time) {
+                if (time < ck_1.time) this._currentKey = 0;
+                this._currentKey++;
+                ck = this.keys[this._currentKey];
+                ck_1 = this.keys[this._currentKey - 1];
+            }
+
+            var nt = (time - ck_1.time) / (ck.time - ck_1.time);
+            switch (ck_1.interpolation) {
+                case Tw2VectorCurve.Interpolation.CONSTANT:
+                    return _math.vec3.copy(value, ck_1.value);
+
+                case Tw2VectorCurve.Interpolation.LINEAR:
+                    value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
+                    value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
+                    value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
+                    return value;
+
+                case Tw2VectorCurve.Interpolation.HERMITE:
+                    var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1,
+                        k2 = -2 * nt * nt * nt + 3 * nt * nt,
+                        k1 = nt * nt * nt - 2 * nt * nt + nt,
+                        k0 = nt * nt * nt - nt * nt;
+
+                    value[0] = k3 * ck_1.value[0] + k2 * ck.value[0] + k1 * ck_1.right[0] + k0 * ck.left[0];
+                    value[1] = k3 * ck_1.value[1] + k2 * ck.value[1] + k1 * ck_1.right[1] + k0 * ck.left[1];
+                    value[2] = k3 * ck_1.value[2] + k2 * ck.value[2] + k1 * ck_1.right[2] + k0 * ck.left[2];
+                    return value;
+
+                default:
+                    return value;
             }
         }
-        if (this.zIndex) {
-            if (this.zIndex === this.xIndex) {
-                this.value[2] = this.value[0];
-            } else {
-                this.value[2] = this.animationEngine.Evaluate(this.zIndex, time);
-            }
-        }
-    }
+    }]);
+
+    return Tw2VectorCurve;
+}(_Tw2Curve2.Tw2Curve);
+
+/**
+ * The curve's child dimension
+ * @type {number}
+ */
+
+
+Tw2VectorCurve.inputDimension = 3;
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+Tw2VectorCurve.outputDimension = 3;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2VectorCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2VectorCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+
+/**
+ * The curve's key constructor
+ * @type {Tw2VectorKey}
+ */
+Tw2VectorCurve.Key = Tw2VectorKey;
+
+/**
+ * Extrapolation types
+ * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+ */
+Tw2VectorCurve.Extrapolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    GRADIENT: 2,
+    CYCLE: 3
 };
 
 /**
- * Computes curve Length
- * @prototype
+ * Interpolation types
+ * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number}}
  */
-Tw2MayaVector3Curve.prototype.ComputeLength = function () {
-    if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) {
-        return;
-    }
-    this.length = 0;
-    if (this.xIndex >= 0) {
-        this.length = this.animationEngine.GetLength(this.xIndex);
-    }
-    if (this.yIndex >= 0) {
-        this.length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
-    }
-    if (this.zIndex >= 0) {
-        this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
-    }
+Tw2VectorCurve.Interpolation = {
+    NONE: 0,
+    CONSTANT: 1,
+    LINEAR: 2,
+    HERMITE: 3
 };
 
 /***/ }),
@@ -26940,100 +27456,104 @@ Tw2MayaVector3Curve.prototype.ComputeLength = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2ColorSequencer = Tw2ColorSequencer;
 
-var _math = __webpack_require__(0);
+var _Tw2ColorSequencer = __webpack_require__(108);
 
-/**
- * Tw2ColorSequencer
- * @property {string} name
- * @property {number} start
- * @property {vec4} value
- * @property {number} operator
- * @property {Array} functions
- * @constructor
- */
-function Tw2ColorSequencer() {
-    this.name = '';
-    this.start = 0;
-    this.value = _math.vec4.create();
-    this.operator = 0;
-    this.functions = [];
-}
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2ColorSequencer.prototype.GetLength = function () {
-    var length = 0;
-    for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
-            length = Math.max(length, this.functions[i].GetLength());
-        }
+Object.keys(_Tw2ColorSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ColorSequencer[key];
     }
-    return length;
-};
+  });
+});
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2ColorSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+var _Tw2EulerRotation = __webpack_require__(109);
 
-/**
- * Scratch variable
- */
-Tw2ColorSequencer.scratch = {
-    vec4_0: _math.vec4.create()
-};
-
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec4} value
- * @returns {vec4}
- * @prototype
- */
-Tw2ColorSequencer.prototype.GetValueAt = function (time, value) {
-    var functions, i;
-    var tempValue = Tw2ColorSequencer.scratch.vec4_0;
-
-    if (this.operator === 0) {
-        value[0] = 1;
-        value[1] = 1;
-        value[2] = 1;
-        value[3] = 1;
-        functions = this.functions;
-        for (i = 0; i < functions.length; ++i) {
-            functions[i].GetValueAt(time, tempValue);
-            value[0] *= tempValue[0];
-            value[1] *= tempValue[1];
-            value[2] *= tempValue[2];
-            value[3] *= tempValue[3];
-        }
-    } else {
-        value[0] = 0;
-        value[1] = 0;
-        value[2] = 0;
-        value[3] = 0;
-        functions = this.functions;
-        for (i = 0; i < functions.length; ++i) {
-            functions[i].GetValueAt(time, tempValue);
-            value[0] += tempValue[0];
-            value[1] += tempValue[1];
-            value[2] += tempValue[2];
-            value[3] += tempValue[3];
-        }
+Object.keys(_Tw2EulerRotation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2EulerRotation[key];
     }
-    return value;
-};
+  });
+});
+
+var _Tw2QuaternionSequencer = __webpack_require__(110);
+
+Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2QuaternionSequencer[key];
+    }
+  });
+});
+
+var _Tw2RGBAScalarSequencer = __webpack_require__(111);
+
+Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2RGBAScalarSequencer[key];
+    }
+  });
+});
+
+var _Tw2ScalarSequencer = __webpack_require__(112);
+
+Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ScalarSequencer[key];
+    }
+  });
+});
+
+var _Tw2VectorSequencer = __webpack_require__(113);
+
+Object.keys(_Tw2VectorSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2VectorSequencer[key];
+    }
+  });
+});
+
+var _Tw2XYZScalarSequencer = __webpack_require__(114);
+
+Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2XYZScalarSequencer[key];
+    }
+  });
+});
+
+var _Tw2YPRSequencer = __webpack_require__(115);
+
+Object.keys(_Tw2YPRSequencer).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2YPRSequencer[key];
+    }
+  });
+});
 
 /***/ }),
 /* 108 */
@@ -27045,80 +27565,157 @@ Tw2ColorSequencer.prototype.GetValueAt = function (time, value) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2EulerRotation = Tw2EulerRotation;
+exports.Tw2ColorSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-/**
- * Tw2EulerRotation
- * @property {string} name
- * @property {*} [yawCurve]
- * @property {*} [pitchCurve]
- * @property {*} [rollCurve]
- * @property {quat} currentValue=[0,0,0,1]
- * @constructor
- */
-function Tw2EulerRotation() {
-    this.name = '';
-    this.yawCurve = null;
-    this.pitchCurve = null;
-    this.rollCurve = null;
-    this.currentValue = _math.quat.create([0, 0, 0, 1]);
-}
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * Tw2ColorSequencer
+ *
+ * @property {number} start
+ * @property {vec4} value
+ * @property {number} operator
+ * @property {Array<Tw2CurveSequencer>} functions
+ * @class
  */
-Tw2EulerRotation.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.currentValue);
-};
+var Tw2ColorSequencer = exports.Tw2ColorSequencer = function (_Tw2CurveSequencer) {
+    _inherits(Tw2ColorSequencer, _Tw2CurveSequencer);
 
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
- */
-Tw2EulerRotation.prototype.GetValueAt = function (time, value) {
-    var yaw = this.yawCurve ? this.yawCurve.GetValueAt(time) : 0.0;
-    var pitch = this.pitchCurve ? this.pitchCurve.GetValueAt(time) : 0.0;
-    var roll = this.rollCurve ? this.rollCurve.GetValueAt(time) : 0.0;
+    function Tw2ColorSequencer() {
+        _classCallCheck(this, Tw2ColorSequencer);
 
-    var sinYaw = Math.sin(yaw / 2.0);
-    var cosYaw = Math.cos(yaw / 2.0);
-    var sinPitch = Math.sin(pitch / 2.0);
-    var cosPitch = Math.cos(pitch / 2.0);
-    var sinRoll = Math.sin(roll / 2.0);
-    var cosRoll = Math.cos(roll / 2.0);
+        var _this = _possibleConstructorReturn(this, (Tw2ColorSequencer.__proto__ || Object.getPrototypeOf(Tw2ColorSequencer)).call(this));
 
-    value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
-    value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
-    value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
-    value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
-
-    return value;
-};
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2EulerRotation.prototype.GetLength = function () {
-    var length = 0;
-    if (this.yawCurve && 'GetLength' in this.yawCurve) {
-        length = this.yawCurve.GetLength();
+        _this.start = 0;
+        _this.value = _math.vec4.create();
+        _this.operator = 0;
+        _this.functions = [];
+        return _this;
     }
-    if (this.pitchCurve && 'GetLength' in this.pitchCurve) {
-        length = Math.max(length, this.pitchCurve.GetLength());
-    }
-    if (this.rollCurve && 'GetLength' in this.rollCurve) {
-        length = Math.max(length, this.rollCurve.GetLength());
-    }
-    return length;
+
+    /**
+     * Sorts the sequencer
+     */
+
+
+    _createClass(Tw2ColorSequencer, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
+        }
+
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                if ('GetLength' in this.functions[i]) {
+                    len = Math.max(len, this.functions[i].GetLength());
+                }
+            }
+            return len;
+        }
+
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec4} value
+         * @returns {vec4}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            var vec4_0 = _Tw2CurveSequencer2.Tw2CurveSequencer.global.vec4_0;
+
+            switch (this.operator) {
+                case Tw2ColorSequencer.Operator.MULTIPLY:
+                    _math.vec4.set(value, 1, 1, 1, 1);
+                    for (var i = 0; i < this.functions.length; ++i) {
+                        this.functions[i].GetValueAt(time, vec4_0);
+                        _math.vec4.multiply(value, value, vec4_0);
+                    }
+                    return value;
+
+                default:
+                    _math.vec4.set(value, 0, 0, 0, 0);
+                    for (var _i = 0; _i < this.functions.length; ++_i) {
+                        this.functions[_i].GetValueAt(time, vec4_0);
+                        _math.vec4.add(value, value, vec4_0);
+                    }
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2ColorSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
+
+/**
+ * The sequencer's curve dimension
+ * @type {number}
+ */
+
+
+Tw2ColorSequencer.inputDimension = 4;
+
+/**
+ * The sequencer's dimension
+ * @type {number}
+ */
+Tw2ColorSequencer.outputDimension = 4;
+
+/**
+ * The sequencer's current value property
+ * @type {string}
+ */
+Tw2ColorSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2ColorSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
+
+/**
+ * The sequencer's curve array
+ * @type {string}
+ */
+Tw2ColorSequencer.childArray = 'functions';
+
+/**
+ * Operators
+ * @type {{MULTIPLY: number, ADD: number}}
+ */
+Tw2ColorSequencer.Operator = {
+    MULTIPLY: 0,
+    ADD: 1
 };
 
 /***/ }),
@@ -27131,73 +27728,146 @@ Tw2EulerRotation.prototype.GetLength = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2QuaternionSequencer = Tw2QuaternionSequencer;
+exports.Tw2EulerRotation = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2QuaternionSequencer
+ * Tw2EulerRotation
+ *
  * @property {string} name
- * @property {number} start
- * @property {quat} value
- * @property {Array} functions
- * @constructor
+ * @property {Tw2CurveSequencer} [yawCurve]
+ * @property {Tw2CurveSequencer} [pitchCurve]
+ * @property {Tw2CurveSequencer} [rollCurve]
+ * @property {quat} currentValue=[0,0,0,1]
+ * @class
  */
-function Tw2QuaternionSequencer() {
-    this.name = '';
-    this.start = 0;
-    this.value = _math.quat.create();
-    this.functions = [];
-}
+var Tw2EulerRotation = exports.Tw2EulerRotation = function (_Tw2CurveSequencer) {
+    _inherits(Tw2EulerRotation, _Tw2CurveSequencer);
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2QuaternionSequencer.prototype.GetLength = function () {
-    var length = 0;
-    for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
-            length = Math.max(length, this.functions[i].GetLength());
+    function Tw2EulerRotation() {
+        _classCallCheck(this, Tw2EulerRotation);
+
+        var _this = _possibleConstructorReturn(this, (Tw2EulerRotation.__proto__ || Object.getPrototypeOf(Tw2EulerRotation)).call(this));
+
+        _this.yawCurve = null;
+        _this.pitchCurve = null;
+        _this.rollCurve = null;
+        _this.currentValue = _math.quat.create();
+        return _this;
+    }
+
+    /**
+     * Sorts the sequencer
+     */
+
+
+    _createClass(Tw2EulerRotation, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
         }
-    }
-    return length;
-};
+
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            if (this.yawCurve && 'GetLength' in this.yawCurve) len = this.yawCurve.GetLength();
+            if (this.pitchCurve && 'GetLength' in this.pitchCurve) len = Math.max(len, this.pitchCurve.GetLength());
+            if (this.rollCurve && 'GetLength' in this.rollCurve) len = Math.max(len, this.rollCurve.GetLength());
+            return len;
+        }
+
+        /**
+         * Updates the current value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            var yaw = this.yawCurve ? this.yawCurve.GetValueAt(time) : 0.0,
+                pitch = this.pitchCurve ? this.pitchCurve.GetValueAt(time) : 0.0,
+                roll = this.rollCurve ? this.rollCurve.GetValueAt(time) : 0.0;
+
+            var sinYaw = Math.sin(yaw / 2.0),
+                cosYaw = Math.cos(yaw / 2.0),
+                sinPitch = Math.sin(pitch / 2.0),
+                cosPitch = Math.cos(pitch / 2.0),
+                sinRoll = Math.sin(roll / 2.0),
+                cosRoll = Math.cos(roll / 2.0);
+
+            value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
+            value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
+            value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
+            value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
+
+            return value;
+        }
+    }]);
+
+    return Tw2EulerRotation;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2QuaternionSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+
+
+Tw2EulerRotation.inputDimension = 1;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
+ * The sequencer's dimension
+ * @type {number}
  */
-Tw2QuaternionSequencer.prototype.GetValueAt = function (time, value) {
-    _math.quat.identity(value, value);
-    var tempValue = Tw2QuaternionSequencer.scratch.quat_0;
-    var functions = this.functions;
-    for (var i = 0; i < functions.length; ++i) {
-        functions[i].GetValueAt(time, tempValue);
-        _math.quat.multiply(value, value, tempValue);
-    }
-    return value;
-};
+Tw2EulerRotation.outputDimension = 3;
 
 /**
- * Scratch variables
+ * The sequencer's current value property
+ * @type {string}
  */
-Tw2QuaternionSequencer.scratch = {
-    quat_0: _math.quat.create()
-};
+Tw2EulerRotation.valueProperty = 'currentValue';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
+
+/**
+ * The sequencer's curve property names
+ * @type {string[]}
+ */
+Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
 /* 110 */
@@ -27209,88 +27879,136 @@ Tw2QuaternionSequencer.scratch = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2RGBAScalarSequencer = Tw2RGBAScalarSequencer;
+exports.Tw2QuaternionSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-/**
- * Tw2RGBAScalarSequencer
- * @property {vec4} value
- * @property {*} RedCurve
- * @property {*} GreenCurve
- * @property {*} BlueCurve
- * @property {*} AlphaCurve
- * @constructor
- */
-function Tw2RGBAScalarSequencer() {
-    this.value = _math.vec4.create();
-    this.RedCurve = null;
-    this.GreenCurve = null;
-    this.BlueCurve = null;
-    this.AlphaCurve = null;
-}
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * Tw2QuaternionSequencer
+ *
+ * @property {string} name
+ * @property {number} start
+ * @property {quat} value
+ * @property {Array<Tw2CurveSequencer>} functions
+ * @class
  */
-Tw2RGBAScalarSequencer.prototype.GetLength = function () {
-    var length = 0;
-    if (this.RedCurve && 'GetLength' in this.RedCurve) {
-        length = this.RedCurve.GetLength();
+var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = function (_Tw2CurveSequencer) {
+    _inherits(Tw2QuaternionSequencer, _Tw2CurveSequencer);
+
+    function Tw2QuaternionSequencer() {
+        _classCallCheck(this, Tw2QuaternionSequencer);
+
+        var _this = _possibleConstructorReturn(this, (Tw2QuaternionSequencer.__proto__ || Object.getPrototypeOf(Tw2QuaternionSequencer)).call(this));
+
+        _this.start = 0;
+        _this.value = _math.quat.create();
+        _this.functions = [];
+        return _this;
     }
-    if (this.GreenCurve && 'GetLength' in this.GreenCurve) {
-        length = Math.max(length, this.GreenCurve.GetLength());
-    }
-    if (this.BlueCurve && 'GetLength' in this.BlueCurve) {
-        length = Math.max(length, this.BlueCurve.GetLength());
-    }
-    if (this.AlphaCurve && 'GetLength' in this.AlphaCurve) {
-        length = Math.max(length, this.AlphaCurve.GetLength());
-    }
-    return length;
-};
+
+    /**
+     * Sorts the sequencer
+     */
+
+
+    _createClass(Tw2QuaternionSequencer, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
+        }
+
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                if ('GetLength' in this.functions[i]) {
+                    len = Math.max(len, this.functions[i].GetLength());
+                }
+            }
+            return len;
+        }
+
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            _math.quat.identity(value);
+            var quat_0 = _Tw2CurveSequencer2.Tw2CurveSequencer.global.quat_0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                this.functions[i].GetValueAt(time, quat_0);
+                _math.quat.multiply(value, value, quat_0);
+            }
+            return value;
+        }
+    }]);
+
+    return Tw2QuaternionSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2RGBAScalarSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+
+
+Tw2QuaternionSequencer.inputDimension = 4;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec4} value
- * @returns {vec4}
- * @prototype
+ * The sequencer's dimension
+ * @type {number}
  */
-Tw2RGBAScalarSequencer.prototype.GetValueAt = function (time, value) {
-    if (this.RedCurve) {
-        value[0] = this.RedCurve.GetValueAt(time);
-    } else {
-        value[0] = 0;
-    }
-    if (this.GreenCurve) {
-        value[1] = this.GreenCurve.GetValueAt(time);
-    } else {
-        value[1] = 0;
-    }
-    if (this.BlueCurve) {
-        value[2] = this.BlueCurve.GetValueAt(time);
-    } else {
-        value[2] = 0;
-    }
-    if (this.AlphaCurve) {
-        value[3] = this.AlphaCurve.GetValueAt(time);
-    } else {
-        value[3] = 0;
-    }
-    return value;
-};
+Tw2QuaternionSequencer.outputDimension = 4;
+
+/**
+ * The sequencer's current value property
+ * @type {string}
+ */
+Tw2QuaternionSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
+
+/**
+ * The sequencer's curve array
+ * @type {string}
+ */
+Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
 /* 111 */
@@ -27300,91 +28018,138 @@ Tw2RGBAScalarSequencer.prototype.GetValueAt = function (time, value) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2ScalarSequencer = Tw2ScalarSequencer;
-/**
- * Tw2ScalarSequencer
- * @property {string} name
- * @property {number} value
- * @property {number} operator
- * @property {Array} functions
- * @property {number} inMinClamp
- * @property {number} inMaxClamp
- * @property {number} outMinClamp
- * @property {number} outMaxClamp
- * @property {boolean} clamping
- * @constructor
- */
-function Tw2ScalarSequencer() {
-    this.name = '';
-    this.value = 0;
-    this.operator = 0;
-    this.functions = [];
-    this.inMinClamp = 0;
-    this.inMaxClamp = 1;
-    this.outMinClamp = 0;
-    this.outMaxClamp = 1;
-    this.clamping = false;
-}
+exports.Tw2RGBAScalarSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * Tw2RGBAScalarSequencer
+ *
+ * @property {vec4} value
+ * @property {Tw2CurveSequencer} RedCurve
+ * @property {Tw2CurveSequencer} GreenCurve
+ * @property {Tw2CurveSequencer} BlueCurve
+ * @property {Tw2CurveSequencer} AlphaCurve
+ * @class
  */
-Tw2ScalarSequencer.prototype.GetLength = function () {
-    var length = 0;
-    for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
-            length = Math.max(length, this.functions[i].GetLength());
-        }
+var Tw2RGBAScalarSequencer = exports.Tw2RGBAScalarSequencer = function (_Tw2CurveSequencer) {
+  _inherits(Tw2RGBAScalarSequencer, _Tw2CurveSequencer);
+
+  function Tw2RGBAScalarSequencer() {
+    _classCallCheck(this, Tw2RGBAScalarSequencer);
+
+    var _this = _possibleConstructorReturn(this, (Tw2RGBAScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2RGBAScalarSequencer)).call(this));
+
+    _this.value = _math.vec4.create();
+    _this.RedCurve = null;
+    _this.GreenCurve = null;
+    _this.BlueCurve = null;
+    _this.AlphaCurve = null;
+    return _this;
+  }
+
+  /**
+   * Sorts the sequencer
+   */
+
+
+  _createClass(Tw2RGBAScalarSequencer, [{
+    key: 'Sort',
+    value: function Sort() {
+      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
     }
-    return length;
-};
+
+    /**
+     * Gets sequencer length
+     * @returns {number}
+     */
+
+  }, {
+    key: 'GetLength',
+    value: function GetLength() {
+      var len = 0;
+      if (this.RedCurve && 'GetLength' in this.RedCurve) len = this.RedCurve.GetLength();
+      if (this.GreenCurve && 'GetLength' in this.GreenCurve) len = Math.max(len, this.GreenCurve.GetLength());
+      if (this.BlueCurve && 'GetLength' in this.BlueCurve) len = Math.max(len, this.BlueCurve.GetLength());
+      if (this.AlphaCurve && 'GetLength' in this.AlphaCurve) len = Math.max(len, this.AlphaCurve.GetLength());
+      return len;
+    }
+
+    /**
+     * Updates the current value at a specific time
+     * @param {number} time
+     */
+
+  }, {
+    key: 'UpdateValue',
+    value: function UpdateValue(time) {
+      this.GetValueAt(time, this.value);
+    }
+
+    /**
+     * Gets a value at a specific time
+     * @param {number} time
+     * @param {vec4} value
+     * @returns {vec4}
+     */
+
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt(time, value) {
+      value[0] = this.RedCurve ? this.RedCurve.GetValueAt(time) : 0;
+      value[1] = this.GreenCurve ? this.GreenCurve.GetValueAt(time) : 0;
+      value[2] = this.BlueCurve ? this.BlueCurve.GetValueAt(time) : 0;
+      value[3] = this.AlphaCurve ? this.AlphaCurve.GetValueAt(time) : 0;
+      return value;
+    }
+  }]);
+
+  return Tw2RGBAScalarSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2ScalarSequencer.prototype.UpdateValue = function (time) {
-    this.value = this.GetValueAt(time);
-};
+
+
+Tw2RGBAScalarSequencer.inputDimension = 1;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @returns {number}
- * @prototype
+ * The sequencer's dimension
+ * @type {number}
  */
-Tw2ScalarSequencer.prototype.GetValueAt = function (time) {
-    var ret, i, v;
+Tw2RGBAScalarSequencer.outputDimension = 4;
 
-    if (this.operator === 0) {
-        ret = 1;
-        for (i = 0; i < this.functions.length; ++i) {
-            v = this.functions[i].GetValueAt(time);
-            if (this.clamping) {
-                v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
-            }
-            ret *= v;
-        }
-    } else {
-        ret = 0;
-        for (i = 0; i < this.functions.length; ++i) {
-            v = this.functions[i].GetValueAt(time);
-            if (this.clamping) {
-                v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
-            }
-            ret += v;
-        }
-    }
-    if (this.clamping) {
-        ret = Math.min(Math.max(ret, this.outMinClamp), this.outMaxClamp);
-    }
-    return ret;
-};
+/**
+ * The sequencer's current value property
+ * @type {string}
+ */
+Tw2RGBAScalarSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
+
+/**
+ * The sequencer's curve property names
+ * @type {string[]}
+ */
+Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
 /* 112 */
@@ -27396,93 +28161,176 @@ Tw2ScalarSequencer.prototype.GetValueAt = function (time) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2VectorSequencer = Tw2VectorSequencer;
+exports.Tw2ScalarSequencer = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Tw2VectorSequencer
+ * Tw2ScalarSequencer
+ *
  * @property {string} name
- * @property {number} start
- * @property {vec3} value
+ * @property {number} value
  * @property {number} operator
- * @property {Array} functions
- * @constructor
+ * @property {Array<Tw2CurveSequencer>} functions
+ * @property {number} inMinClamp
+ * @property {number} inMaxClamp
+ * @property {number} outMinClamp
+ * @property {number} outMaxClamp
+ * @property {boolean} clamping
+ * @class
  */
-function Tw2VectorSequencer() {
-    this.name = '';
-    this.start = 0;
-    this.value = _math.vec3.create();
-    this.operator = 0;
-    this.functions = [];
-}
+var Tw2ScalarSequencer = exports.Tw2ScalarSequencer = function (_Tw2CurveSequencer) {
+    _inherits(Tw2ScalarSequencer, _Tw2CurveSequencer);
 
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2VectorSequencer.prototype.GetLength = function () {
-    var length = 0;
-    for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
-            length = Math.max(length, this.functions[i].GetLength());
-        }
+    function Tw2ScalarSequencer() {
+        _classCallCheck(this, Tw2ScalarSequencer);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2ScalarSequencer)).call(this));
+
+        _this.value = 0;
+        _this.operator = 0;
+        _this.functions = [];
+        _this.inMinClamp = 0;
+        _this.inMaxClamp = 1;
+        _this.outMinClamp = 0;
+        _this.outMaxClamp = 1;
+        _this.clamping = false;
+        return _this;
     }
-    return length;
-};
 
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2VectorSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+    /**
+     * Sorts the sequencer
+     */
 
-/**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec3} value
- * @returns {vec3}
- * @prototype
- */
-Tw2VectorSequencer.prototype.GetValueAt = function (time, value) {
-    var v0 = Tw2VectorSequencer.scratch.vec3_0;
-    var functions, i;
 
-    if (this.operator === 0) {
-        value[0] = 1;
-        value[1] = 1;
-        value[2] = 1;
-        functions = this.functions;
-        for (i = 0; i < functions.length; ++i) {
-            functions[i].GetValueAt(time, v0);
-            value[0] *= v0[0];
-            value[1] *= v0[1];
-            value[2] *= v0[2];
+    _createClass(Tw2ScalarSequencer, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
-    } else {
-        value[0] = 0;
-        value[1] = 0;
-        value[2] = 0;
-        functions = this.functions;
-        for (i = 0; i < functions.length; ++i) {
-            functions[i].GetValueAt(time, v0);
-            value[0] += v0[0];
-            value[1] += v0[1];
-            value[2] += v0[2];
+
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                if ('GetLength' in this.functions[i]) {
+                    len = Math.max(len, this.functions[i].GetLength());
+                }
+            }
+            return len;
         }
-    }
-    return value;
-};
+
+        /**
+         * Updates a value at a specific time
+         *
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.value = this.GetValueAt(time);
+        }
+
+        /**
+         * Gets a value at a specific time
+         *
+         * @param {number} time
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time) {
+            var value = void 0;
+
+            switch (this.operator) {
+                case Tw2ScalarSequencer.Operator.MULTIPLY:
+                    value = 1;
+                    for (var i = 0; i < this.functions.length; ++i) {
+                        var v = this.functions[i].GetValueAt(time);
+                        if (this.clamping) {
+                            v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
+                        }
+                        value *= v;
+                    }
+                    break;
+
+                default:
+                    value = 0;
+                    for (var _i = 0; _i < this.functions.length; ++_i) {
+                        var _v = this.functions[_i].GetValueAt(time);
+                        if (this.clamping) {
+                            _v = Math.min(Math.max(_v, this.inMinClamp), this.inMaxClamp);
+                        }
+                        value += _v;
+                    }
+            }
+
+            if (this.clamping) {
+                value = Math.min(Math.max(value, this.outMinClamp), this.outMaxClamp);
+            }
+
+            return value;
+        }
+    }]);
+
+    return Tw2ScalarSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Scratch variables
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2VectorSequencer.scratch = {
-    vec3_0: _math.vec3.create()
+
+
+Tw2ScalarSequencer.inputDimension = 1;
+
+/**
+ * The sequencer's dimension
+ * @type {number}
+ */
+Tw2ScalarSequencer.outputDimension = 1;
+
+/**
+ * The sequencer's current value property
+ * @type {string}
+ */
+Tw2ScalarSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2ScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
+
+/**
+ * The sequencer's curve properties
+ * @type {string}
+ */
+Tw2ScalarSequencer.childArray = 'functions';
+
+/**
+ * Operator types
+ * @type {{MULTIPLY: number, ADD: number}}
+ */
+Tw2ScalarSequencer.Operator = {
+    MULTIPLY: 0,
+    ADD: 1
 };
 
 /***/ }),
@@ -27495,79 +28343,158 @@ Tw2VectorSequencer.scratch = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2XYZScalarSequencer = Tw2XYZScalarSequencer;
+exports.Tw2VectorSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2XYZScalarSequencer
+ * Tw2VectorSequencer
+ *
  * @property {string} name
+ * @property {number} start
  * @property {vec3} value
- * @property {*} XCurve
- * @property {*} YCurve
- * @property {*} ZCurve
- * @constructor
+ * @property {number} operator
+ * @property {Array.<Tw2Curve>} functions
+ * @class
  */
-function Tw2XYZScalarSequencer() {
-    this.name = '';
-    this.value = _math.vec3.create();
-    this.XCurve = null;
-    this.YCurve = null;
-    this.ZCurve = null;
-}
+var Tw2VectorSequencer = exports.Tw2VectorSequencer = function (_Tw2CurveSequencer) {
+    _inherits(Tw2VectorSequencer, _Tw2CurveSequencer);
+
+    function Tw2VectorSequencer() {
+        _classCallCheck(this, Tw2VectorSequencer);
+
+        var _this = _possibleConstructorReturn(this, (Tw2VectorSequencer.__proto__ || Object.getPrototypeOf(Tw2VectorSequencer)).call(this));
+
+        _this.start = 0;
+        _this.value = _math.vec3.create();
+        _this.operator = 0;
+        _this.functions = [];
+        return _this;
+    }
+
+    /**
+     * Sorts the sequencer
+     */
+
+
+    _createClass(Tw2VectorSequencer, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
+        }
+
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                if ('GetLength' in this.functions[i]) {
+                    len = Math.max(len, this.functions[i].GetLength());
+                }
+            }
+            return len;
+        }
+
+        /**
+         * Updates the current value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec3} value
+         * @returns {vec3}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            var vec3_0 = _Tw2CurveSequencer2.Tw2CurveSequencer.global.vec3_0;
+
+            switch (this.operator) {
+                case Tw2VectorSequencer.Operator.MULTIPLY:
+                    _math.vec3.set(value, 1, 1, 1);
+                    for (var i = 0; i < this.functions.length; ++i) {
+                        this.functions[i].GetValueAt(time, vec3_0);
+                        _math.vec3.multiply(value, value, vec3_0);
+                    }
+                    return value;
+
+                default:
+                    _math.vec3.set(value, 0, 0, 0);
+                    for (var _i = 0; _i < this.functions.length; ++_i) {
+                        this.functions[_i].GetValueAt(time, vec3_0);
+                        _math.vec3.add(value, value, vec3_0);
+                    }
+                    return value;
+            }
+        }
+    }]);
+
+    return Tw2VectorSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2XYZScalarSequencer.prototype.GetLength = function () {
-    var length = 0;
-    if (this.XCurve && 'GetLength' in this.XCurve) {
-        length = this.XCurve.GetLength();
-    }
-    if (this.YCurve && 'GetLength' in this.YCurve) {
-        length = Math.max(length, this.YCurve.GetLength());
-    }
-    if (this.ZCurve && 'GetLength' in this.ZCurve) {
-        length = Math.max(length, this.ZCurve.GetLength());
-    }
-    return length;
-};
+
+
+Tw2VectorSequencer.inputDimension = 3;
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The sequencer's dimension
+ * @type {number}
  */
-Tw2XYZScalarSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+Tw2VectorSequencer.outputDimension = 3;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @param {vec3} value
- * @returns {vec3}
- * @prototype
+ * The sequencer's current value property
+ * @type {string}
  */
-Tw2XYZScalarSequencer.prototype.GetValueAt = function (time, value) {
-    if (this.XCurve) {
-        value[0] = this.XCurve.GetValueAt(time);
-    } else {
-        value[0] = 0;
-    }
-    if (this.YCurve) {
-        value[1] = this.YCurve.GetValueAt(time);
-    } else {
-        value[1] = 0;
-    }
-    if (this.ZCurve) {
-        value[2] = this.ZCurve.GetValueAt(time);
-    } else {
-        value[2] = 0;
-    }
-    return value;
+Tw2VectorSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2VectorSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
+
+/**
+ * The sequencer's curve properties
+ * @type {string}
+ */
+Tw2VectorSequencer.childArray = 'functions';
+
+/**
+ * Operator types
+ * @type {{MULTIPLY: number, ADD: number}}
+ */
+Tw2VectorSequencer.Operator = {
+    MULTIPLY: 0,
+    ADD: 1
 };
 
 /***/ }),
@@ -27578,94 +28505,327 @@ Tw2XYZScalarSequencer.prototype.GetValueAt = function (time, value) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.Tw2YPRSequencer = Tw2YPRSequencer;
+exports.Tw2XYZScalarSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Tw2YPRSequencer
+ * Tw2XYZScalarSequencer
+ *
  * @property {string} name
- * @property {quat} value
- * @property {vec3} YawPitchRoll
- * @property YawCurve
- * @property PitchCurve
- * @property RollCurve
- * @constructor
+ * @property {vec3} value
+ * @property {Tw2CurveSequencer} XCurve
+ * @property {Tw2CurveSequencer} YCurve
+ * @property {Tw2CurveSequencer} ZCurve
+ * @class
  */
-function Tw2YPRSequencer() {
-    this.name = '';
-    this.value = _math.quat.create();
-    this.YawPitchRoll = _math.vec3.create();
-    this.YawCurve = null;
-    this.PitchCurve = null;
-    this.RollCurve = null;
-}
+var Tw2XYZScalarSequencer = exports.Tw2XYZScalarSequencer = function (_Tw2CurveSequencer) {
+  _inherits(Tw2XYZScalarSequencer, _Tw2CurveSequencer);
+
+  function Tw2XYZScalarSequencer() {
+    _classCallCheck(this, Tw2XYZScalarSequencer);
+
+    var _this = _possibleConstructorReturn(this, (Tw2XYZScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2XYZScalarSequencer)).call(this));
+
+    _this.value = _math.vec3.create();
+    _this.XCurve = null;
+    _this.YCurve = null;
+    _this.ZCurve = null;
+    return _this;
+  }
+
+  /**
+   * Sorts the sequencer
+   */
+
+
+  _createClass(Tw2XYZScalarSequencer, [{
+    key: 'Sort',
+    value: function Sort() {
+      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+    }
+
+    /**
+     * Gets sequencer length
+     * @returns {number}
+     */
+
+  }, {
+    key: 'GetLength',
+    value: function GetLength() {
+      var len = 0;
+      if (this.XCurve && 'GetLength' in this.XCurve) len = this.XCurve.GetLength();
+      if (this.YCurve && 'GetLength' in this.YCurve) len = Math.max(len, this.YCurve.GetLength());
+      if (this.ZCurve && 'GetLength' in this.ZCurve) len = Math.max(len, this.ZCurve.GetLength());
+      return len;
+    }
+
+    /**
+     * Updates a value at a specific time
+     * @param {number} time
+     */
+
+  }, {
+    key: 'UpdateValue',
+    value: function UpdateValue(time) {
+      this.GetValueAt(time, this.value);
+    }
+
+    /**
+     * Gets a value at a specific time
+     * @param {number} time
+     * @param {vec3} value
+     * @returns {vec3}
+     */
+
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt(time, value) {
+      value[0] = this.XCurve ? this.XCurve.GetValueAt(time) : 0;
+      value[1] = this.YCurve ? this.YCurve.GetValueAt(time) : 0;
+      value[2] = this.ZCurve ? this.ZCurve.GetValueAt(time) : 0;
+      return value;
+    }
+  }]);
+
+  return Tw2XYZScalarSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
- * Gets curve length
- * @returns {number}
- * @prototype
+ * The sequencer's curve dimension
+ * @type {number}
  */
-Tw2YPRSequencer.prototype.GetLength = function () {
-    var length = 0;
-    if (this.YawCurve && 'GetLength' in this.YawCurve) {
-        length = this.YawCurve.GetLength();
-    }
-    if (this.PitchCurve && 'GetLength' in this.PitchCurve) {
-        length = Math.max(length, this.PitchCurve.GetLength());
-    }
-    if (this.RollCurve && 'GetLength' in this.RollCurve) {
-        length = Math.max(length, this.RollCurve.GetLength());
-    }
-    return length;
-};
+
+
+Tw2XYZScalarSequencer.inputDimension = 1;
 
 /**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
+ * The sequencer's dimension
+ * @type {number}
  */
-Tw2YPRSequencer.prototype.UpdateValue = function (time) {
-    this.GetValueAt(time, this.value);
-};
+Tw2XYZScalarSequencer.outputDimension = 3;
 
 /**
- * Gets a value at a specific time
- * @param {number} time
- * @param {quat} value
- * @returns {quat}
- * @prototype
+ * The sequencer's current value property
+ * @type {string}
  */
-Tw2YPRSequencer.prototype.GetValueAt = function (time, value) {
-    if (this.YawCurve) {
-        this.YawPitchRoll[0] = this.YawCurve.GetValueAt(time);
-    }
-    if (this.PitchCurve) {
-        this.YawPitchRoll[1] = this.PitchCurve.GetValueAt(time);
-    }
-    if (this.RollCurve) {
-        this.YawPitchRoll[2] = this.RollCurve.GetValueAt(time);
-    }
+Tw2XYZScalarSequencer.valueProperty = 'value';
 
-    var sinYaw = Math.sin(this.YawPitchRoll[0] / 180 * Math.PI / 2.0);
-    var cosYaw = Math.cos(this.YawPitchRoll[0] / 180 * Math.PI / 2.0);
-    var sinPitch = Math.sin(this.YawPitchRoll[1] / 180 * Math.PI / 2.0);
-    var cosPitch = Math.cos(this.YawPitchRoll[1] / 180 * Math.PI / 2.0);
-    var sinRoll = Math.sin(this.YawPitchRoll[2] / 180 * Math.PI / 2.0);
-    var cosRoll = Math.cos(this.YawPitchRoll[2] / 180 * Math.PI / 2.0);
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
 
-    value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
-    value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
-    value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
-    value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
-
-    return value;
-};
+/**
+ * The sequencer's curve property names
+ * @type {string[]}
+ */
+Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
 /* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Tw2YPRSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2CurveSequencer2 = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2YPRSequencer
+ *
+ * @property {quat} value
+ * @property {vec3} YawPitchRoll
+ * @property {Tw2CurveSequencer} YawCurve
+ * @property {Tw2CurveSequencer} PitchCurve
+ * @property {Tw2CurveSequencer} RollCurve
+ * @class
+ */
+var Tw2YPRSequencer = exports.Tw2YPRSequencer = function (_Tw2CurveSequencer) {
+  _inherits(Tw2YPRSequencer, _Tw2CurveSequencer);
+
+  function Tw2YPRSequencer() {
+    _classCallCheck(this, Tw2YPRSequencer);
+
+    var _this = _possibleConstructorReturn(this, (Tw2YPRSequencer.__proto__ || Object.getPrototypeOf(Tw2YPRSequencer)).call(this));
+
+    _this.value = _math.quat.create();
+    _this.YawPitchRoll = _math.vec3.create();
+    _this.YawCurve = null;
+    _this.PitchCurve = null;
+    _this.RollCurve = null;
+    return _this;
+  }
+
+  /**
+   * Sorts the sequencer
+   */
+
+
+  _createClass(Tw2YPRSequencer, [{
+    key: 'Sort',
+    value: function Sort() {
+      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+    }
+
+    /**
+     * Gets sequencer length
+     * @returns {number}
+     */
+
+  }, {
+    key: 'GetLength',
+    value: function GetLength() {
+      var len = 0;
+      if (this.YawCurve && 'GetLength' in this.YawCurve) len = this.YawCurve.GetLength();
+      if (this.PitchCurve && 'GetLength' in this.PitchCurve) len = Math.max(len, this.PitchCurve.GetLength());
+      if (this.RollCurve && 'GetLength' in this.RollCurve) len = Math.max(len, this.RollCurve.GetLength());
+      return len;
+    }
+
+    /**
+     * Updates a value at a specific time
+     *
+     * @param {number} time
+     */
+
+  }, {
+    key: 'UpdateValue',
+    value: function UpdateValue(time) {
+      this.GetValueAt(time, this.value);
+    }
+
+    /**
+     * Gets a value at a specific time
+     *
+     * @param {number} time
+     * @param {quat} value
+     * @returns {quat}
+     */
+
+  }, {
+    key: 'GetValueAt',
+    value: function GetValueAt(time, value) {
+      if (this.YawCurve) this.YawPitchRoll[0] = this.YawCurve.GetValueAt(time);
+      if (this.PitchCurve) this.YawPitchRoll[1] = this.PitchCurve.GetValueAt(time);
+      if (this.RollCurve) this.YawPitchRoll[2] = this.RollCurve.GetValueAt(time);
+
+      var sinYaw = Math.sin(this.YawPitchRoll[0] / 180 * Math.PI / 2.0),
+          cosYaw = Math.cos(this.YawPitchRoll[0] / 180 * Math.PI / 2.0),
+          sinPitch = Math.sin(this.YawPitchRoll[1] / 180 * Math.PI / 2.0),
+          cosPitch = Math.cos(this.YawPitchRoll[1] / 180 * Math.PI / 2.0),
+          sinRoll = Math.sin(this.YawPitchRoll[2] / 180 * Math.PI / 2.0),
+          cosRoll = Math.cos(this.YawPitchRoll[2] / 180 * Math.PI / 2.0);
+
+      value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
+      value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
+      value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
+      value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
+
+      return value;
+    }
+  }]);
+
+  return Tw2YPRSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer);
+
+/**
+ * The sequencer's curve dimension
+ * @type {number}
+ */
+
+
+Tw2YPRSequencer.inputDimension = 1;
+
+/**
+ * The sequencer's dimension
+ * @type {number}
+ */
+Tw2YPRSequencer.outputDimension = 4;
+
+/**
+ * The sequencer's current value property
+ * @type {string}
+ */
+Tw2YPRSequencer.valueProperty = 'value';
+
+/**
+ * The sequencer's type
+ * @type {number}
+ */
+Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
+
+/**
+ * The sequencer's curve property names
+ * @type {string[]}
+ */
+Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2WbgTrack = __webpack_require__(117);
+
+Object.keys(_Tw2WbgTrack).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2WbgTrack[key];
+    }
+  });
+});
+
+var _Tw2TransformTrack = __webpack_require__(118);
+
+Object.keys(_Tw2TransformTrack).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2TransformTrack[key];
+    }
+  });
+});
+
+/***/ }),
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27683,13 +28843,13 @@ var _core = __webpack_require__(1);
 
 /**
  * Tw2WbgTrack
+ *
  * @property {string} name
  * @property {string} geometryResPath
  * @property {Object} geometryRes
  * @property {string} group
  * @property {number} duration
  * @property {boolean} cycle
- * @constructor
  */
 function Tw2WbgTrack() {
     this.name = '';
@@ -27708,6 +28868,7 @@ function Tw2WbgTrack() {
         if (!self.name || !self.group || !self.geometryRes) {
             return;
         }
+
         for (var i = 0; i < self.geometryRes.animations.length; ++i) {
             var animation = self.geometryRes.animations[i];
             for (var j = 0; j < animation.trackGroups.length; ++j) {
@@ -27727,8 +28888,7 @@ function Tw2WbgTrack() {
             this.geometryRes = _core.resMan.GetResource(this.geometryResPath);
             var self = this;
             var notification = {
-                ReleaseCachedData: function ReleaseCachedData() {},
-                RebuildCachedData: function RebuildCachedData() {
+                OnResPrepared: function OnResPrepared() {
                     SetCurves(self);
                 }
             };
@@ -27742,20 +28902,15 @@ function Tw2WbgTrack() {
      * @prototype
      */
     this.UpdateValue = function (time) {
-        if (!this._TracksReady()) {
-            return;
-        }
-        if (this.cycle) {
-            time = time % this.duration;
-        }
-        if (time <= this.duration && time >= 0) {
-            this._UpdateValue(time);
-        }
+        if (!this._TracksReady()) return;
+        if (this.cycle) time = time % this.duration;
+        if (time <= this.duration && time >= 0) this._UpdateValue(time);
     };
 }
 
 /**
  * Tw2WbgTransformTrack
+ *
  * @property {vec3} translation
  * @property {quat} rotation
  * @property {vec3} scale
@@ -27763,7 +28918,6 @@ function Tw2WbgTrack() {
  * @variable {*} rotationCurve
  * @variable {*} scaleCurve
  * @variable {mat4} scaleShear
- * @constructor
  */
 function Tw2WbgTransformTrack() {
     this.translation = _math.vec3.create();
@@ -27810,15 +28964,18 @@ function Tw2WbgTransformTrack() {
      */
     this._UpdateValue = function (time) {
         if (positionCurve) {
-            _core.Tw2AnimationController.EvaluateCurve(positionCurve, time, this.translation, this.cycle, this.duration);
+            _math.curve.evaluate(positionCurve, time, this.translation, this.cycle, this.duration);
         }
+
         if (rotationCurve) {
-            _core.Tw2AnimationController.EvaluateCurve(rotationCurve, time, this.rotation, this.cycle, this.duration);
+            _math.curve.evaluate(rotationCurve, time, this.rotation, this.cycle, this.duration);
             _math.quat.normalize(this.rotation, this.rotation);
         }
+
         if (scaleCurve) {
-            _core.Tw2AnimationController.EvaluateCurve(scaleCurve, time, scaleShear, this.cycle, this.duration);
+            _math.curve.evaluate(scaleCurve, time, scaleShear, this.cycle, this.duration);
         }
+
         this.scale[0] = scaleShear[0];
         this.scale[1] = scaleShear[5];
         this.scale[2] = scaleShear[10];
@@ -27832,7 +28989,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 116 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27841,19 +28998,25 @@ Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2TransformTrack = Tw2TransformTrack;
+exports.Tw2TransformTrack = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Tw2TransformTrack
+ *
  * @property {string} name
  * @property {string} resPath
  * @property {Object} res
  * @property {string} group
  * @property {boolean} cycle
+ * @property {number} duration
  * @property {vec3} translation
  * @property {quat} rotation
  * @property {vec3} scale
@@ -27861,111 +29024,110 @@ var _core = __webpack_require__(1);
  * @property orientationCurve
  * @property scaleCurve
  * @property {mat4} _scaleShear
- * @constructor
+ * @class
  */
-function Tw2TransformTrack() {
-    this.name = '';
-    this.resPath = '';
-    this.res = null;
-    this.group = '';
-    this.cycle = false;
-    this.translation = _math.vec3.create();
-    this.rotation = _math.quat.create();
-    this.scale = _math.vec3.fromValues(0, 0, 0);
-    this.positionCurve = null;
-    this.orientationCurve = null;
-    this.scaleCurve = null;
-}
+var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
+    function Tw2TransformTrack() {
+        _classCallCheck(this, Tw2TransformTrack);
 
-/**
- * Initializes the Curve
- * @prototype
- */
-Tw2TransformTrack.prototype.Initialize = function () {
-    if (this.resPath !== '') {
-        this.res = _core.resMan.GetResource(this.resPath);
-    }
-};
-
-/**
- * Gets curve length
- * @returns {number}
- * @prototype
- */
-Tw2TransformTrack.prototype.GetLength = function () {
-    return this.duration;
-};
-
-/**
- * Updates a value at a specific time
- * @param {number} time
- * @prototype
- */
-Tw2TransformTrack.prototype.UpdateValue = function (time) {
-    if (!this.res || !this.res.IsGood()) {
-        return;
-    }
-    if (!this.positionCurve) {
-        this.FindTracks();
-    }
-    if (!this.positionCurve) {
-        return;
+        this.name = '';
+        this.resPath = '';
+        this.res = null;
+        this.group = '';
+        this.cycle = false;
+        this.duration = 0;
+        this.translation = _math.vec3.create();
+        this.rotation = _math.quat.create();
+        this.scale = _math.vec3.fromValues(0, 0, 0);
+        this.scaleShear = _math.mat4.create();
+        this.positionCurve = null;
+        this.orientationCurve = null;
+        this.scaleCurve = null;
     }
 
-    if (this.cycle) {
-        time = time % this.duration;
-    }
-    if (time > this.duration || time < 0) {
-        return;
-    }
+    /**
+     * Initializes the Curve
+     */
 
-    var scaleShear = Tw2TransformTrack.scratch.mat4_0;
-    _core.Tw2AnimationController.EvaluateCurve(this.positionCurve, time, this.translation, this.cycle, this.duration);
-    _core.Tw2AnimationController.EvaluateCurve(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
-    _math.quat.normalize(this.rotation);
-    _core.Tw2AnimationController.EvaluateCurve(this.scaleCurve, time, scaleShear, this.cycle, this.duration);
-    _math.mat4.getScaling(this.scale, this.scaleCurve);
-};
 
-/**
- * FindTracks
- * @prototype
- */
-Tw2TransformTrack.prototype.FindTracks = function () {
-    var i;
-
-    var group = null;
-    for (i = 0; i < this.res.animations.length; ++i) {
-        for (var j = 0; j < this.res.animations[i].trackGroups.length; ++j) {
-            if (this.res.animations[i].trackGroups[j].name === this.group) {
-                this.duration = this.res.animations[i].duration;
-                group = this.res.animations[i].trackGroups[j];
-                break;
+    _createClass(Tw2TransformTrack, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.resPath !== '') {
+                this.res = _core.resMan.GetResource(this.resPath);
             }
         }
-    }
-    if (!group) {
-        return;
-    }
-    for (i = 0; i < group.transformTracks.length; ++i) {
-        if (this.name === group.transformTracks[i].name) {
-            this.positionCurve = group.transformTracks[i].position;
-            this.orientationCurve = group.transformTracks[i].orientation;
-            this.scaleCurve = group.transformTracks[i].scaleShear;
-            break;
-        }
-    }
-};
 
-/**
- * Scratch variables
- */
-Tw2TransformTrack.scratch = {
-    mat4_0: _math.mat4.create()
-};
+        /**
+         * Gets curve length
+         *
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this.duration;
+        }
+
+        /**
+         * Updates a value at a specific time
+         *
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (!this.res || !this.res.IsGood()) return;
+            if (!this.positionCurve) this.FindTracks();
+            if (!this.positionCurve) return;
+            if (this.cycle) time = time % this.duration;
+            if (time > this.duration || time < 0) return;
+
+            _math.curve.evaluate(this.positionCurve, time, this.translation, this.cycle, this.duration);
+            _math.curve.evaluate(this.orientationCurve, time, this.rotation, this.cycle, this.duration);
+            _math.quat.normalize(this.rotation, this.rotation);
+            _math.curve.evaluate(this.scaleCurve, time, this.scaleShear, this.cycle, this.duration);
+            _math.mat4.getScaling(this.scale, this.scaleCurve);
+        }
+
+        /**
+         * FindTracks
+         */
+
+    }, {
+        key: 'FindTracks',
+        value: function FindTracks() {
+            var group = null;
+            for (var i = 0; i < this.res.animations.length; ++i) {
+                for (var j = 0; j < this.res.animations[i].trackGroups.length; ++j) {
+                    if (this.res.animations[i].trackGroups[j].name === this.group) {
+                        this.duration = this.res.animations[i].duration;
+                        group = this.res.animations[i].trackGroups[j];
+                        break;
+                    }
+                }
+            }
+
+            if (!group) return;
+
+            for (var _i = 0; _i < group.transformTracks.length; ++_i) {
+                if (this.name === group.transformTracks[_i].name) {
+                    this.positionCurve = group.transformTracks[_i].position;
+                    this.orientationCurve = group.transformTracks[_i].orientation;
+                    this.scaleCurve = group.transformTracks[_i].scaleShear;
+                    break;
+                }
+            }
+        }
+    }]);
+
+    return Tw2TransformTrack;
+}();
 
 /***/ }),
-/* 117 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27975,7 +29137,875 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveChildBillboard = __webpack_require__(118);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(120);
+
+Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2MayaEulerRotationCurve[key];
+    }
+  });
+});
+
+var _Tw2MayaScalarCurve = __webpack_require__(121);
+
+Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2MayaScalarCurve[key];
+    }
+  });
+});
+
+var _Tw2MayaVector3Curve = __webpack_require__(122);
+
+Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2MayaVector3Curve[key];
+    }
+  });
+});
+
+var _Tw2MayaAnimationEngine = __webpack_require__(123);
+
+Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2MayaAnimationEngine[key];
+    }
+  });
+});
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2MayaEulerRotationCurve = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _curves = __webpack_require__(14);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2MayaEulerRotationCurve
+ *
+ * @property {number} xIndex
+ * @property {number} yIndex
+ * @property {number} zIndex
+ * @property {?Tw2MayaAnimationEngine} animationEngine
+ * @property {string} name
+ * @property {vec3} eulerValue
+ * @property {boolean} updateQuaternion
+ * @property {quat} quatValue
+ * @property {number} _length
+ * @class
+ */
+var Tw2MayaEulerRotationCurve = exports.Tw2MayaEulerRotationCurve = function (_Tw2Curve) {
+    _inherits(Tw2MayaEulerRotationCurve, _Tw2Curve);
+
+    function Tw2MayaEulerRotationCurve() {
+        _classCallCheck(this, Tw2MayaEulerRotationCurve);
+
+        var _this = _possibleConstructorReturn(this, (Tw2MayaEulerRotationCurve.__proto__ || Object.getPrototypeOf(Tw2MayaEulerRotationCurve)).call(this));
+
+        _this.xIndex = -1;
+        _this.yIndex = -1;
+        _this.zIndex = -1;
+        _this.animationEngine = null;
+        _this.eulerValue = _math.vec3.create();
+        _this.updateQuaternion = false;
+        _this.quatValue = _math.quat.create();
+        _this._length = 0;
+        return _this;
+    }
+
+    /**
+     * Sorts the curve
+     */
+
+
+    _createClass(Tw2MayaEulerRotationCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            this.ComputeLength();
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (this.animationEngine) {
+                if (this.xIndex) {
+                    this.eulerValue[0] = this.animationEngine.Evaluate(this.xIndex, time);
+                }
+
+                if (this.yIndex) {
+                    if (this.yIndex === this.xIndex) {
+                        this.eulerValue[1] = this.eulerValue[0];
+                    } else {
+                        this.eulerValue[1] = this.animationEngine.Evaluate(this.yIndex, time);
+                    }
+                }
+
+                if (this.zIndex) {
+                    if (this.zIndex === this.xIndex) {
+                        this.eulerValue[2] = this.eulerValue[0];
+                    } else {
+                        this.eulerValue[2] = this.animationEngine.Evaluate(this.zIndex, time);
+                    }
+                }
+
+                if (this.updateQuaternion) {
+                    var sinYaw = Math.sin(this.eulerValue[0] / 2),
+                        cosYaw = Math.cos(this.eulerValue[0] / 2),
+                        sinPitch = Math.sin(this.eulerValue[1] / 2),
+                        cosPitch = Math.cos(this.eulerValue[1] / 2),
+                        sinRoll = Math.sin(this.eulerValue[2] / 2),
+                        cosRoll = Math.cos(this.eulerValue[2] / 2);
+
+                    this.quatValue[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
+                    this.quatValue[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
+                    this.quatValue[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
+                    this.quatValue[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
+                }
+            }
+        }
+
+        /**
+         * Computes curve Length
+         */
+
+    }, {
+        key: 'ComputeLength',
+        value: function ComputeLength() {
+            if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
+
+            this._length = 0;
+            if (this.xIndex >= 0) {
+                this._length = this.animationEngine.GetLength(this.xIndex);
+            }
+
+            if (this.yIndex >= 0) {
+                this._length = Math.max(this._length, this.animationEngine.GetLength(this.yIndex));
+            }
+
+            if (this.zIndex >= 0) {
+                this._length = Math.max(this._length, this.animationEngine.GetLength(this.zIndex));
+            }
+        }
+    }]);
+
+    return Tw2MayaEulerRotationCurve;
+}(_curves.Tw2Curve);
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+
+
+Tw2MayaEulerRotationCurve.outputDimension = 3;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2MayaScalarCurve = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _curves = __webpack_require__(14);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2MayaScalarCurve
+ *
+ * @property {number} index
+ * @property {null|Tw2MayaAnimationEngine} animationEngine
+ * @property {number} value
+ * @property {number} _length
+ * @class
+ */
+var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = function (_Tw2Curve) {
+    _inherits(Tw2MayaScalarCurve, _Tw2Curve);
+
+    function Tw2MayaScalarCurve() {
+        _classCallCheck(this, Tw2MayaScalarCurve);
+
+        var _this = _possibleConstructorReturn(this, (Tw2MayaScalarCurve.__proto__ || Object.getPrototypeOf(Tw2MayaScalarCurve)).call(this));
+
+        _this.index = -1;
+        _this.animationEngine = null;
+        _this.value = 0;
+        _this._length = 0;
+        return _this;
+    }
+
+    /**
+     * Sorts the curve
+     */
+
+
+    _createClass(Tw2MayaScalarCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            this.ComputeLength();
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (this.animationEngine) {
+                this.value = this.animationEngine.Evaluate(this.index, time);
+            }
+        }
+
+        /**
+         * Computes curve Length
+         */
+
+    }, {
+        key: 'ComputeLength',
+        value: function ComputeLength() {
+            if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
+            if (this.index >= 0) this._length = this.animationEngine.GetLength(this.index);
+        }
+    }]);
+
+    return Tw2MayaScalarCurve;
+}(_curves.Tw2Curve);
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+
+
+Tw2MayaScalarCurve.outputDimension = 1;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2MayaScalarCurve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2MayaVector3Curve = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _curves = __webpack_require__(14);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2MayaVector3Curve
+ *
+ * @property {number} xIndex
+ * @property {number} yIndex
+ * @property {number} zIndex
+ * @property {null|Tw2MayaAnimationEngine} animationEngine
+ * @property {string} name
+ * @property {vec3} value
+ * @property {number} _length
+ */
+var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = function (_Tw2Curve) {
+    _inherits(Tw2MayaVector3Curve, _Tw2Curve);
+
+    function Tw2MayaVector3Curve() {
+        _classCallCheck(this, Tw2MayaVector3Curve);
+
+        var _this = _possibleConstructorReturn(this, (Tw2MayaVector3Curve.__proto__ || Object.getPrototypeOf(Tw2MayaVector3Curve)).call(this));
+
+        _this.xIndex = -1;
+        _this.yIndex = -1;
+        _this.zIndex = -1;
+        _this.animationEngine = null;
+        _this.value = _math.vec3.create();
+        _this._length = 0;
+        return _this;
+    }
+
+    /**
+     * Sorts the curve's keys
+     */
+
+
+    _createClass(Tw2MayaVector3Curve, [{
+        key: 'Sort',
+        value: function Sort() {
+            this.ComputeLength();
+        }
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this._length;
+        }
+
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (this.animationEngine) {
+                if (this.xIndex) {
+                    this.value[0] = this.animationEngine.Evaluate(this.xIndex, time);
+                }
+
+                if (this.yIndex) {
+                    if (this.yIndex === this.xIndex) {
+                        this.value[1] = this.value[0];
+                    } else {
+                        this.value[1] = this.animationEngine.Evaluate(this.yIndex, time);
+                    }
+                }
+
+                if (this.zIndex) {
+                    if (this.zIndex === this.xIndex) {
+                        this.value[2] = this.value[0];
+                    } else {
+                        this.value[2] = this.animationEngine.Evaluate(this.zIndex, time);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Computes curve Length
+         */
+
+    }, {
+        key: 'ComputeLength',
+        value: function ComputeLength() {
+            if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
+
+            this._length = 0;
+            if (this.xIndex >= 0) {
+                this._length = this.animationEngine.GetLength(this.xIndex);
+            }
+
+            if (this.yIndex >= 0) {
+                this._length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
+            }
+
+            if (this.zIndex >= 0) {
+                this._length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
+            }
+        }
+    }]);
+
+    return Tw2MayaVector3Curve;
+}(_curves.Tw2Curve);
+
+/**
+ * The curve's dimension
+ * @type {number}
+ */
+
+
+Tw2MayaVector3Curve.outputDimension = 3;
+
+/**
+ * The curve's current value property
+ * @type {string}
+ */
+Tw2MayaVector3Curve.valueProperty = 'value';
+
+/**
+ * The curve's type
+ * @type {number}
+ */
+Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2MayaAnimationEngine = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2MayaAnimationEngine
+ * TODO: Complete the prototype `_EvaluteBezier`
+ *
+ * @property {Array} curves
+ * @property {Array} hermiteSegments
+ * @property {Array} bezierSegments
+ * @property {number} _currentCurveIndex
+ * @property _evalCache
+ */
+var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = function () {
+    function Tw2MayaAnimationEngine() {
+        _classCallCheck(this, Tw2MayaAnimationEngine);
+
+        this.curves = [];
+        this.hermiteSegments = [];
+        this.bezierSegments = [];
+        this._currentCurveIndex = 0;
+        this._evalCache = null;
+    }
+
+    /**
+     * Evaluate
+     * @param curveIndex
+     * @param time
+     * @returns {*}
+     */
+
+
+    _createClass(Tw2MayaAnimationEngine, [{
+        key: 'Evaluate',
+        value: function Evaluate(curveIndex, time) {
+            if (this.curves.length <= curveIndex) return 0;
+
+            this._currentCurveIndex = curveIndex;
+            if (!this._evalCache) {
+                this._evalCache = new Array(this.curves.length);
+                for (var i = 0; i < this._evalCache.length; ++i) {
+                    this._evalCache[i] = -1;
+                }
+            }
+
+            var animCurve = this.curves[curveIndex];
+            var firstSegment = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET];
+            var segments = null;
+
+            if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
+                segments = this.bezierSegments;
+            } else {
+                segments = this.hermiteSegments;
+            }
+
+            if (time < segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.PRE_INFINITY] === Tw2MayaAnimationEngine.INFINITY) {
+                    return segments[firstSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
+                }
+                return this._EvaluateInfinities(animCurve, segments, firstSegment, time, true);
+            }
+
+            if (time > animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME]) {
+                if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.POST_INFINITY] === Tw2MayaAnimationEngine.INFINITY) {
+                    return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
+                }
+                return this._EvaluateInfinities(animCurve, segments, firstSegment, time, false);
+            }
+
+            return this._EvaluateImpl(animCurve, segments, firstSegment, time);
+        }
+
+        /**
+         * _EvaluateImpl
+         * @param animCurve
+         * @param segments
+         * @param firstSegment
+         * @param time
+         * @returns {*}
+         */
+
+    }, {
+        key: '_EvaluateImpl',
+        value: function _EvaluateImpl(animCurve, segments, firstSegment, time) {
+            var withinInterval = false,
+                nextSegment = null,
+                lastSegment = null,
+                index = void 0;
+
+            if (this._evalCache[this._currentCurveIndex] >= 0) {
+                lastSegment = firstSegment + this._evalCache[this._currentCurveIndex];
+                if (this._evalCache[this._currentCurveIndex] < animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS - 1] && time > segments[lastSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                    nextSegment = firstSegment + this._evalCache[this._currentCurveIndex] + 1;
+                    if (time === segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                        this._evalCache[this._currentCurveIndex]++;
+                        return segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
+                    } else if (time < segments[nextSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                        index = this._evalCache[this._currentCurveIndex] + 1;
+                        withinInterval = true;
+                    } else {
+                        nextSegment = null;
+                    }
+                } else if (this._evalCache[this._currentCurveIndex] > 0 && time < segments[lastSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                    var prevSegment = firstSegment + this._evalCache[this._currentCurveIndex] - 1;
+                    if (time > segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                        index = this._evalCache[this._currentCurveIndex];
+                        withinInterval = true;
+                    } else if (time === segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.TIME]) {
+                        this._evalCache[this._currentCurveIndex]--;
+                        return segments[prevSegment][Tw2MayaAnimationEngine.AnimSegment.VALUE];
+                    }
+                }
+            }
+
+            if (!withinInterval) {
+                var result = this._Find(animCurve, time, segments, firstSegment);
+                index = result[1];
+                if (result[0] || index === 0) {
+                    if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS]) {
+                        index--;
+                        this._evalCache[this._currentCurveIndex] = index;
+                        return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
+                    } else {
+                        this._evalCache[this._currentCurveIndex] = index;
+                        return segments[firstSegment + index][Tw2MayaAnimationEngine.AnimSegment.VALUE];
+                    }
+                } else if (index === animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1) {
+                    this._evalCache[this._currentCurveIndex] = 0;
+                    return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
+                }
+            }
+
+            if (this._evalCache[this._currentCurveIndex] !== index - 1) {
+                this._evalCache[this._currentCurveIndex] = index - 1;
+                lastSegment = firstSegment + this._evalCache[this._currentCurveIndex];
+                if (nextSegment === null) nextSegment = firstSegment + index;
+            }
+
+            if (animCurve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
+                var bSegment = segments[lastSegment];
+                if (bSegment[Tw2MayaAnimationEngine.BezierSegment.IS_STEP]) {
+                    return bSegment[Tw2MayaAnimationEngine.BezierSegment.VALUE];
+                } else if (bSegment[Tw2MayaAnimationEngine.BezierSegment.IS_STEP_NEXT]) {
+                    if (nextSegment === null) {
+                        return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
+                    }
+                    return segments[nextSegment][Tw2MayaAnimationEngine.BezierSegment.VALUE];
+                } else {
+                    var nextKeyTime = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME];
+                    if (this._evalCache[this._currentCurveIndex] + 1 < animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS]) {
+                        nextKeyTime = segments[nextSegment][Tw2MayaAnimationEngine.BezierSegment.TIME];
+                    }
+                    return this._EvaluateBezier(bSegment, time, nextKeyTime);
+                }
+            } else {
+                var hSegment = segments[lastSegment];
+                if (hSegment[Tw2MayaAnimationEngine.HermiteSegment.IS_STEP]) {
+                    return hSegment[Tw2MayaAnimationEngine.HermiteSegment.VALUE];
+                } else if (hSegment[Tw2MayaAnimationEngine.HermiteSegment.IS_STEP_NEXT]) {
+                    if (nextSegment === null) {
+                        return animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_VALUE];
+                    }
+                    return segments[nextSegment][Tw2MayaAnimationEngine.HermiteSegment.VALUE];
+                } else {
+                    return this._EvaluateHermite(hSegment, time);
+                }
+            }
+        }
+
+        /**
+         * A static helper function to evaluate the infinity portion of an animation curve.
+         * The infinity portion is the parts of the animation curve outside the range of keys.
+         * @param curve - The animation curve to evaluate
+         * @param segments
+         * @param startSegment
+         * @param {time} time
+         * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
+         */
+
+    }, {
+        key: '_EvaluateInfinities',
+        value: function _EvaluateInfinities(curve, segments, startSegment, time, bool) {
+            throw new Error('_EvaluateInfinities not implemented');
+        }
+
+        /**
+         * _EvaluateHermite
+         * @param segment
+         * @param time
+         * @returns {*}
+         */
+
+    }, {
+        key: '_EvaluateHermite',
+        value: function _EvaluateHermite(segment, time) {
+            var t = time - segment[Tw2MayaAnimationEngine.HermiteSegment.TIME];
+            var coeff = segment[Tw2MayaAnimationEngine.HermiteSegment.COEFF];
+            return t * (t * (t * coeff[0] + coeff[1]) + coeff[2]) + coeff[3];
+        }
+
+        /**
+         * _EvaluateBezier
+         * @param segment
+         * @param time
+         * @param nextSegmentTime
+         * @returns {*}
+         */
+
+    }, {
+        key: '_EvaluateBezier',
+        value: function _EvaluateBezier(segment, time, nextSegmentTime) {
+            var t = void 0,
+                s = void 0;
+
+            s = (time - segment[Tw2MayaAnimationEngine.BezierSegment.TIME]) / (nextSegmentTime - segment[Tw2MayaAnimationEngine.BezierSegment.TIME]);
+
+            if (segment[Tw2MayaAnimationEngine.BezierSegment.IS_LINEAR]) {
+                t = s;
+            } else {
+                var _poly = _math.vec4.create();
+                _poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
+                _poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
+                _poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
+                _poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
+                var roots = [];
+                if (_math.curve.polyZeroes(_poly, 3, 0.0, 1, 1.0, 1, roots) === 1) t = roots[0];else t = 0.0;
+            }
+
+            var poly = segment[Tw2MayaAnimationEngine.BezierSegment.POLYY];
+            return t * (t * (t * poly[3] + poly[2]) + poly[1]) + poly[0];
+        }
+
+        /**
+         * _Find
+         * @param animCurve
+         * @param time
+         * @param segments
+         * @param firstSegment
+         * @returns {*}
+         */
+
+    }, {
+        key: '_Find',
+        value: function _Find(animCurve, time, segments, firstSegment) {
+            var len = void 0,
+                mid = void 0,
+                low = void 0,
+                high = void 0;
+
+            /* use a binary search to find the key */
+            var index = 0;
+            len = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.NUM_SEGMENTS] + 1;
+            var segment = null;
+            var stime = 0.0;
+
+            if (len > 0) {
+                low = 0;
+                high = len - 1;
+                do {
+                    mid = low + high >> 1;
+                    if (mid < len - 1) {
+                        segment = firstSegment + mid;
+                        stime = segments[segment][Tw2MayaAnimationEngine.AnimSegment.TIME];
+                    } else {
+                        stime = animCurve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME];
+                    }
+
+                    if (time < stime) {
+                        high = mid - 1;
+                    } else if (time > stime) {
+                        low = mid + 1;
+                    } else {
+                        index = mid;
+                        return [true, index];
+                    }
+                } while (low <= high);
+                index = low;
+            }
+            return [false, index];
+        }
+
+        /**
+         * Returns the total number of curves
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetNumberOfCurves',
+        value: function GetNumberOfCurves() {
+            return this.curves.length;
+        }
+
+        /**
+         * Gets specific curve's length
+         * @property {number} index
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength(index) {
+            if (index < 0 || index >= this.curves.length) return 0;
+            var curve = this.curves[index];
+            var firstSegment = void 0;
+
+            if (curve[Tw2MayaAnimationEngine.AnimCurveFields.IS_WEIGHTED]) {
+                firstSegment = this.bezierSegments[curve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET]];
+            } else {
+                firstSegment = this.hermiteSegments[curve[Tw2MayaAnimationEngine.AnimCurveFields.SEGMENT_OFFSET]];
+            }
+
+            return curve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME] - firstSegment[Tw2MayaAnimationEngine.AnimSegment.TIME];
+        }
+    }]);
+
+    return Tw2MayaAnimationEngine;
+}();
+
+Tw2MayaAnimationEngine.AnimCurveFields = {
+    NUM_SEGMENTS: 0,
+    SEGMENT_OFFSET: 1,
+    END_TIME: 2,
+    END_VALUE: 3,
+    IN_TANGENT: 4,
+    OUT_TANGENT: 5,
+    PRE_INFINITY: 6,
+    POST_INFINITY: 7,
+    IS_WEIGHTED: 8
+};
+
+Tw2MayaAnimationEngine.AnimSegment = {
+    TIME: 0,
+    VALUE: 1
+};
+
+Tw2MayaAnimationEngine.HermiteSegment = {
+    TIME: 0,
+    VALUE: 1,
+    COEFF: 2,
+    IS_STEP: 3,
+    IS_STEP_NEXT: 4
+};
+
+Tw2MayaAnimationEngine.BezierSegment = {
+    TIME: 0,
+    VALUE: 1,
+    COEFF: 2,
+    POLYY: 3,
+    IS_STEP: 4,
+    IS_STEP_NEXT: 5,
+    IS_LINEAR: 6
+};
+
+Tw2MayaAnimationEngine.INFINITY = 0;
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveChildBillboard = __webpack_require__(125);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27987,7 +30017,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(119);
+var _EveChildContainer = __webpack_require__(126);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27999,7 +30029,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(120);
+var _EveChildExplosion = __webpack_require__(127);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28011,7 +30041,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(39);
+var _EveChildMesh = __webpack_require__(43);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28023,7 +30053,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(121);
+var _EveChildParticleSystem = __webpack_require__(128);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28035,7 +30065,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(40);
+var _EveLocator = __webpack_require__(44);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28047,7 +30077,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(122);
+var _EveStretch = __webpack_require__(129);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28059,7 +30089,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(123);
+var _EveTurretFiringFX = __webpack_require__(130);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28071,7 +30101,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(41);
+var _EveBoosterSet = __webpack_require__(45);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28083,7 +30113,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(124);
+var _EveCurveLineSet = __webpack_require__(131);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28095,7 +30125,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(42);
+var _EvePlaneSet = __webpack_require__(46);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28107,7 +30137,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(43);
+var _EveSpotlightSet = __webpack_require__(47);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28119,7 +30149,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(44);
+var _EveSpriteSet = __webpack_require__(48);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28131,7 +30161,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(125);
+var _EveTurretSet = __webpack_require__(132);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28143,7 +30173,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(126);
+var _EveMeshOverlayEffect = __webpack_require__(133);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28155,7 +30185,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(45);
+var _EveSpaceObjectDecal = __webpack_require__(49);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28167,7 +30197,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(127);
+var _EvePlanet = __webpack_require__(134);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28179,7 +30209,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(46);
+var _EveShip = __webpack_require__(50);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28191,7 +30221,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(23);
+var _EveSpaceObject = __webpack_require__(27);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28203,7 +30233,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(12);
+var _EveTransform = __webpack_require__(15);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28215,7 +30245,7 @@ Object.keys(_EveTransform).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(128);
+var _EveEffectRoot = __webpack_require__(135);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28227,7 +30257,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(129);
+var _EveMissile = __webpack_require__(136);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28239,7 +30269,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(131);
+var _EveSpaceScene = __webpack_require__(138);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28251,7 +30281,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveLensflare = __webpack_require__(132);
+var _EveLensflare = __webpack_require__(139);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28263,7 +30293,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(133);
+var _EveOccluder = __webpack_require__(140);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28275,7 +30305,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(134);
+var _EveSOF = __webpack_require__(141);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28288,7 +30318,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 118 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28303,7 +30333,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(12);
+var _EveTransform = __webpack_require__(15);
 
 /**
  * Mesh attachment to space object and oriented towards the camera
@@ -28417,7 +30447,7 @@ EveChildBillboard.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 119 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28519,7 +30549,7 @@ EveChildContainer.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 120 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28554,7 +30584,7 @@ EveChildExplosion.prototype.Update = function (parentTransform) {};
 EveChildExplosion.prototype.GetBatches = function (mode, accumulator, perObjectData) {};
 
 /***/ }),
-/* 121 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28569,7 +30599,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(12);
+var _EveTransform = __webpack_require__(15);
 
 /**
  * Particle system attachment to space object
@@ -28671,7 +30701,7 @@ EveChildParticleSystem.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 122 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28915,7 +30945,7 @@ EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
 };
 
 /***/ }),
-/* 123 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29125,7 +31155,7 @@ EveTurretFiringFX.prototype.UpdateViewDependentData = function () {
 };
 
 /***/ }),
-/* 124 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29922,7 +31952,7 @@ EveCurveLineSet.cartFromSphericalAndCenter = function (out, spherical, center) {
 };
 
 /***/ }),
-/* 125 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30572,7 +32602,7 @@ EveTurretSet.prototype.GetClosestTurret = function () {
 };
 
 /***/ }),
-/* 126 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30669,7 +32699,7 @@ EveMeshOverlayEffect.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 127 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30685,7 +32715,7 @@ exports.EvePlanet = EvePlanet;
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(12);
+var _EveTransform = __webpack_require__(15);
 
 /**
  * EvePlanet
@@ -30953,7 +32983,7 @@ EvePlanet.prototype.UpdateViewDependentData = function (parentTransform) {
 };
 
 /***/ }),
-/* 128 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31096,7 +33126,7 @@ EveEffectRoot.prototype.Stop = function () {
 };
 
 /***/ }),
-/* 129 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31104,7 +33134,7 @@ EveEffectRoot.prototype.Stop = function () {
 
 var _math = __webpack_require__(0);
 
-var _EveMissileWarhead = __webpack_require__(130);
+var _EveMissileWarhead = __webpack_require__(137);
 
 /**
  * EveMissile
@@ -31235,7 +33265,7 @@ EveMissile.scratch = {
 };
 
 /***/ }),
-/* 130 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31456,7 +33486,7 @@ EveMissileWarhead.prototype.Launch = function (transform) {
 };
 
 /***/ }),
-/* 131 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31984,7 +34014,7 @@ EveSpaceScene.prototype.Update = function (dt) {
 EveSpaceScene.EmptyTexture = null;
 
 /***/ }),
-/* 132 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32329,7 +34359,7 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData) 
 };
 
 /***/ }),
-/* 133 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32518,7 +34548,7 @@ EveOccluder.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 134 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32533,25 +34563,25 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curves = __webpack_require__(37);
+var _curve = __webpack_require__(42);
 
-var _EveBoosterSet = __webpack_require__(41);
+var _EveBoosterSet = __webpack_require__(45);
 
-var _EveChildMesh = __webpack_require__(39);
+var _EveChildMesh = __webpack_require__(43);
 
-var _EveLocator = __webpack_require__(40);
+var _EveLocator = __webpack_require__(44);
 
-var _EvePlaneSet = __webpack_require__(42);
+var _EvePlaneSet = __webpack_require__(46);
 
-var _EveSpaceObjectDecal = __webpack_require__(45);
+var _EveSpaceObjectDecal = __webpack_require__(49);
 
-var _EveSpotlightSet = __webpack_require__(43);
+var _EveSpotlightSet = __webpack_require__(47);
 
-var _EveSpriteSet = __webpack_require__(44);
+var _EveSpriteSet = __webpack_require__(48);
 
-var _EveSpaceObject = __webpack_require__(23);
+var _EveSpaceObject = __webpack_require__(27);
 
-var _EveShip = __webpack_require__(46);
+var _EveShip = __webpack_require__(50);
 
 function EveSOF() {
     var data = null;
@@ -33196,9 +35226,9 @@ function EveSOF() {
                 if (!curveSet) {
                     curveSet = new _core.Tw2CurveSet();
                 }
-                var curve = new _curves.Tw2ScalarCurve2();
-                curve.keys.push(new _curves.Tw2ScalarKey2());
-                curve.keys.push(new _curves.Tw2ScalarKey2());
+                var curve = new _curve.Tw2ScalarCurve2();
+                curve.keys.push(new _curve.Tw2ScalarKey2());
+                curve.keys.push(new _curve.Tw2ScalarKey2());
                 curve.keys[0].value = _get(animations[i], 'startRate', -1);
                 curve.keys[1].time = 1;
                 curve.keys[1].value = _get(animations[i], 'endRate', -1);
