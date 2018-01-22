@@ -115,7 +115,7 @@ export class Tw2RigidOrientation extends Tw2Curve
 }
 
 /**
- * The curve's dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2RigidOrientation.inputDimension = 4;

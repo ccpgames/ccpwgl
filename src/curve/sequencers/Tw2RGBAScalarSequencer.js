@@ -5,10 +5,10 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  * Tw2RGBAScalarSequencer
  *
  * @property {vec4} value
- * @property {Tw2CurveSequencer} RedCurve
- * @property {Tw2CurveSequencer} GreenCurve
- * @property {Tw2CurveSequencer} BlueCurve
- * @property {Tw2CurveSequencer} AlphaCurve
+ * @property {Tw2Curve} RedCurve
+ * @property {Tw2Curve} GreenCurve
+ * @property {Tw2Curve} BlueCurve
+ * @property {Tw2Curve} AlphaCurve
  * @class
  */
 export class Tw2RGBAScalarSequencer extends Tw2CurveSequencer

@@ -5,9 +5,9 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  * Tw2EulerRotation
  *
  * @property {string} name
- * @property {Tw2CurveSequencer} [yawCurve]
- * @property {Tw2CurveSequencer} [pitchCurve]
- * @property {Tw2CurveSequencer} [rollCurve]
+ * @property {Tw2Curve} [yawCurve]
+ * @property {Tw2Curve} [pitchCurve]
+ * @property {Tw2Curve} [rollCurve]
  * @property {quat} currentValue=[0,0,0,1]
  * @class
  */

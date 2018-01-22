@@ -92,16 +92,16 @@ export class Tw2EventCurve extends Tw2Curve
 }
 
 /**
- * The curve's dimension
+ * The curve's key dimension
  * @type {number}
  */
-Tw2ColorCurve.dimension = -1;
+Tw2ColorCurve.dimension = 1;
 
 /**
- *
+ * The curve's output dimension
  * @type {number}
  */
-Tw2EventCurve.outputDimension = -1;
+Tw2EventCurve.outputDimension = 1;
 
 /**
  * The curve's current value property

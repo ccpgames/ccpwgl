@@ -7,7 +7,7 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  * @property {string} name
  * @property {number} start
  * @property {quat} value
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @class
  */
 export class Tw2QuaternionSequencer extends Tw2CurveSequencer

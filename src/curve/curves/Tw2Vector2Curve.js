@@ -240,7 +240,7 @@ export class Tw2Vector2Curve extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2Vector2Curve.inputDimension = 2;

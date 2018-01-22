@@ -150,7 +150,7 @@ export class Tw2ColorCurve extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2ColorCurve.inputDimension = 4;

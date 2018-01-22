@@ -172,7 +172,7 @@ export class Tw2RotationCurve extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2RotationCurve.outputDimention = 4;

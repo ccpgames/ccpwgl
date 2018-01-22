@@ -128,20 +128,20 @@ export class Tw2Curve
 }
 
 /**
- * The curve's child dimension
- * @type {number}
+ * The curve's key dimension
+ * @type {?number}
  */
 Tw2Curve.inputDimension = null;
 
 /**
  * The curve's dimension
- * @type {number}
+ * @type {?number}
  */
 Tw2Curve.outputDimension = null;
 
 /**
  * The curve's current value property
- * @type {null}
+ * @type {?string}
  */
 Tw2Curve.valueProperty = null;
 
@@ -153,7 +153,7 @@ Tw2Curve.curveType = null;
 
 /**
  * The curve's Key constructor
- * @type {?|Tw2CurveKey}
+ * @type {?Tw2CurveKey}
  */
 Tw2Curve.Key = null;
 

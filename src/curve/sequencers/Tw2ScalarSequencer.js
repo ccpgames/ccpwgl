@@ -6,7 +6,7 @@ import { Tw2CurveSequencer } from './Tw2CurveSequencer';
  * @property {string} name
  * @property {number} value
  * @property {number} operator
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @property {number} inMinClamp
  * @property {number} inMaxClamp
  * @property {number} outMinClamp

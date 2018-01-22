@@ -231,7 +231,7 @@ export class Tw2ScalarCurve2 extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2ScalarCurve2.inputDimension = 1;

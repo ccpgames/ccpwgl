@@ -211,7 +211,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2QuaternionCurve.inputDimension = 4;
@@ -233,7 +233,6 @@ Tw2QuaternionCurve.valueProperty = 'currentValue';
  * @type {number}
  */
 Tw2QuaternionCurve.curveType = Tw2Curve.Type.CURVE2;
-
 
 /**
  * The curve's key constructor

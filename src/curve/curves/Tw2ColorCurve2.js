@@ -205,7 +205,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
 }
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 Tw2ColorCurve2.inputDimension = 4;

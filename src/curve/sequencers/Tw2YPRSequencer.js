@@ -6,9 +6,9 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  *
  * @property {quat} value
  * @property {vec3} YawPitchRoll
- * @property {Tw2CurveSequencer} YawCurve
- * @property {Tw2CurveSequencer} PitchCurve
- * @property {Tw2CurveSequencer} RollCurve
+ * @property {Tw2Curve} YawCurve
+ * @property {Tw2Curve} PitchCurve
+ * @property {Tw2Curve} RollCurve
  * @class
  */
 export class Tw2YPRSequencer extends Tw2CurveSequencer

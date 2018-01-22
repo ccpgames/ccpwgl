@@ -7,7 +7,7 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  * @property {number} start
  * @property {vec4} value
  * @property {number} operator
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @class
  */
 export class Tw2ColorSequencer extends Tw2CurveSequencer
