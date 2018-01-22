@@ -27,8 +27,6 @@ noise.turbulence = (function()
      */
     function initialize()
     {
-        if (s_initialized) return;
-
         for (let i = 0; i < 256; i++)
         {
             s_noiseLookup[i] = vec4.fromValues(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
@@ -125,3 +123,96 @@ noise.turbulence = (function()
         return out;
     };
 })();
+
+/**
+ * Perlin_noise1
+ *
+ * @param {number} a
+ * @returns {number}
+ */
+noise.perlin1 = (function()
+{
+    let p_initialized = false,
+        p_B = 0x100,
+        p_BM = 0xff,
+        p_N = 0x1000,
+        p_p = null,
+        p_g1 = null;
+
+    /**
+     * Initializes Perlin Noise
+     */
+    function initialize()
+    {
+        p_p = new Array(p_B + p_B + 2);
+        p_g1 = new Array(p_B + p_B + 2);
+
+        let i = 0,
+            j = 0,
+            k = 0;
+
+        for (i = 0; i < p_B; i++)
+        {
+            p_p[i] = i;
+            p_g1[i] = Math.random() * 2 - 1;
+        }
+
+        while (--i)
+        {
+            k = p_p[i];
+            p_p[i] = p_p[j = Math.floor(Math.random() * p_B)];
+            p_p[j] = k;
+        }
+
+        for (i = 0; i < p_B + 2; i++)
+        {
+            p_p[p_B + i] = p_p[i];
+            p_g1[p_B + i] = p_g1[i];
+        }
+
+        p_initialized = true;
+    }
+    
+    return function perlin1(a)
+    {
+        if (!p_initialized) initialize();
+
+        let t = a + p_N,
+            bx0 = Math.floor(t) & p_BM,
+            bx1 = (bx0 + 1) & p_BM,
+            rx0 = t - Math.floor(t),
+            rx1 = rx0 - 1;
+
+        let sx = rx0 * rx0 * (3.0 - 2.0 * rx0),
+            u = rx0 * p_g1[p_p[bx0]],
+            v = rx1 * p_g1[p_p[bx1]];
+
+        return u + sx * (v - u);
+    };
+})();
+
+/**
+ * PerlinNoise1D
+ *
+ * @param x
+ * @param alpha
+ * @param beta
+ * @param n
+ * @returns {number}
+ */
+noise.perlin1D = function (x, alpha, beta, n)
+{
+    let sum = 0,
+        p = x,
+        scale = 1;
+
+    for (let i = 0; i < n; ++i)
+    {
+        sum += noise.perlin1(p) / scale;
+        scale *= alpha;
+        p *= beta;
+    }
+    return sum;
+};
+
+

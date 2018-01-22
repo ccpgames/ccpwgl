@@ -10,6 +10,8 @@
   },
   "rules": {
     "no-console": "off",
+    "no-constant-condition" : "off",
+    "no-case-declarations" : "off",
     "quotes": [
       "error",
       "single"

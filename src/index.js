@@ -1,6 +1,6 @@
 import * as math from './math';
 import * as core from './core';
-import * as curves from './curves';
+import * as curves from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
 import {resMan} from './core';
@@ -31,7 +31,7 @@ resMan.Register({
 });
 
 export * from './core';
-export * from './curves';
+export * from './curve';
 export * from './eve';
 export * from './particle';
 export {math};

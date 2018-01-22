@@ -6,7 +6,7 @@ import {Tw2VertexDeclaration} from '../core';
  * Tw2ParticleElement
  *
  * @param {Tw2ParticleElementDeclaration} decl
- * @property {ParticleElementType} elementType
+ * @property {number} elementType
  * @property {string} customName
  * @property {number} dimension
  * @property {number} usageIndex
