@@ -21,7 +21,6 @@ export class Tw2CurveKey
  * Tw2Curve base class
  *
  * @property {string} name
- * @property {number} length
  * @class
  */
 export class Tw2Curve
@@ -89,7 +88,7 @@ export class Tw2Curve
         if (keys && keys.length)
         {
             keys.sort(Tw2Curve.Compare);
-            curve.length = keys[keys.length - 1].time;
+            curve._length = keys[keys.length - 1].time;
         }
     }
 

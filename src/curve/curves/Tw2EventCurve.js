@@ -20,12 +20,12 @@ export class Tw2EventKey extends Tw2CurveKey
 /**
  * Tw2EventCurve
  *
- * @property {number} length
  * @property {string} value
  * @property {Array.<Tw2EventKey>} keys
  * @property {number} extrapolation
  * @property {number} _time
  * @property {number} _currentKey
+ * @property {number} _length
  * @class
  */
 export class Tw2EventCurve extends Tw2Curve

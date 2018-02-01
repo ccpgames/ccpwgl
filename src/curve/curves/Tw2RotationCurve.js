@@ -28,7 +28,6 @@ export class Tw2QuaternionKey extends Tw2CurveKey
  * Tw2RotationCurve
  *
  * @property {number} start
- * @property {number} length
  * @property {quat} value
  * @property {number} extrapolation
  * @property {Array.<Tw2QuaternionKey>} keys

@@ -25,7 +25,6 @@ export class Tw2ScalarKey2 extends Tw2CurveKey
 /**
  * Tw2ScalarCurve2
  *
- * @property {number} length
  * @property {boolean} cycle
  * @property {boolean} reversed
  * @property {number} timeOffset
