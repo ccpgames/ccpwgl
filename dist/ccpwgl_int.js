@@ -618,10 +618,11 @@ var _math = __webpack_require__(0);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Tw2Key base class
+ * Tw2CurveKey base class
  *
  * @property {string} name
  * @property {number} time
+ * @class
  */
 var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
     _classCallCheck(this, Tw2CurveKey);
@@ -634,7 +635,6 @@ var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
  * Tw2Curve base class
  *
  * @property {string} name
- * @property {number} length
  * @class
  */
 
@@ -714,7 +714,7 @@ var Tw2Curve = exports.Tw2Curve = function () {
             curve._length = 0;
             if (keys && keys.length) {
                 keys.sort(Tw2Curve.Compare);
-                curve.length = keys[keys.length - 1].time;
+                curve._length = keys[keys.length - 1].time;
             }
         }
 
@@ -754,8 +754,8 @@ var Tw2Curve = exports.Tw2Curve = function () {
 }();
 
 /**
- * The curve's child dimension
- * @type {number}
+ * The curve's key dimension
+ * @type {?number}
  */
 
 
@@ -763,13 +763,13 @@ Tw2Curve.inputDimension = null;
 
 /**
  * The curve's dimension
- * @type {number}
+ * @type {?number}
  */
 Tw2Curve.outputDimension = null;
 
 /**
  * The curve's current value property
- * @type {null}
+ * @type {?string}
  */
 Tw2Curve.valueProperty = null;
 
@@ -781,7 +781,7 @@ Tw2Curve.curveType = null;
 
 /**
  * The curve's Key constructor
- * @type {?|Tw2CurveKey|Tw2Curve}
+ * @type {?Tw2CurveKey}
  */
 Tw2Curve.Key = null;
 
@@ -804,7 +804,7 @@ Tw2Curve.Extrapolation = null;
 Tw2Curve.Type = {
     CURVE: 1,
     CURVE2: 2,
-    CURVE_MAYA: 4,
+    CURVE_MAYA: 3,
     SEQUENCER: 100,
     SEQUENCER2: 101
 };
@@ -6471,7 +6471,7 @@ var Tw2ColorCurve = exports.Tw2ColorCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -18708,6 +18708,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 // Various functions for helping debug WebGL apps.
 
 WebGLDebugUtils = function() {
+var window
 
 //polyfill window in node
 if (typeof(window) == 'undefined') {
@@ -24812,7 +24813,7 @@ var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -24900,12 +24901,12 @@ var Tw2EventKey = exports.Tw2EventKey = function (_Tw2CurveKey) {
 /**
  * Tw2EventCurve
  *
- * @property {number} length
  * @property {string} value
  * @property {Array.<Tw2EventKey>} keys
  * @property {number} extrapolation
  * @property {number} _time
  * @property {number} _currentKey
+ * @property {number} _length
  * @class
  */
 
@@ -24984,18 +24985,18 @@ var Tw2EventCurve = exports.Tw2EventCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's dimension
+ * The curve's key dimension
  * @type {number}
  */
 
 
-_Tw2ColorCurve.Tw2ColorCurve.dimension = -1;
+_Tw2ColorCurve.Tw2ColorCurve.dimension = 1;
 
 /**
- *
+ * The curve's output dimension
  * @type {number}
  */
-Tw2EventCurve.outputDimension = -1;
+Tw2EventCurve.outputDimension = 1;
 
 /**
  * The curve's current value property
@@ -25368,7 +25369,7 @@ var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -25654,7 +25655,7 @@ var Tw2RigidOrientation = exports.Tw2RigidOrientation = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -25741,7 +25742,6 @@ var Tw2QuaternionKey = exports.Tw2QuaternionKey = function (_Tw2CurveKey) {
  * Tw2RotationCurve
  *
  * @property {number} start
- * @property {number} length
  * @property {quat} value
  * @property {number} extrapolation
  * @property {Array.<Tw2QuaternionKey>} keys
@@ -25892,7 +25892,7 @@ var Tw2RotationCurve = exports.Tw2RotationCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -26146,7 +26146,7 @@ var Tw2ScalarCurve = exports.Tw2ScalarCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -26252,7 +26252,6 @@ var Tw2ScalarKey2 = exports.Tw2ScalarKey2 = function (_Tw2CurveKey) {
 /**
  * Tw2ScalarCurve2
  *
- * @property {number} length
  * @property {boolean} cycle
  * @property {boolean} reversed
  * @property {number} timeOffset
@@ -26451,7 +26450,7 @@ var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -26847,7 +26846,7 @@ var Tw2Vector2Curve = exports.Tw2Vector2Curve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -27152,7 +27151,7 @@ var Tw2Vector3Curve = exports.Tw2Vector3Curve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -27395,7 +27394,7 @@ var Tw2VectorCurve = exports.Tw2VectorCurve = function (_Tw2Curve) {
 }(_Tw2Curve2.Tw2Curve);
 
 /**
- * The curve's child dimension
+ * The curve's key dimension
  * @type {number}
  */
 
@@ -27585,7 +27584,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} start
  * @property {vec4} value
  * @property {number} operator
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @class
  */
 var Tw2ColorSequencer = exports.Tw2ColorSequencer = function (_Tw2CurveSequencer) {
@@ -27746,9 +27745,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Tw2EulerRotation
  *
  * @property {string} name
- * @property {Tw2CurveSequencer} [yawCurve]
- * @property {Tw2CurveSequencer} [pitchCurve]
- * @property {Tw2CurveSequencer} [rollCurve]
+ * @property {Tw2Curve} [yawCurve]
+ * @property {Tw2Curve} [pitchCurve]
+ * @property {Tw2Curve} [rollCurve]
  * @property {quat} currentValue=[0,0,0,1]
  * @class
  */
@@ -27899,7 +27898,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {string} name
  * @property {number} start
  * @property {quat} value
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @class
  */
 var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = function (_Tw2CurveSequencer) {
@@ -28038,10 +28037,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Tw2RGBAScalarSequencer
  *
  * @property {vec4} value
- * @property {Tw2CurveSequencer} RedCurve
- * @property {Tw2CurveSequencer} GreenCurve
- * @property {Tw2CurveSequencer} BlueCurve
- * @property {Tw2CurveSequencer} AlphaCurve
+ * @property {Tw2Curve} RedCurve
+ * @property {Tw2Curve} GreenCurve
+ * @property {Tw2Curve} BlueCurve
+ * @property {Tw2Curve} AlphaCurve
  * @class
  */
 var Tw2RGBAScalarSequencer = exports.Tw2RGBAScalarSequencer = function (_Tw2CurveSequencer) {
@@ -28179,7 +28178,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {string} name
  * @property {number} value
  * @property {number} operator
- * @property {Array<Tw2CurveSequencer>} functions
+ * @property {Array<Tw2Curve>} functions
  * @property {number} inMinClamp
  * @property {number} inMaxClamp
  * @property {number} outMinClamp
@@ -28664,9 +28663,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @property {quat} value
  * @property {vec3} YawPitchRoll
- * @property {Tw2CurveSequencer} YawCurve
- * @property {Tw2CurveSequencer} PitchCurve
- * @property {Tw2CurveSequencer} RollCurve
+ * @property {Tw2Curve} YawCurve
+ * @property {Tw2Curve} PitchCurve
+ * @property {Tw2Curve} RollCurve
  * @class
  */
 var Tw2YPRSequencer = exports.Tw2YPRSequencer = function (_Tw2CurveSequencer) {
@@ -29592,11 +29591,11 @@ var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = function (_Tw2Curve) {
             }
 
             if (this.yIndex >= 0) {
-                this._length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
+                this._length = Math.max(this._length, this.animationEngine.GetLength(this.yIndex));
             }
 
             if (this.zIndex >= 0) {
-                this._length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
+                this._length = Math.max(this._length, this.animationEngine.GetLength(this.zIndex));
             }
         }
     }]);
