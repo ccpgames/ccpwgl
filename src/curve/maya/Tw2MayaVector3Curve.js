@@ -96,12 +96,12 @@ export class Tw2MayaVector3Curve extends Tw2Curve
 
         if (this.yIndex >= 0)
         {
-            this._length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
+            this._length = Math.max(this._length, this.animationEngine.GetLength(this.yIndex));
         }
 
         if (this.zIndex >= 0)
         {
-            this._length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
+            this._length = Math.max(this._length, this.animationEngine.GetLength(this.zIndex));
         }
     }
 }
