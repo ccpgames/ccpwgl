@@ -24703,20 +24703,19 @@ var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = function (_Tw2Curve) {
                 return this.Interpolate(time, null, null, value);
             }
 
-            var startKey = this.keys[0];
+            var startKey = this.keys[0],
+                endKey = this.keys[this.keys.length - 1];
+
             if (time <= startKey.time) {
                 return this.Interpolate(time, null, startKey, value);
-            } else if (time >= this.keys[this.keys.length - 1].time) {
-                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            } else if (time >= endKey.time) {
+                return this.Interpolate(time, endKey, null, value);
             }
 
-            var endKey = void 0;
             for (var i = 0; i + 1 < this.keys.length; ++i) {
                 startKey = this.keys[i];
                 endKey = this.keys[i + 1];
-                if (startKey.time <= time && endKey.time > time) {
-                    break;
-                }
+                if (startKey.time <= time && endKey.time > time) break;
             }
 
             return this.Interpolate(time, startKey, endKey, value);
@@ -25195,7 +25194,7 @@ var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
     _createClass(Tw2QuaternionCurve, [{
         key: 'Sort',
         value: function Sort() {
-            _Tw2Curve2.Tw2Curve.Sort2(this, 'length');
+            _Tw2Curve2.Tw2Curve.Sort2(this);
         }
 
         /**
@@ -25263,14 +25262,15 @@ var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
                 return this.Interpolate(time, null, null, value);
             }
 
-            var startKey = this.keys[0];
+            var startKey = this.keys[0],
+                endKey = this.keys[this.keys.length - 1];
+
             if (time <= startKey.time) {
                 return this.Interpolate(time, null, startKey, value);
-            } else if (time >= this.keys[this.keys.length - 1].time) {
-                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            } else if (time >= endKey.time) {
+                return this.Interpolate(time, endKey, null, value);
             }
 
-            var endKey = void 0;
             for (var i = 0; i + 1 < this.keys.length; ++i) {
                 startKey = this.keys[i];
                 endKey = this.keys[i + 1];
@@ -25463,7 +25463,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
  * The curve's type
  * @type {number}
  */
-Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
+Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
 /* 99 */
@@ -26710,14 +26710,15 @@ var Tw2Vector2Curve = exports.Tw2Vector2Curve = function (_Tw2Curve) {
                 return this.Interpolate(time, null, null, value);
             }
 
-            var startKey = this.keys[0];
+            var startKey = this.keys[0],
+                endKey = this.keys[this.keys.length - 1];
+
             if (time <= startKey.time) {
                 return this.Interpolate(time, null, startKey, value);
-            } else if (time >= this.keys[this.keys.length - 1].time) {
-                return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            } else if (time >= endKey.time) {
+                return this.Interpolate(time, endKey, null, value);
             }
 
-            var endKey = void 0;
             for (var i = 0; i + 1 < this.keys.length; ++i) {
                 startKey = this.keys[i];
                 endKey = this.keys[i + 1];

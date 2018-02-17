@@ -54,4 +54,4 @@ Tw2RandomConstantCurve.valueProperty = 'value';
  * The curve's type
  * @type {number}
  */
-Tw2RandomConstantCurve.curveType = Tw2Curve.Type.CURVE;
+Tw2RandomConstantCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

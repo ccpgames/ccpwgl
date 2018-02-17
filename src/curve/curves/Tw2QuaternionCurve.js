@@ -64,7 +64,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
      */
     Sort()
     {
-        Tw2Curve.Sort2(this, 'length');
+        Tw2Curve.Sort2(this);
     }
 
 
@@ -136,17 +136,18 @@ export class Tw2QuaternionCurve extends Tw2Curve
             return this.Interpolate(time, null, null, value);
         }
 
-        let startKey = this.keys[0];
+        let startKey = this.keys[0],
+            endKey = this.keys[this.keys.length - 1];
+
         if (time <= startKey.time)
         {
             return this.Interpolate(time, null, startKey, value);
         }
-        else if (time >= this.keys[this.keys.length - 1].time)
+        else if (time >= endKey.time)
         {
-            return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            return this.Interpolate(time, endKey, null, value);
         }
 
-        let endKey;
         for (let i = 0; i + 1 < this.keys.length; ++i)
         {
             startKey = this.keys[i];

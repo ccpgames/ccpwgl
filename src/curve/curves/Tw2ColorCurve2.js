@@ -125,25 +125,23 @@ export class Tw2ColorCurve2 extends Tw2Curve
             return this.Interpolate(time, null, null, value);
         }
 
-        let startKey = this.keys[0];
+        let startKey = this.keys[0],
+            endKey = this.keys[this.keys.length - 1];
+
         if (time <= startKey.time)
         {
             return this.Interpolate(time, null, startKey, value);
         }
-        else if (time >= this.keys[this.keys.length - 1].time)
+        else if (time >= endKey.time)
         {
-            return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            return this.Interpolate(time, endKey, null, value);
         }
 
-        let endKey;
         for (let i = 0; i + 1 < this.keys.length; ++i)
         {
             startKey = this.keys[i];
             endKey = this.keys[i + 1];
-            if (startKey.time <= time && endKey.time > time)
-            {
-                break;
-            }
+            if (startKey.time <= time && endKey.time > time) break;
         }
 
         return this.Interpolate(time, startKey, endKey, value);
