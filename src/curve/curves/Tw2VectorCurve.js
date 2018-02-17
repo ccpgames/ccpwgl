@@ -33,7 +33,7 @@ export class Tw2VectorKey extends Tw2CurveKey
  * @property {number} extrapolation
  * @property {Array.<Tw2VectorKey>} keys
  * @property {number} _currentKey
- * @property {number} _length
+ * @property {number} length
  * @class
  */
 export class Tw2VectorCurve extends Tw2Curve
@@ -46,7 +46,7 @@ export class Tw2VectorCurve extends Tw2Curve
         this.extrapolation = 0;
         this.keys = [];
         this._currentKey = 1;
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -63,7 +63,7 @@ export class Tw2VectorCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -83,7 +83,7 @@ export class Tw2VectorCurve extends Tw2Curve
      */
     GetValueAt(time, value)
     {
-        if (this._length === 0)
+        if (this.length === 0)
         {
             return vec3.copy(value, this.value);
         }
@@ -117,7 +117,7 @@ export class Tw2VectorCurve extends Tw2Curve
                     return vec3.copy(value, this.value);
 
                 case Tw2VectorCurve.Extrapolation.GRADIENT:
-                    return vec3.scaleAndAdd(value, firstKey.value, firstKey.left, d);
+                    return vec3.scaleAndAdd(value, firstKey.value, firstKey.left, time * this.length - lastKey.time);
 
                 default:
                     return vec3.copy(value, firstKey.value);

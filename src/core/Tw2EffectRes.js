@@ -1,5 +1,4 @@
 import {quat} from '../math';
-import {resMan} from './Tw2ResMan';
 import {device} from './Tw2Device';
 import {emitter} from './Tw2EventEmitter';
 import {Tw2Resource} from './Tw2Resource';
@@ -37,9 +36,8 @@ Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
  * - Sets shadow states for shaders
  * - Parses Jessica shader annotations
  * @param data
- * @param xml
  */
-Tw2EffectRes.prototype.Prepare = function(data, xml)
+Tw2EffectRes.prototype.Prepare = function(data)
 {
     this.passes = [];
     this.annotations = {};
@@ -320,7 +318,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 shadowShaderCode = stringTable.substr(so, shadowShaderSize);
             }
 
-            stage.shader = CompileShader(stageType, "", shaderCode, this.path);
+            stage.shader = CompileShader(stageType, '', shaderCode, this.path);
             if (stage.shader === null)
             {
                 this.PrepareFinished(false);
@@ -335,7 +333,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 }
                 else
                 {
-                    stage.shadowShader = CompileShader(stageType, "", shadowShaderCode, this.path);
+                    stage.shadowShader = CompileShader(stageType, '', shadowShaderCode, this.path);
                 }
                 if (stage.shadowShader === null)
                 {

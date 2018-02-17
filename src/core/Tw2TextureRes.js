@@ -34,12 +34,10 @@ export class Tw2TextureRes extends Tw2Resource
 
 /**
  * Prepare
- * TODO: @param xml is redundant
  * @param {string} text - Used to identify the type of image, options are 'cube' or anything else
- * @param xml
  * @prototype
  */
-Tw2TextureRes.prototype.Prepare = function(text, xml)
+Tw2TextureRes.prototype.Prepare = function(text)
 {
     var format = device.gl.RGBA;
 

@@ -79,10 +79,9 @@ Tw2MatrixParameter.prototype.GetValue = function()
  * Applies the current value to the supplied constant buffer at the supplied offset
  * @param {Float32Array} constantBuffer
  * @param {number} offset
- * @param {number} [size] - unused
  * @prototype
  */
-Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset)
 {
     constantBuffer.set(this.value, offset);
 };

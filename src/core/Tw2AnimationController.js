@@ -1,4 +1,5 @@
 import {vec3, quat, mat3, mat4} from '../math';
+import {Tw2GeometryRes} from './Tw2GeometryRes';
 
 /**
  * Tw2Track
@@ -594,7 +595,7 @@ Tw2AnimationController.prototype.GetPlayingAnimations = function()
     {
         if (this.animations[i].isPlaying)
         {
-            result.push(this.animations[i].animationRes.name)
+            result.push(this.animations[i].animationRes.name);
         }
     }
 

@@ -175,7 +175,7 @@ Tw2EventEmitter.Register = function(emitter, eventName)
 Tw2EventEmitter.HasListeners = function(emitter, eventName)
 {
     if (!('_events' in emitter) || !(eventName in emitter._events)) return false;
-    return (emitter._events[eventName].length)
+    return (emitter._events[eventName].length);
 };
 
 /**

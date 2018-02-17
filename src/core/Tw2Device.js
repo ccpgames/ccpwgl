@@ -3,6 +3,7 @@ import {variableStore} from './Tw2VariableStore';
 import {resMan} from './Tw2ResMan';
 import {emitter} from './Tw2EventEmitter';
 import {Tw2MatrixParameter} from './Tw2MatrixParameter';
+import {Tw2TextureParameter} from './Tw2TextureParameter';
 import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
 import {Tw2Effect} from './Tw2Effect';
 import {Tw2VertexElement} from './Tw2VertexDeclaration';
@@ -1019,7 +1020,7 @@ Tw2Device.CreateContext = function(canvas, params, contextNames)
 };
 
 // Webgl details
-Tw2Device.WebglVendorPrefixes = ["", 'MOZ_', 'WEBKIT_', 'WEBGL_'];
+Tw2Device.WebglVendorPrefixes = ['', 'MOZ_', 'WEBKIT_', 'WEBGL_'];
 Tw2Device.WebglContextNames = ['webgl', 'experimental-webgl'];
 Tw2Device.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'];
 Tw2Device.WebglVersion = {

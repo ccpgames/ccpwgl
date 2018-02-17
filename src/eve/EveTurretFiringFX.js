@@ -121,7 +121,6 @@ EveTurretFiringFX.prototype.GetMuzzleTransform = function(index)
 
 EveTurretFiringFX.prototype.Update = function(dt)
 {
-    var retVal = false;
     for (var i = 0; i < this.stretch.length; ++i)
     {
         if (this._perMuzzleData[i].started)
@@ -139,7 +138,6 @@ EveTurretFiringFX.prototype.Update = function(dt)
                         this.StartMuzzleEffect(i);
                         this._perMuzzleData[i].currentStartDelay = 0;
                         this._perMuzzleData[i].elapsedTime = 0;
-                        retVal = true;
                     }
                     else
                     {

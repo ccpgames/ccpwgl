@@ -46,17 +46,11 @@ export class Tw2DynamicEmitter extends Tw2ParticleEmitter
     Rebind()
     {
         this.isValid = false;
-        if (!this.particleSystem)
-        {
-            return;
-        }
+        if (!this.particleSystem) return;
 
         for (let i = 0; i < this.generators.length; ++i)
         {
-            if (!this.generators[i].Bind(this.particleSystem))
-            {
-                return;
-            }
+            if (!this.generators[i].Bind(this.particleSystem)) return;
         }
 
         this.isValid = true;
@@ -79,15 +73,13 @@ export class Tw2DynamicEmitter extends Tw2ParticleEmitter
         for (let i = 0; i < count; ++i)
         {
             const index = this.particleSystem.BeginSpawnParticle();
-            if (index === null)
-            {
-                break;
-            }
+            if (index === null) break;
 
             for (let j = 0; j < this.generators.length; ++j)
             {
                 this.generators[j].Generate(position, velocity, index);
             }
+
             this.particleSystem.EndSpawnParticle();
         }
     }

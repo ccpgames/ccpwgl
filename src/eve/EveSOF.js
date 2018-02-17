@@ -281,12 +281,12 @@ export function EveSOF()
             var layer = _get(p, 'layer1', null);
             if (layer)
             {
-                pattern.layers.push(layer)
+                pattern.layers.push(layer);
             }
             layer = _get(p, 'layer2', null);
             if (layer)
             {
-                pattern.layers.push(layer)
+                pattern.layers.push(layer);
             }
             var projections = _get(p, 'projections', []);
             for (var i = 0; i < projections.length; ++i)
@@ -297,12 +297,12 @@ export function EveSOF()
                     layer = _get(p, 'transformLayer1', null);
                     if (layer)
                     {
-                        pattern.patterns.push(layer)
+                        pattern.patterns.push(layer);
                     }
                     layer = _get(p, 'transformLayer2', null);
                     if (layer)
                     {
-                        pattern.patterns.push(layer)
+                        pattern.patterns.push(layer);
                     }
                 }
             }
@@ -313,23 +313,23 @@ export function EveSOF()
             layer = _get(p, 'transformLayer1', null);
             if (layer)
             {
-                pattern.patterns.push(layer)
+                pattern.patterns.push(layer);
             }
             layer = _get(p, 'transformLayer2', null);
             if (layer)
             {
-                pattern.patterns.push(layer)
+                pattern.patterns.push(layer);
             }
             p = _get(race, 'defaultPattern', {});
             layer = _get(p, 'layer1', null);
             if (layer)
             {
-                pattern.layers.push(layer)
+                pattern.layers.push(layer);
             }
             layer = _get(p, 'layer2', null);
             if (layer)
             {
-                pattern.layers.push(layer)
+                pattern.layers.push(layer);
             }
         }
         return pattern;
@@ -425,7 +425,7 @@ export function EveSOF()
 
             var defaultTextures = _get(_get(data['generic']['decalShaders'], hullDecal.shader,
                 {}), 'defaultTextures',
-                {});
+            {});
             for (var texName in defaultTextures)
             {
                 if (defaultTextures.hasOwnProperty(texName))
@@ -511,14 +511,6 @@ export function EveSOF()
             spriteSet.Initialize();
             ship.spriteSets.push(spriteSet);
         }
-    }
-
-    function _scale(a, b, c)
-    {
-        c[0] = a[0] * b;
-        c[1] = a[1] * b;
-        c[2] = a[2] * b;
-        c[3] = a[3] * b;
     }
 
     function SetupSpotlightSets(ship, hull, faction)
@@ -1060,7 +1052,7 @@ export function EveSOF()
         }
         else
         {
-            return data
+            return data;
         }
     }
 

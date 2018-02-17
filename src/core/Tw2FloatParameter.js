@@ -86,10 +86,9 @@ Tw2FloatParameter.prototype.OnValueChanged = function()
  * Applies the current value to the supplied constant buffer at the supplied offset
  * @param {Array} constantBuffer
  * @param {number} offset
- * @param {number} [size=] - unused
  * @prototype
  */
-Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset)
 {
     constantBuffer[offset] = this.value;
 };

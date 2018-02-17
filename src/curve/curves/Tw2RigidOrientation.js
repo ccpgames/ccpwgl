@@ -30,7 +30,7 @@ export class Tw2Torque extends Tw2CurveKey
  * @property {quat} value
  * @property {number} start
  * @property {Array.<Tw2Torque>} states
- * @property {number} _length
+ * @property {number} length
  * @class
  */
 export class Tw2RigidOrientation extends Tw2Curve
@@ -44,7 +44,7 @@ export class Tw2RigidOrientation extends Tw2Curve
         this.value = quat.create();
         this.start = 0;
         this.states = [];
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -61,7 +61,7 @@ export class Tw2RigidOrientation extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**

@@ -32,8 +32,8 @@ export class Tw2QuaternionKey extends Tw2CurveKey
  * @property {number} extrapolation
  * @property {Array.<Tw2QuaternionKey>} keys
  * @property {number} _currentKey
- * @property {number} _length
- * @class
+ * @property {number} length
+ * @class`
  */
 export class Tw2RotationCurve extends Tw2Curve
 {
@@ -45,7 +45,7 @@ export class Tw2RotationCurve extends Tw2Curve
         this.extrapolation = 0;
         this.keys = [];
         this._currentKey = 1;
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -62,7 +62,7 @@ export class Tw2RotationCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -82,7 +82,7 @@ export class Tw2RotationCurve extends Tw2Curve
      */
     GetValueAt(time, value)
     {
-        if (this._length === 0)
+        if (this.length === 0)
         {
             return quat.copy(value, this.value);
         }

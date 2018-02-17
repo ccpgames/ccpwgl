@@ -1,3 +1,5 @@
+/* eslint no-unused-vars:0 */
+
 /**
  * Particle Emitter base class
  *

@@ -6,7 +6,7 @@ import {Tw2PerObjectData} from '../core';
 import {Tw2RawData} from '../core';
 import {Tw2VertexElement} from '../core';
 import {Tw2VertexDeclaration} from '../core';
-
+import {Tw2ForwardingRenderBatch} from '../core';
 
 /**
  * EveCurveLineSet

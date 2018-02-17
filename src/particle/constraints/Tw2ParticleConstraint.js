@@ -1,3 +1,5 @@
+/* eslint no-unused-vars:0 */
+
 /**
  * Tw2ParticleConstraint base class
  * - Not implemented yet

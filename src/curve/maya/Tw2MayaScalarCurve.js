@@ -6,7 +6,7 @@ import {Tw2Curve} from '../curves';
  * @property {number} index
  * @property {null|Tw2MayaAnimationEngine} animationEngine
  * @property {number} value
- * @property {number} _length
+ * @property {number} length
  * @class
  */
 export class Tw2MayaScalarCurve extends Tw2Curve
@@ -17,7 +17,7 @@ export class Tw2MayaScalarCurve extends Tw2Curve
         this.index = -1;
         this.animationEngine = null;
         this.value = 0;
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -34,7 +34,7 @@ export class Tw2MayaScalarCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -55,7 +55,7 @@ export class Tw2MayaScalarCurve extends Tw2Curve
     ComputeLength()
     {
         if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
-        if (this.index >= 0) this._length = this.animationEngine.GetLength(this.index);
+        if (this.index >= 0) this.length = this.animationEngine.GetLength(this.index);
     }
 }
 

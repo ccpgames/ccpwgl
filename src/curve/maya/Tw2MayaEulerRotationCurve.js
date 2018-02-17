@@ -12,7 +12,7 @@ import {Tw2Curve} from '../curves';
  * @property {vec3} eulerValue
  * @property {boolean} updateQuaternion
  * @property {quat} quatValue
- * @property {number} _length
+ * @property {number} length
  * @class
  */
 export class Tw2MayaEulerRotationCurve extends Tw2Curve
@@ -27,7 +27,7 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
         this.eulerValue = vec3.create();
         this.updateQuaternion = false;
         this.quatValue = quat.create();
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -44,7 +44,7 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
     
     /**
@@ -109,20 +109,20 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
     {
         if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
 
-        this._length = 0;
+        this.length = 0;
         if (this.xIndex >= 0)
         {
-            this._length = this.animationEngine.GetLength(this.xIndex);
+            this.length = this.animationEngine.GetLength(this.xIndex);
         }
 
         if (this.yIndex >= 0)
         {
-            this._length = Math.max(this._length, this.animationEngine.GetLength(this.yIndex));
+            this.length = Math.max(this.length, this.animationEngine.GetLength(this.yIndex));
         }
 
         if (this.zIndex >= 0)
         {
-            this._length = Math.max(this._length, this.animationEngine.GetLength(this.zIndex));
+            this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
         }
     }
 }

@@ -8,7 +8,7 @@ import {variableStore} from './Tw2VariableStore';
  * @property {string} variableName
  * @constructor
  */
-function Tw2VariableParameter(name, variableName)
+export function Tw2VariableParameter(name, variableName)
 {
     if (typeof(name) !== 'undefined')
     {
@@ -30,13 +30,10 @@ function Tw2VariableParameter(name, variableName)
 
 /**
  * Bind
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
  * @returns {boolean}
  * @prototype
  */
-Tw2VariableParameter.prototype.Bind = function(constantBuffer, offset, size)
+Tw2VariableParameter.prototype.Bind = function()
 {
     return false;
 };

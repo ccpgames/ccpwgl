@@ -12,8 +12,9 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleAttractorForce extends Tw2ParticleForce
 {
-    super()
+    constructor()
     {
+        super();
         this.magnitude = 0;
         this.position = vec3.create();
     }

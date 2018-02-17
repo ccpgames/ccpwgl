@@ -1,3 +1,5 @@
+/* eslint no-unused-vars:0 */
+
 /**
  * 'Complex' explosion object. Not implemented.
  * @property {boolean} isEffectChild

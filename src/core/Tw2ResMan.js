@@ -160,9 +160,8 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
 /**
  * Prepare
  * @param text
- * @param xml
  */
-Tw2LoadingObject.prototype.Prepare = function(text, xml)
+Tw2LoadingObject.prototype.Prepare = function(text)
 {
     if (text === null)
     {
@@ -293,13 +292,13 @@ function Tw2ResMan()
             // IE
             try
             {
-                httpRequest = new ActiveXObject('Msxml2.XMLHTTP');
+                httpRequest = new window['ActiveXObject']('Msxml2.XMLHTTP');
             }
             catch (e)
             {
                 try
                 {
-                    httpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+                    httpRequest = new window['ActiveXObject']('Microsoft.XMLHTTP');
                 }
                 catch (e)
                 {}
@@ -400,7 +399,6 @@ function Tw2ResMan()
         resMan.prepareBudget = resMan.maxPrepareTime;
 
         var startTime = Date.now();
-        var preparedCount = 0;
         var now;
 
         while (resMan._prepareQueue.length)
@@ -427,7 +425,6 @@ function Tw2ResMan()
                     });
 
                 resMan._prepareQueue.shift();
-                preparedCount++;
             }
 
             now = Date.now();
