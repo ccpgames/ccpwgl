@@ -24,8 +24,6 @@ export class Tw2ParticleDirectForce extends Tw2ParticleForce
      */
     ApplyForce(position, velocity, force)
     {
-        force[0] += this.force[0];
-        force[1] += this.force[1];
-        force[2] += this.force[2];
+        vec3.add(force, force, this.force);
     }
 }

@@ -67,4 +67,4 @@ Tw2PerlinCurve.valueProperty = 'value';
  * The curve's type
  * @type {number}
  */
-Tw2PerlinCurve.curveType = Tw2Curve.Type.CURVE;
+Tw2PerlinCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

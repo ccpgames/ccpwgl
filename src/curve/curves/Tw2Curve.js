@@ -1,3 +1,4 @@
+/* eslint no-unused-vars:0 */
 import {vec3, vec4, quat} from '../../math';
 
 /**
@@ -29,7 +30,7 @@ export class Tw2Curve
     {
         this.name = '';
     }
-    
+
     /**
      * Initializes the Curve
      */
@@ -84,11 +85,10 @@ export class Tw2Curve
      */
     static Sort(curve, keys=curve.keys)
     {
-        curve._length = 0;
         if (keys && keys.length)
         {
             keys.sort(Tw2Curve.Compare);
-            curve._length = keys[keys.length - 1].time;
+            curve.length = keys[keys.length - 1].time;
         }
     }
 
@@ -98,20 +98,19 @@ export class Tw2Curve
      */
     static Sort2(curve)
     {
-        curve._length = 0;
         if (curve.keys && curve.keys.length)
         {
             curve.keys.sort(Tw2Curve.Compare);
             const back = curve.keys[curve.keys.length - 1];
 
-            if (back.time > curve._length)
+            if (back.time > curve.length)
             {
                 const
-                    preLength = curve._length,
+                    preLength = curve.length,
                     endValue = curve.endValue,
                     endTangent = curve.endTangent;
 
-                curve._length = back.time;
+                curve.length = back.time;
                 curve.endValue = back.value;
                 curve.endTangent = back.leftTangent;
 
@@ -176,6 +175,7 @@ Tw2Curve.Type = {
     CURVE: 1,
     CURVE2: 2,
     CURVE_MAYA: 3,
+    CURVE_NO_KEYS: 4,
     SEQUENCER: 100,
     SEQUENCER2: 101,
 };

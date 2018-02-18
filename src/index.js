@@ -1,6 +1,6 @@
 import * as math from './math';
 import * as core from './core';
-import * as curves from './curve';
+import * as curve from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
 import {resMan} from './core';
@@ -24,7 +24,7 @@ resMan.Register({
 
     constructors: [
         core,
-        curves,
+        curve,
         eve,
         particle
     ],

@@ -1,5 +1,6 @@
 import {resMan} from './Tw2ResMan';
 import {device} from './Tw2Device';
+import {Tw2SamplerState} from './Tw2SamplerState';
 
 /**
  * Tw2TextureParameter
@@ -70,7 +71,7 @@ Tw2TextureParameter.prototype.GetResource = function(out)
     }
 
     return out;
-}
+};
 
 /**
  * Sets the texture's resource path

@@ -37,6 +37,7 @@ export class Tw2QuaternionKey2 extends Tw2CurveKey
  * @property {vec4} endTangent
  * @property {number} interpolation
  * @property {Array.<Tw2QuaternionKey>} keys
+ * @property {number} length
  * @class
  */
 export class Tw2QuaternionCurve extends Tw2Curve
@@ -55,7 +56,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
         this.endTangent = vec4.create();
         this.interpolation = 1;
         this.keys = [];
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -73,7 +74,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -95,7 +96,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
     {
         time = time / this.timeScale + this.timeOffset;
 
-        if (this._length <= 0 || time <= 0)
+        if (this.length <= 0 || time <= 0)
         {
             value[0] = this.startValue[0];
             value[1] = this.startValue[1];
@@ -103,11 +104,11 @@ export class Tw2QuaternionCurve extends Tw2Curve
             return value;
         }
 
-        if (time > this._length)
+        if (time > this.length)
         {
             if (this.cycle)
             {
-                time = time % this._length;
+                time = time % this.length;
             }
             else if (this.reversed)
             {
@@ -127,7 +128,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
 
         if (this.reversed)
         {
-            time = this._length - time;
+            time = this.length - time;
         }
 
         if (this.keys.length === 0)
@@ -135,17 +136,18 @@ export class Tw2QuaternionCurve extends Tw2Curve
             return this.Interpolate(time, null, null, value);
         }
 
-        let startKey = this.keys[0];
+        let startKey = this.keys[0],
+            endKey = this.keys[this.keys.length - 1];
+
         if (time <= startKey.time)
         {
             return this.Interpolate(time, null, startKey, value);
         }
-        else if (time >= this.keys[this.keys.length - 1].time)
+        else if (time >= endKey.time)
         {
-            return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            return this.Interpolate(time, endKey, null, value);
         }
 
-        let endKey;
         for (let i = 0; i + 1 < this.keys.length; ++i)
         {
             startKey = this.keys[i];
@@ -173,7 +175,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
         let startValue = this.startValue,
             endValue = this.endValue,
             interp = this.interpolation,
-            deltaTime = this._length;
+            deltaTime = this.length;
 
         if (lastKey !== null)
         {
@@ -198,7 +200,7 @@ export class Tw2QuaternionCurve extends Tw2Curve
                 else if (lastKey)
                 {
                     startValue = lastKey.value;
-                    deltaTime = this._length - lastKey.time;
+                    deltaTime = this.length - lastKey.time;
                 }
 
                 quat.slerp(value, startValue, endValue, time / deltaTime);

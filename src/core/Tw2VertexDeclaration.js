@@ -6,7 +6,7 @@ import {device} from './Tw2Device';
  * @param {number} usageIndex
  * @param {number} type
  * @param {number} elements - How many variables this vertex data type uses
- * @param {number} offset
+ * @param {number} [offset=0]
  * @property {number} usage
  * @property {number} usageIndex
  * @property {number} type
@@ -16,13 +16,13 @@ import {device} from './Tw2Device';
  * @property customSetter
  * @constructor
  */
-export function Tw2VertexElement(usage, usageIndex, type, elements, offset)
+export function Tw2VertexElement(usage, usageIndex, type, elements, offset=0)
 {
     this.usage = usage;
     this.usageIndex = usageIndex;
     this.type = type;
     this.elements = elements;
-    this.offset = typeof(offset) === 'undefined' ? 0 : offset;
+    this.offset = offset;
     this.location = null;
     this.customSetter = null;
 }
@@ -61,9 +61,8 @@ Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
  * @returns {number}
  * @function
  */
-Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset)
+Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset=0)
 {
-    usageOffset = usageOffset || 0;
     if (a.usage < b.usage) return -1;
     if (a.usage > b.usage) return 1;
     if (a.usageIndex + usageOffset < b.usageIndex) return -1;
@@ -178,12 +177,12 @@ Tw2VertexDeclaration.prototype.SetDeclaration = function(inputDecl, stride)
  * SetPartialDeclaration
  * @param {Tw2VertexDeclaration} inputDecl
  * @param {number} stride
- * @param {number} usageOffset
- * @param [divisor=0]
+ * @param {number} [usageOffset=0]
+ * @param {number} [divisor=0]
  * @returns {Array} ResetData
  * @prototype
  */
-Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, stride, usageOffset, divisor)
+Tw2VertexDeclaration.prototype.SetPartialDeclaration = function(inputDecl, stride, usageOffset=0, divisor=0)
 {
     var resetData = [];
     divisor = divisor || 0;

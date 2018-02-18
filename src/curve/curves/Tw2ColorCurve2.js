@@ -1,6 +1,5 @@
 import {vec4} from '../../math';
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
-import {Tw2ColorKey} from "./Tw2ColorCurve";
 
 /**
  * Tw2ColorKey2
@@ -57,7 +56,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
         this.endTangent = vec4.create();
         this.interpolation = 1;
         this.keys = [];
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -74,7 +73,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -95,16 +94,16 @@ export class Tw2ColorCurve2 extends Tw2Curve
     GetValueAt(time, value)
     {
         time = time / this.timeScale + this.timeOffset;
-        if (this._length <= 0 || time <= 0)
+        if (this.length <= 0 || time <= 0)
         {
             return vec4.copy(value, this.startValue);
         }
 
-        if (time > this._length)
+        if (time > this.length)
         {
             if (this.cycle)
             {
-                time = time % this._length;
+                time = time % this.length;
             }
             else if (this.reversed)
             {
@@ -118,7 +117,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
 
         if (this.reversed)
         {
-            time = this._length - time;
+            time = this.length - time;
         }
 
         if (this.keys.length === 0)
@@ -126,25 +125,23 @@ export class Tw2ColorCurve2 extends Tw2Curve
             return this.Interpolate(time, null, null, value);
         }
 
-        let startKey = this.keys[0];
+        let startKey = this.keys[0],
+            endKey = this.keys[this.keys.length - 1];
+
         if (time <= startKey.time)
         {
             return this.Interpolate(time, null, startKey, value);
         }
-        else if (time >= this.keys[this.keys.length - 1].time)
+        else if (time >= endKey.time)
         {
-            return this.Interpolate(time, this.keys[this.keys.length - 1], null, value);
+            return this.Interpolate(time, endKey, null, value);
         }
 
-        let endKey;
         for (let i = 0; i + 1 < this.keys.length; ++i)
         {
             startKey = this.keys[i];
             endKey = this.keys[i + 1];
-            if (startKey.time <= time && endKey.time > time)
-            {
-                break;
-            }
+            if (startKey.time <= time && endKey.time > time) break;
         }
 
         return this.Interpolate(time, startKey, endKey, value);
@@ -165,7 +162,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
         let startValue = this.startValue,
             endValue = this.endValue,
             interp = this.interpolation,
-            deltaTime = this._length;
+            deltaTime = this.length;
 
         if (lastKey !== null)
         {
@@ -190,7 +187,7 @@ export class Tw2ColorCurve2 extends Tw2Curve
                 else if (lastKey)
                 {
                     startValue = lastKey.value;
-                    deltaTime = this._length - lastKey.time;
+                    deltaTime = this.length - lastKey.time;
                 }
                 value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);

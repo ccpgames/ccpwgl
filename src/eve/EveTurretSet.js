@@ -688,7 +688,7 @@ EveTurretSet.prototype.UpdateViewDependentData = function()
     {
         this.firingEffect.UpdateViewDependentData();
     }
-}
+};
 
 /**
  * Animation helper function for turret firing

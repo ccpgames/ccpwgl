@@ -2,6 +2,8 @@ import {device} from './Tw2Device';
 import {resMan} from './Tw2ResMan';
 import {variableStore} from './Tw2VariableStore';
 import {Tw2SamplerState} from './Tw2SamplerState';
+import {Tw2TextureParameter} from './Tw2TextureParameter';
+import {Tw2VariableParameter} from './Tw2VariableParameter';
 
 /**
  * Tw2SamplerOverride
@@ -135,7 +137,6 @@ Tw2Effect.prototype.Initialize = function()
     {
         var path = this.effectFilePath;
         var dot = path.lastIndexOf('.');
-        var ext = path.substr(dot);
         path = path.toLowerCase().substr(0, dot).replace('/effect/', device.effectDir) + '.sm_' + device.shaderModel;
         this.effectRes = resMan.GetResource(path);
         this.effectRes.RegisterNotification(this);

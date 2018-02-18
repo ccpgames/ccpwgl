@@ -79,7 +79,7 @@ export class Tw2SphereShapeAttributeGenerator extends Tw2ParticleAttributeGenera
         const
             phi = (this.minPhi + Math.random() * (this.maxPhi - this.minPhi)) / 180 * Math.PI,
             theta = (this.minTheta + Math.random() * (this.maxTheta - this.minTheta)) / 180 * Math.PI,
-            rv = vec3.create();
+            rv = Tw2ParticleAttributeGenerator.global.vec3_0;
 
         rv[0] = Math.sin(phi) * Math.cos(theta);
         rv[1] = -Math.cos(phi);
@@ -95,6 +95,7 @@ export class Tw2SphereShapeAttributeGenerator extends Tw2ParticleAttributeGenera
             this._velocity.buffer[offset] = rv[0] * speed;
             this._velocity.buffer[offset + 1] = rv[1] * speed;
             this._velocity.buffer[offset + 2] = rv[2] * speed;
+
             if (velocity)
             {
                 this._velocity.buffer[offset] += velocity.buffer[velocity.offset] * this.parentVelocityFactor;
@@ -107,12 +108,14 @@ export class Tw2SphereShapeAttributeGenerator extends Tw2ParticleAttributeGenera
         {
             vec3.scale(rv, rv, this.minRadius + Math.random() * (this.maxRadius - this.minRadius));
             vec3.add(rv, rv, this.position);
+
             if (position)
             {
                 rv[0] += position.buffer[position.offset];
                 rv[1] += position.buffer[position.offset + 1];
                 rv[2] += position.buffer[position.offset + 2];
             }
+
             const offset = this._position.instanceStride * index + this._position.startOffset;
             this._position.buffer[offset] = rv[0];
             this._position.buffer[offset + 1] = rv[1];

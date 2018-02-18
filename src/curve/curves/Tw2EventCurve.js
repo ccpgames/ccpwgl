@@ -1,5 +1,4 @@
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
-import {Tw2ColorCurve} from "./Tw2ColorCurve";
 
 /**
  * Tw2EventKey
@@ -46,7 +45,11 @@ export class Tw2EventCurve extends Tw2Curve
      */
     Sort()
     {
-        Tw2Curve.Sort(this);
+        if (this.keys.length)
+        {
+            this.keys.sort(Tw2Curve.Compare);
+            this._length = this.keys[this.keys.length - 1].time;
+        }
     }
 
     /**
@@ -95,7 +98,7 @@ export class Tw2EventCurve extends Tw2Curve
  * The curve's key dimension
  * @type {number}
  */
-Tw2ColorCurve.dimension = 1;
+Tw2EventCurve.dimension = 1;
 
 /**
  * The curve's output dimension

@@ -56,4 +56,4 @@ Tw2SineCurve.valueProperty = 'value';
  * The curve's type
  * @type {number}
  */
-Tw2SineCurve.curveType = Tw2Curve.Type.CURVE;
+Tw2SineCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

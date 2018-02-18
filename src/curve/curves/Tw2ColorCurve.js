@@ -31,6 +31,7 @@ export class Tw2ColorKey extends Tw2CurveKey
  * @property {number} extrapolation
  * @property {Array.<Tw2ColorKey>} keys
  * @property {number} _currentKey
+ * @property {number} length
  * @class
  */
 export class Tw2ColorCurve extends Tw2Curve
@@ -43,7 +44,7 @@ export class Tw2ColorCurve extends Tw2Curve
         this.extrapolation = 0;
         this.keys = [];
         this._currentKey = 1;
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -60,7 +61,7 @@ export class Tw2ColorCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -80,7 +81,7 @@ export class Tw2ColorCurve extends Tw2Curve
      */
     GetValueAt(time, value)
     {
-        if (this._length === 0)
+        if (this.length === 0)
         {
             return vec4.copy(value, this.value);
         }
@@ -114,7 +115,7 @@ export class Tw2ColorCurve extends Tw2Curve
                     return vec4.copy(value, this.value);
 
                 case Tw2ColorCurve.Extrapolation.GRADIENT:
-                    return vec4.scaleAndAdd(value, firstKey.value, firstKey.left, time * this._length - lastKey.time);
+                    return vec4.scaleAndAdd(value, firstKey.value, firstKey.left, time * this.length - lastKey.time);
 
                 default:
                     return vec4.copy(value, firstKey.value);

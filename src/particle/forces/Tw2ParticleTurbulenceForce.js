@@ -32,10 +32,7 @@ export class Tw2ParticleTurbulenceForce extends Tw2ParticleForce
      */
     ApplyForce(position, velocity, force)
     {
-        if (this.noiseLevel === 0)
-        {
-            return;
-        }
+        if (this.noiseLevel === 0) return;
 
         let pos_0 = position.buffer[position.offset] * this.frequency[0],
             pos_1 = position.buffer[position.offset + 1] * this.frequency[1],

@@ -57,9 +57,8 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
     /**
      * Per frame update
-     * @param {number} dt - delta time
      */
-    Update(dt)
+    Update()
     {
         if (!this._spawned &&
             this.particleSystem &&
@@ -124,10 +123,7 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
             for (let i = 0; i < vertexCount; ++i)
             {
                 const index = this.particleSystem.BeginSpawnParticle();
-                if (index === null)
-                {
-                    break;
-                }
+                if (index === null) break;
 
                 for (let j = 0; j < this.particleSystem._elements.length; ++j)
                 {

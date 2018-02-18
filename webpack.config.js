@@ -1,7 +1,9 @@
 /* eslint-env node */
 
-const path = require('path');
-//const webpack = require('webpack');
+const
+    path = require('path'),
+    UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
+    ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
 
@@ -9,7 +11,7 @@ module.exports = {
 
     entry: {
         'ccpwgl_int': './index.js',
-        //'ccpwgl_int.min': './index.js',
+        'ccpwgl_int.min': './index.js',
     },
 
     output: {
@@ -20,22 +22,33 @@ module.exports = {
     },
 
     plugins: [
-        /*
-        new webpack.optimize.UglifyJsPlugin({
+        new UglifyJsPlugin({
             include: /\.min\.js$/,
-            minimize: true,
+            sourceMap: true,
         }),
-        */
+        new ProgressBarPlugin()
     ],
 
     module: {
         rules: [
             {
+                enforce: 'pre',
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    'fix' : true
+                }
+            },
+            {
                 test: /\.js$/,
                 exclude: [/node_modules/],
-                use: [{
-                    loader: 'babel-loader',
-                }],
+                loader: 'babel-loader',
+                options: {
+                    'presets': [
+                        'env'
+                    ]
+                }
             }
         ]
     }

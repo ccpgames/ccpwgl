@@ -75,13 +75,11 @@ Tw2Vector3Parameter.prototype.OnValueChanged = function()
 
 /**
  * Applies the current value to the supplied constant buffer at the supplied offset
- * TODO: @param size is currently redundant
  * @param {Float32Array} constantBuffer
  * @param {number} offset
- * @param {number} size
  * @prototype
  */
-Tw2Vector3Parameter.prototype.Apply = function(constantBuffer, offset, size)
+Tw2Vector3Parameter.prototype.Apply = function(constantBuffer, offset)
 {
     constantBuffer.set(this.value, offset);
 };

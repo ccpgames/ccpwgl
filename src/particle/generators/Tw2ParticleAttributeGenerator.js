@@ -1,3 +1,6 @@
+/* eslint no-unused-vars:0 */
+import { vec3 } from '../../math';
+
 /**
  * Tw2ParticleAttributeGenerator base class
  *
@@ -32,3 +35,7 @@ export class Tw2ParticleAttributeGenerator
 
     }
 }
+
+Tw2ParticleAttributeGenerator.global = {
+    vec3_0: vec3.create()
+};

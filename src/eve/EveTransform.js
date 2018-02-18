@@ -292,7 +292,7 @@ EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
 
         case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
         case EveTransform.Modifier.EVE_SIMPLE_HALO:
-            // 3 4 3 3 3 4 3 3
+        // 3 4 3 3 3 4 3 3
             mat4.translate(this.worldTransform, parentTransform, this.translation);
             camPos = device.GetEyePosition();
             d = scratch.vec3_0;

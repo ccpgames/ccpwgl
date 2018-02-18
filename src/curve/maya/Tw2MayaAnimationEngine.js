@@ -203,6 +203,8 @@ export class Tw2MayaAnimationEngine
         }
     }
 
+    /* eslint-disable no-unused-vars */
+
     /**
      * A static helper function to evaluate the infinity portion of an animation curve.
      * The infinity portion is the parts of the animation curve outside the range of keys.
@@ -212,10 +214,15 @@ export class Tw2MayaAnimationEngine
      * @param {time} time
      * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
      */
+
     _EvaluateInfinities(curve, segments, startSegment, time, bool)
     {
+
         throw new Error('_EvaluateInfinities not implemented');
+
     }
+
+    /* eslint-enable no-unused-vars */
 
     /**
      * _EvaluateHermite

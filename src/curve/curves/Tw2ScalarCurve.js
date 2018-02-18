@@ -32,7 +32,7 @@ export class Tw2ScalarKey extends Tw2CurveKey
  * @property {number} extrapolation
  * @property {Array.<Tw2ScalarKey>} keys
  * @property {number} _currentKey
- * @property {number} _length
+ * @property {number} length
  * @class
  */
 export class Tw2ScalarCurve extends Tw2Curve
@@ -47,7 +47,7 @@ export class Tw2ScalarCurve extends Tw2Curve
         this.extrapolation = 0;
         this.keys = [];
         this._currentKey = 1;
-        this._length = 0;
+        this.length = 0;
     }
 
     /**
@@ -64,7 +64,7 @@ export class Tw2ScalarCurve extends Tw2Curve
      */
     GetLength()
     {
-        return this._length;
+        return this.length;
     }
 
     /**
@@ -85,7 +85,7 @@ export class Tw2ScalarCurve extends Tw2Curve
     {
         time = time / this.timeScale - this.timeOffset;
 
-        if (this._length === 0)
+        if (this.length === 0)
         {
             return this.value;
         }
@@ -119,7 +119,7 @@ export class Tw2ScalarCurve extends Tw2Curve
                     return this.value;
 
                 case Tw2ScalarCurve.Extrapolation.GRADIENT:
-                    return firstKey.value + (time * this._length - lastKey.time) * firstKey.left;
+                    return firstKey.value + (time * this.length - lastKey.time) * firstKey.left;
 
                 default:
                     return firstKey.value;
