@@ -1,4 +1,4 @@
-import {vec2} from '../math';
+import {vec2, util} from '../math';
 
 /**
  * Tw2Vector2Parameter
@@ -152,4 +152,14 @@ Tw2Vector2Parameter.prototype.SetIndexValue = function(index, value)
 Tw2Vector2Parameter.prototype.FillWith = function(value)
 {
     this.SetValue([value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector2Parameter.is = function(value)
+{
+    return util.isArrayLike(value) && value.length === 2;
 };

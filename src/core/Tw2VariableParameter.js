@@ -1,4 +1,4 @@
-import {variableStore} from './Tw2VariableStore';
+import {store} from './Tw2VariableStore';
 
 /**
  * Tw2VariableParameter
@@ -47,8 +47,8 @@ Tw2VariableParameter.prototype.Bind = function()
  */
 Tw2VariableParameter.prototype.Apply = function(constantBuffer, offset, size)
 {
-    if (typeof(variableStore._variables[this.variableName]) !== 'undefined')
+    if (store.HasVariable(this.variableName))
     {
-        variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
+        store.GetVariable(this.variableName).Apply(constantBuffer, offset, size);
     }
 };

@@ -1,128 +1,203 @@
-import {Tw2MatrixParameter} from './Tw2MatrixParameter';
-import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
-import {Tw2Vector3Parameter} from './Tw2Vector3Parameter';
-import {Tw2Vector2Parameter} from './Tw2Vector2Parameter';
-import {Tw2FloatParameter} from './Tw2FloatParameter';
-import {Tw2TextureParameter} from './Tw2TextureParameter';
-
+import {util} from '../math';
+import {resMan} from './Tw2ResMan';
+import {emitter} from './Tw2EventEmitter';
 
 /**
  * Tw2VariableStore
+ * 
  * @property {Object.< string, Parameter>} _variables
- * @constructor
+ * @property {Object.< string, Function>} _types
+ * @class
  */
-function Tw2VariableStore()
+class Tw2VariableStore
 {
-    this._variables = {};
-}
-
-/**
- * Registers a variable
- * @param {string} name
- * @param {string|number|Float32Array|vec3|mat4} value
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariableWithType = function(name, value, type)
-{
-    return this._variables[name] = new type(name, value);
-};
-
-/**
- * Registers a variable without a value
- * @param {string} name
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterType = function(name, type)
-{
-    return this._variables[name] = new type(name);
-};
-
-/**
- * Gets A Tw2 parameter constructor from a supplied value
- * @param {Number|String|Array.<Number>|Float32Array} value
- * @returns {null|Parameter}
- */
-Tw2VariableStore.GetTw2ParameterType = function(value)
-{
-    if (value && value.constructor.name.toUpperCase().includes('ARRAY'))
+    constructor()
     {
-        switch (value.length)
+        this._variables = {};
+        this._types = {};
+    }
+
+    /**
+     * Gets a variable by it's name
+     * @param {string} name
+     * @returns {?Parameter}
+     */
+    GetVariable(name)
+    {
+        return name && name in this._variables ? this._variables[name] : null;
+    }
+
+    /**
+     * Checks if a variable of a given name exists
+     * @param {string} name
+     * @returns {boolean}
+     */
+    HasVariable(name)
+    {
+        return name && name in this._variables;
+    }
+
+    /**
+     * Gets a type by it's name
+     * @param {string} name
+     * @returns {?Function}
+     */
+    GetType(name)
+    {
+        name = name.toLowerCase();
+        return name && name in this._types ? this._types[name] : null;
+    }
+
+    /**
+     * Gets a type by value
+     * @param {*} value
+     * @returns {?Function}}
+     */
+    GetTypeFromValue(value)
+    {
+        for (let type in this._types)
         {
-            case 16:
-                return Tw2MatrixParameter;
+            if (this._types.hasOwnProperty(type))
+            {
+                const Type = this._types[type];
+                if (Type.is && Type.is(value)) return Type;
+            }
+        }
+        return null;
+    }
 
-            case 4:
-                return Tw2Vector4Parameter;
+    /**
+     * Creates A Tw2 parameter from a supplied value and/or Type
+     * @param {string} name
+     * @param {*} [value]
+     * @param {string|Function} [Type]
+     * @returns {?Parameter}
+     */
+    CreateType(name, value, Type)
+    {
+        if (Type)
+        {
+            if (typeof Type === 'string')
+            {
+                Type = this.GetType(Type);
+            }
+        }
+        else
+        {
+            Type = this.GetTypeFromValue(value);
+        }
 
-            case 3:
-                return Tw2Vector3Parameter;
+        return Type ? new Type(name, value) : null;
+    }
 
-            case 2:
-                return Tw2Vector2Parameter;
+    /**
+     * Registers a variable if it hasn't already been registered
+     * @param {string} name
+     * @param {*} value
+     * @param {Function} [Type]
+     * @returns {?Parameter} The parameter registered with the given name
+     */
+    RegisterVariable(name, value, Type)
+    {
+        if (!this.HasVariable(name))
+        {
+            const variable = this.CreateType(name, value, Type);
+            if (variable)
+            {
+                this._variables[name] = variable;
+                emitter.log('store.registered', {
+                    log: 'debug',
+                    msg: 'Registered Variable: ' + name
+                });
+            }
+        }
 
-            case 1:
-                return Tw2FloatParameter;
+        return name in this._variables ? this._variables[name] : null;
+    }
+
+    /**
+     * Registers a variable type if it hasn't already been registered
+     * @param {string} name
+     * @param {Function} Constructor
+     * @returns {?Function} The type registered with the given name
+     */
+    RegisterType(name, Constructor)
+    {
+        name = name.toLowerCase();
+        if (name && typeof Constructor === 'function' && !this._types[name])
+        {
+            this._types[name] = Constructor;
+            emitter.log('store.registered', {
+                log: 'debug',
+                msg: 'Registered Type: ' + name
+            });
+        }
+        return name in this._types ? this._types[name] : null;
+    }
+
+    /**
+     * Registers variables from an object or array of objects
+     * @param {{string:*}} obj
+     */
+    RegisterVariables(obj)
+    {
+        Tw2VariableStore.toKeyValue(this, 'RegisterVariable', obj);
+    }
+
+    /**
+     * Registers variable Types
+     * @param {{string: Function}} obj
+     */
+    RegisterTypes(obj)
+    {
+        Tw2VariableStore.toKeyValue(this, 'RegisterType', obj);
+    }
+
+    /**
+     * Register
+     * @param {*} [opt={}]
+     */
+    Register(opt)
+    {
+        if (opt)
+        {
+            if (opt['uuid'])
+            {
+                util.generateID = util.generateUUID;
+            }
+
+            this.RegisterTypes(opt.types);
+            this.RegisterVariables(opt.variables);
+
+            resMan.Register(opt);
         }
     }
-    else if (typeof(value) === 'number')
-    {
-        return Tw2FloatParameter;
-    }
-    else if (typeof(value) === 'string')
-    {
-        return Tw2TextureParameter;
-    }
-};
 
-/**
- * Registers a variable without a type
- * @param {string} name
- * @param {string|number|Float32Array} value
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariable = function(name, value)
-{
-    const Type = Tw2VariableStore.GetTw2ParameterType(value);
-    return Type ? this.RegisterVariableWithType(name, value, Type) : null;
-};
-
-/**
- * Registers variables from an object or array of objects
- * @param obj
- */
-Tw2VariableStore.prototype.RegisterVariables = function(obj)
-{
-    if (obj)
+    /**
+     * Passes key:values from an object or array of objects to an internal function
+     * @param {*} target
+     * @param {string} funcName
+     * @param {Array|{}} obj
+     * @returns {boolean}
+     */
+    static toKeyValue(target, funcName, obj)
     {
-        obj = Array.isArray(obj) ? obj : [obj];
-        for (let i = 0; i < obj.length; i++)
+        if (obj && funcName && funcName in target)
         {
-            for (let key in obj[i])
+            obj = Array.isArray(obj) ? obj : [obj];
+            for (let i = 0; i < obj.length; i++)
             {
-                if (obj[i].hasOwnProperty(key))
+                for (let key in obj[i])
                 {
-                    this.RegisterVariable(key, obj[i][key]);
+                    if (obj[i].hasOwnProperty(key))
+                    {
+                        target[funcName](key, obj[i][key]);
+                    }
                 }
             }
         }
     }
-};
+}
 
-/**
- * Register
- * @param opt
- */
-Tw2VariableStore.prototype.Register = function(opt)
-{
-    if (opt)
-    {
-        this.RegisterVariables(opt.variables);
-    }
-};
+export const store = new Tw2VariableStore();
 
-export const variableStore = new Tw2VariableStore();

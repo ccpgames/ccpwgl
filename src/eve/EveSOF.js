@@ -10,15 +10,15 @@ import {Tw2InstancedMesh} from '../core';
 import {Tw2CurveSet} from '../core';
 import {Tw2ValueBinding} from '../core';
 import {Tw2ScalarCurve2, Tw2ScalarKey2} from '../curve';
-import {EveBoosterSet} from './EveBoosterSet';
-import {EveChildMesh} from './EveChildMesh';
-import {EveLocator} from './EveLocator';
-import {EvePlaneSet, EvePlaneSetItem} from './EvePlaneSet';
-import {EveSpaceObjectDecal} from './EveSpaceObjectDecal';
-import {EveSpotlightSet, EveSpotlightSetItem} from './EveSpotlightSet';
-import {EveSpriteSet, EveSpriteSetItem} from './EveSpriteSet';
-import {EveSpaceObject} from './EveSpaceObject';
-import {EveShip} from './EveShip';
+import {EveBoosterSet} from './item/EveBoosterSet';
+import {EveChildMesh} from './child/EveChildMesh';
+import {EveLocator} from './item/EveLocator';
+import {EvePlaneSet, EvePlaneSetItem} from './item/EvePlaneSet';
+import {EveSpaceObjectDecal} from './item/EveSpaceObjectDecal';
+import {EveSpotlightSet, EveSpotlightSetItem} from './item/EveSpotlightSet';
+import {EveSpriteSet, EveSpriteSetItem} from './item/EveSpriteSet';
+import {EveSpaceObject} from './object/EveSpaceObject';
+import {EveShip} from './object/EveShip';
 
 
 export function EveSOF()

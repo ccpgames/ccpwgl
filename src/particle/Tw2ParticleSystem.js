@@ -1,4 +1,4 @@
-import {vec3, mat4} from '../math';
+import {vec3, mat4, util} from '../math';
 import {device} from '../core';
 import {Tw2VertexDeclaration} from '../core';
 import {Tw2ParticleElement} from './Tw2ParticleElement';
@@ -8,6 +8,7 @@ import {Tw2ParticleElementDeclaration} from './Tw2ParticleElement';
 /**
  * Tw2ParticleSystem
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {number} aliveCount
  * @property {number} maxParticleCount
@@ -40,6 +41,7 @@ export class Tw2ParticleSystem
 {
     constructor() 
     {
+        this._id = util.generateID();
         this.name = '';
         this.aliveCount = 0;
         this.maxParticleCount = 0;
@@ -58,12 +60,9 @@ export class Tw2ParticleSystem
         this.aabbMin = vec3.create();
         this.aabbMax = vec3.create();
         this.peakAliveCount = 0;
-
         this.bufferDirty = false;
-
         this._vb = null;
         this._declaration = null;
-
         this._stdElements = [null, null, null, null];
         this._elements = [];
         this.instanceStride = [null, null];

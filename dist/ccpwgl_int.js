@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(52);
+var _vec = __webpack_require__(53);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(58);
+var _quat = __webpack_require__(59);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(59);
+var _mat = __webpack_require__(60);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(60);
+var _mat2 = __webpack_require__(61);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(61);
+var _noise = __webpack_require__(62);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(62);
+var _curve = __webpack_require__(63);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -188,6 +188,18 @@ Object.keys(_curve).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _curve[key];
+    }
+  });
+});
+
+var _util = __webpack_require__(64);
+
+Object.keys(_util).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _util[key];
     }
   });
 });
@@ -203,7 +215,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
 Object.keys(_Tw2Device).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -227,7 +239,7 @@ Object.keys(_Tw2ResMan).forEach(function (key) {
   });
 });
 
-var _Tw2VariableStore = __webpack_require__(17);
+var _Tw2VariableStore = __webpack_require__(16);
 
 Object.keys(_Tw2VariableStore).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +251,19 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(65);
+var _data = __webpack_require__(67);
+
+Object.keys(_data).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _data[key];
+    }
+  });
+});
+
+var _Tw2AnimationController = __webpack_require__(69);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +275,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(24);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -263,7 +287,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2CurveSet = __webpack_require__(66);
+var _Tw2CurveSet = __webpack_require__(70);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +299,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2Effect = __webpack_require__(22);
+var _Tw2Effect = __webpack_require__(20);
 
 Object.keys(_Tw2Effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +311,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2EffectRes = __webpack_require__(67);
+var _Tw2EffectRes = __webpack_require__(71);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +323,7 @@ Object.keys(_Tw2EffectRes).forEach(function (key) {
   });
 });
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
 Object.keys(_Tw2EventEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -311,7 +335,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(68);
+var _Tw2Float = __webpack_require__(72);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +347,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(20);
+var _Tw2FloatParameter = __webpack_require__(36);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -335,7 +359,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(69);
+var _Tw2Frustum = __webpack_require__(73);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -347,7 +371,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(23);
+var _Tw2GeometryRes = __webpack_require__(22);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -359,7 +383,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(70);
+var _Tw2InstancedMesh = __webpack_require__(74);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -371,7 +395,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(19);
+var _Tw2MatrixParameter = __webpack_require__(75);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -383,7 +407,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(38);
+var _Tw2Mesh = __webpack_require__(37);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -395,7 +419,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2ObjectReader = __webpack_require__(36);
+var _Tw2ObjectReader = __webpack_require__(34);
 
 Object.keys(_Tw2ObjectReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,19 +431,7 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(71);
-
-Object.keys(_Tw2PerObjectData).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2PerObjectData[key];
-    }
-  });
-});
-
-var _Tw2PostProcess = __webpack_require__(72);
+var _Tw2PostProcess = __webpack_require__(76);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -431,19 +443,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(73);
-
-Object.keys(_Tw2RawData).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2RawData[key];
-    }
-  });
-});
-
-var _Tw2RenderTarget = __webpack_require__(39);
+var _Tw2RenderTarget = __webpack_require__(38);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -455,7 +455,7 @@ Object.keys(_Tw2RenderTarget).forEach(function (key) {
   });
 });
 
-var _Tw2Resource = __webpack_require__(12);
+var _Tw2Resource = __webpack_require__(11);
 
 Object.keys(_Tw2Resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -467,7 +467,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(74);
+var _Tw2RuntimeInstanceData = __webpack_require__(77);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -479,7 +479,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerState = __webpack_require__(18);
+var _Tw2SamplerState = __webpack_require__(19);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -491,7 +491,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(11);
+var _Tw2TextureParameter = __webpack_require__(17);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -503,7 +503,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(25);
+var _Tw2TextureRes = __webpack_require__(24);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -515,7 +515,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(91);
+var _Tw2TransformParameter = __webpack_require__(94);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -527,7 +527,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(92);
+var _Tw2ValueBinding = __webpack_require__(95);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -539,7 +539,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(37);
+var _Tw2VariableParameter = __webpack_require__(96);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -551,7 +551,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(35);
+var _Tw2Vector2Parameter = __webpack_require__(97);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -563,7 +563,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(34);
+var _Tw2Vector3Parameter = __webpack_require__(98);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -575,7 +575,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(10);
+var _Tw2Vector4Parameter = __webpack_require__(25);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -587,7 +587,7 @@ Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(13);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -609,248 +609,23 @@ Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Curve = exports.Tw2CurveKey = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _math = __webpack_require__(0);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint no-unused-vars:0 */
-
-
-/**
- * Tw2CurveKey base class
- *
- * @property {string} name
- * @property {number} time
- * @class
- */
-var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
-    _classCallCheck(this, Tw2CurveKey);
-
-    this.name = '';
-    this.time = 0;
-};
-
-/**
- * Tw2Curve base class
- *
- * @property {string} name
- * @class
- */
-
-
-var Tw2Curve = exports.Tw2Curve = function () {
-    function Tw2Curve() {
-        _classCallCheck(this, Tw2Curve);
-
-        this.name = '';
-    }
-
-    /**
-     * Initializes the Curve
-     */
-
-
-    _createClass(Tw2Curve, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            this.Sort();
-        }
-
-        /**
-         * Sorts the curve
-         */
-
-    }, {
-        key: 'Sort',
-        value: function Sort() {}
-
-        /**
-         * Gets the curve's length
-         * @returns {number}
-         */
-
-    }, {
-        key: 'GetLength',
-        value: function GetLength() {
-            return 0;
-        }
-
-        /**
-         * Updates the current value at the given time
-         * @param {number} time
-         */
-
-    }, {
-        key: 'UpdateValue',
-        value: function UpdateValue(time) {}
-
-        /**
-         * Compares curve keys
-         * @param {Tw2CurveKey} a
-         * @param {Tw2CurveKey} b
-         * @returns {number}
-         */
-
-    }], [{
-        key: 'Compare',
-        value: function Compare(a, b) {
-            if (a.time < b.time) return -1;
-            if (a.time > b.time) return 1;
-            return 0;
-        }
-
-        /**
-         * Sorts legacy curve keys
-         * @param {*} curve
-         * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
-         */
-
-    }, {
-        key: 'Sort',
-        value: function Sort(curve) {
-            var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : curve.keys;
-
-            if (keys && keys.length) {
-                keys.sort(Tw2Curve.Compare);
-                curve.length = keys[keys.length - 1].time;
-            }
-        }
-
-        /**
-         * Sorts curve keys
-         * @param {*} curve
-         */
-
-    }, {
-        key: 'Sort2',
-        value: function Sort2(curve) {
-            if (curve.keys && curve.keys.length) {
-                curve.keys.sort(Tw2Curve.Compare);
-                var back = curve.keys[curve.keys.length - 1];
-
-                if (back.time > curve.length) {
-                    var preLength = curve.length,
-                        endValue = curve.endValue,
-                        endTangent = curve.endTangent;
-
-                    curve.length = back.time;
-                    curve.endValue = back.value;
-                    curve.endTangent = back.leftTangent;
-
-                    if (preLength > 0) {
-                        back.time = preLength;
-                        back.value = endValue;
-                        back.leftTangent = endTangent;
-                    }
-                }
-            }
-        }
-    }]);
-
-    return Tw2Curve;
-}();
-
-/**
- * The curve's key dimension
- * @type {?number}
- */
-
-
-Tw2Curve.inputDimension = null;
-
-/**
- * The curve's dimension
- * @type {?number}
- */
-Tw2Curve.outputDimension = null;
-
-/**
- * The curve's current value property
- * @type {?string}
- */
-Tw2Curve.valueProperty = null;
-
-/**
- * The curve's type
- * @type {?number}
- */
-Tw2Curve.curveType = null;
-
-/**
- * The curve's Key constructor
- * @type {?Tw2CurveKey}
- */
-Tw2Curve.Key = null;
-
-/**
- * Interpolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Interpolation = null;
-
-/**
- * Extrapolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Extrapolation = null;
-
-/**
- * Curve types
- * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
- */
-Tw2Curve.Type = {
-    CURVE: 1,
-    CURVE2: 2,
-    CURVE_MAYA: 3,
-    CURVE_NO_KEYS: 4,
-    SEQUENCER: 100,
-    SEQUENCER2: 101
-};
-
-/**
- * Class globals
- * @type {*}
- */
-Tw2Curve.global = {
-    vec3_0: _math.vec3.create(),
-    vec4_0: _math.vec4.create(),
-    quat_0: _math.quat.create(),
-    quat_1: _math.quat.create()
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.device = undefined;
 
 var _index = __webpack_require__(0);
 
-var _Tw2VariableStore = __webpack_require__(17);
+var _Tw2VariableStore = __webpack_require__(16);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
-var _Tw2MatrixParameter = __webpack_require__(19);
+var _Tw2TextureParameter = __webpack_require__(17);
 
-var _Tw2TextureParameter = __webpack_require__(11);
+var _Tw2Effect = __webpack_require__(20);
 
-var _Tw2Vector4Parameter = __webpack_require__(10);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
-var _Tw2Effect = __webpack_require__(22);
-
-var _Tw2VertexDeclaration = __webpack_require__(13);
-
-var WebGLDebugUtil = __webpack_require__(63);
+var WebGLDebugUtil = __webpack_require__(65);
 
 /**
  * Tw2Device
@@ -904,18 +679,11 @@ function Tw2Device() {
     this._onResize = null;
 
     this.utils = WebGLDebugUtil;
-
-    _Tw2VariableStore.variableStore.RegisterVariable('WorldMat', this.world);
-    _Tw2VariableStore.variableStore.RegisterVariable('ViewMat', this.view);
-    _Tw2VariableStore.variableStore.RegisterVariable('ProjectionMat', this.projection);
-    _Tw2VariableStore.variableStore.RegisterType('ViewProjectionMat', _Tw2MatrixParameter.Tw2MatrixParameter);
-    _Tw2VariableStore.variableStore.RegisterType('ViewportSize', _Tw2Vector4Parameter.Tw2Vector4Parameter);
-    _Tw2VariableStore.variableStore.RegisterType('Time', _Tw2Vector4Parameter.Tw2Vector4Parameter);
 }
 
 /**
  * Creates gl Device
- * @param {canvas} canvas
+ * @param {HTMLCanvasElement} canvas
  * @param {Object} [params]
  * @returns {boolean}
  */
@@ -1040,8 +808,8 @@ Tw2Device.prototype.CreateDevice = function (canvas, params) {
     this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertices), this.gl.STATIC_DRAW);
     this._cameraQuadBuffer = this.gl.createBuffer();
     this._quadDecl = new _Tw2VertexDeclaration.Tw2VertexDeclaration();
-    this._quadDecl.elements.push(new _Tw2VertexDeclaration.Tw2VertexElement(_Tw2VertexDeclaration.Tw2VertexDeclaration.DECL_POSITION, 0, this.gl.FLOAT, 4, 0));
-    this._quadDecl.elements.push(new _Tw2VertexDeclaration.Tw2VertexElement(_Tw2VertexDeclaration.Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
+    this._quadDecl.elements.push(new _Tw2VertexDeclaration.Tw2VertexElement(_Tw2VertexDeclaration.Tw2VertexDeclaration.Type.POSITION, 0, this.gl.FLOAT, 4, 0));
+    this._quadDecl.elements.push(new _Tw2VertexDeclaration.Tw2VertexElement(_Tw2VertexDeclaration.Tw2VertexDeclaration.Type.TEXCOORD, 0, this.gl.FLOAT, 2, 16));
     this._quadDecl.RebuildHash();
 
     this.alphaTestState = {};
@@ -1137,13 +905,13 @@ Tw2Device.prototype.Tick = function () {
     this.dt = this.previousTime === null ? 0 : (now - this.previousTime) * 0.001;
     this.previousTime = now;
 
-    var time = _Tw2VariableStore.variableStore._variables['Time'].value;
+    var time = _Tw2VariableStore.store.GetVariable('Time').value;
     time[3] = time[0];
     time[0] = this.currentTime;
     time[1] = this.currentTime - Math.floor(this.currentTime);
     time[2] = this.frameCounter;
 
-    var viewportSize = _Tw2VariableStore.variableStore._variables['ViewportSize'].value;
+    var viewportSize = _Tw2VariableStore.store.GetVariable('ViewportSize').value;
     viewportSize[0] = this.viewportWidth;
     viewportSize[1] = this.viewportHeight;
     viewportSize[2] = this.viewportWidth;
@@ -1178,10 +946,7 @@ Tw2Device.prototype.SetView = function (matrix) {
     _index.mat4.invert(this.viewInverse, this.view);
     _index.mat4.transpose(this.viewTranspose, this.view);
     _index.mat4.getTranslation(this.eyePosition, this.viewInverse);
-
-    _index.mat4.multiply(this.viewProjection, this.projection, this.view);
-    _index.mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-    _index.mat4.copy(_Tw2VariableStore.variableStore._variables['ViewProjectionMat'], this.viewProjection);
+    this.UpdateViewProjection();
 };
 
 /**
@@ -1195,14 +960,17 @@ Tw2Device.prototype.SetProjection = function (matrix, forceUpdateViewProjection)
     _index.mat4.transpose(this.projectionTranspose, this.projection);
     _index.mat4.invert(this.projectionInverse, this.projection);
     this.GetTargetResolution(this.targetResolution);
-
-    if (forceUpdateViewProjection) {
-        _index.mat4.multiply(this.viewProjection, this.projection, this.view);
-        _index.mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-        _index.mat4.copy(_Tw2VariableStore.variableStore._variables['ViewProjectionMat'].value, this.viewProjection);
-    }
+    if (forceUpdateViewProjection) this.UpdateViewProjection();
 };
 
+/**
+ * Updates the view projection matrix
+ */
+Tw2Device.prototype.UpdateViewProjection = function () {
+    _index.mat4.multiply(this.viewProjection, this.projection, this.view);
+    _index.mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+    _index.mat4.copy(_Tw2VariableStore.store.GetVariable('ViewProjectionMat').value, this.viewProjection);
+};
 /**
  * Gets the device's target resolution
  * @param {vec4} out
@@ -1883,6 +1651,231 @@ Tw2Device.prototype.BLENDOP_MAX = 5;
 var device = exports.device = new Tw2Device();
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Curve = exports.Tw2CurveKey = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint no-unused-vars:0 */
+
+
+/**
+ * Tw2CurveKey base class
+ *
+ * @property {number|string} _id
+ * @property {string} name
+ * @property {number} time
+ * @class
+ */
+var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
+    _classCallCheck(this, Tw2CurveKey);
+
+    this._id = _math.util.generateID();
+    this.name = '';
+    this.time = 0;
+};
+
+/**
+ * Tw2Curve base class
+ *
+ * @property {number|string} _id
+ * @property {string} name
+ * @class
+ */
+
+
+var Tw2Curve = exports.Tw2Curve = function () {
+    function Tw2Curve() {
+        _classCallCheck(this, Tw2Curve);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+    }
+
+    /**
+     * Initializes the Curve
+     */
+
+
+    _createClass(Tw2Curve, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.Sort();
+        }
+
+        /**
+         * Sorts the curve
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort() {}
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return 0;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {}
+
+        /**
+         * Compares curve keys
+         * @param {Tw2CurveKey} a
+         * @param {Tw2CurveKey} b
+         * @returns {number}
+         */
+
+    }], [{
+        key: 'Compare',
+        value: function Compare(a, b) {
+            if (a.time < b.time) return -1;
+            if (a.time > b.time) return 1;
+            return 0;
+        }
+
+        /**
+         * Sorts legacy curve keys
+         * @param {*} curve
+         * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort(curve) {
+            var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : curve.keys;
+
+            if (keys && keys.length) {
+                keys.sort(Tw2Curve.Compare);
+                curve.length = keys[keys.length - 1].time;
+            }
+        }
+
+        /**
+         * Sorts curve keys
+         * @param {*} curve
+         */
+
+    }, {
+        key: 'Sort2',
+        value: function Sort2(curve) {
+            if (curve.keys && curve.keys.length) {
+                curve.keys.sort(Tw2Curve.Compare);
+                var back = curve.keys[curve.keys.length - 1];
+
+                if (back.time > curve.length) {
+                    var preLength = curve.length,
+                        endValue = curve.endValue,
+                        endTangent = curve.endTangent;
+
+                    curve.length = back.time;
+                    curve.endValue = back.value;
+                    curve.endTangent = back.leftTangent;
+
+                    if (preLength > 0) {
+                        back.time = preLength;
+                        back.value = endValue;
+                        back.leftTangent = endTangent;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return Tw2Curve;
+}();
+
+/**
+ * The curve's key dimension
+ * @type {?number}
+ */
+
+
+Tw2Curve.inputDimension = null;
+
+/**
+ * The curve's dimension
+ * @type {?number}
+ */
+Tw2Curve.outputDimension = null;
+
+/**
+ * The curve's current value property
+ * @type {?string}
+ */
+Tw2Curve.valueProperty = null;
+
+/**
+ * The curve's type
+ * @type {?number}
+ */
+Tw2Curve.curveType = null;
+
+/**
+ * The curve's Key constructor
+ * @type {?Tw2CurveKey}
+ */
+Tw2Curve.Key = null;
+
+/**
+ * Interpolation types
+ * @type {?{ string: number}}
+ */
+Tw2Curve.Interpolation = null;
+
+/**
+ * Extrapolation types
+ * @type {?{ string: number}}
+ */
+Tw2Curve.Extrapolation = null;
+
+/**
+ * Curve types
+ * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
+ */
+Tw2Curve.Type = {
+    CURVE: 1,
+    CURVE2: 2,
+    CURVE_MAYA: 3,
+    CURVE_NO_KEYS: 4,
+    SEQUENCER: 100,
+    SEQUENCER2: 101
+};
+
+/**
+ * Class globals
+ * @type {*}
+ */
+Tw2Curve.global = {
+    vec3_0: _math.vec3.create(),
+    vec4_0: _math.vec4.create(),
+    quat_0: _math.quat.create(),
+    quat_1: _math.quat.create()
+};
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1894,11 +1887,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.resMan = exports.Tw2LoadingObject = undefined;
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
-var _Tw2Resource2 = __webpack_require__(12);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2ObjectReader = __webpack_require__(36);
+var _Tw2ObjectReader = __webpack_require__(34);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2841,100 +2834,6 @@ function equals(a, b) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2CurveSequencer = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _curves = __webpack_require__(15);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Tw2CurveSequencer base class
- *
- * @class
- */
-var Tw2CurveSequencer = exports.Tw2CurveSequencer = function (_Tw2Curve) {
-    _inherits(Tw2CurveSequencer, _Tw2Curve);
-
-    function Tw2CurveSequencer() {
-        _classCallCheck(this, Tw2CurveSequencer);
-
-        return _possibleConstructorReturn(this, (Tw2CurveSequencer.__proto__ || Object.getPrototypeOf(Tw2CurveSequencer)).call(this));
-    }
-
-    /**
-     * Legacy sequencer sorting
-     * @param {Tw2CurveSequencer} sequencer
-     */
-
-
-    _createClass(Tw2CurveSequencer, null, [{
-        key: 'Sort',
-        value: function Sort(sequencer) {
-            var curves = sequencer['functions'];
-            if (curves && curves.length) {
-                for (var i = 0; i < curves.length; i++) {
-                    if (curves[i] && 'Sort' in curves[i]) curves[i].Sort();
-                }
-            }
-        }
-
-        /**
-         * Standard sequencer sorting
-         * @param {Tw2CurveSequencer} sequencer
-         */
-
-    }, {
-        key: 'Sort2',
-        value: function Sort2(sequencer) {
-            var names = sequencer.constructor.childProperties;
-            if (names) {
-                for (var i = 0; i < names.length; i++) {
-                    var curve = sequencer[names[i]];
-                    if (curve && 'Sort' in curve) curve.Sort();
-                }
-            }
-        }
-    }]);
-
-    return Tw2CurveSequencer;
-}(_curves.Tw2Curve);
-
-/**
- * The sequencer's curve property names
- * @type {?Array.<string>}
- */
-
-
-Tw2CurveSequencer.childProperties = null;
-
-/**
- * The sequencer's curve array
- * @type {?string}
- */
-Tw2CurveSequencer.childArray = null;
-
-/**
- * Operator types
- * @type {null}
- */
-Tw2CurveSequencer.Operator = null;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3264,18 +3163,112 @@ emitter.log = function (eventName, eventData) {
 };
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2CurveSequencer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _curves = __webpack_require__(14);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2CurveSequencer base class
+ *
+ * @class
+ */
+var Tw2CurveSequencer = exports.Tw2CurveSequencer = function (_Tw2Curve) {
+    _inherits(Tw2CurveSequencer, _Tw2Curve);
+
+    function Tw2CurveSequencer() {
+        _classCallCheck(this, Tw2CurveSequencer);
+
+        return _possibleConstructorReturn(this, (Tw2CurveSequencer.__proto__ || Object.getPrototypeOf(Tw2CurveSequencer)).call(this));
+    }
+
+    /**
+     * Legacy sequencer sorting
+     * @param {Tw2CurveSequencer} sequencer
+     */
+
+
+    _createClass(Tw2CurveSequencer, null, [{
+        key: 'Sort',
+        value: function Sort(sequencer) {
+            var curves = sequencer['functions'];
+            if (curves && curves.length) {
+                for (var i = 0; i < curves.length; i++) {
+                    if (curves[i] && 'Sort' in curves[i]) curves[i].Sort();
+                }
+            }
+        }
+
+        /**
+         * Standard sequencer sorting
+         * @param {Tw2CurveSequencer} sequencer
+         */
+
+    }, {
+        key: 'Sort2',
+        value: function Sort2(sequencer) {
+            var names = sequencer.constructor.childProperties;
+            if (names) {
+                for (var i = 0; i < names.length; i++) {
+                    var curve = sequencer[names[i]];
+                    if (curve && 'Sort' in curve) curve.Sort();
+                }
+            }
+        }
+    }]);
+
+    return Tw2CurveSequencer;
+}(_curves.Tw2Curve);
+
+/**
+ * The sequencer's curve property names
+ * @type {?Array.<string>}
+ */
+
+
+Tw2CurveSequencer.childProperties = null;
+
+/**
+ * The sequencer's curve array
+ * @type {?string}
+ */
+Tw2CurveSequencer.childArray = null;
+
+/**
+ * Operator types
+ * @type {null}
+ */
+Tw2CurveSequencer.Operator = null;
+
+/***/ }),
 /* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(31);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -3348,6 +3341,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * Tw2ParticleForce base class
+ *
+ * @property {number|string} _id
  * @property {string} name
  * @class
  */
@@ -3355,6 +3350,7 @@ var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
     function Tw2ParticleForce() {
         _classCallCheck(this, Tw2ParticleForce);
 
+        this._id = _math.util.generateID();
         this.name = '';
     }
 
@@ -3407,316 +3403,121 @@ Tw2ParticleForce.global = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Vector4Parameter = Tw2Vector4Parameter;
+exports.EveChild = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
 
 var _math = __webpack_require__(0);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
- * Tw2Vector4Parameter
- * @param {string} [name='']
- * @param {vec4|Float32Array} [value=[1,1,1,1]]
+ * EveChild base class
+ *
+ * @property {number|string} _id
  * @property {string} name
- * @property {vec4|Float32Array} value
- * @property {Float32Array} constantBuffer
- * @property {number} offset
- * @constructor
+ * @property {boolean} display
+ * @property {boolean} useSRT
+ * @property {number} lowestLodVisible
+ * @property {boolean} staticTransform
+ * @property {quat} rotation
+ * @property {vec3} translation
+ * @property {vec3} scaling
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {mat4} worldTransformLast
+ * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
+ * @class
  */
-function Tw2Vector4Parameter(name, value) {
-    this.name = name !== 'undefined' ? name : '';
-    this.value = value !== undefined ? _math.vec4.clone(value) : _math.vec4.fromValues(1, 1, 1);
-    this.constantBuffer = null;
-    this.offset = 0;
-}
+var EveChild = exports.EveChild = function () {
+    function EveChild() {
+        _classCallCheck(this, EveChild);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.useSRT = true;
+        this.lowestLodVisible = 2;
+        this.staticTransform = false;
+        this.rotation = _math.quat.create();
+        this.translation = _math.vec3.create();
+        this.scaling = _math.vec3.fromValues(1, 1, 1);
+        this.localTransform = _math.mat4.create();
+        this.worldTransform = _math.mat4.create();
+        this.worldTransformLast = _math.mat4.create();
+        this._perObjectData = null;
+        this.isEffectChild = true;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChild, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentTransform) {
+            if (this.useSRT) {
+                _math.quat.normalize(this.rotation, this.rotation);
+                _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+            }
+
+            _math.mat4.copy(this.worldTransformLast, this.worldTransform);
+            _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {}
+    }]);
+
+    return EveChild;
+}();
 
 /**
- * Bind
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
+ * PerObjectData declarations
+ * @type {{FFEData: *[]}}
  */
-Tw2Vector4Parameter.prototype.Bind = function (constantBuffer, offset, size) {
-    if (this.constantBuffer !== null || size < 4) {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-    return true;
+
+
+EveChild.perObjectDataDecl = {
+    FFEData: [{ name: 'world', size: 16 }, { name: 'worldInverseTranspose', size: 16 }]
 };
 
 /**
- * Unbind
- * @prototype
+ * Class globals and scratch variables
+ * @type {Object}
  */
-Tw2Vector4Parameter.prototype.Unbind = function () {
-    this.constantBuffer = null;
-};
-
-/**
- * Sets a supplied value
- * @param {vec4|Float32Array|Array} value - Vector4 Array
- * @prototype
- */
-Tw2Vector4Parameter.prototype.SetValue = function (value) {
-    _math.vec4.copy(this.value, value);
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2Vector4Parameter.prototype.OnValueChanged = function () {
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2Vector4Parameter.prototype.Apply = function (constantBuffer, offset) {
-    constantBuffer.set(this.value, offset);
-};
-
-/**
- * Gets the current value array
- * @return {vec4|Float32Array} Vector4 Array
- * @prototype
- */
-Tw2Vector4Parameter.prototype.GetValue = function () {
-    if (this.constantBuffer !== null) {
-        return _math.vec4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
-    }
-
-    return _math.vec4.clone(this.value);
-};
-
-/**
- * Returns a value from a specific index of the value array
- * @param {number} index
- * @returns {number}
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector4Parameter.prototype.GetIndexValue = function (index) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    if (this.constantBuffer !== null) {
-        return this.constantBuffer[this.offset + index];
-    }
-
-    return this.value[index];
-};
-
-/**
- * Sets a value at a specific index of the value array
- * @param {number} index
- * @param {number} value
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector4Parameter.prototype.SetIndexValue = function (index, value) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    this.value[index] = value;
-
-    if (this.constantBuffer !== null) {
-        this.constantBuffer[this.offset + index] = value;
-    }
-};
-
-/**
- * Sets all value array elements to a single value
- * @param {number} value - The value to fill the value array elements with
- * @prototype
- */
-Tw2Vector4Parameter.prototype.FillWith = function (value) {
-    this.SetValue([value, value, value, value]);
+EveChild.global = {
+    mat4_0: _math.mat4.create(),
+    vec3_0: _math.vec3.create()
 };
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2TextureParameter = Tw2TextureParameter;
-
-var _Tw2ResMan = __webpack_require__(4);
-
-var _Tw2Device = __webpack_require__(3);
-
-var _Tw2SamplerState = __webpack_require__(18);
-
-/**
- * Tw2TextureParameter
- * @param {string} [name=''] - Name of the texture parameter
- * @param {string} [texturePath=''] - The texture's resource path
- * @property {string} name
- * @property {boolean} useAllOverrides
- * @property {number} addressUMode
- * @property {number} addressVMode
- * @property {number} addressWMode
- * @property {number} filterMode
- * @property {number} mapFilterMode
- * @property {number} maxAnisotropy
- * @property {Tw2TextureRes} textureRes
- * @property {Tw2SamplerState} _sampler
- * @constructor
- */
-function Tw2TextureParameter(name, texturePath) {
-    if (typeof name !== 'undefined') {
-        this.name = name;
-    } else {
-        this.name = '';
-    }
-
-    this.useAllOverrides = false;
-    this.addressUMode = 1;
-    this.addressVMode = 1;
-    this.addressWMode = 1;
-    this.filterMode = 2;
-    this.mipFilterMode = 2;
-    this.maxAnisotropy = 4;
-    this.textureRes = null;
-    this._sampler = null;
-
-    if (typeof texturePath !== 'undefined') {
-        this.resourcePath = texturePath;
-        this.Initialize();
-    } else {
-        this.resourcePath = '';
-    }
-}
-
-/**
- * Gets texture res object
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2TextureRes>} [out]
- */
-Tw2TextureParameter.prototype.GetResource = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.textureRes !== null) {
-        if (out.indexOf(this.textureRes) === -1) {
-            out.push(this.textureRes);
-        }
-    }
-
-    return out;
-};
-
-/**
- * Sets the texture's resource path
- * @param {string} texturePath
- * @constructor
- */
-Tw2TextureParameter.prototype.SetTexturePath = function (texturePath) {
-    this.resourcePath = texturePath;
-    if (this.resourcePath !== '') {
-        this.textureRes = _Tw2ResMan.resMan.GetResource(this.resourcePath);
-    }
-};
-
-/**
- * Initializes the texture parameter
- * @prototype
- */
-Tw2TextureParameter.prototype.Initialize = function () {
-    if (this.resourcePath !== '') {
-        this.textureRes = _Tw2ResMan.resMan.GetResource(this.resourcePath);
-    }
-
-    if (this.useAllOverrides) {
-        this._sampler = new _Tw2SamplerState.Tw2SamplerState();
-        if (this.filterMode === 1) {
-            switch (this.mipFilterMode) {
-                case 0:
-                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST;
-                    break;
-                case 1:
-                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_NEAREST;
-                    break;
-                default:
-                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_LINEAR;
-            }
-            this._sampler.minFilterNoMips = _Tw2Device.device.gl.NEAREST;
-            this._sampler.magFilter = _Tw2Device.device.gl.NEAREST;
-        } else {
-            switch (this.mipFilterMode) {
-                case 0:
-                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR;
-                    break;
-                case 1:
-                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_NEAREST;
-                    break;
-                default:
-                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_LINEAR;
-            }
-            this._sampler.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
-            this._sampler.magFilter = _Tw2Device.device.gl.LINEAR;
-        }
-
-        this._sampler.addressU = _Tw2Device.device.wrapModes[this.addressUMode];
-        this._sampler.addressV = _Tw2Device.device.wrapModes[this.addressVMode];
-        this._sampler.addressW = _Tw2Device.device.wrapModes[this.addressWMode];
-        this._sampler.anisotropy = this.maxAnisotropy;
-        this._sampler.ComputeHash();
-    }
-};
-
-/**
- * Apply
- * @param stage
- * @param sampler
- * @param slices
- * @prototype
- */
-Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices) {
-    if (this.textureRes) {
-        if (this.useAllOverrides) {
-            this._sampler.samplerType = sampler.samplerType;
-            this._sampler.isVolume = sampler.isVolume;
-            this._sampler.registerIndex = sampler.registerIndex;
-            sampler = this._sampler;
-        }
-        _Tw2Device.device.gl.activeTexture(_Tw2Device.device.gl.TEXTURE0 + stage);
-        this.textureRes.Bind(sampler, slices);
-    }
-};
-
-/**
- * Get Value
- * @return {string}
- */
-Tw2TextureParameter.prototype.GetValue = function () {
-    if (this.textureRes) {
-        return this.textureRes.path;
-    }
-
-    return this.resourcePath;
-};
-
-/***/ }),
-/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3916,7 +3717,7 @@ Tw2Resource.prototype.UnregisterNotification = function (notification) {
 };
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3928,7 +3729,9 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2VertexElement = Tw2VertexElement;
 exports.Tw2VertexDeclaration = Tw2VertexDeclaration;
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /**
  * Tw2VertexElement
@@ -3960,27 +3763,33 @@ function Tw2VertexElement(usage, usageIndex, type, elements) {
 
 /**
  * Tw2VertexDeclaration
+ * @param {Array<Array>|Array<Object>} [declarations]
+ * @param {number} [stride]
  * @property {Array.<Tw2VertexElement>} elements
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @constructor
  */
-function Tw2VertexDeclaration() {
+function Tw2VertexDeclaration(declarations, stride) {
     this.elements = [];
     this._elementsSorted = [];
+
+    if (stride !== undefined) this.stride = stride;
+    if (declarations) this.DeclareFromArray(declarations);
 }
 
 /**
  * Tw2 Vertex Declaration Types
- * @type {number}
  */
-Tw2VertexDeclaration.DECL_POSITION = 0;
-Tw2VertexDeclaration.DECL_COLOR = 1;
-Tw2VertexDeclaration.DECL_NORMAL = 2;
-Tw2VertexDeclaration.DECL_TANGENT = 3;
-Tw2VertexDeclaration.DECL_BINORMAL = 4;
-Tw2VertexDeclaration.DECL_TEXCOORD = 5;
-Tw2VertexDeclaration.DECL_BLENDWEIGHT = 6;
-Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
+Tw2VertexDeclaration.Type = {
+    POSITION: 0,
+    COLOR: 1,
+    NORMAL: 2,
+    TANGENT: 3,
+    BINORMAL: 4,
+    TEXCOORD: 5,
+    BLENDWEIGHT: 6,
+    BLENDINDICES: 7
+};
 
 /**
  * CompareDeclarationElements
@@ -4001,7 +3810,8 @@ Tw2VertexDeclaration.CompareDeclarationElements = function (a, b) {
 };
 
 /**
- * Re-sorts elements
+ * Re-sorts elements and then returns the declaration
+ * @returns {Tw2VertexDeclaration}
  * @prototype
  */
 Tw2VertexDeclaration.prototype.RebuildHash = function () {
@@ -4010,6 +3820,7 @@ Tw2VertexDeclaration.prototype.RebuildHash = function () {
         this._elementsSorted[i] = this.elements[i];
     }
     this._elementsSorted.sort(Tw2VertexDeclaration.CompareDeclarationElements);
+    return this;
 };
 
 /**
@@ -4147,8 +3958,51 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
     }
 };
 
+/**
+ * Declares elements from an array
+ * @param {Array} declarations
+ */
+Tw2VertexDeclaration.prototype.DeclareFromArray = function (declarations) {
+    if (this.elements.length) {
+        this.elements.splice(0, this.elements.length);
+    }
+
+    for (var i = 0; i < declarations.length; i++) {
+        var el = declarations[i];
+
+        if (Array.isArray(el)) {
+            this.AddElement.apply(this, _toConsumableArray(el));
+        } else {
+            this.AddElement(el.usage, el.usageIndex, el.type, el.elements, el.offset);
+        }
+    }
+
+    this.RebuildHash();
+};
+
+/**
+ * Creates and adds a Tw2VertexElement from arguments
+ * @param {number|string} usage
+ * @param {number} usageIndex
+ * @param {number|string} type
+ * @param {number} elements
+ * @param {number} offset
+ * @returns {Tw2VertexDeclaration}
+ */
+Tw2VertexDeclaration.prototype.AddElement = function (usage, usageIndex, type, elements, offset) {
+    if (typeof usage === 'string') {
+        usage = Tw2VertexDeclaration.Type[usage.toUpperCase()];
+    }
+
+    if (typeof type === 'string') {
+        type = _Tw2Device.device.gl[type.toUpperCase()];
+    }
+
+    this.elements.push(new Tw2VertexElement(usage, usageIndex, type, elements, offset));
+};
+
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4257,23 +4111,23 @@ var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = func
             var usage = void 0;
             switch (this.elementType) {
                 case Tw2ParticleElementDeclaration.Type.LIFETIME:
-                    usage = _core.Tw2VertexDeclaration.DECL_TANGENT;
+                    usage = _core.Tw2VertexDeclaration.Type.TANGENT;
                     break;
 
                 case Tw2ParticleElementDeclaration.Type.POSITION:
-                    usage = _core.Tw2VertexDeclaration.DECL_POSITION;
+                    usage = _core.Tw2VertexDeclaration.Type.POSITION;
                     break;
 
                 case Tw2ParticleElementDeclaration.Type.VELOCITY:
-                    usage = _core.Tw2VertexDeclaration.DECL_NORMAL;
+                    usage = _core.Tw2VertexDeclaration.Type.NORMAL;
                     break;
 
                 case Tw2ParticleElementDeclaration.Type.MASS:
-                    usage = _core.Tw2VertexDeclaration.DECL_BINORMAL;
+                    usage = _core.Tw2VertexDeclaration.Type.BINORMAL;
                     break;
 
                 default:
-                    usage = _core.Tw2VertexDeclaration.DECL_TEXCOORD;
+                    usage = _core.Tw2VertexDeclaration.Type.TEXCOORD;
             }
 
             return new _core.Tw2VertexElement(usage, this.usageIndex, _core.device.gl.FLOAT, this.GetDimension());
@@ -4298,7 +4152,7 @@ Tw2ParticleElementDeclaration.Type = {
 };
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4308,7 +4162,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Curve = __webpack_require__(2);
+var _Tw2Curve = __webpack_require__(3);
 
 Object.keys(_Tw2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4320,7 +4174,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(93);
+var _Tw2ColorCurve = __webpack_require__(99);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4332,7 +4186,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(94);
+var _Tw2ColorCurve2 = __webpack_require__(100);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4344,7 +4198,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(95);
+var _Tw2EventCurve = __webpack_require__(101);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4356,7 +4210,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(96);
+var _Tw2PerlinCurve = __webpack_require__(102);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4368,7 +4222,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(97);
+var _Tw2QuaternionCurve = __webpack_require__(103);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4380,7 +4234,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(98);
+var _Tw2RandomConstantCurve = __webpack_require__(104);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4392,7 +4246,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(99);
+var _Tw2RigidOrientation = __webpack_require__(105);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4404,7 +4258,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(100);
+var _Tw2RotationCurve = __webpack_require__(106);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4416,7 +4270,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(101);
+var _Tw2ScalarCurve = __webpack_require__(107);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4428,7 +4282,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(102);
+var _Tw2ScalarCurve2 = __webpack_require__(108);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4440,7 +4294,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(103);
+var _Tw2SineCurve = __webpack_require__(109);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4452,7 +4306,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(104);
+var _Tw2Vector2Curve = __webpack_require__(110);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4464,7 +4318,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(105);
+var _Tw2Vector3Curve = __webpack_require__(111);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4476,7 +4330,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(106);
+var _Tw2VectorCurve = __webpack_require__(112);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4489,6 +4343,105 @@ Object.keys(_Tw2VectorCurve).forEach(function (key) {
 });
 
 /***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveObject base class
+ * Todo: Normalize transforms, use get/set for compatibility
+ *
+ * @property {number} _id
+ * @property {string} name
+ * @property {boolean} display
+ * @class
+ */
+var EveObject = exports.EveObject = function () {
+    function EveObject() {
+        _classCallCheck(this, EveObject);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+    }
+
+    /**
+     * Initializes the object
+     */
+
+
+    _createClass(EveObject, [{
+        key: 'Initialize',
+        value: function Initialize() {}
+
+        /**
+         * Gets object resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Update view dependant data
+         */
+
+    }, {
+        key: 'UpdateViewDependantData',
+        value: function UpdateViewDependantData() {}
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {}
+
+        /**
+         * Accumulates batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {}
+    }]);
+
+    return EveObject;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveObject.global = null;
+
+/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4498,366 +4451,227 @@ Object.keys(_Tw2VectorCurve).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveBasicPerObjectData = EveBasicPerObjectData;
-exports.EveTransform = EveTransform;
+exports.store = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-var _core = __webpack_require__(1);
+var _Tw2ResMan = __webpack_require__(4);
+
+var _Tw2EventEmitter = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * EveBasicPerObjectData
- * @parameter perObjectVSData - Vertex shader data
- * @parameter perObjectPSData - Pixel shader data
- * @parameter perObjectFFEData - Fixed Function Emulation data
- * @constructor
+ * Tw2VariableStore
+ * 
+ * @property {Object.< string, Parameter>} _variables
+ * @property {Object.< string, Function>} _types
+ * @class
  */
-function EveBasicPerObjectData() {
-    this.perObjectVSData = null;
-    this.perObjectPSData = null;
-    this.perObjectFFEData = null;
-}
+var Tw2VariableStore = function () {
+    function Tw2VariableStore() {
+        _classCallCheck(this, Tw2VariableStore);
 
-/**
- * SetPerObjectDataToDevice
- * @param constantBufferHandles
- * @constructor
- */
-EveBasicPerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles) {
-    if (this.perObjectVSData && constantBufferHandles[3]) {
-        _core.device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
-    }
-    if (this.perObjectPSData && constantBufferHandles[4]) {
-        _core.device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
-    }
-    if (this.perObjectFFEData && constantBufferHandles[5]) {
-        _core.device.gl.uniform4fv(constantBufferHandles[5], this.perObjectFFEData.data);
-    }
-};
-
-/**
- * EveTransform
- * @property {String} name
- * @property {Tw2Mesh} mesh
- * @property {Number} Modifier
- * @property {Number} NONE - modifier option
- * @property {Number} BILLBOARD - modifier option
- * @property {Number} TRANSLATE_WITH_CAMERA - modifier option
- * @property {Number} LOOK_AT_CAMERA - modifier option
- * @property {Number} SIMPLE_HALO - modifier option
- * @property {Number} EVE_CAMERA_ROTATION_ALIGNED - modifier option
- * @property {Number} EVE_BOOSTER - modifier option
- * @property {Number} EVE_SIMPLE_HALO - modifier option
- * @property {Number} EVE_CAMERA_ROTATION - modifier option
- * @property {Number} sortValueMultiplier
- * @property {Number} distanceBasedScaleArg1
- * @property {Number} distanceBasedScaleArg2
- * @property {Boolean} useDistanceBasedScale
- * @property {Array.<Tw2ParticleSystem>} particleSystems
- * @property {Array.<Tw2StaticEmitter|Tw2DynamicEmitter>} particleEmitters
- * @property {Array.<Tw2CurveSet>} curveSets
- * @property {Array} children
- * @property {Boolean} display                                      - Enables/ disables all batch accumulations
- * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
- * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
- * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
- * @property {vec3} scaling
- * @property {vec3} translation
- * @property {quat} rotation
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {Array.<mat4>} _mat4Cache
- * @property {Array.<vec3>} _vec3Cache
- * @property {EveBasicPerObjectData} _perObjectData
- * @constructor
- */
-function EveTransform() {
-    this.name = '';
-    this.mesh = null;
-
-    this.modifier = EveTransform.Modifier.NONE;
-
-    this.sortValueMultiplier = 1.0;
-    this.distanceBasedScaleArg1 = 0.2;
-    this.distanceBasedScaleArg2 = 0.63;
-    this.useDistanceBasedScale = false;
-
-    this.particleSystems = [];
-    this.particleEmitters = [];
-    this.curveSets = [];
-    this.children = [];
-
-    this.display = true;
-    this.visible = {};
-    this.visible.mesh = true;
-    this.visible.children = true;
-
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.translation = _math.vec3.create();
-    this.rotation = _math.quat.create();
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-
-    this._perObjectData = new EveBasicPerObjectData();
-    this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-    this._perObjectData.perObjectFFEData.Declare('World', 16);
-    this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
-    this._perObjectData.perObjectFFEData.Create();
-}
-
-/**
- * Scratch variables
- */
-EveTransform.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    vec3_3: _math.vec3.create(),
-    vec3_4: _math.vec3.create(),
-    vec3_5: _math.vec3.create(),
-    vec3_6: _math.vec3.create(),
-    vec3_7: _math.vec3.create(),
-    mat4_0: _math.mat4.create(),
-    mat4_1: _math.mat4.create(),
-    mat4_2: _math.mat4.create()
-};
-
-/**
- * Initializes the EveTransform
- */
-EveTransform.prototype.Initialize = function () {
-    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-};
-
-/**
- * Gets transform res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @param {Boolean} excludeChildren - True to exclude children's res objects
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveTransform.prototype.GetResources = function (out, excludeChildren) {
-    if (out === undefined) {
-        out = [];
+        this._variables = {};
+        this._types = {};
     }
 
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
+    /**
+     * Gets a variable by it's name
+     * @param {string} name
+     * @returns {?Parameter}
+     */
 
-    if (!excludeChildren) {
-        for (var i = 0; i < this.children; i++) {
-            this.children[i].GetResources(out);
+
+    _createClass(Tw2VariableStore, [{
+        key: 'GetVariable',
+        value: function GetVariable(name) {
+            return name && name in this._variables ? this._variables[name] : null;
         }
-    }
 
-    return out;
-};
+        /**
+         * Checks if a variable of a given name exists
+         * @param {string} name
+         * @returns {boolean}
+         */
 
-/**
- * Gets render batches for accumulation
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveTransform.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-
-    if (this.visible.mesh && this.mesh !== null) {
-        _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
-        _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
-        if (perObjectData) {
-            this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
-            this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
+    }, {
+        key: 'HasVariable',
+        value: function HasVariable(name) {
+            return name && name in this._variables;
         }
-        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-    }
 
-    if (this.visible.children) {
-        for (var i = 0; i < this.children.length; ++i) {
-            this.children[i].GetBatches(mode, accumulator, perObjectData);
+        /**
+         * Gets a type by it's name
+         * @param {string} name
+         * @returns {?Function}
+         */
+
+    }, {
+        key: 'GetType',
+        value: function GetType(name) {
+            name = name.toLowerCase();
+            return name && name in this._types ? this._types[name] : null;
         }
-    }
-};
 
-/**
- * Per frame update
- * @param {Number} dt - delta time
- */
-EveTransform.prototype.Update = function (dt) {
-    for (var i = 0; i < this.children.length; ++i) {
-        this.children[i].Update(dt);
-    }
-    for (var i = 0; i < this.particleEmitters.length; ++i) {
-        this.particleEmitters[i].Update(dt);
-    }
-    for (var i = 0; i < this.particleSystems.length; ++i) {
-        this.particleSystems[i].Update(dt);
-    }
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-};
+        /**
+         * Gets a type by value
+         * @param {*} value
+         * @returns {?Function}}
+         */
 
-/**
- * multiply3x3
- */
-EveTransform.Multiply3x3 = function (a, b, c) {
-    c || (c = b);
-    var d = b[0],
-        e = b[1];
-    b = b[2];
-    c[0] = a[0] * d + a[4] * e + a[8] * b;
-    c[1] = a[1] * d + a[5] * e + a[9] * b;
-    c[2] = a[2] * d + a[6] * e + a[10] * b;
-    return c;
-};
-
-/**
- * Per frame update
- * @param {mat4} parentTransform
- */
-EveTransform.prototype.UpdateViewDependentData = function (parentTransform) {
-    var finalScale,
-        d,
-        temp,
-        camPos,
-        scale,
-        invView,
-        scratch = EveTransform.scratch,
-        parentScale = scratch.vec3_7;
-
-    _math.quat.normalize(this.rotation, this.rotation);
-    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-    _math.mat4.getScaling(parentScale, parentTransform);
-
-    switch (this.modifier) {
-        case EveTransform.Modifier.BILLBOARD:
-        case EveTransform.Modifier.SIMPLE_HALO:
-            _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-            finalScale = _math.vec3.multiply(scratch.vec3_0, this.scaling, parentScale);
-
-            if (this.modifier === EveTransform.Modifier.SIMPLE_HALO) {
-                camPos = _core.device.GetEyePosition();
-                d = _math.vec3.subtract(scratch.vec3_1, camPos, this.worldTransform.subarray(12));
-                temp = scratch.vec3_2;
-                _math.vec3.normalize(temp, this.worldTransform.subarray(8));
-                _math.vec3.normalize(d, d);
-                scale = _math.vec3.dot(d, temp);
-                if (scale < 0) scale = 0;
-                _math.vec3.scale(finalScale, finalScale, scale * scale);
+    }, {
+        key: 'GetTypeFromValue',
+        value: function GetTypeFromValue(value) {
+            for (var type in this._types) {
+                if (this._types.hasOwnProperty(type)) {
+                    var Type = this._types[type];
+                    if (Type.is && Type.is(value)) return Type;
+                }
             }
+            return null;
+        }
 
-            invView = _core.device.viewInverse;
-            this.worldTransform[0] = invView[0] * finalScale[0];
-            this.worldTransform[1] = invView[1] * finalScale[0];
-            this.worldTransform[2] = invView[2] * finalScale[0];
-            this.worldTransform[4] = invView[4] * finalScale[1];
-            this.worldTransform[5] = invView[5] * finalScale[1];
-            this.worldTransform[6] = invView[6] * finalScale[1];
-            this.worldTransform[8] = invView[8] * finalScale[2];
-            this.worldTransform[9] = invView[9] * finalScale[2];
-            this.worldTransform[10] = invView[10] * finalScale[2];
-            break;
+        /**
+         * Creates A Tw2 parameter from a supplied value and/or Type
+         * @param {string} name
+         * @param {*} [value]
+         * @param {string|Function} [Type]
+         * @returns {?Parameter}
+         */
 
-        case EveTransform.Modifier.EVE_CAMERA_ROTATION:
-            var newTranslation = _math.vec3.transformMat4(scratch.vec3_0, this.translation, parentTransform);
-            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, newTranslation, this.scaling);
-            _math.mat4.multiply(this.worldTransform, _core.device.viewInverse, this.localTransform);
-            this.worldTransform[12] = this.localTransform[12];
-            this.worldTransform[13] = this.localTransform[13];
-            this.worldTransform[14] = this.localTransform[14];
-            break;
-
-        case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
-        case EveTransform.Modifier.EVE_SIMPLE_HALO:
-            // 3 4 3 3 3 4 3 3
-            _math.mat4.translate(this.worldTransform, parentTransform, this.translation);
-            camPos = _core.device.GetEyePosition();
-            d = scratch.vec3_0;
-            d[0] = camPos[0] - this.worldTransform[12];
-            d[1] = camPos[1] - this.worldTransform[13];
-            d[2] = camPos[2] - this.worldTransform[14];
-
-            var parentT = _math.mat4.transpose(scratch.mat4_0, parentTransform);
-            var camFwd = _math.vec3.copy(scratch.vec3_1, d);
-            _math.vec3.transformMat4(camFwd, camFwd, parentT);
-            _math.vec3.divide(camFwd, camFwd, parentScale);
-            _math.vec3.normalize(camFwd, camFwd);
-
-            var right = _math.vec3.set(scratch.vec3_2, _core.device.view[0], _core.device.view[4], _core.device.view[8]);
-            _math.vec3.transformMat4(right, right, parentT);
-            _math.vec3.normalize(right, right);
-
-            var up = _math.vec3.cross(scratch.vec3_3, camFwd, right);
-            _math.vec3.normalize(up, up);
-
-            _math.vec3.cross(right, up, camFwd);
-
-            var alignMat = scratch.mat4_1;
-            alignMat[0] = right[0];
-            alignMat[1] = right[1];
-            alignMat[2] = right[2];
-            alignMat[4] = up[0];
-            alignMat[5] = up[1];
-            alignMat[6] = up[2];
-            alignMat[8] = camFwd[0];
-            alignMat[9] = camFwd[1];
-            alignMat[10] = camFwd[2];
-            alignMat[15] = 1;
-            var rotationTransform = _math.mat4.fromQuat(scratch.mat4_2, this.rotation);
-            _math.mat4.multiply(alignMat, alignMat, rotationTransform);
-
-            if (this.modifier === EveTransform.Modifier.EVE_SIMPLE_HALO) {
-                var forward = _math.vec3.normalize(scratch.vec3_4, this.worldTransform.subarray(8));
-                var dirToCamNorm = _math.vec3.normalize(d, d);
-                scale = -_math.vec3.dot(dirToCamNorm, forward);
-                if (scale < 0) scale = 0;
-                _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
-                _math.mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * scale, this.scaling[1] * scale, this.scaling[2] * scale]);
+    }, {
+        key: 'CreateType',
+        value: function CreateType(name, value, Type) {
+            if (Type) {
+                if (typeof Type === 'string') {
+                    Type = this.GetType(Type);
+                }
             } else {
-                _math.mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
-                _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                Type = this.GetTypeFromValue(value);
             }
-            break;
 
-        case EveTransform.Modifier.LOOK_AT_CAMERA:
-            _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-            invView = _math.mat4.lookAt(scratch.mat4_0, _core.device.viewInverse.subarray(12), this.worldTransform.subarray(12), [0, 1, 0]);
-            _math.mat4.transpose(invView, invView);
-            finalScale = _math.vec3.multiply(scratch.vec3_0, this.scaling, parentScale);
-            this.worldTransform[0] = invView[0] * finalScale[0];
-            this.worldTransform[1] = invView[1] * finalScale[0];
-            this.worldTransform[2] = invView[2] * finalScale[0];
-            this.worldTransform[4] = invView[4] * finalScale[1];
-            this.worldTransform[5] = invView[5] * finalScale[1];
-            this.worldTransform[6] = invView[6] * finalScale[1];
-            this.worldTransform[8] = invView[8] * finalScale[2];
-            this.worldTransform[9] = invView[9] * finalScale[2];
-            this.worldTransform[10] = invView[10] * finalScale[2];
-            break;
+            return Type ? new Type(name, value) : null;
+        }
 
-        default:
-            _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-    }
+        /**
+         * Registers a variable if it hasn't already been registered
+         * @param {string} name
+         * @param {*} value
+         * @param {Function} [Type]
+         * @returns {?Parameter} The parameter registered with the given name
+         */
 
-    for (var i = 0; i < this.children.length; ++i) {
-        this.children[i].UpdateViewDependentData(this.worldTransform);
-    }
-};
+    }, {
+        key: 'RegisterVariable',
+        value: function RegisterVariable(name, value, Type) {
+            if (!this.HasVariable(name)) {
+                var variable = this.CreateType(name, value, Type);
+                if (variable) {
+                    this._variables[name] = variable;
+                    _Tw2EventEmitter.emitter.log('store.registered', {
+                        log: 'debug',
+                        msg: 'Registered Variable: ' + name
+                    });
+                }
+            }
 
-EveTransform.Modifier = {
-    NONE: 0,
-    BILLBOARD: 1,
-    TRANSLATE_WITH_CAMERA: 2,
-    LOOK_AT_CAMERA: 3,
-    SIMPLE_HALO: 4,
-    EVE_CAMERA_ROTATION_ALIGNED: 100,
-    EVE_BOOSTER: 101,
-    EVE_SIMPLE_HALO: 102,
-    EVE_CAMERA_ROTATION: 103
-};
+            return name in this._variables ? this._variables[name] : null;
+        }
+
+        /**
+         * Registers a variable type if it hasn't already been registered
+         * @param {string} name
+         * @param {Function} Constructor
+         * @returns {?Function} The type registered with the given name
+         */
+
+    }, {
+        key: 'RegisterType',
+        value: function RegisterType(name, Constructor) {
+            name = name.toLowerCase();
+            if (name && typeof Constructor === 'function' && !this._types[name]) {
+                this._types[name] = Constructor;
+                _Tw2EventEmitter.emitter.log('store.registered', {
+                    log: 'debug',
+                    msg: 'Registered Type: ' + name
+                });
+            }
+            return name in this._types ? this._types[name] : null;
+        }
+
+        /**
+         * Registers variables from an object or array of objects
+         * @param {{string:*}} obj
+         */
+
+    }, {
+        key: 'RegisterVariables',
+        value: function RegisterVariables(obj) {
+            Tw2VariableStore.toKeyValue(this, 'RegisterVariable', obj);
+        }
+
+        /**
+         * Registers variable Types
+         * @param {{string: Function}} obj
+         */
+
+    }, {
+        key: 'RegisterTypes',
+        value: function RegisterTypes(obj) {
+            Tw2VariableStore.toKeyValue(this, 'RegisterType', obj);
+        }
+
+        /**
+         * Register
+         * @param {*} [opt={}]
+         */
+
+    }, {
+        key: 'Register',
+        value: function Register(opt) {
+            if (opt) {
+                if (opt['uuid']) {
+                    _math.util.generateID = _math.util.generateUUID;
+                }
+
+                this.RegisterTypes(opt.types);
+                this.RegisterVariables(opt.variables);
+
+                _Tw2ResMan.resMan.Register(opt);
+            }
+        }
+
+        /**
+         * Passes key:values from an object or array of objects to an internal function
+         * @param {*} target
+         * @param {string} funcName
+         * @param {Array|{}} obj
+         * @returns {boolean}
+         */
+
+    }], [{
+        key: 'toKeyValue',
+        value: function toKeyValue(target, funcName, obj) {
+            if (obj && funcName && funcName in target) {
+                obj = Array.isArray(obj) ? obj : [obj];
+                for (var i = 0; i < obj.length; i++) {
+                    for (var key in obj[i]) {
+                        if (obj[i].hasOwnProperty(key)) {
+                            target[funcName](key, obj[i][key]);
+                        }
+                    }
+                }
+            }
+        }
+    }]);
+
+    return Tw2VariableStore;
+}();
+
+var store = exports.store = new Tw2VariableStore();
 
 /***/ }),
 /* 17 */
@@ -4869,420 +4683,176 @@ EveTransform.Modifier = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.variableStore = undefined;
+exports.Tw2TextureParameter = Tw2TextureParameter;
 
-var _Tw2MatrixParameter = __webpack_require__(19);
+var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Vector4Parameter = __webpack_require__(10);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2Vector3Parameter = __webpack_require__(34);
-
-var _Tw2Vector2Parameter = __webpack_require__(35);
-
-var _Tw2FloatParameter = __webpack_require__(20);
-
-var _Tw2TextureParameter = __webpack_require__(11);
+var _Tw2SamplerState = __webpack_require__(19);
 
 /**
- * Tw2VariableStore
- * @property {Object.< string, Parameter>} _variables
- * @constructor
- */
-function Tw2VariableStore() {
-    this._variables = {};
-}
-
-/**
- * Registers a variable
- * @param {string} name
- * @param {string|number|Float32Array|vec3|mat4} value
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type) {
-    return this._variables[name] = new type(name, value);
-};
-
-/**
- * Registers a variable without a value
- * @param {string} name
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterType = function (name, type) {
-    return this._variables[name] = new type(name);
-};
-
-/**
- * Gets A Tw2 parameter constructor from a supplied value
- * @param {Number|String|Array.<Number>|Float32Array} value
- * @returns {null|Parameter}
- */
-Tw2VariableStore.GetTw2ParameterType = function (value) {
-    if (value && value.constructor.name.toUpperCase().includes('ARRAY')) {
-        switch (value.length) {
-            case 16:
-                return _Tw2MatrixParameter.Tw2MatrixParameter;
-
-            case 4:
-                return _Tw2Vector4Parameter.Tw2Vector4Parameter;
-
-            case 3:
-                return _Tw2Vector3Parameter.Tw2Vector3Parameter;
-
-            case 2:
-                return _Tw2Vector2Parameter.Tw2Vector2Parameter;
-
-            case 1:
-                return _Tw2FloatParameter.Tw2FloatParameter;
-        }
-    } else if (typeof value === 'number') {
-        return _Tw2FloatParameter.Tw2FloatParameter;
-    } else if (typeof value === 'string') {
-        return _Tw2TextureParameter.Tw2TextureParameter;
-    }
-};
-
-/**
- * Registers a variable without a type
- * @param {string} name
- * @param {string|number|Float32Array} value
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariable = function (name, value) {
-    var Type = Tw2VariableStore.GetTw2ParameterType(value);
-    return Type ? this.RegisterVariableWithType(name, value, Type) : null;
-};
-
-/**
- * Registers variables from an object or array of objects
- * @param obj
- */
-Tw2VariableStore.prototype.RegisterVariables = function (obj) {
-    if (obj) {
-        obj = Array.isArray(obj) ? obj : [obj];
-        for (var i = 0; i < obj.length; i++) {
-            for (var key in obj[i]) {
-                if (obj[i].hasOwnProperty(key)) {
-                    this.RegisterVariable(key, obj[i][key]);
-                }
-            }
-        }
-    }
-};
-
-/**
- * Register
- * @param opt
- */
-Tw2VariableStore.prototype.Register = function (opt) {
-    if (opt) {
-        this.RegisterVariables(opt.variables);
-    }
-};
-
-var variableStore = exports.variableStore = new Tw2VariableStore();
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2SamplerState = Tw2SamplerState;
-
-var _Tw2Device = __webpack_require__(3);
-
-/**
- * Tw2SamplerState
- * @property {number} registerIndex
+ * Tw2TextureParameter
+ * @param {string} [name=''] - Name of the texture parameter
+ * @param {string} [texturePath=''] - The texture's resource path
  * @property {string} name
- * @property {number} minFilter
- * @property {number} maxFilter
- * @property {number} minFilterNoMips
- * @property {number} addressU
- * @property {number} addressV
- * @property {number} addressW
- * @property {number} anisotropy
- * @property samplerType
- * @property {boolean} isVolume
- * @property {number} hash
+ * @property {boolean} useAllOverrides
+ * @property {number} addressUMode
+ * @property {number} addressVMode
+ * @property {number} addressWMode
+ * @property {number} filterMode
+ * @property {number} mapFilterMode
+ * @property {number} maxAnisotropy
+ * @property {Tw2TextureRes} textureRes
+ * @property {Tw2SamplerState} _sampler
  * @constructor
  */
-function Tw2SamplerState() {
-    this.registerIndex = 0;
-    this.name = '';
-    this.minFilter = _Tw2Device.device.gl.LINEAR;
-    this.maxFilter = _Tw2Device.device.gl.LINEAR;
-    this.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
-    this.addressU = _Tw2Device.device.gl.REPEAT;
-    this.addressV = _Tw2Device.device.gl.REPEAT;
-    this.addressW = _Tw2Device.device.gl.REPEAT;
-    this.anisotropy = 1;
-    this.samplerType = _Tw2Device.device.gl.TEXTURE_2D;
-    this.isVolume = false;
-    this.hash = 0;
-}
-
-/**
- * Computes the sampler hash
- * @prototype
- */
-Tw2SamplerState.prototype.ComputeHash = function () {
-    this.hash = 2166136261;
-    this.hash *= 16777619;
-    this.hash ^= this.minFilter;
-    this.hash *= 16777619;
-    this.hash ^= this.maxFilter;
-    this.hash *= 16777619;
-    this.hash ^= this.addressU;
-    this.hash *= 16777619;
-    this.hash ^= this.addressV;
-    this.hash *= 16777619;
-    this.hash ^= this.anisotropy;
-};
-
-/**
- * Apply
- * @param {boolean} hasMipMaps
- * @prototype
- */
-Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
-    var targetType = this.samplerType;
-    var d = _Tw2Device.device;
-    var gl = d.gl;
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : gl.CLAMP_TO_EDGE);
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : gl.CLAMP_TO_EDGE);
-    gl.texParameteri(targetType, gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
-    gl.texParameteri(targetType, gl.TEXTURE_MAG_FILTER, this.magFilter);
-    if (d.ext.AnisotropicFilter && d.enableAnisotropicFiltering) {
-        gl.texParameterf(targetType, d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
-    }
-};
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2MatrixParameter = Tw2MatrixParameter;
-
-var _math = __webpack_require__(0);
-
-/**
- * Tw2MatrixParameter
- * @param {string} [name='']
- * @param {mat4|Float32Array|Array} [value=mat4.create()]
- * @property {string} name
- * @property {mat4|Float32Array} value
- * @property {Float32Array} constantBuffer
- * @property {number} offset
- * @constructor
- */
-function Tw2MatrixParameter(name, value) {
-    this.name = name !== undefined ? name : '';
-    this.value = value !== undefined ? _math.mat4.clone(value) : _math.mat4.create();
-    this.constantBuffer = null;
-    this.offset = 0;
-}
-
-/**
- * Binds the parameter's value to a constant buffer
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
- */
-Tw2MatrixParameter.prototype.Bind = function (constantBuffer, offset, size) {
-    if (this.constantBuffer !== null || size < 16) {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-};
-
-/**
- * Unbinds the parameter's constant buffer
- * @prototype
- */
-Tw2MatrixParameter.prototype.UnBind = function () {
-    this.constantBuffer = null;
-};
-
-/**
- * Sets a supplied value
- * @param {mat4} value
- * @prototype
- */
-Tw2MatrixParameter.prototype.SetValue = function (value) {
-    _math.mat4.copy(this.value, value);
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Gets the current value
- * @return {mat4|Float32Array}
- * @prototype
- */
-Tw2MatrixParameter.prototype.GetValue = function () {
-    if (this.constantBuffer !== null) {
-        return _math.mat4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
-    }
-
-    return _math.mat4.clone(this.value);
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2MatrixParameter.prototype.Apply = function (constantBuffer, offset) {
-    constantBuffer.set(this.value, offset);
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2MatrixParameter.prototype.OnValueChanged = function () {
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2FloatParameter = Tw2FloatParameter;
-/**
- * A Tw2 Parameter
- * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
- */
-
-/**
- * Tw2FloatParameter
- * @param {string} [name='']
- * @param {number} [value=1]
- * @property {string} name
- * @property {number} value
- * @property {null|Array} constantBuffer
- * @property {null|number} offset
- * @constructor
- */
-function Tw2FloatParameter(name, value) {
+function Tw2TextureParameter(name, texturePath) {
     if (typeof name !== 'undefined') {
         this.name = name;
     } else {
         this.name = '';
     }
-    if (typeof value !== 'undefined') {
-        if (value.constructor.name.toUpperCase().includes('ARRAY')) {
-            this.value = value[0];
-        } else {
-            this.value = value;
-        }
+
+    this.useAllOverrides = false;
+    this.addressUMode = 1;
+    this.addressVMode = 1;
+    this.addressWMode = 1;
+    this.filterMode = 2;
+    this.mipFilterMode = 2;
+    this.maxAnisotropy = 4;
+    this.textureRes = null;
+    this._sampler = null;
+
+    if (typeof texturePath !== 'undefined') {
+        this.resourcePath = texturePath;
+        this.Initialize();
     } else {
-        this.value = 1;
+        this.resourcePath = '';
     }
-    this.constantBuffer = null;
-    this.offset = null;
 }
 
 /**
- * Binds the parameter to a constant buffer
- * @param {Array} constantBuffer
- * @param {number} offset
- * @param {number} [size=] - unused
+ * Gets texture res object
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2TextureRes>} [out]
+ */
+Tw2TextureParameter.prototype.GetResource = function (out) {
+    if (out === undefined) {
+        out = [];
+    }
+
+    if (this.textureRes !== null) {
+        if (out.indexOf(this.textureRes) === -1) {
+            out.push(this.textureRes);
+        }
+    }
+
+    return out;
+};
+
+/**
+ * Sets the texture's resource path
+ * @param {string} texturePath
+ * @constructor
+ */
+Tw2TextureParameter.prototype.SetTexturePath = function (texturePath) {
+    this.resourcePath = texturePath;
+    if (this.resourcePath !== '') {
+        this.textureRes = _Tw2ResMan.resMan.GetResource(this.resourcePath);
+    }
+};
+
+/**
+ * Initializes the texture parameter
+ * @prototype
+ */
+Tw2TextureParameter.prototype.Initialize = function () {
+    if (this.resourcePath !== '') {
+        this.textureRes = _Tw2ResMan.resMan.GetResource(this.resourcePath);
+    }
+
+    if (this.useAllOverrides) {
+        this._sampler = new _Tw2SamplerState.Tw2SamplerState();
+        if (this.filterMode === 1) {
+            switch (this.mipFilterMode) {
+                case 0:
+                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST;
+                    break;
+                case 1:
+                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_NEAREST;
+                    break;
+                default:
+                    this._sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_LINEAR;
+            }
+            this._sampler.minFilterNoMips = _Tw2Device.device.gl.NEAREST;
+            this._sampler.magFilter = _Tw2Device.device.gl.NEAREST;
+        } else {
+            switch (this.mipFilterMode) {
+                case 0:
+                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR;
+                    break;
+                case 1:
+                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_NEAREST;
+                    break;
+                default:
+                    this._sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_LINEAR;
+            }
+            this._sampler.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
+            this._sampler.magFilter = _Tw2Device.device.gl.LINEAR;
+        }
+
+        this._sampler.addressU = _Tw2Device.device.wrapModes[this.addressUMode];
+        this._sampler.addressV = _Tw2Device.device.wrapModes[this.addressVMode];
+        this._sampler.addressW = _Tw2Device.device.wrapModes[this.addressWMode];
+        this._sampler.anisotropy = this.maxAnisotropy;
+        this._sampler.ComputeHash();
+    }
+};
+
+/**
+ * Apply
+ * @param stage
+ * @param sampler
+ * @param slices
+ * @prototype
+ */
+Tw2TextureParameter.prototype.Apply = function (stage, sampler, slices) {
+    if (this.textureRes) {
+        if (this.useAllOverrides) {
+            this._sampler.samplerType = sampler.samplerType;
+            this._sampler.isVolume = sampler.isVolume;
+            this._sampler.registerIndex = sampler.registerIndex;
+            sampler = this._sampler;
+        }
+        _Tw2Device.device.gl.activeTexture(_Tw2Device.device.gl.TEXTURE0 + stage);
+        this.textureRes.Bind(sampler, slices);
+    }
+};
+
+/**
+ * Get Value
+ * @return {string}
+ */
+Tw2TextureParameter.prototype.GetValue = function () {
+    if (this.textureRes) {
+        return this.textureRes.path;
+    }
+
+    return this.resourcePath;
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
  * @returns {boolean}
- * @prototype
  */
-Tw2FloatParameter.prototype.Bind = function (constantBuffer, offset, size) {
-    if (this.constantBuffer !== null || size < 1) {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-};
-
-/**
- * Unbinds the parameter from it's constant buffer
- * @prototype
- */
-Tw2FloatParameter.prototype.Unbind = function () {
-    this.constantBuffer = null;
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2FloatParameter.prototype.OnValueChanged = function () {
-    if (this.constantBuffer !== null) {
-        this.constantBuffer[this.offset] = this.value;
-    }
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2FloatParameter.prototype.Apply = function (constantBuffer, offset) {
-    constantBuffer[offset] = this.value;
-};
-
-/**
- * Gets the current value
- * @prototype
- */
-Tw2FloatParameter.prototype.GetValue = function () {
-    if (this.constantBuffer !== null) {
-        return this.constantBuffer[this.offset];
-    }
-
-    return this.value;
-};
-
-/**
- * Sets a supplied value
- * @prototype
- */
-Tw2FloatParameter.prototype.SetValue = function (value) {
-    this.value = value;
-    if (this.constantBuffer !== null) {
-        this.constantBuffer[this.offset] = this.value;
-    }
+Tw2TextureParameter.is = function (value) {
+    return typeof value === 'string';
 };
 
 /***/ }),
-/* 21 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5415,7 +4985,7 @@ Tw2BinaryReader.prototype.ReadString = function () {
 };
 
 /***/ }),
-/* 22 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5425,19 +4995,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Tw2SamplerOverride = Tw2SamplerOverride;
-exports.Tw2Effect = Tw2Effect;
+exports.Tw2SamplerState = Tw2SamplerState;
 
-var _Tw2Device = __webpack_require__(3);
-
-var _Tw2ResMan = __webpack_require__(4);
-
-var _Tw2VariableStore = __webpack_require__(17);
-
-var _Tw2SamplerState = __webpack_require__(18);
-
-var _Tw2TextureParameter = __webpack_require__(11);
-
-var _Tw2VariableParameter = __webpack_require__(37);
+var _Tw2Device = __webpack_require__(2);
 
 /**
  * Tw2SamplerOverride
@@ -5473,7 +5033,7 @@ function Tw2SamplerOverride() {
      */
     this.GetSampler = function (originalSampler) {
         if (!sampler) {
-            sampler = new _Tw2SamplerState.Tw2SamplerState();
+            sampler = new Tw2SamplerState();
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
             if (this.filter === 1) {
@@ -5522,325 +5082,804 @@ function Tw2SamplerOverride() {
 }
 
 /**
+ * Tw2SamplerState
+ * @property {number} registerIndex
+ * @property {string} name
+ * @property {number} minFilter
+ * @property {number} maxFilter
+ * @property {number} minFilterNoMips
+ * @property {number} addressU
+ * @property {number} addressV
+ * @property {number} addressW
+ * @property {number} anisotropy
+ * @property samplerType
+ * @property {boolean} isVolume
+ * @property {number} hash
+ * @constructor
+ */
+function Tw2SamplerState() {
+    this.registerIndex = 0;
+    this.name = '';
+    this.minFilter = _Tw2Device.device.gl.LINEAR;
+    this.maxFilter = _Tw2Device.device.gl.LINEAR;
+    this.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
+    this.addressU = _Tw2Device.device.gl.REPEAT;
+    this.addressV = _Tw2Device.device.gl.REPEAT;
+    this.addressW = _Tw2Device.device.gl.REPEAT;
+    this.anisotropy = 1;
+    this.samplerType = _Tw2Device.device.gl.TEXTURE_2D;
+    this.isVolume = false;
+    this.hash = 0;
+}
+
+/**
+ * Computes the sampler hash
+ * @prototype
+ */
+Tw2SamplerState.prototype.ComputeHash = function () {
+    this.hash = 2166136261;
+    this.hash *= 16777619;
+    this.hash ^= this.minFilter;
+    this.hash *= 16777619;
+    this.hash ^= this.maxFilter;
+    this.hash *= 16777619;
+    this.hash ^= this.addressU;
+    this.hash *= 16777619;
+    this.hash ^= this.addressV;
+    this.hash *= 16777619;
+    this.hash ^= this.anisotropy;
+};
+
+/**
+ * Apply
+ * @param {boolean} hasMipMaps
+ * @prototype
+ */
+Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
+    var targetType = this.samplerType;
+    var d = _Tw2Device.device;
+    var gl = d.gl;
+    gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : gl.CLAMP_TO_EDGE);
+    gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : gl.CLAMP_TO_EDGE);
+    gl.texParameteri(targetType, gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
+    gl.texParameteri(targetType, gl.TEXTURE_MAG_FILTER, this.magFilter);
+    if (d.ext.AnisotropicFilter && d.enableAnisotropicFiltering) {
+        gl.texParameterf(targetType, d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
+    }
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Effect = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2ResMan = __webpack_require__(4);
+
+var _Tw2Device = __webpack_require__(2);
+
+var _Tw2VariableStore = __webpack_require__(16);
+
+var _Tw2TextureParameter = __webpack_require__(17);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
  * Tw2Effect
+ *
+ * @property {number|string} _id
  * @property {string} name
  * @property {string} effectFilePath
  * @property {Tw2EffectRes|null} effectRes
  * @property {Object.<string, Parameter>} parameters
  * @property {Array} passes
  * @property {Array} samplerOverrides
- * @constructor
+ * @property {boolean} autoParameter
+ * @property {Function} _onModified
+ * @class
  */
-function Tw2Effect() {
-    this.name = '';
-    this.effectFilePath = '';
-    this.effectRes = null;
-    this.parameters = {};
-    this.passes = [];
-    this.samplerOverrides = [];
-}
+var Tw2Effect = exports.Tw2Effect = function () {
+    function Tw2Effect() {
+        _classCallCheck(this, Tw2Effect);
 
-/**
- * Initializes the Tw2Effect
- * @prototype
- */
-Tw2Effect.prototype.Initialize = function () {
-    if (this.effectFilePath !== '') {
-        var path = this.effectFilePath;
-        var dot = path.lastIndexOf('.');
-        path = path.toLowerCase().substr(0, dot).replace('/effect/', _Tw2Device.device.effectDir) + '.sm_' + _Tw2Device.device.shaderModel;
-        this.effectRes = _Tw2ResMan.resMan.GetResource(path);
-        this.effectRes.RegisterNotification(this);
-    }
-};
-
-/**
- * Gets all effect res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
- */
-Tw2Effect.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.effectFilePath = '';
+        this.effectRes = null;
+        this.parameters = {};
+        this.passes = [];
+        this.samplerOverrides = [];
+        this.autoParameter = false;
     }
 
-    if (this.effectRes !== null) {
-        if (out.indexOf(this.effectRes) === -1) {
-            out.push(this.effectRes);
-        }
-    }
+    /**
+     * Initializes the Tw2Effect
+     */
 
-    for (var param in this.parameters) {
-        if (this.parameters.hasOwnProperty(param)) {
-            if (this.parameters[param] instanceof _Tw2TextureParameter.Tw2TextureParameter) {
-                this.parameters[param].GetResource(out);
+
+    _createClass(Tw2Effect, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.effectFilePath !== '') {
+                this.effectFilePath = this.effectFilePath.toLowerCase();
+                var path = Tw2Effect.ToEffectResPath(this.effectFilePath);
+                this.effectRes = _Tw2ResMan.resMan.GetResource(path);
+                this.effectRes.RegisterNotification(this);
             }
         }
-    }
 
-    return out;
-};
+        /**
+         * Checks if the effect's effect resource is good
+         * @returns {boolean}
+         */
 
-/**
- * Returns the Tw2Effect's resource object
- * @prototype
- */
-Tw2Effect.prototype.GetEffectRes = function () {
-    return this.effectRes;
-};
-
-/**
- * Rebuilds Cached Data
- * @param resource
- * @prototype
- */
-Tw2Effect.prototype.RebuildCachedData = function (resource) {
-    if (resource.IsGood()) {
-        this.BindParameters();
-    }
-};
-
-/**
- * BindParameters
- * @returns {boolean}
- * @prototype
- */
-Tw2Effect.prototype.BindParameters = function () {
-    if (this.effectRes === null || !this.effectRes.IsGood()) {
-        return false;
-    }
-
-    for (var i = 0; i < this.passes.length; ++i) {
-        for (var j = 0; j < this.passes[i].stages.length; ++j) {
-            for (var k = 0; k < this.passes[i].stages[j].reroutedParameters.length; ++k) {
-                this.passes[i].stages[j].reroutedParameters[k].Unbind();
-            }
+    }, {
+        key: 'IsGood',
+        value: function IsGood() {
+            return this.effectRes && this.effectRes.IsGood();
         }
-    }
-    this.passes = [];
-    for (var i = 0; i < this.effectRes.passes.length; ++i) {
-        var pass = [];
-        pass.stages = [];
-        for (var j = 0; j < this.effectRes.passes[i].stages.length; ++j) {
-            var stageRes = this.effectRes.passes[i].stages[j];
-            var stage = {};
-            stage.constantBuffer = new Float32Array(stageRes.constantSize);
-            stage.reroutedParameters = [];
-            stage.parameters = [];
-            stage.textures = [];
-            stage.constantBuffer.set(stageRes.constantValues);
 
-            for (var k = 0; k < stageRes.constants.length; ++k) {
-                var constant = stageRes.constants[k];
-                var name = constant.name;
-                if (name === 'PerFrameVS' || name === 'PerObjectVS' || name === 'PerFramePS' || name === 'PerObjectPS' || name === 'PerObjectPSInt') {
-                    continue;
-                }
-                if (name in this.parameters) {
-                    var param = this.parameters[name];
-                    if (param.Bind(stage.constantBuffer, constant.offset, constant.size)) {
-                        stage.reroutedParameters.push(param);
-                    } else {
-                        var p = {};
-                        p.parameter = param;
-                        p.constantBuffer = stage.constantBuffer;
-                        p.offset = constant.offset;
-                        p.size = constant.size;
-                        stage.parameters.push(p);
+        /**
+         * Gets effect resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.effectRes && !out.includes(this.effectRes)) {
+                out.push(this.effectRes);
+            }
+
+            for (var param in this.parameters) {
+                if (this.parameters.hasOwnProperty(param)) {
+                    if ('GetResources' in this.parameters[param]) {
+                        this.parameters[param].GetResources(out);
                     }
-                } else if (name in _Tw2VariableStore.variableStore._variables) {
-                    var param = _Tw2VariableStore.variableStore._variables[name];
-                    var p = {};
-                    p.parameter = param;
-                    p.constantBuffer = stage.constantBuffer;
-                    p.offset = constant.offset;
-                    p.size = constant.size;
-                    stage.parameters.push(p);
-                } else if (constant.isAutoregister) {
-                    _Tw2VariableStore.variableStore.RegisterType(name, constant.type);
-                    var param = _Tw2VariableStore.variableStore._variables[name];
-                    var p = {};
-                    p.parameter = param;
-                    p.constantBuffer = stage.constantBuffer;
-                    p.offset = constant.offset;
-                    p.size = constant.size;
-                    stage.parameters.push(p);
                 }
             }
 
-            for (var k = 0; k < stageRes.textures.length; ++k) {
-                var name = stageRes.textures[k].name;
-                var param = null;
-                if (name in this.parameters) {
-                    param = this.parameters[name];
-                } else if (name in _Tw2VariableStore.variableStore._variables) {
-                    param = _Tw2VariableStore.variableStore._variables[name];
-                } else if (stageRes.textures[k].isAutoregister) {
-                    _Tw2VariableStore.variableStore.RegisterType(name, _Tw2TextureParameter.Tw2TextureParameter);
-                    param = _Tw2VariableStore.variableStore._variables[name];
-                } else {
-                    continue;
+            return out;
+        }
+
+        /**
+         * Gets the effect's resource
+         * @returns {?Tw2EffectRes}
+         */
+
+    }, {
+        key: 'GetEffectRes',
+        value: function GetEffectRes() {
+            return this.effectRes;
+        }
+
+        /**
+         * Rebuilds Cached Data
+         * @param resource
+         */
+
+    }, {
+        key: 'RebuildCachedData',
+        value: function RebuildCachedData(resource) {
+            if (resource.IsGood()) {
+                this.effectRes = resource;
+                this.BindParameters();
+            }
+        }
+
+        /**
+         * Unbinds parameters
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'UnbindParameters',
+        value: function UnbindParameters() {
+            for (var i = 0; i < this.passes.length; ++i) {
+                for (var j = 0; j < this.passes[i].stages.length; ++j) {
+                    for (var k = 0; k < this.passes[i].stages[j].reroutedParameters.length; ++k) {
+                        var parameter = this.passes[i].stages[j].reroutedParameters[k];
+                        if (parameter.Unbind) parameter.Unbind();
+                    }
                 }
-                var p = {};
-                p.parameter = param;
-                p.slot = stageRes.textures[k].registerIndex;
-                p.sampler = null;
-                for (var n = 0; n < stageRes.samplers.length; ++n) {
-                    if (stageRes.samplers[n].registerIndex === p.slot) {
-                        if (stageRes.samplers[n].name in this.samplerOverrides) {
-                            p.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
-                        } else {
-                            p.sampler = stageRes.samplers[n];
+            }
+            this.passes = [];
+        }
+
+        /**
+         * Binds parameters
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'BindParameters',
+        value: function BindParameters() {
+            this.UnbindParameters();
+
+            if (!this.IsGood()) return false;
+
+            for (var i = 0; i < this.effectRes.passes.length; ++i) {
+                var pass = [];
+                pass.stages = [];
+                for (var j = 0; j < this.effectRes.passes[i].stages.length; ++j) {
+                    var stageRes = this.effectRes.passes[i].stages[j];
+                    var stage = {};
+                    stage.constantBuffer = new Float32Array(stageRes.constantSize);
+                    stage.reroutedParameters = [];
+                    stage.parameters = [];
+                    stage.textures = [];
+                    stage.constantBuffer.set(stageRes.constantValues);
+
+                    for (var k = 0; k < stageRes.constants.length; ++k) {
+                        if (Tw2Effect.ConstantIgnore.includes(stageRes.constants[k].name)) continue;
+
+                        var constant = stageRes.constants[k],
+                            name = constant.name;
+
+                        if (name in this.parameters) {
+                            var param = this.parameters[name];
+                            if (param.Bind(stage.constantBuffer, constant.offset, constant.size)) {
+                                stage.reroutedParameters.push(param);
+                            } else {
+                                var p = {};
+                                p.parameter = param;
+                                p.constantBuffer = stage.constantBuffer;
+                                p.offset = constant.offset;
+                                p.size = constant.size;
+                                stage.parameters.push(p);
+                            }
+                        } else if (_Tw2VariableStore.store.HasVariable(name)) {
+                            var _p = {};
+                            _p.parameter = _Tw2VariableStore.store.GetVariable(name);
+                            _p.constantBuffer = stage.constantBuffer;
+                            _p.offset = constant.offset;
+                            _p.size = constant.size;
+                            stage.parameters.push(_p);
+                        } else if (constant.isAutoregister) {
+                            var variable = _Tw2VariableStore.store.RegisterVariable(name, undefined, constant.Type);
+                            if (variable) {
+                                var _p2 = {};
+                                _p2.parameter = variable;
+                                _p2.constantBuffer = stage.constantBuffer;
+                                _p2.offset = constant.offset;
+                                _p2.size = constant.size;
+                                stage.parameters.push(_p2);
+                            }
+                        } else if (this.autoParameter && constant.elements === 1) {
+                            var value = stageRes.constantValues.subarray(constant.offset, constant.offset + constant.size),
+                                _param = _Tw2VariableStore.store.CreateType(name, value, constant.Type);
+
+                            // Parameter is not on/ enabled by default
+                            if (!_param) {
+                                var Type = _Tw2VariableStore.store.GetTypeFromValue(constant.size === 1 ? 1 : new Array(constant.size));
+                                if (Type) _param = new Type(name);
+                            }
+
+                            if (_param) {
+                                console.dir(_param);
+                                this.parameters[name] = _param;
+                                var _p3 = {};
+                                _p3.parameter = _param;
+                                _p3.constantBuffer = stage.constantBuffer;
+                                _p3.offset = constant.offset;
+                                _p3.size = constant.size;
+                                stage.parameters.push(_p3);
+                            }
                         }
-                        break;
+                    }
+
+                    for (var _k = 0; _k < stageRes.textures.length; ++_k) {
+                        var _name = stageRes.textures[_k].name;
+                        var _param2 = void 0;
+
+                        if (_name in this.parameters) {
+                            _param2 = this.parameters[_name];
+                        } else if (_Tw2VariableStore.store.HasVariable(_name)) {
+                            _param2 = _Tw2VariableStore.store.GetVariable(_name);
+                        } else if (stageRes.textures[_k].isAutoregister) {
+                            _param2 = _Tw2VariableStore.store.RegisterVariable(_name, undefined, _Tw2TextureParameter.Tw2TextureParameter);
+                        } else if (this.autoParameter) {
+                            this.parameters[_name] = new _Tw2TextureParameter.Tw2TextureParameter(_name);
+                            _param2 = this.parameters[_name];
+                        } else {
+                            continue;
+                        }
+
+                        var _p4 = {};
+                        _p4.parameter = _param2;
+                        _p4.slot = stageRes.textures[_k].registerIndex;
+                        _p4.sampler = null;
+
+                        for (var n = 0; n < stageRes.samplers.length; ++n) {
+                            if (stageRes.samplers[n].registerIndex === _p4.slot) {
+                                if (stageRes.samplers[n].name in this.samplerOverrides) {
+                                    _p4.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
+                                } else {
+                                    _p4.sampler = stageRes.samplers[n];
+                                }
+                                break;
+                            }
+                        }
+
+                        if (j === 0) _p4.slot += 12;
+                        stage.textures.push(_p4);
+                    }
+                    pass.stages.push(stage);
+                }
+                this.passes.push(pass);
+            }
+
+            if (_Tw2Device.device['effectObserver']) {
+                _Tw2Device.device['effectObserver']['OnEffectChanged'](this);
+            }
+
+            return true;
+        }
+
+        /**
+         * ApplyPass
+         * @param pass
+         */
+
+    }, {
+        key: 'ApplyPass',
+        value: function ApplyPass(pass) {
+            if (!this.IsGood() || pass >= this.passes.length) return;
+
+            this.effectRes.ApplyPass(pass);
+
+            var p = this.passes[pass],
+                rp = this.effectRes.passes[pass],
+                d = _Tw2Device.device;
+
+            var program = d.IsAlphaTestEnabled() && rp.shadowShaderProgram ? rp.shadowShaderProgram : rp.shaderProgram;
+
+            for (var i = 0; i < 2; ++i) {
+                var stages = p.stages[i];
+
+                for (var j = 0; j < stages.parameters.length; ++j) {
+                    var pp = stages.parameters[j];
+                    pp.parameter.Apply(pp.constantBuffer, pp.offset, pp.size);
+                }
+
+                for (var _j = 0; _j < stages.textures.length; ++_j) {
+                    var tex = stages.textures[_j];
+                    tex.parameter.Apply(tex.slot, tex.sampler, program.volumeSlices[tex.sampler.registerIndex]);
+                }
+            }
+
+            var cbh = program.constantBufferHandles;
+            if (cbh[0]) d.gl.uniform4fv(cbh[0], p.stages[0].constantBuffer);
+            if (cbh[7]) d.gl.uniform4fv(cbh[7], p.stages[1].constantBuffer);
+            if (d.perFrameVSData && cbh[1]) d.gl.uniform4fv(cbh[1], d.perFrameVSData.data);
+            if (d.perFramePSData && cbh[2]) d.gl.uniform4fv(cbh[2], d.perFramePSData.data);
+            if (d.perObjectData) d.perObjectData.SetPerObjectDataToDevice(cbh);
+        }
+
+        /**
+         * GetPassCount
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetPassCount',
+        value: function GetPassCount() {
+            return this.IsGood() ? this.passes.length : 0;
+        }
+
+        /**
+         * GetPassInput
+         * @param {number} pass
+         * @returns {*}
+         */
+
+    }, {
+        key: 'GetPassInput',
+        value: function GetPassInput(pass) {
+            if (!this.IsGood() || pass >= this.passes.length) return null;
+
+            if (_Tw2Device.device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram) {
+                return this.effectRes.passes[pass].shadowShaderProgram.input;
+            } else {
+                return this.effectRes.passes[pass].shaderProgram.input;
+            }
+        }
+
+        /**
+         * Render
+         * @param {function} cb - callback
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render(cb) {
+            var count = this.GetPassCount();
+            for (var i = 0; i < count; ++i) {
+                this.ApplyPass(i);
+                cb(this, i);
+            }
+        }
+
+        /**
+         * Gets an object containing effect's texture resource paths
+         * @param {{}} [out={}]
+         * @returns {Object.<string, string>} out
+         */
+
+    }, {
+        key: 'GetTextures',
+        value: function GetTextures() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            for (var key in this.parameters) {
+                if (this.parameters.hasOwnProperty(key) && this.parameters[key] instanceof _Tw2TextureParameter.Tw2TextureParameter) {
+                    var resourcePath = this.parameters[key].GetValue();
+                    if (resourcePath) out[key] = resourcePath;
+                }
+            }
+            return out;
+        }
+
+        /**
+         * Sets textures from an object
+         * @param {{string:string}} options
+         * @returns {boolean} true if updated
+         */
+
+    }, {
+        key: 'SetTextures',
+        value: function SetTextures() {
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var updated = false,
+                rebindParameters = false;
+
+            for (var key in options) {
+                if (options.hasOwnProperty(key)) {
+                    if (key in this.parameters) {
+                        if (this.parameters.SetValue(options[key])) updated = true;
+                    } else {
+                        this.parameters[key] = new _Tw2TextureParameter.Tw2TextureParameter(key, options[key]);
+                        updated = true;
+                        rebindParameters = true;
                     }
                 }
-                if (j === 0) {
-                    p.slot += 12;
+            }
+
+            if (this.IsGood() && rebindParameters) this.BindParameters();
+            return updated;
+        }
+
+        /**
+         * Gets an object containing all non texture parameters values
+         * - Matches sof parameter object
+         * @param {{}} [out={}]
+         * @returns {Object.<string, *>}
+         */
+
+    }, {
+        key: 'GetParameters',
+        value: function GetParameters() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            for (var key in this.parameters) {
+                if (this.parameters.hasOwnProperty(key) && !(this.parameters[key] instanceof _Tw2TextureParameter.Tw2TextureParameter)) {
+                    out[key] = this.parameters[key].GetValue(true);
                 }
-                stage.textures.push(p);
             }
-            pass.stages.push(stage);
+            return out;
         }
-        this.passes.push(pass);
-    }
-    if (_Tw2Device.device.effectObserver) {
-        _Tw2Device.device.effectObserver.OnEffectChanged(this);
-    }
-    return true;
-};
 
-/**
- * ApplyPass
- * @param pass
- * @prototype
- */
-Tw2Effect.prototype.ApplyPass = function (pass) {
-    if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length) {
-        return;
-    }
+        /**
+         * Sets parameters from an object
+         * @param {{string:*}} [options={}]
+         * @returns {boolean} true if updated
+         */
 
-    this.effectRes.ApplyPass(pass);
-    var p = this.passes[pass];
-    var rp = this.effectRes.passes[pass];
-    var d = _Tw2Device.device;
-    if (d.IsAlphaTestEnabled() && rp.shadowShaderProgram) {
-        var program = rp.shadowShaderProgram;
-    } else {
-        var program = rp.shaderProgram;
-    }
-    for (var i = 0; i < 2; ++i) {
-        var stages = p.stages[i];
-        for (var j = 0; j < stages.parameters.length; ++j) {
-            var pp = stages.parameters[j];
-            pp.parameter.Apply(pp.constantBuffer, pp.offset, pp.size);
-        }
-        for (var j = 0; j < stages.textures.length; ++j) {
-            var tex = stages.textures[j];
-            tex.parameter.Apply(tex.slot, tex.sampler, program.volumeSlices[tex.sampler.registerIndex]);
-        }
-    }
-    if (program.constantBufferHandles[0] !== null) {
-        d.gl.uniform4fv(program.constantBufferHandles[0], p.stages[0].constantBuffer);
-    }
-    if (program.constantBufferHandles[7] !== null) {
-        d.gl.uniform4fv(program.constantBufferHandles[7], p.stages[1].constantBuffer);
-    }
-    if (_Tw2Device.device.perFrameVSData && program.constantBufferHandles[1]) {
-        d.gl.uniform4fv(program.constantBufferHandles[1], d.perFrameVSData.data);
-    }
-    if (_Tw2Device.device.perFramePSData && program.constantBufferHandles[2]) {
-        d.gl.uniform4fv(program.constantBufferHandles[2], d.perFramePSData.data);
-    }
-    if (d.perObjectData) {
-        d.perObjectData.SetPerObjectDataToDevice(program.constantBufferHandles);
-    }
-};
+    }, {
+        key: 'SetParameters',
+        value: function SetParameters() {
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-/**
- * GetPassCount
- * @returns {number}
- * @prototype
- */
-Tw2Effect.prototype.GetPassCount = function () {
-    if (this.effectRes === null || !this.effectRes.IsGood()) {
-        return 0;
-    }
-    return this.passes.length;
-};
+            var updated = false,
+                rebindParameters = false;
 
-/**
- * GetPassInput
- * @param {number} pass
- * @returns {*}
- * @prototype
- */
-Tw2Effect.prototype.GetPassInput = function (pass) {
-    if (this.effectRes === null || !this.effectRes.IsGood() || pass >= this.passes.length) {
-        return null;
-    }
-    if (_Tw2Device.device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram) {
-        return this.effectRes.passes[pass].shadowShaderProgram.input;
-    } else {
-        return this.effectRes.passes[pass].shaderProgram.input;
-    }
-};
-
-/**
- * Render
- * @param {function} cb - callback
- * @prototype
- */
-Tw2Effect.prototype.Render = function (cb) {
-    var count = this.GetPassCount();
-    for (var i = 0; i < count; ++i) {
-        this.ApplyPass(i);
-        cb(this, i);
-    }
-};
-
-/**
- * Gets an object containing the textures currently set in the Tw2Effect
- * - Matches sof texture objects
- * @returns {Object.<string, Tw2TextureParameter>}
- * @prototype
- */
-Tw2Effect.prototype.GetTextures = function () {
-    var textures = {};
-
-    for (var param in this.parameters) {
-        if (this.parameters.hasOwnProperty(param) && this.parameters[param] instanceof _Tw2TextureParameter.Tw2TextureParameter) {
-            textures[param] = this.parameters[param].resourcePath;
-        }
-    }
-
-    return textures;
-};
-
-/**
- * Gets an object containing all non texture parameters currently set in the Tw2Effect
- * - Matches sof parameter object
- * @returns {Object.<string, Tw2FloatParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2VariableParameter>}
- * @prototype
- */
-Tw2Effect.prototype.GetParameters = function () {
-    var parameters = {};
-
-    for (var param in this.parameters) {
-        if (this.parameters.hasOwnProperty(param) && !(this.parameters[param] instanceof _Tw2TextureParameter.Tw2TextureParameter)) {
-            if (!(this.parameters[param] instanceof _Tw2VariableParameter.Tw2VariableParameter)) {
-                parameters[param] = this.parameters[param].GetValue();
-            } else {
-                parameters[param] = this.parameters[param].variableName;
+            for (var key in options) {
+                if (options.hasOwnProperty(key)) {
+                    if (key in this.parameters) {
+                        if (this.parameters[key].SetValue(options[key])) updated = true;
+                    } else {
+                        var parameter = _Tw2VariableStore.store.CreateType(key, options[key]);
+                        if (parameter) {
+                            this.parameters[key] = parameter;
+                            rebindParameters = true;
+                            updated = true;
+                        }
+                    }
+                }
             }
-        }
-    }
 
-    return parameters;
-};
+            if (rebindParameters) this.BindParameters();
+            return updated;
+        }
+
+        /**
+         * Sets texture overrides from an object
+         * @param {*} options
+         * @returns {boolean} true if updated
+         */
+
+    }, {
+        key: 'SetOverrides',
+        value: function SetOverrides() {
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var updated = false;
+            for (var key in options) {
+                if (options.hasOwnProperty(key) && key in this.parameters && 'SetOverrides' in this.parameters[key]) {
+                    this.parameters[key].SetOverrides(options[key]);
+                    updated = true;
+                }
+            }
+            return updated;
+        }
+
+        /**
+         * Gets texture overrides as an object
+         * @param {{ string: {}}} out
+         */
+
+    }, {
+        key: 'GetOverrides',
+        value: function GetOverrides() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            for (var key in this.parameters) {
+                if (this.parameters.hasOwnProperty(key) && 'GetOverrides' in this.parameters[key]) {
+                    if (this.parameters[key].useAllOverrides) {
+                        out[key] = this.parameters[key].GetOverrides();
+                    }
+                }
+            }
+            return out;
+        }
+
+        /**
+         * Converts a effect file path into one suitable for an effect resource
+         * @param {string} path
+         * @returns {string}
+         */
+
+    }], [{
+        key: 'ToEffectResPath',
+        value: function ToEffectResPath(path) {
+            return path ? path.substr(0, path.lastIndexOf('.')).replace('/effect/', _Tw2Device.device.effectDir) + '.sm_' + _Tw2Device.device.shaderModel : '';
+        }
+
+        /**
+         * Converts an effect resource path back into a normal effect file path
+         * @param {string} path
+         * @param {string} [ext='fx']
+         * @returns {string}
+         */
+
+    }, {
+        key: 'FromEffectResPath',
+        value: function FromEffectResPath(path) {
+            var ext = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'fx';
+
+            return path.substr(0, path.lastIndexOf('.')).replace(_Tw2Device.device.effectDir, '/effect/') + '.' + ext;
+        }
+
+        /**
+         * Creates a Tw2Effect from an object
+         * @param {{}} [opt={}]
+         * @param {string} [opt.name='']
+         * @param {string} [opt.effectFilePath='']
+         * @param {boolean} [opt.autoParameter]
+         * @param {{string: *}} [opt.parameters]
+         * @param {{string: string}} [opt.textures]
+         * @param {{string: {}}} [opt.overrides]
+         * @returns {Tw2Effect}
+         */
+
+    }, {
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var effect = new Tw2Effect();
+            if (opt.name) effect.name = opt.name;
+            if (opt.effectFilePath) effect.effectFilePath = opt.effectFilePath;
+            if (opt.parameters) effect.SetParameters(opt.parameters);
+            if (opt.textures) effect.SetTextures(opt.textures);
+            if (opt.overrides) effect.SetOverrides(opt.overrides);
+            if ('autoParameter' in opt) effect.autoParameter = opt.autoParameter;
+            effect.Initialize();
+            return effect;
+        }
+    }]);
+
+    return Tw2Effect;
+}();
+
+/**
+ * Constant parameters which are ignored when creating an effect
+ * @type {string[]}
+ */
+
+
+Tw2Effect.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS', 'PerObjectPSInt'];
 
 /***/ }),
-/* 23 */
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Stores raw data for {@link Tw2PerObjectData} perObject objects and {@link EveSpaceScene} perFrame objects
+ *
+ * @param {[]} [declarationArray]
+ * @param {boolean} [skipCreate]
+ * @property {number} nextOffset
+ * @property {Float32Array} data
+ * @property {{}} elements
+ */
+
+var Tw2RawData = exports.Tw2RawData = function () {
+    function Tw2RawData(declarationArray, skipCreate) {
+        _classCallCheck(this, Tw2RawData);
+
+        this.nextOffset = 0;
+        this.data = null;
+        this.elements = {};
+
+        if (declarationArray) {
+            this.DeclareFromArray(declarationArray, skipCreate);
+        }
+    }
+
+    /**
+     * Sets an element's value
+     * @param {string|Object} name
+     * @param {Float32Array|Array} [value]
+     */
+
+
+    _createClass(Tw2RawData, [{
+        key: 'Set',
+        value: function Set(name, value) {
+            var el = this.elements[name];
+
+            if (typeof value !== 'number' && value.length > el.size) {
+                value = 'subarray' in value ? value.subarray(0, el.size) : value.splice(0, el.size);
+            }
+
+            this.data.set(value, el.offset);
+        }
+
+        /**
+         * Gets an element's array value
+         * @param {string} name
+         * @return {Float32Array}
+         */
+
+    }, {
+        key: 'Get',
+        value: function Get(name) {
+            return this.elements[name].array;
+        }
+
+        /**
+         * Gets an element's array value from the share data array
+         * @param {string} name
+         * @return {Float32Array}
+         */
+
+    }, {
+        key: 'GetData',
+        value: function GetData(name) {
+            return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
+        }
+
+        /**
+         * Declares a raw data element and then returns the raw data element
+         * @param {String} name
+         * @param {number} size
+         * @param {Array|Float32Array} [value=null] optional value to set on raw data creation
+         * @returns {Tw2RawData}
+         */
+
+    }, {
+        key: 'Declare',
+        value: function Declare(name, size) {
+            var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+            this.elements[name] = {
+                'offset': this.nextOffset,
+                'size': size,
+                'array': null,
+                'value': value
+            };
+            this.nextOffset += size;
+        }
+
+        /**
+         * Creates the raw data element arrays and then returns the raw data element
+         * @returns {Tw2RawData}
+         */
+
+    }, {
+        key: 'Create',
+        value: function Create() {
+            this.data = new Float32Array(this.nextOffset);
+            for (var name in this.elements) {
+                if (this.elements.hasOwnProperty(name)) {
+                    var el = this.elements[name];
+                    el.array = this.data.subarray(el.offset, el.offset + el.size);
+
+                    if (el.value !== null) {
+                        if (el.size === 1) {
+                            el.array[0] = el.value;
+                        } else {
+                            for (var i = 0; i < el.size; i++) {
+                                el.array[i] = el.value[i];
+                            }
+                        }
+                        el.value = null;
+                    }
+                }
+            }
+        }
+
+        /**
+         * Declares elements from an array
+         * @param {[]} declarationArray
+         * @param {boolean} [skipCreate]
+         * @returns {Tw2RawData}
+         */
+
+    }, {
+        key: 'DeclareFromArray',
+        value: function DeclareFromArray(declarationArray, skipCreate) {
+            if (declarationArray) {
+                for (var i = 0; i < declarationArray.length; i++) {
+                    var el = declarationArray[i];
+                    this.Declare(el.name, el.size, el.value);
+                }
+                if (!skipCreate) this.Create();
+            }
+        }
+    }]);
+
+    return Tw2RawData;
+}();
+
+/***/ }),
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5866,17 +5905,17 @@ var _math = __webpack_require__(0);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
-var _Tw2Resource3 = __webpack_require__(12);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2BinaryReader = __webpack_require__(21);
+var _Tw2BinaryReader = __webpack_require__(18);
 
-var _Tw2BatchAccumulator = __webpack_require__(24);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
-var _Tw2VertexDeclaration = __webpack_require__(13);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5894,8 +5933,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @inherit Tw2RenderBatch
  * @class
  */
-var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2Resource) {
-    _inherits(Tw2GeometryBatch, _Tw2Resource);
+var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2RenderBatch) {
+    _inherits(Tw2GeometryBatch, _Tw2RenderBatch);
 
     function Tw2GeometryBatch() {
         _classCallCheck(this, Tw2GeometryBatch);
@@ -5911,7 +5950,7 @@ var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2Resource) {
     }
 
     return Tw2GeometryBatch;
-}(_Tw2Resource3.Tw2Resource);
+}(_Tw2BatchAccumulator.Tw2RenderBatch);
 
 /**
  * Commits the Geometry Batch for rendering
@@ -5937,8 +5976,8 @@ Tw2GeometryBatch.prototype.Commit = function (overrideEffect) {
  * @class
  */
 
-var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2RenderBatch) {
-    _inherits(Tw2GeometryLineBatch, _Tw2RenderBatch);
+var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2RenderBatch2) {
+    _inherits(Tw2GeometryLineBatch, _Tw2RenderBatch2);
 
     function Tw2GeometryLineBatch() {
         _classCallCheck(this, Tw2GeometryLineBatch);
@@ -6225,8 +6264,8 @@ function Tw2GeometryMesh() {
  * @class
  */
 
-var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource2) {
-    _inherits(Tw2GeometryRes, _Tw2Resource2);
+var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource) {
+    _inherits(Tw2GeometryRes, _Tw2Resource);
 
     function Tw2GeometryRes() {
         _classCallCheck(this, Tw2GeometryRes);
@@ -6245,7 +6284,7 @@ var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource2) {
     }
 
     return Tw2GeometryRes;
-}(_Tw2Resource3.Tw2Resource);
+}(_Tw2Resource2.Tw2Resource);
 
 /**
  * Request Response Type
@@ -6930,7 +6969,7 @@ Tw2GeometryRes.prototype.Unload = function () {
 };
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6942,7 +6981,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ForwardingRenderBatch = exports.Tw2RenderBatch = undefined;
 exports.Tw2BatchAccumulator = Tw2BatchAccumulator;
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -7057,7 +7096,7 @@ Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7068,13 +7107,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2TextureRes = undefined;
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Resource2 = __webpack_require__(12);
+var _Tw2Resource2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7311,6 +7350,164 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices) {
 };
 
 /***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Vector4Parameter = Tw2Vector4Parameter;
+
+var _math = __webpack_require__(0);
+
+/**
+ * Tw2Vector4Parameter
+ * @param {string} [name='']
+ * @param {vec4|Float32Array} [value=[1,1,1,1]]
+ * @property {string} name
+ * @property {vec4|Float32Array} value
+ * @property {Float32Array} constantBuffer
+ * @property {number} offset
+ * @constructor
+ */
+function Tw2Vector4Parameter(name, value) {
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? _math.vec4.clone(value) : _math.vec4.fromValues(1, 1, 1);
+    this.constantBuffer = null;
+    this.offset = 0;
+}
+
+/**
+ * Bind
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @param {number} size
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.Bind = function (constantBuffer, offset, size) {
+    if (this.constantBuffer !== null || size < 4) {
+        return false;
+    }
+    this.constantBuffer = constantBuffer;
+    this.offset = offset;
+    this.Apply(this.constantBuffer, this.offset, size);
+    return true;
+};
+
+/**
+ * Unbind
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.Unbind = function () {
+    this.constantBuffer = null;
+};
+
+/**
+ * Sets a supplied value
+ * @param {vec4|Float32Array|Array} value - Vector4 Array
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.SetValue = function (value) {
+    _math.vec4.copy(this.value, value);
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.OnValueChanged = function () {
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Applies the current value to the supplied constant buffer at the supplied offset
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.Apply = function (constantBuffer, offset) {
+    constantBuffer.set(this.value, offset);
+};
+
+/**
+ * Gets the current value array
+ * @return {vec4|Float32Array} Vector4 Array
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.GetValue = function () {
+    if (this.constantBuffer !== null) {
+        return _math.vec4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+    }
+
+    return _math.vec4.clone(this.value);
+};
+
+/**
+ * Returns a value from a specific index of the value array
+ * @param {number} index
+ * @returns {number}
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.GetIndexValue = function (index) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    if (this.constantBuffer !== null) {
+        return this.constantBuffer[this.offset + index];
+    }
+
+    return this.value[index];
+};
+
+/**
+ * Sets a value at a specific index of the value array
+ * @param {number} index
+ * @param {number} value
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.SetIndexValue = function (index, value) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    this.value[index] = value;
+
+    if (this.constantBuffer !== null) {
+        this.constantBuffer[this.offset + index] = value;
+    }
+};
+
+/**
+ * Sets all value array elements to a single value
+ * @param {number} value - The value to fill the value array elements with
+ * @prototype
+ */
+Tw2Vector4Parameter.prototype.FillWith = function (value) {
+    this.SetValue([value, value, value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector4Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 4;
+};
+
+/***/ }),
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7332,6 +7529,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2ParticleAttributeGenerator base class
  *
+ * @property {number|string} _id
  * @property {string} name
  * @class
  */
@@ -7339,6 +7537,7 @@ var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = func
     function Tw2ParticleAttributeGenerator() {
         _classCallCheck(this, Tw2ParticleAttributeGenerator);
 
+        this._id = _math.util.generateID();
         this.name = '';
     }
 
@@ -7384,22 +7583,39 @@ Tw2ParticleAttributeGenerator.global = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveStation = exports.EveSpaceObject = undefined;
+exports.EveSpaceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
+var _EveObject2 = __webpack_require__(15);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/**
- * EveObject
- * @typedef {EveSpaceObject|EveStation|EveShip|EveTransform|EveEffectRoot|EvePlanet} EveObject
- */
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * EveSpaceObject
+ *
  * @parameter {String} name
+ * @parameter {boolean} display                             - Enables/ disables visibility
+ * @parameter {{}} visible                                  - Visibility options for the space object's elements
+ * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @parameter {boolean} visible.children                    - Enables/ disables child visibility
+ * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
  * @parameter {Number} lod
  * @parameter {Tw2Mesh} mesh
  * @parameter {Array.<EveLocator>} locators
@@ -7418,412 +7634,426 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @parameter {vec3} shapeEllipsoidCenter
  * @parameter {mat4} transform
  * @parameter {Tw2AnimationController} animation
- * @parameter {boolean} display                             - Enables/ disables all batch accumulations
- * @parameter {{}} visible                                  - Batch accumulation options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh batch accumulation
- * @parameter {boolean} visible.children                    - Enables/ disables child batch accumulation
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child batch accumulation
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite set batch accumulation
- * @parameter {boolean} visible.decals                      - Enables/ disables decal batch accumulation
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight set batch accumulation
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane set batch accumulation
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines set batch accumulation
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect batch accumulation
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
  * @parameter {number} killCount                            - number of kills to show on kill counter decals
  * @parameter {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveSpaceObject = exports.EveSpaceObject = function EveSpaceObject() {
-    _classCallCheck(this, EveSpaceObject);
+var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
+    _inherits(EveSpaceObject, _EveObject);
 
-    this.name = '';
-    this.lod = 3;
-    this.mesh = null;
-    this.locators = [];
+    function EveSpaceObject() {
+        _classCallCheck(this, EveSpaceObject);
 
-    this.spriteSets = [];
-    this.turretSets = [];
-    this.decals = [];
-    this.spotlightSets = [];
-    this.planeSets = [];
-    this.curveSets = [];
-    this.lineSets = [];
-    this.overlayEffects = [];
-    this.children = [];
-    this.effectChildren = [];
+        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
 
-    this.boundingSphereCenter = _math.vec3.create();
-    this.boundingSphereRadius = 0;
-    this.shapeEllipsoidRadius = _math.vec3.create();
-    this.shapeEllipsoidCenter = _math.vec3.create();
-
-    this.transform = _math.mat4.create();
-    this.animation = new _core.Tw2AnimationController();
-
-    this.display = true;
-    this.visible = {};
-    this.visible.mesh = true;
-    this.visible.children = true;
-    this.visible.effectChildren = true;
-    this.visible.planeSets = true;
-    this.visible.spotlightSets = true;
-    this.visible.decals = true;
-    this.visible.spriteSets = true;
-    this.visible.overlayEffects = true;
-    this.visible.lineSets = true;
-    this.visible.killmarks = true;
-    this._customMasks = [];
-
-    this.killCount = 0;
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-    this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-    this._perObjectData.perObjectVSData.Create();
-
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-    this._perObjectData.perObjectPSData.Create();
-
-    this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-
-    _math.mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-    _math.mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
-};
-
-/**
- * Scratch variables
- */
-
-
-EveSpaceObject.scratch = {
-    vec3_0: _math.vec3.create()
-};
-
-/**
- * Initializes the EveSpaceObject
- */
-EveSpaceObject.prototype.Initialize = function () {
-    if (this.mesh) {
-        this.animation.SetGeometryResource(this.mesh.geometryResource);
-        for (var i = 0; i < this.decals.length; ++i) {
-            this.decals[i].SetParentGeometry(this.mesh.geometryResource);
-        }
-    }
-};
-
-/**
- * Gets object's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @param {Boolean} excludeChildren - True to exclude children's res objects
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceObject.prototype.GetResources = function (out, excludeChildren) {
-    if (out === undefined) {
-        out = [];
+        _this.visible = {};
+        _this.visible.mesh = true;
+        _this.visible.children = true;
+        _this.visible.effectChildren = true;
+        _this.visible.planeSets = true;
+        _this.visible.spotlightSets = true;
+        _this.visible.decals = true;
+        _this.visible.spriteSets = true;
+        _this.visible.overlayEffects = true;
+        _this.visible.lineSets = true;
+        _this.visible.killmarks = true;
+        _this.visible.customMasks = true;
+        _this.mesh = null;
+        _this.animation = new _core.Tw2AnimationController();
+        _this.locators = [];
+        _this.spriteSets = [];
+        _this.turretSets = [];
+        _this.decals = [];
+        _this.spotlightSets = [];
+        _this.planeSets = [];
+        _this.curveSets = [];
+        _this.lineSets = [];
+        _this.overlayEffects = [];
+        _this.children = [];
+        _this.effectChildren = [];
+        _this.customMasks = [];
+        _this.lod = 3;
+        _this.killCount = 0;
+        _this.transform = _math.mat4.create();
+        _this.boundingSphereCenter = _math.vec3.create();
+        _this.boundingSphereRadius = 0;
+        _this.shapeEllipsoidRadius = _math.vec3.create();
+        _this.shapeEllipsoidCenter = _math.vec3.create();
+        _this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObject.perObjectDataDecl);
+        return _this;
     }
 
-    var self = this;
+    /**
+     * Initializes the EveSpaceObject
+     */
 
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
 
-    if (this.animation !== null) {
-        this.animation.GetResources(out);
-    }
+    _createClass(EveSpaceObject, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.mesh) {
+                this.animation.SetGeometryResource(this.mesh.geometryResource);
 
-    function getSetResources(setName, out) {
-        for (var i = 0; i < self[setName].length; i++) {
-            if ('GetResources' in self[setName][i]) {
-                self[setName][i].GetResources(out);
-            }
-        }
-    }
-
-    getSetResources('spriteSets', out);
-    getSetResources('turretSets', out);
-    getSetResources('decals', out);
-    getSetResources('spotlightSets', out);
-    getSetResources('planeSets', out);
-    getSetResources('lineSets', out);
-    getSetResources('overlayEffects', out);
-    getSetResources('effectChildren', out);
-
-    if (!excludeChildren) {
-        getSetResources('children', out);
-    }
-
-    return out;
-};
-
-/**
- * Resets the lod
- */
-EveSpaceObject.prototype.ResetLod = function () {
-    this.lod = 3;
-};
-
-/**
- * Updates the lod
- * @param {Tw2Frustum} frustum
- */
-EveSpaceObject.prototype.UpdateLod = function (frustum) {
-    var center = _math.vec3.transformMat4(EveSpaceObject.scratch.vec3_0, this.boundingSphereCenter, this.transform);
-
-    if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
-        if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
-            this.lod = 1;
-        } else {
-            this.lod = 2;
-        }
-    } else {
-        this.lod = 0;
-    }
-};
-
-EveSpaceObject.prototype.AddCustomMask = function (position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
-    var transform = _math.mat4.fromRotationTranslationScale(_math.mat4.create(), rotation, position, scaling);
-    _math.mat4.invert(transform, transform);
-    _math.mat4.transpose(transform, transform);
-
-    this._customMasks.push({
-        transform: transform,
-        maskData: _math.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
-        materialID: _math.vec4.fromValues(sourceMaterial, 0, 0, 0),
-        targets: targetMaterials
-    });
-};
-
-/**
- * A Per frame function that updates view dependent data
- */
-EveSpaceObject.prototype.UpdateViewDependentData = function () {
-    for (var i = 0; i < this.children.length; ++i) {
-        this.children[i].UpdateViewDependentData(this.transform);
-    }
-
-    _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-    _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
-    var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter');
-    var radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
-    if (this.shapeEllipsoidRadius[0] > 0) {
-        center[0] = this.shapeEllipsoidCenter[0];
-        center[1] = this.shapeEllipsoidCenter[1];
-        center[2] = this.shapeEllipsoidCenter[2];
-        radii[0] = this.shapeEllipsoidRadius[0];
-        radii[1] = this.shapeEllipsoidRadius[1];
-        radii[2] = this.shapeEllipsoidRadius[2];
-    } else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
-        _math.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-        _math.vec3.scale(center, center, 0.5 * 1.732050807);
-        _math.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-        _math.vec3.scale(radii, radii, 0.5);
-    }
-
-    for (i = 0; i < this._customMasks.length; ++i) {
-        this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this._customMasks[i].transform);
-        this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskData1' : 'CustomMaskData0', this._customMasks[i].maskData);
-        this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this._customMasks[i].materialID);
-        this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', this._customMasks[i].targets);
-    }
-
-    if (this.animation.animations.length) {
-        this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
-    }
-
-    for (var s = 0; s < this.lineSets.length; ++s) {
-        this.lineSets[s].UpdateViewDependentData(this.transform);
-    }
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveSpaceObject.prototype.GetBatches = function (mode, accumulator) {
-    if (this.display) {
-        if (this.visible.mesh && this.mesh !== null && this.lod > 0) {
-            this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-        }
-
-        if (this.lod > 1) {
-            var i;
-
-            if (this.visible.spriteSets) {
-                for (i = 0; i < this.spriteSets.length; ++i) {
-                    this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
-                }
-            }
-
-            if (this.visible.spotlightSets) {
-                for (i = 0; i < this.spotlightSets.length; ++i) {
-                    this.spotlightSets[i].GetBatches(mode, accumulator, this._perObjectData);
-                }
-            }
-
-            if (this.visible.planeSets) {
-                for (i = 0; i < this.planeSets.length; ++i) {
-                    this.planeSets[i].GetBatches(mode, accumulator, this._perObjectData);
-                }
-            }
-
-            if (this.visible.decals) {
-                for (i = 0; i < this.decals.length; ++i) {
-                    var killCount = this.visible.killmarks ? this.killCount : 0;
-                    this.decals[i].GetBatches(mode, accumulator, this._perObjectData, killCount);
-                }
-            }
-
-            if (this.visible.lineSets) {
-                for (var i = 0; i < this.lineSets.length; ++i) {
-                    this.lineSets[i].GetBatches(mode, accumulator);
+                for (var i = 0; i < this.decals.length; ++i) {
+                    this.decals[i].SetParentGeometry(this.mesh.geometryResource);
                 }
             }
         }
 
-        if (this.visible.children) {
-            for (i = 0; i < this.children.length; ++i) {
-                this.children[i].GetBatches(mode, accumulator, this._perObjectData);
+        /**
+         * Resets the lod
+         */
+
+    }, {
+        key: 'ResetLod',
+        value: function ResetLod() {
+            this.lod = 3;
+        }
+
+        /**
+         * Updates the lod
+         * @param {Tw2Frustum} frustum
+         */
+
+    }, {
+        key: 'UpdateLod',
+        value: function UpdateLod(frustum) {
+            var center = _math.vec3.transformMat4(EveSpaceObject.global.vec3_0, this.boundingSphereCenter, this.transform);
+
+            if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
+                if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
+                    this.lod = 1;
+                } else {
+                    this.lod = 2;
+                }
+            } else {
+                this.lod = 0;
             }
         }
 
-        if (this.visible.effectChildren) {
-            for (i = 0; i < this.effectChildren.length; ++i) {
-                this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+        /**
+         * Adds a custom mask
+         * @param {vec3} position
+         * @param {vec3} scaling
+         * @param {quat} rotation
+         * @param {vec4} isMirrored
+         * @param {vec4} sourceMaterial
+         * @param {vec4} targetMaterials
+         */
+
+    }, {
+        key: 'AddCustomMask',
+        value: function AddCustomMask(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
+            var transform = _math.mat4.fromRotationTranslationScale(_math.mat4.create(), rotation, position, scaling);
+            _math.mat4.invert(transform, transform);
+            _math.mat4.transpose(transform, transform);
+
+            this.customMasks.push({
+                transform: transform,
+                maskData: _math.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
+                materialID: _math.vec4.fromValues(sourceMaterial, 0, 0, 0),
+                targets: targetMaterials
+            });
+        }
+
+        /**
+         * Gets locator count for a specific locator group
+         * @param {String} prefix
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLocatorCount',
+        value: function GetLocatorCount(prefix) {
+            var count = 0;
+            for (var i = 0; i < this.locators.length; ++i) {
+                if (this.locators[i].name.substr(0, prefix.length) === prefix) {
+                    ++count;
+                }
+            }
+            return count;
+        }
+
+        /**
+         * Finds a locator joint by it's name
+         * @param {String} name
+         * @returns {null|mat4}
+         */
+
+    }, {
+        key: 'FindLocatorJointByName',
+        value: function FindLocatorJointByName(name) {
+            var model = this.animation.FindModelForMesh(0);
+            if (model) {
+                for (var i = 0; i < model.bones.length; ++i) {
+                    if (model.bones[i].boneRes.name === name) {
+                        return model.bones[i].worldTransform;
+                    }
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Finds a locator transform by it's name
+         * @param {String} name
+         * @returns {null|mat4}
+         */
+
+    }, {
+        key: 'FindLocatorTransformByName',
+        value: function FindLocatorTransformByName(name) {
+            for (var i = 0; i < this.locators.length; ++i) {
+                if (this.locators[i].name === name) {
+                    return this.locators[i].transform;
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Finds locators with a given prefix
+         * @param {string} prefix
+         * @returns {Array}
+         */
+
+    }, {
+        key: 'FindLocatorsByPrefix',
+        value: function FindLocatorsByPrefix(prefix) {
+            var locators = [];
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name.indexOf(prefix) === 0) {
+                    locators.push(this.locators[i]);
+                }
+            }
+            return locators;
+        }
+
+        /**
+         * Gets object's res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} excludeChildren - True to exclude children's res objects
+         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            if (this.mesh) this.mesh.GetResources(out);
+            if (this.animation) this.animation.GetResources(out);
+
+            _math.util.perArrayChild(this.spriteSets, 'GetResources', out);
+            _math.util.perArrayChild(this.turretSets, 'GetResources', out);
+            _math.util.perArrayChild(this.decals, 'GetResources', out);
+            _math.util.perArrayChild(this.spotlightSets, 'GetResources', out);
+            _math.util.perArrayChild(this.planeSets, 'GetResources', out);
+            _math.util.perArrayChild(this.lineSets, 'GetResources', out);
+            _math.util.perArrayChild(this.overlayEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.effectChildren, 'GetResources', out);
+
+            if (!excludeChildren) {
+                _math.util.perArrayChild(this.children, 'GetResources', out);
+            }
+
+            return out;
+        }
+
+        /**
+         * A Per frame function that updates view dependent data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].UpdateViewDependentData(this.transform);
+            }
+
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
+
+            var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter'),
+                radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
+
+            if (this.shapeEllipsoidRadius[0] > 0) {
+                center[0] = this.shapeEllipsoidCenter[0];
+                center[1] = this.shapeEllipsoidCenter[1];
+                center[2] = this.shapeEllipsoidCenter[2];
+                radii[0] = this.shapeEllipsoidRadius[0];
+                radii[1] = this.shapeEllipsoidRadius[1];
+                radii[2] = this.shapeEllipsoidRadius[2];
+            } else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
+                _math.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _math.vec3.scale(center, center, 0.5 * 1.732050807);
+                _math.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _math.vec3.scale(radii, radii, 0.5);
+            }
+
+            for (var _i = 0; _i < this.customMasks.length; ++_i) {
+                var targets = this.visible.customMasks ? this.customMasks[_i].targets : [0, 0, 0, 0];
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this.customMasks[_i].transform);
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskData1' : 'CustomMaskData0', this.customMasks[_i].maskData);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this.customMasks[_i].materialID);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', targets);
+            }
+
+            if (this.animation.animations.length) {
+                this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
+            }
+
+            for (var _i2 = 0; _i2 < this.lineSets.length; ++_i2) {
+                this.lineSets[_i2].UpdateViewDependentData(this.transform);
             }
         }
 
-        if (this.visible.overlayEffects && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
-            for (i = 0; i < this.overlayEffects.length; ++i) {
-                if (this.overlayEffects[i].display) {
-                    var effects = this.overlayEffects[i].GetEffects(mode);
-                    if (effects) {
-                        for (var j = 0; j < effects.length; ++j) {
-                            var batch = new _core.Tw2GeometryBatch();
-                            batch.renderMode = mode;
-                            batch.perObjectData = this._perObjectData;
-                            batch.geometryRes = this.mesh.geometryResource;
-                            batch.meshIx = this.mesh.meshIndex;
-                            batch.start = 0;
-                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                            batch.effect = effects[j];
-                            accumulator.Commit(batch);
+        /**
+         * Per frame update
+         * @param {Number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this.lod > 0) {
+                for (var i = 0; i < this.spriteSets.length; ++i) {
+                    this.spriteSets[i].Update(dt);
+                }
+
+                for (var _i3 = 0; _i3 < this.planeSets.length; _i3++) {
+                    this.planeSets[_i3].Update(dt);
+                }
+
+                /*
+                for (let i = 0; i < this.spotlightSets.length; i++)
+                {
+                    this.spotlightSets[i].Update(dt);
+                }
+                */
+
+                for (var _i4 = 0; _i4 < this.children.length; ++_i4) {
+                    this.children[_i4].Update(dt);
+                }
+
+                for (var _i5 = 0; _i5 < this.effectChildren.length; ++_i5) {
+                    this.effectChildren[_i5].Update(dt, this.transform);
+                }
+
+                for (var _i6 = 0; _i6 < this.curveSets.length; ++_i6) {
+                    this.curveSets[_i6].Update(dt);
+                }
+
+                for (var _i7 = 0; _i7 < this.overlayEffects.length; ++_i7) {
+                    this.overlayEffects[_i7].Update(dt);
+                }
+
+                this.animation.Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display) {
+                var show = this.visible;
+
+                if (show.mesh && this.mesh && this.lod > 0) {
+                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+                }
+
+                if (this.lod > 1) {
+                    if (show.spriteSets) {
+                        for (var i = 0; i < this.spriteSets.length; i++) {
+                            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
                         }
+                    }
+
+                    if (show.spotlightSets) {
+                        for (var _i8 = 0; _i8 < this.spotlightSets.length; _i8++) {
+                            this.spotlightSets[_i8].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.planeSets) {
+                        for (var _i9 = 0; _i9 < this.planeSets.length; _i9++) {
+                            this.planeSets[_i9].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.decals) {
+                        for (var _i10 = 0; _i10 < this.decals.length; _i10++) {
+                            this.decals[_i10].GetBatches(mode, accumulator, this._perObjectData, show.killmarks ? this.killCount : 0);
+                        }
+                    }
+
+                    if (show.lineSets) {
+                        for (var _i11 = 0; _i11 < this.lineSets.length; _i11++) {
+                            this.lineSets[_i11].GetBatches(mode, accumulator);
+                        }
+                    }
+                }
+
+                if (show.children) {
+                    for (var _i12 = 0; _i12 < this.children.length; _i12++) {
+                        this.children[_i12].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.effectChildren) {
+                    for (var _i13 = 0; _i13 < this.effectChildren.length; _i13++) {
+                        this.effectChildren[_i13].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.overlayEffects) {
+                    for (var _i14 = 0; _i14 < this.overlayEffects.length; _i14++) {
+                        this.overlayEffects[_i14].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
                     }
                 }
             }
         }
-    }
+
+        /**
+         * RenderDebugInfo
+         * @param debugHelper
+         */
+
+    }, {
+        key: 'RenderDebugInfo',
+        value: function RenderDebugInfo(debugHelper) {
+            this.animation.RenderDebugInfo(debugHelper);
+        }
+    }]);
+
+    return EveSpaceObject;
+}(_EveObject2.EveObject);
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveSpaceObject.global = {
+    vec3_0: _math.vec3.create()
 };
 
 /**
- * Per frame update
- * @param {Number} dt - delta time
+ * Per object data declarations
+ * @type {{VSData: *[], PSData: *[]}}
  */
-EveSpaceObject.prototype.Update = function (dt) {
-    if (this.lod > 0) {
-        var i;
-        for (i = 0; i < this.spriteSets.length; ++i) {
-            this.spriteSets[i].Update(dt);
-        }
-        for (i = 0; i < this.children.length; ++i) {
-            this.children[i].Update(dt);
-        }
-        for (i = 0; i < this.effectChildren.length; ++i) {
-            this.effectChildren[i].Update(this.transform, dt);
-        }
-        for (i = 0; i < this.curveSets.length; ++i) {
-            this.curveSets[i].Update(dt);
-        }
-        for (i = 0; i < this.overlayEffects.length; ++i) {
-            this.overlayEffects[i].Update(dt);
-        }
-        this.animation.Update(dt);
-    }
+EveSpaceObject.perObjectDataDecl = {
+    VSData: [{ name: 'WorldMat', size: 16 }, { name: 'WorldMatLast', size: 16 }, { name: 'Shipdata', size: 4, value: [0, 1, 0, -10] }, { name: 'Clipdata1', size: 4 }, { name: 'EllipsoidRadii', size: 4 }, { name: 'EllipsoidCenter', size: 4 }, { name: 'CustomMaskMatrix0', size: 16, value: _math.mat4.create() }, { name: 'CustomMaskMatrix1', size: 16, value: _math.mat4.create() }, { name: 'CustomMaskData0', size: 4 }, { name: 'CustomMaskData1', size: 4 }, { name: 'JointMat', size: 696 }],
+    PSData: [{ name: 'Shipdata', size: 4, value: [0, 1, 0, 1] }, { name: 'Clipdata1', size: 4 }, { name: 'Clipdata2', size: 4 }, { name: 'ShLighting', size: 4 * 7 }, { name: 'CustomMaskMaterialID0', size: 4 }, { name: 'CustomMaskMaterialID1', size: 4 }, { name: 'CustomMaskTarget0', size: 4 }, { name: 'CustomMaskTarget1', size: 4 }]
 };
-
-/**
- * Gets locator count for a specific locator group
- * @param {String} prefix
- * @returns {number}
- */
-EveSpaceObject.prototype.GetLocatorCount = function (prefix) {
-    var count = 0;
-    for (var i = 0; i < this.locators.length; ++i) {
-        if (this.locators[i].name.substr(0, prefix.length) === prefix) {
-            ++count;
-        }
-    }
-    return count;
-};
-
-/**
- * Finds a locator joint by it's name
- * @param {String} name
- * @returns {null|mat4}
- */
-EveSpaceObject.prototype.FindLocatorJointByName = function (name) {
-    var model = this.animation.FindModelForMesh(0);
-    if (model !== null) {
-        for (var i = 0; i < model.bones.length; ++i) {
-            if (model.bones[i].boneRes.name === name) {
-                return model.bones[i].worldTransform;
-            }
-        }
-    }
-    return null;
-};
-
-/**
- * Finds a locator transform by it's name
- * @param {String} name
- * @returns {null|mat4}
- */
-EveSpaceObject.prototype.FindLocatorTransformByName = function (name) {
-    for (var i = 0; i < this.locators.length; ++i) {
-        if (this.locators[i].name === name) {
-            return this.locators[i].transform;
-        }
-    }
-    return null;
-};
-
-/**
- * RenderDebugInfo
- * @param debugHelper
- */
-EveSpaceObject.prototype.RenderDebugInfo = function (debugHelper) {
-    this.animation.RenderDebugInfo(debugHelper);
-};
-
-/**
- * EveStation
- * @type {EveSpaceObject}
- */
-var EveStation = exports.EveStation = EveSpaceObject;
 
 /***/ }),
 /* 28 */
@@ -10187,7 +10417,7 @@ const forEach = (function() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.vec3 = undefined;
 
@@ -10196,6 +10426,42 @@ var _glMatrix = __webpack_require__(8);
 var _num = __webpack_require__(28);
 
 exports.vec3 = _glMatrix.vec3;
+
+/**
+ * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
+ * @returns {vec3} out          - receiving vec3
+ */
+
+_glMatrix.vec3.cartFromSpherical = function (out, spherical) {
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta);
+    out[1] = radius * Math.cos(theta);
+    out[2] = radius * Math.cos(phi) * Math.sin(theta);
+    return out;
+};
+
+/**
+ * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
+ * @param {vec3} center         - center
+ * @returns {vec3} out          - receiving vec3
+ */
+_glMatrix.vec3.cartFromSphericalAndCenter = function (out, spherical, center) {
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
+    out[1] = radius * Math.cos(theta) + center[1];
+    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
+    return out;
+};
 
 /**
  * Exponential decay
@@ -10208,13 +10474,78 @@ exports.vec3 = _glMatrix.vec3;
  * @param {number} time
  * @returns {vec3} out
  */
-
 _glMatrix.vec3.exponentialDecay = function (out, omega0, torque, I, drag, time) {
-  out[0] = _num.num.exponentialDecay(omega0[0], torque[0], I, drag, time);
-  out[1] = _num.num.exponentialDecay(omega0[1], torque[1], I, drag, time);
-  out[2] = _num.num.exponentialDecay(omega0[2], torque[2], I, drag, time);
-  return out;
+    out[0] = _num.num.exponentialDecay(omega0[0], torque[0], I, drag, time);
+    out[1] = _num.num.exponentialDecay(omega0[1], torque[1], I, drag, time);
+    out[2] = _num.num.exponentialDecay(omega0[2], torque[2], I, drag, time);
+    return out;
 };
+
+/**
+ * Projects a local vec3 to screen space with viewport settings
+ * @param {vec3} out           - receiving vec3
+ * @param {vec3} a             - local vec3
+ * @param {mat4} m             - model view projection matrix
+ * @param {vec4} viewport      - view port settings (x, y, width, height)
+ * @returns {vec3} out         - receiving vec3 (x, y, perspectiveDivide)
+ */
+_glMatrix.vec3.project = function (out, a, m, viewport) {
+    var x = a[0],
+        y = a[1],
+        z = a[2];
+
+    var outX = m[0] * x + m[4] * y + m[8] * z + m[12],
+        outY = m[1] * x + m[5] * y + m[9] * z + m[13],
+        perD = m[3] * x + m[7] * y + m[11] * z + m[15];
+
+    var projectionX = (outX / perD + 1) / 2;
+    var projectionY = 1 - (outY / perD + 1) / 2;
+
+    out[0] = projectionX * viewport[2] + viewport[0];
+    out[1] = projectionY * viewport[3] + viewport[1];
+    out[2] = perD;
+    return out;
+};
+
+/**
+ * Unprojects a vec3 with canvas coordinates to world space
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} a              - vec3 to unproject
+ * @param {mat4} invViewProj    - inverse view projection matrix
+ * @param {vec4|Array} viewport - [ x, y, width, height ]
+ * @returns {vec3} out
+ * @throw On perspective divide error
+ */
+_glMatrix.vec3.unproject = function () {
+    var vec4_0 = void 0;
+
+    return function unProject(out, a, invViewProj, viewport) {
+        if (!vec4_0) vec4_0 = _glMatrix.vec4.create();
+
+        var x = a[0],
+            y = a[1],
+            z = a[2];
+
+        vec4_0[0] = (x - viewport[0]) * 2.0 / viewport[2] - 1.0;
+        vec4_0[1] = (y - viewport[1]) * 2.0 / viewport[3] - 1.0;
+        vec4_0[2] = 2.0 * z - 1.0;
+        vec4_0[3] = 1.0;
+
+        _glMatrix.vec4.transformMat4(vec4_0, vec4_0, invViewProj);
+
+        if (vec4_0[3] === 0.0) {
+            out[0] = 0;
+            out[1] = 0;
+            out[2] = 0;
+            throw new Error('Perspective divide error');
+        }
+
+        out[0] = vec4_0[0] / vec4_0[3];
+        out[1] = vec4_0[1] / vec4_0[3];
+        out[2] = vec4_0[2] / vec4_0[3];
+        return out;
+    };
+}();
 
 /***/ }),
 /* 33 */
@@ -10242,312 +10573,13 @@ exports.vec4 = _glMatrix.vec4;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Vector3Parameter = Tw2Vector3Parameter;
-
-var _math = __webpack_require__(0);
-
-/**
- * Tw2Vector3Parameter
- * @param {string} [name='']
- * @param {vec3|Float32Array} [value=[1,1,1]]
- * @property {string} name
- * @property {vec3|Float32Array} value
- * @property {Float32Array} constantBuffer
- * @property {number} offset
- * @constructor
- */
-function Tw2Vector3Parameter(name, value) {
-    this.name = name !== 'undefined' ? name : '';
-    this.value = value !== undefined ? _math.vec3.clone(value) : _math.vec3.fromValues(1, 1, 1);
-    this.constantBuffer = null;
-    this.offset = 0;
-}
-
-/**
- * Bind
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
- */
-Tw2Vector3Parameter.prototype.Bind = function (constantBuffer, offset, size) {
-    if (this.constantBuffer !== null || size < 3) {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-    return true;
-};
-
-/**
- * Unbind
- * @prototype
- */
-Tw2Vector3Parameter.prototype.Unbind = function () {
-    this.constantBuffer = null;
-};
-
-/**
- * Sets a supplied value
- * @param {vec3|Float32Array} value - Vector3 Array
- * @prototype
- */
-Tw2Vector3Parameter.prototype.SetValue = function (value) {
-    _math.vec3.copy(this.value, value);
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2Vector3Parameter.prototype.OnValueChanged = function () {
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2Vector3Parameter.prototype.Apply = function (constantBuffer, offset) {
-    constantBuffer.set(this.value, offset);
-};
-
-/**
- * Gets the current value array
- * @return {vec3|Float32Array} Vector3 Array
- * @prototype
- */
-Tw2Vector3Parameter.prototype.GetValue = function () {
-    if (this.constantBuffer !== null) {
-        return _math.vec3.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
-    }
-
-    return _math.vec3.clone(this.value);
-};
-
-/**
- * Returns a value from a specific index of the value array
- * @param {number} index
- * @returns {number}
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector3Parameter.prototype.GetIndexValue = function (index) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    if (this.constantBuffer !== null) {
-        return this.constantBuffer[this.offset + index];
-    }
-
-    return this.value[index];
-};
-
-/**
- * Sets a value at a specific index of the value array
- * @param {number} index
- * @param {number} value
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector3Parameter.prototype.SetIndexValue = function (index, value) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    this.value[index] = value;
-
-    if (this.constantBuffer !== null) {
-        this.constantBuffer[this.offset + index] = value;
-    }
-};
-
-/**
- * Sets all value array elements to a single value
- * @param {number} value - The value to fill the value array elements with
- * @prototype
- */
-Tw2Vector3Parameter.prototype.FillWith = function (value) {
-    this.SetValue([value, value, value]);
-};
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2Vector2Parameter = Tw2Vector2Parameter;
-
-var _math = __webpack_require__(0);
-
-/**
- * Tw2Vector2Parameter
- * @param {string} [name='']
- * @param {vec2|Float32Array} [value=[1,1]]
- * @property {string} name
- * @property {vec2} value
- * @property {Float32Array} constantBuffer
- * @property {number} offset
- * @constructor
- */
-function Tw2Vector2Parameter(name, value) {
-    this.name = name !== 'undefined' ? name : '';
-    this.value = value !== undefined ? _math.vec2.clone(value) : _math.vec2.fromValues(1, 1);
-    this.constantBuffer = null;
-    this.offset = 0;
-}
-
-/**
- * Bind
- * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
- */
-Tw2Vector2Parameter.prototype.Bind = function (constantBuffer, offset, size) {
-    if (this.constantBuffer !== null || size < 2) {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-    return true;
-};
-
-/**
- * Unbind
- * @prototype
- */
-Tw2Vector2Parameter.prototype.Unbind = function () {
-    this.constantBuffer = null;
-};
-
-/**
- * Sets a supplied value
- * @param {vec2} value - Vector2 Array
- * @prototype
- */
-Tw2Vector2Parameter.prototype.SetValue = function (value) {
-    _math.vec2.copy(this.value, value);
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2Vector2Parameter.prototype.OnValueChanged = function () {
-    if (this.constantBuffer !== null) {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2Vector2Parameter.prototype.Apply = function (constantBuffer, offset) {
-    constantBuffer.set(this.value, offset);
-};
-
-/**
- * Gets the current value array
- * @return {vec2} Vector2 Array
- * @prototype
- */
-Tw2Vector2Parameter.prototype.GetValue = function () {
-    if (this.constantBuffer !== null) {
-        return _math.vec2.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
-    }
-
-    return _math.vec2.clone(this.value);
-};
-
-/**
- * Returns a value from a specific index of the value array
- * @param {number} index
- * @returns {number}
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector2Parameter.prototype.GetIndexValue = function (index) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    if (this.constantBuffer !== null) {
-        return this.constantBuffer[this.offset + index];
-    }
-
-    return this.value[index];
-};
-
-/**
- * Sets a value at a specific index of the value array
- * @param {number} index
- * @param {number} value
- * @throw Invalid Index
- * @prototype
- */
-Tw2Vector2Parameter.prototype.SetIndexValue = function (index, value) {
-    if (typeof this.value[index] === 'undefined') {
-        throw 'Invalid Index';
-    }
-
-    this.value[index] = value;
-
-    if (this.constantBuffer !== null) {
-        this.constantBuffer[this.offset + index] = value;
-    }
-};
-
-/**
- * Sets all value array elements to a single value
- * @param {number} value - The value to fill the value array elements with
- * @prototype
- */
-Tw2Vector2Parameter.prototype.FillWith = function (value) {
-    this.SetValue([value, value]);
-};
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.Tw2ObjectReader = Tw2ObjectReader;
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2BinaryReader = __webpack_require__(21);
+var _Tw2BinaryReader = __webpack_require__(18);
 
 /**
  * Tw2ObjectReader
@@ -11018,7 +11050,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async) {
 };
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11027,55 +11059,204 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2VariableParameter = Tw2VariableParameter;
+exports.Tw2PerObjectData = undefined;
 
-var _Tw2VariableStore = __webpack_require__(17);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2Device = __webpack_require__(2);
+
+var _Tw2RawData = __webpack_require__(21);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Tw2VariableParameter
- * @param {string} [name=''] Parameter name
- * @param {string} [variableName='']
+ * Tw2PerObjectData
+ *
+ * @param {{}} [declarations]
+ * @param {Tw2RawData} [decl.VSData]
+ * @param {Tw2RawData} [decl.PSData]
+ * @property {?Tw2RawData} perObjectVSData - Per object vertex shader data
+ * @property {?Tw2RawData} perObjectPSData - Per object pixel shader data
+ * @class
+ */
+var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
+    function Tw2PerObjectData(declarations, skipCreate) {
+        _classCallCheck(this, Tw2PerObjectData);
+
+        this.perObjectVSData = null;
+        this.perObjectPSData = null;
+
+        if (declarations) {
+            this.DeclareFromObject(declarations, skipCreate);
+        }
+    }
+
+    /**
+     * Sets per object data to the device
+     * @param constantBufferHandles
+     */
+
+
+    _createClass(Tw2PerObjectData, [{
+        key: 'SetPerObjectDataToDevice',
+        value: function SetPerObjectDataToDevice(constantBufferHandles) {
+            if (this.perObjectVSData && constantBufferHandles[3]) {
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
+            }
+
+            if (this.perObjectPSData && constantBufferHandles[4]) {
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+            }
+        }
+
+        /**
+         * Declares raw data from an object
+         * @param {{}} declarations
+         * @param {{}} [declarations.VSData]
+         * @param {{}} [declarations.PSData]
+         * @param {boolean} [skipCreate]
+         */
+
+    }, {
+        key: 'DeclareFromObject',
+        value: function DeclareFromObject(declarations, skipCreate) {
+            if (declarations.VSData) {
+                this.perObjectVSData = new _Tw2RawData.Tw2RawData(declarations.VSData, skipCreate);
+            }
+
+            if (declarations.PSData) {
+                this.perObjectPSData = new _Tw2RawData.Tw2RawData(declarations.PSData, skipCreate);
+            }
+        }
+    }]);
+
+    return Tw2PerObjectData;
+}();
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2FloatParameter = Tw2FloatParameter;
+/**
+ * A Tw2 Parameter
+ * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
+ */
+
+/**
+ * Tw2FloatParameter
+ * @param {string} [name='']
+ * @param {number} [value=1]
  * @property {string} name
- * @property {string} variableName
+ * @property {number} value
+ * @property {null|Array} constantBuffer
+ * @property {null|number} offset
  * @constructor
  */
-function Tw2VariableParameter(name, variableName) {
+function Tw2FloatParameter(name, value) {
     if (typeof name !== 'undefined') {
         this.name = name;
     } else {
         this.name = '';
     }
-    if (typeof variableName !== 'undefined') {
-        this.variableName = variableName;
+    if (typeof value !== 'undefined') {
+        if (value.constructor.name.toUpperCase().includes('ARRAY')) {
+            this.value = value[0];
+        } else {
+            this.value = value;
+        }
     } else {
-        this.variableName = '';
+        this.value = 1;
     }
+    this.constantBuffer = null;
+    this.offset = null;
 }
 
 /**
- * Bind
+ * Binds the parameter to a constant buffer
+ * @param {Array} constantBuffer
+ * @param {number} offset
+ * @param {number} [size=] - unused
  * @returns {boolean}
  * @prototype
  */
-Tw2VariableParameter.prototype.Bind = function () {
-    return false;
+Tw2FloatParameter.prototype.Bind = function (constantBuffer, offset, size) {
+    if (this.constantBuffer !== null || size < 1) {
+        return false;
+    }
+    this.constantBuffer = constantBuffer;
+    this.offset = offset;
+    this.Apply(this.constantBuffer, this.offset, size);
 };
 
 /**
- * Apply
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
+ * Unbinds the parameter from it's constant buffer
  * @prototype
  */
-Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
-    if (typeof _Tw2VariableStore.variableStore._variables[this.variableName] !== 'undefined') {
-        _Tw2VariableStore.variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
+Tw2FloatParameter.prototype.Unbind = function () {
+    this.constantBuffer = null;
+};
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2FloatParameter.prototype.OnValueChanged = function () {
+    if (this.constantBuffer !== null) {
+        this.constantBuffer[this.offset] = this.value;
     }
 };
 
+/**
+ * Applies the current value to the supplied constant buffer at the supplied offset
+ * @param {Array} constantBuffer
+ * @param {number} offset
+ * @prototype
+ */
+Tw2FloatParameter.prototype.Apply = function (constantBuffer, offset) {
+    constantBuffer[offset] = this.value;
+};
+
+/**
+ * Gets the current value
+ * @prototype
+ */
+Tw2FloatParameter.prototype.GetValue = function () {
+    if (this.constantBuffer !== null) {
+        return this.constantBuffer[this.offset];
+    }
+
+    return this.value;
+};
+
+/**
+ * Sets a supplied value
+ * @prototype
+ */
+Tw2FloatParameter.prototype.SetValue = function (value) {
+    this.value = value;
+    if (this.constantBuffer !== null) {
+        this.constantBuffer[this.offset] = this.value;
+    }
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2FloatParameter.is = function (value) {
+    return typeof value === 'number';
+};
+
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11090,9 +11271,9 @@ exports.Tw2MeshLineArea = Tw2MeshLineArea;
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2GeometryRes = __webpack_require__(23);
+var _Tw2GeometryRes = __webpack_require__(22);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11293,7 +11474,7 @@ Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData) {
 };
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11304,9 +11485,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2RenderTarget = Tw2RenderTarget;
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2TextureRes = __webpack_require__(25);
+var _Tw2TextureRes = __webpack_require__(24);
 
 /**
  * Tw2RenderTarget
@@ -11408,7 +11589,7 @@ Tw2RenderTarget.prototype.Unset = function () {
 };
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11418,7 +11599,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(75);
+var _emitters = __webpack_require__(78);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11430,7 +11611,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(78);
+var _forces = __webpack_require__(81);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11442,7 +11623,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(85);
+var _generators = __webpack_require__(88);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11454,7 +11635,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(89);
+var _constraints = __webpack_require__(92);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11466,7 +11647,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(90);
+var _Tw2ParticleSystem = __webpack_require__(93);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11478,7 +11659,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(14);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11491,7 +11672,7 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
 });
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11500,16 +11681,19 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Tw2ParticleEmitter = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
+
+var _math = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/* eslint no-unused-vars:0 */
 
 /**
  * Particle Emitter base class
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {Tw2ParticleSystem} particleSystem
  * @class
@@ -11518,6 +11702,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
     function Tw2ParticleEmitter() {
         _classCallCheck(this, Tw2ParticleEmitter);
 
+        this._id = _math.util.generateID();
         this.name = '';
         this.particleSystem = null;
     }
@@ -11545,7 +11730,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11555,7 +11740,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _curves = __webpack_require__(15);
+var _curves = __webpack_require__(14);
 
 Object.keys(_curves).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11567,7 +11752,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(107);
+var _sequencers = __webpack_require__(113);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11579,7 +11764,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(116);
+var _tracks = __webpack_require__(122);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11591,7 +11776,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(119);
+var _maya = __webpack_require__(125);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11604,6 +11789,114 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildMesh = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveChild2 = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Mesh attachment to space object
+ *
+ * @property {boolean} useSpaceObjectData
+ * @property {Tw2Mesh|Tw2InstancedMesh} mesh
+ * @class
+ */
+var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
+    _inherits(EveChildMesh, _EveChild);
+
+    function EveChildMesh() {
+        _classCallCheck(this, EveChildMesh);
+
+        var _this = _possibleConstructorReturn(this, (EveChildMesh.__proto__ || Object.getPrototypeOf(EveChildMesh)).call(this));
+
+        _this.useSpaceObjectData = true;
+        _this.mesh = null;
+        return _this;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array.<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChildMesh, [{
+        key: 'GetResources',
+        value: function GetResources(out) {
+            if (this.mesh) this.mesh.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display || !this.mesh) return;
+
+            if (this.useSpaceObjectData) {
+                if (!this._perObjectData) {
+                    this._perObjectData = new _core.Tw2PerObjectData();
+
+                    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
+                    this._perObjectData.perObjectVSData.data = new Float32Array(perObjectData.perObjectVSData.data.length);
+                    this._perObjectData.perObjectVSData.data[33] = 1;
+                    this._perObjectData.perObjectVSData.data[35] = 1;
+
+                    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
+                    this._perObjectData.perObjectPSData.data = new Float32Array(perObjectData.perObjectPSData.data.length);
+                    this._perObjectData.perObjectPSData.data[1] = 1;
+                    this._perObjectData.perObjectPSData.data[3] = 1;
+                }
+
+                this._perObjectData.perObjectVSData.data.set(perObjectData.perObjectVSData.data);
+                this._perObjectData.perObjectPSData.data.set(perObjectData.perObjectPSData.data);
+
+                _math.mat4.transpose(this._perObjectData.perObjectVSData.data, this.worldTransform);
+                _math.mat4.transpose(this._perObjectData.perObjectVSData.data.subarray(16), this.worldTransformLast);
+            } else {
+                if (!this._perObjectData) {
+                    this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectDataDecl);
+                }
+
+                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
+                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
+            }
+
+            this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+        }
+    }]);
+
+    return EveChildMesh;
+}(_EveChild2.EveChild);
+
+/***/ }),
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11613,127 +11906,387 @@ Object.keys(_maya).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveChildMesh = EveChildMesh;
+exports.EveTransform = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(16);
+var _EveObject2 = __webpack_require__(15);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Mesh attachment to space object
- * @property {string} name
- * @property {boolean} display
- * @property {boolean} useSpaceObjectData
- * @property {Number} lowestLodVisible
- * @property {quat} rotation
- * @property {vec3} translation
+ * EveTransform
+ *
+ * @property {String} name
+ * @property {Boolean} display                                      - Enables/ disables all batch accumulations
+ * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
+ * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
+ * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
+ * @property {Tw2Mesh} mesh
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {Array} children
+ * @property {Array.<Tw2ParticleSystem>} particleSystems
+ * @property {Array.<Tw2StaticEmitter|Tw2DynamicEmitter>} particleEmitters
+ * @property {Number} Modifier
+ * @property {Number} sortValueMultiplier
+ * @property {Number} distanceBasedScaleArg1
+ * @property {Number} distanceBasedScaleArg2
+ * @property {Boolean} useDistanceBasedScale
  * @property {vec3} scaling
- * @property {boolean} useSRT
- * @property {boolean} staticTransform
+ * @property {vec3} translation
+ * @property {quat} rotation
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
- * @property {mat4} worldTransformLast
- * @property {Tw2Mesh} mesh
- * @property {boolean} isEffectChild
- * @property {Tw2PerObjectData|EveBasicPerObjectData} _perObjectData
- * @constructor
+ * @property {Array.<mat4>} _mat4Cache
+ * @property {Array.<vec3>} _vec3Cache
+ * @property {Tw2BasicPerObjectData} _perObjectData
+ * @class
  */
-function EveChildMesh() {
-    this.name = '';
-    this.display = true;
-    this.useSpaceObjectData = true;
-    this.lowestLodVisible = 2;
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.useSRT = true;
-    this.staticTransform = false;
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-    this.worldTransformLast = _math.mat4.create();
-    this.mesh = null;
+var EveTransform = exports.EveTransform = function (_EveObject) {
+    _inherits(EveTransform, _EveObject);
 
-    this.isEffectChild = true;
+    function EveTransform() {
+        _classCallCheck(this, EveTransform);
 
-    this._perObjectData = null;
-}
+        var _this = _possibleConstructorReturn(this, (EveTransform.__proto__ || Object.getPrototypeOf(EveTransform)).call(this));
 
-/**
- * Updates mesh transform
- * @param {mat4} parentTransform
- */
-EveChildMesh.prototype.Update = function (parentTransform) {
-    if (this.useSRT) {
-        _math.quat.normalize(this.rotation, this.rotation);
-        _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        _this.visible = {};
+        _this.visible.mesh = true;
+        _this.visible.children = true;
+        _this.mesh = null;
+        _this.curveSets = [];
+        _this.children = [];
+        _this.particleSystems = [];
+        _this.particleEmitters = [];
+        _this.modifier = EveTransform.Modifier.NONE;
+        _this.sortValueMultiplier = 1.0;
+        _this.distanceBasedScaleArg1 = 0.2;
+        _this.distanceBasedScaleArg2 = 0.63;
+        _this.useDistanceBasedScale = false;
+        _this.scaling = _math.vec3.fromValues(1, 1, 1);
+        _this.translation = _math.vec3.create();
+        _this.rotation = _math.quat.create();
+        _this.localTransform = _math.mat4.create();
+        _this.worldTransform = _math.mat4.create();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(EveTransform.perObjectDataDecl);
+
+        EveTransform.init();
+        return _this;
     }
 
-    _math.mat4.copy(this.worldTransformLast, this.worldTransform);
-    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+    /**
+     * Initializes the EveTransform
+     */
+
+
+    _createClass(EveTransform, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        }
+
+        /**
+         * Gets transform res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} [excludeChildren] - True to exclude children's res objects
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            if (this.mesh) this.mesh.GetResources(out);
+
+            if (!excludeChildren) {
+                for (var i = 0; i < this.children; i++) {
+                    this.children[i].GetResources(out);
+                }
+            }
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData(parentTransform) {
+            var g = EveTransform.global,
+                finalScale = g.vec3_0,
+                parentScale = g.vec3_1,
+                dir = g.vec3_2,
+                viewInv = _core.device.viewInverse;
+
+            _math.quat.normalize(this.rotation, this.rotation);
+            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+            _math.mat4.getScaling(parentScale, parentTransform);
+
+            switch (this.modifier) {
+                case EveTransform.Modifier.BILLBOARD:
+                case EveTransform.Modifier.SIMPLE_HALO:
+                    var dirNorm = g.vec3_3;
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
+
+                    if (this.modifier === EveTransform.Modifier.SIMPLE_HALO) {
+                        _math.vec3.subtract(dir, _core.device.GetEyePosition(), this.worldTransform.subarray(12));
+                        _math.vec3.normalize(dirNorm, this.worldTransform.subarray(8));
+                        _math.vec3.normalize(dir, dir);
+                        var scale = _math.vec3.dot(dir, dirNorm);
+                        if (scale < 0) scale = 0;
+                        _math.vec3.scale(finalScale, finalScale, scale * scale);
+                    }
+
+                    this.worldTransform[0] = viewInv[0] * finalScale[0];
+                    this.worldTransform[1] = viewInv[1] * finalScale[0];
+                    this.worldTransform[2] = viewInv[2] * finalScale[0];
+                    this.worldTransform[4] = viewInv[4] * finalScale[1];
+                    this.worldTransform[5] = viewInv[5] * finalScale[1];
+                    this.worldTransform[6] = viewInv[6] * finalScale[1];
+                    this.worldTransform[8] = viewInv[8] * finalScale[2];
+                    this.worldTransform[9] = viewInv[9] * finalScale[2];
+                    this.worldTransform[10] = viewInv[10] * finalScale[2];
+                    break;
+
+                case EveTransform.Modifier.EVE_CAMERA_ROTATION:
+                    var translation = g.vec3_3;
+                    _math.vec3.transformMat4(translation, this.translation, parentTransform);
+                    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, translation, this.scaling);
+                    _math.mat4.multiply(this.worldTransform, viewInv, this.localTransform);
+                    this.worldTransform[12] = this.localTransform[12];
+                    this.worldTransform[13] = this.localTransform[13];
+                    this.worldTransform[14] = this.localTransform[14];
+                    break;
+
+                case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
+                case EveTransform.Modifier.EVE_SIMPLE_HALO:
+                    var camPos = _core.device.GetEyePosition(),
+                        camFwd = g.vec3_3,
+                        right = g.vec3_4,
+                        up = g.vec3_5,
+                        forward = g.vec3_6,
+                        dirToCamNorm = g.vec3_7,
+                        parentT = g.mat4_0,
+                        alignMat = g.mat4_1,
+                        rotationT = g.mat4_2;
+
+                    // 3 4 3 3 3 4 3 3
+                    _math.mat4.translate(this.worldTransform, parentTransform, this.translation);
+                    _math.mat4.transpose(parentT, parentTransform);
+
+                    dir[0] = camPos[0] - this.worldTransform[12];
+                    dir[1] = camPos[1] - this.worldTransform[13];
+                    dir[2] = camPos[2] - this.worldTransform[14];
+
+                    _math.vec3.copy(camFwd, dir);
+                    _math.vec3.transformMat4(camFwd, camFwd, parentT);
+                    _math.vec3.divide(camFwd, camFwd, parentScale);
+                    _math.vec3.normalize(camFwd, camFwd);
+
+                    _math.vec3.set(right, _core.device.view[0], _core.device.view[4], _core.device.view[8]);
+                    _math.vec3.transformMat4(right, right, parentT);
+                    _math.vec3.normalize(right, right);
+
+                    _math.vec3.cross(up, camFwd, right);
+                    _math.vec3.normalize(up, up);
+                    _math.vec3.cross(right, up, camFwd);
+
+                    alignMat[0] = right[0];
+                    alignMat[1] = right[1];
+                    alignMat[2] = right[2];
+                    alignMat[4] = up[0];
+                    alignMat[5] = up[1];
+                    alignMat[6] = up[2];
+                    alignMat[8] = camFwd[0];
+                    alignMat[9] = camFwd[1];
+                    alignMat[10] = camFwd[2];
+                    alignMat[15] = 1;
+
+                    _math.mat4.fromQuat(rotationT, this.rotation);
+                    _math.mat4.multiply(alignMat, alignMat, rotationT);
+
+                    if (this.modifier === EveTransform.Modifier.EVE_SIMPLE_HALO) {
+                        _math.vec3.normalize(forward, this.worldTransform.subarray(8));
+                        _math.vec3.normalize(dirToCamNorm, dir);
+                        var _scale = -_math.vec3.dot(dirToCamNorm, forward);
+                        if (_scale < 0) _scale = 0;
+                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                        _math.mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * _scale, this.scaling[1] * _scale, this.scaling[2] * _scale]);
+                    } else {
+                        _math.mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
+                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                    }
+                    break;
+
+                case EveTransform.Modifier.LOOK_AT_CAMERA:
+                    var lookAt = g.mat4_0;
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+                    _math.mat4.lookAt(lookAt, viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0]);
+                    _math.mat4.transpose(lookAt, lookAt);
+                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
+                    this.worldTransform[0] = lookAt[0] * finalScale[0];
+                    this.worldTransform[1] = lookAt[1] * finalScale[0];
+                    this.worldTransform[2] = lookAt[2] * finalScale[0];
+                    this.worldTransform[4] = lookAt[4] * finalScale[1];
+                    this.worldTransform[5] = lookAt[5] * finalScale[1];
+                    this.worldTransform[6] = lookAt[6] * finalScale[1];
+                    this.worldTransform[8] = lookAt[8] * finalScale[2];
+                    this.worldTransform[9] = lookAt[9] * finalScale[2];
+                    this.worldTransform[10] = lookAt[10] * finalScale[2];
+                    break;
+
+                default:
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+            }
+
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].UpdateViewDependentData(this.worldTransform);
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.particleEmitters.length; ++_i) {
+                this.particleEmitters[_i].Update(dt);
+            }
+
+            for (var _i2 = 0; _i2 < this.particleSystems.length; ++_i2) {
+                this.particleSystems[_i2].Update(dt);
+            }
+
+            for (var _i3 = 0; _i3 < this.curveSets.length; ++_i3) {
+                this.curveSets[_i3].Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches for accumulation
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData|Tw2BasicPerObjectData} [perObjectData]
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display) return;
+
+            if (this.visible.mesh && this.mesh) {
+                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
+                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
+                if (perObjectData) {
+                    this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
+                    this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
+                }
+                this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+            }
+
+            if (this.visible.children) {
+                for (var i = 0; i < this.children.length; ++i) {
+                    this.children[i].GetBatches(mode, accumulator, perObjectData);
+                }
+            }
+        }
+
+        /**
+         * multiply3x3
+         */
+
+    }], [{
+        key: 'Multiply3x3',
+        value: function Multiply3x3(a, b, c) {
+            c || (c = b);
+            var d = b[0],
+                e = b[1];
+            b = b[2];
+            c[0] = a[0] * d + a[4] * e + a[8] * b;
+            c[1] = a[1] * d + a[5] * e + a[9] * b;
+            c[2] = a[2] * d + a[6] * e + a[10] * b;
+            return c;
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }, {
+        key: 'init',
+        value: function init() {
+            if (!EveTransform.global) {
+                EveTransform.global = {
+                    vec3_0: _math.vec3.create(),
+                    vec3_1: _math.vec3.create(),
+                    vec3_2: _math.vec3.create(),
+                    vec3_3: _math.vec3.create(),
+                    vec3_4: _math.vec3.create(),
+                    vec3_5: _math.vec3.create(),
+                    vec3_6: _math.vec3.create(),
+                    vec3_7: _math.vec3.create(),
+                    mat4_0: _math.mat4.create(),
+                    mat4_1: _math.mat4.create(),
+                    mat4_2: _math.mat4.create()
+                };
+            }
+        }
+    }]);
+
+    return EveTransform;
+}(_EveObject2.EveObject);
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveTransform.global = null;
+
+/**
+ * Modifier states
+ * @type {{string:Number}}
+ */
+EveTransform.Modifier = {
+    NONE: 0,
+    BILLBOARD: 1,
+    TRANSLATE_WITH_CAMERA: 2,
+    LOOK_AT_CAMERA: 3,
+    SIMPLE_HALO: 4,
+    EVE_CAMERA_ROTATION_ALIGNED: 100,
+    EVE_BOOSTER: 101,
+    EVE_SIMPLE_HALO: 102,
+    EVE_CAMERA_ROTATION: 103
 };
 
 /**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
+ * Per object data declarations
+ * @type {{FFEData: *[]}}
  */
-EveChildMesh.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display || !this.mesh) {
-        return;
-    }
-    if (this.useSpaceObjectData) {
-        if (!this._perObjectData) {
-            this._perObjectData = new _core.Tw2PerObjectData();
-            this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-            this._perObjectData.perObjectVSData.data = new Float32Array(perObjectData.perObjectVSData.data.length);
-
-            this._perObjectData.perObjectVSData.data[33] = 1;
-            this._perObjectData.perObjectVSData.data[35] = 1;
-
-            this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-            this._perObjectData.perObjectPSData.data = new Float32Array(perObjectData.perObjectPSData.data.length);
-
-            this._perObjectData.perObjectPSData.data[1] = 1;
-            this._perObjectData.perObjectPSData.data[3] = 1;
-        }
-        this._perObjectData.perObjectVSData.data.set(perObjectData.perObjectVSData.data);
-        this._perObjectData.perObjectPSData.data.set(perObjectData.perObjectPSData.data);
-
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.data, this.worldTransform);
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.data.subarray(16), this.worldTransformLast);
-    } else {
-        if (!this._perObjectData) {
-            this._perObjectData = new _EveTransform.EveBasicPerObjectData();
-            this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-            this._perObjectData.perObjectFFEData.Declare('world', 16);
-            this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-            this._perObjectData.perObjectFFEData.Create();
-        }
-        _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
-        _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
-    }
-
-    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-};
-
-/**
- * Gets child mesh res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveChildMesh.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
-
-    return out;
+EveTransform.perObjectDataDecl = {
+    FFEData: [{ name: 'World', size: 16 }, { name: 'WorldInverseTranspose', size: 16 }]
 };
 
 /***/ }),
@@ -11744,25 +12297,441 @@ EveChildMesh.prototype.GetResources = function (out) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
-exports.EveLocator = EveLocator;
+exports.EveShip = exports.EveTurretSetLocatorInfo = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _EveSpaceObject2 = __webpack_require__(27);
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Contains transform information for Boosters, Turrets and XLTurrets
- * @property {string} name
- * @property {mat4} transform
- * @constructor
+ * Eve Turret Set Locator Info
+ * @property {boolean} isJoint
+ * @property {Array.<mat4>} locatorTransforms
  */
-function EveLocator() {
-  this.name = '';
-  this.transform = _math.mat4.create();
-}
+var EveTurretSetLocatorInfo = exports.EveTurretSetLocatorInfo = function EveTurretSetLocatorInfo() {
+    _classCallCheck(this, EveTurretSetLocatorInfo);
+
+    this.isJoint = false;
+    this.locatorTransforms = [];
+};
+
+/**
+ * EveShip
+ *
+ * @property {number} boosterGain
+ * @property {Array.<EveBoosterSet>} boosters
+ * @property {Array.<EveTurretSet>} turretSets
+ * @property {Array} _turretSetsLocatorInfo
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.turretEffects   - Enabled/ disables turret set effects
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
+ * @class
+ */
+
+
+var EveShip = exports.EveShip = function (_EveSpaceObject) {
+    _inherits(EveShip, _EveSpaceObject);
+
+    function EveShip() {
+        _classCallCheck(this, EveShip);
+
+        var _this = _possibleConstructorReturn(this, (EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call(this));
+
+        _this.visible.turretSets = true;
+        _this.visible.boosters = true;
+        _this.boosters = null;
+        _this.turretSets = [];
+        _this._turretSetsLocatorInfo = [];
+        _this.boosterGain = 1;
+        return _this;
+    }
+
+    /**
+     * Initializes the ship
+     */
+
+
+    _createClass(EveShip, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Initialize', this).call(this);
+
+            if (this.boosters) {
+                this.RebuildBoosterSet();
+            }
+        }
+
+        /**
+         * Rebuilds the ship's booster set
+         */
+
+    }, {
+        key: 'RebuildBoosterSet',
+        value: function RebuildBoosterSet() {
+            if (this.boosters) {
+                this.boosters.Clear();
+                var locators = this.FindLocatorsByPrefix('locator_booster');
+                for (var i = 0; i < locators.length; ++i) {
+                    this.boosters.Add(locators[i].transform, locators[i].atlasIndex0, locators[i].atlasIndex1, locators[i].name);
+                }
+                this.boosters.Rebuild();
+            }
+        }
+
+        /**
+         * Rebuilds turret positions
+         */
+
+    }, {
+        key: 'RebuildTurretPositions',
+        value: function RebuildTurretPositions() {
+            this._turretSetsLocatorInfo = [];
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                var name = this.turretSets[i].locatorName,
+                    locatorCount = this.GetLocatorCount(name),
+                    locator = new EveTurretSetLocatorInfo();
+
+                for (var j = 0; j < locatorCount; ++j) {
+                    var locatorName = name + String.fromCharCode('a'.charCodeAt(0) + j);
+
+                    var locatorTransform = this.FindLocatorJointByName(locatorName);
+                    if (locatorTransform !== null) {
+                        locator.isJoint = true;
+                    } else {
+                        locatorTransform = this.FindLocatorTransformByName(locatorName);
+                    }
+
+                    if (locatorTransform !== null) {
+                        this.turretSets[i].SetLocalTransform(j, locatorTransform, locatorName);
+                        locator.locatorTransforms.push(locatorTransform);
+                    }
+                }
+                this._turretSetsLocatorInfo.push(locator);
+            }
+        }
+
+        /**
+         * Gets ship's resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} [excludeChildren] - True to exclude children's res objects
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetResources', this).call(this, out, excludeChildren);
+
+            for (var i = 0; i < this.turretSets.length; i++) {
+                this.turretSets[i].GetResources(out);
+            }
+
+            if (this.boosters) {
+                this.boosters.GetResources(out);
+            }
+
+            return out;
+        }
+
+        /**
+         * Updates view dependant data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'UpdateViewDependentData', this).call(this);
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                this.turretSets[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - deltaTime
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Update', this).call(this, dt);
+
+            if (this.boosters) {
+                if (this.boosters.rebuildPending) {
+                    this.RebuildBoosterSet();
+                }
+                this.boosters.Update(dt, this.transform);
+            }
+
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                if (i < this._turretSetsLocatorInfo.length) {
+                    if (this._turretSetsLocatorInfo[i].isJoint) {
+                        var locatorInfo = this._turretSetsLocatorInfo[i];
+                        for (var j = 0; j < locatorInfo.locatorTransforms.length; ++j) {
+                            this.turretSets[i].SetLocalTransform(j, locatorInfo.locatorTransforms[j]);
+                        }
+                    }
+                }
+            }
+
+            for (var _i = 0; _i < this.turretSets.length; ++_i) {
+                this.turretSets[_i].Update(dt, this.transform);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display) return;
+
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetBatches', this).call(this, mode, accumulator);
+
+            this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
+            this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
+
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                if (this.lod > 1 && this.visible.turretSets) {
+                    this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData, this.visible.turretEffects);
+                } else if (this.visible.turretEffects) {
+                    this.turretSets[i].GetEffectBatches(mode, accumulator, this._perObjectData);
+                }
+            }
+
+            if (this.boosters && this.visible.boosters) {
+                this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+            }
+        }
+    }]);
+
+    return EveShip;
+}(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
 /* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveOccluder = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveOccluder
+ *
+ * @property {number|string} _id
+ * @property {String} name
+ * @property {boolean} display
+ * @property {number} value
+ * @property {Array.<EveSpriteSet>} sprites
+ * @class
+ */
+var EveOccluder = exports.EveOccluder = function () {
+    function EveOccluder() {
+        _classCallCheck(this, EveOccluder);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.value = 1;
+        this.sprites = [];
+
+        EveOccluder.init();
+    }
+
+    /**
+     * UpdateValues
+     * @param {mat4} parentTransform
+     * @param {number} index
+     */
+
+
+    _createClass(EveOccluder, [{
+        key: 'UpdateValue',
+        value: function UpdateValue(parentTransform, index) {
+            if (!this.display || !_core.device.alphaBlendBackBuffer) return;
+
+            var g = EveOccluder.global,
+                worldViewProj = g.mat4_0,
+                center = g.vec4_0;
+
+            g.accumulator.Clear();
+
+            for (var i = 0; i < this.sprites.length; ++i) {
+                this.sprites[i].UpdateViewDependentData(parentTransform);
+                this.sprites[i].GetBatches(_core.device.RM_DECAL, g.accumulator);
+            }
+
+            _core.store.GetVariable('OccluderValue').value.set([(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
+            g.accumulator.Render();
+
+            _math.mat4.multiply(worldViewProj, _core.device.viewProjection, this.sprites[0].worldTransform);
+            _math.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
+
+            var x0 = (center[0] / center[3] + 1) * 0.5,
+                y0 = (center[1] / center[3] + 1) * 0.5;
+
+            _math.vec4.set(center, 0.5, 0.5, 0, 1);
+            _math.vec4.transformMat4(center, center, worldViewProj);
+
+            var x1 = (center[0] / center[3] + 1) * 0.5,
+                y1 = (center[1] / center[3] + 1) * 0.5;
+
+            center[0] = x0;
+            center[1] = y0;
+            center[2] = x1 - x0;
+            center[3] = y1 - y0;
+
+            g.effect.parameters.OccluderPosition.SetValue(center);
+        }
+
+        /**
+         * CollectSamples
+         * @param {Tw2TextureRes} tex
+         * @param {number} index
+         * @param {number} total
+         * @param {number} samples
+         * @returns boolean
+         */
+
+    }], [{
+        key: 'CollectSamples',
+        value: function CollectSamples(tex, index, total, samples) {
+            var g = this.global,
+                effect = g.effect,
+                vertexBuffer = g.vertexBuffer,
+                decl = g.decl;
+
+            if (!effect.IsGood()) return false;
+
+            effect.parameters.BackBuffer.textureRes = tex;
+            effect.parameters.OccluderIndex.SetValue([index, total, samples]);
+
+            _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, vertexBuffer);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                if (decl.SetDeclaration(effect.GetPassInput(pass), 16)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, 255 * 6);
+            }
+            return true;
+        }
+
+        /**
+         * Initializes class globals and scratch variables
+         */
+
+    }, {
+        key: 'init',
+        value: function init() {
+            if (EveOccluder.global) return;
+
+            var g = EveOccluder.global = {};
+            g.mat4_0 = _math.mat4.create();
+            g.vec4_0 = _math.vec4.create();
+            g.accumulator = new _core.Tw2BatchAccumulator();
+
+            g.effect = _core.Tw2Effect.create({
+                name: 'Occluder sampler collector',
+                effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
+                parameters: {
+                    OccluderPosition: _math.vec4.fromValues(1, 1, 1, 1),
+                    OccluderIndex: _math.vec3.fromValues(1, 1, 1)
+                },
+                textures: {
+                    BackBuffer: ''
+                }
+            });
+
+            g.vertexBuffer = null;
+            g.decl = new _core.Tw2VertexDeclaration([['POSITION', 0, 'FLOAT', 2, 0], ['TEXCOORD', 0, 'FLOAT', 2, 8]]);
+
+            var vb = new Float32Array(255 * 6 * 4);
+            var index = 0;
+            for (var i = 0; i < 16; ++i) {
+                for (var j = 0; j < 16; ++j) {
+                    var x = (i + Math.random()) / 16 * 2 - 1,
+                        y = (j + Math.random()) / 16 * 2 - 1;
+
+                    vb[index++] = 1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = -1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = 1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+
+                    vb[index++] = -1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = 1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = -1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                }
+            }
+
+            g.vertexBuffer = _core.device.gl.createBuffer();
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, g.vertexBuffer);
+            _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, vb, _core.device.gl.STATIC_DRAW);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
+        }
+    }]);
+
+    return EveOccluder;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveOccluder.global = null;
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11852,15 +12821,15 @@ function EveBoosterSet() {
     this._positions = _core.device.gl.createBuffer();
 
     this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 2, 12));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 20));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 36));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 52));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 68));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 84));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 1, 100));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 2, 104));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 2, 12));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 4, 20));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 4, 36));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _core.device.gl.FLOAT, 4, 52));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _core.device.gl.FLOAT, 4, 68));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _core.device.gl.FLOAT, 4, 84));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 6, _core.device.gl.FLOAT, 1, 100));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 7, _core.device.gl.FLOAT, 2, 104));
     this._decl.RebuildHash();
 
     this._perObjectData = new _core.Tw2PerObjectData();
@@ -11925,12 +12894,13 @@ EveBoosterSet.scratch = {
  * @param {mat4} localMatrix
  * @param {number} atlas0
  * @param {number} atlas1
- * @constructor
+ * @param {string} name
  */
-EveBoosterSet.prototype.Add = function (localMatrix, atlas0, atlas1) {
+EveBoosterSet.prototype.Add = function (localMatrix, atlas0, atlas1, name) {
     var scratch = EveBoosterSet.scratch;
 
     this._boosterTransforms[this._boosterTransforms.length] = {
+        name: name,
         transform: _math.mat4.clone(localMatrix),
         atlas0: atlas0,
         atlas1: atlas1
@@ -12060,7 +13030,41 @@ EveBoosterSet.prototype.Render = function (overrideEffect) {
 EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
 
 /***/ }),
-/* 46 */
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveLocator = undefined;
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Contains transform information for Boosters, Turrets and XLTurrets
+ *
+ * @property {string} name
+ * @property {?number} atlasIndex0
+ * @property {?number} atlasIndex1
+ * @property {mat4} transform
+ * @class
+ */
+var EveLocator = exports.EveLocator = function EveLocator() {
+    _classCallCheck(this, EveLocator);
+
+    this.name = '';
+    this.atlasIndex0 = null;
+    this.atlasIndex1 = null;
+    this.transform = _math.mat4.create();
+};
+
+/***/ }),
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12151,15 +13155,15 @@ function EvePlaneSet() {
     this._vertexBuffer = null;
     this._indexBuffer = null;
     this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 16));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 32));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 48));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 64));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 80));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 96));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 4, 112));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 3, 128));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 4, 0));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 4, 16));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 4, 32));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 4, 48));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _core.device.gl.FLOAT, 4, 64));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _core.device.gl.FLOAT, 4, 80));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _core.device.gl.FLOAT, 4, 96));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 6, _core.device.gl.FLOAT, 4, 112));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 7, _core.device.gl.FLOAT, 3, 128));
     this._decl.RebuildHash();
 }
 
@@ -12346,7 +13350,210 @@ EvePlaneSet.scratch = {
 };
 
 /***/ }),
-/* 47 */
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveSpaceObjectDecal = EveSpaceObjectDecal;
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+/**
+ * EveSpaceObjectDecal
+ * @property {boolean} display
+ * @property {Tw2Effect} decalEffect
+ * @property {Tw2Effect} pickEffect
+ * @property {String} name=''
+ * @property {number} groupIndex
+ * @property {boolean} pickable
+ * @property {vec3} position
+ * @property {quat} rotation
+ * @property {vec3} scaling
+ * @property {mat4} decalMatrix
+ * @property {mat4} invDecalMatrix
+ * @property {Tw2GeometryRes} parentGeometry
+ * @property {Array} indexBuffer
+ * @property {*} _indexBuffer
+ * @property {number} parentBoneIndex
+ * @property {Tw2PerObjectData} _perObjectData
+ * @constructor
+ */
+function EveSpaceObjectDecal() {
+    this.display = true;
+    this.decalEffect = null;
+    this.pickEffect = null;
+    this.name = '';
+    this.groupIndex = -1;
+
+    this.pickable = true;
+
+    this.position = _math.vec3.create();
+    this.rotation = _math.quat.create();
+    this.scaling = _math.vec3.create();
+
+    this.decalMatrix = _math.mat4.create();
+    this.invDecalMatrix = _math.mat4.create();
+    this.parentGeometry = null;
+    this.indexBuffer = [];
+    this._indexBuffer = null;
+    this.parentBoneIndex = -1;
+
+    this._perObjectData = new _core.Tw2PerObjectData();
+    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
+    this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
+    this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
+    this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
+    this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
+    this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
+    this._perObjectData.perObjectVSData.Create();
+
+    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
+    this._perObjectData.perObjectPSData.Declare('displayData', 4);
+    this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
+    this._perObjectData.perObjectPSData.Create();
+
+    _math.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
+}
+
+/**
+ * Initializes the decal
+ */
+EveSpaceObjectDecal.prototype.Initialize = function () {
+    var indexes = new Uint16Array(this.indexBuffer);
+    this._indexBuffer = _core.device.gl.createBuffer();
+    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
+
+    _math.mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
+    _math.mat4.invert(this.invDecalMatrix, this.decalMatrix);
+};
+
+/**
+ * Gets decal res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpaceObjectDecal.prototype.GetResources = function (out) {
+    if (out === undefined) {
+        out = [];
+    }
+
+    if (this.parentGeometry !== null) {
+        if (out.indexOf(this.parentGeometry) === -1) {
+            out.push(this.parentGeometry);
+        }
+    }
+
+    if (this.decalEffect !== null) {
+        this.decalEffect.GetResources(out);
+    }
+
+    return out;
+};
+
+/**
+ * Sets the parent geometry
+ * @param {Tw2GeometryRes} geometryRes
+ */
+EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes) {
+    this.parentGeometry = geometryRes;
+};
+
+/**
+ * Gets batches for rendering
+ * @param {number} mode
+ * @param {Tw2BatchAccumulator} accumulator
+ * @param {Tw2PerObjectData} perObjectData
+ * @param {number} [counter=0]
+ */
+EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData, counter) {
+    switch (mode) {
+        case _core.device.RM_DECAL:
+            if (!this.decalEffect) return;
+            break;
+
+        case _core.device.RM_PICKABLE:
+            if (!this.pickEffect || !this.pickable) return;
+            break;
+
+        default:
+            return;
+    }
+
+    if (this.display && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()) {
+        var batch = new _core.Tw2ForwardingRenderBatch();
+        this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
+        if (this.parentBoneIndex >= 0) {
+            var bones = perObjectData.perObjectVSData.Get('JointMat');
+            var offset = this.parentBoneIndex * 12;
+            if (bones[offset + 0] || bones[offset + 4] || bones[offset + 8]) {
+                var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
+                bone[0] = bones[offset + 0];
+                bone[1] = bones[offset + 4];
+                bone[2] = bones[offset + 8];
+                bone[3] = 0;
+                bone[4] = bones[offset + 1];
+                bone[5] = bones[offset + 5];
+                bone[6] = bones[offset + 9];
+                bone[7] = 0;
+                bone[8] = bones[offset + 2];
+                bone[9] = bones[offset + 6];
+                bone[10] = bones[offset + 10];
+                bone[11] = 0;
+                bone[12] = bones[offset + 3];
+                bone[13] = bones[offset + 7];
+                bone[14] = bones[offset + 11];
+                bone[15] = 1;
+                _math.mat4.transpose(bone, bone);
+            }
+        }
+        _math.mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
+        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
+        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
+
+        this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
+        this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
+
+        batch.perObjectData = this._perObjectData;
+        batch.geometryProvider = this;
+        batch.renderMode = mode;
+        accumulator.Commit(batch);
+    }
+};
+
+/**
+ * Renders the decal
+ * @param {Tw2ForwardingRenderBatch} batch
+ * @param {Tw2Effect} overrideEffect
+ */
+EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect) {
+    var bkIB = this.parentGeometry.meshes[0].indexes;
+    var bkStart = this.parentGeometry.meshes[0].areas[0].start;
+    var bkCount = this.parentGeometry.meshes[0].areas[0].count;
+    var bkIndexType = this.parentGeometry.meshes[0].indexType;
+    _math.mat4.copy(_core.store.GetVariable('u_DecalMatrix').value, this.decalMatrix);
+    _math.mat4.copy(_core.store.GetVariable('u_InvDecalMatrix').value, this.invDecalMatrix);
+    this.parentGeometry.meshes[0].indexes = this._indexBuffer;
+    this.parentGeometry.meshes[0].areas[0].start = 0;
+    this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
+    this.parentGeometry.meshes[0].indexType = _core.device.gl.UNSIGNED_SHORT;
+
+    this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : batch.renderMode === _core.device.RM_DECAL ? this.decalEffect : this.pickEffect);
+    this.parentGeometry.meshes[0].indexes = bkIB;
+    this.parentGeometry.meshes[0].areas[0].start = bkStart;
+    this.parentGeometry.meshes[0].areas[0].count = bkCount;
+    this.parentGeometry.meshes[0].indexType = bkIndexType;
+};
+
+/***/ }),
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12423,12 +13630,12 @@ function EveSpotlightSet() {
     this._indexBuffer = null;
 
     this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 16));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 32));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 48));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 3, 64));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 3, 76));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 4, 0));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 4, 16));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 4, 32));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 4, 48));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _core.device.gl.FLOAT, 3, 64));
+    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _core.device.gl.FLOAT, 3, 76));
     this._decl.RebuildHash();
 }
 
@@ -12692,7 +13899,7 @@ EveSpotlightSet.prototype._Render = function (effect, buffer) {
 };
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12793,25 +14000,25 @@ function EveSpriteSet(useQuads, isSkinned) {
     this._instanceBuffer = null;
     this._decl = new _core.Tw2VertexDeclaration();
     if (!useQuads) {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 8));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 3, 20));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 8));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 3, 20));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
     } else {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 52));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 4, 36));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 1, _core.device.gl.FLOAT, 4, 52));
     }
     this._decl.RebuildHash();
 
     this._vdecl = new _core.Tw2VertexDeclaration();
-    this._vdecl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 1, 0));
+    this._vdecl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _core.device.gl.FLOAT, 1, 0));
     this._vdecl.RebuildHash();
 }
 
@@ -12837,20 +14044,20 @@ EveSpriteSet.prototype.UseQuads = function (useQuads, isSkinned) {
 
     this._decl.elements.splice(0, this._decl.elements.length);
     if (!useQuads) {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 8));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 3, 20));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 8));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 3, 20));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
     } else {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 52));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 4, 36));
+        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 1, _core.device.gl.FLOAT, 4, 52));
     }
     this._decl.RebuildHash();
     this.RebuildBuffers();
@@ -13188,459 +14395,7 @@ EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, max
 };
 
 /***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpaceObjectDecal = EveSpaceObjectDecal;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveSpaceObjectDecal
- * @property {boolean} display
- * @property {Tw2Effect} decalEffect
- * @property {Tw2Effect} pickEffect
- * @property {String} name=''
- * @property {number} groupIndex
- * @property {boolean} pickable
- * @property {vec3} position
- * @property {quat} rotation
- * @property {vec3} scaling
- * @property {mat4} decalMatrix
- * @property {mat4} invDecalMatrix
- * @property {Tw2GeometryRes} parentGeometry
- * @property {Array} indexBuffer
- * @property {*} _indexBuffer
- * @property {number} parentBoneIndex
- * @property {Tw2PerObjectData} _perObjectData
- * @constructor
- */
-function EveSpaceObjectDecal() {
-    this.display = true;
-    this.decalEffect = null;
-    this.pickEffect = null;
-    this.name = '';
-    this.groupIndex = -1;
-
-    this.pickable = true;
-
-    this.position = _math.vec3.create();
-    this.rotation = _math.quat.create();
-    this.scaling = _math.vec3.create();
-
-    this.decalMatrix = _math.mat4.create();
-    this.invDecalMatrix = _math.mat4.create();
-    this.parentGeometry = null;
-    this.indexBuffer = [];
-    this._indexBuffer = null;
-    this.parentBoneIndex = -1;
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
-    this._perObjectData.perObjectVSData.Create();
-
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('displayData', 4);
-    this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
-    this._perObjectData.perObjectPSData.Create();
-
-    _math.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
-
-    _core.variableStore.RegisterType('u_DecalMatrix', _core.Tw2MatrixParameter);
-    _core.variableStore.RegisterType('u_InvDecalMatrix', _core.Tw2MatrixParameter);
-}
-
-/**
- * Initializes the decal
- */
-EveSpaceObjectDecal.prototype.Initialize = function () {
-    var indexes = new Uint16Array(this.indexBuffer);
-    this._indexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
-
-    _math.mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
-    _math.mat4.invert(this.invDecalMatrix, this.decalMatrix);
-};
-
-/**
- * Gets decal res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceObjectDecal.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.parentGeometry !== null) {
-        if (out.indexOf(this.parentGeometry) === -1) {
-            out.push(this.parentGeometry);
-        }
-    }
-
-    if (this.decalEffect !== null) {
-        this.decalEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Sets the parent geometry
- * @param {Tw2GeometryRes} geometryRes
- */
-EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes) {
-    this.parentGeometry = geometryRes;
-};
-
-/**
- * Gets batches for rendering
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @param {number} [counter=0]
- */
-EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData, counter) {
-    switch (mode) {
-        case _core.device.RM_DECAL:
-            if (!this.decalEffect) return;
-            break;
-
-        case _core.device.RM_PICKABLE:
-            if (!this.pickEffect || !this.pickable) return;
-            break;
-
-        default:
-            return;
-    }
-
-    if (this.display && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()) {
-        var batch = new _core.Tw2ForwardingRenderBatch();
-        this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
-        if (this.parentBoneIndex >= 0) {
-            var bones = perObjectData.perObjectVSData.Get('JointMat');
-            var offset = this.parentBoneIndex * 12;
-            if (bones[offset + 0] || bones[offset + 4] || bones[offset + 8]) {
-                var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
-                bone[0] = bones[offset + 0];
-                bone[1] = bones[offset + 4];
-                bone[2] = bones[offset + 8];
-                bone[3] = 0;
-                bone[4] = bones[offset + 1];
-                bone[5] = bones[offset + 5];
-                bone[6] = bones[offset + 9];
-                bone[7] = 0;
-                bone[8] = bones[offset + 2];
-                bone[9] = bones[offset + 6];
-                bone[10] = bones[offset + 10];
-                bone[11] = 0;
-                bone[12] = bones[offset + 3];
-                bone[13] = bones[offset + 7];
-                bone[14] = bones[offset + 11];
-                bone[15] = 1;
-                _math.mat4.transpose(bone, bone);
-            }
-        }
-        _math.mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
-
-        this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
-        this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
-
-        batch.perObjectData = this._perObjectData;
-        batch.geometryProvider = this;
-        batch.renderMode = mode;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Renders the decal
- * @param {Tw2ForwardingRenderBatch} batch
- * @param {Tw2Effect} overrideEffect
- */
-EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect) {
-    var bkIB = this.parentGeometry.meshes[0].indexes;
-    var bkStart = this.parentGeometry.meshes[0].areas[0].start;
-    var bkCount = this.parentGeometry.meshes[0].areas[0].count;
-    var bkIndexType = this.parentGeometry.meshes[0].indexType;
-    _math.mat4.copy(_core.variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
-    _math.mat4.copy(_core.variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
-    this.parentGeometry.meshes[0].indexes = this._indexBuffer;
-    this.parentGeometry.meshes[0].areas[0].start = 0;
-    this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
-    this.parentGeometry.meshes[0].indexType = _core.device.gl.UNSIGNED_SHORT;
-
-    this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : batch.renderMode === _core.device.RM_DECAL ? this.decalEffect : this.pickEffect);
-    this.parentGeometry.meshes[0].indexes = bkIB;
-    this.parentGeometry.meshes[0].areas[0].start = bkStart;
-    this.parentGeometry.meshes[0].areas[0].count = bkCount;
-    this.parentGeometry.meshes[0].indexType = bkIndexType;
-};
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveShip = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-exports.EveTurretSetLocatorInfo = EveTurretSetLocatorInfo;
-
-var _EveSpaceObject2 = __webpack_require__(27);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Eve Turret Set Locator Info
- * @property {boolean} isJoint
- * @property {Array.<mat4>} locatorTransforms
- */
-function EveTurretSetLocatorInfo() {
-    this.isJoint = false;
-    this.locatorTransforms = [];
-}
-
-/**
- * EveShip
- * @property {number} boosterGain
- * @property {Array.<EveBoosterSet>} boosters
- * @property {Array.<EveTurretSet>} turretSets
- * @property {Array} _turretSetsLocatorInfo
- * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
- * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
- * @inherits EveSpaceObject
- * @constructor
- */
-
-var EveShip = exports.EveShip = function (_EveSpaceObject) {
-    _inherits(EveShip, _EveSpaceObject);
-
-    function EveShip() {
-        _classCallCheck(this, EveShip);
-
-        var _this = _possibleConstructorReturn(this, (EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call(this));
-
-        _this.boosterGain = 1;
-        _this.boosters = null;
-        _this.turretSets = [];
-        _this._turretSetsLocatorInfo = [];
-
-        _this.visible.turretSets = true;
-        _this.visible.boosters = true;
-        return _this;
-    }
-
-    /**
-     * Initializes the Eve Ship
-     */
-
-
-    _createClass(EveShip, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Initialize', this).call(this);
-            if (this.boosters) {
-                this.RebuildBoosterSet();
-            }
-        }
-
-        /**
-         * Gets ship's res objects
-         * @param {Array} [out=[]] - Optional receiving array
-         * @param {Boolean} excludeChildren - True to exclude children's res objects
-         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources(out, excludeChildren) {
-            if (out === undefined) {
-                out = [];
-            }
-
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetResources', this).call(this, out, excludeChildren);
-
-            var self = this;
-
-            function getSetResources(setName, out) {
-                for (var i = 0; i < self[setName].length; i++) {
-                    self[setName][i].GetResources(out);
-                }
-            }
-
-            getSetResources('turretSets', out);
-
-            if (this.boosters !== null) {
-                this.boosters.GetResources(out);
-            }
-
-            return out;
-        }
-
-        /**
-         * Gets render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (this.display) {
-                _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetBatches', this).call(this, mode, accumulator);
-
-                this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
-                this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
-
-                if (this.visible.turretSets) {
-                    if (this.lod > 1) {
-                        for (var i = 0; i < this.turretSets.length; ++i) {
-                            this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
-                        }
-                    } else {
-                        for (var t = 0; t < this.turretSets.length; ++t) {
-                            if (this.turretSets[t].firingEffect) {
-                                this.turretSets[t].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
-                            }
-                        }
-                    }
-                }
-
-                if (this.boosters && this.visible.boosters) {
-                    this.boosters.GetBatches(mode, accumulator, this._perObjectData);
-                }
-            }
-        }
-
-        /**
-         * Per frame update
-         * @param {number} dt - deltaTime
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Update', this).call(this, dt);
-
-            if (this.boosters) {
-                if (this.boosters.rebuildPending) {
-                    this.RebuildBoosterSet();
-                }
-                this.boosters.Update(dt, this.transform);
-            }
-
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                if (i < this._turretSetsLocatorInfo.length) {
-                    if (this._turretSetsLocatorInfo[i].isJoint) {
-                        for (var j = 0; j < this._turretSetsLocatorInfo[i].locatorTransforms.length; ++j) {
-                            this.turretSets[i].SetLocalTransform(j, this._turretSetsLocatorInfo[i].locatorTransforms[j]);
-                        }
-                    }
-                }
-            }
-
-            for (i = 0; i < this.turretSets.length; ++i) {
-                this.turretSets[i].Update(dt, this.transform);
-            }
-        }
-
-        /**
-         * Updates view dependant data
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData() {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'UpdateViewDependentData', this).call(this);
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                this.turretSets[i].UpdateViewDependentData();
-            }
-        }
-
-        /**
-         * Rebuilds the ship's booster set
-         */
-
-    }, {
-        key: 'RebuildBoosterSet',
-        value: function RebuildBoosterSet() {
-            if (!this.boosters) {
-                return;
-            }
-            this.boosters.Clear();
-            var prefix = 'locator_booster';
-            for (var i = 0; i < this.locators.length; ++i) {
-                if (this.locators[i].name.substr(0, prefix.length) === prefix) {
-                    this.boosters.Add(this.locators[i].transform, this.locators[i].atlasIndex0, this.locators[i].atlasIndex1);
-                }
-            }
-            this.boosters.Rebuild();
-        }
-
-        /**
-         * Rebuilds turret positions
-         */
-
-    }, {
-        key: 'RebuildTurretPositions',
-        value: function RebuildTurretPositions() {
-            this._turretSetsLocatorInfo = [];
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                var name = this.turretSets[i].locatorName;
-                var locatorCount = this.GetLocatorCount(name);
-                var locator = new EveTurretSetLocatorInfo();
-                for (var j = 0; j < locatorCount; ++j) {
-                    var locatorName = name + String.fromCharCode('a'.charCodeAt(0) + j);
-                    var locatorTransform = this.FindLocatorJointByName(locatorName);
-                    if (locatorTransform !== null) {
-                        locator.isJoint = true;
-                    } else {
-                        locatorTransform = this.FindLocatorTransformByName(locatorName);
-                    }
-                    if (locatorTransform !== null) {
-                        this.turretSets[i].SetLocalTransform(j, locatorTransform, locatorName);
-                        locator.locatorTransforms[locator.locatorTransforms.length] = locatorTransform;
-                    }
-                }
-                this._turretSetsLocatorInfo[this._turretSetsLocatorInfo.length] = locator;
-            }
-        }
-    }]);
-
-    return EveShip;
-}(_EveSpaceObject2.EveSpaceObject);
-
-/***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13663,7 +14418,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(42);
+var _curve = __webpack_require__(41);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13675,7 +14430,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(124);
+var _eve = __webpack_require__(130);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13687,7 +14442,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(40);
+var _particle = __webpack_require__(39);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13713,10 +14468,13 @@ var particle = _interopRequireWildcard(_particle);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-/**
- * Register globals
- */
-_core.resMan.Register({
+var vec4 = math.vec4,
+    mat4 = math.mat4;
+
+
+_core.store.Register({
+
+    uuid: false,
 
     resourcePaths: {
         'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
@@ -13730,13 +14488,41 @@ _core.resMan.Register({
         'cube': core.Tw2TextureRes
     },
 
-    constructors: [core, curve, eve, particle]
+    constructors: [core, curve, eve, particle],
+
+    types: {
+        'float': core.Tw2FloatParameter,
+        'vector2': core.Tw2Vector2Parameter,
+        'vector3': core.Tw2Vector3Parameter,
+        'vector4': core.Tw2Vector4Parameter,
+        'matrix4': core.Tw2MatrixParameter,
+        'texture': core.Tw2TextureParameter
+    },
+
+    variables: {
+        'u_DecalMatrix': mat4.create(),
+        'u_InvDecalMatrix': mat4.create(),
+        'EveSpaceSceneEnvMap': '',
+        'EnvMap1': '',
+        'EnvMap2': '',
+        'EnvMap3': '',
+        'ShadowLightness': 0,
+        'LensflareFxDirectionScale': vec4.create(),
+        'LensflareFxOccScale': vec4.fromValues(1, 1, 0, 0),
+        'OccluderValue': vec4.create(),
+        'WorldMat': mat4.create(),
+        'ViewMat': mat4.create(),
+        'ProjectionMat': mat4.create(),
+        'ViewProjectionMat': mat4.create(),
+        'ViewportSize': vec4.create(),
+        'Time': vec4.create()
+    }
 });
 
 exports.math = math;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13752,7 +14538,7 @@ var _glMatrix = __webpack_require__(8);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14222,7 +15008,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14724,7 +15510,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16462,7 +17248,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17153,7 +17939,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17796,7 +18582,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17890,7 +18676,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17906,14 +18692,14 @@ var _glMatrix = __webpack_require__(8);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.mat4 = undefined;
 
@@ -17921,8 +18707,182 @@ var _glMatrix = __webpack_require__(8);
 
 exports.mat4 = _glMatrix.mat4;
 
+/**
+ * arcFromForward
+ * @param {mat4} out
+ * @param {vec3} v
+ * @return {mat4} out
+ */
+
+_glMatrix.mat4.arcFromForward = function () {
+    var vec3_0 = void 0;
+
+    return function arcFromForward(out, v) {
+        if (!vec3_0) vec3_0 = _glMatrix.vec3.create();
+
+        var norm = _glMatrix.vec3.normalize(vec3_0, v);
+        _glMatrix.mat4.identity(out);
+
+        if (norm[2] < -0.99999) {
+            return out;
+        }
+
+        if (norm[2] > 0.99999) {
+            out[5] = -1.0;
+            out[10] = -1.0;
+            return out;
+        }
+
+        var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
+        out[0] = h * norm[1] * norm[1] - norm[2];
+        out[1] = -h * norm[0] * norm[1];
+        out[2] = norm[0];
+
+        out[4] = out[1];
+        out[5] = h * norm[0] * norm[0] - norm[2];
+        out[6] = norm[1];
+
+        out[8] = -norm[0];
+        out[9] = -norm[1];
+        out[10] = -norm[2];
+
+        return out;
+    };
+}();
+
+/**
+ * Copies the translation component from one mat4 to another
+ * @param {mat4} out
+ * @param {mat4} a
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.copyTranslation = function (out, a) {
+    out[12] = a[12];
+    out[13] = a[13];
+    out[14] = a[14];
+    return out;
+};
+
+/**
+ * Sets a mat4 from a mat4
+ * @param {mat4} out
+ * @param {mat3} m
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.fromMat3 = function (out, m) {
+    out[0] = m[0];
+    out[1] = m[1];
+    out[2] = m[2];
+    out[4] = m[3];
+    out[5] = m[4];
+    out[6] = m[5];
+    out[8] = m[6];
+    out[9] = m[7];
+    out[10] = m[8];
+    out[3] = out[7] = out[11] = out[12] = out[13] = out[14] = 0;
+    out[15] = 1;
+    return out;
+};
+
+/**
+ * Generates a look-at matrix with the given eye position, focal point, and up axis from a left handed coordinate system
+ *
+ * @param {mat4} out - mat4 frustum matrix will be written into
+ * @param {vec3} eye - Position of the viewer
+ * @param {vec3} center - Point the viewer is looking at
+ * @param {vec3} up - vec3 pointing up
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.lookAtGL = function () {
+    var vec3_0 = void 0,
+        vec3_1 = void 0,
+        vec3_2 = void 0;
+
+    return function lookAtGL(out, eye, center, up) {
+        if (!vec3_0) {
+            vec3_0 = _glMatrix.vec3.create();
+            vec3_1 = _glMatrix.vec3.create();
+            vec3_2 = _glMatrix.vec3.create();
+        }
+
+        _glMatrix.vec3.subtract(vec3_2, eye, center);
+
+        if (_glMatrix.vec3.squaredLength(vec3_2) === 0) {
+            vec3_2[2] = 1;
+        }
+
+        _glMatrix.vec3.normalize(vec3_2, vec3_2);
+        _glMatrix.vec3.cross(vec3_0, up, vec3_2);
+
+        if (_glMatrix.vec3.squaredLength(vec3_0) === 0) {
+            vec3_2[2] += 0.0001;
+            _glMatrix.vec3.cross(vec3_0, up, vec3_2);
+        }
+
+        _glMatrix.vec3.normalize(vec3_0, vec3_0);
+        _glMatrix.vec3.cross(vec3_1, vec3_2, vec3_0);
+
+        out[0] = vec3_0[0];
+        out[1] = vec3_0[1];
+        out[2] = vec3_0[2];
+
+        out[4] = vec3_1[0];
+        out[5] = vec3_1[1];
+        out[6] = vec3_1[2];
+
+        out[8] = vec3_2[0];
+        out[9] = vec3_2[1];
+        out[10] = vec3_2[2];
+
+        return out;
+    };
+}();
+
+/**
+ * Sets a left handed co-ordinate system perspective from a right handed co-ordinate system
+ * @param {mat4} out        - receiving mat4
+ * @param {number} fovY     - Vertical field of view in radians
+ * @param {number} aspect   - Aspect ratio. typically viewport width/height
+ * @param {number} near     - Near bound of the frustum
+ * @param {number} far      - Far bound of the frustum
+ * @returns {mat4} out      - receiving mat4
+ */
+_glMatrix.mat4.perspectiveGL = function (out, fovY, aspect, near, far) {
+    var fH = Math.tan(fovY / 360 * Math.PI) * near;
+    var fW = fH * aspect;
+    _glMatrix.mat4.frustum(out, -fW, fW, -fH, fH, near, far);
+};
+
+/**
+ * Sets the translation component of a mat4 from a vec3
+ * @param {mat4} out
+ * @param {vec3} v
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.setTranslation = function (out, v) {
+    out[12] = v[0];
+    out[13] = v[1];
+    out[14] = v[2];
+    return out;
+};
+
+/**
+ * Sets the translation component of a mat4 from values
+ * @param {mat4} out
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
+    out[12] = x;
+    out[13] = y;
+    out[14] = z;
+    return out;
+};
+
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18132,7 +19092,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18493,7 +19453,157 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 63 */
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var util = exports.util = {};
+
+/**
+ * Generates a UUID
+ * @author Three.js
+ * @returns {string}
+ */
+util.generateUUID = function () {
+    // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
+    var lut = [];
+    for (var i = 0; i < 256; i++) {
+        lut[i] = (i < 16 ? '0' : '') + i.toString(16).toUpperCase();
+    }
+
+    return function generateUUID() {
+        var d0 = Math.random() * 0xffffffff | 0,
+            d1 = Math.random() * 0xffffffff | 0,
+            d2 = Math.random() * 0xffffffff | 0,
+            d3 = Math.random() * 0xffffffff | 0;
+
+        return lut[d0 & 0xff] + lut[d0 >> 8 & 0xff] + lut[d0 >> 16 & 0xff] + lut[d0 >> 24 & 0xff] + '-' + lut[d1 & 0xff] + lut[d1 >> 8 & 0xff] + '-' + lut[d1 >> 16 & 0x0f | 0x40] + lut[d1 >> 24 & 0xff] + '-' + lut[d2 & 0x3f | 0x80] + lut[d2 >> 8 & 0xff] + '-' + lut[d2 >> 16 & 0xff] + lut[d2 >> 24 & 0xff] + lut[d3 & 0xff] + lut[d3 >> 8 & 0xff] + lut[d3 >> 16 & 0xff] + lut[d3 >> 24 & 0xff];
+    };
+}();
+
+/**
+ * Generates an object id
+ * @returns {number}
+ */
+util.generateObjectID = function () {
+    var OBJECT_COUNT = 0;
+
+    return function generateID() {
+        return OBJECT_COUNT++;
+    };
+}();
+
+/**
+ * Generates an id
+ * @type {?Function}
+ */
+util.generateID = util.generateObjectID;
+
+/**
+ * Gets a source's property value if it exists else returns a default value
+ * @param {*} src
+ * @param {string} prop
+ * @param {*} defaultValue
+ * @returns {*}
+ */
+util.get = function (src, prop, defaultValue) {
+    return src && prop in src ? src[prop] : defaultValue;
+};
+
+/**
+ * Assigns a source's property value(s) if it isn't undefined
+ * @param {*} dest
+ * @param {*} src
+ * @param {string} prop
+ */
+util.assignIfExists = function (dest, src, prop) {
+    if (src && src[prop] !== undefined) {
+        dest[prop] = src[prop];
+    }
+};
+
+/**
+ * Returns a value if it is an array, or a new array with the object in it
+ * @param {*} a
+ * @returns {Array}
+ */
+util.toArray = function (a) {
+    return Array.isArray(a) ? a : [a];
+};
+
+/**
+ * Checks if a value is an array
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isArray = Array.isArray;
+
+/**
+ * Checks if a value is a typed array
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isTyped = function (a) {
+    return a && a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT;
+};
+
+/**
+ * Checks if a value is a vector
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isVector = function (a) {
+    if (a) {
+        if (util.isTyped(a)) {
+            return true;
+        }
+
+        if (util.isArray(a)) {
+            for (var i = 0; i < a.length; i++) {
+                if (typeof a[i] !== 'number') return false;
+            }
+            return true;
+        }
+    }
+    return false;
+};
+
+/**
+ * Checks if a value is array like
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isArrayLike = function (a) {
+    return a && util.isArray(a) || util.isTyped(a);
+};
+
+/**
+ * Calls a function with arguments for each child in an array where that function exists
+ * @param {Array} arr
+ * @param {string} func
+ * @param args
+ */
+util.perArrayChild = function (arr, func) {
+    var len = arr.length;
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+    }
+
+    for (var i = 0; i < len; i++) {
+        var _arr$i;
+
+        if (func in arr) (_arr$i = arr[i])[func].apply(_arr$i, args);
+    }
+};
+
+/***/ }),
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -19697,10 +20807,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(64)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(66)))
 
 /***/ }),
-/* 64 */
+/* 66 */
 /***/ (function(module, exports) {
 
 var g;
@@ -19727,7 +20837,141 @@ module.exports = g;
 
 
 /***/ }),
-/* 65 */
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2RawData = __webpack_require__(21);
+
+Object.defineProperty(exports, 'Tw2RawData', {
+  enumerable: true,
+  get: function get() {
+    return _Tw2RawData.Tw2RawData;
+  }
+});
+
+var _Tw2PerObjectData = __webpack_require__(35);
+
+Object.defineProperty(exports, 'Tw2PerObjectData', {
+  enumerable: true,
+  get: function get() {
+    return _Tw2PerObjectData.Tw2PerObjectData;
+  }
+});
+
+var _Tw2BasicPerObjectData = __webpack_require__(68);
+
+Object.defineProperty(exports, 'Tw2BasicPerObjectData', {
+  enumerable: true,
+  get: function get() {
+    return _Tw2BasicPerObjectData.Tw2BasicPerObjectData;
+  }
+});
+Object.defineProperty(exports, 'EveBasicPerObjectData', {
+  enumerable: true,
+  get: function get() {
+    return _Tw2BasicPerObjectData.Tw2BasicPerObjectData;
+  }
+});
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2BasicPerObjectData = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Tw2Device = __webpack_require__(2);
+
+var _Tw2PerObjectData2 = __webpack_require__(35);
+
+var _Tw2RawData = __webpack_require__(21);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2BasicPerObjectData/EveBasicPerObjectData
+ *
+ * @property {{}} [declarations]
+ * @param {boolean} [skipCreate]
+ * @property {Tw2RawData} [decl.FFEData]
+ * @parameter {?Tw2RawData} perObjectFFEData - Fixed Function Emulation data
+ * @class
+ */
+var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObjectData) {
+    _inherits(Tw2BasicPerObjectData, _Tw2PerObjectData);
+
+    function Tw2BasicPerObjectData(declarations, skipCreate) {
+        _classCallCheck(this, Tw2BasicPerObjectData);
+
+        var _this = _possibleConstructorReturn(this, (Tw2BasicPerObjectData.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData)).call(this));
+
+        _this.perObjectFFEData = null;
+
+        if (declarations) _this.DeclareFromObject(declarations, skipCreate);
+        return _this;
+    }
+
+    /**
+     * Sets per object data to the device
+     * @param constantBufferHandles
+     */
+
+
+    _createClass(Tw2BasicPerObjectData, [{
+        key: 'SetPerObjectDataToDevice',
+        value: function SetPerObjectDataToDevice(constantBufferHandles) {
+            _get(Tw2BasicPerObjectData.prototype.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData.prototype), 'SetPerObjectDataToDevice', this).call(this, constantBufferHandles);
+
+            if (this.perObjectFFEData && constantBufferHandles[5]) {
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[5], this.perObjectFFEData.data);
+            }
+        }
+
+        /**
+         * Declares raw data from an object
+         * @param {{}} declarations
+         * @param {{}} [declarations.VSData]
+         * @param {{}} [declarations.PSData]
+         * @param {{}} [declarations.FFEData}
+         * @param {boolean} [skipCreate]
+         */
+
+    }, {
+        key: 'DeclareFromObject',
+        value: function DeclareFromObject(declarations, skipCreate) {
+            _get(Tw2BasicPerObjectData.prototype.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData.prototype), 'DeclareFromObject', this).call(this, declarations, skipCreate);
+
+            if (declarations.FFEData) {
+                this.perObjectFFEData = new _Tw2RawData.Tw2RawData(declarations.FFEData, skipCreate);
+            }
+        }
+    }]);
+
+    return Tw2BasicPerObjectData;
+}(_Tw2PerObjectData2.Tw2PerObjectData);
+
+/***/ }),
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19745,7 +20989,7 @@ exports.Tw2AnimationController = Tw2AnimationController;
 
 var _math = __webpack_require__(0);
 
-var _Tw2GeometryRes = __webpack_require__(23);
+var _Tw2GeometryRes = __webpack_require__(22);
 
 /**
  * Tw2Track
@@ -20630,7 +21874,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
 };
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20734,7 +21978,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 67 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20747,17 +21991,17 @@ exports.Tw2EffectRes = undefined;
 
 var _math = __webpack_require__(0);
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2EventEmitter = __webpack_require__(7);
+var _Tw2EventEmitter = __webpack_require__(6);
 
-var _Tw2Resource2 = __webpack_require__(12);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2BinaryReader = __webpack_require__(21);
+var _Tw2BinaryReader = __webpack_require__(18);
 
-var _Tw2SamplerState = __webpack_require__(18);
+var _Tw2SamplerState = __webpack_require__(19);
 
-var _Tw2VertexDeclaration = __webpack_require__(13);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21316,7 +22560,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 68 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21336,7 +22580,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 69 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21467,7 +22711,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21486,9 +22730,9 @@ var _math = __webpack_require__(0);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Mesh2 = __webpack_require__(38);
+var _Tw2Mesh2 = __webpack_require__(37);
 
-var _Tw2BatchAccumulator = __webpack_require__(24);
+var _Tw2BatchAccumulator = __webpack_require__(23);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21642,7 +22886,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21651,35 +22895,108 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2PerObjectData = Tw2PerObjectData;
+exports.Tw2MatrixParameter = Tw2MatrixParameter;
 
-var _Tw2Device = __webpack_require__(3);
+var _math = __webpack_require__(0);
 
 /**
- * Tw2PerObjectData
+ * Tw2MatrixParameter
+ * @param {string} [name='']
+ * @param {mat4|Float32Array|Array} [value=mat4.create()]
+ * @property {string} name
+ * @property {mat4|Float32Array} value
+ * @property {Float32Array} constantBuffer
+ * @property {number} offset
  * @constructor
  */
-function Tw2PerObjectData() {
-    this.perObjectVSData = null;
-    this.perObjectPSData = null;
+function Tw2MatrixParameter(name, value) {
+    this.name = name !== undefined ? name : '';
+    this.value = value !== undefined ? _math.mat4.clone(value) : _math.mat4.create();
+    this.constantBuffer = null;
+    this.offset = 0;
 }
 
 /**
- * SetPerObjectDataToDevice
- * @param constantBufferHandles
- * @constructor
+ * Binds the parameter's value to a constant buffer
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @param {number} size
+ * @returns {boolean}
+ * @prototype
  */
-Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHandles) {
-    if (this.perObjectVSData && constantBufferHandles[3]) {
-        _Tw2Device.device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
+Tw2MatrixParameter.prototype.Bind = function (constantBuffer, offset, size) {
+    if (this.constantBuffer !== null || size < 16) {
+        return false;
     }
-    if (this.perObjectPSData && constantBufferHandles[4]) {
-        _Tw2Device.device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+    this.constantBuffer = constantBuffer;
+    this.offset = offset;
+    this.Apply(this.constantBuffer, this.offset, size);
+};
+
+/**
+ * Unbinds the parameter's constant buffer
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.Unbind = function () {
+    this.constantBuffer = null;
+};
+
+/**
+ * Sets a supplied value
+ * @param {mat4} value
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.SetValue = function (value) {
+    _math.mat4.copy(this.value, value);
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
     }
 };
 
+/**
+ * Gets the current value
+ * @return {mat4|Float32Array}
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.GetValue = function () {
+    if (this.constantBuffer !== null) {
+        return _math.mat4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+    }
+
+    return _math.mat4.clone(this.value);
+};
+
+/**
+ * Applies the current value to the supplied constant buffer at the supplied offset
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.Apply = function (constantBuffer, offset) {
+    constantBuffer.set(this.value, offset);
+};
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2MatrixParameter.prototype.OnValueChanged = function () {
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2MatrixParameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 16;
+};
+
 /***/ }),
-/* 72 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21690,19 +23007,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2PostProcess = Tw2PostProcess;
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2RenderTarget = __webpack_require__(39);
+var _Tw2RenderTarget = __webpack_require__(38);
 
-var _Tw2Effect = __webpack_require__(22);
+var _Tw2Effect = __webpack_require__(20);
 
-var _Tw2TextureParameter = __webpack_require__(11);
+var _Tw2TextureParameter = __webpack_require__(17);
 
-var _Tw2Vector4Parameter = __webpack_require__(10);
+var _Tw2Vector4Parameter = __webpack_require__(25);
 
-var _Tw2FloatParameter = __webpack_require__(20);
+var _Tw2FloatParameter = __webpack_require__(36);
 
-var _Tw2TextureRes = __webpack_require__(25);
+var _Tw2TextureRes = __webpack_require__(24);
 
 /**
  * Creates a bloom post effect
@@ -21864,93 +23181,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2RawData = Tw2RawData;
-/**
- * Stores raw data for {@link Tw2PerObjectData} perObject objects and {@link EveSpaceScene} perFrame objects
- * @property {number} nextOffset
- * @property {Float32Array} data
- * @property {Object} elements
- * @property {String} elements.offset
- * @property {number} elements.size
- * @property {Array|null} elements.array
- * @constructor
- */
-function Tw2RawData() {
-    this.nextOffset = 0;
-    this.data = null;
-    this.elements = {};
-}
-
-/**
- * Declares a raw data element
- * @param {String} name
- * @param {number} size
- * @prototype
- */
-Tw2RawData.prototype.Declare = function (name, size) {
-    this.elements[name] = {
-        'offset': this.nextOffset,
-        'size': size,
-        'array': null
-    };
-    this.nextOffset += size;
-};
-
-/**
- * Create
- * @prototype
- */
-Tw2RawData.prototype.Create = function () {
-    this.data = new Float32Array(this.nextOffset);
-    for (var el in this.elements) {
-        if (this.elements.hasOwnProperty(el)) {
-            this.elements[el].array = this.data.subarray(this.elements[el].offset, this.elements[el].offset + this.elements[el].size);
-        }
-    }
-};
-
-/**
- * Sets a element value
- * @param {string} name
- * @param {Float32Array} value
- * @prototype
- */
-Tw2RawData.prototype.Set = function (name, value) {
-    var el = this.elements[name];
-    this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
-};
-
-/**
- * Gets an element's array value
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.Get = function (name) {
-    return this.elements[name].array;
-};
-
-/**
- * Gets an element's array value from the share data array
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.GetData = function (name) {
-    return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
-};
-
-/***/ }),
-/* 74 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21961,11 +23192,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2RuntimeInstanceData = Tw2RuntimeInstanceData;
 
-var _Tw2Device = __webpack_require__(3);
+var _Tw2Device = __webpack_require__(2);
 
-var _Tw2VertexDeclaration = __webpack_require__(13);
+var _Tw2VertexDeclaration = __webpack_require__(12);
 
-var _particle = __webpack_require__(40);
+var _particle = __webpack_require__(39);
 
 /**
  * Tw2RuntimeInstanceData
@@ -22163,7 +23394,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 75 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22173,7 +23404,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(76);
+var _Tw2StaticEmitter = __webpack_require__(79);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22185,7 +23416,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(77);
+var _Tw2DynamicEmitter = __webpack_require__(80);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22198,7 +23429,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 76 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22213,7 +23444,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(41);
+var _Tw2ParticleEmitter2 = __webpack_require__(40);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22354,7 +23585,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 77 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22367,7 +23598,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(41);
+var _Tw2ParticleEmitter2 = __webpack_require__(40);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22474,7 +23705,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 78 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22484,7 +23715,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(79);
+var _Tw2ParticleAttractorForce = __webpack_require__(82);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22496,7 +23727,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(80);
+var _Tw2ParticleDirectForce = __webpack_require__(83);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22508,7 +23739,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(81);
+var _Tw2ParticleDragForce = __webpack_require__(84);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22520,7 +23751,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(82);
+var _Tw2ParticleFluidDragForce = __webpack_require__(85);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22532,7 +23763,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(83);
+var _Tw2ParticleSpring = __webpack_require__(86);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22544,7 +23775,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(84);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(87);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22557,7 +23788,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 79 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22629,7 +23860,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 80 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22690,7 +23921,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 81 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22751,7 +23982,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 82 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22837,7 +24068,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 83 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22902,7 +24133,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 84 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23007,7 +24238,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 85 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23017,7 +24248,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(86);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(89);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23029,7 +24260,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(87);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(90);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23041,7 +24272,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(88);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(91);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23054,7 +24285,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 86 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23069,7 +24300,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(14);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
@@ -23145,7 +24376,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 87 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23160,7 +24391,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(14);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
@@ -23236,7 +24467,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 88 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23251,7 +24482,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(14);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
@@ -23386,14 +24617,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 89 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 90 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23410,13 +24641,14 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(14);
+var _Tw2ParticleElement = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Tw2ParticleSystem
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {number} aliveCount
  * @property {number} maxParticleCount
@@ -23449,6 +24681,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
     function Tw2ParticleSystem() {
         _classCallCheck(this, Tw2ParticleSystem);
 
+        this._id = _math.util.generateID();
         this.name = '';
         this.aliveCount = 0;
         this.maxParticleCount = 0;
@@ -23467,12 +24700,9 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
         this.aabbMin = _math.vec3.create();
         this.aabbMax = _math.vec3.create();
         this.peakAliveCount = 0;
-
         this.bufferDirty = false;
-
         this._vb = null;
         this._declaration = null;
-
         this._stdElements = [null, null, null, null];
         this._elements = [];
         this.instanceStride = [null, null];
@@ -23935,7 +25165,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 91 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24029,7 +25259,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 92 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24045,7 +25275,7 @@ exports.Tw2ValueBinding = Tw2ValueBinding;
 
 var _math = __webpack_require__(0);
 
-var _Tw2Vector4Parameter = __webpack_require__(10);
+var _Tw2Vector4Parameter = __webpack_require__(25);
 
 /**
  * Tw2ValueBinding
@@ -24305,7 +25535,381 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 93 */
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2VariableParameter = Tw2VariableParameter;
+
+var _Tw2VariableStore = __webpack_require__(16);
+
+/**
+ * Tw2VariableParameter
+ * @param {string} [name=''] Parameter name
+ * @param {string} [variableName='']
+ * @property {string} name
+ * @property {string} variableName
+ * @constructor
+ */
+function Tw2VariableParameter(name, variableName) {
+    if (typeof name !== 'undefined') {
+        this.name = name;
+    } else {
+        this.name = '';
+    }
+    if (typeof variableName !== 'undefined') {
+        this.variableName = variableName;
+    } else {
+        this.variableName = '';
+    }
+}
+
+/**
+ * Bind
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2VariableParameter.prototype.Bind = function () {
+    return false;
+};
+
+/**
+ * Apply
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @param {number} size
+ * @prototype
+ */
+Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
+    if (_Tw2VariableStore.store.HasVariable(this.variableName)) {
+        _Tw2VariableStore.store.GetVariable(this.variableName).Apply(constantBuffer, offset, size);
+    }
+};
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Vector2Parameter = Tw2Vector2Parameter;
+
+var _math = __webpack_require__(0);
+
+/**
+ * Tw2Vector2Parameter
+ * @param {string} [name='']
+ * @param {vec2|Float32Array} [value=[1,1]]
+ * @property {string} name
+ * @property {vec2} value
+ * @property {Float32Array} constantBuffer
+ * @property {number} offset
+ * @constructor
+ */
+function Tw2Vector2Parameter(name, value) {
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? _math.vec2.clone(value) : _math.vec2.fromValues(1, 1);
+    this.constantBuffer = null;
+    this.offset = 0;
+}
+
+/**
+ * Bind
+ * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @param {number} size
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.Bind = function (constantBuffer, offset, size) {
+    if (this.constantBuffer !== null || size < 2) {
+        return false;
+    }
+    this.constantBuffer = constantBuffer;
+    this.offset = offset;
+    this.Apply(this.constantBuffer, this.offset, size);
+    return true;
+};
+
+/**
+ * Unbind
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.Unbind = function () {
+    this.constantBuffer = null;
+};
+
+/**
+ * Sets a supplied value
+ * @param {vec2} value - Vector2 Array
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.SetValue = function (value) {
+    _math.vec2.copy(this.value, value);
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.OnValueChanged = function () {
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Applies the current value to the supplied constant buffer at the supplied offset
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.Apply = function (constantBuffer, offset) {
+    constantBuffer.set(this.value, offset);
+};
+
+/**
+ * Gets the current value array
+ * @return {vec2} Vector2 Array
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.GetValue = function () {
+    if (this.constantBuffer !== null) {
+        return _math.vec2.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+    }
+
+    return _math.vec2.clone(this.value);
+};
+
+/**
+ * Returns a value from a specific index of the value array
+ * @param {number} index
+ * @returns {number}
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.GetIndexValue = function (index) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    if (this.constantBuffer !== null) {
+        return this.constantBuffer[this.offset + index];
+    }
+
+    return this.value[index];
+};
+
+/**
+ * Sets a value at a specific index of the value array
+ * @param {number} index
+ * @param {number} value
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.SetIndexValue = function (index, value) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    this.value[index] = value;
+
+    if (this.constantBuffer !== null) {
+        this.constantBuffer[this.offset + index] = value;
+    }
+};
+
+/**
+ * Sets all value array elements to a single value
+ * @param {number} value - The value to fill the value array elements with
+ * @prototype
+ */
+Tw2Vector2Parameter.prototype.FillWith = function (value) {
+    this.SetValue([value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector2Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 2;
+};
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Vector3Parameter = Tw2Vector3Parameter;
+
+var _math = __webpack_require__(0);
+
+/**
+ * Tw2Vector3Parameter
+ * @param {string} [name='']
+ * @param {vec3|Float32Array} [value=[1,1,1]]
+ * @property {string} name
+ * @property {vec3|Float32Array} value
+ * @property {Float32Array} constantBuffer
+ * @property {number} offset
+ * @constructor
+ */
+function Tw2Vector3Parameter(name, value) {
+    this.name = name !== 'undefined' ? name : '';
+    this.value = value !== undefined ? _math.vec3.clone(value) : _math.vec3.fromValues(1, 1, 1);
+    this.constantBuffer = null;
+    this.offset = 0;
+}
+
+/**
+ * Bind
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @param {number} size
+ * @returns {boolean}
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.Bind = function (constantBuffer, offset, size) {
+    if (this.constantBuffer !== null || size < 3) {
+        return false;
+    }
+    this.constantBuffer = constantBuffer;
+    this.offset = offset;
+    this.Apply(this.constantBuffer, this.offset, size);
+    return true;
+};
+
+/**
+ * Unbind
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.Unbind = function () {
+    this.constantBuffer = null;
+};
+
+/**
+ * Sets a supplied value
+ * @param {vec3|Float32Array} value - Vector3 Array
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.SetValue = function (value) {
+    _math.vec3.copy(this.value, value);
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Updates the constant buffer to the current value
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.OnValueChanged = function () {
+    if (this.constantBuffer !== null) {
+        this.constantBuffer.set(this.value, this.offset);
+    }
+};
+
+/**
+ * Applies the current value to the supplied constant buffer at the supplied offset
+ * @param {Float32Array} constantBuffer
+ * @param {number} offset
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.Apply = function (constantBuffer, offset) {
+    constantBuffer.set(this.value, offset);
+};
+
+/**
+ * Gets the current value array
+ * @return {vec3|Float32Array} Vector3 Array
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.GetValue = function () {
+    if (this.constantBuffer !== null) {
+        return _math.vec3.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
+    }
+
+    return _math.vec3.clone(this.value);
+};
+
+/**
+ * Returns a value from a specific index of the value array
+ * @param {number} index
+ * @returns {number}
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.GetIndexValue = function (index) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    if (this.constantBuffer !== null) {
+        return this.constantBuffer[this.offset + index];
+    }
+
+    return this.value[index];
+};
+
+/**
+ * Sets a value at a specific index of the value array
+ * @param {number} index
+ * @param {number} value
+ * @throw Invalid Index
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.SetIndexValue = function (index, value) {
+    if (typeof this.value[index] === 'undefined') {
+        throw 'Invalid Index';
+    }
+
+    this.value[index] = value;
+
+    if (this.constantBuffer !== null) {
+        this.constantBuffer[this.offset + index] = value;
+    }
+};
+
+/**
+ * Sets all value array elements to a single value
+ * @param {number} value - The value to fill the value array elements with
+ * @prototype
+ */
+Tw2Vector3Parameter.prototype.FillWith = function (value) {
+    this.SetValue([value, value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector3Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 3;
+};
+
+/***/ }),
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24320,7 +25924,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24545,7 +26149,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 94 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24560,7 +26164,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24815,7 +26419,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 95 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24828,7 +26432,7 @@ exports.Tw2EventCurve = exports.Tw2EventKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24988,7 +26592,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 96 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25003,7 +26607,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25094,7 +26698,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 97 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25109,7 +26713,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25374,7 +26978,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 98 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25387,7 +26991,7 @@ exports.Tw2RandomConstantCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25466,7 +27070,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 99 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25481,7 +27085,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25651,7 +27255,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 100 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25666,7 +27270,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25912,7 +27516,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 101 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25925,7 +27529,7 @@ exports.Tw2ScalarCurve = exports.Tw2ScalarKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26165,7 +27769,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 102 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26178,7 +27782,7 @@ exports.Tw2ScalarCurve2 = exports.Tw2ScalarKey2 = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26457,7 +28061,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 103 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26470,7 +28074,7 @@ exports.Tw2SineCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26551,7 +28155,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 104 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26566,7 +28170,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26854,7 +28458,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 105 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26869,7 +28473,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27160,7 +28764,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 106 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27175,7 +28779,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2Curve2 = __webpack_require__(2);
+var _Tw2Curve2 = __webpack_require__(3);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27415,7 +29019,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 107 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27425,7 +29029,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(108);
+var _Tw2ColorSequencer = __webpack_require__(114);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27437,7 +29041,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(109);
+var _Tw2EulerRotation = __webpack_require__(115);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27449,7 +29053,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(110);
+var _Tw2QuaternionSequencer = __webpack_require__(116);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27461,7 +29065,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(111);
+var _Tw2RGBAScalarSequencer = __webpack_require__(117);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27473,7 +29077,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(112);
+var _Tw2ScalarSequencer = __webpack_require__(118);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27485,7 +29089,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(113);
+var _Tw2VectorSequencer = __webpack_require__(119);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27497,7 +29101,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(114);
+var _Tw2XYZScalarSequencer = __webpack_require__(120);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27509,7 +29113,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(115);
+var _Tw2YPRSequencer = __webpack_require__(121);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27522,7 +29126,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 108 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27537,7 +29141,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27685,7 +29289,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 109 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27700,7 +29304,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27836,7 +29440,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 110 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27851,7 +29455,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27977,7 +29581,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 111 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27992,7 +29596,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28118,7 +29722,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 112 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28131,7 +29735,7 @@ exports.Tw2ScalarSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28300,7 +29904,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 113 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28315,7 +29919,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28464,7 +30068,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 114 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28479,7 +30083,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28602,7 +30206,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 115 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28617,7 +30221,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -28756,7 +30360,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 116 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28766,7 +30370,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(117);
+var _Tw2WbgTrack = __webpack_require__(123);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28778,7 +30382,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(118);
+var _Tw2TransformTrack = __webpack_require__(124);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28791,7 +30395,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 117 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28810,6 +30414,7 @@ var _core = __webpack_require__(1);
 /**
  * Tw2WbgTrack
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {string} geometryResPath
  * @property {Object} geometryRes
@@ -28818,6 +30423,7 @@ var _core = __webpack_require__(1);
  * @property {boolean} cycle
  */
 function Tw2WbgTrack() {
+    this._id = _math.util.generateID();
     this.name = '';
     this.geometryResPath = '';
     this.geometryRes = null;
@@ -28854,7 +30460,7 @@ function Tw2WbgTrack() {
             this.geometryRes = _core.resMan.GetResource(this.geometryResPath);
             var self = this;
             var notification = {
-                OnResPrepared: function OnResPrepared() {
+                RebuildCachedData: function RebuildCachedData() {
                     SetCurves(self);
                 }
             };
@@ -28877,6 +30483,7 @@ function Tw2WbgTrack() {
 /**
  * Tw2WbgTransformTrack
  *
+ * @property {string|number} _id
  * @property {vec3} translation
  * @property {quat} rotation
  * @property {vec3} scale
@@ -28886,10 +30493,12 @@ function Tw2WbgTrack() {
  * @variable {mat4} scaleShear
  */
 function Tw2WbgTransformTrack() {
+    this._id = _math.util.generateID();
     this.translation = _math.vec3.create();
     this.rotation = _math.quat.create();
     this.rotation[3] = 1;
     this.scale = _math.vec3.create();
+
     var positionCurve = null;
     var rotationCurve = null;
     var scaleCurve = null;
@@ -28955,7 +30564,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 118 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28977,6 +30586,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2TransformTrack
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {string} resPath
  * @property {Object} res
@@ -28996,6 +30606,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
     function Tw2TransformTrack() {
         _classCallCheck(this, Tw2TransformTrack);
 
+        this._id = _math.util.generateID();
         this.name = '';
         this.resPath = '';
         this.res = null;
@@ -29093,7 +30704,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 119 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29103,7 +30714,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(120);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(126);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29115,7 +30726,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(121);
+var _Tw2MayaScalarCurve = __webpack_require__(127);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29127,7 +30738,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(122);
+var _Tw2MayaVector3Curve = __webpack_require__(128);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29139,7 +30750,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(123);
+var _Tw2MayaAnimationEngine = __webpack_require__(129);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29152,7 +30763,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 120 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29167,7 +30778,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _curves = __webpack_require__(15);
+var _curves = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -29323,7 +30934,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 121 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29336,7 +30947,7 @@ exports.Tw2MayaScalarCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _curves = __webpack_require__(15);
+var _curves = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -29439,7 +31050,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 122 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29454,7 +31065,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _curves = __webpack_require__(15);
+var _curves = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -29591,7 +31202,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 123 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29612,6 +31223,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Tw2MayaAnimationEngine
  * TODO: Complete the prototype `_EvaluteBezier`
  *
+ * @property {number|string} _id
+ * @property {string} name
  * @property {Array} curves
  * @property {Array} hermiteSegments
  * @property {Array} bezierSegments
@@ -29622,6 +31235,8 @@ var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = function () {
     function Tw2MayaAnimationEngine() {
         _classCallCheck(this, Tw2MayaAnimationEngine);
 
+        this._id = _math.util.generateID();
+        this.name = '';
         this.curves = [];
         this.hermiteSegments = [];
         this.bezierSegments = [];
@@ -29966,7 +31581,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 124 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29976,7 +31591,102 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveChildBillboard = __webpack_require__(125);
+var _child = __webpack_require__(131);
+
+Object.keys(_child).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _child[key];
+    }
+  });
+});
+
+var _object = __webpack_require__(136);
+
+Object.keys(_object).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _object[key];
+    }
+  });
+});
+
+var _effect = __webpack_require__(140);
+
+Object.keys(_effect).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _effect[key];
+    }
+  });
+});
+
+var _item = __webpack_require__(145);
+
+Object.keys(_item).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _item[key];
+    }
+  });
+});
+
+var _EveSpaceScene = __webpack_require__(148);
+
+Object.keys(_EveSpaceScene).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpaceScene[key];
+    }
+  });
+});
+
+var _EveSOF = __webpack_require__(149);
+
+Object.keys(_EveSOF).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSOF[key];
+    }
+  });
+});
+
+/***/ }),
+/* 131 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveChild = __webpack_require__(10);
+
+Object.keys(_EveChild).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveChild[key];
+    }
+  });
+});
+
+var _EveChildBillboard = __webpack_require__(132);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29988,7 +31698,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(126);
+var _EveChildContainer = __webpack_require__(133);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30000,7 +31710,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(127);
+var _EveChildExplosion = __webpack_require__(134);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30012,7 +31722,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(43);
+var _EveChildMesh = __webpack_require__(42);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30024,7 +31734,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(128);
+var _EveChildParticleSystem = __webpack_require__(135);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30036,139 +31746,402 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(44);
+/***/ }),
+/* 132 */
+/***/ (function(module, exports, __webpack_require__) {
 
-Object.keys(_EveLocator).forEach(function (key) {
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildBillboard = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveChild2 = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Mesh attachment to space object and oriented towards the camera
+ *
+ * @property {Tw2Mesh|Tw2InstancedMesh} mesh
+ * @property {Tw2BasicPerObjectData} _perObjectData
+ * @class
+ */
+var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
+    _inherits(EveChildBillboard, _EveChild);
+
+    function EveChildBillboard() {
+        _classCallCheck(this, EveChildBillboard);
+
+        var _this = _possibleConstructorReturn(this, (EveChildBillboard.__proto__ || Object.getPrototypeOf(EveChildBillboard)).call(this));
+
+        _this.mesh = null;
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectDataDecl);
+        return _this;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array.<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChildBillboard, [{
+        key: 'GetResources',
+        value: function GetResources(out) {
+            if (this.mesh) this.mesh.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentTransform) {
+            _get(EveChildBillboard.prototype.__proto__ || Object.getPrototypeOf(EveChildBillboard.prototype), 'Update', this).call(this, dt, parentTransform);
+
+            var viewInverse = _EveChild2.EveChild.global.mat4_0,
+                finalScale = _EveChild2.EveChild.global.vec3_0;
+
+            _math.mat4.lookAt(viewInverse, _core.device.eyePosition, this.worldTransform.subarray(12), [0, 1, 0]);
+            _math.mat4.transpose(viewInverse, viewInverse);
+            _math.mat4.getScaling(finalScale, parentTransform);
+            _math.vec3.multiply(finalScale, finalScale, this.scaling);
+
+            this.worldTransform[0] = viewInverse[0] * finalScale[0];
+            this.worldTransform[1] = viewInverse[1] * finalScale[0];
+            this.worldTransform[2] = viewInverse[2] * finalScale[0];
+            this.worldTransform[4] = viewInverse[4] * finalScale[1];
+            this.worldTransform[5] = viewInverse[5] * finalScale[1];
+            this.worldTransform[6] = viewInverse[6] * finalScale[1];
+            this.worldTransform[8] = viewInverse[8] * finalScale[2];
+            this.worldTransform[9] = viewInverse[9] * finalScale[2];
+            this.worldTransform[10] = viewInverse[10] * finalScale[2];
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.mesh) {
+                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
+                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
+                this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+            }
+        }
+    }]);
+
+    return EveChildBillboard;
+}(_EveChild2.EveChild);
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildContainer = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _EveChild2 = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Container for other child effects
+ *
+ * @parameter {Array.<{}>} objects
+ * @parameter {Array.<Tw2CurveSet>} curveSets
+ * @class
+ */
+var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
+    _inherits(EveChildContainer, _EveChild);
+
+    function EveChildContainer() {
+        _classCallCheck(this, EveChildContainer);
+
+        var _this = _possibleConstructorReturn(this, (EveChildContainer.__proto__ || Object.getPrototypeOf(EveChildContainer)).call(this));
+
+        _this.objects = [];
+        _this.curveSets = [];
+        return _this;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChildContainer, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.objects.length; i++) {
+                if ('GetResources' in this.objects[i]) {
+                    this.objects[i].GetResources(out);
+                }
+            }
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentTransform) {
+            _get(EveChildContainer.prototype.__proto__ || Object.getPrototypeOf(EveChildContainer.prototype), 'Update', this).call(this, dt, parentTransform);
+
+            for (var i = 0; i < this.curveSets.length; i++) {
+                this.curveSets[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.objects.length; _i++) {
+                this.objects[_i].Update(dt, this.worldTransform);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (this.display) {
+                for (var i = 0; i < this.objects.length; i++) {
+                    this.objects[i].GetBatches(mode, accumulator, perObjectData);
+                }
+            }
+        }
+    }]);
+
+    return EveChildContainer;
+}(_EveChild2.EveChild);
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildExplosion = undefined;
+
+var _EveChild2 = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * 'Complex' explosion object. Not implemented.
+ * 
+ * @class
+ */
+var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
+    _inherits(EveChildExplosion, _EveChild);
+
+    function EveChildExplosion() {
+        _classCallCheck(this, EveChildExplosion);
+
+        return _possibleConstructorReturn(this, (EveChildExplosion.__proto__ || Object.getPrototypeOf(EveChildExplosion)).call(this));
+    }
+
+    return EveChildExplosion;
+}(_EveChild2.EveChild);
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildParticleSystem = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveChild2 = __webpack_require__(10);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Particle system attachment to space object
+ *
+ * @property {Tw2Mesh} mesh
+ * @property {Array<Tw2ParticleEmitter>} particleEmitters
+ * @property {Array<Tw2ParticleSystem>} particleSystems
+ * @property {Tw2BasicPerObjectData} _perObjectData
+ * @class
+ */
+var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChild) {
+    _inherits(EveChildParticleSystem, _EveChild);
+
+    function EveChildParticleSystem() {
+        _classCallCheck(this, EveChildParticleSystem);
+
+        var _this = _possibleConstructorReturn(this, (EveChildParticleSystem.__proto__ || Object.getPrototypeOf(EveChildParticleSystem)).call(this));
+
+        _this.particleEmitters = [];
+        _this.particleSystems = [];
+        _this.mesh = null;
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectDataDecl);
+        return _this;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array.<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChildParticleSystem, [{
+        key: 'GetResources',
+        value: function GetResources(out) {
+            if (this.mesh) this.mesh.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentTransform) {
+            _get(EveChildParticleSystem.prototype.__proto__ || Object.getPrototypeOf(EveChildParticleSystem.prototype), 'Update', this).call(this, dt, parentTransform);
+
+            for (var i = 0; i < this.particleEmitters.length; ++i) {
+                this.particleEmitters[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.particleSystems.length; ++_i) {
+                this.particleSystems[_i].Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.mesh) {
+                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
+                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
+                this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+            }
+        }
+    }]);
+
+    return EveChildParticleSystem;
+}(_EveChild2.EveChild);
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveEffectRoot = __webpack_require__(137);
+
+Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _EveLocator[key];
+      return _EveEffectRoot[key];
     }
   });
 });
 
-var _EveStretch = __webpack_require__(129);
+var _EveMissile = __webpack_require__(138);
 
-Object.keys(_EveStretch).forEach(function (key) {
+Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _EveStretch[key];
+      return _EveMissile[key];
     }
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(130);
-
-Object.keys(_EveTurretFiringFX).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTurretFiringFX[key];
-    }
-  });
-});
-
-var _EveBoosterSet = __webpack_require__(45);
-
-Object.keys(_EveBoosterSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveBoosterSet[key];
-    }
-  });
-});
-
-var _EveCurveLineSet = __webpack_require__(131);
-
-Object.keys(_EveCurveLineSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveCurveLineSet[key];
-    }
-  });
-});
-
-var _EvePlaneSet = __webpack_require__(46);
-
-Object.keys(_EvePlaneSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EvePlaneSet[key];
-    }
-  });
-});
-
-var _EveSpotlightSet = __webpack_require__(47);
-
-Object.keys(_EveSpotlightSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpotlightSet[key];
-    }
-  });
-});
-
-var _EveSpriteSet = __webpack_require__(48);
-
-Object.keys(_EveSpriteSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpriteSet[key];
-    }
-  });
-});
-
-var _EveTurretSet = __webpack_require__(132);
-
-Object.keys(_EveTurretSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTurretSet[key];
-    }
-  });
-});
-
-var _EveMeshOverlayEffect = __webpack_require__(133);
-
-Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveMeshOverlayEffect[key];
-    }
-  });
-});
-
-var _EveSpaceObjectDecal = __webpack_require__(49);
-
-Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpaceObjectDecal[key];
-    }
-  });
-});
-
-var _EvePlanet = __webpack_require__(134);
+var _EvePlanet = __webpack_require__(139);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30180,7 +32153,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(50);
+var _EveShip = __webpack_require__(44);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30204,7 +32177,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(16);
+var _EveTransform = __webpack_require__(43);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30215,44 +32188,939 @@ Object.keys(_EveTransform).forEach(function (key) {
     }
   });
 });
-
-var _EveEffectRoot = __webpack_require__(135);
-
-Object.keys(_EveEffectRoot).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveEffectRoot[key];
-    }
-  });
+Object.defineProperty(exports, 'EveStation', {
+  enumerable: true,
+  get: function get() {
+    return _EveSpaceObject.EveSpaceObject;
+  }
 });
 
-var _EveMissile = __webpack_require__(136);
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
 
-Object.keys(_EveMissile).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveMissile[key];
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveEffectRoot = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObject2 = __webpack_require__(15);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveEffectRoot root objects for FX, can be put into scene's objects array
+ *
+ * @property {string} name
+ * @property {boolean} display
+ * @property {[{}]} curveSets
+ * @property {[{}]} effectChildren
+ * @property {vec3} scaling
+ * @property {quat} rotation
+ * @property {vec3} translation
+ * @property {mat4} localTransform
+ * @property {mat4} rotationTransform
+ * @property {vec3} boundingSphereCenter
+ * @property {number} boundingSphereRadius
+ * @property {number} duration
+ * @property {Tw2PerObjectData} _perObjectData
+ * @class
+ */
+var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
+    _inherits(EveEffectRoot, _EveObject);
+
+    function EveEffectRoot() {
+        _classCallCheck(this, EveEffectRoot);
+
+        var _this = _possibleConstructorReturn(this, (EveEffectRoot.__proto__ || Object.getPrototypeOf(EveEffectRoot)).call(this));
+
+        _this.curveSets = [];
+        _this.effectChildren = [];
+        _this.duration = 0;
+        _this.scaling = _math.vec3.fromValues(1, 1, 1);
+        _this.rotation = _math.quat.create();
+        _this.translation = _math.vec3.create();
+        _this.localTransform = _math.mat4.create();
+        _this.rotationTransform = _math.mat4.create();
+        _this.boundingSphereCenter = _math.vec3.create();
+        _this.boundingSphereRadius = 0;
+        _this._perObjectData = new _core.Tw2PerObjectData(EveEffectRoot.perObjectDataDecl);
+        return _this;
     }
-  });
+
+    /**
+     * Gets effect root res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+     */
+
+
+    _createClass(EveEffectRoot, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.effectChildren.length; ++i) {
+                this.effectChildren[i].GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Internal per frame update
+         * @param {number} dt - Delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            _math.quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
+            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.effectChildren.length; ++_i) {
+                this.effectChildren[_i].Update(dt, this.localTransform);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display) return;
+
+            for (var i = 0; i < this.effectChildren.length; ++i) {
+                this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+            }
+        }
+
+        /**
+         * Starts playing the effectRoot's curveSets if they exist
+         */
+
+    }, {
+        key: 'Start',
+        value: function Start() {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Play();
+            }
+        }
+
+        /**
+         * Stops the effectRoot's curveSets from playing
+         */
+
+    }, {
+        key: 'Stop',
+        value: function Stop() {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Stop();
+            }
+        }
+    }]);
+
+    return EveEffectRoot;
+}(_EveObject2.EveObject);
+
+/**
+ * Per object data declarations
+ * @type {{VSData: *[], PSData: *[]}}
+ */
+
+
+EveEffectRoot.perObjectDataDecl = {
+    VSData: [{ name: 'WorldMat', size: 16 }, { name: 'WorldMatLast', size: 16 }, { name: 'Shipdata', size: 4 }, { name: 'Clipdata1', size: 4 }, { name: 'EllipsoidRadii', size: 4 }, { name: 'EllipsoidCenter', size: 4 }, { name: 'CustomMaskMatrix0', size: 16 }, { name: 'CustomMaskMatrix1', size: 16 }, { name: 'CustomMaskData0', size: 4 }, { name: 'CustomMaskData1', size: 4 }, { name: 'JointMat', size: 696 }],
+    PSData: [{ name: 'Shipdata', size: 4 }, { name: 'Clipdata1', size: 4 }, { name: 'Clipdata2', size: 4 }, { name: 'ShLighting', size: 4 * 7 }, { name: 'CustomMaskMaterialID0', size: 4 }, { name: 'CustomMaskMaterialID1', size: 4 }, { name: 'CustomMaskTarget0', size: 4 }, { name: 'CustomMaskTarget1', size: 4 }]
+};
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveMissile = exports.EveMissileWarhead = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObject2 = __webpack_require__(15);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveMissileWarhead
+ *
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Tw2Mesh} mesh
+ * @property {EveSpriteSet} spriteSet
+ * @property {Number} state
+ * @property {Number} time
+ * @property {Number} durationEjectPhase
+ * @property {Number} startEjectVelocity
+ * @property {Number} acceleration
+ * @property {Number} maxExplosionDistance
+ * @property {Number} impactSize
+ * @property {Number} impactDuration
+ * @property {vec3} pathOffset
+ * @property {mat4} transform
+ * @property {vec3} velocity
+ * @property {Tw2PerObjectData} _perObjectData
+ * @class
+ */
+var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
+    _inherits(EveMissileWarhead, _EveObject);
+
+    function EveMissileWarhead() {
+        _classCallCheck(this, EveMissileWarhead);
+
+        var _this = _possibleConstructorReturn(this, (EveMissileWarhead.__proto__ || Object.getPrototypeOf(EveMissileWarhead)).call(this));
+
+        _this.mesh = null;
+        _this.spriteSet = null;
+        _this.state = EveMissileWarhead.State.READY;
+        _this.time = 0;
+        _this.durationEjectPhase = 0;
+        _this.startEjectVelocity = 0;
+        _this.acceleration = 1;
+        _this.maxExplosionDistance = 40;
+        _this.impactSize = 0;
+        _this.impactDuration = 0.6;
+        _this.pathOffset = _math.vec3.create();
+        _this.transform = _math.mat4.create();
+        _this.velocity = _math.vec3.create();
+        _this._perObjectData = new _core.Tw2PerObjectData(EveMissileWarhead.perObjectDataDecl);
+
+        EveMissile.init();
+        return _this;
+    }
+
+    /**
+     * Initializes the warhead
+     */
+
+
+    _createClass(EveMissileWarhead, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.spriteSet) this.spriteSet.UseQuads(true);
+        }
+
+        /**
+         * Sets up the warhead for rendering
+         * @param {mat4} transform - Initial local to world transform
+         */
+
+    }, {
+        key: 'Launch',
+        value: function Launch(transform) {
+            _math.mat4.copy(this.transform, transform);
+            this.velocity[0] = transform[8] * this.startEjectVelocity;
+            this.velocity[1] = transform[9] * this.startEjectVelocity;
+            this.velocity[2] = transform[10] * this.startEjectVelocity;
+            this.time = 0;
+            this.state = EveMissileWarhead.State.IN_FLIGHT;
+        }
+
+        /**
+         * Creates a clone of the warhead
+         * @returns {EveMissileWarhead}
+         */
+
+    }, {
+        key: 'Clone',
+        value: function Clone() {
+            var warhead = new EveMissileWarhead();
+            warhead.mesh = this.mesh;
+            warhead.spriteSet = this.spriteSet;
+            return warhead;
+        }
+
+        /**
+         * Gets warhead resources
+         * @param {Array} [out=[]] - Receiving array
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.mesh) this.mesh.GetResources(out);
+            if (this.spriteSet) this.spriteSet.GetResources(out);
+        }
+
+        /**
+         * Per frame view dependent data update
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            if (!this.display || this.state === EveMissileWarhead.State.DEAD) return;
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - Time since previous frame
+         * @param {vec3} missilePosition - Missile position
+         * @param {vec3} missileTarget - Missile target position
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, missilePosition, missileTarget) {
+            if (this.state === EveMissileWarhead.State.IN_FLIGHT) {
+                var g = EveMissile.global,
+                    position = _math.mat4.getTranslation(g.vec3_0, this.transform),
+                    tmp = g.vec3_1,
+                    x = g.vec3_2,
+                    y = g.vec3_3;
+
+                this.time += dt;
+                if (this.time > this.durationEjectPhase) {
+                    _math.vec3.subtract(position, this.velocity, missilePosition);
+                    _math.vec3.lerp(position, position, missilePosition, 1 - Math.exp(-dt * 0.9999));
+                    _math.mat4.setTranslation(this.transform, position);
+                    _math.vec3.subtract(tmp, missileTarget, position);
+                    if (_math.vec3.length(tmp) < this.maxExplosionDistance) {
+                        console.log(position, tmp);
+                        this.state = EveMissileWarhead.State.DEAD;
+                    }
+                } else {
+                    _math.vec3.scale(tmp, this.velocity, dt);
+                    this.transform[12] += tmp[0];
+                    this.transform[13] += tmp[1];
+                    this.transform[14] += tmp[2];
+                }
+
+                var z = _math.vec3.normalize(tmp, this.velocity);
+
+                if (Math.abs(z[0]) < 0.99) {
+                    _math.vec3.cross(x, z, [1, 0, 0]);
+                } else {
+                    _math.vec3.cross(x, z, [0, 1, 0]);
+                }
+
+                _math.vec3.normalize(x, x);
+                _math.vec3.cross(y, x, z);
+                this.transform[0] = x[0];
+                this.transform[1] = x[1];
+                this.transform[2] = x[2];
+                this.transform[4] = y[0];
+                this.transform[5] = y[1];
+                this.transform[6] = y[2];
+                this.transform[8] = z[0];
+                this.transform[9] = z[1];
+                this.transform[10] = z[2];
+            }
+
+            if (this.spriteSet) {
+                this.spriteSet.Update(dt);
+            }
+        }
+
+        /**
+         * Accumulates render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.mesh && this.state !== EveMissileWarhead.State.DEAD) {
+                if (this.mesh) {
+                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+                }
+
+                if (this.spriteSet) {
+                    this.spriteSet.GetBatches(mode, accumulator, this._perObjectData, this.transform);
+                }
+            }
+        }
+    }]);
+
+    return EveMissileWarhead;
+}(_EveObject2.EveObject);
+
+/**
+ * Raw per object data
+ * @type {{VSData: *[], PSData: *[]}}
+ */
+
+
+EveMissileWarhead.perObjectDataDecl = {
+    VSData: [{ name: 'WorldMat', size: 16 }, { name: 'WorldMatLast', size: 16 }, { name: 'Shipdata', size: 4, value: [0, 1, 0, -10] }, { name: 'Clipdata1', size: 4 }],
+    PSData: [{ name: 'Shipdata', size: 4, value: [0, 1, 0, 1] }, { name: 'Clipdata1', size: 4 }, { name: 'Clipdata2', size: 4 }]
+};
+
+/**
+ * Missile warhead states
+ * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
+ */
+EveMissileWarhead.State = {
+    READY: 0,
+    IN_FLIGHT: 1,
+    DEAD: 2
+};
+
+/**
+ * EveMissile
+ *
+ * @property {number|string} _id
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Array} warheads
+ * @property {Array} curveSets
+ * @property {vec3} boundingSphereCenter
+ * @property {Number} boundingSphereRadius
+ * @property {vec3} position
+ * @property {vec3} target
+ * @property {Number} speed
+ * @property {?function(EveMissileWarhead): void} warheadExplosionCallback
+ * @property {?function(EveMissile): void} missileFinishedCallback
+ * @class
+ */
+
+var EveMissile = exports.EveMissile = function () {
+    function EveMissile() {
+        _classCallCheck(this, EveMissile);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.warheads = [];
+        this.curveSets = [];
+        this.speed = 1;
+        this.position = _math.vec3.create();
+        this.target = _math.vec3.create();
+        this.boundingSphereCenter = _math.vec3.create();
+        this.boundingSphereRadius = 0;
+        this.warheadExplosionCallback = null;
+        this.missileFinishedCallback = null;
+
+        EveMissile.init();
+    }
+
+    /**
+     * Prepares missile for rendering
+     * @param {vec3} position - Missile starting position
+     * @param {Array} turretTransforms - Turret muzzle local to world transforms
+     * @param {vec3} target - Target position
+     */
+
+
+    _createClass(EveMissile, [{
+        key: 'Launch',
+        value: function Launch(position, turretTransforms, target) {
+            _math.vec3.copy(this.position, position);
+            _math.vec3.copy(this.target, target);
+
+            if (this.warheads.length > turretTransforms.length) {
+                this.warheads.splice(turretTransforms.length);
+            } else {
+                while (this.warheads.length < turretTransforms.length) {
+                    this.warheads.push(this.warheads[0].Clone());
+                }
+            }
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[0].Launch(turretTransforms[i]);
+            }
+        }
+
+        /**
+         * Gets missile res objects
+         * @param {Array} [out=[]] - Receiving array
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].GetResources(out);
+            }
+        }
+
+        /**
+         * Per frame view dependent data update
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - Time since previous frame
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            var tmp = _math.vec3.subtract(EveMissile.global.vec3_0, this.target, this.position),
+                distance = _math.vec3.length(tmp);
+
+            if (distance > 0.1) {
+                _math.vec3.normalize(tmp, tmp);
+                _math.vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
+                _math.vec3.add(this.position, this.position, tmp);
+            }
+
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
+            }
+
+            var checkDead = false;
+            for (var _i = 0; _i < this.warheads.length; ++_i) {
+                var state = this.warheads[_i].state;
+                this.warheads[_i].Update(dt, this.position, this.target);
+                if (state !== EveMissileWarhead.State.DEAD && this.warheads[_i].state === EveMissileWarhead.State.DEAD) {
+                    if (this.warheadExplosionCallback) {
+                        this.warheadExplosionCallback(this.warheads[_i]);
+                    }
+                    checkDead = true;
+                }
+            }
+
+            if (checkDead && this.missileFinishedCallback) {
+                for (var _i2 = 0; _i2 < this.warheads.length; ++_i2) {
+                    if (this.warheads[_i2].state !== EveMissileWarhead.State.DEAD) {
+                        return;
+                    }
+                }
+                this.missileFinishedCallback(this);
+            }
+        }
+
+        /**
+         * Accumulates render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display) return;
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].GetBatches(mode, accumulator);
+            }
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveMissile.global) {
+                EveMissile.global = {
+                    vec3_0: _math.vec3.create(),
+                    vec3_1: _math.vec3.create(),
+                    vec3_2: _math.vec3.create(),
+                    vec3_3: _math.vec3.create()
+                };
+            }
+        }
+    }]);
+
+    return EveMissile;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveMissile.global = null;
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EvePlanet = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _core = __webpack_require__(1);
+
+var _EveTransform = __webpack_require__(43);
+
+var _EveObject2 = __webpack_require__(15);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EvePlanet
+ *
+ * @property {string} name
+ * @property {boolean} display
+ * @property {EveTransform} highDetail
+ * @property {Tw2Effect} effectHeight
+ * @property {Tw2RenderTarget} heightMap
+ * @property {*} zOnlyModel
+ * @property {number} itemID
+ * @property {string} heightMapResPath1
+ * @property {string} heightMapResPath2
+ * @property {boolean} heightDirty
+ * @property {Array} lockedResources
+ * @property {Array.<Resource>} watchedResources
+ * @class
+ */
+var EvePlanet = exports.EvePlanet = function (_EveObject) {
+    _inherits(EvePlanet, _EveObject);
+
+    function EvePlanet() {
+        _classCallCheck(this, EvePlanet);
+
+        var _this = _possibleConstructorReturn(this, (EvePlanet.__proto__ || Object.getPrototypeOf(EvePlanet)).call(this));
+
+        _this.highDetail = new _EveTransform.EveTransform();
+        _this.effectHeight = new _core.Tw2Effect();
+        _this.heightMap = new _core.Tw2RenderTarget();
+        _this.zOnlyModel = null;
+        _this.itemID = 0;
+        _this.heightMapResPath1 = '';
+        _this.heightMapResPath2 = '';
+        _this.heightDirty = false;
+        _this.lockedResources = [];
+        _this.watchedResources = [];
+        return _this;
+    }
+
+    /**
+     * Creates the planet
+     * @param {number} itemID - the item id is used for randomization
+     * @param {string} planetPath - .red file for a planet, or planet template
+     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} heightMap1
+     * @param {string} heightMap2
+     */
+
+
+    _createClass(EvePlanet, [{
+        key: 'Create',
+        value: function Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2) {
+            var _this2 = this;
+
+            this.itemID = itemID;
+            this.heightMapResPath1 = heightMap1;
+            this.heightMapResPath2 = heightMap2;
+            this.highDetail.children = [];
+            this.heightDirty = true;
+
+            _core.resMan.GetObject(planetPath, function (obj) {
+                return EvePlanet.MeshLoaded(_this2, obj);
+            });
+            _core.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
+                return _this2.zOnlyModel = obj;
+            });
+
+            if (atmospherePath) {
+                _core.resMan.GetObject(atmospherePath, function (obj) {
+                    return _this2.highDetail.children.push(obj);
+                });
+            }
+        }
+
+        /**
+         * GetPlanetResources
+         * Todo: Replace this using this.GetResources();
+         * @param obj
+         * @param visited
+         * @param result
+         */
+
+    }, {
+        key: 'GetPlanetResources',
+        value: function GetPlanetResources(obj, visited, result) {
+            if (visited.includes(obj)) return;
+            visited.push(obj);
+
+            if (obj && _typeof(obj['doNotPurge']) !== ( true ? 'undefined' : _typeof(undefined))) {
+                result.push(obj);
+                return;
+            }
+
+            for (var prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    if (_typeof(obj[prop]) === 'object') {
+                        this.GetPlanetResources(obj[prop], visited, result);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Gets planet res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.highDetail) this.highDetail.GetResources(out);
+            if (this.effectHeight) this.effectHeight.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Updates view dependent data
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData(parentTransform) {
+            this.highDetail.UpdateViewDependentData(parentTransform);
+            if (this.zOnlyModel) {
+                this.zOnlyModel.translation = this.highDetail.translation;
+                this.zOnlyModel.scaling = this.highDetail.scaling;
+                this.zOnlyModel.UpdateViewDependentData(parentTransform);
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            this.highDetail.Update(dt);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '') {
+                for (var i = 0; i < this.watchedResources.length; ++i) {
+                    if (this.watchedResources[i] && !this.watchedResources[i].IsGood()) return;
+                }
+
+                this.watchedResources = [];
+
+                this.heightMap.Set();
+                _core.device.SetStandardStates(_core.device.RM_FULLSCREEN);
+                _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
+                _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
+                _core.device.RenderFullScreenQuad(this.effectHeight);
+                this.heightMap.Unset();
+
+                this.heightDirty = false;
+                for (var _i = 0; _i < this.lockedResources.length; ++_i) {
+                    this.lockedResources[_i].doNotPurge--;
+                }
+
+                var mainMesh = this.highDetail.children[0].mesh;
+                var originalEffect = null;
+
+                if (mainMesh.transparentAreas.length) {
+                    originalEffect = mainMesh.transparentAreas[0].effect;
+                } else if (mainMesh.opaqueAreas.length) {
+                    originalEffect = mainMesh.opaqueAreas[0].effect;
+                }
+
+                if (originalEffect) {
+                    originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
+                }
+            }
+
+            if (this.display) {
+                this.highDetail.GetBatches(mode, accumulator);
+            }
+        }
+
+        /**
+         * Gets z buffer only batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetZOnlyBatches',
+        value: function GetZOnlyBatches(mode, accumulator) {
+            if (this.display && this.zOnlyModel) {
+                this.zOnlyModel.GetBatches(mode, accumulator);
+            }
+        }
+
+        /**
+         * Internal helper function that fires when the planet's mesh has loaded
+         * @property {EvePlanet} planet
+         * @property {*} obj
+         */
+
+    }], [{
+        key: 'MeshLoaded',
+        value: function MeshLoaded(planet, obj) {
+            planet.highDetail.children.unshift(obj);
+            planet.lockedResources = [];
+            planet.GetPlanetResources(planet.highDetail, [], planet.lockedResources);
+
+            var mainMesh = planet.highDetail.children[0].mesh,
+                originalEffect = null,
+                resPath = void 0;
+
+            if (mainMesh.transparentAreas.length) {
+                originalEffect = mainMesh.transparentAreas[0].effect;
+                resPath = originalEffect.effectFilePath;
+            } else if (mainMesh.opaqueAreas.length) {
+                originalEffect = mainMesh.opaqueAreas[0].effect;
+                resPath = originalEffect.effectFilePath;
+            } else {
+                resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
+            }
+            resPath = resPath.replace('.fx', 'BlitHeight.fx');
+
+            planet.watchedResources = [];
+            for (var param in originalEffect.parameters) {
+                if (originalEffect.parameters.hasOwnProperty(param)) {
+                    planet.effectHeight.parameters[param] = originalEffect.parameters[param];
+                    if ('textureRes' in originalEffect.parameters[param]) {
+                        planet.watchedResources.push(originalEffect.parameters[param].textureRes);
+                    }
+                }
+            }
+
+            for (var i = 0; i < planet.highDetail.children[0].children.length; ++i) {
+                mainMesh = planet.highDetail.children[0].children[i].mesh;
+                if (!mainMesh) continue;
+
+                originalEffect = null;
+                if (mainMesh.transparentAreas.length) {
+                    originalEffect = mainMesh.transparentAreas[0].effect;
+                } else if (mainMesh.opaqueAreas.length) {
+                    originalEffect = mainMesh.opaqueAreas[0].effect;
+                } else {
+                    continue;
+                }
+
+                for (var _param in originalEffect.parameters) {
+                    if (originalEffect.parameters.hasOwnProperty(_param)) {
+                        planet.effectHeight.parameters[_param] = originalEffect.parameters[_param];
+                        if ('textureRes' in originalEffect.parameters[_param]) {
+                            planet.watchedResources.push(originalEffect.parameters[_param].textureRes);
+                        }
+                    }
+                }
+            }
+
+            var NormalHeight1 = new _core.Tw2TextureParameter('NormalHeight1', planet.heightMapResPath1);
+            NormalHeight1.Initialize();
+            planet.watchedResources.push(NormalHeight1.textureRes);
+            planet.lockedResources.push(NormalHeight1.textureRes);
+            planet.effectHeight.parameters.NormalHeight1 = NormalHeight1;
+
+            var NormalHeight2 = new _core.Tw2TextureParameter('NormalHeight2', planet.heightMapResPath2);
+            NormalHeight2.Initialize();
+            planet.watchedResources.push(NormalHeight2.textureRes);
+            planet.lockedResources.push(NormalHeight2.textureRes);
+            planet.effectHeight.parameters.NormalHeight2 = NormalHeight2;
+
+            planet.effectHeight.parameters.Random = new _core.Tw2FloatParameter('Random', planet.itemID % 100);
+            planet.effectHeight.parameters.TargetTextureHeight = new _core.Tw2FloatParameter('TargetTextureHeight', 1024);
+
+            planet.effectHeight.effectFilePath = resPath;
+            planet.effectHeight.Initialize();
+            planet.heightDirty = true;
+            planet.heightMap.Create(2048, 1024, false);
+            planet.watchedResources.push(planet.effectHeight.effectRes);
+
+            for (var _i2 = 0; _i2 < planet.lockedResources.length; ++_i2) {
+                planet.lockedResources[_i2].doNotPurge++;
+                if (planet.lockedResources[_i2].IsPurged()) {
+                    planet.lockedResources[_i2].Reload();
+                }
+            }
+        }
+    }]);
+
+    return EvePlanet;
+}(_EveObject2.EveObject);
+
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
 });
 
-var _EveSpaceScene = __webpack_require__(138);
-
-Object.keys(_EveSpaceScene).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpaceScene[key];
-    }
-  });
-});
-
-var _EveLensflare = __webpack_require__(139);
+var _EveLensflare = __webpack_require__(141);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30264,7 +33132,19 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(140);
+var _EveMeshOverlayEffect = __webpack_require__(142);
+
+Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveMeshOverlayEffect[key];
+    }
+  });
+});
+
+var _EveOccluder = __webpack_require__(45);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30276,20 +33156,32 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(141);
+var _EveStretch = __webpack_require__(143);
 
-Object.keys(_EveSOF).forEach(function (key) {
+Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _EveSOF[key];
+      return _EveStretch[key];
+    }
+  });
+});
+
+var _EveTurretFiringFX = __webpack_require__(144);
+
+Object.keys(_EveTurretFiringFX).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveTurretFiringFX[key];
     }
   });
 });
 
 /***/ }),
-/* 125 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30298,127 +33190,333 @@ Object.keys(_EveSOF).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveChildBillboard = EveChildBillboard;
+exports.EveLensflare = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(16);
+var _EveOccluder = __webpack_require__(45);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Mesh attachment to space object and oriented towards the camera
- * @property {string} name
+ * EveLensFlare
+ *
+ * @property {number|string} _id
+ * @property {String} name=
  * @property {boolean} display
- * @property {Number} lowestLodVisible
- * @property {quat} rotation
- * @property {vec3} translation
- * @property {vec3} scaling
- * @property {boolean} useSRT
- * @property {boolean} staticTransform
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} worldTransformLast
- * @property {Tw2Mesh} mesh
- * @property {boolean} isEffectChild
- * @property {EveBasicPerObjectData} _perObjectData
- * @constructor
+ * @property {boolean} update
+ * @property {boolean} doOcclusionQueries
+ * @property {number} cameraFactor
+ * @property {vec3} position
+ * @property {Array} flares
+ * @property {Array.<EveOccluder>} occluders
+ * @property {Array.<EveOccluder>} backgroundOccluders
+ * @property {number} occlusionIntensity
+ * @property {number} backgroundOcclusionIntensity
+ * @property {Array} distanceToEdgeCurves
+ * @property {Array} distanceToCenterCurves
+ * @property {Array} radialAngleCurves
+ * @property {Array} xDistanceToCenter
+ * @property {Array} yDistanceToCenter
+ * @property {Array} bindings
+ * @property {Array.<Tw2CurveSet> curveSets
+ * @property {?Tw2Mesh} mesh
+ * @property {vec3} _direction
+ * @property {mat4} _transform
+ * @property {*} _backBuffer
+ * @class
  */
-function EveChildBillboard() {
-    this.name = '';
-    this.display = true;
-    this.lowestLodVisible = 2;
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.useSRT = true;
-    this.staticTransform = false;
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-    this.worldTransformLast = _math.mat4.create();
-    this.mesh = null;
-    this.isEffectChild = true;
+var EveLensflare = exports.EveLensflare = function () {
+    function EveLensflare() {
+        _classCallCheck(this, EveLensflare);
 
-    this._perObjectData = new _EveTransform.EveBasicPerObjectData();
-    this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-    this._perObjectData.perObjectFFEData.Declare('world', 16);
-    this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-    this._perObjectData.perObjectFFEData.Create();
-}
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.update = true;
+        this.doOcclusionQueries = true;
+        this.cameraFactor = 20;
+        this.position = _math.vec3.create();
+        this.flares = [];
+        this.occluders = [];
+        this.backgroundOccluders = [];
+        this.occlusionIntensity = 1;
+        this.backgroundOcclusionIntensity = 1;
+        this.distanceToEdgeCurves = [];
+        this.distanceToCenterCurves = [];
+        this.radialAngleCurves = [];
+        this.xDistanceToCenter = [];
+        this.yDistanceToCenter = [];
+        this.bindings = [];
+        this.curveSets = [];
+        this.mesh = null;
+        this._direction = _math.vec3.create();
+        this._transform = _math.mat4.create();
+        this._backBuffer = null;
 
-/**
- * Scratch variables
- */
-EveChildBillboard.scratch = {
-    mat4_0: _math.mat4.create(),
-    vec3_0: _math.vec3.create()
-};
-
-/**
- * Updates mesh transform
- * @param {mat4} parentTransform
- */
-EveChildBillboard.prototype.Update = function (parentTransform) {
-    var viewInverse = EveChildBillboard.scratch.mat4_0,
-        finalScale = EveChildBillboard.scratch.vec3_0;
-
-    if (this.useSRT) {
-        _math.quat.normalize(this.rotation, this.rotation);
-        _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        EveLensflare.init();
     }
 
-    _math.mat4.copy(this.worldTransformLast, this.worldTransform);
-    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+    /**
+     * Gets lensflares's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
 
-    _math.mat4.lookAt(viewInverse, _core.device.eyePosition, this.worldTransform.subarray(12), [0, 1, 0]);
-    _math.mat4.transpose(viewInverse, viewInverse);
-    _math.mat4.getScaling(finalScale, parentTransform);
-    _math.vec3.multiply(finalScale, finalScale, this.scaling);
 
-    this.worldTransform[0] = viewInverse[0] * finalScale[0];
-    this.worldTransform[1] = viewInverse[1] * finalScale[0];
-    this.worldTransform[2] = viewInverse[2] * finalScale[0];
-    this.worldTransform[4] = viewInverse[4] * finalScale[1];
-    this.worldTransform[5] = viewInverse[5] * finalScale[1];
-    this.worldTransform[6] = viewInverse[6] * finalScale[1];
-    this.worldTransform[8] = viewInverse[8] * finalScale[2];
-    this.worldTransform[9] = viewInverse[9] * finalScale[2];
-    this.worldTransform[10] = viewInverse[10] * finalScale[2];
-};
+    _createClass(EveLensflare, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.mesh) this.mesh.GetResources(out);
+
+            for (var i = 0; i < this.flares.length; i++) {
+                this.flares[i].GetResources(out);
+            }
+
+            if (_EveOccluder.EveOccluder.global && _EveOccluder.EveOccluder.global.effect && !out.includes(_EveOccluder.EveOccluder.global.effect)) {
+                out.push(_EveOccluder.EveOccluder.global.effect);
+            }
+
+            return out;
+        }
+
+        /**
+         * Updates Occluders
+         */
+
+    }, {
+        key: 'UpdateOccluders',
+        value: function UpdateOccluders() {
+            if (!this.doOcclusionQueries) return;
+
+            var g = EveLensflare.global;
+
+            if (!g.occluderLevels[0].texture || g.occluderLevels[0].width < this.occluders.length * 2) {
+                for (var i = 0; i < g.occluderLevels.length; ++i) {
+                    g.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
+                }
+            }
+
+            // TODO: Is this deprecated?
+            for (var j = 0; j < this.flares.length; ++j) {
+                if ('_backBuffer' in this.flares[j]) {
+                    this.flares[j]._backBuffer.textureRes = g.occluderLevels.texture;
+                }
+            }
+
+            this.occlusionIntensity = 1;
+            this.backgroundOcclusionIntensity = 1;
+
+            g.occluderLevels[g.occludedLevelIndex].Set();
+            _core.device.SetStandardStates(_core.device.RM_OPAQUE);
+            _core.device.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
+            g.occluderLevels[g.occludedLevelIndex].Unset();
+
+            var samples = 1;
+            if (_core.device.antialiasing) {
+                samples = _core.device.msaaSamples;
+                _core.device.gl.sampleCoverage(1.0 / samples, false);
+            }
+
+            for (var _i = 0; _i < this.occluders.length; ++_i) {
+                _core.device.SetRenderState(_core.device.RS_COLORWRITEENABLE, 8);
+                _core.device.gl.colorMask(false, false, false, true);
+                _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
+                _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
+
+                // Turn off antialiasing
+                if (_core.device.antialiasing) {
+                    _core.device.gl.enable(_core.device.gl.SAMPLE_COVERAGE);
+                    _core.device.gl.sampleCoverage(0.25, false);
+                }
+                this.occluders[_i].UpdateValue(this._transform, _i);
+                if (_core.device.antialiasing) _core.device.gl.disable(_core.device.gl.SAMPLE_COVERAGE);
+
+                // Copy back buffer into a texture
+                if (!g.backBuffer.texture) g.backBuffer.Attach(_core.device.gl.createTexture());
+                _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, g.backBuffer.texture);
+                if (g.backBuffer.width !== _core.device.viewportWidth || g.backBuffer.height !== _core.device.viewportHeight) {
+                    _core.device.gl.texImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.gl.RGBA, _core.device.viewportWidth, _core.device.viewportHeight, 0, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, null);
+                    _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MAG_FILTER, _core.device.gl.LINEAR);
+                    _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MIN_FILTER, _core.device.gl.LINEAR);
+                    g.backBuffer.width = _core.device.viewportWidth;
+                    g.backBuffer.height = _core.device.viewportHeight;
+                }
+                _core.device.gl.copyTexImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.alphaBlendBackBuffer ? _core.device.gl.RGBA : _core.device.gl.RGB, 0, 0, g.backBuffer.width, g.backBuffer.height, 0);
+                _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, null);
+
+                // Collect samples
+                g.occluderLevels[g.occludedLevelIndex].Set();
+                _EveOccluder.EveOccluder.CollectSamples(g.backBuffer, _i, g.occluderLevels[0].width / 2, samples);
+                g.occluderLevels[g.occludedLevelIndex].Unset();
+            }
+
+            if (_core.device.antialiasing) _core.device.gl.sampleCoverage(1, false);
+
+            g.occluderLevels[(g.occludedLevelIndex + 1) % g.occluderLevels.length].Set();
+            var pixels = new Uint8Array(g.occluderLevels[0].width * 4);
+            _core.device.gl.readPixels(0, 0, 2, 1, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, pixels);
+            g.occluderLevels[(g.occludedLevelIndex + 1) % g.occluderLevels.length].Unset();
+
+            this.occlusionIntensity = 1;
+            for (var _i2 = 0; _i2 < g.occluderLevels[0].width * 2; _i2 += 4) {
+                this.occlusionIntensity *= pixels[_i2 + 1] ? pixels[_i2] / pixels[_i2 + 1] : 1;
+            }
+
+            this.backgroundOcclusionIntensity = this.occlusionIntensity;
+            _math.vec3.set(_core.store.GetVariable('LensflareFxOccScale').value, this.occlusionIntensity, this.occlusionIntensity, 0, 0);
+            g.occludedLevelIndex = (g.occludedLevelIndex + 1) % g.occluderLevels.length;
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (this.display) {
+                var viewDir = _math.vec4.set(EveLensflare.global.vec4_0, 0, 0, 1, 0);
+                _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
+                if (_math.vec3.dot(viewDir, this._direction) < 0) return;
+
+                for (var i = 0; i < this.flares.length; ++i) {
+                    this.flares[i].GetBatches(mode, accumulator, perObjectData);
+                }
+
+                if (this.mesh) {
+                    this.mesh.GetBatches(mode, accumulator, perObjectData);
+                }
+            }
+        }
+
+        /**
+         * Prepares the lensflare for rendering
+         */
+
+    }, {
+        key: 'PrepareRender',
+        value: function PrepareRender() {
+            if (!this.display) return;
+
+            var g = EveLensflare.global,
+                viewDir = g.vec4_0,
+                cameraPos = g.vec3_0,
+                scaleMat = _math.mat4.identity(g.mat4_0),
+                cameraSpacePos = g.vec3_2,
+                negDirVec = g.vec3_3,
+                negPos = g.vec3_1,
+                dist = g.vec4_1;
+
+            _math.vec3.transformMat4(cameraPos, [0, 0, 0], _core.device.viewInverse);
+            if (_math.vec3.length(this.position) === 0) {
+                _math.vec3.negate(negPos, cameraPos);
+                //let distScale = vec3.length(negPos);
+                //distScale = distScale > 1.5 ? 1 / Math.log(distScale) : 2.5;
+            } else {
+                _math.vec3.negate(negPos, this.position);
+                _math.vec3.normalize(this._direction, negPos);
+            }
+
+            _math.vec4.transformMat4(viewDir, [0, 0, 1, 0], _core.device.viewInverse);
+            _math.vec3.scaleAndAdd(cameraSpacePos, cameraPos, viewDir, -this.cameraFactor);
+            _math.vec3.negate(negDirVec, this._direction);
+            _math.mat4.arcFromForward(this._transform, negDirVec);
+            _math.mat4.setTranslation(this._transform, cameraSpacePos);
+            _math.mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
+            //mat4.multiply(scaleMat, scaleMat, this._transform);
+
+            var dir = this._direction;
+            _math.vec4.set(_core.store.GetVariable('LensflareFxDirectionScale').value, dir[0], dir[1], dir[2], 1);
+            _math.vec4.set(dist, dir[0], dir[1], dir[2], 0);
+            _math.vec4.transformMat4(dist, dist, _core.device.view);
+            _math.vec4.transformMat4(dist, dist, _core.device.projection);
+            dist[0] /= dist[3];
+            dist[1] /= dist[3];
+
+            var distToEdge = 1 - Math.min(1 - Math.abs(dist[0]), 1 - Math.abs(dist[1])),
+                distToCenter = Math.sqrt(dist[0] * dist[0] + dist[1] * dist[1]),
+                radialAngle = Math.atan2(dist[1], dist[0]) + Math.PI;
+
+            for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
+                this.distanceToEdgeCurves[i].UpdateValue(distToEdge);
+            }
+
+            for (var _i3 = 0; _i3 < this.distanceToCenterCurves.length; ++_i3) {
+                this.distanceToCenterCurves[_i3].UpdateValue(distToCenter);
+            }
+
+            for (var _i4 = 0; _i4 < this.radialAngleCurves.length; ++_i4) {
+                this.radialAngleCurves[_i4].UpdateValue(radialAngle);
+            }
+
+            for (var _i5 = 0; _i5 < this.xDistanceToCenter.length; ++_i5) {
+                this.xDistanceToCenter[_i5].UpdateValue(dist[0] + 10);
+            }
+
+            for (var _i6 = 0; _i6 < this.yDistanceToCenter.length; ++_i6) {
+                this.yDistanceToCenter[_i6].UpdateValue(dist[1] + 10);
+            }
+
+            for (var _i7 = 0; _i7 < this.bindings.length; ++_i7) {
+                this.bindings[_i7].CopyValue();
+            }
+
+            for (var _i8 = 0; _i8 < this.flares.length; ++_i8) {
+                this.flares[_i8].UpdateViewDependentData(this._transform);
+            }
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveLensflare.global) {
+                var g = EveLensflare.global = {};
+                g.vec3_0 = _math.vec3.create();
+                g.vec3_1 = _math.vec3.create();
+                g.vec3_2 = _math.vec3.create();
+                g.vec3_3 = _math.vec3.create();
+                g.vec4_0 = _math.vec4.create();
+                g.vec4_1 = _math.mat4.create();
+                g.mat4_0 = _math.mat4.create();
+
+                g.backBuffer = new _core.Tw2TextureRes();
+                g.backBuffer.width = 0;
+                g.backBuffer.height = 0;
+                g.backBuffer.hasMipMaps = false;
+                g.occludedLevelIndex = 0;
+                g.occluderLevels = [new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget()];
+            }
+        }
+    }]);
+
+    return EveLensflare;
+}();
 
 /**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
+ * Class global and scratch variables
+ * @type {{string:*}}
  */
-EveChildBillboard.prototype.GetBatches = function (mode, accumulator) {
-    if (!this.display || !this.mesh) {
-        return;
-    }
-    _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
-    _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
-    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-};
 
-/**
- * Gets child mesh res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveChildBillboard.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
 
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
-
-    return out;
-};
+EveLensflare.global = null;
 
 /***/ }),
-/* 126 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30427,137 +33525,155 @@ EveChildBillboard.prototype.GetResources = function (out) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveChildContainer = EveChildContainer;
+exports.EveMeshOverlayEffect = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _core = __webpack_require__(1);
 
 var _math = __webpack_require__(0);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
- * Container for other child effects
+ * Constructor for Overlay Effects
+ *
+ * @property {number|string} _id
  * @property {string} name
- * @property {boolean} display
- * @parameter {Array.<{}>} objects
- * @parameter {Array.<{}>} curveSets
- * @property {quat} rotation
- * @property {vec3} translation
- * @property {vec3} scaling
- * @property {boolean} useSRT
- * @property {boolean} staticTransform
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} worldTransformLast
- * @property {boolean} isEffectChild
- * @constructor
+ * @property {boolean} display                     - Enables/ disables all batch accumulations
+ * @property {{}} visible                          - Batch accumulation options for the overlay effect
+ * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
+ * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
+ * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
+ * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
+ * @property {boolean} visible.distortionEffects   - Currently not supported
+ * @property {boolean} update
+ * @property {Tw2CurveSet} curveSet
+ * @property {Array.<Tw2Effect>} opaqueEffects
+ * @property {Array.<Tw2Effect>} decalEffects
+ * @property {Array.<Tw2Effect>} transparentEffects
+ * @property {Array.<Tw2Effect>} additiveEffects
+ * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
+
+ * @class
  */
-function EveChildContainer() {
-    this.name = '';
-    this.display = true;
-    this.objects = [];
-    this.curveSets = [];
+var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
+    function EveMeshOverlayEffect() {
+        _classCallCheck(this, EveMeshOverlayEffect);
 
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.useSRT = true;
-    this.staticTransform = false;
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-    this.worldTransformLast = _math.mat4.create();
-
-    this.isEffectChild = true;
-}
-
-/**
- * Updates container transform, curve sets and all children
- * @param {mat4} parentTransform
- * @param {Number} dt
- */
-EveChildContainer.prototype.Update = function (parentTransform, dt) {
-    if (this.useSRT) {
-        _math.quat.normalize(this.rotation, this.rotation);
-        _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.visible = {};
+        this.visible.opaqueEffects = true;
+        this.visible.decalEffects = true;
+        this.visible.transparentEffects = true;
+        this.visible.additiveEffects = true;
+        this.visible.distortionEffects = false;
+        this.update = true;
+        this.curveSet = null;
+        this.opaqueEffects = [];
+        this.decalEffects = [];
+        this.transparentEffects = [];
+        this.additiveEffects = [];
+        this.distortionEffects = [];
     }
 
-    _math.mat4.copy(this.worldTransformLast, this.worldTransform);
-    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+    /**
+     * Gets the mesh overlay's resources
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
 
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-    for (i = 0; i < this.objects.length; ++i) {
-        this.objects[i].Update(this.worldTransform, dt);
-    }
-};
 
-/**
- * Gets render batches from children
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveChildContainer.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-    for (var i = 0; i < this.objects.length; ++i) {
-        this.objects[i].GetBatches(mode, accumulator, perObjectData);
-    }
-};
+    _createClass(EveMeshOverlayEffect, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-/**
- * Gets child mesh res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveChildContainer.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
+            _math.util.perArrayChild(this.opaqueEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.decalEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.transparentEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.additiveEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.distortionEffects, 'GetResources', out);
+            return out;
+        }
 
-    for (var i = 0; i < this.objects.length; ++i) {
-        this.objects[i].GetResources(out);
-    }
-    return out;
-};
+        /**
+         * Per frame update
+         * @param {number} dt - delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this.update && this.curveSet) this.curveSet.Update(dt);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {Tw2Mesh} mesh
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData, mesh) {
+            if (!this.display || !mesh || !mesh.geometryResource) return;
+
+            var effects = this.GetEffects(mode);
+            for (var i = 0; i < effects.length; i++) {
+                var batch = new _core.Tw2GeometryBatch();
+                batch.renderMode = mode;
+                batch.perObjectData = perObjectData;
+                batch.geometryRes = mesh.geometryResource;
+                batch.meshIx = mesh.meshIndex;
+                batch.start = 0;
+                batch.count = mesh.geometryResource.meshes[mesh.meshIndex].areas.length;
+                batch.effect = effects[i];
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Gets effects
+         * @param {number} mode
+         * @returns {Array.<Tw2Effect>}
+         */
+
+    }, {
+        key: 'GetEffects',
+        value: function GetEffects(mode) {
+            if (this.display) {
+                switch (mode) {
+                    case _core.device.RM_OPAQUE:
+                        if (this.visible.opaqueEffects) return this.opaqueEffects;
+                        break;
+
+                    case _core.device.RM_TRANSPARENT:
+                        if (this.visible.transparentEffects) return this.transparentEffects;
+                        break;
+
+                    case _core.device.RM_ADDITIVE:
+                        if (this.visible.additiveEffects) return this.additiveEffects;
+                        break;
+
+                    case _core.device.RM_DECAL:
+                        if (this.visible.decalEffects) return this.decalEffects;
+                        break;
+                }
+            }
+            return [];
+        }
+    }]);
+
+    return EveMeshOverlayEffect;
+}();
 
 /***/ }),
-/* 127 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.EveChildExplosion = EveChildExplosion;
-/* eslint no-unused-vars:0 */
-
-/**
- * 'Complex' explosion object. Not implemented.
- * @property {boolean} isEffectChild
- * @constructor
- */
-function EveChildExplosion() {
-  // will be implemented soon(tm)
-  this.isEffectChild = true;
-}
-
-/**
- * Updates explosion transform
- * @param {mat4} parentTransform
- */
-EveChildExplosion.prototype.Update = function (parentTransform) {};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveChildExplosion.prototype.GetBatches = function (mode, accumulator, perObjectData) {};
-
-/***/ }),
-/* 128 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30566,139 +33682,27 @@ EveChildExplosion.prototype.GetBatches = function (mode, accumulator, perObjectD
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveChildParticleSystem = EveChildParticleSystem;
+exports.EveStretch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(16);
-
-/**
- * Particle system attachment to space object
- * @property {string} name
- * @property {boolean} display
- * @property {Number} lowestLodVisible
- * @property {quat} rotation
- * @property {vec3} translation
- * @property {vec3} scaling
- * @property {boolean} useSRT
- * @property {boolean} staticTransform
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} worldTransformLast
- * @property {Tw2Mesh} mesh
- * @property {[{]} particleEmitters
- * @property {[Tw2ParticleSystem]} particleSystems
- * @property {boolean} isEffectChild
- * @property {EveBasicPerObjectData} _perObjectData
- * @constructor
- */
-function EveChildParticleSystem() {
-    this.name = '';
-    this.display = true;
-    this.lowestLodVisible = 2;
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.useSRT = true;
-    this.staticTransform = false;
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-    this.worldTransformLast = _math.mat4.create();
-    this.mesh = null;
-
-    this.particleEmitters = [];
-    this.particleSystems = [];
-
-    this.isEffectChild = true;
-
-    this._perObjectData = new _EveTransform.EveBasicPerObjectData();
-    this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-    this._perObjectData.perObjectFFEData.Declare('world', 16);
-    this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-    this._perObjectData.perObjectFFEData.Create();
-}
-
-/**
- * Updates object transform and ticks particle systems and emitters
- * @param {mat4} parentTransform
- * @param {Number} dt
- */
-EveChildParticleSystem.prototype.Update = function (parentTransform, dt) {
-    if (this.useSRT) {
-        _math.quat.normalize(this.rotation, this.rotation);
-        _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-    }
-
-    _math.mat4.copy(this.worldTransformLast, this.worldTransform);
-    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-
-    for (var i = 0; i < this.particleEmitters.length; ++i) {
-        this.particleEmitters[i].Update(dt);
-    }
-    for (i = 0; i < this.particleSystems.length; ++i) {
-        this.particleSystems[i].Update(dt);
-    }
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveChildParticleSystem.prototype.GetBatches = function (mode, accumulator) {
-    if (!this.display || !this.mesh) {
-        return;
-    }
-    _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
-    _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
-    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-};
-
-/**
- * Gets child mesh res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveChildParticleSystem.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 129 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveStretch = EveStretch;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * EveStretch
+ *
  * @property {String} name
  * @property {boolean} display
  * @property {boolean} update
- * @property source
- * @property dest
- * @property sourceObject
- * @property destObject
- * @property {Array.<CurveSets>} curveSets
+ * @property {*} source
+ * @property {*} dest
+ * @property {*} sourceObject
+ * @property {*} destObject
+ * @property {Array.<Tw2CurveSet>} curveSets
  * @property {Tw2Float} length
  * @property {number} _time
  * @property {boolean} _useTransformsForStretch
@@ -30709,216 +33713,262 @@ var _core = __webpack_require__(1);
  * @property {boolean} _displayDestObject
  * @property {boolean} _useTransformsForStretch
  * @property {boolean} _isNegZForward
- * @constructor
+ * @class
  */
-function EveStretch() {
-    this.name = '';
-    this.display = true;
-    this.update = true;
-    this.source = null;
-    this.dest = null;
-    this.sourceObject = null;
-    this.destObject = null;
-    this.stretchObject = null;
-    this.curveSets = [];
-    this.length = new _core.Tw2Float();
-    this._time = 0;
-    this._useTransformsForStretch = false;
-    this._sourcePosition = _math.vec3.create();
-    this._destinationPosition = _math.vec3.create();
-    this._displaySourceObject = true;
-    this._sourceTransform = null;
-    this._displayDestObject = true;
-    this._useTransformsForStretch = false;
-    this._isNegZForward = false;
-}
+var EveStretch = exports.EveStretch = function () {
+    function EveStretch() {
+        _classCallCheck(this, EveStretch);
 
-/**
- * Scratch variables
- */
-EveStretch.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    mat4_0: _math.mat4.create(),
-    mat4_1: _math.mat4.create()
-};
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.update = true;
+        this.curveSets = [];
+        this.source = null;
+        this.dest = null;
+        this.sourceObject = null;
+        this.destObject = null;
+        this.stretchObject = null;
+        this.length = new _core.Tw2Float();
+        this._time = 0;
+        this._useTransformsForStretch = false;
+        this._sourcePosition = _math.vec3.create();
+        this._destinationPosition = _math.vec3.create();
+        this._displaySourceObject = true;
+        this._sourceTransform = null;
+        this._displayDestObject = true;
+        this._useTransformsForStretch = false;
+        this._isNegZForward = false;
 
-/**
- * Per frame update
- * @param {number} dt - delta time
- */
-EveStretch.prototype.Update = function (dt) {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-    this._time += dt;
-    if (this.source) {
-        this.source.GetValueAt(this._time, this._sourcePosition);
-    } else if (this._useTransformsForStretch) {
-        this._sourcePosition[0] = this._sourceTransform[12];
-        this._sourcePosition[1] = this._sourceTransform[13];
-        this._sourcePosition[2] = this._sourceTransform[14];
-    }
-    if (this.dest) {
-        this.source.GetValueAt(this._time, this._destinationPosition);
+        EveStretch.init();
     }
 
-    var directionVec = _math.vec3.subtract(EveStretch.scratch.vec3_0, this._destinationPosition, this._sourcePosition);
-    this.length.value = _math.vec3.length(directionVec);
-    _math.vec3.normalize(directionVec, directionVec);
+    /**
+     * Per frame update
+     * @param {number} dt - delta time
+     */
 
-    if (this.sourceObject && this._displaySourceObject) {
-        this.sourceObject.Update(dt);
-    }
-    if (this.stretchObject) {
-        this.stretchObject.Update(dt);
-    }
-    if (this.destObject && this._displayDestObject) {
-        this.destObject.Update(dt);
-    }
-};
 
-/**
- * Updates view dependent data
- */
-EveStretch.prototype.UpdateViewDependentData = function () {
-    if (!this.display) {
-        return;
-    }
-
-    var scratch = EveStretch.scratch;
-    var directionVec = _math.vec3.subtract(scratch.vec3_0, this._destinationPosition, this._sourcePosition);
-    var scalingLength = _math.vec3.length(directionVec);
-    _math.vec3.normalize(directionVec, directionVec);
-
-    var m = _math.mat4.identity(scratch.mat4_0),
-        x = _math.vec3.set(scratch.vec3_1, 0, 0, 0),
-        up = _math.vec3.set(scratch.vec3_2, 0, 0, 0);
-
-    if (this._useTransformsForStretch) {
-        _math.mat4.rotateX(m, m, -Math.PI / 2);
-        _math.mat4.multiply(m, this._sourceTransform, m);
-    } else {
-        if (Math.abs(directionVec[1]) > 0.9) {
-            up[2] = 1;
-        } else {
-            up[1] = 1;
-        }
-        _math.vec3.cross(x, up, directionVec);
-        _math.vec3.normalize(x, x);
-        _math.vec3.cross(up, directionVec, x);
-        m[0] = x[0];
-        m[1] = x[1];
-        m[2] = x[2];
-        m[4] = -directionVec[0];
-        m[5] = -directionVec[1];
-        m[6] = -directionVec[2];
-        m[8] = up[0];
-        m[9] = up[1];
-        m[10] = up[2];
-    }
-    if (this.destObject && this._displayDestObject) {
-        m[12] = this._destinationPosition[0];
-        m[13] = this._destinationPosition[1];
-        m[14] = this._destinationPosition[2];
-        this.destObject.UpdateViewDependentData(m);
-    }
-    if (this.sourceObject && this._displaySourceObject) {
-        if (this._useTransformsForStretch) {
-            _math.mat4.identity(m);
-            _math.mat4.rotateX(m, m, -Math.PI / 2);
-            _math.mat4.multiply(m, this._sourceTransform, m);
-        } else {
-            m[12] = this._sourcePosition[0];
-            m[13] = this._sourcePosition[1];
-            m[14] = this._sourcePosition[2];
-        }
-        this.sourceObject.UpdateViewDependentData(m);
-    }
-    if (this.stretchObject) {
-        if (this._useTransformsForStretch) {
-            _math.mat4.identity(m);
-            _math.mat4.scale(m, m, [1, 1, scalingLength]);
-            _math.mat4.multiply(m, this._sourceTransform, m);
-        } else {
-            m[0] = x[0];
-            m[1] = x[1];
-            m[2] = x[2];
-            m[4] = up[0];
-            m[5] = up[1];
-            m[6] = up[2];
-            m[8] = -directionVec[0];
-            m[9] = -directionVec[1];
-            m[10] = -directionVec[2];
-            if (this._isNegZForward) {
-                scalingLength = -scalingLength;
+    _createClass(EveStretch, [{
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
             }
-            var s = _math.mat4.identity(scratch.mat4_1);
-            _math.mat4.scale(s, s, [1, 1, scalingLength]);
-            _math.mat4.multiply(m, m, s);
+
+            this._time += dt;
+
+            if (this.source) {
+                this.source.GetValueAt(this._time, this._sourcePosition);
+            } else if (this._useTransformsForStretch) {
+                this._sourcePosition[0] = this._sourceTransform[12];
+                this._sourcePosition[1] = this._sourceTransform[13];
+                this._sourcePosition[2] = this._sourceTransform[14];
+            }
+
+            if (this.dest) {
+                this.source.GetValueAt(this._time, this._destinationPosition);
+            }
+
+            var directionVec = _math.vec3.subtract(EveStretch.global.vec3_0, this._destinationPosition, this._sourcePosition);
+            this.length.value = _math.vec3.length(directionVec);
+            _math.vec3.normalize(directionVec, directionVec);
+
+            if (this.sourceObject && this._displaySourceObject) {
+                this.sourceObject.Update(dt);
+            }
+
+            if (this.stretchObject) {
+                this.stretchObject.Update(dt);
+            }
+
+            if (this.destObject && this._displayDestObject) {
+                this.destObject.Update(dt);
+            }
         }
-        this.stretchObject.UpdateViewDependentData(m);
-    }
-};
+
+        /**
+         * Updates view dependent data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            if (!this.display) return;
+
+            var g = EveStretch.global,
+                directionVec = _math.vec3.subtract(g.vec3_0, this._destinationPosition, this._sourcePosition),
+                m = _math.mat4.identity(g.mat4_0),
+                x = _math.vec3.set(g.vec3_1, 0, 0, 0),
+                up = _math.vec3.set(g.vec3_2, 0, 0, 0),
+                s = _math.mat4.identity(g.mat4_1);
+
+            var scalingLength = _math.vec3.length(directionVec);
+            _math.vec3.normalize(directionVec, directionVec);
+
+            if (this._useTransformsForStretch) {
+                _math.mat4.rotateX(m, m, -Math.PI / 2);
+                _math.mat4.multiply(m, this._sourceTransform, m);
+            } else {
+                if (Math.abs(directionVec[1]) > 0.9) {
+                    up[2] = 1;
+                } else {
+                    up[1] = 1;
+                }
+                _math.vec3.cross(x, up, directionVec);
+                _math.vec3.normalize(x, x);
+                _math.vec3.cross(up, directionVec, x);
+                m[0] = x[0];
+                m[1] = x[1];
+                m[2] = x[2];
+                m[4] = -directionVec[0];
+                m[5] = -directionVec[1];
+                m[6] = -directionVec[2];
+                m[8] = up[0];
+                m[9] = up[1];
+                m[10] = up[2];
+            }
+            if (this.destObject && this._displayDestObject) {
+                _math.mat4.setTranslation(m, this._destinationPosition);
+                this.destObject.UpdateViewDependentData(m);
+            }
+            if (this.sourceObject && this._displaySourceObject) {
+                if (this._useTransformsForStretch) {
+                    _math.mat4.identity(m);
+                    _math.mat4.rotateX(m, m, -Math.PI / 2);
+                    _math.mat4.multiply(m, this._sourceTransform, m);
+                } else {
+                    _math.mat4.setTranslation(m, this._sourcePosition);
+                }
+                this.sourceObject.UpdateViewDependentData(m);
+            }
+
+            if (this.stretchObject) {
+                if (this._useTransformsForStretch) {
+                    _math.mat4.identity(m);
+                    _math.mat4.scale(m, m, [1, 1, scalingLength]);
+                    _math.mat4.multiply(m, this._sourceTransform, m);
+                } else {
+                    m[0] = x[0];
+                    m[1] = x[1];
+                    m[2] = x[2];
+                    m[4] = up[0];
+                    m[5] = up[1];
+                    m[6] = up[2];
+                    m[8] = -directionVec[0];
+                    m[9] = -directionVec[1];
+                    m[10] = -directionVec[2];
+                    if (this._isNegZForward) scalingLength = -scalingLength;
+                    _math.mat4.scale(s, s, [1, 1, scalingLength]);
+                    _math.mat4.multiply(m, m, s);
+                }
+                this.stretchObject.UpdateViewDependentData(m);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display) return;
+
+            if (this.sourceObject && this._displaySourceObject) {
+                this.sourceObject.GetBatches(mode, accumulator, perObjectData);
+            }
+
+            if (this.destObject && this._displayDestObject) {
+                this.destObject.GetBatches(mode, accumulator, perObjectData);
+            }
+
+            if (this.stretchObject) {
+                this.stretchObject.GetBatches(mode, accumulator, perObjectData);
+            }
+        }
+
+        /**
+         * Gets source position
+         * @param {vec3} position
+         */
+
+    }, {
+        key: 'SetSourcePosition',
+        value: function SetSourcePosition(position) {
+            this._useTransformsForStretch = false;
+            this._sourcePosition = position;
+        }
+
+        /**
+         * Sets the destination position
+         * @param {vec3} position
+         */
+
+    }, {
+        key: 'SetDestinationPosition',
+        value: function SetDestinationPosition(position) {
+            this._destinationPosition = position;
+        }
+
+        /**
+         * Sets the source transform
+         * @param {mat4} transform
+         */
+
+    }, {
+        key: 'SetSourceTransform',
+        value: function SetSourceTransform(transform) {
+            this._useTransformsForStretch = true;
+            this._sourceTransform = transform;
+        }
+
+        /**
+         * SetIsNegZForward
+         * @param {boolean} isNegZForward
+         */
+
+    }, {
+        key: 'SetIsNegZForward',
+        value: function SetIsNegZForward(isNegZForward) {
+            this._isNegZForward = isNegZForward;
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveStretch.global) {
+                EveStretch.global = {
+                    vec3_0: _math.vec3.create(),
+                    vec3_1: _math.vec3.create(),
+                    vec3_2: _math.vec3.create(),
+                    mat4_0: _math.mat4.create(),
+                    mat4_1: _math.mat4.create()
+                };
+            }
+        }
+    }]);
+
+    return EveStretch;
+}();
 
 /**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
+ * Class global and scratch variables
+ * @type {{string:*}}
  */
-EveStretch.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-    if (this.sourceObject && this._displaySourceObject) {
-        this.sourceObject.GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.destObject && this._displayDestObject) {
-        this.destObject.GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.stretchObject) {
-        this.stretchObject.GetBatches(mode, accumulator, perObjectData);
-    }
-};
 
-/**
- * Gets source position
- * @param {vec3} position
- */
-EveStretch.prototype.SetSourcePosition = function (position) {
-    this._useTransformsForStretch = false;
-    this._sourcePosition = position;
-};
 
-/**
- * Sets the destination position
- * @param {vec3} position
- */
-EveStretch.prototype.SetDestinationPosition = function (position) {
-    this._destinationPosition = position;
-};
-
-/**
- * Sets the source transform
- * @param {mat4} transform
- */
-EveStretch.prototype.SetSourceTransform = function (transform) {
-    this._useTransformsForStretch = true;
-    this._sourceTransform = transform;
-};
-
-/**
- * SetIsNegZForward
- * @param {boolean} isNegZForward
- */
-EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
-    this._isNegZForward = isNegZForward;
-};
+EveStretch.global = null;
 
 /***/ }),
-/* 130 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30927,12 +33977,32 @@ EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EvePerMuzzleData = EvePerMuzzleData;
-exports.EveTurretFiringFX = EveTurretFiringFX;
+exports.EveTurretFiringFX = exports.EvePerMuzzleData = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
-function EvePerMuzzleData() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EvePerMuzzleData
+ * Todo: Remove reference in this.muzzlePosition
+ *
+ * @param {boolean} started
+ * @param {boolean} readyToStart
+ * @param muzzlePositionBone
+ * @param {mat4} muzzleTransform
+ * @param {vec3} muzzlePosition
+ * @param {number} currentStartDelay
+ * @param {number} constantDelay
+ * @param {number} elapsedTime
+ * @class
+ */
+var EvePerMuzzleData = exports.EvePerMuzzleData = function EvePerMuzzleData() {
+    _classCallCheck(this, EvePerMuzzleData);
+
+    this._id = _math.util.generateID();
     this.started = false;
     this.readyToStart = false;
     this.muzzlePositionBone = null;
@@ -30941,192 +34011,416 @@ function EvePerMuzzleData() {
     this.currentStartDelay = 0;
     this.constantDelay = 0;
     this.elapsedTime = 0;
-}
-
-function EveTurretFiringFX() {
-    this.name = '';
-    this.display = true;
-    this.useMuzzleTransform = false;
-    this.isFiring = false;
-    this.isLoopFiring = false;
-    this.firingDelay1 = 0;
-    this.firingDelay2 = 0;
-    this.firingDelay3 = 0;
-    this.firingDelay4 = 0;
-    this.firingDelay5 = 0;
-    this.firingDelay6 = 0;
-    this.firingDelay7 = 0;
-    this.firingDelay8 = 0;
-    this.stretch = [];
-    this.endPosition = _math.vec3.create();
-
-    this._firingDuration = 0;
-    this._perMuzzleData = [];
-}
-
-EveTurretFiringFX.prototype.Initialize = function () {
-    this._firingDuration = this.GetCurveDuration();
-    for (var i = 0; i < this.stretch.length; ++i) {
-        this._perMuzzleData[i] = new EvePerMuzzleData();
-    }
-    if (this._perMuzzleData.length > 0) {
-        this._perMuzzleData[0].constantDelay = this.firingDelay1;
-    }
-    if (this._perMuzzleData.length > 1) {
-        this._perMuzzleData[1].constantDelay = this.firingDelay2;
-    }
-    if (this._perMuzzleData.length > 2) {
-        this._perMuzzleData[2].constantDelay = this.firingDelay3;
-    }
-    if (this._perMuzzleData.length > 3) {
-        this._perMuzzleData[3].constantDelay = this.firingDelay4;
-    }
-    if (this._perMuzzleData.length > 4) {
-        this._perMuzzleData[4].constantDelay = this.firingDelay5;
-    }
-    if (this._perMuzzleData.length > 5) {
-        this._perMuzzleData[5].constantDelay = this.firingDelay6;
-    }
-    if (this._perMuzzleData.length > 6) {
-        this._perMuzzleData[6].constantDelay = this.firingDelay7;
-    }
-    if (this._perMuzzleData.length > 7) {
-        this._perMuzzleData[7].constantDelay = this.firingDelay8;
-    }
 };
 
-EveTurretFiringFX.prototype.GetCurveDuration = function () {
-    var maxDuration = 0;
-    for (var i = 0; i < this.stretch.length; ++i) {
-        var stretch = this.stretch[i];
-        for (var j = 0; j < stretch.curveSets.length; ++j) {
-            maxDuration = Math.max(maxDuration, stretch.curveSets[j].GetMaxCurveDuration());
+/**
+ * EveTurretFiringFX
+ *
+ * @param {string} name
+ * @param {boolean} display
+ * @param {Array.<EveStretch>} stretch
+ * @param {boolean} useMuzzleTransform
+ * @param {boolean} isFiring
+ * @param {boolean} isLoopFiring
+ * @param {number} firingDelay1
+ * @param {number} firingDelay2
+ * @param {number} firingDelay3
+ * @param {number} firingDelay4
+ * @param {number} firingDelay5
+ * @param {number} firingDelay6
+ * @param {number} firingDelay7
+ * @param {number} firingDelay8
+ * @param {vec3} endPosition
+ * @param {number} _firingDuration
+ * @param {Array.<EvePerMuzzleData>} _perMuzzleData
+ * @class
+ */
+
+
+var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
+    function EveTurretFiringFX() {
+        _classCallCheck(this, EveTurretFiringFX);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.stretch = [];
+        this.useMuzzleTransform = false;
+        this.isFiring = false;
+        this.isLoopFiring = false;
+        this.firingDelay1 = 0;
+        this.firingDelay2 = 0;
+        this.firingDelay3 = 0;
+        this.firingDelay4 = 0;
+        this.firingDelay5 = 0;
+        this.firingDelay6 = 0;
+        this.firingDelay7 = 0;
+        this.firingDelay8 = 0;
+        this.endPosition = _math.vec3.create();
+        this._firingDuration = 0;
+        this._perMuzzleData = [];
+    }
+
+    /**
+     * Initializes the turret firing fx
+     */
+
+
+    _createClass(EveTurretFiringFX, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this._firingDuration = this.GetCurveDuration();
+            for (var i = 0; i < this.stretch.length; ++i) {
+                this._perMuzzleData[i] = new EvePerMuzzleData();
+            }if (this._perMuzzleData.length > 0) this._perMuzzleData[0].constantDelay = this.firingDelay1;
+            if (this._perMuzzleData.length > 1) this._perMuzzleData[1].constantDelay = this.firingDelay2;
+            if (this._perMuzzleData.length > 2) this._perMuzzleData[2].constantDelay = this.firingDelay3;
+            if (this._perMuzzleData.length > 3) this._perMuzzleData[3].constantDelay = this.firingDelay4;
+            if (this._perMuzzleData.length > 4) this._perMuzzleData[4].constantDelay = this.firingDelay5;
+            if (this._perMuzzleData.length > 5) this._perMuzzleData[5].constantDelay = this.firingDelay6;
+            if (this._perMuzzleData.length > 6) this._perMuzzleData[6].constantDelay = this.firingDelay7;
+            if (this._perMuzzleData.length > 7) this._perMuzzleData[7].constantDelay = this.firingDelay8;
         }
-    }
-    return maxDuration;
-};
 
-EveTurretFiringFX.prototype.GetPerMuzzleEffectCount = function () {
-    return this.stretch.length;
-};
+        /**
+         * Gets the total curve duration
+         * @returns {number}
+         */
 
-EveTurretFiringFX.prototype.SetMuzzleBoneID = function (index, bone) {
-    this._perMuzzleData[index].muzzlePositionBone = bone;
-};
-
-EveTurretFiringFX.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display || !this.isFiring) {
-        return;
-    }
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (this._perMuzzleData[i].started && (this._firingDuration >= this._perMuzzleData[i].elapsedTime || this.isLoopFiring)) {
-            this.stretch[i].GetBatches(mode, accumulator, perObjectData);
+    }, {
+        key: 'GetCurveDuration',
+        value: function GetCurveDuration() {
+            var maxDuration = 0;
+            for (var i = 0; i < this.stretch.length; ++i) {
+                var stretch = this.stretch[i];
+                for (var j = 0; j < stretch.curveSets.length; ++j) {
+                    maxDuration = Math.max(maxDuration, stretch.curveSets[j].GetMaxCurveDuration());
+                }
+            }
+            return maxDuration;
         }
-    }
-};
 
-EveTurretFiringFX.prototype.GetMuzzleTransform = function (index) {
-    return this._perMuzzleData[index].muzzleTransform;
-};
+        /**
+         * Gets a count of stretch effects
+         * @returns {Number}
+         */
 
-EveTurretFiringFX.prototype.Update = function (dt) {
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (this._perMuzzleData[i].started) {
-            this._perMuzzleData[i].elapsedTime += dt;
+    }, {
+        key: 'GetPerMuzzleEffectCount',
+        value: function GetPerMuzzleEffectCount() {
+            return this.stretch.length;
         }
-        if (this._perMuzzleData[i].elapsedTime < this._firingDuration || this.isLoopFiring) {
-            if (this.isFiring) {
-                if (!this._perMuzzleData[i].started) {
-                    if (this._perMuzzleData[i].readyToStart) {
-                        this.StartMuzzleEffect(i);
-                        this._perMuzzleData[i].currentStartDelay = 0;
-                        this._perMuzzleData[i].elapsedTime = 0;
-                    } else {
-                        this._perMuzzleData[i].currentStartDelay -= dt;
-                    }
-                    if (this._perMuzzleData[i].currentStartDelay <= 0) {
-                        this._perMuzzleData[i].readyToStart = true;
-                    }
+
+        /**
+         * Sets muzzle bone id
+         * @param {number} index
+         * @param bone
+         */
+
+    }, {
+        key: 'SetMuzzleBoneID',
+        value: function SetMuzzleBoneID(index, bone) {
+            this._perMuzzleData[index].muzzlePositionBone = bone;
+        }
+
+        /**
+         * Gets a muzzle's transform
+         * @param {number} index
+         * @returns {mat4}
+         */
+
+    }, {
+        key: 'GetMuzzleTransform',
+        value: function GetMuzzleTransform(index) {
+            return this._perMuzzleData[index].muzzleTransform;
+        }
+
+        /**
+         * Prepares the firing effect
+         * @param {number} delay
+         * @param {number} [muzzleID=-1]
+         */
+
+    }, {
+        key: 'PrepareFiring',
+        value: function PrepareFiring(delay) {
+            var muzzleID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (muzzleID < 0 || muzzleID === i) {
+                    this._perMuzzleData[i].currentStartDelay = delay + this._perMuzzleData[i].constantDelay;
+                    this._perMuzzleData[i].started = false;
+                    this._perMuzzleData[i].readyToStart = false;
+                    this._perMuzzleData[i].elapsedTime = 0;
                 } else {
-                    if (this.useMuzzleTransform) {
-                        this.stretch[i].SetSourceTransform(this._perMuzzleData[i].muzzleTransform);
-                    } else {
-                        this.stretch[i].SetSourcePosition(this._perMuzzleData[i].muzzlePosition);
+                    this._perMuzzleData[i].currentStartDelay = Number.MAX_VALUE;
+                    this._perMuzzleData[i].started = false;
+                    this._perMuzzleData[i].readyToStart = false;
+                    this._perMuzzleData[i].elapsedTime = 0;
+                }
+            }
+            this.isFiring = true;
+        }
+
+        /**
+         * Starts a muzzle effect
+         * @param {number} muzzleID
+         */
+
+    }, {
+        key: 'StartMuzzleEffect',
+        value: function StartMuzzleEffect(muzzleID) {
+            var stretch = this.stretch[muzzleID];
+            for (var i = 0; i < stretch.curveSets.length; ++i) {
+                var curveSet = stretch.curveSets[i];
+                switch (curveSet.name) {
+                    case 'play_start':
+                    case 'play_loop':
+                        curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
+                        break;
+
+                    case 'play_stop':
+                        curveSet.Stop();
+                        break;
+                }
+            }
+            this._perMuzzleData[muzzleID].started = true;
+            this._perMuzzleData[muzzleID].readyToStart = false;
+        }
+
+        /**
+         * Stops the firing effect
+         */
+
+    }, {
+        key: 'StopFiring',
+        value: function StopFiring() {
+            for (var j = 0; j < this.stretch.length; ++j) {
+                var stretch = this.stretch[j];
+                for (var i = 0; i < stretch.curveSets.length; ++i) {
+                    var curveSet = stretch.curveSets[i];
+                    switch (curveSet.name) {
+                        case 'play_start':
+                        case 'play_loop':
+                            curveSet.Stop();
+                            break;
+
+                        case 'play_stop':
+                            curveSet.Play();
+                            break;
                     }
-                    this.stretch[i].SetDestinationPosition(this.endPosition);
-                    this.stretch[i].SetIsNegZForward(true);
+                }
+                this._perMuzzleData[j].started = false;
+                this._perMuzzleData[j].readyToStart = false;
+                this._perMuzzleData[j].currentStartDelay = 0;
+                this._perMuzzleData[j].elapsedTime = 0;
+            }
+            this.isFiring = false;
+        }
+
+        /**
+         * Gets resources
+         * @param {Array} [out=[]}
+         * @returns {Array<Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.stretch.length; i++) {
+                this.stretch[i].GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Updates view dependant data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.stretch.length; ++i) {
+                this.stretch[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - Delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (this._perMuzzleData[i].started) {
+                    this._perMuzzleData[i].elapsedTime += dt;
+                }
+
+                if (this._perMuzzleData[i].elapsedTime < this._firingDuration || this.isLoopFiring) {
+                    if (this.isFiring) {
+                        if (!this._perMuzzleData[i].started) {
+                            if (this._perMuzzleData[i].readyToStart) {
+                                this.StartMuzzleEffect(i);
+                                this._perMuzzleData[i].currentStartDelay = 0;
+                                this._perMuzzleData[i].elapsedTime = 0;
+                            } else {
+                                this._perMuzzleData[i].currentStartDelay -= dt;
+                            }
+
+                            if (this._perMuzzleData[i].currentStartDelay <= 0) {
+                                this._perMuzzleData[i].readyToStart = true;
+                            }
+                        } else {
+                            if (this.useMuzzleTransform) {
+                                this.stretch[i].SetSourceTransform(this._perMuzzleData[i].muzzleTransform);
+                            } else {
+                                this.stretch[i].SetSourcePosition(this._perMuzzleData[i].muzzlePosition);
+                            }
+                            this.stretch[i].SetDestinationPosition(this.endPosition);
+                            this.stretch[i].SetIsNegZForward(true);
+                        }
+                    }
+                }
+                this.stretch[i].Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display || !this.isFiring) return;
+
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (this._perMuzzleData[i].started && (this._firingDuration >= this._perMuzzleData[i].elapsedTime || this.isLoopFiring)) {
+                    this.stretch[i].GetBatches(mode, accumulator, perObjectData);
                 }
             }
         }
-        this.stretch[i].Update(dt);
-    }
-};
+    }]);
 
-EveTurretFiringFX.prototype.PrepareFiring = function (delay, muzzleID) {
-    if (typeof muzzleID === 'undefined') {
-        muzzleID = -1;
-    }
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (muzzleID < 0 || muzzleID === i) {
-            this._perMuzzleData[i].currentStartDelay = delay + this._perMuzzleData[i].constantDelay;
-            this._perMuzzleData[i].started = false;
-            this._perMuzzleData[i].readyToStart = false;
-            this._perMuzzleData[i].elapsedTime = 0;
-        } else {
-            this._perMuzzleData[i].currentStartDelay = Number.MAX_VALUE;
-            this._perMuzzleData[i].started = false;
-            this._perMuzzleData[i].readyToStart = false;
-            this._perMuzzleData[i].elapsedTime = 0;
-        }
-    }
-    this.isFiring = true;
-};
-
-EveTurretFiringFX.prototype.StartMuzzleEffect = function (muzzleID) {
-    var stretch = this.stretch[muzzleID];
-    for (var i = 0; i < stretch.curveSets.length; ++i) {
-        var curveSet = stretch.curveSets[i];
-        if (curveSet.name === 'play_start') {
-            curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
-        } else if (curveSet.name === 'play_loop') {
-            curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
-        } else if (curveSet.name === 'play_stop') {
-            curveSet.Stop();
-        }
-    }
-    this._perMuzzleData[muzzleID].started = true;
-    this._perMuzzleData[muzzleID].readyToStart = false;
-};
-
-EveTurretFiringFX.prototype.StopFiring = function () {
-    for (var j = 0; j < this.stretch.length; ++j) {
-        var stretch = this.stretch[j];
-        for (var i = 0; i < stretch.curveSets.length; ++i) {
-            var curveSet = stretch.curveSets[i];
-            if (curveSet.name === 'play_start') {
-                curveSet.Stop();
-            } else if (curveSet.name === 'play_loop') {
-                curveSet.Stop();
-            } else if (curveSet.name === 'play_stop') {
-                curveSet.Play();
-            }
-        }
-        this._perMuzzleData[j].started = false;
-        this._perMuzzleData[j].readyToStart = false;
-        this._perMuzzleData[j].currentStartDelay = 0;
-        this._perMuzzleData[j].elapsedTime = 0;
-    }
-    this.isFiring = false;
-};
-
-EveTurretFiringFX.prototype.UpdateViewDependentData = function () {
-    for (var j = 0; j < this.stretch.length; ++j) {
-        this.stretch[j].UpdateViewDependentData();
-    }
-};
+    return EveTurretFiringFX;
+}();
 
 /***/ }),
-/* 131 */
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveBoosterSet = __webpack_require__(46);
+
+Object.keys(_EveBoosterSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveBoosterSet[key];
+    }
+  });
+});
+
+var _EveCurveLineSet = __webpack_require__(146);
+
+Object.keys(_EveCurveLineSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveCurveLineSet[key];
+    }
+  });
+});
+
+var _EveLocator = __webpack_require__(47);
+
+Object.keys(_EveLocator).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveLocator[key];
+    }
+  });
+});
+
+var _EvePlaneSet = __webpack_require__(48);
+
+Object.keys(_EvePlaneSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EvePlaneSet[key];
+    }
+  });
+});
+
+var _EveSpaceObjectDecal = __webpack_require__(49);
+
+Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpaceObjectDecal[key];
+    }
+  });
+});
+
+var _EveSpotlightSet = __webpack_require__(50);
+
+Object.keys(_EveSpotlightSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpotlightSet[key];
+    }
+  });
+});
+
+var _EveSpriteSet = __webpack_require__(51);
+
+Object.keys(_EveSpriteSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpriteSet[key];
+    }
+  });
+});
+
+var _EveTurretSet = __webpack_require__(147);
+
+Object.keys(_EveTurretSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveTurretSet[key];
+    }
+  });
+});
+
+/***/ }),
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31198,13 +34492,13 @@ function EveCurveLineSet() {
     this._vertexBuffer = null;
     this._vertexBufferSize = 0;
     this.declaration = new _core.Tw2VertexDeclaration();
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 28));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 3, 44));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 56));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 72));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 2, _core.device.gl.FLOAT, 4, 88));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 4, 28));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _core.device.gl.FLOAT, 3, 44));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _core.device.gl.FLOAT, 4, 56));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 1, _core.device.gl.FLOAT, 4, 72));
+    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 2, _core.device.gl.FLOAT, 4, 88));
     this.declaration.stride = 4 * this._vertexSize;
     this.declaration.RebuildHash();
 }
@@ -31923,7 +35217,7 @@ EveCurveLineSet.cartFromSphericalAndCenter = function (out, spherical, center) {
 };
 
 /***/ }),
-/* 132 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32104,7 +35398,7 @@ EveTurretSet.prototype.GetResources = function (out) {
  * Rebuilds the turret sets cached data
  */
 EveTurretSet.prototype.RebuildCachedData = function () {
-    var instancedElement = new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2);
+    var instancedElement = new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _core.device.gl.FLOAT, 2);
     for (var i = 0; i < this.geometryResource.meshes.length; ++i) {
         this.geometryResource.meshes[i].declaration.elements.push(instancedElement);
         this.geometryResource.meshes[i].declaration.RebuildHash();
@@ -32393,7 +35687,7 @@ EveTurretSet.prototype.Render = function (batch, overrideEffect) {
     };
     for (var i = 0; i < this.geometryResource.meshes.length; ++i) {
         var decl = this.geometryResource.meshes[i].declaration;
-        decl.FindUsage(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = customSetter;
+        decl.FindUsage(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1).customSetter = customSetter;
     }
     for (; index < this.turrets.length; ++index) {
         if (this.turrets[index].visible) {
@@ -32573,104 +35867,7 @@ EveTurretSet.prototype.GetClosestTurret = function () {
 };
 
 /***/ }),
-/* 133 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _core = __webpack_require__(1);
-
-/**
- * Constructor for Overlay Effects
- * @property {boolean} update
- * @property {Tw2CurveSet} curveSet
- * @property {string} name
- * @property {Array.<Tw2Effect>} opaqueEffects
- * @property {Array.<Tw2Effect>} decalEffects
- * @property {Array.<Tw2Effect>} transparentEffects
- * @property {Array.<Tw2Effect>} additiveEffects
- * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
- * @property {boolean} display                     - Enables/ disables all batch accumulations
- * @property {{}} visible                          - Batch accumulation options for the overlay effect
- * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
- * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
- * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
- * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
- * @property {boolean} visible.distortionEffects   - Currently not supported
- * @constructor
- */
-function EveMeshOverlayEffect() {
-    this.update = true;
-    this.curveSet = null;
-    this.name = '';
-    this.opaqueEffects = [];
-    this.decalEffects = [];
-    this.transparentEffects = [];
-    this.additiveEffects = [];
-    this.distortionEffects = [];
-
-    this.display = true;
-    this.visible = {};
-    this.visible.opaqueEffects = true;
-    this.visible.decalEffects = true;
-    this.visible.transparentEffects = true;
-    this.visible.additiveEffects = true;
-    this.visible.distortionEffects = false;
-}
-
-/**
- * Per frame update
- * @param {number} dt - delta Time
- */
-EveMeshOverlayEffect.prototype.Update = function (dt) {
-    if (this.update && this.curveSet) {
-        this.curveSet.Update(dt);
-    }
-};
-
-/**
- * Gets effects
- * @param {number} mode
- * @returns {Array.<Tw2Effect>}
- */
-EveMeshOverlayEffect.prototype.GetEffects = function (mode) {
-    if (this.display) {
-        if (mode === _core.device.RM_OPAQUE && this.visible.opaqueEffects) {
-            return this.opaqueEffects;
-        } else if (mode === _core.device.RM_TRANSPARENT && this.visible.transparentEffects) {
-            return this.transparentEffects;
-        } else if (mode === _core.device.RM_ADDITIVE && this.visible.additiveEffects) {
-            return this.additiveEffects;
-        } else if (mode === _core.device.RM_DECAL && this.visible.decalEffects) {
-            return this.decalEffects;
-        }
-    }
-};
-
-/**
- * Gets Mesh Overlay resource objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveMeshOverlayEffect.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    for (var type in this.visible) {
-        if (this.visible.hasOwnProperty(type) && this[type].length) {
-            for (var i = 0; i < this[type].length; i++) {
-                this[type][i].GetResources(out);
-            }
-        }
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 134 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32679,801 +35876,20 @@ EveMeshOverlayEffect.prototype.GetResources = function (out) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.EveSpaceScene = undefined;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-exports.EvePlanet = EvePlanet;
-
-var _core = __webpack_require__(1);
-
-var _EveTransform = __webpack_require__(16);
-
-/**
- * EvePlanet
- * @property {boolean} display
- * @property {EveTransform} highDetail
- * @property {Tw2Effect} effectHeight
- * @property {number} itemID
- * @property {string} heightMapResPath1
- * @property {string} heightMapResPath2
- * @property {Tw2RenderTarget} heightMap
- * @property {boolean} heightDirty
- * @property {Array} lockedResources
- * @property {boolean} zOnlyModel
- * @property {Array.<Resource>} watchedResources
- * @constructor
- */
-function EvePlanet() {
-    this.display = true;
-    this.highDetail = new _EveTransform.EveTransform();
-    this.effectHeight = new _core.Tw2Effect();
-    this.itemID = 0;
-    this.heightMapResPath1 = '';
-    this.heightMapResPath2 = '';
-    this.heightMap = new _core.Tw2RenderTarget();
-    this.heightDirty = false;
-    this.lockedResources = [];
-    this.zOnlyModel = null;
-    this.watchedResources = [];
-}
-
-/**
- * Gets planet res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EvePlanet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    this.highDetail.GetResources(out);
-    this.effectHeight.GetResources(out);
-
-    return out;
-};
-
-/**
- * Creates the planet
- * @param {number} itemID - the item id is used for randomization
- * @param {string} planetPath - .red file for a planet, or planet template
- * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
- * @param {string} heightMap1
- * @param {string} heightMap2
- */
-EvePlanet.prototype.Create = function (itemID, planetPath, atmospherePath, heightMap1, heightMap2) {
-    this.itemID = itemID;
-    this.heightMapResPath1 = heightMap1;
-    this.heightMapResPath2 = heightMap2;
-    this.highDetail.children = [];
-    var self = this;
-
-    _core.resMan.GetObject(planetPath, function (obj) {
-        self.highDetail.children.unshift(obj);
-        self._MeshLoaded();
-    });
-
-    if (atmospherePath) {
-        _core.resMan.GetObject(atmospherePath, function (obj) {
-            self.highDetail.children.push(obj);
-        });
-    }
-    this.heightDirty = true;
-    _core.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
-        self.zOnlyModel = obj;
-    });
-};
-
-/**
- * GetPlanetResources
- * @param obj
- * @param visited
- * @param result
- * @constructor
- */
-EvePlanet.prototype.GetPlanetResources = function (obj, visited, result) {
-    if (visited.indexOf(obj) !== -1) {
-        return;
-    }
-    visited.push(obj);
-    if (obj && _typeof(obj['doNotPurge']) !== ( true ? 'undefined' : _typeof(undefined))) {
-        result.push(obj);
-        return;
-    }
-    for (var prop in obj) {
-        if (obj.hasOwnProperty(prop)) {
-            if (_typeof(obj[prop]) === 'object') {
-                this.GetPlanetResources(obj[prop], visited, result);
-            }
-        }
-    }
-};
-
-/**
- * Internal helper function that fires when the planet's mesh has loaded
- * @private
- */
-EvePlanet.prototype._MeshLoaded = function () {
-    this.lockedResources = [];
-    this.GetPlanetResources(this.highDetail, [], this.lockedResources);
-
-    var mainMesh = this.highDetail.children[0].mesh;
-    var originalEffect = null;
-    var resPath;
-    if (mainMesh.transparentAreas.length) {
-        originalEffect = mainMesh.transparentAreas[0].effect;
-        resPath = originalEffect.effectFilePath;
-    } else if (mainMesh.opaqueAreas.length) {
-        originalEffect = mainMesh.opaqueAreas[0].effect;
-        resPath = originalEffect.effectFilePath;
-    } else {
-        resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
-    }
-    resPath = resPath.replace('.fx', 'BlitHeight.fx');
-    this.watchedResources = [];
-
-    for (var param in originalEffect.parameters) {
-        if (originalEffect.parameters.hasOwnProperty(param)) {
-            this.effectHeight.parameters[param] = originalEffect.parameters[param];
-            if ('textureRes' in originalEffect.parameters[param]) {
-                this.watchedResources.push(originalEffect.parameters[param].textureRes);
-            }
-        }
-    }
-
-    for (var i = 0; i < this.highDetail.children[0].children.length; ++i) {
-        mainMesh = this.highDetail.children[0].children[i].mesh;
-        if (!mainMesh) {
-            continue;
-        }
-        originalEffect = null;
-        if (mainMesh.transparentAreas.length) {
-            originalEffect = mainMesh.transparentAreas[0].effect;
-        } else if (mainMesh.opaqueAreas.length) {
-            originalEffect = mainMesh.opaqueAreas[0].effect;
-        } else {
-            continue;
-        }
-        for (param in originalEffect.parameters) {
-            if (originalEffect.parameters.hasOwnProperty(param)) {
-                this.effectHeight.parameters[param] = originalEffect.parameters[param];
-                if ('textureRes' in originalEffect.parameters[param]) {
-                    this.watchedResources.push(originalEffect.parameters[param].textureRes);
-                }
-            }
-        }
-    }
-
-    param = new _core.Tw2TextureParameter();
-    param.name = 'NormalHeight1';
-    param.resourcePath = this.heightMapResPath1;
-    param.Initialize();
-    this.watchedResources.push(param.textureRes);
-    this.lockedResources.push(param.textureRes);
-    this.effectHeight.parameters[param.name] = param;
-    param = new _core.Tw2TextureParameter();
-    param.name = 'NormalHeight2';
-    param.resourcePath = this.heightMapResPath2;
-    param.Initialize();
-    this.lockedResources.push(param.textureRes);
-    this.watchedResources.push(param.textureRes);
-    this.effectHeight.parameters[param.name] = param;
-    param = new _core.Tw2FloatParameter();
-    param.name = 'Random';
-    param.value = this.itemID % 100;
-    this.effectHeight.parameters[param.name] = param;
-    param = new _core.Tw2FloatParameter();
-    param.name = 'TargetTextureHeight';
-    param.value = 1024;
-    this.effectHeight.parameters[param.name] = param;
-
-    this.effectHeight.effectFilePath = resPath;
-    this.effectHeight.Initialize();
-    this.heightDirty = true;
-    this.heightMap.Create(2048, 1024, false);
-    this.watchedResources.push(this.effectHeight.effectRes);
-
-    for (i = 0; i < this.lockedResources.length; ++i) {
-        this.lockedResources[i].doNotPurge++;
-        if (this.lockedResources[i].IsPurged()) {
-            this.lockedResources[i].Reload();
-        }
-    }
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EvePlanet.prototype.GetBatches = function (mode, accumulator) {
-    if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '') {
-        for (var i = 0; i < this.watchedResources.length; ++i) {
-            if (this.watchedResources[i] && !this.watchedResources[i].IsGood()) {
-                return;
-            }
-        }
-        this.watchedResources = [];
-        this.heightMap.Set();
-        _core.device.SetStandardStates(_core.device.RM_FULLSCREEN);
-        _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
-        _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-        _core.device.RenderFullScreenQuad(this.effectHeight);
-        this.heightMap.Unset();
-        this.heightDirty = false;
-        for (i = 0; i < this.lockedResources.length; ++i) {
-            this.lockedResources[i].doNotPurge--;
-        }
-        var mainMesh = this.highDetail.children[0].mesh;
-        var originalEffect = null;
-        if (mainMesh.transparentAreas.length) {
-            originalEffect = mainMesh.transparentAreas[0].effect;
-        } else if (mainMesh.opaqueAreas.length) {
-            originalEffect = mainMesh.opaqueAreas[0].effect;
-        }
-        if (originalEffect) {
-            originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
-        }
-    }
-
-    if (this.display) {
-        this.highDetail.GetBatches(mode, accumulator);
-    }
-};
-
-/**
- * Gets z buffer only batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EvePlanet.prototype.GetZOnlyBatches = function (mode, accumulator) {
-    if (this.display && this.zOnlyModel) {
-        this.zOnlyModel.GetBatches(mode, accumulator);
-    }
-};
-
-/**
- * Per frame update
- * @param {number} dt - delta time
- */
-EvePlanet.prototype.Update = function (dt) {
-    this.highDetail.Update(dt);
-};
-
-/**
- * Updates view dependent data
- * @param {mat4} parentTransform
- */
-EvePlanet.prototype.UpdateViewDependentData = function (parentTransform) {
-    this.highDetail.UpdateViewDependentData(parentTransform);
-    if (this.zOnlyModel) {
-        this.zOnlyModel.translation = this.highDetail.translation;
-        this.zOnlyModel.scaling = this.highDetail.scaling;
-        this.zOnlyModel.UpdateViewDependentData(parentTransform);
-    }
-};
-
-/***/ }),
-/* 135 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveEffectRoot = EveEffectRoot;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-/**
- * EveEffectRoot root objects for FX, can be put into scene's objects array
- * @property {string} name
- * @property {boolean} display
- * @property {[{}]} curveSets
- * @property {[{}]} effectChildren
- * @property {vec3} scaling
- * @property {quat} rotation
- * @property {vec3} translation
- * @property {mat4} localTransform
- * @property {mat4} rotationTransform
- * @property {vec3} boundingSphereCenter
- * @property {number} boundingSphereRadius
- * @property {number} duration
- * @property {Tw2PerObjectData} _perObjectData
- * @constructor
- */
-function EveEffectRoot() {
-    this.name = '';
-    this.display = true;
-
-    this.curveSets = [];
-    this.boundingSphereCenter = _math.vec3.create();
-    this.boundingSphereRadius = 0;
-
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
-
-    this.duration = 0;
-
-    this.effectChildren = [];
-
-    this.localTransform = _math.mat4.create();
-    this.rotationTransform = _math.mat4.create();
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-    this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-    this._perObjectData.perObjectVSData.Create();
-
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-    this._perObjectData.perObjectPSData.Create();
-}
-
-/**
- * Gets effect root res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
- */
-EveEffectRoot.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    for (var i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].GetResources(out);
-    }
-    return out;
-};
-
-/**
- * Internal per frame update
- * @param {number} dt - Delta Time
- */
-EveEffectRoot.prototype.Update = function (dt) {
-    _math.quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
-    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-    for (i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].Update(this.localTransform, dt);
-    }
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveEffectRoot.prototype.GetBatches = function (mode, accumulator) {
-    if (!this.display) {
-        return;
-    }
-    for (var i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
-    }
-};
-
-/**
- * Starts playing the effectRoot's curveSets if they exist
- */
-EveEffectRoot.prototype.Start = function () {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Play();
-    }
-};
-
-/**
- * Stops the effectRoot's curveSets from playing
- */
-EveEffectRoot.prototype.Stop = function () {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Stop();
-    }
-};
-
-/***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _math = __webpack_require__(0);
-
-var _EveMissileWarhead = __webpack_require__(137);
-
-/**
- * EveMissile
- * @property {String} name
- * @property {Boolean} display
- * @property {Array} warheads
- * @property {Array} curveSets
- * @property {vec3} boundingSphereCenter
- * @property {Number} boundingSphereRadius
- * @property {vec3} position
- * @property {vec3} target
- * @property {Number} speed
- * @property {!function(EveMissileWarhead): void} warheadExplosionCallback
- * @property {!function(EveMissile): void} missileFinishedCallback
- * @constructor
- */
-function EveMissile() {
-    this.name = '';
-    this.display = true;
-    this.warheads = [];
-    this.curveSets = [];
-    this.boundingSphereCenter = _math.vec3.create();
-    this.boundingSphereRadius = 0;
-
-    this.position = _math.vec3.create();
-    this.target = _math.vec3.create();
-    this.speed = 1;
-
-    this.warheadExplosionCallback = null;
-    this.missileFinishedCallback = null;
-}
-
-/**
- * Gets missile res objects
- * @param {Array} out - Receiving array
- */
-EveMissile.prototype.GetResources = function (out) {
-    for (var i = 0; i < this.warheads.length; ++i) {
-        this.warheads[i].GetResources(out);
-    }
-};
-
-/**
- * Per frame view dependent data update
- */
-EveMissile.prototype.UpdateViewDependentData = function () {
-    for (var i = 0; i < this.warheads.length; ++i) {
-        this.warheads[i].UpdateViewDependentData();
-    }
-};
-
-/**
- * Accumulates render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveMissile.prototype.GetBatches = function (mode, accumulator) {
-    if (this.display) {
-        for (var i = 0; i < this.warheads.length; ++i) {
-            this.warheads[i].GetBatches(mode, accumulator);
-        }
-    }
-};
-
-/**
- * Per frame update
- * @param {Number} dt - Time since previous frame
- */
-EveMissile.prototype.Update = function (dt) {
-    var tmp = EveMissile.scratch.vec3_0;
-    _math.vec3.subtract(tmp, this.target, this.position);
-    var distance = _math.vec3.length(tmp);
-    if (distance > 0.1) {
-        _math.vec3.normalize(tmp, tmp);
-        _math.vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
-        _math.vec3.add(tmp, tmp, this.position);
-    }
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-    var checkDead = false;
-    for (i = 0; i < this.warheads.length; ++i) {
-        var state = this.warheads[i].state;
-        this.warheads[i].Update(dt, this.position, this.target);
-        if (state !== _EveMissileWarhead.EveMissileWarhead.STATE_DEAD && this.warheads[i].state === _EveMissileWarhead.EveMissileWarhead.STATE_DEAD) {
-            if (this.warheadExplosionCallback) {
-                this.warheadExplosionCallback(this.warheads[i]);
-            }
-            checkDead = true;
-        }
-    }
-    if (checkDead && this.missileFinishedCallback) {
-        for (i = 0; i < this.warheads.length; ++i) {
-            if (this.warheads[i].state !== _EveMissileWarhead.EveMissileWarhead.STATE_DEAD) {
-                return;
-            }
-        }
-        this.missileFinishedCallback(this);
-    }
-};
-
-/**
- * Prepares missile for rendering
- * @param {vec3} position - Missile starting position
- * @param {Array} turretTransforms - Turret muzzle local to world transforms
- * @param {vec3} target - Target position
- */
-EveMissile.prototype.Launch = function (position, turretTransforms, target) {
-    _math.vec3.copy(this.position, position);
-    _math.vec3.copy(this.target, target);
-    if (this.warheads.length > turretTransforms.length) {
-        this.warheads.splice(turretTransforms.length);
-    } else {
-        while (this.warheads.length < turretTransforms.length) {
-            this.warheads.push(this.warheads[0].Copy());
-        }
-    }
-    for (var i = 0; i < this.warheads.length; ++i) {
-        this.warheads[0].Launch(turretTransforms[i]);
-    }
-};
-
-/**
- * Scratch variables
- */
-EveMissile.scratch = {
-    vec3_0: _math.vec3.create()
-};
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveMissileWarhead = EveMissileWarhead;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveMissileWarhead
- * @property {String} name
- * @property {Boolean} display
- * @property {vec3} pathOffset
- * @property {Number} durationEjectPhase
- * @property {Number} startEjectVelocity
- * @property {Number} acceleration
- * @property {Number} maxExplosionDistance
- * @property {Number} impactSize
- * @property {Number} impactDuration
- * @property {EveSpriteSet} spriteSet
- * @property {Tw2Mesh} mesh
- * @property {Number} state
- * @property {mat4} transform
- * @property {vec3} velocity
- * @property {Number} time
- * @property {Tw2PerObjectData} _perObjectData
- * @constructor
- */
-function EveMissileWarhead() {
-    this.name = '';
-    this.display = true;
-    this.pathOffset = _math.vec3.create();
-    this.durationEjectPhase = 0;
-    this.startEjectVelocity = 0;
-    this.acceleration = 1;
-    this.maxExplosionDistance = 40;
-    this.impactSize = 0;
-    this.impactDuration = 0.6;
-    this.spriteSet = null;
-    this.mesh = null;
-    this.state = EveMissileWarhead.STATE_READY;
-
-    this.transform = _math.mat4.create();
-    this.velocity = _math.vec3.create();
-    this.time = 0;
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectVSData.Create();
-
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-    this._perObjectData.perObjectPSData.Create();
-
-    this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-    this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-    this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-}
-
-EveMissileWarhead.STATE_READY = 0;
-EveMissileWarhead.STATE_IN_FLIGHT = 1;
-EveMissileWarhead.STATE_DEAD = 2;
-
-/**
- * Initializes the warhead
- */
-EveMissileWarhead.prototype.Initialize = function () {
-    if (this.spriteSet) {
-        this.spriteSet.UseQuads(true);
-    }
-};
-
-/**
- * Gets warhead res objects
- * @param {Array} out - Receiving array
- */
-EveMissileWarhead.prototype.GetResources = function (out) {
-    if (this.mesh) {
-        this.mesh.GetResources(out);
-    }
-    if (this.spriteSet) {
-        this.spriteSet.GetResources(out);
-    }
-};
-
-/**
- * Per frame view dependent data update
- */
-EveMissileWarhead.prototype.UpdateViewDependentData = function () {
-    if (!this.display || this.state === EveMissileWarhead.STATE_DEAD) {
-        return;
-    }
-    _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-    _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
-};
-
-/**
- * Accumulates render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveMissileWarhead.prototype.GetBatches = function (mode, accumulator) {
-    if (this.display && this.mesh && this.state !== EveMissileWarhead.STATE_DEAD) {
-        if (this.mesh) {
-            this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-        }
-        if (this.spriteSet) {
-            this.spriteSet.GetBatches(mode, accumulator, this._perObjectData, this.transform);
-        }
-    }
-};
-
-/**
- * Scratch variables
- */
-EveMissileWarhead.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    vec3_3: _math.vec3.create()
-};
-
-/**
- * Per frame update
- * @param {Number} dt - Time since previous frame
- * @param {vec3} missilePosition - Missile position
- * @param {vec3} missileTarget - Missile target position
- */
-EveMissileWarhead.prototype.Update = function (dt, missilePosition, missileTarget) {
-    if (this.state === EveMissileWarhead.STATE_IN_FLIGHT) {
-        var scratch = EveMissileWarhead.scratch;
-        var position = _math.vec3.set(scratch.vec3_1, this.transform[12], this.transform[13], this.transform[14]);
-
-        var tmp = scratch.vec3_0;
-        this.time += dt;
-        if (this.time > this.durationEjectPhase) {
-            _math.vec3.subtract(position, this.velocity, missilePosition);
-            _math.vec3.lerp(position, position, missilePosition, 1 - Math.exp(-dt * 0.9999));
-            this.transform[12] = position[0];
-            this.transform[13] = position[1];
-            this.transform[14] = position[2];
-
-            _math.vec3.subtract(tmp, missileTarget, position);
-            if (_math.vec3.length(tmp) < this.maxExplosionDistance) {
-                console.log(position, tmp);
-                this.state = EveMissileWarhead.STATE_DEAD;
-            }
-        } else {
-            _math.vec3.scale(tmp, this.velocity, dt);
-            this.transform[12] += tmp[0];
-            this.transform[13] += tmp[1];
-            this.transform[14] += tmp[2];
-        }
-
-        var x = scratch.vec3_2,
-            y = scratch.vec3_3,
-            z = _math.vec3.normalize(tmp, this.velocity);
-
-        if (Math.abs(z[0]) < 0.99) {
-            _math.vec3.cross(x, z, [1, 0, 0]);
-        } else {
-            _math.vec3.cross(x, z, [0, 1, 0]);
-        }
-
-        _math.vec3.normalize(x, x);
-        _math.vec3.cross(y, x, z);
-        this.transform[0] = x[0];
-        this.transform[1] = x[1];
-        this.transform[2] = x[2];
-        this.transform[4] = y[0];
-        this.transform[5] = y[1];
-        this.transform[6] = y[2];
-        this.transform[8] = z[0];
-        this.transform[9] = z[1];
-        this.transform[10] = z[2];
-    }
-
-    if (this.spriteSet) {
-        this.spriteSet.Update(dt);
-    }
-};
-
-/**
- * Creates a copy of the warhead
- * @returns {EveMissileWarhead} copy of this object
- */
-EveMissileWarhead.prototype.Copy = function () {
-    var warhead = new EveMissileWarhead();
-    warhead.mesh = this.mesh;
-    warhead.spriteSet = this.spriteSet;
-    return warhead;
-};
-
-/**
- * Sets up the warhead for rendering
- * @param {mat4} transform - Initial local to world transform
- */
-EveMissileWarhead.prototype.Launch = function (transform) {
-    _math.mat4.copy(this.transform, transform);
-    this.velocity[0] = transform[8] * this.startEjectVelocity;
-    this.velocity[1] = transform[9] * this.startEjectVelocity;
-    this.velocity[2] = transform[10] * this.startEjectVelocity;
-    this.time = 0;
-    this.state = EveMissileWarhead.STATE_IN_FLIGHT;
-};
-
-/***/ }),
-/* 138 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpaceScene = EveSpaceScene;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * EveSpaceScene
+ *
+ * @property {number|string} _id
  * @property {string} name
  * @property {boolean} display
  * @property {{}} visible
@@ -33484,12 +35900,12 @@ var _core = __webpack_require__(1);
  * @property {boolean} visible.clearColor
  * @property {boolean} visible.nebula
  * @property {Array.<EveLensflare>} lensflares - Scene lensflares
- * @property {Array.<EveObject>} objects - Scene objects
+ * @property {Array.<*>} objects - Scene objects
  * @property {Array.<EvePlanet>} planets - Scene planets
  * @property {number} nebulaIntensity - controls nebula intensity on scene objects
  * @property {vec4} ambientColor - unused
  * @property {null|Tw2Effect} backgroundEffect
- * @property {boolean} backgroundRenderingEnabled - Toggles background effect visibility
+ * @property {number} backgroundRenderingEnabled - Toggles background effect visibility
  * @property {vec3} endMapScaling - controls the scale of the environment maps
  * @property {quat} envMapRotation - controls the rotation of the environment maps
  * @property {boolean} logEnabled - toggles LOD
@@ -33509,1017 +35925,508 @@ var _core = __webpack_require__(1);
  * @property {null|Tw2TextureRes} envMap1Res
  * @property {null|Tw2TextureRes} envMap2Res
  * @property {null} envMap3Res - unused
- * @property {null|Tw2TextureParameter} _envMapHandle
- * @property {null|Tw2TextureParameter} _envMap1Handle
- * @property {null|Tw2TextureParameter} _envMap2Handle
- * @property {null|Tw2TextureParameter} _envMap3Handle
  * @property {Tw2BatchAccumulator} _batches - Scene batch accumulator
  * @property {Tw2RawData} _perFrameVS
  * @property {Tw2RawData} _perFramePS
  * @property {boolean} renderDebugInfo
  * @property {*} _debugHelper
- * @constructor
+ * @class
  */
-function EveSpaceScene() {
-    this.name = '';
+var EveSpaceScene = exports.EveSpaceScene = function () {
+    function EveSpaceScene() {
+        var _this = this;
 
-    this.display = true;
-    this.visible = {};
-    this.visible.lensflares = true;
-    this.visible.objects = true;
-    this.visible.planets = true;
-    this.visible.fog = true;
-    this.visible.clearColor = true;
-    this.visible.reflection = true;
+        _classCallCheck(this, EveSpaceScene);
 
-    var self = this;
-    Object.defineProperty(this.visible, 'nebula', {
-        get: function get() {
-            return !!self.backgroundRenderingEnabled;
-        },
-        set: function set(bool) {
-            self.backgroundRenderingEnabled = bool;
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.visible = {};
+        this.visible.lensflares = true;
+        this.visible.objects = true;
+        this.visible.planets = true;
+        this.visible.fog = true;
+        this.visible.clearColor = true;
+        this.visible.reflection = true;
+        this.visible.diffuse = true;
+        this.visible.blur = true;
+        this.lensflares = [];
+        this.objects = [];
+        this.planets = [];
+        this.nebulaIntensity = 1;
+        this.ambientColor = _math.quat.fromValues(0.25, 0.25, 0.25, 1);
+        this.backgroundEffect = null;
+        this.backgroundRenderingEnabled = 1;
+        this.clearColor = _math.vec4.fromValues(0, 0, 0, 0);
+        this.lodEnabled = false;
+        this.fogStart = 0;
+        this.fogEnd = 0;
+        this.fogMax = 0;
+        this.fogType = 0;
+        this.fogBlur = 0;
+        this.fogColor = _math.vec4.fromValues(0.25, 0.25, 0.25, 1);
+        this.sunDirection = _math.vec3.fromValues(1, -1, 1);
+        this.sunDiffuseColor = _math.vec4.fromValues(1, 1, 1, 1);
+        this.envMapScaling = _math.vec3.fromValues(1, 1, 1);
+        this.envMapRotation = _math.quat.create();
+        this.envMapResPath = '';
+        this.envMap1ResPath = '';
+        this.envMap2ResPath = '';
+        this.envMap3ResPath = '';
+        this.envMapRes = null;
+        this.envMap1Res = null;
+        this.envMap2Res = null;
+        this.envMap3Res = null;
+        this.renderDebugInfo = false;
+        this._debugHelper = null;
+        this._batches = new _core.Tw2BatchAccumulator();
+        this._perFrameVS = new _core.Tw2RawData(EveSpaceScene.perObjectDataDecl.VSData);
+        this._perFramePS = new _core.Tw2RawData(EveSpaceScene.perObjectDataDecl.PSData);
+
+        Object.defineProperty(this.visible, 'environment', {
+            get: function get() {
+                return _this.backgroundRenderingEnabled;
+            },
+            set: function set(bool) {
+                _this.backgroundRenderingEnabled = bool ? 1 : 0;
+            }
+        });
+
+        EveSpaceScene.init();
+    }
+
+    /**
+     * Initializes the space scene
+     */
+
+
+    _createClass(EveSpaceScene, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.SetEnvMapReflection(this.envMapResPath);
+            this.SetEnvMapDiffuse(this.envMap1ResPath);
+            this.SetEnvMapBlur(this.envMap2ResPath);
+            this.SetEnvMapPath(3, this.envMap3ResPath);
         }
-    });
 
-    this.lensflares = [];
-    this.objects = [];
-    this.planets = [];
+        /**
+         * Keeps the scene and it's object's resources alive
+         */
 
-    this.nebulaIntensity = 1;
-    this.ambientColor = _math.quat.fromValues(0.25, 0.25, 0.25, 1);
-    this.backgroundEffect = null;
-    this.backgroundRenderingEnabled = true;
-    this.envMapScaling = _math.vec3.fromValues(1, 1, 1);
-    this.envMapRotation = _math.quat.create();
-
-    this.lodEnabled = false;
-
-    this.fogStart = 0;
-    this.fogEnd = 0;
-    this.fogMax = 0;
-    this.fogType = 0;
-    this.fogBlur = 0;
-    this.fogColor = _math.vec4.fromValues(0.25, 0.25, 0.25, 1);
-
-    this.sunDirection = _math.vec3.fromValues(1, -1, 1);
-    this.sunDiffuseColor = _math.vec4.fromValues(1, 1, 1, 1);
-
-    this.envMapResPath = '';
-    this.envMap1ResPath = '';
-    this.envMap2ResPath = '';
-    this.envMap3ResPath = '';
-    this.envMapRes = null;
-    this.envMap1Res = null;
-    this.envMap2Res = null;
-    this.envMap3Res = null;
-
-    this.clearColor = _math.vec4.fromValues(0, 0, 0, 0);
-
-    this._envMapHandle = _core.variableStore.RegisterVariable('EveSpaceSceneEnvMap', '');
-    this._envMap1Handle = _core.variableStore.RegisterVariable('EnvMap1', '');
-    this._envMap2Handle = _core.variableStore.RegisterVariable('EnvMap2', '');
-    this._envMap3Handle = _core.variableStore.RegisterVariable('EnvMap3', '');
-
-    this._batches = new _core.Tw2BatchAccumulator();
-
-    this._perFrameVS = new _core.Tw2RawData();
-    this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
-    this._perFrameVS.Declare('ViewProjectionMat', 16);
-    this._perFrameVS.Declare('ViewMat', 16);
-    this._perFrameVS.Declare('ProjectionMat', 16);
-    this._perFrameVS.Declare('ShadowViewMat', 16);
-    this._perFrameVS.Declare('ShadowViewProjectionMat', 16);
-    this._perFrameVS.Declare('EnvMapRotationMat', 16);
-    this._perFrameVS.Declare('SunData.DirWorld', 4);
-    this._perFrameVS.Declare('SunData.DiffuseColor', 4);
-    this._perFrameVS.Declare('FogFactors', 4);
-    this._perFrameVS.Declare('TargetResolution', 4);
-    this._perFrameVS.Declare('ViewportAdjustment', 4);
-    this._perFrameVS.Declare('MiscSettings', 4);
-    this._perFrameVS.Create();
-
-    this._perFramePS = new _core.Tw2RawData();
-    this._perFramePS.Declare('ViewInverseTransposeMat', 16);
-    this._perFramePS.Declare('ViewMat', 16);
-    this._perFramePS.Declare('EnvMapRotationMat', 16);
-    this._perFramePS.Declare('SunData.DirWorld', 4);
-    this._perFramePS.Declare('SunData.DiffuseColor', 4);
-    this._perFramePS.Declare('SceneData.AmbientColor', 3);
-    this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
-    this._perFramePS.Declare('SceneData.FogColor', 4);
-    this._perFramePS.Declare('ViewportOffset', 2);
-    this._perFramePS.Declare('ViewportSize', 2);
-    this._perFramePS.Declare('TargetResolution', 4);
-    this._perFramePS.Declare('ShadowMapSettings', 4);
-    this._perFramePS.Declare('ShadowCameraRange', 4);
-    this._perFramePS.Declare('ProjectionToView', 2);
-    this._perFramePS.Declare('FovXY', 2);
-    this._perFramePS.Declare('MiscSettings', 4);
-    this._perFramePS.Create();
-
-    this.renderDebugInfo = false;
-    this._debugHelper = null;
-}
-
-/**
- * Initializes the space scene
- */
-EveSpaceScene.prototype.Initialize = function () {
-    _core.variableStore.RegisterVariable('ShadowLightness', 0);
-    if (!EveSpaceScene.EmptyTexture) {
-        EveSpaceScene.EmptyTexture = _core.resMan.GetResource('res:/texture/global/black.dds.0.png');
-    }
-
-    if (this.envMapResPath !== '') {
-        this.envMapRes = _core.resMan.GetResource(this.envMapResPath);
-    }
-
-    if (this.envMap1ResPath !== '') {
-        this.envMap1Res = _core.resMan.GetResource(this.envMap1ResPath);
-    }
-
-    if (this.envMap2ResPath !== '') {
-        this.envMap2Res = _core.resMan.GetResource(this.envMap2ResPath);
-    }
-
-    if (this.envMap3ResPath !== '') {
-        this.envMap3Res = _core.resMan.GetResource(this.envMap3ResPath);
-    }
-};
-
-/**
- * Gets scene's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceScene.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.backgroundEffect) {
-        this.backgroundEffect.GetResources(out);
-    }
-
-    for (var i = 0; i < this.lensflares.length; i++) {
-        this.lensflares[i].GetResources(out);
-    }
-
-    function getEnvMapResource(out, envMap) {
-        if (envMap !== null && out.indexOf(envMap) === -1) out.push(envMap);
-    }
-
-    getEnvMapResource(out, this.envMapRes);
-    getEnvMapResource(out, this.envMap1Res);
-    getEnvMapResource(out, this.envMap2Res);
-    getEnvMapResource(out, this.envMap3Res);
-
-    return out;
-};
-
-/**
- * Gets scene's children's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceScene.prototype.GetChildResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    for (var p = 0; p < this.planets.length; p++) {
-        this.planets[p].GetResources(out);
-    }
-
-    for (var i = 0; i < this.objects.length; i++) {
-        this.objects[i].GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Sets the environment reflection map
- * @param {String} path
- */
-EveSpaceScene.prototype.SetEnvMapReflection = function (path) {
-    this.envMapResPath = path;
-
-    if (this.envMapResPath !== '') {
-        this.envMapRes = _core.resMan.GetResource(path);
-    }
-};
-
-/**
- * Sets an environment map
- * @param {number} index
- * @param {String} path
- */
-EveSpaceScene.prototype.SetEnvMapPath = function (index, path) {
-    switch (index) {
-        case 0:
-            this.envMap1ResPath = path;
-            if (this.envMap1ResPath !== '') {
-                this.envMap1Res = _core.resMan.GetResource(this.envMap1ResPath);
-            } else {
-                this.envMap1Res = null;
-            }
-            break;
-
-        case 1:
-            this.envMap2ResPath = path;
-            if (this.envMap2ResPath !== '') {
-                this.envMap2Res = _core.resMan.GetResource(this.envMap2ResPath);
-            } else {
-                this.envMap2Res = null;
-            }
-            break;
-
-        case 2:
-            this.envMap3ResPath = path;
-            if (this.envMap3ResPath !== '') {
-                this.envMap3Res = _core.resMan.GetResource(this.envMap3ResPath);
-            } else {
-                this.envMap3Res = null;
-            }
-            break;
-    }
-};
-
-/**
- * Gets batches for rendering
- * @param {number} mode
- * @param {Array.<EveObject>} objectArray
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveSpaceScene.prototype.RenderBatches = function (mode, objectArray, accumulator) {
-    accumulator = accumulator ? accumulator : this._batches;
-
-    for (var i = 0; i < objectArray.length; ++i) {
-        if (typeof objectArray[i].GetBatches !== 'undefined') {
-            objectArray[i].GetBatches(mode, accumulator);
-        }
-    }
-};
-
-/**
- * Enables LOD
- * @param {boolean} enable
- */
-EveSpaceScene.prototype.EnableLod = function (enable) {
-    this.lodEnabled = enable;
-
-    if (!enable) {
-        for (var i = 0; i < this.objects.length; ++i) {
-            if (this.objects[i].ResetLod) {
-                this.objects[i].ResetLod();
-            }
-        }
-    }
-};
-
-/**
- * Scratch vectors
- *
- * @type {*}
- */
-EveSpaceScene.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec4_0: _math.vec4.create(),
-    mat4_0: _math.mat4.create(),
-    mat4_1: _math.mat4.create(),
-    mat4_2: _math.mat4.create(),
-    mat4_ID: _math.mat4.create(),
-    frustum: new _core.Tw2Frustum()
-};
-
-EveSpaceScene.prototype.ApplyPerFrameData = function () {
-    var d = _core.device,
-        s = EveSpaceScene.scratch;
-
-    // Nebula
-    var envMapTransform = s.mat4_2;
-    _math.mat4.fromQuat(envMapTransform, this.envMapRotation);
-    _math.mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
-    _math.mat4.transpose(envMapTransform, envMapTransform);
-
-    // Sun
-    var sunDir = _math.vec3.negate(s.vec3_0, this.sunDirection);
-    _math.vec3.normalize(sunDir, sunDir);
-
-    // Fog
-    var distance = this.fogEnd - this.fogStart;
-    if (Math.abs(distance) < 1e-5) distance = 1e-5;
-    var f = 1.0 / distance;
-
-    this._perFrameVS.Set('FogFactors', [this.fogEnd * f, f, this.visible.fog ? this.fogMax : 0, 1]);
-    this._perFrameVS.Set('ViewportAdjustment', [1, 1, 1, 1]);
-    this._perFrameVS.Set('MiscSettings', [d.currentTime, 0, d.viewportWidth, d.viewportHeight]);
-    this._perFrameVS.Set('SunData.DirWorld', sunDir);
-    this._perFrameVS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
-    this._perFrameVS.Set('TargetResolution', d.targetResolution);
-    this._perFrameVS.Set('ViewInverseTransposeMat', d.viewInverse);
-    this._perFrameVS.Set('ViewProjectionMat', d.viewProjectionTranspose);
-    this._perFrameVS.Set('ViewMat', d.viewTranspose);
-    this._perFrameVS.Set('ProjectionMat', d.projectionTranspose);
-    this._perFramePS.Set('FovXY', [d.targetResolution[3], d.targetResolution[2]]);
-    this._perFramePS.Set('ShadowMapSettings', [1, 1, 0, 0]);
-    this._perFramePS.Set('TargetResolution', d.targetResolution);
-    this._perFrameVS.Set('EnvMapRotationMat', envMapTransform);
-    _core.device.perFrameVSData = this._perFrameVS;
-
-    this._perFramePS.Set('ViewInverseTransposeMat', d.viewInverse);
-    this._perFramePS.Set('ViewMat', d.viewTranspose);
-    this._perFramePS.Set('EnvMapRotationMat', envMapTransform);
-    this._perFramePS.Set('SunData.DirWorld', sunDir);
-    this._perFramePS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
-    this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
-    this._perFramePS.Set('MiscSettings', [d.currentTime, this.fogType, this.fogBlur, 1]);
-    this._perFramePS.Set('SceneData.FogColor', this.fogColor);
-    this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
-    this._perFramePS.Get('ViewportSize')[0] = d.viewportWidth;
-    this._perFramePS.Get('ViewportSize')[1] = d.viewportHeight;
-    this._perFramePS.Get('ShadowCameraRange')[0] = 1;
-    this._perFramePS.Get('ProjectionToView')[0] = -d.projection[14];
-    this._perFramePS.Get('ProjectionToView')[1] = -d.projection[10] - 1;
-    _core.device.perFramePSData = this._perFramePS;
-
-    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : EveSpaceScene.EmptyTexture;
-    this._envMap1Handle.textureRes = this.envMap1Res;
-    this._envMap2Handle.textureRes = this.envMap2Res;
-    this._envMap3Handle.textureRes = this.envMap3Res;
-};
-
-/**
- * Updates children's view dependent data and renders them
- */
-EveSpaceScene.prototype.Render = function () {
-    this.ApplyPerFrameData();
-    var i,
-        d = _core.device,
-        scratch = EveSpaceScene.scratch,
-        id = _math.mat4.identity(scratch.mat4_ID);
-
-    if (this.backgroundRenderingEnabled && this.backgroundEffect) {
-        d.SetStandardStates(d.RM_FULLSCREEN);
-        d.RenderCameraSpaceQuad(this.backgroundEffect);
-    }
-
-    if (this.visible.planets && this.planets.length) {
-        var tempProj = _math.mat4.copy(scratch.mat4_0, d.projection);
-        var newProj = _math.mat4.copy(scratch.mat4_1, d.projection);
-        var zn = 10000;
-        var zf = 1e11;
-        newProj[10] = zf / (zn - zf);
-        newProj[14] = zf * zn / (zn - zf);
-        d.SetProjection(newProj, true);
-        this.ApplyPerFrameData();
-
-        for (i = 0; i < this.planets.length; ++i) {
-            if (this.planets[i].UpdateViewDependentData) {
-                this.planets[i].UpdateViewDependentData(id);
+    }, {
+        key: 'KeepAlive',
+        value: function KeepAlive() {
+            var res = this.GetResources();
+            for (var i = 0; i < res.length; i++) {
+                res[i].KeepAlive();
             }
         }
 
-        this._batches.Clear();
+        /**
+         * Enables LOD
+         * @param {boolean} enable
+         */
 
-        d.gl.depthRange(0.9, 1);
-        this.RenderBatches(d.RM_OPAQUE, this.planets);
-        this.RenderBatches(d.RM_DECAL, this.planets);
-        this.RenderBatches(d.RM_TRANSPARENT, this.planets);
-        this.RenderBatches(d.RM_ADDITIVE, this.planets);
-        this._batches.Render();
-        d.SetProjection(tempProj, true);
-        this.ApplyPerFrameData();
-        d.gl.depthRange(0, 0.9);
-    }
+    }, {
+        key: 'EnableLod',
+        value: function EnableLod(enable) {
+            this.lodEnabled = enable;
 
-    if (this.lodEnabled) {
-        var frustum = scratch.frustum;
-        frustum.Initialize(d.view, d.projection, d.viewportWidth, d.viewInverse, d.viewProjection);
-        for (i = 0; i < this.objects.length; ++i) {
-            if (this.objects[i].UpdateLod) {
-                this.objects[i].UpdateLod(frustum);
+            if (!enable) {
+                for (var i = 0; i < this.objects.length; ++i) {
+                    if (this.objects[i].ResetLod) {
+                        this.objects[i].ResetLod();
+                    }
+                }
             }
         }
-    }
 
-    if (this.visible.objects) {
-        for (i = 0; i < this.objects.length; ++i) {
-            if (this.objects[i].UpdateViewDependentData) {
-                this.objects[i].UpdateViewDependentData(id);
+        /**
+         * Sets the environment's reflection map
+         * @param {String} path
+         */
+
+    }, {
+        key: 'SetEnvMapReflection',
+        value: function SetEnvMapReflection(path) {
+            this.SetEnvMapPath(0, path);
+        }
+
+        /**
+         * Sets the environment's diffuse map
+         * @param {string} path
+         */
+
+    }, {
+        key: 'SetEnvMapDiffuse',
+        value: function SetEnvMapDiffuse(path) {
+            this.SetEnvMapPath(1, path);
+        }
+
+        /**
+         * Sets the environment's blur map (used for fog)
+         * @param {string} path
+         */
+
+    }, {
+        key: 'SetEnvMapBlur',
+        value: function SetEnvMapBlur(path) {
+            this.SetEnvMapPath(2, path);
+        }
+
+        /**
+         * Sets an environment map
+         * @param {number} index
+         * @param {String} path
+         */
+
+    }, {
+        key: 'SetEnvMapPath',
+        value: function SetEnvMapPath(index, path) {
+            var _this2 = this;
+
+            var setEnvPath = function setEnvPath(path, pathTarget, resTarget) {
+                path = path.toLowerCase();
+                _this2[pathTarget] = path;
+                _this2[resTarget] = path === '' ? null : _core.resMan.GetResource(path);
+                return true;
+            };
+
+            switch (index) {
+                case 0:
+                    // Reflection
+                    return setEnvPath(path, 'envMapResPath', 'envMapRes');
+
+                case 1:
+                    // Diffuse
+                    return setEnvPath(path, 'envMap1ResPath', 'envMap1Res');
+
+                case 2:
+                    // Blur
+                    return setEnvPath(path, 'envMap2ResPath', 'envMap2Res');
+
+                case 3:
+                    // Unused
+                    return setEnvPath(path, 'envMap3ResPath', 'envMap3Res');
+            }
+
+            return false;
+        }
+
+        /**
+         * Gets scene's resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {boolean} [excludeChildren]
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            for (var i = 0; i < this.lensflares.length; i++) {
+                this.lensflares[i].GetResources(out);
+            }
+
+            if (this.backgroundEffect) {
+                this.backgroundEffect.GetResources(out);
+            }
+
+            if (this.envMapRes && !out.includes(this.envMapRes)) out.push(this.envMapRes);
+            if (this.envMap1Res && !out.includes(this.envMap1Res)) out.push(this.envMapRes);
+            if (this.envMap2Res && !out.includes(this.envMap2Res)) out.push(this.envMapRes);
+            if (this.envMap3Res && !out.includes(this.envMap3Res)) out.push(this.envMapRes);
+
+            if (!excludeChildren) {
+                for (var _i = 0; _i < this.planets.length; _i++) {
+                    this.planets[_i].GetResources(out);
+                }
+
+                for (var _i2 = 0; _i2 < this.objects.length; _i2++) {
+                    if ('GetResources' in this.objects[_i2]) {
+                        this.objects[_i2].GetResources(out);
+                    }
+                }
+            }
+
+            return out;
+        }
+
+        /**
+         * Per frame update that is called per frame
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.planets.length; ++i) {
+                if ('Update' in this.planets[i]) {
+                    this.planets[i].Update(dt);
+                }
+            }
+
+            for (var _i3 = 0; _i3 < this.objects.length; ++_i3) {
+                if ('Update' in this.objects[_i3]) {
+                    this.objects[_i3].Update(dt);
+                }
             }
         }
-    }
 
-    if (this.visible.lensflares) {
-        for (i = 0; i < this.lensflares.length; ++i) {
-            this.lensflares[i].PrepareRender();
-        }
-    }
+        /**
+         * Gets batches for rendering
+         * @param {number} mode
+         * @param {Array.<EveObject>} objectArray
+         * @param {Tw2BatchAccumulator} accumulator
+         */
 
-    this._batches.Clear();
+    }, {
+        key: 'RenderBatches',
+        value: function RenderBatches(mode, objectArray) {
+            var accumulator = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this._batches;
 
-    if (this.visible.planets) {
-        for (i = 0; i < this.planets.length; ++i) {
-            this.planets[i].GetZOnlyBatches(d.RM_OPAQUE, this._batches);
-        }
-    }
-
-    if (this.visible.objects) {
-        this.RenderBatches(d.RM_OPAQUE, this.objects);
-        this.RenderBatches(d.RM_DECAL, this.objects);
-        this.RenderBatches(d.RM_TRANSPARENT, this.objects);
-        this.RenderBatches(d.RM_ADDITIVE, this.objects);
-    }
-
-    if (this.visible.lensflares) {
-        for (i = 0; i < this.lensflares.length; ++i) {
-            this.lensflares[i].GetBatches(d.RM_ADDITIVE, this._batches);
-        }
-    }
-
-    this._batches.Render();
-
-    if (this.visible.lensflares) {
-        for (i = 0; i < this.lensflares.length; ++i) {
-            this.lensflares[i].UpdateOccluders();
-        }
-    }
-
-    if (this.renderDebugInfo) {
-        if (this._debugHelper === null) {
-            this._debugHelper = new Tw2DebugRenderer();
-        }
-        for (i = 0; i < this.objects.length; ++i) {
-            if (typeof this.objects[i].RenderDebugInfo !== 'undefined') {
-                this.objects[i].RenderDebugInfo(this._debugHelper);
+            for (var i = 0; i < objectArray.length; ++i) {
+                if ('GetBatches' in objectArray[i]) {
+                    objectArray[i].GetBatches(mode, accumulator);
+                }
             }
         }
-        this._debugHelper.Render();
-    }
+
+        /**
+         * Updates children's view dependent data and renders them
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render() {
+            this.ApplyPerFrameData();
+
+            var g = EveSpaceScene.global,
+                id = _math.mat4.identity(g.mat4_ID),
+                show = this.visible;
+
+            if (this.backgroundRenderingEnabled && this.backgroundEffect) {
+                _core.device.SetStandardStates(_core.device.RM_FULLSCREEN);
+                _core.device.RenderCameraSpaceQuad(this.backgroundEffect);
+            }
+
+            if (show.planets && this.planets.length) {
+                var tempProj = _math.mat4.copy(g.mat4_0, _core.device.projection),
+                    newProj = _math.mat4.copy(g.mat4_1, _core.device.projection),
+                    zn = 10000,
+                    zf = 1e11;
+
+                newProj[10] = zf / (zn - zf);
+                newProj[14] = zf * zn / (zn - zf);
+                _core.device.SetProjection(newProj, true);
+                this.ApplyPerFrameData();
+
+                for (var i = 0; i < this.planets.length; ++i) {
+                    if (this.planets[i].UpdateViewDependentData) {
+                        this.planets[i].UpdateViewDependentData(id);
+                    }
+                }
+
+                this._batches.Clear();
+                _core.device.gl.depthRange(0.9, 1);
+                this.RenderBatches(_core.device.RM_OPAQUE, this.planets);
+                this.RenderBatches(_core.device.RM_DECAL, this.planets);
+                this.RenderBatches(_core.device.RM_TRANSPARENT, this.planets);
+                this.RenderBatches(_core.device.RM_ADDITIVE, this.planets);
+                this._batches.Render();
+                _core.device.SetProjection(tempProj, true);
+                this.ApplyPerFrameData();
+                _core.device.gl.depthRange(0, 0.9);
+            }
+
+            if (this.lodEnabled) {
+                g.frustum.Initialize(_core.device.view, _core.device.projection, _core.device.viewportWidth, _core.device.viewInverse, _core.device.viewProjection);
+                for (var _i4 = 0; _i4 < this.objects.length; ++_i4) {
+                    if (this.objects[_i4].UpdateLod) {
+                        this.objects[_i4].UpdateLod(g.frustum);
+                    }
+                }
+            }
+
+            if (show.objects) {
+                for (var _i5 = 0; _i5 < this.objects.length; ++_i5) {
+                    if (this.objects[_i5].UpdateViewDependentData) {
+                        this.objects[_i5].UpdateViewDependentData(id);
+                    }
+                }
+            }
+
+            if (show.lensflares) {
+                for (var _i6 = 0; _i6 < this.lensflares.length; ++_i6) {
+                    this.lensflares[_i6].PrepareRender();
+                }
+            }
+
+            this._batches.Clear();
+
+            if (this.visible.planets) {
+                for (var _i7 = 0; _i7 < this.planets.length; ++_i7) {
+                    this.planets[_i7].GetZOnlyBatches(_core.device.RM_OPAQUE, this._batches);
+                }
+            }
+
+            if (this.visible.objects) {
+                this.RenderBatches(_core.device.RM_OPAQUE, this.objects);
+                this.RenderBatches(_core.device.RM_DECAL, this.objects);
+                this.RenderBatches(_core.device.RM_TRANSPARENT, this.objects);
+                this.RenderBatches(_core.device.RM_ADDITIVE, this.objects);
+            }
+
+            if (this.visible.lensflares) {
+                for (var _i8 = 0; _i8 < this.lensflares.length; ++_i8) {
+                    this.lensflares[_i8].GetBatches(_core.device.RM_ADDITIVE, this._batches);
+                }
+            }
+
+            this._batches.Render();
+
+            if (this.visible.lensflares) {
+                for (var _i9 = 0; _i9 < this.lensflares.length; ++_i9) {
+                    this.lensflares[_i9].UpdateOccluders();
+                }
+            }
+
+            if (this.renderDebugInfo) {
+                if (EveSpaceScene.DebugRenderer) {
+                    if (!this._debugHelper) {
+                        this._debugHelper = new EveSpaceScene.DebugRenderer();
+                    }
+
+                    for (var _i10 = 0; _i10 < this.objects.length; ++_i10) {
+                        if (typeof this.objects[_i10].RenderDebugInfo !== 'undefined') {
+                            this.objects[_i10].RenderDebugInfo(this._debugHelper);
+                        }
+                    }
+
+                    this._debugHelper.Render();
+                }
+            }
+        }
+
+        /**
+         * Applies per frame data
+         */
+
+    }, {
+        key: 'ApplyPerFrameData',
+        value: function ApplyPerFrameData() {
+            var g = EveSpaceScene.global,
+                envMapTransform = g.mat4_2,
+                sunDir = g.vec3_0;
+
+            _math.mat4.fromQuat(envMapTransform, this.envMapRotation);
+            _math.mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
+            _math.mat4.transpose(envMapTransform, envMapTransform);
+            _math.vec3.negate(sunDir, this.sunDirection);
+            _math.vec3.normalize(sunDir, sunDir);
+
+            var distance = this.fogEnd - this.fogStart;
+            if (Math.abs(distance) < 1e-5) distance = 1e-5;
+            var f = 1.0 / distance;
+
+            var VSData = this._perFrameVS;
+            VSData.Set('FogFactors', [this.fogEnd * f, f, this.visible.fog ? this.fogMax : 0, 1]);
+            VSData.Set('ViewportAdjustment', [1, 1, 1, 1]);
+            VSData.Set('MiscSettings', [_core.device.currentTime, 0, _core.device.viewportWidth, _core.device.viewportHeight]);
+            VSData.Set('SunData.DirWorld', sunDir);
+            VSData.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+            VSData.Set('TargetResolution', _core.device.targetResolution);
+            VSData.Set('ViewInverseTransposeMat', _core.device.viewInverse);
+            VSData.Set('ViewProjectionMat', _core.device.viewProjectionTranspose);
+            VSData.Set('ViewMat', _core.device.viewTranspose);
+            VSData.Set('ProjectionMat', _core.device.projectionTranspose);
+            VSData.Set('EnvMapRotationMat', envMapTransform);
+            _core.device.perFrameVSData = VSData;
+
+            var PSData = this._perFramePS;
+            PSData.Set('ViewInverseTransposeMat', _core.device.viewInverse);
+            PSData.Set('ViewMat', _core.device.viewTranspose);
+            PSData.Set('EnvMapRotationMat', envMapTransform);
+            PSData.Set('SunData.DirWorld', sunDir);
+            PSData.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+            PSData.Set('SceneData.AmbientColor', this.ambientColor);
+            PSData.Set('MiscSettings', [_core.device.currentTime, this.fogType, this.fogBlur, 1]);
+            PSData.Set('SceneData.FogColor', this.fogColor);
+            PSData.Set('FovXY', [_core.device.targetResolution[3], _core.device.targetResolution[2]]);
+            PSData.Set('ShadowMapSettings', [1, 1, 0, 0]);
+            PSData.Set('TargetResolution', _core.device.targetResolution);
+            PSData.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
+            PSData.Get('ViewportSize')[0] = _core.device.viewportWidth;
+            PSData.Get('ViewportSize')[1] = _core.device.viewportHeight;
+            PSData.Get('ShadowCameraRange')[0] = 1;
+            PSData.Get('ProjectionToView')[0] = -_core.device.projection[14];
+            PSData.Get('ProjectionToView')[1] = -_core.device.projection[10] - 1;
+            _core.device.perFramePSData = PSData;
+
+            var _store$_variables = _core.store._variables,
+                EveSpaceSceneEnvMap = _store$_variables.EveSpaceSceneEnvMap,
+                EnvMap1 = _store$_variables.EnvMap1,
+                EnvMap2 = _store$_variables.EnvMap2,
+                EnvMap3 = _store$_variables.EnvMap3;
+
+            EveSpaceSceneEnvMap.textureRes = this.envMapRes && this.visible.reflection ? this.envMapRes : g.emptyTexture;
+            EnvMap1.textureRes = this.envMap1Res && this.visible.diffuse ? this.envMap1Res : g.emptyTexture;
+            EnvMap2.textureRes = this.envMap2Res && this.visible.blur ? this.envMap2Res : g.emptyTexture;
+            EnvMap3.textureRes = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveSpaceScene.global) {
+                EveSpaceScene.global = {
+                    vec3_0: _math.vec3.create(),
+                    vec4_0: _math.vec4.create(),
+                    mat4_0: _math.mat4.create(),
+                    mat4_1: _math.mat4.create(),
+                    mat4_2: _math.mat4.create(),
+                    mat4_ID: _math.mat4.create(),
+                    frustum: new _core.Tw2Frustum(),
+                    emptyTexture: _core.resMan.GetResource('res:/texture/global/black.dds.0.png')
+                };
+            }
+        }
+    }]);
+
+    return EveSpaceScene;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveSpaceScene.global = null;
+
+/**
+ * Per object data declarations
+ * @type {{VSData: *[], PSData: *[]}}
+ */
+EveSpaceScene.perObjectDataDecl = {
+    VSData: [{ name: 'ViewInverseTransposeMat', size: 16 }, { name: 'ViewProjectionMat', size: 16 }, { name: 'ViewMat', size: 16 }, { name: 'ProjectionMat', size: 16 }, { name: 'ShadowViewMat', size: 16 }, { name: 'ShadowViewProjectionMat', size: 16 }, { name: 'EnvMapRotationMat', size: 16 }, { name: 'SunData.DirWorld', size: 4 }, { name: 'SunData.DiffuseColor', size: 4 }, { name: 'FogFactors', size: 4 }, { name: 'TargetResolution', size: 4 }, { name: 'ViewportAdjustment', size: 4 }, { name: 'MiscSettings', size: 4 }],
+    PSData: [{ name: 'ViewInverseTransposeMat', size: 16 }, { name: 'ViewMat', size: 16 }, { name: 'EnvMapRotationMat', size: 16 }, { name: 'SunData.DirWorld', size: 4 }, { name: 'SunData.DiffuseColor', size: 4 }, { name: 'SceneData.AmbientColor', size: 3 }, { name: 'SceneData.NebulaIntensity', size: 1 }, { name: 'SceneData.FogColor', size: 4 }, { name: 'ViewportOffset', size: 2 }, { name: 'ViewportSize', size: 2 }, { name: 'TargetResolution', size: 4 }, { name: 'ShadowMapSettings', size: 4 }, { name: 'ShadowCameraRange', size: 4 }, { name: 'ProjectionToView', size: 2 }, { name: 'FovXY', size: 2 }, { name: 'MiscSettings', size: 4 }]
 };
 
 /**
- * Per frame update that is called per frame
- * @param {number} dt - delta time
+ * Debug renderer
+ * @type {?Function}
  */
-EveSpaceScene.prototype.Update = function (dt) {
-    for (var i = 0; i < this.planets.length; ++i) {
-        if (typeof this.planets[i].Update !== 'undefined') {
-            this.planets[i].Update(dt);
-        }
-    }
-    for (var i = 0; i < this.objects.length; ++i) {
-        if (typeof this.objects[i].Update !== 'undefined') {
-            this.objects[i].Update(dt);
-        }
-    }
-};
-
-/**
- * Empty texture
- * @type {null}
- */
-EveSpaceScene.EmptyTexture = null;
+EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 
 /***/ }),
-/* 139 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveLensflare = EveLensflare;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveLensFlare
- * @property {String} [name='']
- * @property {boolean} display
- * @property {boolean} update
- * @property {boolean} doOcclusionQueries
- * @property {number} cameraFactor
- * @property {vec3} position
- * @property {Array} flares
- * @property {Array.<EveOccluder>} occluders
- * @property {Array.<EveOccluder>} backgroundOccluders
- * @property {number} occlusionIntensity
- * @property {number} backgroundOcclusionIntensity
- * @property {Array} distanceToEdgeCurves
- * @property {Array} distanceToCenterCurves
- * @property {Array} radialAngleCurves
- * @property {Array} xDistanceToCenter
- * @property {Array} yDistanceToCenter
- * @property {Array} bindings
- * @property {Array.<Tw2CurveSet> curveSets
- * @property {null|Tw2Mesh} mesh
- * @property {quat} _directionVar
- * @property {quat} _occlusionVar
- * @property {vec3} _direction
- * @property {mat4} _transform
- * @constructor
- */
-function EveLensflare() {
-    this.name = '';
-    this.display = true;
-    this.update = true;
-    this.doOcclusionQueries = true;
-    this.cameraFactor = 20;
-    this.position = _math.vec3.create();
-    this.flares = [];
-    this.occluders = [];
-    this.backgroundOccluders = [];
-    this.occlusionIntensity = 1;
-    this.backgroundOcclusionIntensity = 1;
-
-    this.distanceToEdgeCurves = [];
-    this.distanceToCenterCurves = [];
-    this.radialAngleCurves = [];
-    this.xDistanceToCenter = [];
-    this.yDistanceToCenter = [];
-    this.bindings = [];
-    this.curveSets = [];
-
-    this.mesh = null;
-
-    this._directionVar = _core.variableStore.RegisterVariable('LensflareFxDirectionScale', _math.vec4.create());
-    this._occlusionVar = _core.variableStore.RegisterVariable('LensflareFxOccScale', _math.vec4.fromValues(1, 1, 0, 0));
-    this._direction = _math.vec3.create();
-    this._transform = _math.mat4.create();
-
-    if (!EveLensflare.backBuffer) {
-        EveLensflare.backBuffer = new _core.Tw2TextureRes();
-        EveLensflare.backBuffer.width = 0;
-        EveLensflare.backBuffer.height = 0;
-        EveLensflare.backBuffer.hasMipMaps = false;
-        EveLensflare.occluderLevels = [new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget()];
-        EveLensflare.occludedLevelIndex = 0;
-    }
-}
-
-/**
- * Gets lensflares's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveLensflare.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
-
-    for (var f = 0; f < this.flares.length; f++) {
-        this.flares[f].GetResources(out);
-    }
-
-    for (var o = 0; o < this.occluders.length; o++) {
-        this.occluders[o].GetResources(out);
-    }
-
-    for (var b = 0; b < this.backgroundOccluders.length; b++) {
-        this.backgroundOccluders[b].GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Internal helper function
- * @param out
- * @param v
- */
-EveLensflare.prototype.MatrixArcFromForward = function (out, v) {
-    var norm = _math.vec3.normalize(_math.vec3.create(), v);
-    _math.mat4.identity(out);
-    if (norm[2] < -0.99999) {
-        return;
-    }
-    if (norm[2] > 0.99999) {
-        out[5] = -1.0;
-        out[10] = -1.0;
-        return;
-    }
-    var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
-    out[0] = h * norm[1] * norm[1] - norm[2];
-    out[1] = -h * norm[0] * norm[1];
-    out[2] = norm[0];
-
-    out[4] = out[1];
-    out[5] = h * norm[0] * norm[0] - norm[2];
-    out[6] = norm[1];
-
-    out[8] = -norm[0];
-    out[9] = -norm[1];
-    out[10] = -norm[2];
-};
-
-/**
- * Scratch variables
- */
-EveLensflare.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    vec3_3: _math.vec3.create(),
-    vec4_0: _math.vec4.create(),
-    vec4_1: _math.mat4.create(),
-    mat4_0: _math.mat4.create()
-};
-
-/**
- * Prepares the lensflare for rendering
- */
-EveLensflare.prototype.PrepareRender = function () {
-    if (!this.display) {
-        return;
-    }
-
-    var scratch = EveLensflare.scratch;
-    var cameraPos = _math.vec3.set(scratch.vec3_0, 0, 0, 0),
-        negPos = scratch.vec3_1,
-        cameraSpacePos = scratch.vec3_2,
-        negDirVec = scratch.vec3_3,
-        viewDir = _math.vec4.set(scratch.vec4_0, 0, 0, 1, 0),
-        d = scratch.vec4_1,
-        scaleMat = _math.mat4.identity(scratch.mat4_0);
-
-    _math.vec3.transformMat4(cameraPos, cameraPos, _core.device.viewInverse);
-
-    if (_math.vec3.length(this.position) === 0) {
-        _math.vec3.negate(negPos, cameraPos);
-        var distScale = _math.vec3.length(negPos);
-        distScale = distScale > 1.5 ? 1 / Math.log(distScale) : 2.5;
-    } else {
-        _math.vec3.negate(negPos, this.position);
-        _math.vec3.normalize(this._direction, negPos);
-    }
-
-    _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
-    cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
-    cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
-    cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
-
-    _math.vec3.negate(negDirVec, this._direction);
-    EveLensflare.prototype.MatrixArcFromForward(this._transform, negDirVec);
-    this._transform[12] = cameraSpacePos[0];
-    this._transform[13] = cameraSpacePos[1];
-    this._transform[14] = cameraSpacePos[2];
-
-    _math.mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
-    //mat4.multiply(scaleMat, scaleMat, this._transform);
-    this._directionVar.value[0] = this._direction[0];
-    this._directionVar.value[1] = this._direction[1];
-    this._directionVar.value[2] = this._direction[2];
-    this._directionVar.value[3] = 1;
-
-    _math.vec4.set(d, this._direction[0], this._direction[1], this._direction[2], 0);
-    _math.vec4.transformMat4(d, d, _core.device.view);
-    _math.vec4.transformMat4(d, d, _core.device.projection);
-    d[0] /= d[3];
-    d[1] /= d[3];
-
-    var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1])),
-        distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]),
-        radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
-
-    for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
-        this.distanceToEdgeCurves[i].UpdateValue(distanceToEdge);
-    }
-    for (i = 0; i < this.distanceToCenterCurves.length; ++i) {
-        this.distanceToCenterCurves[i].UpdateValue(distanceToCenter);
-    }
-    for (i = 0; i < this.radialAngleCurves.length; ++i) {
-        this.radialAngleCurves[i].UpdateValue(radialAngle);
-    }
-    for (i = 0; i < this.xDistanceToCenter.length; ++i) {
-        this.xDistanceToCenter[i].UpdateValue(d[0] + 10);
-    }
-    for (i = 0; i < this.yDistanceToCenter.length; ++i) {
-        this.yDistanceToCenter[i].UpdateValue(d[1] + 10);
-    }
-    for (i = 0; i < this.bindings.length; ++i) {
-        this.bindings[i].CopyValue();
-    }
-    for (i = 0; i < this.flares.length; ++i) {
-        this.flares[i].UpdateViewDependentData(this._transform);
-    }
-};
-
-/**
- * Updates Occluders
- */
-EveLensflare.prototype.UpdateOccluders = function () {
-    if (!this.doOcclusionQueries) {
-        return;
-    }
-    this.occlusionIntensity = 1;
-    this.backgroundOcclusionIntensity = 1;
-
-    if (!EveLensflare.occluderLevels[0].texture || EveLensflare.occluderLevels[0].width < this.occluders.length * 2) {
-        for (var i = 0; i < EveLensflare.occluderLevels.length; ++i) {
-            EveLensflare.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
-        }
-    }
-    for (var j = 0; j < this.flares.length; ++j) {
-        if ('_backBuffer' in this.flares[j]) {
-            this.flares[j]._backBuffer.textureRes = EveLensflare.occluderLevels.texture;
-        }
-    }
-
-    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
-    _core.device.SetStandardStates(_core.device.RM_OPAQUE);
-    _core.device.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
-
-    var samples = 1;
-    if (_core.device.antialiasing) {
-        samples = _core.device.msaaSamples;
-        _core.device.gl.sampleCoverage(1.0 / samples, false);
-    }
-    for (var i = 0; i < this.occluders.length; ++i) {
-        _core.device.SetRenderState(_core.device.RS_COLORWRITEENABLE, 8);
-        _core.device.gl.colorMask(false, false, false, true);
-        _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
-        _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-
-        if (_core.device.antialiasing) {
-            // Turn off antialiasing
-            _core.device.gl.enable(_core.device.gl.SAMPLE_COVERAGE);
-            _core.device.gl.sampleCoverage(0.25, false);
-        }
-        this.occluders[i].UpdateValue(this._transform, i);
-        if (_core.device.antialiasing) {
-            _core.device.gl.disable(_core.device.gl.SAMPLE_COVERAGE);
-        }
-
-        // Copy back buffer into a texture
-        if (!EveLensflare.backBuffer.texture) {
-            EveLensflare.backBuffer.Attach(_core.device.gl.createTexture());
-        }
-        _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, EveLensflare.backBuffer.texture);
-        if (EveLensflare.backBuffer.width !== _core.device.viewportWidth || EveLensflare.backBuffer.height !== _core.device.viewportHeight) {
-            _core.device.gl.texImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.gl.RGBA, _core.device.viewportWidth, _core.device.viewportHeight, 0, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, null);
-            _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MAG_FILTER, _core.device.gl.LINEAR);
-            _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MIN_FILTER, _core.device.gl.LINEAR);
-            EveLensflare.backBuffer.width = _core.device.viewportWidth;
-            EveLensflare.backBuffer.height = _core.device.viewportHeight;
-        }
-        _core.device.gl.copyTexImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.alphaBlendBackBuffer ? _core.device.gl.RGBA : _core.device.gl.RGB, 0, 0, EveLensflare.backBuffer.width, EveLensflare.backBuffer.height, 0);
-        _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, null);
-
-        // Collect samples
-        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
-        this.occluders[i].CollectSamples(EveLensflare.backBuffer, i, EveLensflare.occluderLevels[0].width / 2, samples);
-        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
-    }
-    if (_core.device.antialiasing) {
-        _core.device.gl.sampleCoverage(1, false);
-    }
-
-    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Set();
-    var pixels = new Uint8Array(EveLensflare.occluderLevels[0].width * 4);
-    _core.device.gl.readPixels(0, 0, 2, 1, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, pixels);
-    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Unset();
-
-    this.occlusionIntensity = 1;
-    for (i = 0; i < EveLensflare.occluderLevels[0].width * 2; i += 4) {
-        this.occlusionIntensity *= pixels[i + 1] ? pixels[i] / pixels[i + 1] : 1;
-    }
-
-    this.backgroundOcclusionIntensity = this.occlusionIntensity;
-    this._occlusionVar.value[0] = this.occlusionIntensity;
-    this._occlusionVar.value[1] = this._occlusionVar.value[0];
-    EveLensflare.occludedLevelIndex = (EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length;
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-
-    var viewDir = _math.vec4.set(EveLensflare.scratch.vec4_0, 0, 0, 1, 0);
-    _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
-    if (_math.vec3.dot(viewDir, this._direction) < 0) {
-        return;
-    }
-
-    for (var i = 0; i < this.flares.length; ++i) {
-        this.flares[i].GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.mesh) {
-        this.mesh.GetBatches(mode, accumulator, perObjectData);
-    }
-};
-
-/***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveOccluder = EveOccluder;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveOccluder
- * @property {String} name=''
- * @property {boolean} display
- * @property {number} value
- * @property {Array.<EveSpriteSet>} sprites
- * @constructor
- */
-function EveOccluder() {
-    this.name = '';
-    this.display = true;
-    this.value = 1;
-    this.sprites = [];
-    _core.variableStore.RegisterType('OccluderValue', _core.Tw2Vector4Parameter);
-
-    if (!EveOccluder._collectEffect) {
-        EveOccluder._collectEffect = new _core.Tw2Effect();
-        EveOccluder._collectEffect.effectFilePath = 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx';
-        var param = new _core.Tw2TextureParameter();
-        param.name = 'BackBuffer';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        var param = new _core.Tw2Vector4Parameter();
-        param.name = 'OccluderPosition';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        var param = new _core.Tw2Vector3Parameter();
-        param.name = 'OccluderIndex';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        EveOccluder._collectEffect.Initialize();
-        EveOccluder._vertexBuffer = null;
-        EveOccluder._decl = new _core.Tw2VertexDeclaration();
-        EveOccluder._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 2, 0));
-        EveOccluder._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 2, 8));
-        EveOccluder._decl.RebuildHash();
-
-        var vb = new Float32Array(255 * 6 * 4);
-        var index = 0;
-        for (var i = 0; i < 16; ++i) {
-            for (var j = 0; j < 16; ++j) {
-                var x = (i + Math.random()) / 16 * 2 - 1;
-                var y = (j + Math.random()) / 16 * 2 - 1;
-                vb[index++] = 1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = -1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = 1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-
-                vb[index++] = -1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = 1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = -1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-            }
-        }
-        EveOccluder._vertexBuffer = _core.device.gl.createBuffer();
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, EveOccluder._vertexBuffer);
-        _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, vb, _core.device.gl.STATIC_DRAW);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
-    }
-}
-
-/**
- * Scratch parameters
- */
-EveOccluder.scratch = {
-    mat4_0: _math.mat4.create(),
-    vec4_0: _math.vec4.create(),
-    batches: new _core.Tw2BatchAccumulator()
-};
-
-/**
- * UpdateValues
- * @param {mat4} parentTransform
- * @param {number} index
- */
-EveOccluder.prototype.UpdateValue = function (parentTransform, index) {
-    if (!this.display) {
-        return;
-    }
-    if (!_core.device.alphaBlendBackBuffer) {
-        return;
-    }
-
-    var scratch = EveOccluder.scratch;
-    var batches = scratch.batches;
-    batches.Clear();
-
-    for (var i = 0; i < this.sprites.length; ++i) {
-        this.sprites[i].UpdateViewDependentData(parentTransform);
-        this.sprites[i].GetBatches(_core.device.RM_DECAL, batches);
-    }
-
-    _core.variableStore._variables['OccluderValue'].value.set([(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
-    batches.Render();
-
-    var worldViewProj = _math.mat4.copy(scratch.mat4_0, _core.device.viewProjection);
-    _math.mat4.multiply(worldViewProj, worldViewProj, this.sprites[0].worldTransform);
-    var center = _math.vec4.set(scratch.vec4_0, 0, 0, 0, 1);
-    _math.vec4.transformMat4(center, center, worldViewProj);
-    var x0 = (center[0] / center[3] + 1) * 0.5;
-    var y0 = (center[1] / center[3] + 1) * 0.5;
-    center[0] = center[1] = 0.5;
-    center[2] = 0;
-    center[3] = 1;
-    _math.vec4.transformMat4(center, center, worldViewProj);
-    var x1 = (center[0] / center[3] + 1) * 0.5;
-    var y1 = (center[1] / center[3] + 1) * 0.5;
-    center[0] = x0;
-    center[1] = y0;
-    center[2] = x1 - x0;
-    center[3] = y1 - y0;
-
-    EveOccluder._collectEffect.parameters['OccluderPosition'].SetValue(center);
-};
-
-/**
- * CollectSamples
- * @param tex
- * @param index
- * @param total
- * @param samples
- */
-EveOccluder.prototype.CollectSamples = function (tex, index, total, samples) {
-    var effect = EveOccluder._collectEffect;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-    effect.parameters['BackBuffer'].textureRes = tex;
-    effect.parameters['OccluderIndex'].SetValue([index, total, samples]);
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, EveOccluder._vertexBuffer);
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!EveOccluder._decl.SetDeclaration(effect.GetPassInput(pass), 16)) {
-            return;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, 255 * 6);
-    }
-};
-
-/**
- * Gets Mesh Overlay resource objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Resource>} [out]
- */
-EveOccluder.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (EveOccluder._collectEffect) {
-        EveOccluder._collectEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 141 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34534,25 +36441,25 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(42);
+var _curve = __webpack_require__(41);
 
-var _EveBoosterSet = __webpack_require__(45);
+var _EveBoosterSet = __webpack_require__(46);
 
-var _EveChildMesh = __webpack_require__(43);
+var _EveChildMesh = __webpack_require__(42);
 
-var _EveLocator = __webpack_require__(44);
+var _EveLocator = __webpack_require__(47);
 
-var _EvePlaneSet = __webpack_require__(46);
+var _EvePlaneSet = __webpack_require__(48);
 
 var _EveSpaceObjectDecal = __webpack_require__(49);
 
-var _EveSpotlightSet = __webpack_require__(47);
+var _EveSpotlightSet = __webpack_require__(50);
 
-var _EveSpriteSet = __webpack_require__(48);
+var _EveSpriteSet = __webpack_require__(51);
 
 var _EveSpaceObject = __webpack_require__(27);
 
-var _EveShip = __webpack_require__(50);
+var _EveShip = __webpack_require__(44);
 
 function EveSOF() {
     var data = null;

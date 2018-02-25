@@ -1,14 +1,10 @@
-import {vec3, vec4, quat, mat4} from '../math';
-import {device} from '../core';
-import {resMan} from '../core';
-import {variableStore} from '../core';
-import {Tw2BatchAccumulator} from '../core';
-import {Tw2RawData} from '../core';
-import {Tw2Frustum} from '../core';
-
+import {vec3, vec4, quat, mat4, util} from '../math';
+import {device as d, resMan, store, Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
 
 /**
  * EveSpaceScene
+ *
+ * @property {number|string} _id
  * @property {string} name
  * @property {boolean} display
  * @property {{}} visible
@@ -19,12 +15,12 @@ import {Tw2Frustum} from '../core';
  * @property {boolean} visible.clearColor
  * @property {boolean} visible.nebula
  * @property {Array.<EveLensflare>} lensflares - Scene lensflares
- * @property {Array.<EveObject>} objects - Scene objects
+ * @property {Array.<*>} objects - Scene objects
  * @property {Array.<EvePlanet>} planets - Scene planets
  * @property {number} nebulaIntensity - controls nebula intensity on scene objects
  * @property {vec4} ambientColor - unused
  * @property {null|Tw2Effect} backgroundEffect
- * @property {boolean} backgroundRenderingEnabled - Toggles background effect visibility
+ * @property {number} backgroundRenderingEnabled - Toggles background effect visibility
  * @property {vec3} endMapScaling - controls the scale of the environment maps
  * @property {quat} envMapRotation - controls the rotation of the environment maps
  * @property {boolean} logEnabled - toggles LOD
@@ -44,546 +40,526 @@ import {Tw2Frustum} from '../core';
  * @property {null|Tw2TextureRes} envMap1Res
  * @property {null|Tw2TextureRes} envMap2Res
  * @property {null} envMap3Res - unused
- * @property {null|Tw2TextureParameter} _envMapHandle
- * @property {null|Tw2TextureParameter} _envMap1Handle
- * @property {null|Tw2TextureParameter} _envMap2Handle
- * @property {null|Tw2TextureParameter} _envMap3Handle
  * @property {Tw2BatchAccumulator} _batches - Scene batch accumulator
  * @property {Tw2RawData} _perFrameVS
  * @property {Tw2RawData} _perFramePS
  * @property {boolean} renderDebugInfo
  * @property {*} _debugHelper
- * @constructor
+ * @class
  */
-export function EveSpaceScene()
+export class EveSpaceScene
 {
-    this.name = '';
+    constructor()
+    {
+        this._id = util.generateID();
+        this.name = '';
+        this.display = true;
+        this.visible = {};
+        this.visible.lensflares = true;
+        this.visible.objects = true;
+        this.visible.planets = true;
+        this.visible.fog = true;
+        this.visible.clearColor = true;
+        this.visible.reflection = true;
+        this.visible.diffuse = true;
+        this.visible.blur = true;
+        this.lensflares = [];
+        this.objects = [];
+        this.planets = [];
+        this.nebulaIntensity = 1;
+        this.ambientColor = quat.fromValues(0.25, 0.25, 0.25, 1);
+        this.backgroundEffect = null;
+        this.backgroundRenderingEnabled = 1;
+        this.clearColor = vec4.fromValues(0, 0, 0, 0);
+        this.lodEnabled = false;
+        this.fogStart = 0;
+        this.fogEnd = 0;
+        this.fogMax = 0;
+        this.fogType = 0;
+        this.fogBlur = 0;
+        this.fogColor = vec4.fromValues(0.25, 0.25, 0.25, 1);
+        this.sunDirection = vec3.fromValues(1, -1, 1);
+        this.sunDiffuseColor = vec4.fromValues(1, 1, 1, 1);
+        this.envMapScaling = vec3.fromValues(1, 1, 1);
+        this.envMapRotation = quat.create();
+        this.envMapResPath = '';
+        this.envMap1ResPath = '';
+        this.envMap2ResPath = '';
+        this.envMap3ResPath = '';
+        this.envMapRes = null;
+        this.envMap1Res = null;
+        this.envMap2Res = null;
+        this.envMap3Res = null;
+        this.renderDebugInfo = false;
+        this._debugHelper = null;
+        this._batches = new Tw2BatchAccumulator();
+        this._perFrameVS = new Tw2RawData(EveSpaceScene.perObjectDataDecl.VSData);
+        this._perFramePS = new Tw2RawData(EveSpaceScene.perObjectDataDecl.PSData);
 
-    this.display = true;
-    this.visible = {};
-    this.visible.lensflares = true;
-    this.visible.objects = true;
-    this.visible.planets = true;
-    this.visible.fog = true;
-    this.visible.clearColor = true;
-    this.visible.reflection = true;
-
-    var self = this;
-    Object.defineProperty(this.visible, 'nebula',
-        {
-            get: function()
-            {
-                return !!self.backgroundRenderingEnabled;
-            },
-            set: function(bool)
-            {
-                self.backgroundRenderingEnabled = bool;
-            }
+        Object.defineProperty(this.visible, 'environment', {
+            get: () => { return this.backgroundRenderingEnabled; },
+            set: bool => { this.backgroundRenderingEnabled = bool ? 1 : 0; }
         });
 
-    this.lensflares = [];
-    this.objects = [];
-    this.planets = [];
-
-    this.nebulaIntensity = 1;
-    this.ambientColor = quat.fromValues(0.25, 0.25, 0.25, 1);
-    this.backgroundEffect = null;
-    this.backgroundRenderingEnabled = true;
-    this.envMapScaling = vec3.fromValues(1, 1, 1);
-    this.envMapRotation = quat.create();
-
-    this.lodEnabled = false;
-
-    this.fogStart = 0;
-    this.fogEnd = 0;
-    this.fogMax = 0;
-    this.fogType = 0;
-    this.fogBlur = 0;
-    this.fogColor = vec4.fromValues(0.25, 0.25, 0.25, 1);
-
-    this.sunDirection = vec3.fromValues(1, -1, 1);
-    this.sunDiffuseColor = vec4.fromValues(1, 1, 1, 1);
-
-    this.envMapResPath = '';
-    this.envMap1ResPath = '';
-    this.envMap2ResPath = '';
-    this.envMap3ResPath = '';
-    this.envMapRes = null;
-    this.envMap1Res = null;
-    this.envMap2Res = null;
-    this.envMap3Res = null;
-
-    this.clearColor = vec4.fromValues(0, 0, 0, 0);
-
-    this._envMapHandle = variableStore.RegisterVariable('EveSpaceSceneEnvMap', '');
-    this._envMap1Handle = variableStore.RegisterVariable('EnvMap1', '');
-    this._envMap2Handle = variableStore.RegisterVariable('EnvMap2', '');
-    this._envMap3Handle = variableStore.RegisterVariable('EnvMap3', '');
-
-    this._batches = new Tw2BatchAccumulator();
-
-    this._perFrameVS = new Tw2RawData();
-    this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
-    this._perFrameVS.Declare('ViewProjectionMat', 16);
-    this._perFrameVS.Declare('ViewMat', 16);
-    this._perFrameVS.Declare('ProjectionMat', 16);
-    this._perFrameVS.Declare('ShadowViewMat', 16);
-    this._perFrameVS.Declare('ShadowViewProjectionMat', 16);
-    this._perFrameVS.Declare('EnvMapRotationMat', 16);
-    this._perFrameVS.Declare('SunData.DirWorld', 4);
-    this._perFrameVS.Declare('SunData.DiffuseColor', 4);
-    this._perFrameVS.Declare('FogFactors', 4);
-    this._perFrameVS.Declare('TargetResolution', 4);
-    this._perFrameVS.Declare('ViewportAdjustment', 4);
-    this._perFrameVS.Declare('MiscSettings', 4);
-    this._perFrameVS.Create();
-
-    this._perFramePS = new Tw2RawData();
-    this._perFramePS.Declare('ViewInverseTransposeMat', 16);
-    this._perFramePS.Declare('ViewMat', 16);
-    this._perFramePS.Declare('EnvMapRotationMat', 16);
-    this._perFramePS.Declare('SunData.DirWorld', 4);
-    this._perFramePS.Declare('SunData.DiffuseColor', 4);
-    this._perFramePS.Declare('SceneData.AmbientColor', 3);
-    this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
-    this._perFramePS.Declare('SceneData.FogColor', 4);
-    this._perFramePS.Declare('ViewportOffset', 2);
-    this._perFramePS.Declare('ViewportSize', 2);
-    this._perFramePS.Declare('TargetResolution', 4);
-    this._perFramePS.Declare('ShadowMapSettings', 4);
-    this._perFramePS.Declare('ShadowCameraRange', 4);
-    this._perFramePS.Declare('ProjectionToView', 2);
-    this._perFramePS.Declare('FovXY', 2);
-    this._perFramePS.Declare('MiscSettings', 4);
-    this._perFramePS.Create();
-
-    this.renderDebugInfo = false;
-    this._debugHelper = null;
-}
-
-/**
- * Initializes the space scene
- */
-EveSpaceScene.prototype.Initialize = function()
-{
-    variableStore.RegisterVariable('ShadowLightness', 0);
-    if (!EveSpaceScene.EmptyTexture)
-    {
-        EveSpaceScene.EmptyTexture = resMan.GetResource('res:/texture/global/black.dds.0.png');
+        EveSpaceScene.init();
     }
 
-    if (this.envMapResPath !== '')
+    /**
+     * Initializes the space scene
+     */
+    Initialize()
     {
-        this.envMapRes = resMan.GetResource(this.envMapResPath);
+        this.SetEnvMapReflection(this.envMapResPath);
+        this.SetEnvMapDiffuse(this.envMap1ResPath);
+        this.SetEnvMapBlur(this.envMap2ResPath);
+        this.SetEnvMapPath(3, this.envMap3ResPath);
     }
 
-    if (this.envMap1ResPath !== '')
+    /**
+     * Keeps the scene and it's object's resources alive
+     */
+    KeepAlive()
     {
-        this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
-    }
-
-    if (this.envMap2ResPath !== '')
-    {
-        this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
-    }
-
-    if (this.envMap3ResPath !== '')
-    {
-        this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
-    }
-};
-
-/**
- * Gets scene's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceScene.prototype.GetResources = function(out)
-{
-    if (out === undefined)
-    {
-        out = [];
-    }
-
-    if (this.backgroundEffect)
-    {
-        this.backgroundEffect.GetResources(out);
-    }
-
-    for (var i = 0; i < this.lensflares.length; i++)
-    {
-        this.lensflares[i].GetResources(out);
-    }
-
-    function getEnvMapResource(out, envMap)
-    {
-        if (envMap !== null && out.indexOf(envMap) === -1) out.push(envMap);
-    }
-
-    getEnvMapResource(out, this.envMapRes);
-    getEnvMapResource(out, this.envMap1Res);
-    getEnvMapResource(out, this.envMap2Res);
-    getEnvMapResource(out, this.envMap3Res);
-
-    return out;
-};
-
-/**
- * Gets scene's children's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceScene.prototype.GetChildResources = function(out)
-{
-    if (out === undefined)
-    {
-        out = [];
-    }
-
-    for (var p = 0; p < this.planets.length; p++)
-    {
-        this.planets[p].GetResources(out);
-    }
-
-    for (var i = 0; i < this.objects.length; i++)
-    {
-        this.objects[i].GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Sets the environment reflection map
- * @param {String} path
- */
-EveSpaceScene.prototype.SetEnvMapReflection = function(path)
-{
-    this.envMapResPath = path;
-
-    if (this.envMapResPath !== '')
-    {
-        this.envMapRes = resMan.GetResource(path);
-    }
-};
-
-/**
- * Sets an environment map
- * @param {number} index
- * @param {String} path
- */
-EveSpaceScene.prototype.SetEnvMapPath = function(index, path)
-{
-    switch (index)
-    {
-        case 0:
-            this.envMap1ResPath = path;
-            if (this.envMap1ResPath !== '')
-            {
-                this.envMap1Res = resMan.GetResource(this.envMap1ResPath);
-            }
-            else
-            {
-                this.envMap1Res = null;
-            }
-            break;
-
-        case 1:
-            this.envMap2ResPath = path;
-            if (this.envMap2ResPath !== '')
-            {
-                this.envMap2Res = resMan.GetResource(this.envMap2ResPath);
-            }
-            else
-            {
-                this.envMap2Res = null;
-            }
-            break;
-
-        case 2:
-            this.envMap3ResPath = path;
-            if (this.envMap3ResPath !== '')
-            {
-                this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
-            }
-            else
-            {
-                this.envMap3Res = null;
-            }
-            break;
-    }
-};
-
-/**
- * Gets batches for rendering
- * @param {number} mode
- * @param {Array.<EveObject>} objectArray
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveSpaceScene.prototype.RenderBatches = function(mode, objectArray, accumulator)
-{
-    accumulator = (accumulator) ? accumulator : this._batches;
-
-    for (var i = 0; i < objectArray.length; ++i)
-    {
-        if (typeof(objectArray[i].GetBatches) !== 'undefined')
+        const res = this.GetResources();
+        for (let i = 0; i < res.length; i++)
         {
-            objectArray[i].GetBatches(mode, accumulator);
+            res[i].KeepAlive();
         }
     }
-};
 
-/**
- * Enables LOD
- * @param {boolean} enable
- */
-EveSpaceScene.prototype.EnableLod = function(enable)
-{
-    this.lodEnabled = enable;
-
-    if (!enable)
+    /**
+     * Enables LOD
+     * @param {boolean} enable
+     */
+    EnableLod(enable)
     {
-        for (var i = 0; i < this.objects.length; ++i)
+        this.lodEnabled = enable;
+
+        if (!enable)
         {
-            if (this.objects[i].ResetLod)
+            for (let i = 0; i < this.objects.length; ++i)
             {
-                this.objects[i].ResetLod();
+                if (this.objects[i].ResetLod)
+                {
+                    this.objects[i].ResetLod();
+                }
             }
         }
     }
-};
 
-/**
- * Scratch vectors
- *
- * @type {*}
- */
-EveSpaceScene.scratch = {
-    vec3_0: vec3.create(),
-    vec4_0: vec4.create(),
-    mat4_0: mat4.create(),
-    mat4_1: mat4.create(),
-    mat4_2: mat4.create(),
-    mat4_ID: mat4.create(),
-    frustum: new Tw2Frustum()
-};
-
-EveSpaceScene.prototype.ApplyPerFrameData = function()
-{
-    var d = device,
-        s = EveSpaceScene.scratch;
-
-    // Nebula
-    var envMapTransform = s.mat4_2;
-    mat4.fromQuat(envMapTransform, this.envMapRotation);
-    mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
-    mat4.transpose(envMapTransform, envMapTransform);
-
-    // Sun
-    var sunDir = vec3.negate(s.vec3_0, this.sunDirection);
-    vec3.normalize(sunDir, sunDir);
-
-    // Fog
-    var distance = this.fogEnd - this.fogStart;
-    if (Math.abs(distance) < 1e-5) distance = 1e-5;
-    var f = 1.0 / distance;
-
-    this._perFrameVS.Set('FogFactors', [this.fogEnd * f, f, this.visible.fog ? this.fogMax : 0, 1]);
-    this._perFrameVS.Set('ViewportAdjustment', [1, 1, 1, 1]);
-    this._perFrameVS.Set('MiscSettings', [d.currentTime, 0, d.viewportWidth, d.viewportHeight]);
-    this._perFrameVS.Set('SunData.DirWorld', sunDir);
-    this._perFrameVS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
-    this._perFrameVS.Set('TargetResolution', d.targetResolution);
-    this._perFrameVS.Set('ViewInverseTransposeMat', d.viewInverse);
-    this._perFrameVS.Set('ViewProjectionMat', d.viewProjectionTranspose);
-    this._perFrameVS.Set('ViewMat', d.viewTranspose);
-    this._perFrameVS.Set('ProjectionMat', d.projectionTranspose);
-    this._perFramePS.Set('FovXY', [d.targetResolution[3], d.targetResolution[2]]);
-    this._perFramePS.Set('ShadowMapSettings', [1, 1, 0, 0]);
-    this._perFramePS.Set('TargetResolution', d.targetResolution);
-    this._perFrameVS.Set('EnvMapRotationMat', envMapTransform);
-    device.perFrameVSData = this._perFrameVS;
-
-    this._perFramePS.Set('ViewInverseTransposeMat', d.viewInverse);
-    this._perFramePS.Set('ViewMat', d.viewTranspose);
-    this._perFramePS.Set('EnvMapRotationMat', envMapTransform);
-    this._perFramePS.Set('SunData.DirWorld', sunDir);
-    this._perFramePS.Set('SunData.DiffuseColor', this.sunDiffuseColor);
-    this._perFramePS.Set('SceneData.AmbientColor', this.ambientColor);
-    this._perFramePS.Set('MiscSettings', [d.currentTime, this.fogType, this.fogBlur, 1]);
-    this._perFramePS.Set('SceneData.FogColor', this.fogColor);
-    this._perFramePS.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
-    this._perFramePS.Get('ViewportSize')[0] = d.viewportWidth;
-    this._perFramePS.Get('ViewportSize')[1] = d.viewportHeight;
-    this._perFramePS.Get('ShadowCameraRange')[0] = 1;
-    this._perFramePS.Get('ProjectionToView')[0] = -d.projection[14];
-    this._perFramePS.Get('ProjectionToView')[1] = -d.projection[10] - 1;
-    device.perFramePSData = this._perFramePS;
-
-    this._envMapHandle.textureRes = this.visible.reflection ? this.envMapRes : EveSpaceScene.EmptyTexture;
-    this._envMap1Handle.textureRes = this.envMap1Res;
-    this._envMap2Handle.textureRes = this.envMap2Res;
-    this._envMap3Handle.textureRes = this.envMap3Res;
-};
-
-/**
- * Updates children's view dependent data and renders them
- */
-EveSpaceScene.prototype.Render = function()
-{
-    this.ApplyPerFrameData();
-    var i,
-        d = device,
-        scratch = EveSpaceScene.scratch,
-        id = mat4.identity(scratch.mat4_ID);
-
-    if (this.backgroundRenderingEnabled && this.backgroundEffect)
+    /**
+     * Sets the environment's reflection map
+     * @param {String} path
+     */
+    SetEnvMapReflection(path)
     {
-        d.SetStandardStates(d.RM_FULLSCREEN);
-        d.RenderCameraSpaceQuad(this.backgroundEffect);
+        this.SetEnvMapPath(0, path);
     }
 
-    if (this.visible.planets && this.planets.length)
+    /**
+     * Sets the environment's diffuse map
+     * @param {string} path
+     */
+    SetEnvMapDiffuse(path)
     {
-        var tempProj = mat4.copy(scratch.mat4_0, d.projection);
-        var newProj = mat4.copy(scratch.mat4_1, d.projection);
-        var zn = 10000;
-        var zf = 1e11;
-        newProj[10] = zf / (zn - zf);
-        newProj[14] = (zf * zn) / (zn - zf);
-        d.SetProjection(newProj, true);
+        this.SetEnvMapPath(1, path);
+    }
+
+    /**
+     * Sets the environment's blur map (used for fog)
+     * @param {string} path
+     */
+    SetEnvMapBlur(path)
+    {
+        this.SetEnvMapPath(2, path);
+    }
+
+    /**
+     * Sets an environment map
+     * @param {number} index
+     * @param {String} path
+     */
+    SetEnvMapPath(index, path)
+    {
+        const setEnvPath = (path, pathTarget, resTarget) =>
+        {
+            path = path.toLowerCase();
+            this[pathTarget] = path;
+            this[resTarget] = path === '' ? null : resMan.GetResource(path);
+            return true;
+        };
+
+        switch (index)
+        {
+            case 0: // Reflection
+                return setEnvPath(path, 'envMapResPath', 'envMapRes');
+
+            case 1: // Diffuse
+                return setEnvPath(path, 'envMap1ResPath', 'envMap1Res');
+
+            case 2: // Blur
+                return setEnvPath(path, 'envMap2ResPath', 'envMap2Res');
+
+            case 3: // Unused
+                return setEnvPath(path, 'envMap3ResPath', 'envMap3Res');
+        }
+
+        return false;
+    }
+
+    /**
+     * Gets scene's resources
+     * @param {Array} [out=[]] - Optional receiving array
+     * @param {boolean} [excludeChildren]
+     * @returns {Array.<Tw2Resource>} [out]
+     */
+    GetResources(out = [], excludeChildren)
+    {
+        for (let i = 0; i < this.lensflares.length; i++)
+        {
+            this.lensflares[i].GetResources(out);
+        }
+
+        if (this.backgroundEffect)
+        {
+            this.backgroundEffect.GetResources(out);
+        }
+
+        if (this.envMapRes && !out.includes(this.envMapRes)) out.push(this.envMapRes);
+        if (this.envMap1Res && !out.includes(this.envMap1Res)) out.push(this.envMapRes);
+        if (this.envMap2Res && !out.includes(this.envMap2Res)) out.push(this.envMapRes);
+        if (this.envMap3Res && !out.includes(this.envMap3Res)) out.push(this.envMapRes);
+
+        if (!excludeChildren)
+        {
+            for (let i = 0; i < this.planets.length; i++)
+            {
+                this.planets[i].GetResources(out);
+            }
+
+            for (let i = 0; i < this.objects.length; i++)
+            {
+                if ('GetResources' in this.objects[i])
+                {
+                    this.objects[i].GetResources(out);
+                }
+            }
+        }
+
+        return out;
+    }
+
+    /**
+     * Per frame update that is called per frame
+     * @param {number} dt - delta time
+     */
+    Update(dt)
+    {
+        for (let i = 0; i < this.planets.length; ++i)
+        {
+            if ('Update' in this.planets[i])
+            {
+                this.planets[i].Update(dt);
+            }
+        }
+
+        for (let i = 0; i < this.objects.length; ++i)
+        {
+            if ('Update' in this.objects[i])
+            {
+                this.objects[i].Update(dt);
+            }
+        }
+    }
+
+    /**
+     * Gets batches for rendering
+     * @param {number} mode
+     * @param {Array.<EveObject>} objectArray
+     * @param {Tw2BatchAccumulator} accumulator
+     */
+    RenderBatches(mode, objectArray, accumulator=this._batches)
+    {
+        for (let i = 0; i < objectArray.length; ++i)
+        {
+            if ('GetBatches' in objectArray[i])
+            {
+                objectArray[i].GetBatches(mode, accumulator);
+            }
+        }
+    }
+
+    /**
+     * Updates children's view dependent data and renders them
+     */
+    Render()
+    {
         this.ApplyPerFrameData();
 
-        for (i = 0; i < this.planets.length; ++i)
+        const
+            g = EveSpaceScene.global,
+            id = mat4.identity(g.mat4_ID),
+            show = this.visible;
+
+        if (this.backgroundRenderingEnabled && this.backgroundEffect)
         {
-            if (this.planets[i].UpdateViewDependentData)
+            d.SetStandardStates(d.RM_FULLSCREEN);
+            d.RenderCameraSpaceQuad(this.backgroundEffect);
+        }
+
+        if (show.planets && this.planets.length)
+        {
+            const
+                tempProj = mat4.copy(g.mat4_0, d.projection),
+                newProj = mat4.copy(g.mat4_1, d.projection),
+                zn = 10000,
+                zf = 1e11;
+
+            newProj[10] = zf / (zn - zf);
+            newProj[14] = (zf * zn) / (zn - zf);
+            d.SetProjection(newProj, true);
+            this.ApplyPerFrameData();
+
+            for (let i = 0; i < this.planets.length; ++i)
             {
-                this.planets[i].UpdateViewDependentData(id);
+                if (this.planets[i].UpdateViewDependentData)
+                {
+                    this.planets[i].UpdateViewDependentData(id);
+                }
+            }
+
+            this._batches.Clear();
+            d.gl.depthRange(0.9, 1);
+            this.RenderBatches(d.RM_OPAQUE, this.planets);
+            this.RenderBatches(d.RM_DECAL, this.planets);
+            this.RenderBatches(d.RM_TRANSPARENT, this.planets);
+            this.RenderBatches(d.RM_ADDITIVE, this.planets);
+            this._batches.Render();
+            d.SetProjection(tempProj, true);
+            this.ApplyPerFrameData();
+            d.gl.depthRange(0, 0.9);
+        }
+
+        if (this.lodEnabled)
+        {
+            g.frustum.Initialize(d.view, d.projection, d.viewportWidth, d.viewInverse, d.viewProjection);
+            for (let i = 0; i < this.objects.length; ++i)
+            {
+                if (this.objects[i].UpdateLod)
+                {
+                    this.objects[i].UpdateLod(g.frustum);
+                }
+            }
+        }
+
+        if (show.objects)
+        {
+            for (let i = 0; i < this.objects.length; ++i)
+            {
+                if (this.objects[i].UpdateViewDependentData)
+                {
+                    this.objects[i].UpdateViewDependentData(id);
+                }
+            }
+        }
+
+        if (show.lensflares)
+        {
+            for (let i = 0; i < this.lensflares.length; ++i)
+            {
+                this.lensflares[i].PrepareRender();
             }
         }
 
         this._batches.Clear();
 
-        d.gl.depthRange(0.9, 1);
-        this.RenderBatches(d.RM_OPAQUE, this.planets);
-        this.RenderBatches(d.RM_DECAL, this.planets);
-        this.RenderBatches(d.RM_TRANSPARENT, this.planets);
-        this.RenderBatches(d.RM_ADDITIVE, this.planets);
+        if (this.visible.planets)
+        {
+            for (let i = 0; i < this.planets.length; ++i)
+            {
+                this.planets[i].GetZOnlyBatches(d.RM_OPAQUE, this._batches);
+            }
+        }
+
+        if (this.visible.objects)
+        {
+            this.RenderBatches(d.RM_OPAQUE, this.objects);
+            this.RenderBatches(d.RM_DECAL, this.objects);
+            this.RenderBatches(d.RM_TRANSPARENT, this.objects);
+            this.RenderBatches(d.RM_ADDITIVE, this.objects);
+        }
+
+        if (this.visible.lensflares)
+        {
+            for (let i = 0; i < this.lensflares.length; ++i)
+            {
+                this.lensflares[i].GetBatches(d.RM_ADDITIVE, this._batches);
+            }
+        }
+
         this._batches.Render();
-        d.SetProjection(tempProj, true);
-        this.ApplyPerFrameData();
-        d.gl.depthRange(0, 0.9);
-    }
 
-    if (this.lodEnabled)
-    {
-        var frustum = scratch.frustum;
-        frustum.Initialize(d.view, d.projection, d.viewportWidth, d.viewInverse, d.viewProjection);
-        for (i = 0; i < this.objects.length; ++i)
+        if (this.visible.lensflares)
         {
-            if (this.objects[i].UpdateLod)
+            for (let i = 0; i < this.lensflares.length; ++i)
             {
-                this.objects[i].UpdateLod(frustum);
+                this.lensflares[i].UpdateOccluders();
+            }
+        }
+
+        if (this.renderDebugInfo)
+        {
+            if (EveSpaceScene.DebugRenderer)
+            {
+                if (!this._debugHelper)
+                {
+                    this._debugHelper = new EveSpaceScene.DebugRenderer();
+                }
+
+                for (let i = 0; i < this.objects.length; ++i)
+                {
+                    if (typeof(this.objects[i].RenderDebugInfo) !== 'undefined')
+                    {
+                        this.objects[i].RenderDebugInfo(this._debugHelper);
+                    }
+                }
+
+                this._debugHelper.Render();
             }
         }
     }
 
-    if (this.visible.objects)
+    /**
+     * Applies per frame data
+     */
+    ApplyPerFrameData()
     {
-        for (i = 0; i < this.objects.length; ++i)
-        {
-            if (this.objects[i].UpdateViewDependentData)
-            {
-                this.objects[i].UpdateViewDependentData(id);
-            }
-        }
+        const
+            g = EveSpaceScene.global,
+            envMapTransform = g.mat4_2,
+            sunDir = g.vec3_0;
+
+        mat4.fromQuat(envMapTransform, this.envMapRotation);
+        mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
+        mat4.transpose(envMapTransform, envMapTransform);
+        vec3.negate(sunDir, this.sunDirection);
+        vec3.normalize(sunDir, sunDir);
+
+        let distance = this.fogEnd - this.fogStart;
+        if (Math.abs(distance) < 1e-5) distance = 1e-5;
+        const f = 1.0 / distance;
+
+        const VSData = this._perFrameVS;
+        VSData.Set('FogFactors', [this.fogEnd * f, f, this.visible.fog ? this.fogMax : 0, 1]);
+        VSData.Set('ViewportAdjustment', [1, 1, 1, 1]);
+        VSData.Set('MiscSettings', [d.currentTime, 0, d.viewportWidth, d.viewportHeight]);
+        VSData.Set('SunData.DirWorld', sunDir);
+        VSData.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+        VSData.Set('TargetResolution', d.targetResolution);
+        VSData.Set('ViewInverseTransposeMat', d.viewInverse);
+        VSData.Set('ViewProjectionMat', d.viewProjectionTranspose);
+        VSData.Set('ViewMat', d.viewTranspose);
+        VSData.Set('ProjectionMat', d.projectionTranspose);
+        VSData.Set('EnvMapRotationMat', envMapTransform);
+        d.perFrameVSData = VSData;
+
+        const PSData = this._perFramePS;
+        PSData.Set('ViewInverseTransposeMat', d.viewInverse);
+        PSData.Set('ViewMat', d.viewTranspose);
+        PSData.Set('EnvMapRotationMat', envMapTransform);
+        PSData.Set('SunData.DirWorld', sunDir);
+        PSData.Set('SunData.DiffuseColor', this.sunDiffuseColor);
+        PSData.Set('SceneData.AmbientColor', this.ambientColor);
+        PSData.Set('MiscSettings', [d.currentTime, this.fogType, this.fogBlur, 1]);
+        PSData.Set('SceneData.FogColor', this.fogColor);
+        PSData.Set('FovXY', [d.targetResolution[3], d.targetResolution[2]]);
+        PSData.Set('ShadowMapSettings', [1, 1, 0, 0]);
+        PSData.Set('TargetResolution', d.targetResolution);
+        PSData.Get('SceneData.NebulaIntensity')[0] = this.nebulaIntensity;
+        PSData.Get('ViewportSize')[0] = d.viewportWidth;
+        PSData.Get('ViewportSize')[1] = d.viewportHeight;
+        PSData.Get('ShadowCameraRange')[0] = 1;
+        PSData.Get('ProjectionToView')[0] = -d.projection[14];
+        PSData.Get('ProjectionToView')[1] = -d.projection[10] - 1;
+        d.perFramePSData = PSData;
+
+        const {EveSpaceSceneEnvMap, EnvMap1, EnvMap2, EnvMap3} = store._variables;
+        EveSpaceSceneEnvMap.textureRes = this.envMapRes && this.visible.reflection ? this.envMapRes : g.emptyTexture;
+        EnvMap1.textureRes = this.envMap1Res && this.visible.diffuse ? this.envMap1Res : g.emptyTexture;
+        EnvMap2.textureRes = this.envMap2Res && this.visible.blur ? this.envMap2Res : g.emptyTexture;
+        EnvMap3.textureRes = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
     }
 
-    if (this.visible.lensflares)
+    /**
+     * Initializes class global and scratch variables
+     */
+    static init()
     {
-        for (i = 0; i < this.lensflares.length; ++i)
+        if (!EveSpaceScene.global)
         {
-            this.lensflares[i].PrepareRender();
+            EveSpaceScene.global = {
+                vec3_0: vec3.create(),
+                vec4_0: vec4.create(),
+                mat4_0: mat4.create(),
+                mat4_1: mat4.create(),
+                mat4_2: mat4.create(),
+                mat4_ID: mat4.create(),
+                frustum: new Tw2Frustum(),
+                emptyTexture: resMan.GetResource('res:/texture/global/black.dds.0.png')
+            };
         }
     }
+}
 
-    this._batches.Clear();
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+EveSpaceScene.global = null;
 
-    if (this.visible.planets)
-    {
-        for (i = 0; i < this.planets.length; ++i)
-        {
-            this.planets[i].GetZOnlyBatches(d.RM_OPAQUE, this._batches);
-        }
-    }
-
-    if (this.visible.objects)
-    {
-        this.RenderBatches(d.RM_OPAQUE, this.objects);
-        this.RenderBatches(d.RM_DECAL, this.objects);
-        this.RenderBatches(d.RM_TRANSPARENT, this.objects);
-        this.RenderBatches(d.RM_ADDITIVE, this.objects);
-    }
-
-    if (this.visible.lensflares)
-    {
-        for (i = 0; i < this.lensflares.length; ++i)
-        {
-            this.lensflares[i].GetBatches(d.RM_ADDITIVE, this._batches);
-        }
-    }
-
-    this._batches.Render();
-
-    if (this.visible.lensflares)
-    {
-        for (i = 0; i < this.lensflares.length; ++i)
-        {
-            this.lensflares[i].UpdateOccluders();
-        }
-    }
-
-    if (this.renderDebugInfo)
-    {
-        if (this._debugHelper === null)
-        {
-            this._debugHelper = new Tw2DebugRenderer();
-        }
-        for (i = 0; i < this.objects.length; ++i)
-        {
-            if (typeof(this.objects[i].RenderDebugInfo) !== 'undefined')
-            {
-                this.objects[i].RenderDebugInfo(this._debugHelper);
-            }
-        }
-        this._debugHelper.Render();
-    }
+/**
+ * Per object data declarations
+ * @type {{VSData: *[], PSData: *[]}}
+ */
+EveSpaceScene.perObjectDataDecl = {
+    VSData: [
+        {name: 'ViewInverseTransposeMat', size: 16},
+        {name: 'ViewProjectionMat', size: 16},
+        {name: 'ViewMat', size: 16},
+        {name: 'ProjectionMat', size: 16},
+        {name: 'ShadowViewMat', size: 16},
+        {name: 'ShadowViewProjectionMat', size: 16},
+        {name: 'EnvMapRotationMat', size: 16},
+        {name: 'SunData.DirWorld', size: 4},
+        {name: 'SunData.DiffuseColor', size: 4},
+        {name: 'FogFactors', size: 4},
+        {name: 'TargetResolution', size: 4},
+        {name: 'ViewportAdjustment', size: 4},
+        {name: 'MiscSettings', size: 4}
+    ],
+    PSData: [
+        {name: 'ViewInverseTransposeMat', size: 16},
+        {name: 'ViewMat', size: 16},
+        {name: 'EnvMapRotationMat', size: 16},
+        {name: 'SunData.DirWorld', size: 4},
+        {name: 'SunData.DiffuseColor', size: 4},
+        {name: 'SceneData.AmbientColor', size: 3},
+        {name: 'SceneData.NebulaIntensity', size: 1},
+        {name: 'SceneData.FogColor', size: 4},
+        {name: 'ViewportOffset', size: 2},
+        {name: 'ViewportSize', size: 2},
+        {name: 'TargetResolution', size: 4},
+        {name: 'ShadowMapSettings', size: 4},
+        {name: 'ShadowCameraRange', size: 4},
+        {name: 'ProjectionToView', size: 2},
+        {name: 'FovXY', size: 2},
+        {name: 'MiscSettings', size: 4},
+    ]
 };
 
 /**
- * Per frame update that is called per frame
- * @param {number} dt - delta time
+ * Debug renderer
+ * @type {?Function}
  */
-EveSpaceScene.prototype.Update = function(dt)
-{
-    for (var i = 0; i < this.planets.length; ++i)
-    {
-        if (typeof(this.planets[i].Update) !== 'undefined')
-        {
-            this.planets[i].Update(dt);
-        }
-    }
-    for (var i = 0; i < this.objects.length; ++i)
-    {
-        if (typeof(this.objects[i].Update) !== 'undefined')
-        {
-            this.objects[i].Update(dt);
-        }
-    }
-};
+EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 
-/**
- * Empty texture
- * @type {null}
- */
-EveSpaceScene.EmptyTexture = null;

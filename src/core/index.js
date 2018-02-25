@@ -2,6 +2,8 @@ export * from './Tw2Device';
 export * from './Tw2ResMan';
 export * from './Tw2VariableStore';
 
+export * from './data';
+
 export * from './Tw2AnimationController';
 export * from './Tw2BatchAccumulator';
 export * from './Tw2CurveSet';
@@ -16,9 +18,7 @@ export * from './Tw2InstancedMesh';
 export * from './Tw2MatrixParameter';
 export * from './Tw2Mesh';
 export * from './Tw2ObjectReader';
-export * from './Tw2PerObjectData';
 export * from './Tw2PostProcess';
-export * from './Tw2RawData';
 export * from './Tw2RenderTarget';
 export * from './Tw2Resource';
 export * from './Tw2RuntimeInstanceData';

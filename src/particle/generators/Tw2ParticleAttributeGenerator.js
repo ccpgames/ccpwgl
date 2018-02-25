@@ -1,9 +1,10 @@
 /* eslint no-unused-vars:0 */
-import { vec3 } from '../../math';
+import {util, vec3} from '../../math';
 
 /**
  * Tw2ParticleAttributeGenerator base class
  *
+ * @property {number|string} _id
  * @property {string} name
  * @class
  */
@@ -11,6 +12,7 @@ export class Tw2ParticleAttributeGenerator
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
     }
 

@@ -1,4 +1,4 @@
-import {mat4} from '../math';
+import {mat4, util} from '../math';
 
 /**
  * Tw2MatrixParameter
@@ -41,7 +41,7 @@ Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
  * Unbinds the parameter's constant buffer
  * @prototype
  */
-Tw2MatrixParameter.prototype.UnBind = function()
+Tw2MatrixParameter.prototype.Unbind = function()
 {
     this.constantBuffer = null;
 };
@@ -96,4 +96,14 @@ Tw2MatrixParameter.prototype.OnValueChanged = function()
     {
         this.constantBuffer.set(this.value, this.offset);
     }
+};
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2MatrixParameter.is = function(value)
+{
+    return util.isArrayLike(value) && value.length === 16;
 };

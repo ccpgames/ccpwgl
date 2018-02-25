@@ -178,3 +178,14 @@ Tw2TextureParameter.prototype.GetValue = function()
 
     return this.resourcePath;
 };
+
+
+/**
+ * Checks if a value is a valid parameter input
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2TextureParameter.is = function(value)
+{
+    return typeof value === 'string';
+};
