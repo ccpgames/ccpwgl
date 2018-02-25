@@ -30,28 +30,34 @@ export function Tw2VertexElement(usage, usageIndex, type, elements, offset=0)
 
 /**
  * Tw2VertexDeclaration
+ * @param {Array<Array>|Array<Object>} [declarations]
+ * @param {number} [stride]
  * @property {Array.<Tw2VertexElement>} elements
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @constructor
  */
-export function Tw2VertexDeclaration()
+export function Tw2VertexDeclaration(declarations, stride)
 {
     this.elements = [];
     this._elementsSorted = [];
+
+    if (stride !== undefined) this.stride = stride;
+    if (declarations) this.DeclareFromArray(declarations);
 }
 
 /**
  * Tw2 Vertex Declaration Types
- * @type {number}
  */
-Tw2VertexDeclaration.DECL_POSITION = 0;
-Tw2VertexDeclaration.DECL_COLOR = 1;
-Tw2VertexDeclaration.DECL_NORMAL = 2;
-Tw2VertexDeclaration.DECL_TANGENT = 3;
-Tw2VertexDeclaration.DECL_BINORMAL = 4;
-Tw2VertexDeclaration.DECL_TEXCOORD = 5;
-Tw2VertexDeclaration.DECL_BLENDWEIGHT = 6;
-Tw2VertexDeclaration.DECL_BLENDINDICES = 7;
+Tw2VertexDeclaration.Type = {
+    POSITION: 0,
+    COLOR: 1,
+    NORMAL: 2,
+    TANGENT: 3,
+    BINORMAL: 4,
+    TEXCOORD: 5,
+    BLENDWEIGHT: 6,
+    BLENDINDICES: 7,
+};
 
 /**
  * CompareDeclarationElements
@@ -71,7 +77,8 @@ Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset=0)
 };
 
 /**
- * Re-sorts elements
+ * Re-sorts elements and then returns the declaration
+ * @returns {Tw2VertexDeclaration}
  * @prototype
  */
 Tw2VertexDeclaration.prototype.RebuildHash = function()
@@ -82,6 +89,7 @@ Tw2VertexDeclaration.prototype.RebuildHash = function()
         this._elementsSorted[i] = this.elements[i];
     }
     this._elementsSorted.sort(Tw2VertexDeclaration.CompareDeclarationElements);
+    return this;
 };
 
 /**
@@ -260,4 +268,56 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function(resetData)
             device.ext.vertexAttribDivisor(resetData[i], 0);
         }
     }
+};
+
+/**
+ * Declares elements from an array
+ * @param {Array} declarations
+ */
+Tw2VertexDeclaration.prototype.DeclareFromArray = function(declarations)
+{
+    if (this.elements.length)
+    {
+        this.elements.splice(0, this.elements.length);
+    }
+
+    for (let i = 0; i < declarations.length; i++)
+    {
+        const el = declarations[i];
+
+        if (Array.isArray(el))
+        {
+            this.AddElement(...el);
+        }
+        else
+        {
+            this.AddElement(el.usage, el.usageIndex, el.type, el.elements, el.offset);
+        }
+    }
+
+    this.RebuildHash();
+};
+
+/**
+ * Creates and adds a Tw2VertexElement from arguments
+ * @param {number|string} usage
+ * @param {number} usageIndex
+ * @param {number|string} type
+ * @param {number} elements
+ * @param {number} offset
+ * @returns {Tw2VertexDeclaration}
+ */
+Tw2VertexDeclaration.prototype.AddElement = function(usage, usageIndex, type, elements, offset)
+{
+    if (typeof usage === 'string')
+    {
+        usage = Tw2VertexDeclaration.Type[usage.toUpperCase()];
+    }
+
+    if (typeof type === 'string')
+    {
+        type = device.gl[type.toUpperCase()];
+    }
+
+    this.elements.push(new Tw2VertexElement(usage, usageIndex, type, elements, offset));
 };

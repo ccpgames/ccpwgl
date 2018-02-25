@@ -1,10 +1,8 @@
 import {vec3, vec4, mat4} from '../math/index';
-import {variableStore} from './Tw2VariableStore';
+import {store} from './Tw2VariableStore';
 import {resMan} from './Tw2ResMan';
 import {emitter} from './Tw2EventEmitter';
-import {Tw2MatrixParameter} from './Tw2MatrixParameter';
 import {Tw2TextureParameter} from './Tw2TextureParameter';
-import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
 import {Tw2Effect} from './Tw2Effect';
 import {Tw2VertexElement} from './Tw2VertexDeclaration';
 import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
@@ -64,18 +62,11 @@ function Tw2Device()
     this._onResize = null;
 
     this.utils = WebGLDebugUtil;
-
-    variableStore.RegisterVariable('WorldMat', this.world);
-    variableStore.RegisterVariable('ViewMat', this.view);
-    variableStore.RegisterVariable('ProjectionMat', this.projection);
-    variableStore.RegisterType('ViewProjectionMat', Tw2MatrixParameter);
-    variableStore.RegisterType('ViewportSize', Tw2Vector4Parameter);
-    variableStore.RegisterType('Time', Tw2Vector4Parameter);
 }
 
 /**
  * Creates gl Device
- * @param {canvas} canvas
+ * @param {HTMLCanvasElement} canvas
  * @param {Object} [params]
  * @returns {boolean}
  */
@@ -226,8 +217,8 @@ Tw2Device.prototype.CreateDevice = function(canvas, params)
     this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertices), this.gl.STATIC_DRAW);
     this._cameraQuadBuffer = this.gl.createBuffer();
     this._quadDecl = new Tw2VertexDeclaration();
-    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, this.gl.FLOAT, 4, 0));
-    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
+    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, this.gl.FLOAT, 4, 0));
+    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, this.gl.FLOAT, 2, 16));
     this._quadDecl.RebuildHash();
 
     this.alphaTestState = {};
@@ -329,13 +320,13 @@ Tw2Device.prototype.Tick = function()
     this.dt = this.previousTime === null ? 0 : (now - this.previousTime) * 0.001;
     this.previousTime = now;
 
-    var time = variableStore._variables['Time'].value;
+    var time = store.GetVariable('Time').value;
     time[3] = time[0];
     time[0] = this.currentTime;
     time[1] = this.currentTime - Math.floor(this.currentTime);
     time[2] = this.frameCounter;
 
-    var viewportSize = variableStore._variables['ViewportSize'].value;
+    var viewportSize = store.GetVariable('ViewportSize').value;
     viewportSize[0] = this.viewportWidth;
     viewportSize[1] = this.viewportHeight;
     viewportSize[2] = this.viewportWidth;
@@ -374,10 +365,7 @@ Tw2Device.prototype.SetView = function(matrix)
     mat4.invert(this.viewInverse, this.view);
     mat4.transpose(this.viewTranspose, this.view);
     mat4.getTranslation(this.eyePosition, this.viewInverse);
-
-    mat4.multiply(this.viewProjection, this.projection, this.view);
-    mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-    mat4.copy(variableStore._variables['ViewProjectionMat'], this.viewProjection);
+    this.UpdateViewProjection();
 };
 
 /**
@@ -392,15 +380,18 @@ Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
     mat4.transpose(this.projectionTranspose, this.projection);
     mat4.invert(this.projectionInverse, this.projection);
     this.GetTargetResolution(this.targetResolution);
-
-    if (forceUpdateViewProjection)
-    {
-        mat4.multiply(this.viewProjection, this.projection, this.view);
-        mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-        mat4.copy(variableStore._variables['ViewProjectionMat'].value, this.viewProjection);
-    }
+    if (forceUpdateViewProjection) this.UpdateViewProjection();
 };
 
+/**
+ * Updates the view projection matrix
+ */
+Tw2Device.prototype.UpdateViewProjection = function()
+{
+    mat4.multiply(this.viewProjection, this.projection, this.view);
+    mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
+    mat4.copy(store.GetVariable('ViewProjectionMat').value, this.viewProjection);
+};
 /**
  * Gets the device's target resolution
  * @param {vec4} out

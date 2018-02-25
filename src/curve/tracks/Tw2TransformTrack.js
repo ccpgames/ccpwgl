@@ -1,9 +1,10 @@
-import {curve, vec3, quat, mat4} from '../../math';
+import {curve, vec3, quat, mat4, util} from '../../math';
 import {resMan} from '../../core';
 
 /**
  * Tw2TransformTrack
  *
+ * @property {number|string} _id
  * @property {string} name
  * @property {string} resPath
  * @property {Object} res
@@ -23,6 +24,7 @@ export class Tw2TransformTrack
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
         this.resPath = '';
         this.res = null;

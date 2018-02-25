@@ -1,9 +1,11 @@
-import {curve, vec4} from '../../math';
+import {curve, util, vec4} from '../../math';
 
 /**
  * Tw2MayaAnimationEngine
  * TODO: Complete the prototype `_EvaluteBezier`
  *
+ * @property {number|string} _id
+ * @property {string} name
  * @property {Array} curves
  * @property {Array} hermiteSegments
  * @property {Array} bezierSegments
@@ -14,6 +16,8 @@ export class Tw2MayaAnimationEngine
 {
     constructor()
     {
+        this._id = util.generateID();
+        this.name = '';
         this.curves = [];
         this.hermiteSegments = [];
         this.bezierSegments = [];

@@ -19,7 +19,7 @@ import {Tw2VertexDeclaration} from './Tw2VertexDeclaration';
  * @inherit Tw2RenderBatch
  * @class
  */
-export class Tw2GeometryBatch extends Tw2Resource
+export class Tw2GeometryBatch extends Tw2RenderBatch
 {
     constructor()
     {

@@ -1,8 +1,10 @@
 /* eslint no-unused-vars:0 */
-import {vec3, vec4} from '../../math';
+import {vec3, vec4, util} from '../../math';
 
 /**
  * Tw2ParticleForce base class
+ *
+ * @property {number|string} _id
  * @property {string} name
  * @class
  */
@@ -10,6 +12,7 @@ export class Tw2ParticleForce
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
     }
 
