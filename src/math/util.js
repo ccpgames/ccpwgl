@@ -80,7 +80,7 @@ util.enableUUID = function(bool)
 /**
  * Generates an id
  * - Defaults to Object IDs
- * @type {?Function}
+ * @returns {string|number}
  */
 util.generateID = function()
 {
@@ -114,7 +114,7 @@ util.isArray = Array.isArray;
  */
 util.isArrayLike = function (a)
 {
-    return (a && util.isArray(a) || util.isTyped(a));
+    return a ? util.isArray(a) || util.isTyped(a) : false;
 };
 
 /**
@@ -150,7 +150,7 @@ util.isVector = function (a)
  */
 util.isTyped = function (a)
 {
-    return (a && a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT);
+    return a ? !!(a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT) : false;
 };
 
 /**

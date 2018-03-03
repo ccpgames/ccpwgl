@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 54);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(55);
+var _vec = __webpack_require__(56);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(61);
+var _quat = __webpack_require__(62);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(62);
+var _mat = __webpack_require__(63);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(63);
+var _mat2 = __webpack_require__(64);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(64);
+var _noise = __webpack_require__(65);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(65);
+var _curve = __webpack_require__(66);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -192,7 +192,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(66);
+var _util = __webpack_require__(67);
 
 Object.keys(_util).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +251,7 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(69);
+var _Tw2AnimationController = __webpack_require__(70);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +275,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2CurveSet = __webpack_require__(70);
+var _Tw2CurveSet = __webpack_require__(71);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +299,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2EffectRes = __webpack_require__(71);
+var _Tw2EffectRes = __webpack_require__(72);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +323,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(72);
+var _Tw2Float = __webpack_require__(73);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -347,7 +347,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(73);
+var _Tw2Frustum = __webpack_require__(74);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -371,7 +371,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(74);
+var _Tw2InstancedMesh = __webpack_require__(75);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -431,7 +431,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PostProcess = __webpack_require__(75);
+var _Tw2PostProcess = __webpack_require__(76);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -443,7 +443,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(76);
+var _Tw2RawData = __webpack_require__(77);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -479,7 +479,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(77);
+var _Tw2RuntimeInstanceData = __webpack_require__(78);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -527,7 +527,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(94);
+var _Tw2TransformParameter = __webpack_require__(95);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -539,7 +539,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(95);
+var _Tw2ValueBinding = __webpack_require__(96);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -641,7 +641,7 @@ var _Tw2Effect = __webpack_require__(23);
 
 var _Tw2VertexDeclaration = __webpack_require__(14);
 
-var WebGLDebugUtil = __webpack_require__(67);
+var WebGLDebugUtil = __webpack_require__(68);
 
 /**
  * Tw2Device
@@ -3282,12 +3282,12 @@ emitter.log = function (eventName, eventData) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(32);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -4447,7 +4447,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(96);
+var _Tw2ColorCurve = __webpack_require__(97);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4459,7 +4459,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(97);
+var _Tw2ColorCurve2 = __webpack_require__(98);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4471,7 +4471,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(98);
+var _Tw2EventCurve = __webpack_require__(99);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4483,7 +4483,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(99);
+var _Tw2PerlinCurve = __webpack_require__(100);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4495,7 +4495,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(100);
+var _Tw2QuaternionCurve = __webpack_require__(101);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4507,7 +4507,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(101);
+var _Tw2RandomConstantCurve = __webpack_require__(102);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4519,7 +4519,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(102);
+var _Tw2RigidOrientation = __webpack_require__(103);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4531,7 +4531,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(103);
+var _Tw2RotationCurve = __webpack_require__(104);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4543,7 +4543,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(104);
+var _Tw2ScalarCurve = __webpack_require__(105);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4555,7 +4555,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(105);
+var _Tw2ScalarCurve2 = __webpack_require__(106);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4567,7 +4567,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(106);
+var _Tw2SineCurve = __webpack_require__(107);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4579,7 +4579,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(107);
+var _Tw2Vector2Curve = __webpack_require__(108);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4591,7 +4591,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(108);
+var _Tw2Vector3Curve = __webpack_require__(109);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4603,7 +4603,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(109);
+var _Tw2VectorCurve = __webpack_require__(110);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -7526,22 +7526,7 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator) {
 
         if (this.visible.overlayEffects && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
             for (i = 0; i < this.overlayEffects.length; ++i) {
-                if (this.overlayEffects[i].display) {
-                    var effects = this.overlayEffects[i].GetEffects(mode);
-                    if (effects) {
-                        for (var j = 0; j < effects.length; ++j) {
-                            var batch = new _core.Tw2GeometryBatch();
-                            batch.renderMode = mode;
-                            batch.perObjectData = this._perObjectData;
-                            batch.geometryRes = this.mesh.geometryResource;
-                            batch.meshIx = this.mesh.meshIndex;
-                            batch.start = 0;
-                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                            batch.effect = effects[j];
-                            accumulator.Commit(batch);
-                        }
-                    }
-                }
+                this.overlayEffects[i].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
             }
         }
     }
@@ -11382,7 +11367,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(78);
+var _emitters = __webpack_require__(79);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11394,7 +11379,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(81);
+var _forces = __webpack_require__(82);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11406,7 +11391,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(88);
+var _generators = __webpack_require__(89);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11418,7 +11403,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(92);
+var _constraints = __webpack_require__(93);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11430,7 +11415,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(93);
+var _Tw2ParticleSystem = __webpack_require__(94);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11531,7 +11516,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(110);
+var _sequencers = __webpack_require__(111);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11543,7 +11528,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(119);
+var _tracks = __webpack_require__(120);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11555,7 +11540,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(122);
+var _maya = __webpack_require__(123);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11590,7 +11575,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(128);
+var _EveChildBillboard = __webpack_require__(129);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11602,7 +11587,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(129);
+var _EveChildContainer = __webpack_require__(130);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11614,7 +11599,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(130);
+var _EveChildExplosion = __webpack_require__(131);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11626,7 +11611,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(131);
+var _EveChildMesh = __webpack_require__(132);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11638,7 +11623,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(132);
+var _EveChildParticleSystem = __webpack_require__(133);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11652,6 +11637,218 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 
 /***/ }),
 /* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+exports.EveOccluder = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveOccluder
+ *
+ * @property {number|string} _id
+ * @property {String} name
+ * @property {number} value
+ * @property {Array.<EveSpriteSet>} sprites
+ * @class
+ */
+var EveOccluder = exports.EveOccluder = function () {
+        function EveOccluder() {
+                _classCallCheck(this, EveOccluder);
+
+                this._id = _math.util.generateID();
+                this.name = '';
+                this.value = 1;
+                this.sprites = [];
+
+                EveOccluder.init();
+        }
+
+        /**
+         * UpdateValues
+         * @param {mat4} parentTransform
+         * @param {number} index
+         */
+
+
+        _createClass(EveOccluder, [{
+                key: 'UpdateValue',
+                value: function UpdateValue(parentTransform, index) {
+                        if (!_core.device.alphaBlendBackBuffer) return;
+
+                        var d = _core.device,
+                            g = EveOccluder.global,
+                            worldViewProj = g.mat4_0,
+                            center = g.vec4_0;
+
+                        g.accumulator.Clear();
+
+                        for (var i = 0; i < this.sprites.length; ++i) {
+                                this.sprites[i].UpdateViewDependentData(parentTransform);
+                                this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
+                        }
+
+                        var occluderValue = _core.variableStore._variables['OccluderValue'].value;
+                        occluderValue[0] = (1 << index * 2) / 255.0;
+                        occluderValue[1] = (2 << index * 2) / 255.0;
+                        occluderValue[2] = 0;
+                        occluderValue[3] = 0;
+
+                        g.accumulator.Render();
+
+                        _math.mat4.multiply(worldViewProj, d.viewProjection, this.sprites[0].worldTransform);
+                        _math.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
+
+                        var x0 = (center[0] / center[3] + 1) * 0.5,
+                            y0 = (center[1] / center[3] + 1) * 0.5;
+
+                        _math.vec4.set(center, 0.5, 0.5, 0, 1);
+                        _math.vec4.transformMat4(center, center, worldViewProj);
+
+                        var x1 = (center[0] / center[3] + 1) * 0.5,
+                            y1 = (center[1] / center[3] + 1) * 0.5;
+
+                        center[0] = x0;
+                        center[1] = y0;
+                        center[2] = x1 - x0;
+                        center[3] = y1 - y0;
+
+                        g.effect.parameters.OccluderPosition.SetValue(center);
+                }
+
+                /**
+                 * CollectSamples
+                 * @param {Tw2TextureRes} tex
+                 * @param {number} index
+                 * @param {number} total
+                 * @param {number} samples
+                 * @returns boolean
+                 */
+
+        }], [{
+                key: 'CollectSamples',
+                value: function CollectSamples(tex, index, total, samples) {
+                        var d = _core.device,
+                            g = this.global,
+                            effect = g.effect,
+                            vertexBuffer = g.vertexBuffer,
+                            decl = g.decl;
+
+                        if (!effect.effectRes || !effect.effectRes.IsGood()) return false;
+
+                        effect.parameters.BackBuffer.textureRes = tex;
+                        effect.parameters.OccluderIndex.SetValue([index, total, samples]);
+
+                        d.SetStandardStates(d.RM_ADDITIVE);
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
+
+                        for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                                effect.ApplyPass(pass);
+                                if (decl.SetDeclaration(effect.GetPassInput(pass), 16)) return false;
+                                d.ApplyShadowState();
+                                d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
+                        }
+                        return true;
+                }
+
+                /**
+                 * Initializes class globals and scratch variables
+                 */
+
+        }, {
+                key: 'init',
+                value: function init() {
+                        if (EveOccluder.global) return;
+
+                        _core.variableStore.RegisterVariable('OccluderValue', _math.vec4.fromValues(1, 1, 0, 0));
+
+                        var d = _core.device,
+                            g = EveOccluder.global = {};
+
+                        g.mat4_0 = _math.mat4.create();
+                        g.vec4_0 = _math.vec4.create();
+                        g.accumulator = new _core.Tw2BatchAccumulator();
+
+                        g.effect = new _core.Tw2Effect();
+                        g.effect.name = 'Occluder sample collector';
+                        g.effect.effectFilePath = 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx';
+                        g.effect.parameters.OccluderPosition = new _core.Tw2Vector4Parameter('OccluderPosition');
+                        g.effect.parameters.OccluderIndex = new _core.Tw2Vector3Parameter('OccluderIndex');
+                        g.effect.parameters.BackBuffer = new _core.Tw2TextureParameter('BackBuffer');
+
+                        g.vertexBuffer = null;
+                        g.decl = new _core.Tw2VertexDeclaration();
+                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, d.gl.FLOAT, 2, 0));
+                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, d.gl.FLOAT, 2, 8));
+                        g.decl.RebuildHash();
+
+                        var vb = new Float32Array(255 * 6 * 4);
+                        var index = 0;
+                        for (var i = 0; i < 16; ++i) {
+                                for (var j = 0; j < 16; ++j) {
+                                        var x = (i + Math.random()) / 16 * 2 - 1,
+                                            y = (j + Math.random()) / 16 * 2 - 1;
+
+                                        vb[index++] = 1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = -1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = 1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+
+                                        vb[index++] = -1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = 1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = -1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                }
+                        }
+
+                        g.vertexBuffer = d.gl.createBuffer();
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, g.vertexBuffer);
+                        d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+                }
+        }]);
+
+        return EveOccluder;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {*}
+ */
+
+
+EveOccluder.global = null;
+
+/***/ }),
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11676,7 +11873,7 @@ function EveLocator() {
 }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11974,7 +12171,7 @@ EveBoosterSet.prototype.Render = function (overrideEffect) {
 EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12260,7 +12457,7 @@ EvePlaneSet.scratch = {
 };
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12606,7 +12803,7 @@ EveSpotlightSet.prototype._Render = function (effect, buffer) {
 };
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13102,7 +13299,7 @@ EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, max
 };
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13308,7 +13505,7 @@ EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect) {
 };
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13650,7 +13847,7 @@ EveTransform.Modifier = {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13896,7 +14093,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13931,7 +14128,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(127);
+var _eve = __webpack_require__(128);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13992,7 +14189,7 @@ _core.resMan.Register({
 exports.math = math;
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14008,7 +14205,7 @@ var _glMatrix = __webpack_require__(8);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14478,7 +14675,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14980,7 +15177,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16718,7 +16915,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17409,7 +17606,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18052,7 +18249,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18146,7 +18343,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18162,7 +18359,7 @@ var _glMatrix = __webpack_require__(8);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18353,7 +18550,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18563,7 +18760,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18924,7 +19121,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19002,7 +19199,7 @@ util.enableUUID = function (bool) {
 /**
  * Generates an id
  * - Defaults to Object IDs
- * @type {?Function}
+ * @returns {string|number}
  */
 util.generateID = function () {
     if (USE_UUID === null) USE_UUID = false;
@@ -19033,7 +19230,7 @@ util.isArray = Array.isArray;
  * @returns {boolean}
  */
 util.isArrayLike = function (a) {
-    return a && util.isArray(a) || util.isTyped(a);
+    return a ? util.isArray(a) || util.isTyped(a) : false;
 };
 
 /**
@@ -19063,7 +19260,7 @@ util.isVector = function (a) {
  * @returns {boolean}
  */
 util.isTyped = function (a) {
-    return a && a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT;
+    return a ? !!(a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT) : false;
 };
 
 /**
@@ -19096,7 +19293,7 @@ util.toArray = function (a) {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -20300,10 +20497,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 var g;
@@ -20330,7 +20527,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21139,7 +21336,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
 };
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21243,7 +21440,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21825,7 +22022,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21845,7 +22042,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21976,7 +22173,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22151,7 +22348,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22336,7 +22533,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22422,7 +22619,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22635,7 +22832,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22645,7 +22842,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(79);
+var _Tw2StaticEmitter = __webpack_require__(80);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22657,7 +22854,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(80);
+var _Tw2DynamicEmitter = __webpack_require__(81);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22670,7 +22867,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22826,7 +23023,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22946,7 +23143,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22956,7 +23153,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(82);
+var _Tw2ParticleAttractorForce = __webpack_require__(83);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22968,7 +23165,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(83);
+var _Tw2ParticleDirectForce = __webpack_require__(84);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22980,7 +23177,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(84);
+var _Tw2ParticleDragForce = __webpack_require__(85);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22992,7 +23189,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(85);
+var _Tw2ParticleFluidDragForce = __webpack_require__(86);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23004,7 +23201,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(86);
+var _Tw2ParticleSpring = __webpack_require__(87);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23016,7 +23213,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(87);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(88);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23029,7 +23226,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23101,7 +23298,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23162,7 +23359,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23223,7 +23420,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23309,7 +23506,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23374,7 +23571,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23479,7 +23676,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23489,7 +23686,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(89);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(90);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23501,7 +23698,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(90);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(91);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23513,7 +23710,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(91);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(92);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23526,7 +23723,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23617,7 +23814,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23708,7 +23905,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23858,14 +24055,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24407,7 +24604,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24501,7 +24698,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24777,7 +24974,7 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25017,7 +25214,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25287,7 +25484,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25460,7 +25657,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25566,7 +25763,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25846,7 +26043,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25938,7 +26135,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26123,7 +26320,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26384,7 +26581,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26637,7 +26834,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26929,7 +27126,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27023,7 +27220,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27326,7 +27523,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27632,7 +27829,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27887,7 +28084,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27897,7 +28094,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(111);
+var _Tw2ColorSequencer = __webpack_require__(112);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27909,7 +28106,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(112);
+var _Tw2EulerRotation = __webpack_require__(113);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27921,7 +28118,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(113);
+var _Tw2QuaternionSequencer = __webpack_require__(114);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27933,7 +28130,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(114);
+var _Tw2RGBAScalarSequencer = __webpack_require__(115);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27945,7 +28142,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(115);
+var _Tw2ScalarSequencer = __webpack_require__(116);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27957,7 +28154,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(116);
+var _Tw2VectorSequencer = __webpack_require__(117);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27969,7 +28166,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(117);
+var _Tw2XYZScalarSequencer = __webpack_require__(118);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27981,7 +28178,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(118);
+var _Tw2YPRSequencer = __webpack_require__(119);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27994,7 +28191,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28157,7 +28354,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28308,7 +28505,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28449,7 +28646,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28590,7 +28787,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28772,7 +28969,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28936,7 +29133,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29074,7 +29271,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29228,7 +29425,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29238,7 +29435,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(120);
+var _Tw2WbgTrack = __webpack_require__(121);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29250,7 +29447,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(121);
+var _Tw2TransformTrack = __webpack_require__(122);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29263,7 +29460,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29427,7 +29624,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29565,7 +29762,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29575,7 +29772,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(123);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(124);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29587,7 +29784,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(124);
+var _Tw2MayaScalarCurve = __webpack_require__(125);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29599,7 +29796,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(125);
+var _Tw2MayaVector3Curve = __webpack_require__(126);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29611,7 +29808,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(126);
+var _Tw2MayaAnimationEngine = __webpack_require__(127);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29624,7 +29821,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29795,7 +29992,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29911,7 +30108,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30063,7 +30260,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30438,7 +30635,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30460,6 +30657,18 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
+var _effect = __webpack_require__(134);
+
+Object.keys(_effect).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _effect[key];
+    }
+  });
+});
+
 var _EveBasicPerObjectData = __webpack_require__(17);
 
 Object.keys(_EveBasicPerObjectData).forEach(function (key) {
@@ -30472,7 +30681,7 @@ Object.keys(_EveBasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(46);
+var _EveLocator = __webpack_require__(47);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30484,31 +30693,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(133);
-
-Object.keys(_EveStretch).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveStretch[key];
-    }
-  });
-});
-
-var _EveTurretFiringFX = __webpack_require__(134);
-
-Object.keys(_EveTurretFiringFX).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTurretFiringFX[key];
-    }
-  });
-});
-
-var _EveBoosterSet = __webpack_require__(47);
+var _EveBoosterSet = __webpack_require__(48);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30520,7 +30705,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(135);
+var _EveCurveLineSet = __webpack_require__(139);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30532,7 +30717,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(48);
+var _EvePlaneSet = __webpack_require__(49);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30544,7 +30729,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(49);
+var _EveSpotlightSet = __webpack_require__(50);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30556,7 +30741,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(50);
+var _EveSpriteSet = __webpack_require__(51);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30568,7 +30753,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(136);
+var _EveTurretSet = __webpack_require__(140);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30580,19 +30765,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(137);
-
-Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveMeshOverlayEffect[key];
-    }
-  });
-});
-
-var _EveSpaceObjectDecal = __webpack_require__(51);
+var _EveSpaceObjectDecal = __webpack_require__(52);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30604,7 +30777,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(138);
+var _EvePlanet = __webpack_require__(141);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30616,7 +30789,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(53);
+var _EveShip = __webpack_require__(54);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30640,7 +30813,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(52);
+var _EveTransform = __webpack_require__(53);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30652,7 +30825,7 @@ Object.keys(_EveTransform).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(139);
+var _EveEffectRoot = __webpack_require__(142);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30664,7 +30837,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(140);
+var _EveMissile = __webpack_require__(143);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30676,7 +30849,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(142);
+var _EveSpaceScene = __webpack_require__(145);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30688,31 +30861,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveLensflare = __webpack_require__(143);
-
-Object.keys(_EveLensflare).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveLensflare[key];
-    }
-  });
-});
-
-var _EveOccluder = __webpack_require__(144);
-
-Object.keys(_EveOccluder).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveOccluder[key];
-    }
-  });
-});
-
-var _EveSOF = __webpack_require__(145);
+var _EveSOF = __webpack_require__(146);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30725,7 +30874,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30843,7 +30992,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30948,7 +31097,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30985,7 +31134,7 @@ var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31098,7 +31247,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31210,7 +31359,78 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 133 */
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveLensflare = __webpack_require__(135);
+
+Object.keys(_EveLensflare).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveLensflare[key];
+    }
+  });
+});
+
+var _EveMeshOverlayEffect = __webpack_require__(136);
+
+Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveMeshOverlayEffect[key];
+    }
+  });
+});
+
+var _EveOccluder = __webpack_require__(46);
+
+Object.keys(_EveOccluder).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveOccluder[key];
+    }
+  });
+});
+
+var _EveStretch = __webpack_require__(137);
+
+Object.keys(_EveStretch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveStretch[key];
+    }
+  });
+});
+
+var _EveTurretFiringFX = __webpack_require__(138);
+
+Object.keys(_EveTurretFiringFX).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveTurretFiringFX[key];
+    }
+  });
+});
+
+/***/ }),
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31219,22 +31439,540 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveStretch = EveStretch;
+exports.EveLensflare = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
+var _EveOccluder = __webpack_require__(46);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveLensFlare
+ *
+ * @property {number|string} _id
+ * @property {String} name=
+ * @property {boolean} display
+ * @property {boolean} update
+ * @property {boolean} doOcclusionQueries
+ * @property {number} cameraFactor
+ * @property {vec3} position
+ * @property {Array} flares
+ * @property {Array.<EveOccluder>} occluders
+ * @property {Array.<EveOccluder>} backgroundOccluders
+ * @property {number} occlusionIntensity
+ * @property {number} backgroundOcclusionIntensity
+ * @property {Array} distanceToEdgeCurves
+ * @property {Array} distanceToCenterCurves
+ * @property {Array} radialAngleCurves
+ * @property {Array} xDistanceToCenter
+ * @property {Array} yDistanceToCenter
+ * @property {Array} bindings
+ * @property {Array.<Tw2CurveSet> curveSets
+ * @property {?Tw2Mesh} mesh
+ * @property {vec3} _direction
+ * @property {mat4} _transform
+ * @property {*} _backBuffer
+ * @class
+ */
+var EveLensflare = exports.EveLensflare = function () {
+    function EveLensflare() {
+        _classCallCheck(this, EveLensflare);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.update = true;
+        this.doOcclusionQueries = true;
+        this.cameraFactor = 20;
+        this.position = _math.vec3.create();
+        this.flares = [];
+        this.occluders = [];
+        this.backgroundOccluders = [];
+        this.occlusionIntensity = 1;
+        this.backgroundOcclusionIntensity = 1;
+        this.distanceToEdgeCurves = [];
+        this.distanceToCenterCurves = [];
+        this.radialAngleCurves = [];
+        this.xDistanceToCenter = [];
+        this.yDistanceToCenter = [];
+        this.bindings = [];
+        this.curveSets = [];
+        this.mesh = null;
+        this._direction = _math.vec3.create();
+        this._transform = _math.mat4.create();
+        this._backBuffer = null;
+
+        EveLensflare.init();
+    }
+
+    /**
+     * Gets lensflares's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
+
+
+    _createClass(EveLensflare, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.mesh) this.mesh.GetResources(out);
+
+            for (var i = 0; i < this.flares.length; i++) {
+                this.flares[i].GetResources(out);
+            }
+
+            if (_EveOccluder.EveOccluder.global && _EveOccluder.EveOccluder.global.effect && !out.includes(_EveOccluder.EveOccluder.global.effect)) {
+                out.push(_EveOccluder.EveOccluder.global.effect);
+            }
+
+            return out;
+        }
+
+        /**
+         * Updates Occluders
+         */
+
+    }, {
+        key: 'UpdateOccluders',
+        value: function UpdateOccluders() {
+            if (!this.doOcclusionQueries) return;
+
+            var d = _core.device,
+                g = EveLensflare.global;
+
+            if (!g.occluderLevels[0].texture || g.occluderLevels[0].width < this.occluders.length * 2) {
+                for (var i = 0; i < g.occluderLevels.length; ++i) {
+                    g.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
+                }
+            }
+
+            // TODO: Is this deprecated?
+            for (var j = 0; j < this.flares.length; ++j) {
+                if ('_backBuffer' in this.flares[j]) {
+                    this.flares[j]._backBuffer.textureRes = g.occluderLevels.texture;
+                }
+            }
+
+            this.occlusionIntensity = 1;
+            this.backgroundOcclusionIntensity = 1;
+
+            g.occluderLevels[g.occludedLevelIndex].Set();
+            d.SetStandardStates(d.RM_OPAQUE);
+            d.gl.clearColor(0.0, 0.0, 0.0, 1.0);
+            d.gl.clear(d.gl.COLOR_BUFFER_BIT);
+            g.occluderLevels[g.occludedLevelIndex].Unset();
+
+            var samples = 1;
+            if (d.antialiasing) {
+                samples = d.msaaSamples;
+                d.gl.sampleCoverage(1.0 / samples, false);
+            }
+
+            for (var _i = 0; _i < this.occluders.length; ++_i) {
+                d.SetRenderState(d.RS_COLORWRITEENABLE, 8);
+                d.gl.colorMask(false, false, false, true);
+                d.gl.clearColor(0.0, 0.0, 0.0, 0.0);
+                d.gl.clear(d.gl.COLOR_BUFFER_BIT);
+
+                // Turn off antialiasing
+                if (d.antialiasing) {
+                    d.gl.enable(d.gl.SAMPLE_COVERAGE);
+                    d.gl.sampleCoverage(0.25, false);
+                }
+                this.occluders[_i].UpdateValue(this._transform, _i);
+                if (d.antialiasing) d.gl.disable(d.gl.SAMPLE_COVERAGE);
+
+                // Copy back buffer into a texture
+                if (!g.backBuffer.texture) g.backBuffer.Attach(d.gl.createTexture());
+                d.gl.bindTexture(d.gl.TEXTURE_2D, g.backBuffer.texture);
+                if (g.backBuffer.width !== d.viewportWidth || g.backBuffer.height !== d.viewportHeight) {
+                    d.gl.texImage2D(d.gl.TEXTURE_2D, 0, d.gl.RGBA, d.viewportWidth, d.viewportHeight, 0, d.gl.RGBA, d.gl.UNSIGNED_BYTE, null);
+                    d.gl.texParameteri(d.gl.TEXTURE_2D, d.gl.TEXTURE_MAG_FILTER, d.gl.LINEAR);
+                    d.gl.texParameteri(d.gl.TEXTURE_2D, d.gl.TEXTURE_MIN_FILTER, d.gl.LINEAR);
+                    g.backBuffer.width = d.viewportWidth;
+                    g.backBuffer.height = d.viewportHeight;
+                }
+                d.gl.copyTexImage2D(d.gl.TEXTURE_2D, 0, d.alphaBlendBackBuffer ? d.gl.RGBA : d.gl.RGB, 0, 0, g.backBuffer.width, g.backBuffer.height, 0);
+                d.gl.bindTexture(d.gl.TEXTURE_2D, null);
+
+                // Collect samples
+                g.occluderLevels[g.occludedLevelIndex].Set();
+                _EveOccluder.EveOccluder.CollectSamples(g.backBuffer, _i, g.occluderLevels[0].width / 2, samples);
+                g.occluderLevels[g.occludedLevelIndex].Unset();
+            }
+
+            if (d.antialiasing) d.gl.sampleCoverage(1, false);
+
+            g.occluderLevels[(g.occludedLevelIndex + 1) % g.occluderLevels.length].Set();
+            var pixels = new Uint8Array(g.occluderLevels[0].width * 4);
+            d.gl.readPixels(0, 0, 2, 1, d.gl.RGBA, d.gl.UNSIGNED_BYTE, pixels);
+            g.occluderLevels[(g.occludedLevelIndex + 1) % g.occluderLevels.length].Unset();
+
+            this.occlusionIntensity = 1;
+            for (var _i2 = 0; _i2 < g.occluderLevels[0].width * 2; _i2 += 4) {
+                this.occlusionIntensity *= pixels[_i2 + 1] ? pixels[_i2] / pixels[_i2 + 1] : 1;
+            }
+
+            this.backgroundOcclusionIntensity = this.occlusionIntensity;
+
+            var occlusion = _core.variableStore._variables['LensflareFxOccScale'].value;
+            occlusion[0] = this.occlusionIntensity;
+            occlusion[1] = this.occlusionIntensity;
+            occlusion[2] = 0;
+            occlusion[3] = 0;
+
+            g.occludedLevelIndex = (g.occludedLevelIndex + 1) % g.occluderLevels.length;
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (this.display) {
+                var viewDir = _math.vec4.set(EveLensflare.global.vec4_0, 0, 0, 1, 0);
+
+                _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
+                if (_math.vec3.dot(viewDir, this._direction) < 0) return;
+
+                for (var i = 0; i < this.flares.length; ++i) {
+                    this.flares[i].GetBatches(mode, accumulator, perObjectData);
+                }
+
+                if (this.mesh) {
+                    this.mesh.GetBatches(mode, accumulator, perObjectData);
+                }
+            }
+        }
+
+        /**
+         * Prepares the lensflare for rendering
+         */
+
+    }, {
+        key: 'PrepareRender',
+        value: function PrepareRender() {
+            if (!this.display) return;
+
+            var g = EveLensflare.global,
+                viewDir = g.vec4_0,
+                cameraPos = g.vec3_0,
+                scaleMat = _math.mat4.identity(g.mat4_0),
+                cameraSpacePos = g.vec3_2,
+                negDirVec = g.vec3_3,
+                negPos = g.vec3_1,
+                dist = g.vec4_1;
+
+            _math.vec3.transformMat4(cameraPos, [0, 0, 0], _core.device.viewInverse);
+
+            if (_math.vec3.length(this.position) === 0) {
+                _math.vec3.negate(negPos, cameraPos);
+                //let distScale = vec3.length(negPos);
+                //distScale = distScale > 1.5 ? 1 / Math.log(distScale) : 2.5;
+            } else {
+                _math.vec3.negate(negPos, this.position);
+                _math.vec3.normalize(this._direction, negPos);
+            }
+
+            _math.vec4.transformMat4(viewDir, [0, 0, 1, 0], _core.device.viewInverse);
+            _math.vec3.scaleAndAdd(cameraSpacePos, cameraPos, viewDir, -this.cameraFactor);
+            _math.vec3.negate(negDirVec, this._direction);
+            _math.mat4.arcFromForward(this._transform, negDirVec);
+            _math.mat4.setTranslation(this._transform, cameraSpacePos);
+            _math.mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
+            //mat4.multiply(scaleMat, scaleMat, this._transform);
+
+            var dir = this._direction,
+                dirScale = _core.variableStore._variables['LensflareFxDirectionScale'].value;
+
+            dirScale[0] = dir[0];
+            dirScale[1] = dir[1];
+            dirScale[2] = dir[2];
+            dirScale[3] = 1;
+
+            _math.vec4.set(dist, dir[0], dir[1], dir[2], 0);
+            _math.vec4.transformMat4(dist, dist, _core.device.view);
+            _math.vec4.transformMat4(dist, dist, _core.device.projection);
+            dist[0] /= dist[3];
+            dist[1] /= dist[3];
+
+            var distToEdge = 1 - Math.min(1 - Math.abs(dist[0]), 1 - Math.abs(dist[1])),
+                distToCenter = Math.sqrt(dist[0] * dist[0] + dist[1] * dist[1]),
+                radialAngle = Math.atan2(dist[1], dist[0]) + Math.PI;
+
+            for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
+                this.distanceToEdgeCurves[i].UpdateValue(distToEdge);
+            }
+
+            for (var _i3 = 0; _i3 < this.distanceToCenterCurves.length; ++_i3) {
+                this.distanceToCenterCurves[_i3].UpdateValue(distToCenter);
+            }
+
+            for (var _i4 = 0; _i4 < this.radialAngleCurves.length; ++_i4) {
+                this.radialAngleCurves[_i4].UpdateValue(radialAngle);
+            }
+
+            for (var _i5 = 0; _i5 < this.xDistanceToCenter.length; ++_i5) {
+                this.xDistanceToCenter[_i5].UpdateValue(dist[0] + 10);
+            }
+
+            for (var _i6 = 0; _i6 < this.yDistanceToCenter.length; ++_i6) {
+                this.yDistanceToCenter[_i6].UpdateValue(dist[1] + 10);
+            }
+
+            for (var _i7 = 0; _i7 < this.bindings.length; ++_i7) {
+                this.bindings[_i7].CopyValue();
+            }
+
+            for (var _i8 = 0; _i8 < this.flares.length; ++_i8) {
+                this.flares[_i8].UpdateViewDependentData(this._transform);
+            }
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveLensflare.global) {
+                _core.variableStore.RegisterVariables({
+                    LensflareFxOccScale: _math.vec4.fromValues(1, 1, 0, 0),
+                    LensflareFxDirectionScale: _math.vec4.create()
+                });
+
+                var g = EveLensflare.global = {};
+                g.vec3_0 = _math.vec3.create();
+                g.vec3_1 = _math.vec3.create();
+                g.vec3_2 = _math.vec3.create();
+                g.vec3_3 = _math.vec3.create();
+                g.vec4_0 = _math.vec4.create();
+                g.vec4_1 = _math.mat4.create();
+                g.mat4_0 = _math.mat4.create();
+
+                g.backBuffer = new _core.Tw2TextureRes();
+                g.backBuffer.width = 0;
+                g.backBuffer.height = 0;
+                g.backBuffer.hasMipMaps = false;
+                g.occludedLevelIndex = 0;
+                g.occluderLevels = [new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget()];
+            }
+        }
+    }]);
+
+    return EveLensflare;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveLensflare.global = null;
+
+/***/ }),
+/* 136 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveMeshOverlayEffect = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _core = __webpack_require__(1);
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Constructor for Overlay Effects
+ *
+ * @property {number|string} _id
+ * @property {string} name
+ * @property {boolean} display                     - Enables/ disables all batch accumulations
+ * @property {{}} visible                          - Batch accumulation options for the overlay effect
+ * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
+ * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
+ * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
+ * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
+ * @property {boolean} visible.distortionEffects   - Currently not supported
+ * @property {boolean} update
+ * @property {Tw2CurveSet} curveSet
+ * @property {Array.<Tw2Effect>} opaqueEffects
+ * @property {Array.<Tw2Effect>} decalEffects
+ * @property {Array.<Tw2Effect>} transparentEffects
+ * @property {Array.<Tw2Effect>} additiveEffects
+ * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
+ * @class
+ */
+var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
+    function EveMeshOverlayEffect() {
+        _classCallCheck(this, EveMeshOverlayEffect);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.visible = {};
+        this.visible.opaqueEffects = true;
+        this.visible.decalEffects = true;
+        this.visible.transparentEffects = true;
+        this.visible.additiveEffects = true;
+        this.visible.distortionEffects = false;
+        this.update = true;
+        this.curveSet = null;
+        this.opaqueEffects = [];
+        this.decalEffects = [];
+        this.transparentEffects = [];
+        this.additiveEffects = [];
+        this.distortionEffects = [];
+    }
+
+    /**
+     * Gets the mesh overlay's resources
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
+
+
+    _createClass(EveMeshOverlayEffect, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            _math.util.perArrayChild(this.opaqueEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.decalEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.transparentEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.additiveEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.distortionEffects, 'GetResources', out);
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this.update && this.curveSet) this.curveSet.Update(dt);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {Tw2Mesh} mesh
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData, mesh) {
+            if (!this.display || !mesh || !mesh.geometryResource) return;
+
+            var effects = this.GetEffects(mode);
+            for (var i = 0; i < effects.length; i++) {
+                var batch = new _core.Tw2GeometryBatch();
+                batch.renderMode = mode;
+                batch.perObjectData = perObjectData;
+                batch.geometryRes = mesh.geometryResource;
+                batch.meshIx = mesh.meshIndex;
+                batch.start = 0;
+                batch.count = mesh.geometryResource.meshes[mesh.meshIndex].areas.length;
+                batch.effect = effects[i];
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Gets effects
+         * @param {number} mode
+         * @returns {Array.<Tw2Effect>}
+         */
+
+    }, {
+        key: 'GetEffects',
+        value: function GetEffects(mode) {
+            if (this.display) {
+                switch (mode) {
+                    case _core.device.RM_OPAQUE:
+                        if (this.visible.opaqueEffects) return this.opaqueEffects;
+                        break;
+
+                    case _core.device.RM_TRANSPARENT:
+                        if (this.visible.transparentEffects) return this.transparentEffects;
+                        break;
+
+                    case _core.device.RM_ADDITIVE:
+                        if (this.visible.additiveEffects) return this.additiveEffects;
+                        break;
+
+                    case _core.device.RM_DECAL:
+                        if (this.visible.decalEffects) return this.decalEffects;
+                        break;
+                }
+            }
+            return [];
+        }
+    }]);
+
+    return EveMeshOverlayEffect;
+}();
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveStretch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _index = __webpack_require__(0);
+
+var _index2 = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * EveStretch
+ *
+ * @property {string|number} _id
  * @property {String} name
  * @property {boolean} display
  * @property {boolean} update
- * @property source
- * @property dest
- * @property sourceObject
- * @property destObject
- * @property {Array.<CurveSets>} curveSets
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {*} source
+ * @property {*} dest
+ * @property {*} sourceObject
+ * @property {*} destObject
+ * @property {*} stretchObject
  * @property {Tw2Float} length
  * @property {number} _time
  * @property {boolean} _useTransformsForStretch
@@ -31245,216 +31983,265 @@ var _core = __webpack_require__(1);
  * @property {boolean} _displayDestObject
  * @property {boolean} _useTransformsForStretch
  * @property {boolean} _isNegZForward
- * @constructor
+ * @class
  */
-function EveStretch() {
-    this.name = '';
-    this.display = true;
-    this.update = true;
-    this.source = null;
-    this.dest = null;
-    this.sourceObject = null;
-    this.destObject = null;
-    this.stretchObject = null;
-    this.curveSets = [];
-    this.length = new _core.Tw2Float();
-    this._time = 0;
-    this._useTransformsForStretch = false;
-    this._sourcePosition = _math.vec3.create();
-    this._destinationPosition = _math.vec3.create();
-    this._displaySourceObject = true;
-    this._sourceTransform = null;
-    this._displayDestObject = true;
-    this._useTransformsForStretch = false;
-    this._isNegZForward = false;
-}
+var EveStretch = exports.EveStretch = function () {
+    function EveStretch() {
+        _classCallCheck(this, EveStretch);
 
-/**
- * Scratch variables
- */
-EveStretch.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    mat4_0: _math.mat4.create(),
-    mat4_1: _math.mat4.create()
-};
+        this._id = _index.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.update = true;
+        this.curveSets = [];
+        this.source = null;
+        this.dest = null;
+        this.sourceObject = null;
+        this.destObject = null;
+        this.stretchObject = null;
+        this.length = new _index2.Tw2Float();
+        this._time = 0;
+        this._useTransformsForStretch = false;
+        this._sourcePosition = _index.vec3.create();
+        this._destinationPosition = _index.vec3.create();
+        this._displaySourceObject = true;
+        this._sourceTransform = null;
+        this._displayDestObject = true;
+        this._useTransformsForStretch = false;
+        this._isNegZForward = false;
 
-/**
- * Per frame update
- * @param {number} dt - delta time
- */
-EveStretch.prototype.Update = function (dt) {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
-    }
-    this._time += dt;
-    if (this.source) {
-        this.source.GetValueAt(this._time, this._sourcePosition);
-    } else if (this._useTransformsForStretch) {
-        this._sourcePosition[0] = this._sourceTransform[12];
-        this._sourcePosition[1] = this._sourceTransform[13];
-        this._sourcePosition[2] = this._sourceTransform[14];
-    }
-    if (this.dest) {
-        this.source.GetValueAt(this._time, this._destinationPosition);
+        EveStretch.init();
     }
 
-    var directionVec = _math.vec3.subtract(EveStretch.scratch.vec3_0, this._destinationPosition, this._sourcePosition);
-    this.length.value = _math.vec3.length(directionVec);
-    _math.vec3.normalize(directionVec, directionVec);
+    /**
+     * Gets source position
+     * @param {vec3} position
+     */
 
-    if (this.sourceObject && this._displaySourceObject) {
-        this.sourceObject.Update(dt);
-    }
-    if (this.stretchObject) {
-        this.stretchObject.Update(dt);
-    }
-    if (this.destObject && this._displayDestObject) {
-        this.destObject.Update(dt);
-    }
-};
 
-/**
- * Updates view dependent data
- */
-EveStretch.prototype.UpdateViewDependentData = function () {
-    if (!this.display) {
-        return;
-    }
-
-    var scratch = EveStretch.scratch;
-    var directionVec = _math.vec3.subtract(scratch.vec3_0, this._destinationPosition, this._sourcePosition);
-    var scalingLength = _math.vec3.length(directionVec);
-    _math.vec3.normalize(directionVec, directionVec);
-
-    var m = _math.mat4.identity(scratch.mat4_0),
-        x = _math.vec3.set(scratch.vec3_1, 0, 0, 0),
-        up = _math.vec3.set(scratch.vec3_2, 0, 0, 0);
-
-    if (this._useTransformsForStretch) {
-        _math.mat4.rotateX(m, m, -Math.PI / 2);
-        _math.mat4.multiply(m, this._sourceTransform, m);
-    } else {
-        if (Math.abs(directionVec[1]) > 0.9) {
-            up[2] = 1;
-        } else {
-            up[1] = 1;
+    _createClass(EveStretch, [{
+        key: 'SetSourcePosition',
+        value: function SetSourcePosition(position) {
+            this._useTransformsForStretch = false;
+            this._sourcePosition = position;
         }
-        _math.vec3.cross(x, up, directionVec);
-        _math.vec3.normalize(x, x);
-        _math.vec3.cross(up, directionVec, x);
-        m[0] = x[0];
-        m[1] = x[1];
-        m[2] = x[2];
-        m[4] = -directionVec[0];
-        m[5] = -directionVec[1];
-        m[6] = -directionVec[2];
-        m[8] = up[0];
-        m[9] = up[1];
-        m[10] = up[2];
-    }
-    if (this.destObject && this._displayDestObject) {
-        m[12] = this._destinationPosition[0];
-        m[13] = this._destinationPosition[1];
-        m[14] = this._destinationPosition[2];
-        this.destObject.UpdateViewDependentData(m);
-    }
-    if (this.sourceObject && this._displaySourceObject) {
-        if (this._useTransformsForStretch) {
-            _math.mat4.identity(m);
-            _math.mat4.rotateX(m, m, -Math.PI / 2);
-            _math.mat4.multiply(m, this._sourceTransform, m);
-        } else {
-            m[12] = this._sourcePosition[0];
-            m[13] = this._sourcePosition[1];
-            m[14] = this._sourcePosition[2];
+
+        /**
+         * Sets the destination position
+         * @param {vec3} position
+         */
+
+    }, {
+        key: 'SetDestinationPosition',
+        value: function SetDestinationPosition(position) {
+            this._destinationPosition = position;
         }
-        this.sourceObject.UpdateViewDependentData(m);
-    }
-    if (this.stretchObject) {
-        if (this._useTransformsForStretch) {
-            _math.mat4.identity(m);
-            _math.mat4.scale(m, m, [1, 1, scalingLength]);
-            _math.mat4.multiply(m, this._sourceTransform, m);
-        } else {
-            m[0] = x[0];
-            m[1] = x[1];
-            m[2] = x[2];
-            m[4] = up[0];
-            m[5] = up[1];
-            m[6] = up[2];
-            m[8] = -directionVec[0];
-            m[9] = -directionVec[1];
-            m[10] = -directionVec[2];
-            if (this._isNegZForward) {
-                scalingLength = -scalingLength;
+
+        /**
+         * Sets the source transform
+         * @param {mat4} transform
+         */
+
+    }, {
+        key: 'SetSourceTransform',
+        value: function SetSourceTransform(transform) {
+            this._useTransformsForStretch = true;
+            this._sourceTransform = transform;
+        }
+
+        /**
+         * SetIsNegZForward
+         * @param {boolean} isNegZForward
+         */
+
+    }, {
+        key: 'SetIsNegZForward',
+        value: function SetIsNegZForward(isNegZForward) {
+            this._isNegZForward = isNegZForward;
+        }
+
+        /**
+         * Updates view dependent data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            if (!this.display) return;
+
+            var g = EveStretch.global,
+                directionVec = _index.vec3.subtract(g.vec3_0, this._destinationPosition, this._sourcePosition),
+                m = _index.mat4.identity(g.mat4_0),
+                x = _index.vec3.set(g.vec3_1, 0, 0, 0),
+                up = _index.vec3.set(g.vec3_2, 0, 0, 0),
+                s = _index.mat4.identity(g.mat4_1);
+
+            var scalingLength = _index.vec3.length(directionVec);
+            _index.vec3.normalize(directionVec, directionVec);
+
+            if (this._useTransformsForStretch) {
+                _index.mat4.rotateX(m, m, -Math.PI / 2);
+                _index.mat4.multiply(m, this._sourceTransform, m);
+            } else {
+                if (Math.abs(directionVec[1]) > 0.9) {
+                    up[2] = 1;
+                } else {
+                    up[1] = 1;
+                }
+
+                _index.vec3.cross(x, up, directionVec);
+                _index.vec3.normalize(x, x);
+                _index.vec3.cross(up, directionVec, x);
+                m[0] = x[0];
+                m[1] = x[1];
+                m[2] = x[2];
+                m[4] = -directionVec[0];
+                m[5] = -directionVec[1];
+                m[6] = -directionVec[2];
+                m[8] = up[0];
+                m[9] = up[1];
+                m[10] = up[2];
             }
-            var s = _math.mat4.identity(scratch.mat4_1);
-            _math.mat4.scale(s, s, [1, 1, scalingLength]);
-            _math.mat4.multiply(m, m, s);
+
+            if (this.destObject && this._displayDestObject) {
+                _index.mat4.setTranslation(m, this._destinationPosition);
+                this.destObject.UpdateViewDependentData(m);
+            }
+
+            if (this.sourceObject && this._displaySourceObject) {
+                if (this._useTransformsForStretch) {
+                    _index.mat4.identity(m);
+                    _index.mat4.rotateX(m, m, -Math.PI / 2);
+                    _index.mat4.multiply(m, this._sourceTransform, m);
+                } else {
+                    _index.mat4.setTranslation(m, this._sourcePosition);
+                }
+                this.sourceObject.UpdateViewDependentData(m);
+            }
+
+            if (this.stretchObject) {
+                if (this._useTransformsForStretch) {
+                    _index.mat4.identity(m);
+                    _index.mat4.scale(m, m, [1, 1, scalingLength]);
+                    _index.mat4.multiply(m, this._sourceTransform, m);
+                } else {
+                    m[0] = x[0];
+                    m[1] = x[1];
+                    m[2] = x[2];
+                    m[4] = up[0];
+                    m[5] = up[1];
+                    m[6] = up[2];
+                    m[8] = -directionVec[0];
+                    m[9] = -directionVec[1];
+                    m[10] = -directionVec[2];
+                    if (this._isNegZForward) scalingLength = -scalingLength;
+                    _index.mat4.scale(s, s, [1, 1, scalingLength]);
+                    _index.mat4.multiply(m, m, s);
+                }
+                this.stretchObject.UpdateViewDependentData(m);
+            }
         }
-        this.stretchObject.UpdateViewDependentData(m);
-    }
-};
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
+            }
+
+            this._time += dt;
+
+            if (this.source) {
+                this.source.GetValueAt(this._time, this._sourcePosition);
+            } else if (this._useTransformsForStretch) {
+                this._sourcePosition[0] = this._sourceTransform[12];
+                this._sourcePosition[1] = this._sourceTransform[13];
+                this._sourcePosition[2] = this._sourceTransform[14];
+            }
+
+            if (this.dest) {
+                this.source.GetValueAt(this._time, this._destinationPosition);
+            }
+
+            var directionVec = _index.vec3.subtract(EveStretch.global.vec3_0, this._destinationPosition, this._sourcePosition);
+            this.length.value = _index.vec3.length(directionVec);
+            _index.vec3.normalize(directionVec, directionVec);
+
+            if (this.sourceObject && this._displaySourceObject) {
+                this.sourceObject.Update(dt);
+            }
+
+            if (this.stretchObject) {
+                this.stretchObject.Update(dt);
+            }
+
+            if (this.destObject && this._displayDestObject) {
+                this.destObject.Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display) return;
+
+            if (this.sourceObject && this._displaySourceObject) {
+                this.sourceObject.GetBatches(mode, accumulator, perObjectData);
+            }
+
+            if (this.destObject && this._displayDestObject) {
+                this.destObject.GetBatches(mode, accumulator, perObjectData);
+            }
+
+            if (this.stretchObject) {
+                this.stretchObject.GetBatches(mode, accumulator, perObjectData);
+            }
+        }
+
+        /**
+         * Initializes class global and scratch variables
+         */
+
+    }], [{
+        key: 'init',
+        value: function init() {
+            if (!EveStretch.global) {
+                EveStretch.global = {
+                    vec3_0: _index.vec3.create(),
+                    vec3_1: _index.vec3.create(),
+                    vec3_2: _index.vec3.create(),
+                    mat4_0: _index.mat4.create(),
+                    mat4_1: _index.mat4.create()
+                };
+            }
+        }
+    }]);
+
+    return EveStretch;
+}();
 
 /**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
+ * Class global and scratch variables
+ * @type {{string:*}}
  */
-EveStretch.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-    if (this.sourceObject && this._displaySourceObject) {
-        this.sourceObject.GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.destObject && this._displayDestObject) {
-        this.destObject.GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.stretchObject) {
-        this.stretchObject.GetBatches(mode, accumulator, perObjectData);
-    }
-};
 
-/**
- * Gets source position
- * @param {vec3} position
- */
-EveStretch.prototype.SetSourcePosition = function (position) {
-    this._useTransformsForStretch = false;
-    this._sourcePosition = position;
-};
 
-/**
- * Sets the destination position
- * @param {vec3} position
- */
-EveStretch.prototype.SetDestinationPosition = function (position) {
-    this._destinationPosition = position;
-};
-
-/**
- * Sets the source transform
- * @param {mat4} transform
- */
-EveStretch.prototype.SetSourceTransform = function (transform) {
-    this._useTransformsForStretch = true;
-    this._sourceTransform = transform;
-};
-
-/**
- * SetIsNegZForward
- * @param {boolean} isNegZForward
- */
-EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
-    this._isNegZForward = isNegZForward;
-};
+EveStretch.global = null;
 
 /***/ }),
-/* 134 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31463,206 +32250,344 @@ EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EvePerMuzzleData = EvePerMuzzleData;
-exports.EveTurretFiringFX = EveTurretFiringFX;
+exports.EveTurretFiringFX = exports.EvePerMuzzleData = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function EvePerMuzzleData() {
+var _index = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EvePerMuzzleData
+ * Todo: Remove reference in this.muzzlePosition
+ *
+ * @property {boolean} started
+ * @property {boolean} readyToStart
+ * @property muzzlePositionBone
+ * @property {mat4} muzzleTransform
+ * @property {vec3} muzzlePosition
+ * @property {number} currentStartDelay
+ * @property {number} constantDelay
+ * @property {number} elapsedTime
+ * @class
+ */
+var EvePerMuzzleData = exports.EvePerMuzzleData = function EvePerMuzzleData() {
+    _classCallCheck(this, EvePerMuzzleData);
+
+    this._id = _index.util.generateID();
     this.started = false;
     this.readyToStart = false;
     this.muzzlePositionBone = null;
-    this.muzzleTransform = _math.mat4.create();
+    this.muzzleTransform = _index.mat4.create();
     this.muzzlePosition = this.muzzleTransform.subarray(12, 15);
     this.currentStartDelay = 0;
     this.constantDelay = 0;
     this.elapsedTime = 0;
-}
-
-function EveTurretFiringFX() {
-    this.name = '';
-    this.display = true;
-    this.useMuzzleTransform = false;
-    this.isFiring = false;
-    this.isLoopFiring = false;
-    this.firingDelay1 = 0;
-    this.firingDelay2 = 0;
-    this.firingDelay3 = 0;
-    this.firingDelay4 = 0;
-    this.firingDelay5 = 0;
-    this.firingDelay6 = 0;
-    this.firingDelay7 = 0;
-    this.firingDelay8 = 0;
-    this.stretch = [];
-    this.endPosition = _math.vec3.create();
-
-    this._firingDuration = 0;
-    this._perMuzzleData = [];
-}
-
-EveTurretFiringFX.prototype.Initialize = function () {
-    this._firingDuration = this.GetCurveDuration();
-    for (var i = 0; i < this.stretch.length; ++i) {
-        this._perMuzzleData[i] = new EvePerMuzzleData();
-    }
-    if (this._perMuzzleData.length > 0) {
-        this._perMuzzleData[0].constantDelay = this.firingDelay1;
-    }
-    if (this._perMuzzleData.length > 1) {
-        this._perMuzzleData[1].constantDelay = this.firingDelay2;
-    }
-    if (this._perMuzzleData.length > 2) {
-        this._perMuzzleData[2].constantDelay = this.firingDelay3;
-    }
-    if (this._perMuzzleData.length > 3) {
-        this._perMuzzleData[3].constantDelay = this.firingDelay4;
-    }
-    if (this._perMuzzleData.length > 4) {
-        this._perMuzzleData[4].constantDelay = this.firingDelay5;
-    }
-    if (this._perMuzzleData.length > 5) {
-        this._perMuzzleData[5].constantDelay = this.firingDelay6;
-    }
-    if (this._perMuzzleData.length > 6) {
-        this._perMuzzleData[6].constantDelay = this.firingDelay7;
-    }
-    if (this._perMuzzleData.length > 7) {
-        this._perMuzzleData[7].constantDelay = this.firingDelay8;
-    }
 };
 
-EveTurretFiringFX.prototype.GetCurveDuration = function () {
-    var maxDuration = 0;
-    for (var i = 0; i < this.stretch.length; ++i) {
-        var stretch = this.stretch[i];
-        for (var j = 0; j < stretch.curveSets.length; ++j) {
-            maxDuration = Math.max(maxDuration, stretch.curveSets[j].GetMaxCurveDuration());
+/**
+ * EveTurretFiringFX
+ *
+ * @property {string|number} _id
+ * @property {string} name
+ * @property {boolean} display
+ * @property {Array.<EveStretch>} stretch
+ * @property {boolean} useMuzzleTransform
+ * @property {boolean} isFiring
+ * @property {boolean} isLoopFiring
+ * @property {number} firingDelay1
+ * @property {number} firingDelay2
+ * @property {number} firingDelay3
+ * @property {number} firingDelay4
+ * @property {number} firingDelay5
+ * @property {number} firingDelay6
+ * @property {number} firingDelay7
+ * @property {number} firingDelay8
+ * @property {vec3} endPosition
+ * @property {number} _firingDuration
+ * @property {Array.<EvePerMuzzleData>} _perMuzzleData
+ * @class
+ */
+
+
+var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
+    function EveTurretFiringFX() {
+        _classCallCheck(this, EveTurretFiringFX);
+
+        this._id = _index.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.stretch = [];
+        this.useMuzzleTransform = false;
+        this.isFiring = false;
+        this.isLoopFiring = false;
+        this.firingDelay1 = 0;
+        this.firingDelay2 = 0;
+        this.firingDelay3 = 0;
+        this.firingDelay4 = 0;
+        this.firingDelay5 = 0;
+        this.firingDelay6 = 0;
+        this.firingDelay7 = 0;
+        this.firingDelay8 = 0;
+        this.endPosition = _index.vec3.create();
+        this._firingDuration = 0;
+        this._perMuzzleData = [];
+    }
+
+    /**
+     * Initializes the turret firing fx
+     */
+
+
+    _createClass(EveTurretFiringFX, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this._firingDuration = this.GetCurveDuration();
+            for (var i = 0; i < this.stretch.length; ++i) {
+                this._perMuzzleData[i] = new EvePerMuzzleData();
+            }if (this._perMuzzleData.length > 0) this._perMuzzleData[0].constantDelay = this.firingDelay1;
+            if (this._perMuzzleData.length > 1) this._perMuzzleData[1].constantDelay = this.firingDelay2;
+            if (this._perMuzzleData.length > 2) this._perMuzzleData[2].constantDelay = this.firingDelay3;
+            if (this._perMuzzleData.length > 3) this._perMuzzleData[3].constantDelay = this.firingDelay4;
+            if (this._perMuzzleData.length > 4) this._perMuzzleData[4].constantDelay = this.firingDelay5;
+            if (this._perMuzzleData.length > 5) this._perMuzzleData[5].constantDelay = this.firingDelay6;
+            if (this._perMuzzleData.length > 6) this._perMuzzleData[6].constantDelay = this.firingDelay7;
+            if (this._perMuzzleData.length > 7) this._perMuzzleData[7].constantDelay = this.firingDelay8;
         }
-    }
-    return maxDuration;
-};
 
-EveTurretFiringFX.prototype.GetPerMuzzleEffectCount = function () {
-    return this.stretch.length;
-};
+        /**
+         * Gets the total curve duration
+         * @returns {number}
+         */
 
-EveTurretFiringFX.prototype.SetMuzzleBoneID = function (index, bone) {
-    this._perMuzzleData[index].muzzlePositionBone = bone;
-};
-
-EveTurretFiringFX.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display || !this.isFiring) {
-        return;
-    }
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (this._perMuzzleData[i].started && (this._firingDuration >= this._perMuzzleData[i].elapsedTime || this.isLoopFiring)) {
-            this.stretch[i].GetBatches(mode, accumulator, perObjectData);
+    }, {
+        key: 'GetCurveDuration',
+        value: function GetCurveDuration() {
+            var maxDuration = 0;
+            for (var i = 0; i < this.stretch.length; ++i) {
+                var stretch = this.stretch[i];
+                for (var j = 0; j < stretch.curveSets.length; ++j) {
+                    maxDuration = Math.max(maxDuration, stretch.curveSets[j].GetMaxCurveDuration());
+                }
+            }
+            return maxDuration;
         }
-    }
-};
 
-EveTurretFiringFX.prototype.GetMuzzleTransform = function (index) {
-    return this._perMuzzleData[index].muzzleTransform;
-};
+        /**
+         * Gets a count of stretch effects
+         * @returns {Number}
+         */
 
-EveTurretFiringFX.prototype.Update = function (dt) {
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (this._perMuzzleData[i].started) {
-            this._perMuzzleData[i].elapsedTime += dt;
+    }, {
+        key: 'GetPerMuzzleEffectCount',
+        value: function GetPerMuzzleEffectCount() {
+            return this.stretch.length;
         }
-        if (this._perMuzzleData[i].elapsedTime < this._firingDuration || this.isLoopFiring) {
-            if (this.isFiring) {
-                if (!this._perMuzzleData[i].started) {
-                    if (this._perMuzzleData[i].readyToStart) {
-                        this.StartMuzzleEffect(i);
-                        this._perMuzzleData[i].currentStartDelay = 0;
-                        this._perMuzzleData[i].elapsedTime = 0;
-                    } else {
-                        this._perMuzzleData[i].currentStartDelay -= dt;
-                    }
-                    if (this._perMuzzleData[i].currentStartDelay <= 0) {
-                        this._perMuzzleData[i].readyToStart = true;
-                    }
+
+        /**
+         * Sets muzzle bone id
+         * @param {number} index
+         * @param bone
+         */
+
+    }, {
+        key: 'SetMuzzleBoneID',
+        value: function SetMuzzleBoneID(index, bone) {
+            this._perMuzzleData[index].muzzlePositionBone = bone;
+        }
+
+        /**
+         * Gets a muzzle's transform
+         * @param {number} index
+         * @returns {mat4}
+         */
+
+    }, {
+        key: 'GetMuzzleTransform',
+        value: function GetMuzzleTransform(index) {
+            return this._perMuzzleData[index].muzzleTransform;
+        }
+
+        /**
+         * Prepares the firing effect
+         * @param {number} delay
+         * @param {number} [muzzleID=-1]
+         */
+
+    }, {
+        key: 'PrepareFiring',
+        value: function PrepareFiring(delay) {
+            var muzzleID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : -1;
+
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (muzzleID < 0 || muzzleID === i) {
+                    this._perMuzzleData[i].currentStartDelay = delay + this._perMuzzleData[i].constantDelay;
+                    this._perMuzzleData[i].started = false;
+                    this._perMuzzleData[i].readyToStart = false;
+                    this._perMuzzleData[i].elapsedTime = 0;
                 } else {
-                    if (this.useMuzzleTransform) {
-                        this.stretch[i].SetSourceTransform(this._perMuzzleData[i].muzzleTransform);
-                    } else {
-                        this.stretch[i].SetSourcePosition(this._perMuzzleData[i].muzzlePosition);
+                    this._perMuzzleData[i].currentStartDelay = Number.MAX_VALUE;
+                    this._perMuzzleData[i].started = false;
+                    this._perMuzzleData[i].readyToStart = false;
+                    this._perMuzzleData[i].elapsedTime = 0;
+                }
+            }
+            this.isFiring = true;
+        }
+
+        /**
+         * Starts a muzzle effect
+         * @param {number} muzzleID
+         */
+
+    }, {
+        key: 'StartMuzzleEffect',
+        value: function StartMuzzleEffect(muzzleID) {
+            var stretch = this.stretch[muzzleID];
+            for (var i = 0; i < stretch.curveSets.length; ++i) {
+                var curveSet = stretch.curveSets[i];
+                switch (curveSet.name) {
+                    case 'play_start':
+                    case 'play_loop':
+                        curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
+                        break;
+
+                    case 'play_stop':
+                        curveSet.Stop();
+                        break;
+                }
+            }
+            this._perMuzzleData[muzzleID].started = true;
+            this._perMuzzleData[muzzleID].readyToStart = false;
+        }
+
+        /**
+         * Stops the firing effect
+         */
+
+    }, {
+        key: 'StopFiring',
+        value: function StopFiring() {
+            for (var j = 0; j < this.stretch.length; ++j) {
+                var stretch = this.stretch[j];
+                for (var i = 0; i < stretch.curveSets.length; ++i) {
+                    var curveSet = stretch.curveSets[i];
+                    switch (curveSet.name) {
+                        case 'play_start':
+                        case 'play_loop':
+                            curveSet.Stop();
+                            break;
+
+                        case 'play_stop':
+                            curveSet.Play();
+                            break;
                     }
-                    this.stretch[i].SetDestinationPosition(this.endPosition);
-                    this.stretch[i].SetIsNegZForward(true);
+                }
+                this._perMuzzleData[j].started = false;
+                this._perMuzzleData[j].readyToStart = false;
+                this._perMuzzleData[j].currentStartDelay = 0;
+                this._perMuzzleData[j].elapsedTime = 0;
+            }
+            this.isFiring = false;
+        }
+
+        /**
+         * Gets resources
+         * @param {Array} [out=[]}
+         * @returns {Array<Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.stretch.length; i++) {
+                this.stretch[i].GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Updates view dependant data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.stretch.length; ++i) {
+                this.stretch[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - Delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (this._perMuzzleData[i].started) {
+                    this._perMuzzleData[i].elapsedTime += dt;
+                }
+
+                if (this._perMuzzleData[i].elapsedTime < this._firingDuration || this.isLoopFiring) {
+                    if (this.isFiring) {
+                        if (!this._perMuzzleData[i].started) {
+                            if (this._perMuzzleData[i].readyToStart) {
+                                this.StartMuzzleEffect(i);
+                                this._perMuzzleData[i].currentStartDelay = 0;
+                                this._perMuzzleData[i].elapsedTime = 0;
+                            } else {
+                                this._perMuzzleData[i].currentStartDelay -= dt;
+                            }
+
+                            if (this._perMuzzleData[i].currentStartDelay <= 0) {
+                                this._perMuzzleData[i].readyToStart = true;
+                            }
+                        } else {
+                            if (this.useMuzzleTransform) {
+                                this.stretch[i].SetSourceTransform(this._perMuzzleData[i].muzzleTransform);
+                            } else {
+                                this.stretch[i].SetSourcePosition(this._perMuzzleData[i].muzzlePosition);
+                            }
+                            this.stretch[i].SetDestinationPosition(this.endPosition);
+                            this.stretch[i].SetIsNegZForward(true);
+                        }
+                    }
+                }
+                this.stretch[i].Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display || !this.isFiring) return;
+
+            for (var i = 0; i < this.stretch.length; ++i) {
+                if (this._perMuzzleData[i].started && (this._firingDuration >= this._perMuzzleData[i].elapsedTime || this.isLoopFiring)) {
+                    this.stretch[i].GetBatches(mode, accumulator, perObjectData);
                 }
             }
         }
-        this.stretch[i].Update(dt);
-    }
-};
+    }]);
 
-EveTurretFiringFX.prototype.PrepareFiring = function (delay, muzzleID) {
-    if (typeof muzzleID === 'undefined') {
-        muzzleID = -1;
-    }
-    for (var i = 0; i < this.stretch.length; ++i) {
-        if (muzzleID < 0 || muzzleID === i) {
-            this._perMuzzleData[i].currentStartDelay = delay + this._perMuzzleData[i].constantDelay;
-            this._perMuzzleData[i].started = false;
-            this._perMuzzleData[i].readyToStart = false;
-            this._perMuzzleData[i].elapsedTime = 0;
-        } else {
-            this._perMuzzleData[i].currentStartDelay = Number.MAX_VALUE;
-            this._perMuzzleData[i].started = false;
-            this._perMuzzleData[i].readyToStart = false;
-            this._perMuzzleData[i].elapsedTime = 0;
-        }
-    }
-    this.isFiring = true;
-};
-
-EveTurretFiringFX.prototype.StartMuzzleEffect = function (muzzleID) {
-    var stretch = this.stretch[muzzleID];
-    for (var i = 0; i < stretch.curveSets.length; ++i) {
-        var curveSet = stretch.curveSets[i];
-        if (curveSet.name === 'play_start') {
-            curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
-        } else if (curveSet.name === 'play_loop') {
-            curveSet.PlayFrom(-this._perMuzzleData[muzzleID].currentStartDelay);
-        } else if (curveSet.name === 'play_stop') {
-            curveSet.Stop();
-        }
-    }
-    this._perMuzzleData[muzzleID].started = true;
-    this._perMuzzleData[muzzleID].readyToStart = false;
-};
-
-EveTurretFiringFX.prototype.StopFiring = function () {
-    for (var j = 0; j < this.stretch.length; ++j) {
-        var stretch = this.stretch[j];
-        for (var i = 0; i < stretch.curveSets.length; ++i) {
-            var curveSet = stretch.curveSets[i];
-            if (curveSet.name === 'play_start') {
-                curveSet.Stop();
-            } else if (curveSet.name === 'play_loop') {
-                curveSet.Stop();
-            } else if (curveSet.name === 'play_stop') {
-                curveSet.Play();
-            }
-        }
-        this._perMuzzleData[j].started = false;
-        this._perMuzzleData[j].readyToStart = false;
-        this._perMuzzleData[j].currentStartDelay = 0;
-        this._perMuzzleData[j].elapsedTime = 0;
-    }
-    this.isFiring = false;
-};
-
-EveTurretFiringFX.prototype.UpdateViewDependentData = function () {
-    for (var j = 0; j < this.stretch.length; ++j) {
-        this.stretch[j].UpdateViewDependentData();
-    }
-};
+    return EveTurretFiringFX;
+}();
 
 /***/ }),
-/* 135 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32422,7 +33347,7 @@ EveCurveLineSet.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 136 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33072,104 +33997,7 @@ EveTurretSet.prototype.GetClosestTurret = function () {
 };
 
 /***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _core = __webpack_require__(1);
-
-/**
- * Constructor for Overlay Effects
- * @property {boolean} update
- * @property {Tw2CurveSet} curveSet
- * @property {string} name
- * @property {Array.<Tw2Effect>} opaqueEffects
- * @property {Array.<Tw2Effect>} decalEffects
- * @property {Array.<Tw2Effect>} transparentEffects
- * @property {Array.<Tw2Effect>} additiveEffects
- * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
- * @property {boolean} display                     - Enables/ disables all batch accumulations
- * @property {{}} visible                          - Batch accumulation options for the overlay effect
- * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
- * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
- * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
- * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
- * @property {boolean} visible.distortionEffects   - Currently not supported
- * @constructor
- */
-function EveMeshOverlayEffect() {
-    this.update = true;
-    this.curveSet = null;
-    this.name = '';
-    this.opaqueEffects = [];
-    this.decalEffects = [];
-    this.transparentEffects = [];
-    this.additiveEffects = [];
-    this.distortionEffects = [];
-
-    this.display = true;
-    this.visible = {};
-    this.visible.opaqueEffects = true;
-    this.visible.decalEffects = true;
-    this.visible.transparentEffects = true;
-    this.visible.additiveEffects = true;
-    this.visible.distortionEffects = false;
-}
-
-/**
- * Per frame update
- * @param {number} dt - delta Time
- */
-EveMeshOverlayEffect.prototype.Update = function (dt) {
-    if (this.update && this.curveSet) {
-        this.curveSet.Update(dt);
-    }
-};
-
-/**
- * Gets effects
- * @param {number} mode
- * @returns {Array.<Tw2Effect>}
- */
-EveMeshOverlayEffect.prototype.GetEffects = function (mode) {
-    if (this.display) {
-        if (mode === _core.device.RM_OPAQUE && this.visible.opaqueEffects) {
-            return this.opaqueEffects;
-        } else if (mode === _core.device.RM_TRANSPARENT && this.visible.transparentEffects) {
-            return this.transparentEffects;
-        } else if (mode === _core.device.RM_ADDITIVE && this.visible.additiveEffects) {
-            return this.additiveEffects;
-        } else if (mode === _core.device.RM_DECAL && this.visible.decalEffects) {
-            return this.decalEffects;
-        }
-    }
-};
-
-/**
- * Gets Mesh Overlay resource objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveMeshOverlayEffect.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    for (var type in this.visible) {
-        if (this.visible.hasOwnProperty(type) && this[type].length) {
-            for (var i = 0; i < this[type].length; i++) {
-                this[type][i].GetResources(out);
-            }
-        }
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 138 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33185,7 +34013,7 @@ exports.EvePlanet = EvePlanet;
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(52);
+var _EveTransform = __webpack_require__(53);
 
 /**
  * EvePlanet
@@ -33453,7 +34281,7 @@ EvePlanet.prototype.UpdateViewDependentData = function (parentTransform) {
 };
 
 /***/ }),
-/* 139 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33596,7 +34424,7 @@ EveEffectRoot.prototype.Stop = function () {
 };
 
 /***/ }),
-/* 140 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33604,7 +34432,7 @@ EveEffectRoot.prototype.Stop = function () {
 
 var _math = __webpack_require__(0);
 
-var _EveMissileWarhead = __webpack_require__(141);
+var _EveMissileWarhead = __webpack_require__(144);
 
 /**
  * EveMissile
@@ -33735,7 +34563,7 @@ EveMissile.scratch = {
 };
 
 /***/ }),
-/* 141 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33956,7 +34784,7 @@ EveMissileWarhead.prototype.Launch = function (transform) {
 };
 
 /***/ }),
-/* 142 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34484,511 +35312,7 @@ EveSpaceScene.prototype.Update = function (dt) {
 EveSpaceScene.EmptyTexture = null;
 
 /***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveLensflare = EveLensflare;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveLensFlare
- * @property {String} [name='']
- * @property {boolean} display
- * @property {boolean} update
- * @property {boolean} doOcclusionQueries
- * @property {number} cameraFactor
- * @property {vec3} position
- * @property {Array} flares
- * @property {Array.<EveOccluder>} occluders
- * @property {Array.<EveOccluder>} backgroundOccluders
- * @property {number} occlusionIntensity
- * @property {number} backgroundOcclusionIntensity
- * @property {Array} distanceToEdgeCurves
- * @property {Array} distanceToCenterCurves
- * @property {Array} radialAngleCurves
- * @property {Array} xDistanceToCenter
- * @property {Array} yDistanceToCenter
- * @property {Array} bindings
- * @property {Array.<Tw2CurveSet> curveSets
- * @property {null|Tw2Mesh} mesh
- * @property {quat} _directionVar
- * @property {quat} _occlusionVar
- * @property {vec3} _direction
- * @property {mat4} _transform
- * @constructor
- */
-function EveLensflare() {
-    this.name = '';
-    this.display = true;
-    this.update = true;
-    this.doOcclusionQueries = true;
-    this.cameraFactor = 20;
-    this.position = _math.vec3.create();
-    this.flares = [];
-    this.occluders = [];
-    this.backgroundOccluders = [];
-    this.occlusionIntensity = 1;
-    this.backgroundOcclusionIntensity = 1;
-
-    this.distanceToEdgeCurves = [];
-    this.distanceToCenterCurves = [];
-    this.radialAngleCurves = [];
-    this.xDistanceToCenter = [];
-    this.yDistanceToCenter = [];
-    this.bindings = [];
-    this.curveSets = [];
-
-    this.mesh = null;
-
-    this._directionVar = _core.variableStore.RegisterVariable('LensflareFxDirectionScale', _math.vec4.create());
-    this._occlusionVar = _core.variableStore.RegisterVariable('LensflareFxOccScale', _math.vec4.fromValues(1, 1, 0, 0));
-    this._direction = _math.vec3.create();
-    this._transform = _math.mat4.create();
-
-    if (!EveLensflare.backBuffer) {
-        EveLensflare.backBuffer = new _core.Tw2TextureRes();
-        EveLensflare.backBuffer.width = 0;
-        EveLensflare.backBuffer.height = 0;
-        EveLensflare.backBuffer.hasMipMaps = false;
-        EveLensflare.occluderLevels = [new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget()];
-        EveLensflare.occludedLevelIndex = 0;
-    }
-}
-
-/**
- * Gets lensflares's res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveLensflare.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.mesh !== null) {
-        this.mesh.GetResources(out);
-    }
-
-    for (var f = 0; f < this.flares.length; f++) {
-        this.flares[f].GetResources(out);
-    }
-
-    for (var o = 0; o < this.occluders.length; o++) {
-        this.occluders[o].GetResources(out);
-    }
-
-    for (var b = 0; b < this.backgroundOccluders.length; b++) {
-        this.backgroundOccluders[b].GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Scratch variables
- */
-EveLensflare.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    vec3_3: _math.vec3.create(),
-    vec4_0: _math.vec4.create(),
-    vec4_1: _math.mat4.create(),
-    mat4_0: _math.mat4.create()
-};
-
-/**
- * Prepares the lensflare for rendering
- */
-EveLensflare.prototype.PrepareRender = function () {
-    if (!this.display) {
-        return;
-    }
-
-    var scratch = EveLensflare.scratch;
-    var cameraPos = _math.vec3.set(scratch.vec3_0, 0, 0, 0),
-        negPos = scratch.vec3_1,
-        cameraSpacePos = scratch.vec3_2,
-        negDirVec = scratch.vec3_3,
-        viewDir = _math.vec4.set(scratch.vec4_0, 0, 0, 1, 0),
-        d = scratch.vec4_1,
-        scaleMat = _math.mat4.identity(scratch.mat4_0);
-
-    _math.vec3.transformMat4(cameraPos, cameraPos, _core.device.viewInverse);
-
-    if (_math.vec3.length(this.position) === 0) {
-        _math.vec3.negate(negPos, cameraPos);
-        var distScale = _math.vec3.length(negPos);
-        distScale = distScale > 1.5 ? 1 / Math.log(distScale) : 2.5;
-    } else {
-        _math.vec3.negate(negPos, this.position);
-        _math.vec3.normalize(this._direction, negPos);
-    }
-
-    _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
-    cameraSpacePos[0] = -this.cameraFactor * viewDir[0] + cameraPos[0];
-    cameraSpacePos[1] = -this.cameraFactor * viewDir[1] + cameraPos[1];
-    cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
-
-    _math.vec3.negate(negDirVec, this._direction);
-    _math.mat4.arcFromForward(this._transform, negDirVec);
-    this._transform[12] = cameraSpacePos[0];
-    this._transform[13] = cameraSpacePos[1];
-    this._transform[14] = cameraSpacePos[2];
-
-    _math.mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
-    //mat4.multiply(scaleMat, scaleMat, this._transform);
-    this._directionVar.value[0] = this._direction[0];
-    this._directionVar.value[1] = this._direction[1];
-    this._directionVar.value[2] = this._direction[2];
-    this._directionVar.value[3] = 1;
-
-    _math.vec4.set(d, this._direction[0], this._direction[1], this._direction[2], 0);
-    _math.vec4.transformMat4(d, d, _core.device.view);
-    _math.vec4.transformMat4(d, d, _core.device.projection);
-    d[0] /= d[3];
-    d[1] /= d[3];
-
-    var distanceToEdge = 1 - Math.min(1 - Math.abs(d[0]), 1 - Math.abs(d[1])),
-        distanceToCenter = Math.sqrt(d[0] * d[0] + d[1] * d[1]),
-        radialAngle = Math.atan2(d[1], d[0]) + Math.PI;
-
-    for (var i = 0; i < this.distanceToEdgeCurves.length; ++i) {
-        this.distanceToEdgeCurves[i].UpdateValue(distanceToEdge);
-    }
-    for (i = 0; i < this.distanceToCenterCurves.length; ++i) {
-        this.distanceToCenterCurves[i].UpdateValue(distanceToCenter);
-    }
-    for (i = 0; i < this.radialAngleCurves.length; ++i) {
-        this.radialAngleCurves[i].UpdateValue(radialAngle);
-    }
-    for (i = 0; i < this.xDistanceToCenter.length; ++i) {
-        this.xDistanceToCenter[i].UpdateValue(d[0] + 10);
-    }
-    for (i = 0; i < this.yDistanceToCenter.length; ++i) {
-        this.yDistanceToCenter[i].UpdateValue(d[1] + 10);
-    }
-    for (i = 0; i < this.bindings.length; ++i) {
-        this.bindings[i].CopyValue();
-    }
-    for (i = 0; i < this.flares.length; ++i) {
-        this.flares[i].UpdateViewDependentData(this._transform);
-    }
-};
-
-/**
- * Updates Occluders
- */
-EveLensflare.prototype.UpdateOccluders = function () {
-    if (!this.doOcclusionQueries) {
-        return;
-    }
-    this.occlusionIntensity = 1;
-    this.backgroundOcclusionIntensity = 1;
-
-    if (!EveLensflare.occluderLevels[0].texture || EveLensflare.occluderLevels[0].width < this.occluders.length * 2) {
-        for (var i = 0; i < EveLensflare.occluderLevels.length; ++i) {
-            EveLensflare.occluderLevels[i].Create(this.occluders.length * 2, 1, false);
-        }
-    }
-    for (var j = 0; j < this.flares.length; ++j) {
-        if ('_backBuffer' in this.flares[j]) {
-            this.flares[j]._backBuffer.textureRes = EveLensflare.occluderLevels.texture;
-        }
-    }
-
-    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
-    _core.device.SetStandardStates(_core.device.RM_OPAQUE);
-    _core.device.gl.clearColor(0.0, 0.0, 0.0, 1.0);
-    _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-    EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
-
-    var samples = 1;
-    if (_core.device.antialiasing) {
-        samples = _core.device.msaaSamples;
-        _core.device.gl.sampleCoverage(1.0 / samples, false);
-    }
-    for (var i = 0; i < this.occluders.length; ++i) {
-        _core.device.SetRenderState(_core.device.RS_COLORWRITEENABLE, 8);
-        _core.device.gl.colorMask(false, false, false, true);
-        _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
-        _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-
-        if (_core.device.antialiasing) {
-            // Turn off antialiasing
-            _core.device.gl.enable(_core.device.gl.SAMPLE_COVERAGE);
-            _core.device.gl.sampleCoverage(0.25, false);
-        }
-        this.occluders[i].UpdateValue(this._transform, i);
-        if (_core.device.antialiasing) {
-            _core.device.gl.disable(_core.device.gl.SAMPLE_COVERAGE);
-        }
-
-        // Copy back buffer into a texture
-        if (!EveLensflare.backBuffer.texture) {
-            EveLensflare.backBuffer.Attach(_core.device.gl.createTexture());
-        }
-        _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, EveLensflare.backBuffer.texture);
-        if (EveLensflare.backBuffer.width !== _core.device.viewportWidth || EveLensflare.backBuffer.height !== _core.device.viewportHeight) {
-            _core.device.gl.texImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.gl.RGBA, _core.device.viewportWidth, _core.device.viewportHeight, 0, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, null);
-            _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MAG_FILTER, _core.device.gl.LINEAR);
-            _core.device.gl.texParameteri(_core.device.gl.TEXTURE_2D, _core.device.gl.TEXTURE_MIN_FILTER, _core.device.gl.LINEAR);
-            EveLensflare.backBuffer.width = _core.device.viewportWidth;
-            EveLensflare.backBuffer.height = _core.device.viewportHeight;
-        }
-        _core.device.gl.copyTexImage2D(_core.device.gl.TEXTURE_2D, 0, _core.device.alphaBlendBackBuffer ? _core.device.gl.RGBA : _core.device.gl.RGB, 0, 0, EveLensflare.backBuffer.width, EveLensflare.backBuffer.height, 0);
-        _core.device.gl.bindTexture(_core.device.gl.TEXTURE_2D, null);
-
-        // Collect samples
-        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Set();
-        this.occluders[i].CollectSamples(EveLensflare.backBuffer, i, EveLensflare.occluderLevels[0].width / 2, samples);
-        EveLensflare.occluderLevels[EveLensflare.occludedLevelIndex].Unset();
-    }
-    if (_core.device.antialiasing) {
-        _core.device.gl.sampleCoverage(1, false);
-    }
-
-    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Set();
-    var pixels = new Uint8Array(EveLensflare.occluderLevels[0].width * 4);
-    _core.device.gl.readPixels(0, 0, 2, 1, _core.device.gl.RGBA, _core.device.gl.UNSIGNED_BYTE, pixels);
-    EveLensflare.occluderLevels[(EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length].Unset();
-
-    this.occlusionIntensity = 1;
-    for (i = 0; i < EveLensflare.occluderLevels[0].width * 2; i += 4) {
-        this.occlusionIntensity *= pixels[i + 1] ? pixels[i] / pixels[i + 1] : 1;
-    }
-
-    this.backgroundOcclusionIntensity = this.occlusionIntensity;
-    this._occlusionVar.value[0] = this.occlusionIntensity;
-    this._occlusionVar.value[1] = this._occlusionVar.value[0];
-    EveLensflare.occludedLevelIndex = (EveLensflare.occludedLevelIndex + 1) % EveLensflare.occluderLevels.length;
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display) {
-        return;
-    }
-
-    var viewDir = _math.vec4.set(EveLensflare.scratch.vec4_0, 0, 0, 1, 0);
-    _math.vec4.transformMat4(viewDir, viewDir, _core.device.viewInverse);
-    if (_math.vec3.dot(viewDir, this._direction) < 0) {
-        return;
-    }
-
-    for (var i = 0; i < this.flares.length; ++i) {
-        this.flares[i].GetBatches(mode, accumulator, perObjectData);
-    }
-    if (this.mesh) {
-        this.mesh.GetBatches(mode, accumulator, perObjectData);
-    }
-};
-
-/***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveOccluder = EveOccluder;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveOccluder
- * @property {String} name=''
- * @property {boolean} display
- * @property {number} value
- * @property {Array.<EveSpriteSet>} sprites
- * @constructor
- */
-function EveOccluder() {
-    this.name = '';
-    this.display = true;
-    this.value = 1;
-    this.sprites = [];
-    _core.variableStore.RegisterType('OccluderValue', _core.Tw2Vector4Parameter);
-
-    if (!EveOccluder._collectEffect) {
-        EveOccluder._collectEffect = new _core.Tw2Effect();
-        EveOccluder._collectEffect.effectFilePath = 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx';
-        var param = new _core.Tw2TextureParameter();
-        param.name = 'BackBuffer';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        var param = new _core.Tw2Vector4Parameter();
-        param.name = 'OccluderPosition';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        var param = new _core.Tw2Vector3Parameter();
-        param.name = 'OccluderIndex';
-        EveOccluder._collectEffect.parameters[param.name] = param;
-        EveOccluder._collectEffect.Initialize();
-        EveOccluder._vertexBuffer = null;
-        EveOccluder._decl = new _core.Tw2VertexDeclaration();
-        EveOccluder._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 2, 0));
-        EveOccluder._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 2, 8));
-        EveOccluder._decl.RebuildHash();
-
-        var vb = new Float32Array(255 * 6 * 4);
-        var index = 0;
-        for (var i = 0; i < 16; ++i) {
-            for (var j = 0; j < 16; ++j) {
-                var x = (i + Math.random()) / 16 * 2 - 1;
-                var y = (j + Math.random()) / 16 * 2 - 1;
-                vb[index++] = 1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = -1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = 1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-
-                vb[index++] = -1;
-                vb[index++] = 1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = 1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-                vb[index++] = -1;
-                vb[index++] = -1;
-                vb[index++] = x;
-                vb[index++] = y;
-            }
-        }
-        EveOccluder._vertexBuffer = _core.device.gl.createBuffer();
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, EveOccluder._vertexBuffer);
-        _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, vb, _core.device.gl.STATIC_DRAW);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
-    }
-}
-
-/**
- * Scratch parameters
- */
-EveOccluder.scratch = {
-    mat4_0: _math.mat4.create(),
-    vec4_0: _math.vec4.create(),
-    batches: new _core.Tw2BatchAccumulator()
-};
-
-/**
- * UpdateValues
- * @param {mat4} parentTransform
- * @param {number} index
- */
-EveOccluder.prototype.UpdateValue = function (parentTransform, index) {
-    if (!this.display) {
-        return;
-    }
-    if (!_core.device.alphaBlendBackBuffer) {
-        return;
-    }
-
-    var scratch = EveOccluder.scratch;
-    var batches = scratch.batches;
-    batches.Clear();
-
-    for (var i = 0; i < this.sprites.length; ++i) {
-        this.sprites[i].UpdateViewDependentData(parentTransform);
-        this.sprites[i].GetBatches(_core.device.RM_DECAL, batches);
-    }
-
-    _core.variableStore._variables['OccluderValue'].value.set([(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
-    batches.Render();
-
-    var worldViewProj = _math.mat4.copy(scratch.mat4_0, _core.device.viewProjection);
-    _math.mat4.multiply(worldViewProj, worldViewProj, this.sprites[0].worldTransform);
-    var center = _math.vec4.set(scratch.vec4_0, 0, 0, 0, 1);
-    _math.vec4.transformMat4(center, center, worldViewProj);
-    var x0 = (center[0] / center[3] + 1) * 0.5;
-    var y0 = (center[1] / center[3] + 1) * 0.5;
-    center[0] = center[1] = 0.5;
-    center[2] = 0;
-    center[3] = 1;
-    _math.vec4.transformMat4(center, center, worldViewProj);
-    var x1 = (center[0] / center[3] + 1) * 0.5;
-    var y1 = (center[1] / center[3] + 1) * 0.5;
-    center[0] = x0;
-    center[1] = y0;
-    center[2] = x1 - x0;
-    center[3] = y1 - y0;
-
-    EveOccluder._collectEffect.parameters['OccluderPosition'].SetValue(center);
-};
-
-/**
- * CollectSamples
- * @param tex
- * @param index
- * @param total
- * @param samples
- */
-EveOccluder.prototype.CollectSamples = function (tex, index, total, samples) {
-    var effect = EveOccluder._collectEffect;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-    effect.parameters['BackBuffer'].textureRes = tex;
-    effect.parameters['OccluderIndex'].SetValue([index, total, samples]);
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, EveOccluder._vertexBuffer);
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!EveOccluder._decl.SetDeclaration(effect.GetPassInput(pass), 16)) {
-            return;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, 255 * 6);
-    }
-};
-
-/**
- * Gets Mesh Overlay resource objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Resource>} [out]
- */
-EveOccluder.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (EveOccluder._collectEffect) {
-        EveOccluder._collectEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35005,23 +35329,23 @@ var _core = __webpack_require__(1);
 
 var _curve = __webpack_require__(44);
 
-var _EveBoosterSet = __webpack_require__(47);
+var _EveBoosterSet = __webpack_require__(48);
 
 var _child = __webpack_require__(45);
 
-var _EveLocator = __webpack_require__(46);
+var _EveLocator = __webpack_require__(47);
 
-var _EvePlaneSet = __webpack_require__(48);
+var _EvePlaneSet = __webpack_require__(49);
 
-var _EveSpaceObjectDecal = __webpack_require__(51);
+var _EveSpaceObjectDecal = __webpack_require__(52);
 
-var _EveSpotlightSet = __webpack_require__(49);
+var _EveSpotlightSet = __webpack_require__(50);
 
-var _EveSpriteSet = __webpack_require__(50);
+var _EveSpriteSet = __webpack_require__(51);
 
 var _EveSpaceObject = __webpack_require__(28);
 
-var _EveShip = __webpack_require__(53);
+var _EveShip = __webpack_require__(54);
 
 function EveSOF() {
     var data = null;

@@ -381,25 +381,7 @@ EveSpaceObject.prototype.GetBatches = function (mode, accumulator)
         {
             for (i = 0; i < this.overlayEffects.length; ++i) 
             {
-                if (this.overlayEffects[i].display) 
-                {
-                    var effects = this.overlayEffects[i].GetEffects(mode);
-                    if (effects) 
-                    {
-                        for (var j = 0; j < effects.length; ++j) 
-                        {
-                            var batch = new Tw2GeometryBatch();
-                            batch.renderMode = mode;
-                            batch.perObjectData = this._perObjectData;
-                            batch.geometryRes = this.mesh.geometryResource;
-                            batch.meshIx = this.mesh.meshIndex;
-                            batch.start = 0;
-                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                            batch.effect = effects[j];
-                            accumulator.Commit(batch);
-                        }
-                    }
-                }
+                this.overlayEffects[i].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
             }
         }
     }
