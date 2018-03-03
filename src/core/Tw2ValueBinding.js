@@ -1,4 +1,4 @@
-import {quat} from '../math';
+import {quat, util} from '../math';
 import {Tw2Vector4Parameter} from './Tw2Vector4Parameter';
 
 /**
@@ -163,8 +163,8 @@ Tw2ValueBinding.prototype.Initialize = function()
         return;
     }
 
-    this.sourceIsArray = (this.sourceObject[this.sourceAttribute] instanceof Float32Array || Array.isArray(this.sourceObject[this.sourceAttribute]));
-    this.destinationIsArray = (this.destinationObject[this.destinationAttribute] instanceof Float32Array || Array.isArray(this.destinationObject[this.destinationAttribute]));
+    this.sourceIsArray = util.isArrayLike(this.sourceObject[this.sourceAttribute]);
+    this.destinationIsArray = util.isArrayLike(this.destinationObject[this.destinationAttribute]);
 
     if (this.sourceIsArray === this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === typeof this.destinationObject[this.destinationAttribute])
     {

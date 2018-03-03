@@ -108,39 +108,6 @@ EveLensflare.prototype.GetResources = function(out)
 };
 
 /**
- * Internal helper function
- * @param out
- * @param v
- */
-EveLensflare.prototype.MatrixArcFromForward = function(out, v)
-{
-    var norm = vec3.normalize(vec3.create(), v);
-    mat4.identity(out);
-    if (norm[2] < -0.99999)
-    {
-        return;
-    }
-    if (norm[2] > 0.99999)
-    {
-        out[5] = -1.0;
-        out[10] = -1.0;
-        return;
-    }
-    var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
-    out[0] = h * norm[1] * norm[1] - norm[2];
-    out[1] = -h * norm[0] * norm[1];
-    out[2] = norm[0];
-
-    out[4] = out[1];
-    out[5] = h * norm[0] * norm[0] - norm[2];
-    out[6] = norm[1];
-
-    out[8] = -norm[0];
-    out[9] = -norm[1];
-    out[10] = -norm[2];
-};
-
-/**
  * Scratch variables
  */
 EveLensflare.scratch = {
@@ -192,7 +159,7 @@ EveLensflare.prototype.PrepareRender = function()
     cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
 
     vec3.negate(negDirVec, this._direction);
-    EveLensflare.prototype.MatrixArcFromForward(this._transform, negDirVec);
+    mat4.arcFromForward(this._transform, negDirVec);
     this._transform[12] = cameraSpacePos[0];
     this._transform[13] = cameraSpacePos[1];
     this._transform[14] = cameraSpacePos[2];

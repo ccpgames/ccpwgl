@@ -176,11 +176,11 @@ EveCurveLineSet.prototype.AddCurvedLineCrt = function(startPosition, startColor,
 EveCurveLineSet.prototype.AddCurvedLineSph = function(startPosition, startColor, endPosition, endColor, center, middle, lineWidth)
 {
     return this.AddCurvedLineCrt(
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
         startColor,
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
         endColor,
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), middle, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), middle, center),
         lineWidth);
 };
 
@@ -227,9 +227,9 @@ EveCurveLineSet.prototype.AddSpheredLineCrt = function(startPosition, startColor
 EveCurveLineSet.prototype.AddSpheredLineSph = function(startPosition, startColor, endPosition, endColor, center, lineWidth)
 {
     return this.AddSpheredLineCrt(
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
         startColor,
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), endPosition, center),
         endColor,
         center,
         lineWidth);
@@ -280,8 +280,8 @@ EveCurveLineSet.prototype.ChangeLinePositionSph = function(lineID, startPosition
 {
     this.ChangeLinePositionCrt(
         lineID,
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
-        EveCurveLineSet.cartFromSphericalAndCenter(vec3.create(), endPosition, center)
+        vec3.cartFromSphericalAndCenter(vec3.create(), startPosition, center),
+        vec3.cartFromSphericalAndCenter(vec3.create(), endPosition, center)
     );
 };
 
@@ -303,7 +303,7 @@ EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function(lineID, intermedi
  */
 EveCurveLineSet.prototype.ChangeLineIntermediateSph = function(lineID, intermediatePosition, middle)
 {
-    EveCurveLineSet.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
+    vec3.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
 };
 
 /**
@@ -812,44 +812,5 @@ EveCurveLineSet.prototype.GetResources = function(out)
         this.pickEffect.GetResources(out);
     }
 
-    return out;
-};
-
-/**
- * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
- *
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @returns {vec3} out          - receiving vec3
- */
-EveCurveLineSet.cartFromSpherical = function(out, spherical)
-{
-    var phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
-
-    out[0] = radius * Math.sin(phi) * Math.sin(theta);
-    out[1] = radius * Math.cos(theta);
-    out[2] = radius * Math.cos(phi) * Math.sin(theta);
-    return out;
-};
-
-/**
- * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
- *
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @param {vec3} center         - center
- * @returns {vec3} out          - receiving vec3
- */
-EveCurveLineSet.cartFromSphericalAndCenter = function(out, spherical, center)
-{
-    var phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
-
-    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
-    out[1] = radius * Math.cos(theta) + center[1];
-    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
     return out;
 };

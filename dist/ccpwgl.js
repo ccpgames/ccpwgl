@@ -144,22 +144,6 @@ var ccpwgl = (function(ccpwgl_int)
     var sof = new ccpwgl_int.EveSOF();
 
     /**
-     * Creates a perspective matrix
-     *
-     * @param out
-     * @param fovY
-     * @param aspect
-     * @param near
-     * @param far
-     */
-    ccpwgl.perspective = function(out, fovY, aspect, near, far)
-    {
-        var fH = Math.tan(fovY / 360 * Math.PI) * near;
-        var fW = fH * aspect;
-        return mat4.frustum(out, -fW, fW, -fH, fH, near, far);
-    };
-
-    /**
      * Internal render/update function. Is called every frame.
      * @param {number} dt Frame time.
      **/

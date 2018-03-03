@@ -29,7 +29,7 @@
                 },
                 getProjection: function (aspect)
                 {
-                    return ccpwgl.perspective(mat4.create(), 60, aspect, 1, 1000);
+                    return mat4.perspectiveGL(mat4.create(), 60, aspect, 1, 1000);
                 }
             };
 

@@ -204,22 +204,7 @@ Tw2GeometryBone.scratch = {
  */
 Tw2GeometryBone.prototype.UpdateTransform = function()
 {
-    // Mat4 to mat4
-    var l = this.localTransform,
-        scale = this.scaleShear;
-
-    l[0] = scale[0];
-    l[1] = scale[1];
-    l[2] = scale[2];
-    l[4] = scale[3];
-    l[5] = scale[4];
-    l[6] = scale[5];
-    l[8] = scale[6];
-    l[9] = scale[7];
-    l[10] = scale[8];
-    l[3] = l[7] = l[11] = l[12] = l[13] = l[14] = 0;
-    l[15] = 1;
-
+    mat4.fromMat3(this.localTransform, this.scaleShear);
     quat.normalize(this.orientation, this.orientation);
     var rm = mat4.fromQuat(Tw2GeometryBone.scratch.mat4_0, this.orientation);
     mat4.multiply(this.localTransform, this.localTransform, rm);

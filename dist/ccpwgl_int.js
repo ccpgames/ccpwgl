@@ -192,6 +192,18 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
+var _util = __webpack_require__(63);
+
+Object.keys(_util).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _util[key];
+    }
+  });
+});
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -239,7 +251,7 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(65);
+var _Tw2AnimationController = __webpack_require__(66);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -263,7 +275,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2CurveSet = __webpack_require__(66);
+var _Tw2CurveSet = __webpack_require__(67);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +299,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2EffectRes = __webpack_require__(67);
+var _Tw2EffectRes = __webpack_require__(68);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -311,7 +323,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(68);
+var _Tw2Float = __webpack_require__(69);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -335,7 +347,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(69);
+var _Tw2Frustum = __webpack_require__(70);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -359,7 +371,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(70);
+var _Tw2InstancedMesh = __webpack_require__(71);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +419,7 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(71);
+var _Tw2PerObjectData = __webpack_require__(72);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -419,7 +431,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PostProcess = __webpack_require__(72);
+var _Tw2PostProcess = __webpack_require__(73);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -431,7 +443,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(73);
+var _Tw2RawData = __webpack_require__(74);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -467,7 +479,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(74);
+var _Tw2RuntimeInstanceData = __webpack_require__(75);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -515,7 +527,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(91);
+var _Tw2TransformParameter = __webpack_require__(92);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -527,7 +539,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(92);
+var _Tw2ValueBinding = __webpack_require__(93);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -850,7 +862,7 @@ var _Tw2Effect = __webpack_require__(22);
 
 var _Tw2VertexDeclaration = __webpack_require__(13);
 
-var WebGLDebugUtil = __webpack_require__(63);
+var WebGLDebugUtil = __webpack_require__(64);
 
 /**
  * Tw2Device
@@ -4320,7 +4332,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(93);
+var _Tw2ColorCurve = __webpack_require__(94);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4332,7 +4344,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(94);
+var _Tw2ColorCurve2 = __webpack_require__(95);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4344,7 +4356,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(95);
+var _Tw2EventCurve = __webpack_require__(96);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4356,7 +4368,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(96);
+var _Tw2PerlinCurve = __webpack_require__(97);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4368,7 +4380,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(97);
+var _Tw2QuaternionCurve = __webpack_require__(98);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4380,7 +4392,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(98);
+var _Tw2RandomConstantCurve = __webpack_require__(99);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4392,7 +4404,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(99);
+var _Tw2RigidOrientation = __webpack_require__(100);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4404,7 +4416,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(100);
+var _Tw2RotationCurve = __webpack_require__(101);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4416,7 +4428,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(101);
+var _Tw2ScalarCurve = __webpack_require__(102);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4428,7 +4440,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(102);
+var _Tw2ScalarCurve2 = __webpack_require__(103);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4440,7 +4452,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(103);
+var _Tw2SineCurve = __webpack_require__(104);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4452,7 +4464,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(104);
+var _Tw2Vector2Curve = __webpack_require__(105);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4464,7 +4476,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(105);
+var _Tw2Vector3Curve = __webpack_require__(106);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4476,7 +4488,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(106);
+var _Tw2VectorCurve = __webpack_require__(107);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5179,6 +5191,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Tw2FloatParameter = Tw2FloatParameter;
+
+var _math = __webpack_require__(0);
+
 /**
  * A Tw2 Parameter
  * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
@@ -5201,7 +5216,7 @@ function Tw2FloatParameter(name, value) {
         this.name = '';
     }
     if (typeof value !== 'undefined') {
-        if (value.constructor.name.toUpperCase().includes('ARRAY')) {
+        if (_math.util.isArrayLike(value)) {
             this.value = value[0];
         } else {
             this.value = value;
@@ -6076,22 +6091,7 @@ Tw2GeometryBone.scratch = {
  * @returns {mat4}
  */
 Tw2GeometryBone.prototype.UpdateTransform = function () {
-    // Mat4 to mat4
-    var l = this.localTransform,
-        scale = this.scaleShear;
-
-    l[0] = scale[0];
-    l[1] = scale[1];
-    l[2] = scale[2];
-    l[4] = scale[3];
-    l[5] = scale[4];
-    l[6] = scale[5];
-    l[8] = scale[6];
-    l[9] = scale[7];
-    l[10] = scale[8];
-    l[3] = l[7] = l[11] = l[12] = l[13] = l[14] = 0;
-    l[15] = 1;
-
+    _math.mat4.fromMat3(this.localTransform, this.scaleShear);
     _math.quat.normalize(this.orientation, this.orientation);
     var rm = _math.mat4.fromQuat(Tw2GeometryBone.scratch.mat4_0, this.orientation);
     _math.mat4.multiply(this.localTransform, this.localTransform, rm);
@@ -10187,7 +10187,7 @@ const forEach = (function() {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.vec3 = undefined;
 
@@ -10196,6 +10196,42 @@ var _glMatrix = __webpack_require__(8);
 var _num = __webpack_require__(28);
 
 exports.vec3 = _glMatrix.vec3;
+
+/**
+ * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
+ * @param {vec3} out              - receiving vec3
+ * @param {vec3} spherical        - source vec3 with spherical coordinates (phi, theta, radius)
+ * @returns {vec3} out            - receiving vec3
+ */
+
+_glMatrix.vec3.cartFromSpherical = function (out, spherical) {
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta);
+    out[1] = radius * Math.cos(theta);
+    out[2] = radius * Math.cos(phi) * Math.sin(theta);
+    return out;
+};
+
+/**
+ * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
+ * @param {vec3} center         - center
+ * @returns {vec3} out          - receiving vec3
+ */
+_glMatrix.vec3.cartFromSphericalAndCenter = function (out, spherical, center) {
+    var phi = spherical[0],
+        theta = spherical[1],
+        radius = spherical[2];
+
+    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
+    out[1] = radius * Math.cos(theta) + center[1];
+    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
+    return out;
+};
 
 /**
  * Exponential decay
@@ -10208,13 +10244,78 @@ exports.vec3 = _glMatrix.vec3;
  * @param {number} time
  * @returns {vec3} out
  */
-
 _glMatrix.vec3.exponentialDecay = function (out, omega0, torque, I, drag, time) {
-  out[0] = _num.num.exponentialDecay(omega0[0], torque[0], I, drag, time);
-  out[1] = _num.num.exponentialDecay(omega0[1], torque[1], I, drag, time);
-  out[2] = _num.num.exponentialDecay(omega0[2], torque[2], I, drag, time);
-  return out;
+    out[0] = _num.num.exponentialDecay(omega0[0], torque[0], I, drag, time);
+    out[1] = _num.num.exponentialDecay(omega0[1], torque[1], I, drag, time);
+    out[2] = _num.num.exponentialDecay(omega0[2], torque[2], I, drag, time);
+    return out;
 };
+
+/**
+ * Projects a local vec3 to screen space with viewport settings
+ * @param {vec3} out           - receiving vec3
+ * @param {vec3} a             - local vec3
+ * @param {mat4} m             - model view projection matrix
+ * @param {vec4} viewport      - view port settings (x, y, width, height)
+ * @returns {vec3} out         - receiving vec3 (x, y, perspectiveDivide)
+ */
+_glMatrix.vec3.project = function (out, a, m, viewport) {
+    var x = a[0],
+        y = a[1],
+        z = a[2];
+
+    var outX = m[0] * x + m[4] * y + m[8] * z + m[12],
+        outY = m[1] * x + m[5] * y + m[9] * z + m[13],
+        perD = m[3] * x + m[7] * y + m[11] * z + m[15];
+
+    var projectionX = (outX / perD + 1) / 2;
+    var projectionY = 1 - (outY / perD + 1) / 2;
+
+    out[0] = projectionX * viewport[2] + viewport[0];
+    out[1] = projectionY * viewport[3] + viewport[1];
+    out[2] = perD;
+    return out;
+};
+
+/**
+ * Unprojects a vec3 with canvas coordinates to world space
+ * @param {vec3} out            - receiving vec3
+ * @param {vec3} a              - vec3 to unproject
+ * @param {mat4} invViewProj    - inverse view projection matrix
+ * @param {vec4|Array} viewport - [ x, y, width, height ]
+ * @returns {vec3} out
+ * @throw On perspective divide error
+ */
+_glMatrix.vec3.unproject = function () {
+    var vec4_0 = void 0;
+
+    return function unProject(out, a, invViewProj, viewport) {
+        if (!vec4_0) vec4_0 = _glMatrix.vec4.create();
+
+        var x = a[0],
+            y = a[1],
+            z = a[2];
+
+        vec4_0[0] = (x - viewport[0]) * 2.0 / viewport[2] - 1.0;
+        vec4_0[1] = (y - viewport[1]) * 2.0 / viewport[3] - 1.0;
+        vec4_0[2] = 2.0 * z - 1.0;
+        vec4_0[3] = 1.0;
+
+        _glMatrix.vec4.transformMat4(vec4_0, vec4_0, invViewProj);
+
+        if (vec4_0[3] === 0.0) {
+            out[0] = 0;
+            out[1] = 0;
+            out[2] = 0;
+            throw new Error('Perspective divide error');
+        }
+
+        out[0] = vec4_0[0] / vec4_0[3];
+        out[1] = vec4_0[1] / vec4_0[3];
+        out[2] = vec4_0[2] / vec4_0[3];
+        return out;
+    };
+}();
 
 /***/ }),
 /* 33 */
@@ -11418,7 +11519,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(75);
+var _emitters = __webpack_require__(76);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11430,7 +11531,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(78);
+var _forces = __webpack_require__(79);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11442,7 +11543,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(85);
+var _generators = __webpack_require__(86);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11454,7 +11555,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(89);
+var _constraints = __webpack_require__(90);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11466,7 +11567,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(90);
+var _Tw2ParticleSystem = __webpack_require__(91);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11567,7 +11668,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(107);
+var _sequencers = __webpack_require__(108);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11579,7 +11680,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(116);
+var _tracks = __webpack_require__(117);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11591,7 +11692,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(119);
+var _maya = __webpack_require__(120);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13675,7 +13776,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(124);
+var _eve = __webpack_require__(125);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -17913,13 +18014,188 @@ exports.mat3 = _glMatrix.mat3;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.mat4 = undefined;
 
 var _glMatrix = __webpack_require__(8);
 
 exports.mat4 = _glMatrix.mat4;
+
+/**
+ * arcFromForward
+ * @param {mat4} out
+ * @param {vec3} v
+ * @return {mat4} out
+ */
+
+_glMatrix.mat4.arcFromForward = function () {
+    var vec3_0 = void 0;
+
+    return function arcFromForward(out, v) {
+        if (!vec3_0) vec3_0 = _glMatrix.vec3.create();
+
+        var norm = _glMatrix.vec3.normalize(vec3_0, v);
+        _glMatrix.mat4.identity(out);
+
+        if (norm[2] < -0.99999) {
+            return out;
+        }
+
+        if (norm[2] > 0.99999) {
+            out[5] = -1.0;
+            out[10] = -1.0;
+            return out;
+        }
+
+        var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
+        out[0] = h * norm[1] * norm[1] - norm[2];
+        out[1] = -h * norm[0] * norm[1];
+        out[2] = norm[0];
+
+        out[4] = out[1];
+        out[5] = h * norm[0] * norm[0] - norm[2];
+        out[6] = norm[1];
+
+        out[8] = -norm[0];
+        out[9] = -norm[1];
+        out[10] = -norm[2];
+
+        return out;
+    };
+}();
+
+/**
+ * Copies the translation component from one mat4 to another
+ * @param {mat4} out
+ * @param {mat4} a
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.copyTranslation = function (out, a) {
+    out[12] = a[12];
+    out[13] = a[13];
+    out[14] = a[14];
+    return out;
+};
+
+/**
+ * Sets a mat4 from a mat4
+ * @param {mat4} out
+ * @param {mat3} m
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.fromMat3 = function (out, m) {
+    out[0] = m[0];
+    out[1] = m[1];
+    out[2] = m[2];
+    out[4] = m[3];
+    out[5] = m[4];
+    out[6] = m[5];
+    out[8] = m[6];
+    out[9] = m[7];
+    out[10] = m[8];
+    out[3] = out[7] = out[11] = out[12] = out[13] = out[14] = 0;
+    out[15] = 1;
+    return out;
+};
+
+/**
+ * Generates a look-at matrix with the given eye position, focal point, and up axis from a left handed coordinate system
+ *
+ * @param {mat4} out - mat4 frustum matrix will be written into
+ * @param {vec3} eye - Position of the viewer
+ * @param {vec3} center - Point the viewer is looking at
+ * @param {vec3} up - vec3 pointing up
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.lookAtGL = function () {
+    var vec3_0 = void 0,
+        vec3_1 = void 0,
+        vec3_2 = void 0;
+
+    return function lookAtGL(out, eye, center, up) {
+        if (!vec3_0) {
+            vec3_0 = _glMatrix.vec3.create();
+            vec3_1 = _glMatrix.vec3.create();
+            vec3_2 = _glMatrix.vec3.create();
+        }
+
+        _glMatrix.vec3.subtract(vec3_2, eye, center);
+
+        if (_glMatrix.vec3.squaredLength(vec3_2) === 0) {
+            vec3_2[2] = 1;
+        }
+
+        _glMatrix.vec3.normalize(vec3_2, vec3_2);
+        _glMatrix.vec3.cross(vec3_0, up, vec3_2);
+
+        if (_glMatrix.vec3.squaredLength(vec3_0) === 0) {
+            vec3_2[2] += 0.0001;
+            _glMatrix.vec3.cross(vec3_0, up, vec3_2);
+        }
+
+        _glMatrix.vec3.normalize(vec3_0, vec3_0);
+        _glMatrix.vec3.cross(vec3_1, vec3_2, vec3_0);
+
+        out[0] = vec3_0[0];
+        out[1] = vec3_0[1];
+        out[2] = vec3_0[2];
+
+        out[4] = vec3_1[0];
+        out[5] = vec3_1[1];
+        out[6] = vec3_1[2];
+
+        out[8] = vec3_2[0];
+        out[9] = vec3_2[1];
+        out[10] = vec3_2[2];
+
+        return out;
+    };
+}();
+
+/**
+ * Sets a left handed co-ordinate system perspective from a right handed co-ordinate system
+ * @param {mat4} out        - receiving mat4
+ * @param {number} fovY     - Vertical field of view in radians
+ * @param {number} aspect   - Aspect ratio. typically viewport width/height
+ * @param {number} near     - Near bound of the frustum
+ * @param {number} far      - Far bound of the frustum
+ * @returns {mat4} out      - receiving mat4
+ */
+_glMatrix.mat4.perspectiveGL = function (out, fovY, aspect, near, far) {
+    var fH = Math.tan(fovY / 360 * Math.PI) * near;
+    var fW = fH * aspect;
+    _glMatrix.mat4.frustum(out, -fW, fW, -fH, fH, near, far);
+    return out;
+};
+
+/**
+ * Sets the translation component of a mat4 from a vec3
+ * @param {mat4} out
+ * @param {vec3} v
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.setTranslation = function (out, v) {
+    out[12] = v[0];
+    out[13] = v[1];
+    out[14] = v[2];
+    return out;
+};
+
+/**
+ * Sets the translation component of a mat4 from values
+ * @param {mat4} out
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @returns {mat4} out
+ */
+_glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
+    out[12] = x;
+    out[13] = y;
+    out[14] = z;
+    return out;
+};
 
 /***/ }),
 /* 61 */
@@ -18494,6 +18770,155 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 
 /***/ }),
 /* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var util = exports.util = {};
+
+/**
+ * Assigns property values if they exist in a source object
+ * @param {*} dest
+ * @param {*} src
+ * @param attr
+ */
+util.assignIfExists = function (dest, src, attr) {
+    if (src && src[attr] !== undefined) {
+        dest[attr] = src[attr];
+    }
+};
+
+/**
+ * Generates an id
+ * @type {?Function}
+ */
+util.generateID = util.generateObjectID;
+
+/**
+ * Generates an object id
+ * @returns {number}
+ */
+util.generateObjectID = function () {
+    var OBJECT_COUNT = 0;
+
+    return function generateID() {
+        return OBJECT_COUNT++;
+    };
+}();
+
+/**
+ * Generates a UUID
+ * @author Three.js
+ * @returns {string}
+ */
+util.generateUUID = function () {
+    var lut = [];
+    for (var i = 0; i < 256; i++) {
+        lut[i] = (i < 16 ? '0' : '') + i.toString(16).toUpperCase();
+    }
+
+    return function generateUUID() {
+        var d0 = Math.random() * 0xffffffff | 0,
+            d1 = Math.random() * 0xffffffff | 0,
+            d2 = Math.random() * 0xffffffff | 0,
+            d3 = Math.random() * 0xffffffff | 0;
+
+        return lut[d0 & 0xff] + lut[d0 >> 8 & 0xff] + lut[d0 >> 16 & 0xff] + lut[d0 >> 24 & 0xff] + '-' + lut[d1 & 0xff] + lut[d1 >> 8 & 0xff] + '-' + lut[d1 >> 16 & 0x0f | 0x40] + lut[d1 >> 24 & 0xff] + '-' + lut[d2 & 0x3f | 0x80] + lut[d2 >> 8 & 0xff] + '-' + lut[d2 >> 16 & 0xff] + lut[d2 >> 24 & 0xff] + lut[d3 & 0xff] + lut[d3 >> 8 & 0xff] + lut[d3 >> 16 & 0xff] + lut[d3 >> 24 & 0xff];
+    };
+}();
+
+/**
+ * Gets a source's property value if it exists else returns a default value
+ * @param {*} src
+ * @param {string} prop
+ * @param {*} defaultValue
+ * @returns {*}
+ */
+util.get = function (src, prop, defaultValue) {
+    return src && prop in src ? src[prop] : defaultValue;
+};
+
+/**
+ * Checks if a value is an array
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isArray = Array.isArray;
+
+/**
+ * Checks if a value is array like
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isArrayLike = function (a) {
+    return a && util.isArray(a) || util.isTyped(a);
+};
+
+/**
+ * Checks if a value is a vector
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isVector = function (a) {
+    if (a) {
+        if (util.isTyped(a)) {
+            return true;
+        }
+
+        if (util.isArray(a)) {
+            for (var i = 0; i < a.length; i++) {
+                if (typeof a[i] !== 'number') return false;
+            }
+            return true;
+        }
+    }
+    return false;
+};
+
+/**
+ * Checks if a value is a typed array
+ * @param {*} a
+ * @returns {boolean}
+ */
+util.isTyped = function (a) {
+    return a && a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT;
+};
+
+/**
+ * Calls a function with arguments for each child in an array where that function exists
+ * @param {Array} arr
+ * @param {string} func
+ * @param args
+ */
+util.perArrayChild = function (arr, func) {
+    var len = arr.length;
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+    }
+
+    for (var i = 0; i < len; i++) {
+        var _arr$i;
+
+        if (func in arr) (_arr$i = arr[i])[func].apply(_arr$i, args);
+    }
+};
+
+/**
+ * Returns a value if it is an array, or a new array with the object in it
+ * @param {*} a
+ * @returns {Array}
+ */
+util.toArray = function (a) {
+    return Array.isArray(a) ? a : [a];
+};
+
+/***/ }),
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -19697,10 +20122,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(64)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(65)))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports) {
 
 var g;
@@ -19727,7 +20152,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20363,88 +20788,6 @@ Tw2AnimationController.prototype.ResetBoneTransforms = function (models) {
 };
 
 /**
- * EvaluateCurve
- * @param {Tw2GeometryCurve} curve
- * @param {number} time
- * @param value
- * @param {boolean} cycle
- * @param {number} duration
- */
-Tw2AnimationController.EvaluateCurve = function (curve, time, value, cycle, duration) {
-    var count = curve.knots.length;
-    var knot = count - 1;
-    var t = 0;
-    for (var i = 0; i < curve.knots.length; ++i) {
-        if (curve.knots[i] > time) {
-            knot = i;
-            break;
-        }
-    }
-
-    if (curve.degree === 0) {
-        for (var i = 0; i < curve.dimension; ++i) {
-            value[i] = curve.controls[knot * curve.dimension + i];
-        }
-    } else if (curve.degree === 1) {
-        var knot0 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
-        var dt = curve.knots[knot] - curve.knots[knot0];
-        if (dt < 0) {
-            dt += duration;
-        }
-        if (dt > 0) {
-            t = (time - curve.knots[i - 1]) / dt;
-        }
-        for (var i = 0; i < curve.dimension; ++i) {
-            value[i] = curve.controls[knot0 * curve.dimension + i] * (1 - t) + curve.controls[knot * curve.dimension + i] * t;
-        }
-    } else {
-        var k_2 = cycle ? (knot + count - 2) % count : knot === 0 ? 0 : knot - 2;
-        var k_1 = cycle ? (knot + count - 1) % count : knot === 0 ? 0 : knot - 1;
-
-        var p1 = k_2 * curve.dimension;
-        var p2 = k_1 * curve.dimension;
-        var p3 = knot * curve.dimension;
-
-        var ti_2 = curve.knots[k_2];
-        var ti_1 = curve.knots[k_1];
-        var ti = curve.knots[knot];
-        var ti1 = curve.knots[(knot + 1) % count];
-        if (ti_2 > ti) {
-            ti += duration;
-            ti1 += duration;
-            time += duration;
-        }
-        if (ti_1 > ti) {
-            ti += duration;
-            ti1 += duration;
-            time += duration;
-        }
-        if (ti1 < ti) {
-            ti1 += duration;
-        }
-
-        var tmti_1 = time - ti_1;
-        var tmti_2 = time - ti_2;
-        var dL0 = ti - ti_1;
-        var dL1_1 = ti - ti_2;
-        var dL1_2 = ti1 - ti_1;
-
-        var L0 = tmti_1 / dL0;
-        var L1_1 = tmti_2 / dL1_1;
-        var L1_2 = tmti_1 / dL1_2;
-
-        var ci_2 = L1_1 + L0 - L0 * L1_1;
-        var ci = L0 * L1_2;
-        var ci_1 = ci_2 - ci;
-        ci_2 = 1 - ci_2;
-
-        for (var i = 0; i < curve.dimension; ++i) {
-            value[i] = ci_2 * curve.controls[p1 + i] + ci_1 * curve.controls[p2 + i] + ci * curve.controls[p3 + i];
-        }
-    }
-};
-
-/**
  * Internal render/update function which is called every frame
  * TODO: Fix commented out code (line 718)
  * @param {number} dt - Delta Time
@@ -20485,35 +20828,23 @@ Tw2AnimationController.prototype.Update = function (dt) {
                 for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k) {
                     var track = animation.trackGroups[j].transformTracks[k];
                     if (track.trackRes.position) {
-                        Tw2AnimationController.EvaluateCurve(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
+                        _math.curve.evaluate(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
                     } else {
                         position[0] = position[1] = position[2] = 0;
                     }
                     if (track.trackRes.orientation) {
-                        Tw2AnimationController.EvaluateCurve(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
+                        _math.curve.evaluate(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
                         _math.quat.normalize(orientation, orientation);
                     } else {
                         _math.quat.identity(orientation);
                     }
                     if (track.trackRes.scaleShear) {
-                        Tw2AnimationController.EvaluateCurve(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
+                        _math.curve.evaluate(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
                     } else {
                         _math.mat3.identity(scale);
                     }
 
-                    var l = track.bone.localTransform;
-                    l[0] = scale[0];
-                    l[1] = scale[1];
-                    l[2] = scale[2];
-                    l[4] = scale[3];
-                    l[5] = scale[4];
-                    l[6] = scale[5];
-                    l[8] = scale[6];
-                    l[9] = scale[7];
-                    l[10] = scale[8];
-                    l[3] = l[7] = l[11] = l[12] = l[13] = l[14] = 0;
-                    l[15] = 1;
-
+                    _math.mat4.fromMat3(track.bone.localTransform, scale);
                     _math.mat4.multiply(track.bone.localTransform, track.bone.localTransform, _math.mat4.fromQuat(tempMat, orientation));
                     track.bone.localTransform[12] = position[0];
                     track.bone.localTransform[13] = position[1];
@@ -20630,7 +20961,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20734,7 +21065,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21316,7 +21647,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21336,7 +21667,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21467,7 +21798,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21642,7 +21973,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21679,7 +22010,7 @@ Tw2PerObjectData.prototype.SetPerObjectDataToDevice = function (constantBufferHa
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21864,7 +22195,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21950,7 +22281,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22163,7 +22494,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22173,7 +22504,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(76);
+var _Tw2StaticEmitter = __webpack_require__(77);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22185,7 +22516,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(77);
+var _Tw2DynamicEmitter = __webpack_require__(78);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22198,7 +22529,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22354,7 +22685,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22474,7 +22805,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22484,7 +22815,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(79);
+var _Tw2ParticleAttractorForce = __webpack_require__(80);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22496,7 +22827,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(80);
+var _Tw2ParticleDirectForce = __webpack_require__(81);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22508,7 +22839,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(81);
+var _Tw2ParticleDragForce = __webpack_require__(82);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22520,7 +22851,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(82);
+var _Tw2ParticleFluidDragForce = __webpack_require__(83);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22532,7 +22863,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(83);
+var _Tw2ParticleSpring = __webpack_require__(84);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22544,7 +22875,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(84);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(85);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22557,7 +22888,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22629,7 +22960,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22690,7 +23021,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22751,7 +23082,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22837,7 +23168,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22902,7 +23233,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23007,7 +23338,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23017,7 +23348,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(86);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(87);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23029,7 +23360,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(87);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(88);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23041,7 +23372,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(88);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(89);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23054,7 +23385,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23145,7 +23476,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23236,7 +23567,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23386,14 +23717,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23935,7 +24266,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24029,7 +24360,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24172,8 +24503,8 @@ Tw2ValueBinding.prototype.Initialize = function () {
         return;
     }
 
-    this.sourceIsArray = this.sourceObject[this.sourceAttribute] instanceof Float32Array || Array.isArray(this.sourceObject[this.sourceAttribute]);
-    this.destinationIsArray = this.destinationObject[this.destinationAttribute] instanceof Float32Array || Array.isArray(this.destinationObject[this.destinationAttribute]);
+    this.sourceIsArray = _math.util.isArrayLike(this.sourceObject[this.sourceAttribute]);
+    this.destinationIsArray = _math.util.isArrayLike(this.destinationObject[this.destinationAttribute]);
 
     if (this.sourceIsArray === this.destinationIsArray && _typeof(this.sourceObject[this.sourceAttribute]) === _typeof(this.destinationObject[this.destinationAttribute])) {
         if (this.sourceIsArray) {
@@ -24305,7 +24636,7 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24545,7 +24876,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24815,7 +25146,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24988,7 +25319,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25094,7 +25425,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25374,7 +25705,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25466,7 +25797,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25651,7 +25982,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25912,7 +26243,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26165,7 +26496,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26457,7 +26788,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26551,7 +26882,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26854,7 +27185,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27160,7 +27491,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27415,7 +27746,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27425,7 +27756,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(108);
+var _Tw2ColorSequencer = __webpack_require__(109);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27437,7 +27768,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(109);
+var _Tw2EulerRotation = __webpack_require__(110);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27449,7 +27780,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(110);
+var _Tw2QuaternionSequencer = __webpack_require__(111);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27461,7 +27792,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(111);
+var _Tw2RGBAScalarSequencer = __webpack_require__(112);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27473,7 +27804,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(112);
+var _Tw2ScalarSequencer = __webpack_require__(113);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27485,7 +27816,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(113);
+var _Tw2VectorSequencer = __webpack_require__(114);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27497,7 +27828,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(114);
+var _Tw2XYZScalarSequencer = __webpack_require__(115);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27509,7 +27840,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(115);
+var _Tw2YPRSequencer = __webpack_require__(116);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27522,7 +27853,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27685,7 +28016,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27836,7 +28167,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27977,7 +28308,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28118,7 +28449,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28300,7 +28631,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28464,7 +28795,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28602,7 +28933,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28756,7 +29087,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28766,7 +29097,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(117);
+var _Tw2WbgTrack = __webpack_require__(118);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28778,7 +29109,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(118);
+var _Tw2TransformTrack = __webpack_require__(119);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28791,7 +29122,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28955,7 +29286,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29093,7 +29424,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29103,7 +29434,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(120);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(121);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29115,7 +29446,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(121);
+var _Tw2MayaScalarCurve = __webpack_require__(122);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29127,7 +29458,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(122);
+var _Tw2MayaVector3Curve = __webpack_require__(123);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29139,7 +29470,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(123);
+var _Tw2MayaAnimationEngine = __webpack_require__(124);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29152,7 +29483,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29323,7 +29654,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29439,7 +29770,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29591,7 +29922,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29966,7 +30297,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29976,7 +30307,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveChildBillboard = __webpack_require__(125);
+var _EveChildBillboard = __webpack_require__(126);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29988,7 +30319,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(126);
+var _EveChildContainer = __webpack_require__(127);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30000,7 +30331,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(127);
+var _EveChildExplosion = __webpack_require__(128);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30024,7 +30355,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(128);
+var _EveChildParticleSystem = __webpack_require__(129);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30048,7 +30379,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(129);
+var _EveStretch = __webpack_require__(130);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30060,7 +30391,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(130);
+var _EveTurretFiringFX = __webpack_require__(131);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30084,7 +30415,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(131);
+var _EveCurveLineSet = __webpack_require__(132);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30132,7 +30463,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(132);
+var _EveTurretSet = __webpack_require__(133);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30144,7 +30475,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(133);
+var _EveMeshOverlayEffect = __webpack_require__(134);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30168,7 +30499,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(134);
+var _EvePlanet = __webpack_require__(135);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30216,7 +30547,7 @@ Object.keys(_EveTransform).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(135);
+var _EveEffectRoot = __webpack_require__(136);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30228,7 +30559,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(136);
+var _EveMissile = __webpack_require__(137);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30240,7 +30571,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(138);
+var _EveSpaceScene = __webpack_require__(139);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30252,7 +30583,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveLensflare = __webpack_require__(139);
+var _EveLensflare = __webpack_require__(140);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30264,7 +30595,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(140);
+var _EveOccluder = __webpack_require__(141);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30276,7 +30607,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(141);
+var _EveSOF = __webpack_require__(142);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30289,7 +30620,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30418,7 +30749,7 @@ EveChildBillboard.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30520,7 +30851,7 @@ EveChildContainer.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30557,7 +30888,7 @@ EveChildExplosion.prototype.Update = function (parentTransform) {};
 EveChildExplosion.prototype.GetBatches = function (mode, accumulator, perObjectData) {};
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30674,7 +31005,7 @@ EveChildParticleSystem.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30918,7 +31249,7 @@ EveStretch.prototype.SetIsNegZForward = function (isNegZForward) {
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31126,7 +31457,7 @@ EveTurretFiringFX.prototype.UpdateViewDependentData = function () {
 };
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31301,7 +31632,7 @@ EveCurveLineSet.prototype.AddCurvedLineCrt = function (startPosition, startColor
  * @returns {Number} line index
  */
 EveCurveLineSet.prototype.AddCurvedLineSph = function (startPosition, startColor, endPosition, endColor, center, middle, lineWidth) {
-    return this.AddCurvedLineCrt(EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), middle, center), lineWidth);
+    return this.AddCurvedLineCrt(_math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), middle, center), lineWidth);
 };
 
 /**
@@ -31344,7 +31675,7 @@ EveCurveLineSet.prototype.AddSpheredLineCrt = function (startPosition, startColo
  * @returns {Number} line index
  */
 EveCurveLineSet.prototype.AddSpheredLineSph = function (startPosition, startColor, endPosition, endColor, center, lineWidth) {
-    return this.AddSpheredLineCrt(EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, center, lineWidth);
+    return this.AddSpheredLineCrt(_math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, center, lineWidth);
 };
 
 /**
@@ -31386,7 +31717,7 @@ EveCurveLineSet.prototype.ChangeLinePositionCrt = function (lineID, startPositio
  * @param {vec3} center
  */
 EveCurveLineSet.prototype.ChangeLinePositionSph = function (lineID, startPosition, endPosition, center) {
-    this.ChangeLinePositionCrt(lineID, EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), EveCurveLineSet.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center));
+    this.ChangeLinePositionCrt(lineID, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center));
 };
 
 /**
@@ -31405,7 +31736,7 @@ EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function (lineID, intermed
  * @param {vec3} middle
  */
 EveCurveLineSet.prototype.ChangeLineIntermediateSph = function (lineID, intermediatePosition, middle) {
-    EveCurveLineSet.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
+    _math.vec3.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
 };
 
 /**
@@ -31885,45 +32216,8 @@ EveCurveLineSet.prototype.GetResources = function (out) {
     return out;
 };
 
-/**
- * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
- *
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @returns {vec3} out          - receiving vec3
- */
-EveCurveLineSet.cartFromSpherical = function (out, spherical) {
-    var phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
-
-    out[0] = radius * Math.sin(phi) * Math.sin(theta);
-    out[1] = radius * Math.cos(theta);
-    out[2] = radius * Math.cos(phi) * Math.sin(theta);
-    return out;
-};
-
-/**
- * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
- *
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @param {vec3} center         - center
- * @returns {vec3} out          - receiving vec3
- */
-EveCurveLineSet.cartFromSphericalAndCenter = function (out, spherical, center) {
-    var phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
-
-    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
-    out[1] = radius * Math.cos(theta) + center[1];
-    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
-    return out;
-};
-
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32573,7 +32867,7 @@ EveTurretSet.prototype.GetClosestTurret = function () {
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32670,7 +32964,7 @@ EveMeshOverlayEffect.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32954,7 +33248,7 @@ EvePlanet.prototype.UpdateViewDependentData = function (parentTransform) {
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33097,7 +33391,7 @@ EveEffectRoot.prototype.Stop = function () {
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33105,7 +33399,7 @@ EveEffectRoot.prototype.Stop = function () {
 
 var _math = __webpack_require__(0);
 
-var _EveMissileWarhead = __webpack_require__(137);
+var _EveMissileWarhead = __webpack_require__(138);
 
 /**
  * EveMissile
@@ -33236,7 +33530,7 @@ EveMissile.scratch = {
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33457,7 +33751,7 @@ EveMissileWarhead.prototype.Launch = function (transform) {
 };
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33985,7 +34279,7 @@ EveSpaceScene.prototype.Update = function (dt) {
 EveSpaceScene.EmptyTexture = null;
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34095,36 +34389,6 @@ EveLensflare.prototype.GetResources = function (out) {
 };
 
 /**
- * Internal helper function
- * @param out
- * @param v
- */
-EveLensflare.prototype.MatrixArcFromForward = function (out, v) {
-    var norm = _math.vec3.normalize(_math.vec3.create(), v);
-    _math.mat4.identity(out);
-    if (norm[2] < -0.99999) {
-        return;
-    }
-    if (norm[2] > 0.99999) {
-        out[5] = -1.0;
-        out[10] = -1.0;
-        return;
-    }
-    var h = (1 + norm[2]) / (norm[0] * norm[0] + norm[1] * norm[1]);
-    out[0] = h * norm[1] * norm[1] - norm[2];
-    out[1] = -h * norm[0] * norm[1];
-    out[2] = norm[0];
-
-    out[4] = out[1];
-    out[5] = h * norm[0] * norm[0] - norm[2];
-    out[6] = norm[1];
-
-    out[8] = -norm[0];
-    out[9] = -norm[1];
-    out[10] = -norm[2];
-};
-
-/**
  * Scratch variables
  */
 EveLensflare.scratch = {
@@ -34171,7 +34435,7 @@ EveLensflare.prototype.PrepareRender = function () {
     cameraSpacePos[2] = -this.cameraFactor * viewDir[2] + cameraPos[2];
 
     _math.vec3.negate(negDirVec, this._direction);
-    EveLensflare.prototype.MatrixArcFromForward(this._transform, negDirVec);
+    _math.mat4.arcFromForward(this._transform, negDirVec);
     this._transform[12] = cameraSpacePos[0];
     this._transform[13] = cameraSpacePos[1];
     this._transform[14] = cameraSpacePos[2];
@@ -34330,7 +34594,7 @@ EveLensflare.prototype.GetBatches = function (mode, accumulator, perObjectData) 
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34519,7 +34783,7 @@ EveOccluder.prototype.GetResources = function (out) {
 };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

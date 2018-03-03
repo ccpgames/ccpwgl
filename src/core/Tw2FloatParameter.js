@@ -1,3 +1,5 @@
+import { util } from '../math';
+
 /**
  * A Tw2 Parameter
  * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
@@ -25,7 +27,7 @@ export function Tw2FloatParameter(name, value)
     }
     if (typeof(value) !== 'undefined')
     {
-        if (value.constructor.name.toUpperCase().includes('ARRAY'))
+        if (util.isArrayLike(value))
         {
             this.value = value[0];
         }
