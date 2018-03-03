@@ -1,6 +1,6 @@
 import {vec3, quat, mat4} from '../math';
 import {Tw2RawData} from '../core';
-import {EveBasicPerObjectData} from './EveTransform';
+import {EveBasicPerObjectData} from './EveBasicPerObjectData';
 
 /**
  * Particle system attachment to space object

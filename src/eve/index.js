@@ -1,3 +1,4 @@
+export * from './EveBasicPerObjectData';
 export * from './EveChildBillboard';
 export * from './EveChildContainer';
 export * from './EveChildExplosion';

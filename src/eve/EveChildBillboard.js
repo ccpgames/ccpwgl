@@ -1,7 +1,6 @@
 import {vec3, quat, mat4} from '../math';
-import {device} from '../core';
-import {Tw2RawData} from '../core';
-import {EveBasicPerObjectData} from './EveTransform';
+import {device, Tw2RawData} from '../core';
+import {EveBasicPerObjectData} from './EveBasicPerObjectData';
 
 /**
  * Mesh attachment to space object and oriented towards the camera

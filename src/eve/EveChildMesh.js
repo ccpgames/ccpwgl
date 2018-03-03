@@ -1,7 +1,6 @@
 import {vec3, quat, mat4} from '../math';
-import {Tw2RawData} from '../core';
-import {Tw2PerObjectData} from '../core';
-import {EveBasicPerObjectData} from './EveTransform';
+import {Tw2PerObjectData, Tw2RawData} from '../core';
+import {EveBasicPerObjectData} from './EveBasicPerObjectData';
 
 /**
  * Mesh attachment to space object
