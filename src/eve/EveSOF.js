@@ -11,7 +11,7 @@ import {Tw2CurveSet} from '../core';
 import {Tw2ValueBinding} from '../core';
 import {Tw2ScalarCurve2, Tw2ScalarKey2} from '../curve';
 import {EveBoosterSet} from './EveBoosterSet';
-import {EveChildMesh} from './EveChildMesh';
+import {EveChildMesh} from './child';
 import {EveLocator} from './EveLocator';
 import {EvePlaneSet, EvePlaneSetItem} from './EvePlaneSet';
 import {EveSpaceObjectDecal} from './EveSpaceObjectDecal';

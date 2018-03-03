@@ -1,9 +1,6 @@
+export * from './child';
+
 export * from './EveBasicPerObjectData';
-export * from './EveChildBillboard';
-export * from './EveChildContainer';
-export * from './EveChildExplosion';
-export * from './EveChildMesh';
-export * from './EveChildParticleSystem';
 export * from './EveLocator';
 export * from './EveStretch';
 export * from './EveTurretFiringFX';

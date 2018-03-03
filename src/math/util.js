@@ -15,20 +15,20 @@ util.assignIfExists = function (dest, src, attr)
 };
 
 /**
- * Generates an id
- * @type {?Function}
+ * Identifies if UUIDs should be used for ID generation
+ * @type {?boolean}
  */
-util.generateID = util.generateObjectID;
+let USE_UUID = null;
 
 /**
  * Generates an object id
  * @returns {number}
+ * @private
  */
-util.generateObjectID = (function ()
+const _generateObjectID = (function()
 {
     let OBJECT_COUNT = 0;
-
-    return function generateID()
+    return function _generateObjectID()
     {
         return OBJECT_COUNT++;
     };
@@ -38,8 +38,9 @@ util.generateObjectID = (function ()
  * Generates a UUID
  * @author Three.js
  * @returns {string}
+ * @private
  */
-util.generateUUID = (function ()
+const _generateUUID = (function ()
 {
     const lut = [];
     for (let i = 0; i < 256; i++)
@@ -47,7 +48,7 @@ util.generateUUID = (function ()
         lut[i] = (i < 16 ? '0' : '') + (i).toString(16).toUpperCase();
     }
 
-    return function generateUUID()
+    return function _generateUUID()
     {
         const
             d0 = Math.random() * 0xffffffff | 0,
@@ -61,6 +62,31 @@ util.generateUUID = (function ()
             lut[d3 & 0xff] + lut[d3 >> 8 & 0xff] + lut[d3 >> 16 & 0xff] + lut[d3 >> 24 & 0xff];
     };
 })();
+
+/**
+ * Enables UUID's for ID generation
+ * @param {boolean} bool
+ * @throws When generateID have already been used and trying to set a different ID type
+ */
+util.enableUUID = function(bool)
+{
+    if (USE_UUID !== null && bool !== USE_UUID)
+    {
+        throw new Error('Cannot change id generation type once used');
+    }
+    USE_UUID = (bool);
+};
+
+/**
+ * Generates an id
+ * - Defaults to Object IDs
+ * @type {?Function}
+ */
+util.generateID = function()
+{
+    if (USE_UUID === null) USE_UUID = false;
+    return USE_UUID ? _generateUUID() : _generateObjectID();
+};
 
 /**
  * Gets a source's property value if it exists else returns a default value

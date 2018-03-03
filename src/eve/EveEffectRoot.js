@@ -100,7 +100,7 @@ EveEffectRoot.prototype.Update = function(dt)
     }
     for (i = 0; i < this.effectChildren.length; ++i)
     {
-        this.effectChildren[i].Update(this.localTransform, dt);
+        this.effectChildren[i].Update(dt, this.localTransform);
     }
 };
 
