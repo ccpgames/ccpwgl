@@ -314,12 +314,6 @@ export class EveTransform extends EveObject
 }
 
 /**
- * Class global and scratch variables
- * @type {?{}}
- */
-EveTransform.global = null;
-
-/**
  * Modifier states
  * @type {{string:Number}}
  */
