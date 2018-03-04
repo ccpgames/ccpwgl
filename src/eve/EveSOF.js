@@ -17,8 +17,7 @@ import {EvePlaneSet, EvePlaneSetItem} from './EvePlaneSet';
 import {EveSpaceObjectDecal} from './EveSpaceObjectDecal';
 import {EveSpotlightSet, EveSpotlightSetItem} from './EveSpotlightSet';
 import {EveSpriteSet, EveSpriteSetItem} from './EveSpriteSet';
-import {EveSpaceObject} from './EveSpaceObject';
-import {EveShip} from './EveShip';
+import {EveSpaceObject, EveShip} from './object';
 
 
 export function EveSOF()

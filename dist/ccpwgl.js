@@ -1136,18 +1136,6 @@ var ccpwgl = (function(ccpwgl_int)
             return this.turrets[index].target;
         };
 
-        function hasLocatorPrefix(object, name)
-        {
-            for (var j = 0; j < object.locators.length; ++j)
-            {
-                if (object.locators[j].name.substr(0, name.length) === name)
-                {
-                    return true;
-                }
-            }
-
-        }
-
         function fireMissile(missilePath, positions)
         {
             console.error(missilePath);
@@ -1162,7 +1150,7 @@ var ccpwgl = (function(ccpwgl_int)
                 objectIndex = null;
                 for (var i = 0; i < self.wrappedObjects.length; ++i)
                 {
-                    if (self.wrappedObjects[i] && hasLocatorPrefix(self.wrappedObjects[i], name))
+                    if (self.wrappedObjects[i] && self.wrappedObjects[i].HasLocatorPrefix(name))
                     {
                         objectIndex = i;
                         break;
@@ -1175,7 +1163,7 @@ var ccpwgl = (function(ccpwgl_int)
             }
             else
             {
-                if (!hasLocatorPrefix(self.wrappedObjects[objectIndex], name))
+                if (!self.wrappedObjects[objectIndex].HasLocatorPrefix(name))
                 {
                     return;
                 }
