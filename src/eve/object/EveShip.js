@@ -1,21 +1,6 @@
 import {EveSpaceObject} from './EveSpaceObject';
 
 /**
- * Eve Turret Set Locator Info
- * @property {boolean} isJoint
- * @property {Array.<EveLocator|*>} locators
- */
-export class EveTurretSetLocatorInfo
-{
-    constructor(name='')
-    {
-        this.name = name;
-        this.isJoint = false;
-        this.locators = [];
-    }
-}
-
-/**
  * EveShip
  *
  * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
@@ -23,7 +8,6 @@ export class EveTurretSetLocatorInfo
  * @property {Array.<EveBoosterSet>} boosters
  * @property {Array.<EveTurretSet>} turretSets
  * @property {number} boosterGain
- * @property {Array} _turretSetsLocatorInfo
  * @class
  */
 export class EveShip extends EveSpaceObject
@@ -36,7 +20,6 @@ export class EveShip extends EveSpaceObject
         this.boosters = null;
         this.turretSets = [];
         this.boosterGain = 1;
-        this._turretSetsLocatorInfo = [];
     }
 
     /**
@@ -56,54 +39,51 @@ export class EveShip extends EveSpaceObject
      */
     RebuildBoosterSet()
     {
-        if (!this.boosters) return;
-
-        this.boosters.Clear();
-
-        const locators = this.FindLocatorsByPrefix('locator_booster');
-        for (let i = 0; i < locators.length; ++i)
+        if (this.boosters)
         {
-            this.boosters.Add(locators[i].transform, locators[i].atlasIndex0, locators[i].atlasIndex1, locators[i].name);
+            this.boosters.UpdateItemsFromLocators(this.FindLocatorsByPrefix('locator_booster'));
         }
-
-        this.boosters.Rebuild();
     }
 
     /**
-     * Rebuilds turret positions
+     * Rebuilds turret sets
      */
     RebuildTurretPositions()
     {
-        this._turretSetsLocatorInfo = [];
-        for (let i = 0; i < this.turretSets.length; ++i)
+        for (let i = 0; i < this.turretSets.length; i++)
+        {
+            this.RebuildTurretSet(i);
+        }
+    }
+
+    /**
+     * Rebuilds a turret set
+     * @param {number} index
+     */
+    RebuildTurretSet(index)
+    {
+        if (this.turretSets[index] === undefined) return;
+
+        const
+            turretSet = this.turretSets[index],
+            prefix = turretSet.locatorName,
+            count = this.GetLocatorCount(prefix),
+            locators = [];
+
+        for (let j = 0; j < count; ++j)
         {
             const
-                turretSet = this.turretSets[i],
-                prefix = turretSet.locatorName,
-                count = this.GetLocatorCount(prefix),
-                info = new EveTurretSetLocatorInfo(prefix);
+                name = prefix + String.fromCharCode('a'.charCodeAt(0) + j),
+                locator = this.FindLocatorByName(name);
 
-            for (let j = 0; j < count; ++j)
+            if (locator)
             {
-                const
-                    name = prefix + String.fromCharCode('a'.charCodeAt(0) + j),
-                    locator = this.FindLocatorByName(name),
-                    bone = this.FindLocatorBoneByName(name);
-
-                if (locator)
-                {
-                    if (bone)
-                    {
-                        info.isJoint = true;
-                        locator.bone = bone;
-                    }
-
-                    turretSet.SetLocalTransform(j, bone ? bone.worldTransform : locator.transform, name);
-                    info.locators.push(locator);
-                }
+                locator.FindBone(this.animation);
+                locators.push(locator);
             }
-            this._turretSetsLocatorInfo.push(info);
         }
+
+        turretSet.UpdateItemsFromLocators(locators);
     }
 
     /**
@@ -152,35 +132,21 @@ export class EveShip extends EveSpaceObject
 
         if (this.boosters)
         {
-            if (this.boosters.rebuildPending)
+            if (this.boosters._locatorRebuildPending)
             {
                 this.RebuildBoosterSet();
             }
+
             this.boosters.Update(dt, this.transform);
         }
 
-        // Update turrets that are on bones
         for (let i = 0; i < this.turretSets.length; ++i)
         {
-            if (i < this._turretSetsLocatorInfo.length)
+            if (this.turretSets[i]._locatorRebuildPending)
             {
-                const info = this._turretSetsLocatorInfo[i];
-                if (info.isJoint)
-                {
-                    for (let j = 0; j < info.locators.length; ++j)
-                    {
-                        if (info.locators[j].bone)
-                        {
-                            const locator = info.locators[j];
-                            this.turretSets[i].SetLocalTransform(j, locator.bone.worldTransform, locator.name);
-                        }
-                    }
-                }
+                this.RebuildTurretSet(i);
             }
-        }
 
-        for (let i = 0; i < this.turretSets.length; ++i)
-        {
             this.turretSets[i].Update(dt, this.transform);
         }
     }
@@ -199,16 +165,21 @@ export class EveShip extends EveSpaceObject
             this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
             this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
 
+            if (this.boosters && this.visible.boosters)
+            {
+                this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+            }
+
             if (this.visible.turretSets)
             {
                 if (this.lod > 1)
                 {
                     for (let i = 0; i < this.turretSets.length; ++i)
                     {
-                        this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+                        this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData, this.visible.firingEffects);
                     }
                 }
-                else
+                else if (this.visible.firingEffects)
                 {
                     for (let i = 0; i < this.turretSets.length; ++i)
                     {
@@ -219,12 +190,6 @@ export class EveShip extends EveSpaceObject
                     }
                 }
             }
-
-            if (this.boosters && this.visible.boosters)
-            {
-                this.boosters.GetBatches(mode, accumulator, this._perObjectData);
-            }
         }
     }
-
 }

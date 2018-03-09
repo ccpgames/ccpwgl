@@ -394,12 +394,10 @@ export class EveSpaceObject extends EveObject
                 this.planeSets[i].Update(dt);
             }
 
-            /*
             for (let i = 0; i < this.spotlightSets.length; i++)
             {
                 this.spotlightSets[i].Update(dt);
             }
-            */
 
             for (let i = 0; i < this.children.length; ++i)
             {
@@ -419,6 +417,11 @@ export class EveSpaceObject extends EveObject
             for (let i = 0; i < this.overlayEffects.length; ++i)
             {
                 this.overlayEffects[i].Update(dt);
+            }
+
+            for (let i = 0; i < this.lineSets.length; i++)
+            {
+                this.lineSets[i].Update(dt);
             }
 
             this.animation.Update(dt);

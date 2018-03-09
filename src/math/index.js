@@ -8,3 +8,8 @@ export * from './mat4';
 export * from './noise';
 export * from './curve';
 export * from './util';
+
+/**
+ * TypedArray
+ * @typedef {Float64Array|Float32Array|Uint32Array|Uint16Array|Uint8Array|Uint8ClampedArray|Int32Array|Int16Array|Int8Array} TypedArray
+ */

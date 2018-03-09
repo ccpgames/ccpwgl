@@ -10,16 +10,19 @@
     <script type="text/javascript" src="demos.js"></script>
 
     <script type="text/javascript">
+
+        var ship, canvas, camera, scene;
+
         function OnDocLoad()
         {
             var vec4 = ccpwgl_int.math.vec4,
                 quat = ccpwgl_int.math.quat,
                 mat4 = ccpwgl_int.math.mat4;
 
-            var canvas = document.getElementById('mainCanvas');
+            canvas = document.getElementById('mainCanvas');
             ccpwgl.initialize(canvas, demos.options);
 
-            var camera = {
+            camera = {
                 getView: function ()
                 {
                     var view = mat4.create();
@@ -35,8 +38,8 @@
 
             ccpwgl.setCamera(camera);
 
-            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
-            var ship = scene.loadShip('abc1_t1:amarrbase:amarr');
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            ship = scene.loadShip('abc1_t1:amarrbase:amarr');
             ship.mountTurret(1, 'res:/dx9/model/turret/Energy/Beam/M/beam_focused_F.red');
             ship.mountTurret(2, 'res:/dx9/model/turret/Hybrid/Rail/M/Rail_250mm_T1.red');
             ship.setBoosterStrength(0.3);

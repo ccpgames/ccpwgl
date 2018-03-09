@@ -2,15 +2,38 @@ export const util = {};
 
 /**
  * Assigns property values if they exist in a source object
+ * - Typed arrays are cloned/ copied to ensure no pass-by-reference errors
+ *
  * @param {*} dest
  * @param {*} src
- * @param attr
+ * @param {string|string[]} attrs
  */
-util.assignIfExists = function (dest, src, attr)
+util.assignIfExists = function (dest, src, attrs)
 {
-    if (src && src[attr] !== undefined)
+    if (!src) return;
+
+    attrs = util.toArray(attrs);
+    for (let i = 0; i < attrs.length; i++)
     {
-        dest[attr] = src[attr];
+        const attr = attrs[i];
+        if (src[attr] !== undefined)
+        {
+            if (util.isTyped(dest[attr]) || !dest[attr] && util.isTyped(src[attr]))
+            {
+                if (!dest[attr] || dest[attr].length !== src[attr].length)
+                {
+                    dest[attr] = new dest[attr]['constructor'](src[attr]);
+                }
+                else
+                {
+                    dest[attr].set(src[attr]);
+                }
+            }
+            else
+            {
+                dest[attr] = src[attr];
+            }
+        }
     }
 };
 
@@ -25,7 +48,7 @@ let USE_UUID = null;
  * @returns {number}
  * @private
  */
-const _generateObjectID = (function()
+const _generateObjectID = (function ()
 {
     let OBJECT_COUNT = 0;
     return function _generateObjectID()
@@ -68,7 +91,7 @@ const _generateUUID = (function ()
  * @param {boolean} bool
  * @throws When generateID have already been used and trying to set a different ID type
  */
-util.enableUUID = function(bool)
+util.enableUUID = function (bool)
 {
     if (USE_UUID !== null && bool !== USE_UUID)
     {
@@ -82,7 +105,7 @@ util.enableUUID = function(bool)
  * - Defaults to Object IDs
  * @returns {string|number}
  */
-util.generateID = function()
+util.generateID = function ()
 {
     if (USE_UUID === null) USE_UUID = false;
     return USE_UUID ? _generateUUID() : _generateObjectID();

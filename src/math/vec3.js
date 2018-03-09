@@ -3,12 +3,13 @@ import {num} from './num';
 export {vec3};
 
 /**
- * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
- * @param {vec3} out              - receiving vec3
- * @param {vec3} spherical        - source vec3 with spherical coordinates (phi, theta, radius)
- * @returns {vec3} out            - receiving vec3
+ * Sets a vec3 with cartesian coordinates from spherical coordinates and an optional center point
+ * @param {vec3} out       - receiving vec3
+ * @param {vec3} spherical - source vec3 with spherical coordinates (phi, theta, radius)
+ * @param {vec3} [center]  - Optional center
+ * @returns {vec3} out     - receiving vec3
  */
-vec3.cartFromSpherical = function(out, spherical)
+vec3.fromSpherical = function(out, spherical, center)
 {
     const
         phi = spherical[0],
@@ -18,26 +19,38 @@ vec3.cartFromSpherical = function(out, spherical)
     out[0] = radius * Math.sin(phi) * Math.sin(theta);
     out[1] = radius * Math.cos(theta);
     out[2] = radius * Math.cos(phi) * Math.sin(theta);
+
+    if (center)
+    {
+        out[0] += center[0];
+        out[1] += center[1];
+        out[2] += center[2];
+    }
+
     return out;
 };
 
 /**
- * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @param {vec3} center         - center
- * @returns {vec3} out          - receiving vec3
+ * Gets spherical coordinates from a vector
+ * @param {vec3} out
+ * @param {vec3} a
+ * @returns {vec3} out
  */
-vec3.cartFromSphericalAndCenter = function(out, spherical, center)
+vec3.getSpherical = function(out, a)
 {
-    const
-        phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
+    let phi = 0,
+        theta = 0,
+        radius = vec3.length(a);
 
-    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
-    out[1] = radius * Math.cos(theta) + center[1];
-    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
+    if (radius !== 0)
+    {
+        phi = Math.acos(Math.max(a[1] / radius, Math.min(-1, 1)));
+        theta = Math.atan2(a[0], a[2]);
+    }
+
+    out[0] = phi;
+    out[1] = theta;
+    out[2] = radius;
     return out;
 };
 

@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,7 +84,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _num = __webpack_require__(31);
+var _num = __webpack_require__(30);
 
 Object.keys(_num).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(59);
+var _vec = __webpack_require__(53);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -108,7 +108,7 @@ Object.keys(_vec).forEach(function (key) {
   });
 });
 
-var _vec2 = __webpack_require__(35);
+var _vec2 = __webpack_require__(34);
 
 Object.keys(_vec2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -120,7 +120,7 @@ Object.keys(_vec2).forEach(function (key) {
   });
 });
 
-var _vec3 = __webpack_require__(36);
+var _vec3 = __webpack_require__(35);
 
 Object.keys(_vec3).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(65);
+var _quat = __webpack_require__(59);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(66);
+var _mat = __webpack_require__(60);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(67);
+var _mat2 = __webpack_require__(61);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(68);
+var _noise = __webpack_require__(62);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(69);
+var _curve = __webpack_require__(63);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -192,7 +192,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(70);
+var _util = __webpack_require__(64);
 
 Object.keys(_util).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +239,7 @@ Object.keys(_Tw2ResMan).forEach(function (key) {
   });
 });
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 Object.keys(_Tw2VariableStore).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +251,7 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(73);
+var _Tw2AnimationController = __webpack_require__(67);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -263,7 +263,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(26);
+var _Tw2BatchAccumulator = __webpack_require__(27);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +275,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2CurveSet = __webpack_require__(74);
+var _Tw2CurveSet = __webpack_require__(68);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +287,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2Effect = __webpack_require__(24);
+var _Tw2Effect = __webpack_require__(25);
 
 Object.keys(_Tw2Effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +299,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2EffectRes = __webpack_require__(75);
+var _Tw2EffectRes = __webpack_require__(69);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +323,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(76);
+var _Tw2Float = __webpack_require__(70);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -335,7 +335,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(22);
+var _Tw2FloatParameter = __webpack_require__(23);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -347,7 +347,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(77);
+var _Tw2Frustum = __webpack_require__(71);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -359,7 +359,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(25);
+var _Tw2GeometryRes = __webpack_require__(26);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -371,7 +371,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(78);
+var _Tw2InstancedMesh = __webpack_require__(72);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -383,7 +383,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(21);
+var _Tw2MatrixParameter = __webpack_require__(22);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -395,7 +395,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(41);
+var _Tw2Mesh = __webpack_require__(40);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +407,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2ObjectReader = __webpack_require__(39);
+var _Tw2ObjectReader = __webpack_require__(38);
 
 Object.keys(_Tw2ObjectReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -419,7 +419,7 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(42);
+var _Tw2PerObjectData = __webpack_require__(41);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -431,7 +431,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PostProcess = __webpack_require__(79);
+var _Tw2PostProcess = __webpack_require__(73);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -443,7 +443,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(80);
+var _Tw2RawData = __webpack_require__(74);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -455,7 +455,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(43);
+var _Tw2RenderTarget = __webpack_require__(42);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -467,7 +467,7 @@ Object.keys(_Tw2RenderTarget).forEach(function (key) {
   });
 });
 
-var _Tw2Resource = __webpack_require__(13);
+var _Tw2Resource = __webpack_require__(15);
 
 Object.keys(_Tw2Resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -479,7 +479,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(81);
+var _Tw2RuntimeInstanceData = __webpack_require__(75);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -491,7 +491,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerState = __webpack_require__(20);
+var _Tw2SamplerState = __webpack_require__(21);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -503,7 +503,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(12);
+var _Tw2TextureParameter = __webpack_require__(14);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -515,7 +515,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(27);
+var _Tw2TextureRes = __webpack_require__(28);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -527,7 +527,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(98);
+var _Tw2TransformParameter = __webpack_require__(92);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -539,7 +539,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(99);
+var _Tw2ValueBinding = __webpack_require__(93);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -551,7 +551,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(40);
+var _Tw2VariableParameter = __webpack_require__(39);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -563,7 +563,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(38);
+var _Tw2Vector2Parameter = __webpack_require__(37);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -575,7 +575,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(37);
+var _Tw2Vector3Parameter = __webpack_require__(36);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -587,7 +587,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(11);
+var _Tw2Vector4Parameter = __webpack_require__(13);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -599,7 +599,7 @@ Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(14);
+var _Tw2VertexDeclaration = __webpack_require__(16);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -625,23 +625,23 @@ exports.device = undefined;
 
 var _index = __webpack_require__(0);
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2MatrixParameter = __webpack_require__(21);
+var _Tw2MatrixParameter = __webpack_require__(22);
 
-var _Tw2TextureParameter = __webpack_require__(12);
+var _Tw2TextureParameter = __webpack_require__(14);
 
-var _Tw2Vector4Parameter = __webpack_require__(11);
+var _Tw2Vector4Parameter = __webpack_require__(13);
 
-var _Tw2Effect = __webpack_require__(24);
+var _Tw2Effect = __webpack_require__(25);
 
-var _Tw2VertexDeclaration = __webpack_require__(14);
+var _Tw2VertexDeclaration = __webpack_require__(16);
 
-var WebGLDebugUtil = __webpack_require__(71);
+var WebGLDebugUtil = __webpack_require__(65);
 
 /**
  * Tw2Device
@@ -1908,9 +1908,9 @@ exports.resMan = exports.Tw2LoadingObject = undefined;
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource2 = __webpack_require__(13);
+var _Tw2Resource2 = __webpack_require__(15);
 
-var _Tw2ObjectReader = __webpack_require__(39);
+var _Tw2ObjectReader = __webpack_require__(38);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2857,7 +2857,7 @@ exports.Tw2CurveSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _curves = __webpack_require__(16);
+var _curves = __webpack_require__(18);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3277,19 +3277,321 @@ emitter.log = function (eventName, eventData) {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveObjectSet = exports.EveObjectSetItem = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveObjectSetItem base class
+ *
+ * @property {string|number} _id     - The set item's id
+ * @property {string} name           - The set item's name
+ * @property {boolean} display       - Toggles the set item's visibility
+ * @property {?Function} _onModified - A callback which is fired on value changes
+ */
+var EveObjectSetItem = exports.EveObjectSetItem = function () {
+    function EveObjectSetItem() {
+        _classCallCheck(this, EveObjectSetItem);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this._rebuildPending = true;
+        this._onModified = null;
+    }
+
+    /**
+     * Fire on value changes
+     */
+
+
+    _createClass(EveObjectSetItem, [{
+        key: 'OnValueChanged',
+        value: function OnValueChanged() {
+            this._rebuildPending = true;
+            if (this._onModified) this._onModified(this);
+        }
+    }]);
+
+    return EveObjectSetItem;
+}();
+
+/**
+ * EveObjectSet base class
+ *
+ * @property {number|String} _id                     - The set's id
+ * @property {string} name                           - The set's name
+ * @property {boolean} display                       - Toggles set visibility
+ * @property {Array<EveObjectSetItem>} items         - The set's items
+ * @property {Array<EveObjectSetItem>} _visibleItems - The set's items that will be rendered when the set is visible
+ * @property {boolean} _rebuildPending               - Identifies if the set requires rebuilding
+ * @class
+ */
+
+
+var EveObjectSet = exports.EveObjectSet = function () {
+    function EveObjectSet() {
+        var _this = this;
+
+        _classCallCheck(this, EveObjectSet);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.items = [];
+        this._visibleItems = [];
+        this._rebuildPending = false;
+        this._onChildModified = function (item) {
+            return _this.OnValueChanged(item);
+        };
+    }
+
+    /**
+     * Initializes the set
+     */
+
+
+    _createClass(EveObjectSet, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.Rebuild();
+        }
+
+        /**
+         * Fires on value changes
+         */
+
+    }, {
+        key: 'OnValueChanged',
+        value: function OnValueChanged() {
+            this._rebuildPending = true;
+        }
+
+        /**
+         * Creates an item from an options object and then adds it to the set
+         * @param {*} [opt={}]
+         * @returns {?EveObjectSetItem|*}
+         */
+
+    }, {
+        key: 'CreateItem',
+        value: function CreateItem() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var Item = this.constructor.Item;
+            if (Item && 'create' in Item) {
+                var item = Item.create(opt);
+                this.AddItem(item);
+                return item;
+            }
+            return null;
+        }
+
+        /**
+         * Adds a set item
+         * @param {EveObjectSetItem|*} item
+         */
+
+    }, {
+        key: 'AddItem',
+        value: function AddItem(item) {
+            if (!this.items.includes(item)) {
+                item._onModified = this._onChildModified;
+                this.items.push(item);
+                this.OnValueChanged();
+            }
+        }
+
+        /**
+         * Removes a set item
+         * @param {EveObjectSetItem|*} item
+         */
+
+    }, {
+        key: 'RemoveItem',
+        value: function RemoveItem(item) {
+            var index = this.items.indexOf(item);
+            if (index !== -1) {
+                item._onModified = null;
+                this.items.splice(index, 1);
+                this.OnValueChanged();
+            }
+        }
+
+        /**
+         * Clears all set items
+         */
+
+    }, {
+        key: 'ClearItems',
+        value: function ClearItems() {
+            for (var i = 0; i < this.items.length; i++) {
+                this.items[i]._onModified = null;
+            }
+            this.items = [];
+            this.OnValueChanged();
+        }
+
+        /**
+         * Finds an item by it's id
+         * @param {?number} [id=null]
+         * @returns {?EveObjectSetItem|*}
+         */
+
+    }, {
+        key: 'FindItemByID',
+        value: function FindItemByID() {
+            var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+            if (id !== null) {
+                for (var i = 0; i < this.items.length; i++) {
+                    if (this.items[i]._id === id) {
+                        return this.items[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Gets the set's resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>}
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+        }
+
+        /**
+         * Unloads the set's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {}
+
+        /**
+         * Rebuilds the set
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            this.constructor.RebuildItems(this);
+            this._rebuildPending = false;
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData|EveBasicPerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {}
+
+        /**
+         * Renders the set
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render() {}
+
+        /**
+         * Rebuilds the set's items
+         *
+         * @param {EveObjectSet|*} eveSet
+         */
+
+    }], [{
+        key: 'RebuildItems',
+        value: function RebuildItems(eveSet) {
+            eveSet._visibleItems = [];
+            for (var i = 0; i < eveSet.items.length; i++) {
+                var item = eveSet.items[i];
+                item._onModified = eveSet._onChildModified;
+
+                if (item.display) {
+                    eveSet._visibleItems.push(item);
+                    item._rebuildPending = false;
+                }
+            }
+        }
+    }]);
+
+    return EveObjectSet;
+}();
+
+/**
+ * The object set's item
+ * @type {?Function}
+ */
+
+
+EveObjectSet.Item = null;
+
+/**
+ * Class global and scratch variables
+ * @type {{vec3_0, vec3_1, vec3_2}}
+ */
+EveObjectSet.global = {
+    vec3_0: _math.vec3.create(),
+    vec3_1: _math.vec3.create(),
+    vec3_2: _math.vec3.create(),
+    vec4_0: _math.vec4.create(),
+    vec4_1: _math.vec4.create(),
+    mat4_0: _math.mat4.create()
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(33);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2", function() { return __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2d", function() { return __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__; });
@@ -3340,7 +3642,7 @@ THE SOFTWARE. */
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3410,7 +3712,7 @@ Tw2ParticleForce.global = {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3525,7 +3827,109 @@ EveChild.global = {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveObject base class
+ *
+ * @property {number} _id
+ * @property {string} name
+ * @property {boolean} display
+ * @class
+ */
+var EveObject = exports.EveObject = function () {
+    function EveObject() {
+        _classCallCheck(this, EveObject);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+    }
+
+    /**
+     * Initializes the object
+     */
+
+
+    _createClass(EveObject, [{
+        key: 'Initialize',
+        value: function Initialize() {}
+
+        /**
+         * Gets object resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {}
+
+        /**
+         * Accumulates batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {}
+    }]);
+
+    return EveObject;
+}();
+
+/**
+ * Class global and scratch variables
+ * @type {{string:*}}
+ */
+
+
+EveObject.global = {
+    vec3_0: _math.vec3.create(),
+    vec3_1: _math.vec3.create(),
+    vec3_2: _math.vec3.create(),
+    vec3_3: _math.vec3.create(),
+    vec3_4: _math.vec3.create(),
+    vec3_5: _math.vec3.create(),
+    vec3_6: _math.vec3.create(),
+    vec3_7: _math.vec3.create(),
+    mat4_0: _math.mat4.create(),
+    mat4_1: _math.mat4.create(),
+    mat4_2: _math.mat4.create()
+};
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3674,7 +4078,7 @@ Tw2Vector4Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3689,7 +4093,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2SamplerState = __webpack_require__(20);
+var _Tw2SamplerState = __webpack_require__(21);
 
 /**
  * Tw2TextureParameter
@@ -3843,7 +4247,7 @@ Tw2TextureParameter.prototype.GetValue = function () {
 };
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4043,7 +4447,7 @@ Tw2Resource.prototype.UnregisterNotification = function (notification) {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4275,7 +4679,7 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
 };
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4425,7 +4829,7 @@ Tw2ParticleElementDeclaration.Type = {
 };
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4447,7 +4851,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(100);
+var _Tw2ColorCurve = __webpack_require__(94);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4459,7 +4863,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(101);
+var _Tw2ColorCurve2 = __webpack_require__(95);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4471,7 +4875,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(102);
+var _Tw2EventCurve = __webpack_require__(96);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4483,7 +4887,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(103);
+var _Tw2PerlinCurve = __webpack_require__(97);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4495,7 +4899,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(104);
+var _Tw2QuaternionCurve = __webpack_require__(98);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4507,7 +4911,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(105);
+var _Tw2RandomConstantCurve = __webpack_require__(99);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4519,7 +4923,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(106);
+var _Tw2RigidOrientation = __webpack_require__(100);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4531,7 +4935,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(107);
+var _Tw2RotationCurve = __webpack_require__(101);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4543,7 +4947,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(108);
+var _Tw2ScalarCurve = __webpack_require__(102);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4555,7 +4959,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(109);
+var _Tw2ScalarCurve2 = __webpack_require__(103);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4567,7 +4971,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(110);
+var _Tw2SineCurve = __webpack_require__(104);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4579,7 +4983,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(111);
+var _Tw2Vector2Curve = __webpack_require__(105);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4591,7 +4995,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(112);
+var _Tw2Vector3Curve = __webpack_require__(106);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4603,7 +5007,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(113);
+var _Tw2VectorCurve = __webpack_require__(107);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4616,7 +5020,7 @@ Object.keys(_Tw2VectorCurve).forEach(function (key) {
 });
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4633,7 +5037,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2PerObjectData2 = __webpack_require__(42);
+var _Tw2PerObjectData2 = __webpack_require__(41);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4680,109 +5084,7 @@ var EveBasicPerObjectData = exports.EveBasicPerObjectData = function (_Tw2PerObj
 }(_Tw2PerObjectData2.Tw2PerObjectData);
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
-
-
-var _math = __webpack_require__(0);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * EveObject base class
- *
- * @property {number} _id
- * @property {string} name
- * @property {boolean} display
- * @class
- */
-var EveObject = exports.EveObject = function () {
-    function EveObject() {
-        _classCallCheck(this, EveObject);
-
-        this._id = _math.util.generateID();
-        this.name = '';
-        this.display = true;
-    }
-
-    /**
-     * Initializes the object
-     */
-
-
-    _createClass(EveObject, [{
-        key: 'Initialize',
-        value: function Initialize() {}
-
-        /**
-         * Gets object resources
-         * @param {Array} [out=[]]
-         * @returns {Array<Tw2Resource>} out
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-            return out;
-        }
-
-        /**
-         * Per frame update
-         * @param {number} dt - delta time
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {}
-
-        /**
-         * Accumulates batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {}
-    }]);
-
-    return EveObject;
-}();
-
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-
-
-EveObject.global = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create(),
-    vec3_3: _math.vec3.create(),
-    vec3_4: _math.vec3.create(),
-    vec3_5: _math.vec3.create(),
-    vec3_6: _math.vec3.create(),
-    vec3_7: _math.vec3.create(),
-    mat4_0: _math.mat4.create(),
-    mat4_1: _math.mat4.create(),
-    mat4_2: _math.mat4.create()
-};
-
-/***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4793,17 +5095,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.variableStore = undefined;
 
-var _Tw2MatrixParameter = __webpack_require__(21);
+var _Tw2MatrixParameter = __webpack_require__(22);
 
-var _Tw2Vector4Parameter = __webpack_require__(11);
+var _Tw2Vector4Parameter = __webpack_require__(13);
 
-var _Tw2Vector3Parameter = __webpack_require__(37);
+var _Tw2Vector3Parameter = __webpack_require__(36);
 
-var _Tw2Vector2Parameter = __webpack_require__(38);
+var _Tw2Vector2Parameter = __webpack_require__(37);
 
-var _Tw2FloatParameter = __webpack_require__(22);
+var _Tw2FloatParameter = __webpack_require__(23);
 
-var _Tw2TextureParameter = __webpack_require__(12);
+var _Tw2TextureParameter = __webpack_require__(14);
 
 /**
  * Tw2VariableStore
@@ -4909,7 +5211,7 @@ Tw2VariableStore.prototype.Register = function (opt) {
 var variableStore = exports.variableStore = new Tw2VariableStore();
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4990,7 +5292,7 @@ Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
 };
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5091,7 +5393,7 @@ Tw2MatrixParameter.prototype.OnValueChanged = function () {
 };
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5207,7 +5509,7 @@ Tw2FloatParameter.prototype.SetValue = function (value) {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5340,7 +5642,7 @@ Tw2BinaryReader.prototype.ReadString = function () {
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5356,13 +5658,13 @@ var _Tw2Device = __webpack_require__(2);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
-var _Tw2SamplerState = __webpack_require__(20);
+var _Tw2SamplerState = __webpack_require__(21);
 
-var _Tw2TextureParameter = __webpack_require__(12);
+var _Tw2TextureParameter = __webpack_require__(14);
 
-var _Tw2VariableParameter = __webpack_require__(40);
+var _Tw2VariableParameter = __webpack_require__(39);
 
 /**
  * Tw2SamplerOverride
@@ -5765,7 +6067,7 @@ Tw2Effect.prototype.GetParameters = function () {
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5795,13 +6097,13 @@ var _Tw2Device = __webpack_require__(2);
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource3 = __webpack_require__(13);
+var _Tw2Resource3 = __webpack_require__(15);
 
-var _Tw2BinaryReader = __webpack_require__(23);
+var _Tw2BinaryReader = __webpack_require__(24);
 
-var _Tw2BatchAccumulator = __webpack_require__(26);
+var _Tw2BatchAccumulator = __webpack_require__(27);
 
-var _Tw2VertexDeclaration = __webpack_require__(14);
+var _Tw2VertexDeclaration = __webpack_require__(16);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -6840,7 +7142,7 @@ Tw2GeometryRes.prototype.Unload = function () {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6967,7 +7269,7 @@ Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6984,7 +7286,7 @@ var _Tw2Device = __webpack_require__(2);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Resource2 = __webpack_require__(13);
+var _Tw2Resource2 = __webpack_require__(15);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -7221,7 +7523,7 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7285,903 +7587,7 @@ Tw2ParticleAttributeGenerator.global = {
 };
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveTransform = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-var _EveBasicPerObjectData = __webpack_require__(17);
-
-var _EveObject2 = __webpack_require__(18);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * EveTransform
- *
- * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
- * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
- * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
- * @property {Tw2Mesh} mesh
- * @property {Array.<Tw2CurveSet>} curveSets
- * @property {Array} children
- * @property {Array.<Tw2ParticleSystem>} particleSystems
- * @property {Array.<Tw2StaticEmitter|Tw2DynamicEmitter>} particleEmitters
- * @property {Number} Modifier
- * @property {Number} sortValueMultiplier
- * @property {Number} distanceBasedScaleArg1
- * @property {Number} distanceBasedScaleArg2
- * @property {Boolean} useDistanceBasedScale
- * @property {vec3} scaling
- * @property {vec3} translation
- * @property {quat} rotation
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {Array.<mat4>} _mat4Cache
- * @property {Array.<vec3>} _vec3Cache
- * @property {EveBasicPerObjectData} _perObjectData
- * @class
- */
-var EveTransform = exports.EveTransform = function (_EveObject) {
-    _inherits(EveTransform, _EveObject);
-
-    function EveTransform() {
-        _classCallCheck(this, EveTransform);
-
-        var _this = _possibleConstructorReturn(this, (EveTransform.__proto__ || Object.getPrototypeOf(EveTransform)).call(this));
-
-        _this.visible = {};
-        _this.visible.mesh = true;
-        _this.visible.children = true;
-        _this.mesh = null;
-        _this.curveSets = [];
-        _this.children = [];
-        _this.particleSystems = [];
-        _this.particleEmitters = [];
-        _this.modifier = EveTransform.Modifier.NONE;
-        _this.sortValueMultiplier = 1.0;
-        _this.distanceBasedScaleArg1 = 0.2;
-        _this.distanceBasedScaleArg2 = 0.63;
-        _this.useDistanceBasedScale = false;
-        _this.scaling = _math.vec3.fromValues(1, 1, 1);
-        _this.translation = _math.vec3.create();
-        _this.rotation = _math.quat.create();
-        _this.localTransform = _math.mat4.create();
-        _this.worldTransform = _math.mat4.create();
-
-        _this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
-        _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectFFEData.Declare('World', 16);
-        _this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
-        _this._perObjectData.perObjectFFEData.Create();
-        return _this;
-    }
-
-    /**
-     * Initializes the EveTransform
-     */
-
-
-    _createClass(EveTransform, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-        }
-
-        /**
-         * Gets transform res objects
-         * @param {Array} [out=[]] - Optional receiving array
-         * @param {Boolean} [excludeChildren] - True to exclude children's res objects
-         * @returns {Array.<Tw2Resource>} [out]
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-            var excludeChildren = arguments[1];
-
-            if (this.mesh) this.mesh.GetResources(out);
-
-            if (!excludeChildren) {
-                for (var i = 0; i < this.children; i++) {
-                    this.children[i].GetResources(out);
-                }
-            }
-
-            return out;
-        }
-
-        /**
-         * Per frame update
-         * @param {mat4} parentTransform
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData(parentTransform) {
-            var d = _core.device,
-                g = EveTransform.global,
-                finalScale = g.vec3_0,
-                parentScale = g.vec3_1,
-                dir = g.vec3_2,
-                viewInv = d.viewInverse;
-
-            _math.quat.normalize(this.rotation, this.rotation);
-            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-            _math.mat4.getScaling(parentScale, parentTransform);
-
-            switch (this.modifier) {
-                case EveTransform.Modifier.BILLBOARD:
-                case EveTransform.Modifier.SIMPLE_HALO:
-                    var dirNorm = g.vec3_3;
-                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
-
-                    if (this.modifier === EveTransform.Modifier.SIMPLE_HALO) {
-                        _math.vec3.subtract(dir, d.GetEyePosition(), this.worldTransform.subarray(12));
-                        _math.vec3.normalize(dirNorm, this.worldTransform.subarray(8));
-                        _math.vec3.normalize(dir, dir);
-                        var scale = _math.vec3.dot(dir, dirNorm);
-                        if (scale < 0) scale = 0;
-                        _math.vec3.scale(finalScale, finalScale, scale * scale);
-                    }
-
-                    this.worldTransform[0] = viewInv[0] * finalScale[0];
-                    this.worldTransform[1] = viewInv[1] * finalScale[0];
-                    this.worldTransform[2] = viewInv[2] * finalScale[0];
-                    this.worldTransform[4] = viewInv[4] * finalScale[1];
-                    this.worldTransform[5] = viewInv[5] * finalScale[1];
-                    this.worldTransform[6] = viewInv[6] * finalScale[1];
-                    this.worldTransform[8] = viewInv[8] * finalScale[2];
-                    this.worldTransform[9] = viewInv[9] * finalScale[2];
-                    this.worldTransform[10] = viewInv[10] * finalScale[2];
-                    break;
-
-                case EveTransform.Modifier.EVE_CAMERA_ROTATION:
-                    var translation = g.vec3_3;
-                    _math.vec3.transformMat4(translation, this.translation, parentTransform);
-                    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, translation, this.scaling);
-                    _math.mat4.multiply(this.worldTransform, viewInv, this.localTransform);
-                    this.worldTransform[12] = this.localTransform[12];
-                    this.worldTransform[13] = this.localTransform[13];
-                    this.worldTransform[14] = this.localTransform[14];
-                    break;
-
-                case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
-                case EveTransform.Modifier.EVE_SIMPLE_HALO:
-                    var camPos = d.GetEyePosition(),
-                        camFwd = g.vec3_3,
-                        right = g.vec3_4,
-                        up = g.vec3_5,
-                        forward = g.vec3_6,
-                        dirToCamNorm = g.vec3_7,
-                        parentT = g.mat4_0,
-                        alignMat = g.mat4_1,
-                        rotationT = g.mat4_2;
-
-                    // 3 4 3 3 3 4 3 3
-                    _math.mat4.translate(this.worldTransform, parentTransform, this.translation);
-                    _math.mat4.transpose(parentT, parentTransform);
-
-                    dir[0] = camPos[0] - this.worldTransform[12];
-                    dir[1] = camPos[1] - this.worldTransform[13];
-                    dir[2] = camPos[2] - this.worldTransform[14];
-
-                    _math.vec3.copy(camFwd, dir);
-                    _math.vec3.transformMat4(camFwd, camFwd, parentT);
-                    _math.vec3.divide(camFwd, camFwd, parentScale);
-                    _math.vec3.normalize(camFwd, camFwd);
-
-                    _math.vec3.set(right, d.view[0], d.view[4], d.view[8]);
-                    _math.vec3.transformMat4(right, right, parentT);
-                    _math.vec3.normalize(right, right);
-
-                    _math.vec3.cross(up, camFwd, right);
-                    _math.vec3.normalize(up, up);
-                    _math.vec3.cross(right, up, camFwd);
-
-                    alignMat[0] = right[0];
-                    alignMat[1] = right[1];
-                    alignMat[2] = right[2];
-                    alignMat[4] = up[0];
-                    alignMat[5] = up[1];
-                    alignMat[6] = up[2];
-                    alignMat[8] = camFwd[0];
-                    alignMat[9] = camFwd[1];
-                    alignMat[10] = camFwd[2];
-                    alignMat[15] = 1;
-
-                    _math.mat4.fromQuat(rotationT, this.rotation);
-                    _math.mat4.multiply(alignMat, alignMat, rotationT);
-
-                    if (this.modifier === EveTransform.Modifier.EVE_SIMPLE_HALO) {
-                        _math.vec3.normalize(forward, this.worldTransform.subarray(8));
-                        _math.vec3.normalize(dirToCamNorm, dir);
-                        var _scale = -_math.vec3.dot(dirToCamNorm, forward);
-                        if (_scale < 0) _scale = 0;
-                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
-                        _math.mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * _scale, this.scaling[1] * _scale, this.scaling[2] * _scale]);
-                    } else {
-                        _math.mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
-                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
-                    }
-                    break;
-
-                case EveTransform.Modifier.LOOK_AT_CAMERA:
-                    var lookAt = g.mat4_0;
-                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-                    _math.mat4.lookAt(lookAt, viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0]);
-                    _math.mat4.transpose(lookAt, lookAt);
-                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
-                    this.worldTransform[0] = lookAt[0] * finalScale[0];
-                    this.worldTransform[1] = lookAt[1] * finalScale[0];
-                    this.worldTransform[2] = lookAt[2] * finalScale[0];
-                    this.worldTransform[4] = lookAt[4] * finalScale[1];
-                    this.worldTransform[5] = lookAt[5] * finalScale[1];
-                    this.worldTransform[6] = lookAt[6] * finalScale[1];
-                    this.worldTransform[8] = lookAt[8] * finalScale[2];
-                    this.worldTransform[9] = lookAt[9] * finalScale[2];
-                    this.worldTransform[10] = lookAt[10] * finalScale[2];
-                    break;
-
-                default:
-                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-            }
-
-            for (var i = 0; i < this.children.length; ++i) {
-                this.children[i].UpdateViewDependentData(this.worldTransform);
-            }
-        }
-
-        /**
-         * Per frame update
-         * @param {Number} dt - delta time
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            for (var i = 0; i < this.children.length; ++i) {
-                this.children[i].Update(dt);
-            }
-
-            for (var _i = 0; _i < this.particleEmitters.length; ++_i) {
-                this.particleEmitters[_i].Update(dt);
-            }
-
-            for (var _i2 = 0; _i2 < this.particleSystems.length; ++_i2) {
-                this.particleSystems[_i2].Update(dt);
-            }
-
-            for (var _i3 = 0; _i3 < this.curveSets.length; ++_i3) {
-                this.curveSets[_i3].Update(dt);
-            }
-        }
-
-        /**
-         * Gets render batches for accumulation
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         * @param {Tw2PerObjectData|EveBasicPerObjectData} [perObjectData]
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator, perObjectData) {
-            if (!this.display) return;
-
-            if (this.visible.mesh && this.mesh) {
-                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
-                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
-
-                if (perObjectData) {
-                    this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
-                    this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
-                }
-
-                this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-            }
-
-            if (this.visible.children) {
-                for (var i = 0; i < this.children.length; ++i) {
-                    this.children[i].GetBatches(mode, accumulator, perObjectData);
-                }
-            }
-        }
-
-        /**
-         * multiply3x3
-         */
-
-    }], [{
-        key: 'Multiply3x3',
-        value: function Multiply3x3(a, b, c) {
-            c || (c = b);
-            var d = b[0],
-                e = b[1];
-            b = b[2];
-            c[0] = a[0] * d + a[4] * e + a[8] * b;
-            c[1] = a[1] * d + a[5] * e + a[9] * b;
-            c[2] = a[2] * d + a[6] * e + a[10] * b;
-            return c;
-        }
-    }]);
-
-    return EveTransform;
-}(_EveObject2.EveObject);
-
-/**
- * Modifier states
- * @type {{string:Number}}
- */
-
-
-EveTransform.Modifier = {
-    NONE: 0,
-    BILLBOARD: 1,
-    TRANSLATE_WITH_CAMERA: 2,
-    LOOK_AT_CAMERA: 3,
-    SIMPLE_HALO: 4,
-    EVE_CAMERA_ROTATION_ALIGNED: 100,
-    EVE_BOOSTER: 101,
-    EVE_SIMPLE_HALO: 102,
-    EVE_CAMERA_ROTATION: 103
-};
-
-/***/ }),
 /* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpaceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-var _EveObject2 = __webpack_require__(18);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * EveSpaceObject
- *
- * @parameter {String} name
- * @parameter {boolean} display                             - Enables/ disables visibility
- * @parameter {{}} visible                                  - Visibility options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
- * @parameter {boolean} visible.children                    - Enables/ disables child visibility
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
- * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
- * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
- * @parameter {Number} lod
- * @parameter {Tw2Mesh} mesh
- * @parameter {Array.<EveLocator>} locators
- * @parameter {Array.<EveSpriteSet>} spriteSets
- * @parameter {Array.<EveTurretSet>} turretSets
- * @parameter {Array.<EveSpaceObjectDecal>} decals
- * @parameter {Array.<EveSpotlightSet>} spotlightSets
- * @parameter {Array.<EvePlaneSet>} planeSets
- * @parameter {Array.<Tw2CurveSet>} curveSets
- * @parameter {Array.<EveCurveLineSet>} lineSets
- * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
- * @parameter {Array.<{}>} children
- * @parameter {vec3} boundingSphereCenter
- * @parameter {Number} boundingSphereRadius
- * @parameter {vec3} shapeEllipsoidRadius
- * @parameter {vec3} shapeEllipsoidCenter
- * @parameter {mat4} transform
- * @parameter {Tw2AnimationController} animation
- * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {Tw2PerObjectData} _perObjectData
- * @class
- */
-var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
-    _inherits(EveSpaceObject, _EveObject);
-
-    function EveSpaceObject() {
-        _classCallCheck(this, EveSpaceObject);
-
-        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
-
-        _this.visible = {};
-        _this.visible.mesh = true;
-        _this.visible.children = true;
-        _this.visible.effectChildren = true;
-        _this.visible.planeSets = true;
-        _this.visible.spotlightSets = true;
-        _this.visible.decals = true;
-        _this.visible.spriteSets = true;
-        _this.visible.overlayEffects = true;
-        _this.visible.lineSets = true;
-        _this.visible.killmarks = true;
-        _this.visible.customMasks = true;
-
-        _this.mesh = null;
-        _this.animation = new _core.Tw2AnimationController();
-        _this.locators = [];
-        _this.spriteSets = [];
-        _this.turretSets = [];
-        _this.decals = [];
-        _this.spotlightSets = [];
-        _this.planeSets = [];
-        _this.curveSets = [];
-        _this.lineSets = [];
-        _this.overlayEffects = [];
-        _this.children = [];
-        _this.effectChildren = [];
-        _this.customMasks = [];
-        _this.lod = 3;
-        _this.killCount = 0;
-        _this.transform = _math.mat4.create();
-        _this.boundingSphereCenter = _math.vec3.create();
-        _this.boundingSphereRadius = 0;
-        _this.shapeEllipsoidRadius = _math.vec3.create();
-        _this.shapeEllipsoidCenter = _math.vec3.create();
-
-        _this._perObjectData = new _core.Tw2PerObjectData();
-        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        _this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        _this._perObjectData.perObjectVSData.Create();
-
-        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        _this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        _this._perObjectData.perObjectPSData.Create();
-
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-
-        _math.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-        _math.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
-        return _this;
-    }
-
-    /**
-     * Initializes the EveSpaceObject
-     */
-
-
-    _createClass(EveSpaceObject, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            if (this.mesh) {
-                this.animation.SetGeometryResource(this.mesh.geometryResource);
-
-                for (var i = 0; i < this.decals.length; ++i) {
-                    this.decals[i].SetParentGeometry(this.mesh.geometryResource);
-                }
-            }
-        }
-
-        /**
-         * Resets the lod
-         */
-
-    }, {
-        key: 'ResetLod',
-        value: function ResetLod() {
-            this.lod = 3;
-        }
-
-        /**
-         * Updates the lod
-         * @param {Tw2Frustum} frustum
-         */
-
-    }, {
-        key: 'UpdateLod',
-        value: function UpdateLod(frustum) {
-            var center = _math.vec3.transformMat4(EveSpaceObject.global.vec3_0, this.boundingSphereCenter, this.transform);
-
-            if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
-                if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
-                    this.lod = 1;
-                } else {
-                    this.lod = 2;
-                }
-            } else {
-                this.lod = 0;
-            }
-        }
-
-        /**
-         * Adds a custom mask
-         * @param {vec3} position
-         * @param {vec3} scaling
-         * @param {quat} rotation
-         * @param {vec4} isMirrored
-         * @param {vec4} sourceMaterial
-         * @param {vec4} targetMaterials
-         */
-
-    }, {
-        key: 'AddCustomMask',
-        value: function AddCustomMask(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
-            var transform = _math.mat4.fromRotationTranslationScale(_math.mat4.create(), rotation, position, scaling);
-            _math.mat4.invert(transform, transform);
-            _math.mat4.transpose(transform, transform);
-
-            this.customMasks.push({
-                transform: transform,
-                maskData: _math.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
-                materialID: _math.vec4.fromValues(sourceMaterial, 0, 0, 0),
-                targets: targetMaterials
-            });
-        }
-
-        /**
-         * Gets locator count for a specific locator group
-         * @param {String} prefix
-         * @returns {number}
-         */
-
-    }, {
-        key: 'GetLocatorCount',
-        value: function GetLocatorCount(prefix) {
-            var locators = this.FindLocatorsByPrefix(prefix);
-            return locators.length;
-        }
-
-        /**
-         * Finds a locator's joint by name
-         * @param {string} name
-         * @returns {?mat4}
-         */
-
-    }, {
-        key: 'FindLocatorJointByName',
-        value: function FindLocatorJointByName(name) {
-            var locator = this.FindLocatorBoneByName(name);
-            return locator ? locator.worldTransform : null;
-        }
-
-        /**
-         *
-         * @param name
-         * @returns {null}
-         */
-
-    }, {
-        key: 'FindLocatorTransformByName',
-        value: function FindLocatorTransformByName(name) {
-            var locator = this.FindLocatorByName(name);
-            return locator ? locator.transform : null;
-        }
-
-        /**
-         * Checks if a locator prefix exists
-         * @param {string} prefix
-         * @returns {boolean}
-         */
-
-    }, {
-        key: 'HasLocatorPrefix',
-        value: function HasLocatorPrefix(prefix) {
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name.substring(0, prefix.length) === prefix) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * Finds a locator's bone by it's name
-         * @param {String} name
-         * @returns {?Tw2Bone} null if not found
-         */
-
-    }, {
-        key: 'FindLocatorBoneByName',
-        value: function FindLocatorBoneByName(name) {
-            var model = this.animation.FindModelForMesh(0);
-            if (model) {
-                for (var i = 0; i < model.bones.length; ++i) {
-                    if (model.bones[i].boneRes.name === name) {
-                        return model.bones[i];
-                    }
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Finds a locator by name
-         * @param {string} name
-         * @returns {?EveLocator}
-         */
-
-    }, {
-        key: 'FindLocatorByName',
-        value: function FindLocatorByName(name) {
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name === name) {
-                    return this.locators[i];
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Finds locators with a given prefix
-         * @param {string} prefix
-         * @returns {Array<EveLocator>}
-         */
-
-    }, {
-        key: 'FindLocatorsByPrefix',
-        value: function FindLocatorsByPrefix(prefix) {
-            var locators = [];
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name.indexOf(prefix) === 0) {
-                    locators.push(this.locators[i]);
-                }
-            }
-            return locators;
-        }
-
-        /**
-         * Gets object's res objects
-         * @param {Array} [out=[]] - Optional receiving array
-         * @param {Boolean} excludeChildren - True to exclude children's res objects
-         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-            var excludeChildren = arguments[1];
-
-            if (this.mesh) this.mesh.GetResources(out);
-            if (this.animation) this.animation.GetResources(out);
-
-            _math.util.perArrayChild(this.spriteSets, 'GetResources', out);
-            _math.util.perArrayChild(this.turretSets, 'GetResources', out);
-            _math.util.perArrayChild(this.decals, 'GetResources', out);
-            _math.util.perArrayChild(this.spotlightSets, 'GetResources', out);
-            _math.util.perArrayChild(this.planeSets, 'GetResources', out);
-            _math.util.perArrayChild(this.lineSets, 'GetResources', out);
-            _math.util.perArrayChild(this.overlayEffects, 'GetResources', out);
-            _math.util.perArrayChild(this.effectChildren, 'GetResources', out);
-
-            if (!excludeChildren) {
-                _math.util.perArrayChild(this.children, 'GetResources', out);
-            }
-
-            return out;
-        }
-
-        /**
-         * A Per frame function that updates view dependent data
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData() {
-            for (var i = 0; i < this.children.length; ++i) {
-                this.children[i].UpdateViewDependentData(this.transform);
-            }
-
-            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
-
-            var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter'),
-                radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
-
-            if (this.shapeEllipsoidRadius[0] > 0) {
-                center[0] = this.shapeEllipsoidCenter[0];
-                center[1] = this.shapeEllipsoidCenter[1];
-                center[2] = this.shapeEllipsoidCenter[2];
-                radii[0] = this.shapeEllipsoidRadius[0];
-                radii[1] = this.shapeEllipsoidRadius[1];
-                radii[2] = this.shapeEllipsoidRadius[2];
-            } else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
-                _math.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-                _math.vec3.scale(center, center, 0.5 * 1.732050807);
-                _math.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-                _math.vec3.scale(radii, radii, 0.5);
-            }
-
-            for (var _i = 0; _i < this.customMasks.length; ++_i) {
-                var targets = this.visible.customMasks ? this.customMasks[_i].targets : [0, 0, 0, 0];
-                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this.customMasks[_i].transform);
-                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskData1' : 'CustomMaskData0', this.customMasks[_i].maskData);
-                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this.customMasks[_i].materialID);
-                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', targets);
-            }
-
-            if (this.animation.animations.length) {
-                this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
-            }
-
-            for (var _i2 = 0; _i2 < this.lineSets.length; ++_i2) {
-                this.lineSets[_i2].UpdateViewDependentData(this.transform);
-            }
-        }
-
-        /**
-         * Per frame update
-         * @param {Number} dt - delta time
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            if (this.lod > 0) {
-                for (var i = 0; i < this.spriteSets.length; ++i) {
-                    this.spriteSets[i].Update(dt);
-                }
-
-                for (var _i3 = 0; _i3 < this.planeSets.length; _i3++) {
-                    this.planeSets[_i3].Update(dt);
-                }
-
-                /*
-                for (let i = 0; i < this.spotlightSets.length; i++)
-                {
-                    this.spotlightSets[i].Update(dt);
-                }
-                */
-
-                for (var _i4 = 0; _i4 < this.children.length; ++_i4) {
-                    this.children[_i4].Update(dt);
-                }
-
-                for (var _i5 = 0; _i5 < this.effectChildren.length; ++_i5) {
-                    this.effectChildren[_i5].Update(dt, this.transform);
-                }
-
-                for (var _i6 = 0; _i6 < this.curveSets.length; ++_i6) {
-                    this.curveSets[_i6].Update(dt);
-                }
-
-                for (var _i7 = 0; _i7 < this.overlayEffects.length; ++_i7) {
-                    this.overlayEffects[_i7].Update(dt);
-                }
-
-                this.animation.Update(dt);
-            }
-        }
-
-        /**
-         * Gets render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (this.display) {
-                var show = this.visible;
-
-                if (show.mesh && this.mesh && this.lod > 0) {
-                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-                }
-
-                if (this.lod > 1) {
-                    if (show.spriteSets) {
-                        for (var i = 0; i < this.spriteSets.length; i++) {
-                            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
-                        }
-                    }
-
-                    if (show.spotlightSets) {
-                        for (var _i8 = 0; _i8 < this.spotlightSets.length; _i8++) {
-                            this.spotlightSets[_i8].GetBatches(mode, accumulator, this._perObjectData);
-                        }
-                    }
-
-                    if (show.planeSets) {
-                        for (var _i9 = 0; _i9 < this.planeSets.length; _i9++) {
-                            this.planeSets[_i9].GetBatches(mode, accumulator, this._perObjectData);
-                        }
-                    }
-
-                    if (show.decals) {
-                        for (var _i10 = 0; _i10 < this.decals.length; _i10++) {
-                            this.decals[_i10].GetBatches(mode, accumulator, this._perObjectData, show.killmarks ? this.killCount : 0);
-                        }
-                    }
-
-                    if (show.lineSets) {
-                        for (var _i11 = 0; _i11 < this.lineSets.length; _i11++) {
-                            this.lineSets[_i11].GetBatches(mode, accumulator);
-                        }
-                    }
-                }
-
-                if (show.children) {
-                    for (var _i12 = 0; _i12 < this.children.length; _i12++) {
-                        this.children[_i12].GetBatches(mode, accumulator, this._perObjectData);
-                    }
-                }
-
-                if (show.effectChildren) {
-                    for (var _i13 = 0; _i13 < this.effectChildren.length; _i13++) {
-                        this.effectChildren[_i13].GetBatches(mode, accumulator, this._perObjectData);
-                    }
-                }
-
-                if (show.overlayEffects) {
-                    for (var _i14 = 0; _i14 < this.overlayEffects.length; _i14++) {
-                        this.overlayEffects[_i14].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
-                    }
-                }
-            }
-        }
-
-        /**
-         * RenderDebugInfo
-         * @param debugHelper
-         */
-
-    }, {
-        key: 'RenderDebugInfo',
-        value: function RenderDebugInfo(debugHelper) {
-            this.animation.RenderDebugInfo(debugHelper);
-        }
-    }]);
-
-    return EveSpaceObject;
-}(_EveObject2.EveObject);
-
-/***/ }),
-/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8225,7 +7631,7 @@ num.exponentialDecay = function (omega0, torque, I, d, time) {
 };
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9033,7 +8439,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9873,7 +9279,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10535,7 +9941,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10546,20 +9952,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec3 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
-var _num = __webpack_require__(31);
+var _num = __webpack_require__(30);
 
 exports.vec3 = _glMatrix.vec3;
 
 /**
- * Sets a vec3 with cartesian coordinates converted from a vec3 containing spherical coordinate values
- * @param {vec3} out              - receiving vec3
- * @param {vec3} spherical        - source vec3 with spherical coordinates (phi, theta, radius)
- * @returns {vec3} out            - receiving vec3
+ * Sets a vec3 with cartesian coordinates from spherical coordinates and an optional center point
+ * @param {vec3} out       - receiving vec3
+ * @param {vec3} spherical - source vec3 with spherical coordinates (phi, theta, radius)
+ * @param {vec3} [center]  - Optional center
+ * @returns {vec3} out     - receiving vec3
  */
 
-_glMatrix.vec3.cartFromSpherical = function (out, spherical) {
+_glMatrix.vec3.fromSpherical = function (out, spherical, center) {
     var phi = spherical[0],
         theta = spherical[1],
         radius = spherical[2];
@@ -10567,24 +9974,35 @@ _glMatrix.vec3.cartFromSpherical = function (out, spherical) {
     out[0] = radius * Math.sin(phi) * Math.sin(theta);
     out[1] = radius * Math.cos(theta);
     out[2] = radius * Math.cos(phi) * Math.sin(theta);
+
+    if (center) {
+        out[0] += center[0];
+        out[1] += center[1];
+        out[2] += center[2];
+    }
+
     return out;
 };
 
 /**
- * Sets a vec3 with cartesian coordinates from a vec3 containing spherical coordinate values, and a center point
- * @param {vec3} out            - receiving vec3
- * @param {vec3} spherical      - source vec3 with spherical coordinates (phi, theta, radius)
- * @param {vec3} center         - center
- * @returns {vec3} out          - receiving vec3
+ * Gets spherical coordinates from a vector
+ * @param {vec3} out
+ * @param {vec3} a
+ * @returns {vec3} out
  */
-_glMatrix.vec3.cartFromSphericalAndCenter = function (out, spherical, center) {
-    var phi = spherical[0],
-        theta = spherical[1],
-        radius = spherical[2];
+_glMatrix.vec3.getSpherical = function (out, a) {
+    var phi = 0,
+        theta = 0,
+        radius = _glMatrix.vec3.length(a);
 
-    out[0] = radius * Math.sin(phi) * Math.sin(theta) + center[0];
-    out[1] = radius * Math.cos(theta) + center[1];
-    out[2] = radius * Math.cos(phi) * Math.sin(theta) + center[2];
+    if (radius !== 0) {
+        phi = Math.acos(Math.max(a[1] / radius, Math.min(-1, 1)));
+        theta = Math.atan2(a[0], a[2]);
+    }
+
+    out[0] = phi;
+    out[1] = theta;
+    out[2] = radius;
     return out;
 };
 
@@ -10673,7 +10091,7 @@ _glMatrix.vec3.unproject = function () {
 }();
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10684,12 +10102,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec4 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.vec4 = _glMatrix.vec4;
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10838,7 +10256,7 @@ Tw2Vector3Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10988,7 +10406,7 @@ Tw2Vector2Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11003,7 +10421,7 @@ var _Tw2EventEmitter = __webpack_require__(7);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2BinaryReader = __webpack_require__(23);
+var _Tw2BinaryReader = __webpack_require__(24);
 
 /**
  * Tw2ObjectReader
@@ -11474,7 +10892,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async) {
 };
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11485,7 +10903,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2VariableParameter = Tw2VariableParameter;
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 /**
  * Tw2VariableParameter
@@ -11531,7 +10949,7 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
 };
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11548,7 +10966,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2GeometryRes = __webpack_require__(25);
+var _Tw2GeometryRes = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11749,7 +11167,7 @@ Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData) {
 };
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11804,7 +11222,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11817,7 +11235,7 @@ exports.Tw2RenderTarget = Tw2RenderTarget;
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2TextureRes = __webpack_require__(27);
+var _Tw2TextureRes = __webpack_require__(28);
 
 /**
  * Tw2RenderTarget
@@ -11919,7 +11337,7 @@ Tw2RenderTarget.prototype.Unset = function () {
 };
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11929,7 +11347,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(82);
+var _emitters = __webpack_require__(76);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11941,7 +11359,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(85);
+var _forces = __webpack_require__(79);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11953,7 +11371,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(92);
+var _generators = __webpack_require__(86);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11965,7 +11383,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(96);
+var _constraints = __webpack_require__(90);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11977,7 +11395,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(97);
+var _Tw2ParticleSystem = __webpack_require__(91);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11989,7 +11407,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(15);
+var _Tw2ParticleElement = __webpack_require__(17);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12002,7 +11420,7 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
 });
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12056,7 +11474,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12066,7 +11484,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _curves = __webpack_require__(16);
+var _curves = __webpack_require__(18);
 
 Object.keys(_curves).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12078,7 +11496,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(114);
+var _sequencers = __webpack_require__(108);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12090,7 +11508,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(123);
+var _tracks = __webpack_require__(117);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12102,7 +11520,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(126);
+var _maya = __webpack_require__(120);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12115,7 +11533,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12125,7 +11543,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveChild = __webpack_require__(10);
+var _EveChild = __webpack_require__(11);
 
 Object.keys(_EveChild).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12137,7 +11555,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(132);
+var _EveChildBillboard = __webpack_require__(126);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12149,7 +11567,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(133);
+var _EveChildContainer = __webpack_require__(127);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12161,7 +11579,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(134);
+var _EveChildExplosion = __webpack_require__(128);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12173,7 +11591,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(135);
+var _EveChildMesh = __webpack_require__(129);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12185,7 +11603,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(136);
+var _EveChildParticleSystem = __webpack_require__(130);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12198,7 +11616,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12410,6 +11828,101 @@ var EveOccluder = exports.EveOccluder = function () {
 EveOccluder.global = null;
 
 /***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _EveObject = __webpack_require__(12);
+
+Object.keys(_EveObject).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveObject[key];
+    }
+  });
+});
+
+var _EveEffectRoot = __webpack_require__(136);
+
+Object.keys(_EveEffectRoot).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveEffectRoot[key];
+    }
+  });
+});
+
+var _EveMissile = __webpack_require__(137);
+
+Object.keys(_EveMissile).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveMissile[key];
+    }
+  });
+});
+
+var _EvePlanet = __webpack_require__(138);
+
+Object.keys(_EvePlanet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EvePlanet[key];
+    }
+  });
+});
+
+var _EveShip = __webpack_require__(139);
+
+Object.keys(_EveShip).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveShip[key];
+    }
+  });
+});
+
+var _EveSpaceObject = __webpack_require__(50);
+
+Object.keys(_EveSpaceObject).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpaceObject[key];
+    }
+  });
+});
+
+var _EveTransform = __webpack_require__(49);
+
+Object.keys(_EveTransform).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveTransform[key];
+    }
+  });
+});
+
+/***/ }),
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12419,34 +11932,355 @@ EveOccluder.global = null;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveLocator = undefined;
+exports.EveTransform = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
+var _core = __webpack_require__(1);
+
+var _EveBasicPerObjectData = __webpack_require__(19);
+
+var _EveObject2 = __webpack_require__(12);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 /**
- * Contains transform information for T3 Attachments, Boosters, Turrets and XLTurrets
+ * EveTransform
  *
- * @param {string} [name='']
- * @param {mat4} [transform=mat4.create()]
- * @property {string} name
- * @property {mat4} transform
- * @property {?number} atlasIndex0
- * @property {?number} atlasIndex1
- * @property {?Tw2Bone} bone
+ * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
+ * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
+ * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
+ * @property {Tw2Mesh} mesh
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {Array} children
+ * @property {Array.<Tw2ParticleSystem>} particleSystems
+ * @property {Array.<Tw2StaticEmitter|Tw2DynamicEmitter>} particleEmitters
+ * @property {Number} Modifier
+ * @property {Number} sortValueMultiplier
+ * @property {Number} distanceBasedScaleArg1
+ * @property {Number} distanceBasedScaleArg2
+ * @property {Boolean} useDistanceBasedScale
+ * @property {vec3} scaling
+ * @property {vec3} translation
+ * @property {quat} rotation
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {Array.<mat4>} _mat4Cache
+ * @property {Array.<vec3>} _vec3Cache
+ * @property {EveBasicPerObjectData} _perObjectData
+ * @class
  */
-var EveLocator = exports.EveLocator = function EveLocator() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    var transform = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.mat4.create();
+var EveTransform = exports.EveTransform = function (_EveObject) {
+    _inherits(EveTransform, _EveObject);
 
-    _classCallCheck(this, EveLocator);
+    function EveTransform() {
+        _classCallCheck(this, EveTransform);
 
-    this.name = name;
-    this.transform = _math.mat4.clone(transform);
-    this.atlasIndex0 = null;
-    this.atlasIndex1 = null;
-    this.bone = null;
+        var _this = _possibleConstructorReturn(this, (EveTransform.__proto__ || Object.getPrototypeOf(EveTransform)).call(this));
+
+        _this.visible = {};
+        _this.visible.mesh = true;
+        _this.visible.children = true;
+        _this.mesh = null;
+        _this.curveSets = [];
+        _this.children = [];
+        _this.particleSystems = [];
+        _this.particleEmitters = [];
+        _this.modifier = EveTransform.Modifier.NONE;
+        _this.sortValueMultiplier = 1.0;
+        _this.distanceBasedScaleArg1 = 0.2;
+        _this.distanceBasedScaleArg2 = 0.63;
+        _this.useDistanceBasedScale = false;
+        _this.scaling = _math.vec3.fromValues(1, 1, 1);
+        _this.translation = _math.vec3.create();
+        _this.rotation = _math.quat.create();
+        _this.localTransform = _math.mat4.create();
+        _this.worldTransform = _math.mat4.create();
+
+        _this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
+        _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
+        _this._perObjectData.perObjectFFEData.Declare('World', 16);
+        _this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
+        _this._perObjectData.perObjectFFEData.Create();
+        return _this;
+    }
+
+    /**
+     * Initializes the EveTransform
+     */
+
+
+    _createClass(EveTransform, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+        }
+
+        /**
+         * Gets transform res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} [excludeChildren] - True to exclude children's res objects
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            if (this.mesh) this.mesh.GetResources(out);
+
+            if (!excludeChildren) {
+                for (var i = 0; i < this.children; i++) {
+                    this.children[i].GetResources(out);
+                }
+            }
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData(parentTransform) {
+            var d = _core.device,
+                g = EveTransform.global,
+                finalScale = g.vec3_0,
+                parentScale = g.vec3_1,
+                dir = g.vec3_2,
+                viewInv = d.viewInverse;
+
+            _math.quat.normalize(this.rotation, this.rotation);
+            _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+            _math.mat4.getScaling(parentScale, parentTransform);
+
+            switch (this.modifier) {
+                case EveTransform.Modifier.BILLBOARD:
+                case EveTransform.Modifier.SIMPLE_HALO:
+                    var dirNorm = g.vec3_3;
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
+
+                    if (this.modifier === EveTransform.Modifier.SIMPLE_HALO) {
+                        _math.vec3.subtract(dir, d.GetEyePosition(), this.worldTransform.subarray(12));
+                        _math.vec3.normalize(dirNorm, this.worldTransform.subarray(8));
+                        _math.vec3.normalize(dir, dir);
+                        var scale = _math.vec3.dot(dir, dirNorm);
+                        if (scale < 0) scale = 0;
+                        _math.vec3.scale(finalScale, finalScale, scale * scale);
+                    }
+
+                    this.worldTransform[0] = viewInv[0] * finalScale[0];
+                    this.worldTransform[1] = viewInv[1] * finalScale[0];
+                    this.worldTransform[2] = viewInv[2] * finalScale[0];
+                    this.worldTransform[4] = viewInv[4] * finalScale[1];
+                    this.worldTransform[5] = viewInv[5] * finalScale[1];
+                    this.worldTransform[6] = viewInv[6] * finalScale[1];
+                    this.worldTransform[8] = viewInv[8] * finalScale[2];
+                    this.worldTransform[9] = viewInv[9] * finalScale[2];
+                    this.worldTransform[10] = viewInv[10] * finalScale[2];
+                    break;
+
+                case EveTransform.Modifier.EVE_CAMERA_ROTATION:
+                    var translation = g.vec3_3;
+                    _math.vec3.transformMat4(translation, this.translation, parentTransform);
+                    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, translation, this.scaling);
+                    _math.mat4.multiply(this.worldTransform, viewInv, this.localTransform);
+                    this.worldTransform[12] = this.localTransform[12];
+                    this.worldTransform[13] = this.localTransform[13];
+                    this.worldTransform[14] = this.localTransform[14];
+                    break;
+
+                case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
+                case EveTransform.Modifier.EVE_SIMPLE_HALO:
+                    var camPos = d.GetEyePosition(),
+                        camFwd = g.vec3_3,
+                        right = g.vec3_4,
+                        up = g.vec3_5,
+                        forward = g.vec3_6,
+                        dirToCamNorm = g.vec3_7,
+                        parentT = g.mat4_0,
+                        alignMat = g.mat4_1,
+                        rotationT = g.mat4_2;
+
+                    // 3 4 3 3 3 4 3 3
+                    _math.mat4.translate(this.worldTransform, parentTransform, this.translation);
+                    _math.mat4.transpose(parentT, parentTransform);
+
+                    dir[0] = camPos[0] - this.worldTransform[12];
+                    dir[1] = camPos[1] - this.worldTransform[13];
+                    dir[2] = camPos[2] - this.worldTransform[14];
+
+                    _math.vec3.copy(camFwd, dir);
+                    _math.vec3.transformMat4(camFwd, camFwd, parentT);
+                    _math.vec3.divide(camFwd, camFwd, parentScale);
+                    _math.vec3.normalize(camFwd, camFwd);
+
+                    _math.vec3.set(right, d.view[0], d.view[4], d.view[8]);
+                    _math.vec3.transformMat4(right, right, parentT);
+                    _math.vec3.normalize(right, right);
+
+                    _math.vec3.cross(up, camFwd, right);
+                    _math.vec3.normalize(up, up);
+                    _math.vec3.cross(right, up, camFwd);
+
+                    alignMat[0] = right[0];
+                    alignMat[1] = right[1];
+                    alignMat[2] = right[2];
+                    alignMat[4] = up[0];
+                    alignMat[5] = up[1];
+                    alignMat[6] = up[2];
+                    alignMat[8] = camFwd[0];
+                    alignMat[9] = camFwd[1];
+                    alignMat[10] = camFwd[2];
+                    alignMat[15] = 1;
+
+                    _math.mat4.fromQuat(rotationT, this.rotation);
+                    _math.mat4.multiply(alignMat, alignMat, rotationT);
+
+                    if (this.modifier === EveTransform.Modifier.EVE_SIMPLE_HALO) {
+                        _math.vec3.normalize(forward, this.worldTransform.subarray(8));
+                        _math.vec3.normalize(dirToCamNorm, dir);
+                        var _scale = -_math.vec3.dot(dirToCamNorm, forward);
+                        if (_scale < 0) _scale = 0;
+                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                        _math.mat4.scale(this.worldTransform, this.worldTransform, [this.scaling[0] * _scale, this.scaling[1] * _scale, this.scaling[2] * _scale]);
+                    } else {
+                        _math.mat4.scale(this.worldTransform, this.worldTransform, this.scaling);
+                        _math.mat4.multiply(this.worldTransform, this.worldTransform, alignMat);
+                    }
+                    break;
+
+                case EveTransform.Modifier.LOOK_AT_CAMERA:
+                    var lookAt = g.mat4_0;
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+                    _math.mat4.lookAt(lookAt, viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0]);
+                    _math.mat4.transpose(lookAt, lookAt);
+                    _math.vec3.multiply(finalScale, this.scaling, parentScale);
+                    this.worldTransform[0] = lookAt[0] * finalScale[0];
+                    this.worldTransform[1] = lookAt[1] * finalScale[0];
+                    this.worldTransform[2] = lookAt[2] * finalScale[0];
+                    this.worldTransform[4] = lookAt[4] * finalScale[1];
+                    this.worldTransform[5] = lookAt[5] * finalScale[1];
+                    this.worldTransform[6] = lookAt[6] * finalScale[1];
+                    this.worldTransform[8] = lookAt[8] * finalScale[2];
+                    this.worldTransform[9] = lookAt[9] * finalScale[2];
+                    this.worldTransform[10] = lookAt[10] * finalScale[2];
+                    break;
+
+                default:
+                    _math.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+            }
+
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].UpdateViewDependentData(this.worldTransform);
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.particleEmitters.length; ++_i) {
+                this.particleEmitters[_i].Update(dt);
+            }
+
+            for (var _i2 = 0; _i2 < this.particleSystems.length; ++_i2) {
+                this.particleSystems[_i2].Update(dt);
+            }
+
+            for (var _i3 = 0; _i3 < this.curveSets.length; ++_i3) {
+                this.curveSets[_i3].Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches for accumulation
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData|EveBasicPerObjectData} [perObjectData]
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display) return;
+
+            if (this.visible.mesh && this.mesh) {
+                _math.mat4.transpose(this._perObjectData.perObjectFFEData.Get('World'), this.worldTransform);
+                _math.mat4.invert(this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'), this.worldTransform);
+
+                if (perObjectData) {
+                    this._perObjectData.perObjectVSData = perObjectData.perObjectVSData;
+                    this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
+                }
+
+                this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+            }
+
+            if (this.visible.children) {
+                for (var i = 0; i < this.children.length; ++i) {
+                    this.children[i].GetBatches(mode, accumulator, perObjectData);
+                }
+            }
+        }
+
+        /**
+         * multiply3x3
+         */
+
+    }], [{
+        key: 'Multiply3x3',
+        value: function Multiply3x3(a, b, c) {
+            c || (c = b);
+            var d = b[0],
+                e = b[1];
+            b = b[2];
+            c[0] = a[0] * d + a[4] * e + a[8] * b;
+            c[1] = a[1] * d + a[5] * e + a[9] * b;
+            c[2] = a[2] * d + a[6] * e + a[10] * b;
+            return c;
+        }
+    }]);
+
+    return EveTransform;
+}(_EveObject2.EveObject);
+
+/**
+ * Modifier states
+ * @type {{string:Number}}
+ */
+
+
+EveTransform.Modifier = {
+    NONE: 0,
+    BILLBOARD: 1,
+    TRANSLATE_WITH_CAMERA: 2,
+    LOOK_AT_CAMERA: 3,
+    SIMPLE_HALO: 4,
+    EVE_CAMERA_ROTATION_ALIGNED: 100,
+    EVE_BOOSTER: 101,
+    EVE_SIMPLE_HALO: 102,
+    EVE_CAMERA_ROTATION: 103
 };
 
 /***/ }),
@@ -12459,1649 +12293,15 @@ var EveLocator = exports.EveLocator = function EveLocator() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveBoosterBatch = EveBoosterBatch;
-exports.EveBoosterSet = EveBoosterSet;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveObjectSet
- * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
- */
-
-/**
- * Booster render batch
- * @constructor
- */
-function EveBoosterBatch() {
-    this.renderMode = _core.device.RM_ANY;
-    this.perObjectData = null;
-    this.boosters = null;
-}
-
-/**
- * Commits the batch
- * @param {Tw2Effect} [overrideEffect]
- */
-EveBoosterBatch.prototype.Commit = function (overrideEffect) {
-    this.boosters.Render(overrideEffect);
-};
-
-/**
- * EveBoosterSet
- * @property {boolean} display
- * @property {Tw2Effect} effect
- * @property {Tw2Effect} glows
- * @property {number} glowScale
- * @property {vec4} glowColor
- * @property {vec4} warpGlowColor
- * @property {vec4} warpHaloColor
- * @property {number} symHaloScale
- * @property {number} haloScaleX
- * @property {number} haloScaleY
- * @property {number} maxVel
- * @property {vec4} haloColor
- * @property {boolean} alwaysOn
- * @property {vec4} trailSize
- * @property {vec4} trailColor
- * @property {mat4} _parentTransform
- * @property {mat4} _wavePhase
- * @property {Array.<{}>} _boosterTransforms
- * @property {WebGLBuffer} _positions
- * @property {Tw2VertexDeclaration} _decl
- * @property {Tw2PerObjectData} _perObjectData
- * @property {boolean} rebuildPending
- * @constructor
- */
-function EveBoosterSet() {
-    this.display = true;
-    this.effect = null;
-    this.glows = null;
-    this.glowScale = 1.0;
-    this.glowColor = _math.vec4.create();
-    this.warpGlowColor = _math.vec4.create();
-    this.warpHaloColor = _math.vec4.create();
-    this.symHaloScale = 1.0;
-    this.haloScaleX = 1.0;
-    this.haloScaleY = 1.0;
-    this.maxVel = 250;
-    this.haloColor = _math.vec4.create();
-    this.alwaysOn = true;
-
-    this.trailColor = _math.vec4.create();
-    this.trailSize = _math.vec4.create();
-
-    this._parentTransform = _math.mat4.create();
-    this._wavePhase = _math.mat4.create();
-    this._boosterTransforms = [];
-
-    this._positions = _core.device.gl.createBuffer();
-
-    this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 2, 12));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 20));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 36));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 52));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 68));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 84));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 1, 100));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 2, 104));
-    this._decl.RebuildHash();
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Create();
-
-    this.rebuildPending = false;
-}
-
-/**
- * Initializes the booster set
- */
-EveBoosterSet.prototype.Initialize = function () {
-    this.rebuildPending = true;
-};
-
-/**
- * Gets booster set res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
- */
-EveBoosterSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.effect !== null) {
-        this.effect.GetResources(out);
-    }
-
-    if (this.glows !== null && this.glows.effect !== null) {
-        this.glows.effect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Clears the booster set
- */
-EveBoosterSet.prototype.Clear = function () {
-    this._boosterTransforms = [];
-    this._wavePhase = _math.mat4.create();
-    if (this.glows) {
-        this.glows.Clear();
-    }
-};
-
-/**
- * Scratch variables
- */
-EveBoosterSet.scratch = {
-    vec3_0: _math.vec3.create(),
-    vec3_1: _math.vec3.create(),
-    vec3_2: _math.vec3.create()
-};
-
-/**
- * Adds a booster
- * @param {mat4} localMatrix
- * @param {number} atlas0
- * @param {number} atlas1
- * @constructor
- */
-EveBoosterSet.prototype.Add = function (localMatrix, atlas0, atlas1) {
-    var scratch = EveBoosterSet.scratch;
-
-    this._boosterTransforms[this._boosterTransforms.length] = {
-        transform: _math.mat4.clone(localMatrix),
-        atlas0: atlas0,
-        atlas1: atlas1
-    };
-    this._wavePhase[this._wavePhase.length] = Math.random();
-    if (this.glows) {
-        var pos = _math.vec3.set(scratch.vec3_0, localMatrix[12], localMatrix[13], localMatrix[14]);
-        var dir = _math.vec3.set(scratch.vec3_1, localMatrix[8], localMatrix[9], localMatrix[10]);
-        var scale = Math.max(_math.vec3.length([localMatrix[0], localMatrix[1], localMatrix[2]]), _math.vec3.length([localMatrix[4], localMatrix[5], localMatrix[6]]));
-        _math.vec3.normalize(dir, dir);
-        if (scale < 3) _math.vec3.scale(dir, dir, scale / 3);
-        var seed = Math.random() * 0.7;
-        var spritePos = scratch.vec3_2;
-        _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, 2.5));
-        this.glows.Add(spritePos, seed, seed, scale * this.glowScale, scale * this.glowScale, 0, this.glowColor, this.warpGlowColor);
-        _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, 3));
-        this.glows.Add(spritePos, seed, 1 + seed, scale * this.symHaloScale, scale * this.symHaloScale, 0, this.haloColor, this.warpGlowColor);
-        _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, 3.01));
-        this.glows.Add(spritePos, seed, 1 + seed, scale * this.haloScaleX, scale * this.haloScaleY, 0, this.haloColor, this.warpGlowColor);
-    }
-};
-
-/**
- * Rebuilds the boosters
- */
-EveBoosterSet.prototype.Rebuild = function () {
-    var data = new Float32Array(this._boosterTransforms.length * EveBoosterSet._box.length * 6 * 28);
-    var order = [0, 3, 1, 3, 2, 1];
-    var index = 0;
-    for (var booster = 0; booster < this._boosterTransforms.length; ++booster) {
-        for (var i = 0; i < EveBoosterSet._box.length; ++i) {
-            for (var j = 0; j < order.length; ++j) {
-                data[index++] = EveBoosterSet._box[i][order[j]][0];
-                data[index++] = EveBoosterSet._box[i][order[j]][1];
-                data[index++] = EveBoosterSet._box[i][order[j]][2];
-                data[index++] = 0;
-                data[index++] = 0;
-                data.set(this._boosterTransforms[booster].transform, index);
-                index += 16;
-                data[index++] = 0;
-                data[index++] = 1;
-                data[index++] = 1;
-                data[index++] = 1;
-                data[index++] = this._wavePhase[booster];
-                data[index++] = this._boosterTransforms[booster].atlas0;
-                data[index++] = this._boosterTransforms[booster].atlas1;
-            }
-        }
-    }
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._positions);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, data, _core.device.gl.STATIC_DRAW);
-
-    this.rebuildPending = false;
-    if (this.glows) {
-        this.glows.RebuildBuffers();
-    }
-};
-
-/**
- * Per frame update
- * @param {number} dt - DeltaTime
- * @param {mat4} parentMatrix
- * @constructor
- */
-EveBoosterSet.prototype.Update = function (dt, parentMatrix) {
-    if (this.glows) {
-        this.glows.Update(dt);
-    }
-    this._parentTransform = parentMatrix;
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveBoosterSet.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.display || mode !== _core.device.RM_ADDITIVE) {
-        return;
-    }
-    if (this.effect && this._boosterTransforms.length) {
-        var batch = new EveBoosterBatch();
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this._parentTransform);
-        this._perObjectData.perObjectVSData.Set('Shipdata', perObjectData.perObjectVSData.Get('Shipdata'));
-        this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
-        batch.perObjectData = this._perObjectData;
-        batch.boosters = this;
-        batch.renderMode = _core.device.RM_ADDITIVE;
-        accumulator.Commit(batch);
-    }
-    if (this.glows) {
-        this.glows.GetBoosterGlowBatches(mode, accumulator, perObjectData, this._parentTransform, perObjectData.perObjectVSData.Get('Shipdata')[0], 0);
-    }
-};
-
-/**
- * Renders the accumulated batches
- * @param {Tw2Effect} [overrideEffect]
- * @returns {boolean}
- */
-EveBoosterSet.prototype.Render = function (overrideEffect) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return false;
-    }
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._positions);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 112)) {
-            return false;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, this._boosterTransforms.length * 12 * 3);
-    }
-    return true;
-};
-
-/**
- * Internal helper
- * @type {Array}
- * @private
- */
-EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EvePlaneSetBatch = EvePlaneSetBatch;
-exports.EvePlaneSetItem = EvePlaneSetItem;
-exports.EvePlaneSet = EvePlaneSet;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * Plane set render batch
- * @constructor
- */
-function EvePlaneSetBatch() {
-    this.renderMode = _core.device.RM_ANY;
-    this.perObjectData = null;
-    this.planeSet = null;
-}
-
-/**
- * Commits the plan set
- * @param {Tw2Effect} [overrideEffect]
- * @constructor
- */
-EvePlaneSetBatch.prototype.Commit = function (overrideEffect) {
-    this.planeSet.Render(overrideEffect);
-};
-
-/**
- * EvePlaneSetItem
- * @property {string} name
- * @property {vec3} position
- * @property {vec3} scaling
- * @property {quat} rotation
- * @property {vec4} color
- * @property {vec4} layer1Transform
- * @property {vec4} layer2Transform
- * @property {vec4} layer1Scroll
- * @property {vec4} layer2Scroll
- * @property {number} boneIndex
- * @property {number} groupIndex
- * @constructor
- */
-function EvePlaneSetItem() {
-    this.display = true;
-    this.name = '';
-    this.position = _math.vec3.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.rotation = _math.quat.create();
-    this.color = _math.vec4.fromValues(1, 1, 1, 1);
-    this.layer1Transform = _math.vec4.fromValues(1, 1, 0, 0);
-    this.layer2Transform = _math.vec4.fromValues(1, 1, 0, 0);
-    this.layer1Scroll = _math.quat.create();
-    this.layer2Scroll = _math.quat.create();
-    this.boneIndex = 0;
-    this.groupIndex = -1;
-    this.maskAtlasID = 0;
-}
-
-/**
- * EvePlaneSet
- * @property {String} name
- * @property {Array.<EvePlaneSetItem>} planes
- * @property {Tw2Effect} effect
- * @property {boolean} display
- * @property {boolean} hideOnLowQuality
- * @property {number} _time
- * @property {WebGLBuffer} _vertexBuffer
- * @property {WebGLBuffer} _indexBuffer
- * @property {Tw2VertexDeclaration} _decl
- * @constructor
- */
-function EvePlaneSet() {
-    this.name = '';
-    this.planes = [];
-    this.effect = null;
-    this.display = true;
-    this.hideOnLowQuality = false;
-    this._time = 0;
-
-    this._vertexBuffer = null;
-    this._indexBuffer = null;
-    this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 16));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 32));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 48));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 64));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 80));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 96));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 4, 112));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 3, 128));
-    this._decl.RebuildHash();
-}
-
-/**
- * Initializes the plane set
- */
-EvePlaneSet.prototype.Initialize = function () {
-    this.RebuildBuffers();
-};
-
-/**
- * Gets plane set res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array} {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EvePlaneSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.effect !== null) {
-        this.effect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Rebuilds the plane set's buffers
- */
-EvePlaneSet.prototype.RebuildBuffers = function () {
-    var vertexSize = 35;
-    var visibleItems = [];
-    var mat4_0 = EvePlaneSet.scratch.mat4_0;
-
-    for (var n = 0; n < this.planes.length; n++) {
-        if (this.planes[n].display) {
-            visibleItems.push(this.planes[n]);
-        }
-    }
-
-    var array = new Float32Array(visibleItems.length * 4 * vertexSize);
-    for (var i = 0; i < visibleItems.length; ++i) {
-        var offset = i * 4 * vertexSize;
-        array[offset + vertexSize - 3] = 0;
-        array[offset + vertexSize + vertexSize - 3] = 1;
-        array[offset + 2 * vertexSize + vertexSize - 3] = 2;
-        array[offset + 3 * vertexSize + vertexSize - 3] = 3;
-
-        var itemTransform = _math.mat4.fromRotationTranslationScale(mat4_0, visibleItems[i].rotation, visibleItems[i].position, visibleItems[i].scaling);
-
-        for (var j = 0; j < 4; ++j) {
-            vtxOffset = offset + j * vertexSize;
-            array[vtxOffset + 0] = itemTransform[0];
-            array[vtxOffset + 1] = itemTransform[4];
-            array[vtxOffset + 2] = itemTransform[8];
-            array[vtxOffset + 3] = itemTransform[12];
-            array[vtxOffset + 4] = itemTransform[1];
-            array[vtxOffset + 5] = itemTransform[5];
-            array[vtxOffset + 6] = itemTransform[9];
-            array[vtxOffset + 7] = itemTransform[13];
-            array[vtxOffset + 8] = itemTransform[2];
-            array[vtxOffset + 9] = itemTransform[6];
-            array[vtxOffset + 10] = itemTransform[10];
-            array[vtxOffset + 11] = itemTransform[14];
-
-            array[vtxOffset + 12] = visibleItems[i].color[0];
-            array[vtxOffset + 13] = visibleItems[i].color[1];
-            array[vtxOffset + 14] = visibleItems[i].color[2];
-            array[vtxOffset + 15] = visibleItems[i].color[3];
-
-            array[vtxOffset + 16] = visibleItems[i].layer1Transform[0];
-            array[vtxOffset + 17] = visibleItems[i].layer1Transform[1];
-            array[vtxOffset + 18] = visibleItems[i].layer1Transform[2];
-            array[vtxOffset + 19] = visibleItems[i].layer1Transform[3];
-
-            array[vtxOffset + 20] = visibleItems[i].layer2Transform[0];
-            array[vtxOffset + 21] = visibleItems[i].layer2Transform[1];
-            array[vtxOffset + 22] = visibleItems[i].layer2Transform[2];
-            array[vtxOffset + 23] = visibleItems[i].layer2Transform[3];
-
-            array[vtxOffset + 24] = visibleItems[i].layer1Scroll[0];
-            array[vtxOffset + 25] = visibleItems[i].layer1Scroll[1];
-            array[vtxOffset + 26] = visibleItems[i].layer1Scroll[2];
-            array[vtxOffset + 27] = visibleItems[i].layer1Scroll[3];
-
-            array[vtxOffset + 28] = visibleItems[i].layer2Scroll[0];
-            array[vtxOffset + 29] = visibleItems[i].layer2Scroll[1];
-            array[vtxOffset + 30] = visibleItems[i].layer2Scroll[2];
-            array[vtxOffset + 31] = visibleItems[i].layer2Scroll[3];
-
-            array[vtxOffset + 33] = visibleItems[i].boneIndex;
-            array[vtxOffset + 34] = visibleItems[i].maskAtlasID;
-        }
-    }
-    this._vertexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
-
-    var indexes = new Uint16Array(visibleItems.length * 6);
-    for (i = 0; i < visibleItems.length; ++i) {
-        var offset = i * 6;
-        var vtxOffset = i * 4;
-        indexes[offset] = vtxOffset;
-        indexes[offset + 1] = vtxOffset + 2;
-        indexes[offset + 2] = vtxOffset + 1;
-        indexes[offset + 3] = vtxOffset + 0;
-        indexes[offset + 4] = vtxOffset + 3;
-        indexes[offset + 5] = vtxOffset + 2;
-    }
-    this._indexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, null);
-    this._indexBuffer.count = visibleItems.length * 6;
-};
-
-/**
- * Gets the plane set's render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EvePlaneSet.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (this.display && mode === _core.device.RM_ADDITIVE) {
-        var batch = new EvePlaneSetBatch();
-        batch.renderMode = _core.device.RM_ADDITIVE;
-        batch.planeSet = this;
-        batch.perObjectData = perObjectData;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Renders the plane set
- * @param {Tw2Effect} [overrideEffect]
- * @constructor
- */
-EvePlaneSet.prototype.Render = function (overrideEffect) {
-    var effect = !overrideEffect ? this.effect : overrideEffect;
-    if (!effect || !this._vertexBuffer) {
-        return;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 140)) {
-            return;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawElements(_core.device.gl.TRIANGLES, this._indexBuffer.count, _core.device.gl.UNSIGNED_SHORT, 0);
-    }
-};
-
-/**
- * Per frame update
- * @param {number} dt - Delta Time
- */
-EvePlaneSet.prototype.Update = function (dt) {
-    this._time += dt;
-};
-
-/**
- * Clears the plane set's plane items
- */
-EvePlaneSet.prototype.Clear = function () {
-    this.planes = [];
-};
-
-/**
- * Scratch variables
- */
-EvePlaneSet.scratch = {
-    mat4_0: _math.mat4.create()
-};
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpotlightSetItem = EveSpotlightSetItem;
-exports.EveSpotlightSet = EveSpotlightSet;
-exports.EveSpotlightSetBatch = EveSpotlightSetBatch;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * Spotlight Item
- * - If a spotlight's properties are changed, it's parent's RebuildBuffers method must be called to apply these changes
- *
- * @property {string} name                  - The spotlight's name
- * @property {mat4} transform               - The spotlight's transform
- * @property {vec4} coneColor              - Colour of the spotlight's cone
- * @property {vec4} spriteColor            - Colour of the spotlight's sprite texture
- * @property {vec4} flareColor             - Colour of the spotlight's flare
- * @property {vec4} spriteScale            - The size of the spotlight
- * @property {boolean} boosterGainInfluence - If true, the spotlight can change size on booster gain
- * @property {number} boneIndex             - The spotlight's bone index
- * @property {number} groupIndex            - The sof faction group that the spotlight belongs to
- * @property {number} coneIntensity         - Scales the spotlight's cone colour, set by an object's sof Faction
- * @property {number} spriteIntensity       - Scales the spotlight's sprite colour, set by an object's sof Faction
- * @property {number} flareIntensity        - Scales the spotlight's flare colour, set by an object's sof Faction
- * @constructor
- */
-function EveSpotlightSetItem() {
-    this.display = true;
-    this.name = '';
-    this.transform = _math.mat4.create();
-    this.coneColor = _math.vec4.create();
-    this.spriteColor = _math.vec4.create();
-    this.flareColor = _math.vec4.create();
-    this.spriteScale = _math.vec3.create();
-    this.boosterGainInfluence = false;
-    this.boneIndex = 0;
-    this.groupIndex = -1;
-    this.coneIntensity = 1;
-    this.spriteIntensity = 1;
-    this.flareIntensity = 1;
-}
-
-/**
- * EveSpotlightSet
- *
- * @property {string} name                               - The spotlight set's name
- * @property {boolean} display                           - controls the visibility of the spotlight set, and all it's children
- * @property {Tw2Effect} coneEffect                      - The spotlight set's cone effect
- * @property {Tw2Effect} glowEffect                      - The spotlight set's glow effect
- * @property {Array.<EveSpotlightSetItem) spotlightItems - The spotlight set's children
- * @property {WebGLBuffer} _coneVertexBuffer             - Webgl buffer for the spotlight set's cone vertices
- * @property {WebGLBuffer} _spriteVertexBuffer           - Webgl buffer for the spotlight set's sprite/glow vertices
- * @property {WebGLBuffer} _indexBuffer                  - Webgl buffer for the spotlight set
- * @property {Tw2VertexDeclaration} _decl                - The spotlight set's vertex declarations
- * @constructor
- */
-function EveSpotlightSet() {
-    this.name = '';
-    this.display = true;
-    this.coneEffect = null;
-    this.glowEffect = null;
-    this.spotlightItems = [];
-
-    this._coneVertexBuffer = null;
-    this._spriteVertexBuffer = null;
-    this._indexBuffer = null;
-
-    this._decl = new _core.Tw2VertexDeclaration();
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 0));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 16));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 32));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 48));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 3, 64));
-    this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 3, 76));
-    this._decl.RebuildHash();
-}
-
-/**
- * Initializes the spotlight set
- */
-EveSpotlightSet.prototype.Initialize = function () {
-    this.RebuildBuffers();
-};
-
-/**
- * Gets the spotlight set's resources
- *
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpotlightSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.coneEffect !== null) {
-        this.coneEffect.GetResources(out);
-    }
-
-    if (this.glowEffect !== null) {
-        this.glowEffect.GetResources(out);
-    }
-    return out;
-};
-
-/**
- * Rebuilds the spotlight set's buffers
- */
-EveSpotlightSet.prototype.RebuildBuffers = function () {
-    var visibleItems = [];
-    for (var i = 0; i < this.spotlightItems.length; i++) {
-        if (this.spotlightItems[i].display) {
-            visibleItems.push(this.spotlightItems[i]);
-        }
-    }
-
-    var itemCount = visibleItems.length;
-    if (itemCount === 0) {
-        return;
-    }
-    var vertCount = 4;
-    var coneQuadCount = 4;
-    var coneVertexCount = itemCount * coneQuadCount * vertCount;
-
-    var vertexSize = 22;
-    var array = new Float32Array(coneVertexCount * vertexSize);
-
-    var indexes = [1, 0, 2, 3];
-
-    for (var i = 0; i < itemCount; ++i) {
-        var item = visibleItems[i];
-        for (var q = 0; q < coneQuadCount; ++q) {
-            for (var v = 0; v < vertCount; ++v) {
-                var offset = (i * coneQuadCount * vertCount + vertCount * q + v) * vertexSize;
-                array[offset + 0] = item.coneColor[0] * item.coneIntensity;
-                array[offset + 1] = item.coneColor[1] * item.coneIntensity;
-                array[offset + 2] = item.coneColor[2] * item.coneIntensity;
-                array[offset + 3] = item.coneColor[3];
-
-                array[offset + 4] = item.transform[0];
-                array[offset + 5] = item.transform[4];
-                array[offset + 6] = item.transform[8];
-                array[offset + 7] = item.transform[12];
-
-                array[offset + 8] = item.transform[1];
-                array[offset + 9] = item.transform[5];
-                array[offset + 10] = item.transform[9];
-                array[offset + 11] = item.transform[13];
-
-                array[offset + 12] = item.transform[2];
-                array[offset + 13] = item.transform[6];
-                array[offset + 14] = item.transform[10];
-                array[offset + 15] = item.transform[14];
-
-                array[offset + 16] = 1;
-                array[offset + 17] = 1;
-                array[offset + 18] = 1;
-
-                array[offset + 19] = q * vertCount + indexes[v];
-                array[offset + 20] = item.boneIndex;
-                array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
-            }
-        }
-    }
-
-    this._coneVertexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._coneVertexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.STATIC_DRAW);
-    this._coneVertexBuffer.count = itemCount * coneQuadCount * 6;
-
-    var spriteQuadCount = 2;
-    var spriteVertexCount = itemCount * spriteQuadCount * vertCount;
-    array = new Float32Array(spriteVertexCount * vertexSize);
-
-    var indexes = [1, 0, 2, 3];
-
-    for (var i = 0; i < itemCount; ++i) {
-        var item = visibleItems[i];
-        for (var q = 0; q < spriteQuadCount; ++q) {
-            for (var v = 0; v < vertCount; ++v) {
-                var offset = (i * spriteQuadCount * vertCount + vertCount * q + v) * vertexSize;
-                if (q % 2 === 0) {
-                    array[offset + 0] = item.spriteColor[0] * item.spriteIntensity;
-                    array[offset + 1] = item.spriteColor[1] * item.spriteIntensity;
-                    array[offset + 2] = item.spriteColor[2] * item.spriteIntensity;
-                    array[offset + 3] = item.spriteColor[3];
-
-                    array[offset + 16] = item.spriteScale[0];
-                    array[offset + 17] = 1;
-                    array[offset + 18] = 1;
-                } else {
-                    array[offset + 0] = item.flareColor[0] * item.flareIntensity;
-                    array[offset + 1] = item.flareColor[1] * item.flareIntensity;
-                    array[offset + 2] = item.flareColor[2] * item.flareIntensity;
-                    array[offset + 3] = item.flareColor[3];
-
-                    array[offset + 16] = 1;
-                    array[offset + 17] = item.spriteScale[1];
-                    array[offset + 18] = item.spriteScale[2];
-                }
-
-                array[offset + 4] = item.transform[0];
-                array[offset + 5] = item.transform[4];
-                array[offset + 6] = item.transform[8];
-                array[offset + 7] = item.transform[12];
-
-                array[offset + 8] = item.transform[1];
-                array[offset + 9] = item.transform[5];
-                array[offset + 10] = item.transform[9];
-                array[offset + 11] = item.transform[13];
-
-                array[offset + 12] = item.transform[2];
-                array[offset + 13] = item.transform[6];
-                array[offset + 14] = item.transform[10];
-                array[offset + 15] = item.transform[14];
-
-                array[offset + 19] = q * vertCount + indexes[v];
-                array[offset + 20] = item.boneIndex;
-                array[offset + 21] = item.boosterGainInfluence ? 255 : 0;
-            }
-        }
-    }
-
-    this._spriteVertexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._spriteVertexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.STATIC_DRAW);
-    this._spriteVertexBuffer.count = itemCount * spriteQuadCount * 6;
-
-    var indexes = new Uint16Array(itemCount * coneQuadCount * 6);
-    for (var i = 0; i < itemCount * coneQuadCount; ++i) {
-        var offset = i * 6;
-        var vtxOffset = i * 4;
-        indexes[offset] = vtxOffset;
-        indexes[offset + 1] = vtxOffset + 1;
-        indexes[offset + 2] = vtxOffset + 2;
-        indexes[offset + 3] = vtxOffset + 2;
-        indexes[offset + 4] = vtxOffset + 3;
-        indexes[offset + 5] = vtxOffset + 0;
-    }
-    this._indexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, null);
-};
-
-/**
- * EveSpotlightSetBatch
- *
- * @inherits Tw2RenderBatch
- * @constructor
- */
-function EveSpotlightSetBatch() {
-    this.renderMode = _core.device.RM_ANY;
-    this.perObjectData = null;
-    this.spotlightSet = null;
-}
-
-/**
- * Commits the spotlight set for rendering
- *
- * @param {Tw2Effect} overrideEffect
- */
-EveSpotlightSetBatch.prototype.Commit = function (overrideEffect) {
-    this.spotlightSet.RenderCones(overrideEffect);
-    this.spotlightSet.RenderGlow(overrideEffect);
-};
-
-/**
- * Gets the spotlight set's render batches
- *
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- */
-EveSpotlightSet.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (this.display && mode === _core.device.RM_ADDITIVE) {
-        var batch = new EveSpotlightSetBatch();
-        batch.renderMode = _core.device.RM_ADDITIVE;
-        batch.spotlightSet = this;
-        batch.perObjectData = perObjectData;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Renders the spotlight set's cone effect
- *
- * @param {Tw2Effect} [overrideEffect] - An optional Tw2Effect which can be passed to override the current cone effect
- */
-EveSpotlightSet.prototype.RenderCones = function (overrideEffect) {
-    var effect = !overrideEffect ? this.coneEffect : overrideEffect;
-    this._Render(effect, this._coneVertexBuffer);
-};
-
-/**
- * Renders the spotlight set's glow effect
- *
- * @param {Tw2Effect} overrideEffect - An optional Tw2Effect which can be passed to override the current glow effect
- */
-EveSpotlightSet.prototype.RenderGlow = function (overrideEffect) {
-    var effect = !overrideEffect ? this.glowEffect : overrideEffect;
-    this._Render(effect, this._spriteVertexBuffer);
-};
-
-/**
- * Internal render function
- *
- * @param {Tw2Effect} effect   - The Tw2Effect to render
- * @param {WebGLBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
- * @private
- */
-EveSpotlightSet.prototype._Render = function (effect, buffer) {
-    if (!effect || !buffer || !this._indexBuffer) {
-        return;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, buffer);
-    var stride = 22 * 4;
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), stride)) {
-            return;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawElements(_core.device.gl.TRIANGLES, buffer.count, _core.device.gl.UNSIGNED_SHORT, 0);
-    }
-};
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpriteSetItem = EveSpriteSetItem;
-exports.EveSpriteSetBatch = EveSpriteSetBatch;
-exports.EveSpriteSet = EveSpriteSet;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveSpriteSetItem
- * @property {string} name
- * @property {vec3} position
- * @property {number} blinkRate
- * @property {number} minScale
- * @property {number} falloff
- * @property {vec4} color
- * @property {vec4} warpColor
- * @property {number} boneIndex
- * @property {number} groupIndex
- * @constructor
- */
-function EveSpriteSetItem() {
-    this.display = true;
-    this.name = '';
-    this.position = _math.vec3.create();
-    this.blinkRate = 0;
-    this.blinkPhase = 0;
-    this.minScale = 1;
-    this.maxScale = 1;
-    this.falloff = 0;
-    this.color = _math.vec4.create();
-    this.warpColor = _math.vec4.create();
-    this.boneIndex = 0;
-    this.groupIndex = -1;
-}
-
-/**
- * Sprite set render batch
- * @constructor
- */
-function EveSpriteSetBatch() {
-    this.renderMode = _core.device.RM_ANY;
-    this.perObjectData = null;
-    this.boosterGlow = false;
-    this.spriteSet = null;
-    this.world = null;
-    this.boosterGain = 0;
-    this.warpIntensity = 0;
-}
-
-/**
- * Commits the sprite set
- * @param {Tw2Effect} overrideEffect
- */
-EveSpriteSetBatch.prototype.Commit = function (overrideEffect) {
-    if (this.boosterGlow) {
-        this.spriteSet.RenderBoosterGlow(overrideEffect, this.world, this.boosterGain, this.warpIntensity);
-    } else {
-        this.spriteSet.Render(overrideEffect, this.world, this.perObjectData);
-    }
-};
-
-/**
- * EveSpriteSet
- * @property {string} name
- * @property {Array.<EveSpriteSetItem>} sprites
- * @property {Tw2Effect} effect
- * @property {boolean} display
- * @property {number} _time
- * @property {boolean} useQuads Use quad rendering (CPU transform)
- * @property {boolean} isSkinned Use bone transforms (when useQuads is true)
- * @property {WebGLBuffer} _vertexBuffer
- * @property {WebGLBuffer} _indexBuffer
- * @property {Tw2VertexDeclaration} _decl
- * @param {boolean} useQuads Use quad rendering (CPU transform)
- * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
- * @constructor
- */
-function EveSpriteSet(useQuads, isSkinned) {
-    this.name = '';
-    this.sprites = [];
-    this.effect = null;
-    this.display = true;
-    this._time = 0;
-    this.useQuads = useQuads;
-    this.isSkinned = isSkinned;
-
-    this._vertexBuffer = null;
-    this._indexBuffer = null;
-    this._instanceBuffer = null;
-    this._decl = new _core.Tw2VertexDeclaration();
-    if (!useQuads) {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 8));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 3, 20));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
-    } else {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 52));
-    }
-    this._decl.RebuildHash();
-
-    this._vdecl = new _core.Tw2VertexDeclaration();
-    this._vdecl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 1, 0));
-    this._vdecl.RebuildHash();
-}
-
-/**
- * Initializes the sprite set
- */
-EveSpriteSet.prototype.Initialize = function () {
-    this.RebuildBuffers();
-};
-
-/**
- * Use instanced rendering or 'quad' rendering
- * @param {boolean} useQuads Use quad rendering (CPU transform)
- * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
- */
-EveSpriteSet.prototype.UseQuads = function (useQuads, isSkinned) {
-    if (this.useQuads === useQuads) {
-        return;
-    }
-
-    this.useQuads = useQuads;
-    this.isSkinned = isSkinned;
-
-    this._decl.elements.splice(0, this._decl.elements.length);
-    if (!useQuads) {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 8));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 3, 20));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
-    } else {
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 52));
-    }
-    this._decl.RebuildHash();
-    this.RebuildBuffers();
-};
-
-/**
- * Gets Sprite Set Resource Objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpriteSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.effect !== null) {
-        this.effect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Rebuilds the sprite set's buffers
- */
-EveSpriteSet.prototype.RebuildBuffers = function () {
-    if (this.useQuads) {
-        this._vertexBuffer = _core.device.gl.createBuffer();
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-        _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), _core.device.gl.STATIC_DRAW);
-        this._instanceBuffer = _core.device.gl.createBuffer();
-        return;
-    }
-
-    var visibleItems = [];
-    for (var i = 0; i < this.sprites.length; i++) {
-        if (this.sprites[i].display) {
-            visibleItems.push(this.sprites[i]);
-        }
-    }
-
-    var offset, vtxOffset;
-    var vertexSize = 13;
-    var array = new Float32Array(visibleItems.length * 4 * vertexSize);
-    for (i = 0; i < visibleItems.length; ++i) {
-        offset = i * 4 * vertexSize;
-        array[offset] = 0;
-        array[offset + vertexSize] = 1;
-        array[offset + 2 * vertexSize] = 2;
-        array[offset + 3 * vertexSize] = 3;
-        for (var j = 0; j < 4; ++j) {
-            vtxOffset = offset + j * vertexSize;
-            array[vtxOffset + 1] = visibleItems[i].boneIndex;
-            array[vtxOffset + 2] = visibleItems[i].position[0];
-            array[vtxOffset + 3] = visibleItems[i].position[1];
-            array[vtxOffset + 4] = visibleItems[i].position[2];
-            array[vtxOffset + 5] = visibleItems[i].color[0];
-            array[vtxOffset + 6] = visibleItems[i].color[1];
-            array[vtxOffset + 7] = visibleItems[i].color[2];
-            array[vtxOffset + 8] = visibleItems[i].blinkPhase;
-            array[vtxOffset + 9] = visibleItems[i].blinkRate;
-            array[vtxOffset + 10] = visibleItems[i].minScale;
-            array[vtxOffset + 11] = visibleItems[i].maxScale;
-            array[vtxOffset + 12] = visibleItems[i].falloff;
-        }
-    }
-    this._vertexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
-
-    var indexes = new Uint16Array(visibleItems.length * 6);
-    for (i = 0; i < visibleItems.length; ++i) {
-        offset = i * 6;
-        vtxOffset = i * 4;
-        indexes[offset] = vtxOffset;
-        indexes[offset + 1] = vtxOffset + 2;
-        indexes[offset + 2] = vtxOffset + 1;
-        indexes[offset + 3] = vtxOffset + 0;
-        indexes[offset + 4] = vtxOffset + 3;
-        indexes[offset + 5] = vtxOffset + 2;
-    }
-    this._indexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, null);
-    this._indexBuffer.count = visibleItems.length * 6;
-};
-
-/**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @param {mat4} world
- */
-EveSpriteSet.prototype.GetBatches = function (mode, accumulator, perObjectData, world) {
-    if (this.display && mode === _core.device.RM_ADDITIVE) {
-        var batch = new EveSpriteSetBatch();
-        batch.world = world;
-        batch.renderMode = _core.device.RM_ADDITIVE;
-        batch.spriteSet = this;
-        batch.perObjectData = perObjectData;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Gets render batches for booster glows
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @param {mat4} world
- * @param {Number} boosterGain
- * @param {Number} warpIntensity
- */
-EveSpriteSet.prototype.GetBoosterGlowBatches = function (mode, accumulator, perObjectData, world, boosterGain, warpIntensity) {
-    if (this.display && mode === _core.device.RM_ADDITIVE) {
-        var batch = new EveSpriteSetBatch();
-        batch.boosterGlow = true;
-        batch.world = world;
-        batch.boosterGain = boosterGain;
-        batch.warpIntensity = warpIntensity;
-        batch.renderMode = _core.device.RM_ADDITIVE;
-        batch.spriteSet = this;
-        batch.perObjectData = perObjectData;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Renders the sprite set
- * @param {Tw2Effect} overrideEffect
- * @param {mat4} world
- * @param {Tw2PerObjectData} perObjectData
- */
-EveSpriteSet.prototype.Render = function (overrideEffect, world, perObjectData) {
-    if (this.useQuads) {
-        return this.RenderQuads(overrideEffect, world, perObjectData);
-    }
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (!effect || !this._vertexBuffer) {
-        return;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 52)) {
-            return;
-        }
-        _core.device.ApplyShadowState();
-        _core.device.gl.drawElements(_core.device.gl.TRIANGLES, this._indexBuffer.count, _core.device.gl.UNSIGNED_SHORT, 0);
-    }
-};
-
-/**
- * Scratch variables
- */
-EveSpriteSet.scratch = {
-    vec3_0: _math.vec3.create()
-};
-
-/**
- * Renders the sprite set as booster glow
- * @param {Tw2Effect} overrideEffect
- * @param {mat4} world
- * @param {Number} boosterGain
- * @param {Number} warpIntensity
- */
-EveSpriteSet.prototype.RenderBoosterGlow = function (overrideEffect, world, boosterGain, warpIntensity) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (!effect || !this._vertexBuffer) {
-        return;
-    }
-
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    var array = new Float32Array(17 * this.sprites.length);
-    var index = 0;
-    var pos = EveSpriteSet.scratch.vec3_0;
-    for (var i = 0; i < this.sprites.length; ++i) {
-        _math.vec3.transformMat4(pos, this.sprites[i].position, world);
-        array[index++] = pos[0];
-        array[index++] = pos[1];
-        array[index++] = pos[2];
-        array[index++] = world[8];
-        array[index++] = this.sprites[i].blinkPhase;
-        array[index++] = world[9];
-        array[index++] = this.sprites[i].minScale;
-        array[index++] = this.sprites[i].maxScale;
-        array[index++] = world[10];
-        array[index++] = this.sprites[i].color[0];
-        array[index++] = this.sprites[i].color[1];
-        array[index++] = this.sprites[i].color[2];
-        array[index++] = boosterGain;
-        array[index++] = this.sprites[i].warpColor[0];
-        array[index++] = this.sprites[i].warpColor[1];
-        array[index++] = this.sprites[i].warpColor[2];
-        array[index++] = warpIntensity;
-    }
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._instanceBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.DYNAMIC_DRAW);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-        this._vdecl.SetPartialDeclaration(passInput, 4);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._instanceBuffer);
-        var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
-        _core.device.ApplyShadowState();
-        _core.device.ext.drawArraysInstanced(_core.device.gl.TRIANGLES, 0, 6, this.sprites.length);
-        this._decl.ResetInstanceDivisors(resetData);
-    }
-};
-
-/**
- * Renders the sprite set with pre-transformed quads
- * @param {Tw2Effect} overrideEffect
- * @param {mat4} world
- * @param {Tw2PerObjectData} perObjectData
- */
-EveSpriteSet.prototype.RenderQuads = function (overrideEffect, world, perObjectData) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (!effect || !this._vertexBuffer) {
-        return;
-    }
-
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) {
-        return;
-    }
-    _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
-
-    var array = new Float32Array(17 * this.sprites.length);
-    var index = 0;
-    var pos = EveSpriteSet.scratch.vec3_0;
-    var bones = perObjectData.perObjectVSData.Get('JointMat');
-    var sprite;
-    for (var i = 0; i < this.sprites.length; ++i) {
-        sprite = this.sprites[i];
-        if (this.isSkinned) {
-            var offset = sprite.boneIndex * 12;
-            pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
-            pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
-            pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
-            _math.vec3.transformMat4(pos, pos, world);
-        } else {
-            _math.vec3.transformMat4(pos, sprite.position, world);
-        }
-        array[index++] = pos[0];
-        array[index++] = pos[1];
-        array[index++] = pos[2];
-        array[index++] = 1;
-        array[index++] = sprite.blinkPhase;
-        array[index++] = sprite.blinkRate;
-        array[index++] = sprite.minScale;
-        array[index++] = sprite.maxScale;
-        array[index++] = sprite.falloff;
-        array[index++] = sprite.color[0];
-        array[index++] = sprite.color[1];
-        array[index++] = sprite.color[2];
-        array[index++] = 1;
-        array[index++] = sprite.warpColor[0];
-        array[index++] = sprite.warpColor[1];
-        array[index++] = sprite.warpColor[2];
-        array[index++] = 1;
-    }
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._instanceBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.DYNAMIC_DRAW);
-
-    for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-        this._vdecl.SetPartialDeclaration(passInput, 4);
-        _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._instanceBuffer);
-        var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
-        _core.device.ApplyShadowState();
-        _core.device.ext.drawArraysInstanced(_core.device.gl.TRIANGLES, 0, 6, this.sprites.length);
-        this._decl.ResetInstanceDivisors(resetData);
-    }
-};
-
-/**
- * Per frame update
- * @param {number} dt - Delta time
- */
-EveSpriteSet.prototype.Update = function (dt) {
-    this._time += dt;
-};
-
-/**
- * Clears the sprite set's sprites
- */
-EveSpriteSet.prototype.Clear = function () {
-    this.sprites = [];
-};
-
-/**
- * Adds a sprite set item to the sprite set
- * @param {vec3} pos
- * @param {number} blinkRate
- * @param {number} blinkPhase
- * @param {number} minScale
- * @param {number} maxScale
- * @param {number} falloff
- * @param {vec4} color
- * @constructor
- */
-EveSpriteSet.prototype.Add = function (pos, blinkRate, blinkPhase, minScale, maxScale, falloff, color) {
-    var item = new EveSpriteSetItem();
-    item.display = true;
-    _math.vec3.copy(item.position, pos);
-    item.blinkRate = blinkRate;
-    item.blinkPhase = blinkPhase;
-    item.minScale = minScale;
-    item.maxScale = maxScale;
-    item.falloff = falloff;
-    _math.vec4.copy(item.color, color);
-    this.sprites.push(item);
-};
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveSpaceObjectDecal = EveSpaceObjectDecal;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveSpaceObjectDecal
- * @property {boolean} display
- * @property {Tw2Effect} decalEffect
- * @property {Tw2Effect} pickEffect
- * @property {String} name=''
- * @property {number} groupIndex
- * @property {boolean} pickable
- * @property {vec3} position
- * @property {quat} rotation
- * @property {vec3} scaling
- * @property {mat4} decalMatrix
- * @property {mat4} invDecalMatrix
- * @property {Tw2GeometryRes} parentGeometry
- * @property {Array} indexBuffer
- * @property {*} _indexBuffer
- * @property {number} parentBoneIndex
- * @property {Tw2PerObjectData} _perObjectData
- * @constructor
- */
-function EveSpaceObjectDecal() {
-    this.display = true;
-    this.decalEffect = null;
-    this.pickEffect = null;
-    this.name = '';
-    this.groupIndex = -1;
-
-    this.pickable = true;
-
-    this.position = _math.vec3.create();
-    this.rotation = _math.quat.create();
-    this.scaling = _math.vec3.create();
-
-    this.decalMatrix = _math.mat4.create();
-    this.invDecalMatrix = _math.mat4.create();
-    this.parentGeometry = null;
-    this.indexBuffer = [];
-    this._indexBuffer = null;
-    this.parentBoneIndex = -1;
-
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
-    this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
-    this._perObjectData.perObjectVSData.Create();
-
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('displayData', 4);
-    this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
-    this._perObjectData.perObjectPSData.Create();
-
-    _math.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
-
-    _core.variableStore.RegisterType('u_DecalMatrix', _core.Tw2MatrixParameter);
-    _core.variableStore.RegisterType('u_InvDecalMatrix', _core.Tw2MatrixParameter);
-}
-
-/**
- * Initializes the decal
- */
-EveSpaceObjectDecal.prototype.Initialize = function () {
-    var indexes = new Uint16Array(this.indexBuffer);
-    this._indexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
-
-    _math.mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
-    _math.mat4.invert(this.invDecalMatrix, this.decalMatrix);
-};
-
-/**
- * Gets decal res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveSpaceObjectDecal.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.parentGeometry !== null) {
-        if (out.indexOf(this.parentGeometry) === -1) {
-            out.push(this.parentGeometry);
-        }
-    }
-
-    if (this.decalEffect !== null) {
-        this.decalEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Sets the parent geometry
- * @param {Tw2GeometryRes} geometryRes
- */
-EveSpaceObjectDecal.prototype.SetParentGeometry = function (geometryRes) {
-    this.parentGeometry = geometryRes;
-};
-
-/**
- * Gets batches for rendering
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @param {number} [counter=0]
- */
-EveSpaceObjectDecal.prototype.GetBatches = function (mode, accumulator, perObjectData, counter) {
-    switch (mode) {
-        case _core.device.RM_DECAL:
-            if (!this.decalEffect) return;
-            break;
-
-        case _core.device.RM_PICKABLE:
-            if (!this.pickEffect || !this.pickable) return;
-            break;
-
-        default:
-            return;
-    }
-
-    if (this.display && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()) {
-        var batch = new _core.Tw2ForwardingRenderBatch();
-        this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
-        if (this.parentBoneIndex >= 0) {
-            var bones = perObjectData.perObjectVSData.Get('JointMat');
-            var offset = this.parentBoneIndex * 12;
-            if (bones[offset + 0] || bones[offset + 4] || bones[offset + 8]) {
-                var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
-                bone[0] = bones[offset + 0];
-                bone[1] = bones[offset + 4];
-                bone[2] = bones[offset + 8];
-                bone[3] = 0;
-                bone[4] = bones[offset + 1];
-                bone[5] = bones[offset + 5];
-                bone[6] = bones[offset + 9];
-                bone[7] = 0;
-                bone[8] = bones[offset + 2];
-                bone[9] = bones[offset + 6];
-                bone[10] = bones[offset + 10];
-                bone[11] = 0;
-                bone[12] = bones[offset + 3];
-                bone[13] = bones[offset + 7];
-                bone[14] = bones[offset + 11];
-                bone[15] = 1;
-                _math.mat4.transpose(bone, bone);
-            }
-        }
-        _math.mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
-        _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
-
-        this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
-        this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
-
-        batch.perObjectData = this._perObjectData;
-        batch.geometryProvider = this;
-        batch.renderMode = mode;
-        accumulator.Commit(batch);
-    }
-};
-
-/**
- * Renders the decal
- * @param {Tw2ForwardingRenderBatch} batch
- * @param {Tw2Effect} overrideEffect
- */
-EveSpaceObjectDecal.prototype.Render = function (batch, overrideEffect) {
-    var bkIB = this.parentGeometry.meshes[0].indexes;
-    var bkStart = this.parentGeometry.meshes[0].areas[0].start;
-    var bkCount = this.parentGeometry.meshes[0].areas[0].count;
-    var bkIndexType = this.parentGeometry.meshes[0].indexType;
-    _math.mat4.copy(_core.variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
-    _math.mat4.copy(_core.variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
-    this.parentGeometry.meshes[0].indexes = this._indexBuffer;
-    this.parentGeometry.meshes[0].areas[0].start = 0;
-    this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
-    this.parentGeometry.meshes[0].indexType = _core.device.gl.UNSIGNED_SHORT;
-
-    this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : batch.renderMode === _core.device.RM_DECAL ? this.decalEffect : this.pickEffect);
-    this.parentGeometry.meshes[0].indexes = bkIB;
-    this.parentGeometry.meshes[0].areas[0].start = bkStart;
-    this.parentGeometry.meshes[0].areas[0].count = bkCount;
-    this.parentGeometry.meshes[0].indexType = bkIndexType;
-};
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EvePlanet = undefined;
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+exports.EveSpaceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _math = __webpack_require__(0);
+
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(29);
-
-var _EveObject2 = __webpack_require__(18);
+var _EveObject2 = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -14110,441 +12310,309 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * EvePlanet
+ * EveSpaceObject
  *
- * @property {string} name
- * @property {boolean} display
- * @property {EveTransform} highDetail
- * @property {Tw2Effect} effectHeight
- * @property {Tw2RenderTarget} heightMap
- * @property {*} zOnlyModel
- * @property {number} itemID
- * @property {string} heightMapResPath1
- * @property {string} heightMapResPath2
- * @property {boolean} heightDirty
- * @property {Array} lockedResources
- * @property {Array.<Resource>} watchedResources
+ * @parameter {String} name
+ * @parameter {boolean} display                             - Enables/ disables visibility
+ * @parameter {{}} visible                                  - Visibility options for the space object's elements
+ * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @parameter {boolean} visible.children                    - Enables/ disables child visibility
+ * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
+ * @parameter {Number} lod
+ * @parameter {Tw2Mesh} mesh
+ * @parameter {Array.<EveLocator>} locators
+ * @parameter {Array.<EveSpriteSet>} spriteSets
+ * @parameter {Array.<EveTurretSet>} turretSets
+ * @parameter {Array.<EveSpaceObjectDecal>} decals
+ * @parameter {Array.<EveSpotlightSet>} spotlightSets
+ * @parameter {Array.<EvePlaneSet>} planeSets
+ * @parameter {Array.<Tw2CurveSet>} curveSets
+ * @parameter {Array.<EveCurveLineSet>} lineSets
+ * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
+ * @parameter {Array.<{}>} children
+ * @parameter {vec3} boundingSphereCenter
+ * @parameter {Number} boundingSphereRadius
+ * @parameter {vec3} shapeEllipsoidRadius
+ * @parameter {vec3} shapeEllipsoidCenter
+ * @parameter {mat4} transform
+ * @parameter {Tw2AnimationController} animation
+ * @parameter {number} killCount                            - number of kills to show on kill counter decals
+ * @parameter {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EvePlanet = exports.EvePlanet = function (_EveObject) {
-    _inherits(EvePlanet, _EveObject);
-
-    function EvePlanet() {
-        _classCallCheck(this, EvePlanet);
-
-        var _this = _possibleConstructorReturn(this, (EvePlanet.__proto__ || Object.getPrototypeOf(EvePlanet)).call(this));
-
-        _this.highDetail = new _EveTransform.EveTransform();
-        _this.effectHeight = new _core.Tw2Effect();
-        _this.heightMap = new _core.Tw2RenderTarget();
-        _this.zOnlyModel = null;
-        _this.itemID = 0;
-        _this.heightMapResPath1 = '';
-        _this.heightMapResPath2 = '';
-        _this.heightDirty = false;
-        _this.lockedResources = [];
-        _this.watchedResources = [];
-        return _this;
-    }
-
-    /**
-     * Creates the planet
-     * @param {number} itemID - the item id is used for randomization
-     * @param {string} planetPath - .red file for a planet, or planet template
-     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
-     * @param {string} heightMap1
-     * @param {string} heightMap2
-     */
-
-
-    _createClass(EvePlanet, [{
-        key: 'Create',
-        value: function Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2) {
-            var _this2 = this;
-
-            this.itemID = itemID;
-            this.heightMapResPath1 = heightMap1;
-            this.heightMapResPath2 = heightMap2;
-            this.highDetail.children = [];
-            this.heightDirty = true;
-
-            _core.resMan.GetObject(planetPath, function (obj) {
-                return EvePlanet.MeshLoaded(_this2, obj);
-            });
-            _core.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
-                return _this2.zOnlyModel = obj;
-            });
-
-            if (atmospherePath) {
-                _core.resMan.GetObject(atmospherePath, function (obj) {
-                    return _this2.highDetail.children.push(obj);
-                });
-            }
-        }
-
-        /**
-         * GetPlanetResources
-         * Todo: Replace this, using this.GetResources();
-         * @param obj
-         * @param visited
-         * @param result
-         */
-
-    }, {
-        key: 'GetPlanetResources',
-        value: function GetPlanetResources(obj, visited, result) {
-            if (visited.includes(obj)) return;
-            visited.push(obj);
-
-            if (obj && _typeof(obj['doNotPurge']) !== ( true ? 'undefined' : _typeof(undefined))) {
-                result.push(obj);
-                return;
-            }
-
-            for (var prop in obj) {
-                if (obj.hasOwnProperty(prop)) {
-                    if (_typeof(obj[prop]) === 'object') {
-                        this.GetPlanetResources(obj[prop], visited, result);
-                    }
-                }
-            }
-        }
-
-        /**
-         * Gets planet res objects
-         * @param {Array} [out=[]] - Optional receiving array
-         * @returns {Array.<Tw2Resource>} [out]
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-            if (this.highDetail) this.highDetail.GetResources(out);
-            if (this.effectHeight) this.effectHeight.GetResources(out);
-            return out;
-        }
-
-        /**
-         * Updates view dependent data
-         * @param {mat4} parentTransform
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData(parentTransform) {
-            this.highDetail.UpdateViewDependentData(parentTransform);
-            if (this.zOnlyModel) {
-                this.zOnlyModel.translation = this.highDetail.translation;
-                this.zOnlyModel.scaling = this.highDetail.scaling;
-                this.zOnlyModel.UpdateViewDependentData(parentTransform);
-            }
-        }
-
-        /**
-         * Per frame update
-         * @param {number} dt - delta time
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            this.highDetail.Update(dt);
-        }
-
-        /**
-         * Gets render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '') {
-                for (var i = 0; i < this.watchedResources.length; ++i) {
-                    if (this.watchedResources[i] && !this.watchedResources[i].IsGood()) return;
-                }
-
-                this.watchedResources = [];
-
-                this.heightMap.Set();
-                _core.device.SetStandardStates(_core.device.RM_FULLSCREEN);
-                _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
-                _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
-                _core.device.RenderFullScreenQuad(this.effectHeight);
-                this.heightMap.Unset();
-
-                this.heightDirty = false;
-                for (var _i = 0; _i < this.lockedResources.length; ++_i) {
-                    this.lockedResources[_i].doNotPurge--;
-                }
-
-                var mainMesh = this.highDetail.children[0].mesh;
-                var originalEffect = null;
-
-                if (mainMesh.transparentAreas.length) {
-                    originalEffect = mainMesh.transparentAreas[0].effect;
-                } else if (mainMesh.opaqueAreas.length) {
-                    originalEffect = mainMesh.opaqueAreas[0].effect;
-                }
-
-                if (originalEffect) {
-                    originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
-                }
-            }
-
-            if (this.display) {
-                this.highDetail.GetBatches(mode, accumulator);
-            }
-        }
-
-        /**
-         * Gets z buffer only batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetZOnlyBatches',
-        value: function GetZOnlyBatches(mode, accumulator) {
-            if (this.display && this.zOnlyModel) {
-                this.zOnlyModel.GetBatches(mode, accumulator);
-            }
-        }
-
-        /**
-         * Internal helper function that fires when a planet's mesh has loaded
-         * @property {EvePlanet} planet
-         * @property {*} obj
-         */
-
-    }], [{
-        key: 'MeshLoaded',
-        value: function MeshLoaded(planet, obj) {
-            planet.highDetail.children.unshift(obj);
-            planet.lockedResources = [];
-            planet.GetPlanetResources(planet.highDetail, [], planet.lockedResources);
-
-            var mainMesh = planet.highDetail.children[0].mesh,
-                originalEffect = null,
-                resPath = void 0;
-
-            if (mainMesh.transparentAreas.length) {
-                originalEffect = mainMesh.transparentAreas[0].effect;
-                resPath = originalEffect.effectFilePath;
-            } else if (mainMesh.opaqueAreas.length) {
-                originalEffect = mainMesh.opaqueAreas[0].effect;
-                resPath = originalEffect.effectFilePath;
-            } else {
-                resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
-            }
-            resPath = resPath.replace('.fx', 'BlitHeight.fx');
-
-            planet.watchedResources = [];
-            for (var param in originalEffect.parameters) {
-                if (originalEffect.parameters.hasOwnProperty(param)) {
-                    planet.effectHeight.parameters[param] = originalEffect.parameters[param];
-                    if ('textureRes' in originalEffect.parameters[param]) {
-                        planet.watchedResources.push(originalEffect.parameters[param].textureRes);
-                    }
-                }
-            }
-
-            for (var i = 0; i < planet.highDetail.children[0].children.length; ++i) {
-                mainMesh = planet.highDetail.children[0].children[i].mesh;
-                if (!mainMesh) continue;
-
-                originalEffect = null;
-                if (mainMesh.transparentAreas.length) {
-                    originalEffect = mainMesh.transparentAreas[0].effect;
-                } else if (mainMesh.opaqueAreas.length) {
-                    originalEffect = mainMesh.opaqueAreas[0].effect;
-                } else {
-                    continue;
-                }
-
-                for (var _param in originalEffect.parameters) {
-                    if (originalEffect.parameters.hasOwnProperty(_param)) {
-                        planet.effectHeight.parameters[_param] = originalEffect.parameters[_param];
-                        if ('textureRes' in originalEffect.parameters[_param]) {
-                            planet.watchedResources.push(originalEffect.parameters[_param].textureRes);
-                        }
-                    }
-                }
-            }
-
-            var NormalHeight1 = new _core.Tw2TextureParameter('NormalHeight1', planet.heightMapResPath1);
-            NormalHeight1.Initialize();
-            planet.watchedResources.push(NormalHeight1.textureRes);
-            planet.lockedResources.push(NormalHeight1.textureRes);
-            planet.effectHeight.parameters.NormalHeight1 = NormalHeight1;
-
-            var NormalHeight2 = new _core.Tw2TextureParameter('NormalHeight2', planet.heightMapResPath2);
-            NormalHeight2.Initialize();
-            planet.watchedResources.push(NormalHeight2.textureRes);
-            planet.lockedResources.push(NormalHeight2.textureRes);
-            planet.effectHeight.parameters.NormalHeight2 = NormalHeight2;
-
-            planet.effectHeight.parameters.Random = new _core.Tw2FloatParameter('Random', planet.itemID % 100);
-            planet.effectHeight.parameters.TargetTextureHeight = new _core.Tw2FloatParameter('TargetTextureHeight', 1024);
-
-            planet.effectHeight.effectFilePath = resPath;
-            planet.effectHeight.Initialize();
-            planet.heightDirty = true;
-            planet.heightMap.Create(2048, 1024, false);
-            planet.watchedResources.push(planet.effectHeight.effectRes);
-
-            for (var _i2 = 0; _i2 < planet.lockedResources.length; ++_i2) {
-                planet.lockedResources[_i2].doNotPurge++;
-                if (planet.lockedResources[_i2].IsPurged()) {
-                    planet.lockedResources[_i2].Reload();
-                }
-            }
-        }
-    }]);
-
-    return EvePlanet;
-}(_EveObject2.EveObject);
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveShip = exports.EveTurretSetLocatorInfo = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _EveSpaceObject2 = __webpack_require__(30);
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Eve Turret Set Locator Info
- * @property {boolean} isJoint
- * @property {Array.<EveLocator|*>} locators
- */
-var EveTurretSetLocatorInfo = exports.EveTurretSetLocatorInfo = function EveTurretSetLocatorInfo() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-    _classCallCheck(this, EveTurretSetLocatorInfo);
-
-    this.name = name;
-    this.isJoint = false;
-    this.locators = [];
-};
-
-/**
- * EveShip
- *
- * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
- * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
- * @property {Array.<EveBoosterSet>} boosters
- * @property {Array.<EveTurretSet>} turretSets
- * @property {number} boosterGain
- * @property {Array} _turretSetsLocatorInfo
- * @class
- */
-
-
-var EveShip = exports.EveShip = function (_EveSpaceObject) {
-    _inherits(EveShip, _EveSpaceObject);
-
-    function EveShip() {
-        _classCallCheck(this, EveShip);
-
-        var _this = _possibleConstructorReturn(this, (EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call(this));
-
-        _this.visible.turretSets = true;
-        _this.visible.boosters = true;
-        _this.boosters = null;
+var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
+    _inherits(EveSpaceObject, _EveObject);
+
+    function EveSpaceObject() {
+        _classCallCheck(this, EveSpaceObject);
+
+        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
+
+        _this.visible = {};
+        _this.visible.mesh = true;
+        _this.visible.children = true;
+        _this.visible.effectChildren = true;
+        _this.visible.planeSets = true;
+        _this.visible.spotlightSets = true;
+        _this.visible.decals = true;
+        _this.visible.spriteSets = true;
+        _this.visible.overlayEffects = true;
+        _this.visible.lineSets = true;
+        _this.visible.killmarks = true;
+        _this.visible.customMasks = true;
+
+        _this.mesh = null;
+        _this.animation = new _core.Tw2AnimationController();
+        _this.locators = [];
+        _this.spriteSets = [];
         _this.turretSets = [];
-        _this.boosterGain = 1;
-        _this._turretSetsLocatorInfo = [];
+        _this.decals = [];
+        _this.spotlightSets = [];
+        _this.planeSets = [];
+        _this.curveSets = [];
+        _this.lineSets = [];
+        _this.overlayEffects = [];
+        _this.children = [];
+        _this.effectChildren = [];
+        _this.customMasks = [];
+        _this.lod = 3;
+        _this.killCount = 0;
+        _this.transform = _math.mat4.create();
+        _this.boundingSphereCenter = _math.vec3.create();
+        _this.boundingSphereRadius = 0;
+        _this.shapeEllipsoidRadius = _math.vec3.create();
+        _this.shapeEllipsoidCenter = _math.vec3.create();
+
+        _this._perObjectData = new _core.Tw2PerObjectData();
+        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
+        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
+        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+        _this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
+        _this._perObjectData.perObjectVSData.Declare('JointMat', 696);
+        _this._perObjectData.perObjectVSData.Create();
+
+        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
+        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        _this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
+        _this._perObjectData.perObjectPSData.Create();
+
+        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
+        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
+        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
+        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+
+        _math.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
+        _math.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
         return _this;
     }
 
     /**
-     * Initializes the Eve Ship
+     * Initializes the EveSpaceObject
      */
 
 
-    _createClass(EveShip, [{
+    _createClass(EveSpaceObject, [{
         key: 'Initialize',
         value: function Initialize() {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Initialize', this).call(this);
-            if (this.boosters) {
-                this.RebuildBoosterSet();
+            if (this.mesh) {
+                this.animation.SetGeometryResource(this.mesh.geometryResource);
+
+                for (var i = 0; i < this.decals.length; ++i) {
+                    this.decals[i].SetParentGeometry(this.mesh.geometryResource);
+                }
             }
         }
 
         /**
-         * Rebuilds the ship's booster set
+         * Resets the lod
          */
 
     }, {
-        key: 'RebuildBoosterSet',
-        value: function RebuildBoosterSet() {
-            if (!this.boosters) return;
-
-            this.boosters.Clear();
-
-            var locators = this.FindLocatorsByPrefix('locator_booster');
-            for (var i = 0; i < locators.length; ++i) {
-                this.boosters.Add(locators[i].transform, locators[i].atlasIndex0, locators[i].atlasIndex1, locators[i].name);
-            }
-
-            this.boosters.Rebuild();
+        key: 'ResetLod',
+        value: function ResetLod() {
+            this.lod = 3;
         }
 
         /**
-         * Rebuilds turret positions
+         * Updates the lod
+         * @param {Tw2Frustum} frustum
          */
 
     }, {
-        key: 'RebuildTurretPositions',
-        value: function RebuildTurretPositions() {
-            this._turretSetsLocatorInfo = [];
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                var turretSet = this.turretSets[i],
-                    prefix = turretSet.locatorName,
-                    count = this.GetLocatorCount(prefix),
-                    info = new EveTurretSetLocatorInfo(prefix);
+        key: 'UpdateLod',
+        value: function UpdateLod(frustum) {
+            var center = _math.vec3.transformMat4(EveSpaceObject.global.vec3_0, this.boundingSphereCenter, this.transform);
 
-                for (var j = 0; j < count; ++j) {
-                    var name = prefix + String.fromCharCode('a'.charCodeAt(0) + j),
-                        locator = this.FindLocatorByName(name),
-                        bone = this.FindLocatorBoneByName(name);
+            if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
+                if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
+                    this.lod = 1;
+                } else {
+                    this.lod = 2;
+                }
+            } else {
+                this.lod = 0;
+            }
+        }
 
-                    if (locator) {
-                        if (bone) {
-                            info.isJoint = true;
-                            locator.bone = bone;
-                        }
+        /**
+         * Adds a custom mask
+         * @param {vec3} position
+         * @param {vec3} scaling
+         * @param {quat} rotation
+         * @param {vec4} isMirrored
+         * @param {vec4} sourceMaterial
+         * @param {vec4} targetMaterials
+         */
 
-                        turretSet.SetLocalTransform(j, bone ? bone.worldTransform : locator.transform, name);
-                        info.locators.push(locator);
+    }, {
+        key: 'AddCustomMask',
+        value: function AddCustomMask(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
+            var transform = _math.mat4.fromRotationTranslationScale(_math.mat4.create(), rotation, position, scaling);
+            _math.mat4.invert(transform, transform);
+            _math.mat4.transpose(transform, transform);
+
+            this.customMasks.push({
+                transform: transform,
+                maskData: _math.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
+                materialID: _math.vec4.fromValues(sourceMaterial, 0, 0, 0),
+                targets: targetMaterials
+            });
+        }
+
+        /**
+         * Gets locator count for a specific locator group
+         * @param {String} prefix
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLocatorCount',
+        value: function GetLocatorCount(prefix) {
+            var locators = this.FindLocatorsByPrefix(prefix);
+            return locators.length;
+        }
+
+        /**
+         * Finds a locator's joint by name
+         * @param {string} name
+         * @returns {?mat4}
+         */
+
+    }, {
+        key: 'FindLocatorJointByName',
+        value: function FindLocatorJointByName(name) {
+            var locator = this.FindLocatorBoneByName(name);
+            return locator ? locator.worldTransform : null;
+        }
+
+        /**
+         *
+         * @param name
+         * @returns {null}
+         */
+
+    }, {
+        key: 'FindLocatorTransformByName',
+        value: function FindLocatorTransformByName(name) {
+            var locator = this.FindLocatorByName(name);
+            return locator ? locator.transform : null;
+        }
+
+        /**
+         * Checks if a locator prefix exists
+         * @param {string} prefix
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasLocatorPrefix',
+        value: function HasLocatorPrefix(prefix) {
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name.substring(0, prefix.length) === prefix) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * Finds a locator's bone by it's name
+         * @param {String} name
+         * @returns {?Tw2Bone} null if not found
+         */
+
+    }, {
+        key: 'FindLocatorBoneByName',
+        value: function FindLocatorBoneByName(name) {
+            var model = this.animation.FindModelForMesh(0);
+            if (model) {
+                for (var i = 0; i < model.bones.length; ++i) {
+                    if (model.bones[i].boneRes.name === name) {
+                        return model.bones[i];
                     }
                 }
-                this._turretSetsLocatorInfo.push(info);
             }
+            return null;
         }
 
         /**
-         * Gets ship's res objects
+         * Finds a locator by name
+         * @param {string} name
+         * @returns {?EveLocator}
+         */
+
+    }, {
+        key: 'FindLocatorByName',
+        value: function FindLocatorByName(name) {
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name === name) {
+                    return this.locators[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Finds locators with a given prefix
+         * @param {string} prefix
+         * @returns {Array<EveLocator>}
+         */
+
+    }, {
+        key: 'FindLocatorsByPrefix',
+        value: function FindLocatorsByPrefix(prefix) {
+            var locators = [];
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name.indexOf(prefix) === 0) {
+                    locators.push(this.locators[i]);
+                }
+            }
+            return locators;
+        }
+
+        /**
+         * Gets object's res objects
          * @param {Array} [out=[]] - Optional receiving array
          * @param {Boolean} excludeChildren - True to exclude children's res objects
          * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
@@ -14556,67 +12624,115 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
             var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
             var excludeChildren = arguments[1];
 
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetResources', this).call(this, out, excludeChildren);
+            if (this.mesh) this.mesh.GetResources(out);
+            if (this.animation) this.animation.GetResources(out);
 
-            for (var i = 0; i < this.turretSets.length; i++) {
-                this.turretSets[i].GetResources(out);
-            }
+            _math.util.perArrayChild(this.spriteSets, 'GetResources', out);
+            _math.util.perArrayChild(this.turretSets, 'GetResources', out);
+            _math.util.perArrayChild(this.decals, 'GetResources', out);
+            _math.util.perArrayChild(this.spotlightSets, 'GetResources', out);
+            _math.util.perArrayChild(this.planeSets, 'GetResources', out);
+            _math.util.perArrayChild(this.lineSets, 'GetResources', out);
+            _math.util.perArrayChild(this.overlayEffects, 'GetResources', out);
+            _math.util.perArrayChild(this.effectChildren, 'GetResources', out);
 
-            if (this.boosters) {
-                this.boosters.GetResources(out);
+            if (!excludeChildren) {
+                _math.util.perArrayChild(this.children, 'GetResources', out);
             }
 
             return out;
         }
 
         /**
-         * Updates view dependant data
+         * A Per frame function that updates view dependent data
          */
 
     }, {
         key: 'UpdateViewDependentData',
         value: function UpdateViewDependentData() {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'UpdateViewDependentData', this).call(this);
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].UpdateViewDependentData(this.transform);
+            }
 
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                this.turretSets[i].UpdateViewDependentData();
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
+
+            var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter'),
+                radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
+
+            if (this.shapeEllipsoidRadius[0] > 0) {
+                center[0] = this.shapeEllipsoidCenter[0];
+                center[1] = this.shapeEllipsoidCenter[1];
+                center[2] = this.shapeEllipsoidCenter[2];
+                radii[0] = this.shapeEllipsoidRadius[0];
+                radii[1] = this.shapeEllipsoidRadius[1];
+                radii[2] = this.shapeEllipsoidRadius[2];
+            } else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood()) {
+                _math.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _math.vec3.scale(center, center, 0.5 * 1.732050807);
+                _math.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _math.vec3.scale(radii, radii, 0.5);
+            }
+
+            for (var _i = 0; _i < this.customMasks.length; ++_i) {
+                var targets = this.visible.customMasks ? this.customMasks[_i].targets : [0, 0, 0, 0];
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this.customMasks[_i].transform);
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskData1' : 'CustomMaskData0', this.customMasks[_i].maskData);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this.customMasks[_i].materialID);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', targets);
+            }
+
+            if (this.animation.animations.length) {
+                this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
+            }
+
+            for (var _i2 = 0; _i2 < this.lineSets.length; ++_i2) {
+                this.lineSets[_i2].UpdateViewDependentData(this.transform);
             }
         }
 
         /**
          * Per frame update
-         * @param {number} dt - deltaTime
+         * @param {Number} dt - delta time
          */
 
     }, {
         key: 'Update',
         value: function Update(dt) {
-            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Update', this).call(this, dt);
-
-            if (this.boosters) {
-                if (this.boosters.rebuildPending) {
-                    this.RebuildBoosterSet();
+            if (this.lod > 0) {
+                for (var i = 0; i < this.spriteSets.length; ++i) {
+                    this.spriteSets[i].Update(dt);
                 }
-                this.boosters.Update(dt, this.transform);
-            }
 
-            // Update turrets that are on bones
-            for (var i = 0; i < this.turretSets.length; ++i) {
-                if (i < this._turretSetsLocatorInfo.length) {
-                    var info = this._turretSetsLocatorInfo[i];
-                    if (info.isJoint) {
-                        for (var j = 0; j < info.locators.length; ++j) {
-                            if (info.locators[j].bone) {
-                                var locator = info.locators[j];
-                                this.turretSets[i].SetLocalTransform(j, locator.bone.worldTransform, locator.name);
-                            }
-                        }
-                    }
+                for (var _i3 = 0; _i3 < this.planeSets.length; _i3++) {
+                    this.planeSets[_i3].Update(dt);
                 }
-            }
 
-            for (var _i = 0; _i < this.turretSets.length; ++_i) {
-                this.turretSets[_i].Update(dt, this.transform);
+                for (var _i4 = 0; _i4 < this.spotlightSets.length; _i4++) {
+                    this.spotlightSets[_i4].Update(dt);
+                }
+
+                for (var _i5 = 0; _i5 < this.children.length; ++_i5) {
+                    this.children[_i5].Update(dt);
+                }
+
+                for (var _i6 = 0; _i6 < this.effectChildren.length; ++_i6) {
+                    this.effectChildren[_i6].Update(dt, this.transform);
+                }
+
+                for (var _i7 = 0; _i7 < this.curveSets.length; ++_i7) {
+                    this.curveSets[_i7].Update(dt);
+                }
+
+                for (var _i8 = 0; _i8 < this.overlayEffects.length; ++_i8) {
+                    this.overlayEffects[_i8].Update(dt);
+                }
+
+                for (var _i9 = 0; _i9 < this.lineSets.length; _i9++) {
+                    this.lineSets[_i9].Update(dt);
+                }
+
+                this.animation.Update(dt);
             }
         }
 
@@ -14630,448 +12746,200 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
         key: 'GetBatches',
         value: function GetBatches(mode, accumulator) {
             if (this.display) {
-                _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetBatches', this).call(this, mode, accumulator);
+                var show = this.visible;
 
-                this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
-                this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
+                if (show.mesh && this.mesh && this.lod > 0) {
+                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+                }
 
-                if (this.visible.turretSets) {
-                    if (this.lod > 1) {
-                        for (var i = 0; i < this.turretSets.length; ++i) {
-                            this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData);
+                if (this.lod > 1) {
+                    if (show.spriteSets) {
+                        for (var i = 0; i < this.spriteSets.length; i++) {
+                            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
                         }
-                    } else {
-                        for (var _i2 = 0; _i2 < this.turretSets.length; ++_i2) {
-                            if (this.turretSets[_i2].firingEffect) {
-                                this.turretSets[_i2].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
-                            }
+                    }
+
+                    if (show.spotlightSets) {
+                        for (var _i10 = 0; _i10 < this.spotlightSets.length; _i10++) {
+                            this.spotlightSets[_i10].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.planeSets) {
+                        for (var _i11 = 0; _i11 < this.planeSets.length; _i11++) {
+                            this.planeSets[_i11].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.decals) {
+                        for (var _i12 = 0; _i12 < this.decals.length; _i12++) {
+                            this.decals[_i12].GetBatches(mode, accumulator, this._perObjectData, show.killmarks ? this.killCount : 0);
+                        }
+                    }
+
+                    if (show.lineSets) {
+                        for (var _i13 = 0; _i13 < this.lineSets.length; _i13++) {
+                            this.lineSets[_i13].GetBatches(mode, accumulator);
                         }
                     }
                 }
 
-                if (this.boosters && this.visible.boosters) {
-                    this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+                if (show.children) {
+                    for (var _i14 = 0; _i14 < this.children.length; _i14++) {
+                        this.children[_i14].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.effectChildren) {
+                    for (var _i15 = 0; _i15 < this.effectChildren.length; _i15++) {
+                        this.effectChildren[_i15].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.overlayEffects) {
+                    for (var _i16 = 0; _i16 < this.overlayEffects.length; _i16++) {
+                        this.overlayEffects[_i16].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
+                    }
                 }
             }
         }
+
+        /**
+         * RenderDebugInfo
+         * @param debugHelper
+         */
+
+    }, {
+        key: 'RenderDebugInfo',
+        value: function RenderDebugInfo(debugHelper) {
+            this.animation.RenderDebugInfo(debugHelper);
+        }
     }]);
 
-    return EveShip;
-}(_EveSpaceObject2.EveSpaceObject);
+    return EveSpaceObject;
+}(_EveObject2.EveObject);
 
 /***/ }),
-/* 57 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.EveMissile = exports.EveMissileWarhead = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _EveObjectSet = __webpack_require__(8);
 
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-var _EveObject2 = __webpack_require__(18);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * EveMissileWarhead
- *
- * @property {String} name
- * @property {Boolean} display
- * @property {Tw2Mesh} mesh
- * @property {EveSpriteSet} spriteSet
- * @property {Number} state
- * @property {Number} time
- * @property {Number} durationEjectPhase
- * @property {Number} startEjectVelocity
- * @property {Number} acceleration
- * @property {Number} maxExplosionDistance
- * @property {Number} impactSize
- * @property {Number} impactDuration
- * @property {vec3} pathOffset
- * @property {mat4} transform
- * @property {vec3} velocity
- * @property {Tw2PerObjectData} _perObjectData
- * @class
- */
-var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
-    _inherits(EveMissileWarhead, _EveObject);
-
-    function EveMissileWarhead() {
-        _classCallCheck(this, EveMissileWarhead);
-
-        var _this = _possibleConstructorReturn(this, (EveMissileWarhead.__proto__ || Object.getPrototypeOf(EveMissileWarhead)).call(this));
-
-        _this.mesh = null;
-        _this.spriteSet = null;
-        _this.state = EveMissileWarhead.State.READY;
-        _this.time = 0;
-        _this.durationEjectPhase = 0;
-        _this.startEjectVelocity = 0;
-        _this.acceleration = 1;
-        _this.maxExplosionDistance = 40;
-        _this.impactSize = 0;
-        _this.impactDuration = 0.6;
-        _this.pathOffset = _math.vec3.create();
-        _this.transform = _math.mat4.create();
-        _this.velocity = _math.vec3.create();
-
-        _this._perObjectData = new _core.Tw2PerObjectData();
-        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectVSData.Create();
-
-        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        _this._perObjectData.perObjectPSData.Create();
-
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-        return _this;
+Object.keys(_EveObjectSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveObjectSet[key];
     }
+  });
+});
 
-    /**
-     * Initializes the warhead
-     */
+var _EveBoosterSet = __webpack_require__(140);
 
-
-    _createClass(EveMissileWarhead, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            if (this.spriteSet) this.spriteSet.UseQuads(true);
-        }
-
-        /**
-         * Sets up the warhead for rendering
-         * @param {mat4} transform - Initial local to world transform
-         */
-
-    }, {
-        key: 'Launch',
-        value: function Launch(transform) {
-            _math.mat4.copy(this.transform, transform);
-            this.velocity[0] = transform[8] * this.startEjectVelocity;
-            this.velocity[1] = transform[9] * this.startEjectVelocity;
-            this.velocity[2] = transform[10] * this.startEjectVelocity;
-            this.time = 0;
-            this.state = EveMissileWarhead.State.IN_FLIGHT;
-        }
-
-        /**
-         * Creates a clone of the warhead
-         * @returns {EveMissileWarhead}
-         */
-
-    }, {
-        key: 'Clone',
-        value: function Clone() {
-            var warhead = new EveMissileWarhead();
-            warhead.mesh = this.mesh;
-            warhead.spriteSet = this.spriteSet;
-            return warhead;
-        }
-
-        /**
-         * Gets warhead resources
-         * @param {Array} [out=[]] - Receiving array
-         * @returns {Array<Tw2Resource>} out
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-            if (this.mesh) this.mesh.GetResources(out);
-            if (this.spriteSet) this.spriteSet.GetResources(out);
-        }
-
-        /**
-         * Per frame view dependent data update
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData() {
-            if (!this.display || this.state === EveMissileWarhead.State.DEAD) return;
-            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
-        }
-
-        /**
-         * Per frame update
-         * @param {Number} dt - Time since previous frame
-         * @param {vec3} missilePosition - Missile position
-         * @param {vec3} missileTarget - Missile target position
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt, missilePosition, missileTarget) {
-            if (this.state === EveMissileWarhead.State.IN_FLIGHT) {
-                var g = EveMissile.global,
-                    position = _math.mat4.getTranslation(g.vec3_0, this.transform),
-                    tmp = g.vec3_1,
-                    x = g.vec3_2,
-                    y = g.vec3_3;
-
-                this.time += dt;
-                if (this.time > this.durationEjectPhase) {
-                    _math.vec3.subtract(position, this.velocity, missilePosition);
-                    _math.vec3.lerp(position, position, missilePosition, 1 - Math.exp(-dt * 0.9999));
-                    _math.mat4.setTranslation(this.transform, position);
-                    _math.vec3.subtract(tmp, missileTarget, position);
-                    if (_math.vec3.length(tmp) < this.maxExplosionDistance) {
-                        console.log(position, tmp);
-                        this.state = EveMissileWarhead.State.DEAD;
-                    }
-                } else {
-                    _math.vec3.scale(tmp, this.velocity, dt);
-                    this.transform[12] += tmp[0];
-                    this.transform[13] += tmp[1];
-                    this.transform[14] += tmp[2];
-                }
-
-                var z = _math.vec3.normalize(tmp, this.velocity);
-
-                if (Math.abs(z[0]) < 0.99) {
-                    _math.vec3.cross(x, z, [1, 0, 0]);
-                } else {
-                    _math.vec3.cross(x, z, [0, 1, 0]);
-                }
-
-                _math.vec3.normalize(x, x);
-                _math.vec3.cross(y, x, z);
-                this.transform[0] = x[0];
-                this.transform[1] = x[1];
-                this.transform[2] = x[2];
-                this.transform[4] = y[0];
-                this.transform[5] = y[1];
-                this.transform[6] = y[2];
-                this.transform[8] = z[0];
-                this.transform[9] = z[1];
-                this.transform[10] = z[2];
-            }
-
-            if (this.spriteSet) {
-                this.spriteSet.Update(dt);
-            }
-        }
-
-        /**
-         * Accumulates render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (this.display && this.mesh && this.state !== EveMissileWarhead.State.DEAD) {
-                if (this.mesh) {
-                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-                }
-
-                if (this.spriteSet) {
-                    this.spriteSet.GetBatches(mode, accumulator, this._perObjectData, this.transform);
-                }
-            }
-        }
-    }]);
-
-    return EveMissileWarhead;
-}(_EveObject2.EveObject);
-
-/**
- * Missile warhead states
- * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
- */
-
-
-EveMissileWarhead.State = {
-    READY: 0,
-    IN_FLIGHT: 1,
-    DEAD: 2
-};
-
-/**
- * EveMissile
- *
- * @property {number|string} _id
- * @property {String} name
- * @property {Boolean} display
- * @property {Array} warheads
- * @property {Array} curveSets
- * @property {vec3} boundingSphereCenter
- * @property {Number} boundingSphereRadius
- * @property {vec3} position
- * @property {vec3} target
- * @property {Number} speed
- * @property {?function(EveMissileWarhead): void} warheadExplosionCallback
- * @property {?function(EveMissile): void} missileFinishedCallback
- * @class
- */
-
-var EveMissile = exports.EveMissile = function () {
-    function EveMissile() {
-        _classCallCheck(this, EveMissile);
-
-        this._id = _math.util.generateID();
-        this.name = '';
-        this.display = true;
-        this.warheads = [];
-        this.curveSets = [];
-        this.speed = 1;
-        this.position = _math.vec3.create();
-        this.target = _math.vec3.create();
-        this.boundingSphereCenter = _math.vec3.create();
-        this.boundingSphereRadius = 0;
-        this.warheadExplosionCallback = null;
-        this.missileFinishedCallback = null;
-
-        EveMissile.init();
+Object.keys(_EveBoosterSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveBoosterSet[key];
     }
+  });
+});
 
-    /**
-     * Prepares missile for rendering
-     * @param {vec3} position - Missile starting position
-     * @param {Array} turretTransforms - Turret muzzle local to world transforms
-     * @param {vec3} target - Target position
-     */
+var _EveCurveLineSet = __webpack_require__(141);
 
+Object.keys(_EveCurveLineSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveCurveLineSet[key];
+    }
+  });
+});
 
-    _createClass(EveMissile, [{
-        key: 'Launch',
-        value: function Launch(position, turretTransforms, target) {
-            _math.vec3.copy(this.position, position);
-            _math.vec3.copy(this.target, target);
+var _EveLocator = __webpack_require__(142);
 
-            if (this.warheads.length > turretTransforms.length) {
-                this.warheads.splice(turretTransforms.length);
-            } else {
-                while (this.warheads.length < turretTransforms.length) {
-                    this.warheads.push(this.warheads[0].Clone());
-                }
-            }
+Object.keys(_EveLocator).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveLocator[key];
+    }
+  });
+});
 
-            for (var i = 0; i < this.warheads.length; ++i) {
-                this.warheads[0].Launch(turretTransforms[i]);
-            }
-        }
+var _EvePlaneSet = __webpack_require__(143);
 
-        /**
-         * Gets missile res objects
-         * @param {Array} [out=[]] - Receiving array
-         * @returns {Array<Tw2Resource>} out
-         */
+Object.keys(_EvePlaneSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EvePlaneSet[key];
+    }
+  });
+});
 
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+var _EveSpaceObjectDecal = __webpack_require__(144);
 
-            for (var i = 0; i < this.warheads.length; ++i) {
-                this.warheads[i].GetResources(out);
-            }
-        }
+Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpaceObjectDecal[key];
+    }
+  });
+});
 
-        /**
-         * Per frame view dependent data update
-         */
+var _EveSpotlightSet = __webpack_require__(145);
 
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData() {
-            for (var i = 0; i < this.warheads.length; ++i) {
-                this.warheads[i].UpdateViewDependentData();
-            }
-        }
+Object.keys(_EveSpotlightSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpotlightSet[key];
+    }
+  });
+});
 
-        /**
-         * Per frame update
-         * @param {Number} dt - Time since previous frame
-         */
+var _EveSpriteSet = __webpack_require__(146);
 
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            var tmp = _math.vec3.subtract(EveMissile.global.vec3_0, this.target, this.position),
-                distance = _math.vec3.length(tmp);
+Object.keys(_EveSpriteSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveSpriteSet[key];
+    }
+  });
+});
 
-            if (distance > 0.1) {
-                _math.vec3.normalize(tmp, tmp);
-                _math.vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
-                _math.vec3.add(this.position, this.position, tmp);
-            }
+var _EveTurretSet = __webpack_require__(147);
 
-            for (var i = 0; i < this.curveSets.length; ++i) {
-                this.curveSets[i].Update(dt);
-            }
-
-            var checkDead = false;
-            for (var _i = 0; _i < this.warheads.length; ++_i) {
-                var state = this.warheads[_i].state;
-                this.warheads[_i].Update(dt, this.position, this.target);
-
-                if (state !== EveMissileWarhead.State.DEAD && this.warheads[_i].state === EveMissileWarhead.State.DEAD) {
-                    if (this.warheadExplosionCallback) {
-                        this.warheadExplosionCallback(this.warheads[_i]);
-                    }
-                    checkDead = true;
-                }
-            }
-
-            if (checkDead && this.missileFinishedCallback) {
-                for (var _i2 = 0; _i2 < this.warheads.length; ++_i2) {
-                    if (this.warheads[_i2].state !== EveMissileWarhead.State.DEAD) {
-                        return;
-                    }
-                }
-                this.missileFinishedCallback(this);
-            }
-        }
-
-        /**
-         * Accumulates render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (!this.display) return;
-
-            for (var i = 0; i < this.warheads.length; ++i) {
-                this.warheads[i].GetBatches(mode, accumulator);
-            }
-        }
-    }]);
-
-    return EveMissile;
-}();
+Object.keys(_EveTurretSet).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveTurretSet[key];
+    }
+  });
+});
 
 /***/ }),
-/* 58 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15094,7 +12962,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(46);
+var _curve = __webpack_require__(45);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -15106,7 +12974,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(131);
+var _eve = __webpack_require__(125);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -15118,7 +12986,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(44);
+var _particle = __webpack_require__(43);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -15167,7 +13035,7 @@ _core.resMan.Register({
 exports.math = math;
 
 /***/ }),
-/* 59 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15178,12 +13046,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec2 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 60 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15653,7 +13521,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 61 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16155,7 +14023,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 62 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17893,7 +15761,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 63 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17914,9 +15782,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["fromEuler"] = fromEuler;
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(33);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18584,7 +16452,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 64 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19227,7 +17095,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 65 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19238,7 +17106,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.quat = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.quat = _glMatrix.quat;
 
@@ -19321,7 +17189,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 66 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19332,12 +17200,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat3 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 67 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19348,7 +17216,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat4 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.mat4 = _glMatrix.mat4;
 
@@ -19528,7 +17396,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 68 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19539,9 +17407,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.noise = undefined;
 
-var _vec = __webpack_require__(35);
+var _vec = __webpack_require__(34);
 
-var _vec2 = __webpack_require__(36);
+var _vec2 = __webpack_require__(35);
 
 var noise = exports.noise = {};
 
@@ -19738,7 +17606,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 69 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20099,7 +17967,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 70 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20112,13 +17980,29 @@ var util = exports.util = {};
 
 /**
  * Assigns property values if they exist in a source object
+ * - Typed arrays are cloned/ copied to ensure no pass-by-reference errors
+ *
  * @param {*} dest
  * @param {*} src
- * @param attr
+ * @param {string|string[]} attrs
  */
-util.assignIfExists = function (dest, src, attr) {
-    if (src && src[attr] !== undefined) {
-        dest[attr] = src[attr];
+util.assignIfExists = function (dest, src, attrs) {
+    if (!src) return;
+
+    attrs = util.toArray(attrs);
+    for (var i = 0; i < attrs.length; i++) {
+        var attr = attrs[i];
+        if (src[attr] !== undefined) {
+            if (util.isTyped(dest[attr]) || !dest[attr] && util.isTyped(src[attr])) {
+                if (!dest[attr] || dest[attr].length !== src[attr].length) {
+                    dest[attr] = new dest[attr]['constructor'](src[attr]);
+                } else {
+                    dest[attr].set(src[attr]);
+                }
+            } else {
+                dest[attr] = src[attr];
+            }
+        }
     }
 };
 
@@ -20271,7 +18155,7 @@ util.toArray = function (a) {
 };
 
 /***/ }),
-/* 71 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -21475,10 +19359,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(72)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(66)))
 
 /***/ }),
-/* 72 */
+/* 66 */
 /***/ (function(module, exports) {
 
 var g;
@@ -21505,7 +19389,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 73 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21523,7 +19407,7 @@ exports.Tw2AnimationController = Tw2AnimationController;
 
 var _math = __webpack_require__(0);
 
-var _Tw2GeometryRes = __webpack_require__(25);
+var _Tw2GeometryRes = __webpack_require__(26);
 
 /**
  * Tw2Track
@@ -22314,7 +20198,7 @@ Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometr
 };
 
 /***/ }),
-/* 74 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22418,7 +20302,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 75 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22435,13 +20319,13 @@ var _Tw2Device = __webpack_require__(2);
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2Resource2 = __webpack_require__(13);
+var _Tw2Resource2 = __webpack_require__(15);
 
-var _Tw2BinaryReader = __webpack_require__(23);
+var _Tw2BinaryReader = __webpack_require__(24);
 
-var _Tw2SamplerState = __webpack_require__(20);
+var _Tw2SamplerState = __webpack_require__(21);
 
-var _Tw2VertexDeclaration = __webpack_require__(14);
+var _Tw2VertexDeclaration = __webpack_require__(16);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23000,7 +20884,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 76 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23020,7 +20904,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 77 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23151,7 +21035,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 78 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23170,9 +21054,9 @@ var _math = __webpack_require__(0);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _Tw2Mesh2 = __webpack_require__(41);
+var _Tw2Mesh2 = __webpack_require__(40);
 
-var _Tw2BatchAccumulator = __webpack_require__(26);
+var _Tw2BatchAccumulator = __webpack_require__(27);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23326,7 +21210,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 79 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23339,17 +21223,17 @@ exports.Tw2PostProcess = Tw2PostProcess;
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2RenderTarget = __webpack_require__(43);
+var _Tw2RenderTarget = __webpack_require__(42);
 
-var _Tw2Effect = __webpack_require__(24);
+var _Tw2Effect = __webpack_require__(25);
 
-var _Tw2TextureParameter = __webpack_require__(12);
+var _Tw2TextureParameter = __webpack_require__(14);
 
-var _Tw2Vector4Parameter = __webpack_require__(11);
+var _Tw2Vector4Parameter = __webpack_require__(13);
 
-var _Tw2FloatParameter = __webpack_require__(22);
+var _Tw2FloatParameter = __webpack_require__(23);
 
-var _Tw2TextureRes = __webpack_require__(27);
+var _Tw2TextureRes = __webpack_require__(28);
 
 /**
  * Creates a bloom post effect
@@ -23511,7 +21395,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 80 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23597,7 +21481,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 81 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23610,9 +21494,9 @@ exports.Tw2RuntimeInstanceData = Tw2RuntimeInstanceData;
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2VertexDeclaration = __webpack_require__(14);
+var _Tw2VertexDeclaration = __webpack_require__(16);
 
-var _particle = __webpack_require__(44);
+var _particle = __webpack_require__(43);
 
 /**
  * Tw2RuntimeInstanceData
@@ -23810,7 +21694,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 82 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23820,7 +21704,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(83);
+var _Tw2StaticEmitter = __webpack_require__(77);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23832,7 +21716,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(84);
+var _Tw2DynamicEmitter = __webpack_require__(78);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23845,7 +21729,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 83 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23860,7 +21744,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(45);
+var _Tw2ParticleEmitter2 = __webpack_require__(44);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24001,7 +21885,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 84 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24014,7 +21898,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(45);
+var _Tw2ParticleEmitter2 = __webpack_require__(44);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24121,7 +22005,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 85 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24131,7 +22015,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(86);
+var _Tw2ParticleAttractorForce = __webpack_require__(80);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24143,7 +22027,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(87);
+var _Tw2ParticleDirectForce = __webpack_require__(81);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24155,7 +22039,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(88);
+var _Tw2ParticleDragForce = __webpack_require__(82);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24167,7 +22051,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(89);
+var _Tw2ParticleFluidDragForce = __webpack_require__(83);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24179,7 +22063,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(90);
+var _Tw2ParticleSpring = __webpack_require__(84);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24191,7 +22075,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(91);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(85);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24204,7 +22088,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 86 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24219,7 +22103,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24276,7 +22160,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 87 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24291,7 +22175,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24337,7 +22221,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 88 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24350,7 +22234,7 @@ exports.Tw2ParticleDragForce = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24398,7 +22282,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 89 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24413,7 +22297,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24484,7 +22368,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 90 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24499,7 +22383,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24549,7 +22433,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 91 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24564,7 +22448,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(9);
+var _Tw2ParticleForce2 = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24654,7 +22538,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 92 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24664,7 +22548,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(93);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(87);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24676,7 +22560,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(94);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(88);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24688,7 +22572,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(95);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(89);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24701,7 +22585,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 93 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24716,9 +22600,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(15);
+var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(28);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24792,7 +22676,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 94 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24807,9 +22691,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(15);
+var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(28);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24883,7 +22767,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 95 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24898,9 +22782,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(15);
+var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(28);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25033,14 +22917,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 96 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 97 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25057,7 +22941,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(15);
+var _Tw2ParticleElement = __webpack_require__(17);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25582,7 +23466,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 98 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25676,7 +23560,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 99 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25692,7 +23576,7 @@ exports.Tw2ValueBinding = Tw2ValueBinding;
 
 var _math = __webpack_require__(0);
 
-var _Tw2Vector4Parameter = __webpack_require__(11);
+var _Tw2Vector4Parameter = __webpack_require__(13);
 
 /**
  * Tw2ValueBinding
@@ -25952,7 +23836,7 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 100 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26192,7 +24076,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 101 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26462,7 +24346,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 102 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26635,7 +24519,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 103 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26741,7 +24625,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 104 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27021,7 +24905,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 105 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27113,7 +24997,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 106 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27298,7 +25182,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 107 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27559,7 +25443,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 108 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27812,7 +25696,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 109 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28104,7 +25988,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 110 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28198,7 +26082,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 111 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28501,7 +26385,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 112 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28807,7 +26691,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 113 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29062,7 +26946,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 114 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29072,7 +26956,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(115);
+var _Tw2ColorSequencer = __webpack_require__(109);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29084,7 +26968,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(116);
+var _Tw2EulerRotation = __webpack_require__(110);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29096,7 +26980,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(117);
+var _Tw2QuaternionSequencer = __webpack_require__(111);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29108,7 +26992,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(118);
+var _Tw2RGBAScalarSequencer = __webpack_require__(112);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29120,7 +27004,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(119);
+var _Tw2ScalarSequencer = __webpack_require__(113);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29132,7 +27016,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(120);
+var _Tw2VectorSequencer = __webpack_require__(114);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29144,7 +27028,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(121);
+var _Tw2XYZScalarSequencer = __webpack_require__(115);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29156,7 +27040,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(122);
+var _Tw2YPRSequencer = __webpack_require__(116);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29169,7 +27053,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 115 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29332,7 +27216,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 116 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29483,7 +27367,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 117 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29624,7 +27508,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 118 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29765,7 +27649,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 119 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29947,7 +27831,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 120 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30111,7 +27995,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 121 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30249,7 +28133,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 122 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30403,7 +28287,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 123 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30413,7 +28297,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(124);
+var _Tw2WbgTrack = __webpack_require__(118);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30425,7 +28309,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(125);
+var _Tw2TransformTrack = __webpack_require__(119);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30438,7 +28322,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 124 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30602,7 +28486,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 125 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30740,7 +28624,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 126 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30750,7 +28634,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(127);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(121);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30762,7 +28646,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(128);
+var _Tw2MayaScalarCurve = __webpack_require__(122);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30774,7 +28658,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(129);
+var _Tw2MayaVector3Curve = __webpack_require__(123);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30786,7 +28670,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(130);
+var _Tw2MayaAnimationEngine = __webpack_require__(124);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30799,7 +28683,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 127 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30814,7 +28698,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _curves = __webpack_require__(16);
+var _curves = __webpack_require__(18);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -30970,7 +28854,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 128 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30983,7 +28867,7 @@ exports.Tw2MayaScalarCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _curves = __webpack_require__(16);
+var _curves = __webpack_require__(18);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31086,7 +28970,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 129 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31101,7 +28985,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _curves = __webpack_require__(16);
+var _curves = __webpack_require__(18);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31238,7 +29122,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 130 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31613,7 +29497,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 131 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31623,7 +29507,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(47);
+var _child = __webpack_require__(46);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31635,7 +29519,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(137);
+var _effect = __webpack_require__(131);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31647,7 +29531,31 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _EveBasicPerObjectData = __webpack_require__(17);
+var _object = __webpack_require__(48);
+
+Object.keys(_object).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _object[key];
+    }
+  });
+});
+
+var _item = __webpack_require__(51);
+
+Object.keys(_item).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _item[key];
+    }
+  });
+});
+
+var _EveBasicPerObjectData = __webpack_require__(19);
 
 Object.keys(_EveBasicPerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31659,175 +29567,7 @@ Object.keys(_EveBasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(49);
-
-Object.keys(_EveLocator).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveLocator[key];
-    }
-  });
-});
-
-var _EveBoosterSet = __webpack_require__(50);
-
-Object.keys(_EveBoosterSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveBoosterSet[key];
-    }
-  });
-});
-
-var _EveCurveLineSet = __webpack_require__(142);
-
-Object.keys(_EveCurveLineSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveCurveLineSet[key];
-    }
-  });
-});
-
-var _EvePlaneSet = __webpack_require__(51);
-
-Object.keys(_EvePlaneSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EvePlaneSet[key];
-    }
-  });
-});
-
-var _EveSpotlightSet = __webpack_require__(52);
-
-Object.keys(_EveSpotlightSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpotlightSet[key];
-    }
-  });
-});
-
-var _EveSpriteSet = __webpack_require__(53);
-
-Object.keys(_EveSpriteSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpriteSet[key];
-    }
-  });
-});
-
-var _EveTurretSet = __webpack_require__(143);
-
-Object.keys(_EveTurretSet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTurretSet[key];
-    }
-  });
-});
-
-var _EveSpaceObjectDecal = __webpack_require__(54);
-
-Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpaceObjectDecal[key];
-    }
-  });
-});
-
-var _EvePlanet = __webpack_require__(55);
-
-Object.keys(_EvePlanet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EvePlanet[key];
-    }
-  });
-});
-
-var _EveShip = __webpack_require__(56);
-
-Object.keys(_EveShip).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveShip[key];
-    }
-  });
-});
-
-var _EveSpaceObject = __webpack_require__(30);
-
-Object.keys(_EveSpaceObject).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpaceObject[key];
-    }
-  });
-});
-
-var _EveTransform = __webpack_require__(29);
-
-Object.keys(_EveTransform).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTransform[key];
-    }
-  });
-});
-
-var _EveEffectRoot = __webpack_require__(144);
-
-Object.keys(_EveEffectRoot).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveEffectRoot[key];
-    }
-  });
-});
-
-var _EveMissile = __webpack_require__(57);
-
-Object.keys(_EveMissile).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveMissile[key];
-    }
-  });
-});
-
-var _EveSpaceScene = __webpack_require__(145);
+var _EveSpaceScene = __webpack_require__(148);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31839,7 +29579,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(146);
+var _EveSOF = __webpack_require__(149);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31852,7 +29592,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 132 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31871,9 +29611,9 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(17);
+var _EveBasicPerObjectData = __webpack_require__(19);
 
-var _EveChild2 = __webpack_require__(10);
+var _EveChild2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31970,7 +29710,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 133 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31985,7 +29725,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveChild2 = __webpack_require__(10);
+var _EveChild2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32075,7 +29815,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 134 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32086,7 +29826,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveChildExplosion = undefined;
 
-var _EveChild2 = __webpack_require__(10);
+var _EveChild2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32112,7 +29852,7 @@ var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 135 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32129,9 +29869,9 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(17);
+var _EveBasicPerObjectData = __webpack_require__(19);
 
-var _EveChild2 = __webpack_require__(10);
+var _EveChild2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32225,7 +29965,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 136 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32244,9 +29984,9 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(17);
+var _EveBasicPerObjectData = __webpack_require__(19);
 
-var _EveChild2 = __webpack_require__(10);
+var _EveChild2 = __webpack_require__(11);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32337,7 +30077,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 137 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32347,7 +30087,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(138);
+var _EveLensflare = __webpack_require__(132);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32359,7 +30099,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(139);
+var _EveMeshOverlayEffect = __webpack_require__(133);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32371,7 +30111,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(48);
+var _EveOccluder = __webpack_require__(47);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32383,7 +30123,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(140);
+var _EveStretch = __webpack_require__(134);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32395,7 +30135,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(141);
+var _EveTurretFiringFX = __webpack_require__(135);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32408,7 +30148,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
 });
 
 /***/ }),
-/* 138 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32425,7 +30165,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(48);
+var _EveOccluder = __webpack_require__(47);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32763,7 +30503,7 @@ var EveLensflare = exports.EveLensflare = function () {
 EveLensflare.global = null;
 
 /***/ }),
-/* 139 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32919,7 +30659,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 140 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33219,7 +30959,7 @@ var EveStretch = exports.EveStretch = function () {
 EveStretch.global = null;
 
 /***/ }),
-/* 141 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33565,7 +31305,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 142 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33574,1424 +31314,25 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.EveCurveLineSet = EveCurveLineSet;
+exports.EveEffectRoot = undefined;
 
-var _math = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _core = __webpack_require__(1);
+var _index = __webpack_require__(0);
 
-/**
- * EveCurveLineSet
- * @property {String} name
- * @property {Boolean} display
- * @property {Boolean} disableDepth
- * @property {Number} lineWidthFactor
- * @property {Array} lines
- * @property {Array} emptyLineID
- * @property {vec3} translation
- * @property {quat} rotation
- * @property {vec3} scaling
- * @property {mat4} transform
- * @property {Tw2Effect} lineEffect
- * @property {null|Tw2Effect} pickEffect
- * @property {Boolean} additive
- * @property {Tw2PerObjectData} perObjectData
- * @property {Number} _vertexSize
- * @property {WebGLBuffer} _vertexBuffer
- * @property {Number} _vertexBufferSize
- * @property {Tw2VertexDeclaration} declaration
- * @constructor
- */
-function EveCurveLineSet() {
-    this.name = '';
-    this.display = true;
-    this.disableDepth = false;
-    this.lineWidthFactor = 1;
-    this.lines = [];
-    this.emptyLineID = [];
+var _index2 = __webpack_require__(1);
 
-    this.translation = _math.vec3.create();
-    this.rotation = _math.quat.create();
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.transform = _math.mat4.create();
+var _EveObject2 = __webpack_require__(12);
 
-    this.lineEffect = new _core.Tw2Effect();
-    this.lineEffect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx';
-    this.lineEffect.parameters['TexMap'] = new _core.Tw2TextureParameter('TexMap', 'res:/texture/global/white.dds.0.png');
-    this.lineEffect.parameters['OverlayTexMap'] = new _core.Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
-    this.lineEffect.Initialize();
-    this.pickEffect = null;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    this.additive = false;
-    this.pickable = true;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    this.perObjectData = new _core.Tw2PerObjectData();
-    this.perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this.perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this.perObjectData.perObjectVSData.Create();
-    this.perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this.perObjectData.perObjectPSData.Declare('WorldMat', 16);
-    this.perObjectData.perObjectPSData.Create();
-
-    this._vertexSize = 26;
-    this._vertexBuffer = null;
-    this._vertexBufferSize = 0;
-    this.declaration = new _core.Tw2VertexDeclaration();
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 28));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 3, 44));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 56));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 72));
-    this.declaration.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 2, _core.device.gl.FLOAT, 4, 88));
-    this.declaration.stride = 4 * this._vertexSize;
-    this.declaration.RebuildHash();
-}
-
-/**
- * Initializes the Curve line set
- */
-EveCurveLineSet.prototype.Initialize = function () {
-    _math.mat4.fromRotationTranslationScale(this.transform, this.rotation, this.translation, this.scaling);
-};
-
-/**
- * Adds a line
- * @param line
- * @returns {Number} Line index
- * @private
- */
-EveCurveLineSet.prototype._addLine = function (line) {
-    if (this.emptyLineID.length) {
-        var index = this.emptyLineID.pop();
-        this.lines[index] = line;
-        return index;
-    }
-    this.lines.push(line);
-    return this.lines.length - 1;
-};
-
-/**
- * Adds a straight line
- * @param {vec3} startPosition
- * @param {quat3} startColor
- * @param {vec3} endPosition
- * @param {quat} endColor
- * @param {Number} lineWidth
- * @returns {Number} line index
- */
-EveCurveLineSet.prototype.AddStraightLine = function (startPosition, startColor, endPosition, endColor, lineWidth) {
-    var line = {
-        type: EveCurveLineSet.LINETYPE_STRAIGHT,
-        position1: _math.vec3.clone(startPosition),
-        color1: _math.vec4.clone(startColor),
-        position2: _math.vec3.clone(endPosition),
-        color2: _math.vec4.clone(endColor),
-        intermediatePosition: _math.vec3.create(),
-        width: lineWidth,
-        multiColor: _math.vec4.create(),
-        multiColorBorder: -1,
-        overlayColor: _math.vec4.create(),
-        animationSpeed: 0,
-        animationScale: 1,
-        numOfSegments: 1
-    };
-    return this._addLine(line);
-};
-
-/**
- * Adds a curved line using cartesian co-ordinates
- * @param {vec3} startPosition
- * @param {quat} startColor
- * @param {vec3} endPosition
- * @param {quat} endColor
- * @param {vec3} middle
- * @param {Number} lineWidth
- * @returns {Number} line index
- */
-EveCurveLineSet.prototype.AddCurvedLineCrt = function (startPosition, startColor, endPosition, endColor, middle, lineWidth) {
-    var line = {
-        type: EveCurveLineSet.LINETYPE_CURVED,
-        position1: _math.vec3.clone(startPosition),
-        color1: _math.vec4.clone(startColor),
-        position2: _math.vec3.clone(endPosition),
-        color2: _math.vec4.clone(endColor),
-        intermediatePosition: _math.vec3.clone(middle),
-        width: lineWidth,
-        multiColor: _math.vec4.create(),
-        multiColorBorder: -1,
-        overlayColor: _math.vec4.create(),
-        animationSpeed: 0,
-        animationScale: 1,
-        numOfSegments: 20
-    };
-    return this._addLine(line);
-};
-
-/**
- * Adds a curved line using spherical co-ordinates
- * @param {vec3} startPosition
- * @param {quat} startColor
- * @param {vec3} endPosition
- * @param {quat} endColor
- * @param {vec3} center
- * @param {vec3} middle
- * @param {Number} lineWidth
- * @returns {Number} line index
- */
-EveCurveLineSet.prototype.AddCurvedLineSph = function (startPosition, startColor, endPosition, endColor, center, middle, lineWidth) {
-    return this.AddCurvedLineCrt(_math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), middle, center), lineWidth);
-};
-
-/**
- * Adds a sphered line using cartesian co-ordinates
- * @param {vec3} startPosition
- * @param {quat} startColor
- * @param {vec3} endPosition
- * @param {quat} endColor
- * @param {vec3} center
- * @param {Number} lineWidth
- * @returns {Number} line index
- */
-EveCurveLineSet.prototype.AddSpheredLineCrt = function (startPosition, startColor, endPosition, endColor, center, lineWidth) {
-    var line = {
-        type: EveCurveLineSet.LINETYPE_SPHERED,
-        position1: _math.vec3.clone(startPosition),
-        color1: _math.vec4.clone(startColor),
-        position2: _math.vec3.clone(endPosition),
-        color2: _math.vec4.clone(endColor),
-        intermediatePosition: _math.vec3.clone(center),
-        width: lineWidth,
-        multiColor: _math.vec4.create(),
-        multiColorBorder: -1,
-        overlayColor: _math.vec4.create(),
-        animationSpeed: 0,
-        animationScale: 1,
-        numOfSegments: 20
-    };
-    return this._addLine(line);
-};
-
-/**
- * Adds a sphered line using spherical co-ordinates
- * @param {vec3} startPosition
- * @param {quat} startColor
- * @param {vec3} endPosition
- * @param {quat} endColor
- * @param {vec3} center
- * @param {Number} lineWidth
- * @returns {Number} line index
- */
-EveCurveLineSet.prototype.AddSpheredLineSph = function (startPosition, startColor, endPosition, endColor, center, lineWidth) {
-    return this.AddSpheredLineCrt(_math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), startColor, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center), endColor, center, lineWidth);
-};
-
-/**
- * Changes a line's colors
- * @param {Number} lineID
- * @param {quat} startColor
- * @param {quat} endColor
- */
-EveCurveLineSet.prototype.ChangeLineColor = function (lineID, startColor, endColor) {
-    this.lines[lineID].color1 = startColor;
-    this.lines[lineID].color2 = endColor;
-};
-
-/**
- * Changes a line's width
- * @param {Number} lineID
- * @param {Number} width
- */
-EveCurveLineSet.prototype.ChangeLineWidth = function (lineID, width) {
-    this.lines[lineID].width = width;
-};
-
-/**
- * Changes a lines start and end positions using Cartesian co-ordinates
- * @param {Number} lineID
- * @param {vec3} startPosition
- * @param {vec3} endPosition
- */
-EveCurveLineSet.prototype.ChangeLinePositionCrt = function (lineID, startPosition, endPosition) {
-    this.lines[lineID].position1 = startPosition;
-    this.lines[lineID].position2 = endPosition;
-};
-
-/**
- * Changes a lines start, end and center positions using Spherical co-orindates
- * @param {Number} lineID
- * @param {vec3} startPosition
- * @param {vec3} endPosition
- * @param {vec3} center
- */
-EveCurveLineSet.prototype.ChangeLinePositionSph = function (lineID, startPosition, endPosition, center) {
-    this.ChangeLinePositionCrt(lineID, _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), startPosition, center), _math.vec3.cartFromSphericalAndCenter(_math.vec3.create(), endPosition, center));
-};
-
-/**
- * Changes a line's intermediate position
- * @param {Number} lineID
- * @param {vec3} intermediatePosition
- */
-EveCurveLineSet.prototype.ChangeLineIntermediateCrt = function (lineID, intermediatePosition) {
-    this.lines[lineID].intermediatePosition = intermediatePosition;
-};
-
-/**
- * Changes a line's intermediate and middle positions
- * @param {Number} lineID
- * @param {vec3} intermediatePosition
- * @param {vec3} middle
- */
-EveCurveLineSet.prototype.ChangeLineIntermediateSph = function (lineID, intermediatePosition, middle) {
-    _math.vec3.cartFromSphericalAndCenter(this.lines[lineID].intermediatePosition, intermediatePosition, middle);
-};
-
-/**
- * Changes line multi color parameters
- * @param {Number} lineID
- * @param {quat} color
- * @param {Number} border
- */
-EveCurveLineSet.prototype.ChangeLineMultiColor = function (lineID, color, border) {
-    this.lines[lineID].multiColor = color;
-    this.lines[lineID].multiColorBorder = border;
-};
-
-/**
- * Changes a line's animation parameters
- * @param {Number} lineID
- * @param {quat} color
- * @param {Number} speed
- * @param {Number} scale
- */
-EveCurveLineSet.prototype.ChangeLineAnimation = function (lineID, color, speed, scale) {
-    this.lines[lineID].overlayColor = color;
-    this.lines[lineID].animationSpeed = speed;
-    this.lines[lineID].animationScale = scale;
-};
-
-/**
- * Changes a line's segmentation
- * @param {Number} lineID
- * @param {Number} numOfSegments
- */
-EveCurveLineSet.prototype.ChangeLineSegmentation = function (lineID, numOfSegments) {
-    if (this.lines[lineID].type !== EveCurveLineSet.LINETYPE_STRAIGHT) {
-        this.lines[lineID].numOfSegments = numOfSegments;
-    }
-};
-
-/**
- * Removes a line
- * @param {Number} lineID
- */
-EveCurveLineSet.prototype.RemoveLine = function (lineID) {
-    this.emptyLineID.push(lineID);
-    this.lines[lineID].type = EveCurveLineSet.LINETYPE_INVALID;
-};
-
-/**
- * Clears all lines
- */
-EveCurveLineSet.prototype.ClearLines = function () {
-    this.lines = [];
-    this.emptyLineID = [];
-};
-
-/**
- * Gets line count
- * @returns {Number}
- * @private
- */
-EveCurveLineSet.prototype._lineCount = function () {
-    var count = 0;
-    for (var i = 0; i < this.lines.length; ++i) {
-        if (this.lines[i].type !== EveCurveLineSet.LINETYPE_INVALID) {
-            count += this.lines[i].numOfSegments;
-        }
-    }
-    return count;
-};
-
-/**
- * Fills color vertices
- * @param lineData
- * @param buffer
- * @param offset
- * @returns {*}
- * @private
- */
-EveCurveLineSet.prototype._fillColorVertices = function (lineData, buffer, offset) {
-    buffer[offset++] = lineData.multiColor[0];
-    buffer[offset++] = lineData.multiColor[1];
-    buffer[offset++] = lineData.multiColor[2];
-    buffer[offset++] = lineData.multiColor[3];
-    buffer[offset++] = lineData.overlayColor[0];
-    buffer[offset++] = lineData.overlayColor[1];
-    buffer[offset++] = lineData.overlayColor[2];
-    buffer[offset++] = lineData.overlayColor[3];
-    return offset;
-};
-
-/**
- * Writes line vertices to the vertex buffer
- * @param {EveCurveLineSet} self
- * @param {vec3} position1
- * @param {quat} color1
- * @param length1
- * @param {vec3} position2
- * @param {quat} color2
- * @param length2
- * @param {Number} lineID
- * @param buffer
- * @param {Number} offset
- * @private
- */
-EveCurveLineSet.prototype._writeLineVerticesToBuffer = function (self, position1, color1, length1, position2, color2, length2, lineID, buffer, offset) {
-    var lineData = this.lines[lineID];
-
-    buffer[offset++] = position1[0];
-    buffer[offset++] = position1[1];
-    buffer[offset++] = position1[2];
-    buffer[offset++] = position2[0] - position1[0];
-    buffer[offset++] = position2[1] - position1[1];
-    buffer[offset++] = position2[2] - position1[2];
-    buffer[offset++] = -self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 0;
-    buffer[offset++] = length1;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color1[0];
-    buffer[offset++] = color1[1];
-    buffer[offset++] = color1[2];
-    buffer[offset++] = color1[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-
-    buffer[offset++] = position1[0];
-    buffer[offset++] = position1[1];
-    buffer[offset++] = position1[2];
-    buffer[offset++] = position2[0] - position1[0];
-    buffer[offset++] = position2[1] - position1[1];
-    buffer[offset++] = position2[2] - position1[2];
-    buffer[offset++] = self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 0;
-    buffer[offset++] = length1;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color1[0];
-    buffer[offset++] = color1[1];
-    buffer[offset++] = color1[2];
-    buffer[offset++] = color1[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-
-    buffer[offset++] = position2[0];
-    buffer[offset++] = position2[1];
-    buffer[offset++] = position2[2];
-    buffer[offset++] = position1[0] - position2[0];
-    buffer[offset++] = position1[1] - position2[1];
-    buffer[offset++] = position1[2] - position2[2];
-    buffer[offset++] = -self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 1;
-    buffer[offset++] = length2;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color2[0];
-    buffer[offset++] = color2[1];
-    buffer[offset++] = color2[2];
-    buffer[offset++] = color2[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-
-    buffer[offset++] = position1[0];
-    buffer[offset++] = position1[1];
-    buffer[offset++] = position1[2];
-    buffer[offset++] = position2[0] - position1[0];
-    buffer[offset++] = position2[1] - position1[1];
-    buffer[offset++] = position2[2] - position1[2];
-    buffer[offset++] = self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 0;
-    buffer[offset++] = length1;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color1[0];
-    buffer[offset++] = color1[1];
-    buffer[offset++] = color1[2];
-    buffer[offset++] = color1[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-
-    buffer[offset++] = position2[0];
-    buffer[offset++] = position2[1];
-    buffer[offset++] = position2[2];
-    buffer[offset++] = position1[0] - position2[0];
-    buffer[offset++] = position1[1] - position2[1];
-    buffer[offset++] = position1[2] - position2[2];
-    buffer[offset++] = self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 1;
-    buffer[offset++] = length2;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color2[0];
-    buffer[offset++] = color2[1];
-    buffer[offset++] = color2[2];
-    buffer[offset++] = color2[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-
-    buffer[offset++] = position2[0];
-    buffer[offset++] = position2[1];
-    buffer[offset++] = position2[2];
-    buffer[offset++] = position1[0] - position2[0];
-    buffer[offset++] = position1[1] - position2[1];
-    buffer[offset++] = position1[2] - position2[2];
-    buffer[offset++] = -self.lineWidthFactor * lineData.width;
-    buffer[offset++] = 1;
-    buffer[offset++] = length2;
-    buffer[offset++] = lineData.multiColorBorder;
-    buffer[offset++] = length2 - length1;
-    buffer[offset++] = lineData.animationSpeed;
-    buffer[offset++] = lineData.animationScale;
-    buffer[offset++] = lineID;
-    buffer[offset++] = color2[0];
-    buffer[offset++] = color2[1];
-    buffer[offset++] = color2[2];
-    buffer[offset++] = color2[3];
-    offset = this._fillColorVertices(lineData, buffer, offset);
-};
-
-/**
- * Scratch variables
- */
-EveCurveLineSet.scratch = {
-    vec3_0: _math.vec3.create(), // start direction
-    vec3_1: _math.vec3.create(), // end direction
-    vec3_2: _math.vec3.create(), // start direction normalized
-    vec3_3: _math.vec3.create(), // end direction normalized
-    vec3_4: _math.vec3.create(), // rotationAxis
-    vec3_5: _math.vec3.create(), // direction1
-    vec3_6: _math.vec3.create(), // direction2
-    vec3_7: _math.vec3.create(), // position 1
-    vec3_8: _math.vec3.create(), // position 2
-    vec3_9: _math.vec3.create(), // tangent1
-    vec3_10: _math.vec3.create(), // tangent2
-    vec4_0: _math.vec4.create(), // color 1
-    vec4_1: _math.vec4.create(), // color 2
-    mat4_0: _math.mat4.create() // rotationMatrix
-};
-
-/**
- * Updates line changes
- */
-EveCurveLineSet.prototype.SubmitChanges = function () {
-    var scratch = EveCurveLineSet.scratch;
-
-    this._vertexBuffer = null;
-    if (!this.lines.length) {
-        return;
-    }
-
-    this._vertexBufferSize = this._lineCount();
-    var data = new Float32Array(this._vertexBufferSize * 6 * this._vertexSize);
-    var offset = 0;
-
-    var startDir = scratch.vec3_0,
-        endDir = scratch.vec3_1,
-        startDirNrm = scratch.vec3_2,
-        endDirNrm = scratch.vec3_3,
-        rotationAxis = scratch.vec3_4,
-        dir1 = scratch.vec3_5,
-        dir2 = scratch.vec3_6,
-        pos1 = scratch.vec3_7,
-        pos2 = scratch.vec3_8,
-        tangent1 = scratch.vec3_9,
-        tangent2 = scratch.vec3_10,
-        col1 = scratch.vec4_0,
-        col2 = scratch.vec4_1,
-        rotationMatrix = scratch.mat4_0;
-
-    var j, tmp, segmentFactor;
-
-    for (var i = 0; i < this.lines.length; ++i) {
-        var item = this.lines[i];
-
-        switch (item.type) {
-            case EveCurveLineSet.LINETYPE_INVALID:
-                break;
-
-            case EveCurveLineSet.LINETYPE_STRAIGHT:
-                this._writeLineVerticesToBuffer(this, item.position1, item.color1, 0, item.position2, item.color2, 1, i, data, offset);
-                offset += 6 * this._vertexSize;
-                break;
-
-            case EveCurveLineSet.LINETYPE_SPHERED:
-                _math.vec3.subtract(startDir, item.position1, item.intermediatePosition);
-                _math.vec3.subtract(endDir, item.position2, item.intermediatePosition);
-                _math.vec3.normalize(startDirNrm, startDir);
-                _math.vec3.normalize(endDirNrm, endDir);
-                _math.vec3.cross(rotationAxis, startDir, endDir);
-
-                var fullAngle = Math.acos(_math.vec3.dot(startDirNrm, endDirNrm));
-                var segmentAngle = fullAngle / item.numOfSegments;
-                _math.mat4.identity(rotationMatrix);
-                _math.mat4.rotate(rotationMatrix, rotationMatrix, segmentAngle, rotationAxis);
-                _math.vec3.copy(dir1, startDir);
-                _math.vec4.copy(col1, item.color1);
-
-                for (j = 0; j < this.lines[i].numOfSegments; ++j) {
-                    segmentFactor = (j + 1) / item.numOfSegments;
-                    _math.vec3.transformMat4(dir2, dir1, rotationMatrix);
-                    col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
-                    col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
-                    col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
-                    col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
-                    _math.vec3.add(pos1, dir1, item.intermediatePosition);
-                    _math.vec3.add(pos2, dir2, item.intermediatePosition);
-                    this._writeLineVerticesToBuffer(this, pos1, col1, j / this.lines[i].numOfSegments, pos2, col2, segmentFactor, i, data, offset);
-                    offset += 6 * this._vertexSize;
-
-                    tmp = dir1;
-                    dir1 = dir2;
-                    dir2 = tmp;
-                    tmp = col1;
-                    col1 = col2;
-                    col2 = tmp;
-                }
-                break;
-
-            case EveCurveLineSet.LINETYPE_CURVED:
-                _math.vec3.subtract(tangent1, item.intermediatePosition, item.position1);
-                _math.vec3.subtract(tangent2, item.position2, item.intermediatePosition);
-                _math.vec3.copy(pos1, item.position1);
-                _math.vec3.copy(col1, item.color1);
-
-                for (j = 0; j < item.numOfSegments; ++j) {
-                    segmentFactor = (j + 1) / item.numOfSegments;
-                    _math.vec3.hermite(pos2, item.position1, tangent1, item.position2, tangent2, segmentFactor);
-                    col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
-                    col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
-                    col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
-                    col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
-                    this._writeLineVerticesToBuffer(this, pos1, col1, j / this.lines[i].numOfSegments, pos2, col2, segmentFactor, i, data, offset);
-                    offset += 6 * this._vertexSize;
-
-                    tmp = pos1;
-                    pos1 = pos2;
-                    pos2 = tmp;
-                    tmp = col1;
-                    col1 = col2;
-                    col2 = tmp;
-                }
-        }
-    }
-
-    if (this._vertexBuffer) {
-        _core.device.gl.deleteBuffer(this._vertexBuffer);
-    }
-
-    this._vertexBuffer = _core.device.gl.createBuffer();
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
-    _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, data, _core.device.gl.STATIC_DRAW);
-    _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
-};
-
-EveCurveLineSet.LINETYPE_INVALID = 0;
-EveCurveLineSet.LINETYPE_STRAIGHT = 1;
-EveCurveLineSet.LINETYPE_SPHERED = 2;
-EveCurveLineSet.LINETYPE_CURVED = 3;
-
-/**
- * Accumulates render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- */
-EveCurveLineSet.prototype.GetBatches = function (mode, accumulator) {
-    if (!this.display || !this._vertexBuffer) {
-        return;
-    }
-
-    switch (mode) {
-        case _core.device.RM_TRANSPARENT:
-            if (!this.lineEffect || this.additive) return;
-            break;
-
-        case _core.device.RM_ADDITIVE:
-            if (!this.lineEffect || !this.additive) return;
-            break;
-
-        case _core.device.RM_PICKABLE:
-            if (!this.pickEffect || !this.pickable) return;
-            break;
-
-        default:
-            return;
-    }
-
-    var batch = new _core.Tw2ForwardingRenderBatch();
-    _math.mat4.transpose(this.perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-    _math.mat4.transpose(this.perObjectData.perObjectPSData.Get('WorldMat'), this.transform);
-    batch.perObjectData = this.perObjectData;
-    batch.geometryProvider = this;
-    batch.renderMode = mode;
-    accumulator.Commit(batch);
-};
-
-/**
- * Unloads the curve line set vertex buffer
- */
-EveCurveLineSet.prototype.Unload = function () {
-    if (this._vertexBuffer) {
-        _core.device.gl.deleteBuffer(this._vertexBuffer);
-        this._vertexBuffer = null;
-    }
-};
-
-/**
- * Renders lines
- * @param {RenderBatch} batch
- * @param {Tw2Effect} [overrideEffect]
- * @returns {Boolean}
- */
-EveCurveLineSet.prototype.Render = function (batch, overrideEffect) {
-    var effect = overrideEffect || batch.renderMode === _core.device.RM_PICKABLE ? this.pickEffect : this.lineEffect;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood) {
-        return false;
-    }
-
-    var d = _core.device;
-    d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
-
-    if (this.disableDepth) _core.device.gl.disable(_core.device.gl.DEPTH_TEST);
-
-    var passCount = effect.GetPassCount();
-    for (var pass = 0; pass < passCount; ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        if (!this.declaration.SetDeclaration(passInput, this.declaration.stride)) {
-            return false;
-        }
-        d.ApplyShadowState();
-        d.gl.drawArrays(d.gl.TRIANGLES, 0, this._vertexBufferSize * 6);
-    }
-
-    if (this.disableDepth) _core.device.gl.enable(_core.device.gl.DEPTH_TEST);
-    return true;
-};
-
-/**
- * Per frame update
- */
-EveCurveLineSet.prototype.Update = function () {};
-
-/**
- * Per frame view dependent data update
- * @param {mat4} parentTransform
- */
-EveCurveLineSet.prototype.UpdateViewDependentData = function (parentTransform) {
-    _math.mat4.fromRotationTranslationScale(this.transform, this.rotation, this.translation, this.scaling);
-    _math.mat4.multiply(this.transform, this.transform, parentTransform);
-};
-
-/**
- * Gets curve line set res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
- */
-EveCurveLineSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    this.lineEffect.GetResources(out);
-
-    if (this.pickEffect !== null) {
-        this.pickEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/***/ }),
-/* 143 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveTurretData = EveTurretData;
-exports.EveTurretSet = EveTurretSet;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-/**
- * EveTurretData
- * @property {String} name
- * @property {boolean} visible
- * @property {mat4} localTransform
- * @property {quat} rotation
- * @constructor
- */
-function EveTurretData() {
-    this.name = '';
-    this.visible = true;
-    this.localTransform = _math.mat4.create();
-    this.rotation = _math.quat.create();
-}
-
-/**
- * EveTurretSet
- * @property {boolean} display
- * @property {string} name
- * @property {quat} boundingSphere
- * @property {number} bottomClipHeight
- * @property {string} locatorName
- * @property {Tw2Effect} turretEffect
- * @property {vec3} targetPosition
- * @property {number} sysBoneHeight
- * @property {string} firingEffectResPath
- * @property {EveTurretFiringFX} firingEffect
- * @property {boolean} hasCyclingFiringPos
- * @property {string} geometryResPath
- * @property {Tw2GeometryRes} geometryResource
- * @property {Tw2AnimationController} activeAnimation
- * @property {Tw2AnimationController} inactiveAnimation
- * @property {mat4} parentMatrix
- * @property {Array.<EveTurretData>} turrets
- * @property {number} STATE_INACTIVE
- * @property {number} STATE_IDLE
- * @property {number} STATE_FIRING
- * @property {number} STATE_PACKING
- * @property {number} STATE_UNPACKING
- * @property {number} state
- * @property {Tw2PerObjectData} _perObjectDataActive
- * @property {Tw2PerObjectData} _perObjectDataInactive
- * @property {Array.<string>} worldNames
- * @property {number} _activeTurret
- * @property {number} _recheckTimeLeft
- * @property {number} _currentCyclingFiresPos
- * @constructor
- */
-function EveTurretSet() {
-    this.display = true;
-    this.name = '';
-    this.boundingSphere = _math.quat.create();
-    this.bottomClipHeight = 0;
-    this.locatorName = '';
-    this.sysBoneHeight = 0;
-
-    this.turrets = [];
-    this.turretEffect = null;
-    this.targetPosition = _math.vec3.create();
-    this.firingEffectResPath = '';
-    this.firingEffect = null;
-    this.fireCallback = null;
-    this.fireCallbackPending = false;
-
-    this.hasCyclingFiringPos = false;
-    this.geometryResPath = '';
-    this.geometryResource = null;
-
-    this.activeAnimation = new _core.Tw2AnimationController();
-    this.inactiveAnimation = new _core.Tw2AnimationController();
-
-    this.parentMatrix = _math.mat4.create();
-
-    this.STATE_INACTIVE = 0;
-    this.STATE_IDLE = 1;
-    this.STATE_FIRING = 2;
-    this.STATE_PACKING = 3;
-    this.STATE_UNPACKING = 4;
-
-    this.state = this.STATE_IDLE;
-
-    this._perObjectDataActive = new _core.Tw2PerObjectData();
-    this._perObjectDataActive.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
-    this._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
-    this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-    this._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
-    this._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-    this._perObjectDataActive.perObjectVSData.Create();
-
-    this._perObjectDataInactive = new _core.Tw2PerObjectData();
-    this._perObjectDataInactive.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
-    this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
-    this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-    this._perObjectDataInactive.perObjectVSData.Create();
-
-    this.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
-
-    this._activeTurret = -1;
-    this._recheckTimeLeft = 0;
-    this._currentCyclingFiresPos = 0;
-}
-
-/**
- * Bone Skeleton Names
- * @type {string[]}
- */
-EveTurretSet.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'];
-
-/**
- * Initializes the Turret Set
- */
-EveTurretSet.prototype.Initialize = function () {
-    if (this.turretEffect && this.geometryResPath !== '') {
-        this.geometryResource = _core.resMan.GetResource(this.geometryResPath);
-        this.activeAnimation.SetGeometryResource(this.geometryResource);
-        this.inactiveAnimation.SetGeometryResource(this.geometryResource);
-        if (this.geometryResource) {
-            this.geometryResource.RegisterNotification(this);
-        }
-    }
-    if (this.firingEffectResPath !== '') {
-        var self = this;
-        _core.resMan.GetObject(this.firingEffectResPath, function (object) {
-            self.firingEffect = object;
-        });
-    }
-};
-
-/**
- * Gets turret set res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-EveTurretSet.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    if (this.geometryResource !== null) {
-        if (out.indexOf(this.geometryResource) === -1) {
-            out.push(this.geometryResource);
-        }
-    }
-
-    if (this.turretEffect !== null) {
-        this.turretEffect.GetResources(out);
-    }
-
-    if (this.firingEffect !== null) {
-        this.firingEffect.GetResources(out);
-    }
-
-    return out;
-};
-
-/**
- * Rebuilds the turret sets cached data
- */
-EveTurretSet.prototype.RebuildCachedData = function () {
-    var instancedElement = new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2);
-    for (var i = 0; i < this.geometryResource.meshes.length; ++i) {
-        this.geometryResource.meshes[i].declaration.elements.push(instancedElement);
-        this.geometryResource.meshes[i].declaration.RebuildHash();
-    }
-    var self = this;
-    switch (this.state) {
-        case this.STATE_INACTIVE:
-            this.activeAnimation.PlayAnimation('Inactive', true);
-            this.inactiveAnimation.PlayAnimation('Inactive', true);
-            break;
-        case this.STATE_IDLE:
-            this.activeAnimation.PlayAnimation('Active', true);
-            this.inactiveAnimation.PlayAnimation('Active', true);
-            break;
-        case this.STATE_FIRING:
-            this.activeAnimation.PlayAnimation('Fire', false, function () {
-                self.activeAnimation.PlayAnimation('Active', true);
-            });
-            this.inactiveAnimation.PlayAnimation('Active', true);
-            break;
-        case this.STATE_PACKING:
-            this.EnterStateIdle();
-            break;
-        case this.STATE_UNPACKING:
-            this.EnterStateDeactive();
-            break;
-    }
-};
-
-/**
- * Initializes turret set firing effect
- */
-EveTurretSet.prototype.InitializeFiringEffect = function () {
-    if (!this.firingEffect) {
-        return;
-    }
-    if (this.geometryResource && this.geometryResource.models.length) {
-        var model = this.geometryResource.models[0];
-        for (var i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
-            this.firingEffect.SetMuzzleBoneID(i, model.FindBoneByName(EveTurretSet.positionBoneSkeletonNames[i]));
-        }
-    }
-};
-
-/**
- * Sets the local transform for a specific turret index
- * @param {number} index
- * @param {mat4} localTransform
- * @param {String} locatorName
- */
-EveTurretSet.prototype.SetLocalTransform = function (index, localTransform, locatorName) {
-    var transform = _math.mat4.clone(localTransform);
-    _math.vec3.normalize(transform.subarray(0, 3), transform.subarray(0, 3));
-    _math.vec3.normalize(transform.subarray(4, 7), transform.subarray(4, 7));
-    _math.vec3.normalize(transform.subarray(8, 11), transform.subarray(8, 11));
-    if (index >= this.turrets.length) {
-        var data = new EveTurretData();
-        data.name = locatorName;
-        data.localTransform.set(transform);
-        this.turrets[index] = data;
-    } else {
-        this.turrets[index].localTransform.set(transform);
-    }
-    mat4toquat(this.turrets[index].localTransform, this.turrets[index].rotation);
-};
-
-function mat3x4toquat(mm, index, out, outIndex) {
-    index *= 12;
-    outIndex *= 4;
-    var m = mat3x4toquat._tempMat;
-    m[0] = mm[index + 0];
-    m[1] = mm[index + 4];
-    m[2] = mm[index + 8];
-    m[3] = 0;
-    m[4] = mm[index + 1];
-    m[5] = mm[index + 5];
-    m[6] = mm[index + 9];
-    m[7] = 0;
-    m[8] = mm[index + 2];
-    m[9] = mm[index + 6];
-    m[10] = mm[index + 10];
-    m[11] = 0;
-    m[12] = mm[index + 3];
-    m[13] = mm[index + 7];
-    m[14] = mm[index + 11];
-    m[15] = 1;
-    var q = mat3x4toquat._tempQuat;
-    mat4toquat(m, q);
-    out[outIndex] = q[0];
-    out[outIndex + 1] = q[1];
-    out[outIndex + 2] = q[2];
-    out[outIndex + 3] = q[3];
-}
-
-mat3x4toquat._tempMat = _math.mat4.create();
-mat3x4toquat._tempQuat = _math.quat.create();
-
-function mat4toquat(m, out) {
-    out = out || _math.quat.create();
-    var trace = m[0] + m[5] + m[10] + 1.0;
-    if (trace > 1.0) {
-        out[0] = (m[6] - m[9]) / (2.0 * Math.sqrt(trace));
-        out[1] = (m[8] - m[2]) / (2.0 * Math.sqrt(trace));
-        out[2] = (m[1] - m[4]) / (2.0 * Math.sqrt(trace));
-        out[3] = Math.sqrt(trace) / 2.0;
-        return out;
-    }
-    var maxi = 0;
-    var maxdiag = m[0];
-    for (var i = 1; i < 3; i++) {
-        if (m[i * 4 + i] > maxdiag) {
-            maxi = i;
-            maxdiag = m[i * 4 + i];
-        }
-    }
-    var S;
-    switch (maxi) {
-        case 0:
-            S = 2.0 * Math.sqrt(1.0 + m[0] - m[5] - m[10]);
-            out[0] = 0.25 * S;
-            out[1] = (m[1] + m[4]) / S;
-            out[2] = (m[2] + m[8]) / S;
-            out[3] = (m[6] - m[9]) / S;
-            break;
-        case 1:
-            S = 2.0 * Math.sqrt(1.0 + m[5] - m[0] - m[10]);
-            out[0] = (m[1] + m[4]) / S;
-            out[1] = 0.25 * S;
-            out[2] = (m[6] + m[9]) / S;
-            out[3] = (m[8] - m[2]) / S;
-            break;
-        case 2:
-            S = 2.0 * Math.sqrt(1.0 + m[10] - m[0] - m[5]);
-            out[0] = (m[2] + m[8]) / S;
-            out[1] = (m[6] + m[9]) / S;
-            out[2] = 0.25 * S;
-            out[3] = (m[1] - m[4]) / S;
-            break;
-    }
-    return out;
-}
-
-/**
- * Updates per object data
- * @param {Tw2PerObjectData} perObjectData
- * @param transforms
- * @private
- */
-EveTurretSet.prototype._UpdatePerObjectData = function (perObjectData, transforms) {
-    _math.mat4.transpose(perObjectData.Get('shipMatrix'), this.parentMatrix);
-    var transformCount = transforms.length / 12;
-    perObjectData.Get('turretSetData')[0] = transformCount;
-    perObjectData.Get('baseCutoffData')[0] = this.bottomClipHeight;
-    var translation = perObjectData.Get('turretTranslation');
-    var rotation = perObjectData.Get('turretRotation');
-    var pose = perObjectData.Get('turretPoseTransAndRot');
-    for (var i = 0; i < this.turrets.length; ++i) {
-        for (var j = 0; j < transformCount; ++j) {
-            pose[(i * transformCount + j) * 2 * 4] = transforms[j * 12 + 3];
-            pose[(i * transformCount + j) * 2 * 4 + 1] = transforms[j * 12 + 7];
-            pose[(i * transformCount + j) * 2 * 4 + 2] = transforms[j * 12 + 11];
-            pose[(i * transformCount + j) * 2 * 4 + 3] = 1;
-            mat3x4toquat(transforms, j, pose, (i * transformCount + j) * 2 + 1);
-        }
-        translation[i * 4] = this.turrets[i].localTransform[12];
-        translation[i * 4 + 1] = this.turrets[i].localTransform[13];
-        translation[i * 4 + 2] = this.turrets[i].localTransform[14];
-        translation[i * 4 + 3] = 1;
-        rotation[i * 4] = this.turrets[i].rotation[0];
-        rotation[i * 4 + 1] = this.turrets[i].rotation[1];
-        rotation[i * 4 + 2] = this.turrets[i].rotation[2];
-        rotation[i * 4 + 3] = this.turrets[i].rotation[3];
-    }
-};
-
-/**
- * Gets turret set render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @returns {boolean}
- */
-EveTurretSet.prototype.GetBatches = function (mode, accumulator, perObjectData) {
-    if (!this.turretEffect || this.geometryResource === null || !this.display) {
-        return false;
-    }
-    if (mode === _core.device.RM_OPAQUE) {
-        var transforms = this.inactiveAnimation.GetBoneMatrices(0);
-        if (transforms.length === 0) {
-            return true;
-        }
-        this._UpdatePerObjectData(this._perObjectDataInactive.perObjectVSData, transforms);
-        this._perObjectDataInactive.perObjectPSData = perObjectData.perObjectPSData;
-
-        var batch = new _core.Tw2ForwardingRenderBatch();
-        batch.renderMode = mode;
-        batch.renderActive = false;
-        batch.perObjectData = this._perObjectDataInactive;
-        batch.geometryProvider = this;
-        accumulator.Commit(batch);
-
-        if (this.state === this.STATE_FIRING) {
-            transforms = this.activeAnimation.GetBoneMatrices(0);
-            if (transforms.length === 0) {
-                return true;
-            }
-            this._UpdatePerObjectData(this._perObjectDataActive.perObjectVSData, transforms);
-            this._perObjectDataActive.perObjectPSData = perObjectData.perObjectPSData;
-
-            batch = new _core.Tw2ForwardingRenderBatch();
-            batch.renderActive = true;
-            batch.perObjectData = this._perObjectDataActive;
-            batch.geometryProvider = this;
-            accumulator.Commit(batch);
-        }
-    }
-    if (this.firingEffect) {
-        this.firingEffect.GetBatches(mode, accumulator, perObjectData);
-    }
-    return true;
-};
-
-/**
- * Per frame update
- * @param {number} dt - Delta Time
- * @param {mat4} parentMatrix
- */
-EveTurretSet.prototype.Update = function (dt, parentMatrix) {
-    if (this.turretEffect) {
-        this.activeAnimation.Update(dt);
-        this.inactiveAnimation.Update(dt);
-    }
-    _math.mat4.copy(this.parentMatrix, parentMatrix);
-    if (this.firingEffect) {
-        if (this._activeTurret !== -1) {
-            if (this.firingEffect.isLoopFiring) {
-                if (this.state === this.STATE_FIRING) {
-                    this._recheckTimeLeft -= dt;
-                    if (this._recheckTimeLeft <= 0) {
-                        this._DoStartFiring();
-                    }
-                }
-            }
-            var i;
-            if (this.activeAnimation.models.length) {
-                var bones = this.activeAnimation.models[0].bonesByName;
-                for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
-                    var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform;
-                    var out = this.firingEffect.GetMuzzleTransform(i);
-                    _math.mat4.multiply(out, this.turrets[this._activeTurret].localTransform, transform);
-                    _math.mat4.multiply(out, out, parentMatrix);
-                }
-            } else {
-                for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
-                    _math.mat4.multiply(this.firingEffect.GetMuzzleTransform(i), parentMatrix, this.turrets[this._activeTurret].localTransform);
-                }
-            }
-            if (this.fireCallbackPending) {
-                if (this.fireCallback) {
-                    var cbTransforms = [];
-                    for (i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
-                        cbTransforms.push(this.firingEffect.GetMuzzleTransform(i));
-                    }
-                    this.fireCallback(this, cbTransforms);
-                }
-                this.fireCallbackPending = false;
-            }
-        }
-
-        _math.vec3.copy(this.firingEffect.endPosition, this.targetPosition);
-        this.firingEffect.Update(dt);
-    }
-};
-
-/**
- * Renders the turret set
- * @param batch
- * @param {Tw2Effect} overrideEffect
- */
-EveTurretSet.prototype.Render = function (batch, overrideEffect) {
-    var effect = !overrideEffect ? this.turretEffect : overrideEffect;
-    var index = 0;
-    var customSetter = function customSetter(el) {
-        _core.device.gl.disableVertexAttribArray(el.location);
-        _core.device.gl.vertexAttrib2f(el.location, index, index);
-    };
-    for (var i = 0; i < this.geometryResource.meshes.length; ++i) {
-        var decl = this.geometryResource.meshes[i].declaration;
-        decl.FindUsage(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = customSetter;
-    }
-    for (; index < this.turrets.length; ++index) {
-        if (this.turrets[index].visible) {
-            var isActive = this.state === this.STATE_FIRING && index === this._activeTurret;
-            if (batch.renderActive === isActive) {
-                this.geometryResource.RenderAreas(0, 0, 1, effect);
-            }
-        }
-    }
-};
-
-/**
- * Animation helper function for deactivating a turret set
- */
-EveTurretSet.prototype.EnterStateDeactive = function () {
-    if (this.state === this.STATE_INACTIVE || this.state === this.STATE_PACKING) {
-        return;
-    }
-    var self = this;
-    if (this.turretEffect) {
-        this.activeAnimation.StopAllAnimations();
-        this.inactiveAnimation.StopAllAnimations();
-        this.activeAnimation.PlayAnimation('Pack', false, function () {
-            self.state = self.STATE_INACTIVE;
-            self.activeAnimation.PlayAnimation('Inactive', true);
-        });
-        this.inactiveAnimation.PlayAnimation('Pack', false, function () {
-            self.state = self.STATE_INACTIVE;
-            self.inactiveAnimation.PlayAnimation('Inactive', true);
-        });
-        this.state = this.STATE_PACKING;
-    } else {
-        this.state = self.STATE_INACTIVE;
-    }
-    this._activeTurret = -1;
-    if (this.firingEffect) {
-        this.firingEffect.StopFiring();
-    }
-};
-
-/**
- * Animation helper function for putting a turret set into idle state
- */
-EveTurretSet.prototype.EnterStateIdle = function () {
-    var self = this;
-    if (this.state === this.STATE_IDLE || this.state === this.STATE_UNPACKING) {
-        return;
-    }
-    if (this.turretEffect) {
-        this.activeAnimation.StopAllAnimations();
-        this.inactiveAnimation.StopAllAnimations();
-        if (this.state === this.STATE_FIRING) {
-            this.activeAnimation.PlayAnimation('Active', true);
-            this.inactiveAnimation.PlayAnimation('Active', true);
-        } else {
-            this.activeAnimation.PlayAnimation('Deploy', false, function () {
-                self.state = self.STATE_IDLE;
-                self.activeAnimation.PlayAnimation('Active', true);
-            });
-            this.inactiveAnimation.PlayAnimation('Deploy', false, function () {
-                self.state = self.STATE_IDLE;
-                self.inactiveAnimation.PlayAnimation('Active', true);
-            });
-        }
-        this.state = this.STATE_UNPACKING;
-    } else {
-        this.state = self.STATE_IDLE;
-    }
-    this._activeTurret = -1;
-    if (this.firingEffect) {
-        this.firingEffect.StopFiring();
-    }
-};
-
-/**
- * Animation helper function for putting a turret set into a firing state
- */
-EveTurretSet.prototype.EnterStateFiring = function () {
-    var self = this;
-
-    if (!this.turretEffect || this.state === this.STATE_FIRING) {
-        this._DoStartFiring();
-        if (this.turretEffect) {
-            this.activeAnimation.PlayAnimation('Fire', false, function () {
-                self.activeAnimation.PlayAnimation('Active', true);
-            });
-        }
-        return;
-    }
-    this.activeAnimation.StopAllAnimations();
-    this.inactiveAnimation.StopAllAnimations();
-    if (this.state === this.STATE_INACTIVE) {
-        this.activeAnimation.PlayAnimation('Deploy', false, function () {
-            self._DoStartFiring();
-            self.activeAnimation.PlayAnimation('Fire', false, function () {
-                self.activeAnimation.PlayAnimation('Active', true);
-            });
-        });
-        this.inactiveAnimation.PlayAnimation('Deploy', false, function () {
-            self.inactiveAnimation.PlayAnimation('Active', true);
-        });
-        this.state = this.STATE_UNPACKING;
-    } else {
-        this._DoStartFiring();
-        this.activeAnimation.PlayAnimation('Fire', false, function () {
-            self.activeAnimation.PlayAnimation('Active', true);
-        });
-        this.inactiveAnimation.PlayAnimation('Active', true);
-    }
-};
-
-/**
- * Updates view dependent data
- * @constructor
- */
-EveTurretSet.prototype.UpdateViewDependentData = function () {
-    if (this.firingEffect) {
-        this.firingEffect.UpdateViewDependentData();
-    }
-};
-
-/**
- * Animation helper function for turret firing
- * @private
- */
-EveTurretSet.prototype._DoStartFiring = function () {
-    if (this.hasCyclingFiringPos) {
-        this._currentCyclingFiresPos = 1 - this._currentCyclingFiresPos;
-    }
-    var turret = this.GetClosestTurret();
-    if (this.firingEffect) {
-        this.firingEffect.PrepareFiring(0, this.hasCyclingFiringPos ? this._currentCyclingFiresPos : -1);
-    }
-    this._activeTurret = turret;
-    this.state = this.STATE_FIRING;
-    this._recheckTimeLeft = 2;
-
-    if (this.fireCallback) {
-        this.fireCallbackPending = true;
-    }
-};
-
-EveTurretSet._tempVec3 = [_math.vec3.create(), _math.vec3.create()];
-EveTurretSet._tempQuat4 = [_math.quat.create(), _math.quat.create()];
-
-/**
- * Helper function for finding out what turret should be firing
- * @returns {number}
- */
-EveTurretSet.prototype.GetClosestTurret = function () {
-    var closestTurret = -1;
-    var closestAngle = -2;
-    var nrmToTarget = EveTurretSet._tempVec3[0];
-    var nrmUp = EveTurretSet._tempQuat4[0];
-    var turretPosition = EveTurretSet._tempQuat4[1];
-    for (var i = 0; i < this.turrets.length; ++i) {
-        turretPosition[0] = this.turrets[i].localTransform[12];
-        turretPosition[1] = this.turrets[i].localTransform[13];
-        turretPosition[2] = this.turrets[i].localTransform[14];
-        turretPosition[3] = 1;
-        _math.vec4.transformMat4(turretPosition, turretPosition, this.parentMatrix);
-        _math.vec3.subtract(nrmToTarget, this.targetPosition, turretPosition);
-        _math.vec3.normalize(nrmToTarget, nrmToTarget);
-        nrmUp[0] = 0;
-        nrmUp[1] = 1;
-        nrmUp[2] = 0;
-        nrmUp[3] = 0;
-        _math.vec4.transformMat4(nrmUp, nrmUp, this.turrets[i].localTransform);
-        _math.vec4.transformMat4(nrmUp, nrmUp, this.parentMatrix);
-        var angle = _math.vec3.dot(nrmUp, nrmToTarget);
-        if (angle > closestAngle) {
-            closestTurret = i;
-            closestAngle = angle;
-        }
-    }
-    return closestTurret;
-};
-
-/***/ }),
-/* 144 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveEffectRoot = EveEffectRoot;
-
-var _math = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * EveEffectRoot root objects for FX, can be put into scene's objects array
+ *
  * @property {string} name
  * @property {boolean} display
  * @property {[{}]} curveSets
@@ -35005,120 +31346,5343 @@ var _core = __webpack_require__(1);
  * @property {number} boundingSphereRadius
  * @property {number} duration
  * @property {Tw2PerObjectData} _perObjectData
- * @constructor
+ * @class
  */
-function EveEffectRoot() {
-    this.name = '';
-    this.display = true;
+var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
+    _inherits(EveEffectRoot, _EveObject);
 
-    this.curveSets = [];
-    this.boundingSphereCenter = _math.vec3.create();
-    this.boundingSphereRadius = 0;
+    function EveEffectRoot() {
+        _classCallCheck(this, EveEffectRoot);
 
-    this.scaling = _math.vec3.fromValues(1, 1, 1);
-    this.rotation = _math.quat.create();
-    this.translation = _math.vec3.create();
+        var _this = _possibleConstructorReturn(this, (EveEffectRoot.__proto__ || Object.getPrototypeOf(EveEffectRoot)).call(this));
 
-    this.duration = 0;
+        _this.curveSets = [];
+        _this.effectChildren = [];
+        _this.duration = 0;
+        _this.scaling = _index.vec3.fromValues(1, 1, 1);
+        _this.rotation = _index.quat.create();
+        _this.translation = _index.vec3.create();
+        _this.localTransform = _index.mat4.create();
+        _this.rotationTransform = _index.mat4.create();
+        _this.boundingSphereCenter = _index.vec3.create();
+        _this.boundingSphereRadius = 0;
 
-    this.effectChildren = [];
+        _this._perObjectData = new _index2.Tw2PerObjectData();
+        _this._perObjectData.perObjectVSData = new _index2.Tw2RawData();
+        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
+        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+        _this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        _this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
+        _this._perObjectData.perObjectVSData.Declare('JointMat', 696);
+        _this._perObjectData.perObjectVSData.Create();
 
-    this.localTransform = _math.mat4.create();
-    this.rotationTransform = _math.mat4.create();
+        _this._perObjectData.perObjectPSData = new _index2.Tw2RawData();
+        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        _this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
+        _this._perObjectData.perObjectPSData.Create();
+        return _this;
+    }
 
-    this._perObjectData = new _core.Tw2PerObjectData();
-    this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-    this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-    this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-    this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-    this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-    this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-    this._perObjectData.perObjectVSData.Create();
+    /**
+     * Starts playing the effectRoot's curveSets if they exist
+     */
 
-    this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-    this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-    this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-    this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-    this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-    this._perObjectData.perObjectPSData.Create();
-}
+
+    _createClass(EveEffectRoot, [{
+        key: 'Start',
+        value: function Start() {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Play();
+            }
+        }
+
+        /**
+         * Stops the effectRoot's curveSets from playing
+         */
+
+    }, {
+        key: 'Stop',
+        value: function Stop() {
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Stop();
+            }
+        }
+
+        /**
+         * Gets effect root res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.effectChildren.length; ++i) {
+                this.effectChildren[i].GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Internal per frame update
+         * @param {number} dt - Delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            _index.quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
+            _index.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
+            }
+
+            for (var _i = 0; _i < this.effectChildren.length; ++_i) {
+                this.effectChildren[_i].Update(dt, this.localTransform);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display) return;
+
+            for (var i = 0; i < this.effectChildren.length; ++i) {
+                this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+            }
+        }
+    }]);
+
+    return EveEffectRoot;
+}(_EveObject2.EveObject);
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveMissile = exports.EveMissileWarhead = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObject2 = __webpack_require__(12);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Gets effect root res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ * EveMissileWarhead
+ *
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Tw2Mesh} mesh
+ * @property {EveSpriteSet} spriteSet
+ * @property {Number} state
+ * @property {Number} time
+ * @property {Number} durationEjectPhase
+ * @property {Number} startEjectVelocity
+ * @property {Number} acceleration
+ * @property {Number} maxExplosionDistance
+ * @property {Number} impactSize
+ * @property {Number} impactDuration
+ * @property {vec3} pathOffset
+ * @property {mat4} transform
+ * @property {vec3} velocity
+ * @property {Tw2PerObjectData} _perObjectData
+ * @class
  */
-EveEffectRoot.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
+var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
+    _inherits(EveMissileWarhead, _EveObject);
+
+    function EveMissileWarhead() {
+        _classCallCheck(this, EveMissileWarhead);
+
+        var _this = _possibleConstructorReturn(this, (EveMissileWarhead.__proto__ || Object.getPrototypeOf(EveMissileWarhead)).call(this));
+
+        _this.mesh = null;
+        _this.spriteSet = null;
+        _this.state = EveMissileWarhead.State.READY;
+        _this.time = 0;
+        _this.durationEjectPhase = 0;
+        _this.startEjectVelocity = 0;
+        _this.acceleration = 1;
+        _this.maxExplosionDistance = 40;
+        _this.impactSize = 0;
+        _this.impactDuration = 0.6;
+        _this.pathOffset = _math.vec3.create();
+        _this.transform = _math.mat4.create();
+        _this.velocity = _math.vec3.create();
+
+        _this._perObjectData = new _core.Tw2PerObjectData();
+        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
+        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
+        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectVSData.Create();
+
+        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
+        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        _this._perObjectData.perObjectPSData.Create();
+
+        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
+        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
+        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
+        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+        return _this;
     }
 
-    for (var i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].GetResources(out);
-    }
-    return out;
+    /**
+     * Initializes the warhead
+     */
+
+
+    _createClass(EveMissileWarhead, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.spriteSet) this.spriteSet.UseQuads(true);
+        }
+
+        /**
+         * Sets up the warhead for rendering
+         * @param {mat4} transform - Initial local to world transform
+         */
+
+    }, {
+        key: 'Launch',
+        value: function Launch(transform) {
+            _math.mat4.copy(this.transform, transform);
+            this.velocity[0] = transform[8] * this.startEjectVelocity;
+            this.velocity[1] = transform[9] * this.startEjectVelocity;
+            this.velocity[2] = transform[10] * this.startEjectVelocity;
+            this.time = 0;
+            this.state = EveMissileWarhead.State.IN_FLIGHT;
+        }
+
+        /**
+         * Creates a clone of the warhead
+         * @returns {EveMissileWarhead}
+         */
+
+    }, {
+        key: 'Clone',
+        value: function Clone() {
+            var warhead = new EveMissileWarhead();
+            warhead.mesh = this.mesh;
+            warhead.spriteSet = this.spriteSet;
+            return warhead;
+        }
+
+        /**
+         * Gets warhead resources
+         * @param {Array} [out=[]] - Receiving array
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.mesh) this.mesh.GetResources(out);
+            if (this.spriteSet) this.spriteSet.GetResources(out);
+        }
+
+        /**
+         * Per frame view dependent data update
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            if (!this.display || this.state === EveMissileWarhead.State.DEAD) return;
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - Time since previous frame
+         * @param {vec3} missilePosition - Missile position
+         * @param {vec3} missileTarget - Missile target position
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, missilePosition, missileTarget) {
+            if (this.state === EveMissileWarhead.State.IN_FLIGHT) {
+                var g = EveMissile.global,
+                    position = _math.mat4.getTranslation(g.vec3_0, this.transform),
+                    tmp = g.vec3_1,
+                    x = g.vec3_2,
+                    y = g.vec3_3;
+
+                this.time += dt;
+                if (this.time > this.durationEjectPhase) {
+                    _math.vec3.subtract(position, this.velocity, missilePosition);
+                    _math.vec3.lerp(position, position, missilePosition, 1 - Math.exp(-dt * 0.9999));
+                    _math.mat4.setTranslation(this.transform, position);
+                    _math.vec3.subtract(tmp, missileTarget, position);
+                    if (_math.vec3.length(tmp) < this.maxExplosionDistance) {
+                        console.log(position, tmp);
+                        this.state = EveMissileWarhead.State.DEAD;
+                    }
+                } else {
+                    _math.vec3.scale(tmp, this.velocity, dt);
+                    this.transform[12] += tmp[0];
+                    this.transform[13] += tmp[1];
+                    this.transform[14] += tmp[2];
+                }
+
+                var z = _math.vec3.normalize(tmp, this.velocity);
+
+                if (Math.abs(z[0]) < 0.99) {
+                    _math.vec3.cross(x, z, [1, 0, 0]);
+                } else {
+                    _math.vec3.cross(x, z, [0, 1, 0]);
+                }
+
+                _math.vec3.normalize(x, x);
+                _math.vec3.cross(y, x, z);
+                this.transform[0] = x[0];
+                this.transform[1] = x[1];
+                this.transform[2] = x[2];
+                this.transform[4] = y[0];
+                this.transform[5] = y[1];
+                this.transform[6] = y[2];
+                this.transform[8] = z[0];
+                this.transform[9] = z[1];
+                this.transform[10] = z[2];
+            }
+
+            if (this.spriteSet) {
+                this.spriteSet.Update(dt);
+            }
+        }
+
+        /**
+         * Accumulates render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.mesh && this.state !== EveMissileWarhead.State.DEAD) {
+                if (this.mesh) {
+                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+                }
+
+                if (this.spriteSet) {
+                    this.spriteSet.GetBatches(mode, accumulator, this._perObjectData, this.transform);
+                }
+            }
+        }
+    }]);
+
+    return EveMissileWarhead;
+}(_EveObject2.EveObject);
+
+/**
+ * Missile warhead states
+ * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
+ */
+
+
+EveMissileWarhead.State = {
+    READY: 0,
+    IN_FLIGHT: 1,
+    DEAD: 2
 };
 
 /**
- * Internal per frame update
- * @param {number} dt - Delta Time
+ * EveMissile
+ *
+ * @property {number|string} _id
+ * @property {String} name
+ * @property {Boolean} display
+ * @property {Array} warheads
+ * @property {Array} curveSets
+ * @property {vec3} boundingSphereCenter
+ * @property {Number} boundingSphereRadius
+ * @property {vec3} position
+ * @property {vec3} target
+ * @property {Number} speed
+ * @property {?function(EveMissileWarhead): void} warheadExplosionCallback
+ * @property {?function(EveMissile): void} missileFinishedCallback
+ * @class
  */
-EveEffectRoot.prototype.Update = function (dt) {
-    _math.quat.normalize(this.rotation, this.rotation); // Don't really need to normalize...
-    _math.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
 
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Update(dt);
+var EveMissile = exports.EveMissile = function () {
+    function EveMissile() {
+        _classCallCheck(this, EveMissile);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.warheads = [];
+        this.curveSets = [];
+        this.speed = 1;
+        this.position = _math.vec3.create();
+        this.target = _math.vec3.create();
+        this.boundingSphereCenter = _math.vec3.create();
+        this.boundingSphereRadius = 0;
+        this.warheadExplosionCallback = null;
+        this.missileFinishedCallback = null;
+
+        EveMissile.init();
     }
-    for (i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].Update(dt, this.localTransform);
+
+    /**
+     * Prepares missile for rendering
+     * @param {vec3} position - Missile starting position
+     * @param {Array} turretTransforms - Turret muzzle local to world transforms
+     * @param {vec3} target - Target position
+     */
+
+
+    _createClass(EveMissile, [{
+        key: 'Launch',
+        value: function Launch(position, turretTransforms, target) {
+            _math.vec3.copy(this.position, position);
+            _math.vec3.copy(this.target, target);
+
+            if (this.warheads.length > turretTransforms.length) {
+                this.warheads.splice(turretTransforms.length);
+            } else {
+                while (this.warheads.length < turretTransforms.length) {
+                    this.warheads.push(this.warheads[0].Clone());
+                }
+            }
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[0].Launch(turretTransforms[i]);
+            }
+        }
+
+        /**
+         * Gets missile res objects
+         * @param {Array} [out=[]] - Receiving array
+         * @returns {Array<Tw2Resource>} out
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].GetResources(out);
+            }
+        }
+
+        /**
+         * Per frame view dependent data update
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - Time since previous frame
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            var tmp = _math.vec3.subtract(EveMissile.global.vec3_0, this.target, this.position),
+                distance = _math.vec3.length(tmp);
+
+            if (distance > 0.1) {
+                _math.vec3.normalize(tmp, tmp);
+                _math.vec3.scale(tmp, tmp, Math.min(dt * this.speed, distance));
+                _math.vec3.add(this.position, this.position, tmp);
+            }
+
+            for (var i = 0; i < this.curveSets.length; ++i) {
+                this.curveSets[i].Update(dt);
+            }
+
+            var checkDead = false;
+            for (var _i = 0; _i < this.warheads.length; ++_i) {
+                var state = this.warheads[_i].state;
+                this.warheads[_i].Update(dt, this.position, this.target);
+
+                if (state !== EveMissileWarhead.State.DEAD && this.warheads[_i].state === EveMissileWarhead.State.DEAD) {
+                    if (this.warheadExplosionCallback) {
+                        this.warheadExplosionCallback(this.warheads[_i]);
+                    }
+                    checkDead = true;
+                }
+            }
+
+            if (checkDead && this.missileFinishedCallback) {
+                for (var _i2 = 0; _i2 < this.warheads.length; ++_i2) {
+                    if (this.warheads[_i2].state !== EveMissileWarhead.State.DEAD) {
+                        return;
+                    }
+                }
+                this.missileFinishedCallback(this);
+            }
+        }
+
+        /**
+         * Accumulates render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display) return;
+
+            for (var i = 0; i < this.warheads.length; ++i) {
+                this.warheads[i].GetBatches(mode, accumulator);
+            }
+        }
+    }]);
+
+    return EveMissile;
+}();
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EvePlanet = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _core = __webpack_require__(1);
+
+var _EveTransform = __webpack_require__(49);
+
+var _EveObject2 = __webpack_require__(12);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EvePlanet
+ *
+ * @property {string} name
+ * @property {boolean} display
+ * @property {EveTransform} highDetail
+ * @property {Tw2Effect} effectHeight
+ * @property {Tw2RenderTarget} heightMap
+ * @property {*} zOnlyModel
+ * @property {number} itemID
+ * @property {string} heightMapResPath1
+ * @property {string} heightMapResPath2
+ * @property {boolean} heightDirty
+ * @property {Array} lockedResources
+ * @property {Array.<Resource>} watchedResources
+ * @class
+ */
+var EvePlanet = exports.EvePlanet = function (_EveObject) {
+    _inherits(EvePlanet, _EveObject);
+
+    function EvePlanet() {
+        _classCallCheck(this, EvePlanet);
+
+        var _this = _possibleConstructorReturn(this, (EvePlanet.__proto__ || Object.getPrototypeOf(EvePlanet)).call(this));
+
+        _this.highDetail = new _EveTransform.EveTransform();
+        _this.effectHeight = new _core.Tw2Effect();
+        _this.heightMap = new _core.Tw2RenderTarget();
+        _this.zOnlyModel = null;
+        _this.itemID = 0;
+        _this.heightMapResPath1 = '';
+        _this.heightMapResPath2 = '';
+        _this.heightDirty = false;
+        _this.lockedResources = [];
+        _this.watchedResources = [];
+        return _this;
     }
+
+    /**
+     * Creates the planet
+     * @param {number} itemID - the item id is used for randomization
+     * @param {string} planetPath - .red file for a planet, or planet template
+     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} heightMap1
+     * @param {string} heightMap2
+     */
+
+
+    _createClass(EvePlanet, [{
+        key: 'Create',
+        value: function Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2) {
+            var _this2 = this;
+
+            this.itemID = itemID;
+            this.heightMapResPath1 = heightMap1;
+            this.heightMapResPath2 = heightMap2;
+            this.highDetail.children = [];
+            this.heightDirty = true;
+
+            _core.resMan.GetObject(planetPath, function (obj) {
+                return EvePlanet.MeshLoaded(_this2, obj);
+            });
+            _core.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
+                return _this2.zOnlyModel = obj;
+            });
+
+            if (atmospherePath) {
+                _core.resMan.GetObject(atmospherePath, function (obj) {
+                    return _this2.highDetail.children.push(obj);
+                });
+            }
+        }
+
+        /**
+         * GetPlanetResources
+         * Todo: Replace this, using this.GetResources();
+         * @param obj
+         * @param visited
+         * @param result
+         */
+
+    }, {
+        key: 'GetPlanetResources',
+        value: function GetPlanetResources(obj, visited, result) {
+            if (visited.includes(obj)) return;
+            visited.push(obj);
+
+            if (obj && _typeof(obj['doNotPurge']) !== ( true ? 'undefined' : _typeof(undefined))) {
+                result.push(obj);
+                return;
+            }
+
+            for (var prop in obj) {
+                if (obj.hasOwnProperty(prop)) {
+                    if (_typeof(obj[prop]) === 'object') {
+                        this.GetPlanetResources(obj[prop], visited, result);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Gets planet res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.highDetail) this.highDetail.GetResources(out);
+            if (this.effectHeight) this.effectHeight.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Updates view dependent data
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData(parentTransform) {
+            this.highDetail.UpdateViewDependentData(parentTransform);
+            if (this.zOnlyModel) {
+                this.zOnlyModel.translation = this.highDetail.translation;
+                this.zOnlyModel.scaling = this.highDetail.scaling;
+                this.zOnlyModel.UpdateViewDependentData(parentTransform);
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            this.highDetail.Update(dt);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display && this.heightDirty && this.watchedResources.length && this.heightMapResPath1 !== '') {
+                for (var i = 0; i < this.watchedResources.length; ++i) {
+                    if (this.watchedResources[i] && !this.watchedResources[i].IsGood()) return;
+                }
+
+                this.watchedResources = [];
+
+                this.heightMap.Set();
+                _core.device.SetStandardStates(_core.device.RM_FULLSCREEN);
+                _core.device.gl.clearColor(0.0, 0.0, 0.0, 0.0);
+                _core.device.gl.clear(_core.device.gl.COLOR_BUFFER_BIT);
+                _core.device.RenderFullScreenQuad(this.effectHeight);
+                this.heightMap.Unset();
+
+                this.heightDirty = false;
+                for (var _i = 0; _i < this.lockedResources.length; ++_i) {
+                    this.lockedResources[_i].doNotPurge--;
+                }
+
+                var mainMesh = this.highDetail.children[0].mesh;
+                var originalEffect = null;
+
+                if (mainMesh.transparentAreas.length) {
+                    originalEffect = mainMesh.transparentAreas[0].effect;
+                } else if (mainMesh.opaqueAreas.length) {
+                    originalEffect = mainMesh.opaqueAreas[0].effect;
+                }
+
+                if (originalEffect) {
+                    originalEffect.parameters['HeightMap'].textureRes = this.heightMap.texture;
+                }
+            }
+
+            if (this.display) {
+                this.highDetail.GetBatches(mode, accumulator);
+            }
+        }
+
+        /**
+         * Gets z buffer only batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetZOnlyBatches',
+        value: function GetZOnlyBatches(mode, accumulator) {
+            if (this.display && this.zOnlyModel) {
+                this.zOnlyModel.GetBatches(mode, accumulator);
+            }
+        }
+
+        /**
+         * Internal helper function that fires when a planet's mesh has loaded
+         * @property {EvePlanet} planet
+         * @property {*} obj
+         */
+
+    }], [{
+        key: 'MeshLoaded',
+        value: function MeshLoaded(planet, obj) {
+            planet.highDetail.children.unshift(obj);
+            planet.lockedResources = [];
+            planet.GetPlanetResources(planet.highDetail, [], planet.lockedResources);
+
+            var mainMesh = planet.highDetail.children[0].mesh,
+                originalEffect = null,
+                resPath = void 0;
+
+            if (mainMesh.transparentAreas.length) {
+                originalEffect = mainMesh.transparentAreas[0].effect;
+                resPath = originalEffect.effectFilePath;
+            } else if (mainMesh.opaqueAreas.length) {
+                originalEffect = mainMesh.opaqueAreas[0].effect;
+                resPath = originalEffect.effectFilePath;
+            } else {
+                resPath = 'res:/Graphics/Effect/Managed/Space/Planet/EarthlikePlanet.fx';
+            }
+            resPath = resPath.replace('.fx', 'BlitHeight.fx');
+
+            planet.watchedResources = [];
+            for (var param in originalEffect.parameters) {
+                if (originalEffect.parameters.hasOwnProperty(param)) {
+                    planet.effectHeight.parameters[param] = originalEffect.parameters[param];
+                    if ('textureRes' in originalEffect.parameters[param]) {
+                        planet.watchedResources.push(originalEffect.parameters[param].textureRes);
+                    }
+                }
+            }
+
+            for (var i = 0; i < planet.highDetail.children[0].children.length; ++i) {
+                mainMesh = planet.highDetail.children[0].children[i].mesh;
+                if (!mainMesh) continue;
+
+                originalEffect = null;
+                if (mainMesh.transparentAreas.length) {
+                    originalEffect = mainMesh.transparentAreas[0].effect;
+                } else if (mainMesh.opaqueAreas.length) {
+                    originalEffect = mainMesh.opaqueAreas[0].effect;
+                } else {
+                    continue;
+                }
+
+                for (var _param in originalEffect.parameters) {
+                    if (originalEffect.parameters.hasOwnProperty(_param)) {
+                        planet.effectHeight.parameters[_param] = originalEffect.parameters[_param];
+                        if ('textureRes' in originalEffect.parameters[_param]) {
+                            planet.watchedResources.push(originalEffect.parameters[_param].textureRes);
+                        }
+                    }
+                }
+            }
+
+            var NormalHeight1 = new _core.Tw2TextureParameter('NormalHeight1', planet.heightMapResPath1);
+            NormalHeight1.Initialize();
+            planet.watchedResources.push(NormalHeight1.textureRes);
+            planet.lockedResources.push(NormalHeight1.textureRes);
+            planet.effectHeight.parameters.NormalHeight1 = NormalHeight1;
+
+            var NormalHeight2 = new _core.Tw2TextureParameter('NormalHeight2', planet.heightMapResPath2);
+            NormalHeight2.Initialize();
+            planet.watchedResources.push(NormalHeight2.textureRes);
+            planet.lockedResources.push(NormalHeight2.textureRes);
+            planet.effectHeight.parameters.NormalHeight2 = NormalHeight2;
+
+            planet.effectHeight.parameters.Random = new _core.Tw2FloatParameter('Random', planet.itemID % 100);
+            planet.effectHeight.parameters.TargetTextureHeight = new _core.Tw2FloatParameter('TargetTextureHeight', 1024);
+
+            planet.effectHeight.effectFilePath = resPath;
+            planet.effectHeight.Initialize();
+            planet.heightDirty = true;
+            planet.heightMap.Create(2048, 1024, false);
+            planet.watchedResources.push(planet.effectHeight.effectRes);
+
+            for (var _i2 = 0; _i2 < planet.lockedResources.length; ++_i2) {
+                planet.lockedResources[_i2].doNotPurge++;
+                if (planet.lockedResources[_i2].IsPurged()) {
+                    planet.lockedResources[_i2].Reload();
+                }
+            }
+        }
+    }]);
+
+    return EvePlanet;
+}(_EveObject2.EveObject);
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveShip = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _EveSpaceObject2 = __webpack_require__(50);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveShip
+ *
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
+ * @property {Array.<EveBoosterSet>} boosters
+ * @property {Array.<EveTurretSet>} turretSets
+ * @property {number} boosterGain
+ * @class
+ */
+var EveShip = exports.EveShip = function (_EveSpaceObject) {
+    _inherits(EveShip, _EveSpaceObject);
+
+    function EveShip() {
+        _classCallCheck(this, EveShip);
+
+        var _this = _possibleConstructorReturn(this, (EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call(this));
+
+        _this.visible.turretSets = true;
+        _this.visible.boosters = true;
+        _this.boosters = null;
+        _this.turretSets = [];
+        _this.boosterGain = 1;
+        return _this;
+    }
+
+    /**
+     * Initializes the Eve Ship
+     */
+
+
+    _createClass(EveShip, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Initialize', this).call(this);
+            if (this.boosters) {
+                this.RebuildBoosterSet();
+            }
+        }
+
+        /**
+         * Rebuilds the ship's booster set
+         */
+
+    }, {
+        key: 'RebuildBoosterSet',
+        value: function RebuildBoosterSet() {
+            if (this.boosters) {
+                this.boosters.UpdateItemsFromLocators(this.FindLocatorsByPrefix('locator_booster'));
+            }
+        }
+
+        /**
+         * Rebuilds turret sets
+         */
+
+    }, {
+        key: 'RebuildTurretPositions',
+        value: function RebuildTurretPositions() {
+            for (var i = 0; i < this.turretSets.length; i++) {
+                this.RebuildTurretSet(i);
+            }
+        }
+
+        /**
+         * Rebuilds a turret set
+         * @param {number} index
+         */
+
+    }, {
+        key: 'RebuildTurretSet',
+        value: function RebuildTurretSet(index) {
+            if (this.turretSets[index] === undefined) return;
+
+            var turretSet = this.turretSets[index],
+                prefix = turretSet.locatorName,
+                count = this.GetLocatorCount(prefix),
+                locators = [];
+
+            for (var j = 0; j < count; ++j) {
+                var name = prefix + String.fromCharCode('a'.charCodeAt(0) + j),
+                    locator = this.FindLocatorByName(name);
+
+                if (locator) {
+                    locator.FindBone(this.animation);
+                    locators.push(locator);
+                }
+            }
+
+            turretSet.UpdateItemsFromLocators(locators);
+        }
+
+        /**
+         * Gets ship's res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} excludeChildren - True to exclude children's res objects
+         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetResources', this).call(this, out, excludeChildren);
+
+            for (var i = 0; i < this.turretSets.length; i++) {
+                this.turretSets[i].GetResources(out);
+            }
+
+            if (this.boosters) {
+                this.boosters.GetResources(out);
+            }
+
+            return out;
+        }
+
+        /**
+         * Updates view dependant data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'UpdateViewDependentData', this).call(this);
+
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                this.turretSets[i].UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - deltaTime
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Update', this).call(this, dt);
+
+            if (this.boosters) {
+                if (this.boosters._locatorRebuildPending) {
+                    this.RebuildBoosterSet();
+                }
+
+                this.boosters.Update(dt, this.transform);
+            }
+
+            for (var i = 0; i < this.turretSets.length; ++i) {
+                if (this.turretSets[i]._locatorRebuildPending) {
+                    this.RebuildTurretSet(i);
+                }
+
+                this.turretSets[i].Update(dt, this.transform);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display) {
+                _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'GetBatches', this).call(this, mode, accumulator);
+
+                this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
+                this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
+
+                if (this.boosters && this.visible.boosters) {
+                    this.boosters.GetBatches(mode, accumulator, this._perObjectData);
+                }
+
+                if (this.visible.turretSets) {
+                    if (this.lod > 1) {
+                        for (var i = 0; i < this.turretSets.length; ++i) {
+                            this.turretSets[i].GetBatches(mode, accumulator, this._perObjectData, this.visible.firingEffects);
+                        }
+                    } else if (this.visible.firingEffects) {
+                        for (var _i = 0; _i < this.turretSets.length; ++_i) {
+                            if (this.turretSets[_i].firingEffect) {
+                                this.turretSets[_i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }]);
+
+    return EveShip;
+}(_EveSpaceObject2.EveSpaceObject);
+
+/***/ }),
+/* 140 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveBoosterSet = exports.EveBoosterSetItem = exports.EveBoosterBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Booster render batch
+ *
+ * @property {EveBoosterSet} boosters
+ * @class
+ */
+var EveBoosterBatch = exports.EveBoosterBatch = function (_Tw2RenderBatch) {
+    _inherits(EveBoosterBatch, _Tw2RenderBatch);
+
+    function EveBoosterBatch() {
+        _classCallCheck(this, EveBoosterBatch);
+
+        var _this = _possibleConstructorReturn(this, (EveBoosterBatch.__proto__ || Object.getPrototypeOf(EveBoosterBatch)).call(this));
+
+        _this.boosters = null;
+        return _this;
+    }
+
+    /**
+     * Commits the batch
+     * @param {Tw2Effect} [effect] An optional override effect
+     */
+
+
+    _createClass(EveBoosterBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {
+            this.boosters.Render(effect);
+        }
+    }]);
+
+    return EveBoosterBatch;
+}(_core.Tw2RenderBatch);
+
+/**
+ * EveBoosterSetItem
+ *
+ * @param {boolean} enableCustomValues   - Enables custom values
+ * @property {{}} visible                - Visibility options
+ * @property {boolean} visible.halo      - Toggles halo visibility
+ * @property {boolean} visible.symHalo   - Toggles symmetrical halo visibility
+ * @property {boolean} visible.glow      - Toggles glow visibility
+ * @property {boolean} visible.trail     - Toggles trail visibility (not implemented)
+ * @property {?string} locatorName       - The item's locator name, if it was built from one
+ * @property {boolean} updateFromLocator - Sets whether the item should be updated when it's locator is
+ * @property {mat4} transform            - The item's local transform
+ * @property {number} atlas0             - The item's atlas index 0
+ * @property {number} atlas1             - The item's atlas index 1
+ * @property {number} seed               - A random seed which affects any glows built from this item
+ * @property {number} wavePhase          - A random seed which affects the booster wave pattern
+ * @property {*} customValues            - An optional object containing custom values
+ * @class
+ */
+
+
+var EveBoosterSetItem = exports.EveBoosterSetItem = function (_EveObjectSetItem) {
+    _inherits(EveBoosterSetItem, _EveObjectSetItem);
+
+    function EveBoosterSetItem() {
+        _classCallCheck(this, EveBoosterSetItem);
+
+        var _this2 = _possibleConstructorReturn(this, (EveBoosterSetItem.__proto__ || Object.getPrototypeOf(EveBoosterSetItem)).call(this));
+
+        _this2.visible = {};
+        _this2.visible.glow = true;
+        _this2.visible.symHalo = true;
+        _this2.visible.halo = true;
+        _this2.visible.trail = true;
+        _this2.visible.customValues = false;
+        _this2.locatorName = null;
+        _this2.updateFromLocator = false;
+        _this2.seed = Math.random() * 7;
+        _this2.wavePhase = Math.random();
+        _this2.atlas0 = 0;
+        _this2.atlas1 = 0;
+        _this2.transform = _math.mat4.create();
+        _this2.customValues = null;
+        return _this2;
+    }
+
+    /**
+     * Gets the item's position
+     * @param {vec3} out
+     * @returns {vec3} out
+     */
+
+
+    _createClass(EveBoosterSetItem, [{
+        key: 'GetPosition',
+        value: function GetPosition(out) {
+            return _math.mat4.getTranslation(out, this.transform);
+        }
+
+        /**
+         * Gets the item's direction
+         * @param {vec3} out
+         * @returns {vec3} out
+         */
+
+    }, {
+        key: 'GetDirection',
+        value: function GetDirection(out) {
+            _math.vec3.set(out, this.transform[8], this.transform[9], this.transform[10]);
+            _math.vec3.normalize(out, out);
+            var scale = this.GetScale();
+            if (scale < 3) _math.vec3.scale(out, out, scale / 3);
+            return out;
+        }
+
+        /**
+         * Gets the item's scale
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetScale',
+        value: function GetScale() {
+            var tr = this.transform;
+            return Math.max(_math.vec3.length([tr[0], tr[1], tr[2]]), _math.vec3.length([tr[4], tr[5], tr[6]]));
+        }
+
+        /**
+         * Creates an item from an object
+         * @param {*} [opt={}]
+         * @returns {EveBoosterSetItem}
+         */
+
+    }], [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item.visible, opt.visible, ['glow', 'symHalo', 'halo', 'trail']);
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'seed', 'wavePhase', 'transform', 'locatorName', 'updateFromLocator', 'atlas0', 'atlas1']);
+            return item;
+        }
+    }]);
+
+    return EveBoosterSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * EveBoosterSet
+ *
+ * @property {{}} visible                      - Visibility controls
+ * @property {boolean} visible.glows           - Toggles glow visibility
+ * @property {boolean} visible.symHalos        - Toggles symmetrical halo visibility
+ * @property {boolean} visible.halos           - Toggles halo visibility
+ * @property {boolean} visible.trails          - Toggles trails visibility (Not implemented)
+ * @property {Tw2Effect} effect                - The booster's booster effect
+ * @property {?Tw2Effect} glows                - The booster's glows (sprites)
+ * @property {number} maxVel                   - (Not implemented)
+ * @property {boolean} alwaysOn                - (Not implemented)
+ * @property {number} glowDistance             - The distance between the booster's locators and glow sprites
+ * @property {number} glowScale                - The base scale of the booster's glow sprites
+ * @property {vec4} glowColor                  - The color of the booster set's glow sprites
+ * @property {vec4} warpGlowColor              - The color of the booster set's glow sprites when warping (Not implemented)
+ * @property {number} haloDistance             - The distance between the booster set's locators and halo sprites
+ * @property {number} haloScaleX               - The base vertical scale of the booster set's halos
+ * @property {number} haloScaleY               - The base horizontal scale of the booster set's halos
+ * @property {vec4} haloColor                  - The color of the booster set's halo sprites
+ * @property {vec4} warpHaloColor              - The color of the booster set's halo sprites when warping (Not implemented)
+ * @property {vec4} trailSize                  - The booster set's trail size (Not implemented)
+ * @property {vec4} trailColor                 - The booster set's trail color (Not implemented)
+ * @property {number} symHaloDistance          - The distance between the booster set's locators and symmetrical halo sprites
+ * @property {number} symHaloScale             - The base scale of the booster set's symmetrical halos
+ * @property {mat4} _parentTransform           - The booster set's parent's transform
+ * @property {WebGLBuffer} _positions          - The booster set's webgl buffer
+ * @property {Tw2VertexDeclaration} _decl      - The booster set's vertex declarations
+ * @property {Tw2PerObjectData} _perObjectData - The booster set's shader data
+ * @property {boolean} _locatorRebuildPending  - Identifies that the booster set needs to be rebuilt from locators
+ * @class
+ */
+
+
+var EveBoosterSet = exports.EveBoosterSet = function (_EveObjectSet) {
+    _inherits(EveBoosterSet, _EveObjectSet);
+
+    function EveBoosterSet() {
+        _classCallCheck(this, EveBoosterSet);
+
+        var _this3 = _possibleConstructorReturn(this, (EveBoosterSet.__proto__ || Object.getPrototypeOf(EveBoosterSet)).call(this));
+
+        _this3.visible = {};
+        _this3.visible.glows = true;
+        _this3.visible.symHalos = true;
+        _this3.visible.halos = true;
+        _this3.visible.trails = true;
+        _this3.effect = null;
+        _this3.glows = null;
+        _this3.alwaysOn = true;
+        _this3.maxVel = 250;
+        _this3.glowDistance = 2.5;
+        _this3.glowScale = 1.0;
+        _this3.glowColor = _math.vec4.create();
+        _this3.warpGlowColor = _math.vec4.create();
+        _this3.haloDistance = 3.01;
+        _this3.haloScaleX = 1.0;
+        _this3.haloScaleY = 1.0;
+        _this3.haloColor = _math.vec4.create();
+        _this3.warpHaloColor = _math.vec4.create();
+        _this3.symHaloDistance = 3;
+        _this3.symHaloScale = 1.0;
+        _this3.trailColor = _math.vec4.create();
+        _this3.trailSize = _math.vec4.create();
+        _this3._parentTransform = _math.mat4.create();
+        _this3._positions = null;
+
+        _this3._decl = new _core.Tw2VertexDeclaration();
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 2, 12));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 20));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 36));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 52));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 68));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 84));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 1, 100));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 2, 104));
+        _this3._decl.RebuildHash();
+
+        _this3._perObjectData = new _core.Tw2PerObjectData();
+        _this3._perObjectData.perObjectVSData = new _core.Tw2RawData();
+        _this3._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        _this3._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        _this3._perObjectData.perObjectVSData.Create();
+
+        _this3._locatorRebuildPending = true;
+        return _this3;
+    }
+
+    /**
+     * Finds a booster item that belongs to a locator by it's name
+     * @param {string} locatorName
+     * @returns {?EveBoosterSetItem}
+     */
+
+
+    _createClass(EveBoosterSet, [{
+        key: 'FindItemByLocatorName',
+        value: function FindItemByLocatorName(locatorName) {
+            for (var i = 0; i < this.items.length; i++) {
+                if (this.items[i].locatorName && this.items[i].locatorName === locatorName) {
+                    return this.items[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Updates booster items that were built from locators
+         * @param {Array.<EveLocator>} locators
+         */
+
+    }, {
+        key: 'UpdateItemsFromLocators',
+        value: function UpdateItemsFromLocators(locators) {
+            var items = Array.from(this.items);
+
+            for (var i = 0; i < locators.length; i++) {
+                var _locators$i = locators[i],
+                    name = _locators$i.name,
+                    transform = _locators$i.transform,
+                    atlasIndex0 = _locators$i.atlasIndex0,
+                    atlasIndex1 = _locators$i.atlasIndex1;
+
+
+                var item = this.FindItemByLocatorName(name);
+                if (!item) {
+                    this.CreateItem({
+                        name: name,
+                        locatorName: name,
+                        updateFromLocator: true,
+                        atlas0: atlasIndex0,
+                        atlas1: atlasIndex1,
+                        transform: transform
+                    });
+                } else {
+                    items.splice(items.indexOf(item), 1);
+
+                    if (item.updateFromLocator) {
+                        _math.mat4.copy(item.transform, transform);
+                        item.atlas0 = atlasIndex0;
+                        item.atlas1 = atlasIndex1;
+                        item.OnValueChanged();
+                    }
+                }
+            }
+
+            for (var _i = 0; _i < items.length; _i++) {
+                if (items[_i].locatorName !== null) {
+                    this.RemoveItem(items[_i]);
+                    _i--;
+                }
+            }
+
+            this._locatorRebuildPending = false;
+
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+        }
+
+        /**
+         * Rebuilds the booster set from it's parent's locators
+         */
+
+    }, {
+        key: 'RebuildItemsFromLocators',
+        value: function RebuildItemsFromLocators() {
+            this._locatorRebuildPending = true;
+        }
+
+        /**
+         * Gets booster set resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.effect) {
+                this.effect.GetResources(out);
+            }
+
+            if (this.glows) {
+                this.glows.effect.GetResources(out);
+            }
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - DeltaTime
+         * @param {mat4} parentMatrix
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentMatrix) {
+            _math.mat4.copy(this._parentTransform, parentMatrix);
+            if (this._rebuildPending) this.Rebuild();
+            if (this.glows) this.glows.Update(dt);
+        }
+
+        /**
+         * Unloads the booster's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._positions) {
+                _core.device.gl.deleteBuffer(this._positions);
+                this._positions = null;
+            }
+
+            if (this.glows) {
+                this.glows.Unload();
+            }
+        }
+
+        /**
+         * Rebuilds the boosters
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            this.constructor.RebuildItems(this);
+            var itemCount = this._visibleItems.length;
+            this._rebuildPending = false;
+            if (!itemCount) return;
+
+            var d = _core.device,
+                box = EveBoosterSet._box,
+                data = new Float32Array(itemCount * box.length * 6 * 28),
+                order = [0, 3, 1, 3, 2, 1];
+
+            var index = 0;
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i];
+                for (var b = 0; b < box.length; ++b) {
+                    for (var j = 0; j < order.length; ++j) {
+                        data[index++] = box[b][order[j]][0];
+                        data[index++] = box[b][order[j]][1];
+                        data[index++] = box[b][order[j]][2];
+                        data[index++] = 0;
+                        data[index++] = 0;
+                        data.set(item.transform, index);
+                        index += 16;
+                        data[index++] = 0;
+                        data[index++] = 1;
+                        data[index++] = 1;
+                        data[index++] = 1;
+                        data[index++] = item.wavePhase;
+                        data[index++] = item.atlas0;
+                        data[index++] = item.atlas1;
+                    }
+                }
+            }
+
+            this._positions = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._positions);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, data, d.gl.STATIC_DRAW);
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+            this._positions.count = itemCount * 12 * 3;
+
+            if (this.glows) this.glows.Rebuild();
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (!this.display || mode !== _core.device.RM_ADDITIVE || !this._positions || !this._visibleItems.length) return;
+
+            if (this.effect) {
+                var batch = new EveBoosterBatch();
+                _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this._parentTransform);
+                this._perObjectData.perObjectVSData.Set('Shipdata', perObjectData.perObjectVSData.Get('Shipdata'));
+                this._perObjectData.perObjectPSData = perObjectData.perObjectPSData;
+                batch.perObjectData = this._perObjectData;
+                batch.boosters = this;
+                batch.renderMode = _core.device.RM_ADDITIVE;
+                accumulator.Commit(batch);
+            }
+
+            if (this.glows) {
+                this.glows.GetBoosterGlowBatches(mode, accumulator, perObjectData, this._parentTransform, perObjectData.perObjectVSData.Get('Shipdata')[0], 0);
+            }
+        }
+
+        /**
+         * Renders the accumulated batches
+         * @param {Tw2Effect} [effect=this.effect] - An optional override effect
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood()) return false;
+
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._positions);
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 112)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, this._positions.count);
+            }
+            return true;
+        }
+
+        /**
+         * Rebuilds a booster set's items
+         * @param {EveBoosterSet} boosters
+         */
+
+    }], [{
+        key: 'RebuildItems',
+        value: function RebuildItems(boosters) {
+            var glows = boosters.glows,
+                g = EveBoosterSet.global,
+                spritePos = g.vec3_0;
+
+            if (glows) glows.ClearItems();
+            boosters._visibleItems = [];
+
+            for (var i = 0; i < boosters.items.length; i++) {
+                var item = boosters.items[i];
+                item._onModified = boosters._onChildModified;
+
+                if (item.display) {
+                    boosters._visibleItems.push(item);
+
+                    if (glows) {
+                        var src = item.customValues && item.customValues.display ? item.customValues : boosters,
+                            pos = item.GetPosition(g.vec3_1),
+                            dir = item.GetDirection(g.vec3_2),
+                            scale = item.GetScale();
+
+                        if (boosters.visible.glows && item.visible.glow) {
+                            glows.CreateItem({
+                                name: item.name + '_glow',
+                                position: _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, src.glowDistance)),
+                                blinkRate: item.seed,
+                                blinkPhase: item.seed,
+                                minScale: src.glowScale * scale,
+                                maxScale: src.glowScale * scale,
+                                color: src.glowColor,
+                                warpColor: src.warpGlowColor
+                            });
+                        }
+
+                        if (boosters.visible.symHalos && item.visible.symHalo) {
+                            glows.CreateItem({
+                                name: item.name + '_symHalo',
+                                position: _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, src.symHaloDistance)),
+                                blinkRate: item.seed,
+                                blinkPhase: item.seed + 1,
+                                minScale: src.symHaloScale * scale,
+                                maxScale: src.symHaloScale * scale,
+                                color: src.haloColor,
+                                warpColor: src.warpHaloColor
+                            });
+                        }
+
+                        if (boosters.visible.halos && item.visible.halo) {
+                            glows.CreateItem({
+                                name: item.name + '_halo',
+                                position: _math.vec3.subtract(spritePos, pos, _math.vec3.scale(spritePos, dir, src.haloDistance)),
+                                blinkRate: item.seed,
+                                blinkPhase: item.seed + 1,
+                                minScale: src.haloScaleX * scale,
+                                maxScale: src.haloScaleY * scale,
+                                color: src.haloColor,
+                                warpColor: src.warpHaloColor
+                            });
+                        }
+                    }
+
+                    item._rebuildPending = false;
+                }
+            }
+        }
+    }]);
+
+    return EveBoosterSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * The booster set's item constructor
+ * @type {EveBoosterSetItem}
+ */
+
+
+EveBoosterSet.Item = EveBoosterSetItem;
+
+/**
+ * Internal helper
+ * @type {Array}
+ */
+EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveCurveLineSet = exports.EveCurveLineSetItem = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveCurveLineSetItem
+ *
+ * @property {number} type
+ * @property {vec3} position1
+ * @property {vec4} color1
+ * @property {vec3} position2
+ * @property {vec4} color2
+ * @property {vec3} intermediatePosition
+ * @property {number} width
+ * @property {vec4} multiColor
+ * @property {number} multiColorBorder
+ * @property {vec4} overlayColor
+ * @property {number} animationSpeed
+ * @property {number} animationScale
+ * @property {number} numOfSegments
+ * @class
+ */
+var EveCurveLineSetItem = exports.EveCurveLineSetItem = function (_EveObjectSetItem) {
+    _inherits(EveCurveLineSetItem, _EveObjectSetItem);
+
+    function EveCurveLineSetItem() {
+        _classCallCheck(this, EveCurveLineSetItem);
+
+        var _this = _possibleConstructorReturn(this, (EveCurveLineSetItem.__proto__ || Object.getPrototypeOf(EveCurveLineSetItem)).call(this));
+
+        _this.type = EveCurveLineSetItem.Type.INVALID;
+        _this.position1 = _math.vec3.create();
+        _this.color1 = _math.vec4.fromValues(1, 1, 1, 1);
+        _this.position2 = _math.vec3.create();
+        _this.color2 = _math.vec4.fromValues(1, 1, 1, 1);
+        _this.intermediatePosition = _math.vec3.create();
+        _this.width = 1;
+        _this.multiColor = _math.vec4.fromValues(0, 0, 0, 1);
+        _this.multiColorBorder = -1;
+        _this.overlayColor = _math.vec4.fromValues(0, 0, 0, 1);
+        _this.animationSpeed = 0;
+        _this.animationScale = 1;
+        _this.numOfSegments = 1;
+        return _this;
+    }
+
+    /**
+     * Changes the line's colors
+     * @param {vec3} startColor
+     * @param {vec3} endColor
+     */
+
+
+    _createClass(EveCurveLineSetItem, [{
+        key: 'ChangeColor',
+        value: function ChangeColor(startColor, endColor) {
+            _math.vec3.copy(this.color1, startColor);
+            _math.vec3.copy(this.color2, endColor);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes the line's width
+         * @param {number} width
+         */
+
+    }, {
+        key: 'ChangeWidth',
+        value: function ChangeWidth(width) {
+            this.width = width;
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes positions from cartesian coordinates
+         * @param {vec3} startPosition
+         * @param {vec3} endPosition
+         * @param {vec3} middle
+         */
+
+    }, {
+        key: 'ChangeCartesian',
+        value: function ChangeCartesian(startPosition, endPosition, middle) {
+            _math.vec3.copy(this.position1, startPosition);
+            _math.vec3.copy(this.position2, endPosition);
+            _math.vec3.copy(this.intermediatePosition, middle);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes cartesian position
+         * @param {vec3} startPosition
+         * @param {vec3} endPosition
+         */
+
+    }, {
+        key: 'ChangePositionCartesian',
+        value: function ChangePositionCartesian(startPosition, endPosition) {
+            _math.vec3.copy(this.position1, startPosition);
+            _math.vec3.copy(this.position2, endPosition);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes cartesian intermediate position
+         * @param {vec3} intermediatePosition
+         */
+
+    }, {
+        key: 'ChangeIntermediateCartesian',
+        value: function ChangeIntermediateCartesian(intermediatePosition) {
+            _math.vec3.copy(this.intermediatePosition, intermediatePosition);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes positions from spherical
+         * @param {vec3} startPosition
+         * @param {vec3} endPosition
+         * @param {vec3} middle
+         * @param {vec3} center
+         */
+
+    }, {
+        key: 'ChangeSpherical',
+        value: function ChangeSpherical(startPosition, endPosition, middle, center) {
+            _math.vec3.fromSpherical(this.position1, startPosition, center);
+            _math.vec3.fromSpherical(this.position2, endPosition, center);
+            _math.vec3.fromSpherical(this.intermediatePosition, middle, center);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes position from spherical coordinates
+         * @param {vec3} startPosition
+         * @param {vec3} endPosition
+         * @param {vec3} center
+         */
+
+    }, {
+        key: 'ChangePositionSpherical',
+        value: function ChangePositionSpherical(startPosition, endPosition, center) {
+            _math.vec3.fromSpherical(this.position1, startPosition, center);
+            _math.vec3.fromSpherical(this.position2, endPosition, center);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes spherical intermediate position
+         * @param {vec3} intermediatePosition
+         * @param {vec3} center
+         */
+
+    }, {
+        key: 'ChangeIntermediateSpherical',
+        value: function ChangeIntermediateSpherical(intermediatePosition, center) {
+            _math.vec3.fromSpherical(this.intermediatePosition, intermediatePosition, center);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes multi line color
+         * @param {vec4} color
+         * @param {number} border
+         */
+
+    }, {
+        key: 'ChangeMultiColor',
+        value: function ChangeMultiColor(color, border) {
+            _math.vec4.copy(this.multiColor, color);
+            this.multiColorBorder = border;
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes animated color settings
+         * @param {vec4} color
+         * @param {number} speed
+         * @param {number} scale
+         */
+
+    }, {
+        key: 'ChangeAnimation',
+        value: function ChangeAnimation(color, speed, scale) {
+            _math.vec4.copy(this.overlayColor, color);
+            this.animationSpeed = speed;
+            this.animationScale = scale;
+            this.OnValueChanged();
+        }
+
+        /**
+         * Changes line segmentation
+         * @param {number} numOfSegments
+         */
+
+    }, {
+        key: 'ChangeSegmentation',
+        value: function ChangeSegmentation(numOfSegments) {
+            if (this.type !== EveCurveLineSetItem.Type.STRAIGHT) {
+                this.numOfSegments = numOfSegments;
+                this.OnValueChanged();
+            }
+        }
+
+        /**
+         * Creates a line from an object
+         * @param {*} [opt={}]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }], [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'type', 'position1', 'color1', 'position2', 'color2', 'intermediatePosition', 'width', 'multiColor', 'multiColorBorder', 'overlayColor', 'animationSpeed', 'animationScale', 'numOfSegments']);
+            return item;
+        }
+    }]);
+
+    return EveCurveLineSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * Curve line types
+ * @type {{INVALID: number, STRAIGHT: number, SPHERED: number, CURVED: number}}
+ */
+
+
+EveCurveLineSetItem.Type = {
+    INVALID: 0,
+    STRAIGHT: 1,
+    SPHERED: 2,
+    CURVED: 3
 };
 
 /**
- * Gets render batches
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
+ * Default curved line segmentation
+ * @type {number}
  */
-EveEffectRoot.prototype.GetBatches = function (mode, accumulator) {
-    if (!this.display) {
-        return;
-    }
-    for (var i = 0; i < this.effectChildren.length; ++i) {
-        this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
-    }
-};
+EveCurveLineSetItem.DEFAULT_CURVED_SEGMENTS = 20;
 
 /**
- * Starts playing the effectRoot's curveSets if they exist
+ * Default sphered line segmentation
+ * @type {number}
  */
-EveEffectRoot.prototype.Start = function () {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Play();
-    }
-};
+EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS = 20;
 
 /**
- * Stops the effectRoot's curveSets from playing
+ * EveCurveLineSet
+ *
+ * @property {Tw2Effect} lineEffect
+ * @property {?Tw2Effect} pickEffect
+ * @property {number} lineWidthFactor
+ * @property {boolean} additive
+ * @property {number} depthOffset
+ * @property {vec3} translation
+ * @property {quat} rotation
+ * @property {vec3} scaling
+ * @property {mat4} transform
+ * @property {mat4} parentTransform
+ * @property {number} _vertexSize
+ * @property {number} _vbSize
+ * @property {?WebGLBuffer} _vb
+ * @property {Tw2PerObjectData} _perObjectData
+ * @property {Tw2VertexDeclaration} _decl
+ * @class
  */
-EveEffectRoot.prototype.Stop = function () {
-    for (var i = 0; i < this.curveSets.length; ++i) {
-        this.curveSets[i].Stop();
+
+var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
+    _inherits(EveCurveLineSet, _EveObjectSet);
+
+    function EveCurveLineSet() {
+        _classCallCheck(this, EveCurveLineSet);
+
+        var _this2 = _possibleConstructorReturn(this, (EveCurveLineSet.__proto__ || Object.getPrototypeOf(EveCurveLineSet)).call(this));
+
+        _this2.lineEffect = new _core.Tw2Effect();
+        _this2.lineEffect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx';
+        _this2.lineEffect.parameters['TexMap'] = new _core.Tw2TextureParameter('TexMap', 'res:/texture/global/white.dds.0.png');
+        _this2.lineEffect.parameters['OverlayTexMap'] = new _core.Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
+        _this2.lineEffect.Initialize();
+        _this2.pickEffect = null;
+        _this2.lineWidthFactor = 1;
+        _this2.additive = false;
+        _this2.depthOffset = 0;
+        _this2.translation = _math.vec3.create();
+        _this2.rotation = _math.quat.create();
+        _this2.scaling = _math.vec3.fromValues(1, 1, 1);
+        _this2.transform = _math.mat4.create();
+        _this2.parentTransform = _math.mat4.create();
+        _this2._vertexSize = 26;
+        _this2._vbSize = 0;
+        _this2._vb = null;
+
+        _this2._perObjectData = new _core.Tw2PerObjectData();
+        _this2._perObjectData.perObjectVSData = new _core.Tw2RawData();
+        _this2._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        _this2._perObjectData.perObjectVSData.Create();
+        _this2._perObjectData.perObjectPSData = new _core.Tw2RawData();
+        _this2._perObjectData.perObjectPSData.Declare('WorldMat', 16);
+        _this2._perObjectData.perObjectPSData.Create();
+
+        _this2._decl = new _core.Tw2VertexDeclaration();
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 28));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 3, 44));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 56));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 72));
+        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 2, _core.device.gl.FLOAT, 4, 88));
+        _this2._decl.stride = 4 * _this2._vertexSize;
+        _this2._decl.RebuildHash();
+
+        EveCurveLineSet.init();
+        return _this2;
     }
+
+    /**
+     * Alias for this.items
+     * @returns {Array}
+     */
+
+
+    _createClass(EveCurveLineSet, [{
+        key: 'Initialize',
+
+
+        /**
+         * Initializes the curve line set
+         */
+        value: function Initialize() {
+            this.OnValueChanged();
+            this.Rebuild();
+        }
+
+        /**
+         * Creates a straight line
+         * @param {vec3} start
+         * @param {vec3} end
+         * @param {number} [width]
+         * @param {vec4} [startColor]
+         * @param {vec4} [endColor]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }, {
+        key: 'AddStraightLine',
+        value: function AddStraightLine(start, end, width, startColor, endColor) {
+            return this.CreateItem({
+                type: EveCurveLineSetItem.Type.STRAIGHT,
+                position1: start,
+                position2: end,
+                color1: startColor,
+                color2: endColor,
+                width: width
+            });
+        }
+
+        /**
+         * Creates and adds a curved line from cartesian coordinates
+         * @param {vec3} start
+         * @param {vec3} end
+         * @param {vec3} center
+         * @param {number} [width]
+         * @param {vec4} [startColor]
+         * @param {vec4} [endColor]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }, {
+        key: 'AddCurvedLineCrt',
+        value: function AddCurvedLineCrt(start, end, center, width, startColor, endColor) {
+            return this.CreateItem({
+                type: EveCurveLineSetItem.Type.CURVED,
+                position1: start,
+                position2: end,
+                intermediatePosition: center,
+                color1: startColor,
+                color2: endColor,
+                width: width,
+                numOfSegments: EveCurveLineSetItem.DEFAULT_CURVED_SEGMENTS
+            });
+        }
+
+        /**
+         * Creates and adds a curved line from spherical coordinates
+         * @param {vec3} start
+         * @param {vec3} end
+         * @param {vec3} center
+         * @param {vec3} middle
+         * @param {number} [width]
+         * @param {vec4} [startColor]
+         * @param {vec4} [endColor]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }, {
+        key: 'AddCurvedLineSph',
+        value: function AddCurvedLineSph(start, end, center, middle, width, startColor, endColor) {
+            var g = EveCurveLineSet.global;
+            return this.CreateItem({
+                type: EveCurveLineSetItem.Type.CURVED,
+                position1: _math.vec3.fromSpherical(g.vec3_0, start, center),
+                position2: _math.vec3.fromSpherical(g.vec3_1, end, center),
+                intermediatePosition: _math.vec3.fromSpherical(g.vec3_2, middle, center),
+                color1: startColor,
+                color2: endColor,
+                width: width,
+                numOfSegments: EveCurveLineSetItem.DEFAULT_CURVED_SEGMENTS
+            });
+        }
+
+        /**
+         * Creates and adds a sphered line from cartesian coordinates
+         * @param {vec3} start
+         * @param {vec3} end
+         * @param {vec3} center
+         * @param {number} [width]
+         * @param {vec4} [startColor]
+         * @param {vec4} [endColor]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }, {
+        key: 'AddSpheredLineCrt',
+        value: function AddSpheredLineCrt(start, end, center, width, startColor, endColor) {
+            return this.CreateItem({
+                type: EveCurveLineSetItem.Type.SPHERED,
+                position1: start,
+                position2: end,
+                intermediatePosition: center,
+                color1: startColor,
+                color2: endColor,
+                width: width,
+                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+            });
+        }
+
+        /**
+         * Creates and adds a sphered line from spherical coordinates
+         * @param {vec3} start
+         * @param {vec3} end
+         * @param {vec3} center
+         * @param {vec3} middle
+         * @param {number} [width]
+         * @param {vec4} [startColor]
+         * @param {vec4} [endColor]
+         * @returns {EveCurveLineSetItem}
+         */
+
+    }, {
+        key: 'AddSpheredLineSph',
+        value: function AddSpheredLineSph(start, end, center, middle, width, startColor, endColor) {
+            var g = EveCurveLineSet.global;
+            return this.CreateItem({
+                type: EveCurveLineSetItem.Type.SPHERED,
+                position1: _math.vec3.fromSpherical(g.vec3_0, start, center),
+                position2: _math.vec3.fromSpherical(g.vec3_1, end, center),
+                intermediatePosition: _math.vec3.fromSpherical(g.vec3_2, middle, center),
+                color1: startColor,
+                color2: endColor,
+                width: width,
+                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+            });
+        }
+
+        /**
+         * Fire on value changes
+         */
+
+    }, {
+        key: 'OnValueChanged',
+        value: function OnValueChanged() {
+            _math.mat4.fromRotationTranslationScale(this.transform, this.rotation, this.translation, this.scaling);
+            this._rebuildPending = true;
+        }
+
+        /**
+         * Per frame update
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData(parentTransform) {
+            _math.mat4.copy(this.parentTransform, parentTransform);
+        }
+
+        /**
+         * Per frame update
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update() {
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+        }
+
+        /**
+         * Unloads the line set's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._vb) {
+                _core.device.gl.deleteBuffer(this._vb);
+                this._vb = null;
+            }
+        }
+
+        /**
+         * Rebuilds the line set
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            EveCurveLineSet.RebuildItems(this);
+            this._vb = null;
+            this._vbSize = this.lineCount;
+            this._rebuildPending = false;
+            var visibleItems = this._visibleItems.length;
+            if (!visibleItems) return;
+
+            var g = EveCurveLineSet.global,
+                data = new Float32Array(this._vbSize * 6 * this._vertexSize),
+                startDir = g.vec3_0,
+                endDir = g.vec3_1,
+                startDirNrm = g.vec3_2,
+                endDirNrm = g.vec3_3,
+                rotationAxis = g.vec3_4,
+                tangent1 = g.vec3_5,
+                tangent2 = g.vec3_6,
+                rotationMatrix = g.mat4_0;
+
+            var dir1 = g.vec3_7,
+                dir2 = g.vec3_8,
+                pos1 = g.vec3_9,
+                pos2 = g.vec3_10,
+                col1 = g.vec4_0,
+                col2 = g.vec4_1,
+                offset = 0,
+                tmp = void 0;
+
+            for (var i = 0; i < visibleItems; ++i) {
+                var item = this._visibleItems[i];
+                switch (item.type) {
+                    case EveCurveLineSetItem.Type.INVALID:
+                        break;
+
+                    case EveCurveLineSetItem.Type.STRAIGHT:
+                        EveCurveLineSet.WriteLineVerticesToBuffer(this, item.position1, item.color1, 0, item.position2, item.color2, 1, i, data, offset);
+                        offset += 6 * this._vertexSize;
+                        break;
+
+                    case EveCurveLineSetItem.Type.SPHERED:
+                        _math.vec3.subtract(startDir, item.position1, item.intermediatePosition);
+                        _math.vec3.subtract(endDir, item.position2, item.intermediatePosition);
+                        _math.vec3.normalize(startDirNrm, startDir);
+                        _math.vec3.normalize(endDirNrm, endDir);
+                        _math.vec3.cross(rotationAxis, startDir, endDir);
+
+                        var fullAngle = Math.acos(_math.vec3.dot(startDirNrm, endDirNrm)),
+                            segmentAngle = fullAngle / item.numOfSegments;
+
+                        _math.mat4.identity(rotationMatrix);
+                        _math.mat4.rotate(rotationMatrix, rotationMatrix, segmentAngle, rotationAxis);
+                        _math.vec3.copy(dir1, startDir);
+                        _math.vec4.copy(col1, item.color1);
+
+                        for (var j = 0; j < this.lines[i].numOfSegments; ++j) {
+                            var segmentFactor = (j + 1) / item.numOfSegments;
+                            _math.vec3.transformMat4(dir2, dir1, rotationMatrix);
+                            col2[0] = item.color1[0] * (1 - segmentFactor) + item.color2[0] * segmentFactor;
+                            col2[1] = item.color1[1] * (1 - segmentFactor) + item.color2[1] * segmentFactor;
+                            col2[2] = item.color1[2] * (1 - segmentFactor) + item.color2[2] * segmentFactor;
+                            col2[3] = item.color1[3] * (1 - segmentFactor) + item.color2[3] * segmentFactor;
+                            _math.vec3.add(pos1, dir1, item.intermediatePosition);
+                            _math.vec3.add(pos2, dir2, item.intermediatePosition);
+                            EveCurveLineSet.WriteLineVerticesToBuffer(this, pos1, col1, j / item.numOfSegments, pos2, col2, segmentFactor, i, data, offset);
+                            offset += 6 * this._vertexSize;
+
+                            tmp = dir1;
+                            dir1 = dir2;
+                            dir2 = tmp;
+                            tmp = col1;
+                            col1 = col2;
+                            col2 = tmp;
+                        }
+                        break;
+
+                    case EveCurveLineSetItem.Type.CURVED:
+                        _math.vec3.subtract(tangent1, item.intermediatePosition, item.position1);
+                        _math.vec3.subtract(tangent2, item.position2, item.intermediatePosition);
+                        _math.vec3.copy(pos1, item.position1);
+                        _math.vec3.copy(col1, item.color1);
+
+                        for (var _j = 0; _j < item.numOfSegments; ++_j) {
+                            var _segmentFactor = (_j + 1) / item.numOfSegments;
+                            _math.vec3.hermite(pos2, item.position1, tangent1, item.position2, tangent2, _segmentFactor);
+                            col2[0] = item.color1[0] * (1 - _segmentFactor) + item.color2[0] * _segmentFactor;
+                            col2[1] = item.color1[1] * (1 - _segmentFactor) + item.color2[1] * _segmentFactor;
+                            col2[2] = item.color1[2] * (1 - _segmentFactor) + item.color2[2] * _segmentFactor;
+                            col2[3] = item.color1[3] * (1 - _segmentFactor) + item.color2[3] * _segmentFactor;
+                            EveCurveLineSet.WriteLineVerticesToBuffer(this, pos1, col1, _j / item.numOfSegments, pos2, col2, _segmentFactor, i, data, offset);
+                            offset += 6 * this._vertexSize;
+
+                            tmp = pos1;
+                            pos1 = pos2;
+                            pos2 = tmp;
+                            tmp = col1;
+                            col1 = col2;
+                            col2 = tmp;
+                        }
+                }
+            }
+
+            //if (this._vb) device.gl.deleteBuffer(this._vb);
+            this._vb = _core.device.gl.createBuffer();
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vb);
+            _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, data, _core.device.gl.STATIC_DRAW);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (!this.display || !this._vb) return;
+
+            var effect = void 0;
+            switch (mode) {
+                case _core.device.RM_TRANSPARENT:
+                    if (this.additive || !this.lineEffect) return;
+                    effect = this.lineEffect;
+                    break;
+
+                case _core.device.RM_ADDITIVE:
+                    if (!this.additive || !this.lineEffect) return;
+                    effect = this.lineEffect;
+                    break;
+
+                case _core.device.RM_PICKABLE:
+                    if (!this.pickable || !this.pickEffect) return;
+                    effect = this.pickable;
+            }
+
+            var batch = new _core.Tw2ForwardingRenderBatch(),
+                worldTransform = EveCurveLineSet.global.mat4_0;
+
+            _math.mat4.multiply(worldTransform, this.transform, this.parentTransform);
+            _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), worldTransform);
+            _math.mat4.transpose(this._perObjectData.perObjectPSData.Get('WorldMat'), worldTransform);
+            batch.perObjectData = this._perObjectData;
+            batch.geometryProvider = this;
+            batch.renderMode = mode;
+            batch.effect = effect;
+            accumulator.Commit(batch);
+        }
+
+        /**
+         * Per frame update
+         * @param {Tw2ForwardingRenderBatch} batch
+         * @param {Tw2Effect} [effect=batch.effect} - An optional override effect
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render(batch) {
+            var effect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : batch.effect;
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood()) return false;
+
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vb);
+
+            var passCount = effect.GetPassCount();
+            for (var pass = 0; pass < passCount; ++pass) {
+                effect.ApplyPass(pass);
+                var passInput = effect.GetPassInput(pass);
+                if (!this._decl.SetDeclaration(passInput, this._decl.stride)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawArrays(_core.device.gl.TRIANGLES, 0, this._vbSize * 6);
+            }
+            return true;
+        }
+
+        /**
+         * Fills color vertices
+         * @param {EveCurveLineSetItem} item
+         * @param buffer
+         * @param {number} offset
+         * @returns {number}
+         */
+
+    }, {
+        key: 'lines',
+        get: function get() {
+            return this.items;
+        }
+
+        /**
+         * Alias for this.items
+         * @param {Array} arr
+         */
+        ,
+        set: function set(arr) {
+            this.items = arr;
+        }
+
+        /**
+         * Gets the current line count
+         * @returns {number}
+         */
+
+    }, {
+        key: 'lineCount',
+        get: function get() {
+            var count = 0;
+            for (var i = 0; i < this.items.length; i++) {
+                if (this.items[i].type !== EveCurveLineSetItem.Type.INVALID) {
+                    count += this.items[i].numOfSegments;
+                }
+            }
+            return count;
+        }
+    }], [{
+        key: 'FillColorVertices',
+        value: function FillColorVertices(item, buffer, offset) {
+            buffer[offset++] = item.multiColor[0];
+            buffer[offset++] = item.multiColor[1];
+            buffer[offset++] = item.multiColor[2];
+            buffer[offset++] = item.multiColor[3];
+            buffer[offset++] = item.overlayColor[0];
+            buffer[offset++] = item.overlayColor[1];
+            buffer[offset++] = item.overlayColor[2];
+            buffer[offset++] = item.overlayColor[3];
+            return offset;
+        }
+
+        /**
+         * Writes line vertices to the vertex buffer
+         * @param {EveCurveLineSet} lineSet
+         * @param {vec3} start
+         * @param {quat} startColor
+         * @param length1
+         * @param {vec3} end
+         * @param {quat} endColor
+         * @param length2
+         * @param {Number} lineID
+         * @param buffer
+         * @param {Number} offset
+         */
+
+    }, {
+        key: 'WriteLineVerticesToBuffer',
+        value: function WriteLineVerticesToBuffer(lineSet, start, startColor, length1, end, endColor, length2, lineID, buffer, offset) {
+            var item = lineSet.items[lineID];
+
+            buffer[offset++] = start[0];
+            buffer[offset++] = start[1];
+            buffer[offset++] = start[2];
+            buffer[offset++] = end[0] - start[0];
+            buffer[offset++] = end[1] - start[1];
+            buffer[offset++] = end[2] - start[2];
+            buffer[offset++] = -lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 0;
+            buffer[offset++] = length1;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = startColor[0];
+            buffer[offset++] = startColor[1];
+            buffer[offset++] = startColor[2];
+            buffer[offset++] = startColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+
+            buffer[offset++] = start[0];
+            buffer[offset++] = start[1];
+            buffer[offset++] = start[2];
+            buffer[offset++] = end[0] - start[0];
+            buffer[offset++] = end[1] - start[1];
+            buffer[offset++] = end[2] - start[2];
+            buffer[offset++] = lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 0;
+            buffer[offset++] = length1;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = startColor[0];
+            buffer[offset++] = startColor[1];
+            buffer[offset++] = startColor[2];
+            buffer[offset++] = startColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+
+            buffer[offset++] = end[0];
+            buffer[offset++] = end[1];
+            buffer[offset++] = end[2];
+            buffer[offset++] = start[0] - end[0];
+            buffer[offset++] = start[1] - end[1];
+            buffer[offset++] = start[2] - end[2];
+            buffer[offset++] = -lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 1;
+            buffer[offset++] = length2;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = endColor[0];
+            buffer[offset++] = endColor[1];
+            buffer[offset++] = endColor[2];
+            buffer[offset++] = endColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+
+            buffer[offset++] = start[0];
+            buffer[offset++] = start[1];
+            buffer[offset++] = start[2];
+            buffer[offset++] = end[0] - start[0];
+            buffer[offset++] = end[1] - start[1];
+            buffer[offset++] = end[2] - start[2];
+            buffer[offset++] = lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 0;
+            buffer[offset++] = length1;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = startColor[0];
+            buffer[offset++] = startColor[1];
+            buffer[offset++] = startColor[2];
+            buffer[offset++] = startColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+
+            buffer[offset++] = end[0];
+            buffer[offset++] = end[1];
+            buffer[offset++] = end[2];
+            buffer[offset++] = start[0] - end[0];
+            buffer[offset++] = start[1] - end[1];
+            buffer[offset++] = start[2] - end[2];
+            buffer[offset++] = lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 1;
+            buffer[offset++] = length2;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = endColor[0];
+            buffer[offset++] = endColor[1];
+            buffer[offset++] = endColor[2];
+            buffer[offset++] = endColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+
+            buffer[offset++] = end[0];
+            buffer[offset++] = end[1];
+            buffer[offset++] = end[2];
+            buffer[offset++] = start[0] - end[0];
+            buffer[offset++] = start[1] - end[1];
+            buffer[offset++] = start[2] - end[2];
+            buffer[offset++] = -lineSet.lineWidthFactor * item.width;
+            buffer[offset++] = 1;
+            buffer[offset++] = length2;
+            buffer[offset++] = item.multiColorBorder;
+            buffer[offset++] = length2 - length1;
+            buffer[offset++] = item.animationSpeed;
+            buffer[offset++] = item.animationScale;
+            buffer[offset++] = lineID;
+            buffer[offset++] = endColor[0];
+            buffer[offset++] = endColor[1];
+            buffer[offset++] = endColor[2];
+            buffer[offset++] = endColor[3];
+            offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+        }
+
+        /**
+         * Initializes class global variables and scratch
+         */
+
+    }, {
+        key: 'init',
+        value: function init() {
+            if (!EveCurveLineSet.global) {
+                EveCurveLineSet.global = {
+                    vec3_0: _math.vec3.create(), // start direction
+                    vec3_1: _math.vec3.create(), // end direction
+                    vec3_2: _math.vec3.create(), // start direction normalized
+                    vec3_3: _math.vec3.create(), // end direction normalized
+                    vec3_4: _math.vec3.create(), // rotationAxis
+                    vec3_5: _math.vec3.create(), // direction1
+                    vec3_6: _math.vec3.create(), // direction2
+                    vec3_7: _math.vec3.create(), // position 1
+                    vec3_8: _math.vec3.create(), // position 2
+                    vec3_9: _math.vec3.create(), // tangent1
+                    vec3_10: _math.vec3.create(), // tangent2
+                    vec4_0: _math.vec4.create(), // color 1
+                    vec4_1: _math.vec4.create(), // color 2
+                    mat4_0: _math.mat4.create() // rotationMatrix
+                };
+            }
+        }
+    }]);
+
+    return EveCurveLineSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * Class global variables and scratch
+ */
+
+
+EveCurveLineSet.global = null;
+
+/***/ }),
+/* 142 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveLocator = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _index = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Contains transform information for T3 Attachments, Boosters, Turrets and XLTurrets
+ *
+ * @property {string} name                  - The locator's name
+ * @property {mat4} transform               - The locator's transform
+ * @property {?number} atlasIndex0          - A booster locator's atlasIndex0
+ * @property {?number} atlasIndex1          - A booster locator's atlasIndex1
+ * @property {?Tw2Bone} bone                - A turret locator's bone
+ */
+var EveLocator = exports.EveLocator = function () {
+    function EveLocator() {
+        _classCallCheck(this, EveLocator);
+
+        this.name = '';
+        this.transform = _index.mat4.create();
+        this.atlasIndex0 = null;
+        this.atlasIndex1 = null;
+        this.bone = null;
+    }
+
+    /**
+     * Gets the locator's bone from an animation controller
+     * @param {Tw2AnimationController} animationController
+     * @returns {?Tw2Bone}
+     */
+
+
+    _createClass(EveLocator, [{
+        key: 'FindBone',
+        value: function FindBone(animationController) {
+            this.bone = null;
+            var model = animationController.FindModelForMesh(0);
+            if (model) {
+                for (var i = 0; i < model.bones.length; ++i) {
+                    if (model.bones[i].boneRes.name === this.name) {
+                        this.bone = model.bones[i];
+                        break;
+                    }
+                }
+            }
+            return this.bone;
+        }
+    }]);
+
+    return EveLocator;
+}();
+
+/**
+ * Locator name prefixes
+ * @type {{AUDIO: string, ATTACH: string, BOOSTER: string, TURRET: string, XL_TURRET: string}}
+ */
+
+
+EveLocator.Prefix = {
+    AUDIO: 'locator_audio',
+    ATTACH: 'locator_attach',
+    BOOSTER: 'locator_booster',
+    TURRET: 'locator_turret',
+    XL_TURRET: 'locator_xl'
 };
 
 /***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EvePlaneSet = exports.EvePlaneSetItem = exports.EvePlaneSetBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Plane set render batch
+ *
+ * @property {EvePlaneSet} planeSet
+ * @class
+ */
+var EvePlaneSetBatch = exports.EvePlaneSetBatch = function (_Tw2RenderBatch) {
+    _inherits(EvePlaneSetBatch, _Tw2RenderBatch);
+
+    function EvePlaneSetBatch() {
+        _classCallCheck(this, EvePlaneSetBatch);
+
+        var _this = _possibleConstructorReturn(this, (EvePlaneSetBatch.__proto__ || Object.getPrototypeOf(EvePlaneSetBatch)).call(this));
+
+        _this.planeSet = null;
+        return _this;
+    }
+
+    /**
+     * Commits the plan set
+     * @param {Tw2Effect} [effect] An optional override effect
+     */
+
+
+    _createClass(EvePlaneSetBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {
+            this.planeSet.Render(effect);
+        }
+    }]);
+
+    return EvePlaneSetBatch;
+}(_core.Tw2RenderBatch);
+
+/**
+ * EvePlaneSetItem
+ *
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @property {number} maskAtlasID
+ * @property {vec3} position
+ * @property {vec3} scaling
+ * @property {quat} rotation
+ * @property {vec4} color
+ * @property {vec4} layer1Transform
+ * @property {vec4} layer2Transform
+ * @property {vec4} layer1Scroll
+ * @property {vec4} layer2Scroll
+ * @class
+ */
+
+
+var EvePlaneSetItem = exports.EvePlaneSetItem = function (_EveObjectSetItem) {
+    _inherits(EvePlaneSetItem, _EveObjectSetItem);
+
+    function EvePlaneSetItem() {
+        _classCallCheck(this, EvePlaneSetItem);
+
+        var _this2 = _possibleConstructorReturn(this, (EvePlaneSetItem.__proto__ || Object.getPrototypeOf(EvePlaneSetItem)).call(this));
+
+        _this2.boneIndex = 0;
+        _this2.groupIndex = -1;
+        _this2.maskAtlasID = 0;
+        _this2.position = _math.vec3.create();
+        _this2.scaling = _math.vec3.fromValues(1, 1, 1);
+        _this2.rotation = _math.quat.create();
+        _this2.transform = _math.mat4.create();
+        _this2.color = _math.vec4.fromValues(1, 1, 1, 1);
+        _this2.layer1Transform = _math.vec4.fromValues(1, 1, 0, 0);
+        _this2.layer2Transform = _math.vec4.fromValues(1, 1, 0, 0);
+        _this2.layer1Scroll = _math.vec4.create();
+        _this2.layer2Scroll = _math.vec4.create();
+        return _this2;
+    }
+
+    /**
+     * Creates a plane set item from an object
+     * @param {*} opt
+     * @returns {EvePlaneSetItem}
+     */
+
+
+    _createClass(EvePlaneSetItem, null, [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'boneIndex', 'groupIndex', 'maskAtlasID', 'position', 'scaling', 'rotation', 'transform', 'color', 'layer1Transform', 'layer2Transform', 'layer1Scroll', 'layer2Scroll']);
+            return item;
+        }
+    }]);
+
+    return EvePlaneSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * EvePlaneSet
+ *
+ * @property {String} name
+ * @property {Array.<EvePlaneSetItem>} planes
+ * @property {Tw2Effect} effect
+ * @property {boolean} display
+ * @property {boolean} hideOnLowQuality
+ * @property {number} _time
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
+ * @property {Tw2VertexDeclaration} _decl
+ * @class
+ */
+
+
+var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
+    _inherits(EvePlaneSet, _EveObjectSet);
+
+    function EvePlaneSet() {
+        _classCallCheck(this, EvePlaneSet);
+
+        var _this3 = _possibleConstructorReturn(this, (EvePlaneSet.__proto__ || Object.getPrototypeOf(EvePlaneSet)).call(this));
+
+        _this3.effect = null;
+        _this3.hideOnLowQuality = false;
+        _this3._time = 0;
+        _this3._vertexBuffer = null;
+        _this3._indexBuffer = null;
+
+        _this3._decl = new _core.Tw2VertexDeclaration();
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 0));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 16));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 32));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 48));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 4, 64));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 4, 80));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 4, 96));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 6, _core.device.gl.FLOAT, 4, 112));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 7, _core.device.gl.FLOAT, 3, 128));
+        _this3._decl.RebuildHash();
+        return _this3;
+    }
+
+    /**
+     * Alias for this.items
+     * @returns {Array}
+     */
+
+
+    _createClass(EvePlaneSet, [{
+        key: 'GetResources',
+
+
+        /**
+         * Gets plane set res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array} {Array.<Tw2Resource>} [out]
+         */
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.effect) {
+                this.effect.GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - Delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            this._time += dt;
+
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+        }
+
+        /**
+         * Unloads the set's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._vertexBuffer) {
+                _core.device.gl.deleteBuffer(this._vertexBuffer);
+                this._vertexBuffer = null;
+            }
+
+            if (this._indexBuffer) {
+                _core.device.gl.deleteBuffer(this._indexBuffer);
+                this._indexBuffer = null;
+            }
+        }
+
+        /**
+         * Rebuilds the plane set's buffers
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            this.Unload();
+            EvePlaneSet.RebuildItems(this);
+            this._rebuildPending = false;
+            var itemCount = this._visibleItems.length;
+            if (!itemCount) return;
+
+            var vertexSize = 35,
+                mat4_0 = EvePlaneSet.global.mat4_0;
+
+            var array = new Float32Array(itemCount * 4 * vertexSize);
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i],
+                    offset = i * 4 * vertexSize;
+
+                array[offset + vertexSize - 3] = 0;
+                array[offset + vertexSize + vertexSize - 3] = 1;
+                array[offset + 2 * vertexSize + vertexSize - 3] = 2;
+                array[offset + 3 * vertexSize + vertexSize - 3] = 3;
+
+                var itemTransform = _math.mat4.fromRotationTranslationScale(mat4_0, item.rotation, item.position, item.scaling);
+
+                for (var j = 0; j < 4; ++j) {
+                    var vtxOffset = offset + j * vertexSize;
+                    array[vtxOffset] = itemTransform[0];
+                    array[vtxOffset + 1] = itemTransform[4];
+                    array[vtxOffset + 2] = itemTransform[8];
+                    array[vtxOffset + 3] = itemTransform[12];
+                    array[vtxOffset + 4] = itemTransform[1];
+                    array[vtxOffset + 5] = itemTransform[5];
+                    array[vtxOffset + 6] = itemTransform[9];
+                    array[vtxOffset + 7] = itemTransform[13];
+                    array[vtxOffset + 8] = itemTransform[2];
+                    array[vtxOffset + 9] = itemTransform[6];
+                    array[vtxOffset + 10] = itemTransform[10];
+                    array[vtxOffset + 11] = itemTransform[14];
+
+                    array[vtxOffset + 12] = item.color[0];
+                    array[vtxOffset + 13] = item.color[1];
+                    array[vtxOffset + 14] = item.color[2];
+                    array[vtxOffset + 15] = item.color[3];
+
+                    array[vtxOffset + 16] = item.layer1Transform[0];
+                    array[vtxOffset + 17] = item.layer1Transform[1];
+                    array[vtxOffset + 18] = item.layer1Transform[2];
+                    array[vtxOffset + 19] = item.layer1Transform[3];
+
+                    array[vtxOffset + 20] = item.layer2Transform[0];
+                    array[vtxOffset + 21] = item.layer2Transform[1];
+                    array[vtxOffset + 22] = item.layer2Transform[2];
+                    array[vtxOffset + 23] = item.layer2Transform[3];
+
+                    array[vtxOffset + 24] = item.layer1Scroll[0];
+                    array[vtxOffset + 25] = item.layer1Scroll[1];
+                    array[vtxOffset + 26] = item.layer1Scroll[2];
+                    array[vtxOffset + 27] = item.layer1Scroll[3];
+
+                    array[vtxOffset + 28] = item.layer2Scroll[0];
+                    array[vtxOffset + 29] = item.layer2Scroll[1];
+                    array[vtxOffset + 30] = item.layer2Scroll[2];
+                    array[vtxOffset + 31] = item.layer2Scroll[3];
+
+                    array[vtxOffset + 33] = item.boneIndex;
+                    array[vtxOffset + 34] = item.maskAtlasID;
+                }
+            }
+
+            this._vertexBuffer = _core.device.gl.createBuffer();
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
+            _core.device.gl.bufferData(_core.device.gl.ARRAY_BUFFER, array, _core.device.gl.STATIC_DRAW);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, null);
+
+            var indexes = new Uint16Array(itemCount * 6);
+            for (var _i = 0; _i < itemCount; ++_i) {
+                var _offset = _i * 6,
+                    _vtxOffset = _i * 4;
+
+                indexes[_offset] = _vtxOffset;
+                indexes[_offset + 1] = _vtxOffset + 2;
+                indexes[_offset + 2] = _vtxOffset + 1;
+                indexes[_offset + 3] = _vtxOffset;
+                indexes[_offset + 4] = _vtxOffset + 3;
+                indexes[_offset + 5] = _vtxOffset + 2;
+            }
+
+            this._indexBuffer = _core.device.gl.createBuffer();
+            _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+            _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
+            _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, null);
+            this._indexBuffer.count = itemCount * 6;
+        }
+
+        /**
+         * Gets the plane set's render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (this.display && mode === _core.device.RM_ADDITIVE && this._indexBuffer && this._visibleItems.length) {
+                var batch = new EvePlaneSetBatch();
+                batch.renderMode = _core.device.RM_ADDITIVE;
+                batch.planeSet = this;
+                batch.perObjectData = perObjectData;
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Renders the plane set
+         * @param {Tw2Effect} [effect=this.effect] optional effect override
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+
+            if (!effect || !effect.effectRes && !effect.effectRes.IsGood()) return false;
+
+            _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
+            _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 140)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawElements(_core.device.gl.TRIANGLES, this._indexBuffer.count, _core.device.gl.UNSIGNED_SHORT, 0);
+            }
+            return true;
+        }
+    }, {
+        key: 'planes',
+        get: function get() {
+            return this.items;
+        }
+
+        /**
+         * Alias for this.items
+         * @param {Array} arr
+         */
+        ,
+        set: function set(arr) {
+            this.items = arr;
+        }
+    }]);
+
+    return EvePlaneSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * The plane set's item constructor
+ * @type {EvePlaneSetItem}
+ */
+
+
+EvePlaneSet.Item = EvePlaneSetItem;
+
+/***/ }),
+/* 144 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveSpaceObjectDecal = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveSpaceObjectDecal
+ *
+ * @property {String|number} _id
+ * @property {String} name
+ * @property {boolean} display
+ * @property {Tw2Effect} decalEffect
+ * @property {Tw2Effect} pickEffect
+ * @property {Tw2GeometryRes} parentGeometry
+ * @property {number} parentBoneIndex
+ * @property {number} groupIndex
+ * @property {boolean} pickable
+ * @property {vec3} position
+ * @property {quat} rotation
+ * @property {vec3} scaling
+ * @property {mat4} decalMatrix
+ * @property {mat4} invDecalMatrix
+ * @property {Array} indexBuffer
+ * @property {*} _indexBuffer
+ * @property {Tw2PerObjectData} _perObjectData
+ * @class
+ */
+var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
+    function EveSpaceObjectDecal() {
+        _classCallCheck(this, EveSpaceObjectDecal);
+
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.decalEffect = null;
+        this.pickEffect = null;
+        this.parentGeometry = null;
+        this.parentBoneIndex = -1;
+        this.groupIndex = -1;
+        this.pickable = true;
+        this.position = _math.vec3.create();
+        this.rotation = _math.quat.create();
+        this.scaling = _math.vec3.create();
+        this.decalMatrix = _math.mat4.create();
+        this.invDecalMatrix = _math.mat4.create();
+        this.indexBuffer = [];
+        this._indexBuffer = null;
+
+        this._perObjectData = new _core.Tw2PerObjectData();
+        this._perObjectData.perObjectVSData = new _core.Tw2RawData();
+        this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
+        this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
+        this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
+        this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
+        this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
+        this._perObjectData.perObjectVSData.Create();
+
+        this._perObjectData.perObjectPSData = new _core.Tw2RawData();
+        this._perObjectData.perObjectPSData.Declare('displayData', 4);
+        this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
+        this._perObjectData.perObjectPSData.Create();
+
+        _math.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
+
+        if (!_core.variableStore._variables.u_DecalMatrix) {
+            _core.variableStore.RegisterVariables({
+                'u_DecalMatrix': _math.mat4.create(),
+                'u_InvDecalMatrix': _math.mat4.create()
+            });
+        }
+    }
+
+    /**
+     * Initializes the decal
+     */
+
+
+    _createClass(EveSpaceObjectDecal, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.OnValueChanged();
+        }
+
+        /**
+         * Fire on value changes
+         */
+
+    }, {
+        key: 'OnValueChanged',
+        value: function OnValueChanged() {
+            if (!this._indexBuffer && this.indexBuffer) {
+                var indexes = new Uint16Array(this.indexBuffer);
+                this._indexBuffer = _core.device.gl.createBuffer();
+                _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+                _core.device.gl.bufferData(_core.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _core.device.gl.STATIC_DRAW);
+            }
+
+            _math.mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
+            _math.mat4.invert(this.invDecalMatrix, this.decalMatrix);
+        }
+
+        /**
+         * Sets the parent geometry
+         * @param {Tw2GeometryRes} geometryRes
+         */
+
+    }, {
+        key: 'SetParentGeometry',
+        value: function SetParentGeometry(geometryRes) {
+            this.parentGeometry = geometryRes;
+        }
+
+        /**
+         * Sets the decal's index buffer
+         * @param {number[]} indices
+         */
+
+    }, {
+        key: 'SetIndexBuffer',
+        value: function SetIndexBuffer(indices) {
+            this.indexBuffer = indices;
+            this.Unload();
+            this.OnValueChanged();
+        }
+
+        /**
+         * Gets decal resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.parentGeometry && !out.includes(this.parentGeometry)) {
+                out.push(this.parentGeometry);
+            }
+
+            if (this.decalEffect) this.decalEffect.GetResources(out);
+            if (this.pickEffect) this.pickEffect.GetResources(out);
+            return out;
+        }
+
+        /**
+         * Unloads the decal's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._indexBuffer) {
+                _core.device.gl.deleteBuffer(this._indexBuffer);
+                this._indexBuffer = null;
+            }
+        }
+
+        /**
+         * Gets batches for rendering
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {number} [counter=0]
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData, counter) {
+            var effect = void 0;
+            switch (mode) {
+                case _core.device.RM_DECAL:
+                    effect = this.decalEffect;
+                    break;
+
+                case _core.device.RM_PICKABLE:
+                    effect = this.pickable ? this.pickEffect : null;
+                    break;
+            }
+
+            if (this.display && effect && effect.effectRes && effect.effectRes.IsGood() && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()) {
+                var batch = new _core.Tw2ForwardingRenderBatch();
+                this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
+                if (this.parentBoneIndex >= 0) {
+                    var bones = perObjectData.perObjectVSData.Get('JointMat'),
+                        offset = this.parentBoneIndex * 12;
+
+                    if (bones[offset] || bones[offset + 4] || bones[offset + 8]) {
+                        var bone = this._perObjectData.perObjectVSData.Get('parentBoneMatrix');
+                        bone[0] = bones[offset];
+                        bone[1] = bones[offset + 4];
+                        bone[2] = bones[offset + 8];
+                        bone[3] = 0;
+                        bone[4] = bones[offset + 1];
+                        bone[5] = bones[offset + 5];
+                        bone[6] = bones[offset + 9];
+                        bone[7] = 0;
+                        bone[8] = bones[offset + 2];
+                        bone[9] = bones[offset + 6];
+                        bone[10] = bones[offset + 10];
+                        bone[11] = 0;
+                        bone[12] = bones[offset + 3];
+                        bone[13] = bones[offset + 7];
+                        bone[14] = bones[offset + 11];
+                        bone[15] = 1;
+                        _math.mat4.transpose(bone, bone);
+                    }
+                }
+
+                _math.mat4.invert(this._perObjectData.perObjectVSData.Get('invWorldMatrix'), this._perObjectData.perObjectVSData.Get('worldMatrix'));
+                _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('decalMatrix'), this.decalMatrix);
+                _math.mat4.transpose(this._perObjectData.perObjectVSData.Get('invDecalMatrix'), this.invDecalMatrix);
+
+                this._perObjectData.perObjectPSData.Get('displayData')[0] = counter || 0;
+                this._perObjectData.perObjectPSData.Set('shipData', perObjectData.perObjectPSData.data);
+
+                batch.perObjectData = this._perObjectData;
+                batch.geometryProvider = this;
+                batch.renderMode = mode;
+                batch.effect = effect;
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Renders the decal
+         * @param {Tw2ForwardingRenderBatch} batch
+         * @param {Tw2Effect} [effect=batch.effect] Optional override effect
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render(batch) {
+            var effect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : batch.effect;
+
+            var bkIB = this.parentGeometry.meshes[0].indexes,
+                bkStart = this.parentGeometry.meshes[0].areas[0].start,
+                bkCount = this.parentGeometry.meshes[0].areas[0].count,
+                bkIndexType = this.parentGeometry.meshes[0].indexType;
+
+            _math.mat4.copy(_core.variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
+            _math.mat4.copy(_core.variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
+
+            this.parentGeometry.meshes[0].indexes = this._indexBuffer;
+            this.parentGeometry.meshes[0].areas[0].start = 0;
+            this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
+            this.parentGeometry.meshes[0].indexType = _core.device.gl.UNSIGNED_SHORT;
+
+            this.parentGeometry.RenderAreas(0, 0, 1, effect);
+            this.parentGeometry.meshes[0].indexes = bkIB;
+            this.parentGeometry.meshes[0].areas[0].start = bkStart;
+            this.parentGeometry.meshes[0].areas[0].count = bkCount;
+            this.parentGeometry.meshes[0].indexType = bkIndexType;
+        }
+    }]);
+
+    return EveSpaceObjectDecal;
+}();
+
+/***/ }),
 /* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveSpotlightSet = exports.EveSpotlightSetItem = exports.EveSpotlightSetBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveSpotlightSetBatch
+ *
+ * @property {EveSpotlightSet} spotlightSet
+ * @class
+ */
+var EveSpotlightSetBatch = exports.EveSpotlightSetBatch = function (_Tw2RenderBatch) {
+    _inherits(EveSpotlightSetBatch, _Tw2RenderBatch);
+
+    function EveSpotlightSetBatch() {
+        _classCallCheck(this, EveSpotlightSetBatch);
+
+        var _this = _possibleConstructorReturn(this, (EveSpotlightSetBatch.__proto__ || Object.getPrototypeOf(EveSpotlightSetBatch)).call(this));
+
+        _this.spotlightSet = null;
+        return _this;
+    }
+
+    /**
+     * Commits the spotlight set for rendering
+     * @param {Tw2Effect} [effect] Optional override effect
+     */
+
+
+    _createClass(EveSpotlightSetBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {
+            this.spotlightSet.RenderCones(effect);
+            this.spotlightSet.RenderGlow(effect);
+        }
+    }]);
+
+    return EveSpotlightSetBatch;
+}(_core.Tw2RenderBatch);
+
+/**
+ * Spotlight Item
+ *
+ * @property {mat4} transform               - The spotlight's transform
+ * @property {vec4} coneColor               - Colour of the spotlight's cone
+ * @property {vec4} spriteColor             - Colour of the spotlight's sprite texture
+ * @property {vec4} flareColor              - Colour of the spotlight's flare
+ * @property {vec4} spriteScale             - The size of the spotlight
+ * @property {number} boosterGainInfluence  - If true, the spotlight can change size on booster gain
+ * @property {number} boneIndex             - The spotlight's bone index
+ * @property {number} groupIndex            - The sof faction group that the spotlight belongs to
+ * @property {number} coneIntensity         - Scales the spotlight's cone colour, set by an object's sof Faction
+ * @property {number} spriteIntensity       - Scales the spotlight's sprite colour, set by an object's sof Faction
+ * @property {number} flareIntensity        - Scales the spotlight's flare colour, set by an object's sof Faction
+ * @class
+ */
+
+
+var EveSpotlightSetItem = exports.EveSpotlightSetItem = function (_EveObjectSetItem) {
+    _inherits(EveSpotlightSetItem, _EveObjectSetItem);
+
+    function EveSpotlightSetItem() {
+        _classCallCheck(this, EveSpotlightSetItem);
+
+        var _this2 = _possibleConstructorReturn(this, (EveSpotlightSetItem.__proto__ || Object.getPrototypeOf(EveSpotlightSetItem)).call(this));
+
+        _this2.transform = _math.mat4.create();
+        _this2.coneColor = _math.vec4.create();
+        _this2.spriteColor = _math.vec4.create();
+        _this2.flareColor = _math.vec4.create();
+        _this2.spriteScale = _math.vec3.fromValues(1, 1, 1);
+        _this2.boosterGainInfluence = 0;
+        _this2.boneIndex = 0;
+        _this2.groupIndex = -1;
+        _this2.coneIntensity = 0;
+        _this2.spriteIntensity = 0;
+        _this2.flareIntensity = 0;
+        return _this2;
+    }
+
+    /**
+     * Creates a spotlight set item from an object
+     * @param {*} [opt={}
+     * @returns {EveSpotlightSetItem}
+     */
+
+
+    _createClass(EveSpotlightSetItem, null, [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'boosterGainInfluence', 'boneIndex', 'groupIndex', 'coneIntensity', 'spriteIntensity', 'flareIntensity', 'transform', 'coneColor', 'spriteColor', 'flareColor', 'spriteScale']);
+            return item;
+        }
+    }]);
+
+    return EveSpotlightSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * EveSpotlightSet
+ *
+ * @property {string} name                               - The spotlight set's name
+ * @property {boolean} display                           - controls the visibility of the spotlight set, and all it's children
+ * @property {Tw2Effect} coneEffect                      - The spotlight set's cone effect
+ * @property {Tw2Effect} glowEffect                      - The spotlight set's glow effect
+ * @property {Array.<EveSpotlightSetItem) spotlightItems - The spotlight set's children
+ * @property {WebGLBuffer} _coneVertexBuffer             - Webgl buffer for the spotlight set's cone vertices
+ * @property {WebGLBuffer} _spriteVertexBuffer           - Webgl buffer for the spotlight set's sprite/glow vertices
+ * @property {WebGLBuffer} _indexBuffer                  - Webgl buffer for the spotlight set
+ * @property {Tw2VertexDeclaration} _decl                - The spotlight set's vertex declarations
+ * @class
+ */
+
+
+var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
+    _inherits(EveSpotlightSet, _EveObjectSet);
+
+    function EveSpotlightSet() {
+        _classCallCheck(this, EveSpotlightSet);
+
+        var _this3 = _possibleConstructorReturn(this, (EveSpotlightSet.__proto__ || Object.getPrototypeOf(EveSpotlightSet)).call(this));
+
+        _this3.coneEffect = null;
+        _this3.glowEffect = null;
+        _this3._coneVertexBuffer = null;
+        _this3._spriteVertexBuffer = null;
+        _this3._indexBuffer = null;
+
+        _this3._decl = new _core.Tw2VertexDeclaration();
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 0));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 16));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 4, 32));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 4, 48));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 3, 64));
+        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 3, 76));
+        _this3._decl.RebuildHash();
+
+        return _this3;
+    }
+
+    /**
+     * Alias for this.items
+     * @returns {Array}
+     */
+
+
+    _createClass(EveSpotlightSet, [{
+        key: 'GetResources',
+
+
+        /**
+         * Gets the spotlight set's resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.coneEffect) {
+                this.coneEffect.GetResources(out);
+            }
+
+            if (this.glowEffect) {
+                this.glowEffect.GetResources(out);
+            }
+
+            return out;
+        }
+
+        /**
+         * Unloads the spotlight set's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._coneVertexBuffer) {
+                _core.device.gl.deleteBuffer(this._coneVertexBuffer);
+                this._coneVertexBuffer = null;
+            }
+
+            if (this._spriteVertexBuffer) {
+                _core.device.gl.deleteBuffer(this._spriteVertexBuffer);
+                this._spriteVertexBuffer = null;
+            }
+
+            if (this._indexBuffer) {
+                _core.device.gl.deleteBuffer(this._indexBuffer);
+                this._indexBuffer = null;
+            }
+        }
+
+        /**
+         * Rebuilds the spotlight set's buffers
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            this.Unload();
+            EveSpotlightSet.RebuildItems(this);
+            this._rebuildPending = false;
+            var itemCount = this._visibleItems.length;
+            if (!itemCount) return;
+
+            var d = _core.device,
+                vertCount = 4,
+                coneQuadCount = 4,
+                coneVertexCount = itemCount * coneQuadCount * vertCount,
+                vertexSize = 22,
+                coneIndices = [1, 0, 2, 3],
+                coneArray = new Float32Array(coneVertexCount * vertexSize);
+
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i];
+                for (var q = 0; q < coneQuadCount; ++q) {
+                    for (var v = 0; v < vertCount; ++v) {
+                        var offset = (i * coneQuadCount * vertCount + vertCount * q + v) * vertexSize;
+                        coneArray[offset] = item.coneColor[0] * item.coneIntensity;
+                        coneArray[offset + 1] = item.coneColor[1] * item.coneIntensity;
+                        coneArray[offset + 2] = item.coneColor[2] * item.coneIntensity;
+                        coneArray[offset + 3] = item.coneColor[3];
+
+                        coneArray[offset + 4] = item.transform[0];
+                        coneArray[offset + 5] = item.transform[4];
+                        coneArray[offset + 6] = item.transform[8];
+                        coneArray[offset + 7] = item.transform[12];
+
+                        coneArray[offset + 8] = item.transform[1];
+                        coneArray[offset + 9] = item.transform[5];
+                        coneArray[offset + 10] = item.transform[9];
+                        coneArray[offset + 11] = item.transform[13];
+
+                        coneArray[offset + 12] = item.transform[2];
+                        coneArray[offset + 13] = item.transform[6];
+                        coneArray[offset + 14] = item.transform[10];
+                        coneArray[offset + 15] = item.transform[14];
+
+                        coneArray[offset + 16] = 1;
+                        coneArray[offset + 17] = 1;
+                        coneArray[offset + 18] = 1;
+
+                        coneArray[offset + 19] = q * vertCount + coneIndices[v];
+                        coneArray[offset + 20] = item.boneIndex;
+                        coneArray[offset + 21] = item.boosterGainInfluence ? 255 : 0;
+                    }
+                }
+            }
+
+            this._coneVertexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._coneVertexBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, coneArray, d.gl.STATIC_DRAW);
+            this._coneVertexBuffer.count = itemCount * coneQuadCount * 6;
+
+            var spriteQuadCount = 2,
+                spriteVertexCount = itemCount * spriteQuadCount * vertCount,
+                spriteArray = new Float32Array(spriteVertexCount * vertexSize),
+                spriteIndexes = [1, 0, 2, 3];
+
+            for (var _i = 0; _i < itemCount; ++_i) {
+                var _item = this._visibleItems[_i];
+                for (var _q = 0; _q < spriteQuadCount; ++_q) {
+                    for (var _v = 0; _v < vertCount; ++_v) {
+                        var _offset = (_i * spriteQuadCount * vertCount + vertCount * _q + _v) * vertexSize;
+                        if (_q % 2 === 0) {
+                            spriteArray[_offset] = _item.spriteColor[0] * _item.spriteIntensity;
+                            spriteArray[_offset + 1] = _item.spriteColor[1] * _item.spriteIntensity;
+                            spriteArray[_offset + 2] = _item.spriteColor[2] * _item.spriteIntensity;
+                            spriteArray[_offset + 3] = _item.spriteColor[3];
+
+                            spriteArray[_offset + 16] = _item.spriteScale[0];
+                            spriteArray[_offset + 17] = 1;
+                            spriteArray[_offset + 18] = 1;
+                        } else {
+                            spriteArray[_offset] = _item.flareColor[0] * _item.flareIntensity;
+                            spriteArray[_offset + 1] = _item.flareColor[1] * _item.flareIntensity;
+                            spriteArray[_offset + 2] = _item.flareColor[2] * _item.flareIntensity;
+                            spriteArray[_offset + 3] = _item.flareColor[3];
+
+                            spriteArray[_offset + 16] = 1;
+                            spriteArray[_offset + 17] = _item.spriteScale[1];
+                            spriteArray[_offset + 18] = _item.spriteScale[2];
+                        }
+
+                        spriteArray[_offset + 4] = _item.transform[0];
+                        spriteArray[_offset + 5] = _item.transform[4];
+                        spriteArray[_offset + 6] = _item.transform[8];
+                        spriteArray[_offset + 7] = _item.transform[12];
+
+                        spriteArray[_offset + 8] = _item.transform[1];
+                        spriteArray[_offset + 9] = _item.transform[5];
+                        spriteArray[_offset + 10] = _item.transform[9];
+                        spriteArray[_offset + 11] = _item.transform[13];
+
+                        spriteArray[_offset + 12] = _item.transform[2];
+                        spriteArray[_offset + 13] = _item.transform[6];
+                        spriteArray[_offset + 14] = _item.transform[10];
+                        spriteArray[_offset + 15] = _item.transform[14];
+
+                        spriteArray[_offset + 19] = _q * vertCount + spriteIndexes[_v];
+                        spriteArray[_offset + 20] = _item.boneIndex;
+                        spriteArray[_offset + 21] = _item.boosterGainInfluence ? 255 : 0;
+                    }
+                }
+            }
+
+            this._spriteVertexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._spriteVertexBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, spriteArray, d.gl.STATIC_DRAW);
+            this._spriteVertexBuffer.count = itemCount * spriteQuadCount * 6;
+
+            var indexes = new Uint16Array(itemCount * coneQuadCount * 6);
+            for (var _i2 = 0; _i2 < itemCount * coneQuadCount; ++_i2) {
+                var _offset2 = _i2 * 6,
+                    vtxOffset = _i2 * 4;
+
+                indexes[_offset2] = vtxOffset;
+                indexes[_offset2 + 1] = vtxOffset + 1;
+                indexes[_offset2 + 2] = vtxOffset + 2;
+                indexes[_offset2 + 3] = vtxOffset + 2;
+                indexes[_offset2 + 4] = vtxOffset + 3;
+                indexes[_offset2 + 5] = vtxOffset;
+            }
+
+            this._indexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+            d.gl.bufferData(d.gl.ELEMENT_ARRAY_BUFFER, indexes, d.gl.STATIC_DRAW);
+            d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, null);
+            this._indexBuffer.count = itemCount;
+        }
+
+        /**
+         * Gets the spotlight set's render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData) {
+            if (this.display && mode === _core.device.RM_ADDITIVE && this._indexBuffer && this._indexBuffer.count) {
+                var batch = new EveSpotlightSetBatch();
+                batch.renderMode = _core.device.RM_ADDITIVE;
+                batch.spotlightSet = this;
+                batch.perObjectData = perObjectData;
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Renders the spotlight set's cone effect
+         * @param {Tw2Effect} [effect=this.coneEffect] - An optional argument to override the cone's effect
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RenderCones',
+        value: function RenderCones() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.coneEffect;
+
+            return EveSpotlightSet.Render(this, effect, this._coneVertexBuffer);
+        }
+
+        /**
+         * Renders the spotlight set's glow effect
+         * @param {Tw2Effect} [effect=this.glowEffect] - An optional argument to override the glow's effect
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RenderGlow',
+        value: function RenderGlow() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.glowEffect;
+
+            return EveSpotlightSet.Render(this, effect, this._spriteVertexBuffer);
+        }
+
+        /**
+         * Internal render function
+         * @param {EveSpotlightSet} spotlightSet
+         * @param {Tw2Effect} effect   - The Tw2Effect to render
+         * @param {WebGLBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
+         * @returns {boolean}
+         * @private
+         */
+
+    }, {
+        key: 'spotlightItems',
+        get: function get() {
+            return this.items;
+        }
+
+        /**
+         * Alias for this.items
+         * @param {Array} arr
+         */
+        ,
+        set: function set(arr) {
+            this.items = arr;
+        }
+    }], [{
+        key: 'Render',
+        value: function Render(spotlightSet, effect, buffer) {
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !buffer) return false;
+
+            var stride = 22 * 4;
+            _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, buffer);
+            _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, spotlightSet._indexBuffer);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                if (!spotlightSet._decl.SetDeclaration(effect.GetPassInput(pass), stride)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawElements(_core.device.gl.TRIANGLES, buffer['count'], _core.device.gl.UNSIGNED_SHORT, 0);
+            }
+            return true;
+        }
+    }]);
+
+    return EveSpotlightSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * Spotlight set item constructor
+ * @type {EveSpotlightSetItem}
+ */
+
+
+EveSpotlightSet.Item = EveSpotlightSetItem;
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveSpriteSet = exports.EveSpriteSetItem = exports.EveSpriteSetBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Sprite set render batch
+ *
+ * @property {boolean} boosterGlow
+ * @property {EveSpriteSet} spriteSet
+ * @property {mat4} world
+ * @property {number}
+ * @property {number}
+ * @class
+ */
+var EveSpriteSetBatch = exports.EveSpriteSetBatch = function (_Tw2RenderBatch) {
+    _inherits(EveSpriteSetBatch, _Tw2RenderBatch);
+
+    function EveSpriteSetBatch() {
+        _classCallCheck(this, EveSpriteSetBatch);
+
+        var _this = _possibleConstructorReturn(this, (EveSpriteSetBatch.__proto__ || Object.getPrototypeOf(EveSpriteSetBatch)).call(this));
+
+        _this.boosterGlow = false;
+        _this.spriteSet = null;
+        _this.world = null;
+        _this.boosterGain = 0;
+        _this.warpIntensity = 0;
+        return _this;
+    }
+
+    /**
+     * Commits the sprite set
+     * @param {Tw2Effect} [effect] An optional override effect
+     */
+
+
+    _createClass(EveSpriteSetBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {
+            if (this.boosterGlow) {
+                this.spriteSet.RenderBoosterGlow(effect, this.world, this.boosterGain, this.warpIntensity);
+            } else {
+                this.spriteSet.Render(effect, this.world, this.perObjectData);
+            }
+        }
+    }]);
+
+    return EveSpriteSetBatch;
+}(_core.Tw2RenderBatch);
+
+/**
+ * EveSpriteSetItem
+ *
+ * @property {vec3} position
+ * @property {number} blinkRate
+ * @property {number} blinkPhase
+ * @property {number} minScale
+ * @property {number} maxScale
+ * @property {number} falloff
+ * @property {vec4} color
+ * @property {vec4} warpColor
+ * @property {number} boneIndex
+ * @property {number} groupIndex
+ * @class
+ */
+
+
+var EveSpriteSetItem = exports.EveSpriteSetItem = function (_EveObjectSetItem) {
+    _inherits(EveSpriteSetItem, _EveObjectSetItem);
+
+    function EveSpriteSetItem() {
+        _classCallCheck(this, EveSpriteSetItem);
+
+        var _this2 = _possibleConstructorReturn(this, (EveSpriteSetItem.__proto__ || Object.getPrototypeOf(EveSpriteSetItem)).call(this));
+
+        _this2.position = _math.vec3.create();
+        _this2.blinkRate = 0;
+        _this2.blinkPhase = 0;
+        _this2.minScale = 1;
+        _this2.maxScale = 1;
+        _this2.falloff = 0;
+        _this2.color = _math.vec4.create();
+        _this2.warpColor = _math.vec4.create();
+        _this2.boneIndex = 0;
+        _this2.groupIndex = -1;
+        return _this2;
+    }
+
+    /**
+     * Creates a sprite set item from an object
+     * @param {*} [opt={}]
+     * @returns {EveSpriteSetItem}
+     */
+
+
+    _createClass(EveSpriteSetItem, null, [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'blinkRate', 'blinkPhase', 'minScale', 'maxScale', 'falloff', 'boneIndex', 'groupIndex', 'position', 'color', 'warpColor']);
+            return item;
+        }
+    }]);
+
+    return EveSpriteSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * EveSpriteSet
+ *
+ * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
+ * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
+ * @property {Tw2Effect} effect
+ * @property {?boolean} useQuads - Use quad rendering (CPU transform)
+ * @property {?boolean} isSkinned - Use bone transforms (when useQuads is true)
+ * @property {number} _time
+ * @property {WebGLBuffer} _vertexBuffer
+ * @property {WebGLBuffer} _indexBuffer
+ * @property {Tw2VertexDeclaration} _decl
+ */
+
+
+var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
+    _inherits(EveSpriteSet, _EveObjectSet);
+
+    function EveSpriteSet() {
+        var useQuads = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        var isSkinned = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+        _classCallCheck(this, EveSpriteSet);
+
+        var _this3 = _possibleConstructorReturn(this, (EveSpriteSet.__proto__ || Object.getPrototypeOf(EveSpriteSet)).call(this));
+
+        _this3.effect = null;
+        _this3.useQuads = null;
+        _this3.isSkinned = null;
+        _this3._time = 0;
+        _this3._vertexBuffer = null;
+        _this3._indexBuffer = null;
+        _this3._instanceBuffer = null;
+        _this3._decl = _this3._decl = new _core.Tw2VertexDeclaration();
+        _this3._vdecl = new _core.Tw2VertexDeclaration();
+        _this3._vdecl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 1, 0));
+        _this3._vdecl.RebuildHash();
+
+        _this3.UseQuads(useQuads, isSkinned);
+        return _this3;
+    }
+
+    /**
+     * Alias for this.items
+     * @returns {Array}
+     */
+
+
+    _createClass(EveSpriteSet, [{
+        key: 'UseQuads',
+
+
+        /**
+         * Use instanced rendering or 'quad' rendering
+         * @param {boolean} useQuads      - Use quad rendering (CPU transform)
+         * @param {boolean} isSkinned     - Use bone transforms (when useQuads is true)
+         */
+        value: function UseQuads(useQuads, isSkinned) {
+            if (this.useQuads === useQuads) return;
+
+            this.useQuads = useQuads;
+            this.isSkinned = isSkinned;
+
+            this._decl.elements.splice(0, this._decl.elements.length);
+            if (!useQuads) {
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 5, _core.device.gl.FLOAT, 2, 0));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 8));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 3, 20));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 1, 32));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 1, 36));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 2, _core.device.gl.FLOAT, 1, 40));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 3, _core.device.gl.FLOAT, 1, 44));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 4, _core.device.gl.FLOAT, 1, 48));
+            } else {
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_POSITION, 0, _core.device.gl.FLOAT, 3, 0));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 0, _core.device.gl.FLOAT, 4, 12));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2, 28));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 0, _core.device.gl.FLOAT, 4, 36));
+                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_COLOR, 1, _core.device.gl.FLOAT, 4, 52));
+            }
+
+            this._decl.RebuildHash();
+            this._rebuildPending = true;
+        }
+
+        /**
+         * Gets Sprite Set Resource Objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.effect) {
+                this.effect.GetResources(out);
+            }
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - Delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            this._time += dt;
+
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+        }
+
+        /**
+         * Unloads the sprite set's buffers
+         */
+
+    }, {
+        key: 'Unload',
+        value: function Unload() {
+            if (this._vertexBuffer) {
+                _core.device.gl.deleteBuffer(this._vertexBuffer);
+                this._vertexBuffer = null;
+            }
+
+            // Standard
+            if (this._indexBuffer) {
+                _core.device.gl.deleteBuffer(this._indexBuffer);
+                this._indexBuffer = null;
+            }
+
+            // Quad
+            if (this._instanceBuffer) {
+                _core.device.gl.deleteBuffer(this._instanceBuffer);
+                this._instanceBuffer = null;
+            }
+        }
+
+        /**
+         * Rebuilds the sprite set's buffers
+         */
+
+    }, {
+        key: 'Rebuild',
+        value: function Rebuild() {
+            this.constructor.RebuildItems(this);
+            this._rebuildPending = false;
+            var itemCount = this._visibleItems.length;
+            if (!itemCount) return;
+
+            var d = _core.device;
+
+            if (this.useQuads) {
+                this._vertexBuffer = d.gl.createBuffer();
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+                d.gl.bufferData(d.gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), d.gl.STATIC_DRAW);
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+                this._instanceBuffer = d.gl.createBuffer();
+                return;
+            }
+
+            var vertexSize = 13,
+                array = new Float32Array(itemCount * 4 * vertexSize);
+
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i],
+                    offset = i * 4 * vertexSize;
+
+                array[offset] = 0;
+                array[offset + vertexSize] = 1;
+                array[offset + 2 * vertexSize] = 2;
+                array[offset + 3 * vertexSize] = 3;
+
+                for (var j = 0; j < 4; ++j) {
+                    var vtxOffset = offset + j * vertexSize;
+                    array[vtxOffset + 1] = item.boneIndex;
+                    array[vtxOffset + 2] = item.position[0];
+                    array[vtxOffset + 3] = item.position[1];
+                    array[vtxOffset + 4] = item.position[2];
+                    array[vtxOffset + 5] = item.color[0];
+                    array[vtxOffset + 6] = item.color[1];
+                    array[vtxOffset + 7] = item.color[2];
+                    array[vtxOffset + 8] = item.blinkPhase;
+                    array[vtxOffset + 9] = item.blinkRate;
+                    array[vtxOffset + 10] = item.minScale;
+                    array[vtxOffset + 11] = item.maxScale;
+                    array[vtxOffset + 12] = item.falloff;
+                }
+            }
+
+            this._vertexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.STATIC_DRAW);
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+
+            var indexes = new Uint16Array(itemCount * 6);
+            for (var _i = 0; _i < itemCount; ++_i) {
+                var _offset = _i * 6,
+                    _vtxOffset = _i * 4;
+
+                indexes[_offset] = _vtxOffset;
+                indexes[_offset + 1] = _vtxOffset + 2;
+                indexes[_offset + 2] = _vtxOffset + 1;
+                indexes[_offset + 3] = _vtxOffset;
+                indexes[_offset + 4] = _vtxOffset + 3;
+                indexes[_offset + 5] = _vtxOffset + 2;
+            }
+
+            this._indexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+            d.gl.bufferData(d.gl.ELEMENT_ARRAY_BUFFER, indexes, d.gl.STATIC_DRAW);
+            d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, null);
+            this._indexBuffer.count = itemCount * 6;
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {mat4} world
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData, world) {
+            if (this.display && mode === _core.device.RM_ADDITIVE && this._vertexBuffer && this._visibleItems.length) {
+                var batch = new EveSpriteSetBatch();
+                batch.world = world;
+                batch.renderMode = _core.device.RM_ADDITIVE;
+                batch.spriteSet = this;
+                batch.perObjectData = perObjectData;
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Gets render batches for booster glows
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {mat4} world
+         * @param {Number} boosterGain
+         * @param {Number} warpIntensity
+         */
+
+    }, {
+        key: 'GetBoosterGlowBatches',
+        value: function GetBoosterGlowBatches(mode, accumulator, perObjectData, world, boosterGain, warpIntensity) {
+            if (this.display && mode === _core.device.RM_ADDITIVE && this._vertexBuffer && this._visibleItems.length) {
+                var batch = new EveSpriteSetBatch();
+                batch.boosterGlow = true;
+                batch.world = world;
+                batch.boosterGain = boosterGain;
+                batch.warpIntensity = warpIntensity;
+                batch.renderMode = _core.device.RM_ADDITIVE;
+                batch.spriteSet = this;
+                batch.perObjectData = perObjectData;
+                accumulator.Commit(batch);
+            }
+        }
+
+        /**
+         * Renders the sprite set
+         * @param {Tw2Effect} [effect=this.effect] Optional override effect
+         * @param {mat4} world
+         * @param {Tw2PerObjectData} perObjectData
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+            var world = arguments[1];
+            var perObjectData = arguments[2];
+
+            if (this.useQuads) {
+                return this.RenderQuads(effect, world, perObjectData);
+            }
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._indexBuffer) return false;
+
+            _core.device.SetStandardStates(_core.device.RM_ADDITIVE);
+            _core.device.gl.bindBuffer(_core.device.gl.ARRAY_BUFFER, this._vertexBuffer);
+            _core.device.gl.bindBuffer(_core.device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 52)) return false;
+                _core.device.ApplyShadowState();
+                _core.device.gl.drawElements(_core.device.gl.TRIANGLES, this._indexBuffer.count, _core.device.gl.UNSIGNED_SHORT, 0);
+            }
+            return true;
+        }
+
+        /**
+         * Renders the sprite set as booster glow
+         * @param {Tw2Effect} [effect=this.effect] optional override effect
+         * @param {mat4} world
+         * @param {Number} boosterGain
+         * @param {Number} warpIntensity
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RenderBoosterGlow',
+        value: function RenderBoosterGlow() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+            var world = arguments[1];
+            var boosterGain = arguments[2];
+            var warpIntensity = arguments[3];
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+
+            var d = _core.device,
+                pos = _EveObjectSet2.EveObjectSet.global.vec3_0,
+                itemCount = this._visibleItems.length,
+                array = new Float32Array(17 * itemCount);
+
+            d.SetStandardStates(d.RM_ADDITIVE);
+
+            var index = 0;
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i];
+                _math.vec3.transformMat4(pos, item.position, world);
+                array[index++] = pos[0];
+                array[index++] = pos[1];
+                array[index++] = pos[2];
+                array[index++] = world[8];
+                array[index++] = item.blinkPhase;
+                array[index++] = world[9];
+                array[index++] = item.minScale;
+                array[index++] = item.maxScale;
+                array[index++] = world[10];
+                array[index++] = item.color[0];
+                array[index++] = item.color[1];
+                array[index++] = item.color[2];
+                array[index++] = boosterGain;
+                array[index++] = item.warpColor[0];
+                array[index++] = item.warpColor[1];
+                array[index++] = item.warpColor[2];
+                array[index++] = warpIntensity;
+            }
+
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                var passInput = effect.GetPassInput(pass);
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+                this._vdecl.SetPartialDeclaration(passInput, 4);
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+                var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
+                d.ApplyShadowState();
+                d.ext.drawArraysInstanced(d.gl.TRIANGLES, 0, 6, itemCount);
+                this._decl.ResetInstanceDivisors(resetData);
+            }
+
+            return true;
+        }
+
+        /**
+         * Renders the sprite set with pre-transformed quads
+         * @param {Tw2Effect} [effect=this.effect] optional override effect
+         * @param {mat4} world
+         * @param {Tw2PerObjectData} perObjectData
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RenderQuads',
+        value: function RenderQuads() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+            var world = arguments[1];
+            var perObjectData = arguments[2];
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+
+            var d = _core.device,
+                itemCount = this._visibleItems.length,
+                array = new Float32Array(17 * itemCount),
+                pos = _EveObjectSet2.EveObjectSet.global.vec3_0,
+                bones = perObjectData.perObjectVSData.Get('JointMat');
+
+            d.SetStandardStates(d.RM_ADDITIVE);
+
+            var index = 0;
+            for (var i = 0; i < itemCount; ++i) {
+                var item = this._visibleItems[i];
+                if (this.isSkinned) {
+                    var offset = item.boneIndex * 12;
+                    pos[0] = bones[offset] * item.position[0] + bones[offset + 1] * item.position[1] + bones[offset + 2] * item.position[2] + bones[offset + 3];
+                    pos[1] = bones[offset + 4] * item.position[0] + bones[offset + 5] * item.position[1] + bones[offset + 6] * item.position[2] + bones[offset + 7];
+                    pos[2] = bones[offset + 8] * item.position[0] + bones[offset + 9] * item.position[1] + bones[offset + 10] * item.position[2] + bones[offset + 11];
+                    _math.vec3.transformMat4(pos, pos, world);
+                } else {
+                    _math.vec3.transformMat4(pos, item.position, world);
+                }
+
+                array[index++] = pos[0];
+                array[index++] = pos[1];
+                array[index++] = pos[2];
+                array[index++] = 1;
+                array[index++] = item.blinkPhase;
+                array[index++] = item.blinkRate;
+                array[index++] = item.minScale;
+                array[index++] = item.maxScale;
+                array[index++] = item.falloff;
+                array[index++] = item.color[0];
+                array[index++] = item.color[1];
+                array[index++] = item.color[2];
+                array[index++] = 1;
+                array[index++] = item.warpColor[0];
+                array[index++] = item.warpColor[1];
+                array[index++] = item.warpColor[2];
+                array[index++] = 1;
+            }
+
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
+
+            for (var pass = 0; pass < effect.GetPassCount(); ++pass) {
+                effect.ApplyPass(pass);
+                var passInput = effect.GetPassInput(pass);
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+                this._vdecl.SetPartialDeclaration(passInput, 4);
+                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+                var resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
+                d.ApplyShadowState();
+                d.ext.drawArraysInstanced(d.gl.TRIANGLES, 0, 6, itemCount);
+                this._decl.ResetInstanceDivisors(resetData);
+            }
+
+            return true;
+        }
+    }, {
+        key: 'sprites',
+        get: function get() {
+            return this.items;
+        }
+
+        /**
+         * Alias for this.items
+         * @param {Array} arr
+         */
+        ,
+        set: function set(arr) {
+            this.items = arr;
+        }
+    }]);
+
+    return EveSpriteSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * The sprite set's item constructor
+ * @type {EveSpriteSetItem}
+ */
+
+
+EveSpriteSet.Item = EveSpriteSetItem;
+
+/***/ }),
+/* 147 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveTurretSet = exports.EveTurretSetItem = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObjectSet2 = __webpack_require__(8);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveTurretSetItem
+ *
+ * @property {?Tw2Bone} bone                - The bone the turret is on
+ * @property {boolean} isJoint              - Identifies if the turret is on a joint
+ * @property {?string} locatorName          - The item's locator name
+ * @property {boolean} updateFromLocator    - Allows the turret to be updated from a locator's transforms
+ * @property {boolean} canFireWhenHidden    - Enables firing effects when hidden
+ * @property {vec3} position                - The turret's position
+ * @property {quat} rotation                - The turret's rotation
+ * @property {mat4} _localTransform         - The turret's local transform
+ * @property {quat} _localRotation          - the turret's local rotation
+ */
+var EveTurretSetItem = exports.EveTurretSetItem = function (_EveObjectSetItem) {
+    _inherits(EveTurretSetItem, _EveObjectSetItem);
+
+    function EveTurretSetItem() {
+        _classCallCheck(this, EveTurretSetItem);
+
+        var _this = _possibleConstructorReturn(this, (EveTurretSetItem.__proto__ || Object.getPrototypeOf(EveTurretSetItem)).call(this));
+
+        _this.bone = null;
+        _this.locatorName = null;
+        _this.updateFromLocator = false;
+        _this.canFireWhenHidden = false;
+        _this.position = _math.vec3.create();
+        _this.rotation = _math.quat.create();
+        _this._localTransform = _math.mat4.create();
+        _this._localRotation = _math.quat.create();
+        return _this;
+    }
+
+    /**
+     * Updates the turret's transforms
+     */
+
+
+    _createClass(EveTurretSetItem, [{
+        key: 'UpdateTransforms',
+        value: function UpdateTransforms() {
+            _math.mat4.fromRotationTranslation(this._localTransform, this.rotation, this.position);
+
+            if (this.bone) {
+                _math.mat4.multiply(this._localTransform, this.bone.offsetTransform, this._localTransform);
+                _math.mat4.getRotation(this._localRotation, this._localTransform);
+            } else {
+                _math.quat.copy(this._localRotation, this.rotation);
+            }
+        }
+
+        /**
+         * Creates a turret item from an object
+         * @param {*} [opt={}]
+         * @returns {EveTurretSetItem}
+         */
+
+    }], [{
+        key: 'create',
+        value: function create() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            var item = new this();
+            _math.util.assignIfExists(item, opt, ['name', 'display', 'locatorName', 'updateFromLocator', 'position', 'rotation', 'bone', 'canFireWhenHidden']);
+            item.UpdateTransforms();
+            return item;
+        }
+    }]);
+
+    return EveTurretSetItem;
+}(_EveObjectSet2.EveObjectSetItem);
+
+/**
+ * EveTurretSet
+ *
+ * @property {Array.<EveTurretData>} turrets
+ * @property {Tw2AnimationController} activeAnimation
+ * @property {Tw2AnimationController} inactiveAnimation
+ * @property {string} geometryResPath
+ * @property {Tw2GeometryRes} geometryResource
+ * @property {number} bottomClipHeight
+ * @property {string} locatorName
+ * @property {Tw2Effect} turretEffect
+ * @property {vec3} targetPosition
+ * @property {number} sysBoneHeight
+ * @property {string} firingEffectResPath
+ * @property {EveTurretFiringFX} firingEffect
+ * @property {number} state
+ * @property {boolean} hasCyclingFiringPos
+ * @property {mat4} parentMatrix
+ * @property {quat} boundingSphere
+ * @property {number} _activeTurret
+ * @property {number} _recheckTimeLeft
+ * @property {number} _currentCyclingFiresPos
+ * @property {Tw2PerObjectData} _perObjectDataActive
+ * @property {Tw2PerObjectData} _perObjectDataInactive
+ * @property {boolean} _locatorRebuildPending
+ * @class
+ */
+
+
+var EveTurretSet = exports.EveTurretSet = function (_EveObjectSet) {
+    _inherits(EveTurretSet, _EveObjectSet);
+
+    function EveTurretSet() {
+        _classCallCheck(this, EveTurretSet);
+
+        var _this2 = _possibleConstructorReturn(this, (EveTurretSet.__proto__ || Object.getPrototypeOf(EveTurretSet)).call(this));
+
+        _this2.visible = {};
+        _this2.visible.turrets = true;
+        _this2.visible.firingEffects = true;
+        _this2.activeAnimation = new _core.Tw2AnimationController();
+        _this2.inactiveAnimation = new _core.Tw2AnimationController();
+        _this2.geometryResPath = '';
+        _this2.geometryResource = null;
+        _this2.turretEffect = null;
+        _this2.firingEffectResPath = '';
+        _this2.firingEffect = null;
+        _this2.fireCallback = null;
+        _this2.fireCallbackPending = false;
+        _this2.state = EveTurretSet.State.IDLE;
+        _this2.bottomClipHeight = 0;
+        _this2.locatorName = '';
+        _this2.sysBoneHeight = 0;
+        _this2.hasCyclingFiringPos = false;
+        _this2.targetPosition = _math.vec3.create();
+        _this2.parentMatrix = _math.mat4.create();
+        _this2.boundingSphere = _math.quat.create();
+        _this2._activeTurret = -1;
+        _this2._recheckTimeLeft = 0;
+        _this2._currentCyclingFiresPos = 0;
+
+        _this2._perObjectDataActive = new _core.Tw2PerObjectData();
+        _this2._perObjectDataActive.perObjectVSData = new _core.Tw2RawData();
+        _this2._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
+        _this2._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
+        _this2._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
+        _this2._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
+        _this2._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
+        _this2._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
+        _this2._perObjectDataActive.perObjectVSData.Create();
+
+        _this2._perObjectDataInactive = new _core.Tw2PerObjectData();
+        _this2._perObjectDataInactive.perObjectVSData = new _core.Tw2RawData();
+        _this2._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
+        _this2._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
+        _this2._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
+        _this2._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
+        _this2._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
+        _this2._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
+        _this2._perObjectDataInactive.perObjectVSData.Create();
+
+        _this2._locatorRebuildPending = true;
+        return _this2;
+    }
+
+    /**
+     * Alias for this.items
+     * @returns {Array}
+     */
+
+
+    _createClass(EveTurretSet, [{
+        key: 'Initialize',
+
+
+        /**
+         * Initializes the Turret Set
+         */
+        value: function Initialize() {
+            var _this3 = this;
+
+            if (this.turretEffect && this.geometryResPath !== '') {
+                this.geometryResource = _core.resMan.GetResource(this.geometryResPath);
+                this.activeAnimation.SetGeometryResource(this.geometryResource);
+                this.inactiveAnimation.SetGeometryResource(this.geometryResource);
+                if (this.geometryResource) this.geometryResource.RegisterNotification(this);
+            }
+
+            if (this.firingEffectResPath !== '') {
+                _core.resMan.GetObject(this.firingEffectResPath, function (object) {
+                    return _this3.firingEffect = object;
+                });
+            }
+
+            this.Rebuild();
+        }
+
+        /**
+         * Initializes turret set's firing effect
+         */
+
+    }, {
+        key: 'InitializeFiringEffect',
+        value: function InitializeFiringEffect() {
+            if (!this.firingEffect) return;
+
+            if (this.geometryResource && this.geometryResource.models.length) {
+                var model = this.geometryResource.models[0];
+                for (var i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
+                    this.firingEffect.SetMuzzleBoneID(i, model.FindBoneByName(EveTurretSet.positionBoneSkeletonNames[i]));
+                }
+            }
+        }
+
+        /**
+         * Helper function for finding out what turret should be firing
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetClosestTurret',
+        value: function GetClosestTurret() {
+            var closestTurret = -1,
+                closestAngle = -2;
+
+            var g = EveTurretSet.global,
+                nrmToTarget = g.vec3_0,
+                nrmUp = g.vec4_0,
+                turretPosition = g.vec4_1;
+
+            for (var i = 0; i < this.items.length; ++i) {
+                var item = this.items[i];
+                if (!item.display && !item.canFireWhenHidden) continue;
+
+                turretPosition[0] = item._localTransform[12];
+                turretPosition[1] = item._localTransform[13];
+                turretPosition[2] = item._localTransform[14];
+                turretPosition[3] = 1;
+                _math.vec4.transformMat4(turretPosition, turretPosition, this.parentMatrix);
+                _math.vec3.subtract(nrmToTarget, this.targetPosition, turretPosition);
+                _math.vec3.normalize(nrmToTarget, nrmToTarget);
+                _math.vec4.set(nrmUp, 0, 1, 0, 0);
+                _math.vec4.transformMat4(nrmUp, nrmUp, item._localTransform);
+                _math.vec4.transformMat4(nrmUp, nrmUp, this.parentMatrix);
+                var angle = _math.vec3.dot(nrmUp, nrmToTarget);
+                if (angle > closestAngle) {
+                    closestTurret = this.items.indexOf(item);
+                    closestAngle = angle;
+                }
+            }
+
+            return closestTurret;
+        }
+
+        /**
+         * Animation helper function for deactivating a turret set
+         */
+
+    }, {
+        key: 'EnterStateDeactive',
+        value: function EnterStateDeactive() {
+            var _this4 = this;
+
+            if (this.state === EveTurretSet.State.INACTIVE || this.state === EveTurretSet.State.PACKING) return;
+
+            if (this.turretEffect) {
+                this.activeAnimation.StopAllAnimations();
+                this.inactiveAnimation.StopAllAnimations();
+
+                this.activeAnimation.PlayAnimation('Pack', false, function () {
+                    _this4.state = EveTurretSet.State.INACTIVE;
+                    _this4.activeAnimation.PlayAnimation('Inactive', true);
+                });
+
+                this.inactiveAnimation.PlayAnimation('Pack', false, function () {
+                    _this4.state = EveTurretSet.State.INACTIVE;
+                    _this4.inactiveAnimation.PlayAnimation('Inactive', true);
+                });
+
+                this.state = EveTurretSet.State.PACKING;
+            } else {
+                this.state = EveTurretSet.State.INACTIVE;
+            }
+
+            this._activeTurret = -1;
+
+            if (this.firingEffect) {
+                this.firingEffect.StopFiring();
+            }
+        }
+
+        /**
+         * Animation helper function for putting a turret set into idle state
+         */
+
+    }, {
+        key: 'EnterStateIdle',
+        value: function EnterStateIdle() {
+            var _this5 = this;
+
+            if (this.state === EveTurretSet.State.IDLE || this.state === EveTurretSet.State.UNPACKING) return;
+
+            if (this.turretEffect) {
+                this.activeAnimation.StopAllAnimations();
+                this.inactiveAnimation.StopAllAnimations();
+
+                if (this.state === EveTurretSet.State.FIRING) {
+                    this.activeAnimation.PlayAnimation('Active', true);
+                    this.inactiveAnimation.PlayAnimation('Active', true);
+                } else {
+                    this.activeAnimation.PlayAnimation('Deploy', false, function () {
+                        _this5.state = EveTurretSet.State.IDLE;
+                        _this5.activeAnimation.PlayAnimation('Active', true);
+                    });
+
+                    this.inactiveAnimation.PlayAnimation('Deploy', false, function () {
+                        _this5.state = EveTurretSet.State.IDLE;
+                        _this5.inactiveAnimation.PlayAnimation('Active', true);
+                    });
+                }
+
+                this.state = EveTurretSet.State.UNPACKING;
+            } else {
+                this.state = EveTurretSet.State.IDLE;
+            }
+
+            this._activeTurret = -1;
+
+            if (this.firingEffect) {
+                this.firingEffect.StopFiring();
+            }
+        }
+
+        /**
+         * Animation helper function for putting a turret set into a firing state
+         */
+
+    }, {
+        key: 'EnterStateFiring',
+        value: function EnterStateFiring() {
+            var _this6 = this;
+
+            if (!this.turretEffect || this.state === EveTurretSet.State.FIRING) {
+                EveTurretSet.DoStartFiring(this);
+                if (this.turretEffect) {
+                    this.activeAnimation.PlayAnimation('Fire', false, function () {
+                        _this6.activeAnimation.PlayAnimation('Active', true);
+                    });
+                }
+                return;
+            }
+
+            this.activeAnimation.StopAllAnimations();
+            this.inactiveAnimation.StopAllAnimations();
+            if (this.state === EveTurretSet.State.INACTIVE) {
+                this.activeAnimation.PlayAnimation('Deploy', false, function () {
+                    EveTurretSet.DoStartFiring(_this6);
+                    _this6.activeAnimation.PlayAnimation('Fire', false, function () {
+                        _this6.activeAnimation.PlayAnimation('Active', true);
+                    });
+                });
+
+                this.inactiveAnimation.PlayAnimation('Deploy', false, function () {
+                    _this6.inactiveAnimation.PlayAnimation('Active', true);
+                });
+                this.state = EveTurretSet.State.UNPACKING;
+            } else {
+                EveTurretSet.DoStartFiring(this);
+                this.activeAnimation.PlayAnimation('Fire', false, function () {
+                    _this6.activeAnimation.PlayAnimation('Active', true);
+                });
+
+                this.inactiveAnimation.PlayAnimation('Active', true);
+            }
+        }
+
+        /**
+         * Rebuilds the turret sets cached data
+         */
+
+    }, {
+        key: 'RebuildCachedData',
+        value: function RebuildCachedData() {
+            var instancedElement = new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1, _core.device.gl.FLOAT, 2),
+                meshes = this.geometryResource.meshes,
+                active = this.activeAnimation,
+                inactive = this.inactiveAnimation;
+
+            for (var i = 0; i < meshes.length; ++i) {
+                meshes[i].declaration.elements.push(instancedElement);
+                meshes[i].declaration.RebuildHash();
+            }
+
+            switch (this.state) {
+                case EveTurretSet.State.INACTIVE:
+                    active.PlayAnimation('Inactive', true);
+                    inactive.PlayAnimation('Inactive', true);
+                    break;
+
+                case EveTurretSet.State.IDLE:
+                    active.PlayAnimation('Active', true);
+                    inactive.PlayAnimation('Active', true);
+                    break;
+
+                case EveTurretSet.State.FIRING:
+                    active.PlayAnimation('Fire', false, function () {
+                        return active.PlayAnimation('Active', true);
+                    });
+                    inactive.PlayAnimation('Active', true);
+                    break;
+
+                case EveTurretSet.State.PACKING:
+                    this.EnterStateIdle();
+                    break;
+
+                case EveTurretSet.State.UNPACKING:
+                    this.EnterStateDeactive();
+                    break;
+            }
+        }
+
+        /**
+         * Finds a turret item by name
+         * @param {string} name
+         * @returns {?EveTurretSetItem}
+         */
+
+    }, {
+        key: 'FindItemByLocatorName',
+        value: function FindItemByLocatorName(name) {
+            for (var i = 0; i < this.items.length; i++) {
+                if (this.items[i].locatorName === name) {
+                    return this.items[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Updates the turret set's items that were created from locators
+         * - Turrets without locator names are ignored
+         * @param {Array<EveLocator>} locators
+         */
+
+    }, {
+        key: 'UpdateItemsFromLocators',
+        value: function UpdateItemsFromLocators(locators) {
+            var g = EveTurretSet.global,
+                toRemove = Array.from(this.items),
+                norm = g.mat4_0;
+
+            for (var i = 0; i < locators.length; i++) {
+                var _locators$i = locators[i],
+                    name = _locators$i.name,
+                    transform = _locators$i.transform,
+                    _locators$i$bone = _locators$i.bone,
+                    bone = _locators$i$bone === undefined ? null : _locators$i$bone;
+
+
+                var item = this.FindItemByLocatorName(name);
+                if (!item) {
+                    item = this.CreateItem({
+                        name: name,
+                        locatorName: name,
+                        updateFromLocator: true
+                    });
+                } else {
+                    toRemove.splice(toRemove.indexOf(item), 1);
+                }
+
+                if (item.updateFromLocator) {
+                    item.bone = bone;
+                    _math.mat4.copy(norm, transform);
+                    _math.vec3.normalize(norm.subarray(0, 3), norm.subarray(0, 3));
+                    _math.vec3.normalize(norm.subarray(4, 7), norm.subarray(4, 7));
+                    _math.vec3.normalize(norm.subarray(8, 11), norm.subarray(8, 11));
+                    _math.mat4.getRotation(item.rotation, norm);
+                    _math.mat4.getTranslation(item.position, norm);
+                    item.OnValueChanged();
+                }
+            }
+
+            for (var _i = 0; _i < toRemove.length; _i++) {
+                if (toRemove[_i].locatorName) {
+                    this.RemoveItem(toRemove[_i]);
+                    _i--;
+                }
+            }
+
+            this._locatorRebuildPending = false;
+            if (this._rebuildPending) this.Rebuild();
+        }
+
+        /**
+         * Rebuilds the turret set's items from it's parent's locators
+         */
+
+    }, {
+        key: 'RebuildItemsFromLocators',
+        value: function RebuildItemsFromLocators() {
+            this._locatorRebuildPending = true;
+        }
+
+        /**
+         * Gets turret set res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            if (this.geometryResource && !out.includes(this.geometryResource)) {
+                out.push(this.geometryResource);
+            }
+
+            if (this.turretEffect) {
+                this.turretEffect.GetResources(out);
+            }
+
+            if (this.firingEffect) {
+                this.firingEffect.GetResources(out);
+            }
+
+            return out;
+        }
+
+        /**
+         * Updates view dependent data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            if (this.firingEffect) {
+                this.firingEffect.UpdateViewDependentData();
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - Delta Time
+         * @param {mat4} parentMatrix
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentMatrix) {
+            if (this._rebuildPending) {
+                this.Rebuild();
+            }
+
+            if (this.turretEffect) {
+                this.activeAnimation.Update(dt);
+                this.inactiveAnimation.Update(dt);
+            }
+
+            _math.mat4.copy(this.parentMatrix, parentMatrix);
+
+            if (this.firingEffect && this._visibleItems.length) {
+                if (this._activeTurret !== -1) {
+                    if (this.firingEffect.isLoopFiring) {
+                        if (this.state === EveTurretSet.State.FIRING) {
+                            this._recheckTimeLeft -= dt;
+                            if (this._recheckTimeLeft <= 0) {
+                                EveTurretSet.DoStartFiring(this);
+                            }
+                        }
+                    }
+
+                    var activeItem = this.items[this._activeTurret];
+
+                    if (this.activeAnimation.models.length) {
+                        var bones = this.activeAnimation.models[0].bonesByName;
+                        for (var i = 0; i < this.firingEffect.GetPerMuzzleEffectCount(); ++i) {
+                            var transform = bones[EveTurretSet.positionBoneSkeletonNames[i]].worldTransform,
+                                out = this.firingEffect.GetMuzzleTransform(i);
+
+                            _math.mat4.multiply(out, activeItem._localTransform, transform);
+                            _math.mat4.multiply(out, out, parentMatrix);
+                        }
+                    } else {
+                        for (var _i2 = 0; _i2 < this.firingEffect.GetPerMuzzleEffectCount(); ++_i2) {
+                            _math.mat4.multiply(this.firingEffect.GetMuzzleTransform(_i2), parentMatrix, activeItem._localTransform);
+                        }
+                    }
+
+                    if (this.fireCallbackPending) {
+                        if (this.fireCallback) {
+                            var cbTransforms = [];
+                            for (var _i3 = 0; _i3 < this.firingEffect.GetPerMuzzleEffectCount(); ++_i3) {
+                                cbTransforms.push(this.firingEffect.GetMuzzleTransform(_i3));
+                            }
+                            this.fireCallback(this, cbTransforms);
+                        }
+                        this.fireCallbackPending = false;
+                    }
+                }
+
+                _math.vec3.copy(this.firingEffect.endPosition, this.targetPosition);
+                this.firingEffect.Update(dt);
+            }
+        }
+
+        /**
+         * Gets turret set render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {boolean} [hideFiringEffect]
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator, perObjectData, hideFiringEffect) {
+            if (!this.turretEffect || !this.geometryResource || !this.display || !this._visibleItems.length) return;
+
+            if (mode === _core.device.RM_OPAQUE && this.visible.turrets) {
+                var transforms = this.inactiveAnimation.GetBoneMatrices(0);
+                if (transforms.length !== 0) {
+                    EveTurretSet.UpdatePerObjectData(this, this._perObjectDataInactive.perObjectVSData, transforms);
+                    this._perObjectDataInactive.perObjectPSData = perObjectData.perObjectPSData;
+
+                    var batch = new _core.Tw2ForwardingRenderBatch();
+                    batch.renderMode = mode;
+                    batch.renderActive = false;
+                    batch.perObjectData = this._perObjectDataInactive;
+                    batch.geometryProvider = this;
+                    accumulator.Commit(batch);
+
+                    if (this.state === EveTurretSet.State.FIRING) {
+                        var _transforms = this.activeAnimation.GetBoneMatrices(0);
+                        if (_transforms.length !== 0) {
+                            EveTurretSet.UpdatePerObjectData(this, this._perObjectDataActive.perObjectVSData, _transforms, true);
+                            this._perObjectDataActive.perObjectPSData = perObjectData.perObjectPSData;
+
+                            var _batch = new _core.Tw2ForwardingRenderBatch();
+                            _batch.renderActive = true;
+                            _batch.perObjectData = this._perObjectDataActive;
+                            _batch.geometryProvider = this;
+                            accumulator.Commit(_batch);
+                        }
+                    }
+                }
+            }
+
+            this.GetFiringEffectBatches(mode, accumulator, perObjectData, hideFiringEffect);
+        }
+
+        /**
+         * Gets turret firing effect batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
+         * @param {boolean} [hideFiringEffect]
+         */
+
+    }, {
+        key: 'GetFiringEffectBatches',
+        value: function GetFiringEffectBatches(mode, accumulator, perObjectData, hideFiringEffect) {
+            if (this.firingEffect && this.display && this._visibleItems.length && this.visible.firingEffects && !hideFiringEffect) {
+                this.firingEffect.GetBatches(mode, accumulator, perObjectData);
+            }
+        }
+
+        /**
+         * Renders the turret set
+         * @param batch
+         * @param {Tw2Effect} [effect=this.turretEffect] Optional effect override
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'Render',
+        value: function Render(batch) {
+            var effect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : this.turretEffect;
+
+            if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._visibleItems.length) return false;
+
+            var index = 0;
+            var customSetter = function customSetter(el) {
+                _core.device.gl.disableVertexAttribArray(el.location);
+                _core.device.gl.vertexAttrib2f(el.location, index, index);
+            };
+
+            for (var i = 0; i < this.geometryResource.meshes.length; ++i) {
+                var decl = this.geometryResource.meshes[i].declaration;
+                decl.FindUsage(_core.Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = customSetter;
+            }
+
+            var rendered = 0;
+            for (; index < this.items.length; ++index) {
+                if (this.items[index].display) {
+                    var isActive = this.state === EveTurretSet.State.FIRING && index === this._activeTurret;
+                    if (batch.renderActive === isActive) {
+                        this.geometryResource.RenderAreas(0, 0, 1, effect);
+                        rendered++;
+                    }
+                }
+            }
+
+            return !!rendered;
+        }
+
+        /**
+         * Rebuilds the set's items
+         *
+         * @param {EveTurretSet} turretSet
+         */
+
+    }, {
+        key: 'turrets',
+        get: function get() {
+            return this.items;
+        }
+
+        /**
+         * Alias for this.items
+         * @param {Array} arr
+         */
+        ,
+        set: function set(arr) {
+            this.items = arr;
+        }
+    }], [{
+        key: 'RebuildItems',
+        value: function RebuildItems(turretSet) {
+            turretSet._visibleItems = [];
+
+            for (var i = 0; i < turretSet.items.length; i++) {
+                var item = turretSet.items[i];
+                item._onModified = turretSet._onChildModified;
+
+                if (item.display) {
+                    turretSet._visibleItems.push(item);
+                    if (item._rebuildPending) {
+                        item.UpdateTransforms();
+                        item._rebuildPending = false;
+                    }
+                }
+            }
+        }
+
+        /**
+         * Updates per object data
+         * @param {EveTurretSet} turretSet
+         * @param {Tw2RawData} perObjectData
+         * @param transforms
+         * @param {boolean} [skipBoneCalculations]
+         */
+
+    }, {
+        key: 'UpdatePerObjectData',
+        value: function UpdatePerObjectData(turretSet, perObjectData, transforms, skipBoneCalculations) {
+            _math.mat4.transpose(perObjectData.Get('shipMatrix'), turretSet.parentMatrix);
+            var transformCount = transforms.length / 12;
+            perObjectData.Get('turretSetData')[0] = transformCount;
+            perObjectData.Get('baseCutoffData')[0] = turretSet.bottomClipHeight;
+
+            var translation = perObjectData.Get('turretTranslation'),
+                rotation = perObjectData.Get('turretRotation'),
+                pose = perObjectData.Get('turretPoseTransAndRot');
+
+            for (var i = 0; i < turretSet._visibleItems.length; ++i) {
+                var item = turretSet._visibleItems[i];
+
+                for (var j = 0; j < transformCount; ++j) {
+                    pose[(i * transformCount + j) * 2 * 4] = transforms[j * 12 + 3];
+                    pose[(i * transformCount + j) * 2 * 4 + 1] = transforms[j * 12 + 7];
+                    pose[(i * transformCount + j) * 2 * 4 + 2] = transforms[j * 12 + 11];
+                    pose[(i * transformCount + j) * 2 * 4 + 3] = 1;
+                    EveTurretSet.mat3x4toquat(transforms, j, pose, (i * transformCount + j) * 2 + 1);
+                }
+
+                if (item.bone && !skipBoneCalculations) {
+                    item.UpdateTransforms();
+                }
+
+                translation[i * 4] = item._localTransform[12];
+                translation[i * 4 + 1] = item._localTransform[13];
+                translation[i * 4 + 2] = item._localTransform[14];
+                translation[i * 4 + 3] = 1;
+
+                rotation[i * 4] = item.rotation[0];
+                rotation[i * 4 + 1] = item.rotation[1];
+                rotation[i * 4 + 2] = item.rotation[2];
+                rotation[i * 4 + 3] = item.rotation[3];
+            }
+        }
+
+        /**
+         * Animation helper function for turret firing
+         * @param {EveTurretSet} turretSet
+         * @returns {EveTurretData} the closest turret
+         */
+
+    }, {
+        key: 'DoStartFiring',
+        value: function DoStartFiring(turretSet) {
+            if (turretSet.hasCyclingFiringPos) {
+                turretSet._currentCyclingFiresPos = 1 - turretSet._currentCyclingFiresPos;
+            }
+
+            if (turretSet.firingEffect) {
+                turretSet.firingEffect.PrepareFiring(0, turretSet.hasCyclingFiringPos ? turretSet._currentCyclingFiresPos : -1);
+            }
+
+            turretSet._activeTurret = turretSet.GetClosestTurret();
+            turretSet.state = EveTurretSet.State.FIRING;
+            turretSet._recheckTimeLeft = 2;
+
+            if (turretSet.fireCallback) {
+                turretSet.fireCallbackPending = true;
+            }
+        }
+    }]);
+
+    return EveTurretSet;
+}(_EveObjectSet2.EveObjectSet);
+
+/**
+ * mat3x4 to quat
+ */
+
+
+EveTurretSet.mat3x4toquat = function () {
+    var m = void 0,
+        q = void 0;
+
+    return function mat3x4toquat(mm, index, out, outIndex) {
+        if (!m) {
+            m = _math.mat4.create();
+            q = _math.quat.create();
+        }
+
+        index *= 12;
+        outIndex *= 4;
+
+        m[0] = mm[index];
+        m[1] = mm[index + 4];
+        m[2] = mm[index + 8];
+        m[3] = 0;
+        m[4] = mm[index + 1];
+        m[5] = mm[index + 5];
+        m[6] = mm[index + 9];
+        m[7] = 0;
+        m[8] = mm[index + 2];
+        m[9] = mm[index + 6];
+        m[10] = mm[index + 10];
+        m[11] = 0;
+        m[12] = mm[index + 3];
+        m[13] = mm[index + 7];
+        m[14] = mm[index + 11];
+        m[15] = 1;
+
+        _math.mat4.getRotation(q, m);
+        out[outIndex] = q[0];
+        out[outIndex + 1] = q[1];
+        out[outIndex + 2] = q[2];
+        out[outIndex + 3] = q[3];
+    };
+}();
+
+/**
+ * The eve turret set's item constructor
+ * @type {EveTurretSetItem}
+ */
+EveTurretSet.Item = EveTurretSetItem;
+
+/**
+ * Turret states
+ * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
+ */
+EveTurretSet.State = {
+    INACTIVE: 0,
+    IDLE: 1,
+    FIRING: 2,
+    PACKING: 2,
+    UNPACKING: 4
+};
+
+/**
+ * World turret bone names
+ * @type {string[]}
+ */
+EveTurretSet.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
+
+/**
+ * Bone Skeleton Names
+ * @type {string[]}
+ */
+EveTurretSet.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'];
+
+/***/ }),
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35712,7 +37276,7 @@ EveSpaceScene.global = null;
 EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 
 /***/ }),
-/* 146 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35727,23 +37291,13 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(46);
+var _curve = __webpack_require__(45);
 
-var _EveBoosterSet = __webpack_require__(50);
+var _item = __webpack_require__(51);
 
-var _child = __webpack_require__(47);
+var _child = __webpack_require__(46);
 
-var _EveLocator = __webpack_require__(49);
-
-var _EvePlaneSet = __webpack_require__(51);
-
-var _EveSpaceObjectDecal = __webpack_require__(54);
-
-var _EveSpotlightSet = __webpack_require__(52);
-
-var _EveSpriteSet = __webpack_require__(53);
-
-var _object = __webpack_require__(147);
+var _object = __webpack_require__(48);
 
 function EveSOF() {
     var data = null;
@@ -36065,7 +37619,7 @@ function EveSOF() {
 
             effect.Initialize();
 
-            var decal = new _EveSpaceObjectDecal.EveSpaceObjectDecal();
+            var decal = new _item.EveSpaceObjectDecal();
             _math.vec3.copy(decal.position, _get(hullDecal, 'position', [0, 0, 0]));
             _math.quat.copy(decal.rotation, _get(hullDecal, 'rotation', [0, 0, 0, 1]));
             _math.vec3.copy(decal.scaling, _get(hullDecal, 'scaling', [1, 1, 1]));
@@ -36102,13 +37656,13 @@ function EveSOF() {
         var hullSets = _get(hull, 'spriteSets', []);
         var factionSets = _get(faction, 'spriteSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
-            var spriteSet = new _EveSpriteSet.EveSpriteSet(true, !!(hull['isSkinned'] && hullSets[i]['skinned']));
+            var spriteSet = new _item.EveSpriteSet(true, !!(hull['isSkinned'] && hullSets[i]['skinned']));
             spriteSet.name = _get(hullSets[i], 'name', '');
             spriteSet.effect = spriteEffect;
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
                 if (!('group' + _get(hullData[j], 'groupIndex', -1) in factionSets)) continue;
-                var item = new _EveSpriteSet.EveSpriteSetItem();
+                var item = new _item.EveSpriteSetItem();
                 item.blinkPhase = _get(hullData[j], 'blinkPhase', 0);
                 item.blinkRate = _get(hullData[j], 'blinkRate', 0.1);
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
@@ -36135,7 +37689,7 @@ function EveSOF() {
         var hullSets = _get(hull, 'spotlightSets', []);
         var factionSets = _get(faction, 'spotlightSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
-            var spotlightSet = new _EveSpotlightSet.EveSpotlightSet();
+            var spotlightSet = new _item.EveSpotlightSet();
             spotlightSet.name = _get(hullSets[i], 'name', '');
             spotlightSet.coneEffect = new _core.Tw2Effect();
             spotlightSet.glowEffect = new _core.Tw2Effect();
@@ -36154,7 +37708,7 @@ function EveSOF() {
 
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
-                var item = new _EveSpotlightSet.EveSpotlightSetItem();
+                var item = new _item.EveSpotlightSetItem();
                 item.name = _get(hullData[j], 'name', '');
                 item.groupIndex = _get(hullData[j], 'groupIndex', -1);
                 item.boneIndex = _get(hullData[j], 'boneIndex', 0);
@@ -36195,7 +37749,7 @@ function EveSOF() {
         var hullSets = _get(hull, 'planeSets', []);
         var factionSets = _get(faction, 'planeSets', {});
         for (var i = 0; i < hullSets.length; ++i) {
-            var planeSet = new _EvePlaneSet.EvePlaneSet();
+            var planeSet = new _item.EvePlaneSet();
             planeSet.name = _get(hullSets[i], 'name', '');
             planeSet.effect = new _core.Tw2Effect();
             if (hullSets[i]['skinned']) {
@@ -36211,7 +37765,7 @@ function EveSOF() {
 
             var hullData = _get(hullSets[i], 'items', []);
             for (var j = 0; j < hullData.length; ++j) {
-                var item = new _EvePlaneSet.EvePlaneSetItem();
+                var item = new _item.EvePlaneSetItem();
                 _assignIfExists(item, hullData[j], 'groupIndex');
                 _assignIfExists(item, hullData[j], 'name');
                 item.boneIndex = _get(hullData[j], 'boneIndex', -1);
@@ -36239,7 +37793,7 @@ function EveSOF() {
         if (!('booster' in hull)) {
             return;
         }
-        var booster = new _EveBoosterSet.EveBoosterSet();
+        var booster = new _item.EveBoosterSet();
         var hullBooster = hull['booster'];
         var raceBooster = _get(race, 'booster', {});
         _assignIfExists(booster, raceBooster, 'glowScale');
@@ -36293,7 +37847,7 @@ function EveSOF() {
 
         booster.effect.Initialize();
 
-        booster.glows = new _EveSpriteSet.EveSpriteSet(true);
+        booster.glows = new _item.EveSpriteSet(true);
         booster.glows.effect = new _core.Tw2Effect();
         booster.glows.effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/Booster/BoosterGlowAnimated.fx';
         booster.glows.effect.parameters['DiffuseMap'] = new _core.Tw2TextureParameter('DiffuseMap', 'res:/Texture/Particle/whitesharp.dds.0.png');
@@ -36302,7 +37856,7 @@ function EveSOF() {
 
         var items = _get(hullBooster, 'items', []);
         for (var i = 0; i < items.length; ++i) {
-            var locator = new _EveLocator.EveLocator();
+            var locator = new _item.EveLocator();
             locator.name = 'locator_booster_' + (i + 1);
             if ('transform' in items[i]) {
                 _math.mat4.copy(locator.transform, items[i].transform);
@@ -36320,7 +37874,7 @@ function EveSOF() {
     function SetupLocators(ship, hull) {
         var hullLocators = _get(hull, 'locatorTurrets', []);
         for (var i = 0; i < hullLocators.length; ++i) {
-            var locator = new _EveLocator.EveLocator();
+            var locator = new _item.EveLocator();
             locator.name = hullLocators[i].name;
             if ('transform' in hullLocators[i]) {
                 _math.mat4.copy(locator.transform, hullLocators[i].transform);
@@ -36601,89 +38155,6 @@ function EveSOF() {
         });
     };
 }
-
-/***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _EveObject = __webpack_require__(18);
-
-Object.keys(_EveObject).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveObject[key];
-    }
-  });
-});
-
-var _EveMissile = __webpack_require__(57);
-
-Object.keys(_EveMissile).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveMissile[key];
-    }
-  });
-});
-
-var _EvePlanet = __webpack_require__(55);
-
-Object.keys(_EvePlanet).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EvePlanet[key];
-    }
-  });
-});
-
-var _EveShip = __webpack_require__(56);
-
-Object.keys(_EveShip).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveShip[key];
-    }
-  });
-});
-
-var _EveSpaceObject = __webpack_require__(30);
-
-Object.keys(_EveSpaceObject).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveSpaceObject[key];
-    }
-  });
-});
-
-var _EveTransform = __webpack_require__(29);
-
-Object.keys(_EveTransform).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveTransform[key];
-    }
-  });
-});
 
 /***/ })
 /******/ ]);

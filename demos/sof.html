@@ -12,6 +12,8 @@
 
     <script type="text/javascript">
 
+        var camera, scene, ship;
+
         $(document).ready(function ()
         {
             console.dir(ccpwgl_int);
@@ -19,8 +21,8 @@
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            var camera = ccpwgl.createCamera($canvas[0], undefined, true);
-            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            camera = ccpwgl.createCamera($canvas[0], undefined, true);
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
@@ -38,10 +40,10 @@
                         catch (e)
                         {
                         }
-                        var obj = scene[constructor](dna);
-                        if ('setBoosterStrength' in obj)
+                        ship = scene[constructor](dna);
+                        if ('setBoosterStrength' in ship)
                         {
-                            obj.setBoosterStrength($('#booster-intensity').val() / 50);
+                            ship.setBoosterStrength($('#booster-intensity').val() / 50);
                         }
                     }
                 });
