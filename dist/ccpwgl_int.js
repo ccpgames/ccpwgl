@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -84,7 +84,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _num = __webpack_require__(26);
+var _num = __webpack_require__(29);
 
 Object.keys(_num).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(57);
+var _vec = __webpack_require__(58);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -108,7 +108,7 @@ Object.keys(_vec).forEach(function (key) {
   });
 });
 
-var _vec2 = __webpack_require__(30);
+var _vec2 = __webpack_require__(33);
 
 Object.keys(_vec2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -120,7 +120,7 @@ Object.keys(_vec2).forEach(function (key) {
   });
 });
 
-var _vec3 = __webpack_require__(31);
+var _vec3 = __webpack_require__(34);
 
 Object.keys(_vec3).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(63);
+var _quat = __webpack_require__(64);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(64);
+var _mat = __webpack_require__(65);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(65);
+var _mat2 = __webpack_require__(66);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(66);
+var _noise = __webpack_require__(67);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(67);
+var _curve = __webpack_require__(68);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -192,7 +192,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(68);
+var _util = __webpack_require__(69);
 
 Object.keys(_util).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -215,7 +215,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _batch = __webpack_require__(20);
+var _batch = __webpack_require__(19);
 
 Object.keys(_batch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -227,7 +227,7 @@ Object.keys(_batch).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(81);
+var _curve = __webpack_require__(85);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +239,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _data = __webpack_require__(84);
+var _data = __webpack_require__(88);
 
 Object.keys(_data).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +251,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _deprecated = __webpack_require__(87);
+var _deprecated = __webpack_require__(91);
 
 Object.keys(_deprecated).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -263,7 +263,7 @@ Object.keys(_deprecated).forEach(function (key) {
   });
 });
 
-var _global = __webpack_require__(35);
+var _global = __webpack_require__(24);
 
 Object.keys(_global).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +275,7 @@ Object.keys(_global).forEach(function (key) {
   });
 });
 
-var _geometry = __webpack_require__(38);
+var _geometry = __webpack_require__(40);
 
 Object.keys(_geometry).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +287,7 @@ Object.keys(_geometry).forEach(function (key) {
   });
 });
 
-var _mesh = __webpack_require__(116);
+var _mesh = __webpack_require__(120);
 
 Object.keys(_mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +299,7 @@ Object.keys(_mesh).forEach(function (key) {
   });
 });
 
-var _model = __webpack_require__(118);
+var _model = __webpack_require__(122);
 
 Object.keys(_model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +323,7 @@ Object.keys(_parameter).forEach(function (key) {
   });
 });
 
-var _post = __webpack_require__(121);
+var _post = __webpack_require__(126);
 
 Object.keys(_post).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -335,7 +335,7 @@ Object.keys(_post).forEach(function (key) {
   });
 });
 
-var _reader = __webpack_require__(24);
+var _reader = __webpack_require__(28);
 
 Object.keys(_reader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -347,7 +347,7 @@ Object.keys(_reader).forEach(function (key) {
   });
 });
 
-var _resource = __webpack_require__(25);
+var _resource = __webpack_require__(27);
 
 Object.keys(_resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -383,7 +383,7 @@ Object.keys(_vertex).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(123);
+var _Tw2Float = __webpack_require__(128);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -395,7 +395,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(124);
+var _Tw2Frustum = __webpack_require__(129);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +407,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(47);
+var _Tw2RenderTarget = __webpack_require__(48);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -654,7 +654,7 @@ exports.device = undefined;
 
 var _math = __webpack_require__(0);
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 var _Tw2ResMan = __webpack_require__(4);
 
@@ -666,7 +666,7 @@ var _vertex = __webpack_require__(8);
 
 var _parameter = __webpack_require__(11);
 
-var WebGLDebugUtil = __webpack_require__(79);
+var WebGLDebugUtil = __webpack_require__(80);
 
 /**
  * Tw2Device
@@ -1714,7 +1714,7 @@ var _Tw2EventEmitter = __webpack_require__(7);
 
 var _Tw2Resource2 = __webpack_require__(15);
 
-var _Tw2ObjectReader = __webpack_require__(32);
+var _Tw2ObjectReader = __webpack_require__(35);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3090,7 +3090,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(78);
+var _Tw2VertexDeclaration = __webpack_require__(79);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3411,14 +3411,14 @@ EveObjectSet.global = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(32);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2", function() { return __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2d", function() { return __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__; });
@@ -3479,7 +3479,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2FloatParameter = __webpack_require__(69);
+var _Tw2FloatParameter = __webpack_require__(70);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3491,7 +3491,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(70);
+var _Tw2MatrixParameter = __webpack_require__(71);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3503,7 +3503,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(71);
+var _Tw2TextureParameter = __webpack_require__(72);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3515,7 +3515,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(73);
+var _Tw2TransformParameter = __webpack_require__(74);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3527,7 +3527,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(74);
+var _Tw2VariableParameter = __webpack_require__(75);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3539,7 +3539,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(75);
+var _Tw2Vector2Parameter = __webpack_require__(76);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3551,7 +3551,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(76);
+var _Tw2Vector3Parameter = __webpack_require__(77);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3563,7 +3563,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(77);
+var _Tw2Vector4Parameter = __webpack_require__(78);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4235,7 +4235,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(125);
+var _Tw2ColorCurve = __webpack_require__(130);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4247,7 +4247,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(126);
+var _Tw2ColorCurve2 = __webpack_require__(131);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4259,7 +4259,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(127);
+var _Tw2EventCurve = __webpack_require__(132);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4271,7 +4271,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(128);
+var _Tw2PerlinCurve = __webpack_require__(133);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4283,7 +4283,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(129);
+var _Tw2QuaternionCurve = __webpack_require__(134);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4295,7 +4295,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(130);
+var _Tw2RandomConstantCurve = __webpack_require__(135);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4307,7 +4307,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(131);
+var _Tw2RigidOrientation = __webpack_require__(136);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4319,7 +4319,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(132);
+var _Tw2RotationCurve = __webpack_require__(137);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4331,7 +4331,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(133);
+var _Tw2ScalarCurve = __webpack_require__(138);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4343,7 +4343,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(134);
+var _Tw2ScalarCurve2 = __webpack_require__(139);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4355,7 +4355,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(135);
+var _Tw2SineCurve = __webpack_require__(140);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4367,7 +4367,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(136);
+var _Tw2Vector2Curve = __webpack_require__(141);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4379,7 +4379,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(137);
+var _Tw2Vector3Curve = __webpack_require__(142);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4391,7 +4391,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(138);
+var _Tw2VectorCurve = __webpack_require__(143);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4467,6 +4467,89 @@ var EveBasicPerObjectData = exports.EveBasicPerObjectData = function (_Tw2PerObj
 
 /***/ }),
 /* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2BatchAccumulator = __webpack_require__(57);
+
+Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2BatchAccumulator[key];
+    }
+  });
+});
+
+var _Tw2ForwardingRenderBatch = __webpack_require__(82);
+
+Object.keys(_Tw2ForwardingRenderBatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ForwardingRenderBatch[key];
+    }
+  });
+});
+
+var _Tw2GeometryBatch = __webpack_require__(25);
+
+Object.keys(_Tw2GeometryBatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2GeometryBatch[key];
+    }
+  });
+});
+
+var _Tw2GeometryLineBatch = __webpack_require__(83);
+
+Object.keys(_Tw2GeometryLineBatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2GeometryLineBatch[key];
+    }
+  });
+});
+
+var _Tw2RenderBatch = __webpack_require__(23);
+
+Object.keys(_Tw2RenderBatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2RenderBatch[key];
+    }
+  });
+});
+
+var _Tw2InstancedMeshBatch = __webpack_require__(84);
+
+Object.keys(_Tw2InstancedMeshBatch).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2InstancedMeshBatch[key];
+    }
+  });
+});
+
+/***/ }),
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4583,29 +4666,6 @@ Tw2VariableStore.prototype.Register = function (opt) {
 var variableStore = exports.variableStore = new Tw2VariableStore();
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Tw2BatchAccumulator = __webpack_require__(56);
-
-Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2BatchAccumulator[key];
-    }
-  });
-});
-
-/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4616,7 +4676,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2SamplerState = __webpack_require__(34);
+var _Tw2SamplerState = __webpack_require__(37);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4628,7 +4688,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(72);
+var _Tw2SamplerOverride = __webpack_require__(73);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4656,7 +4716,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 var _parameter = __webpack_require__(11);
 
@@ -4988,6 +5048,181 @@ Tw2Effect.prototype.GetParameters = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Tw2RenderBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /*eslint no-unused-vars:0*/
+
+
+var _global = __webpack_require__(24);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2RenderBatch base class
+ *
+ * @property {number} renderMode
+ * @property {Tw2PerObjectData} perObjectData
+ * @class
+ */
+var Tw2RenderBatch = exports.Tw2RenderBatch = function () {
+    function Tw2RenderBatch() {
+        _classCallCheck(this, Tw2RenderBatch);
+
+        this.renderMode = _global.device.RM_ANY;
+        this.perObjectData = null;
+    }
+
+    /**
+     * Commits the batch
+     * @param {Tw2Effect} [effect] - An optional override effect
+     */
+
+
+    _createClass(Tw2RenderBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {}
+    }]);
+
+    return Tw2RenderBatch;
+}();
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2Device = __webpack_require__(3);
+
+Object.keys(_Tw2Device).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Device[key];
+    }
+  });
+});
+
+var _Tw2EventEmitter = __webpack_require__(7);
+
+Object.keys(_Tw2EventEmitter).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2EventEmitter[key];
+    }
+  });
+});
+
+var _Tw2ResMan = __webpack_require__(4);
+
+Object.keys(_Tw2ResMan).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ResMan[key];
+    }
+  });
+});
+
+var _Tw2VariableStore = __webpack_require__(20);
+
+Object.keys(_Tw2VariableStore).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2VariableStore[key];
+    }
+  });
+});
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2GeometryBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2RenderBatch2 = __webpack_require__(23);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A render batch for geometry
+ *
+ * @property {Tw2GeometryRes} geometryRes
+ * @property {Number} meshIx
+ * @property {Number} start
+ * @property {Number} count
+ * @property {Tw2Effect} effect
+ * @class
+ */
+var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2RenderBatch) {
+    _inherits(Tw2GeometryBatch, _Tw2RenderBatch);
+
+    function Tw2GeometryBatch() {
+        _classCallCheck(this, Tw2GeometryBatch);
+
+        var _this = _possibleConstructorReturn(this, (Tw2GeometryBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryBatch)).call(this));
+
+        _this.geometryRes = null;
+        _this.meshIx = 0;
+        _this.start = 0;
+        _this.count = 1;
+        _this.effect = null;
+        return _this;
+    }
+
+    /**
+     * Commits the Tw2InstancedMeshBatch for rendering
+     * @param {Tw2Effect} [effect=this.effect] An optional override effect
+     */
+
+
+    _createClass(Tw2GeometryBatch, [{
+        key: 'Commit',
+        value: function Commit() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+
+            if (this.geometryRes && effect) {
+                this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
+            }
+        }
+    }]);
+
+    return Tw2GeometryBatch;
+}(_Tw2RenderBatch2.Tw2RenderBatch);
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Tw2ParticleAttributeGenerator = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
@@ -5043,7 +5278,7 @@ Tw2ParticleAttributeGenerator.global = {
 };
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5053,42 +5288,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BinaryReader = __webpack_require__(33);
-
-Object.keys(_Tw2BinaryReader).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2BinaryReader[key];
-    }
-  });
-});
-
-var _Tw2ObjectReader = __webpack_require__(32);
-
-Object.keys(_Tw2ObjectReader).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ObjectReader[key];
-    }
-  });
-});
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _Tw2EffectRes = __webpack_require__(120);
+var _Tw2EffectRes = __webpack_require__(124);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5100,7 +5300,7 @@ Object.keys(_Tw2EffectRes).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(40);
+var _Tw2GeometryRes = __webpack_require__(125);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5124,7 +5324,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(42);
+var _Tw2TextureRes = __webpack_require__(43);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5137,7 +5337,42 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
 });
 
 /***/ }),
-/* 26 */
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _Tw2BinaryReader = __webpack_require__(36);
+
+Object.keys(_Tw2BinaryReader).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2BinaryReader[key];
+    }
+  });
+});
+
+var _Tw2ObjectReader = __webpack_require__(35);
+
+Object.keys(_Tw2ObjectReader).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ObjectReader[key];
+    }
+  });
+});
+
+/***/ }),
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5181,7 +5416,7 @@ num.exponentialDecay = function (omega0, torque, I, d, time) {
 };
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5989,7 +6224,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6829,7 +7064,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7491,7 +7726,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7504,7 +7739,7 @@ exports.vec3 = undefined;
 
 var _glMatrix = __webpack_require__(10);
 
-var _num = __webpack_require__(26);
+var _num = __webpack_require__(29);
 
 exports.vec3 = _glMatrix.vec3;
 
@@ -7641,7 +7876,7 @@ _glMatrix.vec3.unproject = function () {
 }();
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7657,7 +7892,7 @@ var _glMatrix = __webpack_require__(10);
 exports.vec4 = _glMatrix.vec4;
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7672,7 +7907,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _Tw2BinaryReader = __webpack_require__(33);
+var _Tw2BinaryReader = __webpack_require__(36);
 
 /**
  * Tw2ObjectReader
@@ -8143,7 +8378,7 @@ Tw2ObjectReader.prototype.ConstructFromNode = function (initialize, async) {
 };
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8276,7 +8511,7 @@ Tw2BinaryReader.prototype.ReadString = function () {
 };
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8357,7 +8592,7 @@ Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
 };
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8367,66 +8602,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(3);
-
-Object.keys(_Tw2Device).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2Device[key];
-    }
-  });
-});
-
-var _Tw2EventEmitter = __webpack_require__(7);
-
-Object.keys(_Tw2EventEmitter).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2EventEmitter[key];
-    }
-  });
-});
-
-var _Tw2ResMan = __webpack_require__(4);
-
-Object.keys(_Tw2ResMan).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2ResMan[key];
-    }
-  });
-});
-
-var _Tw2VariableStore = __webpack_require__(19);
-
-Object.keys(_Tw2VariableStore).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Tw2VariableStore[key];
-    }
-  });
-});
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _emitters = __webpack_require__(89);
+var _emitters = __webpack_require__(93);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8438,7 +8614,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(92);
+var _forces = __webpack_require__(96);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8450,7 +8626,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(99);
+var _generators = __webpack_require__(103);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8462,7 +8638,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(103);
+var _constraints = __webpack_require__(107);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8474,7 +8650,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(104);
+var _Tw2ParticleSystem = __webpack_require__(108);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8499,7 +8675,7 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
 });
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8553,7 +8729,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8563,7 +8739,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BlendShapeData = __webpack_require__(105);
+var _Tw2BlendShapeData = __webpack_require__(109);
 
 Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8575,7 +8751,7 @@ Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryAnimation = __webpack_require__(106);
+var _Tw2GeometryAnimation = __webpack_require__(110);
 
 Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8587,7 +8763,7 @@ Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryBone = __webpack_require__(107);
+var _Tw2GeometryBone = __webpack_require__(111);
 
 Object.keys(_Tw2GeometryBone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8599,7 +8775,7 @@ Object.keys(_Tw2GeometryBone).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryCurve = __webpack_require__(108);
+var _Tw2GeometryCurve = __webpack_require__(112);
 
 Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8611,7 +8787,7 @@ Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMesh = __webpack_require__(109);
+var _Tw2GeometryMesh = __webpack_require__(113);
 
 Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8623,7 +8799,7 @@ Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshArea = __webpack_require__(110);
+var _Tw2GeometryMeshArea = __webpack_require__(114);
 
 Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8635,7 +8811,7 @@ Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshBinding = __webpack_require__(111);
+var _Tw2GeometryMeshBinding = __webpack_require__(115);
 
 Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8647,7 +8823,7 @@ Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryModel = __webpack_require__(112);
+var _Tw2GeometryModel = __webpack_require__(116);
 
 Object.keys(_Tw2GeometryModel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8659,7 +8835,7 @@ Object.keys(_Tw2GeometryModel).forEach(function (key) {
   });
 });
 
-var _Tw2GeometrySkeleton = __webpack_require__(113);
+var _Tw2GeometrySkeleton = __webpack_require__(117);
 
 Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8671,7 +8847,7 @@ Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTrackGroup = __webpack_require__(114);
+var _Tw2GeometryTrackGroup = __webpack_require__(118);
 
 Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8683,7 +8859,7 @@ Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTransformTrack = __webpack_require__(115);
+var _Tw2GeometryTransformTrack = __webpack_require__(119);
 
 Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8696,7 +8872,7 @@ Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8713,7 +8889,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2GeometryRes = __webpack_require__(40);
+var _batch = __webpack_require__(19);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8741,7 +8917,7 @@ function Tw2MeshArea() {
  * @type {RenderBatch}
  * @prototype
  */
-Tw2MeshArea.batchType = _Tw2GeometryRes.Tw2GeometryBatch;
+Tw2MeshArea.batchType = _batch.Tw2GeometryBatch;
 
 /**
  * Tw2MeshLineArea
@@ -8767,7 +8943,7 @@ function Tw2MeshLineArea() {
  * @type {RenderBatch}
  * @prototype
  */
-Tw2MeshLineArea.batchType = _Tw2GeometryRes.Tw2GeometryLineBatch;
+Tw2MeshLineArea.batchType = _batch.Tw2GeometryLineBatch;
 
 /**
  * Tw2Mesh
@@ -8914,846 +9090,7 @@ Tw2Mesh.prototype.GetBatches = function (mode, accumulator, perObjectData) {
 };
 
 /***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2GeometryRes = exports.Tw2GeometryLineBatch = exports.Tw2GeometryBatch = undefined;
-
-var _math = __webpack_require__(0);
-
-var _Tw2ResMan = __webpack_require__(4);
-
-var _Tw2Device = __webpack_require__(3);
-
-var _Tw2EventEmitter = __webpack_require__(7);
-
-var _reader = __webpack_require__(24);
-
-var _batch = __webpack_require__(20);
-
-var _vertex = __webpack_require__(8);
-
-var _Tw2Resource3 = __webpack_require__(15);
-
-var _geometry = __webpack_require__(38);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Tw2GeometryBatch
- * @property {Tw2GeometryRes} geometryRes
- * @property {Number} meshIx
- * @property {Number} start
- * @property {Number} count
- * @property {Tw2Effect} effect
- * @inherit Tw2RenderBatch
- * @class
- */
-var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2Resource) {
-    _inherits(Tw2GeometryBatch, _Tw2Resource);
-
-    function Tw2GeometryBatch() {
-        _classCallCheck(this, Tw2GeometryBatch);
-
-        var _this = _possibleConstructorReturn(this, (Tw2GeometryBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryBatch)).call(this));
-
-        _this.geometryRes = null;
-        _this.meshIx = 0;
-        _this.start = 0;
-        _this.count = 1;
-        _this.effect = null;
-        return _this;
-    }
-
-    return Tw2GeometryBatch;
-}(_Tw2Resource3.Tw2Resource);
-
-/**
- * Commits the Geometry Batch for rendering
- * @param {Tw2Effect} [overrideEffect]
- */
-
-
-Tw2GeometryBatch.prototype.Commit = function (overrideEffect) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (this.geometryRes && effect) {
-        this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
-    }
-};
-
-/**
- * Tw2GeometryLineBatch
- * @property {Tw2GeometryRes} geometryRes
- * @property {Number} meshIx
- * @property {Number} start
- * @property {Number} count
- * @property {Tw2Effect|null} effect
- * @inherit Tw2RenderBatch
- * @class
- */
-
-var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2RenderBatch) {
-    _inherits(Tw2GeometryLineBatch, _Tw2RenderBatch);
-
-    function Tw2GeometryLineBatch() {
-        _classCallCheck(this, Tw2GeometryLineBatch);
-
-        var _this2 = _possibleConstructorReturn(this, (Tw2GeometryLineBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryLineBatch)).call(this));
-
-        _this2.geometryRes = null;
-        _this2.meshIx = 0;
-        _this2.start = 0;
-        _this2.count = 1;
-        _this2.effect = null;
-        return _this2;
-    }
-
-    return Tw2GeometryLineBatch;
-}(_batch.Tw2RenderBatch);
-
-/**
- * Commits the Geometry Line Batch for rendering
- * @param {Tw2Effect} [overrideEffect]
- */
-
-
-Tw2GeometryLineBatch.prototype.Commit = function (overrideEffect) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (this.geometryRes && effect) {
-        this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
-    }
-};
-
-/**
- * Tw2GeometryRes
- * @property {Array} meshes
- * @property {vec3} minBounds
- * @property {vec3} maxBounds
- * @property {vec3} boundsSpherePosition
- * @property {Number} boundsSphereRadius
- * @property {Array} models
- * @property {Array} animations
- * @property {Boolean} systemMirror
- * @inherit Tw2Resource
- * @class
- */
-
-var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource2) {
-    _inherits(Tw2GeometryRes, _Tw2Resource2);
-
-    function Tw2GeometryRes() {
-        _classCallCheck(this, Tw2GeometryRes);
-
-        var _this3 = _possibleConstructorReturn(this, (Tw2GeometryRes.__proto__ || Object.getPrototypeOf(Tw2GeometryRes)).call(this));
-
-        _this3.meshes = [];
-        _this3.minBounds = _math.vec3.create();
-        _this3.maxBounds = _math.vec3.create();
-        _this3.boundsSpherePosition = _math.vec3.create();
-        _this3.boundsSphereRadius = 0;
-        _this3.models = [];
-        _this3.animations = [];
-        _this3.systemMirror = _Tw2ResMan.resMan.systemMirror;
-        return _this3;
-    }
-
-    return Tw2GeometryRes;
-}(_Tw2Resource3.Tw2Resource);
-
-/**
- * Request Response Type
- * @type {string}
- */
-
-
-Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
-
-/**
- * GetInstanceBuffer
- * @param {Number} meshIndex
- * @returns {*}
- */
-Tw2GeometryRes.prototype.GetInstanceBuffer = function (meshIndex) {
-    return meshIndex < this.meshes.length ? this.meshes[meshIndex].buffer : undefined;
-};
-
-/**
- * GetInstanceDeclaration
- * @param {Number} meshIndex
- * @returns {Tw2VertexDeclaration}
- */
-Tw2GeometryRes.prototype.GetInstanceDeclaration = function (meshIndex) {
-    return this.meshes[meshIndex].declaration;
-};
-
-/**
- * GetInstanceStride
- * @param {Number} meshIndex
- * @returns {*}
- */
-Tw2GeometryRes.prototype.GetInstanceStride = function (meshIndex) {
-    return this.meshes[meshIndex].declaration.stride;
-};
-
-/**
- * GetInstanceCount
- * @param {Number} meshIndex
- * @returns {*}
- */
-Tw2GeometryRes.prototype.GetInstanceCount = function (meshIndex) {
-    return this.meshes[meshIndex].bufferLength * 4 / this.meshes[meshIndex].declaration.stride;
-};
-
-/**
- * Prepare
- * @param data
- */
-Tw2GeometryRes.prototype.Prepare = function (data) {
-    var reader = new _reader.Tw2BinaryReader(new Uint8Array(data));
-    var self = this;
-
-    /**
-     * ReadVertexBuffer
-     * @param declaration
-     * @returns {Float32Array}
-     * @private
-     */
-    function ReadVertexBuffer(declaration) {
-        var declCount = reader.ReadUInt8();
-        var vertexSize = 0;
-        var declIx, i;
-        for (declIx = 0; declIx < declCount; ++declIx) {
-            var element = new _vertex.Tw2VertexElement();
-            element.usage = reader.ReadUInt8();
-            element.usageIndex = reader.ReadUInt8();
-            element.fileType = reader.ReadUInt8();
-            element.type = _Tw2Device.device.gl.FLOAT;
-            element.elements = (element.fileType >> 5) + 1;
-            element.offset = vertexSize * 4;
-            declaration.elements[declIx] = element;
-            vertexSize += element.elements;
-        }
-        declaration.RebuildHash();
-        declaration.stride = vertexSize * 4;
-        var vertexCount = reader.ReadUInt32();
-        if (vertexCount === 0) {
-            return null;
-        }
-        var buffer = new Float32Array(vertexSize * vertexCount);
-        var index = 0;
-        for (var vtxIx = 0; vtxIx < vertexCount; ++vtxIx) {
-            for (declIx = 0; declIx < declCount; ++declIx) {
-                var el = declaration.elements[declIx];
-                switch (el.fileType & 0xf) {
-                    case 0:
-                        if (el.fileType & 0x10) {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadInt8() / 127.0;
-                            }
-                        } else {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadInt8();
-                            }
-                        }
-                        break;
-
-                    case 1:
-                        if (el.fileType & 0x10) {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadInt8() / 32767.0;
-                            }
-                        } else {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadInt16();
-                            }
-                        }
-                        break;
-
-                    case 2:
-                        for (i = 0; i < el.elements; ++i) {
-                            buffer[index++] = reader.ReadInt32();
-                        }
-                        break;
-
-                    case 3:
-                        for (i = 0; i < el.elements; ++i) {
-                            buffer[index++] = reader.ReadFloat16();
-                        }
-                        break;
-
-                    case 4:
-                        for (i = 0; i < el.elements; ++i) {
-                            buffer[index++] = reader.ReadFloat32();
-                        }
-                        break;
-
-                    case 8:
-                        if (el.fileType & 0x10) {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadUInt8() / 255.0;
-                            }
-                        } else {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadUInt8();
-                            }
-                        }
-                        break;
-
-                    case 9:
-                        if (el.fileType & 0x10) {
-                            for (i = 0; i < declaration.elements[declIx].elements; ++i) {
-                                buffer[index++] = reader.ReadUInt8() / 65535.0;
-                            }
-                        } else {
-                            for (i = 0; i < el.elements; ++i) {
-                                buffer[index++] = reader.ReadUInt16();
-                            }
-                        }
-                        break;
-
-                    case 10:
-                        for (i = 0; i < el.elements; ++i) {
-                            buffer[index++] = reader.ReadUInt32();
-                        }
-                        break;
-
-                    default:
-                        _Tw2EventEmitter.emitter.log('res.error', {
-                            log: 'error',
-                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
-                            msg: 'Error loading wbg data',
-                            path: self.path,
-                            type: 'geometry.filetype',
-                            value: el.fileType & 0xf
-                        });
-                        throw 1;
-                }
-            }
-        }
-        return buffer;
-    }
-
-    /**
-     * ReadIndexBuffer
-     * @returns {Uint16Array|Uint32Array}
-     * @private
-     */
-    function ReadIndexBuffer() {
-        var ibType = reader.ReadUInt8();
-        var indexCount = reader.ReadUInt32();
-        var indexes, i;
-        if (ibType === 0) {
-            indexes = new Uint16Array(indexCount);
-            for (i = 0; i < indexCount; ++i) {
-                indexes[i] = reader.ReadUInt16();
-            }
-            return indexes;
-        } else {
-            indexes = new Uint32Array(indexCount);
-            for (i = 0; i < indexCount; ++i) {
-                indexes[i] = reader.ReadUInt32();
-            }
-            return indexes;
-        }
-    }
-
-    /* var fileVersion = */
-    reader.ReadUInt8();
-    var meshCount = reader.ReadUInt8();
-    for (var meshIx = 0; meshIx < meshCount; ++meshIx) {
-        var mesh = new _geometry.Tw2GeometryMesh();
-        mesh.name = reader.ReadString();
-
-        var buffer = ReadVertexBuffer(mesh.declaration);
-        var i, j, k;
-        if (buffer) {
-            mesh.bufferLength = buffer.length;
-            mesh.buffer = _Tw2Device.device.gl.createBuffer();
-            _Tw2Device.device.gl.bindBuffer(_Tw2Device.device.gl.ARRAY_BUFFER, mesh.buffer);
-            _Tw2Device.device.gl.bufferData(_Tw2Device.device.gl.ARRAY_BUFFER, buffer, _Tw2Device.device.gl.STATIC_DRAW);
-        } else {
-            mesh.buffer = null;
-        }
-
-        var indexes = ReadIndexBuffer();
-        if (indexes) {
-            mesh.indexes = _Tw2Device.device.gl.createBuffer();
-            mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? _Tw2Device.device.gl.UNSIGNED_SHORT : _Tw2Device.device.gl.UNSIGNED_INT;
-            _Tw2Device.device.gl.bindBuffer(_Tw2Device.device.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-            _Tw2Device.device.gl.bufferData(_Tw2Device.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _Tw2Device.device.gl.STATIC_DRAW);
-        } else {
-            mesh.indexes = null;
-        }
-
-        var areaCount = reader.ReadUInt8();
-        for (i = 0; i < areaCount; ++i) {
-            mesh.areas[i] = new _geometry.Tw2GeometryMeshArea();
-            mesh.areas[i].name = reader.ReadString();
-            mesh.areas[i].start = reader.ReadUInt32() * indexes.BYTES_PER_ELEMENT;
-            mesh.areas[i].count = reader.ReadUInt32() * 3;
-            mesh.areas[i].minBounds = _math.vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
-            mesh.areas[i].maxBounds = _math.vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
-        }
-
-        var boneBindingCount = reader.ReadUInt8();
-        mesh.boneBindings = [];
-        for (i = 0; i < boneBindingCount; ++i) {
-            mesh.boneBindings[i] = reader.ReadString();
-        }
-
-        var annotationSetCount = reader.ReadUInt16();
-        if (annotationSetCount || this.systemMirror) {
-            mesh.bufferData = buffer;
-            mesh.indexData = indexes;
-        }
-        if (annotationSetCount) {
-            mesh.blendShapes = [];
-            for (i = 0; i < annotationSetCount; ++i) {
-                mesh.blendShapes[i] = new _geometry.Tw2BlendShapeData();
-                mesh.blendShapes[i].name = reader.ReadString();
-                mesh.blendShapes[i].buffer = ReadVertexBuffer(mesh.blendShapes[i].declaration);
-                mesh.blendShapes[i].indexes = ReadIndexBuffer();
-            }
-        }
-        this.meshes[meshIx] = mesh;
-    }
-
-    var modelCount = reader.ReadUInt8();
-    for (var modelIx = 0; modelIx < modelCount; ++modelIx) {
-        var model = new _geometry.Tw2GeometryModel();
-        model.name = reader.ReadString();
-
-        model.skeleton = new _geometry.Tw2GeometrySkeleton();
-        var boneCount = reader.ReadUInt8();
-        for (j = 0; j < boneCount; ++j) {
-            var bone = new _geometry.Tw2GeometryBone();
-            bone.name = reader.ReadString();
-            var flags = reader.ReadUInt8();
-            bone.parentIndex = reader.ReadUInt8();
-            if (bone.parentIndex === 255) {
-                bone.parentIndex = -1;
-            }
-            if (flags & 1) {
-                _math.vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
-            } else {
-                _math.vec3.set(bone.position, 0, 0, 0);
-            }
-            if (flags & 2) {
-                _math.quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
-            } else {
-                _math.quat.identity(bone.orientation);
-            }
-            if (flags & 4) {
-                for (k = 0; k < 9; ++k) {
-                    bone.scaleShear[k] = reader.ReadFloat32();
-                }
-            } else {
-                _math.mat3.identity(bone.scaleShear);
-            }
-            model.skeleton.bones[j] = bone;
-        }
-        for (j = 0; j < model.skeleton.bones.length; ++j) {
-            model.skeleton.bones[j].UpdateTransform();
-            if (model.skeleton.bones[j].parentIndex !== -1) {
-                _math.mat4.multiply(model.skeleton.bones[j].worldTransform, model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform);
-            } else {
-                _math.mat4.copy(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].localTransform);
-            }
-            _math.mat4.invert(model.skeleton.bones[j].worldTransformInv, model.skeleton.bones[j].worldTransform);
-        }
-
-        var meshBindingCount = reader.ReadUInt8();
-        for (j = 0; j < meshBindingCount; ++j) {
-            mesh = reader.ReadUInt8();
-            if (mesh < this.meshes.length) {
-                Tw2GeometryRes.BindMeshToModel(this.meshes[mesh], model);
-            }
-        }
-        this.models[this.models.length] = model;
-    }
-
-    /**
-     * ReadCurve
-     * @returns {Tw2GeometryCurve}
-     * @private
-     */
-    function ReadCurve() {
-        var type = reader.ReadUInt8();
-        if (type === 0) {
-            return null;
-        }
-        var dimension = reader.ReadUInt8();
-        var curve = new _geometry.Tw2GeometryCurve();
-        curve.dimension = dimension;
-        curve.degree = reader.ReadUInt8();
-        var knotCount = reader.ReadUInt32();
-        curve.knots = new Float32Array(knotCount);
-        for (var i = 0; i < knotCount; ++i) {
-            curve.knots[i] = reader.ReadFloat32();
-        }
-        var controlCount = reader.ReadUInt32();
-        curve.controls = new Float32Array(controlCount);
-        for (i = 0; i < controlCount; ++i) {
-            curve.controls[i] = reader.ReadFloat32();
-        }
-        return curve;
-    }
-
-    var animationCount = reader.ReadUInt8();
-    for (i = 0; i < animationCount; ++i) {
-        var animation = new _geometry.Tw2GeometryAnimation();
-        animation.name = reader.ReadString();
-        animation.duration = reader.ReadFloat32();
-        var groupCount = reader.ReadUInt8();
-        for (j = 0; j < groupCount; ++j) {
-            var group = new _geometry.Tw2GeometryTrackGroup();
-            group.name = reader.ReadString();
-            for (var m = 0; m < this.models.length; ++m) {
-                if (this.models[m].name === group.name) {
-                    group.model = this.models[m];
-                    break;
-                }
-            }
-            var transformTrackCount = reader.ReadUInt8();
-            for (k = 0; k < transformTrackCount; ++k) {
-                var track = new _geometry.Tw2GeometryTransformTrack();
-                track.name = reader.ReadString();
-                track.orientation = ReadCurve();
-                track.position = ReadCurve();
-                track.scaleShear = ReadCurve();
-                if (track.orientation) {
-                    var lastX = 0;
-                    var lastY = 0;
-                    var lastZ = 0;
-                    var lastW = 0;
-                    for (var n = 0; n < track.orientation.controls.length; n += 4) {
-                        var x = track.orientation.controls[n];
-                        var y = track.orientation.controls[n + 1];
-                        var z = track.orientation.controls[n + 2];
-                        var w = track.orientation.controls[n + 3];
-                        if (lastX * x + lastY * y + lastZ * z + lastW * w < 0) {
-                            track.orientation.controls[n] = -x;
-                            track.orientation.controls[n + 1] = -y;
-                            track.orientation.controls[n + 2] = -z;
-                            track.orientation.controls[n + 3] = -w;
-                        }
-                        lastX = x;
-                        lastY = y;
-                        lastZ = z;
-                        lastW = w;
-                    }
-                }
-                group.transformTracks[group.transformTracks.length] = track;
-            }
-            animation.trackGroups[animation.trackGroups.length] = group;
-        }
-        this.animations[this.animations.length] = animation;
-    }
-    this.PrepareFinished(true);
-};
-
-/**
- * BindMeshToModel
- * @param {Tw2GeometryMesh} mesh
- * @param {Tw2GeometryModel} model
- */
-Tw2GeometryRes.BindMeshToModel = function (mesh, model) {
-    var binding = new _geometry.Tw2GeometryMeshBinding();
-    binding.mesh = mesh;
-    for (var b = 0; b < binding.mesh.boneBindings.length; ++b) {
-        var name = binding.mesh.boneBindings[b];
-        var bone = model.FindBoneByName(name);
-        if (bone === null) {
-            _Tw2EventEmitter.emitter.log('res.error', {
-                log: 'error',
-                src: ['Tw2GeometryRes', 'BindMeshToModel'],
-                msg: 'Mesh has invalid bone name for model',
-                path: this.path,
-                type: 'geometry.invalidbone',
-                data: {
-                    mesh: binding.mesh.name,
-                    bone: name,
-                    model: model.name
-                }
-            });
-        } else {
-            binding.bones[binding.bones.length] = bone;
-        }
-    }
-    model.meshBindings[model.meshBindings.length] = binding;
-};
-
-/**
- * RenderAreasInstanced
- * @param {Number} meshIx
- * @param {Number} start
- * @param {Number} count
- * @param {Tw2Effect} effect
- * @param instanceVB
- * @param instanceDecl
- * @param instanceStride
- * @param instanceCount
- * @returns {Boolean}
- */
-Tw2GeometryRes.prototype.RenderAreasInstanced = function (meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount) {
-    this.KeepAlive();
-    if (!this._isGood) {
-        return false;
-    }
-
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood) {
-        return false;
-    }
-    var d = _Tw2Device.device;
-    var mesh = this.meshes[meshIx];
-    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-
-    var passCount = effect.GetPassCount();
-    var i, area;
-    for (var pass = 0; pass < passCount; ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        if (passInput.elements.length === 0) {
-            continue;
-        }
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-        mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
-        var resetData = instanceDecl.SetPartialDeclaration(passInput, instanceStride, 8, 1);
-        d.ApplyShadowState();
-
-        for (i = 0; i < count; ++i) {
-            if (i + start < mesh.areas.length) {
-                area = mesh.areas[i + start];
-                var areaStart = area.start;
-                var acount = area.count;
-                while (i + 1 < count) {
-                    area = mesh.areas[i + 1 + start];
-                    if (area.start !== areaStart + acount * 2) {
-                        break;
-                    }
-                    acount += area.count;
-                    ++i;
-                }
-                d.ext.drawElementsInstanced(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
-            }
-        }
-        instanceDecl.ResetInstanceDivisors(resetData);
-    }
-    return true;
-};
-
-/**
- * RenderAreas
- * @param {Number} meshIx
- * @param {Number} start
- * @param {Number} count
- * @param {Tw2Effect} effect
- * @param {callback} cb - callback[pass, drawElements]
- * @returns {Boolean}
- */
-Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb) {
-    this.KeepAlive();
-    if (!this._isGood) {
-        return false;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood) {
-        return false;
-    }
-    var d = _Tw2Device.device;
-    var mesh = this.meshes[meshIx] || this.meshes[0];
-    d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-
-    var passCount = effect.GetPassCount();
-    var i, area;
-    for (var pass = 0; pass < passCount; ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride)) {
-            _Tw2EventEmitter.emitter.log('res.error', {
-                log: 'error',
-                src: ['Tw2GeometryRes', 'RenderLines'],
-                msg: 'Error binding mesh to effect',
-                path: this.path,
-                type: 'geometry.meshbind',
-                data: {
-                    pass: pass,
-                    passInput: passInput,
-                    meshStride: mesh.declaration.stride
-                }
-            });
-            return false;
-        }
-        d.ApplyShadowState();
-
-        if (typeof cb !== 'undefined') {
-            var drawElements = [];
-            for (i = 0; i < count; ++i) {
-                if (i + start < mesh.areas.length) {
-                    area = mesh.areas[i + start];
-                    drawElements.push([d.gl.TRIANGLES, area.count, mesh.indexType, area.start]);
-                }
-            }
-            cb(pass, drawElements);
-        } else {
-            for (i = 0; i < count; ++i) {
-                if (i + start < mesh.areas.length) {
-                    area = mesh.areas[i + start];
-                    var areaStart = area.start;
-                    var acount = area.count;
-                    while (i + 1 < count) {
-                        area = mesh.areas[i + 1 + start];
-                        if (area.start !== areaStart + acount * 2) {
-                            break;
-                        }
-                        acount += area.count;
-                        ++i;
-                    }
-                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
-                }
-            }
-        }
-    }
-    return true;
-};
-
-/**
- * RenderLines
- * @param {Number} meshIx
- * @param {Number} start
- * @param {Number} count
- * @param {Tw2Effect} effect
- * @param {function} cb - callback[pass, drawElements]
- * @returns {Boolean}
- */
-Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, cb) {
-    this.KeepAlive();
-    if (!this._isGood) {
-        return false;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood) {
-        return false;
-    }
-    if (meshIx >= this.meshes.length) {
-        return false;
-    }
-    var d = _Tw2Device.device;
-    var mesh = this.meshes[meshIx];
-    d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-
-    var passCount = effect.GetPassCount();
-    var i, area;
-    for (var pass = 0; pass < passCount; ++pass) {
-        effect.ApplyPass(pass);
-        var passInput = effect.GetPassInput(pass);
-        if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride)) {
-            _Tw2EventEmitter.emitter.log('res.error', {
-                log: 'error',
-                src: ['Tw2GeometryRes', 'RenderLines'],
-                msg: 'Error binding mesh to effect',
-                path: this.path,
-                type: 'geometry.meshbind',
-                data: {
-                    pass: pass,
-                    passInput: passInput,
-                    meshStride: mesh.declaration.stride
-                }
-            });
-            return false;
-        }
-
-        d.ApplyShadowState();
-
-        if (typeof cb !== 'undefined') {
-            var drawElements = [];
-            for (i = 0; i < count; ++i) {
-                if (i + start < mesh.areas.length) {
-                    area = mesh.areas[i + start];
-                    drawElements.push([d.gl.LINES, area.count, mesh.indexType, area.start]);
-                }
-            }
-            cb(pass, drawElements);
-        } else {
-            for (i = 0; i < count; ++i) {
-                if (i + start < mesh.areas.length) {
-                    area = mesh.areas[i + start];
-                    var areaStart = area.start;
-                    var acount = area.count;
-                    while (i + 1 < count) {
-                        area = mesh.areas[i + 1 + start];
-                        if (area.start !== areaStart + acount * 2) {
-                            break;
-                        }
-                        acount += area.count;
-                        ++i;
-                    }
-                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
-                }
-            }
-        }
-    }
-    return true;
-};
-
-/**
- * RenderDebugInfo
- * @param {function} debugHelper
- * @returns {Boolean}
- */
-Tw2GeometryRes.prototype.RenderDebugInfo = function (debugHelper) {
-    if (!this.IsGood()) {
-        return false;
-    }
-    for (var i = 0; i < this.models.length; ++i) {
-        if (this.models[i].skeleton) {
-            for (var j = 0; j < this.models[i].skeleton.bones.length; ++j) {
-                var b0 = this.models[i].skeleton.bones[j];
-                if (b0.parentIndex >= 0) {
-                    var b1 = this.models[i].skeleton.bones[b0.parentIndex];
-                    debugHelper.AddLine([b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]], [0, 0.7, 0, 1], [0, 0.7, 0, 1]);
-                }
-            }
-        }
-    }
-};
-
-/**
- * Unloads webgl and javascript resources
- * @returns {Boolean}
- */
-Tw2GeometryRes.prototype.Unload = function () {
-    for (var i = 0; i < this.meshes.length; ++i) {
-        if (this.meshes[i].buffer) {
-            _Tw2Device.device.gl.deleteBuffer(this.meshes[i].buffer);
-            this.meshes[i].buffer = null;
-        }
-        if (this.meshes[i].indexes) {
-            _Tw2Device.device.gl.deleteBuffer(this.meshes[i].indexes);
-            this.meshes[i].indexes = null;
-        }
-    }
-    this._isPurged = true;
-    this._isGood = false;
-    return true;
-};
-
-/***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9809,7 +9146,7 @@ var Tw2Animation = exports.Tw2Animation = function () {
 }();
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10063,7 +9400,7 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices) {
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10097,7 +9434,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 };
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10126,7 +9463,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 };
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10153,7 +9490,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 };
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10182,7 +9519,7 @@ var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
 };
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10195,7 +9532,7 @@ exports.Tw2RenderTarget = Tw2RenderTarget;
 
 var _Tw2Device = __webpack_require__(3);
 
-var _resource = __webpack_require__(25);
+var _resource = __webpack_require__(27);
 
 /**
  * Tw2RenderTarget
@@ -10297,7 +9634,7 @@ Tw2RenderTarget.prototype.Unset = function () {
 };
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10319,7 +9656,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(139);
+var _sequencers = __webpack_require__(144);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10331,7 +9668,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(148);
+var _tracks = __webpack_require__(153);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10343,7 +9680,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(151);
+var _maya = __webpack_require__(156);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10356,7 +9693,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10378,7 +9715,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(157);
+var _EveChildBillboard = __webpack_require__(162);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10390,7 +9727,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(158);
+var _EveChildContainer = __webpack_require__(163);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10402,7 +9739,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(159);
+var _EveChildExplosion = __webpack_require__(164);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10414,7 +9751,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(160);
+var _EveChildMesh = __webpack_require__(165);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10426,7 +9763,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(161);
+var _EveChildParticleSystem = __webpack_require__(166);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10439,7 +9776,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10651,7 +9988,7 @@ var EveOccluder = exports.EveOccluder = function () {
 EveOccluder.global = null;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10673,7 +10010,7 @@ Object.keys(_EveObject).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(167);
+var _EveEffectRoot = __webpack_require__(172);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10685,7 +10022,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(168);
+var _EveMissile = __webpack_require__(173);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10697,7 +10034,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(169);
+var _EvePlanet = __webpack_require__(174);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10709,7 +10046,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(170);
+var _EveShip = __webpack_require__(175);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10721,7 +10058,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(53);
+var _EveSpaceObject = __webpack_require__(54);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10733,7 +10070,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(52);
+var _EveTransform = __webpack_require__(53);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10746,7 +10083,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11107,7 +10444,7 @@ EveTransform.Modifier = {
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11643,7 +10980,7 @@ var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11665,7 +11002,7 @@ Object.keys(_EveObjectSet).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(171);
+var _EveBoosterSet = __webpack_require__(176);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11677,7 +11014,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(172);
+var _EveCurveLineSet = __webpack_require__(177);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11689,7 +11026,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(173);
+var _EveLocator = __webpack_require__(178);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11701,7 +11038,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(174);
+var _EvePlaneSet = __webpack_require__(179);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11713,7 +11050,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(175);
+var _EveSpaceObjectDecal = __webpack_require__(180);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11725,7 +11062,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(176);
+var _EveSpotlightSet = __webpack_require__(181);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11737,7 +11074,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(177);
+var _EveSpriteSet = __webpack_require__(182);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11749,7 +11086,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(178);
+var _EveTurretSet = __webpack_require__(183);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11762,7 +11099,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 });
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11785,7 +11122,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(48);
+var _curve = __webpack_require__(49);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -11797,7 +11134,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(156);
+var _eve = __webpack_require__(161);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -11809,7 +11146,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(36);
+var _particle = __webpack_require__(38);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -11858,7 +11195,7 @@ _core.resMan.Register({
 exports.math = math;
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11867,125 +11204,86 @@ exports.math = math;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2ForwardingRenderBatch = exports.Tw2RenderBatch = undefined;
-exports.Tw2BatchAccumulator = Tw2BatchAccumulator;
+exports.Tw2BatchAccumulator = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _Tw2Device = __webpack_require__(3);
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Render Batches
- * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
- */
-
-/**
  * Accumulates render batches for rendering
- * @param {function} [sorting] - An optional function for sorting the collected render batches
- * @property {Array.<RenderBatch>} batches
- * @property {number} count - How many batch array elements will be processed
- * @property {function} _sortMethod - the stored sorting function
- * @constructor
+ *
+ * @param {function} [sorting=null]           - An optional function for sorting the collected render batches
+ * @property {Array.<Tw2RenderBatch>} batches - Accumulator render batches and/or child Tw2BatchAccumulators
+ * @property {function} _sortMethod           - An optional method to sort batches before rendering them
+ * @class
  */
-function Tw2BatchAccumulator(sorting) {
-    this.batches = [];
-    this.count = 0;
-    this._sortMethod = sorting ? sorting : undefined;
-}
+var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
+    function Tw2BatchAccumulator() {
+        var sorting = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
-/**
- * Commits a batch to accumulation
- * @param {RenderBatch} batch
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Commit = function (batch) {
-    this.batches[this.count++] = batch;
-};
+        _classCallCheck(this, Tw2BatchAccumulator);
 
-/**
- * Clears any accumulated render batches
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Clear = function () {
-    this.count = 0;
-    this.batches = [];
-};
-
-/**
- * Renders the accumulated render batches
- * - If a sorting function has been defined the render batches will be sorted before rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Render = function (overrideEffect) {
-    if (typeof this._sortMethod !== 'undefined') {
-        this.batches.sort(this._sortMethod);
+        this.batches = [];
+        this._sortMethod = sorting;
     }
-    for (var i = 0; i < this.count; ++i) {
-        if (this.batches[i].renderMode !== _Tw2Device.device.RM_ANY) {
-            _Tw2Device.device.SetStandardStates(this.batches[i].renderMode);
+
+    /**
+     * Commits a batch
+     * @param {Tw2BatchAccumulator|Tw2RenderBatch} batch
+     */
+
+
+    _createClass(Tw2BatchAccumulator, [{
+        key: 'Commit',
+        value: function Commit(batch) {
+            this.batches.push(batch);
         }
-        _Tw2Device.device.perObjectData = this.batches[i].perObjectData;
-        this.batches[i].Commit(overrideEffect);
-    }
-};
 
-/**
- * A standard render batch
- * @property {number} renderMode
- * @property {Tw2PerObjectData} perObjectData
- * @class
- */
+        /**
+         * Clears any accumulated render batches
+         */
 
-var Tw2RenderBatch = exports.Tw2RenderBatch = function Tw2RenderBatch() {
-    _classCallCheck(this, Tw2RenderBatch);
+    }, {
+        key: 'Clear',
+        value: function Clear() {
+            this.batches = [];
+        }
 
-    this.renderMode = _Tw2Device.device.RM_ANY;
-    this.perObjectData = null;
-};
+        /**
+         * Renders the accumulated render batches
+         * @param {Tw2Effect} [effect] - An optional override effect
+         */
 
-/**
- * A render batch that uses geometry provided from an external source
- * @property {*} geometryProvider
- * @inherits Tw2RenderBatch
- * @class
- */
+    }, {
+        key: 'Render',
+        value: function Render(effect) {
+            if (this._sortMethod) {
+                this.batches.sort(this._sortMethod);
+            }
 
+            for (var i = 0; i < this.batches.length; ++i) {
+                if (this.batches[i] instanceof Tw2BatchAccumulator) {
+                    this.batches[i].Render(effect);
+                } else {
+                    if (this.batches[i].renderMode !== _Tw2Device.device.RM_ANY) {
+                        _Tw2Device.device.SetStandardStates(this.batches[i].renderMode);
+                    }
 
-var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2RenderBatch) {
-    _inherits(Tw2ForwardingRenderBatch, _Tw2RenderBatch);
+                    _Tw2Device.device.perObjectData = this.batches[i].perObjectData;
+                    this.batches[i].Commit(effect);
+                }
+            }
+        }
+    }]);
 
-    function Tw2ForwardingRenderBatch() {
-        _classCallCheck(this, Tw2ForwardingRenderBatch);
-
-        var _this = _possibleConstructorReturn(this, (Tw2ForwardingRenderBatch.__proto__ || Object.getPrototypeOf(Tw2ForwardingRenderBatch)).call(this));
-
-        _this.geometryProvider = null;
-        return _this;
-    }
-
-    return Tw2ForwardingRenderBatch;
-}(Tw2RenderBatch);
-
-/**
- * Commits the batch for rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-
-
-Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect) {
-    if (this.geometryProvider) {
-        this.geometryProvider.Render(this, overrideEffect);
-    }
-};
+    return Tw2BatchAccumulator;
+}();
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12001,7 +11299,7 @@ var _glMatrix = __webpack_require__(10);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12471,7 +11769,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12973,7 +12271,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14711,7 +14009,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14732,9 +14030,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["fromEuler"] = fromEuler;
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(32);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -15402,7 +14700,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16045,7 +15343,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16139,7 +15437,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16155,7 +15453,7 @@ var _glMatrix = __webpack_require__(10);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16346,7 +15644,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16357,9 +15655,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.noise = undefined;
 
-var _vec = __webpack_require__(30);
+var _vec = __webpack_require__(33);
 
-var _vec2 = __webpack_require__(31);
+var _vec2 = __webpack_require__(34);
 
 var noise = exports.noise = {};
 
@@ -16556,7 +15854,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16917,7 +16215,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17105,7 +16403,7 @@ util.toArray = function (a) {
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17221,7 +16519,7 @@ Tw2FloatParameter.prototype.SetValue = function (value) {
 };
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17322,7 +16620,7 @@ Tw2MatrixParameter.prototype.OnValueChanged = function () {
 };
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17491,7 +16789,7 @@ Tw2TextureParameter.prototype.GetValue = function () {
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17504,7 +16802,7 @@ exports.Tw2SamplerOverride = Tw2SamplerOverride;
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2SamplerState = __webpack_require__(34);
+var _Tw2SamplerState = __webpack_require__(37);
 
 /**
  * Tw2SamplerOverride
@@ -17589,7 +16887,7 @@ function Tw2SamplerOverride() {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17683,7 +16981,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17694,7 +16992,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2VariableParameter = Tw2VariableParameter;
 
-var _Tw2VariableStore = __webpack_require__(19);
+var _Tw2VariableStore = __webpack_require__(20);
 
 /**
  * Tw2VariableParameter
@@ -17740,7 +17038,7 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
 };
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17890,7 +17188,7 @@ Tw2Vector2Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18039,7 +17337,7 @@ Tw2Vector3Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18188,7 +17486,7 @@ Tw2Vector4Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18420,7 +17718,7 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -19624,10 +18922,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(80)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(81)))
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports) {
 
 var g;
@@ -19654,7 +18952,181 @@ module.exports = g;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2ForwardingRenderBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2RenderBatch2 = __webpack_require__(23);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A render batch that uses geometry provided from an external source
+ *
+ * @property {*} geometryProvider
+ * @class
+ */
+var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2RenderBatch) {
+    _inherits(Tw2ForwardingRenderBatch, _Tw2RenderBatch);
+
+    function Tw2ForwardingRenderBatch() {
+        _classCallCheck(this, Tw2ForwardingRenderBatch);
+
+        var _this = _possibleConstructorReturn(this, (Tw2ForwardingRenderBatch.__proto__ || Object.getPrototypeOf(Tw2ForwardingRenderBatch)).call(this));
+
+        _this.geometryProvider = null;
+        return _this;
+    }
+
+    /**
+     * Commits the batch for rendering
+     * @param {Tw2Effect} [effect] - An optional override effect
+     */
+
+
+    _createClass(Tw2ForwardingRenderBatch, [{
+        key: 'Commit',
+        value: function Commit(effect) {
+            if (this.geometryProvider) {
+                this.geometryProvider.Render(this, effect);
+            }
+        }
+    }]);
+
+    return Tw2ForwardingRenderBatch;
+}(_Tw2RenderBatch2.Tw2RenderBatch);
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2GeometryLineBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2GeometryBatch2 = __webpack_require__(25);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A render batch for line geometry
+ *
+ * @class
+ */
+var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2GeometryBatch) {
+    _inherits(Tw2GeometryLineBatch, _Tw2GeometryBatch);
+
+    function Tw2GeometryLineBatch() {
+        _classCallCheck(this, Tw2GeometryLineBatch);
+
+        return _possibleConstructorReturn(this, (Tw2GeometryLineBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryLineBatch)).call(this));
+    }
+
+    /**
+     * Commits the Geometry Line Batch for rendering
+     * @param {Tw2Effect} [effect=this.effect] An optional override effect
+     */
+
+
+    _createClass(Tw2GeometryLineBatch, [{
+        key: 'Commit',
+        value: function Commit() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+
+            if (this.geometryRes && effect) {
+                this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
+            }
+        }
+    }]);
+
+    return Tw2GeometryLineBatch;
+}(_Tw2GeometryBatch2.Tw2GeometryBatch);
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2InstancedMeshBatch = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2GeometryBatch2 = __webpack_require__(25);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * A render batch for Instanced geometry
+ *
+ * @property {Tw2InstancedMesh} instanceMesh
+ * @class
+ */
+var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2GeometryBatch) {
+    _inherits(Tw2InstancedMeshBatch, _Tw2GeometryBatch);
+
+    function Tw2InstancedMeshBatch() {
+        _classCallCheck(this, Tw2InstancedMeshBatch);
+
+        var _this = _possibleConstructorReturn(this, (Tw2InstancedMeshBatch.__proto__ || Object.getPrototypeOf(Tw2InstancedMeshBatch)).call(this));
+
+        _this.instanceMesh = null;
+        return _this;
+    }
+
+    /**
+     * Commits the Tw2InstancedMeshBatch for rendering
+     * @param {Tw2Effect} [effect=this.effect] An optional override effect
+     */
+
+
+    _createClass(Tw2InstancedMeshBatch, [{
+        key: 'Commit',
+        value: function Commit() {
+            var effect = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.effect;
+
+            if (this.instanceMesh && effect) {
+                this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, effect);
+            }
+        }
+    }]);
+
+    return Tw2InstancedMeshBatch;
+}(_Tw2GeometryBatch2.Tw2GeometryBatch);
+
+/***/ }),
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19664,7 +19136,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2CurveSet = __webpack_require__(82);
+var _Tw2CurveSet = __webpack_require__(86);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -19676,7 +19148,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(83);
+var _Tw2ValueBinding = __webpack_require__(87);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -19689,7 +19161,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 });
 
 /***/ }),
-/* 82 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19793,7 +19265,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 83 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20069,7 +19541,7 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 84 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20079,7 +19551,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PerObjectData = __webpack_require__(85);
+var _Tw2PerObjectData = __webpack_require__(89);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20091,7 +19563,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(86);
+var _Tw2RawData = __webpack_require__(90);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20104,7 +19576,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
 });
 
 /***/ }),
-/* 85 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20117,7 +19589,7 @@ exports.Tw2PerObjectData = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _global = __webpack_require__(35);
+var _global = __webpack_require__(24);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20159,7 +19631,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 86 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20245,7 +19717,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 87 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20255,7 +19727,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(88);
+var _Tw2RuntimeInstanceData = __webpack_require__(92);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20268,7 +19740,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
 });
 
 /***/ }),
-/* 88 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20283,7 +19755,7 @@ var _Tw2Device = __webpack_require__(3);
 
 var _vertex = __webpack_require__(8);
 
-var _particle = __webpack_require__(36);
+var _particle = __webpack_require__(38);
 
 /**
  * Tw2RuntimeInstanceData
@@ -20481,7 +19953,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 89 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20491,7 +19963,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(90);
+var _Tw2StaticEmitter = __webpack_require__(94);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20503,7 +19975,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(91);
+var _Tw2DynamicEmitter = __webpack_require__(95);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20516,7 +19988,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 90 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20531,7 +20003,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(37);
+var _Tw2ParticleEmitter2 = __webpack_require__(39);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20672,7 +20144,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 91 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20685,7 +20157,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(37);
+var _Tw2ParticleEmitter2 = __webpack_require__(39);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20792,7 +20264,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 92 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20802,7 +20274,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(93);
+var _Tw2ParticleAttractorForce = __webpack_require__(97);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20814,7 +20286,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(94);
+var _Tw2ParticleDirectForce = __webpack_require__(98);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20826,7 +20298,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(95);
+var _Tw2ParticleDragForce = __webpack_require__(99);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20838,7 +20310,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(96);
+var _Tw2ParticleFluidDragForce = __webpack_require__(100);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20850,7 +20322,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(97);
+var _Tw2ParticleSpring = __webpack_require__(101);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20862,7 +20334,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(98);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(102);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20875,7 +20347,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 93 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20947,7 +20419,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 94 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21008,7 +20480,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 95 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21069,7 +20541,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 96 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21155,7 +20627,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 97 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21220,7 +20692,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 98 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21325,7 +20797,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 99 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21335,7 +20807,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(100);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(104);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21347,7 +20819,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(101);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(105);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21359,7 +20831,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(102);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(106);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21372,7 +20844,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 100 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21389,7 +20861,7 @@ var _math = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(16);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(23);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21463,7 +20935,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 101 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21480,7 +20952,7 @@ var _math = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(16);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(23);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21554,7 +21026,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 102 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21571,7 +21043,7 @@ var _math = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(16);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(23);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21704,14 +21176,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 103 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 104 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22253,7 +21725,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 105 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22288,7 +21760,7 @@ var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData()
 };
 
 /***/ }),
-/* 106 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22316,7 +21788,7 @@ var Tw2GeometryAnimation = exports.Tw2GeometryAnimation = function Tw2GeometryAn
 };
 
 /***/ }),
-/* 107 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22392,7 +21864,7 @@ Tw2GeometryBone.global = {
 };
 
 /***/ }),
-/* 108 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22422,7 +21894,7 @@ var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
 };
 
 /***/ }),
-/* 109 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22479,7 +21951,7 @@ var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
 };
 
 /***/ }),
-/* 110 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22518,7 +21990,7 @@ var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMesh
 };
 
 /***/ }),
-/* 111 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22544,7 +22016,7 @@ var Tw2GeometryMeshBinding = exports.Tw2GeometryMeshBinding = function Tw2Geomet
 };
 
 /***/ }),
-/* 112 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22602,7 +22074,7 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
 }();
 
 /***/ }),
-/* 113 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22626,7 +22098,7 @@ var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkel
 };
 
 /***/ }),
-/* 114 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22654,7 +22126,7 @@ var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2Geometry
 };
 
 /***/ }),
-/* 115 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22684,7 +22156,7 @@ var Tw2GeometryTransformTrack = exports.Tw2GeometryTransformTrack = function Tw2
 };
 
 /***/ }),
-/* 116 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22706,7 +22178,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(117);
+var _Tw2InstancedMesh = __webpack_require__(121);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22718,7 +22190,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(39);
+var _Tw2Mesh = __webpack_require__(41);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22731,7 +22203,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
 });
 
 /***/ }),
-/* 117 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22740,7 +22212,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2InstancedMeshBatch = exports.Tw2InstancedMesh = undefined;
+exports.Tw2InstancedMesh = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -22750,9 +22222,9 @@ var _math = __webpack_require__(0);
 
 var _Tw2ResMan = __webpack_require__(4);
 
-var _batch = __webpack_require__(20);
+var _batch = __webpack_require__(19);
 
-var _Tw2Mesh2 = __webpack_require__(39);
+var _Tw2Mesh2 = __webpack_require__(41);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22821,7 +22293,7 @@ Tw2InstancedMesh.prototype._GetAreaBatches = function (areas, mode, accumulator,
         if (area.effect === null || area.debugIsHidden) {
             continue;
         }
-        var batch = new Tw2InstancedMeshBatch();
+        var batch = new _batch.Tw2InstancedMeshBatch();
         batch.renderMode = mode;
         batch.perObjectData = perObjectData;
         batch.instanceMesh = this;
@@ -22859,54 +22331,8 @@ Tw2InstancedMesh.prototype.RenderAreas = function (meshIx, start, count, effect)
     }
 };
 
-/**
- * Tw2InstancedMeshBatch
- * @property {Tw2InstancedMesh} instanceMesh
- * @property {Tw2GeometryRes} geometryRes
- * @property {number} meshIx
- * @property {number} start
- * @property {number} count
- * @property {Tw2Effect|null} effect
- * @inherit Tw2RenderBatch
- * @class
- */
-
-var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2RenderBatch) {
-    _inherits(Tw2InstancedMeshBatch, _Tw2RenderBatch);
-
-    function Tw2InstancedMeshBatch() {
-        _classCallCheck(this, Tw2InstancedMeshBatch);
-
-        var _this2 = _possibleConstructorReturn(this, (Tw2InstancedMeshBatch.__proto__ || Object.getPrototypeOf(Tw2InstancedMeshBatch)).call(this));
-
-        _this2.instanceMesh = null;
-        _this2.geometryRes = null;
-        _this2.meshIx = 0;
-        _this2.start = 0;
-        _this2.count = 1;
-        _this2.effect = null;
-        return _this2;
-    }
-
-    return Tw2InstancedMeshBatch;
-}(_batch.Tw2RenderBatch);
-
-/**
- * Commits the Tw2InstancedMeshBatch for rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-
-
-Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
-    var effect = typeof overrideEffect === 'undefined' ? this.effect : overrideEffect;
-    if (this.instanceMesh && effect) {
-        this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, effect);
-    }
-};
-
 /***/ }),
-/* 118 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22916,7 +22342,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Animation = __webpack_require__(41);
+var _Tw2Animation = __webpack_require__(42);
 
 Object.keys(_Tw2Animation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22928,7 +22354,7 @@ Object.keys(_Tw2Animation).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(119);
+var _Tw2AnimationController = __webpack_require__(123);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22940,7 +22366,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2Bone = __webpack_require__(43);
+var _Tw2Bone = __webpack_require__(44);
 
 Object.keys(_Tw2Bone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22952,7 +22378,7 @@ Object.keys(_Tw2Bone).forEach(function (key) {
   });
 });
 
-var _Tw2Model = __webpack_require__(44);
+var _Tw2Model = __webpack_require__(45);
 
 Object.keys(_Tw2Model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22964,7 +22390,7 @@ Object.keys(_Tw2Model).forEach(function (key) {
   });
 });
 
-var _Tw2Track = __webpack_require__(45);
+var _Tw2Track = __webpack_require__(46);
 
 Object.keys(_Tw2Track).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22976,7 +22402,7 @@ Object.keys(_Tw2Track).forEach(function (key) {
   });
 });
 
-var _Tw2TrackGroup = __webpack_require__(46);
+var _Tw2TrackGroup = __webpack_require__(47);
 
 Object.keys(_Tw2TrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22989,7 +22415,7 @@ Object.keys(_Tw2TrackGroup).forEach(function (key) {
 });
 
 /***/ }),
-/* 119 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23004,17 +22430,17 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _math = __webpack_require__(0);
 
-var _resource = __webpack_require__(25);
+var _resource = __webpack_require__(27);
 
-var _Tw2Animation = __webpack_require__(41);
+var _Tw2Animation = __webpack_require__(42);
 
-var _Tw2Bone = __webpack_require__(43);
+var _Tw2Bone = __webpack_require__(44);
 
-var _Tw2Model = __webpack_require__(44);
+var _Tw2Model = __webpack_require__(45);
 
-var _Tw2Track = __webpack_require__(45);
+var _Tw2Track = __webpack_require__(46);
 
-var _Tw2TrackGroup = __webpack_require__(46);
+var _Tw2TrackGroup = __webpack_require__(47);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23814,7 +23240,7 @@ Tw2AnimationController.scratch = {
 };
 
 /***/ }),
-/* 120 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23831,7 +23257,7 @@ var _Tw2Device = __webpack_require__(3);
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
-var _reader = __webpack_require__(24);
+var _reader = __webpack_require__(28);
 
 var _sampler = __webpack_require__(21);
 
@@ -24396,7 +23822,760 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 121 */
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2GeometryRes = undefined;
+
+var _math = __webpack_require__(0);
+
+var _Tw2ResMan = __webpack_require__(4);
+
+var _Tw2Device = __webpack_require__(3);
+
+var _Tw2EventEmitter = __webpack_require__(7);
+
+var _reader = __webpack_require__(28);
+
+var _batch = __webpack_require__(19);
+
+var _vertex = __webpack_require__(8);
+
+var _Tw2Resource2 = __webpack_require__(15);
+
+var _geometry = __webpack_require__(40);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2GeometryRes
+ * @property {Array} meshes
+ * @property {vec3} minBounds
+ * @property {vec3} maxBounds
+ * @property {vec3} boundsSpherePosition
+ * @property {Number} boundsSphereRadius
+ * @property {Array} models
+ * @property {Array} animations
+ * @property {Boolean} systemMirror
+ * @inherit Tw2Resource
+ * @class
+ */
+var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource) {
+    _inherits(Tw2GeometryRes, _Tw2Resource);
+
+    function Tw2GeometryRes() {
+        _classCallCheck(this, Tw2GeometryRes);
+
+        var _this = _possibleConstructorReturn(this, (Tw2GeometryRes.__proto__ || Object.getPrototypeOf(Tw2GeometryRes)).call(this));
+
+        _this.meshes = [];
+        _this.minBounds = _math.vec3.create();
+        _this.maxBounds = _math.vec3.create();
+        _this.boundsSpherePosition = _math.vec3.create();
+        _this.boundsSphereRadius = 0;
+        _this.models = [];
+        _this.animations = [];
+        _this.systemMirror = _Tw2ResMan.resMan.systemMirror;
+        return _this;
+    }
+
+    return Tw2GeometryRes;
+}(_Tw2Resource2.Tw2Resource);
+
+/**
+ * Request Response Type
+ * @type {string}
+ */
+
+
+Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
+
+/**
+ * GetInstanceBuffer
+ * @param {Number} meshIndex
+ * @returns {*}
+ */
+Tw2GeometryRes.prototype.GetInstanceBuffer = function (meshIndex) {
+    return meshIndex < this.meshes.length ? this.meshes[meshIndex].buffer : undefined;
+};
+
+/**
+ * GetInstanceDeclaration
+ * @param {Number} meshIndex
+ * @returns {Tw2VertexDeclaration}
+ */
+Tw2GeometryRes.prototype.GetInstanceDeclaration = function (meshIndex) {
+    return this.meshes[meshIndex].declaration;
+};
+
+/**
+ * GetInstanceStride
+ * @param {Number} meshIndex
+ * @returns {*}
+ */
+Tw2GeometryRes.prototype.GetInstanceStride = function (meshIndex) {
+    return this.meshes[meshIndex].declaration.stride;
+};
+
+/**
+ * GetInstanceCount
+ * @param {Number} meshIndex
+ * @returns {*}
+ */
+Tw2GeometryRes.prototype.GetInstanceCount = function (meshIndex) {
+    return this.meshes[meshIndex].bufferLength * 4 / this.meshes[meshIndex].declaration.stride;
+};
+
+/**
+ * Prepare
+ * @param data
+ */
+Tw2GeometryRes.prototype.Prepare = function (data) {
+    var reader = new _reader.Tw2BinaryReader(new Uint8Array(data));
+    var self = this;
+
+    /**
+     * ReadVertexBuffer
+     * @param declaration
+     * @returns {Float32Array}
+     * @private
+     */
+    function ReadVertexBuffer(declaration) {
+        var declCount = reader.ReadUInt8();
+        var vertexSize = 0;
+        var declIx, i;
+        for (declIx = 0; declIx < declCount; ++declIx) {
+            var element = new _vertex.Tw2VertexElement();
+            element.usage = reader.ReadUInt8();
+            element.usageIndex = reader.ReadUInt8();
+            element.fileType = reader.ReadUInt8();
+            element.type = _Tw2Device.device.gl.FLOAT;
+            element.elements = (element.fileType >> 5) + 1;
+            element.offset = vertexSize * 4;
+            declaration.elements[declIx] = element;
+            vertexSize += element.elements;
+        }
+        declaration.RebuildHash();
+        declaration.stride = vertexSize * 4;
+        var vertexCount = reader.ReadUInt32();
+        if (vertexCount === 0) {
+            return null;
+        }
+        var buffer = new Float32Array(vertexSize * vertexCount);
+        var index = 0;
+        for (var vtxIx = 0; vtxIx < vertexCount; ++vtxIx) {
+            for (declIx = 0; declIx < declCount; ++declIx) {
+                var el = declaration.elements[declIx];
+                switch (el.fileType & 0xf) {
+                    case 0:
+                        if (el.fileType & 0x10) {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadInt8() / 127.0;
+                            }
+                        } else {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadInt8();
+                            }
+                        }
+                        break;
+
+                    case 1:
+                        if (el.fileType & 0x10) {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadInt8() / 32767.0;
+                            }
+                        } else {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadInt16();
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        for (i = 0; i < el.elements; ++i) {
+                            buffer[index++] = reader.ReadInt32();
+                        }
+                        break;
+
+                    case 3:
+                        for (i = 0; i < el.elements; ++i) {
+                            buffer[index++] = reader.ReadFloat16();
+                        }
+                        break;
+
+                    case 4:
+                        for (i = 0; i < el.elements; ++i) {
+                            buffer[index++] = reader.ReadFloat32();
+                        }
+                        break;
+
+                    case 8:
+                        if (el.fileType & 0x10) {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadUInt8() / 255.0;
+                            }
+                        } else {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadUInt8();
+                            }
+                        }
+                        break;
+
+                    case 9:
+                        if (el.fileType & 0x10) {
+                            for (i = 0; i < declaration.elements[declIx].elements; ++i) {
+                                buffer[index++] = reader.ReadUInt8() / 65535.0;
+                            }
+                        } else {
+                            for (i = 0; i < el.elements; ++i) {
+                                buffer[index++] = reader.ReadUInt16();
+                            }
+                        }
+                        break;
+
+                    case 10:
+                        for (i = 0; i < el.elements; ++i) {
+                            buffer[index++] = reader.ReadUInt32();
+                        }
+                        break;
+
+                    default:
+                        _Tw2EventEmitter.emitter.log('res.error', {
+                            log: 'error',
+                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
+                            msg: 'Error loading wbg data',
+                            path: self.path,
+                            type: 'geometry.filetype',
+                            value: el.fileType & 0xf
+                        });
+                        throw 1;
+                }
+            }
+        }
+        return buffer;
+    }
+
+    /**
+     * ReadIndexBuffer
+     * @returns {Uint16Array|Uint32Array}
+     * @private
+     */
+    function ReadIndexBuffer() {
+        var ibType = reader.ReadUInt8();
+        var indexCount = reader.ReadUInt32();
+        var indexes, i;
+        if (ibType === 0) {
+            indexes = new Uint16Array(indexCount);
+            for (i = 0; i < indexCount; ++i) {
+                indexes[i] = reader.ReadUInt16();
+            }
+            return indexes;
+        } else {
+            indexes = new Uint32Array(indexCount);
+            for (i = 0; i < indexCount; ++i) {
+                indexes[i] = reader.ReadUInt32();
+            }
+            return indexes;
+        }
+    }
+
+    /* var fileVersion = */
+    reader.ReadUInt8();
+    var meshCount = reader.ReadUInt8();
+    for (var meshIx = 0; meshIx < meshCount; ++meshIx) {
+        var mesh = new _geometry.Tw2GeometryMesh();
+        mesh.name = reader.ReadString();
+
+        var buffer = ReadVertexBuffer(mesh.declaration);
+        var i, j, k;
+        if (buffer) {
+            mesh.bufferLength = buffer.length;
+            mesh.buffer = _Tw2Device.device.gl.createBuffer();
+            _Tw2Device.device.gl.bindBuffer(_Tw2Device.device.gl.ARRAY_BUFFER, mesh.buffer);
+            _Tw2Device.device.gl.bufferData(_Tw2Device.device.gl.ARRAY_BUFFER, buffer, _Tw2Device.device.gl.STATIC_DRAW);
+        } else {
+            mesh.buffer = null;
+        }
+
+        var indexes = ReadIndexBuffer();
+        if (indexes) {
+            mesh.indexes = _Tw2Device.device.gl.createBuffer();
+            mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? _Tw2Device.device.gl.UNSIGNED_SHORT : _Tw2Device.device.gl.UNSIGNED_INT;
+            _Tw2Device.device.gl.bindBuffer(_Tw2Device.device.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+            _Tw2Device.device.gl.bufferData(_Tw2Device.device.gl.ELEMENT_ARRAY_BUFFER, indexes, _Tw2Device.device.gl.STATIC_DRAW);
+        } else {
+            mesh.indexes = null;
+        }
+
+        var areaCount = reader.ReadUInt8();
+        for (i = 0; i < areaCount; ++i) {
+            mesh.areas[i] = new _geometry.Tw2GeometryMeshArea();
+            mesh.areas[i].name = reader.ReadString();
+            mesh.areas[i].start = reader.ReadUInt32() * indexes.BYTES_PER_ELEMENT;
+            mesh.areas[i].count = reader.ReadUInt32() * 3;
+            mesh.areas[i].minBounds = _math.vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+            mesh.areas[i].maxBounds = _math.vec3.fromValues(reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+        }
+
+        var boneBindingCount = reader.ReadUInt8();
+        mesh.boneBindings = [];
+        for (i = 0; i < boneBindingCount; ++i) {
+            mesh.boneBindings[i] = reader.ReadString();
+        }
+
+        var annotationSetCount = reader.ReadUInt16();
+        if (annotationSetCount || this.systemMirror) {
+            mesh.bufferData = buffer;
+            mesh.indexData = indexes;
+        }
+        if (annotationSetCount) {
+            mesh.blendShapes = [];
+            for (i = 0; i < annotationSetCount; ++i) {
+                mesh.blendShapes[i] = new _geometry.Tw2BlendShapeData();
+                mesh.blendShapes[i].name = reader.ReadString();
+                mesh.blendShapes[i].buffer = ReadVertexBuffer(mesh.blendShapes[i].declaration);
+                mesh.blendShapes[i].indexes = ReadIndexBuffer();
+            }
+        }
+        this.meshes[meshIx] = mesh;
+    }
+
+    var modelCount = reader.ReadUInt8();
+    for (var modelIx = 0; modelIx < modelCount; ++modelIx) {
+        var model = new _geometry.Tw2GeometryModel();
+        model.name = reader.ReadString();
+
+        model.skeleton = new _geometry.Tw2GeometrySkeleton();
+        var boneCount = reader.ReadUInt8();
+        for (j = 0; j < boneCount; ++j) {
+            var bone = new _geometry.Tw2GeometryBone();
+            bone.name = reader.ReadString();
+            var flags = reader.ReadUInt8();
+            bone.parentIndex = reader.ReadUInt8();
+            if (bone.parentIndex === 255) {
+                bone.parentIndex = -1;
+            }
+            if (flags & 1) {
+                _math.vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+            } else {
+                _math.vec3.set(bone.position, 0, 0, 0);
+            }
+            if (flags & 2) {
+                _math.quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
+            } else {
+                _math.quat.identity(bone.orientation);
+            }
+            if (flags & 4) {
+                for (k = 0; k < 9; ++k) {
+                    bone.scaleShear[k] = reader.ReadFloat32();
+                }
+            } else {
+                _math.mat3.identity(bone.scaleShear);
+            }
+            model.skeleton.bones[j] = bone;
+        }
+        for (j = 0; j < model.skeleton.bones.length; ++j) {
+            model.skeleton.bones[j].UpdateTransform();
+            if (model.skeleton.bones[j].parentIndex !== -1) {
+                _math.mat4.multiply(model.skeleton.bones[j].worldTransform, model.skeleton.bones[model.skeleton.bones[j].parentIndex].worldTransform, model.skeleton.bones[j].localTransform);
+            } else {
+                _math.mat4.copy(model.skeleton.bones[j].worldTransform, model.skeleton.bones[j].localTransform);
+            }
+            _math.mat4.invert(model.skeleton.bones[j].worldTransformInv, model.skeleton.bones[j].worldTransform);
+        }
+
+        var meshBindingCount = reader.ReadUInt8();
+        for (j = 0; j < meshBindingCount; ++j) {
+            mesh = reader.ReadUInt8();
+            if (mesh < this.meshes.length) {
+                Tw2GeometryRes.BindMeshToModel(this.meshes[mesh], model);
+            }
+        }
+        this.models[this.models.length] = model;
+    }
+
+    /**
+     * ReadCurve
+     * @returns {Tw2GeometryCurve}
+     * @private
+     */
+    function ReadCurve() {
+        var type = reader.ReadUInt8();
+        if (type === 0) {
+            return null;
+        }
+        var dimension = reader.ReadUInt8();
+        var curve = new _geometry.Tw2GeometryCurve();
+        curve.dimension = dimension;
+        curve.degree = reader.ReadUInt8();
+        var knotCount = reader.ReadUInt32();
+        curve.knots = new Float32Array(knotCount);
+        for (var i = 0; i < knotCount; ++i) {
+            curve.knots[i] = reader.ReadFloat32();
+        }
+        var controlCount = reader.ReadUInt32();
+        curve.controls = new Float32Array(controlCount);
+        for (i = 0; i < controlCount; ++i) {
+            curve.controls[i] = reader.ReadFloat32();
+        }
+        return curve;
+    }
+
+    var animationCount = reader.ReadUInt8();
+    for (i = 0; i < animationCount; ++i) {
+        var animation = new _geometry.Tw2GeometryAnimation();
+        animation.name = reader.ReadString();
+        animation.duration = reader.ReadFloat32();
+        var groupCount = reader.ReadUInt8();
+        for (j = 0; j < groupCount; ++j) {
+            var group = new _geometry.Tw2GeometryTrackGroup();
+            group.name = reader.ReadString();
+            for (var m = 0; m < this.models.length; ++m) {
+                if (this.models[m].name === group.name) {
+                    group.model = this.models[m];
+                    break;
+                }
+            }
+            var transformTrackCount = reader.ReadUInt8();
+            for (k = 0; k < transformTrackCount; ++k) {
+                var track = new _geometry.Tw2GeometryTransformTrack();
+                track.name = reader.ReadString();
+                track.orientation = ReadCurve();
+                track.position = ReadCurve();
+                track.scaleShear = ReadCurve();
+                if (track.orientation) {
+                    var lastX = 0;
+                    var lastY = 0;
+                    var lastZ = 0;
+                    var lastW = 0;
+                    for (var n = 0; n < track.orientation.controls.length; n += 4) {
+                        var x = track.orientation.controls[n];
+                        var y = track.orientation.controls[n + 1];
+                        var z = track.orientation.controls[n + 2];
+                        var w = track.orientation.controls[n + 3];
+                        if (lastX * x + lastY * y + lastZ * z + lastW * w < 0) {
+                            track.orientation.controls[n] = -x;
+                            track.orientation.controls[n + 1] = -y;
+                            track.orientation.controls[n + 2] = -z;
+                            track.orientation.controls[n + 3] = -w;
+                        }
+                        lastX = x;
+                        lastY = y;
+                        lastZ = z;
+                        lastW = w;
+                    }
+                }
+                group.transformTracks[group.transformTracks.length] = track;
+            }
+            animation.trackGroups[animation.trackGroups.length] = group;
+        }
+        this.animations[this.animations.length] = animation;
+    }
+    this.PrepareFinished(true);
+};
+
+/**
+ * BindMeshToModel
+ * @param {Tw2GeometryMesh} mesh
+ * @param {Tw2GeometryModel} model
+ */
+Tw2GeometryRes.BindMeshToModel = function (mesh, model) {
+    var binding = new _geometry.Tw2GeometryMeshBinding();
+    binding.mesh = mesh;
+    for (var b = 0; b < binding.mesh.boneBindings.length; ++b) {
+        var name = binding.mesh.boneBindings[b];
+        var bone = model.FindBoneByName(name);
+        if (bone === null) {
+            _Tw2EventEmitter.emitter.log('res.error', {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'BindMeshToModel'],
+                msg: 'Mesh has invalid bone name for model',
+                path: this.path,
+                type: 'geometry.invalidbone',
+                data: {
+                    mesh: binding.mesh.name,
+                    bone: name,
+                    model: model.name
+                }
+            });
+        } else {
+            binding.bones[binding.bones.length] = bone;
+        }
+    }
+    model.meshBindings[model.meshBindings.length] = binding;
+};
+
+/**
+ * RenderAreasInstanced
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
+ * @param {Tw2Effect} effect
+ * @param instanceVB
+ * @param instanceDecl
+ * @param instanceStride
+ * @param instanceCount
+ * @returns {Boolean}
+ */
+Tw2GeometryRes.prototype.RenderAreasInstanced = function (meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount) {
+    this.KeepAlive();
+    if (!this._isGood) {
+        return false;
+    }
+
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes._isGood) {
+        return false;
+    }
+    var d = _Tw2Device.device;
+    var mesh = this.meshes[meshIx];
+    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+
+    var passCount = effect.GetPassCount();
+    var i, area;
+    for (var pass = 0; pass < passCount; ++pass) {
+        effect.ApplyPass(pass);
+        var passInput = effect.GetPassInput(pass);
+        if (passInput.elements.length === 0) {
+            continue;
+        }
+        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+        mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
+        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
+        var resetData = instanceDecl.SetPartialDeclaration(passInput, instanceStride, 8, 1);
+        d.ApplyShadowState();
+
+        for (i = 0; i < count; ++i) {
+            if (i + start < mesh.areas.length) {
+                area = mesh.areas[i + start];
+                var areaStart = area.start;
+                var acount = area.count;
+                while (i + 1 < count) {
+                    area = mesh.areas[i + 1 + start];
+                    if (area.start !== areaStart + acount * 2) {
+                        break;
+                    }
+                    acount += area.count;
+                    ++i;
+                }
+                d.ext.drawElementsInstanced(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
+            }
+        }
+        instanceDecl.ResetInstanceDivisors(resetData);
+    }
+    return true;
+};
+
+/**
+ * RenderAreas
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
+ * @param {Tw2Effect} effect
+ * @param {callback} cb - callback[pass, drawElements]
+ * @returns {Boolean}
+ */
+Tw2GeometryRes.prototype.RenderAreas = function (meshIx, start, count, effect, cb) {
+    this.KeepAlive();
+    if (!this._isGood) {
+        return false;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes._isGood) {
+        return false;
+    }
+    var d = _Tw2Device.device;
+    var mesh = this.meshes[meshIx] || this.meshes[0];
+    d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+
+    var passCount = effect.GetPassCount();
+    var i, area;
+    for (var pass = 0; pass < passCount; ++pass) {
+        effect.ApplyPass(pass);
+        var passInput = effect.GetPassInput(pass);
+        if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride)) {
+            _Tw2EventEmitter.emitter.log('res.error', {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'RenderLines'],
+                msg: 'Error binding mesh to effect',
+                path: this.path,
+                type: 'geometry.meshbind',
+                data: {
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }
+            });
+            return false;
+        }
+        d.ApplyShadowState();
+
+        if (typeof cb !== 'undefined') {
+            var drawElements = [];
+            for (i = 0; i < count; ++i) {
+                if (i + start < mesh.areas.length) {
+                    area = mesh.areas[i + start];
+                    drawElements.push([d.gl.TRIANGLES, area.count, mesh.indexType, area.start]);
+                }
+            }
+            cb(pass, drawElements);
+        } else {
+            for (i = 0; i < count; ++i) {
+                if (i + start < mesh.areas.length) {
+                    area = mesh.areas[i + start];
+                    var areaStart = area.start;
+                    var acount = area.count;
+                    while (i + 1 < count) {
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start !== areaStart + acount * 2) {
+                            break;
+                        }
+                        acount += area.count;
+                        ++i;
+                    }
+                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
+                }
+            }
+        }
+    }
+    return true;
+};
+
+/**
+ * RenderLines
+ * @param {Number} meshIx
+ * @param {Number} start
+ * @param {Number} count
+ * @param {Tw2Effect} effect
+ * @param {function} cb - callback[pass, drawElements]
+ * @returns {Boolean}
+ */
+Tw2GeometryRes.prototype.RenderLines = function (meshIx, start, count, effect, cb) {
+    this.KeepAlive();
+    if (!this._isGood) {
+        return false;
+    }
+    var effectRes = effect.GetEffectRes();
+    if (!effectRes._isGood) {
+        return false;
+    }
+    if (meshIx >= this.meshes.length) {
+        return false;
+    }
+    var d = _Tw2Device.device;
+    var mesh = this.meshes[meshIx];
+    d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+    d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+
+    var passCount = effect.GetPassCount();
+    var i, area;
+    for (var pass = 0; pass < passCount; ++pass) {
+        effect.ApplyPass(pass);
+        var passInput = effect.GetPassInput(pass);
+        if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride)) {
+            _Tw2EventEmitter.emitter.log('res.error', {
+                log: 'error',
+                src: ['Tw2GeometryRes', 'RenderLines'],
+                msg: 'Error binding mesh to effect',
+                path: this.path,
+                type: 'geometry.meshbind',
+                data: {
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }
+            });
+            return false;
+        }
+
+        d.ApplyShadowState();
+
+        if (typeof cb !== 'undefined') {
+            var drawElements = [];
+            for (i = 0; i < count; ++i) {
+                if (i + start < mesh.areas.length) {
+                    area = mesh.areas[i + start];
+                    drawElements.push([d.gl.LINES, area.count, mesh.indexType, area.start]);
+                }
+            }
+            cb(pass, drawElements);
+        } else {
+            for (i = 0; i < count; ++i) {
+                if (i + start < mesh.areas.length) {
+                    area = mesh.areas[i + start];
+                    var areaStart = area.start;
+                    var acount = area.count;
+                    while (i + 1 < count) {
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start !== areaStart + acount * 2) {
+                            break;
+                        }
+                        acount += area.count;
+                        ++i;
+                    }
+                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
+                }
+            }
+        }
+    }
+    return true;
+};
+
+/**
+ * RenderDebugInfo
+ * @param {function} debugHelper
+ * @returns {Boolean}
+ */
+Tw2GeometryRes.prototype.RenderDebugInfo = function (debugHelper) {
+    if (!this.IsGood()) {
+        return false;
+    }
+    for (var i = 0; i < this.models.length; ++i) {
+        if (this.models[i].skeleton) {
+            for (var j = 0; j < this.models[i].skeleton.bones.length; ++j) {
+                var b0 = this.models[i].skeleton.bones[j];
+                if (b0.parentIndex >= 0) {
+                    var b1 = this.models[i].skeleton.bones[b0.parentIndex];
+                    debugHelper.AddLine([b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]], [0, 0.7, 0, 1], [0, 0.7, 0, 1]);
+                }
+            }
+        }
+    }
+};
+
+/**
+ * Unloads webgl and javascript resources
+ * @returns {Boolean}
+ */
+Tw2GeometryRes.prototype.Unload = function () {
+    for (var i = 0; i < this.meshes.length; ++i) {
+        if (this.meshes[i].buffer) {
+            _Tw2Device.device.gl.deleteBuffer(this.meshes[i].buffer);
+            this.meshes[i].buffer = null;
+        }
+        if (this.meshes[i].indexes) {
+            _Tw2Device.device.gl.deleteBuffer(this.meshes[i].indexes);
+            this.meshes[i].indexes = null;
+        }
+    }
+    this._isPurged = true;
+    this._isGood = false;
+    return true;
+};
+
+/***/ }),
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24406,7 +24585,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PostProcess = __webpack_require__(122);
+var _Tw2PostProcess = __webpack_require__(127);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24419,7 +24598,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
 });
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24432,13 +24611,13 @@ exports.Tw2PostProcess = Tw2PostProcess;
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2RenderTarget = __webpack_require__(47);
+var _Tw2RenderTarget = __webpack_require__(48);
 
 var _Tw2Effect = __webpack_require__(22);
 
 var _parameter = __webpack_require__(11);
 
-var _Tw2TextureRes = __webpack_require__(42);
+var _Tw2TextureRes = __webpack_require__(43);
 
 /**
  * Creates a bloom post effect
@@ -24600,7 +24779,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24620,7 +24799,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24751,7 +24930,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24991,7 +25170,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 126 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25261,7 +25440,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25434,7 +25613,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25540,7 +25719,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25820,7 +25999,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25912,7 +26091,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26097,7 +26276,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 132 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26358,7 +26537,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 133 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26611,7 +26790,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 134 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26903,7 +27082,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 135 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26997,7 +27176,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 136 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27300,7 +27479,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 137 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27606,7 +27785,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 138 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27861,7 +28040,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 139 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27871,7 +28050,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(140);
+var _Tw2ColorSequencer = __webpack_require__(145);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27883,7 +28062,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(141);
+var _Tw2EulerRotation = __webpack_require__(146);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27895,7 +28074,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(142);
+var _Tw2QuaternionSequencer = __webpack_require__(147);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27907,7 +28086,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(143);
+var _Tw2RGBAScalarSequencer = __webpack_require__(148);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27919,7 +28098,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(144);
+var _Tw2ScalarSequencer = __webpack_require__(149);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27931,7 +28110,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(145);
+var _Tw2VectorSequencer = __webpack_require__(150);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27943,7 +28122,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(146);
+var _Tw2XYZScalarSequencer = __webpack_require__(151);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27955,7 +28134,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(147);
+var _Tw2YPRSequencer = __webpack_require__(152);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27968,7 +28147,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 140 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28131,7 +28310,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 141 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28282,7 +28461,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 142 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28423,7 +28602,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28564,7 +28743,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28746,7 +28925,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28910,7 +29089,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29048,7 +29227,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29202,7 +29381,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29212,7 +29391,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(149);
+var _Tw2WbgTrack = __webpack_require__(154);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29224,7 +29403,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(150);
+var _Tw2TransformTrack = __webpack_require__(155);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29237,7 +29416,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29401,7 +29580,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29539,7 +29718,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29549,7 +29728,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(152);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(157);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29561,7 +29740,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(153);
+var _Tw2MayaScalarCurve = __webpack_require__(158);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29573,7 +29752,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(154);
+var _Tw2MayaVector3Curve = __webpack_require__(159);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29585,7 +29764,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(155);
+var _Tw2MayaAnimationEngine = __webpack_require__(160);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29598,7 +29777,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29769,7 +29948,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29885,7 +30064,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30037,7 +30216,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30412,7 +30591,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30422,7 +30601,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(49);
+var _child = __webpack_require__(50);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30434,7 +30613,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(162);
+var _effect = __webpack_require__(167);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30446,7 +30625,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(51);
+var _object = __webpack_require__(52);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30458,7 +30637,7 @@ Object.keys(_object).forEach(function (key) {
   });
 });
 
-var _item = __webpack_require__(54);
+var _item = __webpack_require__(55);
 
 Object.keys(_item).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30482,7 +30661,7 @@ Object.keys(_EveBasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(179);
+var _EveSpaceScene = __webpack_require__(184);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30494,7 +30673,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(180);
+var _EveSOF = __webpack_require__(185);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30507,7 +30686,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30625,7 +30804,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30730,7 +30909,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 159 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30767,7 +30946,7 @@ var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 160 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30880,7 +31059,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30992,7 +31171,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31002,7 +31181,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(163);
+var _EveLensflare = __webpack_require__(168);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31014,7 +31193,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(164);
+var _EveMeshOverlayEffect = __webpack_require__(169);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31026,7 +31205,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(50);
+var _EveOccluder = __webpack_require__(51);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31038,7 +31217,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(165);
+var _EveStretch = __webpack_require__(170);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31050,7 +31229,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(166);
+var _EveTurretFiringFX = __webpack_require__(171);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31063,7 +31242,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
 });
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31080,7 +31259,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(50);
+var _EveOccluder = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31418,7 +31597,7 @@ var EveLensflare = exports.EveLensflare = function () {
 EveLensflare.global = null;
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31574,7 +31753,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31874,7 +32053,7 @@ var EveStretch = exports.EveStretch = function () {
 EveStretch.global = null;
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32220,7 +32399,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32393,7 +32572,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32804,7 +32983,7 @@ var EveMissile = exports.EveMissile = function () {
 }();
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32821,7 +33000,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(52);
+var _EveTransform = __webpack_require__(53);
 
 var _EveObject2 = __webpack_require__(14);
 
@@ -33131,7 +33310,7 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33146,7 +33325,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveSpaceObject2 = __webpack_require__(53);
+var _EveSpaceObject2 = __webpack_require__(54);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -33353,7 +33532,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33936,7 +34115,7 @@ EveBoosterSet.Item = EveBoosterSetItem;
 EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34886,7 +35065,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
 EveCurveLineSet.global = null;
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34965,7 +35144,7 @@ EveLocator.Prefix = {
 };
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35356,7 +35535,7 @@ var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
 EvePlaneSet.Item = EvePlaneSetItem;
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35630,7 +35809,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
 }();
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36086,7 +36265,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
 EveSpotlightSet.Item = EveSpotlightSetItem;
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36685,7 +36864,7 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
 EveSpriteSet.Item = EveSpriteSetItem;
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37597,7 +37776,7 @@ EveTurretSet.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
 EveTurretSet.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'];
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38191,7 +38370,7 @@ EveSpaceScene.global = null;
 EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38206,13 +38385,13 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(48);
+var _curve = __webpack_require__(49);
 
-var _item = __webpack_require__(54);
+var _item = __webpack_require__(55);
 
-var _child = __webpack_require__(49);
+var _child = __webpack_require__(50);
 
-var _object = __webpack_require__(51);
+var _object = __webpack_require__(52);
 
 function EveSOF() {
     var data = null;

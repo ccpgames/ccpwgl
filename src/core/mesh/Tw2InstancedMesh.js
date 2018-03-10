@@ -1,6 +1,6 @@
 import {vec3} from '../../math';
 import {resMan} from '../global/Tw2ResMan';
-import {Tw2RenderBatch} from '../batch';
+import {Tw2InstancedMeshBatch} from '../batch';
 import {Tw2Mesh} from './Tw2Mesh';
 
 /**
@@ -101,45 +101,5 @@ Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
                 this.instanceGeometryResource.GetInstanceStride(this.instanceMeshIndex),
                 this.instanceGeometryResource.GetInstanceCount(this.instanceMeshIndex));
         }
-    }
-};
-
-
-/**
- * Tw2InstancedMeshBatch
- * @property {Tw2InstancedMesh} instanceMesh
- * @property {Tw2GeometryRes} geometryRes
- * @property {number} meshIx
- * @property {number} start
- * @property {number} count
- * @property {Tw2Effect|null} effect
- * @inherit Tw2RenderBatch
- * @class
- */
-export class Tw2InstancedMeshBatch extends Tw2RenderBatch
-{
-    constructor()
-    {
-        super();
-        this.instanceMesh = null;
-        this.geometryRes = null;
-        this.meshIx = 0;
-        this.start = 0;
-        this.count = 1;
-        this.effect = null;
-    }
-}
-
-/**
- * Commits the Tw2InstancedMeshBatch for rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-Tw2InstancedMeshBatch.prototype.Commit = function(overrideEffect)
-{
-    var effect = typeof(overrideEffect) === 'undefined' ? this.effect : overrideEffect;
-    if (this.instanceMesh && effect)
-    {
-        this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, effect);
     }
 };

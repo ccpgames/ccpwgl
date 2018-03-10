@@ -1,110 +1,65 @@
 import {device} from '../global/Tw2Device';
 
 /**
- * Render Batches
- * @typedef {(Tw2RenderBatch|Tw2ForwardingRenderBatch|Tw2GeometryBatch|Tw2GeometryLineBatch|Tw2InstancedMeshBatch|EvePlaneSetBatch|EveBoosterBatch|EveSpotlightSetBatch|EveSpriteSetBatch)} RenderBatch
- */
-
-/**
  * Accumulates render batches for rendering
- * @param {function} [sorting] - An optional function for sorting the collected render batches
- * @property {Array.<RenderBatch>} batches
- * @property {number} count - How many batch array elements will be processed
- * @property {function} _sortMethod - the stored sorting function
- * @constructor
+ *
+ * @param {function} [sorting=null]           - An optional function for sorting the collected render batches
+ * @property {Array.<Tw2RenderBatch>} batches - Accumulator render batches and/or child Tw2BatchAccumulators
+ * @property {function} _sortMethod           - An optional method to sort batches before rendering them
+ * @class
  */
-export function Tw2BatchAccumulator(sorting)
+export class Tw2BatchAccumulator
 {
-    this.batches = [];
-    this.count = 0;
-    this._sortMethod = (sorting) ? sorting : undefined;
-}
-
-/**
- * Commits a batch to accumulation
- * @param {RenderBatch} batch
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Commit = function(batch)
-{
-    this.batches[this.count++] = batch;
-};
-
-/**
- * Clears any accumulated render batches
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Clear = function()
-{
-    this.count = 0;
-    this.batches = [];
-};
-
-/**
- * Renders the accumulated render batches
- * - If a sorting function has been defined the render batches will be sorted before rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-Tw2BatchAccumulator.prototype.Render = function(overrideEffect)
-{
-    if (typeof(this._sortMethod) !== 'undefined')
+    constructor(sorting = null)
     {
-        this.batches.sort(this._sortMethod);
+        this.batches = [];
+        this._sortMethod = sorting;
     }
-    for (var i = 0; i < this.count; ++i)
+
+    /**
+     * Commits a batch
+     * @param {Tw2BatchAccumulator|Tw2RenderBatch} batch
+     */
+    Commit(batch)
     {
-        if (this.batches[i].renderMode !== device.RM_ANY)
+        this.batches.push(batch);
+    }
+
+    /**
+     * Clears any accumulated render batches
+     */
+    Clear()
+    {
+        this.batches = [];
+    }
+
+    /**
+     * Renders the accumulated render batches
+     * @param {Tw2Effect} [effect] - An optional override effect
+     */
+    Render(effect)
+    {
+        if (this._sortMethod)
         {
-            device.SetStandardStates(this.batches[i].renderMode);
+            this.batches.sort(this._sortMethod);
         }
-        device.perObjectData = this.batches[i].perObjectData;
-        this.batches[i].Commit(overrideEffect);
-    }
-};
 
+        for (let i = 0; i < this.batches.length; ++i)
+        {
+            if (this.batches[i] instanceof Tw2BatchAccumulator)
+            {
+                this.batches[i].Render(effect);
+            }
+            else
+            {
+                if (this.batches[i].renderMode !== device.RM_ANY)
+                {
+                    device.SetStandardStates(this.batches[i].renderMode);
+                }
 
-/**
- * A standard render batch
- * @property {number} renderMode
- * @property {Tw2PerObjectData} perObjectData
- * @class
- */
-export class Tw2RenderBatch
-{
-    constructor()
-    {
-        this.renderMode = device.RM_ANY;
-        this.perObjectData = null;
-    }
-}
-
-
-/**
- * A render batch that uses geometry provided from an external source
- * @property {*} geometryProvider
- * @inherits Tw2RenderBatch
- * @class
- */
-export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
-{
-    constructor()
-    {
-        super();
-        this.geometryProvider = null;
+                device.perObjectData = this.batches[i].perObjectData;
+                this.batches[i].Commit(effect);
+            }
+        }
     }
 }
-
-/**
- * Commits the batch for rendering
- * @param {Tw2Effect} [overrideEffect]
- * @prototype
- */
-Tw2ForwardingRenderBatch.prototype.Commit = function(overrideEffect)
-{
-    if (this.geometryProvider)
-    {
-        this.geometryProvider.Render(this, overrideEffect);
-    }
-};
-

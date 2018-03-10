@@ -1,6 +1,6 @@
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
-import {Tw2GeometryBatch, Tw2GeometryLineBatch} from '../resource/Tw2GeometryRes';
+import {Tw2GeometryBatch, Tw2GeometryLineBatch} from '../batch';
 
 /**
  * Tw2MeshArea
