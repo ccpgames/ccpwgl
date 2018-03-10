@@ -1,5 +1,4 @@
-import {device} from '../core/Tw2Device';
-import {Tw2PerObjectData} from '../core/Tw2PerObjectData';
+import {device, Tw2PerObjectData} from '../core';
 
 /**
  * Tw2BasicPerObjectData
