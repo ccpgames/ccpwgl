@@ -4,8 +4,21 @@ import {device} from '../global/Tw2Device';
 import {emitter} from '../global/Tw2EventEmitter';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2RenderBatch} from '../batch';
-import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
+import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
+import {
+    Tw2BlendShapeData,
+    Tw2GeometryAnimation,
+    Tw2GeometryBone,
+    Tw2GeometryCurve,
+    Tw2GeometryMesh,
+    Tw2GeometryMeshArea,
+    Tw2GeometryMeshBinding,
+    Tw2GeometryModel,
+    Tw2GeometrySkeleton,
+    Tw2GeometryTrackGroup,
+    Tw2GeometryTransformTrack
+} from '../geometry';
 
 /**
  * Tw2GeometryBatch
@@ -79,261 +92,6 @@ Tw2GeometryLineBatch.prototype.Commit = function(overrideEffect)
         this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
     }
 };
-
-
-/**
- * Tw2GeometryMeshArea
- * @property {string} name
- * @property {Number} start
- * @property {Number} count
- * @property {vec3} minBounds
- * @property {vec3} maxBounds
- * @property {vec3} boundsSpherePosition
- * @property {Number} boundsSphereRadius
- * @constructor
- */
-export function Tw2GeometryMeshArea()
-{
-    this.name = '';
-    this.start = 0;
-    this.count = 0;
-    this.minBounds = vec3.create();
-    this.maxBounds = vec3.create();
-    this.boundsSpherePosition = vec3.create();
-    this.boundsSphereRadius = 0;
-}
-
-
-/**
- * Tw2GeometryMeshBinding
- * @property {Tw2GeometryMesh} mesh
- * @property {Array.<Tw2GeometryBone>} bones
- * @constructor
- */
-export function Tw2GeometryMeshBinding()
-{
-    this.mesh = null;
-    this.bones = [];
-}
-
-
-/**
- * Tw2GeometryModel
- * @property {string} name
- * @property {Array.<Tw2GeometryMeshBinding>} meshBindings
- * @property {Tw2GeometrySkeleton} skeleton
- * @constructor
- */
-export function Tw2GeometryModel()
-{
-    this.name = '';
-    this.meshBindings = [];
-    this.skeleton = null;
-}
-
-/**
- * Finds a bone by it's name
- * @param {string} name
- * @returns {Tw2GeometryBone|null}
- * @constructor
- */
-Tw2GeometryModel.prototype.FindBoneByName = function(name)
-{
-    if (this.skeleton === null)
-    {
-        return null;
-    }
-    for (var b = 0; b < this.skeleton.bones.length; ++b)
-    {
-        if (this.skeleton.bones[b].name === name)
-        {
-            return this.skeleton.bones[b];
-        }
-    }
-    return null;
-};
-
-
-/**
- * Tw2GeometrySkeleton
- * @property {Array.<Tw2GeometryBone>} bones
- * @constructor
- */
-export function Tw2GeometrySkeleton()
-{
-    this.bones = [];
-}
-
-
-/**
- * Tw2GeometryBone
- * @property {string} name
- * @property {Number} parentIndex
- * @property {vec3} position
- * @property {quat} orientation
- * @property {mat3} scaleShear
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} worldTransformInv
- * @constructor
- */
-export function Tw2GeometryBone()
-{
-    this.name = '';
-    this.parentIndex = -1;
-    this.position = vec3.create();
-    this.orientation = quat.create();
-    this.scaleShear = mat3.create();
-    this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
-    this.worldTransformInv = mat4.create();
-}
-
-/**
- * Scratch variables
- */
-Tw2GeometryBone.scratch = {
-    mat4_0: mat4.create()
-};
-
-/**
- * Updates the Bone's transform
- * @returns {mat4}
- */
-Tw2GeometryBone.prototype.UpdateTransform = function()
-{
-    mat4.fromMat3(this.localTransform, this.scaleShear);
-    quat.normalize(this.orientation, this.orientation);
-    var rm = mat4.fromQuat(Tw2GeometryBone.scratch.mat4_0, this.orientation);
-    mat4.multiply(this.localTransform, this.localTransform, rm);
-    this.localTransform[12] = this.position[0];
-    this.localTransform[13] = this.position[1];
-    this.localTransform[14] = this.position[2];
-    return this.localTransform;
-};
-
-
-/**
- * Tw2GeometryAnimation
- * @property {string} name
- * @property {Number} duration
- * @property {Array.<Tw2GeometryTrackGroup>} trackGroups
- * @constructor
- */
-export function Tw2GeometryAnimation()
-{
-    this.name = '';
-    this.duration = 0;
-    this.trackGroups = [];
-}
-
-
-/**
- * Tw2GeometryTrackGroup
- * @property {string} name
- * @property {Tw2GeometryModel} model
- * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
- * @constructor
- */
-export function Tw2GeometryTrackGroup()
-{
-    this.name = '';
-    this.model = null;
-    this.transformTracks = [];
-}
-
-
-/**
- * Tw2GeometryTransformTrack
- * @property {string} name
- * @property {Tw2GeometryCurve} position
- * @property {Tw2GeometryCurve} orientation
- * @property scaleShear
- * @constructor
- */
-export function Tw2GeometryTransformTrack()
-{
-    this.name = '';
-    this.position = null;
-    this.orientation = null;
-    this.scaleShear = null;
-}
-
-
-/**
- * Tw2GeometryCurve
- * @property {Number} dimension
- * @property {Number} degree
- * @property {Float32Array} knots
- * @property {Float32Array} controls
- * @constructor
- */
-export function Tw2GeometryCurve()
-{
-    this.dimension = 0;
-    this.degree = 0;
-    this.knots = null;
-    this.controls = null;
-}
-
-
-/**
- * Tw2BlendShapeData
- * @property {String} name
- * @property {Tw2VertexDeclaration} declaration
- * @property {Array} buffers
- * @property indexes
- * @property weightProxy
- * @constructor
- */
-export function Tw2BlendShapeData()
-{
-    this.name = '';
-    this.declaration = new Tw2VertexDeclaration();
-    this.buffers = [];
-    this.indexes = null;
-    this.weightProxy = null;
-}
-
-
-/**
- * Tw2GeometryMesh
- * @property {string} name
- * @property {Tw2VertexDeclaration} declaration
- * @property {Array.<Tw2GeometryMeshArea>} areas
- * @property {WebGLBuffer} buffer
- * @property {Number} bufferLength
- * @property bufferData
- * @property {WebGLBuffer} indexes
- * @property indexData
- * @property {Number} indexType
- * @property {vec3} minBounds
- * @property {vec3} maxBounds
- * @property {vec3} boundsSpherePosition
- * @property {Number} boundsSphereRadius
- * @property {Array} bones
- * @property {Array.<string>} boneBindings
- * @constructor
- */
-export function Tw2GeometryMesh()
-{
-    this.name = '';
-    this.declaration = new Tw2VertexDeclaration();
-    this.areas = [];
-    this.buffer = null;
-    this.bufferLength = 0;
-    this.bufferData = null;
-    this.indexes = null;
-    this.indexData = null;
-    this.indexType = 0;
-    this.minBounds = vec3.create();
-    this.maxBounds = vec3.create();
-    this.boundsSpherePosition = vec3.create();
-    this.boundsSphereRadius = 0;
-    this.bones = [];
-    this.boneBindings = [];
-}
-
 
 /**
  * Tw2GeometryRes
