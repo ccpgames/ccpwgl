@@ -1,6 +1,6 @@
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
-import {variableStore} from '../global/Tw2VariableStore';
+import {store} from '../global/Tw2Store';
 import {Tw2TextureParameter, Tw2VariableParameter} from '../parameter';
 
 /**
@@ -161,9 +161,9 @@ Tw2Effect.prototype.BindParameters = function()
                         stage.parameters.push(p);
                     }
                 }
-                else if (name in variableStore._variables)
+                else if (store.HasVariable(name))
                 {
-                    var param = variableStore._variables[name];
+                    var param = store.GetVariable(name);
                     var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
@@ -173,14 +173,16 @@ Tw2Effect.prototype.BindParameters = function()
                 }
                 else if (constant.isAutoregister)
                 {
-                    variableStore.RegisterType(name, constant.type);
-                    var param = variableStore._variables[name];
-                    var p = {};
-                    p.parameter = param;
-                    p.constantBuffer = stage.constantBuffer;
-                    p.offset = constant.offset;
-                    p.size = constant.size;
-                    stage.parameters.push(p);
+                    var param = store.RegisterVariable(name, undefined, constant.type);
+                    if (param)
+                    {
+                        var p = {};
+                        p.parameter = param;
+                        p.constantBuffer = stage.constantBuffer;
+                        p.offset = constant.offset;
+                        p.size = constant.size;
+                        stage.parameters.push(p);
+                    }
                 }
             }
 
@@ -192,14 +194,13 @@ Tw2Effect.prototype.BindParameters = function()
                 {
                     param = this.parameters[name];
                 }
-                else if (name in variableStore._variables)
+                else if (store.HasVariable(name))
                 {
-                    param = variableStore._variables[name];
+                    param = store.GetVariable(name);
                 }
                 else if (stageRes.textures[k].isAutoregister)
                 {
-                    variableStore.RegisterType(name, Tw2TextureParameter);
-                    param = variableStore._variables[name];
+                    param = store.RegisterVariable(name, undefined, Tw2TextureParameter);
                 }
                 else
                 {

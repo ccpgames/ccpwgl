@@ -1,7 +1,7 @@
 import {vec4, mat4, util} from '../../math';
 import {
     device,
-    variableStore,
+    store,
     Tw2Effect,
     Tw2VertexDeclaration,
     Tw2VertexElement,
@@ -55,11 +55,7 @@ export class EveOccluder
             this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
         }
 
-        const occluderValue = variableStore._variables['OccluderValue'].value;
-        occluderValue[0] = (1 << (index * 2)) / 255.0;
-        occluderValue[1] = (2 << (index * 2)) / 255.0;
-        occluderValue[2] = 0;
-        occluderValue[3] = 0;
+        store.SetVariableValue('OccluderValue', [(1 << (index * 2)) / 255.0, (2 << (index * 2)) / 255.0, 0, 0]);
 
         g.accumulator.Render();
 
@@ -126,8 +122,6 @@ export class EveOccluder
     static init()
     {
         if (EveOccluder.global) return;
-
-        variableStore.RegisterVariable('OccluderValue', vec4.fromValues(1,1,0,0));
 
         const
             d = device,

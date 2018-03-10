@@ -1,4 +1,5 @@
 import {emitter} from './Tw2EventEmitter';
+import {store} from './Tw2Store';
 import {Tw2Resource} from '../resource/Tw2Resource';
 import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';
 
@@ -223,9 +224,6 @@ Tw2LoadingObject.prototype.Prepare = function(text)
 /**
  * Resource Manager
  * @property {Boolean} systemMirror - Toggles whether {@link GeometryResource} Index and Buffer data arrays are visible
- * @property {Object.<string, string>} resourcePaths
- * @property {Object} resourcePaths.res - Default resource path for current ccpwgl version
- * @property {Object.<string, Function>} _extensions - an object of registered extensions and their constructors
  * @property {Tw2MotherLode} motherLode
  * @property {Number} maxPrepareTime
  * @property {Number} prepareBudget
@@ -243,19 +241,12 @@ Tw2LoadingObject.prototype.Prepare = function(text)
 function Tw2ResMan()
 {
     this.motherLode = new Tw2MotherLode();
-
     this.systemMirror = false;
     this.maxPrepareTime = 0.05;
     this.prepareBudget = 0;
     this.autoPurgeResources = true;
     this.activeFrame = 0;
     this.purgeTime = 30;
-
-    this._extensions = {};
-    this._resourcePaths = {};
-    this._constructors = {};
-    this._missingConstructors = [];
-
     this._prepareQueue = [];
     this._purgeTime = 0;
     this._purgeFrame = 0;
@@ -528,7 +519,6 @@ function Tw2ResMan()
 
     /**
      * Builds a url from a resource path
-     * - the prefix in the resource path is replaced with it's string value from `this._resourcePaths`
      * @param {string} resPath
      * @returns {string}
      */
@@ -549,8 +539,8 @@ function Tw2ResMan()
         }
 
         var prefix = resPath.substr(0, prefixIndex);
-
-        if (!(prefix in this._resourcePaths))
+        const path = store.GetPath(prefix);
+        if (!path)
         {
             emitter.log('res.error',
                 {
@@ -564,7 +554,7 @@ function Tw2ResMan()
             return resPath;
         }
 
-        return this._resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
+        return path + resPath.substr(prefixIndex + 2);
     };
 
     /**
@@ -685,7 +675,8 @@ function Tw2ResMan()
             return null;
         }
 
-        if (!(ext in this._extensions))
+        const Extension = store.GetExtension(ext);
+        if (!Extension)
         {
             emitter.log('res.error',
                 {
@@ -699,7 +690,7 @@ function Tw2ResMan()
             return null;
         }
 
-        obj = new this._extensions[ext]();
+        obj = new Extension();
         obj.path = path;
         this._LoadResource(obj);
         return obj;
@@ -801,182 +792,6 @@ function Tw2ResMan()
     this.UnloadAndClear = function()
     {
         this.motherLode.UnloadAndClear();
-    };
-
-    /**
-     * Passes key:values from an object or array of objects to an internal function
-     * @param {*} target
-     * @param {string} funcName
-     * @param {Array|{}} obj
-     * @returns {boolean}
-     */
-    const _toKeyValue = function(target, funcName, obj)
-    {
-        if (obj && funcName && funcName in target)
-        {
-            obj = Array.isArray(obj) ? obj : [obj];
-            for (let i = 0; i < obj.length; i++)
-            {
-                for (let key in obj[i])
-                {
-                    if (obj[i].hasOwnProperty(key))
-                    {
-                        target[funcName](key, obj[i][key]);
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
-    };
-
-    /**
-     * Registers a library constructor
-     * @param {string} name
-     * @param {function} Constructor
-     * @returns {?Function}}
-     */
-    this.RegisterConstructor = function(name, Constructor)
-    {
-        if (name && Constructor && typeof Constructor === 'function')
-        {
-            this._constructors[name] = Constructor;
-            return Constructor;
-        }
-        return null;
-    };
-
-    /**
-     * Registers library constructors from an object or array of objects
-     * @param obj
-     */
-    this.RegisterConstructors = function(obj)
-    {
-        _toKeyValue(this, 'RegisterConstructor', obj);
-    };
-
-    /**
-     * Gets a library constructor by name
-     * @param {string} name
-     * @param {boolean} [skipDebug]
-     * @returns {?Function}
-     */
-    this.GetConstructor = function(name, skipDebug)
-    {
-        if (name && name in this._constructors)
-        {
-            return this._constructors[name];
-        }
-        else if (name && !skipDebug)
-        {
-            if (this._missingConstructors.indexOf(name) === -1)
-            {
-                this._missingConstructors.push(name);
-            }
-
-            if (name.includes('Tw2'))
-            {
-                return this.GetConstructor(name.replace('Tw2', 'Tr2'), true);
-            }
-            else if (name.includes('Tr2'))
-            {
-                return this.GetConstructor(name.replace('Tr2', 'Tw2'), true);
-            }
-        }
-        return null;
-    };
-
-    /**
-     * Registers extension's and their constructors
-     * @param {string} extension
-     * @param {Function} Constructor
-     * @returns {boolean}
-     */
-    this.RegisterExtension = function(extension, Constructor)
-    {
-        if (!extension || !Constructor || typeof Constructor !== 'function')
-        {
-            return false;
-        }
-
-        this._extensions[extension] = Constructor;
-        return true;
-    };
-
-    /**
-     * Registers extensions from an object or array of objects
-     * @param obj
-     */
-    this.RegisterExtensions = function(obj)
-    {
-        _toKeyValue(this, 'RegisterExtension', obj);
-    };
-
-    /**
-     * Gets a resource constructor from it's extension
-     * @param {string} extension
-     * @returns {?Function}}
-     */
-    this.GetExtension = function(extension)
-    {
-        return extension && extension in this._extensions ? this._extensions[extension] : null;
-    };
-
-    /**
-     * Registers a resource path
-     * @param {string} prefix
-     * @param {Function} path
-     * @returns {boolean}
-     */
-    this.RegisterResourcePath = function(prefix, path)
-    {
-        if (!prefix || !path)
-        {
-            return false;
-        }
-
-        this._resourcePaths[prefix] = path;
-        return true;
-    };
-
-    /**
-     * Registers resource paths from an object or array of objects
-     * @param obj
-     */
-    this.RegisterResourcePaths = function(obj)
-    {
-        _toKeyValue(this, 'RegisterResourcePath', obj);
-    };
-
-    /**
-     * Gets a resource path from its prefix
-     * @param {string} prefix
-     * @returns {?string}}
-     */
-    this.GetResourcePath = function(prefix)
-    {
-        return prefix && prefix in this._resourcePaths ? this._resourcePaths[prefix] : null;
-    };
-
-    /**
-     * Register
-     * @param {{}} opt
-     * @param {{}} opt.resMan
-     * @param {boolean} opt.systemMirror
-     * @param {boolean} opt.autoPurgeResources
-     * @param {number} opt.autoPurgeTimer
-     * @param {{}} opt.resourcePaths
-     * @param {{}} opt.extensions
-     * @param {{}} opt.constructors
-     */
-    this.Register = function(opt)
-    {
-        if (opt)
-        {
-            this.RegisterConstructors(opt.constructors);
-            this.RegisterResourcePaths(opt.resourcePaths);
-            this.RegisterExtensions(opt.extensions);
-        }
     };
 }
 

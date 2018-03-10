@@ -121,3 +121,13 @@ Tw2FloatParameter.prototype.SetValue = function(value)
         this.constantBuffer[this.offset] = this.value;
     }
 };
+
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2FloatParameter.is = function(value)
+{
+    return typeof value === 'number';
+};

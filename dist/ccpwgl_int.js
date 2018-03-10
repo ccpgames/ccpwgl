@@ -654,7 +654,7 @@ exports.device = undefined;
 
 var _math = __webpack_require__(0);
 
-var _Tw2VariableStore = __webpack_require__(20);
+var _Tw2Store = __webpack_require__(187);
 
 var _Tw2ResMan = __webpack_require__(4);
 
@@ -720,13 +720,6 @@ function Tw2Device() {
     this._onResize = null;
 
     this.utils = WebGLDebugUtil;
-
-    _Tw2VariableStore.variableStore.RegisterVariable('WorldMat', this.world);
-    _Tw2VariableStore.variableStore.RegisterVariable('ViewMat', this.view);
-    _Tw2VariableStore.variableStore.RegisterVariable('ProjectionMat', this.projection);
-    _Tw2VariableStore.variableStore.RegisterType('ViewProjectionMat', _parameter.Tw2MatrixParameter);
-    _Tw2VariableStore.variableStore.RegisterType('ViewportSize', _parameter.Tw2Vector4Parameter);
-    _Tw2VariableStore.variableStore.RegisterType('Time', _parameter.Tw2Vector4Parameter);
 }
 
 /**
@@ -948,22 +941,16 @@ Tw2Device.prototype.Tick = function () {
         this.Resize();
     }
 
+    var previousTime = this.currentTime;
+
     var now = this.Clock.now();
     this.currentTime = (now - this.startTime) * 0.001;
     this.dt = this.previousTime === null ? 0 : (now - this.previousTime) * 0.001;
     this.previousTime = now;
 
-    var time = _Tw2VariableStore.variableStore._variables['Time'].value;
-    time[3] = time[0];
-    time[0] = this.currentTime;
-    time[1] = this.currentTime - Math.floor(this.currentTime);
-    time[2] = this.frameCounter;
+    _Tw2Store.store.SetVariableValue('Time', [this.currentTime, this.currentTime - Math.floor(this.currentTime), this.frameCounter, previousTime]);
 
-    var viewportSize = _Tw2VariableStore.variableStore._variables['ViewportSize'].value;
-    viewportSize[0] = this.viewportWidth;
-    viewportSize[1] = this.viewportHeight;
-    viewportSize[2] = this.viewportWidth;
-    viewportSize[3] = this.viewportHeight;
+    _Tw2Store.store.SetVariableValue('ViewportSize', [this.viewportWidth, this.viewportHeight, this.viewportWidth, this.viewportHeight]);
 
     _Tw2ResMan.resMan.PrepareLoop(this.dt);
 
@@ -997,7 +984,7 @@ Tw2Device.prototype.SetView = function (matrix) {
 
     _math.mat4.multiply(this.viewProjection, this.projection, this.view);
     _math.mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-    _math.mat4.copy(_Tw2VariableStore.variableStore._variables['ViewProjectionMat'], this.viewProjection);
+    _Tw2Store.store.SetVariableValue('ViewProjectionMat', this.viewProjection);
 };
 
 /**
@@ -1015,7 +1002,7 @@ Tw2Device.prototype.SetProjection = function (matrix, forceUpdateViewProjection)
     if (forceUpdateViewProjection) {
         _math.mat4.multiply(this.viewProjection, this.projection, this.view);
         _math.mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-        _math.mat4.copy(_Tw2VariableStore.variableStore._variables['ViewProjectionMat'].value, this.viewProjection);
+        _Tw2Store.store.SetVariableValue('ViewProjectionMat', this.viewProjection);
     }
 };
 
@@ -1712,6 +1699,8 @@ exports.resMan = exports.Tw2LoadingObject = undefined;
 
 var _Tw2EventEmitter = __webpack_require__(7);
 
+var _Tw2Store = __webpack_require__(187);
+
 var _Tw2Resource2 = __webpack_require__(15);
 
 var _Tw2ObjectReader = __webpack_require__(35);
@@ -1922,9 +1911,6 @@ Tw2LoadingObject.prototype.Prepare = function (text) {
 /**
  * Resource Manager
  * @property {Boolean} systemMirror - Toggles whether {@link GeometryResource} Index and Buffer data arrays are visible
- * @property {Object.<string, string>} resourcePaths
- * @property {Object} resourcePaths.res - Default resource path for current ccpwgl version
- * @property {Object.<string, Function>} _extensions - an object of registered extensions and their constructors
  * @property {Tw2MotherLode} motherLode
  * @property {Number} maxPrepareTime
  * @property {Number} prepareBudget
@@ -1941,19 +1927,12 @@ Tw2LoadingObject.prototype.Prepare = function (text) {
  */
 function Tw2ResMan() {
     this.motherLode = new Tw2MotherLode();
-
     this.systemMirror = false;
     this.maxPrepareTime = 0.05;
     this.prepareBudget = 0;
     this.autoPurgeResources = true;
     this.activeFrame = 0;
     this.purgeTime = 30;
-
-    this._extensions = {};
-    this._resourcePaths = {};
-    this._constructors = {};
-    this._missingConstructors = [];
-
     this._prepareQueue = [];
     this._purgeTime = 0;
     this._purgeFrame = 0;
@@ -2174,7 +2153,6 @@ function Tw2ResMan() {
 
     /**
      * Builds a url from a resource path
-     * - the prefix in the resource path is replaced with it's string value from `this._resourcePaths`
      * @param {string} resPath
      * @returns {string}
      */
@@ -2192,8 +2170,8 @@ function Tw2ResMan() {
         }
 
         var prefix = resPath.substr(0, prefixIndex);
-
-        if (!(prefix in this._resourcePaths)) {
+        var path = _Tw2Store.store.GetPath(prefix);
+        if (!path) {
             _Tw2EventEmitter.emitter.log('res.error', {
                 log: 'warn',
                 src: ['Tw2ResMan', 'BuildUrl'],
@@ -2205,7 +2183,7 @@ function Tw2ResMan() {
             return resPath;
         }
 
-        return this._resourcePaths[prefix] + resPath.substr(prefixIndex + 2);
+        return path + resPath.substr(prefixIndex + 2);
     };
 
     /**
@@ -2310,7 +2288,8 @@ function Tw2ResMan() {
             return null;
         }
 
-        if (!(ext in this._extensions)) {
+        var Extension = _Tw2Store.store.GetExtension(ext);
+        if (!Extension) {
             _Tw2EventEmitter.emitter.log('res.error', {
                 log: 'error',
                 src: ['Tw2ResMan', 'ReloadResource'],
@@ -2322,7 +2301,7 @@ function Tw2ResMan() {
             return null;
         }
 
-        obj = new this._extensions[ext]();
+        obj = new Extension();
         obj.path = path;
         this._LoadResource(obj);
         return obj;
@@ -2413,156 +2392,6 @@ function Tw2ResMan() {
      */
     this.UnloadAndClear = function () {
         this.motherLode.UnloadAndClear();
-    };
-
-    /**
-     * Passes key:values from an object or array of objects to an internal function
-     * @param {*} target
-     * @param {string} funcName
-     * @param {Array|{}} obj
-     * @returns {boolean}
-     */
-    var _toKeyValue = function _toKeyValue(target, funcName, obj) {
-        if (obj && funcName && funcName in target) {
-            obj = Array.isArray(obj) ? obj : [obj];
-            for (var i = 0; i < obj.length; i++) {
-                for (var key in obj[i]) {
-                    if (obj[i].hasOwnProperty(key)) {
-                        target[funcName](key, obj[i][key]);
-                    }
-                }
-            }
-            return true;
-        }
-        return false;
-    };
-
-    /**
-     * Registers a library constructor
-     * @param {string} name
-     * @param {function} Constructor
-     * @returns {?Function}}
-     */
-    this.RegisterConstructor = function (name, Constructor) {
-        if (name && Constructor && typeof Constructor === 'function') {
-            this._constructors[name] = Constructor;
-            return Constructor;
-        }
-        return null;
-    };
-
-    /**
-     * Registers library constructors from an object or array of objects
-     * @param obj
-     */
-    this.RegisterConstructors = function (obj) {
-        _toKeyValue(this, 'RegisterConstructor', obj);
-    };
-
-    /**
-     * Gets a library constructor by name
-     * @param {string} name
-     * @param {boolean} [skipDebug]
-     * @returns {?Function}
-     */
-    this.GetConstructor = function (name, skipDebug) {
-        if (name && name in this._constructors) {
-            return this._constructors[name];
-        } else if (name && !skipDebug) {
-            if (this._missingConstructors.indexOf(name) === -1) {
-                this._missingConstructors.push(name);
-            }
-
-            if (name.includes('Tw2')) {
-                return this.GetConstructor(name.replace('Tw2', 'Tr2'), true);
-            } else if (name.includes('Tr2')) {
-                return this.GetConstructor(name.replace('Tr2', 'Tw2'), true);
-            }
-        }
-        return null;
-    };
-
-    /**
-     * Registers extension's and their constructors
-     * @param {string} extension
-     * @param {Function} Constructor
-     * @returns {boolean}
-     */
-    this.RegisterExtension = function (extension, Constructor) {
-        if (!extension || !Constructor || typeof Constructor !== 'function') {
-            return false;
-        }
-
-        this._extensions[extension] = Constructor;
-        return true;
-    };
-
-    /**
-     * Registers extensions from an object or array of objects
-     * @param obj
-     */
-    this.RegisterExtensions = function (obj) {
-        _toKeyValue(this, 'RegisterExtension', obj);
-    };
-
-    /**
-     * Gets a resource constructor from it's extension
-     * @param {string} extension
-     * @returns {?Function}}
-     */
-    this.GetExtension = function (extension) {
-        return extension && extension in this._extensions ? this._extensions[extension] : null;
-    };
-
-    /**
-     * Registers a resource path
-     * @param {string} prefix
-     * @param {Function} path
-     * @returns {boolean}
-     */
-    this.RegisterResourcePath = function (prefix, path) {
-        if (!prefix || !path) {
-            return false;
-        }
-
-        this._resourcePaths[prefix] = path;
-        return true;
-    };
-
-    /**
-     * Registers resource paths from an object or array of objects
-     * @param obj
-     */
-    this.RegisterResourcePaths = function (obj) {
-        _toKeyValue(this, 'RegisterResourcePath', obj);
-    };
-
-    /**
-     * Gets a resource path from its prefix
-     * @param {string} prefix
-     * @returns {?string}}
-     */
-    this.GetResourcePath = function (prefix) {
-        return prefix && prefix in this._resourcePaths ? this._resourcePaths[prefix] : null;
-    };
-
-    /**
-     * Register
-     * @param {{}} opt
-     * @param {{}} opt.resMan
-     * @param {boolean} opt.systemMirror
-     * @param {boolean} opt.autoPurgeResources
-     * @param {number} opt.autoPurgeTimer
-     * @param {{}} opt.resourcePaths
-     * @param {{}} opt.extensions
-     * @param {{}} opt.constructors
-     */
-    this.Register = function (opt) {
-        if (opt) {
-            this.RegisterConstructors(opt.constructors);
-            this.RegisterResourcePaths(opt.resourcePaths);
-            this.RegisterExtensions(opt.extensions);
-        }
     };
 }
 
@@ -3020,6 +2849,7 @@ emitter.consoleDefault = 'log';
  * @param {String}  eventName              - The event to emit
  * @param {{}}      eventData              - event data
  * @param {String} [eventData.msg=]        - event message
+ * @param {boolean}[eventData.hide]        - stops an event log from being output to the console
  * @param {String} [eventData.log=]        - desired console output type (log, info, debug, warn, error, throw)
  * @param {String} [eventData.path=]       - the unmodified path for the file related to the event
  * @param {number} [eventData.time=]       - the time it took to process the event path (rounds to 3 decimal places)
@@ -3055,7 +2885,7 @@ emitter.log = function (eventName, eventData) {
             if (!this.consoleLogs) output = false;
     }
 
-    if (output) {
+    if (output && !eventData.hide) {
         var d = eventData;
         var header = this.consolePrefix.concat(': {', eventName, '}');
         var body = d.msg || '';
@@ -4488,123 +4318,7 @@ Object.keys(_Tw2InstancedMeshBatch).forEach(function (key) {
 });
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.variableStore = undefined;
-
-var _parameter = __webpack_require__(11);
-
-/**
- * Tw2VariableStore
- * @property {Object.< string, Parameter>} _variables
- * @constructor
- */
-function Tw2VariableStore() {
-    this._variables = {};
-}
-
-/**
- * Registers a variable
- * @param {string} name
- * @param {string|number|Float32Array|vec3|mat4} value
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariableWithType = function (name, value, type) {
-    return this._variables[name] = new type(name, value);
-};
-
-/**
- * Registers a variable without a value
- * @param {string} name
- * @param {Parameter} type
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterType = function (name, type) {
-    return this._variables[name] = new type(name);
-};
-
-/**
- * Gets A Tw2 parameter constructor from a supplied value
- * @param {Number|String|Array.<Number>|Float32Array} value
- * @returns {null|Parameter}
- */
-Tw2VariableStore.GetTw2ParameterType = function (value) {
-    if (value && value.constructor.name.toUpperCase().includes('ARRAY')) {
-        switch (value.length) {
-            case 16:
-                return _parameter.Tw2MatrixParameter;
-
-            case 4:
-                return _parameter.Tw2Vector4Parameter;
-
-            case 3:
-                return _parameter.Tw2Vector3Parameter;
-
-            case 2:
-                return _parameter.Tw2Vector2Parameter;
-
-            case 1:
-                return _parameter.Tw2FloatParameter;
-        }
-    } else if (typeof value === 'number') {
-        return _parameter.Tw2FloatParameter;
-    } else if (typeof value === 'string') {
-        return _parameter.Tw2TextureParameter;
-    }
-};
-
-/**
- * Registers a variable without a type
- * @param {string} name
- * @param {string|number|Float32Array} value
- * @returns {Parameter}
- * @constructor
- */
-Tw2VariableStore.prototype.RegisterVariable = function (name, value) {
-    var Type = Tw2VariableStore.GetTw2ParameterType(value);
-    return Type ? this.RegisterVariableWithType(name, value, Type) : null;
-};
-
-/**
- * Registers variables from an object or array of objects
- * @param obj
- */
-Tw2VariableStore.prototype.RegisterVariables = function (obj) {
-    if (obj) {
-        obj = Array.isArray(obj) ? obj : [obj];
-        for (var i = 0; i < obj.length; i++) {
-            for (var key in obj[i]) {
-                if (obj[i].hasOwnProperty(key)) {
-                    this.RegisterVariable(key, obj[i][key]);
-                }
-            }
-        }
-    }
-};
-
-/**
- * Register
- * @param opt
- */
-Tw2VariableStore.prototype.Register = function (opt) {
-    if (opt) {
-        this.RegisterVariables(opt.variables);
-    }
-};
-
-var variableStore = exports.variableStore = new Tw2VariableStore();
-
-/***/ }),
+/* 20 */,
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4655,7 +4369,7 @@ var _Tw2ResMan = __webpack_require__(4);
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2VariableStore = __webpack_require__(20);
+var _Tw2Store = __webpack_require__(187);
 
 var _parameter = __webpack_require__(11);
 
@@ -4786,8 +4500,8 @@ Tw2Effect.prototype.BindParameters = function () {
                         p.size = constant.size;
                         stage.parameters.push(p);
                     }
-                } else if (name in _Tw2VariableStore.variableStore._variables) {
-                    var param = _Tw2VariableStore.variableStore._variables[name];
+                } else if (_Tw2Store.store.HasVariable(name)) {
+                    var param = _Tw2Store.store.GetVariable(name);
                     var p = {};
                     p.parameter = param;
                     p.constantBuffer = stage.constantBuffer;
@@ -4795,14 +4509,15 @@ Tw2Effect.prototype.BindParameters = function () {
                     p.size = constant.size;
                     stage.parameters.push(p);
                 } else if (constant.isAutoregister) {
-                    _Tw2VariableStore.variableStore.RegisterType(name, constant.type);
-                    var param = _Tw2VariableStore.variableStore._variables[name];
-                    var p = {};
-                    p.parameter = param;
-                    p.constantBuffer = stage.constantBuffer;
-                    p.offset = constant.offset;
-                    p.size = constant.size;
-                    stage.parameters.push(p);
+                    var param = _Tw2Store.store.RegisterVariable(name, undefined, constant.type);
+                    if (param) {
+                        var p = {};
+                        p.parameter = param;
+                        p.constantBuffer = stage.constantBuffer;
+                        p.offset = constant.offset;
+                        p.size = constant.size;
+                        stage.parameters.push(p);
+                    }
                 }
             }
 
@@ -4811,11 +4526,10 @@ Tw2Effect.prototype.BindParameters = function () {
                 var param = null;
                 if (name in this.parameters) {
                     param = this.parameters[name];
-                } else if (name in _Tw2VariableStore.variableStore._variables) {
-                    param = _Tw2VariableStore.variableStore._variables[name];
+                } else if (_Tw2Store.store.HasVariable(name)) {
+                    param = _Tw2Store.store.GetVariable(name);
                 } else if (stageRes.textures[k].isAutoregister) {
-                    _Tw2VariableStore.variableStore.RegisterType(name, _parameter.Tw2TextureParameter);
-                    param = _Tw2VariableStore.variableStore._variables[name];
+                    param = _Tw2Store.store.RegisterVariable(name, undefined, _parameter.Tw2TextureParameter);
                 } else {
                     continue;
                 }
@@ -5072,14 +4786,14 @@ Object.keys(_Tw2ResMan).forEach(function (key) {
   });
 });
 
-var _Tw2VariableStore = __webpack_require__(20);
+var _Tw2Store = __webpack_require__(187);
 
-Object.keys(_Tw2VariableStore).forEach(function (key) {
+Object.keys(_Tw2Store).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _Tw2VariableStore[key];
+      return _Tw2Store[key];
     }
   });
 });
@@ -7844,6 +7558,8 @@ exports.Tw2ObjectReader = Tw2ObjectReader;
 
 var _Tw2ResMan = __webpack_require__(4);
 
+var _Tw2Store = __webpack_require__(187);
+
 var _Tw2EventEmitter = __webpack_require__(7);
 
 var _Tw2BinaryReader = __webpack_require__(36);
@@ -7975,7 +7691,7 @@ Tw2ObjectReader.prototype._ConstructObject = function (data) {
     }
 
     try {
-        var Constructor = _Tw2ResMan.resMan.GetConstructor(data.type);
+        var Constructor = _Tw2Store.store.GetConstructor(data.type);
         object = new Constructor();
     } catch (e) {
         _Tw2EventEmitter.emitter.log('res.error', {
@@ -9779,11 +9495,7 @@ var EveOccluder = exports.EveOccluder = function () {
                                 this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
                         }
 
-                        var occluderValue = _core.variableStore._variables['OccluderValue'].value;
-                        occluderValue[0] = (1 << index * 2) / 255.0;
-                        occluderValue[1] = (2 << index * 2) / 255.0;
-                        occluderValue[2] = 0;
-                        occluderValue[3] = 0;
+                        _core.store.SetVariableValue('OccluderValue', [(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
 
                         g.accumulator.Render();
 
@@ -9850,8 +9562,6 @@ var EveOccluder = exports.EveOccluder = function () {
                 key: 'init',
                 value: function init() {
                         if (EveOccluder.global) return;
-
-                        _core.variableStore.RegisterVariable('OccluderValue', _math.vec4.fromValues(1, 1, 0, 0));
 
                         var d = _core.device,
                             g = EveOccluder.global = {};
@@ -11109,12 +10819,17 @@ var particle = _interopRequireWildcard(_particle);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+var vec4 = math.vec4,
+    mat4 = math.mat4;
+exports.math = math;
+
 /**
  * Register globals
  */
-_core.resMan.Register({
 
-    resourcePaths: {
+core.store.Register({
+
+    paths: {
         'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
     },
 
@@ -11126,10 +10841,38 @@ _core.resMan.Register({
         'cube': core.Tw2TextureRes
     },
 
-    constructors: [core, curve, eve, particle]
-});
+    constructors: [core, curve, eve, particle],
 
-exports.math = math;
+    types: {
+        'float': core.Tw2FloatParameter,
+        'number': core.Tw2FloatParameter,
+        'texture': core.Tw2TextureParameter,
+        'vector2': core.Tw2Vector2Parameter,
+        'vector3': core.Tw2Vector3Parameter,
+        'vector4': core.Tw2Vector4Parameter,
+        'matrix4': core.Tw2MatrixParameter
+    },
+
+    variables: {
+        'WorldMat': mat4.create(),
+        'ViewMat': mat4.create(),
+        'ProjectionMat': mat4.create(),
+        'ViewProjectionMat': mat4.create(),
+        'ViewportSize': vec4.create(),
+        'Time': vec4.create(),
+        'u_DecalMatrix': mat4.create(),
+        'u_InvDecalMatrix': mat4.create(),
+        'EveSpaceSceneEnvMap': '',
+        'EnvMap1': '',
+        'EnvMap2': '',
+        'EnvMap3': '',
+        'ShadowLightness': 0,
+        'OccluderValue': vec4.fromValues(1, 1, 0, 0),
+        'LensflareFxOccScale': vec4.fromValues(1, 1, 0, 0),
+        'LensflareFxDirectionScale': vec4.create()
+    }
+
+});
 
 /***/ }),
 /* 57 */
@@ -16455,6 +16198,15 @@ Tw2FloatParameter.prototype.SetValue = function (value) {
     }
 };
 
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2FloatParameter.is = function (value) {
+    return typeof value === 'number';
+};
+
 /***/ }),
 /* 71 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -16556,6 +16308,15 @@ Tw2MatrixParameter.prototype.OnValueChanged = function () {
     }
 };
 
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2MatrixParameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 16;
+};
+
 /***/ }),
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -16573,6 +16334,8 @@ var _Tw2ResMan = __webpack_require__(4);
 var _Tw2Device = __webpack_require__(3);
 
 var _sampler = __webpack_require__(21);
+
+var _math = __webpack_require__(0);
 
 /**
  * Tw2TextureParameter
@@ -16723,6 +16486,33 @@ Tw2TextureParameter.prototype.GetValue = function () {
     }
 
     return this.resourcePath;
+};
+
+/**
+ * Sets a texture parameter's textureRes
+ * @param {Tw2TextureRes} res
+ */
+Tw2TextureParameter.prototype.SetTextureRes = function (res) {
+    if (res && this.textureRes && this.textureRes !== res) {
+        this.textureRes.UnregisterNotification(this);
+        this.textureRes = res;
+        this.textureRes.RegisterNotification(this);
+    }
+};
+
+/**
+ * Alias for SetTexturePath
+ * @type {Tw2TextureParameter.SetTexturePath|*}
+ */
+Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
+
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2TextureParameter.is = function (value) {
+    return typeof value === 'string';
 };
 
 /***/ }),
@@ -16929,7 +16719,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2VariableParameter = Tw2VariableParameter;
 
-var _Tw2VariableStore = __webpack_require__(20);
+var _Tw2Store = __webpack_require__(187);
 
 /**
  * Tw2VariableParameter
@@ -16969,8 +16759,8 @@ Tw2VariableParameter.prototype.Bind = function () {
  * @prototype
  */
 Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
-    if (typeof _Tw2VariableStore.variableStore._variables[this.variableName] !== 'undefined') {
-        _Tw2VariableStore.variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
+    if (_Tw2Store.store.HasVariable(this.variableName)) {
+        _Tw2Store.store.GetVariable(this.variableName).Apply(constantBuffer, offset, size);
     }
 };
 
@@ -17124,6 +16914,15 @@ Tw2Vector2Parameter.prototype.FillWith = function (value) {
     this.SetValue([value, value]);
 };
 
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector2Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 2;
+};
+
 /***/ }),
 /* 77 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -17273,6 +17072,15 @@ Tw2Vector3Parameter.prototype.FillWith = function (value) {
     this.SetValue([value, value, value]);
 };
 
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector3Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 3;
+};
+
 /***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -17420,6 +17228,15 @@ Tw2Vector4Parameter.prototype.SetIndexValue = function (index, value) {
  */
 Tw2Vector4Parameter.prototype.FillWith = function (value) {
     this.SetValue([value, value, value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector4Parameter.is = function (value) {
+    return _math.util.isArrayLike(value) && value.length === 4;
 };
 
 /***/ }),
@@ -19703,8 +19520,7 @@ var Tw2RawData = exports.Tw2RawData = function () {
     /**
      * Sets a element value
      * @param {string} name
-     * @param {Float32Array} value
-     * @prototype
+     * @param {Float32Array|Array} value
      */
 
 
@@ -19719,7 +19535,6 @@ var Tw2RawData = exports.Tw2RawData = function () {
          * Gets an element's array value
          * @param {string} name
          * @return {Float32Array}
-         * @prototype
          */
 
     }, {
@@ -19732,7 +19547,6 @@ var Tw2RawData = exports.Tw2RawData = function () {
          * Gets an element's array value from the share data array
          * @param {string} name
          * @return {Float32Array}
-         * @prototype
          */
 
     }, {
@@ -19842,6 +19656,18 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _Tw2RuntimeInstanceData[key];
+    }
+  });
+});
+
+var _Tw2VariableStore = __webpack_require__(188);
+
+Object.keys(_Tw2VariableStore).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2VariableStore[key];
     }
   });
 });
@@ -23949,8 +23775,6 @@ var _Tw2Device = __webpack_require__(3);
 var _Tw2EventEmitter = __webpack_require__(7);
 
 var _reader = __webpack_require__(28);
-
-var _batch = __webpack_require__(19);
 
 var _vertex = __webpack_require__(8);
 
@@ -31523,12 +31347,7 @@ var EveLensflare = exports.EveLensflare = function () {
 
             this.backgroundOcclusionIntensity = this.occlusionIntensity;
 
-            var occlusion = _core.variableStore._variables['LensflareFxOccScale'].value;
-            occlusion[0] = this.occlusionIntensity;
-            occlusion[1] = this.occlusionIntensity;
-            occlusion[2] = 0;
-            occlusion[3] = 0;
-
+            _core.store.SetVariableValue('LensflareFxOccScale', [this.occlusionIntensity, this.occlusionIntensity, 0, 0]);
             g.occludedLevelIndex = (g.occludedLevelIndex + 1) % g.occluderLevels.length;
         }
 
@@ -31595,13 +31414,9 @@ var EveLensflare = exports.EveLensflare = function () {
             _math.mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
             //mat4.multiply(scaleMat, scaleMat, this._transform);
 
-            var dir = this._direction,
-                dirScale = _core.variableStore._variables['LensflareFxDirectionScale'].value;
+            var dir = this._direction;
 
-            dirScale[0] = dir[0];
-            dirScale[1] = dir[1];
-            dirScale[2] = dir[2];
-            dirScale[3] = 1;
+            _core.store.SetVariableValue('LensflareFxDirectionScale', [dir[0], dir[1], dir[2], 1]);
 
             _math.vec4.set(dist, dir[0], dir[1], dir[2], 0);
             _math.vec4.transformMat4(dist, dist, _core.device.view);
@@ -31650,11 +31465,6 @@ var EveLensflare = exports.EveLensflare = function () {
         key: 'init',
         value: function init() {
             if (!EveLensflare.global) {
-                _core.variableStore.RegisterVariables({
-                    LensflareFxOccScale: _math.vec4.fromValues(1, 1, 0, 0),
-                    LensflareFxDirectionScale: _math.vec4.create()
-                });
-
                 var g = EveLensflare.global = {};
                 g.vec3_0 = _math.vec3.create();
                 g.vec3_1 = _math.vec3.create();
@@ -35701,13 +35511,6 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
         this._perObjectData.perObjectPSData.Create();
 
         _math.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
-
-        if (!_core.variableStore._variables.u_DecalMatrix) {
-            _core.variableStore.RegisterVariables({
-                'u_DecalMatrix': _math.mat4.create(),
-                'u_InvDecalMatrix': _math.mat4.create()
-            });
-        }
     }
 
     /**
@@ -35718,7 +35521,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
     _createClass(EveSpaceObjectDecal, [{
         key: 'Initialize',
         value: function Initialize() {
-            this.OnValueChanged();
+            this.SetIndexBuffer(this.indexBuffer);
         }
 
         /**
@@ -35878,8 +35681,8 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
                 bkCount = this.parentGeometry.meshes[0].areas[0].count,
                 bkIndexType = this.parentGeometry.meshes[0].indexType;
 
-            _math.mat4.copy(_core.variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
-            _math.mat4.copy(_core.variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
+            _core.store.SetVariableValue('u_DecalMatrix', this.decalMatrix);
+            _core.store.SetVariableValue('u_InvDecalMatrix', this.invDecalMatrix);
 
             this.parentGeometry.meshes[0].indexes = this._indexBuffer;
             this.parentGeometry.meshes[0].areas[0].start = 0;
@@ -37945,9 +37748,9 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
         this.visible.planets = true;
         this.visible.fog = true;
         this.visible.clearColor = true;
-        this.visible.reflection = true;
-        this.visible.diffuse = true;
-        this.visible.blur = true;
+        this.visible.environmentReflection = true;
+        this.visible.environmentDiffuse = true;
+        this.visible.environmentBlur = true;
 
         Object.defineProperty(this.visible, 'environment', {
             get: function get() {
@@ -38353,7 +38156,8 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
             var d = _core.device,
                 g = EveSpaceScene.global,
                 envMapTransform = g.mat4_2,
-                sunDir = g.vec3_0;
+                sunDir = g.vec3_0,
+                show = this.visible;
 
             _math.mat4.fromQuat(envMapTransform, this.envMapRotation);
             _math.mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
@@ -38399,16 +38203,15 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
             PSData.Get('ProjectionToView')[1] = -d.projection[10] - 1;
             d.perFramePSData = PSData;
 
-            var _variableStore$_varia = _core.variableStore._variables,
-                EveSpaceSceneEnvMap = _variableStore$_varia.EveSpaceSceneEnvMap,
-                EnvMap1 = _variableStore$_varia.EnvMap1,
-                EnvMap2 = _variableStore$_varia.EnvMap2,
-                EnvMap3 = _variableStore$_varia.EnvMap3;
+            var envMap = this.envMapRes && show.environmentReflection ? this.envMapRes : g.emptyTexture,
+                envMap1 = this.envMap1Res && show.environmentDiffuse ? this.envMap1Res : g.emptyTexture,
+                envMap2 = this.envMap2Res && show.environmentBlur ? this.envMap2Res : g.emptyTexture,
+                envMap3 = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
 
-            EveSpaceSceneEnvMap.textureRes = this.envMapRes && this.visible.reflection ? this.envMapRes : g.emptyTexture;
-            EnvMap1.textureRes = this.envMap1Res && this.visible.diffuse ? this.envMap1Res : g.emptyTexture;
-            EnvMap2.textureRes = this.envMap2Res && this.visible.blur ? this.envMap2Res : g.emptyTexture;
-            EnvMap3.textureRes = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
+            _core.store.GetVariable('EveSpaceSceneEnvMap').SetTextureRes(envMap);
+            _core.store.GetVariable('EnvMap1').SetTextureRes(envMap1);
+            _core.store.GetVariable('EnvMap2').SetTextureRes(envMap2);
+            _core.store.GetVariable('EnvMap3').SetTextureRes(envMap3);
         }
 
         /**
@@ -38419,14 +38222,6 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
         key: 'init',
         value: function init() {
             if (!EveSpaceScene.global) {
-                _core.variableStore.RegisterVariables({
-                    'EveSpaceSceneEnvMap': '',
-                    'EnvMap1': '',
-                    'EnvMap2': '',
-                    'EnvMap3': '',
-                    'ShadowLightness': 0
-                });
-
                 EveSpaceScene.global = {
                     vec3_0: _math.vec3.create(),
                     vec4_0: _math.vec4.create(),
@@ -39426,6 +39221,688 @@ var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObj
 }(_Tw2PerObjectData2.Tw2PerObjectData);
 
 exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.store = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _Tw2EventEmitter = __webpack_require__(7);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Stores engine data
+ *
+ * @property {Object.< string, string>} _paths
+ * @property {Object.< string, Array<string>>} _dynamicPaths
+ * @property {Object.< string, Tw2Parameter>} _variables
+ * @property {Object.< string, Function>} _types
+ * @property {Object.< string, Function>} _extensions
+ * @property {Object.< string, Function>} _constructors
+ * @property {Object.< string, Array<string>>} _missing
+ * @class
+ */
+var Tw2Store = function () {
+    function Tw2Store() {
+        _classCallCheck(this, Tw2Store);
+
+        this._types = {};
+        this._paths = {};
+        this._variables = {};
+        this._extensions = {};
+        this._constructors = {};
+        this._dynamicPaths = {};
+        this._missing = {};
+    }
+
+    /**
+     * Checks if a resource path exists
+     * @param {string} prefix
+     * @returns {boolean}
+     */
+
+
+    _createClass(Tw2Store, [{
+        key: 'HasPath',
+        value: function HasPath(prefix) {
+            return prefix && prefix in this._paths;
+        }
+
+        /**
+         * Gets a path by it's prefix
+         * @param {string} prefix
+         * @returns {?string}
+         */
+
+    }, {
+        key: 'GetPath',
+        value: function GetPath(prefix) {
+            return Tw2Store.GetStoreItem(this, 'paths', prefix);
+        }
+
+        /**
+         * Registers a resource path
+         * @param {string} prefix
+         * @param {string} path
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterPath',
+        value: function RegisterPath(prefix, path) {
+            return !!Tw2Store.SetStoreItem(this, 'paths', prefix, path);
+        }
+
+        /**
+         * Registers resource paths from an object or an array of objects
+         * @param {{string:string}|Array<{string:string}>} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterPaths',
+        value: function RegisterPaths(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterPath', obj);
+        }
+
+        /**
+         * Checks if a dynamic path exists
+         * @param {string} prefix
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasDynamicPath',
+        value: function HasDynamicPath(prefix) {
+            return prefix && prefix in this._dynamicPaths;
+        }
+
+        /**
+         * Gets a dynamic path by it's prefix
+         * @param {string} prefix
+         * @returns {?Array<string>}
+         */
+
+    }, {
+        key: 'GetDynamicPath',
+        value: function GetDynamicPath(prefix) {
+            return Tw2Store.GetStoreItem(this, 'dynamicPaths', prefix);
+        }
+
+        /**
+         * Registers a dynamic path
+         * @param {string} prefix
+         * @param {string[]} paths
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterDynamicPath',
+        value: function RegisterDynamicPath(prefix, paths) {
+            return !!Tw2Store.SetStoreItem(this, 'dynamicPaths', prefix, paths);
+        }
+
+        /**
+         * Registers dynamic paths from an object or array of objects
+         * @param {{string:string[]}|Array<{string:string[]}>} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterDynamicPaths',
+        value: function RegisterDynamicPaths(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterDynamicPath', obj);
+        }
+
+        /**
+         * Checks if an extension exists
+         * @param {string} ext
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasExtension',
+        value: function HasExtension(ext) {
+            return ext && ext in this._extensions;
+        }
+
+        /**
+         * Gets a resource extension by name
+         * @param {string} ext
+         * @returns {?Function}
+         */
+
+    }, {
+        key: 'GetExtension',
+        value: function GetExtension(ext) {
+            return Tw2Store.GetStoreItem(this, 'extensions', ext);
+        }
+
+        /**
+         * Registers a resource extension
+         * @param {name} ext
+         * @param {Function} Constructor
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterExtension',
+        value: function RegisterExtension(ext, Constructor) {
+            if (typeof Constructor === 'function') {
+                return !!Tw2Store.SetStoreItem(this, 'extensions', ext, Constructor);
+            }
+            return false;
+        }
+
+        /**
+         * Registers resource extensions from an object or array of objects
+         * @param {{string:Function}|Array<{string:Function}>} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterExtensions',
+        value: function RegisterExtensions(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterExtension', obj);
+        }
+
+        /**
+         * Checks if a constructor exists
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasConstructor',
+        value: function HasConstructor(name) {
+            return name && name in this._constructors;
+        }
+
+        /**
+         * Gets a library constructor by name
+         * @param {string} name
+         * @returns {?Function}
+         */
+
+    }, {
+        key: 'GetConstructor',
+        value: function GetConstructor(name) {
+            return Tw2Store.GetStoreItem(this, 'constructors', name);
+        }
+
+        /**
+         * Registers library constructors
+         * @param {string} name
+         * @param {Function} Constructor
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterConstructor',
+        value: function RegisterConstructor(name, Constructor) {
+            if (typeof Constructor === 'function') {
+                return !!Tw2Store.SetStoreItem(this, 'constructors', name, Constructor);
+            }
+            return false;
+        }
+
+        /**
+         * Registers library constructors from an object or array of objects
+         * @param {{string:Function}|Array<{string:Function}>} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterConstructors',
+        value: function RegisterConstructors(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterConstructor', obj);
+        }
+
+        /**
+         * Checks if a variable exists
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasVariable',
+        value: function HasVariable(name) {
+            return name && name in this._variables;
+        }
+
+        /**
+         * Gets a variable by name
+         * @param {string} name
+         * @returns {?*}
+         */
+
+    }, {
+        key: 'GetVariable',
+        value: function GetVariable(name) {
+            return Tw2Store.GetStoreItem(this, 'variables', name);
+        }
+
+        /**
+         * Gets a variable's value
+         * @param {string} name
+         * @param {boolean} [serialize]
+         * @returns {?*}
+         */
+
+    }, {
+        key: 'GetVariableValue',
+        value: function GetVariableValue(name, serialize) {
+            var variable = this.GetVariable(name);
+            return variable && variable.GetValue ? variable.GetValue(serialize) : null;
+        }
+
+        /**
+         * Sets a variable's value
+         * @param {string} name
+         * @param {*} value
+         * @returns {boolean} true if successful
+         */
+
+    }, {
+        key: 'SetVariableValue',
+        value: function SetVariableValue(name, value) {
+            var variable = this.GetVariable(name);
+            if (variable && variable.SetValue) {
+                variable.SetValue(value);
+                return true;
+            }
+            return false;
+        }
+
+        /**
+         * Registers a variable
+         * @param {string} name
+         * @param {*|{value:*, type: string|Function}} [value]
+         * @param {string|Function} [Type]
+         * @returns {?*}
+         */
+
+    }, {
+        key: 'RegisterVariable',
+        value: function RegisterVariable(name, value, Type) {
+            var variable = this.CreateType(name, value, Type);
+            return Tw2Store.SetStoreItem(this, 'variables', name, variable);
+        }
+
+        /**
+         * Registers variables from an object or array of objects
+         * @param {{string:*|{value:*,type:string|Function}|Array<{string:*|{value:*,type:string|Function}>}} obj
+         */
+
+    }, {
+        key: 'RegisterVariables',
+        value: function RegisterVariables(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterVariable', obj);
+        }
+
+        /**
+         * Gets a parameter constructor by it's short name
+         * @param {string} name
+         * @returns {?Function}
+         */
+
+    }, {
+        key: 'GetType',
+        value: function GetType(name) {
+            return Tw2Store.GetStoreItem(this, 'types', name);
+        }
+
+        /**
+         * Checks if a type exists
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasType',
+        value: function HasType(name) {
+            return name && name in this._types;
+        }
+
+        /**
+         * Gets a type by value
+         * @param {*} value
+         * @returns {?Function}
+         */
+
+    }, {
+        key: 'GetTypeByValue',
+        value: function GetTypeByValue(value) {
+            for (var type in this._types) {
+                if (this._types.hasOwnProperty(type) && 'is' in this._types[type]) {
+                    if (this._types[type]['is'](value)) return this._types[type];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Creates a type by value and/or type name or function
+         * @param {string} name
+         * @param {?*} [value]
+         * @param {?|string|Function} [Type]
+         * @returns {?*} new parameter
+         */
+
+    }, {
+        key: 'CreateType',
+        value: function CreateType(name, value, Type) {
+            if (value && value.constructor.name === 'Object') {
+                Type = value['Type'] || value['type'];
+                value = value['value'];
+            }
+
+            if (!Type) {
+                Type = this.GetTypeByValue(value);
+            } else if (typeof Type === 'string') {
+                Type = this.GetType(Type);
+            }
+
+            if (typeof Type === 'function') {
+                return new Type(name, value);
+            }
+
+            return null;
+        }
+
+        /**
+         * Registers a parameter type
+         * @param {string} name
+         * @param {Function} Constructor
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterType',
+        value: function RegisterType(name, Constructor) {
+            if (typeof Constructor === 'function') {
+                return !!Tw2Store.SetStoreItem(this, 'types', name, Constructor);
+            }
+            return false;
+        }
+
+        /**
+         * Registers parameter types from an object or array of objects
+         * @param {{string: Function}|[{string:Function}]} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterTypes',
+        value: function RegisterTypes(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterType', obj);
+        }
+
+        /**
+         * Registers store values
+         * @param {{}} [opt={}]
+         * @param {boolean} [opt.uuid]
+         * @param {*} opt.paths
+         * @param {*} opt.dynamicPaths
+         * @param {*} opt.types
+         * @param {*} opt.constructors
+         * @param {*} opt.extensions
+         * @param {*} opt.variables
+         */
+
+    }, {
+        key: 'Register',
+        value: function Register() {
+            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            if ('uuid' in opt) _math.util.enableUUID(opt.uuid);
+            this.RegisterPaths(opt.paths);
+            this.RegisterDynamicPaths(opt.dynamicPaths);
+            this.RegisterTypes(opt.types);
+            this.RegisterConstructors(opt.constructors);
+            this.RegisterExtensions(opt.extensions);
+            this.RegisterVariables(opt.variables);
+        }
+
+        /**
+         * Gets a value from a store
+         * - Records missing keys for debugging
+         * @param {Tw2Store} store
+         * @param {string} type
+         * @param {string} key
+         * @returns {?*}
+         */
+
+    }], [{
+        key: 'GetStoreItem',
+        value: function GetStoreItem(store, type, key) {
+            if (typeof key === 'string') {
+                var storeSet = store['_' + type],
+                    singular = type.substring(0, type.length - 1);
+
+                if (storeSet) {
+                    if (key in storeSet) {
+                        return storeSet[key];
+                    }
+
+                    if (!store._missing[type]) {
+                        store._missing[type] = [];
+                    }
+
+                    if (!store._missing[type].includes(key)) {
+                        store._missing[type].push(key);
+
+                        _Tw2EventEmitter.emitter.log('store.warning', {
+                            log: 'warning',
+                            msg: 'Missing ' + singular + ': \'' + key + '\''
+                        });
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        /**
+         * Sets a store value
+         * @param {Tw2Store} store
+         * @param {string} type
+         * @param {string} key
+         * @param {*} value
+         */
+
+    }, {
+        key: 'SetStoreItem',
+        value: function SetStoreItem(store, type) {
+            var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+            var value = arguments[3];
+
+            if (typeof key === 'string' && value !== undefined) {
+                var storeSet = store['_' + type];
+                if (storeSet) {
+                    var existing = storeSet[key],
+                        singular = type.substring(0, type.length - 1);
+
+                    storeSet[key] = value;
+
+                    if (!existing) {
+                        _Tw2EventEmitter.emitter.log('store.registered', {
+                            log: 'debug',
+                            msg: 'Registered ' + singular + ': \'' + key + '\'',
+                            hide: true
+                        });
+                    } else {
+                        _Tw2EventEmitter.emitter.log('store.registered', {
+                            log: 'debug',
+                            msg: 'Re-registered ' + singular + ': \'' + key + '\'',
+                            data: {
+                                old_value: existing,
+                                new_value: value
+                            }
+                        });
+                    }
+
+                    return value;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * Converts an object or array of objects into single function calls
+         * @param {Tw2Store} store
+         * @param {string} funcName
+         * @param {Array|Object} obj
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'RegisterFromObject',
+        value: function RegisterFromObject(store, funcName, obj) {
+            if (obj && funcName in store) {
+                obj = Array.isArray(obj) ? obj : [obj];
+                for (var i = 0; i < obj.length; i++) {
+                    for (var key in obj[i]) {
+                        if (obj[i].hasOwnProperty(key)) {
+                            store[funcName](key, obj[i][key]);
+                        }
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+    }]);
+
+    return Tw2Store;
+}();
+
+var store = exports.store = new Tw2Store();
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2VariableStore = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+var _index = __webpack_require__(11);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2VariableStore
+ * @property {Object.< string, Parameter>} _variables
+ * @constructor
+ */
+var Tw2VariableStore = exports.Tw2VariableStore = function () {
+    function Tw2VariableStore() {
+        _classCallCheck(this, Tw2VariableStore);
+
+        this._variables = {};
+    }
+
+    /**
+     * Registers a variable
+     * @param {string} name
+     * @param {string|number|Float32Array|vec3|mat4} value
+     * @param {Parameter} type
+     * @returns {Parameter}
+     * @constructor
+     */
+
+
+    _createClass(Tw2VariableStore, [{
+        key: 'RegisterVariableWithType',
+        value: function RegisterVariableWithType(name, value, type) {
+            return this._variables[name] = new type(name, value);
+        }
+
+        /**
+         * Registers a variable without a value
+         * @param {string} name
+         * @param {Parameter} type
+         * @returns {Parameter}
+         * @constructor
+         */
+
+    }, {
+        key: 'RegisterType',
+        value: function RegisterType(name, type) {
+            return this._variables[name] = new type(name);
+        }
+
+        /**
+         * Registers a variable without a type
+         * @param {string} name
+         * @param {string|number|Float32Array} value
+         * @returns {Parameter}
+         */
+
+    }, {
+        key: 'RegisterVariable',
+        value: function RegisterVariable(name, value) {
+            var Type = Tw2VariableStore.GetTw2ParameterType(value);
+            return Type ? this.RegisterVariableWithType(name, value, Type) : null;
+        }
+
+        /**
+         * Gets A Tw2 parameter constructor from a supplied value
+         * @param {Number|String|Array.<Number>|Float32Array} value
+         * @returns {null|Parameter}
+         */
+
+    }], [{
+        key: 'GetTw2ParameterType',
+        value: function GetTw2ParameterType(value) {
+            if (_math.util.isArrayLike(value)) {
+                switch (value.length) {
+                    case 16:
+                        return _index.Tw2MatrixParameter;
+
+                    case 4:
+                        return _index.Tw2Vector4Parameter;
+
+                    case 3:
+                        return _index.Tw2Vector3Parameter;
+
+                    case 2:
+                        return _index.Tw2Vector2Parameter;
+
+                    case 1:
+                        return _index.Tw2FloatParameter;
+                }
+            } else if (typeof value === 'number') {
+                return _index.Tw2FloatParameter;
+            } else if (typeof value === 'string') {
+                return _index.Tw2TextureParameter;
+            }
+        }
+    }]);
+
+    return Tw2VariableStore;
+}();
 
 /***/ })
 /******/ ]);

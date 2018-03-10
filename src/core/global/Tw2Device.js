@@ -1,10 +1,10 @@
 import {vec3, vec4, mat4} from '../../math';
-import {variableStore} from './Tw2VariableStore';
+import {store} from './Tw2Store';
 import {resMan} from './Tw2ResMan';
 import {emitter} from './Tw2EventEmitter';
 import {Tw2Effect} from '../mesh/Tw2Effect';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
-import {Tw2MatrixParameter, Tw2TextureParameter, Tw2Vector4Parameter} from '../parameter';
+import {Tw2TextureParameter} from '../parameter';
 const WebGLDebugUtil = require('webgl-debug');
 
 /**
@@ -60,13 +60,6 @@ function Tw2Device()
     this._onResize = null;
 
     this.utils = WebGLDebugUtil;
-
-    variableStore.RegisterVariable('WorldMat', this.world);
-    variableStore.RegisterVariable('ViewMat', this.view);
-    variableStore.RegisterVariable('ProjectionMat', this.projection);
-    variableStore.RegisterType('ViewProjectionMat', Tw2MatrixParameter);
-    variableStore.RegisterType('ViewportSize', Tw2Vector4Parameter);
-    variableStore.RegisterType('Time', Tw2Vector4Parameter);
 }
 
 /**
@@ -320,22 +313,26 @@ Tw2Device.prototype.Tick = function()
         this.Resize();
     }
 
+    let previousTime = this.currentTime;
+
     var now = this.Clock.now();
     this.currentTime = (now - this.startTime) * 0.001;
     this.dt = this.previousTime === null ? 0 : (now - this.previousTime) * 0.001;
     this.previousTime = now;
 
-    var time = variableStore._variables['Time'].value;
-    time[3] = time[0];
-    time[0] = this.currentTime;
-    time[1] = this.currentTime - Math.floor(this.currentTime);
-    time[2] = this.frameCounter;
+    store.SetVariableValue('Time', [
+        this.currentTime,
+        this.currentTime - Math.floor(this.currentTime),
+        this.frameCounter,
+        previousTime
+    ]);
 
-    var viewportSize = variableStore._variables['ViewportSize'].value;
-    viewportSize[0] = this.viewportWidth;
-    viewportSize[1] = this.viewportHeight;
-    viewportSize[2] = this.viewportWidth;
-    viewportSize[3] = this.viewportHeight;
+    store.SetVariableValue('ViewportSize', [
+        this.viewportWidth,
+        this.viewportHeight,
+        this.viewportWidth,
+        this.viewportHeight
+    ]);
 
     resMan.PrepareLoop(this.dt);
 
@@ -373,7 +370,7 @@ Tw2Device.prototype.SetView = function(matrix)
 
     mat4.multiply(this.viewProjection, this.projection, this.view);
     mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-    mat4.copy(variableStore._variables['ViewProjectionMat'], this.viewProjection);
+    store.SetVariableValue('ViewProjectionMat', this.viewProjection);
 };
 
 /**
@@ -393,7 +390,7 @@ Tw2Device.prototype.SetProjection = function(matrix, forceUpdateViewProjection)
     {
         mat4.multiply(this.viewProjection, this.projection, this.view);
         mat4.transpose(this.viewProjectionTranspose, this.viewProjection);
-        mat4.copy(variableStore._variables['ViewProjectionMat'].value, this.viewProjection);
+        store.SetVariableValue('ViewProjectionMat', this.viewProjection);
     }
 };
 

@@ -1,4 +1,4 @@
-import {vec3} from '../../math';
+import {util, vec3} from '../../math';
 
 /**
  * Tw2Vector3Parameter
@@ -151,4 +151,14 @@ Tw2Vector3Parameter.prototype.SetIndexValue = function(index, value)
 Tw2Vector3Parameter.prototype.FillWith = function(value)
 {
     this.SetValue([value, value, value]);
+};
+
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2Vector3Parameter.is = function(value)
+{
+    return util.isArrayLike(value) && value.length === 3;
 };

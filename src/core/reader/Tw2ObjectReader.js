@@ -1,4 +1,5 @@
 import {resMan} from '../global/Tw2ResMan';
+import {store} from '../global/Tw2Store';
 import {emitter} from '../global/Tw2EventEmitter';
 import {Tw2BinaryReader} from './Tw2BinaryReader';
 
@@ -137,7 +138,7 @@ Tw2ObjectReader.prototype._ConstructObject = function(data)
 
     try
     {
-        const Constructor = resMan.GetConstructor(data.type);
+        const Constructor = store.GetConstructor(data.type);
         object = new Constructor();
     }
     catch (e)

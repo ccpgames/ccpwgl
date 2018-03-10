@@ -1,6 +1,7 @@
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
 import {Tw2SamplerState} from '../sampler';
+import {util} from '../../math';
 
 /**
  * Tw2TextureParameter
@@ -177,4 +178,34 @@ Tw2TextureParameter.prototype.GetValue = function()
     }
 
     return this.resourcePath;
+};
+
+/**
+ * Sets a texture parameter's textureRes
+ * @param {Tw2TextureRes} res
+ */
+Tw2TextureParameter.prototype.SetTextureRes = function(res)
+{
+    if (res && this.textureRes && this.textureRes !== res)
+    {
+        this.textureRes.UnregisterNotification(this);
+        this.textureRes = res;
+        this.textureRes.RegisterNotification(this);
+    }
+};
+
+/**
+ * Alias for SetTexturePath
+ * @type {Tw2TextureParameter.SetTexturePath|*}
+ */
+Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
+
+/**
+ * Checks if a value is a valid parameter value
+ * @param {*} value
+ * @returns {boolean}
+ */
+Tw2TextureParameter.is = function(value)
+{
+    return typeof value === 'string';
 };

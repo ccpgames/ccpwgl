@@ -293,6 +293,7 @@ emitter.consoleDefault = 'log';
  * @param {String}  eventName              - The event to emit
  * @param {{}}      eventData              - event data
  * @param {String} [eventData.msg=]        - event message
+ * @param {boolean}[eventData.hide]        - stops an event log from being output to the console
  * @param {String} [eventData.log=]        - desired console output type (log, info, debug, warn, error, throw)
  * @param {String} [eventData.path=]       - the unmodified path for the file related to the event
  * @param {number} [eventData.time=]       - the time it took to process the event path (rounds to 3 decimal places)
@@ -330,7 +331,7 @@ emitter.log = function(eventName, eventData)
             if (!this.consoleLogs) output = false;
     }
 
-    if (output)
+    if (output && !eventData.hide)
     {
         var d = eventData;
         var header = this.consolePrefix.concat(': {', eventName, '}');

@@ -26,8 +26,7 @@ export class Tw2RawData
     /**
      * Sets a element value
      * @param {string} name
-     * @param {Float32Array} value
-     * @prototype
+     * @param {Float32Array|Array} value
      */
     Set(name, value)
     {
@@ -39,7 +38,6 @@ export class Tw2RawData
      * Gets an element's array value
      * @param {string} name
      * @return {Float32Array}
-     * @prototype
      */
     Get(name)
     {
@@ -50,7 +48,6 @@ export class Tw2RawData
      * Gets an element's array value from the share data array
      * @param {string} name
      * @return {Float32Array}
-     * @prototype
      */
     GetData(name)
     {

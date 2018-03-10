@@ -3,7 +3,6 @@ import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
 import {emitter} from '../global/Tw2EventEmitter';
 import {Tw2BinaryReader} from '../reader';
-import {Tw2RenderBatch} from '../batch';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
 import {
