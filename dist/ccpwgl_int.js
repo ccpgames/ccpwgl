@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 49);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(51);
+var _vec = __webpack_require__(56);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(57);
+var _quat = __webpack_require__(62);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(58);
+var _mat = __webpack_require__(63);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(59);
+var _mat2 = __webpack_require__(64);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(60);
+var _noise = __webpack_require__(65);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(61);
+var _curve = __webpack_require__(66);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -192,7 +192,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(62);
+var _util = __webpack_require__(67);
 
 Object.keys(_util).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -227,7 +227,7 @@ Object.keys(_batch).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(75);
+var _curve = __webpack_require__(80);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +239,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _data = __webpack_require__(78);
+var _data = __webpack_require__(83);
 
 Object.keys(_data).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +251,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _deprecated = __webpack_require__(81);
+var _deprecated = __webpack_require__(86);
 
 Object.keys(_deprecated).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -275,7 +275,7 @@ Object.keys(_global).forEach(function (key) {
   });
 });
 
-var _geometry = __webpack_require__(99);
+var _geometry = __webpack_require__(104);
 
 Object.keys(_geometry).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -287,7 +287,7 @@ Object.keys(_geometry).forEach(function (key) {
   });
 });
 
-var _mesh = __webpack_require__(100);
+var _mesh = __webpack_require__(105);
 
 Object.keys(_mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +299,7 @@ Object.keys(_mesh).forEach(function (key) {
   });
 });
 
-var _model = __webpack_require__(102);
+var _model = __webpack_require__(107);
 
 Object.keys(_model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -323,7 +323,7 @@ Object.keys(_parameter).forEach(function (key) {
   });
 });
 
-var _post = __webpack_require__(105);
+var _post = __webpack_require__(110);
 
 Object.keys(_post).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -383,7 +383,7 @@ Object.keys(_vertex).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(107);
+var _Tw2Float = __webpack_require__(112);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -395,7 +395,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(108);
+var _Tw2Frustum = __webpack_require__(113);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +407,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(41);
+var _Tw2RenderTarget = __webpack_require__(46);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -666,7 +666,7 @@ var _vertex = __webpack_require__(15);
 
 var _parameter = __webpack_require__(10);
 
-var WebGLDebugUtil = __webpack_require__(73);
+var WebGLDebugUtil = __webpack_require__(78);
 
 /**
  * Tw2Device
@@ -3388,12 +3388,12 @@ EveObjectSet.global = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(29);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -3456,7 +3456,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2FloatParameter = __webpack_require__(63);
+var _Tw2FloatParameter = __webpack_require__(68);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3468,7 +3468,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(64);
+var _Tw2MatrixParameter = __webpack_require__(69);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3480,7 +3480,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(65);
+var _Tw2TextureParameter = __webpack_require__(70);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3492,7 +3492,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(67);
+var _Tw2TransformParameter = __webpack_require__(72);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3504,7 +3504,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(68);
+var _Tw2VariableParameter = __webpack_require__(73);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3516,7 +3516,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(69);
+var _Tw2Vector2Parameter = __webpack_require__(74);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3528,7 +3528,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(70);
+var _Tw2Vector3Parameter = __webpack_require__(75);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3540,7 +3540,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(71);
+var _Tw2Vector4Parameter = __webpack_require__(76);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4050,7 +4050,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(72);
+var _Tw2VertexDeclaration = __webpack_require__(77);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4235,7 +4235,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(109);
+var _Tw2ColorCurve = __webpack_require__(114);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4247,7 +4247,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(110);
+var _Tw2ColorCurve2 = __webpack_require__(115);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4259,7 +4259,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(111);
+var _Tw2EventCurve = __webpack_require__(116);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4271,7 +4271,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(112);
+var _Tw2PerlinCurve = __webpack_require__(117);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4283,7 +4283,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(113);
+var _Tw2QuaternionCurve = __webpack_require__(118);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4295,7 +4295,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(114);
+var _Tw2RandomConstantCurve = __webpack_require__(119);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4307,7 +4307,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(115);
+var _Tw2RigidOrientation = __webpack_require__(120);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4319,7 +4319,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(116);
+var _Tw2RotationCurve = __webpack_require__(121);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4331,7 +4331,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(117);
+var _Tw2ScalarCurve = __webpack_require__(122);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4343,7 +4343,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(118);
+var _Tw2ScalarCurve2 = __webpack_require__(123);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4355,7 +4355,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(119);
+var _Tw2SineCurve = __webpack_require__(124);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4367,7 +4367,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(120);
+var _Tw2Vector2Curve = __webpack_require__(125);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4379,7 +4379,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(121);
+var _Tw2Vector3Curve = __webpack_require__(126);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4391,7 +4391,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(122);
+var _Tw2VectorCurve = __webpack_require__(127);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4593,7 +4593,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(50);
+var _Tw2BatchAccumulator = __webpack_require__(55);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4628,7 +4628,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(66);
+var _Tw2SamplerOverride = __webpack_require__(71);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5088,7 +5088,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2EffectRes = __webpack_require__(104);
+var _Tw2EffectRes = __webpack_require__(109);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5124,7 +5124,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(40);
+var _Tw2TextureRes = __webpack_require__(41);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8426,7 +8426,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(83);
+var _emitters = __webpack_require__(88);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8438,7 +8438,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(86);
+var _forces = __webpack_require__(91);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8450,7 +8450,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(93);
+var _generators = __webpack_require__(98);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8462,7 +8462,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(97);
+var _constraints = __webpack_require__(102);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8474,7 +8474,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(98);
+var _Tw2ParticleSystem = __webpack_require__(103);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -9855,6 +9855,62 @@ Tw2GeometryRes.prototype.Unload = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Animation
+ *
+ * @property {Tw2GeometryAnimation} animationRes
+ * @property {number} time
+ * @property {number} timeScale
+ * @property {boolean} cycle
+ * @property {boolean} isPlaying
+ * @property {Function} callback - Stores optional callback passed to prototypes
+ * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
+ * @class
+ */
+var Tw2Animation = exports.Tw2Animation = function () {
+    function Tw2Animation() {
+        _classCallCheck(this, Tw2Animation);
+
+        this.animationRes = null;
+        this.time = 0;
+        this.timeScale = 1.0;
+        this.cycle = false;
+        this.isPlaying = false;
+        this.callback = null;
+        this.trackGroups = [];
+    }
+
+    /**
+     * Checks to see if the animation has finished playing
+     * @return {boolean}
+     */
+
+
+    _createClass(Tw2Animation, [{
+        key: "IsFinished",
+        value: function IsFinished() {
+            return !this.cycle && this.time >= this.animationRes.duration;
+        }
+    }]);
+
+    return Tw2Animation;
+}();
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Tw2TextureRes = undefined;
 
 var _Tw2ResMan = __webpack_require__(4);
@@ -10100,7 +10156,126 @@ Tw2TextureRes.prototype.Bind = function (sampler, slices) {
 };
 
 /***/ }),
-/* 41 */
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2Bone = undefined;
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Bone
+ *
+ * @property {Tw2GeometryBone} boneRes
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {mat4} offsetTransform
+ * @class
+ */
+var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
+    _classCallCheck(this, Tw2Bone);
+
+    this.boneRes = null;
+    this.localTransform = _math.mat4.create();
+    this.worldTransform = _math.mat4.create();
+    this.offsetTransform = _math.mat4.create();
+};
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Model
+ *
+ * @property {Tw2GeometryModel} modelRes
+ * @property {Array.<Tw2Bone>} bones
+ * @property {Object.<string, Tw2Bone>} bonesByName - An object containing every Tw2Bone name and it's object
+ * @class
+ */
+var Tw2Model = exports.Tw2Model = function Tw2Model() {
+    _classCallCheck(this, Tw2Model);
+
+    this.modelRes = null;
+    this.bones = [];
+    this.bonesByName = {};
+};
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Track
+ *
+ * @property {Tw2GeometryTransformTrack} trackRes
+ * @property {Tw2Bone} bone
+ * @class
+ */
+var Tw2Track = exports.Tw2Track = function Tw2Track() {
+    _classCallCheck(this, Tw2Track);
+
+    this.trackRes = null;
+    this.bone = null;
+};
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2TrackGroup
+ *
+ * @property {Tw2GeometryTrackGroup} trackGroupRes
+ * @property {Tw2GeometryModel} model
+ * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
+ * @class
+ */
+var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
+    _classCallCheck(this, Tw2TrackGroup);
+
+    this.trackGroupRes = null;
+    this.model = null;
+    this.transformTracks = [];
+};
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10215,7 +10390,7 @@ Tw2RenderTarget.prototype.Unset = function () {
 };
 
 /***/ }),
-/* 42 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10237,7 +10412,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(123);
+var _sequencers = __webpack_require__(128);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10249,7 +10424,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(132);
+var _tracks = __webpack_require__(137);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10261,7 +10436,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(135);
+var _maya = __webpack_require__(140);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10274,7 +10449,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 43 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10296,7 +10471,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(141);
+var _EveChildBillboard = __webpack_require__(146);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10308,7 +10483,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(142);
+var _EveChildContainer = __webpack_require__(147);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10320,7 +10495,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(143);
+var _EveChildExplosion = __webpack_require__(148);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10332,7 +10507,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(144);
+var _EveChildMesh = __webpack_require__(149);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10344,7 +10519,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(145);
+var _EveChildParticleSystem = __webpack_require__(150);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10357,7 +10532,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 44 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10569,7 +10744,7 @@ var EveOccluder = exports.EveOccluder = function () {
 EveOccluder.global = null;
 
 /***/ }),
-/* 45 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10591,7 +10766,7 @@ Object.keys(_EveObject).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(151);
+var _EveEffectRoot = __webpack_require__(156);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10603,7 +10778,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(152);
+var _EveMissile = __webpack_require__(157);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10615,7 +10790,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(153);
+var _EvePlanet = __webpack_require__(158);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10627,7 +10802,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(154);
+var _EveShip = __webpack_require__(159);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10639,7 +10814,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(47);
+var _EveSpaceObject = __webpack_require__(52);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10651,7 +10826,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(46);
+var _EveTransform = __webpack_require__(51);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10664,7 +10839,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 46 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11025,7 +11200,7 @@ EveTransform.Modifier = {
 };
 
 /***/ }),
-/* 47 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11561,7 +11736,7 @@ var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 48 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11583,7 +11758,7 @@ Object.keys(_EveObjectSet).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(155);
+var _EveBoosterSet = __webpack_require__(160);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11595,7 +11770,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(156);
+var _EveCurveLineSet = __webpack_require__(161);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11607,7 +11782,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(157);
+var _EveLocator = __webpack_require__(162);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11619,7 +11794,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(158);
+var _EvePlaneSet = __webpack_require__(163);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11631,7 +11806,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(159);
+var _EveSpaceObjectDecal = __webpack_require__(164);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11643,7 +11818,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(160);
+var _EveSpotlightSet = __webpack_require__(165);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11655,7 +11830,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(161);
+var _EveSpriteSet = __webpack_require__(166);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11667,7 +11842,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(162);
+var _EveTurretSet = __webpack_require__(167);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11680,7 +11855,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 });
 
 /***/ }),
-/* 49 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11703,7 +11878,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(42);
+var _curve = __webpack_require__(47);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -11715,7 +11890,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(140);
+var _eve = __webpack_require__(145);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -11776,7 +11951,7 @@ _core.resMan.Register({
 exports.math = math;
 
 /***/ }),
-/* 50 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11903,7 +12078,7 @@ Tw2ForwardingRenderBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 51 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11919,7 +12094,7 @@ var _glMatrix = __webpack_require__(9);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 52 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12389,7 +12564,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 53 */
+/* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12891,7 +13066,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 54 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14629,7 +14804,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 55 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15320,7 +15495,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 56 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15963,7 +16138,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 57 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16057,7 +16232,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 58 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16073,7 +16248,7 @@ var _glMatrix = __webpack_require__(9);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 59 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16264,7 +16439,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 60 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16474,7 +16649,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 61 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16488,7 +16663,7 @@ var curve = exports.curve = {};
 /**
  * Evaluates a curve
  *
- * @param {{}} curve
+ * @param {{}|Tw2GeometryCurve} curve
  * @param {Array} curve.knots
  * @param {number} curve.degree
  * @param {Array} curve.controls
@@ -16835,7 +17010,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 62 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17023,7 +17198,7 @@ util.toArray = function (a) {
 };
 
 /***/ }),
-/* 63 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17139,7 +17314,7 @@ Tw2FloatParameter.prototype.SetValue = function (value) {
 };
 
 /***/ }),
-/* 64 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17240,7 +17415,7 @@ Tw2MatrixParameter.prototype.OnValueChanged = function () {
 };
 
 /***/ }),
-/* 65 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17409,7 +17584,7 @@ Tw2TextureParameter.prototype.GetValue = function () {
 };
 
 /***/ }),
-/* 66 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17507,7 +17682,7 @@ function Tw2SamplerOverride() {
 }
 
 /***/ }),
-/* 67 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17601,7 +17776,7 @@ Tw2TransformParameter.prototype.Apply = function (constantBuffer, offset, size) 
 };
 
 /***/ }),
-/* 68 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17658,7 +17833,7 @@ Tw2VariableParameter.prototype.Apply = function (constantBuffer, offset, size) {
 };
 
 /***/ }),
-/* 69 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17808,7 +17983,7 @@ Tw2Vector2Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 70 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17957,7 +18132,7 @@ Tw2Vector3Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 71 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18106,7 +18281,7 @@ Tw2Vector4Parameter.prototype.FillWith = function (value) {
 };
 
 /***/ }),
-/* 72 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18338,7 +18513,7 @@ Tw2VertexDeclaration.prototype.ResetInstanceDivisors = function (resetData) {
 };
 
 /***/ }),
-/* 73 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -19542,10 +19717,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(74)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(79)))
 
 /***/ }),
-/* 74 */
+/* 79 */
 /***/ (function(module, exports) {
 
 var g;
@@ -19572,7 +19747,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 75 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19582,7 +19757,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2CurveSet = __webpack_require__(76);
+var _Tw2CurveSet = __webpack_require__(81);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -19594,7 +19769,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(77);
+var _Tw2ValueBinding = __webpack_require__(82);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -19607,7 +19782,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 });
 
 /***/ }),
-/* 76 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19711,7 +19886,7 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 };
 
 /***/ }),
-/* 77 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19987,7 +20162,7 @@ Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
 };
 
 /***/ }),
-/* 78 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19997,7 +20172,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PerObjectData = __webpack_require__(79);
+var _Tw2PerObjectData = __webpack_require__(84);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20009,7 +20184,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(80);
+var _Tw2RawData = __webpack_require__(85);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20022,7 +20197,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
 });
 
 /***/ }),
-/* 79 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20077,7 +20252,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 80 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20163,7 +20338,7 @@ Tw2RawData.prototype.GetData = function (name) {
 };
 
 /***/ }),
-/* 81 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20173,7 +20348,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(82);
+var _Tw2RuntimeInstanceData = __webpack_require__(87);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20186,7 +20361,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
 });
 
 /***/ }),
-/* 82 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20399,7 +20574,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 83 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20409,7 +20584,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(84);
+var _Tw2StaticEmitter = __webpack_require__(89);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20421,7 +20596,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(85);
+var _Tw2DynamicEmitter = __webpack_require__(90);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20434,7 +20609,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 84 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20590,7 +20765,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 85 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20710,7 +20885,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 86 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20720,7 +20895,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(87);
+var _Tw2ParticleAttractorForce = __webpack_require__(92);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20732,7 +20907,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(88);
+var _Tw2ParticleDirectForce = __webpack_require__(93);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20744,7 +20919,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(89);
+var _Tw2ParticleDragForce = __webpack_require__(94);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20756,7 +20931,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(90);
+var _Tw2ParticleFluidDragForce = __webpack_require__(95);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20768,7 +20943,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(91);
+var _Tw2ParticleSpring = __webpack_require__(96);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20780,7 +20955,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(92);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(97);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20793,7 +20968,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 87 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20865,7 +21040,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 88 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20926,7 +21101,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 89 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20987,7 +21162,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 90 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21073,7 +21248,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 91 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21138,7 +21313,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 92 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21243,7 +21418,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 93 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21253,7 +21428,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(94);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(99);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21265,7 +21440,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(95);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(100);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21277,7 +21452,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(96);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(101);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21290,7 +21465,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 94 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21381,7 +21556,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 95 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21472,7 +21647,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 96 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21622,14 +21797,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 98 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22171,14 +22346,14 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 99 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 100 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22200,7 +22375,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(101);
+var _Tw2InstancedMesh = __webpack_require__(106);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22225,7 +22400,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
 });
 
 /***/ }),
-/* 101 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22400,7 +22575,7 @@ Tw2InstancedMeshBatch.prototype.Commit = function (overrideEffect) {
 };
 
 /***/ }),
-/* 102 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22410,7 +22585,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2AnimationController = __webpack_require__(103);
+var _Tw2Animation = __webpack_require__(40);
+
+Object.keys(_Tw2Animation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Animation[key];
+    }
+  });
+});
+
+var _Tw2AnimationController = __webpack_require__(108);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22422,8 +22609,56 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
+var _Tw2Bone = __webpack_require__(42);
+
+Object.keys(_Tw2Bone).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Bone[key];
+    }
+  });
+});
+
+var _Tw2Model = __webpack_require__(43);
+
+Object.keys(_Tw2Model).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Model[key];
+    }
+  });
+});
+
+var _Tw2Track = __webpack_require__(44);
+
+Object.keys(_Tw2Track).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Track[key];
+    }
+  });
+});
+
+var _Tw2TrackGroup = __webpack_require__(45);
+
+Object.keys(_Tw2TrackGroup).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2TrackGroup[key];
+    }
+  });
+});
+
 /***/ }),
-/* 103 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22432,101 +22667,29 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2Track = Tw2Track;
-exports.Tw2TrackGroup = Tw2TrackGroup;
-exports.Tw2Animation = Tw2Animation;
-exports.Tw2Bone = Tw2Bone;
-exports.Tw2Model = Tw2Model;
-exports.Tw2AnimationController = Tw2AnimationController;
+exports.Tw2AnimationController = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _resource = __webpack_require__(25);
 
-/**
- * Tw2Track
- * @property {Tw2GeometryTransformTrack} trackRes
- * @property {Tw2Bone} bone
- * @constructor
- */
-function Tw2Track() {
-    this.trackRes = null;
-    this.bone = null;
-}
+var _Tw2Animation = __webpack_require__(40);
 
-/**
- * Tw2TrackGroup
- * @property {Tw2GeometryTrackGroup} trackGroupRes
- * @property {Tw2GeometryModel} model
- * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
- * @constructor
- */
-function Tw2TrackGroup() {
-    this.trackGroupRes = null;
-    this.model = null;
-    this.transformTracks = [];
-}
+var _Tw2Bone = __webpack_require__(42);
 
-/**
- * Tw2Animation
- * @property {Tw2GeometryAnimation} animationRes
- * @property {number} time
- * @property {number} timeScale
- * @property {boolean} cycle
- * @property {boolean} isPlaying
- * @property {Function} callback - Stores optional callback passed to prototypes
- * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
- * @constructor
- */
-function Tw2Animation() {
-    this.animationRes = null;
-    this.time = 0;
-    this.timeScale = 1.0;
-    this.cycle = false;
-    this.isPlaying = false;
-    this.callback = null;
-    this.trackGroups = [];
-}
+var _Tw2Model = __webpack_require__(43);
 
-/**
- * Checks to see if the animation has finished playing
- * @return {boolean}
- * @prototype
- */
-Tw2Animation.prototype.IsFinished = function () {
-    return !this.cycle && this.time >= this.animationRes.duration;
-};
+var _Tw2Track = __webpack_require__(44);
 
-/**
- * Tw2Bone
- * @property {Tw2GeometryBone} boneRes
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} offsetTransform
- * @constructor
- */
-function Tw2Bone() {
-    this.boneRes = null;
-    this.localTransform = _math.mat4.create();
-    this.worldTransform = _math.mat4.create();
-    this.offsetTransform = _math.mat4.create();
-}
+var _Tw2TrackGroup = __webpack_require__(45);
 
-/**
- * Tw2Model
- * @property {Tw2GeometryModel} modelRes
- * @property {Array.<Tw2Bone>} bones
- * @property {Object.<string, Tw2Bone>} bonesByName - An object containing every Tw2Bone name and it's object
- * @constructor
- */
-function Tw2Model() {
-    this.modelRes = null;
-    this.bones = [];
-    this.bonesByName = {};
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Tw2AnimationController
+ *
  * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
@@ -22537,27 +22700,781 @@ function Tw2Model() {
  * @property _geometryResource
  * @property {Array} pendingCommands
  * @property {Function} [onLoaded] an optional callback fired when any commands are cleared
- * @prototype
+ * @class
  */
-function Tw2AnimationController(geometryResource) {
-    this.geometryResources = [];
-    this.models = [];
-    this.animations = [];
-    this.meshBindings = [];
-    this.loaded = false;
-    this.update = true;
-    this._geometryResource = null;
-    this.pendingCommands = [];
-    this.onPendingCleared = null;
+var Tw2AnimationController = exports.Tw2AnimationController = function () {
+    function Tw2AnimationController(geometryResource) {
+        _classCallCheck(this, Tw2AnimationController);
 
-    if (typeof geometryResource !== 'undefined') {
-        this.SetGeometryResource(geometryResource);
+        this.geometryResources = [];
+        this.models = [];
+        this.animations = [];
+        this.meshBindings = [];
+        this.loaded = false;
+        this.update = true;
+        this.pendingCommands = [];
+        this.onPendingCleared = null;
+        this._geometryResource = null;
+
+        if (geometryResource) {
+            this.SetGeometryResource(geometryResource);
+        }
     }
-}
+
+    /**
+     * Gets a loaded Tw2Animation by it's name
+     * @returns {?{ string: Tw2Animation}} an object containing animation names and animations, or null if not loaded
+     */
+
+
+    _createClass(Tw2AnimationController, [{
+        key: 'GetAnimationsByName',
+        value: function GetAnimationsByName() {
+            if (!this.loaded) return null;
+
+            var animations = {};
+            for (var i = 0; i < this.animations.length; i++) {
+                animations[this.animations[i].animationRes.name] = this.animations[i];
+            }
+            return animations;
+        }
+
+        /**
+         * Gets a loaded Tw2Animation by it's name
+         * @param {String} name
+         * @returns {?Tw2Animation} Returns the animation if found
+         */
+
+    }, {
+        key: 'GetAnimation',
+        value: function GetAnimation(name) {
+            for (var i = 0; i < this.animations.length; i++) {
+                if (this.animations[i].animationRes.name === name) {
+                    return this.animations[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Resets a Tw2Animation by it's name
+         * @param {String} name
+         * @return {boolean}
+         */
+
+    }, {
+        key: 'ResetAnimation',
+        value: function ResetAnimation(name) {
+            var animation = this.GetAnimation(name);
+            if (animation) {
+                animation.time = 0;
+                animation.isPlaying = false;
+                animation.callback = null;
+                return true;
+            }
+        }
+
+        /**
+         * Plays a specific animation by it's name
+         * @param {string} name - Animation's Name
+         * @param {boolean} [cycle]
+         * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+         * @return {boolean}
+         */
+
+    }, {
+        key: 'PlayAnimation',
+        value: function PlayAnimation(name, cycle, callback) {
+            if (this.animations.length === 0) {
+                this.pendingCommands.push({
+                    'func': this.PlayAnimation,
+                    'args': [name, cycle, callback]
+                });
+                return true;
+            }
+
+            var animation = this.GetAnimation(name);
+            if (animation) {
+                animation.time = 0;
+                animation.isPlaying = true;
+
+                if (typeof cycle !== 'undefined') {
+                    animation.cycle = cycle;
+                }
+
+                if (callback) {
+                    animation.callback = callback;
+                }
+
+                return true;
+            }
+        }
+
+        /**
+         * Plays a specific animation from a specific time
+         * @param {string} name - Animation's Name
+         * @param {number} from - Time to play from
+         * @param {boolean} [cycle]
+         * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'PlayAnimationFrom',
+        value: function PlayAnimationFrom(name, from, cycle, callback) {
+            if (this.animations.length === 0) {
+                this.pendingCommands.push({
+                    'func': this.PlayAnimationFrom,
+                    'args': [name, from, cycle, callback]
+                });
+                return true;
+            }
+
+            var animation = this.GetAnimation(name);
+            if (animation) {
+                animation.time = Math.max(Math.min(from, animation.animationRes.duration), 0);
+                animation.isPlaying = true;
+
+                if (typeof cycle !== 'undefined') {
+                    animation.cycle = cycle;
+                }
+
+                if (callback) {
+                    animation.callback = callback;
+                }
+
+                return true;
+            }
+        }
+
+        /**
+         * Gets an array of all the currently playing animations by name
+         * @returns {Array}
+         */
+
+    }, {
+        key: 'GetPlayingAnimations',
+        value: function GetPlayingAnimations() {
+            var result = [];
+            for (var i = 0; i < this.animations.length; i++) {
+                if (this.animations[i].isPlaying) {
+                    result.push(this.animations[i].animationRes.name);
+                }
+            }
+            return result;
+        }
+
+        /**
+         * Stops an animation or an array of animations from playing
+         * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
+         */
+
+    }, {
+        key: 'StopAnimation',
+        value: function StopAnimation(names) {
+            if (this.animations.length === 0) {
+                this.pendingCommands.push({
+                    'func': this.StopAnimation,
+                    'args': names
+                });
+                return;
+            }
+
+            if (typeof names === 'string' || names instanceof String) {
+                names = [names];
+            }
+
+            var toStop = {};
+            for (var n = 0; n < names.length; n++) {
+                toStop[names[n]] = true;
+            }
+
+            for (var i = 0; i < this.animations.length; ++i) {
+                if (this.animations[i].animationRes.name in toStop) {
+                    this.animations[i].isPlaying = false;
+                }
+            }
+        }
+
+        /**
+         * Stops all animations from playing
+         */
+
+    }, {
+        key: 'StopAllAnimations',
+        value: function StopAllAnimations() {
+            if (this.animations.length === 0) {
+                this.pendingCommands.push({
+                    'func': this.StopAllAnimations,
+                    'args': null
+                });
+                return;
+            }
+
+            for (var i = 0; i < this.animations.length; ++i) {
+                this.animations[i].isPlaying = false;
+            }
+        }
+
+        /**
+         * Stops all but the supplied list of animations
+         * @param {String| Array.<string>} names - Animation Names
+         */
+
+    }, {
+        key: 'StopAllAnimationsExcept',
+        value: function StopAllAnimationsExcept(names) {
+            if (this.animations.length === 0) {
+                this.pendingCommands.push({
+                    'func': this.StopAllAnimationsExcept,
+                    'args': names
+                });
+                return;
+            }
+
+            if (typeof names === 'string' || names instanceof String) {
+                names = [names];
+            }
+
+            var keepAnimating = {};
+            for (var n = 0; n < names.length; n++) {
+                keepAnimating[names[n]] = true;
+            }
+
+            for (var i = 0; i < this.animations.length; ++i) {
+                if (!(this.animations[i].animationRes.name in keepAnimating)) {
+                    this.animations[i].isPlaying = false;
+                }
+            }
+        }
+
+        /**
+         * Clears any existing resources and loads the supplied geometry resource
+         * @param {Tw2GeometryRes} geometryResource
+         */
+
+    }, {
+        key: 'SetGeometryResource',
+        value: function SetGeometryResource(geometryResource) {
+            this.models = [];
+            this.animations = [];
+            this.meshBindings = [];
+
+            for (var i = 0; i < this.geometryResources.length; ++i) {
+                this.geometryResources[i].UnregisterNotification(this);
+            }
+
+            this.loaded = false;
+            this.geometryResources = [];
+
+            if (geometryResource) {
+                this.geometryResources.push(geometryResource);
+                geometryResource.RegisterNotification(this);
+            }
+        }
+
+        /**
+         * Adds a Geometry Resource
+         * @param {Tw2GeometryRes} geometryResource
+         */
+
+    }, {
+        key: 'AddGeometryResource',
+        value: function AddGeometryResource(geometryResource) {
+            for (var i = 0; i < this.geometryResources.length; ++i) {
+                if (this.geometryResources[i] === geometryResource) {
+                    return;
+                }
+            }
+            this.geometryResources.push(geometryResource);
+            geometryResource.RegisterNotification(this);
+        }
+
+        /**
+         * Adds animations from a resource
+         * @param {Tw2GeometryRes} resource
+         */
+
+    }, {
+        key: 'AddAnimationsFromRes',
+        value: function AddAnimationsFromRes(resource) {
+            for (var i = 0; i < resource.animations.length; ++i) {
+                var animation = null;
+                for (var j = 0; j < this.animations.length; ++j) {
+                    if (this.animations[j].animationRes === resource.animations[i]) {
+                        animation = this.animations[i];
+                        break;
+                    }
+                }
+
+                if (!animation) {
+                    animation = new _Tw2Animation.Tw2Animation();
+                    animation.animationRes = resource.animations[i];
+                    this.animations.push(animation);
+                }
+
+                for (var _j = 0; _j < animation.animationRes.trackGroups.length; ++_j) {
+                    var found = false;
+                    for (var k = 0; k < animation.trackGroups.length; ++k) {
+                        if (animation.trackGroups[k].trackGroupRes === animation.animationRes.trackGroups[_j]) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found) {
+                        continue;
+                    }
+
+                    var model = null;
+                    for (var _k = 0; _k < this.models.length; ++_k) {
+                        if (this.models[_k].modelRes.name === animation.animationRes.trackGroups[_j].name) {
+                            model = this.models[_k];
+                            break;
+                        }
+                    }
+
+                    if (model !== null) {
+                        var group = new _Tw2TrackGroup.Tw2TrackGroup();
+                        group.trackGroupRes = animation.animationRes.trackGroups[_j];
+                        for (var _k2 = 0; _k2 < group.trackGroupRes.transformTracks.length; ++_k2) {
+                            for (var m = 0; m < model.bones.length; ++m) {
+                                if (model.bones[m].boneRes.name === group.trackGroupRes.transformTracks[_k2].name) {
+                                    var track = new _Tw2Track.Tw2Track();
+                                    track.trackRes = group.trackGroupRes.transformTracks[_k2];
+                                    track.bone = model.bones[m];
+                                    group.transformTracks.push(track);
+                                    break;
+                                }
+                            }
+                        }
+                        animation.trackGroups.push(group);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Resets the bone transforms
+         */
+
+    }, {
+        key: 'ResetBoneTransforms',
+        value: function ResetBoneTransforms() {
+            for (var i = 0; i < this.models.length; ++i) {
+                for (var j = 0; j < this.models[i].bones.length; ++j) {
+                    var bone = this.models[i].bones[j],
+                        boneRes = bone.boneRes;
+
+                    _math.mat4.copy(bone.localTransform, boneRes.localTransform);
+
+                    if (boneRes.parentIndex !== -1) {
+                        _math.mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
+                    } else {
+                        _math.mat4.set(bone.worldTransform, bone.localTransform);
+                    }
+                    _math.mat4.identity(bone.offsetTransform);
+                }
+            }
+
+            var id = _math.mat4.identity(Tw2AnimationController.scratch.mat4_0);
+            for (var _i = 0; _i < this.meshBindings.length; ++_i) {
+                for (var _j2 = 0; _j2 < this.meshBindings[_i].length; ++_j2) {
+                    for (var k = 0; k * 16 < this.meshBindings[_i][_j2].length; ++k) {
+                        for (var m = 0; m < 16; ++m) {
+                            this.meshBindings[_i][_j2][k * 16 + m] = id[m];
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * GetBoneMatrices
+         * @param {number} meshIndex
+         * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+         * @returns {Float32Array}
+         */
+
+    }, {
+        key: 'GetBoneMatrices',
+        value: function GetBoneMatrices(meshIndex, geometryResource) {
+            if (this.geometryResources.length === 0) {
+                return new Float32Array();
+            }
+
+            if (!geometryResource) {
+                geometryResource = this.geometryResources[0];
+            }
+
+            var meshBindings = Tw2AnimationController.FindMeshBindings(this, geometryResource);
+            if (meshBindings && meshIndex < meshBindings.length) {
+                return meshBindings[meshIndex];
+            }
+            return new Float32Array();
+        }
+
+        /**
+         * FindModelForMesh
+         * @param {number} meshIndex
+         * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+         * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
+         */
+
+    }, {
+        key: 'FindModelForMesh',
+        value: function FindModelForMesh(meshIndex, geometryResource) {
+            if (this.geometryResources.length === 0) {
+                return null;
+            }
+
+            if (!geometryResource) {
+                geometryResource = this.geometryResources[0];
+            }
+
+            if (!geometryResource.IsGood()) {
+                return null;
+            }
+
+            var mesh = geometryResource.meshes[meshIndex];
+            for (var i = 0; i < this.models.length; ++i) {
+                for (var j = 0; j < this.models[i].modelRes.meshBindings.length; ++i) {
+                    if (this.models[i].modelRes.meshBindings[j].mesh === mesh) {
+                        return this.models[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Gets all animation controller res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            for (var i = 0; i < this.geometryResources.length; i++) {
+                if (!out.includes(this.geometryResources[i])) {
+                    out.push(this.geometryResources[i]);
+                }
+            }
+            return out;
+        }
+
+        /**
+         * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
+         * @param {Tw2GeometryRes} resource
+         */
+
+    }, {
+        key: 'RebuildCachedData',
+        value: function RebuildCachedData(resource) {
+            var found = false;
+            for (var i = 0; i < this.geometryResources.length; ++i) {
+                if (this.geometryResources[i] === resource) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                return;
+            }
+
+            for (var _i2 = 0; _i2 < this.geometryResources.length; ++_i2) {
+                if (!this.geometryResources[_i2].IsGood()) {
+                    return;
+                }
+            }
+
+            for (var _i3 = 0; _i3 < this.geometryResources.length; ++_i3) {
+                Tw2AnimationController.DoRebuildCachedData(this, this.geometryResources[_i3]);
+            }
+        }
+
+        /**
+         * Internal render/update function which is called every frame
+         * @param {number} dt - Delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (!this.models || !this.update) {
+                return;
+            }
+
+            for (var i = 0; i < this.geometryResources.length; ++i) {
+                this.geometryResources[i].KeepAlive();
+            }
+
+            var g = Tw2AnimationController.scratch,
+                rotationMat = g.mat4_0,
+                orientation = g.quat_0,
+                position = g.vec3_0,
+                scale = g.mat3_0;
+
+            //var updateBones = false;
+            for (var _i4 = 0; _i4 < this.animations.length; ++_i4) {
+                var animation = this.animations[_i4];
+                if (animation.isPlaying) {
+                    var res = animation.animationRes;
+                    animation.time += dt * animation.timeScale;
+                    if (animation.time > res.duration) {
+                        if (animation.callback) {
+                            animation.callback(this, animation);
+                        }
+
+                        if (animation.cycle) {
+                            animation.time = animation.time % res.duration;
+                        } else {
+                            animation.isPlaying = false;
+                            animation.time = res.duration;
+                        }
+                    }
+
+                    for (var j = 0; j < animation.trackGroups.length; ++j) {
+                        for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k) {
+                            var track = animation.trackGroups[j].transformTracks[k];
+                            if (track.trackRes.position) {
+                                _math.curve.evaluate(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
+                            } else {
+                                position[0] = position[1] = position[2] = 0;
+                            }
+                            if (track.trackRes.orientation) {
+                                _math.curve.evaluate(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
+                                _math.quat.normalize(orientation, orientation);
+                            } else {
+                                _math.quat.identity(orientation);
+                            }
+                            if (track.trackRes.scaleShear) {
+                                _math.curve.evaluate(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
+                            } else {
+                                _math.mat3.identity(scale);
+                            }
+
+                            _math.mat4.fromMat3(track.bone.localTransform, scale);
+                            _math.mat4.multiply(track.bone.localTransform, track.bone.localTransform, _math.mat4.fromQuat(rotationMat, orientation));
+                            track.bone.localTransform[12] = position[0];
+                            track.bone.localTransform[13] = position[1];
+                            track.bone.localTransform[14] = position[2];
+                        }
+                    }
+                }
+            }
+
+            for (var _i5 = 0; _i5 < this.models.length; ++_i5) {
+                for (var _j3 = 0; _j3 < this.models[_i5].bones.length; ++_j3) {
+                    var bone = this.models[_i5].bones[_j3];
+                    if (bone.boneRes.parentIndex !== -1) {
+                        _math.mat4.multiply(bone.worldTransform, this.models[_i5].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
+                    } else {
+                        _math.mat4.copy(bone.worldTransform, bone.localTransform);
+                    }
+                    _math.mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
+                    if (bone.bindingArrays) {
+                        for (var a = 0; a < bone.bindingArrays.length; ++a) {
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 0] = bone.offsetTransform[0];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 1] = bone.offsetTransform[4];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 2] = bone.offsetTransform[8];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 3] = bone.offsetTransform[12];
+
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 4] = bone.offsetTransform[1];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 5] = bone.offsetTransform[5];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 6] = bone.offsetTransform[9];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 7] = bone.offsetTransform[13];
+
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 8] = bone.offsetTransform[2];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 9] = bone.offsetTransform[6];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 10] = bone.offsetTransform[10];
+                            bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 11] = bone.offsetTransform[14];
+                        }
+                    }
+                }
+            }
+        }
+
+        /**
+         * RenderDebugInfo
+         * TODO: Fix commented out code
+         * @param {function} debugHelper
+         */
+
+    }, {
+        key: 'RenderDebugInfo',
+        value: function RenderDebugInfo(debugHelper) {
+            /*for (var i = 0; i < this.geometryResources.length; ++i)
+             {
+             this.geometryResources[i].RenderDebugInfo(debugHelper);
+             }*/
+            for (var i = 0; i < this.models.length; ++i) {
+                for (var j = 0; j < this.models[i].bones.length; ++j) {
+                    var b0 = this.models[i].bones[j];
+                    if (b0.boneRes.parentIndex >= 0) {
+                        var b1 = this.models[i].bones[b0.boneRes.parentIndex];
+                        debugHelper['AddLine']([b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]]);
+                    }
+                }
+            }
+        }
+
+        /**
+         * Adds a model resource to an animation controller
+         * @param {Tw2AnimationController} animationController
+         * @param {Tw2GeometryModel} modelRes
+         * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
+         */
+
+    }], [{
+        key: 'AddModel',
+        value: function AddModel(animationController, modelRes) {
+            for (var i = 0; i < animationController.models.length; ++i) {
+                if (animationController.models[i].modelRes.name === modelRes.name) {
+                    return null;
+                }
+            }
+
+            var model = new _Tw2Model.Tw2Model();
+            model.modelRes = modelRes;
+            var skeleton = modelRes.skeleton;
+            if (skeleton !== null) {
+                for (var j = 0; j < skeleton.bones.length; ++j) {
+                    var bone = new _Tw2Bone.Tw2Bone();
+                    bone.boneRes = skeleton.bones[j];
+                    model.bones.push(bone);
+                    model.bonesByName[bone.boneRes.name] = bone;
+                }
+            }
+            animationController.models.push(model);
+            return model;
+        }
+
+        /**
+         * Finds a mesh binding for a supplied resource from an animation controller
+         * @param {Tw2AnimationController} animationController
+         * @param {Tw2GeometryRes} resource
+         * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
+         * @private
+         */
+
+    }, {
+        key: 'FindMeshBindings',
+        value: function FindMeshBindings(animationController, resource) {
+            for (var i = 0; i < animationController.meshBindings.length; ++i) {
+                if (animationController.meshBindings[i].resource === resource) {
+                    return animationController.meshBindings[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * DoRebuildCachedData
+         * @param {Tw2AnimationController) animationController
+         * @param {Tw2GeometryRes} resource
+         */
+
+    }, {
+        key: 'DoRebuildCachedData',
+        value: function DoRebuildCachedData(animationController, resource) {
+            var newModels = [];
+            if (resource.meshes.length) {
+                for (var i = 0; i < resource.models.length; ++i) {
+                    var model = Tw2AnimationController.AddModel(animationController, resource.models[i]);
+                    if (model) {
+                        newModels.push(model);
+                    }
+                }
+            }
+
+            for (var _i6 = 0; _i6 < animationController.geometryResources.length; ++_i6) {
+                animationController.AddAnimationsFromRes(animationController.geometryResources[_i6]);
+            }
+
+            if (resource.models.length === 0) {
+                for (var _i7 = 0; _i7 < resource.meshes.length; ++_i7) {
+                    _resource.Tw2GeometryRes.BindMeshToModel(resource.meshes[_i7], animationController.geometryResources[0].models[0]);
+                }
+                resource.models.push(animationController.geometryResources[0].models[0]);
+            }
+
+            for (var _i8 = 0; _i8 < resource.models.length; ++_i8) {
+                var _model = null;
+                for (var j = 0; j < animationController.models.length; ++j) {
+                    if (animationController.models[j].modelRes.name === resource.models[_i8].name) {
+                        _model = animationController.models[j];
+                        break;
+                    }
+                }
+
+                if (_model === null) {
+                    continue;
+                }
+
+                for (var _j4 = 0; _j4 < resource.models[_i8].meshBindings.length; ++_j4) {
+                    var meshIx = resource.meshes.indexOf(resource.models[_i8].meshBindings[_j4].mesh);
+                    var meshBindings = Tw2AnimationController.FindMeshBindings(animationController, resource);
+
+                    if (meshBindings === null) {
+                        meshBindings = [];
+                        meshBindings.resource = resource;
+                        animationController.meshBindings.push(meshBindings);
+                    }
+
+                    meshBindings[meshIx] = new Float32Array(resource.models[_i8].meshBindings[_j4].bones.length * 12);
+                    for (var k = 0; k < resource.models[_i8].meshBindings[_j4].bones.length; ++k) {
+                        for (var n = 0; n < _model.bones.length; ++n) {
+                            if (_model.bones[n].boneRes.name === resource.models[_i8].meshBindings[_j4].bones[k].name) {
+                                if (!_model.bones[n].bindingArrays) {
+                                    _model.bones[n].bindingArrays = [];
+                                }
+
+                                _model.bones[n].bindingArrays[_model.bones[n].bindingArrays.length] = {
+                                    'array': meshBindings[meshIx],
+                                    'offset': k * 12
+                                };
+                                //meshBindings[meshIx][k] = model.bones[n].offsetTransform;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (resource.meshes.length && resource.models.length) {
+                animationController.ResetBoneTransforms();
+            }
+
+            animationController.loaded = true;
+            if (animationController.animations.length) {
+                if (animationController.pendingCommands.length) {
+                    for (var _i9 = 0; _i9 < animationController.pendingCommands.length; ++_i9) {
+                        if (!animationController.pendingCommands[_i9].args) {
+                            animationController.pendingCommands[_i9].func.apply(animationController);
+                        } else {
+                            animationController.pendingCommands[_i9].func.apply(animationController, animationController.pendingCommands[_i9].args);
+                        }
+                    }
+                }
+                animationController.pendingCommands = [];
+                if (animationController.onPendingCleared) animationController.onPendingCleared(animationController);
+            }
+        }
+    }]);
+
+    return Tw2AnimationController;
+}();
 
 /**
  * Scratch variables
  */
+
+
 Tw2AnimationController.scratch = {
     vec3_0: _math.vec3.create(),
     quat_0: _math.quat.create(),
@@ -22565,674 +23482,8 @@ Tw2AnimationController.scratch = {
     mat4_0: _math.mat4.create()
 };
 
-/**
- * Gets all animation controller res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-
-Tw2AnimationController.prototype.GetResources = function (out) {
-    if (out === undefined) {
-        out = [];
-    }
-
-    for (var i = 0; i < this.geometryResources.length; i++) {
-        if (out.indexOf(this.geometryResources[i]) === -1) {
-            out.push(this.geometryResources[i]);
-        }
-    }
-    return out;
-};
-
-/**
- * Clears any existing resources and loads the supplied geometry resource
- * @param {Tw2GeometryRes} geometryResource
- * @prototype
- */
-Tw2AnimationController.prototype.SetGeometryResource = function (geometryResource) {
-    this.models = [];
-    this.animations = [];
-    this.meshBindings = [];
-
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        this.geometryResources[i].UnregisterNotification(this);
-    }
-
-    this.loaded = false;
-    this.geometryResources = [];
-
-    if (geometryResource) {
-        this.geometryResources.push(geometryResource);
-        geometryResource.RegisterNotification(this);
-    }
-};
-
-/**
- * Adds a Geometry Resource
- * @param {Tw2GeometryRes} geometryResource
- * @prototype
- */
-Tw2AnimationController.prototype.AddGeometryResource = function (geometryResource) {
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        if (this.geometryResources[i] === geometryResource) {
-            return;
-        }
-    }
-    this.geometryResources.push(geometryResource);
-    geometryResource.RegisterNotification(this);
-};
-
-/**
- * Adds animations from a resource
- * @param {Tw2GeometryRes} resource
- * @prototype
- */
-Tw2AnimationController.prototype.AddAnimationsFromRes = function (resource) {
-    for (var i = 0; i < resource.animations.length; ++i) {
-        var animation = null;
-        for (var j = 0; j < this.animations.length; ++j) {
-            if (this.animations[j].animationRes === resource.animations[i]) {
-                animation = this.animations[i];
-
-                break;
-            }
-        }
-        if (!animation) {
-            animation = new Tw2Animation();
-            animation.animationRes = resource.animations[i];
-            this.animations.push(animation);
-        }
-        for (var j = 0; j < animation.animationRes.trackGroups.length; ++j) {
-            var found = false;
-            for (var k = 0; k < animation.trackGroups.length; ++k) {
-                if (animation.trackGroups[k].trackGroupRes === animation.animationRes.trackGroups[j]) {
-                    found = true;
-                    break;
-                }
-            }
-            if (found) {
-                continue;
-            }
-            var model = null;
-            for (var k = 0; k < this.models.length; ++k) {
-                if (this.models[k].modelRes.name === animation.animationRes.trackGroups[j].name) {
-                    model = this.models[k];
-                    break;
-                }
-            }
-            if (model !== null) {
-                var group = new Tw2TrackGroup();
-                group.trackGroupRes = animation.animationRes.trackGroups[j];
-                for (var k = 0; k < group.trackGroupRes.transformTracks.length; ++k) {
-                    for (var m = 0; m < model.bones.length; ++m) {
-                        if (model.bones[m].boneRes.name === group.trackGroupRes.transformTracks[k].name) {
-                            var track = new Tw2Track();
-                            track.trackRes = group.trackGroupRes.transformTracks[k];
-                            track.bone = model.bones[m];
-                            group.transformTracks.push(track);
-                            break;
-                        }
-                    }
-                }
-                animation.trackGroups.push(group);
-            }
-        }
-    }
-};
-
-/**
- * Adds a model resource
- * @param {Tw2GeometryModel} modelRes
- * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
- * @private
- */
-Tw2AnimationController.prototype._AddModel = function (modelRes) {
-    for (var i = 0; i < this.models.length; ++i) {
-        if (this.models[i].modelRes.name === modelRes.name) {
-            return null;
-        }
-    }
-    var model = new Tw2Model();
-    model.modelRes = modelRes;
-    var skeleton = modelRes.skeleton;
-    if (skeleton !== null) {
-        for (var j = 0; j < skeleton.bones.length; ++j) {
-            var bone = new Tw2Bone();
-            bone.boneRes = skeleton.bones[j];
-            model.bones.push(bone);
-            model.bonesByName[bone.boneRes.name] = bone;
-        }
-    }
-    this.models.push(model);
-    return model;
-};
-
-/**
- * Finds a mesh binding for a supplied resource
- * @param {Tw2GeometryRes} resource
- * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
- * @private
- */
-Tw2AnimationController.prototype._FindMeshBindings = function (resource) {
-    for (var i = 0; i < this.meshBindings.length; ++i) {
-        if (this.meshBindings[i].resource === resource) {
-            return this.meshBindings[i];
-        }
-    }
-    return null;
-};
-
-/**
- * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
- * @param {Tw2GeometryRes} resource
- * @prototype
- */
-Tw2AnimationController.prototype.RebuildCachedData = function (resource) {
-    var found = false;
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        if (this.geometryResources[i] === resource) {
-            found = true;
-            break;
-        }
-    }
-    if (!found) {
-        return;
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        if (!this.geometryResources[i].IsGood()) {
-            return;
-        }
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        this._DoRebuildCachedData(this.geometryResources[i]);
-    }
-};
-
-/**
- * _DoRebuildCachedData
- * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
- * @param {Tw2GeometryRes} resource
- * @private
- */
-Tw2AnimationController.prototype._DoRebuildCachedData = function (resource) {
-    var newModels = [];
-    if (resource.meshes.length) {
-        for (var i = 0; i < resource.models.length; ++i) {
-            var model = this._AddModel(resource.models[i]);
-            if (model) {
-                newModels.push(model);
-            }
-        }
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        this.AddAnimationsFromRes(this.geometryResources[i], this.models);
-    }
-
-    if (resource.models.length === 0) {
-        for (var i = 0; i < resource.meshes.length; ++i) {
-            _resource.Tw2GeometryRes.BindMeshToModel(resource.meshes[i], this.geometryResources[0].models[0]);
-        }
-        resource.models.push(this.geometryResources[0].models[0]);
-    }
-    for (var i = 0; i < resource.models.length; ++i) {
-        var model = null;
-        for (var j = 0; j < this.models.length; ++j) {
-            if (this.models[j].modelRes.name === resource.models[i].name) {
-                model = this.models[j];
-                break;
-            }
-        }
-        if (model === null) {
-            continue;
-        }
-        for (var j = 0; j < resource.models[i].meshBindings.length; ++j) {
-            var meshIx = resource.meshes.indexOf(resource.models[i].meshBindings[j].mesh);
-            var meshBindings = this._FindMeshBindings(resource);
-            if (meshBindings === null) {
-                meshBindings = [];
-                meshBindings.resource = resource;
-                this.meshBindings.push(meshBindings);
-            }
-            meshBindings[meshIx] = new Float32Array(resource.models[i].meshBindings[j].bones.length * 12);
-            for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k) {
-                for (var n = 0; n < model.bones.length; ++n) {
-                    if (model.bones[n].boneRes.name === resource.models[i].meshBindings[j].bones[k].name) {
-                        if (!model.bones[n].bindingArrays) {
-                            model.bones[n].bindingArrays = [];
-                        }
-                        var arrayInfo = {
-                            'array': meshBindings[meshIx],
-                            'offset': k * 12
-                        };
-                        model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = arrayInfo;
-                        //meshBindings[meshIx][k] = model.bones[n].offsetTransform;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    if (resource.meshes.length && resource.models.length) {
-        this.ResetBoneTransforms(resource.models);
-    }
-    this.loaded = true;
-    if (this.animations.length) {
-        if (this.pendingCommands.length) {
-            for (var i = 0; i < this.pendingCommands.length; ++i) {
-                if (!this.pendingCommands[i].args) {
-                    this.pendingCommands[i].func.apply(this);
-                } else {
-                    this.pendingCommands[i].func.apply(this, this.pendingCommands[i].args);
-                }
-            }
-        }
-        this.pendingCommands = [];
-        if (this.onPendingCleared) this.onPendingCleared(this);
-    }
-};
-
-/**
- * Gets a loaded Tw2Animation by it's name
- * @param name
- * @returns {null|Tw2Animation} Returns the animation if found
- * @constructor
- */
-Tw2AnimationController.prototype.GetAnimation = function (name) {
-    for (var i = 0; i < this.animations.length; i++) {
-        if (this.animations[i].animationRes.name === name) {
-            return this.animations[i];
-        }
-    }
-
-    return null;
-};
-
-/**
- * Resets a Tw2Animation by it's name
- * @param {String} name
- * @return {boolean}
- * @constructor
- */
-Tw2AnimationController.prototype.ResetAnimation = function (name) {
-    var animation = this.GetAnimation(name);
-    if (animation) {
-        animation.time = 0;
-        animation.isPlaying = false;
-        animation.callback = null;
-        return true;
-    }
-};
-
-/**
- * Plays a specific animation by it's name
- * @param {string} name - Animation's Name
- * @param {boolean} [cycle]
- * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @return {boolean}
- * @prototype
- */
-Tw2AnimationController.prototype.PlayAnimation = function (name, cycle, callback) {
-    if (this.animations.length === 0) {
-        this.pendingCommands.push({
-            'func': this.PlayAnimation,
-            'args': [name, cycle, callback]
-        });
-        return true;
-    }
-
-    var animation = this.GetAnimation(name);
-
-    if (animation) {
-        animation.time = 0;
-        animation.isPlaying = true;
-        if (typeof cycle !== 'undefined') {
-            animation.cycle = cycle;
-        }
-        if (typeof callback !== 'undefined') {
-            animation.callback = callback;
-        }
-        return true;
-    }
-};
-
-/**
- * Plays a specific animation from a specific time
- * @param {string} name - Animation's Name
- * @param {number} from - Time to play from
- * @param {boolean} [cycle]
- * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @returns {boolean}
- * @prototype
- */
-Tw2AnimationController.prototype.PlayAnimationFrom = function (name, from, cycle, callback) {
-    if (this.animations.length === 0) {
-        this.pendingCommands.push({
-            'func': this.PlayAnimationFrom,
-            'args': [name, from, cycle, callback]
-        });
-        return true;
-    }
-
-    var animation = this.GetAnimation(name);
-
-    if (animation) {
-        from = from <= animation.animationRes.duration ? from : animation.animationRes.duration;
-        animation.time = from < 0 ? 0 : from;
-        animation.isPlaying = true;
-        if (typeof cycle !== 'undefined') {
-            animation.cycle = cycle;
-        }
-        if (typeof callback !== 'undefined') {
-            animation.callback = callback;
-        }
-
-        return true;
-    }
-};
-
-/**
- * Gets an array of all the currently playing animations by name
- * @returns {Array}
- * @constructor
- */
-Tw2AnimationController.prototype.GetPlayingAnimations = function () {
-    var result = [];
-
-    for (var i = 0; i < this.animations.length; i++) {
-        if (this.animations[i].isPlaying) {
-            result.push(this.animations[i].animationRes.name);
-        }
-    }
-
-    return result;
-};
-
-/**
- * Stops an animation or an array of animations from playing
- * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
- * @prototype
- */
-Tw2AnimationController.prototype.StopAnimation = function (names) {
-    if (this.animations.length === 0) {
-        this.pendingCommands.push({
-            'func': this.StopAnimation,
-            'args': names
-        });
-        return;
-    }
-
-    if (typeof names === 'string' || names instanceof String) {
-        names = [names];
-    }
-
-    var toStop = {};
-
-    for (var n = 0; n < names.length; n++) {
-        toStop[names[n]] = true;
-    }
-
-    for (var i = 0; i < this.animations.length; ++i) {
-        if (this.animations[i].animationRes.name in toStop) {
-            this.animations[i].isPlaying = false;
-        }
-    }
-};
-
-/**
- * Stops all animations from playing
- * @prototype
- */
-Tw2AnimationController.prototype.StopAllAnimations = function () {
-    if (this.animations.length === 0) {
-        this.pendingCommands.push({
-            'func': this.StopAllAnimations,
-            'args': null
-        });
-        return;
-    }
-
-    for (var i = 0; i < this.animations.length; ++i) {
-        this.animations[i].isPlaying = false;
-    }
-};
-
-/**
- * Stops all but the supplied list of animations
- * @param {String| Array.<string>} names - Animation Names
- * @prototype
- */
-Tw2AnimationController.prototype.StopAllAnimationsExcept = function (names) {
-    if (this.animations.length === 0) {
-        this.pendingCommands.push({
-            'func': this.StopAllAnimationsExcept,
-            'args': names
-        });
-        return;
-    }
-
-    if (typeof names === 'string' || names instanceof String) {
-        names = [names];
-    }
-
-    var keepAnimating = {};
-
-    for (var n = 0; n < names.length; n++) {
-        keepAnimating[names[n]] = true;
-    }
-
-    for (var i = 0; i < this.animations.length; ++i) {
-        if (!(this.animations[i].animationRes.name in keepAnimating)) {
-            this.animations[i].isPlaying = false;
-        }
-    }
-};
-
-/**
- * Resets the bone transforms for the supplied models
- * @param {Array.<Tw2Model>} models
- * @prototype
- */
-Tw2AnimationController.prototype.ResetBoneTransforms = function (models) {
-    for (var i = 0; i < this.models.length; ++i) {
-        for (var j = 0; j < this.models[i].bones.length; ++j) {
-            var bone = this.models[i].bones[j];
-            var boneRes = bone.boneRes;
-            _math.mat4.copy(bone.localTransform, boneRes.localTransform);
-            if (boneRes.parentIndex !== -1) {
-                _math.mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
-            } else {
-                _math.mat4.set(bone.worldTransform, bone.localTransform);
-            }
-            _math.mat4.identity(bone.offsetTransform);
-        }
-    }
-    var id = _math.mat4.create();
-    for (var i = 0; i < this.meshBindings.length; ++i) {
-        for (var j = 0; j < this.meshBindings[i].length; ++j) {
-            for (var k = 0; k * 16 < this.meshBindings[i][j].length; ++k) {
-                for (var m = 0; m < 16; ++m) {
-                    this.meshBindings[i][j][k * 16 + m] = id[m];
-                }
-            }
-        }
-    }
-};
-
-/**
- * Internal render/update function which is called every frame
- * TODO: Fix commented out code (line 718)
- * @param {number} dt - Delta Time
- * @prototype
- */
-Tw2AnimationController.prototype.Update = function (dt) {
-    if (this.models === null || !this.update) {
-        return;
-    }
-
-    for (var i = 0; i < this.geometryResources.length; ++i) {
-        this.geometryResources[i].KeepAlive();
-    }
-
-    var scratch = Tw2AnimationController.scratch;
-    var tempMat = scratch.mat4_0;
-    var updateBones = false;
-    for (var i = 0; i < this.animations.length; ++i) {
-        var animation = this.animations[i];
-        if (animation.isPlaying) {
-            var res = animation.animationRes;
-            animation.time += dt * animation.timeScale;
-            if (animation.time > res.duration) {
-                if (animation.callback !== null) {
-                    animation.callback(this, animation);
-                }
-                if (animation.cycle) {
-                    animation.time = animation.time % res.duration;
-                } else {
-                    animation.isPlaying = false;
-                    animation.time = res.duration;
-                }
-            }
-            var orientation = scratch.quat_0;
-            var scale = scratch.mat3_0;
-            var position = scratch.vec3_0;
-            for (var j = 0; j < animation.trackGroups.length; ++j) {
-                for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k) {
-                    var track = animation.trackGroups[j].transformTracks[k];
-                    if (track.trackRes.position) {
-                        _math.curve.evaluate(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
-                    } else {
-                        position[0] = position[1] = position[2] = 0;
-                    }
-                    if (track.trackRes.orientation) {
-                        _math.curve.evaluate(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
-                        _math.quat.normalize(orientation, orientation);
-                    } else {
-                        _math.quat.identity(orientation);
-                    }
-                    if (track.trackRes.scaleShear) {
-                        _math.curve.evaluate(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
-                    } else {
-                        _math.mat3.identity(scale);
-                    }
-
-                    _math.mat4.fromMat3(track.bone.localTransform, scale);
-                    _math.mat4.multiply(track.bone.localTransform, track.bone.localTransform, _math.mat4.fromQuat(tempMat, orientation));
-                    track.bone.localTransform[12] = position[0];
-                    track.bone.localTransform[13] = position[1];
-                    track.bone.localTransform[14] = position[2];
-                    updateBones = true;
-                }
-            }
-        }
-    }
-    //if (updateBones)
-    {
-        for (var i = 0; i < this.models.length; ++i) {
-            for (var j = 0; j < this.models[i].bones.length; ++j) {
-                var bone = this.models[i].bones[j];
-                if (bone.boneRes.parentIndex !== -1) {
-                    _math.mat4.multiply(bone.worldTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
-                } else {
-                    _math.mat4.copy(bone.worldTransform, bone.localTransform);
-                }
-                _math.mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
-                if (bone.bindingArrays) {
-                    for (var a = 0; a < bone.bindingArrays.length; ++a) {
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 0] = bone.offsetTransform[0];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 1] = bone.offsetTransform[4];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 2] = bone.offsetTransform[8];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 3] = bone.offsetTransform[12];
-
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 4] = bone.offsetTransform[1];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 5] = bone.offsetTransform[5];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 6] = bone.offsetTransform[9];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 7] = bone.offsetTransform[13];
-
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 8] = bone.offsetTransform[2];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 9] = bone.offsetTransform[6];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 10] = bone.offsetTransform[10];
-                        bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 11] = bone.offsetTransform[14];
-                    }
-                }
-            }
-        }
-    }
-};
-
-/**
- * RenderDebugInfo
- * TODO: Fix commented out code (lines 767 - 770)
- * @param {function} debugHelper
- * @prototype
- */
-Tw2AnimationController.prototype.RenderDebugInfo = function (debugHelper) {
-    /*for (var i = 0; i < this.geometryResources.length; ++i)
-     {
-     this.geometryResources[i].RenderDebugInfo(debugHelper);
-     }*/
-    for (var i = 0; i < this.models.length; ++i) {
-        for (var j = 0; j < this.models[i].bones.length; ++j) {
-            var b0 = this.models[i].bones[j];
-            if (b0.boneRes.parentIndex >= 0) {
-                var b1 = this.models[i].bones[b0.boneRes.parentIndex];
-                debugHelper.AddLine([b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]]);
-            }
-        }
-    }
-};
-
-/**
- * GetBoneMatrices
- * @param {number} meshIndex
- * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
- * @returns {Float32Array}
- * @prototype
- */
-Tw2AnimationController.prototype.GetBoneMatrices = function (meshIndex, geometryResource) {
-    if (this.geometryResources.length === 0) {
-        return new Float32Array();
-    }
-
-    if (typeof geometryResource === 'undefined') {
-        geometryResource = this.geometryResources[0];
-    }
-    var meshBindings = this._FindMeshBindings(geometryResource);
-    if (meshBindings && meshIndex < meshBindings.length) {
-        return meshBindings[meshIndex];
-    }
-    return new Float32Array();
-};
-
-/**
- * FindModelForMesh
- * @param {number} meshIndex
- * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
- * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
- * @prototype
- */
-Tw2AnimationController.prototype.FindModelForMesh = function (meshIndex, geometryResource) {
-    if (this.geometryResources.length === 0) {
-        return null;
-    }
-    if (typeof geometryResource === 'undefined') {
-        geometryResource = this.geometryResources[0];
-    }
-    if (!geometryResource.IsGood()) {
-        return null;
-    }
-    var mesh = geometryResource.meshes[meshIndex];
-    for (var i = 0; i < this.models.length; ++i) {
-        for (var j = 0; j < this.models[i].modelRes.meshBindings.length; ++i) {
-            if (this.models[i].modelRes.meshBindings[j].mesh === mesh) {
-                return this.models[i];
-            }
-        }
-    }
-    return null;
-};
-
 /***/ }),
-/* 104 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23814,7 +24065,7 @@ Tw2EffectRes.prototype.GetParametersByGroup = function (groupName) {
 };
 
 /***/ }),
-/* 105 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23824,7 +24075,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PostProcess = __webpack_require__(106);
+var _Tw2PostProcess = __webpack_require__(111);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23837,7 +24088,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
 });
 
 /***/ }),
-/* 106 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23850,13 +24101,13 @@ exports.Tw2PostProcess = Tw2PostProcess;
 
 var _Tw2Device = __webpack_require__(3);
 
-var _Tw2RenderTarget = __webpack_require__(41);
+var _Tw2RenderTarget = __webpack_require__(46);
 
 var _Tw2Effect = __webpack_require__(22);
 
 var _parameter = __webpack_require__(10);
 
-var _Tw2TextureRes = __webpack_require__(40);
+var _Tw2TextureRes = __webpack_require__(41);
 
 /**
  * Creates a bloom post effect
@@ -24018,7 +24269,7 @@ Tw2PostProcess.prototype.Render = function () {
 };
 
 /***/ }),
-/* 107 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24038,7 +24289,7 @@ function Tw2Float() {
 }
 
 /***/ }),
-/* 108 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24169,7 +24420,7 @@ Tw2Frustum.prototype.GetPixelSizeAcross = function (center, radius) {
 };
 
 /***/ }),
-/* 109 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24409,7 +24660,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 110 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24679,7 +24930,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 111 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24852,7 +25103,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 112 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24958,7 +25209,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 113 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25238,7 +25489,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 114 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25330,7 +25581,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 115 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25515,7 +25766,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 116 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25776,7 +26027,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 117 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26029,7 +26280,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 118 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26321,7 +26572,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 119 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26415,7 +26666,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26718,7 +26969,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 121 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27024,7 +27275,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27279,7 +27530,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27289,7 +27540,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(124);
+var _Tw2ColorSequencer = __webpack_require__(129);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27301,7 +27552,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(125);
+var _Tw2EulerRotation = __webpack_require__(130);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27313,7 +27564,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(126);
+var _Tw2QuaternionSequencer = __webpack_require__(131);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27325,7 +27576,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(127);
+var _Tw2RGBAScalarSequencer = __webpack_require__(132);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27337,7 +27588,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(128);
+var _Tw2ScalarSequencer = __webpack_require__(133);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27349,7 +27600,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(129);
+var _Tw2VectorSequencer = __webpack_require__(134);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27361,7 +27612,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(130);
+var _Tw2XYZScalarSequencer = __webpack_require__(135);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27373,7 +27624,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(131);
+var _Tw2YPRSequencer = __webpack_require__(136);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27386,7 +27637,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27549,7 +27800,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27700,7 +27951,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 126 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27841,7 +28092,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27982,7 +28233,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28164,7 +28415,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28328,7 +28579,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28466,7 +28717,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28620,7 +28871,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 132 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28630,7 +28881,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(133);
+var _Tw2WbgTrack = __webpack_require__(138);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28642,7 +28893,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(134);
+var _Tw2TransformTrack = __webpack_require__(139);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28655,7 +28906,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 133 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28819,7 +29070,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 134 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28957,7 +29208,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 135 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28967,7 +29218,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(136);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(141);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28979,7 +29230,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(137);
+var _Tw2MayaScalarCurve = __webpack_require__(142);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28991,7 +29242,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(138);
+var _Tw2MayaVector3Curve = __webpack_require__(143);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29003,7 +29254,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(139);
+var _Tw2MayaAnimationEngine = __webpack_require__(144);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29016,7 +29267,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 136 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29187,7 +29438,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 137 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29303,7 +29554,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 138 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29455,7 +29706,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 139 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29830,7 +30081,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 140 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29840,7 +30091,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(43);
+var _child = __webpack_require__(48);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29852,7 +30103,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(146);
+var _effect = __webpack_require__(151);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29864,7 +30115,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(45);
+var _object = __webpack_require__(50);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29876,7 +30127,7 @@ Object.keys(_object).forEach(function (key) {
   });
 });
 
-var _item = __webpack_require__(48);
+var _item = __webpack_require__(53);
 
 Object.keys(_item).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29900,7 +30151,7 @@ Object.keys(_EveBasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(163);
+var _EveSpaceScene = __webpack_require__(168);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29912,7 +30163,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(164);
+var _EveSOF = __webpack_require__(169);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29925,7 +30176,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 141 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30043,7 +30294,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 142 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30148,7 +30399,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30185,7 +30436,7 @@ var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30298,7 +30549,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30410,7 +30661,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30420,7 +30671,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(147);
+var _EveLensflare = __webpack_require__(152);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30432,7 +30683,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(148);
+var _EveMeshOverlayEffect = __webpack_require__(153);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30444,7 +30695,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(44);
+var _EveOccluder = __webpack_require__(49);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30456,7 +30707,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(149);
+var _EveStretch = __webpack_require__(154);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30468,7 +30719,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(150);
+var _EveTurretFiringFX = __webpack_require__(155);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30481,7 +30732,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
 });
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30498,7 +30749,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(44);
+var _EveOccluder = __webpack_require__(49);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -30836,7 +31087,7 @@ var EveLensflare = exports.EveLensflare = function () {
 EveLensflare.global = null;
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30992,7 +31243,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31292,7 +31543,7 @@ var EveStretch = exports.EveStretch = function () {
 EveStretch.global = null;
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31638,7 +31889,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31811,7 +32062,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32222,7 +32473,7 @@ var EveMissile = exports.EveMissile = function () {
 }();
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32239,7 +32490,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(46);
+var _EveTransform = __webpack_require__(51);
 
 var _EveObject2 = __webpack_require__(13);
 
@@ -32549,7 +32800,7 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32564,7 +32815,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveSpaceObject2 = __webpack_require__(47);
+var _EveSpaceObject2 = __webpack_require__(52);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32771,7 +33022,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33354,7 +33605,7 @@ EveBoosterSet.Item = EveBoosterSetItem;
 EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34304,7 +34555,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
 EveCurveLineSet.global = null;
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34383,7 +34634,7 @@ EveLocator.Prefix = {
 };
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34774,7 +35025,7 @@ var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
 EvePlaneSet.Item = EvePlaneSetItem;
 
 /***/ }),
-/* 159 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35048,7 +35299,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
 }();
 
 /***/ }),
-/* 160 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35504,7 +35755,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
 EveSpotlightSet.Item = EveSpotlightSetItem;
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36103,7 +36354,7 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
 EveSpriteSet.Item = EveSpriteSetItem;
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37015,7 +37266,7 @@ EveTurretSet.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
 EveTurretSet.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'];
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37609,7 +37860,7 @@ EveSpaceScene.global = null;
 EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37624,13 +37875,13 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(42);
+var _curve = __webpack_require__(47);
 
-var _item = __webpack_require__(48);
+var _item = __webpack_require__(53);
 
-var _child = __webpack_require__(43);
+var _child = __webpack_require__(48);
 
-var _object = __webpack_require__(45);
+var _object = __webpack_require__(50);
 
 function EveSOF() {
     var data = null;

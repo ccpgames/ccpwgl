@@ -3,7 +3,7 @@ export const curve = {};
 /**
  * Evaluates a curve
  *
- * @param {{}} curve
+ * @param {{}|Tw2GeometryCurve} curve
  * @param {Array} curve.knots
  * @param {number} curve.degree
  * @param {Array} curve.controls

@@ -1,101 +1,14 @@
 import {vec3, quat, mat3, mat4, curve} from '../../math';
 import {Tw2GeometryRes} from '../resource';
-
-/**
- * Tw2Track
- * @property {Tw2GeometryTransformTrack} trackRes
- * @property {Tw2Bone} bone
- * @constructor
- */
-export function Tw2Track()
-{
-    this.trackRes = null;
-    this.bone = null;
-}
-
-
-/**
- * Tw2TrackGroup
- * @property {Tw2GeometryTrackGroup} trackGroupRes
- * @property {Tw2GeometryModel} model
- * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
- * @constructor
- */
-export function Tw2TrackGroup()
-{
-    this.trackGroupRes = null;
-    this.model = null;
-    this.transformTracks = [];
-}
-
-
-/**
- * Tw2Animation
- * @property {Tw2GeometryAnimation} animationRes
- * @property {number} time
- * @property {number} timeScale
- * @property {boolean} cycle
- * @property {boolean} isPlaying
- * @property {Function} callback - Stores optional callback passed to prototypes
- * @property {Array} trackGroups - Array of {@link Tw2TrackGroup}
- * @constructor
- */
-export function Tw2Animation()
-{
-    this.animationRes = null;
-    this.time = 0;
-    this.timeScale = 1.0;
-    this.cycle = false;
-    this.isPlaying = false;
-    this.callback = null;
-    this.trackGroups = [];
-}
-
-/**
- * Checks to see if the animation has finished playing
- * @return {boolean}
- * @prototype
- */
-Tw2Animation.prototype.IsFinished = function()
-{
-    return !this.cycle && this.time >= this.animationRes.duration;
-};
-
-
-/**
- * Tw2Bone
- * @property {Tw2GeometryBone} boneRes
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} offsetTransform
- * @constructor
- */
-export function Tw2Bone()
-{
-    this.boneRes = null;
-    this.localTransform = mat4.create();
-    this.worldTransform = mat4.create();
-    this.offsetTransform = mat4.create();
-}
-
-
-/**
- * Tw2Model
- * @property {Tw2GeometryModel} modelRes
- * @property {Array.<Tw2Bone>} bones
- * @property {Object.<string, Tw2Bone>} bonesByName - An object containing every Tw2Bone name and it's object
- * @constructor
- */
-export function Tw2Model()
-{
-    this.modelRes = null;
-    this.bones = [];
-    this.bonesByName = {};
-}
-
+import {Tw2Animation} from './Tw2Animation';
+import {Tw2Bone} from './Tw2Bone';
+import {Tw2Model} from './Tw2Model';
+import {Tw2Track} from './Tw2Track';
+import {Tw2TrackGroup} from './Tw2TrackGroup';
 
 /**
  * Tw2AnimationController
+ *
  * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
@@ -106,736 +19,634 @@ export function Tw2Model()
  * @property _geometryResource
  * @property {Array} pendingCommands
  * @property {Function} [onLoaded] an optional callback fired when any commands are cleared
- * @prototype
+ * @class
  */
-export function Tw2AnimationController(geometryResource)
+export class Tw2AnimationController
 {
-    this.geometryResources = [];
-    this.models = [];
-    this.animations = [];
-    this.meshBindings = [];
-    this.loaded = false;
-    this.update = true;
-    this._geometryResource = null;
-    this.pendingCommands = [];
-    this.onPendingCleared = null;
-
-    if (typeof(geometryResource) !== 'undefined')
+    constructor(geometryResource)
     {
-        this.SetGeometryResource(geometryResource);
-    }
-}
-
-/**
- * Scratch variables
- */
-Tw2AnimationController.scratch = {
-    vec3_0: vec3.create(),
-    quat_0: quat.create(),
-    mat3_0: mat3.create(),
-    mat4_0: mat4.create()
-};
-
-/**
- * Gets all animation controller res objects
- * @param {Array} [out=[]] - Optional receiving array
- * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
- */
-
-Tw2AnimationController.prototype.GetResources = function(out)
-{
-    if (out === undefined)
-    {
-        out = [];
-    }
-
-    for (var i = 0; i < this.geometryResources.length; i++)
-    {
-        if (out.indexOf(this.geometryResources[i]) === -1)
-        {
-            out.push(this.geometryResources[i]);
-        }
-    }
-    return out;
-};
-
-/**
- * Clears any existing resources and loads the supplied geometry resource
- * @param {Tw2GeometryRes} geometryResource
- * @prototype
- */
-Tw2AnimationController.prototype.SetGeometryResource = function(geometryResource)
-{
-    this.models = [];
-    this.animations = [];
-    this.meshBindings = [];
-
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        this.geometryResources[i].UnregisterNotification(this);
-    }
-
-    this.loaded = false;
-    this.geometryResources = [];
-
-    if (geometryResource)
-    {
-        this.geometryResources.push(geometryResource);
-        geometryResource.RegisterNotification(this);
-    }
-};
-
-/**
- * Adds a Geometry Resource
- * @param {Tw2GeometryRes} geometryResource
- * @prototype
- */
-Tw2AnimationController.prototype.AddGeometryResource = function(geometryResource)
-{
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        if (this.geometryResources[i] === geometryResource)
-        {
-            return;
-        }
-    }
-    this.geometryResources.push(geometryResource);
-    geometryResource.RegisterNotification(this);
-};
-
-/**
- * Adds animations from a resource
- * @param {Tw2GeometryRes} resource
- * @prototype
- */
-Tw2AnimationController.prototype.AddAnimationsFromRes = function(resource)
-{
-    for (var i = 0; i < resource.animations.length; ++i)
-    {
-        var animation = null;
-        for (var j = 0; j < this.animations.length; ++j)
-        {
-            if (this.animations[j].animationRes === resource.animations[i])
-            {
-                animation = this.animations[i];
-
-                break;
-            }
-        }
-        if (!animation)
-        {
-            animation = new Tw2Animation();
-            animation.animationRes = resource.animations[i];
-            this.animations.push(animation);
-        }
-        for (var j = 0; j < animation.animationRes.trackGroups.length; ++j)
-        {
-            var found = false;
-            for (var k = 0; k < animation.trackGroups.length; ++k)
-            {
-                if (animation.trackGroups[k].trackGroupRes === animation.animationRes.trackGroups[j])
-                {
-                    found = true;
-                    break;
-                }
-            }
-            if (found)
-            {
-                continue;
-            }
-            var model = null;
-            for (var k = 0; k < this.models.length; ++k)
-            {
-                if (this.models[k].modelRes.name === animation.animationRes.trackGroups[j].name)
-                {
-                    model = this.models[k];
-                    break;
-                }
-            }
-            if (model !== null)
-            {
-                var group = new Tw2TrackGroup();
-                group.trackGroupRes = animation.animationRes.trackGroups[j];
-                for (var k = 0; k < group.trackGroupRes.transformTracks.length; ++k)
-                {
-                    for (var m = 0; m < model.bones.length; ++m)
-                    {
-                        if (model.bones[m].boneRes.name === group.trackGroupRes.transformTracks[k].name)
-                        {
-                            var track = new Tw2Track();
-                            track.trackRes = group.trackGroupRes.transformTracks[k];
-                            track.bone = model.bones[m];
-                            group.transformTracks.push(track);
-                            break;
-                        }
-                    }
-                }
-                animation.trackGroups.push(group);
-            }
-        }
-    }
-};
-
-/**
- * Adds a model resource
- * @param {Tw2GeometryModel} modelRes
- * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
- * @private
- */
-Tw2AnimationController.prototype._AddModel = function(modelRes)
-{
-    for (var i = 0; i < this.models.length; ++i)
-    {
-        if (this.models[i].modelRes.name === modelRes.name)
-        {
-            return null;
-        }
-    }
-    var model = new Tw2Model();
-    model.modelRes = modelRes;
-    var skeleton = modelRes.skeleton;
-    if (skeleton !== null)
-    {
-        for (var j = 0; j < skeleton.bones.length; ++j)
-        {
-            var bone = new Tw2Bone();
-            bone.boneRes = skeleton.bones[j];
-            model.bones.push(bone);
-            model.bonesByName[bone.boneRes.name] = bone;
-        }
-    }
-    this.models.push(model);
-    return model;
-};
-
-/**
- * Finds a mesh binding for a supplied resource
- * @param {Tw2GeometryRes} resource
- * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
- * @private
- */
-Tw2AnimationController.prototype._FindMeshBindings = function(resource)
-{
-    for (var i = 0; i < this.meshBindings.length; ++i)
-    {
-        if (this.meshBindings[i].resource === resource)
-        {
-            return this.meshBindings[i];
-        }
-    }
-    return null;
-};
-
-/**
- * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
- * @param {Tw2GeometryRes} resource
- * @prototype
- */
-Tw2AnimationController.prototype.RebuildCachedData = function(resource)
-{
-    var found = false;
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        if (this.geometryResources[i] === resource)
-        {
-            found = true;
-            break;
-        }
-    }
-    if (!found)
-    {
-        return;
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        if (!this.geometryResources[i].IsGood())
-        {
-            return;
-        }
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        this._DoRebuildCachedData(this.geometryResources[i]);
-    }
-};
-
-/**
- * _DoRebuildCachedData
- * TODO: Too many arguments supplied to this.AddAnimationsFromRes prototype
- * @param {Tw2GeometryRes} resource
- * @private
- */
-Tw2AnimationController.prototype._DoRebuildCachedData = function(resource)
-{
-    var newModels = [];
-    if (resource.meshes.length)
-    {
-        for (var i = 0; i < resource.models.length; ++i)
-        {
-            var model = this._AddModel(resource.models[i]);
-            if (model)
-            {
-                newModels.push(model);
-            }
-        }
-    }
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        this.AddAnimationsFromRes(this.geometryResources[i], this.models);
-    }
-
-    if (resource.models.length === 0)
-    {
-        for (var i = 0; i < resource.meshes.length; ++i)
-        {
-            Tw2GeometryRes.BindMeshToModel(resource.meshes[i], this.geometryResources[0].models[0]);
-        }
-        resource.models.push(this.geometryResources[0].models[0]);
-    }
-    for (var i = 0; i < resource.models.length; ++i)
-    {
-        var model = null;
-        for (var j = 0; j < this.models.length; ++j)
-        {
-            if (this.models[j].modelRes.name === resource.models[i].name)
-            {
-                model = this.models[j];
-                break;
-            }
-        }
-        if (model === null)
-        {
-            continue;
-        }
-        for (var j = 0; j < resource.models[i].meshBindings.length; ++j)
-        {
-            var meshIx = resource.meshes.indexOf(resource.models[i].meshBindings[j].mesh);
-            var meshBindings = this._FindMeshBindings(resource);
-            if (meshBindings === null)
-            {
-                meshBindings = [];
-                meshBindings.resource = resource;
-                this.meshBindings.push(meshBindings);
-            }
-            meshBindings[meshIx] = new Float32Array(resource.models[i].meshBindings[j].bones.length * 12);
-            for (var k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
-            {
-                for (var n = 0; n < model.bones.length; ++n)
-                {
-                    if (model.bones[n].boneRes.name === resource.models[i].meshBindings[j].bones[k].name)
-                    {
-                        if (!model.bones[n].bindingArrays)
-                        {
-                            model.bones[n].bindingArrays = [];
-                        }
-                        var arrayInfo = {
-                            'array': meshBindings[meshIx],
-                            'offset': k * 12
-                        };
-                        model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = arrayInfo;
-                        //meshBindings[meshIx][k] = model.bones[n].offsetTransform;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-    if (resource.meshes.length && resource.models.length)
-    {
-        this.ResetBoneTransforms(resource.models);
-    }
-    this.loaded = true;
-    if (this.animations.length)
-    {
-        if (this.pendingCommands.length)
-        {
-            for (var i = 0; i < this.pendingCommands.length; ++i)
-            {
-                if (!this.pendingCommands[i].args)
-                {
-                    this.pendingCommands[i].func.apply(this);
-                }
-                else
-                {
-                    this.pendingCommands[i].func.apply(this, this.pendingCommands[i].args);
-                }
-            }
-        }
+        this.geometryResources = [];
+        this.models = [];
+        this.animations = [];
+        this.meshBindings = [];
+        this.loaded = false;
+        this.update = true;
         this.pendingCommands = [];
-        if (this.onPendingCleared) this.onPendingCleared(this);
-    }
-};
+        this.onPendingCleared = null;
+        this._geometryResource = null;
 
-/**
- * Gets a loaded Tw2Animation by it's name
- * @param name
- * @returns {null|Tw2Animation} Returns the animation if found
- * @constructor
- */
-Tw2AnimationController.prototype.GetAnimation = function(name)
-{
-    for (var i = 0; i < this.animations.length; i++)
-    {
-        if (this.animations[i].animationRes.name === name)
+        if (geometryResource)
         {
-            return this.animations[i];
+            this.SetGeometryResource(geometryResource);
         }
     }
 
-    return null;
-};
-
-/**
- * Resets a Tw2Animation by it's name
- * @param {String} name
- * @return {boolean}
- * @constructor
- */
-Tw2AnimationController.prototype.ResetAnimation = function(name)
-{
-    var animation = this.GetAnimation(name);
-    if (animation)
+    /**
+     * Gets a loaded Tw2Animation by it's name
+     * @returns {?{ string: Tw2Animation}} an object containing animation names and animations, or null if not loaded
+     */
+    GetAnimationsByName()
     {
-        animation.time = 0;
-        animation.isPlaying = false;
-        animation.callback = null;
-        return true;
+        if (!this.loaded) return null;
+
+        const animations = {};
+        for (let i = 0; i < this.animations.length; i++)
+        {
+            animations[this.animations[i].animationRes.name] = this.animations[i];
+        }
+        return animations;
     }
-};
 
-/**
- * Plays a specific animation by it's name
- * @param {string} name - Animation's Name
- * @param {boolean} [cycle]
- * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @return {boolean}
- * @prototype
- */
-Tw2AnimationController.prototype.PlayAnimation = function(name, cycle, callback)
-{
-    if (this.animations.length === 0)
+    /**
+     * Gets a loaded Tw2Animation by it's name
+     * @param {String} name
+     * @returns {?Tw2Animation} Returns the animation if found
+     */
+    GetAnimation(name)
     {
-        this.pendingCommands.push(
+        for (let i = 0; i < this.animations.length; i++)
+        {
+            if (this.animations[i].animationRes.name === name)
             {
+                return this.animations[i];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Resets a Tw2Animation by it's name
+     * @param {String} name
+     * @return {boolean}
+     */
+    ResetAnimation(name)
+    {
+        const animation = this.GetAnimation(name);
+        if (animation)
+        {
+            animation.time = 0;
+            animation.isPlaying = false;
+            animation.callback = null;
+            return true;
+        }
+    }
+
+    /**
+     * Plays a specific animation by it's name
+     * @param {string} name - Animation's Name
+     * @param {boolean} [cycle]
+     * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+     * @return {boolean}
+     */
+    PlayAnimation(name, cycle, callback)
+    {
+        if (this.animations.length === 0)
+        {
+            this.pendingCommands.push({
                 'func': this.PlayAnimation,
                 'args': [name, cycle, callback]
             });
-        return true;
-    }
-
-    var animation = this.GetAnimation(name);
-
-    if (animation)
-    {
-        animation.time = 0;
-        animation.isPlaying = true;
-        if (typeof(cycle) !== 'undefined')
-        {
-            animation.cycle = cycle;
+            return true;
         }
-        if (typeof(callback) !== 'undefined')
-        {
-            animation.callback = callback;
-        }
-        return true;
-    }
-};
 
-/**
- * Plays a specific animation from a specific time
- * @param {string} name - Animation's Name
- * @param {number} from - Time to play from
- * @param {boolean} [cycle]
- * @param {Function} [callback] - Optional callback which is fired once the animation has completed
- * @returns {boolean}
- * @prototype
- */
-Tw2AnimationController.prototype.PlayAnimationFrom = function(name, from, cycle, callback)
-{
-    if (this.animations.length === 0)
-    {
-        this.pendingCommands.push(
+        const animation = this.GetAnimation(name);
+        if (animation)
+        {
+            animation.time = 0;
+            animation.isPlaying = true;
+
+            if (typeof(cycle) !== 'undefined')
             {
+                animation.cycle = cycle;
+            }
+
+            if (callback)
+            {
+                animation.callback = callback;
+            }
+
+            return true;
+        }
+    }
+
+    /**
+     * Plays a specific animation from a specific time
+     * @param {string} name - Animation's Name
+     * @param {number} from - Time to play from
+     * @param {boolean} [cycle]
+     * @param {Function} [callback] - Optional callback which is fired once the animation has completed
+     * @returns {boolean}
+     */
+    PlayAnimationFrom(name, from, cycle, callback)
+    {
+        if (this.animations.length === 0)
+        {
+            this.pendingCommands.push({
                 'func': this.PlayAnimationFrom,
                 'args': [name, from, cycle, callback]
             });
-        return true;
-    }
-
-    var animation = this.GetAnimation(name);
-
-    if (animation)
-    {
-        from = (from <= animation.animationRes.duration) ? from : animation.animationRes.duration;
-        animation.time = (from < 0) ? 0 : from;
-        animation.isPlaying = true;
-        if (typeof(cycle) !== 'undefined')
-        {
-            animation.cycle = cycle;
-        }
-        if (typeof(callback) !== 'undefined')
-        {
-            animation.callback = callback;
+            return true;
         }
 
-        return true;
-    }
-};
-
-/**
- * Gets an array of all the currently playing animations by name
- * @returns {Array}
- * @constructor
- */
-Tw2AnimationController.prototype.GetPlayingAnimations = function()
-{
-    var result = [];
-
-    for (var i = 0; i < this.animations.length; i++)
-    {
-        if (this.animations[i].isPlaying)
+        const animation = this.GetAnimation(name);
+        if (animation)
         {
-            result.push(this.animations[i].animationRes.name);
-        }
-    }
+            animation.time = Math.max(Math.min(from, animation.animationRes.duration), 0);
+            animation.isPlaying = true;
 
-    return result;
-};
-
-/**
- * Stops an animation or an array of animations from playing
- * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
- * @prototype
- */
-Tw2AnimationController.prototype.StopAnimation = function(names)
-{
-    if (this.animations.length === 0)
-    {
-        this.pendingCommands.push(
+            if (typeof(cycle) !== 'undefined')
             {
+                animation.cycle = cycle;
+            }
+
+            if (callback)
+            {
+                animation.callback = callback;
+            }
+
+            return true;
+        }
+    }
+
+    /**
+     * Gets an array of all the currently playing animations by name
+     * @returns {Array}
+     */
+    GetPlayingAnimations()
+    {
+        const result = [];
+        for (let i = 0; i < this.animations.length; i++)
+        {
+            if (this.animations[i].isPlaying)
+            {
+                result.push(this.animations[i].animationRes.name);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Stops an animation or an array of animations from playing
+     * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
+     */
+    StopAnimation(names)
+    {
+        if (this.animations.length === 0)
+        {
+            this.pendingCommands.push({
                 'func': this.StopAnimation,
                 'args': names
             });
-        return;
-    }
+            return;
+        }
 
-    if (typeof names === 'string' || names instanceof String)
-    {
-        names = [names];
-    }
-
-    var toStop = {};
-
-    for (var n = 0; n < names.length; n++)
-    {
-        toStop[names[n]] = true;
-    }
-
-    for (var i = 0; i < this.animations.length; ++i)
-    {
-        if (this.animations[i].animationRes.name in toStop)
+        if (typeof names === 'string' || names instanceof String)
         {
-            this.animations[i].isPlaying = false;
+            names = [names];
+        }
+
+        const toStop = {};
+        for (let n = 0; n < names.length; n++)
+        {
+            toStop[names[n]] = true;
+        }
+
+        for (let i = 0; i < this.animations.length; ++i)
+        {
+            if (this.animations[i].animationRes.name in toStop)
+            {
+                this.animations[i].isPlaying = false;
+            }
         }
     }
-};
 
-/**
- * Stops all animations from playing
- * @prototype
- */
-Tw2AnimationController.prototype.StopAllAnimations = function()
-{
-    if (this.animations.length === 0)
+    /**
+     * Stops all animations from playing
+     */
+    StopAllAnimations()
     {
-        this.pendingCommands.push(
-            {
+        if (this.animations.length === 0)
+        {
+            this.pendingCommands.push({
                 'func': this.StopAllAnimations,
                 'args': null
             });
-        return;
-    }
+            return;
+        }
 
-    for (var i = 0; i < this.animations.length; ++i)
-    {
-        this.animations[i].isPlaying = false;
-    }
-};
-
-/**
- * Stops all but the supplied list of animations
- * @param {String| Array.<string>} names - Animation Names
- * @prototype
- */
-Tw2AnimationController.prototype.StopAllAnimationsExcept = function(names)
-{
-    if (this.animations.length === 0)
-    {
-        this.pendingCommands.push(
-            {
-                'func': this.StopAllAnimationsExcept,
-                'args': names
-            });
-        return;
-    }
-
-    if (typeof names === 'string' || names instanceof String)
-    {
-        names = [names];
-    }
-
-    var keepAnimating = {};
-
-    for (var n = 0; n < names.length; n++)
-    {
-        keepAnimating[names[n]] = true;
-    }
-
-    for (var i = 0; i < this.animations.length; ++i)
-    {
-        if (!(this.animations[i].animationRes.name in keepAnimating))
+        for (let i = 0; i < this.animations.length; ++i)
         {
             this.animations[i].isPlaying = false;
         }
     }
-};
 
-/**
- * Resets the bone transforms for the supplied models
- * @param {Array.<Tw2Model>} models
- * @prototype
- */
-Tw2AnimationController.prototype.ResetBoneTransforms = function(models)
-{
-    for (var i = 0; i < this.models.length; ++i)
+    /**
+     * Stops all but the supplied list of animations
+     * @param {String| Array.<string>} names - Animation Names
+     */
+    StopAllAnimationsExcept(names)
     {
-        for (var j = 0; j < this.models[i].bones.length; ++j)
+        if (this.animations.length === 0)
         {
-            var bone = this.models[i].bones[j];
-            var boneRes = bone.boneRes;
-            mat4.copy(bone.localTransform, boneRes.localTransform);
-            if (boneRes.parentIndex !== -1)
+            this.pendingCommands.push({
+                'func': this.StopAllAnimationsExcept,
+                'args': names
+            });
+            return;
+        }
+
+        if (typeof names === 'string' || names instanceof String)
+        {
+            names = [names];
+        }
+
+        const keepAnimating = {};
+        for (let n = 0; n < names.length; n++)
+        {
+            keepAnimating[names[n]] = true;
+        }
+
+        for (let i = 0; i < this.animations.length; ++i)
+        {
+            if (!(this.animations[i].animationRes.name in keepAnimating))
             {
-                mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
+                this.animations[i].isPlaying = false;
             }
-            else
-            {
-                mat4.set(bone.worldTransform, bone.localTransform);
-            }
-            mat4.identity(bone.offsetTransform);
         }
     }
-    var id = mat4.create();
-    for (var i = 0; i < this.meshBindings.length; ++i)
+
+    /**
+     * Clears any existing resources and loads the supplied geometry resource
+     * @param {Tw2GeometryRes} geometryResource
+     */
+    SetGeometryResource(geometryResource)
     {
-        for (var j = 0; j < this.meshBindings[i].length; ++j)
+        this.models = [];
+        this.animations = [];
+        this.meshBindings = [];
+
+        for (let i = 0; i < this.geometryResources.length; ++i)
         {
-            for (var k = 0; k * 16 < this.meshBindings[i][j].length; ++k)
+            this.geometryResources[i].UnregisterNotification(this);
+        }
+
+        this.loaded = false;
+        this.geometryResources = [];
+
+        if (geometryResource)
+        {
+            this.geometryResources.push(geometryResource);
+            geometryResource.RegisterNotification(this);
+        }
+    }
+
+    /**
+     * Adds a Geometry Resource
+     * @param {Tw2GeometryRes} geometryResource
+     */
+    AddGeometryResource(geometryResource)
+    {
+        for (let i = 0; i < this.geometryResources.length; ++i)
+        {
+            if (this.geometryResources[i] === geometryResource)
             {
-                for (var m = 0; m < 16; ++m)
+                return;
+            }
+        }
+        this.geometryResources.push(geometryResource);
+        geometryResource.RegisterNotification(this);
+    }
+
+    /**
+     * Adds animations from a resource
+     * @param {Tw2GeometryRes} resource
+     */
+    AddAnimationsFromRes(resource)
+    {
+        for (let i = 0; i < resource.animations.length; ++i)
+        {
+            let animation = null;
+            for (let j = 0; j < this.animations.length; ++j)
+            {
+                if (this.animations[j].animationRes === resource.animations[i])
                 {
-                    this.meshBindings[i][j][k * 16 + m] = id[m];
+                    animation = this.animations[i];
+                    break;
+                }
+            }
+
+            if (!animation)
+            {
+                animation = new Tw2Animation();
+                animation.animationRes = resource.animations[i];
+                this.animations.push(animation);
+            }
+
+            for (let j = 0; j < animation.animationRes.trackGroups.length; ++j)
+            {
+                let found = false;
+                for (let k = 0; k < animation.trackGroups.length; ++k)
+                {
+                    if (animation.trackGroups[k].trackGroupRes === animation.animationRes.trackGroups[j])
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                {
+                    continue;
+                }
+
+                let model = null;
+                for (let k = 0; k < this.models.length; ++k)
+                {
+                    if (this.models[k].modelRes.name === animation.animationRes.trackGroups[j].name)
+                    {
+                        model = this.models[k];
+                        break;
+                    }
+                }
+
+                if (model !== null)
+                {
+                    const group = new Tw2TrackGroup();
+                    group.trackGroupRes = animation.animationRes.trackGroups[j];
+                    for (let k = 0; k < group.trackGroupRes.transformTracks.length; ++k)
+                    {
+                        for (let m = 0; m < model.bones.length; ++m)
+                        {
+                            if (model.bones[m].boneRes.name === group.trackGroupRes.transformTracks[k].name)
+                            {
+                                const track = new Tw2Track();
+                                track.trackRes = group.trackGroupRes.transformTracks[k];
+                                track.bone = model.bones[m];
+                                group.transformTracks.push(track);
+                                break;
+                            }
+                        }
+                    }
+                    animation.trackGroups.push(group);
                 }
             }
         }
     }
-};
-
-/**
- * Internal render/update function which is called every frame
- * TODO: Fix commented out code (line 718)
- * @param {number} dt - Delta Time
- * @prototype
- */
-Tw2AnimationController.prototype.Update = function(dt)
-{
-    if (this.models === null || !this.update)
+    
+    /**
+     * Resets the bone transforms
+     */
+    ResetBoneTransforms()
     {
-        return;
-    }
-
-    for (var i = 0; i < this.geometryResources.length; ++i)
-    {
-        this.geometryResources[i].KeepAlive();
-    }
-
-    var scratch = Tw2AnimationController.scratch;
-    var tempMat = scratch.mat4_0;
-    var updateBones = false;
-    for (var i = 0; i < this.animations.length; ++i)
-    {
-        var animation = this.animations[i];
-        if (animation.isPlaying)
+        for (let i = 0; i < this.models.length; ++i)
         {
-            var res = animation.animationRes;
-            animation.time += dt * animation.timeScale;
-            if (animation.time > res.duration)
+            for (let j = 0; j < this.models[i].bones.length; ++j)
             {
-                if (animation.callback !== null)
+                const
+                    bone = this.models[i].bones[j],
+                    boneRes = bone.boneRes;
+
+                mat4.copy(bone.localTransform, boneRes.localTransform);
+
+                if (boneRes.parentIndex !== -1)
                 {
-                    animation.callback(this, animation);
-                }
-                if (animation.cycle)
-                {
-                    animation.time = animation.time % res.duration;
+                    mat4.multiply(bone.worldTransform, bone.localTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform);
                 }
                 else
                 {
-                    animation.isPlaying = false;
-                    animation.time = res.duration;
+                    mat4.set(bone.worldTransform, bone.localTransform);
                 }
+                mat4.identity(bone.offsetTransform);
             }
-            var orientation = scratch.quat_0;
-            var scale = scratch.mat3_0;
-            var position = scratch.vec3_0;
-            for (var j = 0; j < animation.trackGroups.length; ++j)
-            {
-                for (var k = 0; k < animation.trackGroups[j].transformTracks.length; ++k)
-                {
-                    var track = animation.trackGroups[j].transformTracks[k];
-                    if (track.trackRes.position)
-                    {
-                        curve.evaluate(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
-                    }
-                    else
-                    {
-                        position[0] = position[1] = position[2] = 0;
-                    }
-                    if (track.trackRes.orientation)
-                    {
-                        curve.evaluate(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
-                        quat.normalize(orientation, orientation);
-                    }
-                    else
-                    {
-                        quat.identity(orientation);
-                    }
-                    if (track.trackRes.scaleShear)
-                    {
-                        curve.evaluate(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
-                    }
-                    else
-                    {
-                        mat3.identity(scale);
-                    }
+        }
 
-                    mat4.fromMat3(track.bone.localTransform, scale);
-                    mat4.multiply(track.bone.localTransform, track.bone.localTransform, mat4.fromQuat(tempMat, orientation));
-                    track.bone.localTransform[12] = position[0];
-                    track.bone.localTransform[13] = position[1];
-                    track.bone.localTransform[14] = position[2];
-                    updateBones = true;
+        const id = mat4.identity(Tw2AnimationController.scratch.mat4_0);
+        for (let i = 0; i < this.meshBindings.length; ++i)
+        {
+            for (let j = 0; j < this.meshBindings[i].length; ++j)
+            {
+                for (let k = 0; k * 16 < this.meshBindings[i][j].length; ++k)
+                {
+                    for (let m = 0; m < 16; ++m)
+                    {
+                        this.meshBindings[i][j][k * 16 + m] = id[m];
+                    }
                 }
             }
         }
     }
-    //if (updateBones)
+
+    /**
+     * GetBoneMatrices
+     * @param {number} meshIndex
+     * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+     * @returns {Float32Array}
+     */
+    GetBoneMatrices(meshIndex, geometryResource)
     {
-        for (var i = 0; i < this.models.length; ++i)
+        if (this.geometryResources.length === 0)
         {
-            for (var j = 0; j < this.models[i].bones.length; ++j)
+            return new Float32Array();
+        }
+
+        if (!geometryResource)
+        {
+            geometryResource = this.geometryResources[0];
+        }
+
+        const meshBindings = Tw2AnimationController.FindMeshBindings(this, geometryResource);
+        if (meshBindings && meshIndex < meshBindings.length)
+        {
+            return meshBindings[meshIndex];
+        }
+        return new Float32Array();
+    }
+
+    /**
+     * FindModelForMesh
+     * @param {number} meshIndex
+     * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
+     * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
+     */
+    FindModelForMesh(meshIndex, geometryResource)
+    {
+        if (this.geometryResources.length === 0)
+        {
+            return null;
+        }
+
+        if (!geometryResource)
+        {
+            geometryResource = this.geometryResources[0];
+        }
+
+        if (!geometryResource.IsGood())
+        {
+            return null;
+        }
+
+        const mesh = geometryResource.meshes[meshIndex];
+        for (let i = 0; i < this.models.length; ++i)
+        {
+            for (let j = 0; j < this.models[i].modelRes.meshBindings.length; ++i)
             {
-                var bone = this.models[i].bones[j];
+                if (this.models[i].modelRes.meshBindings[j].mesh === mesh)
+                {
+                    return this.models[i];
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Gets all animation controller res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
+
+    GetResources(out = [])
+    {
+        for (let i = 0; i < this.geometryResources.length; i++)
+        {
+            if (!out.includes(this.geometryResources[i]))
+            {
+                out.push(this.geometryResources[i]);
+            }
+        }
+        return out;
+    }
+
+    /**
+     * Rebuilds the cached data for a resource (unless it doesn't exist or is already good)
+     * @param {Tw2GeometryRes} resource
+     */
+    RebuildCachedData(resource)
+    {
+        let found = false;
+        for (let i = 0; i < this.geometryResources.length; ++i)
+        {
+            if (this.geometryResources[i] === resource)
+            {
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            return;
+        }
+
+        for (let i = 0; i < this.geometryResources.length; ++i)
+        {
+            if (!this.geometryResources[i].IsGood())
+            {
+                return;
+            }
+        }
+
+        for (let i = 0; i < this.geometryResources.length; ++i)
+        {
+            Tw2AnimationController.DoRebuildCachedData(this, this.geometryResources[i]);
+        }
+    }
+    
+    /**
+     * Internal render/update function which is called every frame
+     * @param {number} dt - Delta Time
+     */
+    Update(dt)
+    {
+        if (!this.models || !this.update)
+        {
+            return;
+        }
+
+        for (let i = 0; i < this.geometryResources.length; ++i)
+        {
+            this.geometryResources[i].KeepAlive();
+        }
+
+        const
+            g = Tw2AnimationController.scratch,
+            rotationMat = g.mat4_0,
+            orientation = g.quat_0,
+            position = g.vec3_0,
+            scale = g.mat3_0;
+
+        //var updateBones = false;
+        for (let i = 0; i < this.animations.length; ++i)
+        {
+            const animation = this.animations[i];
+            if (animation.isPlaying)
+            {
+                const res = animation.animationRes;
+                animation.time += dt * animation.timeScale;
+                if (animation.time > res.duration)
+                {
+                    if (animation.callback)
+                    {
+                        animation.callback(this, animation);
+                    }
+
+                    if (animation.cycle)
+                    {
+                        animation.time = animation.time % res.duration;
+                    }
+                    else
+                    {
+                        animation.isPlaying = false;
+                        animation.time = res.duration;
+                    }
+                }
+
+                for (let j = 0; j < animation.trackGroups.length; ++j)
+                {
+                    for (let k = 0; k < animation.trackGroups[j].transformTracks.length; ++k)
+                    {
+                        const track = animation.trackGroups[j].transformTracks[k];
+                        if (track.trackRes.position)
+                        {
+                            curve.evaluate(track.trackRes.position, animation.time, position, animation.cycle, res.duration);
+                        }
+                        else
+                        {
+                            position[0] = position[1] = position[2] = 0;
+                        }
+                        if (track.trackRes.orientation)
+                        {
+                            curve.evaluate(track.trackRes.orientation, animation.time, orientation, animation.cycle, res.duration);
+                            quat.normalize(orientation, orientation);
+                        }
+                        else
+                        {
+                            quat.identity(orientation);
+                        }
+                        if (track.trackRes.scaleShear)
+                        {
+                            curve.evaluate(track.trackRes.scaleShear, animation.time, scale, animation.cycle, res.duration);
+                        }
+                        else
+                        {
+                            mat3.identity(scale);
+                        }
+
+                        mat4.fromMat3(track.bone.localTransform, scale);
+                        mat4.multiply(track.bone.localTransform, track.bone.localTransform, mat4.fromQuat(rotationMat, orientation));
+                        track.bone.localTransform[12] = position[0];
+                        track.bone.localTransform[13] = position[1];
+                        track.bone.localTransform[14] = position[2];
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < this.models.length; ++i)
+        {
+            for (let j = 0; j < this.models[i].bones.length; ++j)
+            {
+                const bone = this.models[i].bones[j];
                 if (bone.boneRes.parentIndex !== -1)
                 {
                     mat4.multiply(bone.worldTransform, this.models[i].bones[bone.boneRes.parentIndex].worldTransform, bone.localTransform);
@@ -847,7 +658,7 @@ Tw2AnimationController.prototype.Update = function(dt)
                 mat4.multiply(bone.offsetTransform, bone.worldTransform, bone.boneRes.worldTransformInv);
                 if (bone.bindingArrays)
                 {
-                    for (var a = 0; a < bone.bindingArrays.length; ++a)
+                    for (let a = 0; a < bone.bindingArrays.length; ++a)
                     {
                         bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 0] = bone.offsetTransform[0];
                         bone.bindingArrays[a].array[bone.bindingArrays[a].offset + 1] = bone.offsetTransform[4];
@@ -867,92 +678,209 @@ Tw2AnimationController.prototype.Update = function(dt)
                 }
             }
         }
-    }
-};
 
-/**
- * RenderDebugInfo
- * TODO: Fix commented out code (lines 767 - 770)
- * @param {function} debugHelper
- * @prototype
- */
-Tw2AnimationController.prototype.RenderDebugInfo = function(debugHelper)
-{
-    /*for (var i = 0; i < this.geometryResources.length; ++i)
-     {
-     this.geometryResources[i].RenderDebugInfo(debugHelper);
-     }*/
-    for (var i = 0; i < this.models.length; ++i)
+    }
+
+    /**
+     * RenderDebugInfo
+     * TODO: Fix commented out code
+     * @param {function} debugHelper
+     */
+    RenderDebugInfo(debugHelper)
     {
-        for (var j = 0; j < this.models[i].bones.length; ++j)
+        /*for (var i = 0; i < this.geometryResources.length; ++i)
+         {
+         this.geometryResources[i].RenderDebugInfo(debugHelper);
+         }*/
+        for (let i = 0; i < this.models.length; ++i)
         {
-            var b0 = this.models[i].bones[j];
-            if (b0.boneRes.parentIndex >= 0)
+            for (let j = 0; j < this.models[i].bones.length; ++j)
             {
-                var b1 = this.models[i].bones[b0.boneRes.parentIndex];
-                debugHelper.AddLine([b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]], [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]]);
+                const b0 = this.models[i].bones[j];
+                if (b0.boneRes.parentIndex >= 0)
+                {
+                    const b1 = this.models[i].bones[b0.boneRes.parentIndex];
+                    debugHelper['AddLine'](
+                        [b0.worldTransform[12], b0.worldTransform[13], b0.worldTransform[14]],
+                        [b1.worldTransform[12], b1.worldTransform[13], b1.worldTransform[14]]);
+                }
             }
         }
     }
-};
 
-/**
- * GetBoneMatrices
- * @param {number} meshIndex
- * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
- * @returns {Float32Array}
- * @prototype
- */
-Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
-{
-    if (this.geometryResources.length === 0)
+    /**
+     * Adds a model resource to an animation controller
+     * @param {Tw2AnimationController} animationController
+     * @param {Tw2GeometryModel} modelRes
+     * @returns {null|Tw2Model} Returns a newly created Tw2Model if the model resource doesn't already exist, and null if it does
+     */
+    static AddModel(animationController, modelRes)
     {
-        return new Float32Array();
-    }
-
-    if (typeof(geometryResource) === 'undefined')
-    {
-        geometryResource = this.geometryResources[0];
-    }
-    var meshBindings = this._FindMeshBindings(geometryResource);
-    if (meshBindings && meshIndex < meshBindings.length)
-    {
-        return meshBindings[meshIndex];
-    }
-    return new Float32Array();
-};
-
-/**
- * FindModelForMesh
- * @param {number} meshIndex
- * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
- * @returns {Tw2Model|null} Returns the Tw2Model for the mesh if found and is good, else returns null
- * @prototype
- */
-Tw2AnimationController.prototype.FindModelForMesh = function(meshIndex, geometryResource)
-{
-    if (this.geometryResources.length === 0)
-    {
-        return null;
-    }
-    if (typeof(geometryResource) === 'undefined')
-    {
-        geometryResource = this.geometryResources[0];
-    }
-    if (!geometryResource.IsGood())
-    {
-        return null;
-    }
-    var mesh = geometryResource.meshes[meshIndex];
-    for (var i = 0; i < this.models.length; ++i)
-    {
-        for (var j = 0; j < this.models[i].modelRes.meshBindings.length; ++i)
+        for (let i = 0; i < animationController.models.length; ++i)
         {
-            if (this.models[i].modelRes.meshBindings[j].mesh === mesh)
+            if (animationController.models[i].modelRes.name === modelRes.name)
             {
-                return this.models[i];
+                return null;
             }
         }
+
+        const model = new Tw2Model();
+        model.modelRes = modelRes;
+        const skeleton = modelRes.skeleton;
+        if (skeleton !== null)
+        {
+            for (let j = 0; j < skeleton.bones.length; ++j)
+            {
+                const bone = new Tw2Bone();
+                bone.boneRes = skeleton.bones[j];
+                model.bones.push(bone);
+                model.bonesByName[bone.boneRes.name] = bone;
+            }
+        }
+        animationController.models.push(model);
+        return model;
     }
-    return null;
+
+    /**
+     * Finds a mesh binding for a supplied resource from an animation controller
+     * @param {Tw2AnimationController} animationController
+     * @param {Tw2GeometryRes} resource
+     * @returns {Object|null} Returns the mesh binding of a resource if it exists, null if it doesn't
+     * @private
+     */
+    static FindMeshBindings(animationController, resource)
+    {
+        for (let i = 0; i < animationController.meshBindings.length; ++i)
+        {
+            if (animationController.meshBindings[i].resource === resource)
+            {
+                return animationController.meshBindings[i];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * DoRebuildCachedData
+     * @param {Tw2AnimationController) animationController
+     * @param {Tw2GeometryRes} resource
+     */
+    static DoRebuildCachedData(animationController, resource)
+    {
+        const newModels = [];
+        if (resource.meshes.length)
+        {
+            for (let i = 0; i < resource.models.length; ++i)
+            {
+                const model = Tw2AnimationController.AddModel(animationController, resource.models[i]);
+                if (model)
+                {
+                    newModels.push(model);
+                }
+            }
+        }
+
+        for (let i = 0; i < animationController.geometryResources.length; ++i)
+        {
+            animationController.AddAnimationsFromRes(animationController.geometryResources[i]);
+        }
+
+        if (resource.models.length === 0)
+        {
+            for (let i = 0; i < resource.meshes.length; ++i)
+            {
+                Tw2GeometryRes.BindMeshToModel(resource.meshes[i], animationController.geometryResources[0].models[0]);
+            }
+            resource.models.push(animationController.geometryResources[0].models[0]);
+        }
+
+        for (let i = 0; i < resource.models.length; ++i)
+        {
+            let model = null;
+            for (let j = 0; j < animationController.models.length; ++j)
+            {
+                if (animationController.models[j].modelRes.name === resource.models[i].name)
+                {
+                    model = animationController.models[j];
+                    break;
+                }
+            }
+
+            if (model === null)
+            {
+                continue;
+            }
+
+            for (let j = 0; j < resource.models[i].meshBindings.length; ++j)
+            {
+                const meshIx = resource.meshes.indexOf(resource.models[i].meshBindings[j].mesh);
+                let meshBindings = Tw2AnimationController.FindMeshBindings(animationController, resource);
+
+                if (meshBindings === null)
+                {
+                    meshBindings = [];
+                    meshBindings.resource = resource;
+                    animationController.meshBindings.push(meshBindings);
+                }
+
+                meshBindings[meshIx] = new Float32Array(resource.models[i].meshBindings[j].bones.length * 12);
+                for (let k = 0; k < resource.models[i].meshBindings[j].bones.length; ++k)
+                {
+                    for (let n = 0; n < model.bones.length; ++n)
+                    {
+                        if (model.bones[n].boneRes.name === resource.models[i].meshBindings[j].bones[k].name)
+                        {
+                            if (!model.bones[n].bindingArrays)
+                            {
+                                model.bones[n].bindingArrays = [];
+                            }
+
+                            model.bones[n].bindingArrays[model.bones[n].bindingArrays.length] = {
+                                'array': meshBindings[meshIx],
+                                'offset': k * 12
+                            };
+                            //meshBindings[meshIx][k] = model.bones[n].offsetTransform;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (resource.meshes.length && resource.models.length)
+        {
+            animationController.ResetBoneTransforms();
+        }
+
+        animationController.loaded = true;
+        if (animationController.animations.length)
+        {
+            if (animationController.pendingCommands.length)
+            {
+                for (let i = 0; i < animationController.pendingCommands.length; ++i)
+                {
+                    if (!animationController.pendingCommands[i].args)
+                    {
+                        animationController.pendingCommands[i].func.apply(animationController);
+                    }
+                    else
+                    {
+                        animationController.pendingCommands[i].func.apply(animationController, animationController.pendingCommands[i].args);
+                    }
+                }
+            }
+            animationController.pendingCommands = [];
+            if (animationController.onPendingCleared) animationController.onPendingCleared(animationController);
+        }
+    }
+}
+
+/**
+ * Scratch variables
+ */
+Tw2AnimationController.scratch = {
+    vec3_0: vec3.create(),
+    quat_0: quat.create(),
+    mat3_0: mat3.create(),
+    mat4_0: mat4.create()
 };
