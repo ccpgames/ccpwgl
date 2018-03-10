@@ -1,6 +1,5 @@
 import {vec3, quat, mat4} from '../../math';
-import {device, Tw2RawData} from '../../core';
-import {EveBasicPerObjectData} from '../EveBasicPerObjectData';
+import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -26,7 +25,7 @@ import {EveObject} from './EveObject';
  * @property {mat4} worldTransform
  * @property {Array.<mat4>} _mat4Cache
  * @property {Array.<vec3>} _vec3Cache
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 export class EveTransform extends EveObject
@@ -53,7 +52,7 @@ export class EveTransform extends EveObject
         this.localTransform = mat4.create();
         this.worldTransform = mat4.create();
 
-        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData = new Tw2BasicPerObjectData();
         this._perObjectData.perObjectFFEData = new Tw2RawData();
         this._perObjectData.perObjectFFEData.Declare('World', 16);
         this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
@@ -268,7 +267,7 @@ export class EveTransform extends EveObject
      * Gets render batches for accumulation
      * @param {number} mode
      * @param {Tw2BatchAccumulator} accumulator
-     * @param {Tw2PerObjectData|EveBasicPerObjectData} [perObjectData]
+     * @param {Tw2PerObjectData|Tw2BasicPerObjectData} [perObjectData]
      */
     GetBatches(mode, accumulator, perObjectData)
     {

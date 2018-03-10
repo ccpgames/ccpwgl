@@ -3343,7 +3343,7 @@ var EveObjectSet = exports.EveObjectSet = function () {
          * Gets render batches
          * @param {number} mode
          * @param {Tw2BatchAccumulator} accumulator
-         * @param {Tw2PerObjectData|EveBasicPerObjectData} perObjectData
+         * @param {Tw2PerObjectData|Tw2BasicPerObjectData} perObjectData
          */
 
     }, {
@@ -3679,7 +3679,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
  * @property {mat4} worldTransformLast
- * @property {?|EveBasicPerObjectData|Tw2PerObjectData} _perObjectData
+ * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
  * @class
  */
 var EveChild = exports.EveChild = function () {
@@ -4404,68 +4404,7 @@ Object.keys(_Tw2VectorCurve).forEach(function (key) {
 });
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveBasicPerObjectData = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _core = __webpack_require__(1);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Tw2BasicPerObjectData
- *
- * @parameter perObjectFFEData - Fixed Function Emulation data
- * @class
- */
-var EveBasicPerObjectData = exports.EveBasicPerObjectData = function (_Tw2PerObjectData) {
-    _inherits(EveBasicPerObjectData, _Tw2PerObjectData);
-
-    function EveBasicPerObjectData() {
-        _classCallCheck(this, EveBasicPerObjectData);
-
-        var _this = _possibleConstructorReturn(this, (EveBasicPerObjectData.__proto__ || Object.getPrototypeOf(EveBasicPerObjectData)).call(this));
-
-        _this.perObjectFFEData = null;
-        return _this;
-    }
-
-    /**
-     * SetPerObjectDataToDevice
-     * @param constantBufferHandles
-     */
-
-
-    _createClass(EveBasicPerObjectData, [{
-        key: 'SetPerObjectDataToDevice',
-        value: function SetPerObjectDataToDevice(constantBufferHandles) {
-            _get(EveBasicPerObjectData.prototype.__proto__ || Object.getPrototypeOf(EveBasicPerObjectData.prototype), 'SetPerObjectDataToDevice', this).call(this, constantBufferHandles);
-
-            if (this.perObjectFFEData && constantBufferHandles[5]) {
-                _core.device.gl.uniform4fv(constantBufferHandles[5], this.perObjectFFEData.data);
-            }
-        }
-    }]);
-
-    return EveBasicPerObjectData;
-}(_core.Tw2PerObjectData);
-
-/***/ }),
+/* 18 */,
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10100,8 +10039,6 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(18);
-
 var _EveObject2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10133,7 +10070,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {mat4} worldTransform
  * @property {Array.<mat4>} _mat4Cache
  * @property {Array.<vec3>} _vec3Cache
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 var EveTransform = exports.EveTransform = function (_EveObject) {
@@ -10163,7 +10100,7 @@ var EveTransform = exports.EveTransform = function (_EveObject) {
         _this.localTransform = _math.mat4.create();
         _this.worldTransform = _math.mat4.create();
 
-        _this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData();
         _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
         _this._perObjectData.perObjectFFEData.Declare('World', 16);
         _this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
@@ -10377,7 +10314,7 @@ var EveTransform = exports.EveTransform = function (_EveObject) {
          * Gets render batches for accumulation
          * @param {number} mode
          * @param {Tw2BatchAccumulator} accumulator
-         * @param {Tw2PerObjectData|EveBasicPerObjectData} [perObjectData]
+         * @param {Tw2PerObjectData|Tw2BasicPerObjectData} [perObjectData]
          */
 
     }, {
@@ -19604,6 +19541,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _Tw2BasicPerObjectData = __webpack_require__(186);
+
+Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2BasicPerObjectData[key];
+    }
+  });
+});
+
 var _Tw2PerObjectData = __webpack_require__(89);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
@@ -19642,23 +19591,30 @@ exports.Tw2PerObjectData = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _global = __webpack_require__(24);
+var _Tw2Device = __webpack_require__(3);
+
+var _Tw2RawData = __webpack_require__(90);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Tw2PerObjectData
  *
- * @parameter {?Tw2RawData} perObjectVSData - Vertex shader data
- * @parameter {?Tw2RawData} perObjectPSData - Pixel shader data
+ * @param {RawDataObject} [rawDataObject]
+ * @property {?Tw2RawData} perObjectVSData - Per object vertex shader data
+ * @property {?Tw2RawData} perObjectPSData - Per object pixel shader data
  * @class
  */
 var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
-    function Tw2PerObjectData() {
+    function Tw2PerObjectData(rawDataObject) {
         _classCallCheck(this, Tw2PerObjectData);
 
         this.perObjectVSData = null;
         this.perObjectPSData = null;
+
+        if (rawDataObject) {
+            this.DeclareFromObject(rawDataObject);
+        }
     }
 
     /**
@@ -19671,11 +19627,30 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
         key: 'SetPerObjectDataToDevice',
         value: function SetPerObjectDataToDevice(constantBufferHandles) {
             if (this.perObjectVSData && constantBufferHandles[3]) {
-                _global.device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
             }
 
             if (this.perObjectPSData && constantBufferHandles[4]) {
-                _global.device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+            }
+        }
+
+        /**
+         * Defines and creates raw data from an object
+         * @param {RawDataObject} rawDataObject
+         */
+
+    }, {
+        key: 'DeclareFromObject',
+        value: function DeclareFromObject() {
+            var rawDataObject = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            if (rawDataObject.VSData) {
+                this.perObjectVSData = new _Tw2RawData.Tw2RawData(rawDataObject.VSData);
+            }
+
+            if (rawDataObject.PSData) {
+                this.perObjectPSData = new _Tw2RawData.Tw2RawData(rawDataObject.PSData);
             }
         }
     }]);
@@ -19693,81 +19668,160 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2RawData = Tw2RawData;
+exports.Tw2RawData = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _math = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
- * Stores raw data for {@link Tw2PerObjectData} perObject objects and {@link EveSpaceScene} perFrame objects
+ * Stores raw data for {@link Tw2PerObjectData}
+ *
+ * @param {{string:Float32Array|Array|number}} [declarations] An optional object containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
- * @property {Object} elements
- * @property {String} elements.offset
- * @property {number} elements.size
- * @property {Array|null} elements.array
- * @constructor
+ * @property {*} elements
+ * @class
  */
-function Tw2RawData() {
-    this.nextOffset = 0;
-    this.data = null;
-    this.elements = {};
-}
+var Tw2RawData = exports.Tw2RawData = function () {
+    function Tw2RawData(declarations) {
+        _classCallCheck(this, Tw2RawData);
 
-/**
- * Declares a raw data element
- * @param {String} name
- * @param {number} size
- * @prototype
- */
-Tw2RawData.prototype.Declare = function (name, size) {
-    this.elements[name] = {
-        'offset': this.nextOffset,
-        'size': size,
-        'array': null
-    };
-    this.nextOffset += size;
-};
+        this.nextOffset = 0;
+        this.data = null;
+        this.elements = {};
 
-/**
- * Create
- * @prototype
- */
-Tw2RawData.prototype.Create = function () {
-    this.data = new Float32Array(this.nextOffset);
-    for (var el in this.elements) {
-        if (this.elements.hasOwnProperty(el)) {
-            this.elements[el].array = this.data.subarray(this.elements[el].offset, this.elements[el].offset + this.elements[el].size);
+        if (declarations) {
+            this.DeclareFromObject(declarations);
         }
     }
-};
 
-/**
- * Sets a element value
- * @param {string} name
- * @param {Float32Array} value
- * @prototype
- */
-Tw2RawData.prototype.Set = function (name, value) {
-    var el = this.elements[name];
-    this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
-};
+    /**
+     * Sets a element value
+     * @param {string} name
+     * @param {Float32Array} value
+     * @prototype
+     */
 
-/**
- * Gets an element's array value
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.Get = function (name) {
-    return this.elements[name].array;
-};
 
-/**
- * Gets an element's array value from the share data array
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.GetData = function (name) {
-    return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
-};
+    _createClass(Tw2RawData, [{
+        key: 'Set',
+        value: function Set(name, value) {
+            var el = this.elements[name];
+            this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
+        }
+
+        /**
+         * Gets an element's array value
+         * @param {string} name
+         * @return {Float32Array}
+         * @prototype
+         */
+
+    }, {
+        key: 'Get',
+        value: function Get(name) {
+            return this.elements[name].array;
+        }
+
+        /**
+         * Gets an element's array value from the share data array
+         * @param {string} name
+         * @return {Float32Array}
+         * @prototype
+         */
+
+    }, {
+        key: 'GetData',
+        value: function GetData(name) {
+            return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
+        }
+
+        /**
+         * Creates the raw data element arrays
+         */
+
+    }, {
+        key: 'Create',
+        value: function Create() {
+            this.data = new Float32Array(this.nextOffset);
+            for (var name in this.elements) {
+                if (this.elements.hasOwnProperty(name)) {
+                    var el = this.elements[name];
+                    el.array = this.data.subarray(el.offset, el.offset + el.size);
+
+                    if (el.value !== null) {
+                        if (el.size === 1) {
+                            el.array[0] = el.value;
+                        } else {
+                            for (var i = 0; i < el.size; i++) {
+                                el.array[i] = el.value[i];
+                            }
+                        }
+                        el.value = null;
+                    }
+                }
+            }
+        }
+
+        /**
+         * Declares a raw data element
+         * @param {String} name
+         * @param {number} size
+         * @param {!|number|Array|Float32Array} [value=null] optional value to set on raw data creation
+         */
+
+    }, {
+        key: 'Declare',
+        value: function Declare(name, size) {
+            var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+            this.elements[name] = {
+                offset: this.nextOffset,
+                size: size,
+                array: null,
+                value: value
+            };
+
+            this.nextOffset += size;
+        }
+
+        /**
+         * Declares raw data from an object and then creates the elements
+         * @param {{string:Float32Array|Array|number}} declarations
+         */
+
+    }, {
+        key: 'DeclareFromObject',
+        value: function DeclareFromObject() {
+            var declarations = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            for (var name in declarations) {
+                if (declarations.hasOwnProperty(name)) {
+                    var value = declarations[name];
+
+                    if (typeof value === 'number') {
+                        this.Declare(name, 1, value);
+                    } else if (_math.util.isArrayLike(value)) {
+                        if (value.length === 1) {
+                            this.Declare(name, value.length, value);
+                        }
+                    } else {
+                        throw new Error('Invalid declaration type: ' + (typeof value === 'undefined' ? 'undefined' : _typeof(value)));
+                    }
+                }
+            }
+
+            this.Create();
+        }
+    }]);
+
+    return Tw2RawData;
+}();
 
 /***/ }),
 /* 91 */
@@ -30702,18 +30756,6 @@ Object.keys(_item).forEach(function (key) {
   });
 });
 
-var _EveBasicPerObjectData = __webpack_require__(18);
-
-Object.keys(_EveBasicPerObjectData).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _EveBasicPerObjectData[key];
-    }
-  });
-});
-
 var _EveSpaceScene = __webpack_require__(184);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
@@ -30758,8 +30800,6 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(18);
-
 var _EveChild2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30772,7 +30812,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Mesh attachment to space object and oriented towards the camera
  *
  * @property {Tw2Mesh|Tw2InstancedMesh} mesh
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
@@ -30784,7 +30824,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
         var _this = _possibleConstructorReturn(this, (EveChildBillboard.__proto__ || Object.getPrototypeOf(EveChildBillboard)).call(this));
 
         _this.mesh = null;
-        _this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData();
         _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
         _this._perObjectData.perObjectFFEData.Declare('world', 16);
         _this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
@@ -31016,8 +31056,6 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(18);
-
 var _EveChild2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31094,7 +31132,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
                 _math.mat4.transpose(this._perObjectData.perObjectVSData.data.subarray(16), this.worldTransformLast);
             } else {
                 if (!this._perObjectData) {
-                    this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
+                    this._perObjectData = new _core.Tw2BasicPerObjectData();
                     this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
                     this._perObjectData.perObjectFFEData.Declare('world', 16);
                     this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
@@ -31131,8 +31169,6 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveBasicPerObjectData = __webpack_require__(18);
-
 var _EveChild2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31147,7 +31183,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2Mesh} mesh
  * @property {Array<Tw2ParticleEmitter>} particleEmitters
  * @property {Array<Tw2ParticleSystem>} particleSystems
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChild) {
@@ -31161,7 +31197,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
         _this.mesh = null;
         _this.particleEmitters = [];
         _this.particleSystems = [];
-        _this._perObjectData = new _EveBasicPerObjectData.EveBasicPerObjectData();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData();
         _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
         _this._perObjectData.perObjectFFEData.Declare('world', 16);
         _this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
@@ -39302,6 +39338,94 @@ function EveSOF() {
         });
     };
 }
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveBasicPerObjectData = exports.Tw2BasicPerObjectData = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _Tw2Device = __webpack_require__(3);
+
+var _Tw2PerObjectData2 = __webpack_require__(89);
+
+var _Tw2RawData = __webpack_require__(90);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2BasicPerObjectData
+ *
+ * @param {RawDataObject} [rawDataObject]    - An optional object containing raw data declarations
+ * @parameter {?Tw2RawData} perObjectFFEData - Fixed Function Emulation data
+ * @class
+ */
+var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObjectData) {
+    _inherits(Tw2BasicPerObjectData, _Tw2PerObjectData);
+
+    function Tw2BasicPerObjectData(rawDataObject) {
+        _classCallCheck(this, Tw2BasicPerObjectData);
+
+        var _this = _possibleConstructorReturn(this, (Tw2BasicPerObjectData.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData)).call(this));
+
+        _this.perObjectFFEData = null;
+
+        if (rawDataObject) _this.DeclareFromObject(rawDataObject);
+        return _this;
+    }
+
+    /**
+     * Sets per object data to the device
+     * @param constantBufferHandles
+     */
+
+
+    _createClass(Tw2BasicPerObjectData, [{
+        key: 'SetPerObjectDataToDevice',
+        value: function SetPerObjectDataToDevice(constantBufferHandles) {
+            _get(Tw2BasicPerObjectData.prototype.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData.prototype), 'SetPerObjectDataToDevice', this).call(this, constantBufferHandles);
+
+            if (this.perObjectFFEData && constantBufferHandles[5]) {
+                _Tw2Device.device.gl.uniform4fv(constantBufferHandles[5], this.perObjectFFEData.data);
+            }
+        }
+
+        /**
+         * Defines and creates raw data from an object
+         * @param {RawDataObject} rawDataObject
+         */
+
+    }, {
+        key: 'DeclareFromObject',
+        value: function DeclareFromObject() {
+            var rawDataObject = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+            _get(Tw2BasicPerObjectData.prototype.__proto__ || Object.getPrototypeOf(Tw2BasicPerObjectData.prototype), 'DeclareFromObject', this).call(this, rawDataObject);
+
+            if (rawDataObject.FFEData) {
+                this.perObjectFFEData = new _Tw2RawData.Tw2RawData(rawDataObject.FFEData);
+            }
+        }
+    }]);
+
+    return Tw2BasicPerObjectData;
+}(_Tw2PerObjectData2.Tw2PerObjectData);
+
+exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
 
 /***/ })
 /******/ ]);
