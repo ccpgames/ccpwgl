@@ -140,8 +140,8 @@ export class EveOccluder
 
         g.vertexBuffer = null;
         g.decl = new Tw2VertexDeclaration();
-        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, d.gl.FLOAT, 2, 0));
-        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, d.gl.FLOAT, 2, 8));
+        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
+        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
         g.decl.RebuildHash();
 
         const vb = new Float32Array(255 * 6 * 4);

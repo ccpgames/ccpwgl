@@ -215,8 +215,8 @@ Tw2Device.prototype.CreateDevice = function(canvas, params)
     this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(vertices), this.gl.STATIC_DRAW);
     this._cameraQuadBuffer = this.gl.createBuffer();
     this._quadDecl = new Tw2VertexDeclaration();
-    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, this.gl.FLOAT, 4, 0));
-    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, this.gl.FLOAT, 2, 16));
+    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, this.gl.FLOAT, 4, 0));
+    this._quadDecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, this.gl.FLOAT, 2, 16));
     this._quadDecl.RebuildHash();
 
     this.alphaTestState = {};
