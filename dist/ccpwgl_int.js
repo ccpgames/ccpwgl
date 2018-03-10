@@ -19170,99 +19170,123 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2CurveSet = Tw2CurveSet;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Tw2CurveSet
+ *
  * @property {string} name
- * @property {Array.<Tw2Curve>} curves
+ * @property {Array.<Tw2Curve|Tw2CurveSequencer>} curves
  * @property {Array} bindings
  * @property {number} scale
  * @property {boolean} playOnLoad
  * @property {boolean} isPlaying
  * @property {number} scaledTime
- * @constructor
  */
-function Tw2CurveSet() {
-    this.name = '';
-    this.curves = [];
-    this.bindings = [];
-    this.scale = 1;
-    this.playOnLoad = true;
-    this.isPlaying = false;
-    this.scaledTime = 0;
-}
+var Tw2CurveSet = exports.Tw2CurveSet = function () {
+    function Tw2CurveSet() {
+        _classCallCheck(this, Tw2CurveSet);
 
-/**
- * Initializes the Tw2CurveSet
- * @prototype
- */
-Tw2CurveSet.prototype.Initialize = function () {
-    if (this.playOnLoad) {
-        this.Play();
+        this.name = '';
+        this.curves = [];
+        this.bindings = [];
+        this.scale = 1;
+        this.playOnLoad = true;
+        this.isPlaying = false;
+        this.scaledTime = 0;
     }
-};
 
-/**
- * Plays the Tw2CurveSet
- * @prototype
- */
-Tw2CurveSet.prototype.Play = function () {
-    this.isPlaying = true;
-    this.scaledTime = 0;
-};
+    /**
+     * Initializes the Tw2CurveSet
+     */
 
-/**
- * Plays the Tw2CurveSet from a specific time
- * @param {number} time
- * @prototype
- */
-Tw2CurveSet.prototype.PlayFrom = function (time) {
-    this.isPlaying = true;
-    this.scaledTime = time;
-};
 
-/**
- * Stops the Tw2CurveSet from playing
- * @prototype
- */
-Tw2CurveSet.prototype.Stop = function () {
-    this.isPlaying = false;
-};
-
-/**
- * Internal render/update function which is called every frame
- * @param {number} dt - Delta Time
- * @prototype
- */
-Tw2CurveSet.prototype.Update = function (dt) {
-    if (this.isPlaying) {
-        this.scaledTime += dt * this.scale;
-        var scaledTime = this.scaledTime;
-        var curves = this.curves;
-        for (var i = 0; i < curves.length; ++i) {
-            curves[i].UpdateValue(scaledTime);
+    _createClass(Tw2CurveSet, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.playOnLoad) this.Play();
         }
-        var bindings = this.bindings;
-        for (var b = 0; b < bindings.length; ++b) {
-            bindings[b].CopyValue();
-        }
-    }
-};
 
-/**
- * Gets the maximum curve duration
- * @returns {number}
- * @prototype
- */
-Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
-    var length = 0;
-    for (var i = 0; i < this.curves.length; ++i) {
-        if ('GetLength' in this.curves[i]) {
-            length = Math.max(length, this.curves[i].GetLength());
+        /**
+         * Plays the Tw2CurveSet
+         */
+
+    }, {
+        key: 'Play',
+        value: function Play() {
+            this.isPlaying = true;
+            this.scaledTime = 0;
         }
-    }
-    return length;
-};
+
+        /**
+         * Plays the Tw2CurveSet from a specific time
+         * @param {number} [time=0]
+         */
+
+    }, {
+        key: 'PlayFrom',
+        value: function PlayFrom() {
+            var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+            this.isPlaying = true;
+            this.scaledTime = time;
+        }
+
+        /**
+         * Stops the Tw2CurveSet from playing
+         */
+
+    }, {
+        key: 'Stop',
+        value: function Stop() {
+            this.isPlaying = false;
+        }
+
+        /**
+         * Internal render/update function which is called every frame
+         * @param {number} dt - Delta Time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this.isPlaying) {
+                this.scaledTime += dt * this.scale;
+
+                for (var i = 0; i < this.curves.length; ++i) {
+                    this.curves[i].UpdateValue(this.scaledTime);
+                }
+
+                for (var _i = 0; _i < this.bindings.length; ++_i) {
+                    this.bindings[_i].CopyValue();
+                }
+            }
+        }
+
+        /**
+         * Gets the maximum curve duration
+         *
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetMaxCurveDuration',
+        value: function GetMaxCurveDuration() {
+            var length = 0;
+            for (var i = 0; i < this.curves.length; ++i) {
+                if ('GetLength' in this.curves[i]) {
+                    length = Math.max(length, this.curves[i].GetLength());
+                }
+            }
+            return length;
+        }
+    }]);
+
+    return Tw2CurveSet;
+}();
 
 /***/ }),
 /* 87 */
@@ -19274,271 +19298,300 @@ Tw2CurveSet.prototype.GetMaxCurveDuration = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Tw2ValueBinding = undefined;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-exports.Tw2ValueBinding = Tw2ValueBinding;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _math = __webpack_require__(0);
 
 var _parameter = __webpack_require__(11);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Tw2ValueBinding
+ *
  * @property {string} name
  * @property {Object} sourceObject
  * @property {string} sourceAttribute
- * @property {number} _sourceElement
- * @property {boolean} sourceIsArray
+ * @property {?number} _sourceElement
+ * @property {?boolean} sourceIsArray
  * @property {Object} destinationObject
  * @property {string} destinationAttribute
- * @property {number} _destinationElement
- * @property {boolean} destinationIsArray
+ * @property {?number} _destinationElement
+ * @property {?boolean} destinationIsArray
  * @property {number} scale
  * @property {quat} offset
  * @property {null|Function} _copyFunc - The function to use when updating destination attributes
- * @constructor
  */
-function Tw2ValueBinding() {
-    this.name = '';
-    this.sourceObject = null;
-    this.sourceAttribute = '';
-    this._sourceElement = null;
-    this.sourceIsArray = null;
+var Tw2ValueBinding = exports.Tw2ValueBinding = function () {
+    function Tw2ValueBinding() {
+        _classCallCheck(this, Tw2ValueBinding);
 
-    this.destinationObject = null;
-    this.destinationAttribute = '';
-    this._destinationElement = null;
-    this.destinationIsArray = null;
+        this.name = '';
+        this.sourceObject = null;
+        this.sourceAttribute = '';
+        this._sourceElement = null;
+        this.sourceIsArray = null;
 
-    this.scale = 1;
-    this.offset = _math.quat.create();
-    this._copyFunc = null;
-}
+        this.destinationObject = null;
+        this.destinationAttribute = '';
+        this._destinationElement = null;
+        this.destinationIsArray = null;
 
-/**
- * Initializes the Value Binding
- * @prototypes
- */
-Tw2ValueBinding.prototype.Initialize = function () {
-    if (!this.sourceObject || this.sourceAttribute === '') {
-        return;
-    }
-    if (!this.destinationObject || this.destinationAttribute === '') {
-        return;
+        this.scale = 1;
+        this.offset = _math.quat.create();
+        this._copyFunc = null;
     }
 
-    var srcSwizzled = false;
-    var destSwizzled = false;
-    var srcSwizzle = this.sourceAttribute.substr(-2);
+    /**
+     * Initializes the Value Binding
+     */
 
-    if (srcSwizzle === '.x' || srcSwizzle === '.r') {
-        srcSwizzled = true;
-        this._sourceElement = 0;
-        this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
-    } else if (srcSwizzle === '.y' || srcSwizzle === '.g') {
-        srcSwizzled = true;
-        this._sourceElement = 1;
-        this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
-    } else if (srcSwizzle === '.z' || srcSwizzle === '.b') {
-        srcSwizzled = true;
-        this._sourceElement = 2;
-        this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
-    } else if (srcSwizzle === '.w' || srcSwizzle === '.a') {
-        srcSwizzled = true;
-        this._sourceElement = 3;
-        this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
-    } else if (this.sourceObject instanceof _parameter.Tw2Vector4Parameter) {
-        if (this.sourceAttribute === 'v1') {
-            srcSwizzled = true;
-            this._sourceElement = 0;
-            this.sourceAttribute = 'value';
-        } else if (this.sourceAttribute === 'v2') {
-            srcSwizzled = true;
-            this._sourceElement = 1;
-            this.sourceAttribute = 'value';
-        } else if (this.sourceAttribute === 'v3') {
-            srcSwizzled = true;
-            this._sourceElement = 2;
-            this.sourceAttribute = 'value';
-        } else if (this.sourceAttribute === 'v4') {
-            srcSwizzled = true;
-            this._sourceElement = 3;
-            this.sourceAttribute = 'value';
-        }
-    }
 
-    var destSwizzle = this.destinationAttribute.substr(-2);
-    if (destSwizzle === '.x' || destSwizzle === '.r') {
-        destSwizzled = true;
-        this._destinationElement = 0;
-        this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
-    } else if (destSwizzle === '.y' || destSwizzle === '.g') {
-        destSwizzled = true;
-        this._destinationElement = 1;
-        this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
-    } else if (destSwizzle === '.z' || destSwizzle === '.b') {
-        destSwizzled = true;
-        this._destinationElement = 2;
-        this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
-    } else if (destSwizzle === '.w' || destSwizzle === '.a') {
-        destSwizzled = true;
-        this._destinationElement = 3;
-        this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
-    } else if (this.destinationObject instanceof _parameter.Tw2Vector4Parameter) {
-        if (this.destinationAttribute === 'v1') {
-            destSwizzled = true;
-            this._destinationElement = 0;
-            this.destinationAttribute = 'value';
-        } else if (this.destinationAttribute === 'v2') {
-            destSwizzled = true;
-            this._destinationElement = 1;
-            this.destinationAttribute = 'value';
-        } else if (this.destinationAttribute === 'v3') {
-            destSwizzled = true;
-            this._destinationElement = 2;
-            this.destinationAttribute = 'value';
-        } else if (this.destinationAttribute === 'v4') {
-            destSwizzled = true;
-            this._destinationElement = 3;
-            this.destinationAttribute = 'value';
-        }
-    }
-    if (!(this.sourceAttribute in this.sourceObject) || !(this.destinationAttribute in this.destinationObject)) {
-        return;
-    }
+    _createClass(Tw2ValueBinding, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (!this.sourceObject || this.sourceAttribute === '') return;
+            if (!this.destinationObject || this.destinationAttribute === '') return;
 
-    this.sourceIsArray = _math.util.isArrayLike(this.sourceObject[this.sourceAttribute]);
-    this.destinationIsArray = _math.util.isArrayLike(this.destinationObject[this.destinationAttribute]);
+            var srcSwizzled = false,
+                destSwizzled = false,
+                srcSwizzle = this.sourceAttribute.substr(-2);
 
-    if (this.sourceIsArray === this.destinationIsArray && _typeof(this.sourceObject[this.sourceAttribute]) === _typeof(this.destinationObject[this.destinationAttribute])) {
-        if (this.sourceIsArray) {
-            if (srcSwizzled) {
-                if (destSwizzled) {
-                    this._copyFunc = this._CopyElementToElement;
-                } else {
-                    this._copyFunc = this._ReplicateElement;
-                }
-            } else {
-                if (this.sourceObject[this.sourceAttribute].length <= this.destinationObject[this.destinationAttribute].length) {
-                    this._copyFunc = this._CopyArray;
-                } else if (this.sourceObject[this.sourceAttribute].length === 16) {
-                    this._copyFunc = this._ExtractPos;
-                } else {
-                    return;
+            if (srcSwizzle === '.x' || srcSwizzle === '.r') {
+                srcSwizzled = true;
+                this._sourceElement = 0;
+                this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
+            } else if (srcSwizzle === '.y' || srcSwizzle === '.g') {
+                srcSwizzled = true;
+                this._sourceElement = 1;
+                this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
+            } else if (srcSwizzle === '.z' || srcSwizzle === '.b') {
+                srcSwizzled = true;
+                this._sourceElement = 2;
+                this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
+            } else if (srcSwizzle === '.w' || srcSwizzle === '.a') {
+                srcSwizzled = true;
+                this._sourceElement = 3;
+                this.sourceAttribute = this.sourceAttribute.substr(0, this.sourceAttribute.length - 2);
+            } else if (this.sourceObject instanceof _parameter.Tw2Vector4Parameter) {
+                if (this.sourceAttribute === 'v1') {
+                    srcSwizzled = true;
+                    this._sourceElement = 0;
+                    this.sourceAttribute = 'value';
+                } else if (this.sourceAttribute === 'v2') {
+                    srcSwizzled = true;
+                    this._sourceElement = 1;
+                    this.sourceAttribute = 'value';
+                } else if (this.sourceAttribute === 'v3') {
+                    srcSwizzled = true;
+                    this._sourceElement = 2;
+                    this.sourceAttribute = 'value';
+                } else if (this.sourceAttribute === 'v4') {
+                    srcSwizzled = true;
+                    this._sourceElement = 3;
+                    this.sourceAttribute = 'value';
                 }
             }
-        } else {
-            this._copyFunc = this._CopyValueToValue;
+
+            var destSwizzle = this.destinationAttribute.substr(-2);
+            if (destSwizzle === '.x' || destSwizzle === '.r') {
+                destSwizzled = true;
+                this._destinationElement = 0;
+                this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
+            } else if (destSwizzle === '.y' || destSwizzle === '.g') {
+                destSwizzled = true;
+                this._destinationElement = 1;
+                this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
+            } else if (destSwizzle === '.z' || destSwizzle === '.b') {
+                destSwizzled = true;
+                this._destinationElement = 2;
+                this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
+            } else if (destSwizzle === '.w' || destSwizzle === '.a') {
+                destSwizzled = true;
+                this._destinationElement = 3;
+                this.destinationAttribute = this.destinationAttribute.substr(0, this.destinationAttribute.length - 2);
+            } else if (this.destinationObject instanceof _parameter.Tw2Vector4Parameter) {
+                if (this.destinationAttribute === 'v1') {
+                    destSwizzled = true;
+                    this._destinationElement = 0;
+                    this.destinationAttribute = 'value';
+                } else if (this.destinationAttribute === 'v2') {
+                    destSwizzled = true;
+                    this._destinationElement = 1;
+                    this.destinationAttribute = 'value';
+                } else if (this.destinationAttribute === 'v3') {
+                    destSwizzled = true;
+                    this._destinationElement = 2;
+                    this.destinationAttribute = 'value';
+                } else if (this.destinationAttribute === 'v4') {
+                    destSwizzled = true;
+                    this._destinationElement = 3;
+                    this.destinationAttribute = 'value';
+                }
+            }
+
+            if (!(this.sourceAttribute in this.sourceObject) || !(this.destinationAttribute in this.destinationObject)) {
+                return;
+            }
+
+            this.sourceIsArray = _math.util.isArrayLike(this.sourceObject[this.sourceAttribute]);
+            this.destinationIsArray = _math.util.isArrayLike(this.destinationObject[this.destinationAttribute]);
+
+            if (this.sourceIsArray === this.destinationIsArray && _typeof(this.sourceObject[this.sourceAttribute]) === _typeof(this.destinationObject[this.destinationAttribute])) {
+                if (this.sourceIsArray) {
+                    if (srcSwizzled) {
+                        if (destSwizzled) {
+                            this._copyFunc = Tw2ValueBinding.CopyElementToElement;
+                        } else {
+                            this._copyFunc = Tw2ValueBinding.ReplicateElement;
+                        }
+                    } else {
+                        if (this.sourceObject[this.sourceAttribute].length <= this.destinationObject[this.destinationAttribute].length) {
+                            this._copyFunc = Tw2ValueBinding.CopyArray;
+                        } else if (this.sourceObject[this.sourceAttribute].length === 16) {
+                            this._copyFunc = Tw2ValueBinding.ExtractPos;
+                        }
+                    }
+                } else {
+                    this._copyFunc = Tw2ValueBinding.CopyValueToValue;
+                }
+            } else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] === 'number') {
+                this._copyFunc = Tw2ValueBinding.CopyElementToValue;
+            } else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === 'number') {
+                if (destSwizzled) {
+                    this._copyFunc = Tw2ValueBinding.CopyValueToElement;
+                } else {
+                    this._copyFunc = Tw2ValueBinding.ReplicateValue;
+                }
+            } else if (typeof this.sourceObject[this.sourceAttribute] === 'number' && typeof this.destinationObject[this.destinationAttribute] === 'boolean') {
+                this._copyFunc = Tw2ValueBinding.CopyFloatToBoolean;
+            }
         }
-    } else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] === 'number') {
-        this._copyFunc = this._CopyElementToValue;
-    } else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === 'number') {
-        if (destSwizzled) {
-            this._copyFunc = this._CopyValueToElement;
-        } else {
-            this._copyFunc = this._ReplicateValue;
+
+        /**
+         * CopyValue
+         * @param {*} [controller=this]
+         */
+
+    }, {
+        key: 'CopyValue',
+        value: function CopyValue() {
+            var controller = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this;
+
+            if (this._copyFunc) {
+                this._copyFunc.call(this);
+                if ('OnValueChanged' in this.destinationObject) {
+                    this.destinationObject.OnValueChanged(controller, [this.destinationAttribute]);
+                }
+            }
         }
-    } else if (typeof this.sourceObject[this.sourceAttribute] === 'number' && typeof this.destinationObject[this.destinationAttribute] === 'boolean') {
-        this._copyFunc = this._CopyFloatToBoolean;
-    } else {
-        return;
-    }
-};
 
-/**
- * CopyValue
- * @prototype
- */
-Tw2ValueBinding.prototype.CopyValue = function () {
-    if (this._copyFunc) {
-        this._copyFunc.call(this);
-        if ('OnValueChanged' in this.destinationObject) {
-            this.destinationObject.OnValueChanged();
+        /**
+         * _CopyValueToValue
+         */
+
+    }], [{
+        key: 'CopyValueToValue',
+        value: function CopyValueToValue() {
+            this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
         }
-    }
-};
 
-/**
- * _CopyValueToValue
- * @private
- */
-Tw2ValueBinding.prototype._CopyValueToValue = function () {
-    this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
-};
+        /**
+         * _CopyArray
+         */
 
-/**
- * _CopyArray
- * @private
- */
-Tw2ValueBinding.prototype._CopyArray = function () {
-    var count = Math.min(this.destinationObject[this.destinationAttribute].length, this.sourceObject[this.sourceAttribute].length);
-    for (var i = 0; i < count; ++i) {
-        this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i] * this.scale + this.offset[i];
-    }
-};
+    }, {
+        key: 'CopyArray',
+        value: function CopyArray() {
+            var count = Math.min(this.destinationObject[this.destinationAttribute].length, this.sourceObject[this.sourceAttribute].length);
+            for (var i = 0; i < count; ++i) {
+                this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i] * this.scale + this.offset[i];
+            }
+        }
 
-/**
- * _CopyElementToElement
- * @private
- */
-Tw2ValueBinding.prototype._CopyElementToElement = function () {
-    this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
-};
+        /**
+         * _CopyElementToElement
+         */
 
-/**
- * _ReplicateValue
- * @private
- */
-Tw2ValueBinding.prototype._ReplicateValue = function () {
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
-        this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[i];
-    }
-};
+    }, {
+        key: 'CopyElementToElement',
+        value: function CopyElementToElement() {
+            this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
+        }
 
-/**
- * _CopyArray
- * @private
- */
-Tw2ValueBinding.prototype._ReplicateElement = function () {
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
-        this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[i];
-    }
-};
+        /**
+         * _ReplicateValue
+         */
 
-/**
- * _ExtractPos
- * @private
- */
-Tw2ValueBinding.prototype._ExtractPos = function () {
-    for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
-        this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i + 12] * this.scale + this.offset[i];
-    }
-};
+    }, {
+        key: 'ReplicateValue',
+        value: function ReplicateValue() {
+            for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
+                this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[i];
+            }
+        }
 
-/**
- * _CopyElementToValue
- * @private
- */
-Tw2ValueBinding.prototype._CopyElementToValue = function () {
-    this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
-};
+        /**
+         * _CopyArray
+         */
 
-/**
- * _CopyValueToElement
- * @private
- */
-Tw2ValueBinding.prototype._CopyValueToElement = function () {
-    this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
-};
+    }, {
+        key: 'ReplicateElement',
+        value: function ReplicateElement() {
+            for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
+                this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[i];
+            }
+        }
 
-/**
- * _CopyFloatToBoolean
- * @private
- */
-Tw2ValueBinding.prototype._CopyFloatToBoolean = function () {
-    this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] !== 0;
-};
+        /**
+         * _ExtractPos
+         */
+
+    }, {
+        key: 'ExtractPos',
+        value: function ExtractPos() {
+            for (var i = 0; i < this.destinationObject[this.destinationAttribute].length; ++i) {
+                this.destinationObject[this.destinationAttribute][i] = this.sourceObject[this.sourceAttribute][i + 12] * this.scale + this.offset[i];
+            }
+        }
+
+        /**
+         * _CopyElementToValue
+         */
+
+    }, {
+        key: 'CopyElementToValue',
+        value: function CopyElementToValue() {
+            this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute][this._sourceElement] * this.scale + this.offset[0];
+        }
+
+        /**
+         * _CopyValueToElement
+         */
+
+    }, {
+        key: 'CopyValueToElement',
+        value: function CopyValueToElement() {
+            this.destinationObject[this.destinationAttribute][this._destinationElement] = this.sourceObject[this.sourceAttribute] * this.scale + this.offset[0];
+        }
+
+        /**
+         * _CopyFloatToBoolean
+         */
+
+    }, {
+        key: 'CopyFloatToBoolean',
+        value: function CopyFloatToBoolean() {
+            this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] !== 0;
+        }
+    }]);
+
+    return Tw2ValueBinding;
+}();
 
 /***/ }),
 /* 88 */
