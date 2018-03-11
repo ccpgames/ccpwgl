@@ -223,7 +223,7 @@ class Tw2Store
      * Gets a variable's value
      * @param {string} name
      * @param {boolean} [serialize]
-     * @returns {?*}
+     * @returns {?*} null if the variable doesn't exist or it does but it has no GetValue method
      */
     GetVariableValue(name, serialize)
     {
@@ -235,7 +235,7 @@ class Tw2Store
      * Sets a variable's value
      * @param {string} name
      * @param {*} value
-     * @returns {boolean} true if successful
+     * @returns {?boolean} null if the variable doesn't exist or it does but has no SetValue method
      */
     SetVariableValue(name, value)
     {
@@ -245,7 +245,7 @@ class Tw2Store
             variable.SetValue(value);
             return true;
         }
-        return false;
+        return null;
     }
 
     /**

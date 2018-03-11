@@ -1,119 +1,107 @@
-import {mat4, util} from '../../math';
+import {mat4} from '../../math';
+import {Tw2VectorParameter} from './Tw2Parameter';
 
 /**
  * Tw2MatrixParameter
+ *
  * @param {string} [name='']
  * @param {mat4|Float32Array|Array} [value=mat4.create()]
- * @property {string} name
- * @property {mat4|Float32Array} value
- * @property {Float32Array} constantBuffer
- * @property {number} offset
- * @constructor
+ * @class
  */
-export function Tw2MatrixParameter(name, value)
+export class Tw2MatrixParameter extends Tw2VectorParameter
 {
-    this.name = (name !== undefined) ? name : '';
-    this.value = (value !== undefined) ? mat4.clone(value) : mat4.create();
-    this.constantBuffer = null;
-    this.offset = 0;
+    constructor(name = '', value = mat4.create())
+    {
+        super(name, value);
+    }
+
+    /**
+     * Composes the parameter's value from components
+     * @param {Tw2Vector4Parameter|quat} rotation
+     * @param {Tw2Vector3Parameter|vec3} translation
+     * @param {Tw2Vector3Parameter|vec3} scaling
+     */
+    Compose(rotation, translation, scaling)
+    {
+        if ('value' in rotation) rotation = rotation['value'];
+        if ('value' in translation) translation = translation['value'];
+        if ('value' in scaling) scaling = scaling['value'];
+
+        mat4.fromRotationTranslationScale(this.value, rotation, translation, scaling);
+        this.OnValueChanged();
+    }
+
+    /**
+     * Decomposes the parameter's value to components
+     * @param {Tw2Vector4Parameter|quat} rotation
+     * @param {Tw2Vector3Parameter|vec3} translation
+     * @param {Tw2Vector3Parameter|vec3} scaling
+     */
+    Decompose(rotation, translation, scaling)
+    {
+        mat4.getRotation('value' in rotation ? rotation.value : rotation, this.value);
+        mat4.getTranslation('value' in translation ? translation.value : translation, this.value);
+        mat4.getScaling('value' in scaling ? scaling.value : scaling, this.value);
+
+        if ('OnValueChanged' in rotation) rotation.OnValueChanged();
+        if ('OnValueChanged' in translation) translation.OnValueChanged();
+        if ('OnValueChanged' in scaling) scaling.OnValueChanged();
+    }
+
+    /**
+     * Gets the matrices' translation x value
+     * @returns {number}
+     */
+    get x()
+    {
+        return this.GetIndexValue(12);
+    }
+
+    /**
+     * Sets the matrices' translation x value
+     * @param {number} val
+     */
+    set x(val)
+    {
+        this.SetIndexValue(12, val);
+    }
+
+    /**
+     * Gets the matrices' translation y value
+     * @returns {number}
+     */
+    get y()
+    {
+        return this.GetIndexValue(13);
+    }
+
+    /**
+     * Sets the matrices' translation y value
+     * @param {number} val
+     */
+    set y(val)
+    {
+        this.SetIndexValue(13, val);
+    }
+
+    /**
+     * Gets the matrices' translation z value
+     * @returns {number}
+     */
+    get z()
+    {
+        return this.GetIndexValue(14);
+    }
+
+    /**
+     * Sets the matrices' translation z value
+     * @param {number} val
+     */
+    set z(val)
+    {
+        this.SetIndexValue(14, val);
+    }
+
 }
 
-/**
- * Binds the parameter's value to a constant buffer
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @returns {boolean}
- * @prototype
- */
-Tw2MatrixParameter.prototype.Bind = function(constantBuffer, offset, size)
-{
-    if (this.constantBuffer !== null || size < 16)
-    {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-};
-
-/**
- * Unbinds the parameter's constant buffer
- * @prototype
- */
-Tw2MatrixParameter.prototype.UnBind = function()
-{
-    this.constantBuffer = null;
-};
-
-/**
- * Sets a supplied value
- * @param {mat4} value
- * @prototype
- */
-Tw2MatrixParameter.prototype.SetValue = function(value)
-{
-    mat4.copy(this.value, value);
-    if (this.constantBuffer !== null)
-    {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Gets the current value
- * @return {mat4|Float32Array}
- * @prototype
- */
-Tw2MatrixParameter.prototype.GetValue = function()
-{
-    if (this.constantBuffer !== null)
-    {
-        return mat4.clone(this.constantBuffer.subarray(this.offset, this.offset + this.value.length));
-    }
-
-    return mat4.clone(this.value);
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset)
-{
-    constantBuffer.set(this.value, offset);
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2MatrixParameter.prototype.OnValueChanged = function()
-{
-    if (this.constantBuffer !== null)
-    {
-        this.constantBuffer.set(this.value, this.offset);
-    }
-};
-
-/**
- * Checks if the parameter's value equals another
- * @param {mat4|Array} value
- * @returns {boolean}
- */
-Tw2MatrixParameter.prototype.EqualsValue = function(value)
-{
-    return mat4.equals(this.value, value);
-};
-
-/**
- * Checks if a value is a valid parameter value
- * @param {*} value
- * @returns {boolean}
- */
-Tw2MatrixParameter.is = function(value)
-{
-    return util.isArrayLike(value) && value.length === 16;
-};
+Tw2MatrixParameter.constantBufferSize = 16;

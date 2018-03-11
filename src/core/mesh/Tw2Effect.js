@@ -495,10 +495,28 @@ export class Tw2Effect
             if (options.hasOwnProperty(key))
             {
                 const param = this.parameters[key];
-                if (param && 'SetOverrides' in param)
+                if (param && param.constructor === Tw2TextureParameter)
                 {
-                    param.SetOverrides(options[key]);
-                    updated = true;
+                    let doUpdate = false;
+
+                    const overrides = options[key];
+                    for (let prop in overrides)
+                    {
+                        if (overrides.hasOwnProperty(prop) && Tw2TextureParameter.overrideProperties.includes(prop))
+                        {
+                            if (overrides[prop] !== param[prop])
+                            {
+                                doUpdate = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (doUpdate)
+                    {
+                        param.SetOverrides(options[key]);
+                        updated = true;
+                    }
                 }
             }
         }
@@ -564,7 +582,6 @@ export class Tw2Effect
     {
         const effect = new this();
         util.assignIfExists(effect, opt, ['name', 'effectFilePath', 'display', 'autoParameter', ]);
-
         if ('parameters' in opt) effect.SetParameters(opt.parameters);
         if ('textures' in opt) effect.SetTextures(opt.textures);
         if ('overrides' in opt) effect.SetOverrides(opt.overrides);
@@ -574,7 +591,7 @@ export class Tw2Effect
             let path = opt.effectFilePath;
             effect.name = path.substring(path.lastIndexOf('/') + 1, path.length);
         }
-        
+
         effect.Initialize();
         return effect;
     }
