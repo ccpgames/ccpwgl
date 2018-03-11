@@ -155,6 +155,16 @@ Tw2Vector2Parameter.prototype.FillWith = function(value)
 };
 
 /**
+ * Checks if a value equals the parameter's value
+ * @param {vec2|Array} value
+ * @returns {boolean}
+ */
+Tw2Vector2Parameter.prototype.EqualsValue = function(value)
+{
+    return vec2.equals(this.value, value);
+};
+
+/**
  * Checks if a value is a valid parameter value
  * @param {*} value
  * @returns {boolean}

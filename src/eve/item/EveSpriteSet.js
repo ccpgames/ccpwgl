@@ -374,7 +374,7 @@ export class EveSpriteSet extends EveObjectSet
             return this.RenderQuads(effect, world, perObjectData);
         }
 
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._indexBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._indexBuffer) return false;
 
         device.SetStandardStates(device.RM_ADDITIVE);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
@@ -400,7 +400,7 @@ export class EveSpriteSet extends EveObjectSet
      */
     RenderBoosterGlow(effect = this.effect, world, boosterGain, warpIntensity)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,
@@ -462,7 +462,7 @@ export class EveSpriteSet extends EveObjectSet
      */
     RenderQuads(effect = this.effect, world, perObjectData)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,

@@ -131,12 +131,15 @@ export class EveOccluder
         g.vec4_0 = vec4.create();
         g.accumulator = new Tw2BatchAccumulator();
 
-        g.effect = new Tw2Effect();
-        g.effect.name = 'Occluder sample collector';
-        g.effect.effectFilePath = 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx';
-        g.effect.parameters.OccluderPosition = new Tw2Vector4Parameter('OccluderPosition');
-        g.effect.parameters.OccluderIndex = new Tw2Vector3Parameter('OccluderIndex');
-        g.effect.parameters.BackBuffer = new Tw2TextureParameter('BackBuffer');
+        g.effect = Tw2Effect.create({
+            name: 'Occluder sampler',
+            effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
+            parameters: {
+                'OccluderPosition': [1, 1, 1, 1],
+                'OccluderIndex': [1, 1, 1],
+                'BackBuffer': ''
+            }
+        });
 
         g.vertexBuffer = null;
         g.decl = new Tw2VertexDeclaration();

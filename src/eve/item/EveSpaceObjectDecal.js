@@ -164,8 +164,7 @@ export class EveSpaceObjectDecal
 
         if
         (
-            this.display && effect && effect.effectRes && effect.effectRes.IsGood() &&
-            this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()
+            this.display && effect && effect.IsGood() && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()
         )
         {
             const batch = new Tw2ForwardingRenderBatch();

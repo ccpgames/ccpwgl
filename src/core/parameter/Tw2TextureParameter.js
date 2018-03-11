@@ -201,6 +201,16 @@ Tw2TextureParameter.prototype.SetTextureRes = function(res)
 Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
 
 /**
+ * Checks if a value equals the parameters resource path
+ * @param {string} value
+ * @returns {boolean}
+ */
+Tw2TextureParameter.prototype.EqualsValue = function(value)
+{
+    return value.toLowerCase() === this.GetValue();
+};
+
+/**
  * Checks if a value is a valid parameter value
  * @param {*} value
  * @returns {boolean}

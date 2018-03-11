@@ -1,9 +1,10 @@
-import {quat, util } from '../../math';
+import {quat, util} from '../../math';
 import {Tw2Vector4Parameter} from '../parameter';
 
 /**
  * Tw2ValueBinding
  *
+ * @property {string|number} _id
  * @property {string} name
  * @property {Object} sourceObject
  * @property {string} sourceAttribute
@@ -21,17 +22,16 @@ export class Tw2ValueBinding
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
         this.sourceObject = null;
         this.sourceAttribute = '';
         this._sourceElement = null;
         this.sourceIsArray = null;
-
         this.destinationObject = null;
         this.destinationAttribute = '';
         this._destinationElement = null;
         this.destinationIsArray = null;
-
         this.scale = 1;
         this.offset = quat.create();
         this._copyFunc = null;

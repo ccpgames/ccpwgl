@@ -307,7 +307,7 @@ export class EvePlaneSet extends EveObjectSet
      */
     Render(effect = this.effect)
     {
-        if (!effect || !effect.effectRes && !effect.effectRes.IsGood()) return false;
+        if (!effect || !effect.IsGood()) return false;
 
         device.SetStandardStates(device.RM_ADDITIVE);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);

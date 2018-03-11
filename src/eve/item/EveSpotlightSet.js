@@ -376,7 +376,7 @@ export class EveSpotlightSet extends EveObjectSet
      */
     static Render(spotlightSet, effect, buffer)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !buffer) return false;
+        if (!effect || !effect.IsGood() || !buffer) return false;
 
         const stride = 22 * 4;
         device.SetStandardStates(device.RM_ADDITIVE);

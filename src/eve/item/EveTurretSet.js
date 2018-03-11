@@ -696,7 +696,7 @@ export class EveTurretSet extends EveObjectSet
      */
     Render(batch, effect = this.turretEffect)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._visibleItems.length) return false;
+        if (!effect || !effect.IsGood() || !this._visibleItems.length) return false;
 
         let index = 0;
         const customSetter = function (el)

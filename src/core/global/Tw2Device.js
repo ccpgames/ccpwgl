@@ -4,7 +4,6 @@ import {resMan} from './Tw2ResMan';
 import {emitter} from './Tw2EventEmitter';
 import {Tw2Effect} from '../mesh/Tw2Effect';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
-import {Tw2TextureParameter} from '../parameter';
 const WebGLDebugUtil = require('webgl-debug');
 
 /**
@@ -427,9 +426,7 @@ Tw2Device.prototype.GetEyePosition = function()
  */
 Tw2Device.prototype.RenderFullScreenQuad = function(effect)
 {
-    if (!effect) return;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) return;
+    if (!effect || !effect.IsGood()) return;
 
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
 
@@ -453,13 +450,14 @@ Tw2Device.prototype.RenderTexture = (function()
     {
         if (blitEffect === null)
         {
-            blitEffect = new Tw2Effect();
-            blitEffect.effectFilePath = 'res:/graphics/effect/managed/space/system/blit.fx';
-            var param = new Tw2TextureParameter();
-            param.name = 'BlitSource';
-            blitEffect.parameters[param.name] = param;
-            blitEffect.Initialize();
+            blitEffect = Tw2Effect.create({
+                effectFilePath: 'res:/graphics/effect/managed/space/system/blit.fx',
+                textures: {
+                    BlitSource: ''
+                }
+            });
         }
+
         blitEffect.parameters['BlitSource'].textureRes = texture;
         this.RenderFullScreenQuad(blitEffect);
     };
@@ -471,9 +469,7 @@ Tw2Device.prototype.RenderTexture = (function()
  */
 Tw2Device.prototype.RenderCameraSpaceQuad = function(effect)
 {
-    if (!effect) return;
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes.IsGood()) return;
+    if (!effect || !effect.IsGood()) return;
 
     var vertices = new Float32Array([
         1.0, 1.0, 0.0, 1.0, 1.0, 1.0, -1.0, 1.0, 0.0, 1.0, 0.0, 1.0,

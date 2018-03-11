@@ -251,11 +251,14 @@ export class EveCurveLineSet extends EveObjectSet
     constructor()
     {
         super();
-        this.lineEffect = new Tw2Effect();
-        this.lineEffect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx';
-        this.lineEffect.parameters['TexMap'] = new Tw2TextureParameter('TexMap', 'res:/texture/global/white.dds.0.png');
-        this.lineEffect.parameters['OverlayTexMap'] = new Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
-        this.lineEffect.Initialize();
+        this.lineEffect = Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx',
+            textures: {
+                'TexMap': 'res:/texture/global/white.dds.0.png',
+                'OverlayTexMap': 'res:/texture/global/white.dds.0.png'
+            }
+        });
+
         this.pickEffect = null;
         this.lineWidthFactor = 1;
         this.additive = false;
@@ -664,7 +667,7 @@ export class EveCurveLineSet extends EveObjectSet
      */
     Render(batch, effect = batch.effect)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood()) return false;
+        if (!effect || !effect.IsGood()) return false;
 
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vb);
 
@@ -859,7 +862,7 @@ export class EveCurveLineSet extends EveObjectSet
                 vec3_10: vec3.create(),// tangent2
                 vec4_0: vec4.create(), // color 1
                 vec4_1: vec4.create(), // color 2
-                mat4_0: mat4.create()  // rotationMatrix
+                mat4_0: mat4.create(),  // rotationMatrix
             };
         }
     }

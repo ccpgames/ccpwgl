@@ -123,6 +123,16 @@ Tw2FloatParameter.prototype.SetValue = function(value)
 };
 
 /**
+ * Checks if the parameter's value equals a supplied value
+ * @param {number} value
+ * @returns {boolean}
+ */
+Tw2FloatParameter.prototype.EqualsValue = function(value)
+{
+    return value === this.GetValue();
+};
+
+/**
  * Checks if a value is a valid parameter value
  * @param {*} value
  * @returns {boolean}

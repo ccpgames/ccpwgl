@@ -77,7 +77,7 @@ export class EveMeshOverlayEffect
      */
     GetBatches(mode, accumulator, perObjectData, mesh)
     {
-        if (!this.display || !mesh || !mesh.geometryResource) return;
+        if (!this.display || !mesh || !mesh.IsGood()) return;
 
         const effects = this.GetEffects(mode);
         for (let i = 0; i < effects.length; i++)

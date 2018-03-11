@@ -1,17 +1,17 @@
-import {vec3} from '../../math';
 import {resMan} from '../global/Tw2ResMan';
+import {vec3} from '../../math';
 import {Tw2InstancedMeshBatch} from '../batch';
 import {Tw2Mesh} from './Tw2Mesh';
 
 /**
  * Tw2InstancedMesh
+ *
  * @property instanceGeometryResource
  * @property {string} instanceGeometryResPath
  * @property {number} instanceMeshIndex
  * @property {vec3} minBounds
  * @property {vec3} maxBounds
- * @inherit Tw2Mesh
- * @constructor
+ * @class
  */
 export class Tw2InstancedMesh extends Tw2Mesh
 {
@@ -26,8 +26,7 @@ export class Tw2InstancedMesh extends Tw2Mesh
     }
 
     /**
-     * Initializes the Tw2InstancedMesh
-     * @prototype
+     * Initializes the instanced mesh
      */
     Initialize()
     {
@@ -37,62 +36,48 @@ export class Tw2InstancedMesh extends Tw2Mesh
             this.instanceGeometryResource = resMan.GetResource(this.instanceGeometryResPath);
         }
     }
-}
 
-/**
- * _GetAreaBatches
- * @param {Array.<Tw2MeshArea>} areas
- * @param {number} mode
- * @param {Tw2BatchAccumulator} accumulator
- * @param {Tw2PerObjectData} perObjectData
- * @private
- */
-Tw2InstancedMesh.prototype._GetAreaBatches = function(areas, mode, accumulator, perObjectData)
-{
-    for (var i = 0; i < areas.length; ++i)
+    /**
+     * Checks if the instances meshes' resources are good
+     * @returns {boolean}
+     */
+    IsGood()
     {
-        var area = areas[i];
-        if (area.effect === null || area.debugIsHidden)
-        {
-            continue;
-        }
-        var batch = new Tw2InstancedMeshBatch();
-        batch.renderMode = mode;
-        batch.perObjectData = perObjectData;
-        batch.instanceMesh = this;
-        batch.meshIx = area.meshIndex;
-        batch.start = area.index;
-        batch.count = area.count;
-        batch.effect = area.effect;
-        accumulator.Commit(batch);
-    }
-};
+        const
+            instanced = this.instanceGeometryResource,
+            isResGood = super.IsGood(),
+            isInstancedResGood = !instanced ? false : instanced.IsGood ? instanced.IsGood() : true;
 
-/**
- * RenderAreas
- * @param {number} meshIx
- * @param {number} start
- * @param {number} count
- * @param {Tw2Effect} effect
- * @prototype
- */
-Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
-{
-    if (this.geometryResource)
-    {
-        this.geometryResource.KeepAlive();
+        return isResGood && isInstancedResGood;
     }
-    if (this.instanceGeometryResource && this.instanceGeometryResource.KeepAlive)
+
+    /**
+     * Gets mesh resources
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2Resource>} [out]
+     */
+    GetResources(out = [])
     {
-        this.instanceGeometryResource.KeepAlive();
-    }
-    if (this.geometryResource && this.instanceGeometryResource)
-    {
-        if (!this.geometryResource.IsGood())
+        super.GetResources(out);
+        if (this.instanceGeometryResource && 'GetResources' in this.instanceGeometryResource)
         {
-            return;
+            this.instanceGeometryResource.GetResources(out);
         }
-        var buffer = this.instanceGeometryResource.GetInstanceBuffer(this.instanceMeshIndex);
+        return out;
+    }
+
+    /**
+     * RenderAreas
+     * @param {number} meshIx
+     * @param {number} start
+     * @param {number} count
+     * @param {Tw2Effect} effect
+     */
+    RenderAreas(meshIx, start, count, effect)
+    {
+        if (!this.IsGood()) return;
+
+        const buffer = this.instanceGeometryResource.GetInstanceBuffer(this.instanceMeshIndex);
         if (buffer)
         {
             this.geometryResource.RenderAreasInstanced(meshIx, start, count, effect,
@@ -102,4 +87,33 @@ Tw2InstancedMesh.prototype.RenderAreas = function(meshIx, start, count, effect)
                 this.instanceGeometryResource.GetInstanceCount(this.instanceMeshIndex));
         }
     }
-};
+
+    /**
+     * Gets area batches
+     * @param {Tw2InstancedMesh} mesh
+     * @param {Array.<Tw2MeshArea>} areas
+     * @param {number} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     * @param {Tw2PerObjectData} perObjectData
+     */
+    static GetAreaBatches(mesh, areas, mode, accumulator, perObjectData)
+    {
+        for (let i = 0; i < areas.length; ++i)
+        {
+            const area = areas[i];
+            if (area.effect && area.display)
+            {
+                const batch = new Tw2InstancedMeshBatch();
+                batch.renderMode = mode;
+                batch.perObjectData = perObjectData;
+                batch.instanceMesh = mesh;
+                batch.meshIx = area.meshIndex;
+                batch.start = area.index;
+                batch.count = area.count;
+                batch.effect = area.effect;
+                accumulator.Commit(batch);
+            }
+        }
+    }
+}
+

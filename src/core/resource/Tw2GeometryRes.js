@@ -576,16 +576,11 @@ Tw2GeometryRes.BindMeshToModel = function(mesh, model)
 Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount)
 {
     this.KeepAlive();
-    if (!this._isGood)
+    if (!this._isGood || !effect || !effect.IsGood())
     {
         return false;
     }
 
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood)
-    {
-        return false;
-    }
     var d = device;
     var mesh = this.meshes[meshIx];
     d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
@@ -643,12 +638,7 @@ Tw2GeometryRes.prototype.RenderAreasInstanced = function(meshIx, start, count, e
 Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb)
 {
     this.KeepAlive();
-    if (!this._isGood)
-    {
-        return false;
-    }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood)
+    if (!this._isGood || !effect || !effect.IsGood())
     {
         return false;
     }
@@ -735,19 +725,11 @@ Tw2GeometryRes.prototype.RenderAreas = function(meshIx, start, count, effect, cb
 Tw2GeometryRes.prototype.RenderLines = function(meshIx, start, count, effect, cb)
 {
     this.KeepAlive();
-    if (!this._isGood)
+    if (!this._isGood || !effect || !effect.IsGood() || meshIx >= this.meshes.length)
     {
         return false;
     }
-    var effectRes = effect.GetEffectRes();
-    if (!effectRes._isGood)
-    {
-        return false;
-    }
-    if (meshIx >= this.meshes.length)
-    {
-        return false;
-    }
+
     var d = device;
     var mesh = this.meshes[meshIx];
     d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);

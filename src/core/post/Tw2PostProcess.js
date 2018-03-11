@@ -24,86 +24,86 @@ export function Tw2PostProcess()
     this.quadRT1 = new Tw2RenderTarget();
 
     this.steps = [];
-    this.steps[0] = new Tw2Effect();
     this.steps[0] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT1,
-        'inputs':
-            {
-                'BlitCurrent': null
+        'effect': Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx',
+            parameters: {
+                'g_texelSize': [1, 1, 1, 1],
+                'BlitCurrent': ''
             }
+        }),
+        'rt': this.quadRT1,
+        'inputs': {
+            'BlitCurrent': null
+        }
     };
-    this.steps[0].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx';
-    this.steps[0].effect.Initialize();
-    this.steps[0].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[0].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
-    this.steps[1] = new Tw2Effect();
     this.steps[1] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT0,
-        'inputs':
-            {
-                'BlitCurrent': this.quadRT1
+        'effect': Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx',
+            parameters: {
+                'LuminanceThreshold': 0.85,
+                'LuminanceScale': 2,
+                'BlitCurrent': ''
             }
+        }),
+        'rt': this.quadRT0,
+        'inputs': {
+            'BlitCurrent': this.quadRT1
+        }
     };
-    this.steps[1].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx';
-    this.steps[1].effect.Initialize();
-    this.steps[1].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[1].effect.parameters['LuminanceThreshold'] = new Tw2FloatParameter('LuminanceThreshold', 0.85);
-    this.steps[1].effect.parameters['LuminanceScale'] = new Tw2FloatParameter('LuminanceScale', 2);
 
-    this.steps[2] = new Tw2Effect();
     this.steps[2] = {
-        'effect': new Tw2Effect(),
+        'effect': Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx',
+            parameters: {
+                'g_texelSize': [1, 1, 1, 1],
+                'BlitCurrent': ''
+            }
+        }),
         'rt': this.quadRT1,
-        'inputs':
-            {
-                'BlitCurrent': this.quadRT0
-            }
+        'inputs': {
+            'BlitCurrent': this.quadRT0
+        }
     };
-    this.steps[2].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx';
-    this.steps[2].effect.Initialize();
-    this.steps[2].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[2].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
-    this.steps[3] = new Tw2Effect();
     this.steps[3] = {
-        'effect': new Tw2Effect(),
+        'effect': Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx',
+            parameters: {
+                'g_texelSize': [1, 1, 1, 1],
+                'BlitCurrent': ''
+            }
+        }),
         'rt': this.quadRT0,
-        'inputs':
-            {
-                'BlitCurrent': this.quadRT1
-            }
+        'inputs': {
+            'BlitCurrent': this.quadRT1
+        }
     };
-    this.steps[3].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx';
-    this.steps[3].effect.Initialize();
-    this.steps[3].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[3].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
 
-    this.steps[4] = new Tw2Effect();
     this.steps[4] = {
-        'effect': new Tw2Effect(),
-        'rt': null,
-        'inputs':
-            {
-                'BlitCurrent': this.quadRT0,
-                'BlitOriginal': null
+        'effect': Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx',
+            parameters: {
+                'g_texelSize': [1, 1, 1, 1],
+                'ScalingFactor': 1,
+                'BlitCurrent': '',
+                'BlitOriginal': ''
             }
+        }),
+        'rt': null,
+        'inputs': {
+            'BlitCurrent': this.quadRT0,
+            'BlitOriginal': null
+        }
     };
-    this.steps[4].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx';
-    this.steps[4].effect.Initialize();
-    this.steps[4].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[4].effect.parameters['BlitOriginal'] = new Tw2TextureParameter('BlitOriginal');
-    this.steps[4].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
-    this.steps[4].effect.parameters['ScalingFactor'] = new Tw2FloatParameter('ScalingFactor', 1);
 }
 
 /**
  * Internal render/update function. It is called every frame.
  * @prototype
  */
-Tw2PostProcess.prototype.Render = function()
+Tw2PostProcess.prototype.Render = function ()
 {
     var step, i;
 

@@ -1,4 +1,4 @@
-import {util, vec3} from '../../math';
+import {util, vec2, vec3} from '../../math';
 
 /**
  * Tw2Vector3Parameter
@@ -152,6 +152,17 @@ Tw2Vector3Parameter.prototype.FillWith = function(value)
 {
     this.SetValue([value, value, value]);
 };
+
+/**
+ * Checks if a value equals the parameter's value
+ * @param {vec3|Array} value
+ * @returns {boolean}
+ */
+Tw2Vector3Parameter.prototype.EqualsValue = function(value)
+{
+    return vec3.equals(this.value, value);
+};
+
 
 /**
  * Checks if a value is a valid parameter value

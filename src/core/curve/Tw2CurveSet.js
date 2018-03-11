@@ -1,6 +1,9 @@
+import { util } from '../../math';
+
 /**
  * Tw2CurveSet
  *
+ * @property {string|number} _id
  * @property {string} name
  * @property {Array.<Tw2Curve|Tw2CurveSequencer>} curves
  * @property {Array} bindings
@@ -13,6 +16,7 @@ export class Tw2CurveSet
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
         this.curves = [];
         this.bindings = [];

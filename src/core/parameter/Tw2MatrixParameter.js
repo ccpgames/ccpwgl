@@ -99,6 +99,16 @@ Tw2MatrixParameter.prototype.OnValueChanged = function()
 };
 
 /**
+ * Checks if the parameter's value equals another
+ * @param {mat4|Array} value
+ * @returns {boolean}
+ */
+Tw2MatrixParameter.prototype.EqualsValue = function(value)
+{
+    return mat4.equals(this.value, value);
+};
+
+/**
  * Checks if a value is a valid parameter value
  * @param {*} value
  * @returns {boolean}

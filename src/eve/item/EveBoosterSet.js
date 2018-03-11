@@ -423,7 +423,7 @@ export class EveBoosterSet extends EveObjectSet
      */
     Render(effect = this.effect)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood()) return false;
+        if (!effect || !effect.IsGood()) return false;
 
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._positions);
         for (let pass = 0; pass < effect.GetPassCount(); ++pass)
