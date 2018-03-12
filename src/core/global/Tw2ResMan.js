@@ -164,7 +164,7 @@ Tw2LoadingObject.prototype.AddObject = function(object, callback, initialize)
  */
 Tw2LoadingObject.prototype.Prepare = function(text)
 {
-    if (text === null)
+    if (!Tw2ObjectReader.IsValidXML(text))
     {
         emitter.log('res.error',
             {
