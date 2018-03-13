@@ -6,7 +6,6 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  * @property {string} name
  * @property {number} rate
  * @property {boolean} isValid
- * @property {null|Tw2ParticleSystem} particleSystem
  * @property {number} _accumulatedRate
  * @property {Array<Tw2ParticleAttributeGenerator>}} generators
  * @inherits Tw2ParticleEmitter

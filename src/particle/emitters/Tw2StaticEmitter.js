@@ -6,7 +6,6 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  * Tw2StaticEmitter
  *
  * @property {string} name
- * @property {null|Tw2ParticleSystem} particleSystem
  * @property {string} geometryResourcePath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Number} geometryIndex
@@ -19,7 +18,6 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
     constructor()
     {
         super();
-        this.particleSystem = null;
         this.geometryResourcePath = '';
         this.geometryResource = null;
         this.geometryIndex = 0;

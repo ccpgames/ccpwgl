@@ -3,13 +3,14 @@ import * as core from './core';
 import * as curve from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
-const {vec4, mat4} = math;
 
 export * from './core';
 export * from './curve';
 export * from './eve';
 export * from './particle';
 export {math};
+
+const {vec4, mat4} = math;
 
 /**
  * Register globals
@@ -52,15 +53,15 @@ core.store.Register({
         'ViewProjectionMat': mat4.create(),
         'ViewportSize': vec4.create(),
         'Time': vec4.create(),
-        'u_DecalMatrix' : mat4.create(),
-        'u_InvDecalMatrix' : mat4.create(),
+        'u_DecalMatrix': mat4.create(),
+        'u_InvDecalMatrix': mat4.create(),
         'EveSpaceSceneEnvMap': '',
         'EnvMap1': '',
         'EnvMap2': '',
         'EnvMap3': '',
         'ShadowLightness': 0,
-        'OccluderValue': vec4.fromValues(1,1,0,0),
-        'LensflareFxOccScale': vec4.fromValues(1,1,0,0),
+        'OccluderValue': vec4.fromValues(1, 1, 0, 0),
+        'LensflareFxOccScale': vec4.fromValues(1, 1, 0, 0),
         'LensflareFxDirectionScale': vec4.create()
     }
 

@@ -1,9 +1,10 @@
 /* eslint no-unused-vars:0 */
-import {vec3, vec4, quat} from '../../math';
+import {vec3, vec4, quat, util} from '../../math';
 
 /**
  * Tw2CurveKey base class
  *
+ * @property {number|string} id
  * @property {string} name
  * @property {number} time
  * @class
@@ -12,6 +13,7 @@ export class Tw2CurveKey
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
         this.time = 0;
     }
@@ -21,6 +23,7 @@ export class Tw2CurveKey
 /**
  * Tw2Curve base class
  *
+ * @property {number|string} id
  * @property {string} name
  * @class
  */
@@ -28,6 +31,7 @@ export class Tw2Curve
 {
     constructor()
     {
+        this._id = util.generateID();
         this.name = '';
     }
 

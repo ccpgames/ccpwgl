@@ -1,9 +1,10 @@
-import {vec3, quat, mat4, curve} from '../../math';
+import {vec3, quat, mat4, curve, util} from '../../math';
 import {resMan} from '../../core';
 
 /**
  * Tw2WbgTrack
  *
+ * @property {string|number} _id
  * @property {string} name
  * @property {string} geometryResPath
  * @property {Object} geometryRes
@@ -13,6 +14,7 @@ import {resMan} from '../../core';
  */
 export function Tw2WbgTrack()
 {
+    this._id = util.generateID();
     this.name = '';
     this.geometryResPath = '';
     this.geometryRes = null;
@@ -81,6 +83,7 @@ export function Tw2WbgTrack()
 /**
  * Tw2WbgTransformTrack
  *
+ * @property {string|number} _id
  * @property {vec3} translation
  * @property {quat} rotation
  * @property {vec3} scale
@@ -91,6 +94,7 @@ export function Tw2WbgTrack()
  */
 export function Tw2WbgTransformTrack()
 {
+    this._id = util.generateID();
     this.translation = vec3.create();
     this.rotation = quat.create();
     this.rotation[3] = 1;
