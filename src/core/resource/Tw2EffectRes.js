@@ -1,6 +1,6 @@
 import {quat} from '../../math';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2EventEmitter';
+import {emitter} from '../global/Tw2Logger';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2SamplerState} from '../sampler';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';

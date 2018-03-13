@@ -1,6 +1,6 @@
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2EventEmitter';
+import {emitter} from '../global/Tw2Logger';
 import {Tw2Resource} from './Tw2Resource';
 
 /**

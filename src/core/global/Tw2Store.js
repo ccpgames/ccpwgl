@@ -1,5 +1,5 @@
 import {util} from '../../math';
-import {emitter} from './Tw2EventEmitter';
+import {emitter} from './Tw2Logger';
 
 /**
  * Stores engine data

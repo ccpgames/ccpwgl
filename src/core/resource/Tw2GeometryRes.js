@@ -1,7 +1,7 @@
 import {vec3, quat, mat3, mat4} from '../../math';
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2EventEmitter';
+import {emitter} from '../global/Tw2Logger';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';

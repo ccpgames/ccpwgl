@@ -1,4 +1,4 @@
-import {emitter} from './Tw2EventEmitter';
+import {emitter} from './Tw2Logger';
 import {store} from './Tw2Store';
 import {Tw2Resource} from '../resource/Tw2Resource';
 import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';

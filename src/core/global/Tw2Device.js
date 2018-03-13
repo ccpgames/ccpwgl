@@ -1,7 +1,7 @@
 import {vec3, vec4, mat4} from '../../math';
 import {store} from './Tw2Store';
 import {resMan} from './Tw2ResMan';
-import {emitter} from './Tw2EventEmitter';
+import {emitter} from './Tw2Logger';
 import {Tw2Effect} from '../mesh/Tw2Effect';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
 const WebGLDebugUtil = require('webgl-debug');
