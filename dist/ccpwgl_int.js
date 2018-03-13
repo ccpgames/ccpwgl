@@ -10007,14 +10007,19 @@ Tw2TextureParameter.overrideProperties = ['useAllOverrides', 'addressUMode', 'ad
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2SamplerState = Tw2SamplerState;
+exports.Tw2SamplerState = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _Tw2Device = __webpack_require__(2);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Tw2SamplerState
- * @property {number} registerIndex
+ *
  * @property {string} name
+ * @property {number} registerIndex
  * @property {number} minFilter
  * @property {number} maxFilter
  * @property {number} minFilterNoMips
@@ -10025,57 +10030,113 @@ var _Tw2Device = __webpack_require__(2);
  * @property samplerType
  * @property {boolean} isVolume
  * @property {number} hash
- * @constructor
+ * @class
  */
-function Tw2SamplerState() {
-    this.registerIndex = 0;
-    this.name = '';
-    this.minFilter = _Tw2Device.device.gl.LINEAR;
-    this.maxFilter = _Tw2Device.device.gl.LINEAR;
-    this.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
-    this.addressU = _Tw2Device.device.gl.REPEAT;
-    this.addressV = _Tw2Device.device.gl.REPEAT;
-    this.addressW = _Tw2Device.device.gl.REPEAT;
-    this.anisotropy = 1;
-    this.samplerType = _Tw2Device.device.gl.TEXTURE_2D;
-    this.isVolume = false;
-    this.hash = 0;
-}
+var Tw2SamplerState = exports.Tw2SamplerState = function () {
+    function Tw2SamplerState() {
+        _classCallCheck(this, Tw2SamplerState);
+
+        this.name = '';
+        this.registerIndex = 0;
+        this.minFilter = _Tw2Device.device.gl.LINEAR;
+        this.maxFilter = _Tw2Device.device.gl.LINEAR;
+        this.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
+        this.addressU = _Tw2Device.device.gl.REPEAT;
+        this.addressV = _Tw2Device.device.gl.REPEAT;
+        this.addressW = _Tw2Device.device.gl.REPEAT;
+        this.anisotropy = 1;
+        this.samplerType = _Tw2Device.device.gl.TEXTURE_2D;
+        this.isVolume = false;
+        this.hash = 0;
+    }
+
+    /**
+     * Computes the sampler hash
+     */
+
+
+    _createClass(Tw2SamplerState, [{
+        key: 'ComputeHash',
+        value: function ComputeHash() {
+            this.hash = 2166136261;
+            this.hash *= 16777619;
+            this.hash ^= this.minFilter;
+            this.hash *= 16777619;
+            this.hash ^= this.maxFilter;
+            this.hash *= 16777619;
+            this.hash ^= this.addressU;
+            this.hash *= 16777619;
+            this.hash ^= this.addressV;
+            this.hash *= 16777619;
+            this.hash ^= this.anisotropy;
+        }
+
+        /**
+         * Apply
+         * @param {boolean} hasMipMaps
+         */
+
+    }, {
+        key: 'Apply',
+        value: function Apply(hasMipMaps) {
+            var targetType = this.samplerType,
+                d = _Tw2Device.device;
+
+            d.gl.texParameteri(targetType, d.gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : d.gl.CLAMP_TO_EDGE);
+            d.gl.texParameteri(targetType, d.gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : d.gl.CLAMP_TO_EDGE);
+            d.gl.texParameteri(targetType, d.gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
+            d.gl.texParameteri(targetType, d.gl.TEXTURE_MAG_FILTER, this.magFilter);
+            if (d.ext.AnisotropicFilter && d.enableAnisotropicFiltering) {
+                d.gl.texParameterf(targetType, d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
+            }
+        }
+
+        /**
+         * Gets the current filter mode
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetFilterMode',
+        value: function GetFilterMode() {
+            return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
+        }
+
+        /**
+         * Gets the current mip filter mode
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetMipFilterMode',
+        value: function GetMipFilterMode() {
+            return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
+        }
+    }]);
+
+    return Tw2SamplerState;
+}();
 
 /**
- * Computes the sampler hash
- * @prototype
+ * Filter modes
  */
-Tw2SamplerState.prototype.ComputeHash = function () {
-    this.hash = 2166136261;
-    this.hash *= 16777619;
-    this.hash ^= this.minFilter;
-    this.hash *= 16777619;
-    this.hash ^= this.maxFilter;
-    this.hash *= 16777619;
-    this.hash ^= this.addressU;
-    this.hash *= 16777619;
-    this.hash ^= this.addressV;
-    this.hash *= 16777619;
-    this.hash ^= this.anisotropy;
+
+
+Tw2SamplerState.FilterMode = {
+    9728: 1,
+    9729: 2
 };
 
 /**
- * Apply
- * @param {boolean} hasMipMaps
- * @prototype
+ * Mip filter modes
  */
-Tw2SamplerState.prototype.Apply = function (hasMipMaps) {
-    var targetType = this.samplerType;
-    var d = _Tw2Device.device;
-    var gl = d.gl;
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : gl.CLAMP_TO_EDGE);
-    gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : gl.CLAMP_TO_EDGE);
-    gl.texParameteri(targetType, gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
-    gl.texParameteri(targetType, gl.TEXTURE_MAG_FILTER, this.magFilter);
-    if (d.ext.AnisotropicFilter && d.enableAnisotropicFiltering) {
-        gl.texParameterf(targetType, d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
-    }
+Tw2SamplerState.MipFilterMode = {
+    9728: 0,
+    9729: 0,
+    9984: 1,
+    9985: 1,
+    9986: 2,
+    9987: 2
 };
 
 /***/ }),
@@ -12754,9 +12815,9 @@ var particle = _interopRequireWildcard(_particle);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
+exports.math = math;
 var vec4 = math.vec4,
     mat4 = math.mat4;
-exports.math = math;
 
 /**
  * Register globals
@@ -18074,14 +18135,17 @@ util.toArray = function (a) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2SamplerOverride = Tw2SamplerOverride;
+exports.Tw2SamplerOverride = undefined;
 
 var _Tw2Device = __webpack_require__(2);
 
 var _Tw2SamplerState = __webpack_require__(41);
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 /**
  * Tw2SamplerOverride
+ *
  * @property {number} addressU
  * @property {number} addressV
  * @property {number} addressW
@@ -18090,11 +18154,12 @@ var _Tw2SamplerState = __webpack_require__(41);
  * @property {number} lodBias
  * @property {number} maxMipLevel
  * @property {number} maxAnisotropy
- * @constructor
+ * @class
  */
-function Tw2SamplerOverride() {
-    this.name = '';
+var Tw2SamplerOverride = exports.Tw2SamplerOverride = function Tw2SamplerOverride() {
+    _classCallCheck(this, Tw2SamplerOverride);
 
+    this.name = '';
     this.addressU = 0;
     this.addressV = 0;
     this.addressW = 0;
@@ -18107,60 +18172,64 @@ function Tw2SamplerOverride() {
     var sampler = null;
 
     /**
-     * GetSampler
+     * Gets the sampler
      * @param originalSampler
-     * @returns {*}
-     * @method
+     * @returns {Tw2SamplerState}
      */
     this.GetSampler = function (originalSampler) {
         if (!sampler) {
             sampler = new _Tw2SamplerState.Tw2SamplerState();
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
+
             if (this.filter === 1) {
                 switch (this.mipFilter) {
                     case 0:
                         sampler.minFilter = _Tw2Device.device.gl.NEAREST;
                         break;
+
                     case 1:
                         sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_NEAREST;
                         break;
+
                     default:
                         sampler.minFilter = _Tw2Device.device.gl.NEAREST_MIPMAP_LINEAR;
                 }
+
                 sampler.minFilterNoMips = _Tw2Device.device.gl.NEAREST;
             } else {
                 switch (this.mipFilter) {
                     case 0:
                         sampler.minFilter = _Tw2Device.device.gl.LINEAR;
                         break;
+
                     case 1:
                         sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_NEAREST;
                         break;
+
                     default:
                         sampler.minFilter = _Tw2Device.device.gl.LINEAR_MIPMAP_LINEAR;
                 }
+
                 sampler.minFilterNoMips = _Tw2Device.device.gl.LINEAR;
             }
-            if (this.filter === 1) {
-                sampler.magFilter = _Tw2Device.device.gl.NEAREST;
-            } else {
-                sampler.magFilter = _Tw2Device.device.gl.LINEAR;
-            }
-            var wrapModes = [0, _Tw2Device.device.gl.REPEAT, _Tw2Device.device.gl.MIRRORED_REPEAT, _Tw2Device.device.gl.CLAMP_TO_EDGE, _Tw2Device.device.gl.CLAMP_TO_EDGE, _Tw2Device.device.gl.CLAMP_TO_EDGE];
-            sampler.addressU = wrapModes[this.addressU];
-            sampler.addressV = wrapModes[this.addressV];
-            sampler.addressW = wrapModes[this.addressW];
+
             if (this.filter === 3 || this.mipFilter === 3) {
                 sampler.anisotropy = Math.max(this.maxAnisotropy, 1);
             }
+
+            sampler.magFilter = this.filter === 1 ? _Tw2Device.device.gl.NEAREST : _Tw2Device.device.gl.LINEAR;
+            sampler.addressU = _Tw2Device.device.wrapModes[this.addressU];
+            sampler.addressV = _Tw2Device.device.wrapModes[this.addressV];
+            sampler.addressW = _Tw2Device.device.wrapModes[this.addressW];
             sampler.samplerType = originalSampler.samplerType;
             sampler.isVolume = originalSampler.isVolume;
             sampler.ComputeHash();
         }
+
         return sampler;
     };
-}
+};
 
 /***/ }),
 /* 77 */
