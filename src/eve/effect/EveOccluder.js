@@ -5,10 +5,7 @@ import {
     Tw2Effect,
     Tw2VertexDeclaration,
     Tw2VertexElement,
-    Tw2BatchAccumulator,
-    Tw2Vector4Parameter,
-    Tw2Vector3Parameter,
-    Tw2TextureParameter
+    Tw2BatchAccumulator
 } from '../../core';
 
 /**

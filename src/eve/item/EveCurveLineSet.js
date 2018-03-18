@@ -6,7 +6,7 @@ import {
     Tw2RawData,
     Tw2VertexElement,
     Tw2VertexDeclaration,
-    Tw2ForwardingRenderBatch, Tw2TextureParameter
+    Tw2ForwardingRenderBatch
 } from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 

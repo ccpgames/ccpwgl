@@ -789,7 +789,7 @@ export class Tw2AnimationController
         {
             for (let i = 0; i < resource.meshes.length; ++i)
             {
-                Tw2GeometryRes.BindMeshToModel(resource.meshes[i], animationController.geometryResources[0].models[0]);
+                Tw2GeometryRes.BindMeshToModel(resource.meshes[i], animationController.geometryResources[0].models[0], resource);
             }
             resource.models.push(animationController.geometryResources[0].models[0]);
         }

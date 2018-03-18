@@ -1081,7 +1081,7 @@ export class Tw2Device
             }
             catch (err)
             {
-
+                /* eslint-disable-line no-empty */
             }
         }
         return null;
@@ -1099,7 +1099,6 @@ let timeOuts;
 /**
  * Requests and animation frame
  * @param {Function} callback
- * @param {HTMLElement} element
  * @returns {number} id
  */
 Tw2Device.RequestAnimationFrame = (function ()
@@ -1110,16 +1109,16 @@ Tw2Device.RequestAnimationFrame = (function ()
         window['mozRequestAnimationFrame'] ||
         window['oRequestAnimationFrame'] ||
         window['msRequestAnimationFrame'] ||
-        function (/* function FrameRequestCallback */ callback, /* DOMElement Element */ element)
+        function (callback)
         {
             if (!timeOuts) timeOuts = [];
             timeOuts.push(window.setTimeout(callback, 1000 / 60));
             return timeOuts.length - 1;
         };
 
-    return function RequestAnimationFrame(callback, element)
+    return function RequestAnimationFrame(callback)
     {
-        return requestFrame(callback, element);
+        return requestFrame(callback);
     };
 
 })();

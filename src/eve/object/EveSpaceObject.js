@@ -522,3 +522,5 @@ export class EveSpaceObject extends EveObject
         this.animation.RenderDebugInfo(debugHelper);
     }
 }
+
+export { EveSpaceObject as EveStation };

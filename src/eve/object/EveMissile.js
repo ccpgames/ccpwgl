@@ -128,7 +128,7 @@ export class EveMissileWarhead extends EveObject
         if (this.state === EveMissileWarhead.State.IN_FLIGHT)
         {
             const
-                g = EveMissile.global,
+                g = EveMissileWarhead.global,
                 position = mat4.getTranslation(g.vec3_0, this.transform),
                 tmp = g.vec3_1,
                 x = g.vec3_2,
@@ -315,7 +315,7 @@ export class EveMissile
     Update(dt)
     {
         const
-            tmp = vec3.subtract(EveMissile.global.vec3_0, this.target, this.position),
+            tmp = vec3.subtract(EveMissileWarhead.global.vec3_0, this.target, this.position),
             distance = vec3.length(tmp);
 
         if (distance > 0.1)

@@ -18,7 +18,8 @@ const {vec4, mat4} = math;
 core.store.Register({
 
     paths: {
-        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
+        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/',
+        'cdn': 'https://developers.eveonline.com/res/'
     },
 
     extensions: {
@@ -26,7 +27,10 @@ core.store.Register({
         'sm_lo': core.Tw2EffectRes,
         'wbg': core.Tw2GeometryRes,
         'png': core.Tw2TextureRes,
-        'cube': core.Tw2TextureRes
+        'cube': core.Tw2TextureRes,
+        'mp4' : core.Tw2VideoRes,
+        'ogg' : core.Tw2VideoRes,
+        'webm' : core.Tw2VideoRes
     },
 
     constructors: [

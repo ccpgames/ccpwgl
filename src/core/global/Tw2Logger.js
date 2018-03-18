@@ -68,13 +68,13 @@ export class Tw2Logger extends Tw2EventEmitter
 
             if (log.path)
             {
-                body += `'${log.path}'`;
+                body += ` '${log.path}'`;
                 if ('time' in log) body += ` in ${log.time.toFixed(3)} secs`;
             }
 
             if (log.value !== undefined || log.type)
             {
-                body += '(';
+                body += ' (';
                 if (log.type) body += log.type;
                 if (log.type && log.value !== undefined) body += ':';
                 if (log.value !== undefined) body += log.value;
