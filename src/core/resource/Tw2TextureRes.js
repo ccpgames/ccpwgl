@@ -1,6 +1,6 @@
 import {resMan} from '../global/Tw2ResMan';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2Logger';
+import {logger} from '../global/Tw2Logger';
 import {Tw2Resource} from './Tw2Resource';
 
 /**
@@ -90,8 +90,7 @@ export class Tw2TextureRes extends Tw2Resource
      */
     DoCustomLoad(path)
     {
-        path = resMan.BuildUrl(path);
-        const ext = Tw2TextureRes.GetPathExt(path);
+        const ext = resMan.constructor.GetPathExt(path);
         switch (ext)
         {
             case 'cube':
@@ -118,7 +117,7 @@ export class Tw2TextureRes extends Tw2Resource
         this.images[0].onerror = () =>
         {
             resMan._pendingLoads--;
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2TextureRes', 'DoCustomLoad'],
                 msg: 'Error loading resource',
@@ -203,27 +202,6 @@ export class Tw2TextureRes extends Tw2Resource
         {
             sampler.Apply(this.hasMipMaps);
             this._currentSampler = sampler.hash;
-        }
-    }
-
-    /**
-     * Gets a path extension
-     * @param {string} path
-     * @returns {?string}
-     */
-    static GetPathExt(path)
-    {
-        if (path.substr(0, 5) === 'str:/')
-        {
-            const slash = path.indexOf('/', 5);
-            if (slash === -1) return null;
-            return path.substr(5, slash - 5);
-        }
-        else
-        {
-            const dot = path.lastIndexOf('.');
-            if (dot === -1) return null;
-            return path.substr(dot + 1);
         }
     }
 

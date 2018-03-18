@@ -3,7 +3,6 @@ import {util} from '../../math';
 
 /**
  * Event log
- *
  * @typedef {*} eventLog
  * @property {string} log       - Desired console output type
  * @property {string} msg       - A message to log
@@ -20,6 +19,7 @@ import {util} from '../../math';
 /**
  * Handles basic event logging
  *
+ * @param {string} [name='']          - The logger's name
  * @property {string} name            - The name of the logger and it's prefix
  * @property {{}} visible             - Visibility options
  * @property {boolean} visible.log    - Toggles console log output
@@ -34,10 +34,10 @@ import {util} from '../../math';
  */
 export class Tw2Logger extends Tw2EventEmitter
 {
-    constructor()
+    constructor(name='')
     {
         super();
-        this.name = 'CCPWGL';
+        this.name = name;
         this.display = true;
         this.visible = {};
         this.visible.log = true;
@@ -47,8 +47,6 @@ export class Tw2Logger extends Tw2EventEmitter
         this.visible.error = true;
         this.maxLogs = 100;
         this._logs = [];
-
-        Tw2EventEmitter.logger = this;
     }
 
     /**
@@ -115,7 +113,7 @@ export class Tw2Logger extends Tw2EventEmitter
     /**
      * Gets an array of logs
      * @param {number} [count]
-     * @returns {Array}
+     * @returns {Array<eventLog>}
      */
     GetLogs(count)
     {
@@ -147,4 +145,10 @@ Tw2Logger.Type = {
     DEBUG: 'debug'
 };
 
-export const emitter = new Tw2Logger();
+export const logger = new Tw2Logger('CCPWGL');
+
+/**
+ * The default event logger logger
+ * @type {Tw2Logger}
+ */
+Tw2EventEmitter.logger = logger;

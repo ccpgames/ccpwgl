@@ -2,10 +2,6 @@ CCP WebGL Library
 ======
 An implementation of CCP Games graphics engine in webgl
 
-Latest News
----
-The library is currently in the process of being converted to es6
-
 Core files
 -----
 * `dist/ccpwgl_int.js`      - ccp webgl core library

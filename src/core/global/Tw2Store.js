@@ -1,5 +1,5 @@
 import {util} from '../../math';
-import {emitter} from './Tw2Logger';
+import {logger} from './Tw2Logger';
 
 /**
  * Stores engine data
@@ -418,7 +418,7 @@ class Tw2Store
                 {
                     store._missing[type].push(key);
 
-                    emitter.log('store.warning', {
+                    logger.log('store.warning', {
                         log: 'warning',
                         msg: `Missing ${singular}: '${key}'`
                     });
@@ -451,7 +451,7 @@ class Tw2Store
 
                 if (!existing)
                 {
-                    emitter.log('store.registered', {
+                    logger.log('store.registered', {
                         log: 'debug',
                         msg: `Registered ${singular}: '${key}'`,
                         hide: true
@@ -459,7 +459,7 @@ class Tw2Store
                 }
                 else
                 {
-                    emitter.log('store.registered', {
+                    logger.log('store.registered', {
                         log: 'debug',
                         msg: `Re-registered ${singular}: '${key}'`,
                         data: {

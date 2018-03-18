@@ -160,3 +160,17 @@ export class Tw2Resource
         }
     }
 }
+
+/**
+ * An optional function for when the resource handles it's own loading
+ * -  If the method returns false then the resource manager will handle the http request
+ * @type {?Function}
+ * @returns {boolean}
+ */
+Tw2Resource.prototype.DoCustomLoad = null;
+
+/**
+ * HTTP request response type
+ * @type {null}
+ */
+Tw2Resource.prototype.requestResponseType = null;

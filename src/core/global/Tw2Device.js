@@ -1,6 +1,6 @@
 import {vec3, vec4, mat4} from '../../math';
 import {store} from './Tw2Store';
-import {emitter} from './Tw2Logger';
+import {logger} from './Tw2Logger';
 import {resMan} from './Tw2ResMan';
 import {Tw2Effect} from '../mesh/Tw2Effect';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
@@ -244,7 +244,7 @@ export class Tw2Device
             this.gl = this.utils.makeDebugContext(gl);
         }
 
-        emitter.log('webgl', {
+        logger.log('webgl', {
             log: 'warn',
             type: 'Context created',
             value: this.glVersion

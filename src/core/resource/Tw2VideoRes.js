@@ -1,8 +1,7 @@
 import {device} from '../global/Tw2Device';
 import {resMan} from '../global/Tw2ResMan';
-import {emitter} from '../global/Tw2Logger';
+import {logger} from '../global/Tw2Logger';
 import {Tw2Resource} from './Tw2Resource';
-import {Tw2TextureRes} from './Tw2TextureRes';
 
 /**
  * Tw2VideoRes
@@ -134,8 +133,7 @@ export class Tw2VideoRes extends Tw2Resource
      */
     DoCustomLoad(path)
     {
-        path = resMan.BuildUrl(path);
-        const ext = Tw2TextureRes.GetPathExt(path);
+        const ext = resMan.constructor.GetPathExt(path);
         this.LoadStarted();
         resMan._pendingLoads++;
 
@@ -149,7 +147,7 @@ export class Tw2VideoRes extends Tw2Resource
         this.video.onerror = () =>
         {
             resMan._pendingLoads--;
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2TextureRes', 'DoCustomLoad'],
                 msg: 'Error loading resource',

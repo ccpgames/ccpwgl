@@ -1,6 +1,6 @@
 import {quat} from '../../math';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2Logger';
+import {logger} from '../global/Tw2Logger';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2SamplerState} from '../sampler';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
@@ -57,7 +57,7 @@ export class Tw2EffectRes extends Tw2Resource
         const version = reader.ReadUInt32();
         if (version < 2 || version > 5)
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
                 msg: 'Invalid version of effect file',
@@ -79,7 +79,7 @@ export class Tw2EffectRes extends Tw2Resource
             headerSize = reader.ReadUInt32();
             if (headerSize === 0)
             {
-                emitter.log('res.error', {
+                logger.log('res.error', {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CreateProgram'],
                     msg: 'File contains no compiled effects',
@@ -122,7 +122,7 @@ export class Tw2EffectRes extends Tw2Resource
             headerSize = reader.ReadUInt32();
             if (headerSize === 0)
             {
-                emitter.log('res.error', {
+                logger.log('res.error', {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CreateProgram'],
                     msg: 'File contains no compiled effects',
@@ -555,7 +555,7 @@ export class Tw2EffectRes extends Tw2Resource
 
         if (!d.gl.getShaderParameter(shader, d.gl.COMPILE_STATUS))
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CompileShader'],
                 msg: 'Error compiling shader',
@@ -590,7 +590,7 @@ export class Tw2EffectRes extends Tw2Resource
 
         if (!d.gl.getProgramParameter(program.program, d.gl.LINK_STATUS))
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
                 msg: 'Error linking shaders',

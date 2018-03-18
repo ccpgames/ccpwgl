@@ -1,6 +1,6 @@
 import {vec3, quat, mat3, mat4} from '../../math';
 import {device} from '../global/Tw2Device';
-import {emitter} from '../global/Tw2Logger';
+import {logger} from '../global/Tw2Logger';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
@@ -326,7 +326,7 @@ export class Tw2GeometryRes extends Tw2Resource
 
             if (!bone)
             {
-                emitter.log('res.error', {
+                logger.log('res.error', {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'BindMeshToModel'],
                     msg: 'Mesh has invalid bone name for model',
@@ -434,7 +434,7 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('res.error', {
+                logger.log('res.error', {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
                     msg: 'Error binding mesh to effect',
@@ -517,7 +517,7 @@ export class Tw2GeometryRes extends Tw2Resource
             let passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('res.error', {
+                logger.log('res.error', {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
                     msg: 'Error binding mesh to effect',
@@ -762,7 +762,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     default:
-                        emitter.log('res.error', {
+                        logger.log('res.error', {
                             log: 'error',
                             src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
                             msg: 'Error loading wbg data',
@@ -836,7 +836,6 @@ export class Tw2GeometryRes extends Tw2Resource
         return curve;
     }
 }
-
 
 /**
  * Request Response Type

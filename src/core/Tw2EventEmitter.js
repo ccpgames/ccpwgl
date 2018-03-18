@@ -6,9 +6,7 @@ const PRIVATE = new WeakMap();
 
 /**
  * Tw2EventEmitter
- *
- * @param {*} [parentEmitter] an option emitter that will re publish any events with the emitter's type prefixed
- * @property {string} uuid
+ * @class
  */
 export class Tw2EventEmitter
 {

@@ -1,4 +1,4 @@
-import {emitter} from '../global/Tw2Logger';
+import {logger} from '../global/Tw2Logger';
 import {store} from '../global/Tw2Store';
 import {Tw2BinaryReader} from './Tw2BinaryReader';
 
@@ -37,7 +37,7 @@ export class Tw2ObjectReader
     {
         if (!Tw2ObjectReader.IsValidXML(this.xmlNode))
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'error',
                 src: ['Tw2ObjectReader', 'constructor'],
                 msg: 'Invalid Binary',
@@ -99,7 +99,7 @@ export class Tw2ObjectReader
         const Constructor = store.GetConstructor(data.type);
         if (!Constructor)
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'throw',
                 src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
                 msg: 'Object with undefined type',
@@ -116,7 +116,7 @@ export class Tw2ObjectReader
         }
         catch (e)
         {
-            emitter.log('res.error', {
+            logger.log('res.error', {
                 log: 'throw',
                 src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
                 msg: 'Error instantiating constructor',
