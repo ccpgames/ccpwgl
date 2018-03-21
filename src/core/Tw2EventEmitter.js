@@ -40,7 +40,7 @@ export class Tw2EventEmitter
                 function (value, key)
                 {
                     key.call(value.context, e);
-                    if (key.once) events[eventName].delete(key);
+                    if (value.once) events[eventName].delete(key);
                 }
             );
         }
