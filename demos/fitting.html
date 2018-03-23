@@ -10,13 +10,16 @@
     <script type="text/javascript" src="demos.js"></script>
 
     <script type="text/javascript">
+
+        var camera, scene, ship;
+
         $(document).ready(function ()
         {
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            var camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
-            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
@@ -91,7 +94,7 @@
                 catch (e)
                 {
                 }
-                var obj = scene.loadShip(dna, shipLoaded);
+                ship = scene.loadShip(dna, shipLoaded);
             }
 
             softree($('.sof-tree'), $('#dna'), loadDna, function filter(parents)
