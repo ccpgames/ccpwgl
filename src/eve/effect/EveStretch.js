@@ -93,6 +93,21 @@ export class EveStretch
     }
 
     /**
+     * Gets the stretches resources
+     * @param {Array} [out=[]]
+     * @return {Array<Tw2Resource>} out
+     */
+    GetResources(out=[])
+    {
+        if (this.source && this.source.GetResources) this.source.GetResources(out);
+        if (this.dest && this.dest.GetResources) this.dest.GetResources(out);
+        if (this.sourceObject && this.sourceObject.GetResources) this.sourceObject.GetResources(out);
+        if (this.destObject && this.destObject.GetResources) this.destObject.GetResources(out);
+        if (this.stretchObject && this.stretchObject.GetResources) this.stretchObject.GetResources(out);
+        return out;
+    }
+
+    /**
      * Updates view dependent data
      */
     UpdateViewDependentData()

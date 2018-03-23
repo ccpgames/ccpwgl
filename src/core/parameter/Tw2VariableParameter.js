@@ -1,54 +1,82 @@
-import {variableStore} from '../global/Tw2VariableStore';
+import {store} from '../global/Tw2Store';
+import {Tw2Parameter} from './Tw2Parameter';
 
 /**
  * Tw2VariableParameter
- * @param {string} [name=''] Parameter name
+ *
+ * @param {string} [name='']
  * @param {string} [variableName='']
- * @property {string} name
  * @property {string} variableName
- * @constructor
+ * @class
  */
-export function Tw2VariableParameter(name, variableName)
+export class Tw2VariableParameter extends Tw2Parameter
 {
-    if (typeof(name) !== 'undefined')
+    constructor(name = '', variableName = '')
     {
-        this.name = name;
-    }
-    else
-    {
-        this.name = '';
-    }
-    if (typeof(variableName) !== 'undefined')
-    {
+        super(name);
         this.variableName = variableName;
     }
-    else
+
+    /**
+     * Gets the linked variable
+     * @returns {Tw2Parameter}
+     */
+    get variable()
     {
-        this.variableName = '';
+        return store.GetVariable(this.variableName);
+    }
+
+    /**
+     * Gets the linked variable's size
+     * @returns {number}
+     */
+    get size()
+    {
+        return this.variable ? this.variable.size : 0;
+    }
+
+    /**
+     * Gets the variable's value
+     * @param {boolean} [serialize]
+     * @returns {?*}
+     */
+    GetValue(serialize)
+    {
+        return store.GetVariableValue(this.variableName, serialize);
+    }
+
+    /**
+     * Apply
+     * @param {*} a
+     * @param {*} b
+     * @param {*} c
+     */
+    Apply(a, b, c)
+    {
+        if (this.variable)
+        {
+            this.variable.Apply(a, b, c);
+        }
+    }
+
+    /**
+     * Not implemented for Variable Parameters
+     * @returns {boolean} true if successful
+     */
+    AddCallback()
+    {
+        return false;
+    }
+
+    /**
+     * Copies another variable parameter's value
+     * @param {Tw2VariableParameter} parameter
+     * @param {boolean} [includeName]
+     */
+    Copy(parameter, includeName)
+    {
+        if (includeName) this.name = parameter.name;
+        this.variableName = parameter.variableName;
     }
 }
 
-/**
- * Bind
- * @returns {boolean}
- * @prototype
- */
-Tw2VariableParameter.prototype.Bind = function()
-{
-    return false;
-};
-
-/**
- * Apply
- * @param {Float32Array} constantBuffer
- * @param {number} offset
- * @param {number} size
- * @prototype
- */
-Tw2VariableParameter.prototype.Apply = function(constantBuffer, offset, size)
-{
-    if (typeof(variableStore._variables[this.variableName]) !== 'undefined')
-    {
-        variableStore._variables[this.variableName].Apply(constantBuffer, offset, size);
-    }
-};

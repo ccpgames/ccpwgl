@@ -1,82 +1,140 @@
+import { util } from '../../math';
+
 /**
- * Stores raw data for {@link Tw2PerObjectData} perObject objects and {@link EveSpaceScene} perFrame objects
+ * Stores raw data for {@link Tw2PerObjectData}
+ *
+ * @param {{string:Float32Array|Array|number}} [declarations] An optional object containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
- * @property {Object} elements
- * @property {String} elements.offset
- * @property {number} elements.size
- * @property {Array|null} elements.array
- * @constructor
+ * @property {*} elements
+ * @class
  */
-export function Tw2RawData()
+export class Tw2RawData
 {
-    this.nextOffset = 0;
-    this.data = null;
-    this.elements = {};
-}
-
-/**
- * Declares a raw data element
- * @param {String} name
- * @param {number} size
- * @prototype
- */
-Tw2RawData.prototype.Declare = function(name, size)
-{
-    this.elements[name] = {
-        'offset': this.nextOffset,
-        'size': size,
-        'array': null
-    };
-    this.nextOffset += size;
-};
-
-/**
- * Create
- * @prototype
- */
-Tw2RawData.prototype.Create = function()
-{
-    this.data = new Float32Array(this.nextOffset);
-    for (var el in this.elements)
+    constructor(declarations)
     {
-        if (this.elements.hasOwnProperty(el))
+        this.nextOffset = 0;
+        this.data = null;
+        this.elements = {};
+
+        if (declarations)
         {
-            this.elements[el].array = this.data.subarray(this.elements[el].offset, this.elements[el].offset + this.elements[el].size);
+            this.DeclareFromObject(declarations);
         }
     }
-};
 
-/**
- * Sets a element value
- * @param {string} name
- * @param {Float32Array} value
- * @prototype
- */
-Tw2RawData.prototype.Set = function(name, value)
-{
-    var el = this.elements[name];
-    this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
-};
+    /**
+     * Sets a element value
+     * @param {string} name
+     * @param {Float32Array|Array} value
+     */
+    Set(name, value)
+    {
+        const el = this.elements[name];
+        this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
+    }
 
-/**
- * Gets an element's array value
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.Get = function(name)
-{
-    return this.elements[name].array;
-};
+    /**
+     * Gets an element's array value
+     * @param {string} name
+     * @return {Float32Array}
+     */
+    Get(name)
+    {
+        return this.elements[name].array;
+    }
 
-/**
- * Gets an element's array value from the share data array
- * @param {string} name
- * @return {Float32Array}
- * @prototype
- */
-Tw2RawData.prototype.GetData = function(name)
-{
-    return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
-};
+    /**
+     * Gets an element's array value from the share data array
+     * @param {string} name
+     * @return {Float32Array}
+     */
+    GetData(name)
+    {
+        return this.data.subarray(this.elements[name].offset, this.elements[name].offset + this.elements[name].array.length);
+    }
+
+    /**
+     * Creates the raw data element arrays
+     */
+    Create()
+    {
+        this.data = new Float32Array(this.nextOffset);
+        for (let name in this.elements)
+        {
+            if (this.elements.hasOwnProperty(name))
+            {
+                const el = this.elements[name];
+                el.array = this.data.subarray(el.offset, el.offset + el.size);
+
+                if (el.value !== null)
+                {
+                    if (el.size === 1)
+                    {
+                        el.array[0] = el.value;
+                    }
+                    else
+                    {
+                        for (let i = 0; i < el.size; i++)
+                        {
+                            el.array[i] = el.value[i];
+                        }
+                    }
+                    el.value = null;
+                }
+            }
+        }
+    }
+
+    /**
+     * Declares a raw data element
+     * @param {String} name
+     * @param {number} size
+     * @param {!|number|Array|Float32Array} [value=null] optional value to set on raw data creation
+     */
+    Declare(name, size, value=null)
+    {
+        this.elements[name] = {
+            offset: this.nextOffset,
+            size: size,
+            array: null,
+            value: value
+        };
+
+        this.nextOffset += size;
+    }
+
+    /**
+     * Declares raw data from an object and then creates the elements
+     * @param {{string:Float32Array|Array|number}} declarations
+     */
+    DeclareFromObject(declarations = {})
+    {
+        for (let name in declarations)
+        {
+            if (declarations.hasOwnProperty(name))
+            {
+                const value = declarations[name];
+
+                if (typeof value === 'number')
+                {
+                    this.Declare(name, 1, value);
+                }
+                else if (util.isArrayLike(value))
+                {
+                    if (value.length === 1)
+                    {
+                        this.Declare(name, value.length, value);
+                    }
+                }
+                else
+                {
+                    throw new Error(`Invalid declaration type: ${typeof value}`);
+                }
+            }
+        }
+
+        this.Create();
+    }
+
+}

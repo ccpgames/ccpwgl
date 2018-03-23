@@ -348,7 +348,7 @@ export class EveSpaceObject extends EveObject
             radii[1] = this.shapeEllipsoidRadius[1];
             radii[2] = this.shapeEllipsoidRadius[2];
         }
-        else if (this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
+        else if (this.mesh && this.mesh.IsGood())
         {
             vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
             vec3.scale(center, center, 0.5 * 1.732050807);
@@ -503,7 +503,7 @@ export class EveSpaceObject extends EveObject
                 }
             }
 
-            if (show.overlayEffects)
+            if (show.overlayEffects && this.mesh && this.mesh.IsGood())
             {
                 for (let i = 0; i < this.overlayEffects.length; i++)
                 {
@@ -522,3 +522,5 @@ export class EveSpaceObject extends EveObject
         this.animation.RenderDebugInfo(debugHelper);
     }
 }
+
+export { EveSpaceObject as EveStation };

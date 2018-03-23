@@ -16,7 +16,7 @@ import { vec3, quat, mat4, util } from '../../math';
  * @property {mat4} localTransform
  * @property {mat4} worldTransform
  * @property {mat4} worldTransformLast
- * @property {?|EveBasicPerObjectData|Tw2PerObjectData} _perObjectData
+ * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
  * @class
  */
 export class EveChild

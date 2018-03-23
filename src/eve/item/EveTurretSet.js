@@ -392,7 +392,7 @@ export class EveTurretSet extends EveObjectSet
     RebuildCachedData()
     {
         const
-            instancedElement = new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 2),
+            instancedElement = new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 2),
             meshes = this.geometryResource.meshes,
             active = this.activeAnimation,
             inactive = this.inactiveAnimation;
@@ -696,7 +696,7 @@ export class EveTurretSet extends EveObjectSet
      */
     Render(batch, effect = this.turretEffect)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._visibleItems.length) return false;
+        if (!effect || !effect.IsGood() || !this._visibleItems.length) return false;
 
         let index = 0;
         const customSetter = function (el)
@@ -708,7 +708,7 @@ export class EveTurretSet extends EveObjectSet
         for (let i = 0; i < this.geometryResource.meshes.length; ++i)
         {
             const decl = this.geometryResource.meshes[i].declaration;
-            decl.FindUsage(Tw2VertexDeclaration.DECL_TEXCOORD, 1).customSetter = customSetter;
+            decl.FindUsage(Tw2VertexDeclaration.Type.TEXCOORD, 1).customSetter = customSetter;
         }
 
         let rendered = 0;

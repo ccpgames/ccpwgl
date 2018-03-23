@@ -1,9 +1,13 @@
 /**
  * Tw2Float
+ *
  * @property {number} value
- * @constructor
+ * @class
  */
-export function Tw2Float()
+export class Tw2Float
 {
-    this.value = 0;
+    constructor()
+    {
+        this.value = 0;
+    }
 }

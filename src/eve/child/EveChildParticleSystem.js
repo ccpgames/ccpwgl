@@ -1,6 +1,5 @@
 import {mat4} from '../../math';
-import {Tw2RawData} from '../../core';
-import {EveBasicPerObjectData} from '../EveBasicPerObjectData';
+import {Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveChild} from './EveChild';
 
 /**
@@ -9,7 +8,7 @@ import {EveChild} from './EveChild';
  * @property {Tw2Mesh} mesh
  * @property {Array<Tw2ParticleEmitter>} particleEmitters
  * @property {Array<Tw2ParticleSystem>} particleSystems
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 export class EveChildParticleSystem extends EveChild
@@ -20,7 +19,7 @@ export class EveChildParticleSystem extends EveChild
         this.mesh = null;
         this.particleEmitters = [];
         this.particleSystems = [];
-        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData = new Tw2BasicPerObjectData();
         this._perObjectData.perObjectFFEData = new Tw2RawData();
         this._perObjectData.perObjectFFEData.Declare('world', 16);
         this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);

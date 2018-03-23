@@ -1,5 +1,5 @@
 import {vec3, vec4, mat4, util} from '../../math';
-import {device, variableStore, Tw2TextureRes, Tw2RenderTarget} from '../../core';
+import {device, store, Tw2TextureRes, Tw2RenderTarget} from '../../core';
 import {EveOccluder} from './EveOccluder';
 
 /**
@@ -178,12 +178,7 @@ export class EveLensflare
 
         this.backgroundOcclusionIntensity = this.occlusionIntensity;
 
-        const occlusion = variableStore._variables['LensflareFxOccScale'].value;
-        occlusion[0] = this.occlusionIntensity;
-        occlusion[1] = this.occlusionIntensity;
-        occlusion[2] = 0;
-        occlusion[3] = 0;
-
+        store.SetVariableValue('LensflareFxOccScale', [ this.occlusionIntensity, this.occlusionIntensity, 0, 0 ]);
         g.occludedLevelIndex = (g.occludedLevelIndex + 1) % g.occluderLevels.length;
     }
 
@@ -253,14 +248,9 @@ export class EveLensflare
         mat4.scale(scaleMat, scaleMat, [this.occlusionIntensity, this.occlusionIntensity, 1]);
         //mat4.multiply(scaleMat, scaleMat, this._transform);
 
-        const
-            dir = this._direction,
-            dirScale = variableStore._variables['LensflareFxDirectionScale'].value;
+        const dir = this._direction;
 
-        dirScale[0] = dir[0];
-        dirScale[1] = dir[1];
-        dirScale[2] = dir[2];
-        dirScale[3] = 1;
+        store.SetVariableValue('LensflareFxDirectionScale', [ dir[0], dir[1], dir[2], 1 ]);
 
         vec4.set(dist, dir[0], dir[1], dir[2], 0);
         vec4.transformMat4(dist, dist, device.view);
@@ -316,11 +306,6 @@ export class EveLensflare
     {
         if (!EveLensflare.global)
         {
-            variableStore.RegisterVariables({
-                LensflareFxOccScale: vec4.fromValues(1,1,0,0),
-                LensflareFxDirectionScale: vec4.create()
-            });
-
             const g = EveLensflare.global = {};
             g.vec3_0 = vec3.create();
             g.vec3_1 = vec3.create();

@@ -1,12 +1,10 @@
-import {resMan} from '../../core';
-import {emitter} from '../../core';
+import {resMan, logger} from '../../core';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**
  * Tw2StaticEmitter
  *
  * @property {string} name
- * @property {null|Tw2ParticleSystem} particleSystem
  * @property {string} geometryResourcePath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Number} geometryIndex
@@ -19,7 +17,6 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
     constructor()
     {
         super();
-        this.particleSystem = null;
         this.geometryResourcePath = '';
         this.geometryResource = null;
         this.geometryIndex = 0;
@@ -82,7 +79,7 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
                 if (input === null)
                 {
-                    emitter.log('res.error', {
+                    logger.log('res.error', {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],
                         msg: 'Input geometry mesh lacks element required by particle system',
@@ -99,19 +96,18 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
                 if (input.elements < d.elements)
                 {
-                    emitter.log('res.error', {
+                    logger.log('res.error', {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],
                         msg: 'Input geometry mesh elements do not have the required number of components',
                         path: this.geometryResource.path,
                         type: 'geometry.elementcomponents',
-                        data:
-                            {
-                                inputCount: input.elements,
-                                elementCount: d.elements,
-                                elementUsage: d.usage,
-                                elementUsageIndex: d.usageIndex
-                            }
+                        data: {
+                            inputCount: input.elements,
+                            elementCount: d.elements,
+                            elementUsage: d.usage,
+                            elementUsageIndex: d.usageIndex
+                        }
                     });
                     return;
                 }

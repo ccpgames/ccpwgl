@@ -1,5 +1,5 @@
 import {vec3, vec4, quat, mat4, util} from '../math';
-import {device, resMan, variableStore, Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
+import {device, resMan, store, Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
 
 /**
  * EveSpaceScene
@@ -60,9 +60,9 @@ export class EveSpaceScene
         this.visible.planets = true;
         this.visible.fog = true;
         this.visible.clearColor = true;
-        this.visible.reflection = true;
-        this.visible.diffuse = true;
-        this.visible.blur = true;
+        this.visible.environmentReflection = true;
+        this.visible.environmentDiffuse = true;
+        this.visible.environmentBlur = true;
 
         Object.defineProperty(this.visible, 'environment', {
             get: () => { return this.backgroundRenderingEnabled; },
@@ -473,7 +473,8 @@ export class EveSpaceScene
             d = device,
             g = EveSpaceScene.global,
             envMapTransform = g.mat4_2,
-            sunDir = g.vec3_0;
+            sunDir = g.vec3_0,
+            show = this.visible;
 
         mat4.fromQuat(envMapTransform, this.envMapRotation);
         mat4.scale(envMapTransform, envMapTransform, this.envMapScaling);
@@ -519,11 +520,16 @@ export class EveSpaceScene
         PSData.Get('ProjectionToView')[1] = -d.projection[10] - 1;
         d.perFramePSData = PSData;
 
-        const {EveSpaceSceneEnvMap, EnvMap1, EnvMap2, EnvMap3} = variableStore._variables;
-        EveSpaceSceneEnvMap.textureRes = this.envMapRes && this.visible.reflection ? this.envMapRes : g.emptyTexture;
-        EnvMap1.textureRes = this.envMap1Res && this.visible.diffuse ? this.envMap1Res : g.emptyTexture;
-        EnvMap2.textureRes = this.envMap2Res && this.visible.blur ? this.envMap2Res : g.emptyTexture;
-        EnvMap3.textureRes = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
+        const
+            envMap = this.envMapRes && show.environmentReflection ? this.envMapRes : g.emptyTexture,
+            envMap1 = this.envMap1Res && show.environmentDiffuse ? this.envMap1Res : g.emptyTexture,
+            envMap2 = this.envMap2Res && show.environmentBlur ? this.envMap2Res : g.emptyTexture,
+            envMap3 = this.envMap3Res ? this.envMap3Res : g.emptyTexture;
+
+        store.GetVariable('EveSpaceSceneEnvMap').SetTextureRes(envMap);
+        store.GetVariable('EnvMap1').SetTextureRes(envMap1);
+        store.GetVariable('EnvMap2').SetTextureRes(envMap2);
+        store.GetVariable('EnvMap3').SetTextureRes(envMap3);
     }
 
     /**
@@ -533,14 +539,6 @@ export class EveSpaceScene
     {
         if (!EveSpaceScene.global)
         {
-            variableStore.RegisterVariables({
-                'EveSpaceSceneEnvMap': '',
-                'EnvMap1': '',
-                'EnvMap2': '',
-                'EnvMap3': '',
-                'ShadowLightness': 0,
-            });
-
             EveSpaceScene.global = {
                 vec3_0: vec3.create(),
                 vec4_0: vec4.create(),

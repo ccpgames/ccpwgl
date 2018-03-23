@@ -1,6 +1,26 @@
 export const util = {};
 
 /**
+ * Adds arguments to an array if they don't already exist in it
+ * @param {Array} arr
+ * @param args
+ * @returns {boolean} true if something was added
+ */
+util.addToArray = function(arr, ...args)
+{
+    let added = false;
+    for (let i = 0; i < args.length; i++)
+    {
+        if (arr.indexOf(args[i]) !== -1)
+        {
+            arr.push(args[i]);
+            added = true;
+        }
+    }
+    return added;
+};
+
+/**
  * Assigns property values if they exist in a source object
  * - Typed arrays are cloned/ copied to ensure no pass-by-reference errors
  *
@@ -18,9 +38,9 @@ util.assignIfExists = function (dest, src, attrs)
         const attr = attrs[i];
         if (src[attr] !== undefined)
         {
-            if (util.isTyped(dest[attr]) || !dest[attr] && util.isTyped(src[attr]))
+            if (util.isTyped(dest[attr]))
             {
-                if (!dest[attr] || dest[attr].length !== src[attr].length)
+                if (dest[attr].length !== src[attr].length)
                 {
                     dest[attr] = new dest[attr]['constructor'](src[attr]);
                 }
@@ -28,6 +48,10 @@ util.assignIfExists = function (dest, src, attrs)
                 {
                     dest[attr].set(src[attr]);
                 }
+            }
+            else if (util.isTyped(src[attr]))
+            {
+                dest[attr] = new src[attr]['constructor'](src[attr]);
             }
             else
             {
@@ -189,6 +213,27 @@ util.perArrayChild = function (arr, func, ...args)
     {
         if (func in arr) arr[i][func](...args);
     }
+};
+
+/**
+ * Removes arguments from an array if they exist in it
+ * @param {Array} arr
+ * @param args
+ * @returns {boolean} true if something was removed
+ */
+util.removeFromArray = function(arr, ...args)
+{
+    let removed = false;
+    for (let i = 0; i < args.length; i++)
+    {
+        const index = arr.indexOf(args[i]);
+        if (index !== -1)
+        {
+            arr.splice(index, 1);
+            removed = true;
+        }
+    }
+    return removed;
 };
 
 /**

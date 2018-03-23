@@ -6,7 +6,7 @@ import {
     Tw2RawData,
     Tw2VertexElement,
     Tw2VertexDeclaration,
-    Tw2ForwardingRenderBatch, Tw2TextureParameter
+    Tw2ForwardingRenderBatch
 } from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
@@ -251,11 +251,14 @@ export class EveCurveLineSet extends EveObjectSet
     constructor()
     {
         super();
-        this.lineEffect = new Tw2Effect();
-        this.lineEffect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx';
-        this.lineEffect.parameters['TexMap'] = new Tw2TextureParameter('TexMap', 'res:/texture/global/white.dds.0.png');
-        this.lineEffect.parameters['OverlayTexMap'] = new Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
-        this.lineEffect.Initialize();
+        this.lineEffect = Tw2Effect.create({
+            effectFilePath: 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx',
+            textures: {
+                'TexMap': 'res:/texture/global/white.dds.0.png',
+                'OverlayTexMap': 'res:/texture/global/white.dds.0.png'
+            }
+        });
+
         this.pickEffect = null;
         this.lineWidthFactor = 1;
         this.additive = false;
@@ -278,13 +281,13 @@ export class EveCurveLineSet extends EveObjectSet
         this._perObjectData.perObjectPSData.Create();
 
         this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 4, 28));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 3, 44));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 4, 56));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 1, device.gl.FLOAT, 4, 72));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 2, device.gl.FLOAT, 4, 88));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 12));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 28));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 3, 44));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 56));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 1, device.gl.FLOAT, 4, 72));
+        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 2, device.gl.FLOAT, 4, 88));
         this._decl.stride = 4 * this._vertexSize;
         this._decl.RebuildHash();
 
@@ -664,7 +667,7 @@ export class EveCurveLineSet extends EveObjectSet
      */
     Render(batch, effect = batch.effect)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood()) return false;
+        if (!effect || !effect.IsGood()) return false;
 
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vb);
 
@@ -859,7 +862,7 @@ export class EveCurveLineSet extends EveObjectSet
                 vec3_10: vec3.create(),// tangent2
                 vec4_0: vec4.create(), // color 1
                 vec4_1: vec4.create(), // color 2
-                mat4_0: mat4.create()  // rotationMatrix
+                mat4_0: mat4.create(),  // rotationMatrix
             };
         }
     }

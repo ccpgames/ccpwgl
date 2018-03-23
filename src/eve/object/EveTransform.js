@@ -1,6 +1,5 @@
 import {vec3, quat, mat4} from '../../math';
-import {device, Tw2RawData} from '../../core';
-import {EveBasicPerObjectData} from '../EveBasicPerObjectData';
+import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -26,7 +25,7 @@ import {EveObject} from './EveObject';
  * @property {mat4} worldTransform
  * @property {Array.<mat4>} _mat4Cache
  * @property {Array.<vec3>} _vec3Cache
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 export class EveTransform extends EveObject
@@ -53,7 +52,7 @@ export class EveTransform extends EveObject
         this.localTransform = mat4.create();
         this.worldTransform = mat4.create();
 
-        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData = new Tw2BasicPerObjectData();
         this._perObjectData.perObjectFFEData = new Tw2RawData();
         this._perObjectData.perObjectFFEData.Declare('World', 16);
         this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
@@ -117,7 +116,7 @@ export class EveTransform extends EveObject
 
                 if (this.modifier === EveTransform.Modifier.SIMPLE_HALO)
                 {
-                    vec3.subtract(dir, d.GetEyePosition(), this.worldTransform.subarray(12));
+                    vec3.subtract(dir, d.GetEyePosition(dir), this.worldTransform.subarray(12));
                     vec3.normalize(dirNorm, this.worldTransform.subarray(8));
                     vec3.normalize(dir, dir);
                     let scale = vec3.dot(dir, dirNorm);
@@ -149,7 +148,6 @@ export class EveTransform extends EveObject
             case EveTransform.Modifier.EVE_CAMERA_ROTATION_ALIGNED:
             case EveTransform.Modifier.EVE_SIMPLE_HALO:
                 const
-                    camPos = d.GetEyePosition(),
                     camFwd = g.vec3_3,
                     right = g.vec3_4,
                     up = g.vec3_5,
@@ -163,9 +161,10 @@ export class EveTransform extends EveObject
                 mat4.translate(this.worldTransform, parentTransform, this.translation);
                 mat4.transpose(parentT, parentTransform);
 
-                dir[0] = camPos[0] - this.worldTransform[12];
-                dir[1] = camPos[1] - this.worldTransform[13];
-                dir[2] = camPos[2] - this.worldTransform[14];
+                d.GetEyePosition(dir);
+                dir[0] -= this.worldTransform[12];
+                dir[1] -= this.worldTransform[13];
+                dir[2] -= this.worldTransform[14];
 
                 vec3.copy(camFwd, dir);
                 vec3.transformMat4(camFwd, camFwd, parentT);
@@ -268,7 +267,7 @@ export class EveTransform extends EveObject
      * Gets render batches for accumulation
      * @param {number} mode
      * @param {Tw2BatchAccumulator} accumulator
-     * @param {Tw2PerObjectData|EveBasicPerObjectData} [perObjectData]
+     * @param {Tw2PerObjectData|Tw2BasicPerObjectData} [perObjectData]
      */
     GetBatches(mode, accumulator, perObjectData)
     {

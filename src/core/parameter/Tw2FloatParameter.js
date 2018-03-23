@@ -1,123 +1,87 @@
-import { util } from '../../math';
-
-/**
- * A Tw2 Parameter
- * @typedef {(Tw2FloatParameter|Tw2TextureParameter|Tw2VariableParameter|Tw2Vector2Parameter|Tw2Vector3Parameter|Tw2Vector4Parameter|Tw2MatrixParameter)} Parameter
- */
+import {Tw2Parameter} from './Tw2Parameter';
+import {util} from '../../math';
 
 /**
  * Tw2FloatParameter
+ *
  * @param {string} [name='']
  * @param {number} [value=1]
  * @property {string} name
  * @property {number} value
- * @property {null|Array} constantBuffer
- * @property {null|number} offset
- * @constructor
+ * @property {?Float32Array} constantBuffer
+ * @property {?number} offset
+ * @class
  */
-export function Tw2FloatParameter(name, value)
+export class Tw2FloatParameter extends Tw2Parameter
 {
-    if (typeof(name) !== 'undefined')
+    constructor(name = '', value = 1)
     {
-        this.name = name;
+        super(name);
+        this.value = util.isArrayLike(value) ? value[0] : value;
+        this.constantBuffer = null;
+        this.offset = null;
     }
-    else
+
+    /**
+     * Sets the parameter's value
+     * @param {number} value
+     * @returns {boolean} true if updated
+     */
+    SetValue(value)
     {
-        this.name = '';
+        this.value = value;
+        this.OnValueChanged();
     }
-    if (typeof(value) !== 'undefined')
+
+    /**
+     * Gets the parameter's value
+     * @returns {number}
+     */
+    GetValue()
     {
-        if (util.isArrayLike(value))
-        {
-            this.value = value[0];
-        }
-        else
-        {
-            this.value = value;
-        }
+        return this.value;
     }
-    else
+
+    /**
+     * Applies the parameter's value to a constant buffer
+     * @param {Float32Array} constantBuffer
+     * @param {number} offset
+     */
+    Apply(constantBuffer, offset)
     {
-        this.value = 1;
+        constantBuffer[offset] = this.value;
     }
-    this.constantBuffer = null;
-    this.offset = null;
+
+    /**
+     * Checks if a value equals the parameter's value
+     * @param {number} value
+     * @returns {boolean}
+     */
+    EqualsValue(value)
+    {
+        return this.value === value;
+    }
+
+    /**
+     * Copies another float parameter's value
+     * @param {Tw2FloatParameter} parameter
+     * @param {boolean} [includeName]
+     */
+    Copy(parameter, includeName)
+    {
+        if (includeName) this.name = parameter.name;
+        this.SetValue(parameter.GetValue());
+    }
+
+    /**
+     * Checks if a value is a valid value
+     * @param {number} value
+     * @returns {boolean}
+     */
+    static is(value)
+    {
+        return typeof value === 'number';
+    }
 }
 
-/**
- * Binds the parameter to a constant buffer
- * @param {Array} constantBuffer
- * @param {number} offset
- * @param {number} [size=] - unused
- * @returns {boolean}
- * @prototype
- */
-Tw2FloatParameter.prototype.Bind = function(constantBuffer, offset, size)
-{
-    if (this.constantBuffer !== null || size < 1)
-    {
-        return false;
-    }
-    this.constantBuffer = constantBuffer;
-    this.offset = offset;
-    this.Apply(this.constantBuffer, this.offset, size);
-};
-
-/**
- * Unbinds the parameter from it's constant buffer
- * @prototype
- */
-Tw2FloatParameter.prototype.Unbind = function()
-{
-    this.constantBuffer = null;
-};
-
-/**
- * Updates the constant buffer to the current value
- * @prototype
- */
-Tw2FloatParameter.prototype.OnValueChanged = function()
-{
-    if (this.constantBuffer !== null)
-    {
-        this.constantBuffer[this.offset] = this.value;
-    }
-};
-
-/**
- * Applies the current value to the supplied constant buffer at the supplied offset
- * @param {Array} constantBuffer
- * @param {number} offset
- * @prototype
- */
-Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset)
-{
-    constantBuffer[offset] = this.value;
-};
-
-/**
- * Gets the current value
- * @prototype
- */
-Tw2FloatParameter.prototype.GetValue = function()
-{
-    if (this.constantBuffer !== null)
-    {
-        return this.constantBuffer[this.offset];
-    }
-
-    return this.value;
-};
-
-/**
- * Sets a supplied value
- * @prototype
- */
-Tw2FloatParameter.prototype.SetValue = function(value)
-{
-    this.value = value;
-    if (this.constantBuffer !== null)
-    {
-        this.constantBuffer[this.offset] = this.value;
-    }
-};
+Tw2FloatParameter.size = 1;

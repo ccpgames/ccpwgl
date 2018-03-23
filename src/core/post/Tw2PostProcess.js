@@ -1,188 +1,181 @@
-import {device} from '../global/Tw2Device';
+import {device} from '../global';
 import {Tw2RenderTarget} from '../Tw2RenderTarget';
-import {Tw2Effect} from '../mesh/Tw2Effect';
-import {Tw2TextureParameter, Tw2Vector4Parameter, Tw2FloatParameter} from '../parameter';
-import {Tw2TextureRes} from '../resource/Tw2TextureRes';
+import {Tw2Effect} from '../mesh';
+import {Tw2TextureRes} from '../resource';
 
 /**
  * Creates a bloom post effect
+ *
  * @property {number} width
  * @property {number} height
  * @property {Tw2TextureRes} texture
  * @property {Tw2RenderTarget} quadRT0
  * @property {Tw2RenderTarget} quadRT1
  * @property {Array.<Tw2Effect|Object>} steps
- * @constructor
+ * @class
  */
-export function Tw2PostProcess()
+export class Tw2PostProcess
 {
-    this.width = 0;
-    this.height = 0;
-
-    this.texture = null;
-    this.quadRT0 = new Tw2RenderTarget();
-    this.quadRT1 = new Tw2RenderTarget();
-
-    this.steps = [];
-    this.steps[0] = new Tw2Effect();
-    this.steps[0] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT1,
-        'inputs':
-            {
+    constructor()
+    {
+        this.width = 0;
+        this.height = 0;
+        this.texture = null;
+        this.quadRT0 = new Tw2RenderTarget();
+        this.quadRT1 = new Tw2RenderTarget();
+        this.steps = [{
+            'effect': Tw2Effect.create({
+                effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx',
+                parameters: {
+                    'g_texelSize': [1, 1, 1, 1],
+                    'BlitCurrent': ''
+                }
+            }),
+            'rt': this.quadRT1,
+            'inputs': {
                 'BlitCurrent': null
             }
-    };
-    this.steps[0].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorDownFilter4.fx';
-    this.steps[0].effect.Initialize();
-    this.steps[0].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[0].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
-
-    this.steps[1] = new Tw2Effect();
-    this.steps[1] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT0,
-        'inputs':
-            {
+        }, {
+            'effect': Tw2Effect.create({
+                effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx',
+                parameters: {
+                    'LuminanceThreshold': 0.85,
+                    'LuminanceScale': 2,
+                    'BlitCurrent': ''
+                }
+            }),
+            'rt': this.quadRT0,
+            'inputs': {
                 'BlitCurrent': this.quadRT1
             }
-    };
-    this.steps[1].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorHighPassFilter.fx';
-    this.steps[1].effect.Initialize();
-    this.steps[1].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[1].effect.parameters['LuminanceThreshold'] = new Tw2FloatParameter('LuminanceThreshold', 0.85);
-    this.steps[1].effect.parameters['LuminanceScale'] = new Tw2FloatParameter('LuminanceScale', 2);
-
-    this.steps[2] = new Tw2Effect();
-    this.steps[2] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT1,
-        'inputs':
-            {
+        }, {
+            'effect': Tw2Effect.create({
+                effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx',
+                parameters: {
+                    'g_texelSize': [1, 1, 1, 1],
+                    'BlitCurrent': ''
+                }
+            }),
+            'rt': this.quadRT1,
+            'inputs': {
                 'BlitCurrent': this.quadRT0
             }
-    };
-    this.steps[2].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurHorizontalBig.fx';
-    this.steps[2].effect.Initialize();
-    this.steps[2].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[2].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
-
-    this.steps[3] = new Tw2Effect();
-    this.steps[3] = {
-        'effect': new Tw2Effect(),
-        'rt': this.quadRT0,
-        'inputs':
-            {
+        }, {
+            'effect': Tw2Effect.create({
+                effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx',
+                parameters: {
+                    'g_texelSize': [1, 1, 1, 1],
+                    'BlitCurrent': ''
+                }
+            }),
+            'rt': this.quadRT0,
+            'inputs': {
                 'BlitCurrent': this.quadRT1
             }
-    };
-    this.steps[3].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorExpBlurVerticalBig.fx';
-    this.steps[3].effect.Initialize();
-    this.steps[3].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[3].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
-
-    this.steps[4] = new Tw2Effect();
-    this.steps[4] = {
-        'effect': new Tw2Effect(),
-        'rt': null,
-        'inputs':
-            {
+        }, {
+            'effect': Tw2Effect.create({
+                effectFilePath: 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx',
+                parameters: {
+                    'g_texelSize': [1, 1, 1, 1],
+                    'ScalingFactor': 1,
+                    'BlitCurrent': '',
+                    'BlitOriginal': ''
+                }
+            }),
+            'rt': null,
+            'inputs': {
                 'BlitCurrent': this.quadRT0,
                 'BlitOriginal': null
             }
-    };
-    this.steps[4].effect.effectFilePath = 'res:/Graphics/Effect/Managed/Space/PostProcess/ColorUpFilter4_Add.fx';
-    this.steps[4].effect.Initialize();
-    this.steps[4].effect.parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent');
-    this.steps[4].effect.parameters['BlitOriginal'] = new Tw2TextureParameter('BlitOriginal');
-    this.steps[4].effect.parameters['g_texelSize'] = new Tw2Vector4Parameter('g_texelSize');
-    this.steps[4].effect.parameters['ScalingFactor'] = new Tw2FloatParameter('ScalingFactor', 1);
-}
-
-/**
- * Internal render/update function. It is called every frame.
- * @prototype
- */
-Tw2PostProcess.prototype.Render = function()
-{
-    var step, i;
-
-    var width = device.viewportWidth;
-    var height = device.viewportHeight;
-    if (width <= 0 || height <= 0)
-    {
-        return;
+        }];
     }
-    if (this.texture === null)
+
+    /**
+     * Internal render/update function. It is called every frame.
+     */
+    Render()
     {
-        this.texture = new Tw2TextureRes();
-        this.texture.Attach(device.gl.createTexture());
-    }
-    if (width !== this.width || height !== this.height)
-    {
-        device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
-        device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, width, height, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
-        device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+        const
+            width = device.viewportWidth,
+            height = device.viewportHeight;
 
-        this.quadRT0.Create(width / 4, height / 4, false);
-        this.quadRT1.Create(width / 4, height / 4, false);
+        if (width <= 0 || height <= 0) return;
 
-        this.width = width;
-        this.height = height;
-
-        for (i = 0; i < this.steps.length; ++i)
+        if (this.texture === null)
         {
-            step = this.steps[i];
-            for (var name in step.inputs)
+            this.texture = new Tw2TextureRes();
+            this.texture.Attach(device.gl.createTexture());
+        }
+
+        if (width !== this.width || height !== this.height)
+        {
+            device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
+            device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, width, height, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
+            device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+
+            this.quadRT0.Create(width / 4, height / 4, false);
+            this.quadRT1.Create(width / 4, height / 4, false);
+
+            this.width = width;
+            this.height = height;
+
+            for (let i = 0; i < this.steps.length; ++i)
             {
-                if (step.inputs.hasOwnProperty(name))
+                const step = this.steps[i];
+                for (let name in step.inputs)
                 {
-                    if (step.inputs[name])
+                    if (step.inputs.hasOwnProperty(name))
                     {
-                        step.effect.parameters[name].textureRes = step.inputs[name].texture;
+                        if (step.inputs[name])
+                        {
+                            step.effect.parameters[name].textureRes = step.inputs[name].texture;
+                        }
+                        else
+                        {
+                            step.effect.parameters[name].textureRes = this.texture;
+                        }
+                    }
+                }
+
+                if ('g_texelSize' in step.effect.parameters && 'BlitCurrent' in step.inputs)
+                {
+                    const
+                        size = step.effect.parameters['g_texelSize'],
+                        rt = step.inputs['BlitCurrent'];
+
+                    if (rt)
+                    {
+                        size.value[0] = 1.0 / rt.width;
+                        size.value[1] = 1.0 / rt.width;
                     }
                     else
                     {
-                        step.effect.parameters[name].textureRes = this.texture;
+                        size.value[0] = 1.0 / width;
+                        size.value[1] = 1.0 / width;
                     }
+                    size.OnValueChanged();
                 }
             }
-            if ('g_texelSize' in step.effect.parameters && 'BlitCurrent' in step.inputs)
+        }
+
+        device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
+        device.gl.copyTexImage2D(device.gl.TEXTURE_2D, 0, device.alphaBlendBackBuffer ? device.gl.RGBA : device.gl.RGB, 0, 0, width, height, 0);
+        device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+        device.SetStandardStates(device.RM_OPAQUE);
+
+        for (let i = 0; i < this.steps.length; ++i)
+        {
+            const step = this.steps[i];
+            if (step.rt !== null)
             {
-                var size = step.effect.parameters['g_texelSize'];
-                var rt = step.inputs['BlitCurrent'];
-                if (rt)
-                {
-                    size.value[0] = 1.0 / rt.width;
-                    size.value[1] = 1.0 / rt.width;
-                }
-                else
-                {
-                    size.value[0] = 1.0 / width;
-                    size.value[1] = 1.0 / width;
-                }
-                size.OnValueChanged();
+                step.rt.Set();
             }
+            else
+            {
+                device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
+                device.gl.viewport(0, 0, width, height);
+            }
+            device.RenderFullScreenQuad(step.effect);
         }
     }
-    device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
-    device.gl.copyTexImage2D(device.gl.TEXTURE_2D, 0, device.alphaBlendBackBuffer ? device.gl.RGBA : device.gl.RGB, 0, 0, width, height, 0);
-    device.gl.bindTexture(device.gl.TEXTURE_2D, null);
-
-    device.SetStandardStates(device.RM_OPAQUE);
-
-    for (i = 0; i < this.steps.length; ++i)
-    {
-        step = this.steps[i];
-        if (step.rt !== null)
-        {
-            step.rt.Set();
-        }
-        else
-        {
-            device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
-            device.gl.viewport(0, 0, width, height);
-        }
-        device.RenderFullScreenQuad(step.effect);
-    }
-};
+}

@@ -1,6 +1,5 @@
 import {mat4} from '../../math';
-import {Tw2PerObjectData, Tw2RawData} from '../../core';
-import {EveBasicPerObjectData} from '../EveBasicPerObjectData';
+import {Tw2PerObjectData, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveChild} from './EveChild';
 
 /**
@@ -67,7 +66,7 @@ export class EveChildMesh extends EveChild
         {
             if (!this._perObjectData)
             {
-                this._perObjectData = new EveBasicPerObjectData();
+                this._perObjectData = new Tw2BasicPerObjectData();
                 this._perObjectData.perObjectFFEData = new Tw2RawData();
                 this._perObjectData.perObjectFFEData.Declare('world', 16);
                 this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);

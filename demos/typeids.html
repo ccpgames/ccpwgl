@@ -11,13 +11,15 @@
 
     <script type="text/javascript">
 
+        var camera, scene, ship;
+
         $(document).ready(function ()
         {
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            var camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
-            var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
@@ -47,14 +49,15 @@
                 }
                 else
                 {
-                    scene.loadObject(dna, function(){ camera.focus(this, 2, 200 )});
+                    ship = scene.loadObject(dna, function(){ camera.focus(this, 2, 200 )});
                 }
             }
 
             $.when(
                 $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/typeids.json')),
                 $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/graphicids.json')),
-                $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/categories.json'))).done(function (v1, v2, v3)
+                $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/categories.json'))
+            ).done(function (v1, v2, v3)
             {
                 var typeids = v1[0];
                 var graphicids = v2[0];

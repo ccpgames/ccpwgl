@@ -118,7 +118,7 @@ export class EveSpriteSet extends EveObjectSet
         this._instanceBuffer = null;
         this._decl = this._decl = new Tw2VertexDeclaration();
         this._vdecl = new Tw2VertexDeclaration();
-        this._vdecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 1, 0));
+        this._vdecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 1, 0));
         this._vdecl.RebuildHash();
 
         this.UseQuads(useQuads, isSkinned);
@@ -157,22 +157,22 @@ export class EveSpriteSet extends EveObjectSet
         this._decl.elements.splice(0, this._decl.elements.length);
         if (!useQuads)
         {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 5, device.gl.FLOAT, 2, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 8));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 3, 20));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 1, 32));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 1, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 2, device.gl.FLOAT, 1, 40));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 3, device.gl.FLOAT, 1, 44));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 4, device.gl.FLOAT, 1, 48));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 2, 0));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 8));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 3, 20));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 1, 32));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 1, 36));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 1, 40));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 1, 44));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 1, 48));
         }
         else
         {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, device.gl.FLOAT, 3, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, device.gl.FLOAT, 4, 12));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 1, device.gl.FLOAT, 2, 28));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 0, device.gl.FLOAT, 4, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_COLOR, 1, device.gl.FLOAT, 4, 52));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 12));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 2, 28));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 36));
+            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 1, device.gl.FLOAT, 4, 52));
         }
 
         this._decl.RebuildHash();
@@ -374,7 +374,7 @@ export class EveSpriteSet extends EveObjectSet
             return this.RenderQuads(effect, world, perObjectData);
         }
 
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._indexBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._indexBuffer) return false;
 
         device.SetStandardStates(device.RM_ADDITIVE);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
@@ -400,7 +400,7 @@ export class EveSpriteSet extends EveObjectSet
      */
     RenderBoosterGlow(effect = this.effect, world, boosterGain, warpIntensity)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,
@@ -462,7 +462,7 @@ export class EveSpriteSet extends EveObjectSet
      */
     RenderQuads(effect = this.effect, world, perObjectData)
     {
-        if (!effect || !effect.effectRes || !effect.effectRes.IsGood() || !this._instanceBuffer) return false;
+        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,

@@ -92,23 +92,23 @@ export class Tw2ParticleElementDeclaration
         switch (this.elementType)
         {
             case Tw2ParticleElementDeclaration.Type.LIFETIME:
-                usage = Tw2VertexDeclaration.DECL_TANGENT;
+                usage = Tw2VertexDeclaration.Type.TANGENT;
                 break;
 
             case Tw2ParticleElementDeclaration.Type.POSITION:
-                usage = Tw2VertexDeclaration.DECL_POSITION;
+                usage = Tw2VertexDeclaration.Type.POSITION;
                 break;
 
             case Tw2ParticleElementDeclaration.Type.VELOCITY:
-                usage = Tw2VertexDeclaration.DECL_NORMAL;
+                usage = Tw2VertexDeclaration.Type.NORMAL;
                 break;
 
             case Tw2ParticleElementDeclaration.Type.MASS:
-                usage = Tw2VertexDeclaration.DECL_BINORMAL;
+                usage = Tw2VertexDeclaration.Type.BINORMAL;
                 break;
 
             default:
-                usage = Tw2VertexDeclaration.DECL_TEXCOORD;
+                usage = Tw2VertexDeclaration.Type.TEXCOORD;
         }
 
         return new Tw2VertexElement(usage, this.usageIndex, device.gl.FLOAT, this.GetDimension());

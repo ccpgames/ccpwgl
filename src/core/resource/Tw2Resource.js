@@ -1,12 +1,8 @@
 import {resMan} from '../global/Tw2ResMan';
 
 /**
- * Resource - A Tw2Resource
- * @typedef {(Tw2Resource|Tw2EffectRes|Tw2GeometryRes|Tw2TextureRes)} Resource
- */
-
-/**
- * Tw2Resource
+ * Tw2Resource base class
+ *
  * @property {string} path
  * @property {boolean} _isLoading
  * @property {boolean} _isGood
@@ -14,10 +10,7 @@ import {resMan} from '../global/Tw2ResMan';
  * @property {Array} _notifications
  * @property {number} activeFrame
  * @property {number} doNotPurge
- * @property {null|Function} _onLoadStarted - optional callback fired on res loading: callback(this)
- * @property {null|Function} _onLoadFinished - optional callback fired on res loaded: callback(this, success)
- * @property {null|Function} _onLoadPrepareFinished - optional callback fired on res prepare finish: callback(this, success)
- * @constructor
+ * @class
  */
 export class Tw2Resource
 {
@@ -30,179 +23,154 @@ export class Tw2Resource
         this._notifications = [];
         this.activeFrame = 0;
         this.doNotPurge = 0;
-        this._onLoadStarted = null;
-        this._onLoadFinished = null;
-        this._onPrepareFinished = null;
+    }
+
+    /**
+     * Checks to see if the resource is loading
+     * @returns {boolean}
+     */
+    IsLoading()
+    {
+        this.KeepAlive();
+        return this._isLoading;
+    }
+
+    /**
+     * Checks to see if the resource is good
+     * @returns {boolean}
+     */
+    IsGood()
+    {
+        this.KeepAlive();
+        return this._isGood;
+    }
+
+    /**
+     * Checks to see if the resource is purged
+     * @returns {boolean}
+     * @prototype
+     */
+    IsPurged()
+    {
+        return this._isPurged;
+    }
+
+    /**
+     * LoadStarted
+     */
+    LoadStarted()
+    {
+        this._isLoading = true;
+        this.UpdateNotifications('ReleaseCachedData');
+    }
+
+    /**
+     * LoadFinished
+     * @param {boolean} success
+     */
+    LoadFinished(success)
+    {
+        this._isLoading = false;
+        if (!success) this._isGood = false;
+    }
+
+    /**
+     * PrepareFinished
+     * @param {boolean} success
+     */
+    PrepareFinished(success)
+    {
+        this._isLoading = false;
+        this._isGood = success;
+        this.UpdateNotifications('RebuildCachedData');
+    }
+
+    /**
+     * Sets resource's isGood property
+     * @param {boolean} success
+     */
+    SetIsGood(success)
+    {
+        this._isGood = success;
+    }
+
+    /**
+     * Unloads the resource
+     */
+    Unload()
+    {
+
+    }
+
+    /**
+     * Reloads the resource
+     */
+    Reload()
+    {
+        this.Unload();
+        resMan.ReloadResource(this);
+    }
+
+    /**
+     * Keeps the resource from being purged
+     */
+    KeepAlive()
+    {
+        this.activeFrame = resMan.activeFrame;
+        if (this._isPurged) this.Reload();
+    }
+
+    /**
+     * Registers a notification
+     * @param {*} notification
+     */
+    RegisterNotification(notification)
+    {
+        if (!this._notifications.includes(notification))
+        {
+            this._notifications.push(notification);
+            if (this._isGood && 'RebuildCachedData' in notification)
+            {
+                notification.RebuildCachedData(this);
+            }
+        }
+    }
+
+    /**
+     * Deregisters a notification
+     * @param {*} notification
+     */
+    UnregisterNotification(notification)
+    {
+        this._notifications.splice(this._notifications.indexOf(notification), 1);
+    }
+
+    /**
+     * Updates a notification
+     * @param {string} funcName - The function name to call
+     */
+    UpdateNotifications(funcName)
+    {
+        for (let i = 0; i < this._notifications.length; i++)
+        {
+            if (funcName in this._notifications[i])
+            {
+                this._notifications[i][funcName](this);
+            }
+        }
     }
 }
 
 /**
- * Checks to see if the resource is loading
+ * An optional function for when the resource handles it's own loading
+ * -  If the method returns false then the resource manager will handle the http request
+ * @type {?Function}
  * @returns {boolean}
- * @prototype
  */
-Tw2Resource.prototype.IsLoading = function()
-{
-    this.KeepAlive();
-    return this._isLoading;
-};
+Tw2Resource.prototype.DoCustomLoad = null;
 
 /**
- * Checks to see if the resource is good
- * @returns {boolean}
- * @prototype
+ * HTTP request response type
+ * @type {null}
  */
-Tw2Resource.prototype.IsGood = function()
-{
-    this.KeepAlive();
-    return this._isGood;
-};
-
-/**
- * Checks to see if the resource is purged
- * @returns {boolean}
- * @prototype
- */
-Tw2Resource.prototype.IsPurged = function()
-{
-    return this._isPurged;
-};
-
-/**
- * LoadStarted
- * @prototype
- */
-Tw2Resource.prototype.LoadStarted = function()
-{
-    this._isLoading = true;
-
-    for (var i = 0; i < this._notifications.length; ++i)
-    {
-        this._notifications[i].ReleaseCachedData(this);
-    }
-
-    if (this._onLoadStarted)
-    {
-        this._onLoadStarted(this);
-    }
-};
-
-/**
- * LoadFinished
- * @param {boolean} success
- * @prototype
- */
-Tw2Resource.prototype.LoadFinished = function(success)
-{
-    this._isLoading = false;
-
-    if (!success)
-    {
-        this._isGood = false;
-    }
-
-    if (this._onLoadFinished)
-    {
-        this._onLoadFinished(this, success);
-    }
-};
-
-/**
- * PrepareFinished
- * @param {boolean} success
- * @prototype
- */
-Tw2Resource.prototype.PrepareFinished = function(success)
-{
-    this._isLoading = false;
-    this._isGood = success;
-
-    for (var i = 0; i < this._notifications.length; ++i)
-    {
-        this._notifications[i].RebuildCachedData(this);
-    }
-
-    if (this._onPrepareFinished)
-    {
-        this._onPrepareFinished(this, success);
-    }
-};
-
-/**
- * Sets resource's isGood property
- * @param {boolean} success
- * @prototype
- */
-Tw2Resource.prototype.SetIsGood = function(success)
-{
-    this._isGood = success;
-};
-
-/**
- * Unload
- * @prototype
- */
-Tw2Resource.prototype.Unload = function() {};
-
-/**
- * Reloads the resource
- * @prototype
- */
-Tw2Resource.prototype.Reload = function()
-{
-    this.Unload();
-    resMan.ReloadResource(this);
-};
-
-/**
- * Keeps the resource from being purged
- * @prototype
- */
-Tw2Resource.prototype.KeepAlive = function()
-{
-    this.activeFrame = resMan.activeFrame;
-    if (this._isPurged)
-    {
-        this.Reload();
-    }
-};
-
-/**
- * Registers a notification
- * @param notification
- * @prototype
- */
-Tw2Resource.prototype.RegisterNotification = function(notification)
-{
-    for (var i = 0; i < this._notifications.length; ++i)
-    {
-        if (this._notifications[i] === notification)
-        {
-            return;
-        }
-    }
-
-    this._notifications[this._notifications.length] = notification;
-
-    if (this._isGood)
-    {
-        notification.RebuildCachedData(this);
-    }
-};
-
-/**
- * Deregisters a notification
- * @param notification
- * @prototype
- */
-Tw2Resource.prototype.UnregisterNotification = function(notification)
-{
-    for (var i = 0; i < this._notifications.length; ++i)
-    {
-        if (this._notifications[i] === notification)
-        {
-            this._notifications.splice(i, 1);
-            return;
-        }
-    }
-};
+Tw2Resource.prototype.requestResponseType = null;

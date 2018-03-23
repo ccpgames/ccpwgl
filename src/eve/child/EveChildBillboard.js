@@ -1,13 +1,12 @@
 import {vec3, mat4} from '../../math';
-import {device, Tw2RawData} from '../../core';
-import {EveBasicPerObjectData} from '../EveBasicPerObjectData';
+import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveChild} from './EveChild';
 
 /**
  * Mesh attachment to space object and oriented towards the camera
  *
  * @property {Tw2Mesh|Tw2InstancedMesh} mesh
- * @property {EveBasicPerObjectData} _perObjectData
+ * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
 export class EveChildBillboard extends EveChild
@@ -16,7 +15,7 @@ export class EveChildBillboard extends EveChild
     {
         super();
         this.mesh = null;
-        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData = new Tw2BasicPerObjectData();
         this._perObjectData.perObjectFFEData = new Tw2RawData();
         this._perObjectData.perObjectFFEData.Declare('world', 16);
         this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);

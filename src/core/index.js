@@ -16,3 +16,4 @@ export * from './vertex';
 export * from './Tw2Float';
 export * from './Tw2Frustum';
 export * from './Tw2RenderTarget';
+export * from './Tw2EventEmitter';

@@ -1,14 +1,11 @@
 import {vec4, mat4, util} from '../../math';
 import {
     device,
-    variableStore,
+    store,
     Tw2Effect,
     Tw2VertexDeclaration,
     Tw2VertexElement,
-    Tw2BatchAccumulator,
-    Tw2Vector4Parameter,
-    Tw2Vector3Parameter,
-    Tw2TextureParameter
+    Tw2BatchAccumulator
 } from '../../core';
 
 /**
@@ -55,11 +52,7 @@ export class EveOccluder
             this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
         }
 
-        const occluderValue = variableStore._variables['OccluderValue'].value;
-        occluderValue[0] = (1 << (index * 2)) / 255.0;
-        occluderValue[1] = (2 << (index * 2)) / 255.0;
-        occluderValue[2] = 0;
-        occluderValue[3] = 0;
+        store.SetVariableValue('OccluderValue', [(1 << (index * 2)) / 255.0, (2 << (index * 2)) / 255.0, 0, 0]);
 
         g.accumulator.Render();
 
@@ -127,8 +120,6 @@ export class EveOccluder
     {
         if (EveOccluder.global) return;
 
-        variableStore.RegisterVariable('OccluderValue', vec4.fromValues(1,1,0,0));
-
         const
             d = device,
             g = EveOccluder.global = {};
@@ -137,17 +128,20 @@ export class EveOccluder
         g.vec4_0 = vec4.create();
         g.accumulator = new Tw2BatchAccumulator();
 
-        g.effect = new Tw2Effect();
-        g.effect.name = 'Occluder sample collector';
-        g.effect.effectFilePath = 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx';
-        g.effect.parameters.OccluderPosition = new Tw2Vector4Parameter('OccluderPosition');
-        g.effect.parameters.OccluderIndex = new Tw2Vector3Parameter('OccluderIndex');
-        g.effect.parameters.BackBuffer = new Tw2TextureParameter('BackBuffer');
+        g.effect = Tw2Effect.create({
+            name: 'Occluder sampler',
+            effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
+            parameters: {
+                'OccluderPosition': [1, 1, 1, 1],
+                'OccluderIndex': [1, 1, 1],
+                'BackBuffer': ''
+            }
+        });
 
         g.vertexBuffer = null;
         g.decl = new Tw2VertexDeclaration();
-        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_POSITION, 0, d.gl.FLOAT, 2, 0));
-        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.DECL_TEXCOORD, 0, d.gl.FLOAT, 2, 8));
+        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
+        g.decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
         g.decl.RebuildHash();
 
         const vb = new Float32Array(255 * 6 * 4);

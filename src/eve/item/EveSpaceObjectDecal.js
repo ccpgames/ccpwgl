@@ -1,7 +1,7 @@
 import {vec3, quat, mat4, util} from '../../math';
 import {
     device,
-    variableStore,
+    store,
     Tw2PerObjectData,
     Tw2RawData,
     Tw2ForwardingRenderBatch
@@ -65,14 +65,6 @@ export class EveSpaceObjectDecal
         this._perObjectData.perObjectPSData.Create();
 
         mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
-
-        if (!variableStore._variables.u_DecalMatrix)
-        {
-            variableStore.RegisterVariables({
-                'u_DecalMatrix' : mat4.create(),
-                'u_InvDecalMatrix' : mat4.create()
-            });
-        }
     }
 
     /**
@@ -80,7 +72,7 @@ export class EveSpaceObjectDecal
      */
     Initialize()
     {
-        this.OnValueChanged();
+        this.SetIndexBuffer(this.indexBuffer);
     }
 
     /**
@@ -172,8 +164,7 @@ export class EveSpaceObjectDecal
 
         if
         (
-            this.display && effect && effect.effectRes && effect.effectRes.IsGood() &&
-            this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()
+            this.display && effect && effect.IsGood() && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood()
         )
         {
             const batch = new Tw2ForwardingRenderBatch();
@@ -235,8 +226,8 @@ export class EveSpaceObjectDecal
             bkCount = this.parentGeometry.meshes[0].areas[0].count,
             bkIndexType = this.parentGeometry.meshes[0].indexType;
 
-        mat4.copy(variableStore._variables['u_DecalMatrix'].value, this.decalMatrix);
-        mat4.copy(variableStore._variables['u_InvDecalMatrix'].value, this.invDecalMatrix);
+        store.SetVariableValue('u_DecalMatrix', this.decalMatrix);
+        store.SetVariableValue('u_InvDecalMatrix', this.invDecalMatrix);
 
         this.parentGeometry.meshes[0].indexes = this._indexBuffer;
         this.parentGeometry.meshes[0].areas[0].start = 0;
