@@ -18,11 +18,11 @@ export class EveBoosterBatch extends Tw2RenderBatch
 
     /**
      * Commits the batch
-     * @param {Tw2Effect} [effect] An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
-        this.boosters.Render(effect);
+        this.boosters.Render(technique);
     }
 }
 
@@ -418,18 +418,18 @@ export class EveBoosterSet extends EveObjectSet
 
     /**
      * Renders the accumulated batches
-     * @param {Tw2Effect} [effect=this.effect] - An optional override effect
+     * @param {string} technique - technique name
      * @returns {boolean}
      */
-    Render(effect = this.effect)
+    Render(technique)
     {
-        if (!effect || !effect.IsGood()) return false;
+        if (!this.effect || !this.effect.IsGood()) return false;
 
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._positions);
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 112)) return false;
+            this.effect.ApplyPass(technique, pass);
+            if (!this._decl.SetDeclaration(this.effect.GetPassInput(technique, pass), 112)) return false;
             device.ApplyShadowState();
             device.gl.drawArrays(device.gl.TRIANGLES, 0, this._positions.count);
         }

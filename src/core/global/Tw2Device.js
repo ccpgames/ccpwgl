@@ -645,17 +645,18 @@ export class Tw2Device
     /**
      * RenderFullScreenQuad
      * @param {Tw2Effect} effect
+     * @param {string} technique - Technique name
      * @returns {boolean}
      */
-    RenderFullScreenQuad(effect)
+    RenderFullScreenQuad(effect, technique='Main')
     {
         if (!effect || !effect.IsGood()) return false;
 
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!this._quadDecl.SetDeclaration(effect.GetPassInput(pass), 24)) return false;
+            effect.ApplyPass(technique, pass);
+            if (!this._quadDecl.SetDeclaration(effect.GetPassInput(technique, pass), 24)) return false;
             this.ApplyShadowState();
             this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
         }
@@ -686,9 +687,10 @@ export class Tw2Device
     /**
      * RenderCameraSpaceQuad
      * @param {Tw2Effect} effect
+     * @param {string} technique - Technique name
      * @returns {boolean}
      */
-    RenderCameraSpaceQuad(effect)
+    RenderCameraSpaceQuad(effect, technique='Main')
     {
         if (!effect || !effect.IsGood()) return false;
 
@@ -708,10 +710,10 @@ export class Tw2Device
 
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._cameraQuadBuffer);
         this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!this._quadDecl.SetDeclaration(effect.GetPassInput(pass), 24)) return false;
+            effect.ApplyPass(technique, pass);
+            if (!this._quadDecl.SetDeclaration(effect.GetPassInput(technique, pass), 24)) return false;
             this.ApplyShadowState();
             this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
         }

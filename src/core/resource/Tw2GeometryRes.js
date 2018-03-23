@@ -186,7 +186,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 bone.parentIndex = reader.ReadUInt8();
                 if (bone.parentIndex === 255) bone.parentIndex = -1;
 
-                if ((flags & 1))
+                if ((flags & 1) != 0)
                 {
                     vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -195,7 +195,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     vec3.set(bone.position, 0, 0, 0);
                 }
 
-                if ((flags & 2))
+                if ((flags & 2) != 0)
                 {
                     quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -204,7 +204,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     quat.identity(bone.orientation);
                 }
 
-                if ((flags & 4))
+                if ((flags & 4) != 0)
                 {
                     for (let k = 0; k < 9; ++k)
                     {
@@ -353,13 +353,14 @@ export class Tw2GeometryRes extends Tw2Resource
      * @param {number} start
      * @param {number} count
      * @param {Tw2Effect} effect
+     * @param {string} technique
      * @param instanceVB
      * @param instanceDecl
      * @param instanceStride
      * @param instanceCount
      * @returns {Boolean}
      */
-    RenderAreasInstanced(meshIx, start, count, effect, instanceVB, instanceDecl, instanceStride, instanceCount)
+    RenderAreasInstanced(meshIx, start, count, effect, technique, instanceVB, instanceDecl, instanceStride, instanceCount)
     {
         this.KeepAlive();
         if (!this.IsGood() || !effect.IsGood() || meshIx >= this.meshes.length) return false;
@@ -367,14 +368,14 @@ export class Tw2GeometryRes extends Tw2Resource
         const
             d = device,
             mesh = this.meshes[meshIx],
-            passCount = effect.GetPassCount();
+            passCount = effect.GetPassCount(technique);
 
         d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
-            effect.ApplyPass(pass);
-            const passInput = effect.GetPassInput(pass);
+            effect.ApplyPass(technique, pass);
+            const passInput = effect.GetPassInput(technique, pass);
             if (passInput.elements.length === 0) continue;
 
             d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
@@ -412,10 +413,10 @@ export class Tw2GeometryRes extends Tw2Resource
      * @param {number} start
      * @param {number} count
      * @param {Tw2Effect} effect
-     * @param {Function} [cb] - callback[pass, drawElements]
+     * @param {string} technique
      * @returns {Boolean}
      */
-    RenderAreas(meshIx, start, count, effect, cb)
+    RenderAreas(meshIx, start, count, effect, technique)
     {
         this.KeepAlive();
         if (!this.IsGood() || !effect.IsGood() || meshIx >= this.meshes.length) return false;
@@ -423,15 +424,15 @@ export class Tw2GeometryRes extends Tw2Resource
         const
             d = device,
             mesh = this.meshes[meshIx] || this.meshes[0],
-            passCount = effect.GetPassCount();
+            passCount = effect.GetPassCount(technique);
 
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
         d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
-            effect.ApplyPass(pass);
-            const passInput = effect.GetPassInput(pass);
+            effect.ApplyPass(technique, pass);
+            const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
                 logger.log('res.error', {
@@ -451,38 +452,22 @@ export class Tw2GeometryRes extends Tw2Resource
 
             d.ApplyShadowState();
 
-            if (cb)
+            for (let i = 0; i < count; ++i)
             {
-                let drawElements = [];
-                for (let i = 0; i < count; ++i)
+                if (i + start < mesh.areas.length)
                 {
-                    if (i + start < mesh.areas.length)
-                    {
-                        const area = mesh.areas[i + start];
-                        drawElements.push([d.gl.TRIANGLES, area.count, mesh.indexType, area.start]);
-                    }
-                }
-                cb(pass, drawElements);
-            }
-            else
-            {
-                for (let i = 0; i < count; ++i)
-                {
-                    if (i + start < mesh.areas.length)
-                    {
-                        let area = mesh.areas[i + start],
-                            areaStart = area.start,
-                            acount = area.count;
+                    let area = mesh.areas[i + start],
+                        areaStart = area.start,
+                        acount = area.count;
 
-                        while (i + 1 < count)
-                        {
-                            area = mesh.areas[i + 1 + start];
-                            if (area.start !== areaStart + acount * 2) break;
-                            acount += area.count;
-                            ++i;
-                        }
-                        d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
+                    while (i + 1 < count)
+                    {
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start !== areaStart + acount * 2) break;
+                        acount += area.count;
+                        ++i;
                     }
+                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -495,10 +480,10 @@ export class Tw2GeometryRes extends Tw2Resource
      * @param {number} start
      * @param {number} count
      * @param {Tw2Effect} effect
-     * @param {function} [cb] - callback[pass, drawElements]
+     * @param {string} technique
      * @returns {Boolean}
      */
-    RenderLines(meshIx, start, count, effect, cb)
+    RenderLines(meshIx, start, count, effect, technique)
     {
         this.KeepAlive();
         if (!this.IsGood() || !effect.IsGood() || meshIx >= this.meshes.length) return false;
@@ -506,15 +491,15 @@ export class Tw2GeometryRes extends Tw2Resource
         const
             d = device,
             mesh = this.meshes[meshIx],
-            passCount = effect.GetPassCount();
+            passCount = effect.GetPassCount(technique);
 
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
         d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
-            effect.ApplyPass(pass);
-            let passInput = effect.GetPassInput(pass);
+            effect.ApplyPass(technique, pass);
+            let passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
                 logger.log('res.error', {
@@ -534,38 +519,22 @@ export class Tw2GeometryRes extends Tw2Resource
 
             d.ApplyShadowState();
 
-            if (cb)
+            for (let i = 0; i < count; ++i)
             {
-                const drawElements = [];
-                for (let i = 0; i < count; ++i)
+                if (i + start < mesh.areas.length)
                 {
-                    if (i + start < mesh.areas.length)
-                    {
-                        const area = mesh.areas[i + start];
-                        drawElements.push([d.gl.LINES, area.count, mesh.indexType, area.start]);
-                    }
-                }
-                cb(pass, drawElements);
-            }
-            else
-            {
-                for (let i = 0; i < count; ++i)
-                {
-                    if (i + start < mesh.areas.length)
-                    {
-                        let area = mesh.areas[i + start],
-                            areaStart = area.start,
-                            acount = area.count;
+                    let area = mesh.areas[i + start],
+                        areaStart = area.start,
+                        acount = area.count;
 
-                        while (i + 1 < count)
-                        {
-                            area = mesh.areas[i + 1 + start];
-                            if (area.start !== areaStart + acount * 2) break;
-                            acount += area.count;
-                            ++i;
-                        }
-                        d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
+                    while (i + 1 < count)
+                    {
+                        area = mesh.areas[i + 1 + start];
+                        if (area.start !== areaStart + acount * 2) break;
+                        acount += area.count;
+                        ++i;
                     }
+                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -666,7 +635,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 switch (el.fileType & 0xf)
                 {
                     case 0:
-                        if ((el.fileType & 0x10))
+                        if ((el.fileType & 0x10) != 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -683,7 +652,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 1:
-                        if ((el.fileType & 0x10))
+                        if ((el.fileType & 0x10) != 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -721,7 +690,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 8:
-                        if ((el.fileType & 0x10))
+                        if ((el.fileType & 0x10) != 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -738,7 +707,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 9:
-                        if ((el.fileType & 0x10))
+                        if ((el.fileType & 0x10) != 0)
                         {
                             for (let i = 0; i < declaration.elements[declIx].elements; ++i)
                             {

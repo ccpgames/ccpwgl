@@ -8,6 +8,7 @@ import {Tw2RenderBatch} from './Tw2RenderBatch';
  * @property {Number} start
  * @property {Number} count
  * @property {Tw2Effect} effect
+ * @property {string} technique
  * @class
  */
 export class Tw2GeometryBatch extends Tw2RenderBatch
@@ -24,13 +25,13 @@ export class Tw2GeometryBatch extends Tw2RenderBatch
 
     /**
      * Commits the Tw2InstancedMeshBatch for rendering
-     * @param {Tw2Effect} [effect=this.effect] An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect = this.effect)
+    Commit(technique)
     {
-        if (this.geometryRes && effect)
+        if (this.geometryRes && this.effect)
         {
-            this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, effect);
+            this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, this.effect, technique);
         }
     }
 }

@@ -16,13 +16,13 @@ export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
 
     /**
      * Commits the batch for rendering
-     * @param {Tw2Effect} [effect] - An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
         if (this.geometryProvider)
         {
-            this.geometryProvider.Render(this, effect);
+            this.geometryProvider.Render(this, technique);
         }
     }
 }

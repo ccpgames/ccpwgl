@@ -10,7 +10,9 @@ import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
  * @property {string} effectFilePath
  * @property {Tw2EffectRes|null} effectRes
  * @property {Object.<string, Tw2Parameter>} parameters
- * @property {Array} passes
+ * @property {Object.<string, Array>} techniques
+ * @property {Object.<string, string>} options
+ * @property {Tw2Shader|null} shader
  * @property {Array} samplerOverrides
  * @property {boolean} autoParameter
  * @property {?Function} _onModified
@@ -25,10 +27,12 @@ export class Tw2Effect
         this.effectFilePath = '';
         this.effectRes = null;
         this.parameters = {};
-        this.passes = [];
+        this.techniques = [];
         this.samplerOverrides = [];
         this.autoParameter = false;
         this._onModified = null;
+        this.options = {};
+        this.shader = null;
     }
 
     /**
@@ -51,7 +55,7 @@ export class Tw2Effect
      */
     IsGood()
     {
-        return (this.effectRes && this.effectRes.IsGood());
+        return this.shader !== null;
     }
 
     /**
@@ -86,11 +90,8 @@ export class Tw2Effect
      */
     RebuildCachedData(resource)
     {
-        if (resource.IsGood())
-        {
-            this.effectRes = resource;
-            this.BindParameters();
-        }
+        this.shader = resource.GetShader(this.options);
+        this.BindParameters();
     }
 
     /**
@@ -99,17 +100,24 @@ export class Tw2Effect
      */
     UnBindParameters()
     {
-        for (let i = 0; i < this.passes.length; ++i)
+        for (let t in this.techniques)
         {
-            for (let j = 0; j < this.passes[i].stages.length; ++j)
+            if (this.techniques.hasOwnProperty(t))
             {
-                for (let k = 0; k < this.passes[i].stages[j].reroutedParameters.length; ++k)
+                let technique = this.techniques[t];
+                for (let i = 0; i < technique.passes.length; ++i)
                 {
-                    this.passes[i].stages[j].reroutedParameters[k].Unbind();
+                    for (let j = 0; j < technique.passes[i].stages.length; ++j)
+                    {
+                        for (let k = 0; k < technique.passes[i].stages[j].reroutedParameters.length; ++k)
+                        {
+                            technique.passes[i].stages[j].reroutedParameters[k].Unbind();
+                        }
+                    }
                 }
             }
         }
-        this.passes = [];
+        this.techniques = {};
     }
 
     /**
@@ -119,158 +127,171 @@ export class Tw2Effect
     BindParameters()
     {
         this.UnBindParameters();
-        if (!this.IsGood()) return false;
-
-        for (let i = 0; i < this.effectRes.passes.length; ++i)
+        if (!this.IsGood())
         {
-            const pass = [];
-            pass.stages = [];
-            for (let j = 0; j < this.effectRes.passes[i].stages.length; ++j)
+            return false;
+        }
+
+        for (let techniqueName in this.shader.techniques)
+        {
+            if (this.shader.techniques.hasOwnProperty(techniqueName))
             {
-                const
-                    stageRes = this.effectRes.passes[i].stages[j],
-                    stage = {};
+                let technique = this.shader.techniques[techniqueName];
+                let passes = [];
 
-                stage.constantBuffer = new Float32Array(stageRes.constantSize);
-                stage.reroutedParameters = [];
-                stage.parameters = [];
-                stage.textures = [];
-                stage.constantBuffer.set(stageRes.constantValues);
-
-                for (let k = 0; k < stageRes.constants.length; ++k)
+                for (let i = 0; i < technique.passes.length; ++i)
                 {
-                    const
-                        constant = stageRes.constants[k],
-                        name = constant.name,
-                        Type = constant.Type;
+                    const pass = [];
+                    pass.stages = [];
+                    for (let j = 0; j < technique.passes[i].stages.length; ++j)
+                    {
+                        const
+                            stageRes = technique.passes[i].stages[j],
+                            stage = {};
 
-                    if (Tw2Effect.ConstantIgnore.includes(name)) continue;
+                        stage.constantBuffer = new Float32Array(stageRes.constantSize);
+                        stage.reroutedParameters = [];
+                        stage.parameters = [];
+                        stage.textures = [];
+                        stage.constantBuffer.set(stageRes.constantValues);
 
-                    if (name in this.parameters)
-                    {
-                        const param = this.parameters[name];
-                        if (param.Bind(stage.constantBuffer, constant.offset, constant.size))
+                        for (let k = 0; k < stageRes.constants.length; ++k)
                         {
-                            stage.reroutedParameters.push(param);
-                        }
-                        else
-                        {
-                            stage.parameters.push({
-                                parameter: param,
-                                constantBuffer: stage.constantBuffer,
-                                offset: constant.offset,
-                                size: constant.size
-                            });
-                        }
-                    }
-                    else if (store.HasVariable(name))
-                    {
-                        stage.parameters.push({
-                            parameter: store.GetVariable(name),
-                            constantBuffer: stage.constantBuffer,
-                            offset: constant.offset,
-                            size: constant.size
-                        });
-                    }
-                    else if (constant.isAutoregister && Type)
-                    {
-                        const variable = store.RegisterVariable(name, undefined, Type);
-                        if (variable)
-                        {
-                            stage.parameters.push({
-                                parameter: variable,
-                                constantBuffer: stage.constantBuffer,
-                                offset: constant.offset,
-                                size: constant.size
-                            });
-                        }
-                    }
-                    else if (this.autoParameter && constant.elements === 1)
-                    {
-                        let value = stage.constantBuffer.subarray(constant.offset, constant.offset + constant.size);
-                        if (value.length === 0)
-                        {
-                            value = undefined;
-                        }
-                        else if (value.length === 1)
-                        {
-                            value = value[0];
-                        }
+                            const
+                                constant = stageRes.constants[k],
+                                name = constant.name,
+                                Type = constant.Type;
 
-                        const param = store.CreateType(name, value, Type);
-                        if (param)
-                        {
-                            this.parameters[name] = param;
-                            if (param.Bind(stage.constantBuffer, constant.offset, constant.size))
+                            if (Tw2Effect.ConstantIgnore.includes(name)) continue;
+
+                            if (name in this.parameters)
                             {
-                                stage.reroutedParameters.push(param);
+                                const param = this.parameters[name];
+                                if (param.Bind(stage.constantBuffer, constant.offset, constant.size))
+                                {
+                                    stage.reroutedParameters.push(param);
+                                }
+                                else
+                                {
+                                    stage.parameters.push({
+                                        parameter: param,
+                                        constantBuffer: stage.constantBuffer,
+                                        offset: constant.offset,
+                                        size: constant.size
+                                    });
+                                }
                             }
-                            else
+                            else if (store.HasVariable(name))
                             {
-                                stage.parameter.push({
-                                    parameter: param,
+                                stage.parameters.push({
+                                    parameter: store.GetVariable(name),
                                     constantBuffer: stage.constantBuffer,
                                     offset: constant.offset,
                                     size: constant.size
                                 });
                             }
-                        }
-                    }
-                }
-
-                for (let k = 0; k < stageRes.textures.length; ++k)
-                {
-                    const name = stageRes.textures[k].name;
-                    let param = null;
-                    if (name in this.parameters)
-                    {
-                        param = this.parameters[name];
-                    }
-                    else if (store.HasVariable(name))
-                    {
-                        param = store.GetVariable(name);
-                    }
-                    else if (stageRes.textures[k].isAutoregister)
-                    {
-                        param = store.RegisterVariable(name, undefined, Tw2TextureParameter);
-                    }
-                    else if (this.autoParameter)
-                    {
-                        param = this.parameters[name] = new Tw2TextureParameter(name);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-                    const p = {
-                        parameter : param,
-                        slot: stageRes.textures[k].registerIndex,
-                        sampler: null
-                    };
-
-                    for (let n = 0; n < stageRes.samplers.length; ++n)
-                    {
-                        if (stageRes.samplers[n].registerIndex === p.slot)
-                        {
-                            if (stageRes.samplers[n].name in this.samplerOverrides)
+                            else if (constant.isAutoregister && Type)
                             {
-                                p.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
+                                const variable = store.RegisterVariable(name, undefined, Type);
+                                if (variable)
+                                {
+                                    stage.parameters.push({
+                                        parameter: variable,
+                                        constantBuffer: stage.constantBuffer,
+                                        offset: constant.offset,
+                                        size: constant.size
+                                    });
+                                }
+                            }
+                            else if (this.autoParameter && constant.elements === 1)
+                            {
+                                let value = stage.constantBuffer.subarray(constant.offset, constant.offset + constant.size);
+                                if (value.length === 0)
+                                {
+                                    value = undefined;
+                                }
+                                else if (value.length === 1)
+                                {
+                                    value = value[0];
+                                }
+
+                                const param = store.CreateType(name, value, Type);
+                                if (param)
+                                {
+                                    this.parameters[name] = param;
+                                    if (param.Bind(stage.constantBuffer, constant.offset, constant.size))
+                                    {
+                                        stage.reroutedParameters.push(param);
+                                    }
+                                    else
+                                    {
+                                        stage.parameter.push({
+                                            parameter: param,
+                                            constantBuffer: stage.constantBuffer,
+                                            offset: constant.offset,
+                                            size: constant.size
+                                        });
+                                    }
+                                }
+                            }
+                        }
+
+                        for (let k = 0; k < stageRes.textures.length; ++k)
+                        {
+                            const name = stageRes.textures[k].name;
+                            let param = null;
+                            if (name in this.parameters)
+                            {
+                                param = this.parameters[name];
+                            }
+                            else if (store.HasVariable(name))
+                            {
+                                param = store.GetVariable(name);
+                            }
+                            else if (stageRes.textures[k].isAutoregister)
+                            {
+                                param = store.RegisterVariable(name, undefined, Tw2TextureParameter);
+                            }
+                            else if (this.autoParameter)
+                            {
+                                param = this.parameters[name] = new Tw2TextureParameter(name);
                             }
                             else
                             {
-                                p.sampler = stageRes.samplers[n];
+                                continue;
                             }
-                            break;
-                        }
-                    }
 
-                    if (j === 0) p.slot += 12;
-                    stage.textures.push(p);
+                            const p = {
+                                parameter : param,
+                                slot: stageRes.textures[k].registerIndex,
+                                sampler: null
+                            };
+
+                            for (let n = 0; n < stageRes.samplers.length; ++n)
+                            {
+                                if (stageRes.samplers[n].registerIndex === p.slot)
+                                {
+                                    if (stageRes.samplers[n].name in this.samplerOverrides)
+                                    {
+                                        p.sampler = this.samplerOverrides[stageRes.samplers[n].name].GetSampler(stageRes.samplers[n]);
+                                    }
+                                    else
+                                    {
+                                        p.sampler = stageRes.samplers[n];
+                                    }
+                                    break;
+                                }
+                            }
+
+                            if (j === 0) p.slot += 12;
+                            stage.textures.push(p);
+                        }
+                        pass.stages.push(stage);
+                    }
+                    passes.push(pass);
                 }
-                pass.stages.push(stage);
+                this.techniques[techniqueName] = passes;
             }
-            this.passes.push(pass);
         }
 
         if (device['effectObserver'])
@@ -284,17 +305,21 @@ export class Tw2Effect
 
     /**
      * ApplyPass
-     * @param pass
+     * @param technique {string} - technique name
+     * @param pass {number}
      */
-    ApplyPass(pass)
+    ApplyPass(technique, pass)
     {
-        if (!this.IsGood() || pass >= this.passes.length) return;
+        if (!this.IsGood() || !(technique in this.techniques) || pass >= this.techniques[technique].length)
+        {
+            return;
+        }
 
-        this.effectRes.ApplyPass(pass);
+        this.shader.ApplyPass(technique, pass);
 
         const
-            p = this.passes[pass],
-            rp = this.effectRes.passes[pass],
+            p = this.techniques[technique][pass],
+            rp = this.shader.techniques[technique].passes[pass],
             d = device;
 
         const program = (d.IsAlphaTestEnabled() && rp.shadowShaderProgram) ? rp.shadowShaderProgram : rp.shaderProgram;
@@ -326,29 +351,38 @@ export class Tw2Effect
 
     /**
      * GetPassCount
+     * @param technique {string} - technique name
      * @returns {number}
      */
-    GetPassCount()
+    GetPassCount(technique)
     {
-        return this.IsGood() ? this.passes.length : 0;
+        if (this.shader === null || !(technique in this.techniques))
+        {
+            return 0;
+        }
+        return this.techniques[technique].length;
     }
 
     /**
      * GetPassInput
+     * @param technique {string} - technique name
      * @param {number} pass
      * @returns {*}
      */
-    GetPassInput(pass)
+    GetPassInput(technique, pass)
     {
-        if (!this.IsGood() || pass >= this.passes.length) return null;
-
-        if (device.IsAlphaTestEnabled() && this.effectRes.passes[pass].shadowShaderProgram)
+        if (this.shader === null || !(technique in this.techniques) || pass >= this.techniques[technique].length)
         {
-            return this.effectRes.passes[pass].shadowShaderProgram.input;
+            return null;
+        }
+
+        if (device.IsAlphaTestEnabled() && this.shader.techniques[technique].passes[pass].shadowShaderProgram)
+        {
+            return this.shader.techniques[technique].passes[pass].shadowShaderProgram.input;
         }
         else
         {
-            return this.effectRes.passes[pass].shaderProgram.input;
+            return this.shader.techniques[technique].passes[pass].shaderProgram.input;
         }
     }
 
@@ -358,10 +392,10 @@ export class Tw2Effect
      */
     Render(cb)
     {
-        const count = this.GetPassCount();
+        const count = this.GetPassCount('Main');
         for (let i = 0; i < count; ++i)
         {
-            this.ApplyPass(i);
+            this.ApplyPass('Main', i);
             cb(this, i);
         }
     }

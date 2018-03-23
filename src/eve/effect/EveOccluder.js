@@ -103,10 +103,10 @@ export class EveOccluder
         d.SetStandardStates(d.RM_ADDITIVE);
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < effect.GetPassCount('Main'); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (decl.SetDeclaration(effect.GetPassInput(pass), 16)) return false;
+            effect.ApplyPass('Main', pass);
+            if (decl.SetDeclaration(effect.GetPassInput('Main', pass), 16)) return false;
             d.ApplyShadowState();
             d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
         }

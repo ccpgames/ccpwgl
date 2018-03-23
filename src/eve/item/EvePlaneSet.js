@@ -18,11 +18,11 @@ export class EvePlaneSetBatch extends Tw2RenderBatch
 
     /**
      * Commits the plan set
-     * @param {Tw2Effect} [effect] An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
-        this.planeSet.Render(effect);
+        this.planeSet.Render(technique);
     }
 }
 
@@ -303,20 +303,20 @@ export class EvePlaneSet extends EveObjectSet
 
     /**
      * Renders the plane set
-     * @param {Tw2Effect} [effect=this.effect] optional effect override
+     * @param {string} technique - technique name
      */
-    Render(effect = this.effect)
+    Render(technique)
     {
-        if (!effect || !effect.IsGood()) return false;
+        if (!this.effect || !this.effect.IsGood()) return false;
 
         device.SetStandardStates(device.RM_ADDITIVE);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
         device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 140)) return false;
+            this.effect.ApplyPass(technique, pass);
+            if (!this._decl.SetDeclaration(this.effect.GetPassInput(technique, pass), 140)) return false;
             device.ApplyShadowState();
             device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
         }

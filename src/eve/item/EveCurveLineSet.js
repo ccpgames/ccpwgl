@@ -262,6 +262,7 @@ export class EveCurveLineSet extends EveObjectSet
         this.pickEffect = null;
         this.lineWidthFactor = 1;
         this.additive = false;
+        this.pickable = true;
         this.depthOffset = 0;
         this.translation = vec3.create();
         this.rotation = quat.create();
@@ -642,7 +643,7 @@ export class EveCurveLineSet extends EveObjectSet
 
             case device.RM_PICKABLE:
                 if (!this.pickable || !this.pickEffect) return;
-                effect = this.pickable;
+                effect = this.pickEffect;
         }
 
         const
@@ -662,20 +663,20 @@ export class EveCurveLineSet extends EveObjectSet
     /**
      * Per frame update
      * @param {Tw2ForwardingRenderBatch} batch
-     * @param {Tw2Effect} [effect=batch.effect} - An optional override effect
+     * @param {string} technique - technique name
      * @returns {boolean}
      */
-    Render(batch, effect = batch.effect)
+    Render(batch, technique)
     {
-        if (!effect || !effect.IsGood()) return false;
+        if (!batch.effect || !batch.effect.IsGood()) return false;
 
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vb);
 
-        let passCount = effect.GetPassCount();
+        let passCount = batch.effect.GetPassCount(technique);
         for (let pass = 0; pass < passCount; ++pass)
         {
-            effect.ApplyPass(pass);
-            let passInput = effect.GetPassInput(pass);
+            batch.effect.ApplyPass(technique, pass);
+            let passInput = batch.effect.GetPassInput(technique, pass);
             if (!this._decl.SetDeclaration(passInput, this._decl.stride)) return false;
             device.ApplyShadowState();
             device.gl.drawArrays(device.gl.TRIANGLES, 0, this._vbSize * 6);
@@ -838,7 +839,7 @@ export class EveCurveLineSet extends EveObjectSet
         buffer[offset++] = endColor[1];
         buffer[offset++] = endColor[2];
         buffer[offset++] = endColor[3];
-        offset = EveCurveLineSet.FillColorVertices(item, buffer, offset);
+        EveCurveLineSet.FillColorVertices(item, buffer, offset);
     }
 
     /**

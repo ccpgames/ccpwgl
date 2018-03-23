@@ -35,9 +35,9 @@ export class Tw2BatchAccumulator
 
     /**
      * Renders the accumulated render batches
-     * @param {Tw2Effect} [effect] - An optional override effect
+     * @param {string} [technique] - technique name
      */
-    Render(effect)
+    Render(technique='Main')
     {
         if (this._sortMethod)
         {
@@ -48,7 +48,7 @@ export class Tw2BatchAccumulator
         {
             if (this.batches[i] instanceof Tw2BatchAccumulator)
             {
-                this.batches[i].Render(effect);
+                this.batches[i].Render(technique);
             }
             else
             {
@@ -58,7 +58,7 @@ export class Tw2BatchAccumulator
                 }
 
                 device.perObjectData = this.batches[i].perObjectData;
-                this.batches[i].Commit(effect);
+                this.batches[i].Commit(technique);
             }
         }
     }

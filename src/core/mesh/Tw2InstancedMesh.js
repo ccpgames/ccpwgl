@@ -72,15 +72,16 @@ export class Tw2InstancedMesh extends Tw2Mesh
      * @param {number} start
      * @param {number} count
      * @param {Tw2Effect} effect
+     * @param {string} technique
      */
-    RenderAreas(meshIx, start, count, effect)
+    RenderAreas(meshIx, start, count, effect, technique)
     {
         if (!this.IsGood()) return;
 
         const buffer = this.instanceGeometryResource.GetInstanceBuffer(this.instanceMeshIndex);
         if (buffer)
         {
-            this.geometryResource.RenderAreasInstanced(meshIx, start, count, effect,
+            this.geometryResource.RenderAreasInstanced(meshIx, start, count, effect, technique,
                 buffer,
                 this.instanceGeometryResource.GetInstanceDeclaration(this.instanceMeshIndex),
                 this.instanceGeometryResource.GetInstanceStride(this.instanceMeshIndex),

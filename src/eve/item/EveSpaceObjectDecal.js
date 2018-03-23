@@ -216,9 +216,9 @@ export class EveSpaceObjectDecal
     /**
      * Renders the decal
      * @param {Tw2ForwardingRenderBatch} batch
-     * @param {Tw2Effect} [effect=batch.effect] Optional override effect
+     * @param {string} technique - technique name
      */
-    Render(batch, effect=batch.effect)
+    Render(batch, technique)
     {
         const
             bkIB = this.parentGeometry.meshes[0].indexes,
@@ -234,7 +234,7 @@ export class EveSpaceObjectDecal
         this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
         this.parentGeometry.meshes[0].indexType = device.gl.UNSIGNED_SHORT;
 
-        this.parentGeometry.RenderAreas(0, 0, 1, effect);
+        this.parentGeometry.RenderAreas(0, 0, 1, batch.effect, technique);
         this.parentGeometry.meshes[0].indexes = bkIB;
         this.parentGeometry.meshes[0].areas[0].start = bkStart;
         this.parentGeometry.meshes[0].areas[0].count = bkCount;

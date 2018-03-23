@@ -14,13 +14,13 @@ export class Tw2GeometryLineBatch extends Tw2GeometryBatch
 
     /**
      * Commits the Geometry Line Batch for rendering
-     * @param {Tw2Effect} [effect=this.effect] An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect = this.effect)
+    Commit(technique)
     {
-        if (this.geometryRes && effect)
+        if (this.geometryRes && this.effect)
         {
-            this.geometryRes.RenderLines(this.meshIx, this.start, this.count, effect);
+            this.geometryRes.RenderLines(this.meshIx, this.start, this.count, this.effect, technique);
         }
     }
 }

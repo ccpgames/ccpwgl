@@ -18,12 +18,12 @@ export class EveSpotlightSetBatch extends Tw2RenderBatch
 
     /**
      * Commits the spotlight set for rendering
-     * @param {Tw2Effect} [effect] Optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
-        this.spotlightSet.RenderCones(effect);
-        this.spotlightSet.RenderGlow(effect);
+        this.spotlightSet.RenderCones(technique);
+        this.spotlightSet.RenderGlow(technique);
     }
 }
 
@@ -348,33 +348,34 @@ export class EveSpotlightSet extends EveObjectSet
 
     /**
      * Renders the spotlight set's cone effect
-     * @param {Tw2Effect} [effect=this.coneEffect] - An optional argument to override the cone's effect
+     * @param {string} technique - technique name
      * @returns {boolean}
      */
-    RenderCones(effect = this.coneEffect)
+    RenderCones(technique)
     {
-        return EveSpotlightSet.Render(this, effect, this._coneVertexBuffer);
+        return EveSpotlightSet.Render(this, this.coneEffect, technique, this._coneVertexBuffer);
     }
 
     /**
      * Renders the spotlight set's glow effect
-     * @param {Tw2Effect} [effect=this.glowEffect] - An optional argument to override the glow's effect
+     * @param {string} technique - technique name
      * @returns {boolean}
      */
-    RenderGlow(effect = this.glowEffect)
+    RenderGlow(technique)
     {
-        return EveSpotlightSet.Render(this, effect, this._spriteVertexBuffer);
+        return EveSpotlightSet.Render(this, this.glowEffect, technique, this._spriteVertexBuffer);
     }
 
     /**
      * Internal render function
      * @param {EveSpotlightSet} spotlightSet
      * @param {Tw2Effect} effect   - The Tw2Effect to render
+     * @param {string} technique - technique name
      * @param {WebGLBuffer} buffer - A webgl buffer (ie. cone or glow buffer)
      * @returns {boolean}
      * @private
      */
-    static Render(spotlightSet, effect, buffer)
+    static Render(spotlightSet, effect, technique, buffer)
     {
         if (!effect || !effect.IsGood() || !buffer) return false;
 
@@ -383,10 +384,10 @@ export class EveSpotlightSet extends EveObjectSet
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, buffer);
         device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, spotlightSet._indexBuffer);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!spotlightSet._decl.SetDeclaration(effect.GetPassInput(pass), stride)) return false;
+            effect.ApplyPass(technique, pass);
+            if (!spotlightSet._decl.SetDeclaration(effect.GetPassInput(technique, pass), stride)) return false;
             device.ApplyShadowState();
             device.gl.drawElements(device.gl.TRIANGLES, buffer['count'], device.gl.UNSIGNED_SHORT, 0);
         }

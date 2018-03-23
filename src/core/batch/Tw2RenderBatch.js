@@ -18,9 +18,9 @@ export class Tw2RenderBatch
 
     /**
      * Commits the batch
-     * @param {Tw2Effect} [effect] - An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
 
     }

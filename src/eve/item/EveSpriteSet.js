@@ -26,17 +26,17 @@ export class EveSpriteSetBatch extends Tw2RenderBatch
 
     /**
      * Commits the sprite set
-     * @param {Tw2Effect} [effect] An optional override effect
+     * @param {string} technique - technique name
      */
-    Commit(effect)
+    Commit(technique)
     {
         if (this.boosterGlow)
         {
-            this.spriteSet.RenderBoosterGlow(effect, this.world, this.boosterGain, this.warpIntensity);
+            this.spriteSet.RenderBoosterGlow(technique, this.world, this.boosterGain, this.warpIntensity);
         }
         else
         {
-            this.spriteSet.Render(effect, this.world, this.perObjectData);
+            this.spriteSet.Render(technique, this.world, this.perObjectData);
         }
     }
 }
@@ -362,28 +362,28 @@ export class EveSpriteSet extends EveObjectSet
 
     /**
      * Renders the sprite set
-     * @param {Tw2Effect} [effect=this.effect] Optional override effect
+     * @param {string} technique - technique name
      * @param {mat4} world
      * @param {Tw2PerObjectData} perObjectData
      * @returns {boolean}
      */
-    Render(effect = this.effect, world, perObjectData)
+    Render(technique, world, perObjectData)
     {
         if (this.useQuads)
         {
-            return this.RenderQuads(effect, world, perObjectData);
+            return this.RenderQuads(technique, world, perObjectData);
         }
 
-        if (!effect || !effect.IsGood() || !this._indexBuffer) return false;
+        if (!this.effect || !this.effect.IsGood() || !this._indexBuffer) return false;
 
         device.SetStandardStates(device.RM_ADDITIVE);
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
         device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            if (!this._decl.SetDeclaration(effect.GetPassInput(pass), 52)) return false;
+            this.effect.ApplyPass(technique, pass);
+            if (!this._decl.SetDeclaration(this.effect.GetPassInput(technique, pass), 52)) return false;
             device.ApplyShadowState();
             device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
         }
@@ -392,15 +392,15 @@ export class EveSpriteSet extends EveObjectSet
 
     /**
      * Renders the sprite set as booster glow
-     * @param {Tw2Effect} [effect=this.effect] optional override effect
+     * @param {string} technique - technique name
      * @param {mat4} world
      * @param {Number} boosterGain
      * @param {Number} warpIntensity
      * @returns {boolean}
      */
-    RenderBoosterGlow(effect = this.effect, world, boosterGain, warpIntensity)
+    RenderBoosterGlow(technique, world, boosterGain, warpIntensity)
     {
-        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
+        if (!this.effect || !this.effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,
@@ -437,10 +437,10 @@ export class EveSpriteSet extends EveObjectSet
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
         d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            const passInput = effect.GetPassInput(pass);
+            this.effect.ApplyPass(technique, pass);
+            const passInput = this.effect.GetPassInput(technique, pass);
             d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
             this._vdecl.SetPartialDeclaration(passInput, 4);
             d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
@@ -455,14 +455,14 @@ export class EveSpriteSet extends EveObjectSet
 
     /**
      * Renders the sprite set with pre-transformed quads
-     * @param {Tw2Effect} [effect=this.effect] optional override effect
+     * @param {string} technique - technique name
      * @param {mat4} world
      * @param {Tw2PerObjectData} perObjectData
      * @returns {boolean}
      */
-    RenderQuads(effect = this.effect, world, perObjectData)
+    RenderQuads(technique, world, perObjectData)
     {
-        if (!effect || !effect.IsGood() || !this._instanceBuffer) return false;
+        if (!this.effect || !this.effect.IsGood() || !this._instanceBuffer) return false;
 
         const
             d = device,
@@ -512,10 +512,10 @@ export class EveSpriteSet extends EveObjectSet
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
         d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
 
-        for (let pass = 0; pass < effect.GetPassCount(); ++pass)
+        for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
-            effect.ApplyPass(pass);
-            const passInput = effect.GetPassInput(pass);
+            this.effect.ApplyPass(technique, pass);
+            const passInput = this.effect.GetPassInput(technique, pass);
             d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
             this._vdecl.SetPartialDeclaration(passInput, 4);
             d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);

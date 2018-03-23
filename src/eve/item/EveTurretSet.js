@@ -78,7 +78,7 @@ export class EveTurretSetItem extends EveObjectSetItem
 /**
  * EveTurretSet
  *
- * @property {Array.<EveTurretData>} turrets
+ * @property {Array.<EveTurretSetItem>} turrets
  * @property {Tw2AnimationController} activeAnimation
  * @property {Tw2AnimationController} inactiveAnimation
  * @property {string} geometryResPath
@@ -691,12 +691,12 @@ export class EveTurretSet extends EveObjectSet
     /**
      * Renders the turret set
      * @param batch
-     * @param {Tw2Effect} [effect=this.turretEffect] Optional effect override
+     * @param {string} technique - technique name
      * @returns {boolean}
      */
-    Render(batch, effect = this.turretEffect)
+    Render(batch, technique)
     {
-        if (!effect || !effect.IsGood() || !this._visibleItems.length) return false;
+        if (!this.turretEffect || !this.turretEffect.IsGood() || !this._visibleItems.length) return false;
 
         let index = 0;
         const customSetter = function (el)
@@ -719,7 +719,7 @@ export class EveTurretSet extends EveObjectSet
                 const isActive = this.state === EveTurretSet.State.FIRING && index === this._activeTurret;
                 if (batch.renderActive === isActive)
                 {
-                    this.geometryResource.RenderAreas(0, 0, 1, effect);
+                    this.geometryResource.RenderAreas(0, 0, 1, this.turretEffect, technique);
                     rendered++;
                 }
             }
@@ -806,7 +806,7 @@ export class EveTurretSet extends EveObjectSet
     /**
      * Animation helper function for turret firing
      * @param {EveTurretSet} turretSet
-     * @returns {EveTurretData} the closest turret
+     * @returns {EveTurretSetItem} the closest turret
      */
     static DoStartFiring(turretSet)
     {
