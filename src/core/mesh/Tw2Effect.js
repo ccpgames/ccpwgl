@@ -15,7 +15,6 @@ import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
  * @property {Tw2Shader|null} shader
  * @property {Array} samplerOverrides
  * @property {boolean} autoParameter
- * @property {?Function} _onModified
  * @class
  */
 export class Tw2Effect
@@ -30,7 +29,6 @@ export class Tw2Effect
         this.techniques = [];
         this.samplerOverrides = [];
         this.autoParameter = false;
-        this._onModified = null;
         this.options = {};
         this.shader = null;
     }
@@ -105,13 +103,13 @@ export class Tw2Effect
             if (this.techniques.hasOwnProperty(t))
             {
                 let technique = this.techniques[t];
-                for (let i = 0; i < technique.passes.length; ++i)
+                for (let i = 0; i < technique.length; ++i)
                 {
-                    for (let j = 0; j < technique.passes[i].stages.length; ++j)
+                    for (let j = 0; j < technique[i].stages.length; ++j)
                     {
-                        for (let k = 0; k < technique.passes[i].stages[j].reroutedParameters.length; ++k)
+                        for (let k = 0; k < technique[i].stages[j].reroutedParameters.length; ++k)
                         {
-                            technique.passes[i].stages[j].reroutedParameters[k].Unbind();
+                            technique[i].stages[j].reroutedParameters[k].Unbind();
                         }
                     }
                 }
@@ -529,7 +527,7 @@ export class Tw2Effect
             if (options.hasOwnProperty(key))
             {
                 const param = this.parameters[key];
-                if (param && param.constructor === Tw2TextureParameter)
+                if (param && param instanceof Tw2TextureParameter)
                 {
                     let doUpdate = false;
 
@@ -568,7 +566,7 @@ export class Tw2Effect
             if (this.parameters.hasOwnProperty(key))
             {
                 const param = this.parameters[key];
-                if (param && 'GetOverrides' in param && param.useAllOverrides)
+                if (param && param instanceof Tw2TextureParameter && param.useAllOverrides)
                 {
                     out[key] = this.parameters[key].GetOverrides();
                 }
