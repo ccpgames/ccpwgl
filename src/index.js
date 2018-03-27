@@ -18,8 +18,7 @@ const {vec4, mat4} = math;
 core.store.Register({
 
     paths: {
-        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/',
-        'cdn': 'https://developers.eveonline.com/res/'
+        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
     },
 
     extensions: {
