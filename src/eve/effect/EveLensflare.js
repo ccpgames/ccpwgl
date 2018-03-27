@@ -23,7 +23,7 @@ import {EveOccluder} from './EveOccluder';
  * @property {Array} xDistanceToCenter
  * @property {Array} yDistanceToCenter
  * @property {Array} bindings
- * @property {Array.<Tw2CurveSet> curveSets
+ * @property {Array.<Tw2CurveSet>} curveSets
  * @property {?Tw2Mesh} mesh
  * @property {vec3} _direction
  * @property {mat4} _transform
@@ -312,7 +312,7 @@ export class EveLensflare
             g.vec3_2 = vec3.create();
             g.vec3_3 = vec3.create();
             g.vec4_0 = vec4.create();
-            g.vec4_1 = mat4.create();
+            g.vec4_1 = vec4.create();
             g.mat4_0 = mat4.create();
 
             g.backBuffer = new Tw2TextureRes();
