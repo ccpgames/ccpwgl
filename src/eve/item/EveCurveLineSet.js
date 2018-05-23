@@ -873,3 +873,9 @@ export class EveCurveLineSet extends EveObjectSet
  * Class global variables and scratch
  */
 EveCurveLineSet.global = null;
+
+/**
+ * Line set item constructor
+ * @type {EveCurveLineSetItem}
+ */
+EveCurveLineSet.Item = EveCurveLineSetItem;

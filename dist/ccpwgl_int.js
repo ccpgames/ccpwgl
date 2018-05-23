@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 65);
+/******/ 	return __webpack_require__(__webpack_require__.s = 64);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -96,7 +96,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(67);
+var _vec = __webpack_require__(66);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -132,7 +132,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(73);
+var _quat = __webpack_require__(72);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -144,7 +144,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(74);
+var _mat = __webpack_require__(73);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -156,7 +156,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(75);
+var _mat2 = __webpack_require__(74);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -168,7 +168,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(76);
+var _noise = __webpack_require__(75);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -180,7 +180,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(77);
+var _curve = __webpack_require__(76);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -192,7 +192,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(78);
+var _util = __webpack_require__(77);
 
 Object.keys(_util).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -227,7 +227,7 @@ Object.keys(_batch).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(87);
+var _curve = __webpack_require__(86);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -239,7 +239,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _data = __webpack_require__(97);
+var _data = __webpack_require__(96);
 
 Object.keys(_data).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -251,7 +251,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _deprecated = __webpack_require__(99);
+var _deprecated = __webpack_require__(98);
 
 Object.keys(_deprecated).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -299,7 +299,7 @@ Object.keys(_mesh).forEach(function (key) {
   });
 });
 
-var _model = __webpack_require__(132);
+var _model = __webpack_require__(131);
 
 Object.keys(_model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -407,7 +407,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(57);
+var _Tw2RenderTarget = __webpack_require__(56);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -459,7 +459,7 @@ var _vertex = __webpack_require__(9);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var WebGLDebugUtil = __webpack_require__(82);
+var WebGLDebugUtil = __webpack_require__(81);
 
 /**
  * Tw2Device
@@ -1715,7 +1715,7 @@ var device = exports.device = new Tw2Device();
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2Curve = exports.Tw2CurveKey = undefined;
 
@@ -1735,11 +1735,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
-  _classCallCheck(this, Tw2CurveKey);
+    _classCallCheck(this, Tw2CurveKey);
 
-  this._id = _math.util.generateID();
-  this.name = '';
-  this.time = 0;
+    this._id = _math.util.generateID();
+    this.name = '';
+    this.time = 0;
 };
 
 /**
@@ -1752,116 +1752,116 @@ var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
 
 
 var Tw2Curve = exports.Tw2Curve = function () {
-  function Tw2Curve() {
-    _classCallCheck(this, Tw2Curve);
+    function Tw2Curve() {
+        _classCallCheck(this, Tw2Curve);
 
-    this._id = _math.util.generateID();
-    this.name = '';
-  }
-
-  /**
-   * Initializes the Curve
-   */
-
-
-  _createClass(Tw2Curve, [{
-    key: 'Initialize',
-    value: function Initialize() {
-      this.Sort();
+        this._id = _math.util.generateID();
+        this.name = '';
     }
 
     /**
-     * Sorts the curve
+     * Initializes the Curve
      */
 
-  }, {
-    key: 'Sort',
-    value: function Sort() {}
 
-    /**
-     * Gets the curve's length
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      return 0;
-    }
-
-    /**
-     * Updates the current value at the given time
-     * @param {number} time
-     */
-
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {}
-
-    /**
-     * Compares curve keys
-     * @param {Tw2CurveKey} a
-     * @param {Tw2CurveKey} b
-     * @returns {number}
-     */
-
-  }], [{
-    key: 'Compare',
-    value: function Compare(a, b) {
-      if (a.time < b.time) return -1;
-      if (a.time > b.time) return 1;
-      return 0;
-    }
-
-    /**
-     * Sorts legacy curve keys
-     * @param {*} curve
-     * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
-     */
-
-  }, {
-    key: 'Sort',
-    value: function Sort(curve) {
-      var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : curve.keys;
-
-      if (keys && keys.length) {
-        keys.sort(Tw2Curve.Compare);
-        curve.length = keys[keys.length - 1].time;
-      }
-    }
-
-    /**
-     * Sorts curve keys
-     * @param {*} curve
-     */
-
-  }, {
-    key: 'Sort2',
-    value: function Sort2(curve) {
-      if (curve.keys && curve.keys.length) {
-        curve.keys.sort(Tw2Curve.Compare);
-        var back = curve.keys[curve.keys.length - 1];
-
-        if (back.time > curve.length) {
-          var preLength = curve.length,
-              endValue = curve.endValue,
-              endTangent = curve.endTangent;
-
-          curve.length = back.time;
-          curve.endValue = back.value;
-          curve.endTangent = back.leftTangent;
-
-          if (preLength > 0) {
-            back.time = preLength;
-            back.value = endValue;
-            back.leftTangent = endTangent;
-          }
+    _createClass(Tw2Curve, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            this.Sort();
         }
-      }
-    }
-  }]);
 
-  return Tw2Curve;
+        /**
+         * Sorts the curve
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort() {}
+
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return 0;
+        }
+
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {}
+
+        /**
+         * Compares curve keys
+         * @param {Tw2CurveKey} a
+         * @param {Tw2CurveKey} b
+         * @returns {number}
+         */
+
+    }], [{
+        key: 'Compare',
+        value: function Compare(a, b) {
+            if (a.time < b.time) return -1;
+            if (a.time > b.time) return 1;
+            return 0;
+        }
+
+        /**
+         * Sorts legacy curve keys
+         * @param {*} curve
+         * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
+         */
+
+    }, {
+        key: 'Sort',
+        value: function Sort(curve) {
+            var keys = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : curve.keys;
+
+            if (keys && keys.length) {
+                keys.sort(Tw2Curve.Compare);
+                curve.length = keys[keys.length - 1].time;
+            }
+        }
+
+        /**
+         * Sorts curve keys
+         * @param {*} curve
+         */
+
+    }, {
+        key: 'Sort2',
+        value: function Sort2(curve) {
+            if (curve.keys && curve.keys.length) {
+                curve.keys.sort(Tw2Curve.Compare);
+                var back = curve.keys[curve.keys.length - 1];
+
+                if (back.time > curve.length) {
+                    var preLength = curve.length,
+                        endValue = curve.endValue,
+                        endTangent = curve.endTangent;
+
+                    curve.length = back.time;
+                    curve.endValue = back.value;
+                    curve.endTangent = back.leftTangent;
+
+                    if (preLength > 0) {
+                        back.time = preLength;
+                        back.value = endValue;
+                        back.leftTangent = endTangent;
+                    }
+                }
+            }
+        }
+    }]);
+
+    return Tw2Curve;
 }();
 
 /**
@@ -1913,12 +1913,12 @@ Tw2Curve.Extrapolation = null;
  * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
  */
 Tw2Curve.Type = {
-  CURVE: 1,
-  CURVE2: 2,
-  CURVE_MAYA: 3,
-  CURVE_NO_KEYS: 4,
-  SEQUENCER: 100,
-  SEQUENCER2: 101
+    CURVE: 1,
+    CURVE2: 2,
+    CURVE_MAYA: 3,
+    CURVE_NO_KEYS: 4,
+    SEQUENCER: 100,
+    SEQUENCER2: 101
 };
 
 /**
@@ -1926,10 +1926,10 @@ Tw2Curve.Type = {
  * @type {*}
  */
 Tw2Curve.global = {
-  vec3_0: _math.vec3.create(),
-  vec4_0: _math.vec4.create(),
-  quat_0: _math.quat.create(),
-  quat_1: _math.quat.create()
+    vec3_0: _math.vec3.create(),
+    vec4_0: _math.vec4.create(),
+    quat_0: _math.quat.create(),
+    quat_1: _math.quat.create()
 };
 
 /***/ }),
@@ -2215,7 +2215,7 @@ var _Tw2Logger = __webpack_require__(4);
 
 var _Tw2Store = __webpack_require__(16);
 
-var _Tw2MotherLode = __webpack_require__(79);
+var _Tw2MotherLode = __webpack_require__(78);
 
 var _Tw2LoadingObject = __webpack_require__(37);
 
@@ -3176,7 +3176,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(81);
+var _Tw2VertexDeclaration = __webpack_require__(80);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3509,12 +3509,12 @@ EveObjectSet.global = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(33);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -3793,7 +3793,7 @@ Tw2Resource.prototype.requestResponseType = null;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2ParticleForce = undefined;
 
@@ -3812,38 +3812,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
-  function Tw2ParticleForce() {
-    _classCallCheck(this, Tw2ParticleForce);
+    function Tw2ParticleForce() {
+        _classCallCheck(this, Tw2ParticleForce);
 
-    this._id = _math.util.generateID();
-    this.name = '';
-  }
-
-  /**
-   * Applies forces
-   * @param {Tw2ParticleElement} position
-   * @param {Tw2ParticleElement} velocity
-   * @param {Tw2ParticleElement} force
-   * @param {number} dt
-   * @param {number} mass
-   */
-
-
-  _createClass(Tw2ParticleForce, [{
-    key: 'ApplyForce',
-    value: function ApplyForce(position, velocity, force, dt, mass) {}
+        this._id = _math.util.generateID();
+        this.name = '';
+    }
 
     /**
-     * Per frame update (Called before ApplyForce)
-     * @param {number} dt - delta time
+     * Applies forces
+     * @param {Tw2ParticleElement} position
+     * @param {Tw2ParticleElement} velocity
+     * @param {Tw2ParticleElement} force
+     * @param {number} dt
+     * @param {number} mass
      */
 
-  }, {
-    key: 'Update',
-    value: function Update(dt) {}
-  }]);
 
-  return Tw2ParticleForce;
+    _createClass(Tw2ParticleForce, [{
+        key: 'ApplyForce',
+        value: function ApplyForce(position, velocity, force, dt, mass) {}
+
+        /**
+         * Per frame update (Called before ApplyForce)
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {}
+    }]);
+
+    return Tw2ParticleForce;
 }();
 
 /**
@@ -3853,9 +3853,9 @@ var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
 
 
 Tw2ParticleForce.global = {
-  vec3_0: _math.vec3.create(),
-  vec3_1: _math.vec3.create(),
-  vec4_0: _math.vec4.create()
+    vec3_0: _math.vec3.create(),
+    vec3_1: _math.vec3.create(),
+    vec4_0: _math.vec4.create()
 };
 
 /***/ }),
@@ -3981,7 +3981,7 @@ EveChild.global = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.EveObject = undefined;
 
@@ -4001,58 +4001,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var EveObject = exports.EveObject = function () {
-  function EveObject() {
-    _classCallCheck(this, EveObject);
+    function EveObject() {
+        _classCallCheck(this, EveObject);
 
-    this._id = _math.util.generateID();
-    this.name = '';
-    this.display = true;
-  }
-
-  /**
-   * Initializes the object
-   */
-
-
-  _createClass(EveObject, [{
-    key: 'Initialize',
-    value: function Initialize() {}
-
-    /**
-     * Gets object resources
-     * @param {Array} [out=[]]
-     * @returns {Array<Tw2Resource>} out
-     */
-
-  }, {
-    key: 'GetResources',
-    value: function GetResources() {
-      var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-      return out;
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.display = true;
     }
 
     /**
-     * Per frame update
-     * @param {number} dt - delta time
+     * Initializes the object
      */
 
-  }, {
-    key: 'Update',
-    value: function Update(dt) {}
 
-    /**
-     * Accumulates batches
-     * @param {number} mode
-     * @param {Tw2BatchAccumulator} accumulator
-     */
+    _createClass(EveObject, [{
+        key: 'Initialize',
+        value: function Initialize() {}
 
-  }, {
-    key: 'GetBatches',
-    value: function GetBatches(mode, accumulator) {}
-  }]);
+        /**
+         * Gets object resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>} out
+         */
 
-  return EveObject;
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {}
+
+        /**
+         * Accumulates batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {}
+    }]);
+
+    return EveObject;
 }();
 
 /**
@@ -4062,17 +4062,17 @@ var EveObject = exports.EveObject = function () {
 
 
 EveObject.global = {
-  vec3_0: _math.vec3.create(),
-  vec3_1: _math.vec3.create(),
-  vec3_2: _math.vec3.create(),
-  vec3_3: _math.vec3.create(),
-  vec3_4: _math.vec3.create(),
-  vec3_5: _math.vec3.create(),
-  vec3_6: _math.vec3.create(),
-  vec3_7: _math.vec3.create(),
-  mat4_0: _math.mat4.create(),
-  mat4_1: _math.mat4.create(),
-  mat4_2: _math.mat4.create()
+    vec3_0: _math.vec3.create(),
+    vec3_1: _math.vec3.create(),
+    vec3_2: _math.vec3.create(),
+    vec3_3: _math.vec3.create(),
+    vec3_4: _math.vec3.create(),
+    vec3_5: _math.vec3.create(),
+    vec3_6: _math.vec3.create(),
+    vec3_7: _math.vec3.create(),
+    mat4_0: _math.mat4.create(),
+    mat4_1: _math.mat4.create(),
+    mat4_2: _math.mat4.create()
 };
 
 /***/ }),
@@ -5055,7 +5055,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(66);
+var _Tw2BatchAccumulator = __webpack_require__(65);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5067,7 +5067,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2ForwardingRenderBatch = __webpack_require__(84);
+var _Tw2ForwardingRenderBatch = __webpack_require__(83);
 
 Object.keys(_Tw2ForwardingRenderBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5091,7 +5091,7 @@ Object.keys(_Tw2GeometryBatch).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryLineBatch = __webpack_require__(85);
+var _Tw2GeometryLineBatch = __webpack_require__(84);
 
 Object.keys(_Tw2GeometryLineBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5115,7 +5115,7 @@ Object.keys(_Tw2RenderBatch).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMeshBatch = __webpack_require__(86);
+var _Tw2InstancedMeshBatch = __webpack_require__(85);
 
 Object.keys(_Tw2InstancedMeshBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5150,7 +5150,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(80);
+var _Tw2SamplerOverride = __webpack_require__(79);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5170,7 +5170,7 @@ Object.keys(_Tw2SamplerOverride).forEach(function (key) {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2RenderBatch = undefined;
 
@@ -5189,25 +5189,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2RenderBatch = exports.Tw2RenderBatch = function () {
-  function Tw2RenderBatch() {
-    _classCallCheck(this, Tw2RenderBatch);
+    function Tw2RenderBatch() {
+        _classCallCheck(this, Tw2RenderBatch);
 
-    this.renderMode = _global.device.RM_ANY;
-    this.perObjectData = null;
-  }
+        this.renderMode = _global.device.RM_ANY;
+        this.perObjectData = null;
+    }
 
-  /**
-   * Commits the batch
-   * @param {string} technique - technique name
-   */
+    /**
+     * Commits the batch
+     * @param {string} technique - technique name
+     */
 
 
-  _createClass(Tw2RenderBatch, [{
-    key: 'Commit',
-    value: function Commit(technique) {}
-  }]);
+    _createClass(Tw2RenderBatch, [{
+        key: 'Commit',
+        value: function Commit(technique) {}
+    }]);
 
-  return Tw2RenderBatch;
+    return Tw2RenderBatch;
 }();
 
 /***/ }),
@@ -5300,7 +5300,7 @@ Object.keys(_Tw2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(90);
+var _Tw2FloatParameter = __webpack_require__(89);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5312,7 +5312,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(91);
+var _Tw2MatrixParameter = __webpack_require__(90);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5324,7 +5324,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(92);
+var _Tw2TransformParameter = __webpack_require__(91);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5336,7 +5336,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(93);
+var _Tw2VariableParameter = __webpack_require__(92);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5348,7 +5348,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(94);
+var _Tw2Vector2Parameter = __webpack_require__(93);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5360,7 +5360,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(95);
+var _Tw2Vector3Parameter = __webpack_require__(94);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5372,7 +5372,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(96);
+var _Tw2Vector4Parameter = __webpack_require__(95);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5566,7 +5566,7 @@ var Tw2RawData = exports.Tw2RawData = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2ParticleEmitter = undefined;
 
@@ -5586,34 +5586,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
-  function Tw2ParticleEmitter() {
-    _classCallCheck(this, Tw2ParticleEmitter);
+    function Tw2ParticleEmitter() {
+        _classCallCheck(this, Tw2ParticleEmitter);
 
-    this._id = _math.util.generateID();
-    this.name = '';
-    this.particleSystem = null;
-  }
-
-  /**
-   * Initializes the particle emitter
-   */
-
-
-  _createClass(Tw2ParticleEmitter, [{
-    key: 'Initialize',
-    value: function Initialize() {}
+        this._id = _math.util.generateID();
+        this.name = '';
+        this.particleSystem = null;
+    }
 
     /**
-     * Per frame update
-     * @param {number} dt - delta time
+     * Initializes the particle emitter
      */
 
-  }, {
-    key: 'Update',
-    value: function Update(dt) {}
-  }]);
 
-  return Tw2ParticleEmitter;
+    _createClass(Tw2ParticleEmitter, [{
+        key: 'Initialize',
+        value: function Initialize() {}
+
+        /**
+         * Per frame update
+         * @param {number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {}
+    }]);
+
+    return Tw2ParticleEmitter;
 }();
 
 /***/ }),
@@ -5693,7 +5693,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2EffectRes = __webpack_require__(51);
+var _Tw2EffectRes = __webpack_require__(133);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5741,7 +5741,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(52);
+var _Tw2TextureRes = __webpack_require__(51);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -9290,7 +9290,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Tw2Shader|null} shader
  * @property {Array} samplerOverrides
  * @property {boolean} autoParameter
- * @property {?Function} _onModified
  * @class
  */
 var Tw2Effect = exports.Tw2Effect = function () {
@@ -9305,7 +9304,6 @@ var Tw2Effect = exports.Tw2Effect = function () {
         this.techniques = [];
         this.samplerOverrides = [];
         this.autoParameter = false;
-        this._onModified = null;
         this.options = {};
         this.shader = null;
     }
@@ -9386,10 +9384,10 @@ var Tw2Effect = exports.Tw2Effect = function () {
             for (var t in this.techniques) {
                 if (this.techniques.hasOwnProperty(t)) {
                     var technique = this.techniques[t];
-                    for (var i = 0; i < technique.passes.length; ++i) {
-                        for (var j = 0; j < technique.passes[i].stages.length; ++j) {
-                            for (var k = 0; k < technique.passes[i].stages[j].reroutedParameters.length; ++k) {
-                                technique.passes[i].stages[j].reroutedParameters[k].Unbind();
+                    for (var i = 0; i < technique.length; ++i) {
+                        for (var j = 0; j < technique[i].stages.length; ++j) {
+                            for (var k = 0; k < technique[i].stages[j].reroutedParameters.length; ++k) {
+                                technique[i].stages[j].reroutedParameters[k].Unbind();
                             }
                         }
                     }
@@ -9761,7 +9759,7 @@ var Tw2Effect = exports.Tw2Effect = function () {
             for (var key in options) {
                 if (options.hasOwnProperty(key)) {
                     var param = this.parameters[key];
-                    if (param && param.constructor === _Tw2TextureParameter.Tw2TextureParameter) {
+                    if (param && param instanceof _Tw2TextureParameter.Tw2TextureParameter) {
                         var doUpdate = false;
 
                         var overrides = options[key];
@@ -9797,7 +9795,7 @@ var Tw2Effect = exports.Tw2Effect = function () {
             for (var key in this.parameters) {
                 if (this.parameters.hasOwnProperty(key)) {
                     var param = this.parameters[key];
-                    if (param && 'GetOverrides' in param && param.useAllOverrides) {
+                    if (param && param instanceof _Tw2TextureParameter.Tw2TextureParameter && param.useAllOverrides) {
                         out[key] = this.parameters[key].GetOverrides();
                     }
                 }
@@ -10501,7 +10499,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(101);
+var _emitters = __webpack_require__(100);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10513,7 +10511,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(105);
+var _forces = __webpack_require__(104);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10525,7 +10523,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(112);
+var _generators = __webpack_require__(111);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10537,7 +10535,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(116);
+var _constraints = __webpack_require__(115);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10549,7 +10547,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(117);
+var _Tw2ParticleSystem = __webpack_require__(116);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10584,7 +10582,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BlendShapeData = __webpack_require__(119);
+var _Tw2BlendShapeData = __webpack_require__(118);
 
 Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10596,7 +10594,7 @@ Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryAnimation = __webpack_require__(120);
+var _Tw2GeometryAnimation = __webpack_require__(119);
 
 Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10608,7 +10606,7 @@ Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryBone = __webpack_require__(121);
+var _Tw2GeometryBone = __webpack_require__(120);
 
 Object.keys(_Tw2GeometryBone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10620,7 +10618,7 @@ Object.keys(_Tw2GeometryBone).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryCurve = __webpack_require__(122);
+var _Tw2GeometryCurve = __webpack_require__(121);
 
 Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10632,7 +10630,7 @@ Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMesh = __webpack_require__(123);
+var _Tw2GeometryMesh = __webpack_require__(122);
 
 Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10644,7 +10642,7 @@ Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshArea = __webpack_require__(124);
+var _Tw2GeometryMeshArea = __webpack_require__(123);
 
 Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10656,7 +10654,7 @@ Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshBinding = __webpack_require__(125);
+var _Tw2GeometryMeshBinding = __webpack_require__(124);
 
 Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10668,7 +10666,7 @@ Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryModel = __webpack_require__(126);
+var _Tw2GeometryModel = __webpack_require__(125);
 
 Object.keys(_Tw2GeometryModel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10680,7 +10678,7 @@ Object.keys(_Tw2GeometryModel).forEach(function (key) {
   });
 });
 
-var _Tw2GeometrySkeleton = __webpack_require__(127);
+var _Tw2GeometrySkeleton = __webpack_require__(126);
 
 Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10692,7 +10690,7 @@ Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTrackGroup = __webpack_require__(128);
+var _Tw2GeometryTrackGroup = __webpack_require__(127);
 
 Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10704,7 +10702,7 @@ Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTransformTrack = __webpack_require__(129);
+var _Tw2GeometryTransformTrack = __webpack_require__(128);
 
 Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10739,7 +10737,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(130);
+var _Tw2InstancedMesh = __webpack_require__(129);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10775,7 +10773,7 @@ Object.keys(_Tw2MeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2MeshLineArea = __webpack_require__(131);
+var _Tw2MeshLineArea = __webpack_require__(130);
 
 Object.keys(_Tw2MeshLineArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11100,258 +11098,6 @@ var Tw2Animation = exports.Tw2Animation = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2EffectRes = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Tw2Logger = __webpack_require__(4);
-
-var _reader = __webpack_require__(29);
-
-var _Tw2Resource2 = __webpack_require__(12);
-
-var _Tw2Shader = __webpack_require__(134);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Tw2EffectRes
- *
- * @property {Array} passes
- * @inherits Tw2Resource
- */
-var Tw2EffectRes = exports.Tw2EffectRes = function (_Tw2Resource) {
-    _inherits(Tw2EffectRes, _Tw2Resource);
-
-    function Tw2EffectRes() {
-        _classCallCheck(this, Tw2EffectRes);
-
-        var _this = _possibleConstructorReturn(this, (Tw2EffectRes.__proto__ || Object.getPrototypeOf(Tw2EffectRes)).call(this));
-
-        _this.passes = [];
-        _this.annotations = {};
-        _this.permutations = [];
-        _this.offsets = [];
-        _this.reader = null;
-        _this.version = 0;
-        _this.stringTable = '';
-        _this.shaders = {};
-        return _this;
-    }
-
-    /**
-     * Prepares the effect
-     * - Creates Shaders
-     * - Sets shadow states for shaders
-     * - Parses Jessica shader annotations
-     * @param data
-     */
-
-
-    _createClass(Tw2EffectRes, [{
-        key: 'Prepare',
-        value: function Prepare(data) {
-            this.permutations = [];
-            this.offsets = [];
-            this.passes = [];
-            this.annotations = {};
-            this.reader = null;
-            this.version = 0;
-            this.stringTable = '';
-            this.shaders = {};
-
-            var reader = new _reader.Tw2BinaryReader(new Uint8Array(data));
-            var stringTable = '';
-
-            /**
-             * ReadString
-             * @returns {string}
-             * @private
-             */
-            function ReadString() {
-                var offset = reader.ReadUInt32();
-                var end = offset;
-                while (stringTable.charCodeAt(end)) {
-                    ++end;
-                }
-                return stringTable.substr(offset, end - offset);
-            }
-
-            var version = reader.ReadUInt32();
-            if (version < 2 || version > 7) {
-                _Tw2Logger.logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2EffectRes', 'CreateProgram'],
-                    msg: 'Invalid version of effect file',
-                    type: 'shader.effectversion',
-                    path: this.path,
-                    value: version
-                });
-
-                this.PrepareFinished(false);
-                return;
-            }
-
-            var headerSize = void 0,
-                stringTableSize = void 0;
-
-            if (version < 5) {
-                headerSize = reader.ReadUInt32();
-                if (headerSize === 0) {
-                    _Tw2Logger.logger.log('res.error', {
-                        log: 'error',
-                        src: ['Tw2EffectRes', 'CreateProgram'],
-                        msg: 'File contains no compiled effects',
-                        path: this.path,
-                        type: 'shader.effectheadersize',
-                        value: 0
-                    });
-
-                    this.PrepareFinished(false);
-                    return;
-                }
-
-                /* let permutation = */
-                reader.ReadUInt32();
-                var offset = reader.ReadUInt32();
-                reader.cursor = 2 * 4 + headerSize * 3 * 4;
-                stringTableSize = reader.ReadUInt32();
-                this.stringTableOffset = reader.cursor;
-                stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
-                reader.cursor = offset;
-            } else {
-                stringTableSize = reader.ReadUInt32();
-                this.stringTableOffset = reader.cursor;
-                stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
-                reader.cursor += stringTableSize;
-                var permutationCount = reader.ReadUInt8();
-                for (var perm = 0; perm < permutationCount; ++perm) {
-                    var permutation = {
-                        name: ReadString(),
-                        defaultOption: reader.ReadUInt8(),
-                        description: ReadString(),
-                        type: reader.ReadUInt8(),
-                        options: {},
-                        optionCount: reader.ReadUInt8()
-                    };
-                    for (var j = 0; j < permutation.optionCount; ++j) {
-                        permutation.options[ReadString()] = j;
-                    }
-                    this.permutations.push(permutation);
-                }
-
-                headerSize = reader.ReadUInt32();
-                if (headerSize === 0) {
-                    _Tw2Logger.logger.log('res.error', {
-                        log: 'error',
-                        src: ['Tw2EffectRes', 'CreateProgram'],
-                        msg: 'File contains no compiled effects',
-                        path: this.path,
-                        type: 'shader.effectheadersize',
-                        value: 0
-                    });
-
-                    this.PrepareFinished(false);
-                    return;
-                }
-                for (var i = 0; i < headerSize; ++i) {
-                    this.offsets.push({
-                        index: reader.ReadUInt32(),
-                        offset: reader.ReadUInt32(),
-                        size: reader.ReadUInt32()
-                    });
-                }
-
-                reader.ReadUInt32();
-                reader.cursor = reader.ReadUInt32();
-            }
-            this.reader = reader;
-            this.version = version;
-            this.stringTable = stringTable;
-
-            this.PrepareFinished(true);
-        }
-
-        /**
-         * Gets/creates a shader for the given permutation options
-         *
-         * @param {Object.<string, string>} options - Permutation options
-         * @returns {Tw2Shader|null}
-         */
-
-    }, {
-        key: 'GetShader',
-        value: function GetShader(options) {
-            if (!this.IsGood()) {
-                return null;
-            }
-
-            var index = 0;
-            var multiplier = 1;
-
-            for (var i = 0; i < this.permutations.length; ++i) {
-                var permutation = this.permutations[i];
-                var value = permutation.defaultOption;
-                if (options.hasOwnProperty(permutation.name)) {
-                    var valueName = options[permutation.name];
-                    if (!permutation.options.hasOwnProperty(valueName)) {
-                        _Tw2Logger.logger.log('res.error', {
-                            log: 'error',
-                            src: ['Tw2EffectRes', 'GetShader'],
-                            msg: 'Invalid shader permutation value',
-                            path: this.path,
-                            name: permutation.name,
-                            value: valueName
-                        });
-                        return null;
-                    }
-                    value = permutation.options[valueName];
-                }
-                index += value * multiplier;
-                multiplier *= permutation.optionCount;
-            }
-
-            if (this.shaders.hasOwnProperty(index)) {
-                return this.shaders[index];
-            }
-
-            this.reader.cursor = this.offsets[index].offset;
-            var shader = null;
-            try {
-                shader = new _Tw2Shader.Tw2Shader(this.reader, this.version, this.stringTable, this.stringTableOffset);
-            } catch (error) {
-                return null;
-            }
-            this.shaders[index] = shader;
-            return shader;
-        }
-    }]);
-
-    return Tw2EffectRes;
-}(_Tw2Resource2.Tw2Resource);
-
-/**
- * Request Response Type
- * @type {string}
- */
-
-
-Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.Tw2TextureRes = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -11617,7 +11363,7 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
 }(_Tw2Resource2.Tw2Resource);
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11651,7 +11397,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 };
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11680,7 +11426,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 };
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11707,7 +11453,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 };
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11736,7 +11482,7 @@ var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
 };
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11753,7 +11499,7 @@ var _math = __webpack_require__(0);
 
 var _Tw2Device = __webpack_require__(2);
 
-var _Tw2TextureRes = __webpack_require__(52);
+var _Tw2TextureRes = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11881,7 +11627,7 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
 }();
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11940,7 +11686,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12023,14 +11769,14 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
 exports.EveOccluder = undefined;
 
@@ -12052,175 +11798,175 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var EveOccluder = exports.EveOccluder = function () {
-    function EveOccluder() {
-        _classCallCheck(this, EveOccluder);
+        function EveOccluder() {
+                _classCallCheck(this, EveOccluder);
 
-        this._id = _math.util.generateID();
-        this.name = '';
-        this.value = 1;
-        this.sprites = [];
+                this._id = _math.util.generateID();
+                this.name = '';
+                this.value = 1;
+                this.sprites = [];
 
-        EveOccluder.init();
-    }
-
-    /**
-     * UpdateValues
-     * @param {mat4} parentTransform
-     * @param {number} index
-     */
-
-
-    _createClass(EveOccluder, [{
-        key: 'UpdateValue',
-        value: function UpdateValue(parentTransform, index) {
-            if (!_core.device.alphaBlendBackBuffer) return;
-
-            var d = _core.device,
-                g = EveOccluder.global,
-                worldViewProj = g.mat4_0,
-                center = g.vec4_0;
-
-            g.accumulator.Clear();
-
-            for (var i = 0; i < this.sprites.length; ++i) {
-                this.sprites[i].UpdateViewDependentData(parentTransform);
-                this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
-            }
-
-            _core.store.SetVariableValue('OccluderValue', [(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
-
-            g.accumulator.Render();
-
-            _math.mat4.multiply(worldViewProj, d.viewProjection, this.sprites[0].worldTransform);
-            _math.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
-
-            var x0 = (center[0] / center[3] + 1) * 0.5,
-                y0 = (center[1] / center[3] + 1) * 0.5;
-
-            _math.vec4.set(center, 0.5, 0.5, 0, 1);
-            _math.vec4.transformMat4(center, center, worldViewProj);
-
-            var x1 = (center[0] / center[3] + 1) * 0.5,
-                y1 = (center[1] / center[3] + 1) * 0.5;
-
-            center[0] = x0;
-            center[1] = y0;
-            center[2] = x1 - x0;
-            center[3] = y1 - y0;
-
-            g.effect.parameters.OccluderPosition.SetValue(center);
+                EveOccluder.init();
         }
 
         /**
-         * CollectSamples
-         * @param {Tw2TextureRes} tex
+         * UpdateValues
+         * @param {mat4} parentTransform
          * @param {number} index
-         * @param {number} total
-         * @param {number} samples
-         * @returns boolean
          */
 
-    }], [{
-        key: 'CollectSamples',
-        value: function CollectSamples(tex, index, total, samples) {
-            var d = _core.device,
-                g = this.global,
-                effect = g.effect,
-                vertexBuffer = g.vertexBuffer,
-                decl = g.decl;
 
-            if (!effect.effectRes || !effect.effectRes.IsGood()) return false;
+        _createClass(EveOccluder, [{
+                key: 'UpdateValue',
+                value: function UpdateValue(parentTransform, index) {
+                        if (!_core.device.alphaBlendBackBuffer) return;
 
-            effect.parameters.BackBuffer.textureRes = tex;
-            effect.parameters.OccluderIndex.SetValue([index, total, samples]);
+                        var d = _core.device,
+                            g = EveOccluder.global,
+                            worldViewProj = g.mat4_0,
+                            center = g.vec4_0;
 
-            d.SetStandardStates(d.RM_ADDITIVE);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
+                        g.accumulator.Clear();
 
-            for (var pass = 0; pass < effect.GetPassCount('Main'); ++pass) {
-                effect.ApplyPass('Main', pass);
-                if (decl.SetDeclaration(effect.GetPassInput('Main', pass), 16)) return false;
-                d.ApplyShadowState();
-                d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
-            }
-            return true;
-        }
+                        for (var i = 0; i < this.sprites.length; ++i) {
+                                this.sprites[i].UpdateViewDependentData(parentTransform);
+                                this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
+                        }
 
-        /**
-         * Initializes class globals and scratch variables
-         */
+                        _core.store.SetVariableValue('OccluderValue', [(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
 
-    }, {
-        key: 'init',
-        value: function init() {
-            if (EveOccluder.global) return;
+                        g.accumulator.Render();
 
-            var d = _core.device,
-                g = EveOccluder.global = {};
+                        _math.mat4.multiply(worldViewProj, d.viewProjection, this.sprites[0].worldTransform);
+                        _math.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
 
-            g.mat4_0 = _math.mat4.create();
-            g.vec4_0 = _math.vec4.create();
-            g.accumulator = new _core.Tw2BatchAccumulator();
+                        var x0 = (center[0] / center[3] + 1) * 0.5,
+                            y0 = (center[1] / center[3] + 1) * 0.5;
 
-            g.effect = _core.Tw2Effect.create({
-                name: 'Occluder sampler',
-                effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
-                parameters: {
-                    'OccluderPosition': [1, 1, 1, 1],
-                    'OccluderIndex': [1, 1, 1],
-                    'BackBuffer': ''
+                        _math.vec4.set(center, 0.5, 0.5, 0, 1);
+                        _math.vec4.transformMat4(center, center, worldViewProj);
+
+                        var x1 = (center[0] / center[3] + 1) * 0.5,
+                            y1 = (center[1] / center[3] + 1) * 0.5;
+
+                        center[0] = x0;
+                        center[1] = y0;
+                        center[2] = x1 - x0;
+                        center[3] = y1 - y0;
+
+                        g.effect.parameters.OccluderPosition.SetValue(center);
                 }
-            });
 
-            g.vertexBuffer = null;
-            g.decl = new _core.Tw2VertexDeclaration();
-            g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
-            g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
-            g.decl.RebuildHash();
+                /**
+                 * CollectSamples
+                 * @param {Tw2TextureRes} tex
+                 * @param {number} index
+                 * @param {number} total
+                 * @param {number} samples
+                 * @returns boolean
+                 */
 
-            var vb = new Float32Array(255 * 6 * 4);
-            var index = 0;
-            for (var i = 0; i < 16; ++i) {
-                for (var j = 0; j < 16; ++j) {
-                    var x = (i + Math.random()) / 16 * 2 - 1,
-                        y = (j + Math.random()) / 16 * 2 - 1;
+        }], [{
+                key: 'CollectSamples',
+                value: function CollectSamples(tex, index, total, samples) {
+                        var d = _core.device,
+                            g = this.global,
+                            effect = g.effect,
+                            vertexBuffer = g.vertexBuffer,
+                            decl = g.decl;
 
-                    vb[index++] = 1;
-                    vb[index++] = 1;
-                    vb[index++] = x;
-                    vb[index++] = y;
-                    vb[index++] = -1;
-                    vb[index++] = 1;
-                    vb[index++] = x;
-                    vb[index++] = y;
-                    vb[index++] = 1;
-                    vb[index++] = -1;
-                    vb[index++] = x;
-                    vb[index++] = y;
+                        if (!effect.effectRes || !effect.effectRes.IsGood()) return false;
 
-                    vb[index++] = -1;
-                    vb[index++] = 1;
-                    vb[index++] = x;
-                    vb[index++] = y;
-                    vb[index++] = 1;
-                    vb[index++] = -1;
-                    vb[index++] = x;
-                    vb[index++] = y;
-                    vb[index++] = -1;
-                    vb[index++] = -1;
-                    vb[index++] = x;
-                    vb[index++] = y;
+                        effect.parameters.BackBuffer.textureRes = tex;
+                        effect.parameters.OccluderIndex.SetValue([index, total, samples]);
+
+                        d.SetStandardStates(d.RM_ADDITIVE);
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
+
+                        for (var pass = 0; pass < effect.GetPassCount('Main'); ++pass) {
+                                effect.ApplyPass('Main', pass);
+                                if (decl.SetDeclaration(effect.GetPassInput('Main', pass), 16)) return false;
+                                d.ApplyShadowState();
+                                d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
+                        }
+                        return true;
                 }
-            }
 
-            g.vertexBuffer = d.gl.createBuffer();
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, g.vertexBuffer);
-            d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
-        }
-    }]);
+                /**
+                 * Initializes class globals and scratch variables
+                 */
 
-    return EveOccluder;
+        }, {
+                key: 'init',
+                value: function init() {
+                        if (EveOccluder.global) return;
+
+                        var d = _core.device,
+                            g = EveOccluder.global = {};
+
+                        g.mat4_0 = _math.mat4.create();
+                        g.vec4_0 = _math.vec4.create();
+                        g.accumulator = new _core.Tw2BatchAccumulator();
+
+                        g.effect = _core.Tw2Effect.create({
+                                name: 'Occluder sampler',
+                                effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
+                                parameters: {
+                                        'OccluderPosition': [1, 1, 1, 1],
+                                        'OccluderIndex': [1, 1, 1],
+                                        'BackBuffer': ''
+                                }
+                        });
+
+                        g.vertexBuffer = null;
+                        g.decl = new _core.Tw2VertexDeclaration();
+                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
+                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
+                        g.decl.RebuildHash();
+
+                        var vb = new Float32Array(255 * 6 * 4);
+                        var index = 0;
+                        for (var i = 0; i < 16; ++i) {
+                                for (var j = 0; j < 16; ++j) {
+                                        var x = (i + Math.random()) / 16 * 2 - 1,
+                                            y = (j + Math.random()) / 16 * 2 - 1;
+
+                                        vb[index++] = 1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = -1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = 1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+
+                                        vb[index++] = -1;
+                                        vb[index++] = 1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = 1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                        vb[index++] = -1;
+                                        vb[index++] = -1;
+                                        vb[index++] = x;
+                                        vb[index++] = y;
+                                }
+                        }
+
+                        g.vertexBuffer = d.gl.createBuffer();
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, g.vertexBuffer);
+                        d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
+                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+                }
+        }]);
+
+        return EveOccluder;
 }();
 
 /**
@@ -12232,7 +11978,7 @@ var EveOccluder = exports.EveOccluder = function () {
 EveOccluder.global = null;
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12302,7 +12048,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(63);
+var _EveSpaceObject = __webpack_require__(62);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12314,7 +12060,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(62);
+var _EveTransform = __webpack_require__(61);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12327,7 +12073,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12686,7 +12432,7 @@ EveTransform.Modifier = {
 };
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13224,7 +12970,7 @@ var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
 exports.EveStation = EveSpaceObject;
 
 /***/ }),
-/* 64 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13343,7 +13089,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 });
 
 /***/ }),
-/* 65 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13366,7 +13112,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(58);
+var _curve = __webpack_require__(57);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13427,8 +13173,7 @@ var vec4 = math.vec4,
 core.store.Register({
 
     paths: {
-        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/',
-        'cdn': 'https://developers.eveonline.com/res/'
+        'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
     },
 
     extensions: {
@@ -13476,7 +13221,7 @@ core.store.Register({
 });
 
 /***/ }),
-/* 66 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13566,7 +13311,7 @@ var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
 }();
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13582,7 +13327,7 @@ var _glMatrix = __webpack_require__(11);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14052,7 +13797,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 69 */
+/* 68 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14554,7 +14299,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 70 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16292,7 +16037,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 71 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16983,7 +16728,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 72 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17626,7 +17371,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 73 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17720,7 +17465,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 74 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17736,7 +17481,7 @@ var _glMatrix = __webpack_require__(11);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 75 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17927,7 +17672,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 76 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18137,7 +17882,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 77 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18498,7 +18243,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 78 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18733,7 +18478,7 @@ util.toArray = function (a) {
 };
 
 /***/ }),
-/* 79 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18904,7 +18649,7 @@ var Tw2MotherLode = exports.Tw2MotherLode = function () {
 }();
 
 /***/ }),
-/* 80 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19010,7 +18755,7 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function Tw2SamplerOverrid
 };
 
 /***/ }),
-/* 81 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19312,7 +19057,7 @@ Tw2VertexDeclaration.Type = {
 };
 
 /***/ }),
-/* 82 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -20516,10 +20261,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(83)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(82)))
 
 /***/ }),
-/* 83 */
+/* 82 */
 /***/ (function(module, exports) {
 
 var g;
@@ -20546,7 +20291,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 84 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20604,7 +20349,7 @@ var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2
 }(_Tw2RenderBatch2.Tw2RenderBatch);
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20658,7 +20403,7 @@ var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2Geometry
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20716,7 +20461,7 @@ var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2Geomet
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20726,7 +20471,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2CurveSet = __webpack_require__(88);
+var _Tw2CurveSet = __webpack_require__(87);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20738,7 +20483,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(89);
+var _Tw2ValueBinding = __webpack_require__(88);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -20751,7 +20496,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 });
 
 /***/ }),
-/* 88 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20884,7 +20629,7 @@ var Tw2CurveSet = exports.Tw2CurveSet = function () {
 }();
 
 /***/ }),
-/* 89 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21189,7 +20934,7 @@ var Tw2ValueBinding = exports.Tw2ValueBinding = function () {
 }();
 
 /***/ }),
-/* 90 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21321,7 +21066,7 @@ var Tw2FloatParameter = exports.Tw2FloatParameter = function (_Tw2Parameter) {
 Tw2FloatParameter.size = 1;
 
 /***/ }),
-/* 91 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21468,7 +21213,7 @@ var Tw2MatrixParameter = exports.Tw2MatrixParameter = function (_Tw2VectorParame
 Tw2MatrixParameter.constantBufferSize = 16;
 
 /***/ }),
-/* 92 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21630,7 +21375,7 @@ var Tw2TransformParameter = exports.Tw2TransformParameter = function (_Tw2Parame
 Tw2TransformParameter.constantBufferSize = 16;
 
 /***/ }),
-/* 93 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21755,14 +21500,14 @@ var Tw2VariableParameter = exports.Tw2VariableParameter = function (_Tw2Paramete
 }(_Tw2Parameter2.Tw2Parameter);
 
 /***/ }),
-/* 94 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2Vector2Parameter = undefined;
 
@@ -21786,60 +21531,60 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = function (_Tw2VectorParameter) {
-  _inherits(Tw2Vector2Parameter, _Tw2VectorParameter);
+    _inherits(Tw2Vector2Parameter, _Tw2VectorParameter);
 
-  function Tw2Vector2Parameter() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec2.fromValues(1, 1);
+    function Tw2Vector2Parameter() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec2.fromValues(1, 1);
 
-    _classCallCheck(this, Tw2Vector2Parameter);
+        _classCallCheck(this, Tw2Vector2Parameter);
 
-    return _possibleConstructorReturn(this, (Tw2Vector2Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector2Parameter)).call(this, name, value));
-  }
-
-  /**
-   * Gets the first value index
-   * @returns {number}
-   */
-
-
-  _createClass(Tw2Vector2Parameter, [{
-    key: 'x',
-    get: function get() {
-      return this.GetIndexValue(0);
+        return _possibleConstructorReturn(this, (Tw2Vector2Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector2Parameter)).call(this, name, value));
     }
 
     /**
-     * Sets the first value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(0, val);
-    }
-
-    /**
-     * Gets the second value index
+     * Gets the first value index
      * @returns {number}
      */
 
-  }, {
-    key: 'y',
-    get: function get() {
-      return this.GetIndexValue(1);
-    }
 
-    /**
-     * Sets the second value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(1, val);
-    }
-  }]);
+    _createClass(Tw2Vector2Parameter, [{
+        key: 'x',
+        get: function get() {
+            return this.GetIndexValue(0);
+        }
 
-  return Tw2Vector2Parameter;
+        /**
+         * Sets the first value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(0, val);
+        }
+
+        /**
+         * Gets the second value index
+         * @returns {number}
+         */
+
+    }, {
+        key: 'y',
+        get: function get() {
+            return this.GetIndexValue(1);
+        }
+
+        /**
+         * Sets the second value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(1, val);
+        }
+    }]);
+
+    return Tw2Vector2Parameter;
 }(_Tw2Parameter.Tw2VectorParameter);
 
 /**
@@ -21851,14 +21596,14 @@ var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = function (_Tw2VectorPara
 Tw2Vector2Parameter.constantBufferSize = 2;
 
 /***/ }),
-/* 95 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2Vector3Parameter = undefined;
 
@@ -21882,80 +21627,80 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = function (_Tw2VectorParameter) {
-  _inherits(Tw2Vector3Parameter, _Tw2VectorParameter);
+    _inherits(Tw2Vector3Parameter, _Tw2VectorParameter);
 
-  function Tw2Vector3Parameter() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec3.fromValues(1, 1, 1);
+    function Tw2Vector3Parameter() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec3.fromValues(1, 1, 1);
 
-    _classCallCheck(this, Tw2Vector3Parameter);
+        _classCallCheck(this, Tw2Vector3Parameter);
 
-    return _possibleConstructorReturn(this, (Tw2Vector3Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector3Parameter)).call(this, name, value));
-  }
-
-  /**
-   * Gets the first value index
-   * @returns {number}
-   */
-
-
-  _createClass(Tw2Vector3Parameter, [{
-    key: 'x',
-    get: function get() {
-      return this.GetIndexValue(0);
+        return _possibleConstructorReturn(this, (Tw2Vector3Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector3Parameter)).call(this, name, value));
     }
 
     /**
-     * Sets the first value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(0, val);
-    }
-
-    /**
-     * Gets the second value index
+     * Gets the first value index
      * @returns {number}
      */
 
-  }, {
-    key: 'y',
-    get: function get() {
-      return this.GetIndexValue(1);
-    }
 
-    /**
-     * Sets the second value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(1, val);
-    }
+    _createClass(Tw2Vector3Parameter, [{
+        key: 'x',
+        get: function get() {
+            return this.GetIndexValue(0);
+        }
 
-    /**
-     * Gets the third value index
-     * @returns {number}
-     */
+        /**
+         * Sets the first value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(0, val);
+        }
 
-  }, {
-    key: 'z',
-    get: function get() {
-      return this.GetIndexValue(2);
-    }
+        /**
+         * Gets the second value index
+         * @returns {number}
+         */
 
-    /**
-     * Sets the third value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(2, val);
-    }
-  }]);
+    }, {
+        key: 'y',
+        get: function get() {
+            return this.GetIndexValue(1);
+        }
 
-  return Tw2Vector3Parameter;
+        /**
+         * Sets the second value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(1, val);
+        }
+
+        /**
+         * Gets the third value index
+         * @returns {number}
+         */
+
+    }, {
+        key: 'z',
+        get: function get() {
+            return this.GetIndexValue(2);
+        }
+
+        /**
+         * Sets the third value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(2, val);
+        }
+    }]);
+
+    return Tw2Vector3Parameter;
 }(_Tw2Parameter.Tw2VectorParameter);
 
 /**
@@ -21967,14 +21712,14 @@ var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = function (_Tw2VectorPara
 Tw2Vector3Parameter.constantBufferSize = 3;
 
 /***/ }),
-/* 96 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2Vector4Parameter = undefined;
 
@@ -21998,100 +21743,100 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = function (_Tw2VectorParameter) {
-  _inherits(Tw2Vector4Parameter, _Tw2VectorParameter);
+    _inherits(Tw2Vector4Parameter, _Tw2VectorParameter);
 
-  function Tw2Vector4Parameter() {
-    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-    var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec4.fromValues(1, 1, 1, 1);
+    function Tw2Vector4Parameter() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _math.vec4.fromValues(1, 1, 1, 1);
 
-    _classCallCheck(this, Tw2Vector4Parameter);
+        _classCallCheck(this, Tw2Vector4Parameter);
 
-    return _possibleConstructorReturn(this, (Tw2Vector4Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector4Parameter)).call(this, name, value));
-  }
-
-  /**
-   * Gets the first value index
-   * @returns {number}
-   */
-
-
-  _createClass(Tw2Vector4Parameter, [{
-    key: 'x',
-    get: function get() {
-      return this.GetIndexValue(0);
+        return _possibleConstructorReturn(this, (Tw2Vector4Parameter.__proto__ || Object.getPrototypeOf(Tw2Vector4Parameter)).call(this, name, value));
     }
 
     /**
-     * Sets the first value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(0, val);
-    }
-
-    /**
-     * Gets the second value index
+     * Gets the first value index
      * @returns {number}
      */
 
-  }, {
-    key: 'y',
-    get: function get() {
-      return this.GetIndexValue(1);
-    }
 
-    /**
-     * Sets the second value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(1, val);
-    }
+    _createClass(Tw2Vector4Parameter, [{
+        key: 'x',
+        get: function get() {
+            return this.GetIndexValue(0);
+        }
 
-    /**
-     * Gets the third value index
-     * @returns {number}
-     */
+        /**
+         * Sets the first value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(0, val);
+        }
 
-  }, {
-    key: 'z',
-    get: function get() {
-      return this.GetIndexValue(2);
-    }
+        /**
+         * Gets the second value index
+         * @returns {number}
+         */
 
-    /**
-     * Sets the third value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(2, val);
-    }
+    }, {
+        key: 'y',
+        get: function get() {
+            return this.GetIndexValue(1);
+        }
 
-    /**
-     * Gets the fourth value index
-     * @returns {number}
-     */
+        /**
+         * Sets the second value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(1, val);
+        }
 
-  }, {
-    key: 'w',
-    get: function get() {
-      return this.GetIndexValue(3);
-    }
+        /**
+         * Gets the third value index
+         * @returns {number}
+         */
 
-    /**
-     * Sets the fourth value index
-     * @param {number} val
-     */
-    ,
-    set: function set(val) {
-      this.SetIndexValue(3, val);
-    }
-  }]);
+    }, {
+        key: 'z',
+        get: function get() {
+            return this.GetIndexValue(2);
+        }
 
-  return Tw2Vector4Parameter;
+        /**
+         * Sets the third value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(2, val);
+        }
+
+        /**
+         * Gets the fourth value index
+         * @returns {number}
+         */
+
+    }, {
+        key: 'w',
+        get: function get() {
+            return this.GetIndexValue(3);
+        }
+
+        /**
+         * Sets the fourth value index
+         * @param {number} val
+         */
+        ,
+        set: function set(val) {
+            this.SetIndexValue(3, val);
+        }
+    }]);
+
+    return Tw2Vector4Parameter;
 }(_Tw2Parameter.Tw2VectorParameter);
 
 /**
@@ -22103,7 +21848,7 @@ var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = function (_Tw2VectorPara
 Tw2Vector4Parameter.constantBufferSize = 4;
 
 /***/ }),
-/* 97 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22113,7 +21858,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BasicPerObjectData = __webpack_require__(98);
+var _Tw2BasicPerObjectData = __webpack_require__(97);
 
 Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22150,7 +21895,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
 });
 
 /***/ }),
-/* 98 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22238,7 +21983,7 @@ var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObj
 exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
 
 /***/ }),
-/* 99 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22248,7 +21993,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RuntimeInstanceData = __webpack_require__(100);
+var _Tw2RuntimeInstanceData = __webpack_require__(99);
 
 Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22260,7 +22005,7 @@ Object.keys(_Tw2RuntimeInstanceData).forEach(function (key) {
   });
 });
 
-var _Tw2VariableStore = __webpack_require__(118);
+var _Tw2VariableStore = __webpack_require__(117);
 
 Object.keys(_Tw2VariableStore).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22273,7 +22018,7 @@ Object.keys(_Tw2VariableStore).forEach(function (key) {
 });
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22486,7 +22231,7 @@ function Tw2RuntimeInstanceData() {
 }
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22496,7 +22241,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(102);
+var _Tw2StaticEmitter = __webpack_require__(101);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22508,7 +22253,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(103);
+var _Tw2DynamicEmitter = __webpack_require__(102);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22520,7 +22265,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2GpuUniqueEmitter = __webpack_require__(104);
+var _Tw2GpuUniqueEmitter = __webpack_require__(103);
 
 Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22533,7 +22278,7 @@ Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22687,7 +22432,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22806,7 +22551,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22900,7 +22645,7 @@ var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = function (_Tw2ParticleEm
 exports.Tr2GpuUniqueEmitter = Tw2GpuUniqueEmitter;
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22910,7 +22655,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(106);
+var _Tw2ParticleAttractorForce = __webpack_require__(105);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22922,7 +22667,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(107);
+var _Tw2ParticleDirectForce = __webpack_require__(106);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22934,7 +22679,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(108);
+var _Tw2ParticleDragForce = __webpack_require__(107);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22946,7 +22691,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(109);
+var _Tw2ParticleFluidDragForce = __webpack_require__(108);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22958,7 +22703,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(110);
+var _Tw2ParticleSpring = __webpack_require__(109);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22970,7 +22715,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(111);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(110);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22983,7 +22728,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23055,7 +22800,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23116,7 +22861,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23177,7 +22922,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 109 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23263,7 +23008,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 110 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23328,7 +23073,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 111 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23433,7 +23178,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 112 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23443,7 +23188,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(113);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(112);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23455,7 +23200,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(114);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(113);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23467,7 +23212,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(115);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(114);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23480,7 +23225,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 113 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23571,7 +23316,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 114 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23662,7 +23407,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 115 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23812,14 +23557,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 116 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 117 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24363,7 +24108,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 Tw2ParticleSystem.global = null;
 
 /***/ }),
-/* 118 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24476,7 +24221,7 @@ var Tw2VariableStore = exports.Tw2VariableStore = function () {
 }();
 
 /***/ }),
-/* 119 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24511,7 +24256,7 @@ var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData()
 };
 
 /***/ }),
-/* 120 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24539,7 +24284,7 @@ var Tw2GeometryAnimation = exports.Tw2GeometryAnimation = function Tw2GeometryAn
 };
 
 /***/ }),
-/* 121 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24615,7 +24360,7 @@ Tw2GeometryBone.global = {
 };
 
 /***/ }),
-/* 122 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24645,7 +24390,7 @@ var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
 };
 
 /***/ }),
-/* 123 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24702,7 +24447,7 @@ var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
 };
 
 /***/ }),
-/* 124 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24741,7 +24486,7 @@ var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMesh
 };
 
 /***/ }),
-/* 125 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24767,7 +24512,7 @@ var Tw2GeometryMeshBinding = exports.Tw2GeometryMeshBinding = function Tw2Geomet
 };
 
 /***/ }),
-/* 126 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24825,7 +24570,7 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
 }();
 
 /***/ }),
-/* 127 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24849,7 +24594,7 @@ var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkel
 };
 
 /***/ }),
-/* 128 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24877,7 +24622,7 @@ var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2Geometry
 };
 
 /***/ }),
-/* 129 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24907,7 +24652,7 @@ var Tw2GeometryTransformTrack = exports.Tw2GeometryTransformTrack = function Tw2
 };
 
 /***/ }),
-/* 130 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25062,7 +24807,7 @@ var Tw2InstancedMesh = exports.Tw2InstancedMesh = function (_Tw2Mesh) {
 }(_Tw2Mesh2.Tw2Mesh);
 
 /***/ }),
-/* 131 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25109,7 +24854,7 @@ var Tw2MeshLineArea = exports.Tw2MeshLineArea = function (_Tw2MeshArea) {
 Tw2MeshLineArea.batchType = _batch.Tw2GeometryLineBatch;
 
 /***/ }),
-/* 132 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25131,7 +24876,7 @@ Object.keys(_Tw2Animation).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(133);
+var _Tw2AnimationController = __webpack_require__(132);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -25143,7 +24888,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(52);
 
 Object.keys(_Tw2Bone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -25155,7 +24900,7 @@ Object.keys(_Tw2Bone).forEach(function (key) {
   });
 });
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(53);
 
 Object.keys(_Tw2Model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -25167,7 +24912,7 @@ Object.keys(_Tw2Model).forEach(function (key) {
   });
 });
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(54);
 
 Object.keys(_Tw2Track).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -25179,7 +24924,7 @@ Object.keys(_Tw2Track).forEach(function (key) {
   });
 });
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(55);
 
 Object.keys(_Tw2TrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -25192,7 +24937,7 @@ Object.keys(_Tw2TrackGroup).forEach(function (key) {
 });
 
 /***/ }),
-/* 133 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25211,13 +24956,13 @@ var _resource = __webpack_require__(28);
 
 var _Tw2Animation = __webpack_require__(50);
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(52);
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(53);
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(54);
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(55);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26015,6 +25760,258 @@ Tw2AnimationController.scratch = {
     mat3_0: _math.mat3.create(),
     mat4_0: _math.mat4.create()
 };
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Tw2EffectRes = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Tw2Logger = __webpack_require__(4);
+
+var _reader = __webpack_require__(29);
+
+var _Tw2Resource2 = __webpack_require__(12);
+
+var _Tw2Shader = __webpack_require__(134);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Tw2EffectRes
+ *
+ * @property {Array} passes
+ * @inherits Tw2Resource
+ */
+var Tw2EffectRes = exports.Tw2EffectRes = function (_Tw2Resource) {
+    _inherits(Tw2EffectRes, _Tw2Resource);
+
+    function Tw2EffectRes() {
+        _classCallCheck(this, Tw2EffectRes);
+
+        var _this = _possibleConstructorReturn(this, (Tw2EffectRes.__proto__ || Object.getPrototypeOf(Tw2EffectRes)).call(this));
+
+        _this.passes = [];
+        _this.annotations = {};
+        _this.permutations = [];
+        _this.offsets = [];
+        _this.reader = null;
+        _this.version = 0;
+        _this.stringTable = '';
+        _this.shaders = {};
+        return _this;
+    }
+
+    /**
+     * Prepares the effect
+     * - Creates Shaders
+     * - Sets shadow states for shaders
+     * - Parses Jessica shader annotations
+     * @param data
+     */
+
+
+    _createClass(Tw2EffectRes, [{
+        key: 'Prepare',
+        value: function Prepare(data) {
+            this.permutations = [];
+            this.offsets = [];
+            this.passes = [];
+            this.annotations = {};
+            this.reader = null;
+            this.version = 0;
+            this.stringTable = '';
+            this.shaders = {};
+
+            var reader = new _reader.Tw2BinaryReader(new Uint8Array(data));
+            var stringTable = '';
+
+            /**
+             * ReadString
+             * @returns {string}
+             * @private
+             */
+            function ReadString() {
+                var offset = reader.ReadUInt32();
+                var end = offset;
+                while (stringTable.charCodeAt(end)) {
+                    ++end;
+                }
+                return stringTable.substr(offset, end - offset);
+            }
+
+            var version = reader.ReadUInt32();
+            if (version < 2 || version > 7) {
+                _Tw2Logger.logger.log('res.error', {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'Invalid version of effect file',
+                    type: 'shader.effectversion',
+                    path: this.path,
+                    value: version
+                });
+
+                this.PrepareFinished(false);
+                return;
+            }
+
+            var headerSize = void 0,
+                stringTableSize = void 0;
+
+            if (version < 5) {
+                headerSize = reader.ReadUInt32();
+                if (headerSize === 0) {
+                    _Tw2Logger.logger.log('res.error', {
+                        log: 'error',
+                        src: ['Tw2EffectRes', 'CreateProgram'],
+                        msg: 'File contains no compiled effects',
+                        path: this.path,
+                        type: 'shader.effectheadersize',
+                        value: 0
+                    });
+
+                    this.PrepareFinished(false);
+                    return;
+                }
+
+                /* let permutation = */
+                reader.ReadUInt32();
+                var offset = reader.ReadUInt32();
+                reader.cursor = 2 * 4 + headerSize * 3 * 4;
+                stringTableSize = reader.ReadUInt32();
+                this.stringTableOffset = reader.cursor;
+                stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+                reader.cursor = offset;
+            } else {
+                stringTableSize = reader.ReadUInt32();
+                this.stringTableOffset = reader.cursor;
+                stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+                reader.cursor += stringTableSize;
+                var permutationCount = reader.ReadUInt8();
+                for (var perm = 0; perm < permutationCount; ++perm) {
+                    var permutation = {
+                        name: ReadString(),
+                        defaultOption: reader.ReadUInt8(),
+                        description: ReadString(),
+                        type: reader.ReadUInt8(),
+                        options: {},
+                        optionCount: reader.ReadUInt8()
+                    };
+                    for (var j = 0; j < permutation.optionCount; ++j) {
+                        permutation.options[ReadString()] = j;
+                    }
+                    this.permutations.push(permutation);
+                }
+
+                headerSize = reader.ReadUInt32();
+                if (headerSize === 0) {
+                    _Tw2Logger.logger.log('res.error', {
+                        log: 'error',
+                        src: ['Tw2EffectRes', 'CreateProgram'],
+                        msg: 'File contains no compiled effects',
+                        path: this.path,
+                        type: 'shader.effectheadersize',
+                        value: 0
+                    });
+
+                    this.PrepareFinished(false);
+                    return;
+                }
+                for (var i = 0; i < headerSize; ++i) {
+                    this.offsets.push({
+                        index: reader.ReadUInt32(),
+                        offset: reader.ReadUInt32(),
+                        size: reader.ReadUInt32()
+                    });
+                }
+
+                reader.ReadUInt32();
+                reader.cursor = reader.ReadUInt32();
+            }
+            this.reader = reader;
+            this.version = version;
+            this.stringTable = stringTable;
+
+            this.PrepareFinished(true);
+        }
+
+        /**
+         * Gets/creates a shader for the given permutation options
+         *
+         * @param {Object.<string, string>} options - Permutation options
+         * @returns {Tw2Shader|null}
+         */
+
+    }, {
+        key: 'GetShader',
+        value: function GetShader(options) {
+            if (!this.IsGood()) {
+                return null;
+            }
+
+            var index = 0;
+            var multiplier = 1;
+
+            for (var i = 0; i < this.permutations.length; ++i) {
+                var permutation = this.permutations[i];
+                var value = permutation.defaultOption;
+                if (options.hasOwnProperty(permutation.name)) {
+                    var valueName = options[permutation.name];
+                    if (!permutation.options.hasOwnProperty(valueName)) {
+                        _Tw2Logger.logger.log('res.error', {
+                            log: 'error',
+                            src: ['Tw2EffectRes', 'GetShader'],
+                            msg: 'Invalid shader permutation value',
+                            path: this.path,
+                            name: permutation.name,
+                            value: valueName
+                        });
+                        return null;
+                    }
+                    value = permutation.options[valueName];
+                }
+                index += value * multiplier;
+                multiplier *= permutation.optionCount;
+            }
+
+            if (this.shaders.hasOwnProperty(index)) {
+                return this.shaders[index];
+            }
+
+            this.reader.cursor = this.offsets[index].offset;
+            var shader = null;
+            try {
+                shader = new _Tw2Shader.Tw2Shader(this.reader, this.version, this.stringTable, this.stringTableOffset);
+            } catch (error) {
+                return null;
+            }
+            this.shaders[index] = shader;
+            return shader;
+        }
+    }]);
+
+    return Tw2EffectRes;
+}(_Tw2Resource2.Tw2Resource);
+
+/**
+ * Request Response Type
+ * @type {string}
+ */
+
+
+Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
 /* 134 */
@@ -27635,7 +27632,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(17);
 
-var _Tw2RenderTarget = __webpack_require__(57);
+var _Tw2RenderTarget = __webpack_require__(56);
 
 var _mesh = __webpack_require__(47);
 
@@ -31375,7 +31372,7 @@ Tw2ColorSequencer.Operator = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2EulerRotation = undefined;
 
@@ -31402,88 +31399,88 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2EulerRotation = exports.Tw2EulerRotation = function (_Tw2CurveSequencer) {
-  _inherits(Tw2EulerRotation, _Tw2CurveSequencer);
+    _inherits(Tw2EulerRotation, _Tw2CurveSequencer);
 
-  function Tw2EulerRotation() {
-    _classCallCheck(this, Tw2EulerRotation);
+    function Tw2EulerRotation() {
+        _classCallCheck(this, Tw2EulerRotation);
 
-    var _this = _possibleConstructorReturn(this, (Tw2EulerRotation.__proto__ || Object.getPrototypeOf(Tw2EulerRotation)).call(this));
+        var _this = _possibleConstructorReturn(this, (Tw2EulerRotation.__proto__ || Object.getPrototypeOf(Tw2EulerRotation)).call(this));
 
-    _this.yawCurve = null;
-    _this.pitchCurve = null;
-    _this.rollCurve = null;
-    _this.currentValue = _math.quat.create();
-    return _this;
-  }
-
-  /**
-   * Sorts the sequencer
-   */
-
-
-  _createClass(Tw2EulerRotation, [{
-    key: 'Sort',
-    value: function Sort() {
-      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        _this.yawCurve = null;
+        _this.pitchCurve = null;
+        _this.rollCurve = null;
+        _this.currentValue = _math.quat.create();
+        return _this;
     }
 
     /**
-     * Gets sequencer length
-     * @returns {number}
+     * Sorts the sequencer
      */
 
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      var len = 0;
-      if (this.yawCurve && 'GetLength' in this.yawCurve) len = this.yawCurve.GetLength();
-      if (this.pitchCurve && 'GetLength' in this.pitchCurve) len = Math.max(len, this.pitchCurve.GetLength());
-      if (this.rollCurve && 'GetLength' in this.rollCurve) len = Math.max(len, this.rollCurve.GetLength());
-      return len;
-    }
 
-    /**
-     * Updates the current value at a specific time
-     * @param {number} time
-     */
+    _createClass(Tw2EulerRotation, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        }
 
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.GetValueAt(time, this.currentValue);
-    }
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
 
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @param {quat} value
-     * @returns {quat}
-     */
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            if (this.yawCurve && 'GetLength' in this.yawCurve) len = this.yawCurve.GetLength();
+            if (this.pitchCurve && 'GetLength' in this.pitchCurve) len = Math.max(len, this.pitchCurve.GetLength());
+            if (this.rollCurve && 'GetLength' in this.rollCurve) len = Math.max(len, this.rollCurve.GetLength());
+            return len;
+        }
 
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time, value) {
-      var yaw = this.yawCurve ? this.yawCurve.GetValueAt(time) : 0.0,
-          pitch = this.pitchCurve ? this.pitchCurve.GetValueAt(time) : 0.0,
-          roll = this.rollCurve ? this.rollCurve.GetValueAt(time) : 0.0;
+        /**
+         * Updates the current value at a specific time
+         * @param {number} time
+         */
 
-      var sinYaw = Math.sin(yaw / 2.0),
-          cosYaw = Math.cos(yaw / 2.0),
-          sinPitch = Math.sin(pitch / 2.0),
-          cosPitch = Math.cos(pitch / 2.0),
-          sinRoll = Math.sin(roll / 2.0),
-          cosRoll = Math.cos(roll / 2.0);
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.currentValue);
+        }
 
-      value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
-      value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
-      value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
-      value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
 
-      return value;
-    }
-  }]);
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            var yaw = this.yawCurve ? this.yawCurve.GetValueAt(time) : 0.0,
+                pitch = this.pitchCurve ? this.pitchCurve.GetValueAt(time) : 0.0,
+                roll = this.rollCurve ? this.rollCurve.GetValueAt(time) : 0.0;
 
-  return Tw2EulerRotation;
+            var sinYaw = Math.sin(yaw / 2.0),
+                cosYaw = Math.cos(yaw / 2.0),
+                sinPitch = Math.sin(pitch / 2.0),
+                cosPitch = Math.cos(pitch / 2.0),
+                sinRoll = Math.sin(roll / 2.0),
+                cosRoll = Math.cos(roll / 2.0);
+
+            value[0] = sinYaw * cosPitch * sinRoll + cosYaw * sinPitch * cosRoll;
+            value[1] = sinYaw * cosPitch * cosRoll - cosYaw * sinPitch * sinRoll;
+            value[2] = cosYaw * cosPitch * sinRoll - sinYaw * sinPitch * cosRoll;
+            value[3] = cosYaw * cosPitch * cosRoll + sinYaw * sinPitch * sinRoll;
+
+            return value;
+        }
+    }]);
+
+    return Tw2EulerRotation;
 }(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
@@ -31526,7 +31523,7 @@ Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2QuaternionSequencer = undefined;
 
@@ -31552,79 +31549,79 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = function (_Tw2CurveSequencer) {
-  _inherits(Tw2QuaternionSequencer, _Tw2CurveSequencer);
+    _inherits(Tw2QuaternionSequencer, _Tw2CurveSequencer);
 
-  function Tw2QuaternionSequencer() {
-    _classCallCheck(this, Tw2QuaternionSequencer);
+    function Tw2QuaternionSequencer() {
+        _classCallCheck(this, Tw2QuaternionSequencer);
 
-    var _this = _possibleConstructorReturn(this, (Tw2QuaternionSequencer.__proto__ || Object.getPrototypeOf(Tw2QuaternionSequencer)).call(this));
+        var _this = _possibleConstructorReturn(this, (Tw2QuaternionSequencer.__proto__ || Object.getPrototypeOf(Tw2QuaternionSequencer)).call(this));
 
-    _this.start = 0;
-    _this.value = _math.quat.create();
-    _this.functions = [];
-    return _this;
-  }
-
-  /**
-   * Sorts the sequencer
-   */
-
-
-  _createClass(Tw2QuaternionSequencer, [{
-    key: 'Sort',
-    value: function Sort() {
-      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
+        _this.start = 0;
+        _this.value = _math.quat.create();
+        _this.functions = [];
+        return _this;
     }
 
     /**
-     * Gets sequencer length
-     * @returns {number}
+     * Sorts the sequencer
      */
 
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      var len = 0;
-      for (var i = 0; i < this.functions.length; ++i) {
-        if ('GetLength' in this.functions[i]) {
-          len = Math.max(len, this.functions[i].GetLength());
+
+    _createClass(Tw2QuaternionSequencer, [{
+        key: 'Sort',
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
-      }
-      return len;
-    }
 
-    /**
-     * Updates a value at a specific time
-     * @param {number} time
-     */
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
 
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.GetValueAt(time, this.value);
-    }
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                if ('GetLength' in this.functions[i]) {
+                    len = Math.max(len, this.functions[i].GetLength());
+                }
+            }
+            return len;
+        }
 
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @param {quat} value
-     * @returns {quat}
-     */
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
 
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time, value) {
-      _math.quat.identity(value);
-      var quat_0 = _Tw2CurveSequencer2.Tw2CurveSequencer.global.quat_0;
-      for (var i = 0; i < this.functions.length; ++i) {
-        this.functions[i].GetValueAt(time, quat_0);
-        _math.quat.multiply(value, value, quat_0);
-      }
-      return value;
-    }
-  }]);
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
 
-  return Tw2QuaternionSequencer;
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {quat} value
+         * @returns {quat}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            _math.quat.identity(value);
+            var quat_0 = _Tw2CurveSequencer2.Tw2CurveSequencer.global.quat_0;
+            for (var i = 0; i < this.functions.length; ++i) {
+                this.functions[i].GetValueAt(time, quat_0);
+                _math.quat.multiply(value, value, quat_0);
+            }
+            return value;
+        }
+    }]);
+
+    return Tw2QuaternionSequencer;
 }(_Tw2CurveSequencer2.Tw2CurveSequencer);
 
 /**
@@ -33019,7 +33016,7 @@ Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2MayaScalarCurve = undefined;
 
@@ -33043,68 +33040,68 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = function (_Tw2Curve) {
-  _inherits(Tw2MayaScalarCurve, _Tw2Curve);
+    _inherits(Tw2MayaScalarCurve, _Tw2Curve);
 
-  function Tw2MayaScalarCurve() {
-    _classCallCheck(this, Tw2MayaScalarCurve);
+    function Tw2MayaScalarCurve() {
+        _classCallCheck(this, Tw2MayaScalarCurve);
 
-    var _this = _possibleConstructorReturn(this, (Tw2MayaScalarCurve.__proto__ || Object.getPrototypeOf(Tw2MayaScalarCurve)).call(this));
+        var _this = _possibleConstructorReturn(this, (Tw2MayaScalarCurve.__proto__ || Object.getPrototypeOf(Tw2MayaScalarCurve)).call(this));
 
-    _this.index = -1;
-    _this.animationEngine = null;
-    _this.value = 0;
-    _this.length = 0;
-    return _this;
-  }
-
-  /**
-   * Sorts the curve
-   */
-
-
-  _createClass(Tw2MayaScalarCurve, [{
-    key: 'Sort',
-    value: function Sort() {
-      this.ComputeLength();
+        _this.index = -1;
+        _this.animationEngine = null;
+        _this.value = 0;
+        _this.length = 0;
+        return _this;
     }
 
     /**
-     * Gets the curve's length
-     * @returns {number}
+     * Sorts the curve
      */
 
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      return this.length;
-    }
 
-    /**
-     * Updates a value at a specific time
-     * @param {number} time
-     */
+    _createClass(Tw2MayaScalarCurve, [{
+        key: 'Sort',
+        value: function Sort() {
+            this.ComputeLength();
+        }
 
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      if (this.animationEngine) {
-        this.value = this.animationEngine.Evaluate(this.index, time);
-      }
-    }
+        /**
+         * Gets the curve's length
+         * @returns {number}
+         */
 
-    /**
-     * Computes curve Length
-     */
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            return this.length;
+        }
 
-  }, {
-    key: 'ComputeLength',
-    value: function ComputeLength() {
-      if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
-      if (this.index >= 0) this.length = this.animationEngine.GetLength(this.index);
-    }
-  }]);
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
 
-  return Tw2MayaScalarCurve;
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            if (this.animationEngine) {
+                this.value = this.animationEngine.Evaluate(this.index, time);
+            }
+        }
+
+        /**
+         * Computes curve Length
+         */
+
+    }, {
+        key: 'ComputeLength',
+        value: function ComputeLength() {
+            if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
+            if (this.index >= 0) this.length = this.animationEngine.GetLength(this.index);
+        }
+    }]);
+
+    return Tw2MayaScalarCurve;
 }(_curves.Tw2Curve);
 
 /**
@@ -33667,7 +33664,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(59);
+var _child = __webpack_require__(58);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33691,7 +33688,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(61);
+var _object = __webpack_require__(60);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33703,7 +33700,7 @@ Object.keys(_object).forEach(function (key) {
   });
 });
 
-var _item = __webpack_require__(64);
+var _item = __webpack_require__(63);
 
 Object.keys(_item).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34253,7 +34250,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(60);
+var _EveOccluder = __webpack_require__(59);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34307,7 +34304,7 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(60);
+var _EveOccluder = __webpack_require__(59);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34332,7 +34329,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array} xDistanceToCenter
  * @property {Array} yDistanceToCenter
  * @property {Array} bindings
- * @property {Array.<Tw2CurveSet> curveSets
+ * @property {Array.<Tw2CurveSet>} curveSets
  * @property {?Tw2Mesh} mesh
  * @property {vec3} _direction
  * @property {mat4} _transform
@@ -34606,7 +34603,7 @@ var EveLensflare = exports.EveLensflare = function () {
                 g.vec3_2 = _math.vec3.create();
                 g.vec3_3 = _math.vec3.create();
                 g.vec4_0 = _math.vec4.create();
-                g.vec4_1 = _math.mat4.create();
+                g.vec4_1 = _math.vec4.create();
                 g.mat4_0 = _math.mat4.create();
 
                 g.backBuffer = new _core.Tw2TextureRes();
@@ -36053,7 +36050,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(62);
+var _EveTransform = __webpack_require__(61);
 
 var _EveObject2 = __webpack_require__(15);
 
@@ -36378,7 +36375,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveSpaceObject2 = __webpack_require__(63);
+var _EveSpaceObject2 = __webpack_require__(62);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38116,6 +38113,12 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
 
 
 EveCurveLineSet.global = null;
+
+/**
+ * Line set item constructor
+ * @type {EveCurveLineSetItem}
+ */
+EveCurveLineSet.Item = EveCurveLineSetItem;
 
 /***/ }),
 /* 189 */
@@ -41401,13 +41404,13 @@ var _math = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(58);
+var _curve = __webpack_require__(57);
 
-var _item = __webpack_require__(64);
+var _item = __webpack_require__(63);
 
-var _child = __webpack_require__(59);
+var _child = __webpack_require__(58);
 
-var _object = __webpack_require__(61);
+var _object = __webpack_require__(60);
 
 function EveSOF() {
     var data = null;
