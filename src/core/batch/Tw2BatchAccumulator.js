@@ -1,4 +1,4 @@
-import {device} from '../global/Tw2Device';
+import {device} from '../../global';
 
 /**
  * Accumulates render batches for rendering

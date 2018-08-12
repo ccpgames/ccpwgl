@@ -1,4 +1,4 @@
-import {device} from '../global';
+import {device} from '../../global';
 import {Tw2RenderTarget} from '../Tw2RenderTarget';
 import {Tw2Effect} from '../mesh';
 import {Tw2TextureRes} from '../resource';

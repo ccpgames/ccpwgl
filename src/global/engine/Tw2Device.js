@@ -1,9 +1,9 @@
-import {vec3, vec4, mat4} from '../../math';
+import {vec3, vec4, mat4} from '../math';
 import {store} from './Tw2Store';
 import {logger} from './Tw2Logger';
 import {resMan} from './Tw2ResMan';
-import {Tw2Effect} from '../mesh/Tw2Effect';
-import {Tw2VertexElement, Tw2VertexDeclaration} from '../vertex';
+import {Tw2Effect} from '../../core/mesh/Tw2Effect';
+import {Tw2VertexElement, Tw2VertexDeclaration} from '../../core/vertex';
 
 const WebGLDebugUtil = require('webgl-debug');
 
@@ -15,6 +15,7 @@ const WebGLDebugUtil = require('webgl-debug');
  * @property {?VRDisplay} vrDisplay                - An optional VRDisplay context
  * @property {?{}} ext                             - An object containing compatibility extensions
  * @property {boolean} debugMode                   - Toggles debug mode
+ * @property {{}} debugUtils                       - Webgl debug utils
  * @property {number} dt                           - Clock delta time
  * @property {number} startTime                    - Clock start time
  * @property {number} currentTime                  - Clock current time
@@ -59,7 +60,6 @@ const WebGLDebugUtil = require('webgl-debug');
  * @property {WebGLTexture} _fallbackTexture       - A fallback texture
  * @property {Tw2Effect} _blitEffect               - The blit effect used for rendering textures
  * @property {?Function} _onResize                 - An optional function which is called when the canvas resizes
- * @property {{}} utils                            - Webgl debug utils
  * @class
  */
 export class Tw2Device
@@ -72,6 +72,7 @@ export class Tw2Device
         this.ext = null;
 
         this.debugMode = false;
+        this.debugUtils = null;
 
         this.dt = 0;
         this.frameCounter = 0;
@@ -123,8 +124,6 @@ export class Tw2Device
         this._fallbackTexture = null;
         this._blitEffect = null;
         this._onResize = null;
-
-        this.utils = WebGLDebugUtil;
     }
 
     /**
@@ -241,7 +240,8 @@ export class Tw2Device
 
         if (gl && this.debugMode)
         {
-            this.gl = this.utils.makeDebugContext(gl);
+            this.debugUtils = WebGLDebugUtil;
+            this.gl = this.debugUtils.makeDebugContext(gl);
         }
 
         logger.log('webgl', {

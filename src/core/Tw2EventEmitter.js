@@ -10,11 +10,6 @@ const PRIVATE = new WeakMap();
  */
 export class Tw2EventEmitter
 {
-    constructor()
-    {
-        PRIVATE.set(this, {events: {}});
-    }
-
     /**
      * Emits an event
      * @param {string} eventName
@@ -22,34 +17,35 @@ export class Tw2EventEmitter
      * @returns {Tw2EventEmitter}
      * @emit event_added { eventName: string} - the first time an event is emitted
      */
-    emit(eventName, e)
+    emit(eventName, e={})
     {
-        eventName = eventName.toLowerCase();
-
-        // Short cut to creating a log output
-        if (e && e['__log'])
+        if (PRIVATE.has(this))
         {
-            e.log = this.log(eventName, e['__log']);
-            delete e['__log'];
-        }
+            const events = PRIVATE.get(this);
+            eventName = eventName.toLowerCase();
 
-        const events = PRIVATE.get(this).events;
-        if (eventName in events)
-        {
-            events[eventName].forEach(
-                function (value, key)
-                {
-                    key.call(value.context, e);
-                    if (value.once) events[eventName].delete(key);
-                }
-            );
-        }
-        else
-        {
-            events[eventName] = new Set();
-            this.emit('event_added', {eventName: eventName});
-        }
+            // Short cut to creating a log output
+            if (e.log && !e.log.logged)
+            {
+                e.log = this.log(eventName, e.log);
+            }
 
+            if (eventName in events)
+            {
+                events[eventName].forEach(
+                    function (value, key)
+                    {
+                        key.call(value.context, e);
+                        if (value.once) events[eventName].delete(key);
+                    }
+                );
+            }
+            else
+            {
+                events[eventName] = new Set();
+                this.emit('event_added', {eventName: eventName});
+            }
+        }
         return this;
     }
 
@@ -63,7 +59,9 @@ export class Tw2EventEmitter
      */
     on(eventName, listener, context = undefined, once = false)
     {
-        const events = PRIVATE.get(this).events;
+        if (!PRIVATE.has(this)) PRIVATE.set(this, {});
+        const events = PRIVATE.get(this);
+
         eventName = eventName.toLowerCase();
         if (!events[eventName])
         {
@@ -94,9 +92,12 @@ export class Tw2EventEmitter
      */
     off(eventName, listener)
     {
-        const events = PRIVATE.get(this).events;
-        eventName = eventName.toLowerCase();
-        if (eventName in events) events[eventName].delete(listener);
+        if (PRIVATE.has(this))
+        {
+            const events = PRIVATE.get(this);
+            eventName = eventName.toLowerCase();
+            if (eventName in events) events[eventName].delete(listener);
+        }
         return this;
     }
 
@@ -108,12 +109,15 @@ export class Tw2EventEmitter
      */
     del(eventName)
     {
-        const events = PRIVATE.get(this).events;
-        eventName = eventName.toLowerCase();
-        if (eventName in events)
+        if (PRIVATE.has(this))
         {
-            this.emit('event_removed', {eventName: eventName});
-            delete events[eventName];
+            const events = PRIVATE.get(this);
+            eventName = eventName.toLowerCase();
+            if (eventName in events)
+            {
+                this.emit('event_removed', {eventName: eventName});
+                delete events[eventName];
+            }
         }
         return this;
     }
@@ -125,12 +129,15 @@ export class Tw2EventEmitter
      */
     clr(listener)
     {
-        const events = PRIVATE.get(this).events;
-        for (let eventName in events)
+        if (PRIVATE.has(this))
         {
-            if (events.hasOwnProperty(eventName) && events[eventName].has(listener))
+            const events = PRIVATE.get(this);
+            for (let eventName in events)
             {
-                events[eventName].delete(listener);
+                if (events.hasOwnProperty(eventName) && events[eventName].has(listener))
+                {
+                    events[eventName].delete(listener);
+                }
             }
         }
         return this;
@@ -143,8 +150,11 @@ export class Tw2EventEmitter
      */
     kill()
     {
-        this.emit('event_kill');
-        PRIVATE.get(this).events = {};
+        if (PRIVATE.has(this))
+        {
+            this.emit('event_kill');
+            PRIVATE.set(this, {});
+        }
         return this;
     }
 
@@ -161,6 +171,15 @@ export class Tw2EventEmitter
             this.constructor.logger.log(eventName, eventLog);
         }
         return eventLog;
+    }
+
+    /**
+     * Assigns the event emitter's prototypes to a constructor/class
+     * @param Constructor
+     */
+    static assign(Constructor)
+    {
+        Object.assign(Constructor.prototype, Tw2EventEmitter.prototype);
     }
 }
 

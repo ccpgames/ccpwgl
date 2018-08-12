@@ -1,4 +1,4 @@
-import {vec3, vec4, noise} from '../../math';
+import {vec3, vec4, noise} from '../../global';
 import {Tw2ParticleForce} from './Tw2ParticleForce';
 
 /**

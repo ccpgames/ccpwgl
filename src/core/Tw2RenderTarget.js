@@ -1,5 +1,4 @@
-import {util} from '../math';
-import {device} from './global/Tw2Device';
+import {util, device} from '../global';
 import {Tw2TextureRes} from './resource/Tw2TextureRes';
 
 /**

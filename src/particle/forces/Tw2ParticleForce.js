@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util, vec3, vec4} from '../../math';
+import {util, vec3, vec4} from '../../global';
 
 /**
  * Tw2ParticleForce base class

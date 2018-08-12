@@ -1,5 +1,5 @@
-import {vec3, vec4, quat, mat4, util} from '../math';
-import {device, resMan, store, Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
+import {vec3, vec4, quat, mat4, util, device, resMan, store} from '../global';
+import {Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
 
 /**
  * EveSpaceScene

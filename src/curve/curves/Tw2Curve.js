@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {vec3, vec4, quat, util} from '../../math';
+import {vec3, vec4, quat, util} from '../../global';
 
 /**
  * Tw2CurveKey base class

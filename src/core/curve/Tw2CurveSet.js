@@ -1,4 +1,4 @@
-import { util } from '../../math';
+import { util } from '../../global';
 
 /**
  * Tw2CurveSet

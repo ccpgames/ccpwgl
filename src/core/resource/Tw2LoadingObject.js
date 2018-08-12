@@ -1,5 +1,4 @@
-import {resMan} from '../global/Tw2ResMan';
-import {logger} from '../global/Tw2Logger';
+import {resMan, logger} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
 import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';
 

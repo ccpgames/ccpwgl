@@ -1,4 +1,4 @@
-import {logger} from '../global/Tw2Logger';
+import {logger} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2Resource} from './Tw2Resource';
 import {Tw2Shader} from './Tw2Shader';

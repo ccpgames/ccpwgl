@@ -1,4 +1,4 @@
-import {noise} from '../../math';
+import {noise} from '../../global';
 import {Tw2Curve} from './Tw2Curve';
 
 /**

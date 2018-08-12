@@ -1,6 +1,5 @@
-import {vec3, vec4, quat, mat4, util} from '../../math';
+import {vec3, vec4, quat, mat4, util, device} from '../../global';
 import {
-    device,
     Tw2Effect,
     Tw2PerObjectData,
     Tw2RawData,

@@ -1,5 +1,4 @@
-import {vec3, vec4, quat, mat4} from '../math';
-import {resMan} from '../core';
+import {vec3, vec4, quat, mat4, resMan} from '../global';
 import {Tw2FloatParameter} from '../core';
 import {Tw2TextureParameter} from '../core';
 import {Tw2Vector4Parameter} from '../core';

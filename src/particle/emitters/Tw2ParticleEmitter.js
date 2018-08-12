@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Particle Emitter base class

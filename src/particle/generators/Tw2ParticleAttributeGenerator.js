@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util, vec3} from '../../math';
+import {util, vec3} from '../../global';
 
 /**
  * Tw2ParticleAttributeGenerator base class

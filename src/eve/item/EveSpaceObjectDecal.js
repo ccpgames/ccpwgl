@@ -1,11 +1,5 @@
-import {vec3, quat, mat4, util} from '../../math';
-import {
-    device,
-    store,
-    Tw2PerObjectData,
-    Tw2RawData,
-    Tw2ForwardingRenderBatch
-} from '../../core/';
+import {vec3, quat, mat4, util, device, store} from '../../global';
+import {    Tw2PerObjectData,    Tw2RawData,    Tw2ForwardingRenderBatch} from '../../core/';
 
 /**
  * EveSpaceObjectDecal

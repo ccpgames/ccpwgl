@@ -1,6 +1,4 @@
-import {util} from '../../math';
-import {resMan} from '../global/Tw2ResMan';
-import {device} from '../global/Tw2Device';
+import {util, resMan, device} from '../../global';
 
 /**
  * Tw2Mesh

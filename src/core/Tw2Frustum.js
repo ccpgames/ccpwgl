@@ -1,4 +1,4 @@
-import {vec3, vec4, mat4} from '../math';
+import {vec3, vec4, mat4} from '../global';
 
 /**
  * Tw2Frustum

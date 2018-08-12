@@ -1,6 +1,4 @@
-import {vec3, quat, mat3, mat4} from '../../math';
-import {device} from '../global/Tw2Device';
-import {logger} from '../global/Tw2Logger';
+import {vec3, quat, mat3, mat4, device, logger} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
@@ -186,7 +184,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 bone.parentIndex = reader.ReadUInt8();
                 if (bone.parentIndex === 255) bone.parentIndex = -1;
 
-                if ((flags & 1) != 0)
+                if ((flags & 1) !== 0)
                 {
                     vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -195,7 +193,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     vec3.set(bone.position, 0, 0, 0);
                 }
 
-                if ((flags & 2) != 0)
+                if ((flags & 2) !== 0)
                 {
                     quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -204,7 +202,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     quat.identity(bone.orientation);
                 }
 
-                if ((flags & 4) != 0)
+                if ((flags & 4) !== 0)
                 {
                     for (let k = 0; k < 9; ++k)
                     {
@@ -635,7 +633,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 switch (el.fileType & 0xf)
                 {
                     case 0:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -652,7 +650,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 1:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -690,7 +688,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 8:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -707,7 +705,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 9:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < declaration.elements[declIx].elements; ++i)
                             {

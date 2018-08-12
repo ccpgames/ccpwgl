@@ -1,4 +1,4 @@
-import {quat, util} from '../../math';
+import {quat, util} from '../../global';
 import {Tw2Vector4Parameter} from '../parameter';
 
 /**
@@ -194,11 +194,11 @@ export class Tw2ValueBinding
                 this._copyFunc = Tw2ValueBinding.CopyValueToValue;
             }
         }
-        else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] === 'number')
+        else if (this.sourceIsArray && srcSwizzled && util.isNumber(this.destinationObject[this.destinationAttribute]))
         {
             this._copyFunc = Tw2ValueBinding.CopyElementToValue;
         }
-        else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === 'number')
+        else if (this.destinationIsArray && util.isNumber(this.sourceObject[this.sourceAttribute]))
         {
             if (destSwizzled)
             {
@@ -209,7 +209,7 @@ export class Tw2ValueBinding
                 this._copyFunc = Tw2ValueBinding.ReplicateValue;
             }
         }
-        else if (typeof this.sourceObject[this.sourceAttribute] === 'number' && typeof this.destinationObject[this.destinationAttribute] === 'boolean')
+        else if (util.isNumber(this.sourceObject[this.sourceAttribute]) && util.isBoolean(this.destinationObject[this.destinationAttribute]))
         {
             this._copyFunc = Tw2ValueBinding.CopyFloatToBoolean;
         }

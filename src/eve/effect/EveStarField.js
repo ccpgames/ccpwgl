@@ -1,5 +1,5 @@
-/*eslint no-unused-vars:0 */
-import {EveObject} from './EveObject';
+import {util} from '../../global';
+
 /**
  * EveStarField - not implemented yet
  *
@@ -13,11 +13,13 @@ import {EveObject} from './EveObject';
  * @property {number} minFlashRate
  * @property {number} seed
  */
-export class EveStarField extends EveObject
+export class EveStarField
 {
     constructor()
     {
-        super();
+        this._id = util.generateID();
+        this.name = '';
+        this.display = true;
         this.effect = null;
         this.maxDist = 0;
         this.maxFlashRate = 0;

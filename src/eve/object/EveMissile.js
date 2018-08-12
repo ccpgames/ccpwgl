@@ -1,4 +1,4 @@
-import {vec3, mat4, util} from '../../math';
+import {vec3, mat4, util} from '../../global';
 import {Tw2PerObjectData, Tw2RawData} from '../../core';
 import {EveObject} from './EveObject';
 

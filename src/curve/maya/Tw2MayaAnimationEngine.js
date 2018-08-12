@@ -1,4 +1,4 @@
-import {curve, util, vec4} from '../../math';
+import {curve, util, vec4} from '../../global';
 
 /**
  * Tw2MayaAnimationEngine

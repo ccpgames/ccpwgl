@@ -1,4 +1,4 @@
-import {vec2} from '../../math';
+import {vec2} from '../../global';
 import {Tw2VectorParameter} from './Tw2Parameter';
 
 /**

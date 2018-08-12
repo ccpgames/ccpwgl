@@ -1,5 +1,5 @@
 /*eslint no-unused-vars:0*/
-import {device} from '../global';
+import {device} from '../../global';
 
 /**
  * Tw2RenderBatch base class

@@ -1,5 +1,5 @@
-import {vec3, vec4, mat4, util} from '../../math';
-import {device, store, Tw2TextureRes, Tw2RenderTarget} from '../../core';
+import {vec3, vec4, mat4, util, device, store} from '../../global';
+import {Tw2TextureRes, Tw2RenderTarget} from '../../core';
 import {EveOccluder} from './EveOccluder';
 
 /**

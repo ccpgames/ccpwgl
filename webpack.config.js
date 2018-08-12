@@ -45,6 +45,18 @@ module.exports = {
                 exclude: [/node_modules/],
                 loader: 'babel-loader',
                 options: {
+                    'plugins': [
+                        'transform-decorators-legacy',
+                        'transform-class-properties',
+                        [
+                            'transform-builtin-extend',
+                            {
+                                'globals': [
+                                    'Error'
+                                ]
+                            }
+                        ]
+                    ],
                     'presets': [
                         'env'
                     ]

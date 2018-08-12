@@ -1,5 +1,5 @@
 import {Tw2GeometryBatch} from '../batch';
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Tw2MeshArea

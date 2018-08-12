@@ -1,4 +1,5 @@
-import {device, resMan, Tw2Effect, Tw2RenderTarget, Tw2TextureParameter, Tw2FloatParameter} from '../../core';
+import {util, device, resMan} from '../../global';
+import {Tw2Effect, Tw2RenderTarget, Tw2TextureParameter, Tw2FloatParameter} from '../../core';
 import {EveTransform} from './EveTransform';
 import {EveObject} from './EveObject';
 
@@ -73,7 +74,7 @@ export class EvePlanet extends EveObject
         if (visited.includes(obj)) return;
         visited.push(obj);
 
-        if (obj && typeof(obj['doNotPurge']) !== typeof(undefined))
+        if (obj && !util.isUndefined(obj['doNotPurge']))
         {
             result.push(obj);
             return;
@@ -83,7 +84,7 @@ export class EvePlanet extends EveObject
         {
             if (obj.hasOwnProperty(prop))
             {
-                if (typeof(obj[prop]) === 'object')
+                if (util.isObjectLike(obj[prop]))
                 {
                     this.GetPlanetResources(obj[prop], visited, result);
                 }

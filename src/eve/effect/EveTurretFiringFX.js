@@ -1,4 +1,4 @@
-import {vec3, mat4, util} from '../../math/index';
+import {vec3, mat4, util} from '../../global';
 
 /**
  * EvePerMuzzleData

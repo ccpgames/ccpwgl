@@ -1,5 +1,4 @@
-import {curve, vec3, quat, mat4, util} from '../../math';
-import {resMan} from '../../core';
+import {curve, vec3, quat, mat4, util, resMan} from '../../global';
 
 /**
  * Tw2TransformTrack

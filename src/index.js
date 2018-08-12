@@ -1,21 +1,22 @@
-import * as math from './math';
+import * as math from './global/math';
 import * as core from './core';
 import * as curve from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
+import { device, store, resMan, logger, util } from './global';
 
 export * from './core';
 export * from './curve';
 export * from './eve';
 export * from './particle';
-export {math};
+export {math, util, device, store, resMan, logger};
 
 const {vec4, mat4} = math;
 
 /**
  * Register globals
  */
-core.store.Register({
+store.Register({
 
     paths: {
         'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'

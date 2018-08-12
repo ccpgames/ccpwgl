@@ -1,4 +1,4 @@
-import {store} from '../global/Tw2Store';
+import {store} from '../../global';
 import {Tw2Parameter} from './Tw2Parameter';
 
 /**

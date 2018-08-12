@@ -1,7 +1,7 @@
 import {logger} from './Tw2Logger';
 import {store} from './Tw2Store';
 import {Tw2MotherLode} from './Tw2MotherLode';
-import {Tw2LoadingObject} from '../resource/Tw2LoadingObject';
+import {Tw2LoadingObject} from '../../core/resource/Tw2LoadingObject';
 
 /**
  * Resource Manager
@@ -135,7 +135,7 @@ export class Tw2ResMan
             {
                 if (this.autoPurgeResources)
                 {
-                    this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime);
+                    this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime, logger);
                 }
             }
         }

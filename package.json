@@ -1,7 +1,7 @@
 {
   "name": "ccpwgl",
   "licence": "MIT",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CCP webGL library",
   "homepage": "https://github.com/ccpgames/ccpwgl",
   "bugs": "https://github.com/ccpgames/ccpwgl/issues",
@@ -11,9 +11,13 @@
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.1",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-env": "^1.6.0",
-    "eslint": "^4.5.0",
+    "eslint": "^4.19.1",
     "eslint-loader": "^1.9.0",
     "gl-matrix": "2.4.0",
     "progress-bar-webpack-plugin": "^1.10.0",

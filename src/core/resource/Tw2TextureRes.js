@@ -1,6 +1,4 @@
-import {resMan} from '../global/Tw2ResMan';
-import {device} from '../global/Tw2Device';
-import {logger} from '../global/Tw2Logger';
+import {resMan, device, logger} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
 
 /**

@@ -1,4 +1,4 @@
-import {vec3, quat, mat3, mat4, curve} from '../../math';
+import {vec3, quat, mat3, mat4, curve, util} from '../../global';
 import {Tw2GeometryRes} from '../resource';
 import {Tw2Animation} from './Tw2Animation';
 import {Tw2Bone} from './Tw2Bone';
@@ -115,7 +115,7 @@ export class Tw2AnimationController
             animation.time = 0;
             animation.isPlaying = true;
 
-            if (typeof(cycle) !== 'undefined')
+            if (!util.isUndefined(cycle))
             {
                 animation.cycle = cycle;
             }
@@ -154,7 +154,7 @@ export class Tw2AnimationController
             animation.time = Math.max(Math.min(from, animation.animationRes.duration), 0);
             animation.isPlaying = true;
 
-            if (typeof(cycle) !== 'undefined')
+            if (!util.isUndefined(cycle))
             {
                 animation.cycle = cycle;
             }
@@ -200,10 +200,7 @@ export class Tw2AnimationController
             return;
         }
 
-        if (typeof names === 'string' || names instanceof String)
-        {
-            names = [names];
-        }
+        names = util.toArray(names);
 
         const toStop = {};
         for (let n = 0; n < names.length; n++)
@@ -255,10 +252,7 @@ export class Tw2AnimationController
             return;
         }
 
-        if (typeof names === 'string' || names instanceof String)
-        {
-            names = [names];
-        }
+        util.toArray(names);
 
         const keepAnimating = {};
         for (let n = 0; n < names.length; n++)

@@ -1,5 +1,5 @@
-import {vec3, vec4, mat4, util} from '../../math';
-import {device, Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
+import {vec3, vec4, mat4, util, device} from '../../global';
+import {Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**

@@ -1,5 +1,5 @@
-import {vec3, mat4} from '../../math';
-import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
+import {vec3, mat4, device} from '../../global';
+import {Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveChild} from './EveChild';
 
 /**

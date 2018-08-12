@@ -1,4 +1,4 @@
-import {device} from '../global/Tw2Device';
+import {util, device} from '../../global';
 import {Tw2VertexElement} from './Tw2VertexElement';
 
 /**
@@ -234,34 +234,39 @@ export class Tw2VertexDeclaration
             const decl = declarations[i];
             let usage, usageIndex, type, elements, offset;
 
-            if (Array.isArray(decl))
+            if (util.isArray(decl))
             {
                 usage = decl[0];
                 usageIndex = decl[1];
-                type = decl[2];
-                elements = decl[3];
+                elements = decl[2];
+                type = decl[3];
                 offset = decl[4];
             }
             else
             {
                 usage = decl.usage;
                 usageIndex = decl.usageIndex;
-                type = decl.type;
                 elements = decl.elements;
+                type = decl.type;
                 offset = decl.offset;
             }
 
-            if (typeof usage === 'string')
+            if (util.isString(usage))
             {
                 usage = Tw2VertexDeclaration.Type[usage.toUpperCase()];
             }
 
-            if (typeof type === 'string')
+            if (util.isNoU(type))
+            {
+                type = 'FLOAT';
+            }
+
+            if (util.isString(type))
             {
                 type = device.gl[type.toUpperCase()];
             }
 
-            if (offset === undefined)
+            if (util.isNoU(offset))
             {
                 offset = currentOffset;
             }

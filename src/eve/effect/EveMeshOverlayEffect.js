@@ -1,5 +1,5 @@
-import {device, Tw2GeometryBatch} from '../../core';
-import {util} from '../../math';
+import {Tw2GeometryBatch} from '../../core';
+import {util, device} from '../../global';
 
 /**
  * Constructor for Overlay Effects

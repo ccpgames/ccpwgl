@@ -1,4 +1,4 @@
-import {mat3, mat4, quat, vec3} from '../../math';
+import {mat3, mat4, quat, vec3} from '../../global';
 
 /**
  * Tw2GeometryBone

@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { util } from '../../math';
+import { util } from '../../global';
 
 /**
  * Tw2Parameter base class
@@ -70,11 +70,11 @@ export class Tw2Parameter
     /**
      * Gets the parameter's value
      * @param {boolean} [serialize] - forces serialized result
-     * @returns {null}
+     * @returns {*}
      */
     GetValue(serialize)
     {
-        return null;
+
     }
 
     /**
@@ -299,8 +299,14 @@ export class Tw2VectorParameter extends Tw2Parameter
      * @param {Float32Array|Array} value
      * @returns {boolean}
      */
-    static is(value)
+    static isValue(value)
     {
         return (util.isArrayLike(value) && value.length === this.constantBufferSize);
     }
 }
+
+/**
+ * The parameter's constantBufferSize
+ * @type {number}
+ */
+Tw2VectorParameter.constantBufferSize = 0;

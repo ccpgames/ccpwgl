@@ -1,7 +1,5 @@
-import {device} from '../global/Tw2Device';
-import {logger} from '../global';
+import {quat, util, device, logger} from '../../global';
 import {Tw2VertexDeclaration, Tw2VertexElement} from '../vertex';
-import {quat} from '../../math';
 import {Tw2SamplerState} from '../sampler';
 
 /**
@@ -460,7 +458,7 @@ export class Tw2Shader
         }
         else
         {
-            let source = prefix + (typeof shaderCode === 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
+            let source = prefix + (util.isString(shaderCode) ? shaderCode : String.fromCharCode.apply(null, shaderCode));
             source = source.substr(0, source.length - 1);
             d.gl.shaderSource(shader, source);
             d.gl.compileShader(shader);

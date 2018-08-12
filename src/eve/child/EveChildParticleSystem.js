@@ -1,4 +1,4 @@
-import {mat4} from '../../math';
+import {mat4} from '../../global';
 import {Tw2BasicPerObjectData, Tw2RawData} from '../../core';
 import {EveChild} from './EveChild';
 

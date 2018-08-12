@@ -1,4 +1,4 @@
-import { util } from '../../math';
+import { util } from '../../global';
 
 /**
  * Stores raw data for {@link Tw2PerObjectData}
@@ -116,7 +116,7 @@ export class Tw2RawData
             {
                 const value = declarations[name];
 
-                if (typeof value === 'number')
+                if (util.isNumber(value))
                 {
                     this.Declare(name, 1, value);
                 }

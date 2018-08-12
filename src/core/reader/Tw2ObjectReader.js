@@ -1,5 +1,4 @@
-import {logger} from '../global/Tw2Logger';
-import {store} from '../global/Tw2Store';
+import {logger, store} from '../../global';
 import {Tw2BinaryReader} from './Tw2BinaryReader';
 
 /**

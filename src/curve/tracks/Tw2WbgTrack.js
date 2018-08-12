@@ -1,5 +1,4 @@
-import {vec3, quat, mat4, curve, util} from '../../math';
-import {resMan} from '../../core';
+import {vec3, quat, mat4, curve, util, resMan} from '../../global';
 
 /**
  * Tw2WbgTrack

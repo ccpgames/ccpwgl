@@ -1,8 +1,6 @@
-import {resMan} from '../global/Tw2ResMan';
-import {device} from '../global/Tw2Device';
+import {resMan, device, util} from '../../global';
 import {Tw2SamplerState} from '../sampler';
 import {Tw2Parameter} from './Tw2Parameter';
-import {util} from '../../math';
 
 /**
  * Tw2TextureParameter
@@ -259,13 +257,13 @@ export class Tw2TextureParameter extends Tw2Parameter
     }
 
     /**
-     *
-     * @param value
+     * Checks if a value is a valid parameter value
+     * @param {*} a
      * @returns {boolean}
      */
-    static is(value)
+    static isValue(a)
     {
-        return typeof value === 'string';
+        return util.isString(a);
     }
 }
 

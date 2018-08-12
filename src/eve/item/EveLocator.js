@@ -1,4 +1,4 @@
-import {mat4} from '../../math/index';
+import {mat4} from '../../global';
 
 /**
  * Contains transform information for T3 Attachments, Boosters, Turrets and XLTurrets

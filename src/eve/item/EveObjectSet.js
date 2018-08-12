@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { vec3, vec4, mat4, util } from '../../math';
+import { vec3, vec4, mat4, util } from '../../global';
 
 /**
  * EveObjectSetItem base class

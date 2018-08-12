@@ -1,5 +1,3 @@
-import {logger} from './Tw2Logger';
-
 /**
  * Manages loaded resources
  * 
@@ -105,8 +103,9 @@ export class Tw2MotherLode
      * @param {Number} curFrame - the current frame count
      * @param {Number} frameLimit - how many frames the object can stay alive for before being purged
      * @param {Number} frameDistance - how long the resource has been alive for
+     * @param {Tw2Logger} logger
      */
-    PurgeInactive(curFrame, frameLimit, frameDistance)
+    PurgeInactive(curFrame, frameLimit, frameDistance, logger)
     {
         for (const path in this._loadedObjects)
         {

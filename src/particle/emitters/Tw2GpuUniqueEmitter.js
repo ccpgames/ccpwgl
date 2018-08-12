@@ -1,4 +1,4 @@
-import { vec3, vec4 } from '../../math';
+import { vec3, vec4 } from '../../global';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**

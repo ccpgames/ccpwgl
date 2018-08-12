@@ -1,5 +1,4 @@
-import {resMan} from '../global/Tw2ResMan';
-import {vec3} from '../../math';
+import {vec3, resMan} from '../../global';
 import {Tw2InstancedMeshBatch} from '../batch';
 import {Tw2Mesh} from './Tw2Mesh';
 

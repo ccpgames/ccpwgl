@@ -1,4 +1,4 @@
-import {resMan} from '../global/Tw2ResMan';
+import {resMan} from '../../global';
 
 /**
  * Tw2Resource base class

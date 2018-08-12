@@ -1,4 +1,4 @@
-import {device} from '../global/Tw2Device';
+import {device} from '../../global';
 import {Tw2PerObjectData} from './Tw2PerObjectData';
 import {Tw2RawData} from './Tw2RawData';
 

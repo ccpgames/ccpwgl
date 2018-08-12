@@ -1,5 +1,4 @@
-import {util} from '../../math';
-import {resMan, device, store} from '../global';
+import {util, resMan, device, store} from '../../global';
 import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
 
 /**

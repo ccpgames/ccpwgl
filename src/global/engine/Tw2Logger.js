@@ -1,5 +1,5 @@
-import {Tw2EventEmitter} from '../Tw2EventEmitter';
-import {util} from '../../math';
+import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
+import {assignIfExists} from '../util';
 
 /**
  * Event log
@@ -32,7 +32,7 @@ import {util} from '../../math';
  * @property {Array} _logs            - Stored logs
  * @property {?Function} _onNewLog    - On new log
  */
-export class Tw2Logger extends Tw2EventEmitter
+class Tw2Logger extends Tw2EventEmitter
 {
     constructor(name='')
     {
@@ -57,6 +57,8 @@ export class Tw2Logger extends Tw2EventEmitter
      */
     log(eventName, log)
     {
+        if (log.logged) return log;
+
         log.log = Tw2Logger.Type[log.log ? log.log.toUpperCase() : 'LOG'] || 'log';
 
         if (!log.hide && this.display && this.visible[log.log])
@@ -107,6 +109,7 @@ export class Tw2Logger extends Tw2EventEmitter
         }
 
         this.emit('log', log);
+        log.logged = true;
         return log;
     }
 
@@ -126,8 +129,8 @@ export class Tw2Logger extends Tw2EventEmitter
      */
     Set(opt={})
     {
-        util.assignIfExists(this, opt, ['name', 'maxLogs', 'display']);
-        util.assignIfExists(this.visible, opt.visible, ['log','info','debug','warn','error']);
+        assignIfExists(this, opt, ['name', 'maxLogs', 'display']);
+        assignIfExists(this.visible, opt.visible, ['log','info','debug','warn','error']);
     }
 }
 

@@ -1,5 +1,5 @@
 import {Tw2Parameter} from './Tw2Parameter';
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Tw2FloatParameter
@@ -74,14 +74,18 @@ export class Tw2FloatParameter extends Tw2Parameter
     }
 
     /**
-     * Checks if a value is a valid value
-     * @param {number} value
+     * Checks if a value is a valid parameter value
+     * @param {number} a
      * @returns {boolean}
      */
-    static is(value)
+    static isValue(a)
     {
-        return typeof value === 'number';
+        return util.isNumber(a);
     }
 }
 
-Tw2FloatParameter.size = 1;
+/**
+ * Float parameter's constant buffer size
+ * @type {number}
+ */
+Tw2FloatParameter.constantBufferSize = 1;

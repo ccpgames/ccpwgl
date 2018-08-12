@@ -1,4 +1,4 @@
-import {vec4} from '../../math';
+import {vec4} from '../../global';
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
 
 /**
