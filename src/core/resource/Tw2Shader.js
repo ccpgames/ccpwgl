@@ -33,23 +33,26 @@ export class Tw2Shader
         this.techniques = {};
         this.annotations = {};
 
-        const d = device;
+        const {wrapModes, gl} = device;
 
         let techniqueCount = 1;
         if (version > 6)
         {
             techniqueCount = reader.ReadUInt8();
         }
+
         for (let t = 0; t < techniqueCount; ++t)
         {
             let technique = {
                 name: 'Main',
                 passes: []
             };
+
             if (version > 6)
             {
                 technique.name = ReadString();
             }
+
             this.techniques[technique.name] = technique;
 
             const passCount = reader.ReadUInt8();
@@ -243,40 +246,40 @@ export class Tw2Shader
                             switch (mipFilter)
                             {
                                 case 0:
-                                    sampler.minFilter = d.gl.NEAREST;
+                                    sampler.minFilter = gl.NEAREST;
                                     break;
 
                                 case 1:
-                                    sampler.minFilter = d.gl.NEAREST_MIPMAP_NEAREST;
+                                    sampler.minFilter = gl.NEAREST_MIPMAP_NEAREST;
                                     break;
 
                                 default:
-                                    sampler.minFilter = d.gl.NEAREST_MIPMAP_LINEAR;
+                                    sampler.minFilter = gl.NEAREST_MIPMAP_LINEAR;
                             }
-                            sampler.minFilterNoMips = d.gl.NEAREST;
+                            sampler.minFilterNoMips = gl.NEAREST;
                         }
                         else
                         {
                             switch (mipFilter)
                             {
                                 case 0:
-                                    sampler.minFilter = d.gl.LINEAR;
+                                    sampler.minFilter = gl.LINEAR;
                                     break;
 
                                 case 1:
-                                    sampler.minFilter = d.gl.LINEAR_MIPMAP_NEAREST;
+                                    sampler.minFilter = gl.LINEAR_MIPMAP_NEAREST;
                                     break;
 
                                 default:
-                                    sampler.minFilter = d.gl.LINEAR_MIPMAP_LINEAR;
+                                    sampler.minFilter = gl.LINEAR_MIPMAP_LINEAR;
                             }
-                            sampler.minFilterNoMips = d.gl.LINEAR;
+                            sampler.minFilterNoMips = gl.LINEAR;
                         }
 
-                        sampler.magFilter = magFilter === 1 ? d.gl.NEAREST : d.gl.LINEAR;
-                        sampler.addressU = d.wrapModes[addressU];
-                        sampler.addressV = d.wrapModes[addressV];
-                        sampler.addressW = d.wrapModes[addressW];
+                        sampler.magFilter = magFilter === 1 ? gl.NEAREST : gl.LINEAR;
+                        sampler.addressU = wrapModes[addressU];
+                        sampler.addressV = wrapModes[addressV];
+                        sampler.addressW = wrapModes[addressW];
 
                         if (minFilter === 3 || magFilter === 3 || mipFilter === 3)
                         {
@@ -287,7 +290,7 @@ export class Tw2Shader
                         {
                             if (stage.textures[n].registerIndex === sampler.registerIndex)
                             {
-                                sampler.samplerType = stage.textures[n].type === 4 ? d.gl.TEXTURE_CUBE_MAP : d.gl.TEXTURE_2D;
+                                sampler.samplerType = stage.textures[n].type === 4 ? gl.TEXTURE_CUBE_MAP : gl.TEXTURE_2D;
                                 sampler.isVolume = stage.textures[n].type === 3;
                                 break;
                             }
@@ -381,7 +384,10 @@ export class Tw2Shader
      */
     ApplyPass(technique, pass)
     {
-        const d = device;
+        const
+            d = device,
+            gl = d.gl;
+
         pass = this.techniques[technique].passes[pass];
 
         for (let i = 0; i < pass.states.length; ++i)
@@ -391,12 +397,12 @@ export class Tw2Shader
 
         if (d.IsAlphaTestEnabled())
         {
-            d.gl.useProgram(pass.shadowShaderProgram.program);
+            gl.useProgram(pass.shadowShaderProgram.program);
             d.shadowHandles = pass.shadowShaderProgram;
         }
         else
         {
-            d.gl.useProgram(pass.shaderProgram.program);
+            gl.useProgram(pass.shaderProgram.program);
             d.shadowHandles = null;
         }
     }
@@ -449,22 +455,22 @@ export class Tw2Shader
     static CompileShader(stageType, prefix, shaderCode, path)
     {
         const
-            d = device,
-            shader = d.gl.createShader(stageType === 0 ? d.gl.VERTEX_SHADER : d.gl.FRAGMENT_SHADER);
+            {ext, gl} = device,
+            shader = gl.createShader(stageType === 0 ? gl.VERTEX_SHADER : gl.FRAGMENT_SHADER);
 
-        if (d.ext.ShaderBinary)
+        if (ext.ShaderBinary)
         {
-            d.ext.ShaderBinary['shaderBinary'](shader, shaderCode);
+            ext.ShaderBinary['shaderBinary'](shader, shaderCode);
         }
         else
         {
             let source = prefix + (util.isString(shaderCode) ? shaderCode : String.fromCharCode.apply(null, shaderCode));
             source = source.substr(0, source.length - 1);
-            d.gl.shaderSource(shader, source);
-            d.gl.compileShader(shader);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
         }
 
-        if (!d.gl.getShaderParameter(shader, d.gl.COMPILE_STATUS))
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
         {
             logger.log('res.error', {
                 log: 'error',
@@ -473,7 +479,7 @@ export class Tw2Shader
                 path: path,
                 type: 'shader.compile',
                 value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
-                data: device.gl.getShaderInfoLog(shader)
+                data: gl.getShaderInfoLog(shader)
             });
             return null;
         }
@@ -491,15 +497,15 @@ export class Tw2Shader
     static CreateProgram(vertexShader, fragmentShader, pass, path)
     {
         const
-            d = device,
+            gl = device.gl,
             program = {};
 
-        program.program = d.gl.createProgram();
-        d.gl.attachShader(program.program, vertexShader);
-        d.gl.attachShader(program.program, fragmentShader);
-        d.gl.linkProgram(program.program);
+        program.program = gl.createProgram();
+        gl.attachShader(program.program, vertexShader);
+        gl.attachShader(program.program, fragmentShader);
+        gl.linkProgram(program.program);
 
-        if (!d.gl.getProgramParameter(program.program, d.gl.LINK_STATUS))
+        if (!gl.getProgramParameter(program.program, gl.LINK_STATUS))
         {
             logger.log('res.error', {
                 log: 'error',
@@ -507,35 +513,35 @@ export class Tw2Shader
                 msg: 'Error linking shaders',
                 path: path,
                 type: 'shader.linkstatus',
-                data: device.gl.getProgramInfoLog(program.program)
+                data: gl.getProgramInfoLog(program.program)
             });
             return null;
         }
 
-        d.gl.useProgram(program.program);
+        gl.useProgram(program.program);
         program.constantBufferHandles = [];
         for (let j = 0; j < 16; ++j)
         {
-            program.constantBufferHandles[j] = d.gl.getUniformLocation(program.program, 'cb' + j);
+            program.constantBufferHandles[j] = gl.getUniformLocation(program.program, 'cb' + j);
         }
 
         program.samplerHandles = [];
         for (let j = 0; j < 16; ++j)
         {
-            program.samplerHandles[j] = d.gl.getUniformLocation(program.program, 's' + j);
-            d.gl.uniform1i(program.samplerHandles[j], j);
+            program.samplerHandles[j] = gl.getUniformLocation(program.program, 's' + j);
+            gl.uniform1i(program.samplerHandles[j], j);
         }
 
         for (let j = 0; j < 16; ++j)
         {
-            program.samplerHandles[j + 12] = d.gl.getUniformLocation(program.program, 'vs' + j);
-            d.gl.uniform1i(program.samplerHandles[j + 12], j + 12);
+            program.samplerHandles[j + 12] = gl.getUniformLocation(program.program, 'vs' + j);
+            gl.uniform1i(program.samplerHandles[j + 12], j + 12);
         }
 
         program.input = new Tw2VertexDeclaration();
         for (let j = 0; j < pass.stages[0].inputDefinition.elements.length; ++j)
         {
-            let location = d.gl.getAttribLocation(program.program, 'attr' + j);
+            let location = gl.getAttribLocation(program.program, 'attr' + j);
             if (location >= 0)
             {
                 const el = new Tw2VertexElement(
@@ -548,16 +554,16 @@ export class Tw2Shader
         }
         program.input.RebuildHash();
 
-        program.shadowStateInt = d.gl.getUniformLocation(program.program, 'ssi');
-        program.shadowStateFloat = d.gl.getUniformLocation(program.program, 'ssf');
-        program.shadowStateYFlip = d.gl.getUniformLocation(program.program, 'ssyf');
-        d.gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
+        program.shadowStateInt = gl.getUniformLocation(program.program, 'ssi');
+        program.shadowStateFloat = gl.getUniformLocation(program.program, 'ssf');
+        program.shadowStateYFlip = gl.getUniformLocation(program.program, 'ssyf');
+        gl.uniform3f(program.shadowStateYFlip, 0, 0, 1);
         program.volumeSlices = [];
         for (let j = 0; j < pass.stages[1].samplers.length; ++j)
         {
             if (pass.stages[1].samplers[j].isVolume)
             {
-                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = d.gl.getUniformLocation(program.program, 's' + pass.stages[1].samplers[j].registerIndex + 'sl');
+                program.volumeSlices[pass.stages[1].samplers[j].registerIndex] = gl.getUniformLocation(program.program, 's' + pass.stages[1].samplers[j].registerIndex + 'sl');
             }
         }
         return program;

@@ -41,10 +41,10 @@ export class Tw2RGBAScalarSequencer extends Tw2CurveSequencer
         if (this.RedCurve && ('GetLength' in this.RedCurve)) len = this.RedCurve.GetLength();
         if (this.GreenCurve && ('GetLength' in this.GreenCurve)) len = Math.max(len, this.GreenCurve.GetLength());
         if (this.BlueCurve && ('GetLength' in this.BlueCurve)) len = Math.max(len, this.BlueCurve.GetLength());
-        if (this.AlphaCurve && ('GetLength' in this.AlphaCurve))  len = Math.max(len, this.AlphaCurve.GetLength());
+        if (this.AlphaCurve && ('GetLength' in this.AlphaCurve)) len = Math.max(len, this.AlphaCurve.GetLength());
         return len;
     }
-    
+
     /**
      * Updates the current value at a specific time
      * @param {number} time
@@ -98,4 +98,4 @@ Tw2RGBAScalarSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
  * The sequencer's curve property names
  * @type {string[]}
  */
-Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve' ];
+Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];

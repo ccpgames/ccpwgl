@@ -92,7 +92,7 @@ export class EveShip extends EveSpaceObject
      * @param {Boolean} excludeChildren - True to exclude children's res objects
      * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
      */
-    GetResources(out=[], excludeChildren)
+    GetResources(out = [], excludeChildren)
     {
         super.GetResources(out, excludeChildren);
 

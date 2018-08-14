@@ -66,7 +66,7 @@ export class EveLensflare
      * @param {Array} [out=[]] - Optional receiving array
      * @returns {Array.<Tw2Resource>} [out]
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         if (this.mesh) this.mesh.GetResources(out);
 
@@ -178,7 +178,7 @@ export class EveLensflare
 
         this.backgroundOcclusionIntensity = this.occlusionIntensity;
 
-        store.SetVariableValue('LensflareFxOccScale', [ this.occlusionIntensity, this.occlusionIntensity, 0, 0 ]);
+        store.SetVariableValue('LensflareFxOccScale', [this.occlusionIntensity, this.occlusionIntensity, 0, 0]);
         g.occludedLevelIndex = (g.occludedLevelIndex + 1) % g.occluderLevels.length;
     }
 
@@ -226,7 +226,7 @@ export class EveLensflare
             negPos = g.vec3_1,
             dist = g.vec4_1;
 
-        vec3.transformMat4(cameraPos, [ 0, 0, 0 ], device.viewInverse);
+        vec3.transformMat4(cameraPos, [0, 0, 0], device.viewInverse);
 
         if (vec3.length(this.position) === 0)
         {
@@ -240,7 +240,7 @@ export class EveLensflare
             vec3.normalize(this._direction, negPos);
         }
 
-        vec4.transformMat4(viewDir, [ 0, 0, 1, 0 ], device.viewInverse);
+        vec4.transformMat4(viewDir, [0, 0, 1, 0], device.viewInverse);
         vec3.scaleAndAdd(cameraSpacePos, cameraPos, viewDir, -this.cameraFactor);
         vec3.negate(negDirVec, this._direction);
         mat4.arcFromForward(this._transform, negDirVec);
@@ -250,7 +250,7 @@ export class EveLensflare
 
         const dir = this._direction;
 
-        store.SetVariableValue('LensflareFxDirectionScale', [ dir[0], dir[1], dir[2], 1 ]);
+        store.SetVariableValue('LensflareFxDirectionScale', [dir[0], dir[1], dir[2], 1]);
 
         vec4.set(dist, dir[0], dir[1], dir[2], 0);
         vec4.transformMat4(dist, dist, device.view);

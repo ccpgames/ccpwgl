@@ -4,7 +4,7 @@ import {Tw2Parameter} from './Tw2Parameter';
 
 /**
  * Tw2TextureParameter
- * 
+ *
  * @param {string} [name=''] - Name of the texture parameter
  * @param {string} [texturePath=''] - The texture's resource path
  * @property {string} name
@@ -133,7 +133,7 @@ export class Tw2TextureParameter extends Tw2Parameter
      * Sets the textures overrides
      * @param {{}} [opt={}] - An object containing the override options to set
      */
-    SetOverrides(opt={})
+    SetOverrides(opt = {})
     {
         util.assignIfExists(this, opt, Tw2TextureParameter.overrideProperties);
         this.OnValueChanged();
@@ -143,7 +143,7 @@ export class Tw2TextureParameter extends Tw2Parameter
      * Gets the texture's overrides
      * @returns {{}}
      */
-    GetOverrides(out={})
+    GetOverrides(out = {})
     {
         util.assignIfExists(out, this, Tw2TextureParameter.overrideProperties);
         return out;
@@ -157,49 +157,52 @@ export class Tw2TextureParameter extends Tw2Parameter
         if (this.useAllOverrides)
         {
             this._sampler = this._sampler || new Tw2SamplerState();
-            const sampler = this._sampler;
+
+            const
+                {wrapModes, gl} = device,
+                sampler = this._sampler;
 
             if (this.filterMode === 1)
             {
                 switch (this.mipFilterMode)
                 {
                     case 0:
-                        sampler.minFilter = device.gl.NEAREST;
+                        sampler.minFilter = gl.NEAREST;
                         break;
 
                     case 1:
-                        sampler.minFilter = device.gl.NEAREST_MIPMAP_NEAREST;
+                        sampler.minFilter = gl.NEAREST_MIPMAP_NEAREST;
                         break;
 
                     default:
-                        sampler.minFilter = device.gl.NEAREST_MIPMAP_LINEAR;
+                        sampler.minFilter = gl.NEAREST_MIPMAP_LINEAR;
                 }
 
-                sampler.minFilterNoMips = device.gl.NEAREST;
-                sampler.magFilter = device.gl.NEAREST;
+                sampler.minFilterNoMips = gl.NEAREST;
+                sampler.magFilter = gl.NEAREST;
             }
             else
             {
                 switch (this.mipFilterMode)
                 {
                     case 0:
-                        sampler.minFilter = device.gl.LINEAR;
+                        sampler.minFilter = gl.LINEAR;
                         break;
 
                     case 1:
-                        sampler.minFilter = device.gl.LINEAR_MIPMAP_NEAREST;
+                        sampler.minFilter = gl.LINEAR_MIPMAP_NEAREST;
                         break;
 
                     default:
-                        sampler.minFilter = device.gl.LINEAR_MIPMAP_LINEAR;
+                        sampler.minFilter = gl.LINEAR_MIPMAP_LINEAR;
                 }
-                sampler.minFilterNoMips = device.gl.LINEAR;
-                sampler.magFilter = device.gl.LINEAR;
+                sampler.minFilterNoMips = gl.LINEAR;
+                sampler.magFilter = gl.LINEAR;
             }
 
-            sampler.addressU = device.wrapModes[this.addressUMode];
-            sampler.addressV = device.wrapModes[this.addressVMode];
-            sampler.addressW = device.wrapModes[this.addressWMode];
+            sampler.addressU = wrapModes[this.addressUMode];
+            sampler.addressV = wrapModes[this.addressVMode];
+            sampler.addressW = wrapModes[this.addressWMode];
             sampler.anisotropy = this.maxAnisotropy;
             sampler.ComputeHash();
         }
@@ -247,7 +250,7 @@ export class Tw2TextureParameter extends Tw2Parameter
      * @param {Array} [out=[]]
      * @returns {Array.<Tw2Resource>}
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         if (this.textureRes && !out.includes(this.textureRes))
         {

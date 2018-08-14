@@ -96,6 +96,7 @@ export class Tw2PostProcess
     Render()
     {
         const
+            gl = device.gl,
             width = device.viewportWidth,
             height = device.viewportHeight;
 
@@ -104,14 +105,14 @@ export class Tw2PostProcess
         if (this.texture === null)
         {
             this.texture = new Tw2TextureRes();
-            this.texture.Attach(device.gl.createTexture());
+            this.texture.Attach(gl.createTexture());
         }
 
         if (width !== this.width || height !== this.height)
         {
-            device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
-            device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, width, height, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
-            device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+            gl.bindTexture(gl.TEXTURE_2D, this.texture.texture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+            gl.bindTexture(gl.TEXTURE_2D, null);
 
             this.quadRT0.Create(width / 4, height / 4, false);
             this.quadRT1.Create(width / 4, height / 4, false);
@@ -158,9 +159,9 @@ export class Tw2PostProcess
             }
         }
 
-        device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
-        device.gl.copyTexImage2D(device.gl.TEXTURE_2D, 0, device.alphaBlendBackBuffer ? device.gl.RGBA : device.gl.RGB, 0, 0, width, height, 0);
-        device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+        gl.bindTexture(gl.TEXTURE_2D, this.texture.texture);
+        gl.copyTexImage2D(gl.TEXTURE_2D, 0, device.alphaBlendBackBuffer ? gl.RGBA : gl.RGB, 0, 0, width, height, 0);
+        gl.bindTexture(gl.TEXTURE_2D, null);
         device.SetStandardStates(device.RM_OPAQUE);
 
         for (let i = 0; i < this.steps.length; ++i)
@@ -172,8 +173,8 @@ export class Tw2PostProcess
             }
             else
             {
-                device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
-                device.gl.viewport(0, 0, width, height);
+                gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+                gl.viewport(0, 0, width, height);
             }
             device.RenderFullScreenQuad(step.effect);
         }

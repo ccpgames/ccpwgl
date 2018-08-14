@@ -65,7 +65,7 @@ export class Tw2ColorSequencer extends Tw2CurveSequencer
     {
         const vec4_0 = Tw2CurveSequencer.global.vec4_0;
 
-        switch(this.operator)
+        switch (this.operator)
         {
             case Tw2ColorSequencer.Operator.MULTIPLY:
                 vec4.set(value, 1, 1, 1, 1);

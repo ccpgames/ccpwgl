@@ -48,4 +48,4 @@ export class Tw2BasicPerObjectData extends Tw2PerObjectData
     }
 }
 
-export { Tw2BasicPerObjectData as EveBasicPerObjectData };
+export {Tw2BasicPerObjectData as EveBasicPerObjectData};

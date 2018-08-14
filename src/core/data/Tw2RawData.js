@@ -1,4 +1,4 @@
-import { util } from '../../global';
+import {util} from '../../global';
 
 /**
  * Stores raw data for {@link Tw2PerObjectData}
@@ -92,7 +92,7 @@ export class Tw2RawData
      * @param {number} size
      * @param {!|number|Array|Float32Array} [value=null] optional value to set on raw data creation
      */
-    Declare(name, size, value=null)
+    Declare(name, size, value = null)
     {
         this.elements[name] = {
             offset: this.nextOffset,

@@ -312,7 +312,7 @@ export class EveSpaceScene
      * @param {Array.<EveObject>} objectArray
      * @param {Tw2BatchAccumulator} accumulator
      */
-    RenderBatches(mode, objectArray, accumulator=this._batches)
+    RenderBatches(mode, objectArray, accumulator = this._batches)
     {
         for (let i = 0; i < objectArray.length; ++i)
         {

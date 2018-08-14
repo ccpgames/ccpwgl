@@ -46,7 +46,7 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
     {
         return this.length;
     }
-    
+
     /**
      * Updates a value at a specific time
      * @param {number} time

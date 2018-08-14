@@ -59,7 +59,7 @@ export class Tw2Curve
     {
         return 0;
     }
-    
+
     /**
      * Updates the current value at the given time
      * @param {number} time
@@ -87,7 +87,7 @@ export class Tw2Curve
      * @param {*} curve
      * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
      */
-    static Sort(curve, keys=curve.keys)
+    static Sort(curve, keys = curve.keys)
     {
         if (keys && keys.length)
         {

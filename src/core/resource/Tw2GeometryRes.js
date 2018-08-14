@@ -91,7 +91,7 @@ export class Tw2GeometryRes extends Tw2Resource
     Prepare(data)
     {
         const
-            d = device,
+            gl = device.gl,
             reader = new Tw2BinaryReader(new Uint8Array(data));
 
         /* let fileVersion = */
@@ -106,9 +106,9 @@ export class Tw2GeometryRes extends Tw2Resource
             if (buffer)
             {
                 mesh.bufferLength = buffer.length;
-                mesh.buffer = d.gl.createBuffer();
-                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-                d.gl.bufferData(d.gl.ARRAY_BUFFER, buffer, d.gl.STATIC_DRAW);
+                mesh.buffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+                gl.bufferData(gl.ARRAY_BUFFER, buffer, gl.STATIC_DRAW);
             }
             else
             {
@@ -118,10 +118,10 @@ export class Tw2GeometryRes extends Tw2Resource
             const indexes = Tw2GeometryRes.ReadIndexBuffer(reader);
             if (indexes)
             {
-                mesh.indexes = d.gl.createBuffer();
-                mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? d.gl.UNSIGNED_SHORT : d.gl.UNSIGNED_INT;
-                d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-                d.gl.bufferData(d.gl.ELEMENT_ARRAY_BUFFER, indexes, d.gl.STATIC_DRAW);
+                mesh.indexes = gl.createBuffer();
+                mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? gl.UNSIGNED_SHORT : gl.UNSIGNED_INT;
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+                gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indexes, gl.STATIC_DRAW);
             }
             else
             {
@@ -268,7 +268,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     const track = new Tw2GeometryTransformTrack();
                     track.name = reader.ReadString();
                     track.orientation = Tw2GeometryRes.ReadCurve(reader);
-                    track.position =Tw2GeometryRes.ReadCurve(reader);
+                    track.position = Tw2GeometryRes.ReadCurve(reader);
                     track.scaleShear = Tw2GeometryRes.ReadCurve(reader);
 
                     if (track.orientation)
@@ -365,10 +365,11 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            {ext, gl} = d,
             mesh = this.meshes[meshIx],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
@@ -376,9 +377,9 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (passInput.elements.length === 0) continue;
 
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
             mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
+            gl.bindBuffer(gl.ARRAY_BUFFER, instanceVB);
             const resetData = instanceDecl.SetPartialDeclaration(passInput, instanceStride, 8, 1);
             d.ApplyShadowState();
 
@@ -397,7 +398,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.ext.drawElementsInstanced(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
+                    ext.drawElementsInstanced(gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
                 }
             }
             instanceDecl.ResetInstanceDivisors(resetData);
@@ -421,11 +422,12 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            gl = d.gl,
             mesh = this.meshes[meshIx] || this.meshes[0],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
@@ -465,7 +467,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
+                    gl.drawElements(gl.TRIANGLES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -488,11 +490,12 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            gl = d.gl,
             mesh = this.meshes[meshIx],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
@@ -532,7 +535,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
+                    gl.drawElements(gl.LINES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -576,15 +579,17 @@ export class Tw2GeometryRes extends Tw2Resource
     {
         for (let i = 0; i < this.meshes.length; ++i)
         {
+            const gl = device.gl;
+
             if (this.meshes[i].buffer)
             {
-                device.gl.deleteBuffer(this.meshes[i].buffer);
+                gl.deleteBuffer(this.meshes[i].buffer);
                 this.meshes[i].buffer = null;
             }
 
             if (this.meshes[i].indexes)
             {
-                device.gl.deleteBuffer(this.meshes[i].indexes);
+                gl.deleteBuffer(this.meshes[i].indexes);
                 this.meshes[i].indexes = null;
             }
         }

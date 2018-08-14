@@ -110,4 +110,4 @@ Tw2EulerRotation.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
  * The sequencer's curve property names
  * @type {string[]}
  */
-Tw2EulerRotation.childProperties = [ 'yawCurve', 'pitchCurve', 'rollCurve' ];
+Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];

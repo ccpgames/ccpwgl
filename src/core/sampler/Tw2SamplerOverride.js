@@ -35,7 +35,7 @@ export class Tw2SamplerOverride
          * @param originalSampler
          * @returns {Tw2SamplerState}
          */
-        this.GetSampler = function (originalSampler)
+        this.GetSampler = function(originalSampler)
         {
             if (!sampler)
             {
@@ -43,41 +43,43 @@ export class Tw2SamplerOverride
                 sampler.registerIndex = originalSampler.registerIndex;
                 sampler.name = originalSampler.name;
 
+                const {wrapModes, gl} = device;
+
                 if (this.filter === 1)
                 {
                     switch (this.mipFilter)
                     {
                         case 0:
-                            sampler.minFilter = device.gl.NEAREST;
+                            sampler.minFilter = gl.NEAREST;
                             break;
 
                         case 1:
-                            sampler.minFilter = device.gl.NEAREST_MIPMAP_NEAREST;
+                            sampler.minFilter = gl.NEAREST_MIPMAP_NEAREST;
                             break;
 
                         default:
-                            sampler.minFilter = device.gl.NEAREST_MIPMAP_LINEAR;
+                            sampler.minFilter = gl.NEAREST_MIPMAP_LINEAR;
                     }
 
-                    sampler.minFilterNoMips = device.gl.NEAREST;
+                    sampler.minFilterNoMips = gl.NEAREST;
                 }
                 else
                 {
                     switch (this.mipFilter)
                     {
                         case 0:
-                            sampler.minFilter = device.gl.LINEAR;
+                            sampler.minFilter = gl.LINEAR;
                             break;
 
                         case 1:
-                            sampler.minFilter = device.gl.LINEAR_MIPMAP_NEAREST;
+                            sampler.minFilter = gl.LINEAR_MIPMAP_NEAREST;
                             break;
 
                         default:
-                            sampler.minFilter = device.gl.LINEAR_MIPMAP_LINEAR;
+                            sampler.minFilter = gl.LINEAR_MIPMAP_LINEAR;
                     }
 
-                    sampler.minFilterNoMips = device.gl.LINEAR;
+                    sampler.minFilterNoMips = gl.LINEAR;
                 }
 
                 if (this.filter === 3 || this.mipFilter === 3)
@@ -85,10 +87,10 @@ export class Tw2SamplerOverride
                     sampler.anisotropy = Math.max(this.maxAnisotropy, 1);
                 }
 
-                sampler.magFilter = this.filter === 1 ? device.gl.NEAREST : device.gl.LINEAR;
-                sampler.addressU = device.wrapModes[this.addressU];
-                sampler.addressV = device.wrapModes[this.addressV];
-                sampler.addressW = device.wrapModes[this.addressW];
+                sampler.magFilter = this.filter === 1 ? gl.NEAREST : gl.LINEAR;
+                sampler.addressU = wrapModes[this.addressU];
+                sampler.addressV = wrapModes[this.addressV];
+                sampler.addressW = wrapModes[this.addressW];
                 sampler.samplerType = originalSampler.samplerType;
                 sampler.isVolume = originalSampler.isVolume;
                 sampler.ComputeHash();

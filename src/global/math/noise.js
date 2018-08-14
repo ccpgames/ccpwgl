@@ -1,5 +1,6 @@
 import {vec3} from './vec3';
 import {vec4} from './vec4';
+
 export const noise = {};
 
 /**
@@ -172,7 +173,7 @@ noise.perlin1 = (function()
 
         p_initialized = true;
     }
-    
+
     return function perlin1(a)
     {
         if (!p_initialized) initialize();
@@ -200,7 +201,7 @@ noise.perlin1 = (function()
  * @param n
  * @returns {number}
  */
-noise.perlin1D = function (x, alpha, beta, n)
+noise.perlin1D = function(x, alpha, beta, n)
 {
     let sum = 0,
         p = x,

@@ -1,4 +1,4 @@
-import { util } from '../../global';
+import {util} from '../../global';
 
 /**
  * Tw2CurveSet

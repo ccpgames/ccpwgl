@@ -21,7 +21,7 @@ export class EveChildContainer extends EveChild
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         for (let i = 0; i < this.objects.length; i++)
         {

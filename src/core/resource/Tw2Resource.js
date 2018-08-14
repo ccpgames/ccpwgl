@@ -26,6 +26,15 @@ export class Tw2Resource
     }
 
     /**
+     * Gets an array of resource errors, or an empty array if there are none
+     * @returns {Array.<Tw2Error|Error>}
+     */
+    GetErrors()
+    {
+        return resMan.motherLode.GetErrors(this.path);
+    }
+
+    /**
      * Checks to see if the resource is loading
      * @returns {boolean}
      */
@@ -129,7 +138,7 @@ export class Tw2Resource
         if (!this._notifications.includes(notification))
         {
             this._notifications.push(notification);
-            if (this._isGood && 'RebuildCachedData' in notification)
+            if (this.IsGood() && 'RebuildCachedData' in notification)
             {
                 notification.RebuildCachedData(this);
             }

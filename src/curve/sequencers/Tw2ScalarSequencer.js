@@ -1,4 +1,4 @@
-import { Tw2CurveSequencer } from './Tw2CurveSequencer';
+import {Tw2CurveSequencer} from './Tw2CurveSequencer';
 
 /**
  * Tw2ScalarSequencer
@@ -74,21 +74,21 @@ export class Tw2ScalarSequencer extends Tw2CurveSequencer
     {
         let value;
 
-        switch(this.operator)
+        switch (this.operator)
         {
             case Tw2ScalarSequencer.Operator.MULTIPLY:
                 value = 1;
                 for (let i = 0; i < this.functions.length; ++i)
                 {
                     let v = this.functions[i].GetValueAt(time);
-                    if (this.clamping) 
+                    if (this.clamping)
                     {
                         v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
                     }
                     value *= v;
                 }
                 break;
-                
+
             default:
                 value = 0;
                 for (let i = 0; i < this.functions.length; ++i)
@@ -101,12 +101,12 @@ export class Tw2ScalarSequencer extends Tw2CurveSequencer
                     value += v;
                 }
         }
-        
-        if (this.clamping) 
+
+        if (this.clamping)
         {
             value = Math.min(Math.max(value, this.outMinClamp), this.outMaxClamp);
         }
-        
+
         return value;
     }
 }

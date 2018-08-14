@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { vec3, quat, mat4, util } from '../../global';
+import {vec3, quat, mat4, util} from '../../global';
 
 /**
  * EveChild base class
@@ -31,7 +31,7 @@ export class EveChild
         this.staticTransform = false;
         this.rotation = quat.create();
         this.translation = vec3.create();
-        this.scaling = vec3.fromValues(1,1,1);
+        this.scaling = vec3.fromValues(1, 1, 1);
         this.localTransform = mat4.create();
         this.worldTransform = mat4.create();
         this.worldTransformLast = mat4.create();
@@ -44,7 +44,7 @@ export class EveChild
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         return out;
     }
@@ -82,6 +82,6 @@ export class EveChild
  * @type {Object}
  */
 EveChild.global = {
-    mat4_0 : mat4.create(),
-    vec3_0 : vec3.create()
+    mat4_0: mat4.create(),
+    vec3_0: vec3.create()
 };

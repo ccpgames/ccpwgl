@@ -259,7 +259,7 @@ export class Tw2Effect
                             }
 
                             const p = {
-                                parameter : param,
+                                parameter: param,
                                 slot: stageRes.textures[k].registerIndex,
                                 sampler: null
                             };
@@ -317,7 +317,8 @@ export class Tw2Effect
         const
             p = this.techniques[technique][pass],
             rp = this.shader.techniques[technique].passes[pass],
-            d = device;
+            d = device,
+            gl = d.gl;
 
         const program = (d.IsAlphaTestEnabled() && rp.shadowShaderProgram) ? rp.shadowShaderProgram : rp.shaderProgram;
 
@@ -339,10 +340,10 @@ export class Tw2Effect
         }
 
         const cbh = program.constantBufferHandles;
-        if (cbh[0]) d.gl.uniform4fv(cbh[0], p.stages[0].constantBuffer);
-        if (cbh[7]) d.gl.uniform4fv(cbh[7], p.stages[1].constantBuffer);
-        if (d.perFrameVSData && cbh[1]) d.gl.uniform4fv(cbh[1], d.perFrameVSData.data);
-        if (d.perFramePSData && cbh[2]) d.gl.uniform4fv(cbh[2], d.perFramePSData.data);
+        if (cbh[0]) gl.uniform4fv(cbh[0], p.stages[0].constantBuffer);
+        if (cbh[7]) gl.uniform4fv(cbh[7], p.stages[1].constantBuffer);
+        if (d.perFrameVSData && cbh[1]) gl.uniform4fv(cbh[1], d.perFrameVSData.data);
+        if (d.perFramePSData && cbh[2]) gl.uniform4fv(cbh[2], d.perFramePSData.data);
         if (d.perObjectData) d.perObjectData.SetPerObjectDataToDevice(cbh);
     }
 
@@ -597,7 +598,7 @@ export class Tw2Effect
         path = path.substr(0, path.lastIndexOf('.')).replace(device.effectDir, '/effect/') + '.' + ext;
         return path.toLowerCase();
     }
-    
+
     /**
      * Creates a Tw2Effect from an object
      * @param {{}} [opt]
@@ -612,7 +613,7 @@ export class Tw2Effect
     static create(opt = {})
     {
         const effect = new this();
-        util.assignIfExists(effect, opt, ['name', 'effectFilePath', 'display', 'autoParameter', ]);
+        util.assignIfExists(effect, opt, ['name', 'effectFilePath', 'display', 'autoParameter',]);
         if ('parameters' in opt) effect.SetParameters(opt.parameters);
         if ('textures' in opt) effect.SetTextures(opt.textures);
         if ('overrides' in opt) effect.SetOverrides(opt.overrides);

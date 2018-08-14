@@ -386,7 +386,7 @@ export class Tw2AnimationController
             }
         }
     }
-    
+
     /**
      * Resets the bone transforms
      */
@@ -545,7 +545,7 @@ export class Tw2AnimationController
             Tw2AnimationController.DoRebuildCachedData(this, this.geometryResources[i]);
         }
     }
-    
+
     /**
      * Internal render/update function which is called every frame
      * @param {number} dt - Delta Time

@@ -11,7 +11,7 @@ export class Tw2CurveSequencer extends Tw2Curve
     {
         super();
     }
-    
+
     /**
      * Legacy sequencer sorting
      * @param {Tw2CurveSequencer} sequencer

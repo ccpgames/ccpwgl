@@ -1,4 +1,4 @@
-import { vec3, vec4 } from '../../global';
+import {vec3, vec4} from '../../global';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**
@@ -63,4 +63,4 @@ export class Tw2GpuUniqueEmitter extends Tw2ParticleEmitter
 }
 
 // Temporary alias
-export { Tw2GpuUniqueEmitter as Tr2GpuUniqueEmitter };
+export {Tw2GpuUniqueEmitter as Tr2GpuUniqueEmitter};

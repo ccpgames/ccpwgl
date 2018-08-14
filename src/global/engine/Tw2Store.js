@@ -1,5 +1,6 @@
 import {isString, isPlain, isArray, isFunction, toArray, isUndefined, enableUUID} from '../util';
 import {logger} from './Tw2Logger';
+import {Tw2Error} from '../../core';
 
 /**
  * Stores engine data
@@ -180,11 +181,13 @@ class Tw2Store
      */
     RegisterConstructor(name, Constructor)
     {
-        if (isFunction(Constructor))
+        // Don't store errors as library constructors
+        if (Constructor && (Constructor instanceof Tw2Error || Constructor.isError))
         {
-            return Tw2Store.SetStoreItem(this, 'constructor', name, Constructor);
+            return false;
         }
-        return false;
+
+        return Tw2Store.SetStoreItem(this, 'constructor', name, Constructor, isFunction);
     }
 
     /**
@@ -328,7 +331,7 @@ class Tw2Store
         {
             Type = this.GetTypeByValue(value);
         }
-        
+
         if (isString(Type))
         {
             Type = this.GetType(Type);
@@ -393,7 +396,7 @@ class Tw2Store
     RegisterSchema(name, schema)
     {
         return Tw2Store.SetStoreItem(this, 'schema', name, schema, a =>
-        { 
+        {
             return a && a.constructor.name === 'Tw2Schema';
         });
     }

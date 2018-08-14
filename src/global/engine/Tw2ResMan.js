@@ -383,7 +383,7 @@ export class Tw2ResMan
      */
     static DoLoadResource(resMan, res)
     {
-        return function ()
+        return function()
         {
             let readyState = 0;
 

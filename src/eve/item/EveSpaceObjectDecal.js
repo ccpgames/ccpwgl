@@ -1,5 +1,5 @@
 import {vec3, quat, mat4, util, device, store} from '../../global';
-import {    Tw2PerObjectData,    Tw2RawData,    Tw2ForwardingRenderBatch} from '../../core/';
+import {Tw2PerObjectData, Tw2RawData, Tw2ForwardingRenderBatch} from '../../core/';
 
 /**
  * EveSpaceObjectDecal
@@ -76,10 +76,13 @@ export class EveSpaceObjectDecal
     {
         if (!this._indexBuffer && this.indexBuffer)
         {
-            const indexes = new Uint16Array(this.indexBuffer);
-            this._indexBuffer = device.gl.createBuffer();
-            device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-            device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
+            const
+                gl = device.gl,
+                indexes = new Uint16Array(this.indexBuffer);
+
+            this._indexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indexes, gl.STATIC_DRAW);
         }
 
         mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);

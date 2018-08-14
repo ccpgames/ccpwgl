@@ -31,7 +31,7 @@ export class EveObject
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         return out;
     }

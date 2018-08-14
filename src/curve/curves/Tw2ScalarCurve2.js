@@ -65,7 +65,7 @@ export class Tw2ScalarCurve2 extends Tw2Curve
     {
         Tw2Curve.Sort2(this);
     }
-    
+
     /**
      * Gets the curve's length
      * @returns {number}

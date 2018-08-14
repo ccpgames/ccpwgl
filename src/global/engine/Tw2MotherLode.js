@@ -1,6 +1,6 @@
 /**
  * Manages loaded resources
- * 
+ *
  * @property {Object} _loadedObjects            - loaded resources
  * @property {{string:Array<eventLog>}} _errors - Not implemented yet
  * @class
@@ -16,21 +16,22 @@ export class Tw2MotherLode
     /**
      * Adds an error log for a given path
      * @param {string} path
-     * @param {eventLog} log
+     * @param {Tw2Error|Error} err
      */
-    AddError(path, log)
+    AddError(path, err)
     {
         this._errors[path] = this._errors[path] || [];
-        if (!this._errors[path].includes(log))
+
+        if (!this._errors[path].includes(err))
         {
-            this._errors[path].push(log);
+            this._errors[path].push(err);
         }
     }
 
     /**
      * Gets a path's error logs
      * @param {string} path
-     * @returns {?Array<eventLog>}
+     * @returns {?Array<Tw2Error|Error>}
      */
     GetErrors(path)
     {
@@ -40,7 +41,7 @@ export class Tw2MotherLode
     /**
      * Finds a loaded object by it's file path
      * @param {string} path
-     * @returns {Tw2LoadingObject}
+     * @returns {Tw2LoadingObject|Tw2Resource}
      */
     Find(path)
     {
@@ -114,7 +115,7 @@ export class Tw2MotherLode
                 const res = this._loadedObjects[path];
                 if (!res.doNotPurge)
                 {
-                    if (res._isPurged)
+                    if (res.IsPurged())
                     {
                         logger.log('res.event', {
                             msg: 'Unloaded  ',

@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { vec3, vec4, mat4, util } from '../../global';
+import {vec3, vec4, mat4, util} from '../../global';
 
 /**
  * EveObjectSetItem base class
@@ -75,7 +75,7 @@ export class EveObjectSet
      * @param {*} [opt={}]
      * @returns {?EveObjectSetItem|*}
      */
-    CreateItem(opt={})
+    CreateItem(opt = {})
     {
         const Item = this.constructor.Item;
         if (Item && 'create' in Item)
@@ -86,7 +86,7 @@ export class EveObjectSet
         }
         return null;
     }
-    
+
     /**
      * Adds a set item
      * @param {EveObjectSetItem|*} item
@@ -134,7 +134,7 @@ export class EveObjectSet
      * @param {?number} [id=null]
      * @returns {?EveObjectSetItem|*}
      */
-    FindItemByID(id=null)
+    FindItemByID(id = null)
     {
         if (id !== null)
         {
@@ -154,7 +154,7 @@ export class EveObjectSet
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>}
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         return out;
     }

@@ -1,5 +1,5 @@
 import {vec3} from '../../global';
-import {Tw2CurveSequencer } from './Tw2CurveSequencer';
+import {Tw2CurveSequencer} from './Tw2CurveSequencer';
 
 /**
  * Tw2VectorSequencer
@@ -66,7 +66,7 @@ export class Tw2VectorSequencer extends Tw2CurveSequencer
     {
         const vec3_0 = Tw2CurveSequencer.global.vec3_0;
 
-        switch(this.operator)
+        switch (this.operator)
         {
             case Tw2VectorSequencer.Operator.MULTIPLY:
                 vec3.set(value, 1, 1, 1);

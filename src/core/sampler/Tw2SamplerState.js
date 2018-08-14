@@ -21,16 +21,17 @@ export class Tw2SamplerState
 {
     constructor()
     {
+        const gl = device.gl;
         this.name = '';
         this.registerIndex = 0;
-        this.minFilter = device.gl.LINEAR;
-        this.maxFilter = device.gl.LINEAR;
-        this.minFilterNoMips = device.gl.LINEAR;
-        this.addressU = device.gl.REPEAT;
-        this.addressV = device.gl.REPEAT;
-        this.addressW = device.gl.REPEAT;
+        this.minFilter = gl.LINEAR;
+        this.maxFilter = gl.LINEAR;
+        this.minFilterNoMips = gl.LINEAR;
+        this.addressU = gl.REPEAT;
+        this.addressV = gl.REPEAT;
+        this.addressW = gl.REPEAT;
         this.anisotropy = 1;
-        this.samplerType = device.gl.TEXTURE_2D;
+        this.samplerType = gl.TEXTURE_2D;
         this.isVolume = false;
         this.hash = 0;
     }
@@ -57,19 +58,20 @@ export class Tw2SamplerState
      * Apply
      * @param {boolean} hasMipMaps
      */
-    Apply (hasMipMaps)
+    Apply(hasMipMaps)
     {
         const
             targetType = this.samplerType,
-            d = device;
+            d = device,
+            gl = d.gl;
 
-        d.gl.texParameteri(targetType, d.gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : d.gl.CLAMP_TO_EDGE);
-        d.gl.texParameteri(targetType, d.gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : d.gl.CLAMP_TO_EDGE);
-        d.gl.texParameteri(targetType, d.gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
-        d.gl.texParameteri(targetType, d.gl.TEXTURE_MAG_FILTER, this.magFilter);
+        gl.texParameteri(targetType, gl.TEXTURE_WRAP_S, hasMipMaps ? this.addressU : gl.CLAMP_TO_EDGE);
+        gl.texParameteri(targetType, gl.TEXTURE_WRAP_T, hasMipMaps ? this.addressV : gl.CLAMP_TO_EDGE);
+        gl.texParameteri(targetType, gl.TEXTURE_MIN_FILTER, hasMipMaps ? this.minFilter : this.minFilterNoMips);
+        gl.texParameteri(targetType, gl.TEXTURE_MAG_FILTER, this.magFilter);
         if (d.ext.AnisotropicFilter && d.enableAnisotropicFiltering)
         {
-            d.gl.texParameterf(targetType,
+            gl.texParameterf(targetType,
                 d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT,
                 Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
         }

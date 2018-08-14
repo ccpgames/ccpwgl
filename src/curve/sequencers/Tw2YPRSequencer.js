@@ -40,10 +40,10 @@ export class Tw2YPRSequencer extends Tw2CurveSequencer
         let len = 0;
         if (this.YawCurve && ('GetLength' in this.YawCurve)) len = this.YawCurve.GetLength();
         if (this.PitchCurve && ('GetLength' in this.PitchCurve)) len = Math.max(len, this.PitchCurve.GetLength());
-        if (this.RollCurve && ('GetLength' in this.RollCurve))  len = Math.max(len, this.RollCurve.GetLength());
+        if (this.RollCurve && ('GetLength' in this.RollCurve)) len = Math.max(len, this.RollCurve.GetLength());
         return len;
     }
-    
+
     /**
      * Updates a value at a specific time
      *
@@ -112,4 +112,4 @@ Tw2YPRSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
  * The sequencer's curve property names
  * @type {string[]}
  */
-Tw2YPRSequencer.childProperties = [ 'YawCurve', 'PitchCurve', 'RollCurve' ];
+Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];

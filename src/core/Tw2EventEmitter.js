@@ -17,7 +17,7 @@ export class Tw2EventEmitter
      * @returns {Tw2EventEmitter}
      * @emit event_added { eventName: string} - the first time an event is emitted
      */
-    emit(eventName, e={})
+    emit(eventName, e = {})
     {
         if (PRIVATE.has(this))
         {
@@ -33,7 +33,7 @@ export class Tw2EventEmitter
             if (eventName in events)
             {
                 events[eventName].forEach(
-                    function (value, key)
+                    function(value, key)
                     {
                         key.call(value.context, e);
                         if (value.once) events[eventName].delete(key);

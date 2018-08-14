@@ -1,4 +1,5 @@
 import {quat} from 'gl-matrix';
+
 export {quat};
 
 /**
@@ -8,7 +9,7 @@ export {quat};
  * @param {quat|vec3} a
  * @returns {quat}
  */
-quat.exp = function (out, a)
+quat.exp = function(out, a)
 {
     let norm = Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
     if (norm)
@@ -35,7 +36,7 @@ quat.exp = function (out, a)
  * @param {quat} q
  * @returns {quat}
  */
-quat.ln = function (out, q)
+quat.ln = function(out, q)
 {
     let norm = quat.length(q);
     if (norm > 1.0001 || norm < 0.99999)
@@ -75,7 +76,7 @@ quat.ln = function (out, q)
  * @param {number} exponent
  * @returns {quat}
  */
-quat.pow = function (out, inq, exponent)
+quat.pow = function(out, inq, exponent)
 {
     if (exponent === 1)
     {

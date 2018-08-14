@@ -122,7 +122,7 @@ export function isObjectLike(a)
  */
 export function isPlain(a)
 {
-    if (!isObject(a) || !isTag(a,'[object Object]'))
+    if (!isObject(a) || !isTag(a, '[object Object]'))
     {
         return false;
     }

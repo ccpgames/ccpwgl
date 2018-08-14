@@ -28,14 +28,16 @@ export class Tw2PerObjectData
      */
     SetPerObjectDataToDevice(constantBufferHandles)
     {
+        const gl = device.gl;
+
         if (this.perObjectVSData && constantBufferHandles[3])
         {
-            device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
+            gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
         }
 
         if (this.perObjectPSData && constantBufferHandles[4])
         {
-            device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+            gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
         }
     }
 

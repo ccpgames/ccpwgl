@@ -1,4 +1,3 @@
-
 const
     url = {},
     query = window.location.search.substring(1),

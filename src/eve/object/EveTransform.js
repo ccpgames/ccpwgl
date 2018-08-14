@@ -73,7 +73,7 @@ export class EveTransform extends EveObject
      * @param {Boolean} [excludeChildren] - True to exclude children's res objects
      * @returns {Array.<Tw2Resource>} [out]
      */
-    GetResources(out=[], excludeChildren)
+    GetResources(out = [], excludeChildren)
     {
         if (this.mesh) this.mesh.GetResources(out);
 

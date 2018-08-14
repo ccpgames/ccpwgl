@@ -55,7 +55,7 @@ export class EveTurretSetItem extends EveObjectSetItem
             quat.copy(this._localRotation, this.rotation);
         }
     }
-    
+
     /**
      * Creates a turret item from an object
      * @param {*} [opt={}]
@@ -128,7 +128,7 @@ export class EveTurretSet extends EveObjectSet
         this._activeTurret = -1;
         this._recheckTimeLeft = 0;
         this._currentCyclingFiresPos = 0;
-        
+
         this._perObjectDataActive = new Tw2PerObjectData();
         this._perObjectDataActive.perObjectVSData = new Tw2RawData();
         this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
@@ -227,7 +227,7 @@ export class EveTurretSet extends EveObjectSet
         {
             const item = this.items[i];
             if (!item.display && !item.canFireWhenHidden) continue;
-            
+
             turretPosition[0] = item._localTransform[12];
             turretPosition[1] = item._localTransform[13];
             turretPosition[2] = item._localTransform[14];
@@ -459,7 +459,7 @@ export class EveTurretSet extends EveObjectSet
 
         for (let i = 0; i < locators.length; i++)
         {
-            const {name, transform, bone=null} = locators[i];
+            const {name, transform, bone = null} = locators[i];
 
             let item = this.FindItemByLocatorName(name);
             if (!item)
@@ -697,7 +697,7 @@ export class EveTurretSet extends EveObjectSet
         if (!this.turretEffect || !this.turretEffect.IsGood() || !this._visibleItems.length) return false;
 
         let index = 0;
-        const customSetter = function (el)
+        const customSetter = function(el)
         {
             device.gl.disableVertexAttribArray(el.location);
             device.gl.vertexAttrib2f(el.location, index, index);
@@ -793,7 +793,7 @@ export class EveTurretSet extends EveObjectSet
             translation[i * 4 + 1] = item._localTransform[13];
             translation[i * 4 + 2] = item._localTransform[14];
             translation[i * 4 + 3] = 1;
-            
+
             rotation[i * 4] = item.rotation[0];
             rotation[i * 4 + 1] = item.rotation[1];
             rotation[i * 4 + 2] = item.rotation[2];
@@ -832,7 +832,7 @@ export class EveTurretSet extends EveObjectSet
 /**
  * mat3x4 to quat
  */
-EveTurretSet.mat3x4toquat = (function ()
+EveTurretSet.mat3x4toquat = (function()
 {
     let m, q;
 

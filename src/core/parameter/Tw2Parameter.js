@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { util } from '../../global';
+import {util} from '../../global';
 
 /**
  * Tw2Parameter base class

@@ -26,7 +26,7 @@ num.biCumulative = function(t, order)
 
 /**
  * Exponential decay
- * 
+ *
  * @param {number} omega0
  * @param {number} torque
  * @param {number} I - inertia

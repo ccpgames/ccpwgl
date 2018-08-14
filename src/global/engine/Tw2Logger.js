@@ -34,7 +34,7 @@ import {assignIfExists} from '../util';
  */
 class Tw2Logger extends Tw2EventEmitter
 {
-    constructor(name='')
+    constructor(name = '')
     {
         super();
         this.name = name;
@@ -127,10 +127,10 @@ class Tw2Logger extends Tw2EventEmitter
      * Sets the logger's properties
      * @param {*} [opt={}]
      */
-    Set(opt={})
+    Set(opt = {})
     {
         assignIfExists(this, opt, ['name', 'maxLogs', 'display']);
-        assignIfExists(this.visible, opt.visible, ['log','info','debug','warn','error']);
+        assignIfExists(this.visible, opt.visible, ['log', 'info', 'debug', 'warn', 'error']);
     }
 }
 

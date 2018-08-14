@@ -480,7 +480,7 @@ export class EveSpaceObject extends EveObject
 
                 if (show.lineSets)
                 {
-                    for (let i = 0; i <  this.lineSets.length; i++)
+                    for (let i = 0; i < this.lineSets.length; i++)
                     {
                         this.lineSets[i].GetBatches(mode, accumulator);
                     }
@@ -523,4 +523,4 @@ export class EveSpaceObject extends EveObject
     }
 }
 
-export { EveSpaceObject as EveStation };
+export {EveSpaceObject as EveStation};

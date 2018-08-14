@@ -1,4 +1,4 @@
-import { isArray } from './type';
+import {isArray} from './type';
 
 /**
  * Adds arguments to an array if they don't already exist in it

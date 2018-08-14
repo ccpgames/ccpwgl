@@ -162,19 +162,19 @@ export class Tw2Device
         }
 
         this.ext = {
-            drawElementsInstanced: function ()
+            drawElementsInstanced: function()
             {
                 return false;
             },
-            drawArraysInstanced: function ()
+            drawArraysInstanced: function()
             {
                 return false;
             },
-            vertexAttribDivisor: function ()
+            vertexAttribDivisor: function()
             {
                 return false;
             },
-            hasInstancedArrays: function ()
+            hasInstancedArrays: function()
             {
                 return false;
             }
@@ -186,19 +186,19 @@ export class Tw2Device
         {
             case Tw2Device.WebglVersion.WEBGL2:
                 this.ext = {
-                    drawElementsInstanced: function (mode, count, type, offset, instanceCount)
+                    drawElementsInstanced: function(mode, count, type, offset, instanceCount)
                     {
                         gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
                     },
-                    drawArraysInstanced: function (mode, first, count, instanceCount)
+                    drawArraysInstanced: function(mode, first, count, instanceCount)
                     {
                         gl.drawArraysInstanced(mode, first, count, instanceCount);
                     },
-                    vertexAttribDivisor: function (location, divisor)
+                    vertexAttribDivisor: function(location, divisor)
                     {
                         gl.vertexAttribDivisor(location, divisor);
                     },
-                    hasInstancedArrays: function ()
+                    hasInstancedArrays: function()
                     {
                         return true;
                     }
@@ -214,19 +214,19 @@ export class Tw2Device
                 if (instancedArrays)
                 {
                     this.ext = {
-                        drawElementsInstanced: function (mode, count, type, offset, instanceCount)
+                        drawElementsInstanced: function(mode, count, type, offset, instanceCount)
                         {
                             instancedArrays['drawElementsInstancedANGLE'](mode, count, type, offset, instanceCount);
                         },
-                        drawArraysInstanced: function (mode, first, count, instanceCount)
+                        drawArraysInstanced: function(mode, first, count, instanceCount)
                         {
                             instancedArrays['drawArraysInstancedANGLE'](mode, first, count, instanceCount);
                         },
-                        vertexAttribDivisor: function (location, divisor)
+                        vertexAttribDivisor: function(location, divisor)
                         {
                             instancedArrays['vertexAttribDivisorANGLE'](location, divisor);
                         },
-                        hasInstancedArrays: function ()
+                        hasInstancedArrays: function()
                         {
                             return true;
                         }
@@ -648,7 +648,7 @@ export class Tw2Device
      * @param {string} technique - Technique name
      * @returns {boolean}
      */
-    RenderFullScreenQuad(effect, technique='Main')
+    RenderFullScreenQuad(effect, technique = 'Main')
     {
         if (!effect || !effect.IsGood()) return false;
 
@@ -690,7 +690,7 @@ export class Tw2Device
      * @param {string} technique - Technique name
      * @returns {boolean}
      */
-    RenderCameraSpaceQuad(effect, technique='Main')
+    RenderCameraSpaceQuad(effect, technique = 'Main')
     {
         if (!effect || !effect.IsGood()) return false;
 
@@ -1103,7 +1103,7 @@ let timeOuts;
  * @param {Function} callback
  * @returns {number} id
  */
-Tw2Device.RequestAnimationFrame = (function ()
+Tw2Device.RequestAnimationFrame = (function()
 {
     const requestFrame =
         window['requestAnimationFrame'] ||
@@ -1111,7 +1111,7 @@ Tw2Device.RequestAnimationFrame = (function ()
         window['mozRequestAnimationFrame'] ||
         window['oRequestAnimationFrame'] ||
         window['msRequestAnimationFrame'] ||
-        function (callback)
+        function(callback)
         {
             if (!timeOuts) timeOuts = [];
             timeOuts.push(window.setTimeout(callback, 1000 / 60));
@@ -1129,7 +1129,7 @@ Tw2Device.RequestAnimationFrame = (function ()
  * Cancels an animation frame by it's id
  * @param {number} id
  */
-Tw2Device.CancelAnimationFrame = (function ()
+Tw2Device.CancelAnimationFrame = (function()
 {
     const cancelFrame =
         window['cancelAnimationFrame'] ||
@@ -1137,7 +1137,7 @@ Tw2Device.CancelAnimationFrame = (function ()
         window['mozRequestAnimationFrame'] ||
         window['oRequestAnimationFrame'] ||
         window['msRequestAnimationFrame'] ||
-        function (id)
+        function(id)
         {
             if (!timeOuts) timeOuts = [];
             if (timeOuts[id] !== undefined)

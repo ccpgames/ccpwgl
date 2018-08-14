@@ -48,7 +48,7 @@ export class Tw2VideoRes extends Tw2Resource
     IsGood()
     {
         this.KeepAlive();
-        return this._isGood && this.video && this._playable;
+        return super.IsGood() && this.video && this._playable;
     }
 
     /**
@@ -103,7 +103,7 @@ export class Tw2VideoRes extends Tw2Resource
     {
         const gl = device.gl;
 
-        switch(text)
+        switch (text)
         {
             case 'mp4':
             case 'webm':
@@ -224,24 +224,26 @@ export class Tw2VideoRes extends Tw2Resource
      */
     Bind(sampler)
     {
-        const d = device;
+        const
+            d = device,
+            gl = d.gl;
 
         this.KeepAlive();
         const targetType = sampler.samplerType;
-        if (targetType !== d.gl.TEXTURE_2D) return;
+        if (targetType !== gl.TEXTURE_2D) return;
 
         if (!this.texture)
         {
-            d.gl.bindTexture(d.gl.TEXTURE_2D, d.GetFallbackTexture());
+            gl.bindTexture(gl.TEXTURE_2D, d.GetFallbackTexture());
             return;
         }
 
         this._currentTime = this.video.currentTime;
-        d.gl.bindTexture(d.gl.TEXTURE_2D, this.texture);
-        d.gl.texImage2D(d.gl.TEXTURE_2D, 0, d.gl.RGBA, d.gl.RGBA, d.gl.UNSIGNED_BYTE, this.video);
-        d.gl.bindTexture(d.gl.TEXTURE_2D, null);
+        gl.bindTexture(gl.TEXTURE_2D, this.texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.video);
+        gl.bindTexture(gl.TEXTURE_2D, null);
 
-        d.gl.bindTexture(targetType, this.texture);
+        gl.bindTexture(targetType, this.texture);
         if (sampler.hash !== this._currentSampler)
         {
             sampler.Apply(false);

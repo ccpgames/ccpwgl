@@ -1,4 +1,5 @@
 import {mat4, vec3} from 'gl-matrix';
+
 export {mat4};
 
 /**
@@ -18,7 +19,7 @@ mat4.arcFromForward = (function()
         const norm = vec3.normalize(vec3_0, v);
         mat4.identity(out);
 
-        if (norm[2] < -0.99999) 
+        if (norm[2] < -0.99999)
         {
             return out;
         }
@@ -92,7 +93,7 @@ mat4.fromMat3 = function(out, m)
  * @param {vec3} up - vec3 pointing up
  * @returns {mat4} out
  */
-mat4.lookAtGL = (function ()
+mat4.lookAtGL = (function()
 {
     let vec3_0, vec3_1, vec3_2;
 

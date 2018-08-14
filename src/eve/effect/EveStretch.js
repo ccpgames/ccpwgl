@@ -97,7 +97,7 @@ export class EveStretch
      * @param {Array} [out=[]]
      * @return {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         if (this.source && this.source.GetResources) this.source.GetResources(out);
         if (this.dest && this.dest.GetResources) this.dest.GetResources(out);

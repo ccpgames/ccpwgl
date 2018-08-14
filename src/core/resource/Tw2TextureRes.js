@@ -38,24 +38,24 @@ export class Tw2TextureRes extends Tw2Resource
     Prepare(text)
     {
         const
-            d = device,
-            format = this.images[0]['ccpGLFormat'] ? this.images[0]['ccpGLFormat'] : d.gl.RGBA;
+            gl = device.gl,
+            format = this.images[0]['ccpGLFormat'] ? this.images[0]['ccpGLFormat'] : gl.RGBA;
 
         switch (text)
         {
             case 'cube':
-                this.texture = d.gl.createTexture();
-                d.gl.bindTexture(d.gl.TEXTURE_CUBE_MAP, this.texture);
+                this.texture = gl.createTexture();
+                gl.bindTexture(gl.TEXTURE_CUBE_MAP, this.texture);
                 const canvas = document.createElement('canvas');
                 canvas.width = canvas.height = this.images[0].height;
                 const ctx = canvas.getContext('2d');
                 for (let j = 0; j < 6; ++j)
                 {
                     ctx.drawImage(this.images[0], j * canvas.width, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
-                    d.gl.texImage2D(d.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, format, format, d.gl.UNSIGNED_BYTE, canvas);
+                    gl.texImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, format, format, gl.UNSIGNED_BYTE, canvas);
                 }
-                d.gl.generateMipmap(d.gl.TEXTURE_CUBE_MAP);
-                d.gl.bindTexture(d.gl.TEXTURE_CUBE_MAP, null);
+                gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
+                gl.bindTexture(gl.TEXTURE_CUBE_MAP, null);
                 this.width = canvas.width;
                 this.height = canvas.height;
                 this.hasMipMaps = true;
@@ -65,12 +65,12 @@ export class Tw2TextureRes extends Tw2Resource
 
             //case 'png':
             default:
-                this.texture = d.gl.createTexture();
-                d.gl.bindTexture(d.gl.TEXTURE_2D, this.texture);
-                d.gl.texImage2D(d.gl.TEXTURE_2D, 0, format, format, d.gl.UNSIGNED_BYTE, this.images[0]);
+                this.texture = gl.createTexture();
+                gl.bindTexture(gl.TEXTURE_2D, this.texture);
+                gl.texImage2D(gl.TEXTURE_2D, 0, format, format, gl.UNSIGNED_BYTE, this.images[0]);
                 this.hasMipMaps = Tw2TextureRes.IsPowerOfTwo(this.images[0].width) && Tw2TextureRes.IsPowerOfTwo(this.images[0].height);
-                if (this.hasMipMaps) d.gl.generateMipmap(d.gl.TEXTURE_2D);
-                d.gl.bindTexture(d.gl.TEXTURE_2D, null);
+                if (this.hasMipMaps) gl.generateMipmap(gl.TEXTURE_2D);
+                gl.bindTexture(gl.TEXTURE_2D, null);
                 this.width = this.images[0].width;
                 this.height = this.images[0].height;
                 this._isAttached = false;
@@ -177,25 +177,27 @@ export class Tw2TextureRes extends Tw2Resource
      */
     Bind(sampler, slices)
     {
-        const d = device;
+        const
+            d = device,
+            gl = d.gl;
 
         this.KeepAlive();
         let targetType = sampler.samplerType;
-        if (targetType !== (this.isCube ? d.gl.TEXTURE_CUBE_MAP : d.gl.TEXTURE_2D)) return;
+        if (targetType !== (this.isCube ? gl.TEXTURE_CUBE_MAP : gl.TEXTURE_2D)) return;
 
         if (!this.texture)
         {
-            const texture = targetType === d.gl.TEXTURE_2D ? d.GetFallbackTexture() : d.GetFallbackCubeMap();
-            d.gl.bindTexture(targetType, texture);
+            const texture = targetType === gl.TEXTURE_2D ? d.GetFallbackTexture() : d.GetFallbackCubeMap();
+            gl.bindTexture(targetType, texture);
             return;
         }
 
         if (sampler.isVolume)
         {
-            d.gl.uniform1f(slices, this.height / this.width);
+            gl.uniform1f(slices, this.height / this.width);
         }
 
-        d.gl.bindTexture(targetType, this.texture);
+        gl.bindTexture(targetType, this.texture);
         if (sampler.hash !== this._currentSampler)
         {
             sampler.Apply(this.hasMipMaps);
