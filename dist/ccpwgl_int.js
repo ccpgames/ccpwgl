@@ -3474,6 +3474,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 exports.isArrayLike = isArrayLike;
 exports.isBoolean = isBoolean;
+exports.isCanvas = isCanvas;
 exports.isDescriptor = isDescriptor;
 exports.isNumber = isNumber;
 exports.isFunction = isFunction;
@@ -3514,6 +3515,15 @@ function isArrayLike(a) {
  */
 function isBoolean(a) {
     return isTag(a, '[object Boolean]');
+}
+
+/**
+ * Checks if a value is an html canvas element
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isCanvas(a) {
+    return !!(a && a instanceof HTMLCanvasElement);
 }
 
 /**
@@ -26486,7 +26496,7 @@ var Tw2SingleInstantiationError = exports.Tw2SingleInstantiationError = function
     function Tw2SingleInstantiationError(data) {
         _classCallCheck(this, Tw2SingleInstantiationError);
 
-        return _possibleConstructorReturn(this, (Tw2SingleInstantiationError.__proto__ || Object.getPrototypeOf(Tw2SingleInstantiationError)).call(this, data, 'Class can only be instantiated once'));
+        return _possibleConstructorReturn(this, (Tw2SingleInstantiationError.__proto__ || Object.getPrototypeOf(Tw2SingleInstantiationError)).call(this, data, 'Multiple class instantiations not yet supported'));
     }
 
     return Tw2SingleInstantiationError;
@@ -34846,7 +34856,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {string} heightMapResPath2
  * @property {boolean} heightDirty
  * @property {Array} lockedResources
- * @property {Array.<Resource>} watchedResources
+ * @property {Array.<Tw2Resource>} watchedResources
  * @class
  */
 var EvePlanet = exports.EvePlanet = function (_EveObject) {
@@ -34871,19 +34881,31 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
     }
 
     /**
-     * Creates the planet
-     * @param {number} itemID - the item id is used for randomization
-     * @param {string} planetPath - .red file for a planet, or planet template
-     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
-     * @param {string} heightMap1
-     * @param {string} heightMap2
+     * Creates the planet from an options object
+     * @param {{}} options={}                   - an object containing the planet's options
+     * @param {number} options.itemID           - the item id is used for randomization
+     * @param {string} options.planetPath       - .red file for a planet, or planet template
+     * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} options.heightMap1       - the planet's first height map
+     * @param {string} options.heightMap2       - the planet's second height map
+     * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
      */
 
 
     _createClass(EvePlanet, [{
         key: 'Create',
-        value: function Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2) {
+        value: function Create() {
             var _this2 = this;
+
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var onLoaded = arguments[1];
+            var _options$itemID = options.itemID,
+                itemID = _options$itemID === undefined ? 0 : _options$itemID,
+                planetPath = options.planetPath,
+                atmospherePath = options.atmospherePath,
+                heightMap1 = options.heightMap1,
+                heightMap2 = options.heightMap2;
+
 
             this.itemID = itemID;
             this.heightMapResPath1 = heightMap1;
@@ -34891,18 +34913,38 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
             this.highDetail.children = [];
             this.heightDirty = true;
 
-            _global.resMan.GetObject(planetPath, function (obj) {
-                return EvePlanet.MeshLoaded(_this2, obj);
-            });
-            _global.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
-                return _this2.zOnlyModel = obj;
-            });
+            var loadingParts = 1;
+            if (planetPath) loadingParts++;
+            if (atmospherePath) loadingParts++;
+
+            /**
+             * Handles the optional onLoaded callback which is fired when all parts have loaded
+             */
+            function onPartLoaded() {
+                loadingParts--;
+                if (loadingParts < 1 && onLoaded) {
+                    onLoaded();
+                }
+            }
+
+            if (planetPath) {
+                _global.resMan.GetObject(planetPath, function (obj) {
+                    EvePlanet.MeshLoaded(_this2, obj);
+                    onPartLoaded();
+                });
+            }
 
             if (atmospherePath) {
                 _global.resMan.GetObject(atmospherePath, function (obj) {
-                    return _this2.highDetail.children.push(obj);
+                    _this2.highDetail.children.push(obj);
+                    onPartLoaded();
                 });
             }
+
+            _global.resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', function (obj) {
+                _this2.zOnlyModel = obj;
+                onPartLoaded();
+            });
         }
 
         /**

@@ -28,6 +28,16 @@ export function isBoolean(a)
 }
 
 /**
+ * Checks if a value is an html canvas element
+ * @param {*} a
+ * @returns {boolean}
+ */
+export function isCanvas(a)
+{
+    return !!(a && a instanceof HTMLCanvasElement);
+}
+
+/**
  * Checks if a value is a descriptor
  * @author jay phelps
  * @param {*} a

@@ -315,7 +315,7 @@ export class Tw2SingleInstantiationError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Class can only be instantiated once');
+        super(data, 'Multiple class instantiations not yet supported');
     }
 }
 

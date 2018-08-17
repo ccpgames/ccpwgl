@@ -1389,21 +1389,30 @@ var ccpwgl = (function(ccpwgl_int)
     /**
      * Wrapper for planets. Created with Scene.loadPlanet function.
      *
+     * @param {{}} [options={}]                 - an object containing the planet's options
+     * @param {number} options.itemID           - the item id is used for randomization
+     * @param {string} options.planetPath       - .red file for a planet, or planet template
+     * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} options.heightMap1       - planet's first height map
+     * @param {string} options.heightMap2       - planet's second height map
+     * @param {function} [onLoad]               - an optional callback which is fired when the planet has loaded
      * @constructor
-     * @param {integer} itemID Planet's item ID.
-     * @param {string} planetPath Res path to planet's .red template file.
-     * @param {string} atmospherePath Res path to planet's .red atmosphere file.
-     * @param {string} heightMap1 Res path to planet's first height map texture.
-     * @param {string} heightMap2 Res path to planet's second height map texture.
      */
-    function Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+    function Planet(options, onLoad)
     {
         /** Wrapped ccpwgl_int planet object @type {ccpwgl_int.EvePlanet} **/
         this.wrappedObjects = [new ccpwgl_int.EvePlanet()];
-        this.wrappedObjects[0].Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
+
+        var self = this;
+        this.wrappedObjects[0].Create(options, function()
+        {
+           if (onLoad) onLoad.call(self);
+        });
+        
+        
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
-
+        
         /**
          * Check if planet's resources are loaded and the resulting height map is generated.
          *
@@ -1650,24 +1659,32 @@ var ccpwgl = (function(ccpwgl_int)
             }
             return object;
         };
-
+        
         /**
          * Creates a planet.
          *
-         * @param {integer} itemID Planet's item ID.
-         * @param {string} planetPath Res path to planet's .red template file.
-         * @param {string} atmospherePath Res path to planet's .red atmosphere file.
-         * @param {string} heightMap1 Res path to planet's first height map texture.
-         * @param {string} heightMap2 Res path to planet's second height map texture.
+         * @param {number} itemID           - the item id is used for randomization
+         * @param {string} planetPath       - .red file for a planet, or planet template
+         * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
+         * @param {string} heightMap1       - planet's first height map    
+         * @param {string} heightMap2       - planet's second height map
+         * @param {function} [onLoad]       - an optioanl callback which is fired when the planet has loaded
          * @returns {ccpwgl.Planet} A newly created planet instance.
          */
-        this.loadPlanet = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+        this.loadPlanet = function(itemID, planetPath, atmospherePath, heightMap1, heightMap2, onLoad)
         {
-            var object = new Planet(itemID, planetPath, atmospherePath, heightMap1, heightMap2);
+            var object = new Planet({
+                itemID: itemID,
+                planetPath: planetPath,
+                atmospherePath: atmospherePath,
+                heightMap1: heightMap1,
+                heightMap2: heightMap2
+            }, onLoad);
+            
             this.objects.push(object);
             rebuildSceneObjects(this);
             return object;
-        };
+        }
 
         /**
          * Returns object (ship or planet) at a specified index in scene's objects list.

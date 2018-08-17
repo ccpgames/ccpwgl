@@ -17,7 +17,7 @@ import {EveObject} from './EveObject';
  * @property {string} heightMapResPath2
  * @property {boolean} heightDirty
  * @property {Array} lockedResources
- * @property {Array.<Resource>} watchedResources
+ * @property {Array.<Tw2Resource>} watchedResources
  * @class
  */
 export class EvePlanet extends EveObject
@@ -38,28 +38,64 @@ export class EvePlanet extends EveObject
     }
 
     /**
-     * Creates the planet
-     * @param {number} itemID - the item id is used for randomization
-     * @param {string} planetPath - .red file for a planet, or planet template
-     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
-     * @param {string} heightMap1
-     * @param {string} heightMap2
+     * Creates the planet from an options object
+     * @param {{}} options={}                   - an object containing the planet's options
+     * @param {number} options.itemID           - the item id is used for randomization
+     * @param {string} options.planetPath       - .red file for a planet, or planet template
+     * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} options.heightMap1       - the planet's first height map
+     * @param {string} options.heightMap2       - the planet's second height map
+     * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
      */
-    Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+    Create(options={}, onLoaded)
     {
+        const {itemID=0, planetPath, atmospherePath, heightMap1, heightMap2} = options;
+
         this.itemID = itemID;
         this.heightMapResPath1 = heightMap1;
         this.heightMapResPath2 = heightMap2;
         this.highDetail.children = [];
         this.heightDirty = true;
 
-        resMan.GetObject(planetPath, obj => EvePlanet.MeshLoaded(this, obj));
-        resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', obj => this.zOnlyModel = obj);
+        let loadingParts = 1;
+        if (planetPath) loadingParts++;
+        if (atmospherePath) loadingParts++;
+
+        /**
+         * Handles the optional onLoaded callback which is fired when all parts have loaded
+         */
+        function onPartLoaded()
+        {
+            loadingParts--;
+            if (loadingParts < 1 && onLoaded)
+            {
+                onLoaded();
+            }
+        }
+
+        if (planetPath)
+        {
+            resMan.GetObject(planetPath, obj =>
+            {
+                EvePlanet.MeshLoaded(this, obj);
+                onPartLoaded();
+            });
+        }
 
         if (atmospherePath)
         {
-            resMan.GetObject(atmospherePath, obj => this.highDetail.children.push(obj));
+            resMan.GetObject(atmospherePath, obj =>
+            {
+                this.highDetail.children.push(obj);
+                onPartLoaded();
+            });
         }
+
+        resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', obj =>
+        {
+            this.zOnlyModel = obj;
+            onPartLoaded();
+        });
     }
 
     /**
