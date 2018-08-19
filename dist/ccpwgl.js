@@ -303,7 +303,7 @@ var ccpwgl = (function(ccpwgl_int)
      */
     ccpwgl.setResourcePath = function(namespace, path)
     {
-        ccpwgl_int.resMan.resourcePaths[namespace] = path;
+        ccpwgl_int.store.RegisterPath(namespace, path);
     };
 
     /**
