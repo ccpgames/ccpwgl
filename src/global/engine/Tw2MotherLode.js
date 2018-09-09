@@ -17,6 +17,7 @@ export class Tw2MotherLode
      * Adds an error log for a given path
      * @param {string} path
      * @param {Tw2Error|Error} err
+     * @returns {Tw2Error|Error} err
      */
     AddError(path, err)
     {
@@ -24,8 +25,15 @@ export class Tw2MotherLode
 
         if (!this._errors[path].includes(err))
         {
+            // Normalize error data
+            err.data = err.data || {};
+            err.data.path = err.data.path || path;
+            err.data.err = err.data.err || err;
+
             this._errors[path].push(err);
         }
+
+        return err;
     }
 
     /**
@@ -36,6 +44,16 @@ export class Tw2MotherLode
     GetErrors(path)
     {
         return path && path in this._errors ? Object.assign([], this._errors[path]) : null;
+    }
+
+    /**
+     * Checks if a path has any errors
+     * @param {string} path
+     * @returns {*|boolean}
+     */
+    HasErrors(path)
+    {
+        return (path && path in this._errors);
     }
 
     /**
@@ -55,7 +73,7 @@ export class Tw2MotherLode
     /**
      * Adds a loaded object
      * @param {string} path
-     * @param {Tw2LoadingObject} obj
+     * @param {Tw2LoadingObject|Tw2Resource} obj
      */
     Add(path, obj)
     {
@@ -104,9 +122,8 @@ export class Tw2MotherLode
      * @param {Number} curFrame - the current frame count
      * @param {Number} frameLimit - how many frames the object can stay alive for before being purged
      * @param {Number} frameDistance - how long the resource has been alive for
-     * @param {Tw2Logger} logger
      */
-    PurgeInactive(curFrame, frameLimit, frameDistance, logger)
+    PurgeInactive(curFrame, frameLimit, frameDistance)
     {
         for (const path in this._loadedObjects)
         {
@@ -117,24 +134,15 @@ export class Tw2MotherLode
                 {
                     if (res.IsPurged())
                     {
-                        logger.log('res.event', {
-                            msg: 'Unloaded  ',
-                            path: res.path,
-                            type: 'purged'
-                        });
-
-                        delete this._loadedObjects[path];
+                        res.OnUnloaded();
+                        this.Remove(path);
                     }
                     if (res._isGood && (curFrame - res.activeFrame) % frameLimit >= frameDistance)
                     {
                         if (res.Unload())
                         {
-                            logger.log('res.event', {
-                                msg: 'Unloaded  ',
-                                path: res.path,
-                                type: 'unused'
-                            });
-                            delete this._loadedObjects[path];
+                            res.OnUnloaded();
+                            this.Remove(path);
                         }
                     }
                 }

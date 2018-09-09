@@ -66,3 +66,38 @@ export function get(src, prop, defaultValue)
 {
     return src && prop in src ? src[prop] : defaultValue;
 }
+
+/**
+ * Returns a string from a string template and a given object's properties
+ * - templates are surrounded by %'s (ie. %propertyName%)
+ * - default values are optionally identified with an = (ie. %propertyName=defaultValue%)
+ * @param {string} str
+ * @param {{}} [obj={}]
+ * @returns {string}
+ *
+ * @example
+ * const message = "%feature=Feature% not supported";
+ * const message2 = "%feature% not supported";
+ * let str1 = template(message, { feature: "Dynamic resource paths" })
+ * let str2 = template(message);
+ * let str3 = template(message2);
+ * > str1 === "Dynamic resource paths not supported"
+ * > str2 === "Feature not supported"
+ * > str3 === "undefined not supported"
+ */
+export function template(str, obj = {})
+{
+    const literals = str.match(/%([^\\}]*(?:\\.[^\\}]*)*)%/g) || [];
+
+    for (let i = 0; i < literals.length; i++)
+    {
+        const
+            literal = literals[i],
+            split = literal.substring(1, literal.length - 1).split('='),
+            value = split[0] in obj ? obj[split[0]] : split[1];
+
+        str = str.replace(literal, value);
+    }
+
+    return str;
+}

@@ -1,14 +1,16 @@
-import {resMan, logger} from '../../global';
+import {resMan} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
 import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';
 
 /**
  * Tw2LoadingObject
  *
- * @property {string} _redContents          - object's .red file xml contents
+ * @param {string} [path]                   - The resource's path
+ * @property {?string} _redContents         - object's .red file xml contents
  * @property {Number} _inPrepare            - the amount of child objects to prepare
  * @property {Array.<Object>} _objects      - the child objects to prepare
  * @property {Tw2ObjectReader} _constructor - A function for constructing child objects
+ * @inheritDoc {Tw2Resource}
  * @class
  */
 export class Tw2LoadingObject extends Tw2Resource
@@ -16,6 +18,7 @@ export class Tw2LoadingObject extends Tw2Resource
     constructor()
     {
         super();
+        this.path = '';
         this._redContents = null;
         this._inPrepare = null;
         this._objects = [];
@@ -24,15 +27,23 @@ export class Tw2LoadingObject extends Tw2Resource
 
     /**
      * Adds a child object
-     * @param {Object} object
-     * @param {Function} callback
+     * @param {Function} onResolved
+     * @param {Function} onRejected
      * @returns {Object}
      */
-    AddObject(object, callback)
+    AddObject(onResolved, onRejected)
     {
-        object._loadCallback = callback;
-        this._objects.push(object);
-        return object;
+        if (this.HasErrors())
+        {
+            if (onRejected)
+            {
+                onRejected(this.GetErrors()[0]);
+            }
+        }
+        else
+        {
+            this._objects.push({onResolved, onRejected});
+        }
     }
 
     /**
@@ -41,49 +52,70 @@ export class Tw2LoadingObject extends Tw2Resource
      */
     Prepare(text)
     {
-        if (!Tw2ObjectReader.IsValidXML(text))
-        {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2LoadingObject', 'Prepare'],
-                msg: 'Invalid XML',
-                path: this.path,
-                type: 'xml.invalid',
-            });
-            this.PrepareFinished(false);
-            return;
-        }
-
         if (this._inPrepare === null)
         {
             this._redContents = text;
             this._constructor = new Tw2ObjectReader(this._redContents);
             this._inPrepare = 0;
+            // Test construction once for errors
+            this._constructor.Construct();
         }
 
         while (this._inPrepare < this._objects.length)
         {
+            const object = this._objects[this._inPrepare];
+
             try
             {
-                this._objects[this._inPrepare]._loadCallback(this._constructor.Construct());
+                object.onResolved(this._constructor.Construct());
             }
-            catch (e)
+            catch (err)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2LoadingObject', 'Prepare'],
-                    msg: 'Error preparing resource',
-                    path: this.path,
-                    type: 'prepare',
-                    err: e
-                });
+                if (object.onRejected)
+                {
+                    object.onRejected(err);
+                    object.onRejected = null; // Only fire once
+                }
+
+                this.OnWarning({err, message: 'Error preparing child object'});
             }
 
             this._inPrepare++;
         }
 
+        this.OnPrepared();
+    }
+
+    /**
+     * Fires on errors
+     * @param {Error} err
+     * @returns {Error}
+     */
+    OnError(err)
+    {
+        super.OnError(err);
+        for (let i = 0; i < this._objects.length; i++)
+        {
+            const object = this._objects[i];
+            if (object.onRejected)
+            {
+                object.onRejected(err);
+            }
+        }
         resMan.motherLode.Remove(this.path);
-        this.PrepareFinished(true);
+        this._objects = [];
+        return err;
+    }
+
+    /**
+     * Fires when prepared
+     * @param log
+     */
+    OnPrepared(log)
+    {
+        resMan.motherLode.Remove(this.path);
+        this._objects = [];
+        super.OnPrepared(log);
     }
 }
 

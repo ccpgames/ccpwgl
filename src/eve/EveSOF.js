@@ -743,22 +743,33 @@ export function EveSOF()
 
     function BindParticleEmitters(obj, curveSet, curve)
     {
-        for (var i = 0; i < obj.particleEmitters.length; ++i)
+        if (Array.isArray(obj.particleEmitters))
         {
-            if ('rate' in obj.particleEmitters[i])
+            for (var i = 0; i < obj.particleEmitters.length; ++i)
             {
-                var binding = new Tw2ValueBinding();
-                binding.sourceObject = curve;
-                binding.sourceAttribute = 'currentValue';
-                binding.destinationObject = obj.particleEmitters[i];
-                binding.destinationAttribute = 'rate';
-                binding.Initialize();
-                curveSet.bindings.push(binding);
+                if ('rate' in obj.particleEmitters[i])
+                {
+                    var binding = new Tw2ValueBinding();
+                    binding.sourceObject = curve;
+                    binding.sourceAttribute = 'currentValue';
+                    binding.destinationObject = obj.particleEmitters[i];
+                    binding.destinationAttribute = 'rate';
+                    binding.Initialize();
+                    curveSet.bindings.push(binding);
+                }
+            }
+            for (i = 0; i < obj.children.length; ++i)
+            {
+                BindParticleEmitters(obj.children[i], curveSet, curve);
             }
         }
-        for (i = 0; i < obj.children.length; ++i)
+        else
         {
-            BindParticleEmitters(obj.children[i], curveSet, curve);
+            resMan.log({
+                type: 'warning',
+                title: 'Space object factory',
+                message: `Unable to bind particle emitters: ${obj.constructor.name}`
+            });
         }
     }
 

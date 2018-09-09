@@ -1,7 +1,21 @@
-import {logger} from './Tw2Logger';
 import {store} from './Tw2Store';
 import {Tw2MotherLode} from './Tw2MotherLode';
 import {Tw2LoadingObject} from '../../core/resource/Tw2LoadingObject';
+import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
+import {isError} from '../util';
+import {
+    Tw2Error,
+    HTTPInstanceError,
+    HTTPReadyStateError,
+    HTTPRequestSendError,
+    HTTPStatusError,
+    Tw2FeatureNotImplementedError,
+    Tw2ResourceExtensionUndefinedError,
+    Tw2ResourceExtensionUnregisteredError,
+    Tw2ResourcePrefixUndefinedError,
+    Tw2ResourcePrefixUnregisteredError
+} from '../../core';
+
 
 /**
  * Resource Manager
@@ -21,10 +35,12 @@ import {Tw2LoadingObject} from '../../core/resource/Tw2LoadingObject';
  * @property {Number} _noLoadFrames
  * @class
  */
-export class Tw2ResMan
+export class Tw2ResMan extends Tw2EventEmitter
 {
     constructor()
     {
+        super();
+        this.name = 'Resource manager';
         this.motherLode = new Tw2MotherLode();
         this.systemMirror = false;
         this.maxPrepareTime = 0.05;
@@ -38,6 +54,55 @@ export class Tw2ResMan
         this._purgeFrameLimit = 1000;
         this._pendingLoads = 0;
         this._noLoadFrames = 0;
+    }
+
+    /**
+     * Fires on resource errors
+     * @param {string} path
+     * @param {Tw2Error|Error} err
+     * @returns {Tw2Error|Error} err;
+     */
+    OnResError(path, err = new Tw2Error({path}))
+    {
+        path = Tw2ResMan.NormalizePath(path);
+        const res = this.motherLode.Find(path);
+        if (res)
+        {
+            res.OnError(err);
+        }
+        else
+        {
+            this.OnResEvent('error', path, err);
+        }
+        return err;
+    }
+
+    /**
+     * Fires on resource events
+     * @param eventName
+     * @param path
+     * @param log
+     */
+    OnResEvent(eventName, path, log = {})
+    {
+        const defaultLog = Tw2ResMan.DefaultLog[eventName.toUpperCase()];
+        let eventData = Object.assign({res: this.motherLode.Find(path), path}, log.data);
+
+        // Convert errors to logs
+        if (isError(log))
+        {
+            const err = this.motherLode.AddError(path, log);
+            log = {err, message: err.message};
+        }
+
+        // Only allow valid events
+        if (defaultLog)
+        {
+            log = Object.assign({title: this.name}, defaultLog, log);
+            log.message = log.message.includes(path) ? log.message : log.message += ` "${path}"`;
+            eventData.log = log;
+            this.emit(eventName.toLowerCase(), eventData);
+        }
     }
 
     /**
@@ -95,28 +160,15 @@ export class Tw2ResMan
                 data = this._prepareQueue[0][1],
                 xml = this._prepareQueue[0][2];
 
-            let handlesPrepareQueue;
+            this._prepareQueue.shift();
 
             try
             {
-                handlesPrepareQueue = res.Prepare(data, xml);
+                res.Prepare(data, xml);
             }
-            catch (e)
+            catch (err)
             {
-                this._prepareQueue.shift();
-                throw e;
-            }
-
-            if (!handlesPrepareQueue)
-            {
-                logger.log('res.event', {
-                    msg: 'Prepared  ',
-                    path: res.path,
-                    time: (Date.now() - startTime) * 0.001,
-                    type: 'prepared'
-                });
-
-                this._prepareQueue.shift();
+                res.OnError(err);
             }
 
             this.prepareBudget -= (Date.now() - startTime) * 0.001;
@@ -135,7 +187,7 @@ export class Tw2ResMan
             {
                 if (this.autoPurgeResources)
                 {
-                    this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime, logger);
+                    this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime);
                 }
             }
         }
@@ -161,60 +213,70 @@ export class Tw2ResMan
             return res;
         }
 
-        const ext = Tw2ResMan.GetPathExt(path);
-        if (ext === null)
+        if (path.indexOf('dynamic:/') === 0)
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2ResMan', 'ReloadResource'],
-                msg: 'Undefined extension',
-                type: 'extension.undefined',
-                path: path
-            });
+            this.OnResError(path, new Tw2FeatureNotImplementedError({
+                message: 'Dynamic resources not implemented'
+            }));
             return null;
         }
 
-        const Extension = store.GetExtension(ext);
-        if (!Extension)
+        const extension = Tw2ResMan.GetPathExt(path);
+        if (extension === null)
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2ResMan', 'ReloadResource'],
-                msg: 'Unregistered extension',
-                type: 'extension.unregistered',
-                path: path,
-                value: ext
-            });
+            this.OnResError(path, new Tw2ResourceExtensionUndefinedError({path}));
             return null;
         }
 
-        res = new Extension();
-        res.path = path;
-        return Tw2ResMan.LoadResource(this, res);
+        const Constructor = store.GetExtension(extension);
+        if (!Constructor)
+        {
+            this.OnResError(path, new Tw2ResourceExtensionUnregisteredError({path, extension}));
+            return null;
+        }
+
+        try
+        {
+            res = new Constructor();
+            res.path = path;
+            return Tw2ResMan.LoadResource(this, res);
+        }
+        catch (err)
+        {
+            this.OnResError(path, err);
+            return null;
+        }
     }
 
     /**
      * Gets a resource object
      * @param {string} path
-     * @param {Function} callback
+     * @param {Function} onResolved - Callback fired when the object has loaded
+     * @param {Function} onRejected - Callback fired when the object fails to load
      */
-    GetObject(path, callback)
+    GetObject(path, onResolved, onRejected)
     {
-        const obj = {};
         path = Tw2ResMan.NormalizePath(path);
 
         // Check if already loaded
         let res = this.motherLode.Find(path);
         if (res)
         {
-            res.AddObject(obj, callback);
+            res.AddObject(onResolved, onRejected);
             return;
         }
 
-        res = new Tw2LoadingObject();
-        res.path = path;
-        res.AddObject(obj, callback);
-        Tw2ResMan.LoadResource(this, res);
+        try
+        {
+            res = new Tw2LoadingObject();
+            res.path = path;
+            res.AddObject(onResolved, onRejected);
+            Tw2ResMan.LoadResource(this, res);
+        }
+        catch (err)
+        {
+            this.OnResError(path, err);
+        }
     }
 
     /**
@@ -228,55 +290,48 @@ export class Tw2ResMan
 
         // Check if already loaded and good
         const res = this.motherLode.Find(path);
-        if (res && !res.IsPurged()) return res;
+        if (res && !res.IsPurged())
+        {
+            return res;
+        }
 
-        logger.log('res.event', {
-            msg: 'Reloading ',
-            path: path,
-            type: 'reload'
-        });
-
-        return Tw2ResMan.LoadResource(this, resource);
+        try
+        {
+            return Tw2ResMan.LoadResource(this, resource);
+        }
+        catch (err)
+        {
+            this.OnResError(path, err);
+            return resource;
+        }
     }
 
     /**
      * Builds a url from a resource path
-     * @param {string} resPath
+     * @param {string} path
      * @returns {string}
      */
-    static BuildUrl(resPath)
+    BuildUrl(path)
     {
-        const prefixIndex = resPath.indexOf(':/');
+        const prefixIndex = path.indexOf(':/');
         if (prefixIndex === -1)
         {
-            logger.log('res.error', {
-                log: 'warn',
-                src: ['Tw2ResMan', 'BuildUrl'],
-                msg: 'Invalid path',
-                type: 'prefix.undefined',
-                path: resPath
-            });
-            return resPath;
+            throw new Tw2ResourcePrefixUndefinedError({path});
         }
 
-        const
-            prefix = resPath.substr(0, prefixIndex),
-            path = store.GetPath(prefix);
-
-        if (!path)
+        const prefix = path.substr(0, prefixIndex);
+        if (prefix === 'http' || prefix === 'https')
         {
-            logger.log('res.error', {
-                log: 'warn',
-                src: ['Tw2ResMan', 'BuildUrl'],
-                msg: 'Unregistered path',
-                path: resPath,
-                type: 'prefix.unregistered',
-                value: prefix
-            });
-            return resPath;
+            return path;
         }
 
-        return path + resPath.substr(prefixIndex + 2);
+        const fullPrefix = store.GetPath(prefix);
+        if (!fullPrefix)
+        {
+            throw new Tw2ResourcePrefixUnregisteredError({path, prefix});
+        }
+
+        return fullPrefix + path.substr(prefixIndex + 2);
     }
 
     /**
@@ -314,65 +369,39 @@ export class Tw2ResMan
     }
 
     /**
-     * Returns a path suitable for logging by truncating really long file names
-     * @param {string} path
-     * @returns {string}
-     */
-    static LogPathString(path)
-    {
-        if (path.substr(0, 5) === 'str:/' && path.length > 64)
-        {
-            return path.substr(0, 64) + '...';
-        }
-        return path;
-    }
-
-    /**
      * Loads a resource
      * @param {Tw2ResMan} resMan
-     * @param {Tw2Resource} res
-     * @returns {Tw2Resource}
+     * @param {Tw2Resource|Tw2LoadingObject} res
+     * @returns {Tw2Resource|Tw2LoadingObject} res
      */
     static LoadResource(resMan, res)
     {
         const
             path = res.path,
-            url = Tw2ResMan.BuildUrl(path);
+            url = resMan.BuildUrl(path);
 
-        res._isPurged = false;
         resMan.motherLode.Add(path, res);
-        if (res.DoCustomLoad && res.DoCustomLoad(url)) return res;
 
-        const httpRequest = Tw2ResMan.CreateHttpRequest(res.requestResponseType);
-        if (httpRequest)
+        if (res.DoCustomLoad && res.DoCustomLoad(url, Tw2ResMan.GetPathExt(url)))
         {
-            logger.log('res.event', {
-                msg: 'Requesting',
-                path: path,
-                type: 'request'
-            });
-
-            httpRequest.onreadystatechange = Tw2ResMan.DoLoadResource(resMan, res);
-            httpRequest.open('GET', url);
-            res.LoadStarted();
-
-            try
-            {
-                httpRequest.send();
-                resMan._pendingLoads++;
-            }
-            catch (e)
-            {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2ResMan', 'LoadResource'],
-                    msg: 'Error sending object HTTP request',
-                    path: path,
-                    type: 'http.request',
-                    err: e
-                });
-            }
+            return res;
         }
+
+        const httpRequest = Tw2ResMan.CreateHttpRequest(res);
+        httpRequest.onreadystatechange = Tw2ResMan.DoLoadResource(resMan, res);
+        httpRequest.open('GET', url);
+
+        try
+        {
+            httpRequest.send();
+            resMan._pendingLoads++;
+            res.OnRequested();
+        }
+        catch (err)
+        {
+            throw new HTTPRequestSendError({path});
+        }
+
         return res;
     }
 
@@ -383,6 +412,8 @@ export class Tw2ResMan
      */
     static DoLoadResource(resMan, res)
     {
+        const path = res.path;
+
         return function()
         {
             let readyState = 0;
@@ -391,25 +422,17 @@ export class Tw2ResMan
             {
                 readyState = this.readyState;
             }
-            catch (e)
+            catch (err)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2ResMan', '_DoLoadResource'],
-                    msg: 'Communication error loading',
-                    path: res.path,
-                    type: 'http.readystate',
-                    value: readyState
-                });
-
-                res.LoadFinished(false);
                 resMan._pendingLoads--;
+                res.OnError(new HTTPReadyStateError({path}));
                 return;
             }
 
             if (readyState === 4)
             {
-                if (this.status === 200)
+                const status = this.status;
+                if (status === 200)
                 {
                     let data = null,
                         xml = null;
@@ -424,21 +447,12 @@ export class Tw2ResMan
                         data = this.response;
                     }
 
-                    res.LoadFinished(true);
                     resMan._prepareQueue.push([res, data, xml]);
+                    res.OnLoaded();
                 }
                 else
                 {
-                    logger.log('res.error', {
-                        log: 'error',
-                        src: ['Tw2ResMan', '_DoLoadResource'],
-                        msg: 'Communication error loading',
-                        path: res.path,
-                        type: 'http.status',
-                        value: this.status
-                    });
-                    res.LoadFinished(false);
-                    res.PrepareFinished(false);
+                    res.OnError(new HTTPStatusError({path, status}));
                 }
                 resMan._pendingLoads--;
             }
@@ -447,10 +461,10 @@ export class Tw2ResMan
 
     /**
      * Creates an HTTP request
-     * @param {?string} [responseType]
+     * @param {Tw2Resource} res
      * @returns {XMLHttpRequest|ActiveXObject}
      */
-    static CreateHttpRequest(responseType)
+    static CreateHttpRequest(res)
     {
         let httpRequest = null;
 
@@ -481,21 +495,28 @@ export class Tw2ResMan
 
         if (!httpRequest)
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2LoadingObject', 'Prepare'],
-                msg: 'Could not create an XMLHTTP instance',
-                type: 'http.instance'
-            });
+            throw new HTTPInstanceError({path: res.path});
         }
-        else if (responseType)
+        else if (res.requestResponseType)
         {
-            httpRequest.responseType = responseType;
+            httpRequest.responseType = res.requestResponseType;
         }
 
         return httpRequest;
     }
 }
+
+// Default log outputs for resource events
+Tw2ResMan.DefaultLog = {
+    ERROR: {type: 'error', message: 'Uncaught error'},
+    WARNING: {type: 'warn', message: 'Undefined warning'},
+    REQUESTED: {type: 'info', message: 'Requested'},
+    RELOADING: {type: 'info', message: 'Reloading'},
+    LOADED: {type: 'info', message: 'Loaded'},
+    PREPARED: {type: 'log', message: 'Prepared'},
+    PURGED: {type: 'debug', message: 'Purged'},
+    UNLOADED: {type: 'debug', message: 'Unloaded'}
+};
 
 // Global instance of Tw2ResMan
 export const resMan = new Tw2ResMan();

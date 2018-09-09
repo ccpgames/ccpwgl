@@ -1,7 +1,7 @@
-import {logger} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2Resource} from './Tw2Resource';
 import {Tw2Shader} from './Tw2Shader';
+import {Tw2ShaderHeaderSizeError, Tw2ShaderPermutationValueError, Tw2ShaderVersionError} from '../Tw2Error';
 
 /**
  * Tw2EffectRes
@@ -64,16 +64,7 @@ export class Tw2EffectRes extends Tw2Resource
         const version = reader.ReadUInt32();
         if (version < 2 || version > 7)
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'Invalid version of effect file',
-                type: 'shader.effectversion',
-                path: this.path,
-                value: version
-            });
-
-            this.PrepareFinished(false);
+            this.OnError(new Tw2ShaderVersionError({path: this.path, version}));
             return;
         }
 
@@ -85,16 +76,7 @@ export class Tw2EffectRes extends Tw2Resource
             headerSize = reader.ReadUInt32();
             if (headerSize === 0)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2EffectRes', 'CreateProgram'],
-                    msg: 'File contains no compiled effects',
-                    path: this.path,
-                    type: 'shader.effectheadersize',
-                    value: 0
-                });
-
-                this.PrepareFinished(false);
+                this.OnError(new Tw2ShaderHeaderSizeError({path: this.path}));
                 return;
             }
 
@@ -134,18 +116,10 @@ export class Tw2EffectRes extends Tw2Resource
             headerSize = reader.ReadUInt32();
             if (headerSize === 0)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2EffectRes', 'CreateProgram'],
-                    msg: 'File contains no compiled effects',
-                    path: this.path,
-                    type: 'shader.effectheadersize',
-                    value: 0
-                });
-
-                this.PrepareFinished(false);
+                this.OnError(new Tw2ShaderHeaderSizeError({path: this.path}));
                 return;
             }
+
             for (let i = 0; i < headerSize; ++i)
             {
                 this.offsets.push({
@@ -162,7 +136,7 @@ export class Tw2EffectRes extends Tw2Resource
         this.version = version;
         this.stringTable = stringTable;
 
-        this.PrepareFinished(true);
+        this.OnPrepared();
     }
 
     /**
@@ -190,15 +164,11 @@ export class Tw2EffectRes extends Tw2Resource
                 let valueName = options[permutation.name];
                 if (!permutation.options.hasOwnProperty(valueName))
                 {
-                    logger.log('res.error',
-                        {
-                            log: 'error',
-                            src: ['Tw2EffectRes', 'GetShader'],
-                            msg: 'Invalid shader permutation value',
-                            path: this.path,
-                            name: permutation.name,
-                            value: valueName
-                        });
+                    this.OnError(new Tw2ShaderPermutationValueError({
+                        path: this.path,
+                        permutation: permutation.name,
+                        valueName: valueName
+                    }));
                     return null;
                 }
                 value = permutation.options[valueName];
@@ -216,10 +186,11 @@ export class Tw2EffectRes extends Tw2Resource
         let shader = null;
         try
         {
-            shader = new Tw2Shader(this.reader, this.version, this.stringTable, this.stringTableOffset);
+            shader = new Tw2Shader(this.reader, this.version, this.stringTable, this.stringTableOffset, this.path);
         }
         catch (error)
         {
+            this.OnError(error);
             return null;
         }
         this.shaders[index] = shader;

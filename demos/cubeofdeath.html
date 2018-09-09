@@ -27,7 +27,7 @@
 
             function sofDataReceived(member)
             {
-                return function (data)
+                return function(data)
                 {
                     sofData[member] = [];
                     for (var i in data)
@@ -44,7 +44,7 @@
                         var y = 0;
                         var z = 0;
                         var cubeDimension = Math.ceil(Math.pow(shipCount, 1 / 3));
-                        var radius = ( cubeDimension - 1 ) / 2 * spacing;
+                        var radius = (cubeDimension - 1) / 2 * spacing;
 
                         for (i = 0; i < shipCount; ++i)
                         {
@@ -82,7 +82,7 @@
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

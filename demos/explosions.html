@@ -28,7 +28,7 @@
             {
                 var size = sizes[Math.floor(Math.random() * sizes.length)];
                 var race = races[Math.floor(Math.random() * races.length)];
-                var explosion = scene.loadObject('res:/fisfx/deathexplosion/death_' + size + '_' + race + '.red', function ()
+                var explosion = scene.loadObject('res:/fisfx/deathexplosion/death_' + size + '_' + race + '.red', function()
                 {
                     this.wrappedObjects[0].Start();
                     explodionData[1] = currentTime + this.wrappedObjects[0].duration;
@@ -67,7 +67,7 @@
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            ccpwgl.onPreRender = function (dt)
+            ccpwgl.onPreRender = function(dt)
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
                 currentTime += dt;

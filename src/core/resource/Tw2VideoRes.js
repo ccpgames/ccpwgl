@@ -1,5 +1,6 @@
-import {device, resMan, logger} from '../../global';
+import {device, resMan} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
+import {HTTPRequestError, Tw2ResourceExtensionUnregisteredError} from '../Tw2Error';
 
 /**
  * Tw2VideoRes
@@ -97,13 +98,13 @@ export class Tw2VideoRes extends Tw2Resource
 
     /**
      * Prepares the resource
-     * @param {string} text
+     * @param {string} extension
      */
-    Prepare(text)
+    Prepare(extension)
     {
         const gl = device.gl;
 
-        switch (text)
+        switch (extension)
         {
             case 'mp4':
             case 'webm':
@@ -119,20 +120,36 @@ export class Tw2VideoRes extends Tw2Resource
                 this.height = this.video.height;
                 this.video.loop = this.cycle;
                 if (this.playOnLoad) this.video.play();
-                this.PrepareFinished(true);
+                break;
+
+            default:
+                throw new Tw2ResourceExtensionUnregisteredError({path: this.path, extension});
         }
+
+        this.OnPrepared();
     }
 
     /**
      * Loads the resource from a path
      *
      * @param {string} path
+     * @param {string} extension
      * @returns {boolean} returns true to tell the resMan not to handle http requests
      */
-    DoCustomLoad(path)
+    DoCustomLoad(path, extension)
     {
-        const ext = resMan.constructor.GetPathExt(path);
-        this.LoadStarted();
+        switch (extension)
+        {
+            case 'mp4':
+            case 'webm':
+            case 'ogg':
+                break;
+
+            default:
+                throw new Tw2ResourceExtensionUnregisteredError({path, extension});
+        }
+
+        this.OnRequested();
         resMan._pendingLoads++;
 
         this.video = document.createElement('video');
@@ -145,16 +162,8 @@ export class Tw2VideoRes extends Tw2Resource
         this.video.onerror = () =>
         {
             resMan._pendingLoads--;
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: path
-            });
-            this.LoadFinished(false);
-            this.PrepareFinished(false);
             this.video = null;
+            this.OnError(new HTTPRequestError({path}));
         };
 
         /**
@@ -165,8 +174,8 @@ export class Tw2VideoRes extends Tw2Resource
             this._playable = true;
             this.video.oncanplay = null;
             resMan._pendingLoads--;
-            resMan._prepareQueue.push([this, ext, null]);
-            this.LoadFinished(true);
+            resMan._prepareQueue.push([this, extension, null]);
+            this.OnLoaded();
         };
 
         /**

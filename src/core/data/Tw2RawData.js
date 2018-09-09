@@ -1,4 +1,5 @@
 import {util} from '../../global';
+import {Tw2DeclarationValueTypeError} from '../Tw2Error';
 
 /**
  * Stores raw data for {@link Tw2PerObjectData}
@@ -129,7 +130,7 @@ export class Tw2RawData
                 }
                 else
                 {
-                    throw new Error(`Invalid declaration type: ${typeof value}`);
+                    throw new Tw2DeclarationValueTypeError({valueType: typeof value});
                 }
             }
         }

@@ -1,7 +1,8 @@
-import {vec3, quat, mat3, mat4, device, logger} from '../../global';
+import {vec3, quat, mat3, mat4, device} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
+import {Tw2GeometryFileTypeError, Tw2GeometryMeshEffectBindError, Tw2GeometryMeshInvalidBoneError} from '../Tw2Error';
 import {
     Tw2BlendShapeData,
     Tw2GeometryAnimation,
@@ -15,6 +16,7 @@ import {
     Tw2GeometryTrackGroup,
     Tw2GeometryTransformTrack
 } from '../geometry';
+
 
 /**
  * Tw2GeometryRes
@@ -101,7 +103,7 @@ export class Tw2GeometryRes extends Tw2Resource
         {
             const mesh = new Tw2GeometryMesh();
             mesh.name = reader.ReadString();
-            const buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.declaration);
+            const buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.declaration, this.path);
 
             if (buffer)
             {
@@ -160,7 +162,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 {
                     mesh.blendShapes[i] = new Tw2BlendShapeData();
                     mesh.blendShapes[i].name = reader.ReadString();
-                    mesh.blendShapes[i].buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.blendShapes[i].declaration);
+                    mesh.blendShapes[i].buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.blendShapes[i].declaration, this.path);
                     mesh.blendShapes[i].indexes = Tw2GeometryRes.ReadIndexBuffer(reader);
                 }
             }
@@ -303,7 +305,7 @@ export class Tw2GeometryRes extends Tw2Resource
             this.animations[this.animations.length] = animation;
         }
 
-        this.PrepareFinished(true);
+        this.OnPrepared();
     }
 
     /**
@@ -324,17 +326,11 @@ export class Tw2GeometryRes extends Tw2Resource
 
             if (!bone)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'BindMeshToModel'],
-                    msg: 'Mesh has invalid bone name for model',
+                throw new Tw2GeometryMeshInvalidBoneError({
                     path: res.path,
-                    type: 'geometry.invalidbone',
-                    data: {
-                        mesh: binding.mesh.name,
-                        bone: name,
-                        model: model.name
-                    }
+                    mesh: binding.mesh.name,
+                    bone: name,
+                    model: model.name
                 });
             }
             else
@@ -435,18 +431,12 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
+                this.OnError(new Tw2GeometryMeshEffectBindError({
                     path: this.path,
-                    type: 'geometry.meshbind',
-                    data: {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }));
                 return false;
             }
 
@@ -500,21 +490,15 @@ export class Tw2GeometryRes extends Tw2Resource
         for (let pass = 0; pass < passCount; ++pass)
         {
             effect.ApplyPass(technique, pass);
-            let passInput = effect.GetPassInput(technique, pass);
+            const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
+                this.OnError(new Tw2GeometryMeshEffectBindError({
                     path: this.path,
-                    type: 'geometry.meshbind',
-                    data: {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }));
                 return false;
             }
 
@@ -603,9 +587,10 @@ export class Tw2GeometryRes extends Tw2Resource
      * ReadVertexBuffer
      * @param {Tw2BinaryReader} reader
      * @param {Tw2VertexDeclaration} declaration
+     * @param {string} path
      * @returns {?Float32Array}
      */
-    static ReadVertexBuffer(reader, declaration)
+    static ReadVertexBuffer(reader, declaration, path)
     {
         const declCount = reader.ReadUInt8();
         let vertexSize = 0;
@@ -734,15 +719,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     default:
-                        logger.log('res.error', {
-                            log: 'error',
-                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
-                            msg: 'Error loading wbg data',
-                            path: self.path,
-                            type: 'geometry.filetype',
-                            value: el.fileType & 0xf
-                        });
-                        throw 1;
+                        throw new Tw2GeometryFileTypeError({path: path, key: 'fileType', value: el.fileType & 0xf});
                 }
             }
         }

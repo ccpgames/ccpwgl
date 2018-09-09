@@ -1,6 +1,6 @@
 import {isString, isPlain, isArray, isFunction, toArray, isUndefined, enableUUID} from '../util';
-import {logger} from './Tw2Logger';
-import {Tw2Error} from '../../core';
+import {Tw2Error} from '../../core/Tw2Error';
+import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 
 /**
  * Stores engine data
@@ -15,10 +15,12 @@ import {Tw2Error} from '../../core';
  * @property {Object.< string, Array<string>>} _missing
  * @class
  */
-class Tw2Store
+class Tw2Store extends Tw2EventEmitter
 {
     constructor()
     {
+        super();
+        this.name = 'Variable store';
         this._type = {};
         this._path = {};
         this._variable = {};
@@ -461,12 +463,16 @@ class Tw2Store
             if (!store._missing[type].includes(key))
             {
                 store._missing[type].push(key);
-
-                logger.log('store.warning', {
-                    log: 'warning',
-                    msg: `Missing ${type}: '${key}'`
-                });
             }
+
+            store.emit('missing', {
+                type, key,
+                log: {
+                    type: 'debug',
+                    title: store.name,
+                    message: `Missing ${type}: "${key}"`
+                }
+            });
         }
 
         return null;
@@ -485,9 +491,13 @@ class Tw2Store
     {
         if (validator && !validator(value))
         {
-            logger.log('store.error', {
-                log: 'error',
-                msg: `Invalid value ${type}: '${key}'`,
+            store.emit('error', {
+                type, key, value,
+                log: {
+                    type: 'error',
+                    title: store.name,
+                    message: `Invalid ${type}: "${key}"`,
+                }
             });
             return false;
         }
@@ -495,28 +505,16 @@ class Tw2Store
         const storeSet = store['_' + type];
         if (storeSet && isString(key) && !isUndefined(value))
         {
-            const existing = storeSet[key];
+            const oldValue = storeSet[key];
             storeSet[key] = value;
-
-            if (!existing)
-            {
-                logger.log('store.registered', {
-                    log: 'debug',
-                    msg: `Registered ${type}: '${key}'`,
-                    hide: true
-                });
-            }
-            else
-            {
-                logger.log('store.registered', {
-                    log: 'debug',
-                    msg: `Re-registered ${type}: '${key}'`,
-                    data: {
-                        old_value: existing,
-                        new_value: value
-                    }
-                });
-            }
+            store.emit('registered', {
+                type, key, value, oldValue,
+                log: {
+                    type: 'debug',
+                    title: store.name,
+                    message: `${oldValue ? 'Re-registered' : 'Registered'} ${type} "${key}"`
+                }
+            });
             return true;
         }
         return false;

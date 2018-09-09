@@ -1,6 +1,7 @@
-import {quat, util, device, logger} from '../../global';
+import {quat, util, device} from '../../global';
 import {Tw2VertexDeclaration, Tw2VertexElement} from '../vertex';
 import {Tw2SamplerState} from '../sampler';
+import {Tw2ShaderCompileError, Tw2ShaderLinkError} from '../Tw2Error';
 
 /**
  * Tw2Shader
@@ -13,7 +14,6 @@ export class Tw2Shader
 {
     constructor(reader, version, stringTable, stringTableOffset, path)
     {
-
         /**
          * ReadString
          * @returns {string}
@@ -113,20 +113,16 @@ export class Tw2Shader
                     }
 
                     stage.shader = Tw2Shader.CompileShader(stageType, '', shaderCode, path);
-                    if (stage.shader === null)
-                    {
-                        throw new Error();
-                    }
 
                     if (validShadowShader)
                     {
                         if (shadowShaderSize === 0)
                         {
-                            stage.shadowShader = Tw2Shader.CompileShader(stageType, '\n#define PS\n', shaderCode, path);
+                            stage.shadowShader = Tw2Shader.CompileShader(stageType, '\n#define PS\n', shaderCode, path, true);
                         }
                         else
                         {
-                            stage.shadowShader = Tw2Shader.CompileShader(stageType, '', shadowShaderCode, path);
+                            stage.shadowShader = Tw2Shader.CompileShader(stageType, '', shadowShaderCode, path, true);
                         }
 
                         if (stage.shadowShader === null)
@@ -319,15 +315,18 @@ export class Tw2Shader
                     });
                 }
 
-                pass.shaderProgram = Tw2Shader.CreateProgram(pass.stages[0].shader, pass.stages[1].shader, pass, path);
-                if (pass.shaderProgram === null)
-                {
-                    throw new Error();
-                }
+                pass.shaderProgram = Tw2Shader.CreateProgram(
+                    pass.stages[0].shader,
+                    pass.stages[1].shader,
+                    pass, path);
 
                 if (validShadowShader)
                 {
-                    pass.shadowShaderProgram = Tw2Shader.CreateProgram(pass.stages[0].shadowShader, pass.stages[1].shadowShader, pass, path);
+                    pass.shadowShaderProgram = Tw2Shader.CreateProgram(
+                        pass.stages[0].shadowShader,
+                        pass.stages[1].shadowShader,
+                        pass, path, true);
+
                     if (pass.shadowShaderProgram === null)
                     {
                         pass.shadowShaderProgram = pass.shaderProgram;
@@ -408,51 +407,15 @@ export class Tw2Shader
     }
 
     /**
-     * Finds out if a parameter name is a valid shader input
-     * @param {string} name - An Effect Parameter name
-     * @returns {Boolean}
-     */
-    IsValidParameter(name)
-    {
-        return (name in this.annotations);
-    }
-
-    /**
-     * Returns an array of valid parameter names for a specific annotation group
-     * - Compatible with pre V5 shaders
-     * @param {string} groupName - The name of an annotation group
-     * @returns {Array.< string >}
-     */
-    GetParametersByGroup(groupName)
-    {
-        const parameters = [];
-        for (let param in this.annotations)
-        {
-            if (this.annotations.hasOwnProperty(param))
-            {
-                for (let i = 0; i < this.annotations[param].length; i++)
-                {
-                    if (
-                        this.annotations[param][i].name.toLowerCase() === 'group' &&
-                        this.annotations[param][i].value.toLowerCase() === groupName.toLowerCase())
-                    {
-                        parameters.push(param);
-                    }
-                }
-            }
-        }
-        return parameters;
-    }
-
-    /**
      * Compiles shader
      * @param {number} stageType
      * @param {string} prefix
      * @param shaderCode
-     * @param {string} path - Shader path
+     * @param {string} path
+     * @param {boolean} [skipError]
      * @returns {*}
      */
-    static CompileShader(stageType, prefix, shaderCode, path)
+    static CompileShader(stageType, prefix, shaderCode, path, skipError)
     {
         const
             {ext, gl} = device,
@@ -472,15 +435,14 @@ export class Tw2Shader
 
         if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS))
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2Shader', 'CompileShader'],
-                msg: 'Error compiling shader',
-                path: path,
-                type: 'shader.compile',
-                value: (stageType === 0) ? 'VERTEX' : 'FRAGMENT',
-                data: gl.getShaderInfoLog(shader)
-            });
+            if (!skipError)
+            {
+                throw new Tw2ShaderCompileError({
+                    path: path,
+                    shaderType: stageType === 0 ? 'vertex' : 'fragment',
+                    infoLog: gl.getShaderInfoLog(shader)
+                });
+            }
             return null;
         }
         return shader;
@@ -491,10 +453,11 @@ export class Tw2Shader
      * @param vertexShader
      * @param fragmentShader
      * @param pass
-     * @param {string} path - Shader path
+     * @param {string} path
+     * @param {boolean} [skipError]
      * @returns {*}
      */
-    static CreateProgram(vertexShader, fragmentShader, pass, path)
+    static CreateProgram(vertexShader, fragmentShader, pass, path, skipError)
     {
         const
             gl = device.gl,
@@ -507,14 +470,13 @@ export class Tw2Shader
 
         if (!gl.getProgramParameter(program.program, gl.LINK_STATUS))
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2Shader', 'CreateProgram'],
-                msg: 'Error linking shaders',
-                path: path,
-                type: 'shader.linkstatus',
-                data: gl.getProgramInfoLog(program.program)
-            });
+            if (!skipError)
+            {
+                throw new Tw2ShaderLinkError({
+                    path: path,
+                    infoLog: gl.getProgramInfoLog(program.program)
+                });
+            }
             return null;
         }
 

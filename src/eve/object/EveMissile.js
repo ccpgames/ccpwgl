@@ -251,8 +251,6 @@ export class EveMissile
         this.boundingSphereRadius = 0;
         this.warheadExplosionCallback = null;
         this.missileFinishedCallback = null;
-
-        EveMissile.init();
     }
 
     /**

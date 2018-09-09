@@ -1,5 +1,6 @@
-import {resMan, device, logger} from '../../global';
+import {resMan, device} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
+import {HTTPRequestError, Tw2ResourceExtensionUnregisteredError} from '../Tw2Error';
 
 /**
  * Tw2TextureRes
@@ -33,15 +34,15 @@ export class Tw2TextureRes extends Tw2Resource
 
     /**
      * Prepares the resource
-     * @param {string} text
+     * @param {string} extension
      */
-    Prepare(text)
+    Prepare(extension)
     {
         const
             gl = device.gl,
             format = this.images[0]['ccpGLFormat'] ? this.images[0]['ccpGLFormat'] : gl.RGBA;
 
-        switch (text)
+        switch (extension)
         {
             case 'cube':
                 this.texture = gl.createTexture();
@@ -59,12 +60,9 @@ export class Tw2TextureRes extends Tw2Resource
                 this.width = canvas.width;
                 this.height = canvas.height;
                 this.hasMipMaps = true;
-                this._isAttached = false;
-                this.PrepareFinished(true);
                 break;
 
-            //case 'png':
-            default:
+            case 'png':
                 this.texture = gl.createTexture();
                 gl.bindTexture(gl.TEXTURE_2D, this.texture);
                 gl.texImage2D(gl.TEXTURE_2D, 0, format, format, gl.UNSIGNED_BYTE, this.images[0]);
@@ -73,36 +71,41 @@ export class Tw2TextureRes extends Tw2Resource
                 gl.bindTexture(gl.TEXTURE_2D, null);
                 this.width = this.images[0].width;
                 this.height = this.images[0].height;
-                this._isAttached = false;
-                this.PrepareFinished(true);
                 break;
+
+            default:
+                throw new Tw2ResourceExtensionUnregisteredError({path: this.path, extension});
         }
 
         this.images = null;
+        this._isAttached = false;
+        this.OnPrepared();
     }
 
     /**
      * An optional method resources can have that allows them to take over loading their resources
      * @param {string} path - texture resource path
+     * @param {string} extension - the texture extension
      * @returns {boolean} returns true to tell the resMan not to handle http requests
      */
-    DoCustomLoad(path)
+    DoCustomLoad(path, extension)
     {
-        const ext = resMan.constructor.GetPathExt(path);
-        switch (ext)
+        switch (extension)
         {
             case 'cube':
                 this.isCube = true;
                 path = path.substr(0, path.length - 5) + '.png';
                 break;
 
-            //case 'png':
-            default:
+            case 'png':
                 this.isCube = false;
                 break;
+
+            default:
+                throw new Tw2ResourceExtensionUnregisteredError({path, extension});
         }
 
-        this.LoadStarted();
+        this.OnRequested();
         resMan._pendingLoads++;
 
         this.images = [];
@@ -115,16 +118,8 @@ export class Tw2TextureRes extends Tw2Resource
         this.images[0].onerror = () =>
         {
             resMan._pendingLoads--;
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: path
-            });
-            this.LoadFinished(false);
-            this.PrepareFinished(false);
             this.images = null;
+            this.OnError(new HTTPRequestError({path}));
         };
 
         /**
@@ -133,8 +128,8 @@ export class Tw2TextureRes extends Tw2Resource
         this.images[0].onload = () =>
         {
             resMan._pendingLoads--;
-            resMan._prepareQueue.push([this, ext, null]);
-            this.LoadFinished(true);
+            resMan._prepareQueue.push([this, extension, null]);
+            this.OnLoaded();
         };
 
         this.images[0].src = Tw2TextureRes.AddMipLevelSkipCount(path);
@@ -166,8 +161,8 @@ export class Tw2TextureRes extends Tw2Resource
     {
         this.texture = texture;
         this._isAttached = true;
-        this.LoadFinished(true);
-        this.PrepareFinished(true);
+        this.OnLoaded({hide: true, isAttachment: true});
+        this.OnPrepared({hide: true, isAttachment: true});
     }
 
     /**

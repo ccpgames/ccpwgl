@@ -3,7 +3,7 @@ var ccpwgl = (function(ccpwgl_int)
     var ccpwgl = {};
     var vec3 = ccpwgl_int.math.vec3;
     var mat4 = ccpwgl_int.math.mat4;
-    
+
     /**
      * Values for textureQuality option that can be passed to ccpwgl.initialize.
      */
@@ -258,13 +258,14 @@ var ccpwgl = (function(ccpwgl_int)
             }
             return defaultValue;
         }
+
         var d = ccpwgl_int.device;
         d.mipLevelSkipCount = getOption(params, 'textureQuality', 0);
         d.shaderModel = getOption(params, 'shaderQuality', 'hi');
         d.enableAnisotropicFiltering = getOption(params, 'anisotropicFilter', true);
 
         var glParams = getOption(params, 'glParams',
-        {});
+            {});
         glParams.webgl2 = !params || params.webgl2 === undefined ? false : params.webgl2;
 
         var webglVersion = d.CreateDevice(canvas, glParams);
@@ -464,15 +465,6 @@ var ccpwgl = (function(ccpwgl_int)
         }
 
         var self = this;
-        if (resPath.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/))
-        {
-            this.dna = resPath;
-            sof.BuildFromDNA(resPath, onObjectLoaded);
-        }
-        else
-        {
-            ccpwgl_int.resMan.GetObject(resPath, onObjectLoaded);
-        }
 
         /**
          * Check if object .red file is still loading.
@@ -594,6 +586,16 @@ var ccpwgl = (function(ccpwgl_int)
         {
             this.overlays.splice(0, this.overlays.length);
             rebuildOverlays();
+        }
+
+        if (resPath.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/))
+        {
+            this.dna = resPath;
+            sof.BuildFromDNA(resPath, onObjectLoaded);
+        }
+        else
+        {
+            ccpwgl_int.resMan.GetObject(resPath, onObjectLoaded);
         }
     }
 
@@ -1241,6 +1243,7 @@ var ccpwgl = (function(ccpwgl_int)
                 };
 
             }
+
             if (this.siegeState != state)
             {
                 this.siegeState = state;
@@ -1357,6 +1360,7 @@ var ccpwgl = (function(ccpwgl_int)
             }
             return 0;
         });
+
         for (i = 0; i < resPath.length; ++i)
         {
             if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/))
@@ -1404,15 +1408,11 @@ var ccpwgl = (function(ccpwgl_int)
         this.wrappedObjects = [new ccpwgl_int.EvePlanet()];
 
         var self = this;
-        this.wrappedObjects[0].Create(options, function()
-        {
-           if (onLoad) onLoad.call(self);
-        });
-        
-        
+
+
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
-        
+
         /**
          * Check if planet's resources are loaded and the resulting height map is generated.
          *
@@ -1460,6 +1460,11 @@ var ccpwgl = (function(ccpwgl_int)
             out = out || mat4.create();
             return mat4.clone(this.wrappedObjects[0].highDetail.localTransform);
         };
+
+        this.wrappedObjects[0].Create(options, function()
+        {
+            if (onLoad) onLoad.call(self);
+        });
     }
 
     /**
@@ -1659,14 +1664,14 @@ var ccpwgl = (function(ccpwgl_int)
             }
             return object;
         };
-        
+
         /**
          * Creates a planet.
          *
          * @param {number} itemID           - the item id is used for randomization
          * @param {string} planetPath       - .red file for a planet, or planet template
          * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
-         * @param {string} heightMap1       - planet's first height map    
+         * @param {string} heightMap1       - planet's first height map
          * @param {string} heightMap2       - planet's second height map
          * @param {function} [onLoad]       - an optioanl callback which is fired when the planet has loaded
          * @returns {ccpwgl.Planet} A newly created planet instance.
@@ -1680,7 +1685,7 @@ var ccpwgl = (function(ccpwgl_int)
                 heightMap1: heightMap1,
                 heightMap2: heightMap2
             }, onLoad);
-            
+
             this.objects.push(object);
             rebuildSceneObjects(this);
             return object;
@@ -1905,10 +1910,10 @@ var ccpwgl = (function(ccpwgl_int)
         this.additionalRotationY = 0;
 
         var self = this;
-        element.addEventListener('mousedown', function (event) { self._DragStart(event); }, false);
-        element.addEventListener('touchstart', function (event) { self._DragStart(event); }, true);
-        window.addEventListener('DOMMouseScroll', function (e) { return self._WheelHandler(e, element); }, false);
-        window.addEventListener('mousewheel', function (e) { return self._WheelHandler(e, element); }, false);
+        element.addEventListener('mousedown', function(event) { self._DragStart(event); }, false);
+        element.addEventListener('touchstart', function(event) { self._DragStart(event); }, true);
+        window.addEventListener('DOMMouseScroll', function(e) { return self._WheelHandler(e, element); }, false);
+        window.addEventListener('mousewheel', function(e) { return self._WheelHandler(e, element); }, false);
 
         /**
          * Sets the cameras poi to an object, and adjusts the distance to suit
@@ -1916,15 +1921,17 @@ var ccpwgl = (function(ccpwgl_int)
          * @param {SpaceObject|Ship|Planet} obj
          * @param {number} [distanceMultiplier]
          * @param {number} [minDistance]
+         * @param {boolean} [autoPlane] - Tries to fix near plane based on object's size
          * @returns {boolean}
          */
-        this.focus = function (obj, distanceMultiplier, minDistance)
+        this.focus = function(obj, distanceMultiplier, minDistance, autoPlane)
         {
             try
             {
+                const radius = obj.getBoundingSphere()[1];
                 mat4.getTranslation(this.poi, obj.getTransform());
-                this.distance = Math.max(obj.getBoundingSphere()[1] * (distanceMultiplier || 1), (minDistance || 0));
-                console.log(this.distance);
+                this.distance = Math.max(radius * (distanceMultiplier || 1.5), (minDistance || 0));
+                if (autoPlane) this.nearPlane = Math.max(radius / 100, 0.1);
                 return true;
             }
             catch (err)
@@ -1937,7 +1944,7 @@ var ccpwgl = (function(ccpwgl_int)
          * Gets the camera's view matrix
          * @returns {mat4}
          */
-        this.getView = function ()
+        this.getView = function()
         {
             var view = mat4.create();
             mat4.identity(view);
@@ -1954,7 +1961,7 @@ var ccpwgl = (function(ccpwgl_int)
          * @param {number} aspect - The canvas's aspect ratio
          * @returns {mat4}
          */
-        this.getProjection = function (aspect)
+        this.getProjection = function(aspect)
         {
             var fH = Math.tan(this.fov / 360 * Math.PI) * this.nearPlane;
             var fW = fH * aspect;
@@ -1965,7 +1972,7 @@ var ccpwgl = (function(ccpwgl_int)
          * Per frame update
          * @param {number} dt - delta time
          */
-        this.update = function (dt)
+        this.update = function(dt)
         {
             this.rotationX += this._rotationSpeedX * dt;
             this._rotationSpeedX *= 0.9;
@@ -2000,7 +2007,7 @@ var ccpwgl = (function(ccpwgl_int)
          * @param event
          * @private
          */
-        this._DragStart = function (event)
+        this._DragStart = function(event)
         {
             if (!event.touches && !this.onShift && event.button !== 0)
             {
@@ -2014,12 +2021,12 @@ var ccpwgl = (function(ccpwgl_int)
             var self = this;
             if (this._moveEvent === null)
             {
-                document.addEventListener('mousemove', this._moveEvent = function (event) { self._DragMove(event); }, true);
+                document.addEventListener('mousemove', this._moveEvent = function(event) { self._DragMove(event); }, true);
                 document.addEventListener('touchmove', this._moveEvent, true);
             }
             if (this._upEvent === null)
             {
-                document.addEventListener('mouseup', this._upEvent = function (event) { self._DragStop(event); }, true);
+                document.addEventListener('mouseup', this._upEvent = function(event) { self._DragStop(event); }, true);
                 document.addEventListener('touchend', this._upEvent, true);
             }
             event.preventDefault();
@@ -2035,19 +2042,19 @@ var ccpwgl = (function(ccpwgl_int)
             this._lastRotationX = this.rotationX;
             this._rotationSpeedY = 0;
             this._lastRotationY = this.rotationY;
-            this._measureRotation = setTimeout(function () { self._MeasureRotation(); }, 500);
+            this._measureRotation = setTimeout(function() { self._MeasureRotation(); }, 500);
         };
 
         /**
          * Measures rotation
          * @private
          */
-        this._MeasureRotation = function ()
+        this._MeasureRotation = function()
         {
             var self = this;
             this._lastRotationX = this.rotationX;
             this._lastRotationY = this.rotationY;
-            this._measureRotation = setTimeout(function () { self._MeasureRotation(); }, 500);
+            this._measureRotation = setTimeout(function() { self._MeasureRotation(); }, 500);
         };
 
         /**
@@ -2055,7 +2062,7 @@ var ccpwgl = (function(ccpwgl_int)
          * @param event
          * @private
          */
-        this._DragMove = function (event)
+        this._DragMove = function(event)
         {
             var device = ccpwgl_int.device;
 
@@ -2134,7 +2141,7 @@ var ccpwgl = (function(ccpwgl_int)
          * @param event
          * @private
          */
-        this._DragStop = function (event)
+        this._DragStop = function(event)
         {
             clearTimeout(this._measureRotation);
             document.removeEventListener('mousemove', this._moveEvent, true);
@@ -2169,7 +2176,7 @@ var ccpwgl = (function(ccpwgl_int)
          * @returns {boolean}
          * @private
          */
-        this._WheelHandler = function (event, element)
+        this._WheelHandler = function(event, element)
         {
             var delta = 0;
             if (!event) /* For IE. */
@@ -2225,15 +2232,15 @@ var ccpwgl = (function(ccpwgl_int)
         };
     }
 
-     /**
+    /**
      * Creates a camera
      *
      * @param {HTMLCanvasElement|Element} canvas
      * @param {*} [options]
-      *@param {boolean} [setAsCurrent]
+     *@param {boolean} [setAsCurrent]
      * @returns {Camera}
      */
-    ccpwgl.createCamera = function (canvas, options, setAsCurrent)
+    ccpwgl.createCamera = function(canvas, options, setAsCurrent)
     {
         function get(src, srcAttr, defaultValue)
         {

@@ -13,13 +13,14 @@
 
         var camera, scene, ship;
 
-        $(document).ready(function ()
+        $(document).ready(function()
         {
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
+            camera = ccpwgl.createCamera($canvas[0], {distance: 100}, true);
             scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            var lastHull = null;
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
@@ -35,21 +36,36 @@
                 }
                 if (dna.split(':').length > 2)
                 {
-                    ccpwgl.getSofHullConstructor(dna, function (constructor)
+                    ccpwgl.getSofHullConstructor(dna, function(constructor)
                     {
                         if (constructor)
                         {
-                            var obj = scene[constructor](dna,  function(){ camera.focus(this, 2, 200 )});
-                            if ('setBoosterStrength' in obj)
+                            ship = scene[constructor](dna, function()
                             {
-                                obj.setBoosterStrength($('#booster-intensity').val() / 50);
+                                var hull = dna.split(':')[0];
+                                if (lastHull !== hull)
+                                {
+                                    camera.focus(this, 3, 50, true);
+                                    lastHull = hull;
+                                }
+                            });
+                            if ('setBoosterStrength' in ship)
+                            {
+                                ship.setBoosterStrength($('#booster-intensity').val() / 50);
                             }
                         }
                     });
                 }
                 else
                 {
-                    ship = scene.loadObject(dna, function(){ camera.focus(this, 2, 200 )});
+                    ship = scene.loadObject(dna, function()
+                    {
+                        if (lastHull !== dna)
+                        {
+                            camera.focus(this, 3, 50, true);
+                            lastHull = dna;
+                        }
+                    });
                 }
             }
 
@@ -57,7 +73,7 @@
                 $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/typeids.json')),
                 $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/graphicids.json')),
                 $.getJSON(ccpwgl_int.resMan.BuildUrl('res:/staticdata/categories.json'))
-            ).done(function (v1, v2, v3)
+            ).done(function(v1, v2, v3)
             {
                 var typeids = v1[0];
                 var graphicids = v2[0];
@@ -69,7 +85,7 @@
 
                 function typeSelected(type)
                 {
-                    return function (evt)
+                    return function(evt)
                     {
                         $types.find('a').removeClass('selected');
                         $(evt.target).addClass('selected');
@@ -84,12 +100,12 @@
 
                 function groupSelected(group)
                 {
-                    return function (evt)
+                    return function(evt)
                     {
                         $groups.find('a').removeClass('selected');
                         $(evt.target).addClass('selected');
                         $types.empty();
-                        $.each(typeids, function (id, type)
+                        $.each(typeids, function(id, type)
                         {
                             if (type.group == group)
                             {
@@ -101,49 +117,49 @@
 
                 function categorySelected(category)
                 {
-                    return function (evt)
+                    return function(evt)
                     {
                         $categories.find('a').removeClass('selected');
                         $(evt.target).addClass('selected');
                         $groups.empty();
                         $types.empty();
-                        $.each(categories[category].groups, function (id, group)
+                        $.each(categories[category].groups, function(id, group)
                         {
                             $groups.append($('<li>').append($('<a>').text(group || 'N/A').click(groupSelected(id))));
                         })
                     }
                 }
 
-                $.each(categories, function (id, category)
+                $.each(categories, function(id, category)
                 {
                     $categories.append($('<li>').append($('<a>').text(category.name || 'N/A').click(categorySelected(id))));
                 })
             });
 
 
-            $('#create').click(function ()
+            $('#create').click(function()
             {
                 var dna = $('#dna').val();
                 loadDna(dna);
                 history.pushState({'dna': dna}, 'SOF ' + dna);
             });
 
-            $('#normal').click(function ()
+            $('#normal').click(function()
             {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
             });
 
-            $('#siege').click(function ()
+            $('#siege').click(function()
             {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
             });
 
-            $('#booster-intensity').change(function ()
+            $('#booster-intensity').change(function()
             {
                 scene.getObject(0).setBoosterStrength($(this).val() / 50)
             });
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

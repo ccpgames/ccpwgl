@@ -1,9 +1,9 @@
 import {vec3, vec4, mat4} from '../math';
 import {store} from './Tw2Store';
-import {logger} from './Tw2Logger';
 import {resMan} from './Tw2ResMan';
 import {Tw2Effect} from '../../core/mesh/Tw2Effect';
 import {Tw2VertexElement, Tw2VertexDeclaration} from '../../core/vertex';
+import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 
 const WebGLDebugUtil = require('webgl-debug');
 
@@ -62,10 +62,12 @@ const WebGLDebugUtil = require('webgl-debug');
  * @property {?Function} _onResize                 - An optional function which is called when the canvas resizes
  * @class
  */
-export class Tw2Device
+export class Tw2Device extends Tw2EventEmitter
 {
     constructor()
     {
+        super();
+        this.name = 'Device';
         this.gl = null;
         this.glVersion = Tw2Device.WebglVersion.NONE;
         this.vrDisplay = null;
@@ -244,10 +246,13 @@ export class Tw2Device
             this.gl = this.debugUtils.makeDebugContext(gl);
         }
 
-        logger.log('webgl', {
-            log: 'warn',
-            type: 'Context created',
-            value: this.glVersion
+        this.emit('created', {
+            gl, params, canvas,
+            log: {
+                type: 'debug',
+                title: this.name,
+                message: `Webgl${this.glVersion} context created`,
+            }
         });
 
         // Optional extensions
@@ -381,7 +386,8 @@ export class Tw2Device
      */
     Resize()
     {
-        if (this.vrDisplay && this.vrDisplay['isPresenting'])
+        const vrEnabled = this.vrDisplay && this.vrDisplay['isPresenting'];
+        if (vrEnabled)
         {
             const
                 leftEye = this.vrDisplay['getEyeParameters']('left'),
@@ -411,6 +417,13 @@ export class Tw2Device
             this.viewportWidth,
             this.viewportHeight
         ]);
+
+        this.emit('resized', {
+            width: this.viewportWidth,
+            height: this.viewportHeight,
+            aspect: this.viewportAspect,
+            source: vrEnabled ? this.vrDisplay : this.canvas
+        });
     }
 
     /**
@@ -437,6 +450,13 @@ export class Tw2Device
             this.frameCounter,
             previousTime
         ]);
+
+        this.emit('tick', {
+            dt: this.dt,
+            previous: previousTime,
+            current: this.currentTime,
+            frame: this.frameCounter
+        });
 
         resMan.PrepareLoop(this.dt);
 

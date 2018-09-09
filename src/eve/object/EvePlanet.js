@@ -47,9 +47,9 @@ export class EvePlanet extends EveObject
      * @param {string} options.heightMap2       - the planet's second height map
      * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
      */
-    Create(options={}, onLoaded)
+    Create(options = {}, onLoaded)
     {
-        const {itemID=0, planetPath, atmospherePath, heightMap1, heightMap2} = options;
+        const {itemID = 0, planetPath, atmospherePath, heightMap1, heightMap2} = options;
 
         this.itemID = itemID;
         this.heightMapResPath1 = heightMap1;

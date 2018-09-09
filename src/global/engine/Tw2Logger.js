@@ -2,21 +2,6 @@ import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 import {assignIfExists} from '../util';
 
 /**
- * Event log
- * @typedef {*} eventLog
- * @property {string} log       - Desired console output type
- * @property {string} msg       - A message to log
- * @property {string} path      - An optional resource path
- * @property {number} time      - An optional time
- * @property {string} type      - The type of log
- * @property {*} value          - An optional value
- * @property {*} data           - An optional values object
- * @property {Error} err        - An optional caught error
- * @property {boolean} hide     - True to skip console output
- * @property {boolean} logged   - Identifies if the log has been logged
- */
-
-/**
  * Handles basic event logging
  *
  * @param {string} [name='']          - The logger's name
@@ -42,7 +27,7 @@ class Tw2Logger extends Tw2EventEmitter
         this.visible = {};
         this.visible.log = true;
         this.visible.info = true;
-        this.visible.debug = true;
+        this.visible.debug = false;
         this.visible.warn = true;
         this.visible.error = true;
         this.maxLogs = 100;
@@ -51,47 +36,34 @@ class Tw2Logger extends Tw2EventEmitter
 
     /**
      * Adds an event log and outputs it to the console
-     * @param {string} eventName
-     * @param {eventLog} log
-     * @returns {eventLog} log
+     * @param {*} log
+     * @returns {*} log
      */
-    log(eventName, log)
+    log(log)
     {
-        if (log.logged) return log;
-
-        log.log = Tw2Logger.Type[log.log ? log.log.toUpperCase() : 'LOG'] || 'log';
-
-        if (!log.hide && this.display && this.visible[log.log])
+        if (log.logged)
         {
-            let header = `${this.name}: {${eventName}}`;
-            let body = log.msg || '';
+            return log;
+        }
 
-            if (log.path)
-            {
-                body += ` '${log.path}'`;
-                if ('time' in log) body += ` in ${log.time.toFixed(3)} secs`;
-            }
+        // Normalize log
+        log.type = Tw2Logger.Type[log.type ? log.type.toUpperCase() : 'LOG'] || 'log';
+        log.message = log.message || '';
+        log.title = log.title || '';
 
-            if (log.value !== undefined || log.type)
-            {
-                body += ' (';
-                if (log.type) body += log.type;
-                if (log.type && log.value !== undefined) body += ':';
-                if (log.value !== undefined) body += log.value;
-                body += ')';
-            }
+        if (!log.hide && this.display && this.visible[log.type])
+        {
+            let header = `${this.name} ${log.title}:`;
 
-            if ('data' in log || 'err' in log)
+            if (log.err)
             {
-                console.group(header);
-                console[log.log](body);
-                if (log.data) console.debug(log.data);
+                console.group(header, log.message);
                 if (log.err) console.debug(log.err.stack || log.err.toString());
                 console.groupEnd();
             }
             else
             {
-                console[log.log](header, body);
+                console[log.type](header, log.message);
             }
         }
 
@@ -108,7 +80,7 @@ class Tw2Logger extends Tw2EventEmitter
             this._logs = [];
         }
 
-        this.emit('log', log);
+        this.emit(log.type, log);
         log.logged = true;
         return log;
     }
@@ -136,13 +108,11 @@ class Tw2Logger extends Tw2EventEmitter
 
 /**
  * Console outputs
- * @type {{THROW: string, ERROR: string, WARNING: string, WARN: string, INFO: string, LOG: string, DEBUG: string}}
+ * @type {*}
  */
 Tw2Logger.Type = {
-    THROW: 'error',
     ERROR: 'error',
     WARNING: 'warn',
-    WARN: 'warn',
     INFO: 'info',
     LOG: 'log',
     DEBUG: 'debug'

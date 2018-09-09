@@ -64,6 +64,16 @@ export function isDescriptor(a)
 }
 
 /**
+ * Checks if a value is an error
+ * @param {*} a
+ * @returns {boolean}
+ */
+export function isError(a)
+{
+    return !!(a && a instanceof Error || a.constructor.isError);
+}
+
+/**
  * Checks if a value is a number
  * @param {*} a
  * @returns {boolean}

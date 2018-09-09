@@ -1,4 +1,4 @@
-import {device} from '../core';
+import {device} from '../global';
 import {Tw2VertexElement} from '../core';
 import {Tw2VertexDeclaration} from '../core';
 

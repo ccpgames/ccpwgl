@@ -1,5 +1,6 @@
-import {logger, store} from '../../global';
+import {store} from '../../global';
 import {Tw2BinaryReader} from './Tw2BinaryReader';
+import {Tw2FeatureNotImplementedError, Tw2XMLBinaryError, Tw2XMLObjectTypeUndefinedError} from '../Tw2Error';
 
 /**
  * Tw2ObjectReader
@@ -36,14 +37,7 @@ export class Tw2ObjectReader
     {
         if (!Tw2ObjectReader.IsValidXML(this.xmlNode))
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2ObjectReader', 'constructor'],
-                msg: 'Invalid Binary',
-                type: 'redbin.invalid',
-                data: this.xmlNode
-            });
-            return;
+            throw new Tw2XMLBinaryError({message: 'Invalid binary, expected binred'});
         }
 
         this._reader = new Tw2BinaryReader(new Uint8Array(this.xmlNode));
@@ -93,56 +87,39 @@ export class Tw2ObjectReader
             return data;
         }
 
-        let object;
-
-        const Constructor = store.GetConstructor(data.type);
+        let Constructor = store.GetConstructor(data.type);
         if (!Constructor)
         {
-            logger.log('res.error', {
-                log: 'throw',
-                src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
-                msg: 'Object with undefined type',
-                type: 'xml.type',
-                value: data.type
-            });
-
-            throw new Error('YAML: object with undefined type \'' + data.type + '\'');
+            if (Tw2ObjectReader.DEBUG_ENABLED)
+            {
+                Constructor = Object;
+            }
+            else
+            {
+                throw new Tw2XMLObjectTypeUndefinedError({type: data.type});
+            }
         }
 
-        try
-        {
-            object = new Constructor();
-        }
-        catch (e)
-        {
-            logger.log('res.error', {
-                log: 'throw',
-                src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
-                msg: 'Error instantiating constructor',
-                type: 'xml.type.constructor',
-                value: data.type,
-                err: e
-            });
-
-            throw e;
-        }
-
+        const object = new Constructor();
         for (let k in data)
         {
             if (data.hasOwnProperty(k) && k !== 'type')
             {
-                if (object[k] === undefined && this.DEBUG_ENABLED)
+                if (data[k].constructor === Object)
                 {
-                    object[k] = null;
-                }
-
-                if (object[k] && data[k].constructor === Object)
-                {
-                    for (let key in data[k])
+                    if (this.DEBUG_ENABLED)
                     {
-                        if (data[k].hasOwnProperty(key))
+                        object[k] = object[k] || {};
+                    }
+
+                    if (object[k])
+                    {
+                        for (let key in data[k])
                         {
-                            object[k][key] = data[k][key];
+                            if (data[k].hasOwnProperty(key))
+                            {
+                                object[k][key] = data[k][key];
+                            }
                         }
                     }
                 }
@@ -235,7 +212,7 @@ export class Tw2ObjectReader
                         return objReader._reader.ReadFloat32();
 
                     default:
-                        throw Error('float64 values are not yet supported');
+                        throw new Tw2FeatureNotImplementedError({value: 'Float64'});
                 }
 
             case this.ElementRawType.STRING:
@@ -323,6 +300,12 @@ export class Tw2ObjectReader
         return result;
     }
 }
+
+/**
+ * Enables debug mode
+ * @type {boolean}
+ */
+Tw2ObjectReader.DEBUG_ENABLED = false;
 
 /**
  * ID Bit

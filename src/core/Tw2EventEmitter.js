@@ -19,16 +19,16 @@ export class Tw2EventEmitter
      */
     emit(eventName, e = {})
     {
+        // Short cut to creating a log output
+        if (e.log && !e.log.logged)
+        {
+            this.log(e.log);
+        }
+
         if (PRIVATE.has(this))
         {
             const events = PRIVATE.get(this);
             eventName = eventName.toLowerCase();
-
-            // Short cut to creating a log output
-            if (e.log && !e.log.logged)
-            {
-                e.log = this.log(eventName, e.log);
-            }
 
             if (eventName in events)
             {
@@ -160,15 +160,14 @@ export class Tw2EventEmitter
 
     /**
      * Logs an event log
-     * @param {string} eventName
-     * @param {eventLog} eventLog
-     * @returns {eventLog}
+     * @param {*} eventLog
+     * @returns {*}
      */
-    log(eventName, eventLog)
+    log(eventLog)
     {
         if (this.constructor.logger)
         {
-            this.constructor.logger.log(eventName, eventLog);
+            this.constructor.logger.log(eventLog);
         }
         return eventLog;
     }

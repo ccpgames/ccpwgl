@@ -1,4 +1,4 @@
-import {isFunction} from '../global/util';
+import {isFunction, template} from '../global/util';
 
 const HAS_CAPTURE_STACK_TRACE = isFunction(Error['captureStackTrace']);
 
@@ -13,18 +13,22 @@ export class Tw2Error extends Error
     {
         super();
 
+        let message = defaultMessage;
         if (typeof data === 'string')
         {
-            data = {message: data};
+            message = data;
+            data = {};
         }
-        else
+        else if (data.message)
         {
-            data.message = data.message || defaultMessage;
+            message = data.message;
+            delete data.message;
         }
 
-        this.message = data.message;
+        this.message = template(message, data);
         this.name = this.constructor.name;
         this.data = data;
+        this.data.err = this;
 
         if (HAS_CAPTURE_STACK_TRACE)
         {
@@ -32,7 +36,7 @@ export class Tw2Error extends Error
         }
         else
         {
-            this.stack = (new Error(data.message)).stack;
+            this.stack = (new Error(this.message)).stack;
         }
     }
 }
@@ -87,7 +91,7 @@ export class HTTPStatusError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Communication status error while loading resource');
+        super(data, 'Communication status error while loading resource (%status%)');
     }
 }
 
@@ -123,7 +127,7 @@ export class Tw2XMLObjectTypeUndefinedError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'XML Object with undefined type');
+        super(data, 'XML Object with undefined type (%type%)');
     }
 }
 
@@ -183,7 +187,7 @@ export class Tw2GeometryFileTypeError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Invalid geometry file type');
+        super(data, 'Invalid geometry file type (%fileType%)');
     }
 }
 
@@ -195,7 +199,7 @@ export class Tw2ResourcePrefixUnregisteredError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Unregistered resource prefix');
+        super(data, 'Unregistered resource prefix (%prefix%)');
     }
 }
 
@@ -219,7 +223,7 @@ export class Tw2ResourceExtensionUnregisteredError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Unregistered resource extension');
+        super(data, 'Unregistered resource extension (%extension%)');
     }
 }
 
@@ -243,7 +247,7 @@ export class Tw2ShaderVersionError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Invalid version of effect file');
+        super(data, 'Invalid version of effect file (%version%)');
     }
 }
 
@@ -279,7 +283,7 @@ export class Tw2ShaderCompileError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Error compiling shader');
+        super(data, 'Error compiling %shaderType% shader');
     }
 }
 
@@ -303,7 +307,7 @@ export class Tw2DeclarationValueTypeError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Invalid declaration value type');
+        super(data, 'Invalid declaration value type (%valueType%)');
     }
 }
 
