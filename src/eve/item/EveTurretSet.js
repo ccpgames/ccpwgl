@@ -7,7 +7,6 @@ import {
     Tw2ForwardingRenderBatch
 } from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
-import {Tw2RawData} from '../../core';
 
 
 /**
@@ -129,26 +128,8 @@ export class EveTurretSet extends EveObjectSet
         this._recheckTimeLeft = 0;
         this._currentCyclingFiresPos = 0;
 
-        this._perObjectDataActive = new Tw2PerObjectData();
-        this._perObjectDataActive.perObjectVSData = new Tw2RawData();
-        this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
-        this._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
-        this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-        this._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        this._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        this._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        this._perObjectDataActive.perObjectVSData.Create();
-
-        this._perObjectDataInactive = new Tw2PerObjectData();
-        this._perObjectDataInactive.perObjectVSData = new Tw2RawData();
-        this._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
-        this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        this._perObjectDataInactive.perObjectVSData.Create();
-
+        this._perObjectDataActive = new Tw2PerObjectData(EveTurretSet.perObjectData);
+        this._perObjectDataInactive = new Tw2PerObjectData(EveTurretSet.perObjectData);
         this._locatorRebuildPending = true;
     }
 
@@ -827,6 +808,64 @@ export class EveTurretSet extends EveObjectSet
             turretSet.fireCallbackPending = true;
         }
     }
+
+    /**
+     * The eve turret set's item constructor
+     * @type {EveTurretSetItem}
+     */
+    static Item = EveTurretSetItem;
+
+    /**
+     * Turret states
+     * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
+     */
+    static State = {
+        INACTIVE: 0,
+        IDLE: 1,
+        FIRING: 2,
+        PACKING: 2,
+        UNPACKING: 4
+    };
+
+    /**
+     * World turret bone names
+     * @type {string[]}
+     */
+    static worldNames = [
+        'turretWorld0',
+        'turretWorld1',
+        'turretWorld2'
+    ];
+
+    /**
+     * Bone Skeleton Names
+     * @type {string[]}
+     */
+    static positionBoneSkeletonNames = [
+        'Pos_Fire01',
+        'Pos_Fire02',
+        'Pos_Fire03',
+        'Pos_Fire04',
+        'Pos_Fire05',
+        'Pos_Fire06',
+        'Pos_Fire07',
+        'Pos_Fire08'
+    ];
+
+    /**
+     * Per object data
+     * @type {{VSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['baseCutoffData', 4],
+            ['turretSetData', 4],
+            ['shipMatrix', 16],
+            ['turretTranslation', 4 * 24],
+            ['turretRotation', 4 * 24],
+            ['turretPoseTransAndRot', 2 * 4 * 72]
+        ]
+    };
 }
 
 /**
@@ -872,45 +911,3 @@ EveTurretSet.mat3x4toquat = (function()
     };
 })();
 
-/**
- * The eve turret set's item constructor
- * @type {EveTurretSetItem}
- */
-EveTurretSet.Item = EveTurretSetItem;
-
-/**
- * Turret states
- * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
- */
-EveTurretSet.State = {
-    INACTIVE: 0,
-    IDLE: 1,
-    FIRING: 2,
-    PACKING: 2,
-    UNPACKING: 4
-};
-
-/**
- * World turret bone names
- * @type {string[]}
- */
-EveTurretSet.worldNames = [
-    'turretWorld0',
-    'turretWorld1',
-    'turretWorld2'
-];
-
-/**
- * Bone Skeleton Names
- * @type {string[]}
- */
-EveTurretSet.positionBoneSkeletonNames = [
-    'Pos_Fire01',
-    'Pos_Fire02',
-    'Pos_Fire03',
-    'Pos_Fire04',
-    'Pos_Fire05',
-    'Pos_Fire06',
-    'Pos_Fire07',
-    'Pos_Fire08'
-];

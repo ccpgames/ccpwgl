@@ -307,7 +307,7 @@ export class Tw2DeclarationValueTypeError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Invalid declaration value type (%valueType%)');
+        super(data, 'Invalid declaration value type (%declaration%:%valueType%)');
     }
 }
 

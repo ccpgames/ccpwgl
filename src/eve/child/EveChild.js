@@ -75,13 +75,25 @@ export class EveChild
     {
 
     }
+
+    /**
+     * Class globals and scratch variables
+     * @type {Object}
+     */
+    static global = {
+        mat4_0: mat4.create(),
+        vec3_0: vec3.create()
+    };
+
+    /**
+     * Per object data
+     * @type {{FFEData: *[]}}
+     */
+    static perObjectData = {
+        FFEData: [
+            ['world', 16],
+            ['worldInverseTranspose', 16]
+        ]
+    };
 }
 
-/**
- * Class globals and scratch variables
- * @type {Object}
- */
-EveChild.global = {
-    mat4_0: mat4.create(),
-    vec3_0: vec3.create()
-};

@@ -1,5 +1,5 @@
 import {vec3, quat, mat4, util, device, store} from '../../global';
-import {Tw2PerObjectData, Tw2RawData, Tw2ForwardingRenderBatch} from '../../core/';
+import {Tw2PerObjectData, Tw2ForwardingRenderBatch} from '../../core/';
 
 /**
  * EveSpaceObjectDecal
@@ -43,22 +43,7 @@ export class EveSpaceObjectDecal
         this.invDecalMatrix = mat4.create();
         this.indexBuffer = [];
         this._indexBuffer = null;
-
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('displayData', 4);
-        this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
-        this._perObjectData.perObjectPSData.Create();
-
-        mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
+        this._perObjectData = new Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
     }
 
     /**
@@ -237,4 +222,22 @@ export class EveSpaceObjectDecal
         this.parentGeometry.meshes[0].areas[0].count = bkCount;
         this.parentGeometry.meshes[0].indexType = bkIndexType;
     }
+
+    /**
+     * Per object data
+     * @type {{VSData: *[], PSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['worldMatrix', 16],
+            ['invWorldMatrix', 16],
+            ['decalMatrix', 16],
+            ['invDecalMatrix', 16],
+            ['parentBoneMatrix', 16, mat4.identity([])]
+        ],
+        PSData: [
+            ['displayData', 4],
+            ['shipData', 4 * 3]
+        ]
+    };
 }

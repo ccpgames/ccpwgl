@@ -1,12 +1,5 @@
 import {vec3, vec4, quat, mat4, util, device} from '../../global';
-import {
-    Tw2Effect,
-    Tw2PerObjectData,
-    Tw2RawData,
-    Tw2VertexElement,
-    Tw2VertexDeclaration,
-    Tw2ForwardingRenderBatch
-} from '../../core';
+import {Tw2Effect, Tw2PerObjectData, Tw2VertexDeclaration, Tw2ForwardingRenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 
@@ -199,30 +192,30 @@ export class EveCurveLineSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
+    /**
+     * Curve line types
+     * @type {{INVALID: number, STRAIGHT: number, SPHERED: number, CURVED: number}}
+     */
+    static Type = {
+        INVALID: 0,
+        STRAIGHT: 1,
+        SPHERED: 2,
+        CURVED: 3
+    };
+
+    /**
+     * Default curved line segmentation
+     * @type {number}
+     */
+    static DEFAULT_CURVED_SEGMENTS = 20;
+
+    /**
+     * Default sphered line segmentation
+     * @type {number}
+     */
+    static DEFAULT_SPHERED_SEGMENTS = 20;
 }
-
-/**
- * Curve line types
- * @type {{INVALID: number, STRAIGHT: number, SPHERED: number, CURVED: number}}
- */
-EveCurveLineSetItem.Type = {
-    INVALID: 0,
-    STRAIGHT: 1,
-    SPHERED: 2,
-    CURVED: 3
-};
-
-/**
- * Default curved line segmentation
- * @type {number}
- */
-EveCurveLineSetItem.DEFAULT_CURVED_SEGMENTS = 20;
-
-/**
- * Default sphered line segmentation
- * @type {number}
- */
-EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS = 20;
 
 
 /**
@@ -272,24 +265,8 @@ export class EveCurveLineSet extends EveObjectSet
         this._vbSize = 0;
         this._vb = null;
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Create();
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectPSData.Create();
-
-        this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 12));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 28));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 3, 44));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 56));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 1, device.gl.FLOAT, 4, 72));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 2, device.gl.FLOAT, 4, 88));
-        this._decl.stride = 4 * this._vertexSize;
-        this._decl.RebuildHash();
+        this._perObjectData = new Tw2PerObjectData(EveCurveLineSet.perObjectData);
+        this._decl = new Tw2VertexDeclaration(EveCurveLineSet.vertexDeclarations, 4 * this._vertexSize);
 
         EveCurveLineSet.init();
     }
@@ -429,7 +406,7 @@ export class EveCurveLineSet extends EveObjectSet
             color1: startColor,
             color2: endColor,
             width: width,
-            numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+            numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGMENTS
         });
     }
 
@@ -455,7 +432,7 @@ export class EveCurveLineSet extends EveObjectSet
             color1: startColor,
             color2: endColor,
             width: width,
-            numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+            numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGMENTS
         });
     }
 
@@ -866,15 +843,39 @@ export class EveCurveLineSet extends EveObjectSet
             };
         }
     }
+
+    /**
+     * Line set item constructor
+     * @type {EveCurveLineSetItem}
+     */
+    static Item = EveCurveLineSetItem;
+
+    /**
+     * Class global variables and scratch
+     */
+    static global = null;
+
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        VSData: [['WorldMat', 16]],
+        PSData: [['WorldMat', 16]]
+    };
+
+    /**
+     * Vertex declarations
+     * @type {*[]}
+     */
+    static vertexDeclarations = [
+        ['POSITION', 0, 3],
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 3],
+        ['COLOR', 0, 4],
+        ['COLOR', 1, 4],
+        ['COLOR', 2, 4]
+    ];
 }
 
-/**
- * Class global variables and scratch
- */
-EveCurveLineSet.global = null;
-
-/**
- * Line set item constructor
- * @type {EveCurveLineSetItem}
- */
-EveCurveLineSet.Item = EveCurveLineSetItem;

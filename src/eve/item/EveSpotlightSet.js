@@ -1,5 +1,5 @@
 import {vec3, vec4, mat4, util, device} from '../../global';
-import {Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
+import {Tw2VertexDeclaration, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -104,16 +104,7 @@ export class EveSpotlightSet extends EveObjectSet
         this._coneVertexBuffer = null;
         this._spriteVertexBuffer = null;
         this._indexBuffer = null;
-
-        this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 16));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 32));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 4, 48));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 3, 64));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 3, 76));
-        this._decl.RebuildHash();
-
+        this._decl = new Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations);
     }
 
     /**
@@ -393,12 +384,27 @@ export class EveSpotlightSet extends EveObjectSet
         }
         return true;
     }
+
+    /**
+     * Spotlight set item constructor
+     * @type {EveSpotlightSetItem}
+     */
+    static Item = EveSpotlightSetItem;
+
+    /**
+     * Vertex declarations
+     * @type {*[]}
+     */
+    static vertexDeclarations = [
+        ['COLOR', 0, 4],
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 4],
+        ['TEXCOORD', 3, 3],
+        ['TEXCOORD', 4, 3]
+    ];
 }
 
-/**
- * Spotlight set item constructor
- * @type {EveSpotlightSetItem}
- */
-EveSpotlightSet.Item = EveSpotlightSetItem;
+
 
 

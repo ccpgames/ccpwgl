@@ -228,8 +228,9 @@ export class Tw2VertexDeclaration
     /**
      * Sets vertex declarations from an array of arrays, or an array of objects
      * @param {Array<Array>|Array<Object>} declarations
+     * @param {number} [stride]
      */
-    DeclareFromObject(declarations)
+    DeclareFromObject(declarations, stride)
     {
         this.elements.splice(0, this.elements.length);
         let currentOffset = 0;
@@ -278,6 +279,11 @@ export class Tw2VertexDeclaration
 
             this.elements.push(new Tw2VertexElement(usage, usageIndex, type, elements, offset));
             currentOffset += elements * 4;
+        }
+
+        if (stride !== undefined)
+        {
+            this.stride = stride;
         }
 
         this.RebuildHash();

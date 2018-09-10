@@ -1,5 +1,5 @@
 import {vec3, vec4, mat4, util} from '../../global';
-import {Tw2AnimationController, Tw2PerObjectData, Tw2RawData} from '../../core';
+import {Tw2AnimationController, Tw2PerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -81,39 +81,7 @@ export class EveSpaceObject extends EveObject
         this.shapeEllipsoidRadius = vec3.create();
         this.shapeEllipsoidCenter = vec3.create();
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        this._perObjectData.perObjectPSData.Create();
-
-        this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-
-        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
+        this._perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
     }
 
     /**
@@ -520,6 +488,36 @@ export class EveSpaceObject extends EveObject
     RenderDebugInfo(debugHelper)
     {
         this.animation.RenderDebugInfo(debugHelper);
+    }
+
+    /**
+     * Per object data
+     * @type {{VSData: *[], PSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['WorldMat', 16],
+            ['WorldMatLast', 16],
+            ['Shipdata', 4, [0, 1, 0, -10]],
+            ['Clipdata1', 4],
+            ['EllipsoidRadii', 4],
+            ['EllipsoidCenter', 4],
+            ['CustomMaskMatrix0', 16, mat4.identity([])],
+            ['CustomMaskMatrix1', 16, mat4.identity([])],
+            ['CustomMaskData0', 4],
+            ['CustomMaskData1', 4],
+            ['JointMat', 696]
+        ],
+        PSData: [
+            ['Shipdata', 4, [0, 1, 0, 1]],
+            ['Clipdata1', 4],
+            ['Clipdata2', 4],
+            ['ShLighting', 4 * 7],
+            ['CustomMaskMaterialID0', 4],
+            ['CustomMaskMaterialID1', 4],
+            ['CustomMaskTarget0', 4],
+            ['CustomMaskTarget1', 4]
+        ]
     }
 }
 

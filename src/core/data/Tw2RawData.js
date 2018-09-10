@@ -4,7 +4,7 @@ import {Tw2DeclarationValueTypeError} from '../Tw2Error';
 /**
  * Stores raw data for {@link Tw2PerObjectData}
  *
- * @param {{string:Float32Array|Array|number}} [declarations] An optional object containing raw data declarations
+ * @param {Array} [declarations] An optional array containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
  * @property {*} elements
@@ -31,8 +31,11 @@ export class Tw2RawData
      */
     Set(name, value)
     {
-        const el = this.elements[name];
-        this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
+        const
+            el = this.elements[name],
+            subarray = 'subarray' in value ? 'subarray' : 'slice';
+
+        this.data.set(value.length > el.size ? value[subarray](0, el.size) : value, el.offset);
     }
 
     /**
@@ -72,7 +75,14 @@ export class Tw2RawData
                 {
                     if (el.size === 1)
                     {
-                        el.array[0] = el.value;
+                        if (util.isNumber(el.value))
+                        {
+                            el.array[0] = el.value;
+                        }
+                        else
+                        {
+                            el.array[0] = el.value[0];
+                        }
                     }
                     else
                     {
@@ -95,6 +105,11 @@ export class Tw2RawData
      */
     Declare(name, size, value = null)
     {
+        if (value !== null && !(util.isArrayLike(value) || util.isNumber(value)))
+        {
+            throw new Tw2DeclarationValueTypeError({declaration: name, valueType: typeof value});
+        }
+
         this.elements[name] = {
             offset: this.nextOffset,
             size: size,
@@ -107,34 +122,23 @@ export class Tw2RawData
 
     /**
      * Declares raw data from an object and then creates the elements
-     * @param {{string:Float32Array|Array|number}} declarations
+     * @param {Array|Object} declarations
      */
-    DeclareFromObject(declarations = {})
+    DeclareFromObject(declarations = [])
     {
-        for (let name in declarations)
+        for (let i = 0; i < declarations.length; i++)
         {
-            if (declarations.hasOwnProperty(name))
+            const decl = declarations[i];
+            if (util.isArray(decl))
             {
-                const value = declarations[name];
-
-                if (util.isNumber(value))
-                {
-                    this.Declare(name, 1, value);
-                }
-                else if (util.isArrayLike(value))
-                {
-                    if (value.length === 1)
-                    {
-                        this.Declare(name, value.length, value);
-                    }
-                }
-                else
-                {
-                    throw new Tw2DeclarationValueTypeError({valueType: typeof value});
-                }
+                this.Declare(decl[0], decl[1], decl[2]);
+            }
+            else
+            {
+                this.Declare(decl.name, decl.size, decl.value);
             }
         }
-
+        
         this.Create();
     }
 

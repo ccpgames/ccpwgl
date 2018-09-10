@@ -1,5 +1,5 @@
 import {vec3, quat, mat4, device} from '../../global';
-import {Tw2BasicPerObjectData, Tw2RawData} from '../../core';
+import {Tw2BasicPerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -52,11 +52,7 @@ export class EveTransform extends EveObject
         this.localTransform = mat4.create();
         this.worldTransform = mat4.create();
 
-        this._perObjectData = new Tw2BasicPerObjectData();
-        this._perObjectData.perObjectFFEData = new Tw2RawData();
-        this._perObjectData.perObjectFFEData.Declare('World', 16);
-        this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
-        this._perObjectData.perObjectFFEData.Create();
+        this._perObjectData = new Tw2BasicPerObjectData(EveTransform.perObjectData);
     }
 
     /**
@@ -310,11 +306,22 @@ export class EveTransform extends EveObject
         c[2] = a[2] * d + a[6] * e + a[10] * b;
         return c;
     }
+
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        FFEData: [
+            ['World', 16],
+            ['WorldInverseTranspose', 16]
+        ]
+    };
 }
 
 /**
  * Modifier states
- * @type {{string:Number}}
+ * @type {*}
  */
 EveTransform.Modifier = {
     NONE: 0,

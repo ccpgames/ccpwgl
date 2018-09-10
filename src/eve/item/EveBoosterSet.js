@@ -1,5 +1,5 @@
 import {vec3, vec4, mat4, util, device} from '../../global';
-import {Tw2VertexDeclaration, Tw2VertexElement, Tw2PerObjectData, Tw2RawData, Tw2RenderBatch} from '../../core';
+import {Tw2VertexDeclaration, Tw2PerObjectData, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -179,25 +179,8 @@ export class EveBoosterSet extends EveObjectSet
         this.trailSize = vec4.create();
         this._parentTransform = mat4.create();
         this._positions = null;
-
-        this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 2, 12));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 20));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 4, 52));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 4, 68));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 4, 84));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 6, device.gl.FLOAT, 1, 100));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 7, device.gl.FLOAT, 2, 104));
-        this._decl.RebuildHash();
-
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Create();
-
+        this._decl = new Tw2VertexDeclaration(EveBoosterSet.vertexDeclarations);
+        this._perObjectData = new Tw2PerObjectData(EveBoosterSet.perObjectData);
         this._locatorRebuildPending = true;
     }
 
@@ -514,58 +497,80 @@ export class EveBoosterSet extends EveObjectSet
             }
         }
     }
+
+    /**
+     * The booster set's item constructor
+     * @type {EveBoosterSetItem}
+     */
+    static Item = EveBoosterSetItem;
+
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        VSData: [
+            ['WorldMat', 16],
+            ['Shipdata', 4]
+        ]
+    };
+
+    /**
+     * Vertex declarations
+     * @type {*}
+     */
+    static vertexDeclarations = [
+        ['POSITION', 0, 3],
+        ['TEXCOORD', 0, 2],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 4],
+        ['TEXCOORD', 3, 4],
+        ['TEXCOORD', 4, 4],
+        ['TEXCOORD', 5, 4],
+        ['TEXCOORD', 6, 1],
+        ['TEXCOORD', 7, 2]
+    ];
+
+    /**
+     * Internal helper
+     * @type {Array}
+     */
+    static _box = [
+        [
+            [-1.0, -1.0, 0.0],
+            [1.0, -1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [-1.0, 1.0, 0.0]
+        ],
+        [
+            [-1.0, -1.0, -1.0],
+            [-1.0, 1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, -1.0, -1.0]
+        ],
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, 1.0, 0.0],
+            [-1.0, 1.0, -1.0],
+            [-1.0, -1.0, -1.0]
+        ],
+        [
+            [1.0, -1.0, 0.0],
+            [1.0, -1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, 1.0, 0.0]
+        ],
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, -1.0, -1.0],
+            [1.0, -1.0, -1.0],
+            [1.0, -1.0, 0.0]
+        ],
+        [
+            [-1.0, 1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [1.0, 1.0, -1.0],
+            [-1.0, 1.0, -1.0]
+        ]
+    ];
 }
-
-/**
- * The booster set's item constructor
- * @type {EveBoosterSetItem}
- */
-EveBoosterSet.Item = EveBoosterSetItem;
-
-/**
- * Internal helper
- * @type {Array}
- */
-EveBoosterSet._box = [
-    [
-        [-1.0, -1.0, 0.0],
-        [1.0, -1.0, 0.0],
-        [1.0, 1.0, 0.0],
-        [-1.0, 1.0, 0.0]
-    ],
-
-    [
-        [-1.0, -1.0, -1.0],
-        [-1.0, 1.0, -1.0],
-        [1.0, 1.0, -1.0],
-        [1.0, -1.0, -1.0]
-    ],
-
-    [
-        [-1.0, -1.0, 0.0],
-        [-1.0, 1.0, 0.0],
-        [-1.0, 1.0, -1.0],
-        [-1.0, -1.0, -1.0]
-    ],
-
-    [
-        [1.0, -1.0, 0.0],
-        [1.0, -1.0, -1.0],
-        [1.0, 1.0, -1.0],
-        [1.0, 1.0, 0.0]
-    ],
-
-    [
-        [-1.0, -1.0, 0.0],
-        [-1.0, -1.0, -1.0],
-        [1.0, -1.0, -1.0],
-        [1.0, -1.0, 0.0]
-    ],
-
-    [
-        [-1.0, 1.0, 0.0],
-        [1.0, 1.0, 0.0],
-        [1.0, 1.0, -1.0],
-        [-1.0, 1.0, -1.0]
-    ]
-];

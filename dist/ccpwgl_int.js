@@ -164,7 +164,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _geometry = __webpack_require__(47);
+var _geometry = __webpack_require__(48);
 
 Object.keys(_geometry).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -176,7 +176,7 @@ Object.keys(_geometry).forEach(function (key) {
   });
 });
 
-var _mesh = __webpack_require__(48);
+var _mesh = __webpack_require__(49);
 
 Object.keys(_mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -200,7 +200,7 @@ Object.keys(_model).forEach(function (key) {
   });
 });
 
-var _parameter = __webpack_require__(45);
+var _parameter = __webpack_require__(46);
 
 Object.keys(_parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -320,7 +320,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(57);
+var _Tw2RenderTarget = __webpack_require__(58);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -1099,7 +1099,7 @@ var Tw2DeclarationValueTypeError = exports.Tw2DeclarationValueTypeError = functi
     function Tw2DeclarationValueTypeError(data) {
         _classCallCheck(this, Tw2DeclarationValueTypeError);
 
-        return _possibleConstructorReturn(this, (Tw2DeclarationValueTypeError.__proto__ || Object.getPrototypeOf(Tw2DeclarationValueTypeError)).call(this, data, 'Invalid declaration value type (%valueType%)'));
+        return _possibleConstructorReturn(this, (Tw2DeclarationValueTypeError.__proto__ || Object.getPrototypeOf(Tw2DeclarationValueTypeError)).call(this, data, 'Invalid declaration value type (%declaration%:%valueType%)'));
     }
 
     return Tw2DeclarationValueTypeError;
@@ -1938,12 +1938,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(34);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2", function() { return __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2d", function() { return __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__; });
@@ -2297,7 +2297,7 @@ Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   });
 });
 
-var _Tw2VertexElement = __webpack_require__(44);
+var _Tw2VertexElement = __webpack_require__(45);
 
 Object.keys(_Tw2VertexElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2321,7 +2321,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveChild = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
 
 
 var _global = __webpack_require__(0);
@@ -2346,7 +2348,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveChild = exports.EveChild = function () {
+var EveChild = exports.EveChild = (_temp = _class = function () {
     function EveChild() {
         _classCallCheck(this, EveChild);
 
@@ -2408,21 +2410,27 @@ var EveChild = exports.EveChild = function () {
     }, {
         key: 'GetBatches',
         value: function GetBatches(mode, accumulator) {}
+
+        /**
+         * Class globals and scratch variables
+         * @type {Object}
+         */
+
+
+        /**
+         * Per object data
+         * @type {{FFEData: *[]}}
+         */
+
     }]);
 
     return EveChild;
-}();
-
-/**
- * Class globals and scratch variables
- * @type {Object}
- */
-
-
-EveChild.global = {
+}(), _class.global = {
     mat4_0: _global.mat4.create(),
     vec3_0: _global.vec3.create()
-};
+}, _class.perObjectData = {
+    FFEData: [['world', 16], ['worldInverseTranspose', 16]]
+}, _temp);
 
 /***/ }),
 /* 12 */
@@ -2610,7 +2618,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _arr = __webpack_require__(36);
+var _arr = __webpack_require__(37);
 
 Object.keys(_arr).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3331,7 +3339,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _num = __webpack_require__(30);
+var _num = __webpack_require__(31);
 
 Object.keys(_num).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3355,7 +3363,7 @@ Object.keys(_vec).forEach(function (key) {
   });
 });
 
-var _vec2 = __webpack_require__(34);
+var _vec2 = __webpack_require__(35);
 
 Object.keys(_vec2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3367,7 +3375,7 @@ Object.keys(_vec2).forEach(function (key) {
   });
 });
 
-var _vec3 = __webpack_require__(35);
+var _vec3 = __webpack_require__(36);
 
 Object.keys(_vec3).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4342,7 +4350,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2SamplerState = __webpack_require__(43);
+var _Tw2SamplerState = __webpack_require__(44);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4506,7 +4514,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Stores raw data for {@link Tw2PerObjectData}
  *
- * @param {{string:Float32Array|Array|number}} [declarations] An optional object containing raw data declarations
+ * @param {Array} [declarations] An optional array containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
  * @property {*} elements
@@ -4535,8 +4543,10 @@ var Tw2RawData = exports.Tw2RawData = function () {
     _createClass(Tw2RawData, [{
         key: 'Set',
         value: function Set(name, value) {
-            var el = this.elements[name];
-            this.data.set(value.length > el.size ? value.subarray(0, el.size) : value, el.offset);
+            var el = this.elements[name],
+                subarray = 'subarray' in value ? 'subarray' : 'slice';
+
+            this.data.set(value.length > el.size ? value[subarray](0, el.size) : value, el.offset);
         }
 
         /**
@@ -4578,7 +4588,11 @@ var Tw2RawData = exports.Tw2RawData = function () {
 
                     if (el.value !== null) {
                         if (el.size === 1) {
-                            el.array[0] = el.value;
+                            if (_global.util.isNumber(el.value)) {
+                                el.array[0] = el.value;
+                            } else {
+                                el.array[0] = el.value[0];
+                            }
                         } else {
                             for (var i = 0; i < el.size; i++) {
                                 el.array[i] = el.value[i];
@@ -4602,6 +4616,10 @@ var Tw2RawData = exports.Tw2RawData = function () {
         value: function Declare(name, size) {
             var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
+            if (value !== null && !(_global.util.isArrayLike(value) || _global.util.isNumber(value))) {
+                throw new _Tw2Error.Tw2DeclarationValueTypeError({ declaration: name, valueType: typeof value === 'undefined' ? 'undefined' : _typeof(value) });
+            }
+
             this.elements[name] = {
                 offset: this.nextOffset,
                 size: size,
@@ -4614,27 +4632,20 @@ var Tw2RawData = exports.Tw2RawData = function () {
 
         /**
          * Declares raw data from an object and then creates the elements
-         * @param {{string:Float32Array|Array|number}} declarations
+         * @param {Array|Object} declarations
          */
 
     }, {
         key: 'DeclareFromObject',
         value: function DeclareFromObject() {
-            var declarations = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+            var declarations = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
-            for (var name in declarations) {
-                if (declarations.hasOwnProperty(name)) {
-                    var value = declarations[name];
-
-                    if (_global.util.isNumber(value)) {
-                        this.Declare(name, 1, value);
-                    } else if (_global.util.isArrayLike(value)) {
-                        if (value.length === 1) {
-                            this.Declare(name, value.length, value);
-                        }
-                    } else {
-                        throw new _Tw2Error.Tw2DeclarationValueTypeError({ valueType: typeof value === 'undefined' ? 'undefined' : _typeof(value) });
-                    }
+            for (var i = 0; i < declarations.length; i++) {
+                var decl = declarations[i];
+                if (_global.util.isArray(decl)) {
+                    this.Declare(decl[0], decl[1], decl[2]);
+                } else {
+                    this.Declare(decl.name, decl.size, decl.value);
                 }
             }
 
@@ -4680,7 +4691,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2LoadingObject = __webpack_require__(38);
+var _Tw2LoadingObject = __webpack_require__(39);
 
 Object.keys(_Tw2LoadingObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4704,7 +4715,7 @@ Object.keys(_Tw2Resource).forEach(function (key) {
   });
 });
 
-var _Tw2TextureRes = __webpack_require__(52);
+var _Tw2TextureRes = __webpack_require__(53);
 
 Object.keys(_Tw2TextureRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4739,7 +4750,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BinaryReader = __webpack_require__(40);
+var _Tw2BinaryReader = __webpack_require__(41);
 
 Object.keys(_Tw2BinaryReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4751,7 +4762,7 @@ Object.keys(_Tw2BinaryReader).forEach(function (key) {
   });
 });
 
-var _Tw2ObjectReader = __webpack_require__(39);
+var _Tw2ObjectReader = __webpack_require__(40);
 
 Object.keys(_Tw2ObjectReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4765,6 +4776,522 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
 
 /***/ }),
 /* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveStation = exports.EveSpaceObject = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
+
+var _global = __webpack_require__(0);
+
+var _core = __webpack_require__(1);
+
+var _EveObject2 = __webpack_require__(12);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveSpaceObject
+ *
+ * @parameter {String} name
+ * @parameter {boolean} display                             - Enables/ disables visibility
+ * @parameter {{}} visible                                  - Visibility options for the space object's elements
+ * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @parameter {boolean} visible.children                    - Enables/ disables child visibility
+ * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
+ * @parameter {Number} lod
+ * @parameter {Tw2Mesh} mesh
+ * @parameter {Array.<EveLocator>} locators
+ * @parameter {Array.<EveSpriteSet>} spriteSets
+ * @parameter {Array.<EveTurretSet>} turretSets
+ * @parameter {Array.<EveSpaceObjectDecal>} decals
+ * @parameter {Array.<EveSpotlightSet>} spotlightSets
+ * @parameter {Array.<EvePlaneSet>} planeSets
+ * @parameter {Array.<Tw2CurveSet>} curveSets
+ * @parameter {Array.<EveCurveLineSet>} lineSets
+ * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
+ * @parameter {Array.<{}>} children
+ * @parameter {vec3} boundingSphereCenter
+ * @parameter {Number} boundingSphereRadius
+ * @parameter {vec3} shapeEllipsoidRadius
+ * @parameter {vec3} shapeEllipsoidCenter
+ * @parameter {mat4} transform
+ * @parameter {Tw2AnimationController} animation
+ * @parameter {number} killCount                            - number of kills to show on kill counter decals
+ * @parameter {Tw2PerObjectData} _perObjectData
+ * @class
+ */
+var EveSpaceObject = exports.EveSpaceObject = (_temp = _class = function (_EveObject) {
+    _inherits(EveSpaceObject, _EveObject);
+
+    function EveSpaceObject() {
+        _classCallCheck(this, EveSpaceObject);
+
+        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
+
+        _this.visible = {};
+        _this.visible.mesh = true;
+        _this.visible.children = true;
+        _this.visible.effectChildren = true;
+        _this.visible.planeSets = true;
+        _this.visible.spotlightSets = true;
+        _this.visible.decals = true;
+        _this.visible.spriteSets = true;
+        _this.visible.overlayEffects = true;
+        _this.visible.lineSets = true;
+        _this.visible.killmarks = true;
+        _this.visible.customMasks = true;
+
+        _this.mesh = null;
+        _this.animation = new _core.Tw2AnimationController();
+        _this.locators = [];
+        _this.spriteSets = [];
+        _this.turretSets = [];
+        _this.decals = [];
+        _this.spotlightSets = [];
+        _this.planeSets = [];
+        _this.curveSets = [];
+        _this.lineSets = [];
+        _this.overlayEffects = [];
+        _this.children = [];
+        _this.effectChildren = [];
+        _this.customMasks = [];
+        _this.lod = 3;
+        _this.killCount = 0;
+        _this.transform = _global.mat4.create();
+        _this.boundingSphereCenter = _global.vec3.create();
+        _this.boundingSphereRadius = 0;
+        _this.shapeEllipsoidRadius = _global.vec3.create();
+        _this.shapeEllipsoidCenter = _global.vec3.create();
+
+        _this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObject.perObjectData);
+        return _this;
+    }
+
+    /**
+     * Initializes the EveSpaceObject
+     */
+
+
+    _createClass(EveSpaceObject, [{
+        key: 'Initialize',
+        value: function Initialize() {
+            if (this.mesh) {
+                this.animation.SetGeometryResource(this.mesh.geometryResource);
+
+                for (var i = 0; i < this.decals.length; ++i) {
+                    this.decals[i].SetParentGeometry(this.mesh.geometryResource);
+                }
+            }
+        }
+
+        /**
+         * Resets the lod
+         */
+
+    }, {
+        key: 'ResetLod',
+        value: function ResetLod() {
+            this.lod = 3;
+        }
+
+        /**
+         * Updates the lod
+         * @param {Tw2Frustum} frustum
+         */
+
+    }, {
+        key: 'UpdateLod',
+        value: function UpdateLod(frustum) {
+            var center = _global.vec3.transformMat4(EveSpaceObject.global.vec3_0, this.boundingSphereCenter, this.transform);
+
+            if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
+                if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
+                    this.lod = 1;
+                } else {
+                    this.lod = 2;
+                }
+            } else {
+                this.lod = 0;
+            }
+        }
+
+        /**
+         * Adds a custom mask
+         * @param {vec3} position
+         * @param {vec3} scaling
+         * @param {quat} rotation
+         * @param {vec4} isMirrored
+         * @param {vec4} sourceMaterial
+         * @param {vec4} targetMaterials
+         */
+
+    }, {
+        key: 'AddCustomMask',
+        value: function AddCustomMask(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
+            var transform = _global.mat4.fromRotationTranslationScale(_global.mat4.create(), rotation, position, scaling);
+            _global.mat4.invert(transform, transform);
+            _global.mat4.transpose(transform, transform);
+
+            this.customMasks.push({
+                transform: transform,
+                maskData: _global.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
+                materialID: _global.vec4.fromValues(sourceMaterial, 0, 0, 0),
+                targets: targetMaterials
+            });
+        }
+
+        /**
+         * Gets locator count for a specific locator group
+         * @param {String} prefix
+         * @returns {number}
+         */
+
+    }, {
+        key: 'GetLocatorCount',
+        value: function GetLocatorCount(prefix) {
+            var locators = this.FindLocatorsByPrefix(prefix);
+            return locators.length;
+        }
+
+        /**
+         * Finds a locator's joint by name
+         * @param {string} name
+         * @returns {?mat4}
+         */
+
+    }, {
+        key: 'FindLocatorJointByName',
+        value: function FindLocatorJointByName(name) {
+            var locator = this.FindLocatorBoneByName(name);
+            return locator ? locator.worldTransform : null;
+        }
+
+        /**
+         *
+         * @param name
+         * @returns {null}
+         */
+
+    }, {
+        key: 'FindLocatorTransformByName',
+        value: function FindLocatorTransformByName(name) {
+            var locator = this.FindLocatorByName(name);
+            return locator ? locator.transform : null;
+        }
+
+        /**
+         * Checks if a locator prefix exists
+         * @param {string} prefix
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasLocatorPrefix',
+        value: function HasLocatorPrefix(prefix) {
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name.substring(0, prefix.length) === prefix) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /**
+         * Finds a locator's bone by it's name
+         * @param {String} name
+         * @returns {?Tw2Bone} null if not found
+         */
+
+    }, {
+        key: 'FindLocatorBoneByName',
+        value: function FindLocatorBoneByName(name) {
+            var model = this.animation.FindModelForMesh(0);
+            if (model) {
+                for (var i = 0; i < model.bones.length; ++i) {
+                    if (model.bones[i].boneRes.name === name) {
+                        return model.bones[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Finds a locator by name
+         * @param {string} name
+         * @returns {?EveLocator}
+         */
+
+    }, {
+        key: 'FindLocatorByName',
+        value: function FindLocatorByName(name) {
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name === name) {
+                    return this.locators[i];
+                }
+            }
+            return null;
+        }
+
+        /**
+         * Finds locators with a given prefix
+         * @param {string} prefix
+         * @returns {Array<EveLocator>}
+         */
+
+    }, {
+        key: 'FindLocatorsByPrefix',
+        value: function FindLocatorsByPrefix(prefix) {
+            var locators = [];
+            for (var i = 0; i < this.locators.length; i++) {
+                if (this.locators[i].name.indexOf(prefix) === 0) {
+                    locators.push(this.locators[i]);
+                }
+            }
+            return locators;
+        }
+
+        /**
+         * Gets object's res objects
+         * @param {Array} [out=[]] - Optional receiving array
+         * @param {Boolean} excludeChildren - True to exclude children's res objects
+         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+         */
+
+    }, {
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+            var excludeChildren = arguments[1];
+
+            if (this.mesh) this.mesh.GetResources(out);
+            if (this.animation) this.animation.GetResources(out);
+
+            _global.util.perArrayChild(this.spriteSets, 'GetResources', out);
+            _global.util.perArrayChild(this.turretSets, 'GetResources', out);
+            _global.util.perArrayChild(this.decals, 'GetResources', out);
+            _global.util.perArrayChild(this.spotlightSets, 'GetResources', out);
+            _global.util.perArrayChild(this.planeSets, 'GetResources', out);
+            _global.util.perArrayChild(this.lineSets, 'GetResources', out);
+            _global.util.perArrayChild(this.overlayEffects, 'GetResources', out);
+            _global.util.perArrayChild(this.effectChildren, 'GetResources', out);
+
+            if (!excludeChildren) {
+                _global.util.perArrayChild(this.children, 'GetResources', out);
+            }
+
+            return out;
+        }
+
+        /**
+         * A Per frame function that updates view dependent data
+         */
+
+    }, {
+        key: 'UpdateViewDependentData',
+        value: function UpdateViewDependentData() {
+            for (var i = 0; i < this.children.length; ++i) {
+                this.children[i].UpdateViewDependentData(this.transform);
+            }
+
+            _global.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
+            _global.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
+
+            var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter'),
+                radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
+
+            if (this.shapeEllipsoidRadius[0] > 0) {
+                center[0] = this.shapeEllipsoidCenter[0];
+                center[1] = this.shapeEllipsoidCenter[1];
+                center[2] = this.shapeEllipsoidCenter[2];
+                radii[0] = this.shapeEllipsoidRadius[0];
+                radii[1] = this.shapeEllipsoidRadius[1];
+                radii[2] = this.shapeEllipsoidRadius[2];
+            } else if (this.mesh && this.mesh.IsGood()) {
+                _global.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _global.vec3.scale(center, center, 0.5 * 1.732050807);
+                _global.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
+                _global.vec3.scale(radii, radii, 0.5);
+            }
+
+            for (var _i = 0; _i < this.customMasks.length; ++_i) {
+                var targets = this.visible.customMasks ? this.customMasks[_i].targets : [0, 0, 0, 0];
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this.customMasks[_i].transform);
+                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskData1' : 'CustomMaskData0', this.customMasks[_i].maskData);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this.customMasks[_i].materialID);
+                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', targets);
+            }
+
+            if (this.animation.animations.length) {
+                this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
+            }
+
+            for (var _i2 = 0; _i2 < this.lineSets.length; ++_i2) {
+                this.lineSets[_i2].UpdateViewDependentData(this.transform);
+            }
+        }
+
+        /**
+         * Per frame update
+         * @param {Number} dt - delta time
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt) {
+            if (this.lod > 0) {
+                for (var i = 0; i < this.spriteSets.length; ++i) {
+                    this.spriteSets[i].Update(dt);
+                }
+
+                for (var _i3 = 0; _i3 < this.planeSets.length; _i3++) {
+                    this.planeSets[_i3].Update(dt);
+                }
+
+                for (var _i4 = 0; _i4 < this.spotlightSets.length; _i4++) {
+                    this.spotlightSets[_i4].Update(dt);
+                }
+
+                for (var _i5 = 0; _i5 < this.children.length; ++_i5) {
+                    this.children[_i5].Update(dt);
+                }
+
+                for (var _i6 = 0; _i6 < this.effectChildren.length; ++_i6) {
+                    this.effectChildren[_i6].Update(dt, this.transform);
+                }
+
+                for (var _i7 = 0; _i7 < this.curveSets.length; ++_i7) {
+                    this.curveSets[_i7].Update(dt);
+                }
+
+                for (var _i8 = 0; _i8 < this.overlayEffects.length; ++_i8) {
+                    this.overlayEffects[_i8].Update(dt);
+                }
+
+                for (var _i9 = 0; _i9 < this.lineSets.length; _i9++) {
+                    this.lineSets[_i9].Update(dt);
+                }
+
+                this.animation.Update(dt);
+            }
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {
+            if (this.display) {
+                var show = this.visible;
+
+                if (show.mesh && this.mesh && this.lod > 0) {
+                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+                }
+
+                if (this.lod > 1) {
+                    if (show.spriteSets) {
+                        for (var i = 0; i < this.spriteSets.length; i++) {
+                            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
+                        }
+                    }
+
+                    if (show.spotlightSets) {
+                        for (var _i10 = 0; _i10 < this.spotlightSets.length; _i10++) {
+                            this.spotlightSets[_i10].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.planeSets) {
+                        for (var _i11 = 0; _i11 < this.planeSets.length; _i11++) {
+                            this.planeSets[_i11].GetBatches(mode, accumulator, this._perObjectData);
+                        }
+                    }
+
+                    if (show.decals) {
+                        for (var _i12 = 0; _i12 < this.decals.length; _i12++) {
+                            this.decals[_i12].GetBatches(mode, accumulator, this._perObjectData, show.killmarks ? this.killCount : 0);
+                        }
+                    }
+
+                    if (show.lineSets) {
+                        for (var _i13 = 0; _i13 < this.lineSets.length; _i13++) {
+                            this.lineSets[_i13].GetBatches(mode, accumulator);
+                        }
+                    }
+                }
+
+                if (show.children) {
+                    for (var _i14 = 0; _i14 < this.children.length; _i14++) {
+                        this.children[_i14].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.effectChildren) {
+                    for (var _i15 = 0; _i15 < this.effectChildren.length; _i15++) {
+                        this.effectChildren[_i15].GetBatches(mode, accumulator, this._perObjectData);
+                    }
+                }
+
+                if (show.overlayEffects && this.mesh && this.mesh.IsGood()) {
+                    for (var _i16 = 0; _i16 < this.overlayEffects.length; _i16++) {
+                        this.overlayEffects[_i16].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
+                    }
+                }
+            }
+        }
+
+        /**
+         * RenderDebugInfo
+         * @param debugHelper
+         */
+
+    }, {
+        key: 'RenderDebugInfo',
+        value: function RenderDebugInfo(debugHelper) {
+            this.animation.RenderDebugInfo(debugHelper);
+        }
+
+        /**
+         * Per object data
+         * @type {{VSData: *[], PSData: *[]}}
+         */
+
+    }]);
+
+    return EveSpaceObject;
+}(_EveObject2.EveObject), _class.perObjectData = {
+    VSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', 4, [0, 1, 0, -10]], ['Clipdata1', 4], ['EllipsoidRadii', 4], ['EllipsoidCenter', 4], ['CustomMaskMatrix0', 16, _global.mat4.identity([])], ['CustomMaskMatrix1', 16, _global.mat4.identity([])], ['CustomMaskData0', 4], ['CustomMaskData1', 4], ['JointMat', 696]],
+    PSData: [['Shipdata', 4, [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4], ['ShLighting', 4 * 7], ['CustomMaskMaterialID0', 4], ['CustomMaskMaterialID1', 4], ['CustomMaskTarget0', 4], ['CustomMaskTarget1', 4]]
+}, _temp);
+exports.EveStation = EveSpaceObject;
+
+/***/ }),
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4822,7 +5349,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4888,7 +5415,7 @@ Tw2ParticleAttributeGenerator.global = {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4932,7 +5459,7 @@ num.exponentialDecay = function (omega0, torque, I, d, time) {
 };
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5740,7 +6267,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6580,7 +7107,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7242,7 +7769,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7255,7 +7782,7 @@ exports.vec3 = undefined;
 
 var _glMatrix = __webpack_require__(8);
 
-var _num = __webpack_require__(30);
+var _num = __webpack_require__(31);
 
 exports.vec3 = _glMatrix.vec3;
 
@@ -7392,7 +7919,7 @@ _glMatrix.vec3.unproject = function () {
 }();
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7408,7 +7935,7 @@ var _glMatrix = __webpack_require__(8);
 exports.vec4 = _glMatrix.vec4;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7509,7 +8036,7 @@ function toUniqueArray(a) {
 }
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7526,7 +8053,7 @@ var _Tw2Store = __webpack_require__(20);
 
 var _Tw2MotherLode = __webpack_require__(83);
 
-var _Tw2LoadingObject = __webpack_require__(38);
+var _Tw2LoadingObject = __webpack_require__(39);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
@@ -8023,7 +8550,7 @@ Tw2ResMan.DefaultLog = {
 var resMan = exports.resMan = new Tw2ResMan();
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8042,7 +8569,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2Resource2 = __webpack_require__(9);
 
-var _Tw2ObjectReader = __webpack_require__(39);
+var _Tw2ObjectReader = __webpack_require__(40);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8180,7 +8707,7 @@ var Tw2LoadingObject = exports.Tw2LoadingObject = function (_Tw2Resource) {
 Tw2LoadingObject.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8195,7 +8722,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2BinaryReader = __webpack_require__(40);
+var _Tw2BinaryReader = __webpack_require__(41);
 
 var _Tw2Error = __webpack_require__(4);
 
@@ -8603,7 +9130,7 @@ Tw2ObjectReader.TypedArrays = {
 };
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8764,7 +9291,7 @@ var Tw2BinaryReader = exports.Tw2BinaryReader = function () {
 }();
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8779,7 +9306,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2TextureParameter = __webpack_require__(42);
+var _Tw2TextureParameter = __webpack_require__(43);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9384,7 +9911,7 @@ var Tw2Effect = exports.Tw2Effect = function () {
 Tw2Effect.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS', 'PerObjectPSInt'];
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9729,7 +10256,7 @@ Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTextur
 Tw2TextureParameter.overrideProperties = ['useAllOverrides', 'addressUMode', 'addressVMode', 'addressWMode', 'filterMode', 'mipFilterMode', 'maxAnisotropy'];
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9873,7 +10400,7 @@ Tw2SamplerState.MipFilterMode = {
 };
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9917,7 +10444,7 @@ var Tw2VertexElement = exports.Tw2VertexElement = function Tw2VertexElement(usag
 };
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10023,7 +10550,7 @@ Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(42);
+var _Tw2TextureParameter = __webpack_require__(43);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10036,7 +10563,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
 });
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10119,7 +10646,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10262,7 +10789,7 @@ Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10272,7 +10799,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Effect = __webpack_require__(41);
+var _Tw2Effect = __webpack_require__(42);
 
 Object.keys(_Tw2Effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10296,7 +10823,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(49);
+var _Tw2Mesh = __webpack_require__(50);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10308,7 +10835,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2MeshArea = __webpack_require__(50);
+var _Tw2MeshArea = __webpack_require__(51);
 
 Object.keys(_Tw2MeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10333,7 +10860,7 @@ Object.keys(_Tw2MeshLineArea).forEach(function (key) {
 });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10527,7 +11054,7 @@ var Tw2Mesh = exports.Tw2Mesh = function () {
 }();
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10576,7 +11103,7 @@ var Tw2MeshArea = exports.Tw2MeshArea = function Tw2MeshArea() {
 Tw2MeshArea.batchType = _batch.Tw2GeometryBatch;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10632,7 +11159,7 @@ var Tw2Animation = exports.Tw2Animation = function () {
 }();
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10899,7 +11426,7 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
 }(_Tw2Resource2.Tw2Resource);
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10933,7 +11460,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10962,7 +11489,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10989,7 +11516,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 };
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11018,7 +11545,7 @@ var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
 };
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11033,7 +11560,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2TextureRes = __webpack_require__(52);
+var _Tw2TextureRes = __webpack_require__(53);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11161,7 +11688,7 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
 }();
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11220,7 +11747,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11303,7 +11830,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11512,7 +12039,7 @@ var EveOccluder = exports.EveOccluder = function () {
 EveOccluder.global = null;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11582,7 +12109,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(63);
+var _EveSpaceObject = __webpack_require__(28);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11594,7 +12121,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(62);
+var _EveTransform = __webpack_require__(63);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11607,7 +12134,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11619,6 +12146,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.EveTransform = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -11658,7 +12187,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
-var EveTransform = exports.EveTransform = function (_EveObject) {
+var EveTransform = exports.EveTransform = (_temp = _class = function (_EveObject) {
     _inherits(EveTransform, _EveObject);
 
     function EveTransform() {
@@ -11685,11 +12214,7 @@ var EveTransform = exports.EveTransform = function (_EveObject) {
         _this.localTransform = _global.mat4.create();
         _this.worldTransform = _global.mat4.create();
 
-        _this._perObjectData = new _core.Tw2BasicPerObjectData();
-        _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectFFEData.Declare('World', 16);
-        _this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
-        _this._perObjectData.perObjectFFEData.Create();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(EveTransform.perObjectData);
         return _this;
     }
 
@@ -11942,16 +12467,23 @@ var EveTransform = exports.EveTransform = function (_EveObject) {
             c[2] = a[2] * d + a[6] * e + a[10] * b;
             return c;
         }
+
+        /**
+         * Per object data
+         * @type {*}
+         */
+
     }]);
 
     return EveTransform;
-}(_EveObject2.EveObject);
+}(_EveObject2.EveObject), _class.perObjectData = {
+    FFEData: [['World', 16], ['WorldInverseTranspose', 16]]
+}, _temp);
 
 /**
  * Modifier states
- * @type {{string:Number}}
+ * @type {*}
  */
-
 
 EveTransform.Modifier = {
     NONE: 0,
@@ -11964,544 +12496,6 @@ EveTransform.Modifier = {
     EVE_SIMPLE_HALO: 102,
     EVE_CAMERA_ROTATION: 103
 };
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveStation = exports.EveSpaceObject = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _global = __webpack_require__(0);
-
-var _core = __webpack_require__(1);
-
-var _EveObject2 = __webpack_require__(12);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * EveSpaceObject
- *
- * @parameter {String} name
- * @parameter {boolean} display                             - Enables/ disables visibility
- * @parameter {{}} visible                                  - Visibility options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
- * @parameter {boolean} visible.children                    - Enables/ disables child visibility
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
- * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
- * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
- * @parameter {Number} lod
- * @parameter {Tw2Mesh} mesh
- * @parameter {Array.<EveLocator>} locators
- * @parameter {Array.<EveSpriteSet>} spriteSets
- * @parameter {Array.<EveTurretSet>} turretSets
- * @parameter {Array.<EveSpaceObjectDecal>} decals
- * @parameter {Array.<EveSpotlightSet>} spotlightSets
- * @parameter {Array.<EvePlaneSet>} planeSets
- * @parameter {Array.<Tw2CurveSet>} curveSets
- * @parameter {Array.<EveCurveLineSet>} lineSets
- * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
- * @parameter {Array.<{}>} children
- * @parameter {vec3} boundingSphereCenter
- * @parameter {Number} boundingSphereRadius
- * @parameter {vec3} shapeEllipsoidRadius
- * @parameter {vec3} shapeEllipsoidCenter
- * @parameter {mat4} transform
- * @parameter {Tw2AnimationController} animation
- * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {Tw2PerObjectData} _perObjectData
- * @class
- */
-var EveSpaceObject = exports.EveSpaceObject = function (_EveObject) {
-    _inherits(EveSpaceObject, _EveObject);
-
-    function EveSpaceObject() {
-        _classCallCheck(this, EveSpaceObject);
-
-        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
-
-        _this.visible = {};
-        _this.visible.mesh = true;
-        _this.visible.children = true;
-        _this.visible.effectChildren = true;
-        _this.visible.planeSets = true;
-        _this.visible.spotlightSets = true;
-        _this.visible.decals = true;
-        _this.visible.spriteSets = true;
-        _this.visible.overlayEffects = true;
-        _this.visible.lineSets = true;
-        _this.visible.killmarks = true;
-        _this.visible.customMasks = true;
-
-        _this.mesh = null;
-        _this.animation = new _core.Tw2AnimationController();
-        _this.locators = [];
-        _this.spriteSets = [];
-        _this.turretSets = [];
-        _this.decals = [];
-        _this.spotlightSets = [];
-        _this.planeSets = [];
-        _this.curveSets = [];
-        _this.lineSets = [];
-        _this.overlayEffects = [];
-        _this.children = [];
-        _this.effectChildren = [];
-        _this.customMasks = [];
-        _this.lod = 3;
-        _this.killCount = 0;
-        _this.transform = _global.mat4.create();
-        _this.boundingSphereCenter = _global.vec3.create();
-        _this.boundingSphereRadius = 0;
-        _this.shapeEllipsoidRadius = _global.vec3.create();
-        _this.shapeEllipsoidCenter = _global.vec3.create();
-
-        _this._perObjectData = new _core.Tw2PerObjectData();
-        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        _this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        _this._perObjectData.perObjectVSData.Create();
-
-        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        _this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        _this._perObjectData.perObjectPSData.Create();
-
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-
-        _global.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-        _global.mat4.identity(_this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
-        return _this;
-    }
-
-    /**
-     * Initializes the EveSpaceObject
-     */
-
-
-    _createClass(EveSpaceObject, [{
-        key: 'Initialize',
-        value: function Initialize() {
-            if (this.mesh) {
-                this.animation.SetGeometryResource(this.mesh.geometryResource);
-
-                for (var i = 0; i < this.decals.length; ++i) {
-                    this.decals[i].SetParentGeometry(this.mesh.geometryResource);
-                }
-            }
-        }
-
-        /**
-         * Resets the lod
-         */
-
-    }, {
-        key: 'ResetLod',
-        value: function ResetLod() {
-            this.lod = 3;
-        }
-
-        /**
-         * Updates the lod
-         * @param {Tw2Frustum} frustum
-         */
-
-    }, {
-        key: 'UpdateLod',
-        value: function UpdateLod(frustum) {
-            var center = _global.vec3.transformMat4(EveSpaceObject.global.vec3_0, this.boundingSphereCenter, this.transform);
-
-            if (frustum.IsSphereVisible(center, this.boundingSphereRadius)) {
-                if (frustum.GetPixelSizeAcross(center, this.boundingSphereRadius) < 100) {
-                    this.lod = 1;
-                } else {
-                    this.lod = 2;
-                }
-            } else {
-                this.lod = 0;
-            }
-        }
-
-        /**
-         * Adds a custom mask
-         * @param {vec3} position
-         * @param {vec3} scaling
-         * @param {quat} rotation
-         * @param {vec4} isMirrored
-         * @param {vec4} sourceMaterial
-         * @param {vec4} targetMaterials
-         */
-
-    }, {
-        key: 'AddCustomMask',
-        value: function AddCustomMask(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials) {
-            var transform = _global.mat4.fromRotationTranslationScale(_global.mat4.create(), rotation, position, scaling);
-            _global.mat4.invert(transform, transform);
-            _global.mat4.transpose(transform, transform);
-
-            this.customMasks.push({
-                transform: transform,
-                maskData: _global.vec4.fromValues(1, isMirrored ? 1 : 0, 0, 0),
-                materialID: _global.vec4.fromValues(sourceMaterial, 0, 0, 0),
-                targets: targetMaterials
-            });
-        }
-
-        /**
-         * Gets locator count for a specific locator group
-         * @param {String} prefix
-         * @returns {number}
-         */
-
-    }, {
-        key: 'GetLocatorCount',
-        value: function GetLocatorCount(prefix) {
-            var locators = this.FindLocatorsByPrefix(prefix);
-            return locators.length;
-        }
-
-        /**
-         * Finds a locator's joint by name
-         * @param {string} name
-         * @returns {?mat4}
-         */
-
-    }, {
-        key: 'FindLocatorJointByName',
-        value: function FindLocatorJointByName(name) {
-            var locator = this.FindLocatorBoneByName(name);
-            return locator ? locator.worldTransform : null;
-        }
-
-        /**
-         *
-         * @param name
-         * @returns {null}
-         */
-
-    }, {
-        key: 'FindLocatorTransformByName',
-        value: function FindLocatorTransformByName(name) {
-            var locator = this.FindLocatorByName(name);
-            return locator ? locator.transform : null;
-        }
-
-        /**
-         * Checks if a locator prefix exists
-         * @param {string} prefix
-         * @returns {boolean}
-         */
-
-    }, {
-        key: 'HasLocatorPrefix',
-        value: function HasLocatorPrefix(prefix) {
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name.substring(0, prefix.length) === prefix) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * Finds a locator's bone by it's name
-         * @param {String} name
-         * @returns {?Tw2Bone} null if not found
-         */
-
-    }, {
-        key: 'FindLocatorBoneByName',
-        value: function FindLocatorBoneByName(name) {
-            var model = this.animation.FindModelForMesh(0);
-            if (model) {
-                for (var i = 0; i < model.bones.length; ++i) {
-                    if (model.bones[i].boneRes.name === name) {
-                        return model.bones[i];
-                    }
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Finds a locator by name
-         * @param {string} name
-         * @returns {?EveLocator}
-         */
-
-    }, {
-        key: 'FindLocatorByName',
-        value: function FindLocatorByName(name) {
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name === name) {
-                    return this.locators[i];
-                }
-            }
-            return null;
-        }
-
-        /**
-         * Finds locators with a given prefix
-         * @param {string} prefix
-         * @returns {Array<EveLocator>}
-         */
-
-    }, {
-        key: 'FindLocatorsByPrefix',
-        value: function FindLocatorsByPrefix(prefix) {
-            var locators = [];
-            for (var i = 0; i < this.locators.length; i++) {
-                if (this.locators[i].name.indexOf(prefix) === 0) {
-                    locators.push(this.locators[i]);
-                }
-            }
-            return locators;
-        }
-
-        /**
-         * Gets object's res objects
-         * @param {Array} [out=[]] - Optional receiving array
-         * @param {Boolean} excludeChildren - True to exclude children's res objects
-         * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
-         */
-
-    }, {
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-            var excludeChildren = arguments[1];
-
-            if (this.mesh) this.mesh.GetResources(out);
-            if (this.animation) this.animation.GetResources(out);
-
-            _global.util.perArrayChild(this.spriteSets, 'GetResources', out);
-            _global.util.perArrayChild(this.turretSets, 'GetResources', out);
-            _global.util.perArrayChild(this.decals, 'GetResources', out);
-            _global.util.perArrayChild(this.spotlightSets, 'GetResources', out);
-            _global.util.perArrayChild(this.planeSets, 'GetResources', out);
-            _global.util.perArrayChild(this.lineSets, 'GetResources', out);
-            _global.util.perArrayChild(this.overlayEffects, 'GetResources', out);
-            _global.util.perArrayChild(this.effectChildren, 'GetResources', out);
-
-            if (!excludeChildren) {
-                _global.util.perArrayChild(this.children, 'GetResources', out);
-            }
-
-            return out;
-        }
-
-        /**
-         * A Per frame function that updates view dependent data
-         */
-
-    }, {
-        key: 'UpdateViewDependentData',
-        value: function UpdateViewDependentData() {
-            for (var i = 0; i < this.children.length; ++i) {
-                this.children[i].UpdateViewDependentData(this.transform);
-            }
-
-            _global.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMat'), this.transform);
-            _global.mat4.transpose(this._perObjectData.perObjectVSData.Get('WorldMatLast'), this.transform);
-
-            var center = this._perObjectData.perObjectVSData.Get('EllipsoidCenter'),
-                radii = this._perObjectData.perObjectVSData.Get('EllipsoidRadii');
-
-            if (this.shapeEllipsoidRadius[0] > 0) {
-                center[0] = this.shapeEllipsoidCenter[0];
-                center[1] = this.shapeEllipsoidCenter[1];
-                center[2] = this.shapeEllipsoidCenter[2];
-                radii[0] = this.shapeEllipsoidRadius[0];
-                radii[1] = this.shapeEllipsoidRadius[1];
-                radii[2] = this.shapeEllipsoidRadius[2];
-            } else if (this.mesh && this.mesh.IsGood()) {
-                _global.vec3.subtract(center, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-                _global.vec3.scale(center, center, 0.5 * 1.732050807);
-                _global.vec3.add(radii, this.mesh.geometryResource.maxBounds, this.mesh.geometryResource.minBounds);
-                _global.vec3.scale(radii, radii, 0.5);
-            }
-
-            for (var _i = 0; _i < this.customMasks.length; ++_i) {
-                var targets = this.visible.customMasks ? this.customMasks[_i].targets : [0, 0, 0, 0];
-                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this.customMasks[_i].transform);
-                this._perObjectData.perObjectVSData.Set(_i ? 'CustomMaskData1' : 'CustomMaskData0', this.customMasks[_i].maskData);
-                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this.customMasks[_i].materialID);
-                this._perObjectData.perObjectPSData.Set(_i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', targets);
-            }
-
-            if (this.animation.animations.length) {
-                this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
-            }
-
-            for (var _i2 = 0; _i2 < this.lineSets.length; ++_i2) {
-                this.lineSets[_i2].UpdateViewDependentData(this.transform);
-            }
-        }
-
-        /**
-         * Per frame update
-         * @param {Number} dt - delta time
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt) {
-            if (this.lod > 0) {
-                for (var i = 0; i < this.spriteSets.length; ++i) {
-                    this.spriteSets[i].Update(dt);
-                }
-
-                for (var _i3 = 0; _i3 < this.planeSets.length; _i3++) {
-                    this.planeSets[_i3].Update(dt);
-                }
-
-                for (var _i4 = 0; _i4 < this.spotlightSets.length; _i4++) {
-                    this.spotlightSets[_i4].Update(dt);
-                }
-
-                for (var _i5 = 0; _i5 < this.children.length; ++_i5) {
-                    this.children[_i5].Update(dt);
-                }
-
-                for (var _i6 = 0; _i6 < this.effectChildren.length; ++_i6) {
-                    this.effectChildren[_i6].Update(dt, this.transform);
-                }
-
-                for (var _i7 = 0; _i7 < this.curveSets.length; ++_i7) {
-                    this.curveSets[_i7].Update(dt);
-                }
-
-                for (var _i8 = 0; _i8 < this.overlayEffects.length; ++_i8) {
-                    this.overlayEffects[_i8].Update(dt);
-                }
-
-                for (var _i9 = 0; _i9 < this.lineSets.length; _i9++) {
-                    this.lineSets[_i9].Update(dt);
-                }
-
-                this.animation.Update(dt);
-            }
-        }
-
-        /**
-         * Gets render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {
-            if (this.display) {
-                var show = this.visible;
-
-                if (show.mesh && this.mesh && this.lod > 0) {
-                    this.mesh.GetBatches(mode, accumulator, this._perObjectData);
-                }
-
-                if (this.lod > 1) {
-                    if (show.spriteSets) {
-                        for (var i = 0; i < this.spriteSets.length; i++) {
-                            this.spriteSets[i].GetBatches(mode, accumulator, this._perObjectData, this.transform);
-                        }
-                    }
-
-                    if (show.spotlightSets) {
-                        for (var _i10 = 0; _i10 < this.spotlightSets.length; _i10++) {
-                            this.spotlightSets[_i10].GetBatches(mode, accumulator, this._perObjectData);
-                        }
-                    }
-
-                    if (show.planeSets) {
-                        for (var _i11 = 0; _i11 < this.planeSets.length; _i11++) {
-                            this.planeSets[_i11].GetBatches(mode, accumulator, this._perObjectData);
-                        }
-                    }
-
-                    if (show.decals) {
-                        for (var _i12 = 0; _i12 < this.decals.length; _i12++) {
-                            this.decals[_i12].GetBatches(mode, accumulator, this._perObjectData, show.killmarks ? this.killCount : 0);
-                        }
-                    }
-
-                    if (show.lineSets) {
-                        for (var _i13 = 0; _i13 < this.lineSets.length; _i13++) {
-                            this.lineSets[_i13].GetBatches(mode, accumulator);
-                        }
-                    }
-                }
-
-                if (show.children) {
-                    for (var _i14 = 0; _i14 < this.children.length; _i14++) {
-                        this.children[_i14].GetBatches(mode, accumulator, this._perObjectData);
-                    }
-                }
-
-                if (show.effectChildren) {
-                    for (var _i15 = 0; _i15 < this.effectChildren.length; _i15++) {
-                        this.effectChildren[_i15].GetBatches(mode, accumulator, this._perObjectData);
-                    }
-                }
-
-                if (show.overlayEffects && this.mesh && this.mesh.IsGood()) {
-                    for (var _i16 = 0; _i16 < this.overlayEffects.length; _i16++) {
-                        this.overlayEffects[_i16].GetBatches(mode, accumulator, this._perObjectData, this.mesh);
-                    }
-                }
-            }
-        }
-
-        /**
-         * RenderDebugInfo
-         * @param debugHelper
-         */
-
-    }, {
-        key: 'RenderDebugInfo',
-        value: function RenderDebugInfo(debugHelper) {
-            this.animation.RenderDebugInfo(debugHelper);
-        }
-    }]);
-
-    return EveSpaceObject;
-}(_EveObject2.EveObject);
-
-exports.EveStation = EveSpaceObject;
 
 /***/ }),
 /* 64 */
@@ -12646,7 +12640,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(58);
+var _curve = __webpack_require__(59);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -15599,9 +15593,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["fromEuler"] = fromEuler;
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(34);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17224,9 +17218,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.noise = undefined;
 
-var _vec = __webpack_require__(34);
+var _vec = __webpack_require__(35);
 
-var _vec2 = __webpack_require__(35);
+var _vec2 = __webpack_require__(36);
 
 var noise = exports.noise = {};
 
@@ -17803,7 +17797,7 @@ Object.defineProperty(exports, 'device', {
   }
 });
 
-var _Tw2ResMan = __webpack_require__(37);
+var _Tw2ResMan = __webpack_require__(38);
 
 Object.defineProperty(exports, 'resMan', {
   enumerable: true,
@@ -17848,9 +17842,9 @@ var _math = __webpack_require__(19);
 
 var _Tw2Store = __webpack_require__(20);
 
-var _Tw2ResMan = __webpack_require__(37);
+var _Tw2ResMan = __webpack_require__(38);
 
-var _Tw2Effect = __webpack_require__(41);
+var _Tw2Effect = __webpack_require__(42);
 
 var _vertex = __webpack_require__(10);
 
@@ -19150,7 +19144,7 @@ exports.template = template;
 
 var _type = __webpack_require__(21);
 
-var _arr = __webpack_require__(36);
+var _arr = __webpack_require__(37);
 
 /**
  * Assigns property values if they exist in a source object
@@ -19593,7 +19587,7 @@ exports.Tw2SamplerOverride = undefined;
 
 var _global = __webpack_require__(0);
 
-var _Tw2SamplerState = __webpack_require__(43);
+var _Tw2SamplerState = __webpack_require__(44);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19705,7 +19699,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2VertexElement = __webpack_require__(44);
+var _Tw2VertexElement = __webpack_require__(45);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19905,11 +19899,12 @@ var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = function () {
         /**
          * Sets vertex declarations from an array of arrays, or an array of objects
          * @param {Array<Array>|Array<Object>} declarations
+         * @param {number} [stride]
          */
 
     }, {
         key: 'DeclareFromObject',
-        value: function DeclareFromObject(declarations) {
+        value: function DeclareFromObject(declarations, stride) {
             this.elements.splice(0, this.elements.length);
             var currentOffset = 0;
 
@@ -19953,6 +19948,10 @@ var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = function () {
 
                 this.elements.push(new _Tw2VertexElement.Tw2VertexElement(usage, usageIndex, type, elements, offset));
                 currentOffset += elements * 4;
+            }
+
+            if (stride !== undefined) {
+                this.stride = stride;
             }
 
             this.RebuildHash();
@@ -21750,7 +21749,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _parameter = __webpack_require__(45);
+var _parameter = __webpack_require__(46);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22980,7 +22979,7 @@ Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(46);
+var _Tw2PerObjectData = __webpack_require__(47);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23022,7 +23021,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2PerObjectData2 = __webpack_require__(46);
+var _Tw2PerObjectData2 = __webpack_require__(47);
 
 var _Tw2RawData = __webpack_require__(25);
 
@@ -23543,7 +23542,7 @@ var _global = __webpack_require__(0);
 
 var _batch = __webpack_require__(18);
 
-var _Tw2Mesh2 = __webpack_require__(49);
+var _Tw2Mesh2 = __webpack_require__(50);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23690,7 +23689,7 @@ exports.Tw2MeshLineArea = undefined;
 
 var _batch = __webpack_require__(18);
 
-var _Tw2MeshArea2 = __webpack_require__(50);
+var _Tw2MeshArea2 = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23734,7 +23733,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Animation = __webpack_require__(51);
+var _Tw2Animation = __webpack_require__(52);
 
 Object.keys(_Tw2Animation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23758,7 +23757,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(54);
 
 Object.keys(_Tw2Bone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23770,7 +23769,7 @@ Object.keys(_Tw2Bone).forEach(function (key) {
   });
 });
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(55);
 
 Object.keys(_Tw2Model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23782,7 +23781,7 @@ Object.keys(_Tw2Model).forEach(function (key) {
   });
 });
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(56);
 
 Object.keys(_Tw2Track).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23794,7 +23793,7 @@ Object.keys(_Tw2Track).forEach(function (key) {
   });
 });
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(57);
 
 Object.keys(_Tw2TrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23824,15 +23823,15 @@ var _global = __webpack_require__(0);
 
 var _resource = __webpack_require__(26);
 
-var _Tw2Animation = __webpack_require__(51);
+var _Tw2Animation = __webpack_require__(52);
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(54);
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(55);
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(56);
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(57);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25370,7 +25369,7 @@ var _Tw2Resource2 = __webpack_require__(9);
 
 var _Tw2Error = __webpack_require__(4);
 
-var _geometry = __webpack_require__(47);
+var _geometry = __webpack_require__(48);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26423,9 +26422,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2RenderTarget = __webpack_require__(57);
+var _Tw2RenderTarget = __webpack_require__(58);
 
-var _mesh = __webpack_require__(48);
+var _mesh = __webpack_require__(49);
 
 var _resource = __webpack_require__(26);
 
@@ -32454,7 +32453,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(59);
+var _child = __webpack_require__(60);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32478,7 +32477,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(61);
+var _object = __webpack_require__(62);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32570,11 +32569,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
         var _this = _possibleConstructorReturn(this, (EveChildBillboard.__proto__ || Object.getPrototypeOf(EveChildBillboard)).call(this));
 
         _this.mesh = null;
-        _this._perObjectData = new _core.Tw2BasicPerObjectData();
-        _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectFFEData.Declare('world', 16);
-        _this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-        _this._perObjectData.perObjectFFEData.Create();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData);
         return _this;
     }
 
@@ -32878,11 +32873,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
                 _global.mat4.transpose(this._perObjectData.perObjectVSData.data.subarray(16), this.worldTransformLast);
             } else {
                 if (!this._perObjectData) {
-                    this._perObjectData = new _core.Tw2BasicPerObjectData();
-                    this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-                    this._perObjectData.perObjectFFEData.Declare('world', 16);
-                    this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-                    this._perObjectData.perObjectFFEData.Create();
+                    this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData);
                 }
                 _global.mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
                 _global.mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);
@@ -32943,11 +32934,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
         _this.mesh = null;
         _this.particleEmitters = [];
         _this.particleSystems = [];
-        _this._perObjectData = new _core.Tw2BasicPerObjectData();
-        _this._perObjectData.perObjectFFEData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectFFEData.Declare('world', 16);
-        _this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-        _this._perObjectData.perObjectFFEData.Create();
+        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData);
         return _this;
     }
 
@@ -33040,7 +33027,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(60);
+var _EveOccluder = __webpack_require__(61);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33106,7 +33093,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(60);
+var _EveOccluder = __webpack_require__(61);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34313,6 +34300,8 @@ var _core = __webpack_require__(1);
 
 var _EveObject2 = __webpack_require__(12);
 
+var _EveSpaceObject = __webpack_require__(28);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -34356,31 +34345,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
         _this.boundingSphereCenter = _global.vec3.create();
         _this.boundingSphereRadius = 0;
 
-        _this._perObjectData = new _core.Tw2PerObjectData();
-        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        _this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        _this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        _this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        _this._perObjectData.perObjectVSData.Create();
-
-        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        _this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        _this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        _this._perObjectData.perObjectPSData.Create();
+        _this._perObjectData = new _core.Tw2PerObjectData(_EveSpaceObject.EveSpaceObject.perObjectData);
         return _this;
     }
 
@@ -34480,6 +34445,8 @@ exports.EveMissile = exports.EveMissileWarhead = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
@@ -34513,7 +34480,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
+var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (_EveObject) {
     _inherits(EveMissileWarhead, _EveObject);
 
     function EveMissileWarhead() {
@@ -34535,24 +34502,7 @@ var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
         _this.transform = _global.mat4.create();
         _this.velocity = _global.vec3.create();
 
-        _this._perObjectData = new _core.Tw2PerObjectData();
-        _this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        _this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectVSData.Create();
-
-        _this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        _this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        _this._perObjectData.perObjectPSData.Create();
-
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        _this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        _this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+        _this._perObjectData = new _core.Tw2PerObjectData(EveMissile.perObjectData);
         return _this;
     }
 
@@ -34703,16 +34653,24 @@ var EveMissileWarhead = exports.EveMissileWarhead = function (_EveObject) {
                 }
             }
         }
+
+        /**
+         * Per object data
+         * @type {*}
+         */
+
     }]);
 
     return EveMissileWarhead;
-}(_EveObject2.EveObject);
+}(_EveObject2.EveObject), _class.perObjectData = {
+    PSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', [0, 1, 0, -10]], ['Clipdata1', 4]],
+    VSData: [['Shipdata', [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4]]
+}, _temp);
 
 /**
  * Missile warhead states
  * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
  */
-
 
 EveMissileWarhead.State = {
     READY: 0,
@@ -34893,7 +34851,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(62);
+var _EveTransform = __webpack_require__(63);
 
 var _EveObject2 = __webpack_require__(12);
 
@@ -35250,7 +35208,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveSpaceObject2 = __webpack_require__(63);
+var _EveSpaceObject2 = __webpack_require__(28);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -35468,6 +35426,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveBoosterSet = exports.EveBoosterSetItem = exports.EveBoosterBatch = undefined;
 
+var _class, _temp;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _global = __webpack_require__(0);
@@ -35658,7 +35618,7 @@ var EveBoosterSetItem = exports.EveBoosterSetItem = function (_EveObjectSetItem)
  */
 
 
-var EveBoosterSet = exports.EveBoosterSet = function (_EveObjectSet) {
+var EveBoosterSet = exports.EveBoosterSet = (_temp = _class = function (_EveObjectSet) {
     _inherits(EveBoosterSet, _EveObjectSet);
 
     function EveBoosterSet() {
@@ -35690,25 +35650,8 @@ var EveBoosterSet = exports.EveBoosterSet = function (_EveObjectSet) {
         _this3.trailSize = _global.vec4.create();
         _this3._parentTransform = _global.mat4.create();
         _this3._positions = null;
-
-        _this3._decl = new _core.Tw2VertexDeclaration();
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _global.device.gl.FLOAT, 3, 0));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _global.device.gl.FLOAT, 2, 12));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _global.device.gl.FLOAT, 4, 20));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _global.device.gl.FLOAT, 4, 36));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _global.device.gl.FLOAT, 4, 52));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _global.device.gl.FLOAT, 4, 68));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _global.device.gl.FLOAT, 4, 84));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 6, _global.device.gl.FLOAT, 1, 100));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 7, _global.device.gl.FLOAT, 2, 104));
-        _this3._decl.RebuildHash();
-
-        _this3._perObjectData = new _core.Tw2PerObjectData();
-        _this3._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this3._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this3._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        _this3._perObjectData.perObjectVSData.Create();
-
+        _this3._decl = new _core.Tw2VertexDeclaration(EveBoosterSet.vertexDeclarations);
+        _this3._perObjectData = new _core.Tw2PerObjectData(EveBoosterSet.perObjectData);
         _this3._locatorRebuildPending = true;
         return _this3;
     }
@@ -36018,24 +35961,36 @@ var EveBoosterSet = exports.EveBoosterSet = function (_EveObjectSet) {
                 }
             }
         }
+
+        /**
+         * The booster set's item constructor
+         * @type {EveBoosterSetItem}
+         */
+
+
+        /**
+         * Per object data
+         * @type {*}
+         */
+
+
+        /**
+         * Vertex declarations
+         * @type {*}
+         */
+
+
+        /**
+         * Internal helper
+         * @type {Array}
+         */
+
     }]);
 
     return EveBoosterSet;
-}(_EveObjectSet2.EveObjectSet);
-
-/**
- * The booster set's item constructor
- * @type {EveBoosterSetItem}
- */
-
-
-EveBoosterSet.Item = EveBoosterSetItem;
-
-/**
- * Internal helper
- * @type {Array}
- */
-EveBoosterSet._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]];
+}(_EveObjectSet2.EveObjectSet), _class.Item = EveBoosterSetItem, _class.perObjectData = {
+    VSData: [['WorldMat', 16], ['Shipdata', 4]]
+}, _class.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp);
 
 /***/ }),
 /* 175 */
@@ -36050,6 +36005,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.EveCurveLineSet = exports.EveCurveLineSetItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp, _class2, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -36081,7 +36038,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} numOfSegments
  * @class
  */
-var EveCurveLineSetItem = exports.EveCurveLineSetItem = function (_EveObjectSetItem) {
+var EveCurveLineSetItem = exports.EveCurveLineSetItem = (_temp = _class = function (_EveObjectSetItem) {
     _inherits(EveCurveLineSetItem, _EveObjectSetItem);
 
     function EveCurveLineSetItem() {
@@ -36278,35 +36235,33 @@ var EveCurveLineSetItem = exports.EveCurveLineSetItem = function (_EveObjectSetI
             _global.util.assignIfExists(item, opt, ['name', 'display', 'type', 'position1', 'color1', 'position2', 'color2', 'intermediatePosition', 'width', 'multiColor', 'multiColorBorder', 'overlayColor', 'animationSpeed', 'animationScale', 'numOfSegments']);
             return item;
         }
+
+        /**
+         * Curve line types
+         * @type {{INVALID: number, STRAIGHT: number, SPHERED: number, CURVED: number}}
+         */
+
+
+        /**
+         * Default curved line segmentation
+         * @type {number}
+         */
+
+
+        /**
+         * Default sphered line segmentation
+         * @type {number}
+         */
+
     }]);
 
     return EveCurveLineSetItem;
-}(_EveObjectSet2.EveObjectSetItem);
-
-/**
- * Curve line types
- * @type {{INVALID: number, STRAIGHT: number, SPHERED: number, CURVED: number}}
- */
-
-
-EveCurveLineSetItem.Type = {
+}(_EveObjectSet2.EveObjectSetItem), _class.Type = {
     INVALID: 0,
     STRAIGHT: 1,
     SPHERED: 2,
     CURVED: 3
-};
-
-/**
- * Default curved line segmentation
- * @type {number}
- */
-EveCurveLineSetItem.DEFAULT_CURVED_SEGMENTS = 20;
-
-/**
- * Default sphered line segmentation
- * @type {number}
- */
-EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS = 20;
+}, _class.DEFAULT_CURVED_SEGMENTS = 20, _class.DEFAULT_SPHERED_SEGMENTS = 20, _temp);
 
 /**
  * EveCurveLineSet
@@ -36329,7 +36284,7 @@ EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS = 20;
  * @class
  */
 
-var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
+var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_EveObjectSet) {
     _inherits(EveCurveLineSet, _EveObjectSet);
 
     function EveCurveLineSet() {
@@ -36359,24 +36314,8 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
         _this2._vbSize = 0;
         _this2._vb = null;
 
-        _this2._perObjectData = new _core.Tw2PerObjectData();
-        _this2._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        _this2._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        _this2._perObjectData.perObjectVSData.Create();
-        _this2._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        _this2._perObjectData.perObjectPSData.Declare('WorldMat', 16);
-        _this2._perObjectData.perObjectPSData.Create();
-
-        _this2._decl = new _core.Tw2VertexDeclaration();
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, _global.device.gl.FLOAT, 3, 0));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _global.device.gl.FLOAT, 4, 12));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _global.device.gl.FLOAT, 4, 28));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _global.device.gl.FLOAT, 3, 44));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _global.device.gl.FLOAT, 4, 56));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 1, _global.device.gl.FLOAT, 4, 72));
-        _this2._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 2, _global.device.gl.FLOAT, 4, 88));
-        _this2._decl.stride = 4 * _this2._vertexSize;
-        _this2._decl.RebuildHash();
+        _this2._perObjectData = new _core.Tw2PerObjectData(EveCurveLineSet.perObjectData);
+        _this2._decl = new _core.Tw2VertexDeclaration(EveCurveLineSet.vertexDeclarations, 4 * _this2._vertexSize);
 
         EveCurveLineSet.init();
         return _this2;
@@ -36499,7 +36438,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
                 color1: startColor,
                 color2: endColor,
                 width: width,
-                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGMENTS
             });
         }
 
@@ -36527,7 +36466,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
                 color1: startColor,
                 color2: endColor,
                 width: width,
-                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGEMENTS
+                numOfSegments: EveCurveLineSetItem.DEFAULT_SPHERED_SEGMENTS
             });
         }
 
@@ -36977,23 +36916,36 @@ var EveCurveLineSet = exports.EveCurveLineSet = function (_EveObjectSet) {
                 };
             }
         }
+
+        /**
+         * Line set item constructor
+         * @type {EveCurveLineSetItem}
+         */
+
+
+        /**
+         * Class global variables and scratch
+         */
+
+
+        /**
+         * Per object data
+         * @type {*}
+         */
+
+
+        /**
+         * Vertex declarations
+         * @type {*[]}
+         */
+
     }]);
 
     return EveCurveLineSet;
-}(_EveObjectSet2.EveObjectSet);
-
-/**
- * Class global variables and scratch
- */
-
-
-EveCurveLineSet.global = null;
-
-/**
- * Line set item constructor
- * @type {EveCurveLineSetItem}
- */
-EveCurveLineSet.Item = EveCurveLineSetItem;
+}(_EveObjectSet2.EveObjectSet), _class2.Item = EveCurveLineSetItem, _class2.global = null, _class2.perObjectData = {
+    VSData: [['WorldMat', 16]],
+    PSData: [['WorldMat', 16]]
+}, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp2);
 
 /***/ }),
 /* 176 */
@@ -37085,6 +37037,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.EvePlaneSet = exports.EvePlaneSetItem = exports.EvePlaneSetBatch = undefined;
+
+var _class, _temp;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37212,7 +37166,7 @@ var EvePlaneSetItem = exports.EvePlaneSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
+var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSet) {
     _inherits(EvePlaneSet, _EveObjectSet);
 
     function EvePlaneSet() {
@@ -37225,18 +37179,7 @@ var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
         _this3._time = 0;
         _this3._vertexBuffer = null;
         _this3._indexBuffer = null;
-
-        _this3._decl = new _core.Tw2VertexDeclaration();
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _global.device.gl.FLOAT, 4, 0));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _global.device.gl.FLOAT, 4, 16));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _global.device.gl.FLOAT, 4, 32));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _global.device.gl.FLOAT, 4, 48));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _global.device.gl.FLOAT, 4, 64));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _global.device.gl.FLOAT, 4, 80));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _global.device.gl.FLOAT, 4, 96));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 6, _global.device.gl.FLOAT, 4, 112));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 7, _global.device.gl.FLOAT, 3, 128));
-        _this3._decl.RebuildHash();
+        _this3._decl = new _core.Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations);
         return _this3;
     }
 
@@ -37436,6 +37379,18 @@ var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
             }
             return true;
         }
+
+        /**
+         * The plane set's item constructor
+         * @type {EvePlaneSetItem}
+         */
+
+
+        /**
+         * Vertex declarations
+         * @type {*[]}
+         */
+
     }, {
         key: 'planes',
         get: function get() {
@@ -37453,15 +37408,7 @@ var EvePlaneSet = exports.EvePlaneSet = function (_EveObjectSet) {
     }]);
 
     return EvePlaneSet;
-}(_EveObjectSet2.EveObjectSet);
-
-/**
- * The plane set's item constructor
- * @type {EvePlaneSetItem}
- */
-
-
-EvePlaneSet.Item = EvePlaneSetItem;
+}(_EveObjectSet2.EveObjectSet), _class.Item = EvePlaneSetItem, _class.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp);
 
 /***/ }),
 /* 178 */
@@ -37476,6 +37423,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.EveSpaceObjectDecal = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -37505,7 +37454,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
+var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = (_temp = _class = function () {
     function EveSpaceObjectDecal() {
         _classCallCheck(this, EveSpaceObjectDecal);
 
@@ -37525,22 +37474,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
         this.invDecalMatrix = _global.mat4.create();
         this.indexBuffer = [];
         this._indexBuffer = null;
-
-        this._perObjectData = new _core.Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new _core.Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new _core.Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('displayData', 4);
-        this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
-        this._perObjectData.perObjectPSData.Create();
-
-        _global.mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
+        this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
     }
 
     /**
@@ -37725,10 +37659,19 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = function () {
             this.parentGeometry.meshes[0].areas[0].count = bkCount;
             this.parentGeometry.meshes[0].indexType = bkIndexType;
         }
+
+        /**
+         * Per object data
+         * @type {{VSData: *[], PSData: *[]}}
+         */
+
     }]);
 
     return EveSpaceObjectDecal;
-}();
+}(), _class.perObjectData = {
+    VSData: [['worldMatrix', 16], ['invWorldMatrix', 16], ['decalMatrix', 16], ['invDecalMatrix', 16], ['parentBoneMatrix', 16, _global.mat4.identity([])]],
+    PSData: [['displayData', 4], ['shipData', 4 * 3]]
+}, _temp);
 
 /***/ }),
 /* 179 */
@@ -37741,6 +37684,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.EveSpotlightSet = exports.EveSpotlightSetItem = exports.EveSpotlightSetBatch = undefined;
+
+var _class, _temp;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37868,7 +37813,7 @@ var EveSpotlightSetItem = exports.EveSpotlightSetItem = function (_EveObjectSetI
  */
 
 
-var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
+var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_EveObjectSet) {
     _inherits(EveSpotlightSet, _EveObjectSet);
 
     function EveSpotlightSet() {
@@ -37881,16 +37826,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
         _this3._coneVertexBuffer = null;
         _this3._spriteVertexBuffer = null;
         _this3._indexBuffer = null;
-
-        _this3._decl = new _core.Tw2VertexDeclaration();
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, _global.device.gl.FLOAT, 4, 0));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, _global.device.gl.FLOAT, 4, 16));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, _global.device.gl.FLOAT, 4, 32));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, _global.device.gl.FLOAT, 4, 48));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, _global.device.gl.FLOAT, 3, 64));
-        _this3._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, _global.device.gl.FLOAT, 3, 76));
-        _this3._decl.RebuildHash();
-
+        _this3._decl = new _core.Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations);
         return _this3;
     }
 
@@ -38170,18 +38106,22 @@ var EveSpotlightSet = exports.EveSpotlightSet = function (_EveObjectSet) {
             }
             return true;
         }
+
+        /**
+         * Spotlight set item constructor
+         * @type {EveSpotlightSetItem}
+         */
+
+
+        /**
+         * Vertex declarations
+         * @type {*[]}
+         */
+
     }]);
 
     return EveSpotlightSet;
-}(_EveObjectSet2.EveObjectSet);
-
-/**
- * Spotlight set item constructor
- * @type {EveSpotlightSetItem}
- */
-
-
-EveSpotlightSet.Item = EveSpotlightSetItem;
+}(_EveObjectSet2.EveObjectSet), _class.Item = EveSpotlightSetItem, _class.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp);
 
 /***/ }),
 /* 180 */
@@ -38194,6 +38134,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.EveSpriteSet = exports.EveSpriteSetItem = exports.EveSpriteSetBatch = undefined;
+
+var _class, _temp;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38329,7 +38271,7 @@ var EveSpriteSetItem = exports.EveSpriteSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
+var EveSpriteSet = exports.EveSpriteSet = (_temp = _class = function (_EveObjectSet) {
     _inherits(EveSpriteSet, _EveObjectSet);
 
     function EveSpriteSet() {
@@ -38347,10 +38289,8 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
         _this3._vertexBuffer = null;
         _this3._indexBuffer = null;
         _this3._instanceBuffer = null;
-        _this3._decl = _this3._decl = new _core.Tw2VertexDeclaration();
-        _this3._vdecl = new _core.Tw2VertexDeclaration();
-        _this3._vdecl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, _global.device.gl.FLOAT, 1, 0));
-        _this3._vdecl.RebuildHash();
+        _this3._decl = new _core.Tw2VertexDeclaration();
+        _this3._vdecl = new _core.Tw2VertexDeclaration([['TEXCOORD', 5, 1]]);
 
         _this3.UseQuads(useQuads, isSkinned);
         return _this3;
@@ -38373,31 +38313,9 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
          */
         value: function UseQuads(useQuads, isSkinned) {
             if (this.useQuads === useQuads) return;
-
             this.useQuads = useQuads;
             this.isSkinned = isSkinned;
-
-            var gl = _global.device.gl;
-
-            this._decl.elements.splice(0, this._decl.elements.length);
-            if (!useQuads) {
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 5, gl.FLOAT, 2, 0));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, gl.FLOAT, 3, 8));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, gl.FLOAT, 3, 20));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, gl.FLOAT, 1, 32));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, gl.FLOAT, 1, 36));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 2, gl.FLOAT, 1, 40));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 3, gl.FLOAT, 1, 44));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 4, gl.FLOAT, 1, 48));
-            } else {
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, gl.FLOAT, 3, 0));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, gl.FLOAT, 4, 12));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 1, gl.FLOAT, 2, 28));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 0, gl.FLOAT, 4, 36));
-                this._decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.COLOR, 1, gl.FLOAT, 4, 52));
-            }
-
-            this._decl.RebuildHash();
+            this._decl.DeclareFromObject(!useQuads ? EveSpriteSet.vertexDeclarations : EveSpriteSet.quadVertexDeclarations);
             this._rebuildPending = true;
         }
 
@@ -38751,6 +38669,24 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
 
             return true;
         }
+
+        /**
+         * The sprite set's item constructor
+         * @type {EveSpriteSetItem}
+         */
+
+
+        /**
+         * Vertex declarations
+         * @type {*[]}
+         */
+
+
+        /**
+         * cpu transform vertex declarations
+         * @type {*[]}
+         */
+
     }, {
         key: 'sprites',
         get: function get() {
@@ -38768,15 +38704,7 @@ var EveSpriteSet = exports.EveSpriteSet = function (_EveObjectSet) {
     }]);
 
     return EveSpriteSet;
-}(_EveObjectSet2.EveObjectSet);
-
-/**
- * The sprite set's item constructor
- * @type {EveSpriteSetItem}
- */
-
-
-EveSpriteSet.Item = EveSpriteSetItem;
+}(_EveObjectSet2.EveObjectSet), _class.Item = EveSpriteSetItem, _class.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp);
 
 /***/ }),
 /* 181 */
@@ -38789,6 +38717,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.EveTurretSet = exports.EveTurretSetItem = undefined;
+
+var _class, _temp;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38904,7 +38834,7 @@ var EveTurretSetItem = exports.EveTurretSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EveTurretSet = exports.EveTurretSet = function (_EveObjectSet) {
+var EveTurretSet = exports.EveTurretSet = (_temp = _class = function (_EveObjectSet) {
     _inherits(EveTurretSet, _EveObjectSet);
 
     function EveTurretSet() {
@@ -38936,26 +38866,8 @@ var EveTurretSet = exports.EveTurretSet = function (_EveObjectSet) {
         _this2._recheckTimeLeft = 0;
         _this2._currentCyclingFiresPos = 0;
 
-        _this2._perObjectDataActive = new _core.Tw2PerObjectData();
-        _this2._perObjectDataActive.perObjectVSData = new _core.Tw2RawData();
-        _this2._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
-        _this2._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
-        _this2._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-        _this2._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        _this2._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        _this2._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        _this2._perObjectDataActive.perObjectVSData.Create();
-
-        _this2._perObjectDataInactive = new _core.Tw2PerObjectData();
-        _this2._perObjectDataInactive.perObjectVSData = new _core.Tw2RawData();
-        _this2._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
-        _this2._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
-        _this2._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-        _this2._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        _this2._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        _this2._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        _this2._perObjectDataInactive.perObjectVSData.Create();
-
+        _this2._perObjectDataActive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData);
+        _this2._perObjectDataInactive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData);
         _this2._locatorRebuildPending = true;
         return _this2;
     }
@@ -39610,15 +39522,52 @@ var EveTurretSet = exports.EveTurretSet = function (_EveObjectSet) {
                 turretSet.fireCallbackPending = true;
             }
         }
+
+        /**
+         * The eve turret set's item constructor
+         * @type {EveTurretSetItem}
+         */
+
+
+        /**
+         * Turret states
+         * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
+         */
+
+
+        /**
+         * World turret bone names
+         * @type {string[]}
+         */
+
+
+        /**
+         * Bone Skeleton Names
+         * @type {string[]}
+         */
+
+
+        /**
+         * Per object data
+         * @type {{VSData: *[]}}
+         */
+
     }]);
 
     return EveTurretSet;
-}(_EveObjectSet2.EveObjectSet);
+}(_EveObjectSet2.EveObjectSet), _class.Item = EveTurretSetItem, _class.State = {
+    INACTIVE: 0,
+    IDLE: 1,
+    FIRING: 2,
+    PACKING: 2,
+    UNPACKING: 4
+}, _class.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'], _class.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'], _class.perObjectData = {
+    VSData: [['baseCutoffData', 4], ['turretSetData', 4], ['shipMatrix', 16], ['turretTranslation', 4 * 24], ['turretRotation', 4 * 24], ['turretPoseTransAndRot', 2 * 4 * 72]]
+}, _temp);
 
 /**
  * mat3x4 to quat
  */
-
 
 EveTurretSet.mat3x4toquat = function () {
     var m = void 0,
@@ -39658,36 +39607,6 @@ EveTurretSet.mat3x4toquat = function () {
     };
 }();
 
-/**
- * The eve turret set's item constructor
- * @type {EveTurretSetItem}
- */
-EveTurretSet.Item = EveTurretSetItem;
-
-/**
- * Turret states
- * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
- */
-EveTurretSet.State = {
-    INACTIVE: 0,
-    IDLE: 1,
-    FIRING: 2,
-    PACKING: 2,
-    UNPACKING: 4
-};
-
-/**
- * World turret bone names
- * @type {string[]}
- */
-EveTurretSet.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'];
-
-/**
- * Bone Skeleton Names
- * @type {string[]}
- */
-EveTurretSet.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'];
-
 /***/ }),
 /* 182 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -39701,6 +39620,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.EveSpaceScene = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -39754,7 +39675,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {*} _debugHelper
  * @class
  */
-var EveSpaceScene = exports.EveSpaceScene = function () {
+var EveSpaceScene = exports.EveSpaceScene = (_temp = _class = function () {
     function EveSpaceScene() {
         var _this = this;
 
@@ -39813,40 +39734,8 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
         this._debugHelper = null;
 
         this._batches = new _core.Tw2BatchAccumulator();
-        this._perFrameVS = new _core.Tw2RawData();
-        this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
-        this._perFrameVS.Declare('ViewProjectionMat', 16);
-        this._perFrameVS.Declare('ViewMat', 16);
-        this._perFrameVS.Declare('ProjectionMat', 16);
-        this._perFrameVS.Declare('ShadowViewMat', 16);
-        this._perFrameVS.Declare('ShadowViewProjectionMat', 16);
-        this._perFrameVS.Declare('EnvMapRotationMat', 16);
-        this._perFrameVS.Declare('SunData.DirWorld', 4);
-        this._perFrameVS.Declare('SunData.DiffuseColor', 4);
-        this._perFrameVS.Declare('FogFactors', 4);
-        this._perFrameVS.Declare('TargetResolution', 4);
-        this._perFrameVS.Declare('ViewportAdjustment', 4);
-        this._perFrameVS.Declare('MiscSettings', 4);
-        this._perFrameVS.Create();
-
-        this._perFramePS = new _core.Tw2RawData();
-        this._perFramePS.Declare('ViewInverseTransposeMat', 16);
-        this._perFramePS.Declare('ViewMat', 16);
-        this._perFramePS.Declare('EnvMapRotationMat', 16);
-        this._perFramePS.Declare('SunData.DirWorld', 4);
-        this._perFramePS.Declare('SunData.DiffuseColor', 4);
-        this._perFramePS.Declare('SceneData.AmbientColor', 3);
-        this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
-        this._perFramePS.Declare('SceneData.FogColor', 4);
-        this._perFramePS.Declare('ViewportOffset', 2);
-        this._perFramePS.Declare('ViewportSize', 2);
-        this._perFramePS.Declare('TargetResolution', 4);
-        this._perFramePS.Declare('ShadowMapSettings', 4);
-        this._perFramePS.Declare('ShadowCameraRange', 4);
-        this._perFramePS.Declare('ProjectionToView', 2);
-        this._perFramePS.Declare('FovXY', 2);
-        this._perFramePS.Declare('MiscSettings', 4);
-        this._perFramePS.Create();
+        this._perFrameVS = new _core.Tw2RawData(EveSpaceScene.perFrameData.VSData);
+        this._perFramePS = new _core.Tw2RawData(EveSpaceScene.perFrameData.PSData);
 
         EveSpaceScene.init();
     }
@@ -40255,24 +40144,31 @@ var EveSpaceScene = exports.EveSpaceScene = function () {
                 };
             }
         }
+
+        /**
+         * Per frame data
+         * @type {*}
+         */
+
+
+        /**
+         * Class global and scratch variables
+         * @type {?*}
+         */
+
+
+        /**
+         * Debug renderer
+         * @type {?Function}
+         */
+
     }]);
 
     return EveSpaceScene;
-}();
-
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-
-
-EveSpaceScene.global = null;
-
-/**
- * Debug renderer
- * @type {?Function}
- */
-EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
+}(), _class.perFrameData = {
+    PSData: [['ViewInverseTransposeMat', 16], ['ViewMat', 16], ['EnvMapRotationMat', 16], ['SunData.DirWorld', 4], ['SunData.DiffuseColor', 4], ['SceneData.AmbientColor', 3], ['SceneData.NebulaIntensity', 1], ['SceneData.FogColor', 4], ['ViewportOffset', 2], ['ViewportSize', 2], ['TargetResolution', 4], ['ShadowMapSettings', 4], ['ShadowCameraRange', 4], ['ProjectionToView', 2], ['FovXY', 2], ['MiscSettings', 4]],
+    VSData: [['ViewInverseTransposeMat', 16], ['ViewProjectionMat', 16], ['ViewMat', 16], ['ProjectionMat', 16], ['ShadowViewMat', 16], ['ShadowViewProjectionMat', 16], ['EnvMapRotationMat', 16], ['SunData.DirWorld', 4], ['SunData.DiffuseColor', 4], ['FogFactors', 4], ['TargetResolution', 4], ['ViewportAdjustment', 4], ['MiscSettings', 4]]
+}, _class.global = null, _class.DebugRenderer = window['Tw2DebugRenderer'] || null, _temp);
 
 /***/ }),
 /* 183 */
@@ -40290,13 +40186,13 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(58);
+var _curve = __webpack_require__(59);
 
 var _item = __webpack_require__(64);
 
-var _child = __webpack_require__(59);
+var _child = __webpack_require__(60);
 
-var _object = __webpack_require__(61);
+var _object = __webpack_require__(62);
 
 function EveSOF() {
     var data = null;
@@ -41311,7 +41207,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(28);
+var _Tw2ParticleEmitter2 = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41453,7 +41349,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(28);
+var _Tw2ParticleEmitter2 = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41572,7 +41468,7 @@ exports.Tr2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = undefined;
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(28);
+var _Tw2ParticleEmitter2 = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42250,7 +42146,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42341,7 +42237,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42432,7 +42328,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElement = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(29);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(30);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

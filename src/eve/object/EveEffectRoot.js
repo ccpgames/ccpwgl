@@ -1,6 +1,7 @@
 import {vec3, quat, mat4} from '../../global';
-import {Tw2PerObjectData, Tw2RawData} from '../../core';
+import {Tw2PerObjectData} from '../../core';
 import {EveObject} from './EveObject';
+import {EveSpaceObject} from './EveSpaceObject';
 
 /**
  * EveEffectRoot root objects for FX, can be put into scene's objects array
@@ -36,31 +37,7 @@ export class EveEffectRoot extends EveObject
         this.boundingSphereCenter = vec3.create();
         this.boundingSphereRadius = 0;
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        this._perObjectData.perObjectPSData.Create();
+        this._perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
     }
 
     /**

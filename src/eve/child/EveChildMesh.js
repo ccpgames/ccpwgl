@@ -66,11 +66,7 @@ export class EveChildMesh extends EveChild
         {
             if (!this._perObjectData)
             {
-                this._perObjectData = new Tw2BasicPerObjectData();
-                this._perObjectData.perObjectFFEData = new Tw2RawData();
-                this._perObjectData.perObjectFFEData.Declare('world', 16);
-                this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-                this._perObjectData.perObjectFFEData.Create();
+                this._perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
             }
             mat4.transpose(this._perObjectData.perObjectFFEData.Get('world'), this.worldTransform);
             mat4.invert(this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'), this.worldTransform);

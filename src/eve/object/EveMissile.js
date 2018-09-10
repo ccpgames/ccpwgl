@@ -1,5 +1,5 @@
 import {vec3, mat4, util} from '../../global';
-import {Tw2PerObjectData, Tw2RawData} from '../../core';
+import {Tw2PerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -42,24 +42,7 @@ export class EveMissileWarhead extends EveObject
         this.transform = mat4.create();
         this.velocity = vec3.create();
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        this._perObjectData.perObjectPSData.Create();
-
-        this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+        this._perObjectData = new Tw2PerObjectData(EveMissile.perObjectData);
     }
 
     /**
@@ -205,6 +188,24 @@ export class EveMissileWarhead extends EveObject
             }
         }
     }
+
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        PSData: [
+            ['WorldMat', 16],
+            ['WorldMatLast', 16],
+            ['Shipdata', [0, 1, 0, -10]],
+            ['Clipdata1', 4]
+        ],
+        VSData: [
+            ['Shipdata', [0, 1, 0, 1]],
+            ['Clipdata1', 4],
+            ['Clipdata2', 4],
+        ]
+    };
 }
 
 /**

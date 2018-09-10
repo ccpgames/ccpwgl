@@ -1,5 +1,5 @@
 import {vec3, vec4, util, device} from '../../global';
-import {Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
+import {Tw2VertexDeclaration, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -116,10 +116,8 @@ export class EveSpriteSet extends EveObjectSet
         this._vertexBuffer = null;
         this._indexBuffer = null;
         this._instanceBuffer = null;
-        this._decl = this._decl = new Tw2VertexDeclaration();
-        this._vdecl = new Tw2VertexDeclaration();
-        this._vdecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 1, 0));
-        this._vdecl.RebuildHash();
+        this._decl = new Tw2VertexDeclaration();
+        this._vdecl = new Tw2VertexDeclaration([['TEXCOORD', 5, 1]]);
 
         this.UseQuads(useQuads, isSkinned);
     }
@@ -150,34 +148,9 @@ export class EveSpriteSet extends EveObjectSet
     UseQuads(useQuads, isSkinned)
     {
         if (this.useQuads === useQuads) return;
-
         this.useQuads = useQuads;
         this.isSkinned = isSkinned;
-
-        const gl = device.gl;
-
-        this._decl.elements.splice(0, this._decl.elements.length);
-        if (!useQuads)
-        {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, gl.FLOAT, 2, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, gl.FLOAT, 3, 8));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, gl.FLOAT, 3, 20));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, gl.FLOAT, 1, 32));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, gl.FLOAT, 1, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, gl.FLOAT, 1, 40));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, gl.FLOAT, 1, 44));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, gl.FLOAT, 1, 48));
-        }
-        else
-        {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, gl.FLOAT, 3, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, gl.FLOAT, 4, 12));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, gl.FLOAT, 2, 28));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, gl.FLOAT, 4, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 1, gl.FLOAT, 4, 52));
-        }
-
-        this._decl.RebuildHash();
+        this._decl.DeclareFromObject(!useQuads ? EveSpriteSet.vertexDeclarations : EveSpriteSet.quadVertexDeclarations);
         this._rebuildPending = true;
     }
 
@@ -537,11 +510,40 @@ export class EveSpriteSet extends EveObjectSet
 
         return true;
     }
+
+    /**
+     * The sprite set's item constructor
+     * @type {EveSpriteSetItem}
+     */
+    static Item = EveSpriteSetItem;
+
+    /**
+     * Vertex declarations
+     * @type {*[]}
+     */
+    static vertexDeclarations = [
+        ['TEXCOORD', 5, 2],
+        ['POSITION', 0, 3],
+        ['COLOR', 0, 3],
+        ['TEXCOORD', 0, 1],
+        ['TEXCOORD', 1, 1],
+        ['TEXCOORD', 2, 1],
+        ['TEXCOORD', 3, 1],
+        ['TEXCOORD', 4, 1]
+    ];
+
+    /**
+     * cpu transform vertex declarations
+     * @type {*[]}
+     */
+    static quadVertexDeclarations = [
+        ['POSITION', 0, 3],
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 2],
+        ['COLOR', 0, 4],
+        ['COLOR', 1, 4]
+    ];
 }
 
-/**
- * The sprite set's item constructor
- * @type {EveSpriteSetItem}
- */
-EveSpriteSet.Item = EveSpriteSetItem;
+
 
