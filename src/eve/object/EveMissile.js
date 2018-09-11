@@ -42,7 +42,7 @@ export class EveMissileWarhead extends EveObject
         this.transform = mat4.create();
         this.velocity = vec3.create();
 
-        this._perObjectData = new Tw2PerObjectData(EveMissile.perObjectData);
+        this._perObjectData = new Tw2PerObjectData(EveMissileWarhead.perObjectData);
     }
 
     /**
@@ -197,11 +197,11 @@ export class EveMissileWarhead extends EveObject
         PSData: [
             ['WorldMat', 16],
             ['WorldMatLast', 16],
-            ['Shipdata', [0, 1, 0, -10]],
+            ['Shipdata', 4, [0, 1, 0, -10]],
             ['Clipdata1', 4]
         ],
         VSData: [
-            ['Shipdata', [0, 1, 0, 1]],
+            ['Shipdata', 4, [0, 1, 0, 1]],
             ['Clipdata1', 4],
             ['Clipdata2', 4],
         ]
