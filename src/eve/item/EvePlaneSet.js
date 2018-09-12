@@ -323,10 +323,10 @@ export class EvePlaneSet extends EveObjectSet
      * @type {*[]}
      */
     static vertexDeclarations = [
-        ['TEXCOORD', 0, 4 ],
-        ['TEXCOORD', 1, 4 ],
-        ['TEXCOORD', 2, 4 ],
-        ['COLOR', 0, 4 ],
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 4],
+        ['COLOR', 0, 4],
         ['TEXCOORD', 3, 4],
         ['TEXCOORD', 4, 4],
         ['TEXCOORD', 5, 4],

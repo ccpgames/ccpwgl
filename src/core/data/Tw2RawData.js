@@ -138,7 +138,7 @@ export class Tw2RawData
                 this.Declare(decl.name, decl.size, decl.value);
             }
         }
-        
+
         this.Create();
     }
 

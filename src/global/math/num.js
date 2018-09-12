@@ -25,6 +25,26 @@ num.biCumulative = function(t, order)
 };
 
 /**
+ * Converts a Dword to Float
+ * @param value
+ * @return {Number}
+ */
+num.dwordToFloat = function(value)
+{
+    const
+        b4 = (value & 0xff),
+        b3 = (value & 0xff00) >> 8,
+        b2 = (value & 0xff0000) >> 16,
+        b1 = (value & 0xff000000) >> 24,
+        sign = 1 - (2 * (b1 >> 7)), // sign = bit 0
+        exp = (((b1 << 1) & 0xff) | (b2 >> 7)) - 127, // exponent = bits 1..8
+        sig = ((b2 & 0x7f) << 16) | (b3 << 8) | b4; // significand = bits 9..31
+
+    if (sig === 0 && exp === -127) return 0.0;
+    return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
+};
+
+/**
  * Exponential decay
  *
  * @param {number} omega0
