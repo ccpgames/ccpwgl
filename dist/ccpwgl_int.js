@@ -5445,6 +5445,26 @@ num.biCumulative = function (t, order) {
 };
 
 /**
+ * Converts a Dword to Float
+ * @param value
+ * @return {Number}
+ */
+num.dwordToFloat = function (value) {
+    var b4 = value & 0xff,
+        b3 = (value & 0xff00) >> 8,
+        b2 = (value & 0xff0000) >> 16,
+        b1 = (value & 0xff000000) >> 24,
+        sign = 1 - 2 * (b1 >> 7),
+        // sign = bit 0
+    exp = (b1 << 1 & 0xff | b2 >> 7) - 127,
+        // exponent = bits 1..8
+    sig = (b2 & 0x7f) << 16 | b3 << 8 | b4; // significand = bits 9..31
+
+    if (sig === 0 && exp === -127) return 0.0;
+    return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
+};
+
+/**
  * Exponential decay
  *
  * @param {number} omega0
@@ -17838,6 +17858,8 @@ exports.device = exports.Tw2Device = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _math = __webpack_require__(19);
 
 var _Tw2Store = __webpack_require__(20);
@@ -17849,6 +17871,8 @@ var _Tw2Effect = __webpack_require__(42);
 var _vertex = __webpack_require__(10);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -17913,8 +17937,7 @@ var WebGLDebugUtil = __webpack_require__(86);
  * @property {?Function} _onResize                 - An optional function which is called when the canvas resizes
  * @class
  */
-
-var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
+var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter) {
     _inherits(Tw2Device, _Tw2EventEmitter);
 
     function Tw2Device() {
@@ -18007,6 +18030,8 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
     }, {
         key: 'CreateDevice',
         value: function CreateDevice(canvas, params) {
+            var _states, _states2, _states3;
+
             this.gl = null;
             this.glVersion = Tw2Device.WebglVersion.NONE;
             this.effectDir = '/effect.gles2/';
@@ -18022,22 +18047,20 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
                 if (this.gl) this.glVersion = Tw2Device.WebglVersion.WEBGL;
             }
 
-            this.ext = {
-                drawElementsInstanced: function drawElementsInstanced() {
-                    return false;
-                },
-                drawArraysInstanced: function drawArraysInstanced() {
-                    return false;
-                },
-                vertexAttribDivisor: function vertexAttribDivisor() {
-                    return false;
-                },
-                hasInstancedArrays: function hasInstancedArrays() {
-                    return false;
-                }
-            };
+            var returnFalse = function returnFalse() {
+                return false;
+            },
+                returnTrue = function returnTrue() {
+                return true;
+            },
+                gl = this.gl;
 
-            var gl = this.gl;
+            this.ext = {
+                drawElementsInstanced: returnFalse,
+                drawArraysInstanced: returnFalse,
+                vertexAttribDivisor: returnFalse,
+                hasInstancedArrays: returnFalse
+            };
 
             switch (this.glVersion) {
                 case Tw2Device.WebglVersion.WEBGL2:
@@ -18051,9 +18074,7 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
                         vertexAttribDivisor: function vertexAttribDivisor(location, divisor) {
                             gl.vertexAttribDivisor(location, divisor);
                         },
-                        hasInstancedArrays: function hasInstancedArrays() {
-                            return true;
-                        }
+                        hasInstancedArrays: returnTrue
                     };
                     break;
 
@@ -18074,9 +18095,7 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
                             vertexAttribDivisor: function vertexAttribDivisor(location, divisor) {
                                 instancedArrays['vertexAttribDivisorANGLE'](location, divisor);
                             },
-                            hasInstancedArrays: function hasInstancedArrays() {
-                                return true;
-                            }
+                            hasInstancedArrays: returnTrue
                         };
                     }
                     break;
@@ -18132,44 +18151,24 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
             gl.bindBuffer(gl.ARRAY_BUFFER, this._quadBuffer);
             gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
             this._cameraQuadBuffer = gl.createBuffer();
-            this._quadDecl = new _vertex.Tw2VertexDeclaration();
-            this._quadDecl.elements.push(new _vertex.Tw2VertexElement(_vertex.Tw2VertexDeclaration.Type.POSITION, 0, gl.FLOAT, 4, 0));
-            this._quadDecl.elements.push(new _vertex.Tw2VertexElement(_vertex.Tw2VertexDeclaration.Type.TEXCOORD, 0, gl.FLOAT, 2, 16));
-            this._quadDecl.RebuildHash();
+            this._quadDecl = new _vertex.Tw2VertexDeclaration([['POSITION', 0, 4], ['TEXCOORD', 0, 2]]);
 
-            this._alphaTestState = {};
-            this._alphaTestState.states = {};
-            this._alphaTestState.states[this.RS_ALPHATESTENABLE] = 0;
-            this._alphaTestState.states[this.RS_ALPHAREF] = -1;
-            this._alphaTestState.states[this.RS_ALPHAFUNC] = this.CMP_GREATER;
-            this._alphaTestState.states[this.RS_CLIPPING] = 0;
-            this._alphaTestState.states[this.RS_CLIPPLANEENABLE] = 0;
-            this._alphaTestState.dirty = false;
+            this._alphaTestState = {
+                dirty: false,
+                states: (_states = {}, _defineProperty(_states, this.RS_ALPHATESTENABLE, 0), _defineProperty(_states, this.RS_ALPHAREF, -1), _defineProperty(_states, this.RS_ALPHAFUNC, this.CMP_GREATER), _defineProperty(_states, this.RS_CLIPPING, 0), _defineProperty(_states, this.RS_CLIPPLANEENABLE, 0), _states)
+            };
 
-            this._alphaBlendState = {};
-            this._alphaBlendState.states = {};
-            this._alphaBlendState.states[this.RS_SRCBLEND] = this.BLEND_SRCALPHA;
-            this._alphaBlendState.states[this.RS_DESTBLEND] = this.BLEND_INVSRCALPHA;
-            this._alphaBlendState.states[this.RS_BLENDOP] = this.BLENDOP_ADD;
-            this._alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE] = 0;
-            this._alphaBlendState.states[this.RS_BLENDOPALPHA] = this.BLENDOP_ADD;
-            this._alphaBlendState.states[this.RS_SRCBLENDALPHA] = this.BLEND_SRCALPHA;
-            this._alphaBlendState.states[this.RS_DESTBLENDALPHA] = this.BLEND_INVSRCALPHA;
-            this._alphaBlendState.dirty = false;
+            this._alphaBlendState = {
+                dirty: false,
+                states: (_states2 = {}, _defineProperty(_states2, this.RS_SRCBLEND, this.BLEND_SRCALPHA), _defineProperty(_states2, this.RS_DESTBLEND, this.BLEND_INVSRCALPHA), _defineProperty(_states2, this.RS_BLENDOP, this.BLENDOP_ADD), _defineProperty(_states2, this.RS_SEPARATEALPHABLENDENABLE, 0), _defineProperty(_states2, this.RS_BLENDOPALPHA, this.BLENDOP_ADD), _defineProperty(_states2, this.RS_SRCBLENDALPHA, this.BLEND_SRCALPHA), _defineProperty(_states2, this.RS_DESTBLENDALPHA, this.BLEND_INVSRCALPHA), _states2)
+            };
 
-            this._depthOffsetState = {};
-            this._depthOffsetState.states = {};
-            this._depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS] = 0;
-            this._depthOffsetState.states[this.RS_DEPTHBIAS] = 0;
-            this._depthOffsetState.dirty = false;
+            this._depthOffsetState = {
+                dirty: false,
+                states: (_states3 = {}, _defineProperty(_states3, this.RS_SLOPESCALEDEPTHBIAS, 0), _defineProperty(_states3, this.RS_DEPTHBIAS, 0), _states3)
+            };
 
-            this.wrapModes = [];
-            this.wrapModes[0] = 0;
-            this.wrapModes[1] = gl.REPEAT;
-            this.wrapModes[2] = gl.MIRRORED_REPEAT;
-            this.wrapModes[3] = gl.CLAMP_TO_EDGE;
-            this.wrapModes[4] = gl.CLAMP_TO_EDGE;
-            this.wrapModes[5] = gl.CLAMP_TO_EDGE;
+            this.wrapModes = [0, gl.REPEAT, gl.MIRRORED_REPEAT, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE];
 
             this._shadowStateBuffer = new Float32Array(24);
 
@@ -18364,13 +18363,15 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
 
         /**
          * Gets the device's target resolution
-         * @param {vec4} out
+         * @param {vec4} [out=vec4.create()]
          * @returns {vec4} out
          */
 
     }, {
         key: 'GetTargetResolution',
-        value: function GetTargetResolution(out) {
+        value: function GetTargetResolution() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _math.vec4.create();
+
             var aspectRatio = this.projection[0] ? this.projection[5] / this.projection[0] : 0.0;
             var aspectAdjustment = 1.0;
             if (aspectRatio > 1.6) aspectAdjustment = aspectRatio / 1.6;
@@ -18384,13 +18385,15 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
 
         /**
          * GetEyePosition
-         * @param {vec3} [out]
+         * @param {vec3} [out=vec3.create()]
          * @return {vec3}
          */
 
     }, {
         key: 'GetEyePosition',
-        value: function GetEyePosition(out) {
+        value: function GetEyePosition() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _math.vec3.create();
+
             return _math.vec3.copy(out, this.eyePosition);
         }
 
@@ -18427,9 +18430,10 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
     }, {
         key: 'GetExtension',
         value: function GetExtension(extension) {
-            for (var prefix in Tw2Device.WebglVendorPrefixes) {
-                if (Tw2Device.WebglVendorPrefixes.hasOwnProperty(prefix)) {
-                    var ext = this.gl.getExtension(Tw2Device.WebglVendorPrefixes[prefix] + extension);
+            var prefixes = Tw2Device.WebglVendorPrefixes;
+            for (var prefix in prefixes) {
+                if (prefixes.hasOwnProperty(prefix)) {
+                    var ext = this.gl.getExtension(prefixes[prefix] + extension);
                     if (ext) return ext;
                 }
             }
@@ -18476,14 +18480,16 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
         value: function CreateSolidTexture() {
             var rgba = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [0, 0, 0, 0];
 
-            var texture = this.gl.createTexture();
-            this.gl.bindTexture(this.gl.TEXTURE_2D, texture);
-            this.gl.texImage2D(this.gl.TEXTURE_2D, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array(rgba));
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-            this.gl.texParameteri(this.gl.TEXTURE_2D, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
-            this.gl.bindTexture(this.gl.TEXTURE_2D, null);
+            var gl = this.gl,
+                texture = this.gl.createTexture();
+
+            gl.bindTexture(gl.TEXTURE_2D, texture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(rgba));
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+            gl.bindTexture(gl.TEXTURE_2D, null);
             return texture;
         }
 
@@ -18498,17 +18504,19 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
         value: function CreateSolidCube() {
             var rgba = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [0, 0, 0, 0];
 
-            var texture = this.gl.createTexture();
-            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, texture);
+            var gl = this.gl,
+                texture = this.gl.createTexture();
+
+            gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
             for (var j = 0; j < 6; ++j) {
-                this.gl.texImage2D(this.gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, this.gl.RGBA, 1, 1, 0, this.gl.RGBA, this.gl.UNSIGNED_BYTE, new Uint8Array(rgba));
+                gl.texImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(rgba));
             }
-            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_WRAP_S, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_WRAP_T, this.gl.CLAMP_TO_EDGE);
-            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_MAG_FILTER, this.gl.NEAREST);
-            this.gl.texParameteri(this.gl.TEXTURE_CUBE_MAP, this.gl.TEXTURE_MIN_FILTER, this.gl.NEAREST);
-            //this.gl.generateMipmap(this.gl.TEXTURE_CUBE_MAP);
-            this.gl.bindTexture(this.gl.TEXTURE_CUBE_MAP, null);
+            gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+            gl.texParameteri(gl.TEXTURE_CUBE_MAP, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+            //gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
+            gl.bindTexture(gl.TEXTURE_CUBE_MAP, null);
             return texture;
         }
 
@@ -18526,12 +18534,13 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
 
             if (!effect || !effect.IsGood()) return false;
 
-            this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._quadBuffer);
+            var gl = this.gl;
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._quadBuffer);
             for (var pass = 0; pass < effect.GetPassCount(technique); ++pass) {
                 effect.ApplyPass(technique, pass);
                 if (!this._quadDecl.SetDeclaration(effect.GetPassInput(technique, pass), 24)) return false;
                 this.ApplyShadowState();
-                this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
             }
             return true;
         }
@@ -18582,13 +18591,14 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
                 vec[3] = 1;
             }
 
-            this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this._cameraQuadBuffer);
-            this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
+            var gl = this.gl;
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._cameraQuadBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
             for (var pass = 0; pass < effect.GetPassCount(technique); ++pass) {
                 effect.ApplyPass(technique, pass);
                 if (!this._quadDecl.SetDeclaration(effect.GetPassInput(technique, pass), 24)) return false;
                 this.ApplyShadowState();
-                this.gl.drawArrays(this.gl.TRIANGLE_STRIP, 0, 4);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
             }
             return true;
         }
@@ -18678,7 +18688,7 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
 
                 case this.RS_SLOPESCALEDEPTHBIAS:
                 case this.RS_DEPTHBIAS:
-                    value = Tw2Device.DwordToFloat(value);
+                    value = _math.num.dwordToFloat(value);
                     if (this._depthOffsetState[state] !== value) {
                         this._depthOffsetState.states[state] = value;
                         this._depthOffsetState.dirty = true;
@@ -18694,39 +18704,41 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
     }, {
         key: 'ApplyShadowState',
         value: function ApplyShadowState() {
+            var gl = this.gl;
+
             if (this._alphaBlendState.dirty) {
-                var blendOp = this.gl.FUNC_ADD;
+                var blendOp = gl.FUNC_ADD;
                 if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_SUBTRACT) {
-                    blendOp = this.gl.FUNC_SUBTRACT;
+                    blendOp = gl.FUNC_SUBTRACT;
                 } else if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_REVSUBTRACT) {
-                    blendOp = this.gl.FUNC_REVERSE_SUBTRACT;
+                    blendOp = gl.FUNC_REVERSE_SUBTRACT;
                 }
 
                 var srcBlend = this._blendTable[this._alphaBlendState.states[this.RS_SRCBLEND]],
                     destBlend = this._blendTable[this._alphaBlendState.states[this.RS_DESTBLEND]];
 
                 if (this._alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE]) {
-                    var blendOpAlpha = this.gl.FUNC_ADD;
+                    var blendOpAlpha = gl.FUNC_ADD;
                     if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_SUBTRACT) {
-                        blendOpAlpha = this.gl.FUNC_SUBTRACT;
+                        blendOpAlpha = gl.FUNC_SUBTRACT;
                     } else if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_REVSUBTRACT) {
-                        blendOpAlpha = this.gl.FUNC_REVERSE_SUBTRACT;
+                        blendOpAlpha = gl.FUNC_REVERSE_SUBTRACT;
                     }
 
                     var srcBlendAlpha = this._blendTable[this._alphaBlendState.states[this.RS_SRCBLENDALPHA]],
                         destBlendAlpha = this._blendTable[this._alphaBlendState.states[this.RS_DESTBLENDALPHA]];
 
-                    this.gl.blendEquationSeparate(blendOp, blendOpAlpha);
-                    this.gl.blendFuncSeparate(srcBlend, destBlend, srcBlendAlpha, destBlendAlpha);
+                    gl.blendEquationSeparate(blendOp, blendOpAlpha);
+                    gl.blendFuncSeparate(srcBlend, destBlend, srcBlendAlpha, destBlendAlpha);
                 } else {
-                    this.gl.blendEquation(blendOp);
-                    this.gl.blendFunc(srcBlend, destBlend);
+                    gl.blendEquation(blendOp);
+                    gl.blendFunc(srcBlend, destBlend);
                 }
                 this._alphaBlendState.dirty = false;
             }
 
             if (this._depthOffsetState.dirty) {
-                this.gl.polygonOffset(this._depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS], this._depthOffsetState.states[this.RS_DEPTHBIAS]);
+                gl.polygonOffset(this._depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS], this._depthOffsetState.states[this.RS_DEPTHBIAS]);
                 this._depthOffsetState.dirty = false;
             }
 
@@ -18786,7 +18798,7 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
                 }
 
                 var clipPlaneEnable = 0;
-                this.gl.uniform4f(this.shadowHandles.shadowStateInt, invertedAlphaTest, alphaTestRef, alphaTestFunc, clipPlaneEnable);
+                gl.uniform4f(this.shadowHandles.shadowStateInt, invertedAlphaTest, alphaTestRef, alphaTestFunc, clipPlaneEnable);
                 //this._shadowStateBuffers
             }
         }
@@ -18886,29 +18898,6 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
         }
 
         /**
-         * Converts a Dword to Float
-         * @param value
-         * @return {Number}
-         */
-
-    }], [{
-        key: 'DwordToFloat',
-        value: function DwordToFloat(value) {
-            var b4 = value & 0xff,
-                b3 = (value & 0xff00) >> 8,
-                b2 = (value & 0xff0000) >> 16,
-                b1 = (value & 0xff000000) >> 24,
-                sign = 1 - 2 * (b1 >> 7),
-                // sign = bit 0
-            exp = (b1 << 1 & 0xff | b2 >> 7) - 127,
-                // exponent = bits 1..8
-            sig = (b2 & 0x7f) << 16 | b3 << 8 | b4; // significand = bits 9..31
-
-            if (sig === 0 && exp === -127) return 0.0;
-            return sign * (1 + sig * Math.pow(2, -23)) * Math.pow(2, exp);
-        }
-
-        /**
          * Creates a gl context
          *
          * @param {HTMLCanvasElement} canvas
@@ -18917,7 +18906,7 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
          * @returns {*}
          */
 
-    }, {
+    }], [{
         key: 'CreateContext',
         value: function CreateContext(canvas, params, contextNames) {
             contextNames = Array.isArray(contextNames) ? contextNames : [contextNames];
@@ -18930,44 +18919,66 @@ var Tw2Device = exports.Tw2Device = function (_Tw2EventEmitter) {
             }
             return null;
         }
+
+        /**
+         * The constructor used to generate the time
+         * @type {DateConstructor}
+         */
+
+
+        /**
+         * Requests and animation frame
+         */
+
+
+        /**
+         * Cancels an animation frame by it's id
+         */
+
+
+        /**
+         * Webgl vendor prefixes
+         * @type {string[]}
+         */
+
+
+        /**
+         * Webgl context names
+         * @type {string[]}
+         */
+
+
+        /**
+         * Webgl2 context names
+         * @type {string[]}
+         */
+
+
+        /**
+         * Webgl version
+         * @type {{NONE: number, WEBGL: number, WEBGL2: number}}
+         */
+
     }]);
 
     return Tw2Device;
-}(_Tw2EventEmitter2.Tw2EventEmitter);
-
-/**
- * The constructor used to generate the time
- * @type {DateConstructor}
- */
-
-
-Tw2Device.Clock = Date;
-
-var timeOuts = void 0;
-
-/**
- * Requests and animation frame
- * @param {Function} callback
- * @returns {number} id
- */
-Tw2Device.RequestAnimationFrame = function () {
-    var requestFrame = window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (callback) {
+}(_Tw2EventEmitter2.Tw2EventEmitter), _class.Clock = Date, _class.RequestAnimationFrame = function () {
+    var requestAnimation = window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (callback) {
         if (!timeOuts) timeOuts = [];
         timeOuts.push(window.setTimeout(callback, 1000 / 60));
         return timeOuts.length - 1;
     };
 
-    return function RequestAnimationFrame(callback) {
-        return requestFrame(callback);
+    /**
+     * Requests an animation frame
+     * @param {Function} callback
+     * @returns {number} id
+     */
+    return function (callback) {
+        return requestAnimation(callback);
     };
-}();
-
-/**
- * Cancels an animation frame by it's id
- * @param {number} id
- */
-Tw2Device.CancelAnimationFrame = function () {
-    var cancelFrame = window['cancelAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (id) {
+}(), _class.CancelAnimationFrame = function () {
+    var cancelAnimation = window['cancelAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (id) {
         if (!timeOuts) timeOuts = [];
         if (timeOuts[id] !== undefined) {
             window.clearTimeout(timeOuts[id]);
@@ -18976,20 +18987,22 @@ Tw2Device.CancelAnimationFrame = function () {
         }
     };
 
-    return function CancelAnimationFrame(id) {
-        cancelFrame(id);
+    /**
+     * Cancels an animation frame by it's id
+     * @param {number} id
+     */
+    return function (id) {
+        cancelAnimation(id);
     };
-}();
-
-// Webgl details
-Tw2Device.WebglVendorPrefixes = ['', 'MOZ_', 'WEBKIT_', 'WEBGL_'];
-Tw2Device.WebglContextNames = ['webgl', 'experimental-webgl'];
-Tw2Device.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'];
-Tw2Device.WebglVersion = {
+}(), _class.WebglVendorPrefixes = ['', 'MOZ_', 'WEBKIT_', 'WEBGL_'], _class.WebglContextNames = ['webgl', 'experimental-webgl'], _class.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'], _class.WebglVersion = {
     NONE: 0,
     WEBGL: 1,
     WEBGL2: 2
-};
+}, _temp);
+
+// Storage for devices without request animation frame
+
+var timeOuts = void 0;
 
 // Render Modes
 Tw2Device.prototype.RM_ANY = -1;
@@ -19065,8 +19078,7 @@ Tw2Device.prototype.RS_MULTISAMPLEANTIALIAS = 161; // BOOL - set to do FSAA with
 Tw2Device.prototype.RS_MULTISAMPLEMASK = 162; // DWORD - per-sample enable/disable
 Tw2Device.prototype.RS_PATCHEDGESTYLE = 163; // Sets whether patch edges will use float style tessellation
 Tw2Device.prototype.RS_DEBUGMONITORTOKEN = 165; // DEBUG ONLY - token to debug monitor
-Tw2Device.prototype.RS_POINTSIZE_MAX = 166;
-// float point size max threshold
+Tw2Device.prototype.RS_POINTSIZE_MAX = 166; // float point size max threshold
 Tw2Device.prototype.RS_INDEXEDVERTEXBLENDENABLE = 167;
 Tw2Device.prototype.RS_COLORWRITEENABLE = 168; // per-channel write enable
 Tw2Device.prototype.RS_TWEENFACTOR = 170; // float tween factor
@@ -34502,7 +34514,7 @@ var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (
         _this.transform = _global.mat4.create();
         _this.velocity = _global.vec3.create();
 
-        _this._perObjectData = new _core.Tw2PerObjectData(EveMissile.perObjectData);
+        _this._perObjectData = new _core.Tw2PerObjectData(EveMissileWarhead.perObjectData);
         return _this;
     }
 
@@ -34663,8 +34675,8 @@ var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (
 
     return EveMissileWarhead;
 }(_EveObject2.EveObject), _class.perObjectData = {
-    PSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', [0, 1, 0, -10]], ['Clipdata1', 4]],
-    VSData: [['Shipdata', [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4]]
+    PSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', 4, [0, 1, 0, -10]], ['Clipdata1', 4]],
+    VSData: [['Shipdata', 4, [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4]]
 }, _temp);
 
 /**
