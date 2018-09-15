@@ -60,6 +60,26 @@ class Tw2Store extends Tw2EventEmitter
      */
     RegisterPath(prefix, path)
     {
+        if (path.lastIndexOf('/') !== path.length - 1)
+        {
+            path += '/';
+        }
+
+        if (Tw2Store.RestrictedPathPrefixes.includes(prefix))
+        {
+            this.emit('error', {
+                type: 'path',
+                key: prefix,
+                value: path,
+                log: {
+                    type: 'error',
+                    title: this.name,
+                    message: `Cannot register restricted prefix "${prefix}"`
+                }
+            });
+            return false;
+        }
+
         return Tw2Store.SetStoreItem(this, 'path', prefix, path, isString);
     }
 
@@ -547,5 +567,11 @@ class Tw2Store extends Tw2EventEmitter
         return false;
     }
 }
+
+/**
+ * Restricted path prefixes
+ * @type {string[]}
+ */
+Tw2Store.RestrictedPathPrefixes = ['dynamic', 'rgba'];
 
 export const store = new Tw2Store();

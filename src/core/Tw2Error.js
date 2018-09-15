@@ -91,7 +91,7 @@ export class HTTPStatusError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Communication status error while loading resource (%status%)');
+        super(data, `Communication status error while loading resource ${data.status}`);
     }
 }
 
@@ -283,7 +283,7 @@ export class Tw2ShaderCompileError extends Tw2Error
 {
     constructor(data)
     {
-        super(data, 'Error compiling %shaderType% shader');
+        super(data, 'Error compiling %shaderType% shader (%infoLog%)');
     }
 }
 

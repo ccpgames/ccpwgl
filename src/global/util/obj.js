@@ -87,7 +87,7 @@ export function get(src, prop, defaultValue)
  */
 export function template(str, obj = {})
 {
-    const literals = str.match(/%([^\\}]*(?:\\.[^\\}]*)*)%/g) || [];
+    const literals = str.match(/%([^%]+)?%/g) || [];
 
     for (let i = 0; i < literals.length; i++)
     {

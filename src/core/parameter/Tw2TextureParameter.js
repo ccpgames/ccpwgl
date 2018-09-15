@@ -1,6 +1,7 @@
 import {resMan, device, util} from '../../global';
 import {Tw2SamplerState} from '../sampler';
 import {Tw2Parameter} from './Tw2Parameter';
+import {Tw2TextureRes} from '../resource/Tw2TextureRes';
 
 /**
  * Tw2TextureParameter
@@ -99,8 +100,29 @@ export class Tw2TextureParameter extends Tw2Parameter
     {
         if (this.resourcePath !== '')
         {
-            this.resourcePath = this.resourcePath.toLowerCase();
-            this.textureRes = this.resourcePath !== '' ? resMan.GetResource(this.resourcePath) : null;
+            if (this.resourcePath.indexOf('rgba:/') === 0)
+            {
+                if (!this.textureRes || this.textureRes.path !== this.resourcePath)
+                {
+                    const
+                        color = this.resourcePath.replace('rgba:/', '').split(','),
+                        texture = device.CreateSolidTexture([
+                            parseFloat(color[0]),
+                            parseFloat(color[1]),
+                            parseFloat(color[2]),
+                            color[3] !== undefined ? parseFloat(color[3]) : 255
+                        ]);
+
+                    this.textureRes = new Tw2TextureRes();
+                    this.textureRes.path = this.resourcePath;
+                    this.textureRes.Attach(texture);
+                }
+            }
+            else
+            {
+                this.resourcePath = this.resourcePath.toLowerCase();
+                this.textureRes = this.resourcePath !== '' ? resMan.GetResource(this.resourcePath) : null;
+            }
         }
 
         this.UpdateOverrides();
@@ -117,7 +139,7 @@ export class Tw2TextureParameter extends Tw2Parameter
     {
         if (this.textureRes)
         {
-            if (this.useAllOverrides)
+            if (this.useAllOverrides && this._sampler)
             {
                 this._sampler.samplerType = sampler.samplerType;
                 this._sampler.isVolume = sampler.isVolume;

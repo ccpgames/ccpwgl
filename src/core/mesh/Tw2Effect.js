@@ -435,7 +435,7 @@ export class Tw2Effect
                     value = options[key],
                     param = this.parameters[key];
 
-                if (Tw2TextureParameter.is(value))
+                if (Tw2TextureParameter.isValue(value))
                 {
                     if (param)
                     {
@@ -493,7 +493,7 @@ export class Tw2Effect
 
                 if (param)
                 {
-                    if (param.constructor.is(value) && !param.EqualsValue(value))
+                    if (param.constructor.isValue(value) && !param.EqualsValue(value))
                     {
                         this.parameters[key].SetValue(value);
                         updated = true;
@@ -573,6 +573,16 @@ export class Tw2Effect
             }
         }
         return out;
+    }
+
+    /**
+     * Adds effect parameters automatically
+     * @returns {boolean} true if updated
+     */
+    AutoParameter()
+    {
+        this.autoParameter = true;
+        return this.BindParameters();
     }
 
 
