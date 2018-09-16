@@ -407,6 +407,70 @@ export class Tw2Shader
     }
 
     /**
+     * Checks if a constant is supported
+     * @param {string} name
+     * @returns {boolean}
+     */
+    HasConstant(name)
+    {
+        return this.constructor.Has(this.techniques, 'constants', name);
+    }
+
+    /**
+     * Checks if a texture is supported
+     * @param {string} name
+     * @returns {boolean}
+     */
+    HasTexture(name)
+    {
+        return this.constructor.Has(this.techniques, 'textures', name);
+    }
+
+    /**
+     * Checks if a sampler is supported
+     * @param {string} name
+     * @returns {boolean}
+     */
+    HasSampler(name)
+    {
+        return this.constructor.Has(this.techniques, 'samplers', name);
+    }
+
+    /**
+     * Checks if any techniques have a value with a given name for a specific type
+     * @param {*} techniques
+     * @param {string} type
+     * @param {string} name
+     * @returns {?*}
+     */
+    static Has(techniques, type, name)
+    {
+        for (const t in techniques)
+        {
+            if (techniques.hasOwnProperty(t))
+            {
+                const technique = techniques[t];
+                for (let p = 0; p < technique.passes.length; p++)
+                {
+                    const pass = technique.passes[p];
+                    for (let s = 0; s < pass.stages.length; s++)
+                    {
+                        const stage = pass.stages[s];
+                        for (let i = 0; i < stage[type].length; i++)
+                        {
+                            if (stage[type][i].name === name)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Compiles shader
      * @param {number} stageType
      * @param {string} prefix
