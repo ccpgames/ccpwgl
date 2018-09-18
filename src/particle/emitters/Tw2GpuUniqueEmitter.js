@@ -60,6 +60,12 @@ export class Tw2GpuUniqueEmitter extends Tw2ParticleEmitter
         //this.velocityStretchRotation=null;
         //this.inheritVelocity=null;
     }
+
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+    static partialImplementation = true;
 }
 
 // Temporary alias

@@ -33,7 +33,7 @@ store.Register({
         'webm': core.Tw2VideoRes
     },
 
-    constructors: [
+    classes: [
         core,
         curve,
         eve,

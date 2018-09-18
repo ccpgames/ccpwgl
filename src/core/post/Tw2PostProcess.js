@@ -2,10 +2,14 @@ import {device} from '../../global';
 import {Tw2RenderTarget} from '../Tw2RenderTarget';
 import {Tw2Effect} from '../mesh';
 import {Tw2TextureRes} from '../resource';
+import {generateID} from '../../global/util';
 
 /**
  * Creates a bloom post effect
  *
+ * @property {number|string} _id
+ * @property {string} name
+ * @property {boolean} display
  * @property {number} width
  * @property {number} height
  * @property {Tw2TextureRes} texture
@@ -18,6 +22,9 @@ export class Tw2PostProcess
 {
     constructor()
     {
+        this._id = generateID();
+        this.name = 'Bloom';
+        this.display = true;
         this.width = 0;
         this.height = 0;
         this.texture = null;
@@ -91,16 +98,41 @@ export class Tw2PostProcess
     }
 
     /**
+     * Checks if all resources are good
+     * @returns {boolean}
+     */
+    IsGood()
+    {
+        let isGood = true;
+        // Ensure each effect is called to keep alive
+        for (let i = 0; i < this.steps.length; i++)
+        {
+            const step = this.steps[i];
+            if (step.effect && !step.effect.IsGood())
+            {
+                isGood = false;
+            }
+        }
+        return isGood;
+    }
+
+    /**
      * Internal render/update function. It is called every frame.
+     * @returns {boolean} true if post was rendered
      */
     Render()
     {
+        if (!this.IsGood() || !this.display)
+        {
+            return false;
+        }
+
         const
             gl = device.gl,
             width = device.viewportWidth,
             height = device.viewportHeight;
 
-        if (width <= 0 || height <= 0) return;
+        if (width <= 0 || height <= 0) return false;
 
         if (this.texture === null)
         {
@@ -178,5 +210,7 @@ export class Tw2PostProcess
             }
             device.RenderFullScreenQuad(step.effect);
         }
+
+        return true;
     }
 }

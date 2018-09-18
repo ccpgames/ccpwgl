@@ -154,15 +154,28 @@ export class Tw2TextureRes extends Tw2Resource
     }
 
     /**
-     * Attach
+     * Attaches a texture
      * @param {WebGLTexture} texture
      */
     Attach(texture)
     {
+        this.path = '';
         this.texture = texture;
+        this._isPurged = false;
         this._isAttached = true;
-        this.OnLoaded({hide: true, isAttachment: true});
-        this.OnPrepared({hide: true, isAttachment: true});
+        this.OnLoaded({hide: true, data: {isAttachment: true}});
+        this.OnPrepared({hide: true, data: {isAttachment: true}});
+    }
+
+    /**
+     * Reloads the texture
+     */
+    Reload()
+    {
+        if (!this._isAttached)
+        {
+            return super.Reload();
+        }
     }
 
     /**

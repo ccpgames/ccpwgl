@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 65);
+/******/ 	return __webpack_require__(__webpack_require__.s = 66);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -97,7 +97,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _engine = __webpack_require__(78);
+var _engine = __webpack_require__(79);
 
 Object.keys(_engine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -109,7 +109,7 @@ Object.keys(_engine).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(14);
+var _util = __webpack_require__(10);
 
 var util = _interopRequireWildcard(_util);
 
@@ -140,7 +140,7 @@ Object.keys(_batch).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(92);
+var _curve = __webpack_require__(93);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -152,7 +152,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _data = __webpack_require__(102);
+var _data = __webpack_require__(103);
 
 Object.keys(_data).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -188,7 +188,7 @@ Object.keys(_mesh).forEach(function (key) {
   });
 });
 
-var _model = __webpack_require__(117);
+var _model = __webpack_require__(118);
 
 Object.keys(_model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -212,7 +212,7 @@ Object.keys(_parameter).forEach(function (key) {
   });
 });
 
-var _post = __webpack_require__(123);
+var _post = __webpack_require__(124);
 
 Object.keys(_post).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -260,7 +260,7 @@ Object.keys(_sampler).forEach(function (key) {
   });
 });
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
 Object.keys(_vertex).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -272,7 +272,7 @@ Object.keys(_vertex).forEach(function (key) {
   });
 });
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 Object.keys(_Tw2Error).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -296,7 +296,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(125);
+var _Tw2Float = __webpack_require__(126);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -308,7 +308,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(126);
+var _Tw2Frustum = __webpack_require__(127);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -645,9 +645,386 @@ function equals(a, b) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.Tw2VectorParameter = exports.Tw2Parameter = undefined;
+
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+
+
+var _global = __webpack_require__(0);
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2Parameter base class
+ *
+ * @param {string} [name='']
+ * @property {string|number} _id
+ * @property {string} name
+ * @property {Array<Function>} _onModified
+ */
+var Tw2Parameter = exports.Tw2Parameter = function () {
+    function Tw2Parameter() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+        _classCallCheck(this, Tw2Parameter);
+
+        this._id = _global.util.generateID();
+        this.name = name;
+        this._onModified = [];
+    }
+
+    /**
+     * Gets the parameter's constant buffer size
+     * @returns {number} 0 if invalid
+     */
+
+
+    _createClass(Tw2Parameter, [{
+        key: 'OnValueChanged',
+
+
+        /**
+         * Fire on value changes
+         * @property {*} [controller]        - An optional object which changed the parameter's value
+         * @property {string[]} [properties] - An optional array for tracking the parameters that were updated
+         */
+        value: function OnValueChanged(controller, properties) {
+            for (var i = 0; i < this._onModified.length; i++) {
+                this._onModified[i](this, controller, properties);
+            }
+        }
+
+        /**
+         * Adds a callback which is fired when the parameter's OnValueChanged method is called
+         * @param {function} func
+         * @returns {boolean} true if successful
+         */
+
+    }, {
+        key: 'AddCallback',
+        value: function AddCallback(func) {
+            if (!this._onModified.includes(func)) {
+                this._onModified.push(func);
+            }
+            return true;
+        }
+
+        /**
+         * Removes a callback
+         * @param {Function} func
+         */
+
+    }, {
+        key: 'RemoveCallback',
+        value: function RemoveCallback(func) {
+            var index = this._onModified.indexOf(func);
+            if (index !== -1) {
+                this._onModified.splice(index, 1);
+            }
+        }
+
+        /**
+         * Gets the parameter's value
+         * @param {boolean} [serialize] - forces serialized result
+         * @returns {*}
+         */
+
+    }, {
+        key: 'GetValue',
+        value: function GetValue(serialize) {}
+
+        /**
+         * Binds the parameter
+         * @param {*} a
+         * @param {*} b
+         * @param {*} c
+         * @returns {boolean} false if not bound
+         */
+
+    }, {
+        key: 'Bind',
+        value: function Bind(a, b, c) {
+            return false;
+        }
+
+        /**
+         * Unbinds the parameter
+         */
+
+    }, {
+        key: 'UnBind',
+        value: function UnBind() {}
+
+        /**
+         * Applies the parameter to a constant buffer
+         * @param {*} a
+         * @param {*} b
+         * @param {*} c
+         */
+
+    }, {
+        key: 'Apply',
+        value: function Apply(a, b, c) {}
+
+        /**
+         * Copies another parameter's value
+         * @param {*} parameter
+         */
+
+    }, {
+        key: 'Copy',
+        value: function Copy(parameter) {}
+
+        /**
+         * Clones the parameter
+         * @returns {Tw2Parameter}
+         */
+
+    }, {
+        key: 'Clone',
+        value: function Clone() {
+            var parameter = new this.constructor();
+            parameter.Copy(this, true);
+            return parameter;
+        }
+    }, {
+        key: 'size',
+        get: function get() {
+            return this.constructor.constantBufferSize;
+        }
+    }]);
+
+    return Tw2Parameter;
+}();
+
+/**
+ * The parameter's constant buffer size
+ * @type {number}
+ */
+
+
+Tw2Parameter.constantBufferSize = 0;
+
+/**
+ * Tw2VectorParameter base class
+ *
+ * @property {Float32Array} value
+ * @property {?Float32Array} constantBuffer
+ * @property {?number} offset
+ * @class
+ */
+
+var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
+    _inherits(Tw2VectorParameter, _Tw2Parameter);
+
+    function Tw2VectorParameter(name, value) {
+        _classCallCheck(this, Tw2VectorParameter);
+
+        var _this = _possibleConstructorReturn(this, (Tw2VectorParameter.__proto__ || Object.getPrototypeOf(Tw2VectorParameter)).call(this, name));
+
+        _this.value = new Float32Array(_this.size);
+        _this.constantBuffer = null;
+        _this.offset = null;
+        if (value) _this.value.set(value);
+        return _this;
+    }
+
+    /**
+     * Sets the parameter's value
+     * @param {Float32Array} value
+     */
+
+
+    _createClass(Tw2VectorParameter, [{
+        key: 'SetValue',
+        value: function SetValue(value) {
+            this.value.set(value);
+            this.OnValueChanged();
+        }
+
+        /**
+         * Sets a parameter's value at a given index
+         * @param {number} index   - the parameter's value index to change
+         * @param {number} value   - the value to set
+         * @throw Index Error
+         */
+
+    }, {
+        key: 'SetIndexValue',
+        value: function SetIndexValue(index, value) {
+            if (this.value[index] !== undefined) {
+                if (this.value[index] !== value) {
+                    this.value[index] = value;
+                    this.OnValueChanged();
+                }
+                return;
+            }
+
+            throw new Error('Index Error');
+        }
+
+        /**
+         * Gets the parameter's value
+         * @param {boolean} [serialize] - An optional parameter to force a serialized result
+         * @returns {Array|Float32Array}
+         */
+
+    }, {
+        key: 'GetValue',
+        value: function GetValue(serialize) {
+            var value = this.constantBuffer ? this.constantBuffer.subarray(this.offset, this.offset + this.size) : this.value;
+            return serialize ? Array.from(value) : new Float32Array(value);
+        }
+
+        /**
+         * Gets a parameter's value at a given index
+         * @param index
+         * @returns {number}
+         * @throw Index Error
+         */
+
+    }, {
+        key: 'GetIndexValue',
+        value: function GetIndexValue(index) {
+            if (this.value[index] !== undefined) {
+                return this.value[index];
+            }
+            throw new Error('Index Error');
+        }
+
+        /**
+         * Fire on value changes
+         * @param {*} [controller]        - An optional parameter for tracking the object that called the function
+         * @param {string[]} [properties] - An optional array for tracking the parameters that were updated
+         */
+
+    }, {
+        key: 'OnValueChanged',
+        value: function OnValueChanged(controller, properties) {
+            if (this.constantBuffer) {
+                this.Apply(this.constantBuffer, this.offset);
+            }
+
+            _get(Tw2VectorParameter.prototype.__proto__ || Object.getPrototypeOf(Tw2VectorParameter.prototype), 'OnValueChanged', this).call(this, controller, properties);
+        }
+
+        /**
+         * Binds the parameter to a constant buffer
+         * @param {Float32Array} constantBuffer
+         * @param {number} offset
+         * @param {number} size
+         * @returns {boolean} true if bound
+         */
+
+    }, {
+        key: 'Bind',
+        value: function Bind(constantBuffer, offset, size) {
+            if (!this.constantBuffer && size >= this.size) {
+                this.constantBuffer = constantBuffer;
+                this.offset = offset;
+                this.Apply(constantBuffer, offset, size);
+                return true;
+            }
+            return false;
+        }
+
+        /**
+         * Unbinds the parameter from a constant buffer
+         */
+
+    }, {
+        key: 'Unbind',
+        value: function Unbind() {
+            this.constantBuffer = null;
+        }
+
+        /**
+         * Applies the parameter's value to it's constant buffer
+         * @param {Float32Array} constantBuffer
+         * @param {number} offset
+         * @param {number} [size]
+         */
+
+    }, {
+        key: 'Apply',
+        value: function Apply(constantBuffer, offset, size) {
+            constantBuffer.set(this.value, offset);
+        }
+
+        /**
+         * Checks if a value equals the parameter's value
+         * - Assumes the correct length array or typed array is passed
+         * @param {Array|Float32Array} value
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'EqualsValue',
+        value: function EqualsValue(value) {
+            for (var i = 0; i < this.size; i++) {
+                if (this.value[i] !== value[i]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /**
+         * Copies another parameter's value
+         * @param {Tw2VectorParameter|*} parameter
+         * @param {boolean} [includeName]
+         */
+
+    }, {
+        key: 'Copy',
+        value: function Copy(parameter, includeName) {
+            if (includeName) this.name = parameter.name;
+            this.SetValue(parameter.GetValue());
+        }
+
+        /**
+         * Checks if a value is a valid parameter input
+         * @param {Float32Array|Array} value
+         * @returns {boolean}
+         */
+
+    }], [{
+        key: 'isValue',
+        value: function isValue(value) {
+            return _global.util.isArrayLike(value) && value.length === this.constantBufferSize;
+        }
+    }]);
+
+    return Tw2VectorParameter;
+}(Tw2Parameter);
+
+/**
+ * The parameter's constantBufferSize
+ * @type {number}
+ */
+
+
+Tw2VectorParameter.constantBufferSize = 0;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Tw2FeatureNotImplementedError = exports.Tw2AbstractClassMethodError = exports.Tw2SingleInstantiationError = exports.Tw2DeclarationValueTypeError = exports.Tw2ShaderLinkError = exports.Tw2ShaderCompileError = exports.Tw2ShaderPermutationValueError = exports.Tw2ShaderHeaderSizeError = exports.Tw2ShaderVersionError = exports.Tw2ResourceExtensionUndefinedError = exports.Tw2ResourceExtensionUnregisteredError = exports.Tw2ResourcePrefixUndefinedError = exports.Tw2ResourcePrefixUnregisteredError = exports.Tw2GeometryFileTypeError = exports.Tw2GeometryMeshEffectBindError = exports.Tw2GeometryMeshInvalidBoneError = exports.Tw2GeometryMeshElementComponentError = exports.Tw2GeometryMeshParticleElementError = exports.Tw2XMLObjectTypeUndefinedError = exports.Tw2XMLBinaryError = exports.HTTPReadyStateError = exports.HTTPStatusError = exports.HTTPInstanceError = exports.HTTPRequestSendError = exports.HTTPRequestError = exports.Tw2Error = undefined;
 
-var _util = __webpack_require__(14);
+var _util = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1157,383 +1534,6 @@ var Tw2FeatureNotImplementedError = exports.Tw2FeatureNotImplementedError = func
 }(Tw2Error);
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Tw2VectorParameter = exports.Tw2Parameter = undefined;
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
-
-
-var _global = __webpack_require__(0);
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Tw2Parameter base class
- *
- * @param {string} [name='']
- * @property {string|number} _id
- * @property {string} name
- * @property {Array<Function>} _onModified
- */
-var Tw2Parameter = exports.Tw2Parameter = function () {
-    function Tw2Parameter() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-        _classCallCheck(this, Tw2Parameter);
-
-        this._id = _global.util.generateID();
-        this.name = name;
-        this._onModified = [];
-    }
-
-    /**
-     * Gets the parameter's constant buffer size
-     * @returns {number} 0 if invalid
-     */
-
-
-    _createClass(Tw2Parameter, [{
-        key: 'OnValueChanged',
-
-
-        /**
-         * Fire on value changes
-         * @property {*} [controller]        - An optional object which changed the parameter's value
-         * @property {string[]} [properties] - An optional array for tracking the parameters that were updated
-         */
-        value: function OnValueChanged(controller, properties) {
-            for (var i = 0; i < this._onModified.length; i++) {
-                this._onModified[i](this, controller, properties);
-            }
-        }
-
-        /**
-         * Adds a callback which is fired when the parameter's OnValueChanged method is called
-         * @param {function} func
-         * @returns {boolean} true if successful
-         */
-
-    }, {
-        key: 'AddCallback',
-        value: function AddCallback(func) {
-            if (!this._onModified.includes(func)) {
-                this._onModified.push(func);
-            }
-            return true;
-        }
-
-        /**
-         * Removes a callback
-         * @param {Function} func
-         */
-
-    }, {
-        key: 'RemoveCallback',
-        value: function RemoveCallback(func) {
-            var index = this._onModified.indexOf(func);
-            if (index !== -1) {
-                this._onModified.splice(index, 1);
-            }
-        }
-
-        /**
-         * Gets the parameter's value
-         * @param {boolean} [serialize] - forces serialized result
-         * @returns {*}
-         */
-
-    }, {
-        key: 'GetValue',
-        value: function GetValue(serialize) {}
-
-        /**
-         * Binds the parameter
-         * @param {*} a
-         * @param {*} b
-         * @param {*} c
-         * @returns {boolean} false if not bound
-         */
-
-    }, {
-        key: 'Bind',
-        value: function Bind(a, b, c) {
-            return false;
-        }
-
-        /**
-         * Unbinds the parameter
-         */
-
-    }, {
-        key: 'UnBind',
-        value: function UnBind() {}
-
-        /**
-         * Applies the parameter to a constant buffer
-         * @param {*} a
-         * @param {*} b
-         * @param {*} c
-         */
-
-    }, {
-        key: 'Apply',
-        value: function Apply(a, b, c) {}
-
-        /**
-         * Copies another parameter's value
-         * @param {*} parameter
-         */
-
-    }, {
-        key: 'Copy',
-        value: function Copy(parameter) {}
-
-        /**
-         * Clones the parameter
-         * @returns {Tw2Parameter}
-         */
-
-    }, {
-        key: 'Clone',
-        value: function Clone() {
-            var parameter = new this.constructor();
-            parameter.Copy(this, true);
-            return parameter;
-        }
-    }, {
-        key: 'size',
-        get: function get() {
-            return this.constructor.constantBufferSize;
-        }
-    }]);
-
-    return Tw2Parameter;
-}();
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2Parameter.constantBufferSize = 0;
-
-/**
- * Tw2VectorParameter base class
- *
- * @property {Float32Array} value
- * @property {?Float32Array} constantBuffer
- * @property {?number} offset
- * @class
- */
-
-var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
-    _inherits(Tw2VectorParameter, _Tw2Parameter);
-
-    function Tw2VectorParameter(name, value) {
-        _classCallCheck(this, Tw2VectorParameter);
-
-        var _this = _possibleConstructorReturn(this, (Tw2VectorParameter.__proto__ || Object.getPrototypeOf(Tw2VectorParameter)).call(this, name));
-
-        _this.value = new Float32Array(_this.size);
-        _this.constantBuffer = null;
-        _this.offset = null;
-        if (value) _this.value.set(value);
-        return _this;
-    }
-
-    /**
-     * Sets the parameter's value
-     * @param {Float32Array} value
-     */
-
-
-    _createClass(Tw2VectorParameter, [{
-        key: 'SetValue',
-        value: function SetValue(value) {
-            this.value.set(value);
-            this.OnValueChanged();
-        }
-
-        /**
-         * Sets a parameter's value at a given index
-         * @param {number} index   - the parameter's value index to change
-         * @param {number} value   - the value to set
-         * @throw Index Error
-         */
-
-    }, {
-        key: 'SetIndexValue',
-        value: function SetIndexValue(index, value) {
-            if (this.value[index] !== undefined) {
-                if (this.value[index] !== value) {
-                    this.value[index] = value;
-                    this.OnValueChanged();
-                }
-                return;
-            }
-
-            throw new Error('Index Error');
-        }
-
-        /**
-         * Gets the parameter's value
-         * @param {boolean} [serialize] - An optional parameter to force a serialized result
-         * @returns {Array|Float32Array}
-         */
-
-    }, {
-        key: 'GetValue',
-        value: function GetValue(serialize) {
-            var value = this.constantBuffer ? this.constantBuffer.subarray(this.offset, this.offset + this.size) : this.value;
-            return serialize ? Array.from(value) : new Float32Array(value);
-        }
-
-        /**
-         * Gets a parameter's value at a given index
-         * @param index
-         * @returns {number}
-         * @throw Index Error
-         */
-
-    }, {
-        key: 'GetIndexValue',
-        value: function GetIndexValue(index) {
-            if (this.value[index] !== undefined) {
-                return this.value[index];
-            }
-            throw new Error('Index Error');
-        }
-
-        /**
-         * Fire on value changes
-         * @param {*} [controller]        - An optional parameter for tracking the object that called the function
-         * @param {string[]} [properties] - An optional array for tracking the parameters that were updated
-         */
-
-    }, {
-        key: 'OnValueChanged',
-        value: function OnValueChanged(controller, properties) {
-            if (this.constantBuffer) {
-                this.Apply(this.constantBuffer, this.offset);
-            }
-
-            _get(Tw2VectorParameter.prototype.__proto__ || Object.getPrototypeOf(Tw2VectorParameter.prototype), 'OnValueChanged', this).call(this, controller, properties);
-        }
-
-        /**
-         * Binds the parameter to a constant buffer
-         * @param {Float32Array} constantBuffer
-         * @param {number} offset
-         * @param {number} size
-         * @returns {boolean} true if bound
-         */
-
-    }, {
-        key: 'Bind',
-        value: function Bind(constantBuffer, offset, size) {
-            if (!this.constantBuffer && size >= this.size) {
-                this.constantBuffer = constantBuffer;
-                this.offset = offset;
-                this.Apply(constantBuffer, offset, size);
-                return true;
-            }
-            return false;
-        }
-
-        /**
-         * Unbinds the parameter from a constant buffer
-         */
-
-    }, {
-        key: 'Unbind',
-        value: function Unbind() {
-            this.constantBuffer = null;
-        }
-
-        /**
-         * Applies the parameter's value to it's constant buffer
-         * @param {Float32Array} constantBuffer
-         * @param {number} offset
-         * @param {number} [size]
-         */
-
-    }, {
-        key: 'Apply',
-        value: function Apply(constantBuffer, offset, size) {
-            constantBuffer.set(this.value, offset);
-        }
-
-        /**
-         * Checks if a value equals the parameter's value
-         * - Assumes the correct length array or typed array is passed
-         * @param {Array|Float32Array} value
-         * @returns {boolean}
-         */
-
-    }, {
-        key: 'EqualsValue',
-        value: function EqualsValue(value) {
-            for (var i = 0; i < this.size; i++) {
-                if (this.value[i] !== value[i]) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /**
-         * Copies another parameter's value
-         * @param {Tw2VectorParameter|*} parameter
-         * @param {boolean} [includeName]
-         */
-
-    }, {
-        key: 'Copy',
-        value: function Copy(parameter, includeName) {
-            if (includeName) this.name = parameter.name;
-            this.SetValue(parameter.GetValue());
-        }
-
-        /**
-         * Checks if a value is a valid parameter input
-         * @param {Float32Array|Array} value
-         * @returns {boolean}
-         */
-
-    }], [{
-        key: 'isValue',
-        value: function isValue(value) {
-            return _global.util.isArrayLike(value) && value.length === this.constantBufferSize;
-        }
-    }]);
-
-    return Tw2VectorParameter;
-}(Tw2Parameter);
-
-/**
- * The parameter's constantBufferSize
- * @type {number}
- */
-
-
-Tw2VectorParameter.constantBufferSize = 0;
-
-/***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1629,6 +1629,129 @@ Tw2CurveSequencer.Operator = null;
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChild = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
+
+
+var _global = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * EveChild base class
+ *
+ * @property {number|string} _id
+ * @property {string} name
+ * @property {boolean} display
+ * @property {boolean} useSRT
+ * @property {number} lowestLodVisible
+ * @property {boolean} staticTransform
+ * @property {quat} rotation
+ * @property {vec3} translation
+ * @property {vec3} scaling
+ * @property {mat4} localTransform
+ * @property {mat4} worldTransform
+ * @property {mat4} worldTransformLast
+ * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
+ * @class
+ */
+var EveChild = exports.EveChild = (_temp = _class = function () {
+    function EveChild() {
+        _classCallCheck(this, EveChild);
+
+        this._id = _global.util.generateID();
+        this.name = '';
+        this.display = true;
+        this.useSRT = true;
+        this.lowestLodVisible = 2;
+        this.staticTransform = false;
+        this.rotation = _global.quat.create();
+        this.translation = _global.vec3.create();
+        this.scaling = _global.vec3.fromValues(1, 1, 1);
+        this.localTransform = _global.mat4.create();
+        this.worldTransform = _global.mat4.create();
+        this.worldTransformLast = _global.mat4.create();
+        this._perObjectData = null;
+        this.isEffectChild = true;
+    }
+
+    /**
+     * Gets the child's resources
+     * @param {Array} [out=[]]
+     * @returns {Array<Tw2Resource>} out
+     */
+
+
+    _createClass(EveChild, [{
+        key: 'GetResources',
+        value: function GetResources() {
+            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+            return out;
+        }
+
+        /**
+         * Per frame update
+         * @param {number} dt
+         * @param {mat4} parentTransform
+         */
+
+    }, {
+        key: 'Update',
+        value: function Update(dt, parentTransform) {
+            if (this.useSRT) {
+                _global.quat.normalize(this.rotation, this.rotation);
+                _global.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
+            }
+
+            _global.mat4.copy(this.worldTransformLast, this.worldTransform);
+            _global.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
+        }
+
+        /**
+         * Gets render batches
+         * @param {number} mode
+         * @param {Tw2BatchAccumulator} accumulator
+         */
+
+    }, {
+        key: 'GetBatches',
+        value: function GetBatches(mode, accumulator) {}
+
+        /**
+         * Class globals and scratch variables
+         * @type {Object}
+         */
+
+
+        /**
+         * Per object data
+         * @type {{FFEData: *[]}}
+         */
+
+    }]);
+
+    return EveChild;
+}(), _class.global = {
+    mat4_0: _global.mat4.create(),
+    vec3_0: _global.vec3.create()
+}, _class.perObjectData = {
+    FFEData: [['world', 16], ['worldInverseTranspose', 16]]
+}, _temp);
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1930,18 +2053,18 @@ EveObjectSet.global = {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(35);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -1994,7 +2117,78 @@ THE SOFTWARE. */
 
 
 /***/ }),
-/* 9 */
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _arr = __webpack_require__(38);
+
+Object.keys(_arr).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _arr[key];
+    }
+  });
+});
+
+var _obj = __webpack_require__(81);
+
+Object.keys(_obj).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _obj[key];
+    }
+  });
+});
+
+var _type = __webpack_require__(21);
+
+Object.keys(_type).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _type[key];
+    }
+  });
+});
+
+var _uuid = __webpack_require__(82);
+
+Object.keys(_uuid).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _uuid[key];
+    }
+  });
+});
+
+var _url = __webpack_require__(83);
+
+Object.keys(_url).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _url[key];
+    }
+  });
+});
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2275,7 +2469,7 @@ Tw2Resource.prototype.DoCustomLoad = null;
 Tw2Resource.prototype.requestResponseType = null;
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2285,7 +2479,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(85);
+var _Tw2VertexDeclaration = __webpack_require__(86);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2310,130 +2504,7 @@ Object.keys(_Tw2VertexElement).forEach(function (key) {
 });
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.EveChild = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _class, _temp; /* eslint no-unused-vars:0 */
-
-
-var _global = __webpack_require__(0);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * EveChild base class
- *
- * @property {number|string} _id
- * @property {string} name
- * @property {boolean} display
- * @property {boolean} useSRT
- * @property {number} lowestLodVisible
- * @property {boolean} staticTransform
- * @property {quat} rotation
- * @property {vec3} translation
- * @property {vec3} scaling
- * @property {mat4} localTransform
- * @property {mat4} worldTransform
- * @property {mat4} worldTransformLast
- * @property {?|Tw2BasicPerObjectData|Tw2PerObjectData} _perObjectData
- * @class
- */
-var EveChild = exports.EveChild = (_temp = _class = function () {
-    function EveChild() {
-        _classCallCheck(this, EveChild);
-
-        this._id = _global.util.generateID();
-        this.name = '';
-        this.display = true;
-        this.useSRT = true;
-        this.lowestLodVisible = 2;
-        this.staticTransform = false;
-        this.rotation = _global.quat.create();
-        this.translation = _global.vec3.create();
-        this.scaling = _global.vec3.fromValues(1, 1, 1);
-        this.localTransform = _global.mat4.create();
-        this.worldTransform = _global.mat4.create();
-        this.worldTransformLast = _global.mat4.create();
-        this._perObjectData = null;
-        this.isEffectChild = true;
-    }
-
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array<Tw2Resource>} out
-     */
-
-
-    _createClass(EveChild, [{
-        key: 'GetResources',
-        value: function GetResources() {
-            var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-            return out;
-        }
-
-        /**
-         * Per frame update
-         * @param {number} dt
-         * @param {mat4} parentTransform
-         */
-
-    }, {
-        key: 'Update',
-        value: function Update(dt, parentTransform) {
-            if (this.useSRT) {
-                _global.quat.normalize(this.rotation, this.rotation);
-                _global.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
-            }
-
-            _global.mat4.copy(this.worldTransformLast, this.worldTransform);
-            _global.mat4.multiply(this.worldTransform, parentTransform, this.localTransform);
-        }
-
-        /**
-         * Gets render batches
-         * @param {number} mode
-         * @param {Tw2BatchAccumulator} accumulator
-         */
-
-    }, {
-        key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {}
-
-        /**
-         * Class globals and scratch variables
-         * @type {Object}
-         */
-
-
-        /**
-         * Per object data
-         * @type {{FFEData: *[]}}
-         */
-
-    }]);
-
-    return EveChild;
-}(), _class.global = {
-    mat4_0: _global.mat4.create(),
-    vec3_0: _global.vec3.create()
-}, _class.perObjectData = {
-    FFEData: [['world', 16], ['worldInverseTranspose', 16]]
-}, _temp);
-
-/***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2535,7 +2606,7 @@ EveObject.global = {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2606,77 +2677,6 @@ Tw2ParticleForce.global = {
     vec3_1: _global.vec3.create(),
     vec4_0: _global.vec4.create()
 };
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _arr = __webpack_require__(38);
-
-Object.keys(_arr).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _arr[key];
-    }
-  });
-});
-
-var _obj = __webpack_require__(80);
-
-Object.keys(_obj).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _obj[key];
-    }
-  });
-});
-
-var _type = __webpack_require__(21);
-
-Object.keys(_type).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _type[key];
-    }
-  });
-});
-
-var _uuid = __webpack_require__(81);
-
-Object.keys(_uuid).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _uuid[key];
-    }
-  });
-});
-
-var _url = __webpack_require__(82);
-
-Object.keys(_url).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _url[key];
-    }
-  });
-});
 
 /***/ }),
 /* 15 */
@@ -2925,7 +2925,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(127);
+var _Tw2ColorCurve = __webpack_require__(128);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2937,7 +2937,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(128);
+var _Tw2ColorCurve2 = __webpack_require__(129);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2949,7 +2949,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(129);
+var _Tw2EventCurve = __webpack_require__(130);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2961,7 +2961,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(130);
+var _Tw2PerlinCurve = __webpack_require__(131);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2973,7 +2973,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(131);
+var _Tw2QuaternionCurve = __webpack_require__(132);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2985,7 +2985,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(132);
+var _Tw2RandomConstantCurve = __webpack_require__(133);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2997,7 +2997,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(133);
+var _Tw2RigidOrientation = __webpack_require__(134);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3009,7 +3009,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(134);
+var _Tw2RotationCurve = __webpack_require__(135);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3021,7 +3021,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(135);
+var _Tw2ScalarCurve = __webpack_require__(136);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3033,7 +3033,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(136);
+var _Tw2ScalarCurve2 = __webpack_require__(137);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3045,7 +3045,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(137);
+var _Tw2SineCurve = __webpack_require__(138);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3057,7 +3057,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(138);
+var _Tw2Vector2Curve = __webpack_require__(139);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3069,7 +3069,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(139);
+var _Tw2Vector3Curve = __webpack_require__(140);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3081,7 +3081,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(140);
+var _Tw2VectorCurve = __webpack_require__(141);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3103,48 +3103,15 @@ Object.keys(_Tw2VectorCurve).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tw2ParticleElementDeclaration = exports.Tw2ParticleElement = undefined;
+exports.Tw2ParticleElementDeclaration = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _global = __webpack_require__(0);
-
 var _core = __webpack_require__(1);
 
+var _global = __webpack_require__(0);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * Tw2ParticleElement
- *
- * @param {Tw2ParticleElementDeclaration} decl
- * @property {number} elementType
- * @property {string} customName
- * @property {number} dimension
- * @property {number} usageIndex
- * @property {boolean} usedByGPU
- * @property buffer
- * @property {number} startOffset
- * @property {number} offset
- * @property {number} instanceStride
- * @property {number} vertexStride
- * @property {boolean} dirty
- * @class
- */
-var Tw2ParticleElement = exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
-    _classCallCheck(this, Tw2ParticleElement);
-
-    this.elementType = decl.elementType;
-    this.customName = decl.customName;
-    this.dimension = decl.GetDimension();
-    this.usageIndex = decl.usageIndex;
-    this.usedByGPU = decl.usedByGPU;
-    this.buffer = null;
-    this.startOffset = 0;
-    this.offset = 0;
-    this.instanceStride = 0;
-    this.vertexStride = 0;
-    this.dirty = false;
-};
 
 /**
  * Tw2ParticleElementDeclaration
@@ -3156,8 +3123,6 @@ var Tw2ParticleElement = exports.Tw2ParticleElement = function Tw2ParticleElemen
  * @property {boolean} usedByGPU
  * @class
  */
-
-
 var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = function () {
     function Tw2ParticleElementDeclaration() {
         _classCallCheck(this, Tw2ParticleElementDeclaration);
@@ -3256,7 +3221,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(66);
+var _Tw2BatchAccumulator = __webpack_require__(67);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3268,7 +3233,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2ForwardingRenderBatch = __webpack_require__(89);
+var _Tw2ForwardingRenderBatch = __webpack_require__(90);
 
 Object.keys(_Tw2ForwardingRenderBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3292,7 +3257,7 @@ Object.keys(_Tw2GeometryBatch).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryLineBatch = __webpack_require__(90);
+var _Tw2GeometryLineBatch = __webpack_require__(91);
 
 Object.keys(_Tw2GeometryLineBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3316,7 +3281,7 @@ Object.keys(_Tw2RenderBatch).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMeshBatch = __webpack_require__(91);
+var _Tw2InstancedMeshBatch = __webpack_require__(92);
 
 Object.keys(_Tw2InstancedMeshBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3351,7 +3316,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(67);
+var _vec = __webpack_require__(68);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3387,7 +3352,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(73);
+var _quat = __webpack_require__(74);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3399,7 +3364,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(74);
+var _mat = __webpack_require__(75);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3411,7 +3376,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(75);
+var _mat2 = __webpack_require__(76);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3423,7 +3388,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(76);
+var _noise = __webpack_require__(77);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3435,7 +3400,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(77);
+var _curve = __webpack_require__(78);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3461,9 +3426,7 @@ exports.store = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(14);
-
-var _Tw2Error = __webpack_require__(4);
+var _util = __webpack_require__(10);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
@@ -3481,7 +3444,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Object.< string, Tw2Parameter>} _variable
  * @property {Object.< string, Function>} _type
  * @property {Object.< string, Function>} _extension
- * @property {Object.< string, Function>} _constructor
+ * @property {Object.< string, Function>} _class
  * @property {Object.< string, Tw2Schema>} _schema
  * @property {Object.< string, Array<string>>} _missing
  * @class
@@ -3499,7 +3462,7 @@ var Tw2Store = function (_Tw2EventEmitter) {
         _this._path = {};
         _this._variable = {};
         _this._extension = {};
-        _this._constructor = {};
+        _this._class = {};
         _this._dynamicPath = {};
         _this._schema = {};
         _this._missing = {};
@@ -3679,9 +3642,9 @@ var Tw2Store = function (_Tw2EventEmitter) {
          */
 
     }, {
-        key: 'HasConstructor',
-        value: function HasConstructor(name) {
-            return name && name in this._constructor;
+        key: 'HasClass',
+        value: function HasClass(name) {
+            return name && name in this._class;
         }
 
         /**
@@ -3691,9 +3654,25 @@ var Tw2Store = function (_Tw2EventEmitter) {
          */
 
     }, {
-        key: 'GetConstructor',
-        value: function GetConstructor(name) {
-            return Tw2Store.GetStoreItem(this, 'constructor', name);
+        key: 'GetClass',
+        value: function GetClass(name) {
+            var Constructor = Tw2Store.GetStoreItem(this, 'class', name);
+
+            // Create a warning when a partially implemented class is called
+            if (Constructor && Constructor.partialImplementation) {
+                this.emit('warning', {
+                    type: 'class',
+                    key: name,
+                    value: Constructor,
+                    log: {
+                        type: 'warning',
+                        title: this.name,
+                        message: 'Feature partially implemented (' + name + ')'
+                    }
+                });
+            }
+
+            return Constructor;
         }
 
         /**
@@ -3704,14 +3683,9 @@ var Tw2Store = function (_Tw2EventEmitter) {
          */
 
     }, {
-        key: 'RegisterConstructor',
-        value: function RegisterConstructor(name, Constructor) {
-            // Don't store errors as library constructors
-            if (Constructor && (Constructor instanceof _Tw2Error.Tw2Error || Constructor.isError)) {
-                return false;
-            }
-
-            return Tw2Store.SetStoreItem(this, 'constructor', name, Constructor, _util.isFunction);
+        key: 'RegisterClass',
+        value: function RegisterClass(name, Constructor) {
+            return Tw2Store.SetStoreItem(this, 'class', name, Constructor, _util.isFunction);
         }
 
         /**
@@ -3721,9 +3695,9 @@ var Tw2Store = function (_Tw2EventEmitter) {
          */
 
     }, {
-        key: 'RegisterConstructors',
-        value: function RegisterConstructors(obj) {
-            return Tw2Store.RegisterFromObject(this, 'RegisterConstructor', obj);
+        key: 'RegisterClasses',
+        value: function RegisterClasses(obj) {
+            return Tw2Store.RegisterFromObject(this, 'RegisterClass', obj);
         }
 
         /**
@@ -3966,7 +3940,7 @@ var Tw2Store = function (_Tw2EventEmitter) {
          * @param {*} opt.paths
          * @param {*} opt.dynamicPaths
          * @param {*} opt.types
-         * @param {*} opt.constructors
+         * @param {*} opt.classes
          * @param {*} opt.extensions
          * @param {*} opt.variables
          * @param {*} opt.schemas
@@ -3981,7 +3955,7 @@ var Tw2Store = function (_Tw2EventEmitter) {
             this.RegisterPaths(opt.paths);
             this.RegisterDynamicPaths(opt.dynamicPaths);
             this.RegisterTypes(opt.types);
-            this.RegisterConstructors(opt.constructors);
+            this.RegisterClasses(opt.classes);
             this.RegisterExtensions(opt.extensions);
             this.RegisterVariables(opt.variables);
             this.RegisterSchemas(opt.schemas);
@@ -4388,7 +4362,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(84);
+var _Tw2SamplerOverride = __webpack_require__(85);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4414,11 +4388,13 @@ exports.Tw2TextureRes = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 var _global = __webpack_require__(0);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4584,17 +4560,31 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
         }
 
         /**
-         * Attach
+         * Attaches a texture
          * @param {WebGLTexture} texture
          */
 
     }, {
         key: 'Attach',
         value: function Attach(texture) {
+            this.path = '';
             this.texture = texture;
+            this._isPurged = false;
             this._isAttached = true;
-            this.OnLoaded({ hide: true, isAttachment: true });
-            this.OnPrepared({ hide: true, isAttachment: true });
+            this.OnLoaded({ hide: true, data: { isAttachment: true } });
+            this.OnPrepared({ hide: true, data: { isAttachment: true } });
+        }
+
+        /**
+         * Reloads the texture
+         */
+
+    }, {
+        key: 'Reload',
+        value: function Reload() {
+            if (!this._isAttached) {
+                return _get(Tw2TextureRes.prototype.__proto__ || Object.getPrototypeOf(Tw2TextureRes.prototype), 'Reload', this).call(this);
+            }
         }
 
         /**
@@ -4800,7 +4790,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -4960,7 +4950,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2EffectRes = __webpack_require__(119);
+var _Tw2EffectRes = __webpack_require__(120);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4972,7 +4962,7 @@ Object.keys(_Tw2EffectRes).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(121);
+var _Tw2GeometryRes = __webpack_require__(122);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -4996,7 +4986,7 @@ Object.keys(_Tw2LoadingObject).forEach(function (key) {
   });
 });
 
-var _Tw2Resource = __webpack_require__(9);
+var _Tw2Resource = __webpack_require__(11);
 
 Object.keys(_Tw2Resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5020,7 +5010,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2VideoRes = __webpack_require__(122);
+var _Tw2VideoRes = __webpack_require__(123);
 
 Object.keys(_Tw2VideoRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5087,7 +5077,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObject2 = __webpack_require__(12);
+var _EveObject2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8093,7 +8083,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec3 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 var _num = __webpack_require__(32);
 
@@ -8243,7 +8233,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec4 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.vec4 = _glMatrix.vec4;
 
@@ -8364,13 +8354,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _Tw2Store = __webpack_require__(20);
 
-var _Tw2MotherLode = __webpack_require__(83);
+var _Tw2MotherLode = __webpack_require__(84);
 
 var _Tw2LoadingObject = __webpack_require__(40);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
-var _util = __webpack_require__(14);
+var _util = __webpack_require__(10);
 
 var _core = __webpack_require__(1);
 
@@ -8880,7 +8870,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
 var _Tw2ObjectReader = __webpack_require__(41);
 
@@ -9037,7 +9027,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2BinaryReader = __webpack_require__(42);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9132,7 +9122,7 @@ var Tw2ObjectReader = exports.Tw2ObjectReader = function () {
                 return data;
             }
 
-            var Constructor = _global.store.GetConstructor(data.type);
+            var Constructor = _global.store.GetClass(data.type);
             if (!Constructor) {
                 if (Tw2ObjectReader.DEBUG_ENABLED) {
                     Constructor = Object;
@@ -10255,7 +10245,7 @@ var _global = __webpack_require__(0);
 
 var _sampler = __webpack_require__(22);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(4);
 
 var _Tw2TextureRes = __webpack_require__(23);
 
@@ -10792,7 +10782,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(4);
 
 Object.keys(_Tw2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10804,7 +10794,7 @@ Object.keys(_Tw2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(95);
+var _Tw2FloatParameter = __webpack_require__(96);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10816,7 +10806,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(96);
+var _Tw2MatrixParameter = __webpack_require__(97);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10828,7 +10818,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(97);
+var _Tw2TransformParameter = __webpack_require__(98);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10840,7 +10830,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(98);
+var _Tw2VariableParameter = __webpack_require__(99);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10852,7 +10842,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(99);
+var _Tw2Vector2Parameter = __webpack_require__(100);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10864,7 +10854,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(100);
+var _Tw2Vector3Parameter = __webpack_require__(101);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10876,7 +10866,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(101);
+var _Tw2Vector4Parameter = __webpack_require__(102);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -10994,7 +10984,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BlendShapeData = __webpack_require__(104);
+var _Tw2BlendShapeData = __webpack_require__(105);
 
 Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11006,7 +10996,7 @@ Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryAnimation = __webpack_require__(105);
+var _Tw2GeometryAnimation = __webpack_require__(106);
 
 Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11018,7 +11008,7 @@ Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryBone = __webpack_require__(106);
+var _Tw2GeometryBone = __webpack_require__(107);
 
 Object.keys(_Tw2GeometryBone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11030,7 +11020,7 @@ Object.keys(_Tw2GeometryBone).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryCurve = __webpack_require__(107);
+var _Tw2GeometryCurve = __webpack_require__(108);
 
 Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11042,7 +11032,7 @@ Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMesh = __webpack_require__(108);
+var _Tw2GeometryMesh = __webpack_require__(109);
 
 Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11054,7 +11044,7 @@ Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshArea = __webpack_require__(109);
+var _Tw2GeometryMeshArea = __webpack_require__(110);
 
 Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11066,7 +11056,7 @@ Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshBinding = __webpack_require__(110);
+var _Tw2GeometryMeshBinding = __webpack_require__(111);
 
 Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11078,7 +11068,7 @@ Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryModel = __webpack_require__(111);
+var _Tw2GeometryModel = __webpack_require__(112);
 
 Object.keys(_Tw2GeometryModel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11090,7 +11080,7 @@ Object.keys(_Tw2GeometryModel).forEach(function (key) {
   });
 });
 
-var _Tw2GeometrySkeleton = __webpack_require__(112);
+var _Tw2GeometrySkeleton = __webpack_require__(113);
 
 Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11102,7 +11092,7 @@ Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTrackGroup = __webpack_require__(113);
+var _Tw2GeometryTrackGroup = __webpack_require__(114);
 
 Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11114,7 +11104,7 @@ Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTransformTrack = __webpack_require__(114);
+var _Tw2GeometryTransformTrack = __webpack_require__(115);
 
 Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11149,7 +11139,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(115);
+var _Tw2InstancedMesh = __webpack_require__(116);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11185,7 +11175,7 @@ Object.keys(_Tw2MeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2MeshLineArea = __webpack_require__(116);
+var _Tw2MeshLineArea = __webpack_require__(117);
 
 Object.keys(_Tw2MeshLineArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11781,7 +11771,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(141);
+var _sequencers = __webpack_require__(142);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11793,7 +11783,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(150);
+var _tracks = __webpack_require__(151);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11805,7 +11795,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(153);
+var _maya = __webpack_require__(154);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11828,7 +11818,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveChild = __webpack_require__(11);
+var _EveChild = __webpack_require__(7);
 
 Object.keys(_EveChild).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11840,7 +11830,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(159);
+var _EveChildBillboard = __webpack_require__(160);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11852,7 +11842,19 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(160);
+var _EveChildCloud = __webpack_require__(161);
+
+Object.keys(_EveChildCloud).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _EveChildCloud[key];
+    }
+  });
+});
+
+var _EveChildContainer = __webpack_require__(162);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11864,7 +11866,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(161);
+var _EveChildExplosion = __webpack_require__(163);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11876,7 +11878,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(162);
+var _EveChildMesh = __webpack_require__(164);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11888,7 +11890,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(163);
+var _EveChildParticleSystem = __webpack_require__(165);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12120,7 +12122,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveObject = __webpack_require__(12);
+var _EveObject = __webpack_require__(13);
 
 Object.keys(_EveObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12132,7 +12134,7 @@ Object.keys(_EveObject).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(170);
+var _EveEffectRoot = __webpack_require__(172);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12144,7 +12146,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(171);
+var _EveMissile = __webpack_require__(173);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12156,7 +12158,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(172);
+var _EvePlanet = __webpack_require__(174);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12168,7 +12170,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(173);
+var _EveShip = __webpack_require__(175);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12224,7 +12226,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObject2 = __webpack_require__(12);
+var _EveObject2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12579,7 +12581,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveObjectSet = __webpack_require__(7);
+var _EveObjectSet = __webpack_require__(8);
 
 Object.keys(_EveObjectSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12591,7 +12593,7 @@ Object.keys(_EveObjectSet).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(174);
+var _EveBoosterSet = __webpack_require__(176);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12603,7 +12605,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(175);
+var _EveCurveLineSet = __webpack_require__(177);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12615,7 +12617,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(176);
+var _EveLocator = __webpack_require__(178);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12627,7 +12629,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(177);
+var _EvePlaneSet = __webpack_require__(179);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12639,7 +12641,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(178);
+var _EveSpaceObjectDecal = __webpack_require__(180);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12651,7 +12653,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(179);
+var _EveSpotlightSet = __webpack_require__(181);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12663,7 +12665,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(180);
+var _EveSpriteSet = __webpack_require__(182);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12675,7 +12677,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(181);
+var _EveTurretSet = __webpack_require__(183);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12689,6 +12691,52 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 
 /***/ }),
 /* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2ParticleElement
+ *
+ * @param {Tw2ParticleElementDeclaration} decl
+ * @property {number} elementType
+ * @property {string} customName
+ * @property {number} dimension
+ * @property {number} usageIndex
+ * @property {boolean} usedByGPU
+ * @property buffer
+ * @property {number} startOffset
+ * @property {number} offset
+ * @property {number} instanceStride
+ * @property {number} vertexStride
+ * @property {boolean} dirty
+ * @class
+ */
+var Tw2ParticleElement = exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
+    _classCallCheck(this, Tw2ParticleElement);
+
+    this.elementType = decl.elementType;
+    this.customName = decl.customName;
+    this.dimension = decl.GetDimension();
+    this.usageIndex = decl.usageIndex;
+    this.usedByGPU = decl.usedByGPU;
+    this.buffer = null;
+    this.startOffset = 0;
+    this.offset = 0;
+    this.instanceStride = 0;
+    this.vertexStride = 0;
+    this.dirty = false;
+};
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12723,7 +12771,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(158);
+var _eve = __webpack_require__(159);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -12735,7 +12783,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(184);
+var _particle = __webpack_require__(186);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -12793,7 +12841,7 @@ _global.store.Register({
         'webm': core.Tw2VideoRes
     },
 
-    constructors: [core, curve, eve, particle],
+    classes: [core, curve, eve, particle],
 
     types: {
         'float': core.Tw2FloatParameter,
@@ -12827,7 +12875,7 @@ _global.store.Register({
 });
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12863,13 +12911,19 @@ var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
     }
 
     /**
-     * Commits a batch
-     * @param {Tw2BatchAccumulator|Tw2RenderBatch} batch
+     * Gets the batch count
+     * @returns {number}
      */
 
 
     _createClass(Tw2BatchAccumulator, [{
         key: 'Commit',
+
+
+        /**
+         * Commits a batch
+         * @param {Tw2BatchAccumulator|Tw2RenderBatch} batch
+         */
         value: function Commit(batch) {
             this.batches.push(batch);
         }
@@ -12911,13 +12965,18 @@ var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
                 }
             }
         }
+    }, {
+        key: 'length',
+        get: function get() {
+            return this.batches.length;
+        }
     }]);
 
     return Tw2BatchAccumulator;
 }();
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12928,12 +12987,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vec2 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13403,7 +13462,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13905,7 +13964,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15643,7 +15702,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16334,7 +16393,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16977,7 +17036,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16988,7 +17047,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.quat = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.quat = _glMatrix.quat;
 
@@ -17071,7 +17130,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17082,12 +17141,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat3 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17098,7 +17157,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.mat4 = undefined;
 
-var _glMatrix = __webpack_require__(8);
+var _glMatrix = __webpack_require__(9);
 
 exports.mat4 = _glMatrix.mat4;
 
@@ -17278,7 +17337,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17488,7 +17547,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17849,7 +17908,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17859,7 +17918,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(79);
+var _Tw2Device = __webpack_require__(80);
 
 Object.defineProperty(exports, 'device', {
   enumerable: true,
@@ -17886,7 +17945,7 @@ Object.defineProperty(exports, 'store', {
   }
 });
 
-var _Tw2Logger = __webpack_require__(88);
+var _Tw2Logger = __webpack_require__(89);
 
 Object.defineProperty(exports, 'logger', {
   enumerable: true,
@@ -17896,7 +17955,7 @@ Object.defineProperty(exports, 'logger', {
 });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17919,7 +17978,7 @@ var _Tw2ResMan = __webpack_require__(39);
 
 var _Tw2Effect = __webpack_require__(43);
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
@@ -17931,7 +17990,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var WebGLDebugUtil = __webpack_require__(86);
+var WebGLDebugUtil = __webpack_require__(87);
 
 /**
  * Tw2Device
@@ -18868,6 +18927,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             switch (renderMode) {
                 case this.RM_OPAQUE:
                 case this.RM_PICKABLE:
+                case this.RM_DISTORTION:
                     this.SetRenderState(this.RS_ZENABLE, true);
                     this.SetRenderState(this.RS_ZWRITEENABLE, true);
                     this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
@@ -19064,6 +19124,7 @@ Tw2Device.prototype.RM_ADDITIVE = 3;
 Tw2Device.prototype.RM_DEPTH = 4;
 Tw2Device.prototype.RM_FULLSCREEN = 5;
 Tw2Device.prototype.RM_PICKABLE = 6;
+Tw2Device.prototype.RM_DISTORTION = 7;
 
 // Render States
 Tw2Device.prototype.RS_ZENABLE = 7; // D3DZBUFFERTYPE (or TRUE/FALSE for legacy)
@@ -19192,7 +19253,7 @@ Tw2Device.prototype.BLENDOP_MAX = 5;
 var device = exports.device = new Tw2Device();
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19294,7 +19355,7 @@ function template(str) {
 }
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19375,7 +19436,7 @@ function generateID() {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19457,7 +19518,7 @@ function getURLBoolean(key, defaultValue) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19637,7 +19698,7 @@ var Tw2MotherLode = exports.Tw2MotherLode = function () {
 }();
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19747,7 +19808,7 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function Tw2SamplerOverrid
 };
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20063,7 +20124,7 @@ Tw2VertexDeclaration.Type = {
 };
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -21267,10 +21328,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(87)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(88)))
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports) {
 
 var g;
@@ -21297,7 +21358,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21312,7 +21373,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
-var _util = __webpack_require__(14);
+var _util = __webpack_require__(10);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21457,7 +21518,7 @@ var logger = exports.logger = new Tw2Logger('CCPWGL');
 _Tw2EventEmitter2.Tw2EventEmitter.logger = logger;
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21515,7 +21576,7 @@ var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2
 }(_Tw2RenderBatch2.Tw2RenderBatch);
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21569,7 +21630,7 @@ var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2Geometry
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21627,7 +21688,7 @@ var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2Geomet
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21637,7 +21698,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2CurveSet = __webpack_require__(93);
+var _Tw2CurveSet = __webpack_require__(94);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21649,7 +21710,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(94);
+var _Tw2ValueBinding = __webpack_require__(95);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -21662,7 +21723,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 });
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21795,7 +21856,7 @@ var Tw2CurveSet = exports.Tw2CurveSet = function () {
 }();
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22100,7 +22161,7 @@ var Tw2ValueBinding = exports.Tw2ValueBinding = function () {
 }();
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22113,7 +22174,7 @@ exports.Tw2FloatParameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(4);
 
 var _global = __webpack_require__(0);
 
@@ -22238,7 +22299,7 @@ var Tw2FloatParameter = exports.Tw2FloatParameter = function (_Tw2Parameter) {
 Tw2FloatParameter.constantBufferSize = 1;
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22253,7 +22314,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22385,7 +22446,7 @@ var Tw2MatrixParameter = exports.Tw2MatrixParameter = function (_Tw2VectorParame
 Tw2MatrixParameter.constantBufferSize = 16;
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22402,7 +22463,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22547,7 +22608,7 @@ var Tw2TransformParameter = exports.Tw2TransformParameter = function (_Tw2Parame
 Tw2TransformParameter.constantBufferSize = 16;
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22562,7 +22623,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22672,7 +22733,7 @@ var Tw2VariableParameter = exports.Tw2VariableParameter = function (_Tw2Paramete
 }(_Tw2Parameter2.Tw2Parameter);
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22687,7 +22748,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22768,7 +22829,7 @@ var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = function (_Tw2VectorPara
 Tw2Vector2Parameter.constantBufferSize = 2;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22783,7 +22844,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22884,7 +22945,7 @@ var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = function (_Tw2VectorPara
 Tw2Vector3Parameter.constantBufferSize = 3;
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22899,7 +22960,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(4);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23020,7 +23081,7 @@ var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = function (_Tw2VectorPara
 Tw2Vector4Parameter.constantBufferSize = 4;
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23030,7 +23091,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BasicPerObjectData = __webpack_require__(103);
+var _Tw2BasicPerObjectData = __webpack_require__(104);
 
 Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23067,7 +23128,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
 });
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23155,7 +23216,7 @@ var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObj
 exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23166,7 +23227,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2BlendShapeData = undefined;
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23190,7 +23251,7 @@ var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData()
 };
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23218,7 +23279,7 @@ var Tw2GeometryAnimation = exports.Tw2GeometryAnimation = function Tw2GeometryAn
 };
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23294,7 +23355,7 @@ Tw2GeometryBone.global = {
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23324,7 +23385,7 @@ var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
 };
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23337,7 +23398,7 @@ exports.Tw2GeometryMesh = undefined;
 
 var _global = __webpack_require__(0);
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23381,7 +23442,7 @@ var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
 };
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23420,7 +23481,7 @@ var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMesh
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23446,7 +23507,7 @@ var Tw2GeometryMeshBinding = exports.Tw2GeometryMeshBinding = function Tw2Geomet
 };
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23504,7 +23565,7 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
 }();
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23528,7 +23589,7 @@ var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkel
 };
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23556,7 +23617,7 @@ var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2Geometry
 };
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23586,7 +23647,7 @@ var Tw2GeometryTransformTrack = exports.Tw2GeometryTransformTrack = function Tw2
 };
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23739,7 +23800,7 @@ var Tw2InstancedMesh = exports.Tw2InstancedMesh = function (_Tw2Mesh) {
 }(_Tw2Mesh2.Tw2Mesh);
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23786,7 +23847,7 @@ var Tw2MeshLineArea = exports.Tw2MeshLineArea = function (_Tw2MeshArea) {
 Tw2MeshLineArea.batchType = _batch.Tw2GeometryLineBatch;
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23808,7 +23869,7 @@ Object.keys(_Tw2Animation).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(118);
+var _Tw2AnimationController = __webpack_require__(119);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23869,7 +23930,7 @@ Object.keys(_Tw2TrackGroup).forEach(function (key) {
 });
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24690,7 +24751,7 @@ Tw2AnimationController.scratch = {
 };
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24705,11 +24766,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _reader = __webpack_require__(28);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2Shader = __webpack_require__(120);
+var _Tw2Shader = __webpack_require__(121);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24914,7 +24975,7 @@ var Tw2EffectRes = exports.Tw2EffectRes = function (_Tw2Resource) {
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24929,11 +24990,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
 var _sampler = __webpack_require__(22);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25285,6 +25346,72 @@ var Tw2Shader = exports.Tw2Shader = function () {
         }
 
         /**
+         * Checks if a constant is supported
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasConstant',
+        value: function HasConstant(name) {
+            return this.constructor.Has(this.techniques, 'constants', name);
+        }
+
+        /**
+         * Checks if a texture is supported
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasTexture',
+        value: function HasTexture(name) {
+            return this.constructor.Has(this.techniques, 'textures', name);
+        }
+
+        /**
+         * Checks if a sampler is supported
+         * @param {string} name
+         * @returns {boolean}
+         */
+
+    }, {
+        key: 'HasSampler',
+        value: function HasSampler(name) {
+            return this.constructor.Has(this.techniques, 'samplers', name);
+        }
+
+        /**
+         * Checks if any techniques have a value with a given name for a specific type
+         * @param {*} techniques
+         * @param {string} type
+         * @param {string} name
+         * @returns {?*}
+         */
+
+    }], [{
+        key: 'Has',
+        value: function Has(techniques, type, name) {
+            for (var t in techniques) {
+                if (techniques.hasOwnProperty(t)) {
+                    var technique = techniques[t];
+                    for (var p = 0; p < technique.passes.length; p++) {
+                        var pass = technique.passes[p];
+                        for (var s = 0; s < pass.stages.length; s++) {
+                            var stage = pass.stages[s];
+                            for (var i = 0; i < stage[type].length; i++) {
+                                if (stage[type][i].name === name) {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /**
          * Compiles shader
          * @param {number} stageType
          * @param {string} prefix
@@ -25294,7 +25421,7 @@ var Tw2Shader = exports.Tw2Shader = function () {
          * @returns {*}
          */
 
-    }], [{
+    }, {
         key: 'CompileShader',
         value: function CompileShader(stageType, prefix, shaderCode, path, skipError) {
             var ext = _global.device.ext,
@@ -25409,7 +25536,7 @@ var Tw2Shader = exports.Tw2Shader = function () {
 Tw2Shader.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS'];
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25426,11 +25553,11 @@ var _global = __webpack_require__(0);
 
 var _reader = __webpack_require__(28);
 
-var _vertex = __webpack_require__(10);
+var _vertex = __webpack_require__(12);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 var _geometry = __webpack_require__(49);
 
@@ -26148,7 +26275,7 @@ var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource) {
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26165,9 +26292,9 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2Resource2 = __webpack_require__(9);
+var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2Error = __webpack_require__(4);
+var _Tw2Error = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26447,7 +26574,7 @@ var Tw2VideoRes = exports.Tw2VideoRes = function (_Tw2Resource) {
 }(_Tw2Resource2.Tw2Resource);
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26457,7 +26584,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PostProcess = __webpack_require__(124);
+var _Tw2PostProcess = __webpack_require__(125);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -26470,7 +26597,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
 });
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26491,11 +26618,16 @@ var _mesh = __webpack_require__(50);
 
 var _resource = __webpack_require__(27);
 
+var _util = __webpack_require__(10);
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * Creates a bloom post effect
  *
+ * @property {number|string} _id
+ * @property {string} name
+ * @property {boolean} display
  * @property {number} width
  * @property {number} height
  * @property {Tw2TextureRes} texture
@@ -26508,6 +26640,9 @@ var Tw2PostProcess = exports.Tw2PostProcess = function () {
     function Tw2PostProcess() {
         _classCallCheck(this, Tw2PostProcess);
 
+        this._id = (0, _util.generateID)();
+        this.name = 'Bloom';
+        this.display = true;
         this.width = 0;
         this.height = 0;
         this.texture = null;
@@ -26581,18 +26716,42 @@ var Tw2PostProcess = exports.Tw2PostProcess = function () {
     }
 
     /**
-     * Internal render/update function. It is called every frame.
+     * Checks if all resources are good
+     * @returns {boolean}
      */
 
 
     _createClass(Tw2PostProcess, [{
+        key: 'IsGood',
+        value: function IsGood() {
+            var isGood = true;
+            // Ensure each effect is called to keep alive
+            for (var i = 0; i < this.steps.length; i++) {
+                var step = this.steps[i];
+                if (step.effect && !step.effect.IsGood()) {
+                    isGood = false;
+                }
+            }
+            return isGood;
+        }
+
+        /**
+         * Internal render/update function. It is called every frame.
+         * @returns {boolean} true if post was rendered
+         */
+
+    }, {
         key: 'Render',
         value: function Render() {
+            if (!this.IsGood() || !this.display) {
+                return false;
+            }
+
             var gl = _global.device.gl,
                 width = _global.device.viewportWidth,
                 height = _global.device.viewportHeight;
 
-            if (width <= 0 || height <= 0) return;
+            if (width <= 0 || height <= 0) return false;
 
             if (this.texture === null) {
                 this.texture = new _resource.Tw2TextureRes();
@@ -26653,6 +26812,8 @@ var Tw2PostProcess = exports.Tw2PostProcess = function () {
                 }
                 _global.device.RenderFullScreenQuad(_step.effect);
             }
+
+            return true;
         }
     }]);
 
@@ -26660,7 +26821,7 @@ var Tw2PostProcess = exports.Tw2PostProcess = function () {
 }();
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26685,7 +26846,7 @@ var Tw2Float = exports.Tw2Float = function Tw2Float() {
 };
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26839,7 +27000,7 @@ Tw2Frustum.global = {
 };
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27079,7 +27240,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27349,7 +27510,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27522,7 +27683,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27628,7 +27789,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27908,7 +28069,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28000,7 +28161,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28185,7 +28346,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28446,7 +28607,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28699,7 +28860,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28991,7 +29152,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29085,7 +29246,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29388,7 +29549,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29694,7 +29855,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29949,7 +30110,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29959,7 +30120,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(142);
+var _Tw2ColorSequencer = __webpack_require__(143);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29971,7 +30132,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(143);
+var _Tw2EulerRotation = __webpack_require__(144);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29983,7 +30144,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(144);
+var _Tw2QuaternionSequencer = __webpack_require__(145);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -29995,7 +30156,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(145);
+var _Tw2RGBAScalarSequencer = __webpack_require__(146);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30007,7 +30168,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(146);
+var _Tw2ScalarSequencer = __webpack_require__(147);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30019,7 +30180,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(147);
+var _Tw2VectorSequencer = __webpack_require__(148);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30031,7 +30192,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(148);
+var _Tw2XYZScalarSequencer = __webpack_require__(149);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30043,7 +30204,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(149);
+var _Tw2YPRSequencer = __webpack_require__(150);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30056,7 +30217,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30219,7 +30380,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30370,7 +30531,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30511,7 +30672,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30652,7 +30813,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30834,7 +30995,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30998,7 +31159,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31136,7 +31297,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31290,7 +31451,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31300,7 +31461,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(151);
+var _Tw2WbgTrack = __webpack_require__(152);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31312,7 +31473,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(152);
+var _Tw2TransformTrack = __webpack_require__(153);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31325,7 +31486,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31491,7 +31652,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31629,7 +31790,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31639,7 +31800,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(154);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(155);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31651,7 +31812,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(155);
+var _Tw2MayaScalarCurve = __webpack_require__(156);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31663,7 +31824,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(156);
+var _Tw2MayaVector3Curve = __webpack_require__(157);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31675,7 +31836,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(157);
+var _Tw2MayaAnimationEngine = __webpack_require__(158);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31688,7 +31849,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31859,7 +32020,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31975,7 +32136,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32127,7 +32288,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32506,7 +32667,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32528,7 +32689,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(164);
+var _effect = __webpack_require__(166);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32564,7 +32725,7 @@ Object.keys(_item).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(182);
+var _EveSpaceScene = __webpack_require__(184);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32576,7 +32737,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(183);
+var _EveSOF = __webpack_require__(185);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32589,7 +32750,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32608,7 +32769,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveChild2 = __webpack_require__(11);
+var _EveChild2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32701,7 +32862,52 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 160 */
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.EveChildCloud = undefined;
+
+var _class, _temp;
+
+var _EveChild2 = __webpack_require__(7);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * EveChildCloud - not implemented
+ *
+ * @class
+ */
+var EveChildCloud = exports.EveChildCloud = (_temp = _class = function (_EveChild) {
+    _inherits(EveChildCloud, _EveChild);
+
+    function EveChildCloud() {
+        _classCallCheck(this, EveChildCloud);
+
+        return _possibleConstructorReturn(this, (EveChildCloud.__proto__ || Object.getPrototypeOf(EveChildCloud)).call(this));
+    }
+
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+
+
+    return EveChildCloud;
+}(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
+
+/***/ }),
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32716,7 +32922,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveChild2 = __webpack_require__(11);
+var _EveChild2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32806,7 +33012,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 161 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32817,7 +33023,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveChildExplosion = undefined;
 
-var _EveChild2 = __webpack_require__(11);
+var _class, _temp;
+
+var _EveChild2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32830,7 +33038,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @class
  */
-var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
+var EveChildExplosion = exports.EveChildExplosion = (_temp = _class = function (_EveChild) {
     _inherits(EveChildExplosion, _EveChild);
 
     function EveChildExplosion() {
@@ -32839,11 +33047,17 @@ var EveChildExplosion = exports.EveChildExplosion = function (_EveChild) {
         return _possibleConstructorReturn(this, (EveChildExplosion.__proto__ || Object.getPrototypeOf(EveChildExplosion)).call(this));
     }
 
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+
+
     return EveChildExplosion;
-}(_EveChild2.EveChild);
+}(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 162 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32860,7 +33074,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveChild2 = __webpack_require__(11);
+var _EveChild2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32950,7 +33164,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 163 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32969,7 +33183,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveChild2 = __webpack_require__(11);
+var _EveChild2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -33056,7 +33270,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 164 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33066,7 +33280,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(165);
+var _EveLensflare = __webpack_require__(167);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33078,7 +33292,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(166);
+var _EveMeshOverlayEffect = __webpack_require__(168);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33102,7 +33316,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(167);
+var _EveStretch = __webpack_require__(169);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33114,7 +33328,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(168);
+var _EveTurretFiringFX = __webpack_require__(170);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33126,7 +33340,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
   });
 });
 
-var _EveStarField = __webpack_require__(169);
+var _EveStarField = __webpack_require__(171);
 
 Object.keys(_EveStarField).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33139,7 +33353,7 @@ Object.keys(_EveStarField).forEach(function (key) {
 });
 
 /***/ }),
-/* 165 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33480,7 +33694,7 @@ var EveLensflare = exports.EveLensflare = function () {
 EveLensflare.global = null;
 
 /***/ }),
-/* 166 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33532,7 +33746,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
         this.visible.decalEffects = true;
         this.visible.transparentEffects = true;
         this.visible.additiveEffects = true;
-        this.visible.distortionEffects = false;
+        this.visible.distortionEffects = true;
         this.update = true;
         this.curveSet = null;
         this.opaqueEffects = [];
@@ -33626,6 +33840,9 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
                     case _global.device.RM_DECAL:
                         if (this.visible.decalEffects) return this.decalEffects;
                         break;
+
+                    case _global.device.RM_DISTORTION:
+                        if (this.visible.distortionEffects) return this.distortionEffects;
                 }
             }
             return [];
@@ -33636,7 +33853,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 167 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33955,7 +34172,7 @@ var EveStretch = exports.EveStretch = function () {
 EveStretch.global = null;
 
 /***/ }),
-/* 168 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34301,7 +34518,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 169 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34311,6 +34528,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.EveStarField = undefined;
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -34329,7 +34548,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} minFlashRate
  * @property {number} seed
  */
-var EveStarField = exports.EveStarField = function EveStarField() {
+var EveStarField = exports.EveStarField = (_temp = _class = function EveStarField() {
     _classCallCheck(this, EveStarField);
 
     this._id = _global.util.generateID();
@@ -34341,10 +34560,16 @@ var EveStarField = exports.EveStarField = function EveStarField() {
     this.minFlashIntensity = 0;
     this.minFlashRate = 0;
     this.seed = 20;
-};
+}
+
+/**
+ * Identifies that the object is not yet fully implemented
+ * @type {boolean}
+ */
+, _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 170 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34361,7 +34586,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObject2 = __webpack_require__(12);
+var _EveObject2 = __webpack_require__(13);
 
 var _EveSpaceObject = __webpack_require__(29);
 
@@ -34495,7 +34720,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 171 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34514,7 +34739,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObject2 = __webpack_require__(12);
+var _EveObject2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34897,7 +35122,7 @@ var EveMissile = exports.EveMissile = function () {
 }();
 
 /***/ }),
-/* 172 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34916,7 +35141,7 @@ var _core = __webpack_require__(1);
 
 var _EveTransform = __webpack_require__(63);
 
-var _EveObject2 = __webpack_require__(12);
+var _EveObject2 = __webpack_require__(13);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -35256,7 +35481,7 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 173 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35478,7 +35703,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 174 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35497,7 +35722,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36056,7 +36281,7 @@ var EveBoosterSet = exports.EveBoosterSet = (_temp = _class = function (_EveObje
 }, _class.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp);
 
 /***/ }),
-/* 175 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36075,7 +36300,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37011,7 +37236,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
 }, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp2);
 
 /***/ }),
-/* 176 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37090,7 +37315,7 @@ EveLocator.Prefix = {
 };
 
 /***/ }),
-/* 177 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37109,7 +37334,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37474,7 +37699,7 @@ var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSe
 }(_EveObjectSet2.EveObjectSet), _class.Item = EvePlaneSetItem, _class.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp);
 
 /***/ }),
-/* 178 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37737,7 +37962,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = (_temp = _class = functi
 }, _temp);
 
 /***/ }),
-/* 179 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37756,7 +37981,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38187,7 +38412,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_Eve
 }(_EveObjectSet2.EveObjectSet), _class.Item = EveSpotlightSetItem, _class.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp);
 
 /***/ }),
-/* 180 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38206,7 +38431,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38770,7 +38995,7 @@ var EveSpriteSet = exports.EveSpriteSet = (_temp = _class = function (_EveObject
 }(_EveObjectSet2.EveObjectSet), _class.Item = EveSpriteSetItem, _class.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp);
 
 /***/ }),
-/* 181 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38789,7 +39014,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveObjectSet2 = __webpack_require__(7);
+var _EveObjectSet2 = __webpack_require__(8);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -39671,7 +39896,7 @@ EveTurretSet.mat3x4toquat = function () {
 }();
 
 /***/ }),
-/* 182 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40234,7 +40459,7 @@ var EveSpaceScene = exports.EveSpaceScene = (_temp = _class = function () {
 }, _class.global = null, _class.DebugRenderer = window['Tw2DebugRenderer'] || null, _temp);
 
 /***/ }),
-/* 183 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41123,7 +41348,7 @@ function EveSOF() {
 }
 
 /***/ }),
-/* 184 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41133,7 +41358,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(185);
+var _emitters = __webpack_require__(187);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41145,7 +41370,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(189);
+var _forces = __webpack_require__(191);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41157,7 +41382,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(196);
+var _generators = __webpack_require__(198);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41169,7 +41394,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(200);
+var _constraints = __webpack_require__(202);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41181,7 +41406,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(201);
+var _Tw2ParticleSystem = __webpack_require__(203);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41193,7 +41418,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(17);
+var _Tw2ParticleElement = __webpack_require__(65);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41205,8 +41430,20 @@ Object.keys(_Tw2ParticleElement).forEach(function (key) {
   });
 });
 
+var _Tw2ParticleElementDeclaration = __webpack_require__(17);
+
+Object.keys(_Tw2ParticleElementDeclaration).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2ParticleElementDeclaration[key];
+    }
+  });
+});
+
 /***/ }),
-/* 185 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41216,7 +41453,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(186);
+var _Tw2StaticEmitter = __webpack_require__(188);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41228,7 +41465,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(187);
+var _Tw2DynamicEmitter = __webpack_require__(189);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41240,7 +41477,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2GpuUniqueEmitter = __webpack_require__(188);
+var _Tw2GpuUniqueEmitter = __webpack_require__(190);
 
 Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41253,7 +41490,7 @@ Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 186 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41399,7 +41636,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 187 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41518,7 +41755,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 188 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41528,6 +41765,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Tr2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = undefined;
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -41565,7 +41804,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {vec4} color3
  * @class
  */
-var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = function (_Tw2ParticleEmitter) {
+var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = (_temp = _class = function (_Tw2ParticleEmitter) {
     _inherits(Tw2GpuUniqueEmitter, _Tw2ParticleEmitter);
 
     function Tw2GpuUniqueEmitter() {
@@ -41603,16 +41842,21 @@ var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = function (_Tw2ParticleEm
         return _this;
     }
 
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+
+
     return Tw2GpuUniqueEmitter;
-}(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
+}(_Tw2ParticleEmitter2.Tw2ParticleEmitter), _class.partialImplementation = true, _temp);
 
 // Temporary alias
-
 
 exports.Tr2GpuUniqueEmitter = Tw2GpuUniqueEmitter;
 
 /***/ }),
-/* 189 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41622,7 +41866,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(190);
+var _Tw2ParticleAttractorForce = __webpack_require__(192);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41634,7 +41878,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(191);
+var _Tw2ParticleDirectForce = __webpack_require__(193);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41646,7 +41890,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(192);
+var _Tw2ParticleDragForce = __webpack_require__(194);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41658,7 +41902,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(193);
+var _Tw2ParticleFluidDragForce = __webpack_require__(195);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41670,7 +41914,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(194);
+var _Tw2ParticleSpring = __webpack_require__(196);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41682,7 +41926,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(195);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(197);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41695,7 +41939,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 190 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41710,7 +41954,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41767,7 +42011,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 191 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41782,7 +42026,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41828,7 +42072,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 192 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41841,7 +42085,7 @@ exports.Tw2ParticleDragForce = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41889,7 +42133,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 193 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41904,7 +42148,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41975,7 +42219,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 194 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41990,7 +42234,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42040,7 +42284,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 195 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42055,7 +42299,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleForce2 = __webpack_require__(13);
+var _Tw2ParticleForce2 = __webpack_require__(14);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42145,7 +42389,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 196 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42155,7 +42399,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(197);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(199);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42167,7 +42411,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(198);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(200);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42179,7 +42423,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(199);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(201);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42192,7 +42436,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 197 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42207,7 +42451,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(17);
+var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(31);
 
@@ -42236,7 +42480,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 
         var _this = _possibleConstructorReturn(this, (Tw2RandomIntegerAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomIntegerAttributeGenerator)).call(this));
 
-        _this.elementType = _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.CUSTOM;
+        _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM;
         _this.customName = '';
         _this.minRange = _global.vec4.create();
         _this.maxRange = _global.vec4.create();
@@ -42255,7 +42499,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
         key: 'Bind',
         value: function Bind(ps) {
             for (var i = 0; i < ps._elements.length; ++i) {
-                if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
+                if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
                     this._element = ps._elements[i];
                     return true;
                 }
@@ -42283,7 +42527,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 198 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42298,7 +42542,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(17);
+var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(31);
 
@@ -42327,7 +42571,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 
         var _this = _possibleConstructorReturn(this, (Tw2RandomUniformAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomUniformAttributeGenerator)).call(this));
 
-        _this.elementType = _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.CUSTOM;
+        _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM;
         _this.customName = '';
         _this.minRange = _global.vec4.create();
         _this.maxRange = _global.vec4.create();
@@ -42346,7 +42590,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
         key: 'Bind',
         value: function Bind(ps) {
             for (var i = 0; i < ps._elements.length; ++i) {
-                if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
+                if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
                     this._element = ps._elements[i];
                     return true;
                 }
@@ -42374,7 +42618,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 199 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42389,7 +42633,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleElement = __webpack_require__(17);
+var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
 var _Tw2ParticleAttributeGenerator = __webpack_require__(31);
 
@@ -42459,9 +42703,9 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
             this._velocity = null;
 
             for (var i = 0; i < ps._elements.length; ++i) {
-                if (ps._elements[i].elementType === _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION && this.controlPosition) {
+                if (ps._elements[i].elementType === _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION && this.controlPosition) {
                     this._position = ps._elements[i];
-                } else if (ps._elements[i].elementType === _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY && this.controlVelocity) {
+                } else if (ps._elements[i].elementType === _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY && this.controlVelocity) {
                     this._velocity = ps._elements[i];
                 }
             }
@@ -42524,14 +42768,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 200 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 201 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42548,7 +42792,9 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(17);
+var _Tw2ParticleElement = __webpack_require__(65);
+
+var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42667,7 +42913,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 
                 el.startOffset = this.vertexStride[bufferIndex];
                 el.offset = el.startOffset;
-                if (this.elements[i].elementType !== _Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.CUSTOM) {
+                if (this.elements[i].elementType !== _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM) {
                     this._stdElements[this.elements[i].elementType] = el;
                 }
                 this.vertexStride[bufferIndex] += el.dimension;
@@ -42781,10 +43027,10 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
         value: function Update(dt) {
             dt = Math.min(dt, 0.1);
 
-            if (this.applyAging && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.LIFETIME)) {
-                var lifetime = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.LIFETIME),
-                    position = this.emitParticleOnDeathEmitter ? this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION) : null,
-                    velocity = this.emitParticleOnDeathEmitter ? this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY) : null;
+            if (this.applyAging && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.LIFETIME)) {
+                var lifetime = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.LIFETIME),
+                    position = this.emitParticleOnDeathEmitter ? this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION) : null,
+                    velocity = this.emitParticleOnDeathEmitter ? this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY) : null;
 
                 for (var i = 0; i < this.aliveCount; ++i) {
                     lifetime.buffer[lifetime.offset] += dt / lifetime.buffer[lifetime.offset + 1];
@@ -42814,15 +43060,15 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
 
             var vec3_0 = Tw2ParticleSystem.global.vec3_0;
 
-            if (this.updateSimulation && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION) && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY)) {
+            if (this.updateSimulation && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION) && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY)) {
                 var hasForces = this.applyForce && this.forces.length;
                 for (var _i4 = 0; _i4 < this.forces.length; ++_i4) {
                     this.forces[_i4].Update(dt);
                 }
 
-                var _position = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION),
-                    _velocity = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY),
-                    mass = hasForces ? this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.MASS) : null;
+                var _position = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION),
+                    _velocity = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY),
+                    mass = hasForces ? this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.MASS) : null;
 
                 for (var _i5 = 0; _i5 < this.aliveCount; ++_i5) {
                     if (hasForces) {
@@ -42867,9 +43113,9 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
                 this.GetBoundingBox(this.aabbMin, this.aabbMax);
             }
 
-            if (this.emitParticleDuringLifeEmitter && !(this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION) && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY)) && this.updateSimulation) {
-                var _position2 = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION),
-                    _velocity2 = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.VELOCITY);
+            if (this.emitParticleDuringLifeEmitter && !(this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION) && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY)) && this.updateSimulation) {
+                var _position2 = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION),
+                    _velocity2 = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.VELOCITY);
 
                 for (var _i7 = 0; _i7 < this.aliveCount; ++_i7) {
                     this.emitParticleDuringLifeEmitter.SpawnParticles(_position2, _velocity2, 1);
@@ -42898,8 +43144,8 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
     }, {
         key: 'GetBoundingBox',
         value: function GetBoundingBox(aabbMin, aabbMax) {
-            if (this.aliveCount && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION)) {
-                var position = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION);
+            if (this.aliveCount && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION)) {
+                var position = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION);
                 aabbMin[0] = position.buffer[position.offset];
                 aabbMin[1] = position.buffer[position.offset + 1];
                 aabbMin[2] = position.buffer[position.offset + 2];
@@ -42930,7 +43176,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
         value: function _Sort() {
             var eye = _global.mat4.multiply(Tw2ParticleSystem.global.mat4_0, _global.device.projection, _global.device.view),
                 //device.viewInverse;
-            position = this.GetElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION),
+            position = this.GetElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION),
                 count = this.aliveCount,
                 distances = this._distancesBuffer;
 
@@ -42989,7 +43235,7 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
             if (this.aliveCount === 0) return undefined;
 
             var gl = _global.device.gl;
-            if (this.requiresSorting && this.HasElement(_Tw2ParticleElement.Tw2ParticleElementDeclaration.Type.POSITION) && this.buffers) {
+            if (this.requiresSorting && this.HasElement(_Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.POSITION) && this.buffers) {
                 this._Sort();
 
                 var stride = this.instanceStride[0],

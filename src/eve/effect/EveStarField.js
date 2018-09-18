@@ -27,4 +27,10 @@ export class EveStarField
         this.minFlashRate = 0;
         this.seed = 20;
     }
+
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+    static partialImplementation = true;
 }

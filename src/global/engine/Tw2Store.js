@@ -1,5 +1,4 @@
 import {isString, isPlain, isArray, isFunction, toArray, isUndefined, enableUUID} from '../util';
-import {Tw2Error} from '../../core/Tw2Error';
 import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 
 /**
@@ -10,7 +9,7 @@ import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
  * @property {Object.< string, Tw2Parameter>} _variable
  * @property {Object.< string, Function>} _type
  * @property {Object.< string, Function>} _extension
- * @property {Object.< string, Function>} _constructor
+ * @property {Object.< string, Function>} _class
  * @property {Object.< string, Tw2Schema>} _schema
  * @property {Object.< string, Array<string>>} _missing
  * @class
@@ -25,7 +24,7 @@ class Tw2Store extends Tw2EventEmitter
         this._path = {};
         this._variable = {};
         this._extension = {};
-        this._constructor = {};
+        this._class = {};
         this._dynamicPath = {};
         this._schema = {};
         this._missing = {};
@@ -180,9 +179,9 @@ class Tw2Store extends Tw2EventEmitter
      * @param {string} name
      * @returns {boolean}
      */
-    HasConstructor(name)
+    HasClass(name)
     {
-        return (name && name in this._constructor);
+        return (name && name in this._class);
     }
 
     /**
@@ -190,9 +189,26 @@ class Tw2Store extends Tw2EventEmitter
      * @param {string} name
      * @returns {?Function}
      */
-    GetConstructor(name)
+    GetClass(name)
     {
-        return Tw2Store.GetStoreItem(this, 'constructor', name);
+        const Constructor = Tw2Store.GetStoreItem(this, 'class', name);
+
+        // Create a warning when a partially implemented class is called
+        if (Constructor && Constructor.partialImplementation)
+        {
+            this.emit('warning', {
+                type: 'class',
+                key: name,
+                value: Constructor,
+                log: {
+                    type: 'warning',
+                    title: this.name,
+                    message: `Feature partially implemented (${name})`
+                }
+            });
+        }
+
+        return Constructor;
     }
 
     /**
@@ -201,15 +217,9 @@ class Tw2Store extends Tw2EventEmitter
      * @param {Function} Constructor
      * @returns {boolean}
      */
-    RegisterConstructor(name, Constructor)
+    RegisterClass(name, Constructor)
     {
-        // Don't store errors as library constructors
-        if (Constructor && (Constructor instanceof Tw2Error || Constructor.isError))
-        {
-            return false;
-        }
-
-        return Tw2Store.SetStoreItem(this, 'constructor', name, Constructor, isFunction);
+        return Tw2Store.SetStoreItem(this, 'class', name, Constructor, isFunction);
     }
 
     /**
@@ -217,9 +227,9 @@ class Tw2Store extends Tw2EventEmitter
      * @param {{string:Function}|Array<{string:Function}>} obj
      * @returns {boolean}
      */
-    RegisterConstructors(obj)
+    RegisterClasses(obj)
     {
-        return Tw2Store.RegisterFromObject(this, 'RegisterConstructor', obj);
+        return Tw2Store.RegisterFromObject(this, 'RegisterClass', obj);
     }
 
     /**
@@ -440,7 +450,7 @@ class Tw2Store extends Tw2EventEmitter
      * @param {*} opt.paths
      * @param {*} opt.dynamicPaths
      * @param {*} opt.types
-     * @param {*} opt.constructors
+     * @param {*} opt.classes
      * @param {*} opt.extensions
      * @param {*} opt.variables
      * @param {*} opt.schemas
@@ -451,7 +461,7 @@ class Tw2Store extends Tw2EventEmitter
         this.RegisterPaths(opt.paths);
         this.RegisterDynamicPaths(opt.dynamicPaths);
         this.RegisterTypes(opt.types);
-        this.RegisterConstructors(opt.constructors);
+        this.RegisterClasses(opt.classes);
         this.RegisterExtensions(opt.extensions);
         this.RegisterVariables(opt.variables);
         this.RegisterSchemas(opt.schemas);

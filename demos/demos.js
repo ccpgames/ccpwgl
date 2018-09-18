@@ -437,24 +437,38 @@ function init()
         }
     };
 
+    // Keep a track of the last messages
+    // If they're the same as a new one, don't bother to redisplay
+    var lastError, lastWarning;
+
     ccpwgl_int.logger.on('error', function(e)
     {
-        Toasts.create({
-            type: 'error',
-            title: e.title,
-            text: e.message,
-            timeout: 8000
-        });
+        if (lastError !== e.message)
+        {
+            Toasts.create({
+                type: 'error',
+                title: e.title,
+                text: e.message,
+                timeout: 8000,
+                icon: 'https://image.eveonline.com/Type/24552_64.png'
+            });
+            lastError = e.message;
+        }
     });
 
     ccpwgl_int.logger.on('warn', function(e)
     {
-        Toasts.create({
-            type: 'warning',
-            title: e.title,
-            text: e.message,
-            timeout: 4000
-        });
+        if (lastWarning !== e.message)
+        {
+            Toasts.create({
+                type: 'warning',
+                title: e.title,
+                text: e.message,
+                timeout: 6000,
+                icon: 'https://image.eveonline.com/Type/24589_64.png'
+            });
+            lastWarning = e.message;
+        }
     });
 }
 

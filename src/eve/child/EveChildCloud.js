@@ -1,11 +1,11 @@
 import {EveChild} from './EveChild';
 
 /**
- * 'Complex' explosion object. Not implemented.
+ * EveChildCloud - not implemented
  *
  * @class
  */
-export class EveChildExplosion extends EveChild
+export class EveChildCloud extends EveChild
 {
     constructor()
     {
@@ -18,3 +18,4 @@ export class EveChildExplosion extends EveChild
      */
     static partialImplementation = true;
 }
+

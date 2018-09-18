@@ -95,8 +95,6 @@ var ccpwgl = (function(ccpwgl_int)
     var camera = null;
     /** Postprocessing effect @type {ccpwlg_int.Tw2Postprocess} **/
     var postprocess = null;
-    /** If the postprocessing should be applied **/
-    var postprocessingEnabled = false;
     /** Background clear color **/
     var clearColor = [0, 0, 0, 1];
     /** If scene updates and update callbacks are to be called **/
@@ -200,11 +198,7 @@ var ccpwgl = (function(ccpwgl_int)
                 ccpwgl.onPostSceneRender(dt);
             }
 
-            if (postprocess && postprocessingEnabled)
-            {
-                postprocess.Render();
-            }
-            else
+            if (!postprocess || postprocess.Render())
             {
                 // We have crap in back buffer alpha channel, so clear it
                 d.gl.colorMask(false, false, false, true);
@@ -264,8 +258,7 @@ var ccpwgl = (function(ccpwgl_int)
         d.shaderModel = getOption(params, 'shaderQuality', 'hi');
         d.enableAnisotropicFiltering = getOption(params, 'anisotropicFilter', true);
 
-        var glParams = getOption(params, 'glParams',
-            {});
+        var glParams = getOption(params, 'glParams', {});
         glParams.webgl2 = !params || params.webgl2 === undefined ? false : params.webgl2;
 
         var webglVersion = d.CreateDevice(canvas, glParams);
@@ -273,8 +266,7 @@ var ccpwgl = (function(ccpwgl_int)
         if (!webglVersion) throw new ccpwgl.NoWebGLError();
 
         d.Schedule(render);
-        postprocessingEnabled = getOption(params, 'postprocessing', false);
-        if (postprocessingEnabled) postprocess = new ccpwgl_int.Tw2PostProcess();
+        ccpwgl.enablePostprocessing(getOption(params, 'postprocessing', false))
 
         function tick()
         {
@@ -316,10 +308,14 @@ var ccpwgl = (function(ccpwgl_int)
      */
     ccpwgl.enablePostprocessing = function(enable)
     {
-        postprocessingEnabled = enable;
-        if (postprocessingEnabled && !postprocess)
+        if (postprocess || enable)
         {
-            postprocess = new ccpwgl_int.Tw2PostProcess();
+            if (!postprocess)
+            {
+                postprocess = new ccpwgl_int.Tw2PostProcess();
+            }
+
+            postprocess.display = enable;
         }
     };
 

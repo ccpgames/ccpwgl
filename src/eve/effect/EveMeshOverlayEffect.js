@@ -34,7 +34,7 @@ export class EveMeshOverlayEffect
         this.visible.decalEffects = true;
         this.visible.transparentEffects = true;
         this.visible.additiveEffects = true;
-        this.visible.distortionEffects = false;
+        this.visible.distortionEffects = true;
         this.update = true;
         this.curveSet = null;
         this.opaqueEffects = [];
@@ -120,6 +120,9 @@ export class EveMeshOverlayEffect
                 case device.RM_DECAL:
                     if (this.visible.decalEffects) return this.decalEffects;
                     break;
+
+                case device.RM_DISTORTION:
+                    if (this.visible.distortionEffects) return this.distortionEffects;
             }
         }
         return [];

@@ -987,6 +987,7 @@ export class Tw2Device extends Tw2EventEmitter
         {
             case this.RM_OPAQUE:
             case this.RM_PICKABLE:
+            case this.RM_DISTORTION:
                 this.SetRenderState(this.RS_ZENABLE, true);
                 this.SetRenderState(this.RS_ZWRITEENABLE, true);
                 this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
@@ -1199,6 +1200,7 @@ Tw2Device.prototype.RM_ADDITIVE = 3;
 Tw2Device.prototype.RM_DEPTH = 4;
 Tw2Device.prototype.RM_FULLSCREEN = 5;
 Tw2Device.prototype.RM_PICKABLE = 6;
+Tw2Device.prototype.RM_DISTORTION = 7;
 
 // Render States
 Tw2Device.prototype.RS_ZENABLE = 7; // D3DZBUFFERTYPE (or TRUE/FALSE for legacy)

@@ -17,6 +17,15 @@ export class Tw2BatchAccumulator
     }
 
     /**
+     * Gets the batch count
+     * @returns {number}
+     */
+    get length()
+    {
+        return this.batches.length;
+    }
+
+    /**
      * Commits a batch
      * @param {Tw2BatchAccumulator|Tw2RenderBatch} batch
      */

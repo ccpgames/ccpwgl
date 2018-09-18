@@ -1,5 +1,5 @@
 import {vec4} from '../../global';
-import {Tw2ParticleElementDeclaration} from '../Tw2ParticleElement';
+import {Tw2ParticleElementDeclaration} from '../Tw2ParticleElementDeclaration';
 import {Tw2ParticleAttributeGenerator} from './Tw2ParticleAttributeGenerator';
 
 /**
