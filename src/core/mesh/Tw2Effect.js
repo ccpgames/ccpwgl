@@ -52,7 +52,20 @@ export class Tw2Effect
      */
     IsGood()
     {
+        this.KeepAlive();
         return this.shader !== null;
+    }
+
+    /**
+     * Keeps the effect and it's parameters alive
+     */
+    KeepAlive()
+    {
+        const res = this.GetResources();
+        for (let i = 0; i < res.length; i++)
+        {
+            res[i].KeepAlive();
+        }
     }
 
     /**
@@ -632,6 +645,14 @@ export class Tw2Effect
         {
             let path = opt.effectFilePath;
             effect.name = path.substring(path.lastIndexOf('/') + 1, path.length);
+        }
+
+        if (!effect.name && effect.effectFilePath)
+        {
+            effect.name = effect.effectFilePath.substring(
+                effect.effectFilePath.lastIndexOf('/') + 1,
+                effect.effectFilePath.lastIndexOf('.')
+            );
         }
 
         effect.Initialize();

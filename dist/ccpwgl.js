@@ -93,8 +93,6 @@ var ccpwgl = (function(ccpwgl_int)
     var scene = null;
     /** Current camera **/
     var camera = null;
-    /** Postprocessing effect @type {ccpwlg_int.Tw2Postprocess} **/
-    var postprocess = null;
     /** Background clear color **/
     var clearColor = [0, 0, 0, 1];
     /** If scene updates and update callbacks are to be called **/
@@ -103,6 +101,18 @@ var ccpwgl = (function(ccpwgl_int)
     var renderingEnabled = true;
     /** Current resource unload policy @type {ccpwgl.ResourceUnloadPolicy} **/
     var resourceUnloadPolicy = ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
+
+    /**
+     * Bloom post effect
+     * @type {?Tw2PostEffect}
+     **/
+    var bloomEffect;
+
+    /**
+     * Post effect manager
+     * @type {ccpwgl_int.Tw2PostEffectManager}
+     */
+    ccpwgl.post = new ccpwgl_int.Tw2PostEffectManager();
 
     /**
      * Callback that is fired before updating scene state and before any rendering occurs. The dt parameter passed to the
@@ -172,6 +182,7 @@ var ccpwgl = (function(ccpwgl_int)
                     scene.objects[i].onUpdate.call(scene.objects[i], dt);
                 }
             }
+            ccpwgl.post.Update(dt);
             scene.wrappedScene.Update(dt);
         }
         if (renderingEnabled)
@@ -198,7 +209,7 @@ var ccpwgl = (function(ccpwgl_int)
                 ccpwgl.onPostSceneRender(dt);
             }
 
-            if (!postprocess || postprocess.Render())
+            if (!ccpwgl.post.Render())
             {
                 // We have crap in back buffer alpha channel, so clear it
                 d.gl.colorMask(false, false, false, true);
@@ -230,10 +241,9 @@ var ccpwgl = (function(ccpwgl_int)
      * - anisotropicFilter: boolean value; if true anisotropic texture filtering will be
      *   turned on if browser supports it, if false anisotropic texture filtering is disabled.
      *   Disabling anisotropic filtering might result in better performance. Defaults to true.
-     * - postprocessing: boolean value; if true, postprocessing effects are applied to the
-     *   rendered image. Disabling postprocessing effects might result in better performance.
-     *   Defaults to false. You can also turn this option on and off with
-     *   ccpwgl.enablePostprocessing call.
+     * - postprocessing: boolean value; if true, bloom postprocessing effects are applied to the
+     *   rendered image. Disabling bloom postprocessing effects might result in better performance.
+     *   Defaults to false. You can also turn this option on and off with ccpwgl.enablePostprocessing call.
      * - glParams: object; WebGL context creation parameters, see
      *   https://www.khronos.org/registry/webgl/specs/1.0/#2.2. Defaults to none.
      *
@@ -266,7 +276,11 @@ var ccpwgl = (function(ccpwgl_int)
         if (!webglVersion) throw new ccpwgl.NoWebGLError();
 
         d.Schedule(render);
-        ccpwgl.enablePostprocessing(getOption(params, 'postprocessing', false))
+
+        if ('postprocessing' in params)
+        {
+            ccpwgl.enablePostprocessing(params.postprocessing)
+        }
 
         function tick()
         {
@@ -300,7 +314,7 @@ var ccpwgl = (function(ccpwgl_int)
     };
 
     /**
-     * Enables/disables postprocessing effects. Triggers shader loading the first time
+     * Enables/disables bloom postprocessing effects. Triggers shader loading the first time
      * postprocessing is enabled, so the actual postprocessing will be turn on with a
      * delay after the first enabling call.
      *
@@ -308,14 +322,57 @@ var ccpwgl = (function(ccpwgl_int)
      */
     ccpwgl.enablePostprocessing = function(enable)
     {
-        if (postprocess || enable)
+        if (enable)
         {
-            if (!postprocess)
+            if (!bloomEffect)
             {
-                postprocess = new ccpwgl_int.Tw2PostProcess();
+                const postDirectory = 'res:/Graphics/Effect/Managed/Space/PostProcess/';
+                bloomEffect = ccpwgl.post.CreateItem({
+                    name: "Bloom",
+                    display: false,
+                    index: 0,
+                    steps: [
+                        {
+                            name: "Color down filter 4",
+                            target: "quadRT1",
+                            effectFilePath: postDirectory + "ColorDownFilter4.fx",
+                            inputs: {BlitCurrent: null}
+                        },
+                        {
+                            name: "Color high pass filter",
+                            target: "quadRT0",
+                            effectFilePath: postDirectory + "ColorHighPassFilter.fx",
+                            parameters: {LuminanceThreshold: 0.85, LuminanceScale: 2},
+                            inputs: {BlitCurrent: "quadRT1"}
+                        },
+                        {
+                            name: "Color exposure blur horizontal big",
+                            target: "quadRT1",
+                            effectFilePath: postDirectory + "ColorExpBlurHorizontalBig.fx",
+                            inputs: {BlitCurrent: "quadRT0"}
+                        },
+                        {
+                            name: "Color exposure blur vertical big",
+                            target: "quadRT0",
+                            effectFilePath: postDirectory + "ColorExpBlurVerticalBig.fx",
+                            inputs: {BlitCurrent: "quadRT1"}
+                        },
+                        {
+                            name: "Color up filter 4 add",
+                            target: null,
+                            effectFilePath: postDirectory + "ColorUpFilter4_Add.fx",
+                            parameters: {"ScalingFactor": 1},
+                            inputs: {BlitCurrent: "quadRT0", BlitOriginal: null}
+                        }
+                    ]
+                });
             }
 
-            postprocess.display = enable;
+            bloomEffect.display = true;
+        }
+        else if (!enable && bloomEffect)
+        {
+            bloomEffect.display = false;
         }
     };
 

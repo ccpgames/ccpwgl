@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Sun</title>
+
+    <link rel="stylesheet" href="demos.css">
+    <script type="text/javascript" src="../dist/ccpwgl_int.js"></script>
+    <script type="text/javascript" src="../dist/ccpwgl.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="demos.js"></script>
+
+    <script type="text/javascript">
+
+        var canvas, camera, scene, ship, filmEffect;
+
+        function OnDocLoad()
+        {
+            canvas = document.getElementById('mainCanvas');
+            ccpwgl.initialize(canvas, demos.options);
+
+            camera = ccpwgl.createCamera(canvas, undefined, true);
+            scene = ccpwgl.loadScene('res:/dx9/scene/universe/c04_cube.red');
+            ship = scene.loadShip('cf4_t1:caldaribase:caldari', function() {camera.focus(this, 4)});
+
+            filmEffect = ccpwgl.post.CreateItem({
+                name: "Example Film effect",
+                display: true,
+                steps: [
+                    {
+                        name: "Tone mapping",
+                        effectFilePath: "res:/Graphics/Effect/Managed/Space/PostProcess/toneMappingwithexposure.fx",
+                        parameters: {
+                            BloomBrightness: [0.7, 0, 0, 0],
+                            ColoredGrain: [1, 0, 0, 0],
+                            Desaturate: [0.3, 0, 0, 0],
+                            ExposureAdjust: [2, 0, 0, 0],
+                            FadeAmount: [0.01, 0, 0, 0],
+                            FadeColor: [0, 0.1, 2, 1],
+                            FilmGrain: [2, 0, 0, 0],
+                            GrainColorAmount: [0.6, 0, 0, 0],
+                            GrainIntensity: [0.05, 0, 0, 0],
+                            GrainLuminanceExponent: [0.7, 0, 0, 0],
+                            GrainSize: [2, 0, 0, 0],
+                            GrimeWeight: [20, 0, 0, 0],
+                            LUTEnabled: [1, 0, 0, 0],
+                            LUTInfluence: [0.5, 0, 0, 0],
+                            SaturationFactor: [1, 0, 0, 0],
+                            Tonemapping: [1, 0, 0, 0]
+                        },
+                        textures: {
+                            Grime: "res:/texture/flare/grime9.dds.0.png",
+                            TexLUT: "res:/dx9/scene/postprocess/ncc_vintage.dds.0.png"
+                        },
+                        inputs: {
+                            BlitCurrent: null,
+                            BlitOriginal: null
+                        }
+                    }
+                ]
+            });
+
+            ccpwgl.onPreRender = function()
+            {
+                document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
+            };
+
+        }
+    </script>
+
+</head>
+<body onload="OnDocLoad()">
+<canvas id="mainCanvas" width="500" height="500"></canvas>
+<div id="loading">Loading...</div>
+</body>
+</html>

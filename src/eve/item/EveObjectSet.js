@@ -219,11 +219,11 @@ export class EveObjectSet
         {
             const item = eveSet.items[i];
             item._onModified = eveSet._onChildModified;
+            item._rebuildPending = false;
 
             if (item.display)
             {
                 eveSet._visibleItems.push(item);
-                item._rebuildPending = false;
             }
         }
     }
