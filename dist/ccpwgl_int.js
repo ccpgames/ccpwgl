@@ -35570,24 +35570,23 @@ var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (
          * @type {*}
          */
 
+
+        /**
+         * Missile warhead states
+         * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
+         */
+
     }]);
 
     return EveMissileWarhead;
 }(_EveObject2.EveObject), _class.perObjectData = {
-    PSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', 4, [0, 1, 0, -10]], ['Clipdata1', 4]],
-    VSData: [['Shipdata', 4, [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4]]
-}, _temp);
-
-/**
- * Missile warhead states
- * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
- */
-
-EveMissileWarhead.State = {
+    VSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', 4, [0, 1, 0, -10]], ['Clipdata1', 4], ['JointMat', 696]],
+    PSData: [['Shipdata', 4, [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4]]
+}, _class.State = {
     READY: 0,
     IN_FLIGHT: 1,
     DEAD: 2
-};
+}, _temp);
 
 /**
  * EveMissile

@@ -194,29 +194,32 @@ export class EveMissileWarhead extends EveObject
      * @type {*}
      */
     static perObjectData = {
-        PSData: [
+        VSData: [
             ['WorldMat', 16],
             ['WorldMatLast', 16],
             ['Shipdata', 4, [0, 1, 0, -10]],
-            ['Clipdata1', 4]
+            ['Clipdata1', 4],
+            ['JointMat', 696]
         ],
-        VSData: [
+        PSData: [
             ['Shipdata', 4, [0, 1, 0, 1]],
             ['Clipdata1', 4],
             ['Clipdata2', 4],
         ]
     };
+
+    /**
+     * Missile warhead states
+     * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
+     */
+    static State = {
+        READY: 0,
+        IN_FLIGHT: 1,
+        DEAD: 2
+    };
 }
 
-/**
- * Missile warhead states
- * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
- */
-EveMissileWarhead.State = {
-    READY: 0,
-    IN_FLIGHT: 1,
-    DEAD: 2
-};
+
 
 
 /**
