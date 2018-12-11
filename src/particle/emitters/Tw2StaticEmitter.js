@@ -5,8 +5,6 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 /**
  * Tw2StaticEmitter
  *
- * @property {string} name
- * @property {string} geometryResourcePath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Number} geometryIndex
  * @property {Boolean} _spawned
@@ -15,14 +13,12 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  */
 export class Tw2StaticEmitter extends Tw2ParticleEmitter
 {
-    constructor()
-    {
-        super();
-        this.geometryResourcePath = '';
-        this.geometryResource = null;
-        this.geometryIndex = 0;
-        this._spawned = false;
-    }
+
+    geometryResourcePath = '';
+    geometryResource = null;
+    geometryIndex = 0;
+    _spawned = false;
+
 
     /**
      * Initializes the particle emitter
@@ -123,4 +119,5 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
             }
         }
     }
+
 }

@@ -5,14 +5,14 @@
  */
 export class Tw2PostProcess
 {
-    constructor()
-    {
-        this.stages = [];
-    }
+
+    stages = [];
+
 
     /**
      * Identifies that the object is not yet fully implemented
      * @type {boolean}
      */
     static partialImplementation = true;
+
 }

@@ -5,7 +5,6 @@ import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';
 /**
  * Tw2LoadingObject
  *
- * @param {string} [path]                   - The resource's path
  * @property {?string} _redContents         - object's .red file xml contents
  * @property {Number} _inPrepare            - the amount of child objects to prepare
  * @property {Array.<Object>} _objects      - the child objects to prepare
@@ -15,15 +14,13 @@ import {Tw2ObjectReader} from '../reader/Tw2ObjectReader';
  */
 export class Tw2LoadingObject extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.path = '';
-        this._redContents = null;
-        this._inPrepare = null;
-        this._objects = [];
-        this._constructor = null;
-    }
+
+    path = '';
+    _redContents = null;
+    _inPrepare = null;
+    _objects = [];
+    _constructor = null;
+
 
     /**
      * Adds a child object
@@ -117,6 +114,7 @@ export class Tw2LoadingObject extends Tw2Resource
         this._objects = [];
         super.OnPrepared(log);
     }
+
 }
 
 /**

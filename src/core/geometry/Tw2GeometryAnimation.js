@@ -7,10 +7,9 @@
  */
 export class Tw2GeometryAnimation
 {
-    constructor()
-    {
-        this.name = '';
-        this.duration = 0;
-        this.trackGroups = [];
-    }
+
+    name = '';
+    duration = 0;
+    trackGroups = [];
+
 }

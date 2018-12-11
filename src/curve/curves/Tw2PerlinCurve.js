@@ -16,19 +16,17 @@ import {Tw2Curve} from './Tw2Curve';
  */
 export class Tw2PerlinCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.value = 0;
-        this.start = 0;
-        this.speed = 1;
-        this.alpha = 1.1;
-        this.beta = 2;
-        this.offset = 0;
-        this.scale = 1;
-        this.N = 3;
-        this._startOffset = Math.random() * 100;
-    }
+
+    value = 0;
+    start = 0;
+    speed = 1;
+    alpha = 1.1;
+    beta = 2;
+    offset = 0;
+    scale = 1;
+    N = 3;
+    _startOffset = Math.random() * 100;
+
 
     /**
      * Updates the current value at the given time
@@ -49,22 +47,23 @@ export class Tw2PerlinCurve extends Tw2Curve
         time -= this._startOffset;
         return ((noise.perlin1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2) * this.scale + this.offset;
     }
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE_NO_KEYS;
+
 }
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2PerlinCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2PerlinCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2PerlinCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

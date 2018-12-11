@@ -14,14 +14,13 @@ import {device} from '../global';
  */
 export class Tw2ParticleElementDeclaration
 {
-    constructor()
-    {
-        this.elementType = 4;
-        this.customName = '';
-        this.dimension = 1;
-        this.usageIndex = 0;
-        this.usedByGPU = true;
-    }
+
+    elementType = 4;
+    customName = '';
+    dimension = 1;
+    usageIndex = 0;
+    usedByGPU = true;
+
 
     /**
      * Gets the dimension of an element type
@@ -77,16 +76,18 @@ export class Tw2ParticleElementDeclaration
 
         return new Tw2VertexElement(usage, this.usageIndex, device.gl.FLOAT, this.GetDimension());
     }
+
+    /**
+     * Particle element declaration types
+     * @type {{LIFETIME: number, POSITION: number, VELOCITY: number, MASS: number, CUSTOM: number}}
+     */
+    static Type = {
+        LIFETIME: 0,
+        POSITION: 1,
+        VELOCITY: 2,
+        MASS: 3,
+        CUSTOM: 4
+    };
+
 }
 
-/**
- * Particle element declaration types
- * @type {{LIFETIME: number, POSITION: number, VELOCITY: number, MASS: number, CUSTOM: number}}
- */
-Tw2ParticleElementDeclaration.Type = {
-    LIFETIME: 0,
-    POSITION: 1,
-    VELOCITY: 2,
-    MASS: 3,
-    CUSTOM: 4
-};

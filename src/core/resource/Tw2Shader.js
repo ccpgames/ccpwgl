@@ -12,6 +12,19 @@ import {Tw2ShaderCompileError, Tw2ShaderLinkError} from '../Tw2Error';
  */
 export class Tw2Shader
 {
+
+    techniques = {};
+    annotations = {};
+
+
+    /**
+     * Constructor
+     * @param reader
+     * @param version
+     * @param stringTable
+     * @param stringTableOffset
+     * @param path
+     */
     constructor(reader, version, stringTable, stringTableOffset, path)
     {
         /**
@@ -29,9 +42,6 @@ export class Tw2Shader
             }
             return stringTable.substr(offset, end - offset);
         }
-
-        this.techniques = {};
-        this.annotations = {};
 
         const {wrapModes, gl} = device;
 
@@ -594,16 +604,16 @@ export class Tw2Shader
         }
         return program;
     }
+
+    /**
+     * Constant names that are ignored
+     * @type {string[]}
+     */
+    static ConstantIgnore = [
+        'PerFrameVS',
+        'PerObjectVS',
+        'PerFramePS',
+        'PerObjectPS'
+    ];
+
 }
-
-
-/**
- * Constant names that are ignored
- * @type {string[]}
- */
-Tw2Shader.ConstantIgnore = [
-    'PerFrameVS',
-    'PerObjectVS',
-    'PerFramePS',
-    'PerObjectPS'
-];

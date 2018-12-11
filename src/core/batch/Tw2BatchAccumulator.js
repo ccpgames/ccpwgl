@@ -3,16 +3,23 @@ import {device} from '../../global';
 /**
  * Accumulates render batches for rendering
  *
- * @param {function} [sorting=null]           - An optional function for sorting the collected render batches
  * @property {Array.<Tw2RenderBatch>} batches - Accumulator render batches and/or child Tw2BatchAccumulators
- * @property {function} _sortMethod           - An optional method to sort batches before rendering them
+ * @property {?function} _sortMethod          - An optional method to sort batches before rendering them
  * @class
  */
 export class Tw2BatchAccumulator
 {
+
+    batches = [];
+    _sortMethod = null;
+
+
+    /**
+     * Constructor
+     * @param {?function} [sorting=null] - An optional function for sorting the collected render batches
+     */
     constructor(sorting = null)
     {
-        this.batches = [];
         this._sortMethod = sorting;
     }
 
@@ -71,4 +78,5 @@ export class Tw2BatchAccumulator
             }
         }
     }
+
 }

@@ -16,38 +16,39 @@ import {Tw2TextureRes} from './resource/Tw2TextureRes';
  */
 export class Tw2RenderTarget
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.texture = null;
-        this.width = null;
-        this.height = null;
-        this.hasDepth = null;
-        this._frameBuffer = null;
-        this._renderBuffer = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    texture = null;
+    width = null;
+    height = null;
+    hasDepth = null;
+    _frameBuffer = null;
+    _renderBuffer = null;
+
 
     /**
      * Destroys the render target's webgl buffers and textures
      */
     Destroy()
     {
+        const gl = device.gl;
+
         if (this.texture)
         {
-            device.gl.deleteTexture(this.texture.texture);
+            gl.deleteTexture(this.texture.texture);
             this.texture = null;
         }
 
         if (this._renderBuffer)
         {
-            device.gl.deleteRenderbuffer(this._renderBuffer);
+            gl.deleteRenderbuffer(this._renderBuffer);
             this._renderBuffer = null;
         }
 
         if (this._frameBuffer)
         {
-            device.gl.deleteFramebuffer(this._frameBuffer);
+            gl.deleteFramebuffer(this._frameBuffer);
             this._frameBuffer = null;
         }
     }
@@ -61,37 +62,39 @@ export class Tw2RenderTarget
      */
     Create(width, height, hasDepth)
     {
+        const gl = device.gl;
+
         this.Destroy();
         this.texture = new Tw2TextureRes();
-        this.texture.Attach(device.gl.createTexture());
+        this.texture.Attach(gl.createTexture());
 
-        this._frameBuffer = device.gl.createFramebuffer();
-        device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, this._frameBuffer);
+        this._frameBuffer = gl.createFramebuffer();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, this._frameBuffer);
 
-        device.gl.bindTexture(device.gl.TEXTURE_2D, this.texture.texture);
-        device.gl.texImage2D(device.gl.TEXTURE_2D, 0, device.gl.RGBA, width, height, 0, device.gl.RGBA, device.gl.UNSIGNED_BYTE, null);
-        device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MAG_FILTER, device.gl.LINEAR);
-        device.gl.texParameteri(device.gl.TEXTURE_2D, device.gl.TEXTURE_MIN_FILTER, device.gl.LINEAR);
-        device.gl.bindTexture(device.gl.TEXTURE_2D, null);
+        gl.bindTexture(gl.TEXTURE_2D, this.texture.texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.bindTexture(gl.TEXTURE_2D, null);
 
         this._renderBuffer = null;
 
         if (hasDepth)
         {
-            this._renderBuffer = device.gl.createRenderbuffer();
-            device.gl.bindRenderbuffer(device.gl.RENDERBUFFER, this._renderBuffer);
-            device.gl.renderbufferStorage(device.gl.RENDERBUFFER, device.gl.DEPTH_COMPONENT16, width, height);
+            this._renderBuffer = gl.createRenderbuffer();
+            gl.bindRenderbuffer(gl.RENDERBUFFER, this._renderBuffer);
+            gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
         }
 
-        device.gl.framebufferTexture2D(device.gl.FRAMEBUFFER, device.gl.COLOR_ATTACHMENT0, device.gl.TEXTURE_2D, this.texture.texture, 0);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this.texture.texture, 0);
 
         if (hasDepth)
         {
-            device.gl.framebufferRenderbuffer(device.gl.FRAMEBUFFER, device.gl.DEPTH_ATTACHMENT, device.gl.RENDERBUFFER, this._renderBuffer);
+            gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, this._renderBuffer);
         }
 
-        device.gl.bindRenderbuffer(device.gl.RENDERBUFFER, null);
-        device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
+        gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
 
         this.texture.width = this.width = width;
         this.texture.height = this.height = height;
@@ -115,4 +118,5 @@ export class Tw2RenderTarget
         device.gl.bindFramebuffer(device.gl.FRAMEBUFFER, null);
         device.gl.viewport(0, 0, device.viewportWidth, device.viewportHeight);
     }
+
 }

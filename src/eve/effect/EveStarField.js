@@ -13,24 +13,24 @@ import {util} from '../../global';
  * @property {number} minFlashRate
  * @property {number} seed
  */
-export class EveStarField
+export class EveStarfield
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.effect = null;
-        this.maxDist = 0;
-        this.maxFlashRate = 0;
-        this.minFlashIntensity = 0;
-        this.minFlashRate = 0;
-        this.seed = 20;
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    effect = null;
+    maxDist = 0;
+    maxFlashRate = 0;
+    minFlashIntensity = 0;
+    minFlashRate = 0;
+    seed = 20;
+
 
     /**
      * Identifies that the object is not yet fully implemented
      * @type {boolean}
      */
     static partialImplementation = true;
+
 }

@@ -1,7 +1,6 @@
 /**
  * Tw2ParticleElement
  *
- * @param {Tw2ParticleElementDeclaration} decl
  * @property {number} elementType
  * @property {string} customName
  * @property {number} dimension
@@ -17,18 +16,34 @@
  */
 export class Tw2ParticleElement
 {
+
+    elementType = null;
+    customName = null;
+    dimension = null;
+    usageIndex = null;
+    usedByGPU = null;
+    buffer = null;
+    startOffset = 0;
+    offset = 0;
+    instanceStride = 0;
+    vertexStride = 0;
+    dirty = false;
+
+
+    /**
+     * Constructor
+     * @param {Tw2ParticleElementDeclaration} decl
+     */
     constructor(decl)
     {
-        this.elementType = decl.elementType;
-        this.customName = decl.customName;
-        this.dimension = decl.GetDimension();
-        this.usageIndex = decl.usageIndex;
-        this.usedByGPU = decl.usedByGPU;
-        this.buffer = null;
-        this.startOffset = 0;
-        this.offset = 0;
-        this.instanceStride = 0;
-        this.vertexStride = 0;
-        this.dirty = false;
+        if (decl)
+        {
+            this.elementType = decl.elementType;
+            this.customName = decl.customName;
+            this.dimension = decl.GetDimension();
+            this.usageIndex = decl.usageIndex;
+            this.usedByGPU = decl.usedByGPU;
+        }
     }
+
 }

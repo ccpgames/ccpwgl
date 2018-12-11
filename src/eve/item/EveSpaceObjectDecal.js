@@ -25,26 +25,25 @@ import {Tw2PerObjectData, Tw2ForwardingRenderBatch} from '../../core/';
  */
 export class EveSpaceObjectDecal
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.decalEffect = null;
-        this.pickEffect = null;
-        this.parentGeometry = null;
-        this.parentBoneIndex = -1;
-        this.groupIndex = -1;
-        this.pickable = true;
-        this.position = vec3.create();
-        this.rotation = quat.create();
-        this.scaling = vec3.create();
-        this.decalMatrix = mat4.create();
-        this.invDecalMatrix = mat4.create();
-        this.indexBuffer = [];
-        this._indexBuffer = null;
-        this._perObjectData = new Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    decalEffect = null;
+    pickEffect = null;
+    parentGeometry = null;
+    parentBoneIndex = -1;
+    groupIndex = -1;
+    pickable = true;
+    position = vec3.create();
+    rotation = quat.create();
+    scaling = vec3.create();
+    decalMatrix = mat4.create();
+    invDecalMatrix = mat4.create();
+    indexBuffer = [];
+    _indexBuffer = null;
+    _perObjectData = new Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
+
 
     /**
      * Initializes the decal
@@ -240,4 +239,5 @@ export class EveSpaceObjectDecal
             ['shipData', 4 * 3]
         ]
     };
+
 }

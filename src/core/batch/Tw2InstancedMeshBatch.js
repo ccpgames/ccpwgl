@@ -8,11 +8,9 @@ import {Tw2GeometryBatch} from './Tw2GeometryBatch';
  */
 export class Tw2InstancedMeshBatch extends Tw2GeometryBatch
 {
-    constructor()
-    {
-        super();
-        this.instanceMesh = null;
-    }
+
+    instanceMesh = null;
+
 
     /**
      * Commits the Tw2InstancedMeshBatch for rendering
@@ -25,4 +23,5 @@ export class Tw2InstancedMeshBatch extends Tw2GeometryBatch
             this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, this.effect, technique);
         }
     }
+
 }

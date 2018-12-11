@@ -12,13 +12,11 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2QuaternionSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.start = 0;
-        this.value = quat.create();
-        this.functions = [];
-    }
+
+    start = 0;
+    value = quat.create();
+    functions = [];
+
 
     /**
      * Sorts the sequencer
@@ -71,34 +69,35 @@ export class Tw2QuaternionSequencer extends Tw2CurveSequencer
         }
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 4;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER;
+
+    /**
+     * The sequencer's curve array
+     * @type {string}
+     */
+    static childArray = 'functions';
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2QuaternionSequencer.inputDimension = 4;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2QuaternionSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2QuaternionSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2QuaternionSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve array
- * @type {string}
- */
-Tw2QuaternionSequencer.childArray = 'functions';

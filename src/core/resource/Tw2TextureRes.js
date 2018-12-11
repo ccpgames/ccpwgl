@@ -18,19 +18,17 @@ import {HTTPRequestError, Tw2ResourceExtensionUnregisteredError} from '../Tw2Err
  */
 export class Tw2TextureRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.texture = null;
-        this.isCube = false;
-        this.images = [];
-        this.width = 0;
-        this.height = 0;
-        this.hasMipMaps = false;
-        this._facesLoaded = 0;
-        this._currentSampler = 0;
-        this._isAttached = false;
-    }
+
+    texture = null;
+    isCube = false;
+    images = [];
+    width = 0;
+    height = 0;
+    hasMipMaps = false;
+    _facesLoaded = 0;
+    _currentSampler = 0;
+    _isAttached = false;
+
 
     /**
      * Prepares the resource
@@ -244,4 +242,5 @@ export class Tw2TextureRes extends Tw2Resource
         }
         return path;
     }
+
 }

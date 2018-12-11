@@ -4,19 +4,25 @@ import {Tw2VertexElement} from './Tw2VertexElement';
 /**
  * Tw2VertexDeclaration
  *
- * @param {Array<Array|Object>} [declarations]
- * @param {number} [stride]
  * @property {Array.<Tw2VertexElement>} elements
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @class
  */
 export class Tw2VertexDeclaration
 {
+
+    elements = [];
+    _elementsSorted = [];
+    stride = null;
+
+
+    /**
+     * Constructor
+     * @param {Array<Array|Object>} [declarations]
+     * @param {number} [stride]
+     */
     constructor(declarations, stride)
     {
-        this.elements = [];
-        this._elementsSorted = [];
-
         if (stride !== undefined)
         {
             this.stride = stride;
@@ -305,19 +311,20 @@ export class Tw2VertexDeclaration
         if (a.usageIndex + usageOffset > b.usageIndex) return 1;
         return 0;
     }
-}
 
-/**
- * Tw2 Vertex Declaration Types
- * @type {number}
- */
-Tw2VertexDeclaration.Type = {
-    POSITION: 0,
-    COLOR: 1,
-    NORMAL: 2,
-    TANGENT: 3,
-    BINORMAL: 4,
-    TEXCOORD: 5,
-    BLENDWEIGHT: 6,
-    BLENDINDICES: 7
-};
+    /**
+     * Vertex Declaration Types
+     * @type {*}
+     */
+    static Type = {
+        POSITION: 0,
+        COLOR: 1,
+        NORMAL: 2,
+        TANGENT: 3,
+        BINORMAL: 4,
+        TEXCOORD: 5,
+        BLENDWEIGHT: 6,
+        BLENDINDICES: 7
+    };
+
+}

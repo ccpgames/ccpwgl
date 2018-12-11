@@ -11,13 +11,12 @@ import {Tw2PostEffect} from './Tw2PostEffect';
  */
 export class Tw2PostEffectManager
 {
-    constructor()
-    {
-        this._id = generateID();
-        this.name = 'Post manager';
-        this.display = true;
-        this.items = [];
-    }
+
+    _id = generateID();
+    name = 'Post manager';
+    display = true;
+    items = [];
+
 
     /**
      * Alias for items
@@ -33,7 +32,7 @@ export class Tw2PostEffectManager
      * @param {*} [opt={}]
      * @returns {Tw2PostEffect}
      */
-    CreateItem(opt={})
+    CreateItem(opt = {})
     {
         const postEffect = Tw2PostEffect.create(opt);
         this.AddItem(postEffect);
@@ -164,4 +163,5 @@ export class Tw2PostEffectManager
      * @type {Tw2PostEffect}
      */
     static Item = Tw2PostEffect;
+
 }

@@ -2,7 +2,6 @@ import {vec3, mat4, util} from '../../global';
 
 /**
  * EvePerMuzzleData
- * Todo: Remove reference in this.muzzlePosition
  *
  * @property {boolean} started
  * @property {boolean} readyToStart
@@ -16,18 +15,26 @@ import {vec3, mat4, util} from '../../global';
  */
 export class EvePerMuzzleData
 {
-    constructor()
+
+    _id = util.generateID();
+    started = false;
+    readyToStart = false;
+    muzzlePositionBone = null;
+    muzzleTransform = mat4.create();
+    currentStartDelay = 0;
+    constantDelay = 0;
+    elapsedTime = 0;
+
+
+    /**
+     * Muzzle position
+     * @returns {TypedArray}
+     */
+    get muzzlePosition()
     {
-        this._id = util.generateID();
-        this.started = false;
-        this.readyToStart = false;
-        this.muzzlePositionBone = null;
-        this.muzzleTransform = mat4.create();
-        this.muzzlePosition = this.muzzleTransform.subarray(12, 15);
-        this.currentStartDelay = 0;
-        this.constantDelay = 0;
-        this.elapsedTime = 0;
+        return this.muzzleTransform.subarray(12, 15);
     }
+
 }
 
 
@@ -56,27 +63,26 @@ export class EvePerMuzzleData
  */
 export class EveTurretFiringFX
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.stretch = [];
-        this.useMuzzleTransform = false;
-        this.isFiring = false;
-        this.isLoopFiring = false;
-        this.firingDelay1 = 0;
-        this.firingDelay2 = 0;
-        this.firingDelay3 = 0;
-        this.firingDelay4 = 0;
-        this.firingDelay5 = 0;
-        this.firingDelay6 = 0;
-        this.firingDelay7 = 0;
-        this.firingDelay8 = 0;
-        this.endPosition = vec3.create();
-        this._firingDuration = 0;
-        this._perMuzzleData = [];
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    stretch = [];
+    useMuzzleTransform = false;
+    isFiring = false;
+    isLoopFiring = false;
+    firingDelay1 = 0;
+    firingDelay2 = 0;
+    firingDelay3 = 0;
+    firingDelay4 = 0;
+    firingDelay5 = 0;
+    firingDelay6 = 0;
+    firingDelay7 = 0;
+    firingDelay8 = 0;
+    endPosition = vec3.create();
+    _firingDuration = 0;
+    _perMuzzleData = [];
+
 
     /**
      * Initializes the turret firing fx
@@ -84,15 +90,20 @@ export class EveTurretFiringFX
     Initialize()
     {
         this._firingDuration = this.GetCurveDuration();
-        for (let i = 0; i < this.stretch.length; ++i) this._perMuzzleData[i] = new EvePerMuzzleData();
-        if (this._perMuzzleData.length > 0) this._perMuzzleData[0].constantDelay = this.firingDelay1;
-        if (this._perMuzzleData.length > 1) this._perMuzzleData[1].constantDelay = this.firingDelay2;
-        if (this._perMuzzleData.length > 2) this._perMuzzleData[2].constantDelay = this.firingDelay3;
-        if (this._perMuzzleData.length > 3) this._perMuzzleData[3].constantDelay = this.firingDelay4;
-        if (this._perMuzzleData.length > 4) this._perMuzzleData[4].constantDelay = this.firingDelay5;
-        if (this._perMuzzleData.length > 5) this._perMuzzleData[5].constantDelay = this.firingDelay6;
-        if (this._perMuzzleData.length > 6) this._perMuzzleData[6].constantDelay = this.firingDelay7;
-        if (this._perMuzzleData.length > 7) this._perMuzzleData[7].constantDelay = this.firingDelay8;
+        for (let i = 0; i < this.stretch.length; ++i)
+        {
+            this._perMuzzleData[i] = new EvePerMuzzleData();
+        }
+
+        const data = this._perMuzzleData;
+        if (data.length > 0) data[0].constantDelay = this.firingDelay1;
+        if (data.length > 1) data[1].constantDelay = this.firingDelay2;
+        if (data.length > 2) data[2].constantDelay = this.firingDelay3;
+        if (data.length > 3) data[3].constantDelay = this.firingDelay4;
+        if (data.length > 4) data[4].constantDelay = this.firingDelay5;
+        if (data.length > 5) data[5].constantDelay = this.firingDelay6;
+        if (data.length > 6) data[6].constantDelay = this.firingDelay7;
+        if (data.length > 7) data[7].constantDelay = this.firingDelay8;
     }
 
     /**
@@ -229,7 +240,7 @@ export class EveTurretFiringFX
     /**
      * Gets resources
      * @param {Array} [out=[]}
-     * @returns {Array<Resource>} out
+     * @returns {Array<Tw2Resource>} out
      */
     GetResources(out = [])
     {
@@ -323,4 +334,5 @@ export class EveTurretFiringFX
             }
         }
     }
+
 }

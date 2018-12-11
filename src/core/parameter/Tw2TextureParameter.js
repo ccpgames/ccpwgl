@@ -6,8 +6,6 @@ import {Tw2TextureRes} from '../resource/Tw2TextureRes';
 /**
  * Tw2TextureParameter
  *
- * @param {string} [name=''] - Name of the texture parameter
- * @param {string} [texturePath=''] - The texture's resource path
  * @property {string} name
  * @property {boolean} useAllOverrides
  * @property {number} addressUMode
@@ -22,21 +20,33 @@ import {Tw2TextureRes} from '../resource/Tw2TextureRes';
  */
 export class Tw2TextureParameter extends Tw2Parameter
 {
-    constructor(name = '', texturePath = '')
+
+    resourcePath = '';
+    useAllOverrides = false;
+    addressUMode = 1;
+    addressVMode = 1;
+    addressWMode = 1;
+    filterMode = 2;
+    mipFilterMode = 2;
+    maxAnisotropy = 4;
+    textureRes = null;
+    _sampler = null;
+
+
+    /**
+     * Constructor
+     * @param {string} [name]        - Name of the texture parameter
+     * @param {string} [texturePath] - The texture's resource path
+     */
+    constructor(name, texturePath)
     {
         super(name);
-        this.resourcePath = texturePath;
-        this.useAllOverrides = false;
-        this.addressUMode = 1;
-        this.addressVMode = 1;
-        this.addressWMode = 1;
-        this.filterMode = 2;
-        this.mipFilterMode = 2;
-        this.maxAnisotropy = 4;
-        this.textureRes = null;
-        this._sampler = null;
 
-        if (texturePath) this.Initialize();
+        if (texturePath)
+        {
+            this.resourcePath = texturePath;
+            this.Initialize();
+        }
     }
 
     /**
@@ -290,6 +300,21 @@ export class Tw2TextureParameter extends Tw2Parameter
     {
         return util.isString(a);
     }
+
+    /**
+     * The texture parameter's override properties
+     * @type {string[]}
+     */
+    static overrideProperties = [
+        'useAllOverrides',
+        'addressUMode',
+        'addressVMode',
+        'addressWMode',
+        'filterMode',
+        'mipFilterMode',
+        'maxAnisotropy'
+    ];
+
 }
 
 /**
@@ -297,17 +322,3 @@ export class Tw2TextureParameter extends Tw2Parameter
  * @type {Tw2TextureParameter.SetTexturePath}
  */
 Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
-
-/**
- * The texture parameter's override properties
- * @type {string[]}
- */
-Tw2TextureParameter.overrideProperties = [
-    'useAllOverrides',
-    'addressUMode',
-    'addressVMode',
-    'addressWMode',
-    'filterMode',
-    'mipFilterMode',
-    'maxAnisotropy'
-];

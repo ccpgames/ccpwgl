@@ -14,15 +14,13 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveSpriteSetBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.boosterGlow = false;
-        this.spriteSet = null;
-        this.world = null;
-        this.boosterGain = 0;
-        this.warpIntensity = 0;
-    }
+
+    boosterGlow = false;
+    spriteSet = null;
+    world = null;
+    boosterGain = 0;
+    warpIntensity = 0;
+
 
     /**
      * Commits the sprite set
@@ -39,6 +37,7 @@ export class EveSpriteSetBatch extends Tw2RenderBatch
             this.spriteSet.Render(technique, this.world, this.perObjectData);
         }
     }
+
 }
 
 
@@ -59,20 +58,18 @@ export class EveSpriteSetBatch extends Tw2RenderBatch
  */
 export class EveSpriteSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.position = vec3.create();
-        this.blinkRate = 0;
-        this.blinkPhase = 0;
-        this.minScale = 1;
-        this.maxScale = 1;
-        this.falloff = 0;
-        this.color = vec4.create();
-        this.warpColor = vec4.create();
-        this.boneIndex = 0;
-        this.groupIndex = -1;
-    }
+
+    position = vec3.create();
+    blinkRate = 0;
+    blinkPhase = 0;
+    minScale = 1;
+    maxScale = 1;
+    falloff = 0;
+    color = vec4.create();
+    warpColor = vec4.create();
+    boneIndex = 0;
+    groupIndex = -1;
+
 
     /**
      * Creates a sprite set item from an object
@@ -88,14 +85,13 @@ export class EveSpriteSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 
 /**
  * EveSpriteSet
  *
- * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
- * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
  * @property {Tw2Effect} effect
  * @property {?boolean} useQuads - Use quad rendering (CPU transform)
  * @property {?boolean} isSkinned - Use bone transforms (when useQuads is true)
@@ -106,19 +102,26 @@ export class EveSpriteSetItem extends EveObjectSetItem
  */
 export class EveSpriteSet extends EveObjectSet
 {
+
+    effect = null;
+    useQuads = null;
+    isSkinned = null;
+    _time = 0;
+    _vertexBuffer = null;
+    _indexBuffer = null;
+    _instanceBuffer = null;
+    _decl = new Tw2VertexDeclaration();
+    _vdecl = new Tw2VertexDeclaration([['TEXCOORD', 5, 1]]);
+
+
+    /**
+     * Constructor
+     * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
+     * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
+     */
     constructor(useQuads = false, isSkinned = false)
     {
         super();
-        this.effect = null;
-        this.useQuads = null;
-        this.isSkinned = null;
-        this._time = 0;
-        this._vertexBuffer = null;
-        this._indexBuffer = null;
-        this._instanceBuffer = null;
-        this._decl = new Tw2VertexDeclaration();
-        this._vdecl = new Tw2VertexDeclaration([['TEXCOORD', 5, 1]]);
-
         this.UseQuads(useQuads, isSkinned);
     }
 
@@ -543,6 +546,7 @@ export class EveSpriteSet extends EveObjectSet
         ['COLOR', 0, 4],
         ['COLOR', 1, 4]
     ];
+
 }
 
 

@@ -4,7 +4,6 @@ import {Tw2DeclarationValueTypeError} from '../Tw2Error';
 /**
  * Stores raw data for {@link Tw2PerObjectData}
  *
- * @param {Array} [declarations] An optional array containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
  * @property {*} elements
@@ -12,16 +11,19 @@ import {Tw2DeclarationValueTypeError} from '../Tw2Error';
  */
 export class Tw2RawData
 {
+
+    nextOffset = 0;
+    data = null;
+    elements = {};
+
+
+    /**
+     * Constructor
+     * @param {Array} [declarations] An optional array containing raw data declarations
+     */
     constructor(declarations)
     {
-        this.nextOffset = 0;
-        this.data = null;
-        this.elements = {};
-
-        if (declarations)
-        {
-            this.DeclareFromObject(declarations);
-        }
+        if (declarations) this.DeclareFromObject(declarations);
     }
 
     /**

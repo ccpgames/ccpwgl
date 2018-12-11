@@ -10,11 +10,8 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveSpotlightSetBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.spotlightSet = null;
-    }
+
+    spotlightSet = null;
 
     /**
      * Commits the spotlight set for rendering
@@ -25,6 +22,7 @@ export class EveSpotlightSetBatch extends Tw2RenderBatch
         this.spotlightSet.RenderCones(technique);
         this.spotlightSet.RenderGlow(technique);
     }
+
 }
 
 
@@ -46,21 +44,19 @@ export class EveSpotlightSetBatch extends Tw2RenderBatch
  */
 export class EveSpotlightSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.transform = mat4.create();
-        this.coneColor = vec4.create();
-        this.spriteColor = vec4.create();
-        this.flareColor = vec4.create();
-        this.spriteScale = vec3.fromValues(1, 1, 1);
-        this.boosterGainInfluence = 0;
-        this.boneIndex = 0;
-        this.groupIndex = -1;
-        this.coneIntensity = 0;
-        this.spriteIntensity = 0;
-        this.flareIntensity = 0;
-    }
+
+    transform = mat4.create();
+    coneColor = vec4.create();
+    spriteColor = vec4.create();
+    flareColor = vec4.create();
+    spriteScale = vec3.fromValues(1, 1, 1);
+    boosterGainInfluence = 0;
+    boneIndex = 0;
+    groupIndex = -1;
+    coneIntensity = 0;
+    spriteIntensity = 0;
+    flareIntensity = 0;
+
 
     /**
      * Creates a spotlight set item from an object
@@ -77,6 +73,7 @@ export class EveSpotlightSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 
@@ -96,16 +93,14 @@ export class EveSpotlightSetItem extends EveObjectSetItem
  */
 export class EveSpotlightSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.coneEffect = null;
-        this.glowEffect = null;
-        this._coneVertexBuffer = null;
-        this._spriteVertexBuffer = null;
-        this._indexBuffer = null;
-        this._decl = new Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations);
-    }
+
+    coneEffect = null;
+    glowEffect = null;
+    _coneVertexBuffer = null;
+    _spriteVertexBuffer = null;
+    _indexBuffer = null;
+    _decl = new Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations);
+
 
     /**
      * Alias for this.items
@@ -403,6 +398,7 @@ export class EveSpotlightSet extends EveObjectSet
         ['TEXCOORD', 3, 3],
         ['TEXCOORD', 4, 3]
     ];
+
 }
 
 

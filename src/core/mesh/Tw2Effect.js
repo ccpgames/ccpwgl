@@ -18,19 +18,18 @@ import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
  */
 export class Tw2Effect
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.effectFilePath = '';
-        this.effectRes = null;
-        this.parameters = {};
-        this.techniques = [];
-        this.samplerOverrides = [];
-        this.autoParameter = false;
-        this.options = {};
-        this.shader = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    effectFilePath = '';
+    effectRes = null;
+    parameters = {};
+    techniques = [];
+    samplerOverrides = [];
+    autoParameter = false;
+    options = {};
+    shader = null;
+
 
     /**
      * Initializes the Tw2Effect
@@ -658,17 +657,17 @@ export class Tw2Effect
         effect.Initialize();
         return effect;
     }
+
+    /**
+     * Constant parameters which are ignored when creating an effect
+     * @type {string[]}
+     */
+    static ConstantIgnore = [
+        'PerFrameVS',
+        'PerObjectVS',
+        'PerFramePS',
+        'PerObjectPS',
+        'PerObjectPSInt'
+    ];
+
 }
-
-/**
- * Constant parameters which are ignored when creating an effect
- * @type {string[]}
- */
-Tw2Effect.ConstantIgnore = [
-    'PerFrameVS',
-    'PerObjectVS',
-    'PerFramePS',
-    'PerObjectPS',
-    'PerObjectPSInt'
-];
-

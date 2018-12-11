@@ -9,7 +9,6 @@ import {Tw2TrackGroup} from './Tw2TrackGroup';
 /**
  * Tw2AnimationController
  *
- * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
  * @property {Array.<Tw2Animation>} animations
@@ -23,22 +22,25 @@ import {Tw2TrackGroup} from './Tw2TrackGroup';
  */
 export class Tw2AnimationController
 {
+
+    geometryResources = [];
+    models = [];
+    animations = [];
+    meshBindings = [];
+    loaded = false;
+    update = true;
+    pendingCommands = [];
+    onPendingCleared = null;
+    _geometryResource = null;
+
+
+    /**
+     * Constructor
+     * @param {Tw2GeometryRes} [geometryResource]
+     */
     constructor(geometryResource)
     {
-        this.geometryResources = [];
-        this.models = [];
-        this.animations = [];
-        this.meshBindings = [];
-        this.loaded = false;
-        this.update = true;
-        this.pendingCommands = [];
-        this.onPendingCleared = null;
-        this._geometryResource = null;
-
-        if (geometryResource)
-        {
-            this.SetGeometryResource(geometryResource);
-        }
+        if (geometryResource) this.SetGeometryResource(geometryResource);
     }
 
     /**
@@ -414,7 +416,7 @@ export class Tw2AnimationController
             }
         }
 
-        const id = mat4.identity(Tw2AnimationController.scratch.mat4_0);
+        const id = mat4.identity(Tw2AnimationController.global.mat4_0);
         for (let i = 0; i < this.meshBindings.length; ++i)
         {
             for (let j = 0; j < this.meshBindings[i].length; ++j)
@@ -563,7 +565,7 @@ export class Tw2AnimationController
         }
 
         const
-            g = Tw2AnimationController.scratch,
+            g = Tw2AnimationController.global,
             rotationMat = g.mat4_0,
             orientation = g.quat_0,
             position = g.vec3_0,
@@ -867,14 +869,16 @@ export class Tw2AnimationController
             if (animationController.onPendingCleared) animationController.onPendingCleared(animationController);
         }
     }
+
+    /**
+     * Global and Scratch variables
+     */
+    static global = {
+        vec3_0: vec3.create(),
+        quat_0: quat.create(),
+        mat3_0: mat3.create(),
+        mat4_0: mat4.create()
+    };
+
 }
 
-/**
- * Scratch variables
- */
-Tw2AnimationController.scratch = {
-    vec3_0: vec3.create(),
-    quat_0: quat.create(),
-    mat3_0: mat3.create(),
-    mat4_0: mat4.create()
-};

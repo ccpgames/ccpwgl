@@ -4,12 +4,16 @@ import {Tw2VectorParameter} from './Tw2Parameter';
 /**
  * Tw2Vector4Parameter
  *
- * @param {string} [name='']
- * @param {vec4|Array|Float32Array} [value=vec4.fromValues(1,1,1,1)]
  * @class
  */
 export class Tw2Vector4Parameter extends Tw2VectorParameter
 {
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {vec4|Array|Float32Array} [value=vec4.fromValues(1,1,1,1)]
+     */
     constructor(name = '', value = vec4.fromValues(1, 1, 1, 1))
     {
         super(name, value);
@@ -86,10 +90,11 @@ export class Tw2Vector4Parameter extends Tw2VectorParameter
     {
         this.SetIndexValue(3, val);
     }
-}
 
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-Tw2Vector4Parameter.constantBufferSize = 4;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 4;
+
+}

@@ -13,14 +13,12 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2ColorKey2 extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = vec4.create();
-        this.leftTangent = vec4.create();
-        this.rightTangent = vec4.create();
-        this.interpolation = 1;
-    }
+
+    value = vec4.create();
+    leftTangent = vec4.create();
+    rightTangent = vec4.create();
+    interpolation = 1;
+
 }
 
 
@@ -42,22 +40,20 @@ export class Tw2ColorKey2 extends Tw2CurveKey
  */
 export class Tw2ColorCurve2 extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.cycle = false;
-        this.reversed = false;
-        this.timeOffset = 0;
-        this.timeScale = 1;
-        this.startValue = vec4.fromValues(0, 0, 0, 1);
-        this.currentValue = vec4.fromValues(0, 0, 0, 1);
-        this.endValue = vec4.fromValues(0, 0, 0, 1);
-        this.startTangent = vec4.create();
-        this.endTangent = vec4.create();
-        this.interpolation = 1;
-        this.keys = [];
-        this.length = 0;
-    }
+
+    cycle = false;
+    reversed = false;
+    timeOffset = 0;
+    timeScale = 1;
+    startValue = vec4.fromValues(0, 0, 0, 1);
+    currentValue = vec4.fromValues(0, 0, 0, 1);
+    endValue = vec4.fromValues(0, 0, 0, 1);
+    startTangent = vec4.create();
+    endTangent = vec4.create();
+    interpolation = 1;
+    keys = [];
+    length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -199,43 +195,45 @@ export class Tw2ColorCurve2 extends Tw2Curve
                 return value;
         }
     }
+
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static inputDimension = 4;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'currentValue';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE2;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2ColorKey2}
+     */
+    static Key = Tw2ColorKey2;
+
+    /**
+     * Interpolation types
+     * @type {{CONSTANT: number, LINEAR: number}}
+     */
+    static Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2ColorCurve2.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ColorCurve2.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ColorCurve2.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ColorCurve2.curveType = Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2ColorKey2}
- */
-Tw2ColorCurve2.Key = Tw2ColorKey2;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number}}
- */
-Tw2ColorCurve2.Interpolation = {
-    CONSTANT: 0,
-    LINEAR: 1
-};

@@ -38,39 +38,40 @@ import {Tw2ParticleElementDeclaration} from './Tw2ParticleElementDeclaration';
  */
 export class Tw2ParticleSystem
 {
+
+    _id = util.generateID();
+    name = '';
+    aliveCount = 0;
+    maxParticleCount = 0;
+    emitParticleOnDeathEmitter = null;
+    emitParticleDuringLifeEmitter = null;
+    elements = [];
+    isValid = false;
+    requiresSorting = false;
+    updateSimulation = true;
+    applyForce = true;
+    applyAging = true;
+    isGlobal = false;
+    forces = [];
+    constraints = [];
+    updateBoundingBox = false;
+    aabbMin = vec3.create();
+    aabbMax = vec3.create();
+    peakAliveCount = 0;
+    bufferDirty = false;
+    _vb = null;
+    _declaration = null;
+    _stdElements = [null, null, null, null];
+    _elements = [];
+    instanceStride = [null, null];
+    vertexStride = [null, null];
+    buffers = [null, null];
+
+    /**
+     * Constructor
+     */
     constructor()
     {
-        this._id = util.generateID();
-        this.name = '';
-        this.aliveCount = 0;
-        this.maxParticleCount = 0;
-        this.emitParticleOnDeathEmitter = null;
-        this.emitParticleDuringLifeEmitter = null;
-        this.elements = [];
-        this.isValid = false;
-        this.requiresSorting = false;
-        this.updateSimulation = true;
-        this.applyForce = true;
-        this.applyAging = true;
-        this.isGlobal = false;
-        this.forces = [];
-        this.constraints = [];
-        this.updateBoundingBox = false;
-        this.aabbMin = vec3.create();
-        this.aabbMax = vec3.create();
-        this.peakAliveCount = 0;
-
-        this.bufferDirty = false;
-
-        this._vb = null;
-        this._declaration = null;
-
-        this._stdElements = [null, null, null, null];
-        this._elements = [];
-        this.instanceStride = [null, null];
-        this.vertexStride = [null, null];
-        this.buffers = [null, null];
-
         Tw2ParticleSystem.init();
     }
 
@@ -539,9 +540,11 @@ export class Tw2ParticleSystem
             };
         }
     }
+
+    /**
+     * Global and scratch variables
+     */
+    static global = null;
+
 }
 
-/**
- * Class globals
- */
-Tw2ParticleSystem.global = null;

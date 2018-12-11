@@ -10,11 +10,10 @@ import {util} from '../../global';
  */
 export class Tw2ParticleConstraint
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-    }
+
+    _id = util.generateID();
+    name = '';
+
 
     /**
      * Applies constraints
@@ -27,4 +26,5 @@ export class Tw2ParticleConstraint
     {
 
     }
+
 }

@@ -13,14 +13,12 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2Vector3Key extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = vec3.create();
-        this.leftTangent = vec3.create();
-        this.rightTangent = vec3.create();
-        this.interpolation = 1;
-    }
+
+    value = vec3.create();
+    leftTangent = vec3.create();
+    rightTangent = vec3.create();
+    interpolation = 1;
+
 }
 
 
@@ -43,22 +41,20 @@ export class Tw2Vector3Key extends Tw2CurveKey
  */
 export class Tw2Vector3Curve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.cycle = false;
-        this.reversed = false;
-        this.timeOffset = 0;
-        this.timeScale = 1;
-        this.startValue = vec3.create();
-        this.currentValue = vec3.create();
-        this.endValue = vec3.create();
-        this.startTangent = vec3.create();
-        this.endTangent = vec3.create();
-        this.interpolation = 1;
-        this.keys = [];
-        this.length = 0;
-    }
+
+    cycle = false;
+    reversed = false;
+    timeOffset = 0;
+    timeScale = 1;
+    startValue = vec3.create();
+    currentValue = vec3.create();
+    endValue = vec3.create();
+    startTangent = vec3.create();
+    endTangent = vec3.create();
+    interpolation = 1;
+    keys = [];
+    length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -241,44 +237,45 @@ export class Tw2Vector3Curve extends Tw2Curve
                 return value;
         }
     }
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static inputDimension = 3;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 3;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'currentValue';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE2;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2Vector3Key}
+     */
+    static Key = Tw2Vector3Key;
+
+    /**
+     * Interpolation types
+     * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+     */
+    static Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2Vector3Curve.inputDimension = 3;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2Vector3Curve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2Vector3Curve.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2Vector3Curve.curveType = Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2Vector3Key}
- */
-Tw2Vector3Curve.Key = Tw2Vector3Key;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
- */
-Tw2Vector3Curve.Interpolation = {
-    CONSTANT: 0,
-    LINEAR: 1,
-    HERMITE: 2
-};

@@ -20,22 +20,21 @@ import {Tw2Vector4Parameter} from '../parameter';
  */
 export class Tw2ValueBinding
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.sourceObject = null;
-        this.sourceAttribute = '';
-        this._sourceElement = null;
-        this.sourceIsArray = null;
-        this.destinationObject = null;
-        this.destinationAttribute = '';
-        this._destinationElement = null;
-        this.destinationIsArray = null;
-        this.scale = 1;
-        this.offset = quat.create();
-        this._copyFunc = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    sourceObject = null;
+    sourceAttribute = '';
+    _sourceElement = null;
+    sourceIsArray = null;
+    destinationObject = null;
+    destinationAttribute = '';
+    _destinationElement = null;
+    destinationIsArray = null;
+    scale = 1;
+    offset = quat.create();
+    _copyFunc = null;
+
 
     /**
      * Initializes the Value Binding
@@ -315,4 +314,5 @@ export class Tw2ValueBinding
     {
         this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] !== 0;
     }
+
 }

@@ -12,13 +12,18 @@ import {Tw2Effect, Tw2VertexDeclaration, Tw2VertexElement, Tw2BatchAccumulator} 
  */
 export class EveOccluder
 {
+
+    _id = util.generateID();
+    name = '';
+    value = 1;
+    sprites = [];
+
+
+    /**
+     * Constructor
+     */
     constructor()
     {
-        this._id = util.generateID();
-        this.name = '';
-        this.value = 1;
-        this.sprites = [];
-
         EveOccluder.init();
     }
 
@@ -180,10 +185,12 @@ export class EveOccluder
         d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
         d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
     }
-}
 
-/**
- * Class global and scratch variables
- * @type {*}
- */
-EveOccluder.global = null;
+
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = null;
+
+}

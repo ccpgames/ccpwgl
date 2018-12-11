@@ -6,8 +6,7 @@
  */
 export class Tw2Float
 {
-    constructor()
-    {
-        this.value = 0;
-    }
+
+    value = 0;
+
 }

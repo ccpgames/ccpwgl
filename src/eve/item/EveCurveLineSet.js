@@ -23,23 +23,21 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveCurveLineSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.type = EveCurveLineSetItem.Type.INVALID;
-        this.position1 = vec3.create();
-        this.color1 = vec4.fromValues(1, 1, 1, 1);
-        this.position2 = vec3.create();
-        this.color2 = vec4.fromValues(1, 1, 1, 1);
-        this.intermediatePosition = vec3.create();
-        this.width = 1;
-        this.multiColor = vec4.fromValues(0, 0, 0, 1);
-        this.multiColorBorder = -1;
-        this.overlayColor = vec4.fromValues(0, 0, 0, 1);
-        this.animationSpeed = 0;
-        this.animationScale = 1;
-        this.numOfSegments = 1;
-    }
+
+    type = EveCurveLineSetItem.Type.INVALID;
+    position1 = vec3.create();
+    color1 = vec4.fromValues(1, 1, 1, 1);
+    position2 = vec3.create();
+    color2 = vec4.fromValues(1, 1, 1, 1);
+    intermediatePosition = vec3.create();
+    width = 1;
+    multiColor = vec4.fromValues(0, 0, 0, 1);
+    multiColorBorder = -1;
+    overlayColor = vec4.fromValues(0, 0, 0, 1);
+    animationSpeed = 0;
+    animationScale = 1;
+    numOfSegments = 1;
+
 
     /**
      * Changes the line's colors
@@ -215,6 +213,7 @@ export class EveCurveLineSetItem extends EveObjectSetItem
      * @type {number}
      */
     static DEFAULT_SPHERED_SEGMENTS = 20;
+
 }
 
 
@@ -240,34 +239,37 @@ export class EveCurveLineSetItem extends EveObjectSetItem
  */
 export class EveCurveLineSet extends EveObjectSet
 {
+
+    lineEffect = Tw2Effect.create({
+        effectFilePath: 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx',
+        textures: {
+            'TexMap': 'res:/texture/global/white.dds.0.png',
+            'OverlayTexMap': 'res:/texture/global/white.dds.0.png'
+        }
+    });
+    pickEffect = null;
+    lineWidthFactor = 1;
+    additive = false;
+    pickable = true;
+    depthOffset = 0;
+    translation = vec3.create();
+    rotation = quat.create();
+    scaling = vec3.fromValues(1, 1, 1);
+    transform = mat4.create();
+    parentTransform = mat4.create();
+    _vertexSize = 26;
+    _vbSize = 0;
+    _vb = null;
+    _perObjectData = new Tw2PerObjectData(EveCurveLineSet.perObjectData);
+    _decl = new Tw2VertexDeclaration(EveCurveLineSet.vertexDeclarations, 4 * this._vertexSize);
+
+
+    /**
+     * Constructor
+     */
     constructor()
     {
         super();
-        this.lineEffect = Tw2Effect.create({
-            effectFilePath: 'res:/Graphics/Effect/Managed/Space/SpecialFX/Lines3D.fx',
-            textures: {
-                'TexMap': 'res:/texture/global/white.dds.0.png',
-                'OverlayTexMap': 'res:/texture/global/white.dds.0.png'
-            }
-        });
-
-        this.pickEffect = null;
-        this.lineWidthFactor = 1;
-        this.additive = false;
-        this.pickable = true;
-        this.depthOffset = 0;
-        this.translation = vec3.create();
-        this.rotation = quat.create();
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.transform = mat4.create();
-        this.parentTransform = mat4.create();
-        this._vertexSize = 26;
-        this._vbSize = 0;
-        this._vb = null;
-
-        this._perObjectData = new Tw2PerObjectData(EveCurveLineSet.perObjectData);
-        this._decl = new Tw2VertexDeclaration(EveCurveLineSet.vertexDeclarations, 4 * this._vertexSize);
-
         EveCurveLineSet.init();
     }
 
@@ -851,7 +853,7 @@ export class EveCurveLineSet extends EveObjectSet
     static Item = EveCurveLineSetItem;
 
     /**
-     * Class global variables and scratch
+     * Global and scratch variables
      */
     static global = null;
 

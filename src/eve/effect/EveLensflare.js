@@ -32,32 +32,37 @@ import {EveOccluder} from './EveOccluder';
  */
 export class EveLensflare
 {
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    update = true;
+    doOcclusionQueries = true;
+    cameraFactor = 20;
+    position = vec3.create();
+    flares = [];
+    occluders = [];
+    backgroundOccluders = [];
+    occlusionIntensity = 1;
+    backgroundOcclusionIntensity = 1;
+    distanceToEdgeCurves = [];
+    distanceToCenterCurves = [];
+    radialAngleCurves = [];
+    xDistanceToCenter = [];
+    yDistanceToCenter = [];
+    bindings = [];
+    curveSets = [];
+    mesh = null;
+    _direction = vec3.create();
+    _transform = mat4.create();
+    _backBuffer = null;
+
+
+    /**
+     * Constructor
+     */
     constructor()
     {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.update = true;
-        this.doOcclusionQueries = true;
-        this.cameraFactor = 20;
-        this.position = vec3.create();
-        this.flares = [];
-        this.occluders = [];
-        this.backgroundOccluders = [];
-        this.occlusionIntensity = 1;
-        this.backgroundOcclusionIntensity = 1;
-        this.distanceToEdgeCurves = [];
-        this.distanceToCenterCurves = [];
-        this.radialAngleCurves = [];
-        this.xDistanceToCenter = [];
-        this.yDistanceToCenter = [];
-        this.bindings = [];
-        this.curveSets = [];
-        this.mesh = null;
-        this._direction = vec3.create();
-        this._transform = mat4.create();
-        this._backBuffer = null;
-
         EveLensflare.init();
     }
 
@@ -328,10 +333,11 @@ export class EveLensflare
             ];
         }
     }
-}
 
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-EveLensflare.global = null;
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = null;
+
+}

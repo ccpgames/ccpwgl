@@ -30,30 +30,28 @@ import {EveObject} from './EveObject';
  */
 export class EveTransform extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.mesh = true;
-        this.visible.children = true;
-        this.mesh = null;
-        this.curveSets = [];
-        this.children = [];
-        this.particleSystems = [];
-        this.particleEmitters = [];
-        this.modifier = EveTransform.Modifier.NONE;
-        this.sortValueMultiplier = 1.0;
-        this.distanceBasedScaleArg1 = 0.2;
-        this.distanceBasedScaleArg2 = 0.63;
-        this.useDistanceBasedScale = false;
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.translation = vec3.create();
-        this.rotation = quat.create();
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
 
-        this._perObjectData = new Tw2BasicPerObjectData(EveTransform.perObjectData);
-    }
+    visible = {
+        mesh: true,
+        children: true
+    };
+    mesh = null;
+    curveSets = [];
+    children = [];
+    particleSystems = [];
+    particleEmitters = [];
+    modifier = EveTransform.Modifier.NONE;
+    sortValueMultiplier = 1.0;
+    distanceBasedScaleArg1 = 0.2;
+    distanceBasedScaleArg2 = 0.63;
+    useDistanceBasedScale = false;
+    scaling = vec3.fromValues(1, 1, 1);
+    translation = vec3.create();
+    rotation = quat.create();
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    _perObjectData = new Tw2BasicPerObjectData(EveTransform.perObjectData);
+
 
     /**
      * Initializes the EveTransform
@@ -317,20 +315,21 @@ export class EveTransform extends EveObject
             ['WorldInverseTranspose', 16]
         ]
     };
-}
 
-/**
- * Modifier states
- * @type {*}
- */
-EveTransform.Modifier = {
-    NONE: 0,
-    BILLBOARD: 1,
-    TRANSLATE_WITH_CAMERA: 2,
-    LOOK_AT_CAMERA: 3,
-    SIMPLE_HALO: 4,
-    EVE_CAMERA_ROTATION_ALIGNED: 100,
-    EVE_BOOSTER: 101,
-    EVE_SIMPLE_HALO: 102,
-    EVE_CAMERA_ROTATION: 103
-};
+    /**
+     * Modifier states
+     * @type {*}
+     */
+    static Modifier = {
+        NONE: 0,
+        BILLBOARD: 1,
+        TRANSLATE_WITH_CAMERA: 2,
+        LOOK_AT_CAMERA: 3,
+        SIMPLE_HALO: 4,
+        EVE_CAMERA_ROTATION_ALIGNED: 100,
+        EVE_BOOSTER: 101,
+        EVE_SIMPLE_HALO: 102,
+        EVE_CAMERA_ROTATION: 103
+    };
+
+}

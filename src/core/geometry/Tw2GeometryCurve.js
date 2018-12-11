@@ -8,11 +8,10 @@
  */
 export class Tw2GeometryCurve
 {
-    constructor()
-    {
-        this.dimension = 0;
-        this.degree = 0;
-        this.knots = null;
-        this.controls = null;
-    }
+
+    dimension = 0;
+    degree = 0;
+    knots = null;
+    controls = null;
+
 }

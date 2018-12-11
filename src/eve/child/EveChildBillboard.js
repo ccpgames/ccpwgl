@@ -11,12 +11,10 @@ import {EveChild} from './EveChild';
  */
 export class EveChildBillboard extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.mesh = null;
-        this._perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
-    }
+
+    mesh = null;
+    _perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
+
 
     /**
      * Gets the child's resources
@@ -72,4 +70,5 @@ export class EveChildBillboard extends EveChild
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
     }
+
 }

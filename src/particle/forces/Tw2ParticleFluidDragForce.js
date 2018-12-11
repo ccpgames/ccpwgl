@@ -5,18 +5,14 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  * Tw2ParticleFluidDragForce
  *
  * @property {number} drag
- * @property {vec3} _tempVec
- * @property {vec3} _tempVec2
  * @inherits Tw2ParticleForce
  * @class
  */
 export class Tw2ParticleFluidDragForce extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.drag = 0.1;
-    }
+
+    drag = 0.1;
+
 
     /**
      * Applies forces
@@ -62,4 +58,5 @@ export class Tw2ParticleFluidDragForce extends Tw2ParticleForce
             vec3.copy(force, vec3_0);
         }
     }
+
 }

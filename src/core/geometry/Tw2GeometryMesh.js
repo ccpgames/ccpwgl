@@ -22,22 +22,21 @@ import {Tw2VertexDeclaration} from '../vertex';
  */
 export class Tw2GeometryMesh
 {
-    constructor()
-    {
-        this.name = '';
-        this.declaration = new Tw2VertexDeclaration();
-        this.areas = [];
-        this.buffer = null;
-        this.bufferLength = 0;
-        this.bufferData = null;
-        this.indexes = null;
-        this.indexData = null;
-        this.indexType = 0;
-        this.minBounds = vec3.create();
-        this.maxBounds = vec3.create();
-        this.boundsSpherePosition = vec3.create();
-        this.boundsSphereRadius = 0;
-        this.bones = [];
-        this.boneBindings = [];
-    }
+
+    name = '';
+    declaration = new Tw2VertexDeclaration();
+    areas = [];
+    buffer = null;
+    bufferLength = 0;
+    bufferData = null;
+    indexes = null;
+    indexData = null;
+    indexType = 0;
+    minBounds = vec3.create();
+    maxBounds = vec3.create();
+    boundsSpherePosition = vec3.create();
+    boundsSphereRadius = 0;
+    bones = [];
+    boneBindings = [];
+
 }

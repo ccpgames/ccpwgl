@@ -15,15 +15,13 @@ import {Tw2ParticleAttributeGenerator} from './Tw2ParticleAttributeGenerator';
  */
 export class Tw2RandomIntegerAttributeGenerator extends Tw2ParticleAttributeGenerator
 {
-    constructor()
-    {
-        super();
-        this.elementType = Tw2ParticleElementDeclaration.Type.CUSTOM;
-        this.customName = '';
-        this.minRange = vec4.create();
-        this.maxRange = vec4.create();
-        this._element = null;
-    }
+
+    elementType = Tw2ParticleElementDeclaration.Type.CUSTOM;
+    customName = '';
+    minRange = vec4.create();
+    maxRange = vec4.create();
+    _element = null;
+
 
     /**
      * Binds a particle system element to the generator
@@ -61,4 +59,5 @@ export class Tw2RandomIntegerAttributeGenerator extends Tw2ParticleAttributeGene
                 Math.floor(this.minRange[i] + Math.random() * (this.maxRange[i] - this.minRange[i]) + 0.5);
         }
     }
+
 }

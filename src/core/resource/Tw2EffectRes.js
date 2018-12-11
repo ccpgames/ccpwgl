@@ -7,22 +7,27 @@ import {Tw2ShaderHeaderSizeError, Tw2ShaderPermutationValueError, Tw2ShaderVersi
  * Tw2EffectRes
  *
  * @property {Array} passes
+ * @property {*} annotation
+ * @property {Array} permutations
+ * @property {Array} offsets
+ * @property {*} reader
+ * @property {number} version
+ * @property {string} stringTable
+ * @property {*} shaders
  * @inherits Tw2Resource
  */
 export class Tw2EffectRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.passes = [];
-        this.annotations = {};
-        this.permutations = [];
-        this.offsets = [];
-        this.reader = null;
-        this.version = 0;
-        this.stringTable = '';
-        this.shaders = {};
-    }
+
+    passes = [];
+    annotations = {};
+    permutations = [];
+    offsets = [];
+    reader = null;
+    version = 0;
+    stringTable = '';
+    shaders = {};
+
 
     /**
      * Prepares the effect
@@ -196,6 +201,7 @@ export class Tw2EffectRes extends Tw2Resource
         this.shaders[index] = shader;
         return shader;
     }
+
 }
 
 /**

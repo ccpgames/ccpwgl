@@ -7,7 +7,7 @@ export const num = {};
  * @param {number} order
  * @returns {number}
  */
-num.biCumulative = function(t, order)
+num.biCumulative = function (t, order)
 {
     if (order === 1)
     {
@@ -29,7 +29,7 @@ num.biCumulative = function(t, order)
  * @param value
  * @return {Number}
  */
-num.dwordToFloat = function(value)
+num.dwordToFloat = function (value)
 {
     const
         b4 = (value & 0xff),
@@ -54,7 +54,7 @@ num.dwordToFloat = function(value)
  * @param {number} time - time
  * @returns {number}
  */
-num.exponentialDecay = function(omega0, torque, I, d, time)
+num.exponentialDecay = function (omega0, torque, I, d, time)
 {
     return torque * time / d + I * (omega0 * d - torque) / (d * d) * (1.0 - Math.pow(Math.E, -d * time / I));
 };

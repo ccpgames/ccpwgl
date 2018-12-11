@@ -4,7 +4,6 @@ import {Tw2Parameter} from './Tw2Parameter';
 /**
  * Tw2TransformParameter
  *
- * @param {string} [name='']
  * @parameter {string} name
  * @parameter {vec3} scaling=[1,1,1]
  * @parameter {quat} rotation=[0,0,0,1]
@@ -15,18 +14,17 @@ import {Tw2Parameter} from './Tw2Parameter';
  */
 export class Tw2TransformParameter extends Tw2Parameter
 {
-    constructor(name = '')
-    {
-        super(name);
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.rotationCenter = vec3.create();
-        this.rotation = quat.create();
-        this.translation = vec3.create();
-        this.transform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.constantBuffer = null;
-        this.offset = null;
-    }
+
+    name = '';
+    scaling = vec3.fromValues(1, 1, 1);
+    rotationCenter = vec3.create();
+    rotation = quat.create();
+    translation = vec3.create();
+    transform = mat4.create();
+    worldTransform = mat4.create();
+    constantBuffer = null;
+    offset = null;
+
 
     /**
      * Initializes the transform parameter
@@ -109,10 +107,11 @@ export class Tw2TransformParameter extends Tw2Parameter
         vec3.copy(this.rotationCenter, parameter.rotationCenter);
         this.OnValueChanged();
     }
-}
 
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-Tw2TransformParameter.constantBufferSize = 16;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 16;
+
+}

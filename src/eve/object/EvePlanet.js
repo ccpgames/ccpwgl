@@ -22,20 +22,18 @@ import {EveObject} from './EveObject';
  */
 export class EvePlanet extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.highDetail = new EveTransform();
-        this.effectHeight = new Tw2Effect();
-        this.heightMap = new Tw2RenderTarget();
-        this.zOnlyModel = null;
-        this.itemID = 0;
-        this.heightMapResPath1 = '';
-        this.heightMapResPath2 = '';
-        this.heightDirty = false;
-        this.lockedResources = [];
-        this.watchedResources = [];
-    }
+
+    highDetail = new EveTransform();
+    effectHeight = new Tw2Effect();
+    heightMap = new Tw2RenderTarget();
+    zOnlyModel = null;
+    itemID = 0;
+    heightMapResPath1 = '';
+    heightMapResPath2 = '';
+    heightDirty = false;
+    lockedResources = [];
+    watchedResources = [];
+
 
     /**
      * Creates the planet from an options object
@@ -336,4 +334,5 @@ export class EvePlanet extends EveObject
             }
         }
     }
+
 }

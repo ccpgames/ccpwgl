@@ -14,7 +14,7 @@ export const noise = {};
  * @param {number} power
  * @returns {vec4} out
  */
-noise.turbulence = (function()
+noise.turbulence = (function ()
 {
     const
         s_noiseLookup = [],
@@ -131,7 +131,7 @@ noise.turbulence = (function()
  * @param {number} a
  * @returns {number}
  */
-noise.perlin1 = (function()
+noise.perlin1 = (function ()
 {
     let p_initialized = false,
         p_B = 0x100,
@@ -201,7 +201,7 @@ noise.perlin1 = (function()
  * @param n
  * @returns {number}
  */
-noise.perlin1D = function(x, alpha, beta, n)
+noise.perlin1D = function (x, alpha, beta, n)
 {
     let sum = 0,
         p = x,

@@ -11,15 +11,13 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleSpring extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.springConstant = 0;
-        this.position = vec3.create();
-    }
+
+    springConstant = 0;
+    position = vec3.create();
+
 
     /**
-     * Applies forces
+     * ApplyForce
      * @param {Tw2ParticleElement} position
      * @param {Tw2ParticleElement} velocity
      * @param {Tw2ParticleElement} force
@@ -30,4 +28,5 @@ export class Tw2ParticleSpring extends Tw2ParticleForce
         force[1] += (this.position[1] - position.buffer[position.offset + 1]) * this.springConstant;
         force[2] += (this.position[2] - position.buffer[position.offset + 2]) * this.springConstant;
     }
+
 }

@@ -5,17 +5,22 @@ import {Tw2RawData} from './Tw2RawData';
 /**
  * Tw2BasicPerObjectData
  *
- * @param {RawDataObject} [rawDataObject]    - An optional object containing raw data declarations
  * @parameter {?Tw2RawData} perObjectFFEData - Fixed Function Emulation data
  * @class
  */
 export class Tw2BasicPerObjectData extends Tw2PerObjectData
 {
+
+    perObjectFFEData = null;
+
+
+    /**
+     * Constructor
+     * @param {RawDataObject} [rawDataObject] - An optional object containing raw data declarations
+     */
     constructor(rawDataObject)
     {
         super();
-        this.perObjectFFEData = null;
-
         if (rawDataObject) this.DeclareFromObject(rawDataObject);
     }
 
@@ -46,6 +51,7 @@ export class Tw2BasicPerObjectData extends Tw2PerObjectData
             this.perObjectFFEData = new Tw2RawData(rawDataObject.FFEData);
         }
     }
+
 }
 
 export {Tw2BasicPerObjectData as EveBasicPerObjectData};

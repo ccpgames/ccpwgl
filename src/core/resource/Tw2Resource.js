@@ -15,16 +15,15 @@ import {resMan} from '../../global';
  */
 export class Tw2Resource
 {
-    constructor()
-    {
-        this.path = '';
-        this._isLoading = false;
-        this._isGood = false;
-        this._isPurged = false;
-        this._notifications = [];
-        this.activeFrame = 0;
-        this.doNotPurge = 0;
-    }
+
+    path = '';
+    _isLoading = false;
+    _isGood = false;
+    _isPurged = false;
+    _notifications = [];
+    activeFrame = 0;
+    doNotPurge = 0;
+
 
     /**
      * Checks to see if the resource is loading
@@ -219,6 +218,7 @@ export class Tw2Resource
             }
         }
     }
+
 }
 
 /**

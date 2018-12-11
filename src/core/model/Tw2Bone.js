@@ -11,11 +11,10 @@ import {mat4} from '../../global';
  */
 export class Tw2Bone
 {
-    constructor()
-    {
-        this.boneRes = null;
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.offsetTransform = mat4.create();
-    }
+
+    boneRes = null;
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    offsetTransform = mat4.create();
+
 }

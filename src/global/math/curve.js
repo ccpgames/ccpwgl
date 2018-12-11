@@ -13,7 +13,7 @@ export const curve = {};
  * @param {boolean} cycle
  * @param {number} duration
  */
-curve.evaluate = function(curve, time, value, cycle, duration)
+curve.evaluate = function (curve, time, value, cycle, duration)
 {
     let count = curve.knots.length;
     let knot = count - 1;
@@ -117,7 +117,7 @@ curve.evaluate = function(curve, time, value, cycle, duration)
  * @param s
  * @returns {*}
  */
-curve.ag_horner1 = function(P, deg, s)
+curve.ag_horner1 = function (P, deg, s)
 {
     let h = P[deg];
     while (--deg >= 0) h = (s * h) + P[deg];
@@ -135,7 +135,7 @@ curve.ag_horner1 = function(P, deg, s)
  * @param pars
  * @returns {*}
  */
-curve.ag_zeroin2 = function(a, b, fa, fb, tol, pars)
+curve.ag_zeroin2 = function (a, b, fa, fb, tol, pars)
 {
     let test;
     let c, d, e, fc, del, m, machtol, p, q, r, s;
@@ -240,7 +240,7 @@ curve.ag_zeroin2 = function(a, b, fa, fb, tol, pars)
  * @param pars
  * @returns {*}
  */
-curve.ag_zeroin = function(a, b, tol, pars)
+curve.ag_zeroin = function (a, b, tol, pars)
 {
     let fa, fb;
 
@@ -265,7 +265,7 @@ curve.ag_zeroin = function(a, b, tol, pars)
  * @param Roots
  * @returns {*}
  */
-curve.polyZeroes = function(Poly, deg, a, a_closed, b, b_closed, Roots)
+curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots)
 {
     let i, left_ok, right_ok, nr, ndr, skip;
 

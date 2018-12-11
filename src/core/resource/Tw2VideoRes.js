@@ -22,25 +22,21 @@ import {HTTPRequestError, Tw2ResourceExtensionUnregisteredError} from '../Tw2Err
  */
 export class Tw2VideoRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.texture = null;
-        this.video = null;
-        this.width = 0;
-        this.height = 0;
-        this.cycle = true;
-        this.playOnLoad = true;
 
-        this._currentSampler = 0;
-        this._currentTime = -1;
-        this._playable = false;
-        this._isPlaying = false;
+    texture = null;
+    video = null;
+    width = 0;
+    height = 0;
+    cycle = true;
+    playOnLoad = true;
+    _currentSampler = 0;
+    _currentTime = -1;
+    _playable = false;
+    _isPlaying = false;
+    _onPlaying = null;
+    _onPause = null;
+    _onEnded = null;
 
-        this._onPlaying = null;
-        this._onPause = null;
-        this._onEnded = null;
-    }
 
     /**
      * Checks if the resource is good
@@ -259,4 +255,5 @@ export class Tw2VideoRes extends Tw2Resource
             this._currentSampler = sampler.hash;
         }
     }
+
 }

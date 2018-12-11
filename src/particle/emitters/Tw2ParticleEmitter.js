@@ -11,12 +11,11 @@ import {util} from '../../global';
  */
 export class Tw2ParticleEmitter
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.particleSystem = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    particleSystem = null;
+
 
     /**
      * Initializes the particle emitter
@@ -34,4 +33,5 @@ export class Tw2ParticleEmitter
     {
 
     }
+
 }

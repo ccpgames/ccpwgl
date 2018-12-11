@@ -13,14 +13,13 @@ import {vec3} from '../../global';
  */
 export class Tw2GeometryMeshArea
 {
-    constructor()
-    {
-        this.name = '';
-        this.start = 0;
-        this.count = 0;
-        this.minBounds = vec3.create();
-        this.maxBounds = vec3.create();
-        this.boundsSpherePosition = vec3.create();
-        this.boundsSphereRadius = 0;
-    }
+
+    name = '';
+    start = 0;
+    count = 0;
+    minBounds = vec3.create();
+    maxBounds = vec3.create();
+    boundsSpherePosition = vec3.create();
+    boundsSphereRadius = 0;
+
 }

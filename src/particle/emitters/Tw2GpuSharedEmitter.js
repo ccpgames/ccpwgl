@@ -7,10 +7,6 @@ import {Tw2GpuUniqueEmitter} from './Tw2GpuUniqueEmitter';
  */
 export class Tw2GpuSharedEmitter extends Tw2GpuUniqueEmitter
 {
-    constructor()
-    {
-        super();
-    }
 
     /**
      * Identifies that the object is not yet fully implemented

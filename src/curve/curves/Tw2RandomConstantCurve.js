@@ -11,14 +11,12 @@ import {Tw2Curve} from './Tw2Curve';
  */
 export class Tw2RandomConstantCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.value = 0;
-        this.min = 0;
-        this.max = 1;
-        this.hold = true;
-    }
+
+    value = 0;
+    min = 0;
+    max = 1;
+    hold = true;
+
 
     /**
      * Updates the current value at the given time
@@ -36,22 +34,23 @@ export class Tw2RandomConstantCurve extends Tw2Curve
     {
         return this.hold ? this.value : this.min + (this.max - this.min) * Math.random();
     }
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE_NO_KEYS;
+
 }
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2RandomConstantCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RandomConstantCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RandomConstantCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

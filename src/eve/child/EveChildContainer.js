@@ -9,12 +9,10 @@ import {EveChild} from './EveChild';
  */
 export class EveChildContainer extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.objects = [];
-        this.curveSets = [];
-    }
+
+    objects = [];
+    curveSets = [];
+
 
     /**
      * Gets the child's resources
@@ -69,4 +67,5 @@ export class EveChildContainer extends EveChild
             }
         }
     }
+
 }

@@ -8,10 +8,9 @@
  */
 export class Tw2TrackGroup
 {
-    constructor()
-    {
-        this.trackGroupRes = null;
-        this.model = null;
-        this.transformTracks = [];
-    }
+
+    trackGroupRes = null;
+    model = null;
+    transformTracks = [];
+
 }

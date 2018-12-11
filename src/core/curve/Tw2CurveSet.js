@@ -14,17 +14,16 @@ import {util} from '../../global';
  */
 export class Tw2CurveSet
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.curves = [];
-        this.bindings = [];
-        this.scale = 1;
-        this.playOnLoad = true;
-        this.isPlaying = false;
-        this.scaledTime = 0;
-    }
+
+    _id = util.generateID();
+    name = '';
+    curves = [];
+    bindings = [];
+    scale = 1;
+    playOnLoad = true;
+    isPlaying = false;
+    scaledTime = 0;
+
 
     /**
      * Initializes the Tw2CurveSet
@@ -100,4 +99,5 @@ export class Tw2CurveSet
         }
         return length;
     }
+
 }

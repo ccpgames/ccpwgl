@@ -33,7 +33,7 @@ export class Tw2EventEmitter
             if (eventName in events)
             {
                 events[eventName].forEach(
-                    function(value, key)
+                    function (value, key)
                     {
                         key.call(value.context, e);
                         if (value.once) events[eventName].delete(key);

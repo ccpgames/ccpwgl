@@ -26,29 +26,29 @@ import {util, resMan, device} from '../../global';
  */
 export class Tw2Mesh
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.visible = {};
-        this.visible.opaqueAreas = true;
-        this.visible.transparentAreas = true;
-        this.visible.additiveAreas = true;
-        this.visible.pickableAreas = true;
-        this.visible.decalAreas = true;
-        this.visible.depthAreas = true;
-        this.opaqueAreas = [];
-        this.transparentAreas = [];
-        this.additiveAreas = [];
-        this.pickableAreas = [];
-        this.decalAreas = [];
-        this.depthAreas = [];
-        this.meshIndex = 0;
-        this.geometryResPath = '';
-        this.lowDetailGeometryResPath = '';
-        this.geometryResource = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    visible = {
+        opaqueAreas: true,
+        transparentAreas: true,
+        additiveAreas: true,
+        pickableAreas: true,
+        decalAreas: true,
+        depthAreas: true
+    };
+    opaqueAreas = [];
+    transparentAreas = [];
+    additiveAreas = [];
+    pickableAreas = [];
+    decalAreas = [];
+    depthAreas = [];
+    meshIndex = 0;
+    geometryResPath = '';
+    lowDetailGeometryResPath = '';
+    geometryResource = null;
+
 
     /**
      * Initializes the Tw2Mesh
@@ -168,4 +168,5 @@ export class Tw2Mesh
             }
         }
     }
+
 }

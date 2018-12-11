@@ -13,15 +13,12 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2YPRSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.value = quat.create();
-        this.YawPitchRoll = vec3.create();
-        this.YawCurve = null;
-        this.PitchCurve = null;
-        this.RollCurve = null;
-    }
+
+    value = quat.create();
+    YawPitchRoll = vec3.create();
+    YawCurve = null;
+    PitchCurve = null;
+    RollCurve = null;
 
     /**
      * Sorts the sequencer
@@ -82,34 +79,35 @@ export class Tw2YPRSequencer extends Tw2CurveSequencer
 
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER2;
+
+    /**
+     * The sequencer's curve property names
+     * @type {string[]}
+     */
+    static childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2YPRSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2YPRSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2YPRSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2YPRSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];

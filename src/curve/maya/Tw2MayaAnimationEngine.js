@@ -14,15 +14,14 @@ import {Tw2FeatureNotImplementedError} from '../../core';
  */
 export class Tw2MayaAnimationEngine
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.curves = [];
-        this.hermiteSegments = [];
-        this.bezierSegments = [];
-        this._currentCurveIndex = 0;
-        this._evalCache = null;
-    }
+
+    _id = util.generateID();
+    curves = [];
+    hermiteSegments = [];
+    bezierSegments = [];
+    _currentCurveIndex = 0;
+    _evalCache = null;
+
 
     /**
      * Evaluate
@@ -358,41 +357,42 @@ export class Tw2MayaAnimationEngine
 
         return curve[Tw2MayaAnimationEngine.AnimCurveFields.END_TIME] - firstSegment[Tw2MayaAnimationEngine.AnimSegment.TIME];
     }
+
+    static AnimCurveFields = {
+        NUM_SEGMENTS: 0,
+        SEGMENT_OFFSET: 1,
+        END_TIME: 2,
+        END_VALUE: 3,
+        IN_TANGENT: 4,
+        OUT_TANGENT: 5,
+        PRE_INFINITY: 6,
+        POST_INFINITY: 7,
+        IS_WEIGHTED: 8
+    };
+
+    static AnimSegment = {
+        TIME: 0,
+        VALUE: 1
+    };
+
+    static HermiteSegment = {
+        TIME: 0,
+        VALUE: 1,
+        COEFF: 2,
+        IS_STEP: 3,
+        IS_STEP_NEXT: 4
+    };
+
+    static BezierSegment = {
+        TIME: 0,
+        VALUE: 1,
+        COEFF: 2,
+        POLYY: 3,
+        IS_STEP: 4,
+        IS_STEP_NEXT: 5,
+        IS_LINEAR: 6
+    };
+
+    static INFINITY = 0;
+
 }
-
-Tw2MayaAnimationEngine.AnimCurveFields = {
-    NUM_SEGMENTS: 0,
-    SEGMENT_OFFSET: 1,
-    END_TIME: 2,
-    END_VALUE: 3,
-    IN_TANGENT: 4,
-    OUT_TANGENT: 5,
-    PRE_INFINITY: 6,
-    POST_INFINITY: 7,
-    IS_WEIGHTED: 8
-};
-
-Tw2MayaAnimationEngine.AnimSegment = {
-    TIME: 0,
-    VALUE: 1
-};
-
-Tw2MayaAnimationEngine.HermiteSegment = {
-    TIME: 0,
-    VALUE: 1,
-    COEFF: 2,
-    IS_STEP: 3,
-    IS_STEP_NEXT: 4
-};
-
-Tw2MayaAnimationEngine.BezierSegment = {
-    TIME: 0,
-    VALUE: 1,
-    COEFF: 2,
-    POLYY: 3,
-    IS_STEP: 4,
-    IS_STEP_NEXT: 5,
-    IS_LINEAR: 6
-};
-
-Tw2MayaAnimationEngine.INFINITY = 0;

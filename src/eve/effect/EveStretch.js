@@ -28,29 +28,33 @@ import {Tw2Float} from '../../core';
  */
 export class EveStretch
 {
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    update = true;
+    curveSets = [];
+    source = null;
+    dest = null;
+    sourceObject = null;
+    destObject = null;
+    stretchObject = null;
+    length = new Tw2Float();
+    _time = 0;
+    _useTransformsForStretch = false;
+    _sourcePosition = vec3.create();
+    _destinationPosition = vec3.create();
+    _displaySourceObject = true;
+    _sourceTransform = null;
+    _displayDestObject = true;
+    _isNegZForward = false;
+
+
+    /**
+     * Constructor
+     */
     constructor()
     {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.update = true;
-        this.curveSets = [];
-        this.source = null;
-        this.dest = null;
-        this.sourceObject = null;
-        this.destObject = null;
-        this.stretchObject = null;
-        this.length = new Tw2Float();
-        this._time = 0;
-        this._useTransformsForStretch = false;
-        this._sourcePosition = vec3.create();
-        this._destinationPosition = vec3.create();
-        this._displaySourceObject = true;
-        this._sourceTransform = null;
-        this._displayDestObject = true;
-        this._useTransformsForStretch = false;
-        this._isNegZForward = false;
-
         EveStretch.init();
     }
 
@@ -294,10 +298,11 @@ export class EveStretch
             };
         }
     }
-}
 
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-EveStretch.global = null;
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = null;
+
+}

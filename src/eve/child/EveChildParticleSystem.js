@@ -13,14 +13,12 @@ import {EveChild} from './EveChild';
  */
 export class EveChildParticleSystem extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.mesh = null;
-        this.particleEmitters = [];
-        this.particleSystems = [];
-        this._perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
-    }
+
+    mesh = null;
+    particleEmitters = [];
+    particleSystems = [];
+    _perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
+
 
     /**
      * Gets the child's resources
@@ -67,4 +65,5 @@ export class EveChildParticleSystem extends EveChild
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
     }
+
 }

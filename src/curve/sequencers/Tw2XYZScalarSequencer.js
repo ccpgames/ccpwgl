@@ -13,14 +13,12 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2XYZScalarSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.value = vec3.create();
-        this.XCurve = null;
-        this.YCurve = null;
-        this.ZCurve = null;
-    }
+
+    value = vec3.create();
+    XCurve = null;
+    YCurve = null;
+    ZCurve = null;
+
 
     /**
      * Sorts the sequencer
@@ -65,34 +63,35 @@ export class Tw2XYZScalarSequencer extends Tw2CurveSequencer
         value[2] = this.ZCurve ? this.ZCurve.GetValueAt(time) : 0;
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 3;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER2;
+
+    /**
+     * The sequencer's curve property names
+     * @type {string[]}
+     */
+    static childProperties = ['XCurve', 'YCurve', 'ZCurve'];
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2XYZScalarSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2XYZScalarSequencer.outputDimension = 3;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2XYZScalarSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2XYZScalarSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];

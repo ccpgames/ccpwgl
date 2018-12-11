@@ -24,18 +24,16 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveTurretSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.bone = null;
-        this.locatorName = null;
-        this.updateFromLocator = false;
-        this.canFireWhenHidden = false;
-        this.position = vec3.create();
-        this.rotation = quat.create();
-        this._localTransform = mat4.create();
-        this._localRotation = quat.create();
-    }
+
+    bone = null;
+    locatorName = null;
+    updateFromLocator = false;
+    canFireWhenHidden = false;
+    position = vec3.create();
+    rotation = quat.create();
+    _localTransform = mat4.create();
+    _localRotation = quat.create();
+
 
     /**
      * Updates the turret's transforms
@@ -69,6 +67,7 @@ export class EveTurretSetItem extends EveObjectSetItem
         item.UpdateTransforms();
         return item;
     }
+
 }
 
 
@@ -101,37 +100,36 @@ export class EveTurretSetItem extends EveObjectSetItem
  */
 export class EveTurretSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.turrets = true;
-        this.visible.firingEffects = true;
-        this.activeAnimation = new Tw2AnimationController();
-        this.inactiveAnimation = new Tw2AnimationController();
-        this.geometryResPath = '';
-        this.geometryResource = null;
-        this.turretEffect = null;
-        this.firingEffectResPath = '';
-        this.firingEffect = null;
-        this.fireCallback = null;
-        this.fireCallbackPending = false;
-        this.state = EveTurretSet.State.IDLE;
-        this.bottomClipHeight = 0;
-        this.locatorName = '';
-        this.sysBoneHeight = 0;
-        this.hasCyclingFiringPos = false;
-        this.targetPosition = vec3.create();
-        this.parentMatrix = mat4.create();
-        this.boundingSphere = quat.create();
-        this._activeTurret = -1;
-        this._recheckTimeLeft = 0;
-        this._currentCyclingFiresPos = 0;
 
-        this._perObjectDataActive = new Tw2PerObjectData(EveTurretSet.perObjectData);
-        this._perObjectDataInactive = new Tw2PerObjectData(EveTurretSet.perObjectData);
-        this._locatorRebuildPending = true;
-    }
+    visible = {
+        turrets: true,
+        firingEffects: true
+    };
+    activeAnimation = new Tw2AnimationController();
+    inactiveAnimation = new Tw2AnimationController();
+    geometryResPath = '';
+    geometryResource = null;
+    turretEffect = null;
+    firingEffectResPath = '';
+    firingEffect = null;
+    fireCallback = null;
+    fireCallbackPending = false;
+    state = EveTurretSet.State.IDLE;
+    bottomClipHeight = 0;
+    locatorName = '';
+    sysBoneHeight = 0;
+    hasCyclingFiringPos = false;
+    targetPosition = vec3.create();
+    parentMatrix = mat4.create();
+    boundingSphere = quat.create();
+    _activeTurret = -1;
+    _recheckTimeLeft = 0;
+    _currentCyclingFiresPos = 0;
+
+    _perObjectDataActive = new Tw2PerObjectData(EveTurretSet.perObjectData);
+    _perObjectDataInactive = new Tw2PerObjectData(EveTurretSet.perObjectData);
+    _locatorRebuildPending = true;
+
 
     /**
      * Alias for this.items
@@ -678,7 +676,7 @@ export class EveTurretSet extends EveObjectSet
         if (!this.turretEffect || !this.turretEffect.IsGood() || !this._visibleItems.length) return false;
 
         let index = 0;
-        const customSetter = function(el)
+        const customSetter = function (el)
         {
             device.gl.disableVertexAttribArray(el.location);
             device.gl.vertexAttrib2f(el.location, index, index);
@@ -866,48 +864,49 @@ export class EveTurretSet extends EveObjectSet
             ['turretPoseTransAndRot', 2 * 4 * 72]
         ]
     };
-}
 
-/**
- * mat3x4 to quat
- */
-EveTurretSet.mat3x4toquat = (function()
-{
-    let m, q;
-
-    return function mat3x4toquat(mm, index, out, outIndex)
+    /**
+     * mat3x4 to quat
+     */
+    static mat3x4toquat = (function ()
     {
-        if (!m)
+        let m, q;
+
+        return function (mm, index, out, outIndex)
         {
-            m = mat4.create();
-            q = quat.create();
-        }
+            if (!m)
+            {
+                m = mat4.create();
+                q = quat.create();
+            }
 
-        index *= 12;
-        outIndex *= 4;
+            index *= 12;
+            outIndex *= 4;
 
-        m[0] = mm[index];
-        m[1] = mm[index + 4];
-        m[2] = mm[index + 8];
-        m[3] = 0;
-        m[4] = mm[index + 1];
-        m[5] = mm[index + 5];
-        m[6] = mm[index + 9];
-        m[7] = 0;
-        m[8] = mm[index + 2];
-        m[9] = mm[index + 6];
-        m[10] = mm[index + 10];
-        m[11] = 0;
-        m[12] = mm[index + 3];
-        m[13] = mm[index + 7];
-        m[14] = mm[index + 11];
-        m[15] = 1;
+            m[0] = mm[index];
+            m[1] = mm[index + 4];
+            m[2] = mm[index + 8];
+            m[3] = 0;
+            m[4] = mm[index + 1];
+            m[5] = mm[index + 5];
+            m[6] = mm[index + 9];
+            m[7] = 0;
+            m[8] = mm[index + 2];
+            m[9] = mm[index + 6];
+            m[10] = mm[index + 10];
+            m[11] = 0;
+            m[12] = mm[index + 3];
+            m[13] = mm[index + 7];
+            m[14] = mm[index + 11];
+            m[15] = 1;
 
-        mat4.getRotation(q, m);
-        out[outIndex] = q[0];
-        out[outIndex + 1] = q[1];
-        out[outIndex + 2] = q[2];
-        out[outIndex + 3] = q[3];
-    };
-})();
+            mat4.getRotation(q, m);
+            out[outIndex] = q[0];
+            out[outIndex + 1] = q[1];
+            out[outIndex + 2] = q[2];
+            out[outIndex + 3] = q[3];
+        };
+    })();
+
+}
 

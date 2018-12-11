@@ -21,23 +21,22 @@ import {vec3, quat, mat4, util} from '../../global';
  */
 export class EveChild
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.useSRT = true;
-        this.lowestLodVisible = 2;
-        this.staticTransform = false;
-        this.rotation = quat.create();
-        this.translation = vec3.create();
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.worldTransformLast = mat4.create();
-        this._perObjectData = null;
-        this.isEffectChild = true;
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    useSRT = true;
+    lowestLodVisible = 2;
+    staticTransform = false;
+    rotation = quat.create();
+    translation = vec3.create();
+    scaling = vec3.fromValues(1, 1, 1);
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    worldTransformLast = mat4.create();
+    _perObjectData = null;
+    isEffectChild = true;
+
 
     /**
      * Gets the child's resources
@@ -70,8 +69,9 @@ export class EveChild
      * Gets render batches
      * @param {number} mode
      * @param {Tw2BatchAccumulator} accumulator
+     * @param {Tw2PerObjectData} perObjectData
      */
-    GetBatches(mode, accumulator)
+    GetBatches(mode, accumulator, perObjectData)
     {
 
     }
@@ -95,5 +95,6 @@ export class EveChild
             ['worldInverseTranspose', 16]
         ]
     };
+
 }
 

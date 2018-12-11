@@ -10,11 +10,9 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleDirectForce extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.force = vec3.create();
-    }
+
+    force = vec3.create();
+
 
     /**
      * ApplyForce
@@ -26,4 +24,5 @@ export class Tw2ParticleDirectForce extends Tw2ParticleForce
     {
         vec3.add(force, force, this.force);
     }
+
 }

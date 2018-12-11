@@ -8,11 +8,9 @@ import {Tw2RenderBatch} from './Tw2RenderBatch';
  */
 export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.geometryProvider = null;
-    }
+
+    geometryProvider = null;
+
 
     /**
      * Commits the batch for rendering
@@ -25,4 +23,5 @@ export class Tw2ForwardingRenderBatch extends Tw2RenderBatch
             this.geometryProvider.Render(this, technique);
         }
     }
+
 }

@@ -17,19 +17,18 @@ import {Tw2Effect} from '../mesh/Tw2Effect';
  */
 export class Tw2PostEffectStep
 {
-    constructor()
-    {
-        this._id = generateID();
-        this.name = '';
-        this.index = -1;
-        this.display = true;
-        this.effect = null;
-        this.target = null;
-        this.inputs = {};
-        this._renderTarget = null;
-        this._rebuildPending = true;
-        this._onModified = null;
-    }
+
+    _id = generateID();
+    name = '';
+    index = -1;
+    display = true;
+    effect = null;
+    target = null;
+    inputs = {};
+    _renderTarget = null;
+    _rebuildPending = true;
+    _onModified = null;
+
 
     /**
      * Fires on value changes
@@ -82,7 +81,7 @@ export class Tw2PostEffectStep
      * @param {*} [opt={}]
      * @returns {Tw2PostEffectStep}
      */
-    static create(opt={})
+    static create(opt = {})
     {
         const item = new this();
         assignIfExists(item, opt, ['name', 'display', 'target', 'index']);
@@ -103,4 +102,5 @@ export class Tw2PostEffectStep
 
         return item;
     }
+
 }

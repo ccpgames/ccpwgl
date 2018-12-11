@@ -4,22 +4,24 @@ import {Tw2RawData} from './Tw2RawData';
 /**
  * Tw2PerObjectData
  *
- * @param {RawDataObject} [rawDataObject]
  * @property {?Tw2RawData} perObjectVSData - Per object vertex shader data
  * @property {?Tw2RawData} perObjectPSData - Per object pixel shader data
  * @class
  */
 export class Tw2PerObjectData
 {
+
+    perObjectVSData = null;
+    perObjectPSData = null;
+
+
+    /**
+     * Constructor
+     * @param {RawDataObject} [rawDataObject]
+     */
     constructor(rawDataObject)
     {
-        this.perObjectVSData = null;
-        this.perObjectPSData = null;
-
-        if (rawDataObject)
-        {
-            this.DeclareFromObject(rawDataObject);
-        }
+        if (rawDataObject) this.DeclareFromObject(rawDataObject);
     }
 
     /**
@@ -43,7 +45,7 @@ export class Tw2PerObjectData
 
     /**
      * Defines and creates raw data from an object
-     * @param {RawDataObject} rawDataObject
+     * @param {RawDataObject} [rawDataObject={}]
      */
     DeclareFromObject(rawDataObject = {})
     {
@@ -57,4 +59,5 @@ export class Tw2PerObjectData
             this.perObjectPSData = new Tw2RawData(rawDataObject.PSData);
         }
     }
+
 }

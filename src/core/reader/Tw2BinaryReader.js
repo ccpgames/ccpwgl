@@ -1,14 +1,23 @@
 /**
  * Tw2BinaryReader
  *
- * @param {*} data
+ * @property {*} data
+ * @property {number} cursor
  */
 export class Tw2BinaryReader
 {
+
+    data = null;
+    cursor = 0;
+
+
+    /**
+     * Constructor
+     * @param {*} data
+     */
     constructor(data)
     {
         this.data = data;
-        this.cursor = 0;
     }
 
     /**
@@ -121,4 +130,5 @@ export class Tw2BinaryReader
         }
         return str;
     }
+
 }

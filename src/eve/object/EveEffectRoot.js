@@ -23,22 +23,19 @@ import {EveSpaceObject} from './EveSpaceObject';
  */
 export class EveEffectRoot extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.curveSets = [];
-        this.effectChildren = [];
-        this.duration = 0;
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.rotation = quat.create();
-        this.translation = vec3.create();
-        this.localTransform = mat4.create();
-        this.rotationTransform = mat4.create();
-        this.boundingSphereCenter = vec3.create();
-        this.boundingSphereRadius = 0;
 
-        this._perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
-    }
+    curveSets = [];
+    effectChildren = [];
+    duration = 0;
+    scaling = vec3.fromValues(1, 1, 1);
+    rotation = quat.create();
+    translation = vec3.create();
+    localTransform = mat4.create();
+    rotationTransform = mat4.create();
+    boundingSphereCenter = vec3.create();
+    boundingSphereRadius = 0;
+    _perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
+
 
     /**
      * Starts playing the effectRoot's curveSets if they exist
@@ -110,4 +107,5 @@ export class EveEffectRoot extends EveObject
             this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
         }
     }
+
 }

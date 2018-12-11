@@ -24,25 +24,25 @@ import {util, device} from '../../global';
  */
 export class EveMeshOverlayEffect
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.visible = {};
-        this.visible.opaqueEffects = true;
-        this.visible.decalEffects = true;
-        this.visible.transparentEffects = true;
-        this.visible.additiveEffects = true;
-        this.visible.distortionEffects = true;
-        this.update = true;
-        this.curveSet = null;
-        this.opaqueEffects = [];
-        this.decalEffects = [];
-        this.transparentEffects = [];
-        this.additiveEffects = [];
-        this.distortionEffects = [];
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    visible = {
+        opaqueEffects: true,
+        decalEffects: true,
+        transparentEffects: true,
+        additiveEffects: true,
+        distortionEffects: true
+    };
+    update = true;
+    curveSet = null;
+    opaqueEffects = [];
+    decalEffects = [];
+    transparentEffects = [];
+    additiveEffects = [];
+    distortionEffects = [];
+
 
     /**
      * Gets the mesh overlay's resources
@@ -127,4 +127,5 @@ export class EveMeshOverlayEffect
         }
         return [];
     }
+
 }

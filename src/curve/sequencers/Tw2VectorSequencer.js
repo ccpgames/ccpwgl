@@ -13,14 +13,12 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2VectorSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.start = 0;
-        this.value = vec3.create();
-        this.operator = 0;
-        this.functions = [];
-    }
+
+    start = 0;
+    value = vec3.create();
+    operator = 0;
+    functions = [];
+
 
     /**
      * Sorts the sequencer
@@ -87,43 +85,44 @@ export class Tw2VectorSequencer extends Tw2CurveSequencer
                 return value;
         }
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 3;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 3;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER;
+
+    /**
+     * The sequencer's curve properties
+     * @type {string}
+     */
+    static childArray = 'functions';
+
+    /**
+     * Operator types
+     * @type {{MULTIPLY: number, ADD: number}}
+     */
+    static Operator = {
+        MULTIPLY: 0,
+        ADD: 1
+    };
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2VectorSequencer.inputDimension = 3;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2VectorSequencer.outputDimension = 3;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2VectorSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2VectorSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve properties
- * @type {string}
- */
-Tw2VectorSequencer.childArray = 'functions';
-
-/**
- * Operator types
- * @type {{MULTIPLY: number, ADD: number}}
- */
-Tw2VectorSequencer.Operator = {
-    MULTIPLY: 0,
-    ADD: 1
-};

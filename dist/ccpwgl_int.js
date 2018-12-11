@@ -346,6 +346,8 @@ exports.Tw2Curve = exports.Tw2CurveKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class2, _temp;
+
 var _global = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint no-unused-vars:0 */
@@ -376,7 +378,7 @@ var Tw2CurveKey = exports.Tw2CurveKey = function Tw2CurveKey() {
  */
 
 
-var Tw2Curve = exports.Tw2Curve = function () {
+var Tw2Curve = exports.Tw2Curve = (_temp = _class2 = function () {
     function Tw2Curve() {
         _classCallCheck(this, Tw2Curve);
 
@@ -384,13 +386,13 @@ var Tw2Curve = exports.Tw2Curve = function () {
         this.name = '';
     }
 
-    /**
-     * Initializes the Curve
-     */
-
-
     _createClass(Tw2Curve, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Curve
+         */
         value: function Initialize() {
             this.Sort();
         }
@@ -484,78 +486,76 @@ var Tw2Curve = exports.Tw2Curve = function () {
                 }
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {?number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {?number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {?string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {?number}
+         */
+
+
+        /**
+         * The curve's Key constructor
+         * @type {?Tw2CurveKey}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {?{ string: number}}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {?{ string: number}}
+         */
+
+
+        /**
+         * Curve types
+         * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
+         */
+
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return Tw2Curve;
-}();
-
-/**
- * The curve's key dimension
- * @type {?number}
- */
-
-
-Tw2Curve.inputDimension = null;
-
-/**
- * The curve's dimension
- * @type {?number}
- */
-Tw2Curve.outputDimension = null;
-
-/**
- * The curve's current value property
- * @type {?string}
- */
-Tw2Curve.valueProperty = null;
-
-/**
- * The curve's type
- * @type {?number}
- */
-Tw2Curve.curveType = null;
-
-/**
- * The curve's Key constructor
- * @type {?Tw2CurveKey}
- */
-Tw2Curve.Key = null;
-
-/**
- * Interpolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Interpolation = null;
-
-/**
- * Extrapolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Extrapolation = null;
-
-/**
- * Curve types
- * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
- */
-Tw2Curve.Type = {
+}(), _class2.inputDimension = null, _class2.outputDimension = null, _class2.valueProperty = null, _class2.curveType = null, _class2.Key = null, _class2.Interpolation = null, _class2.Extrapolation = null, _class2.Type = {
     CURVE: 1,
     CURVE2: 2,
     CURVE_MAYA: 3,
     CURVE_NO_KEYS: 4,
     SEQUENCER: 100,
     SEQUENCER2: 101
-};
-
-/**
- * Class globals
- * @type {*}
- */
-Tw2Curve.global = {
+}, _class2.global = {
     vec3_0: _global.vec3.create(),
     vec4_0: _global.vec4.create(),
     quat_0: _global.quat.create(),
     quat_1: _global.quat.create()
-};
+}, _temp);
 
 /***/ }),
 /* 3 */
@@ -649,7 +649,9 @@ exports.Tw2VectorParameter = exports.Tw2Parameter = undefined;
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
 
 
 var _global = __webpack_require__(0);
@@ -663,20 +665,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2Parameter base class
  *
- * @param {string} [name='']
  * @property {string|number} _id
  * @property {string} name
  * @property {Array<Function>} _onModified
  */
-var Tw2Parameter = exports.Tw2Parameter = function () {
+var Tw2Parameter = exports.Tw2Parameter = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     */
     function Tw2Parameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
         _classCallCheck(this, Tw2Parameter);
 
         this._id = _global.util.generateID();
-        this.name = name;
+        this.name = '';
         this._onModified = [];
+
+        this.name = name;
     }
 
     /**
@@ -793,6 +801,12 @@ var Tw2Parameter = exports.Tw2Parameter = function () {
             parameter.Copy(this, true);
             return parameter;
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }, {
         key: 'size',
         get: function get() {
@@ -801,15 +815,7 @@ var Tw2Parameter = exports.Tw2Parameter = function () {
     }]);
 
     return Tw2Parameter;
-}();
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2Parameter.constantBufferSize = 0;
+}(), _class.constantBufferSize = 0, _temp);
 
 /**
  * Tw2VectorParameter base class
@@ -823,14 +829,20 @@ Tw2Parameter.constantBufferSize = 0;
 var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
     _inherits(Tw2VectorParameter, _Tw2Parameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {Float32Array|Array} [value]
+     */
     function Tw2VectorParameter(name, value) {
         _classCallCheck(this, Tw2VectorParameter);
 
         var _this = _possibleConstructorReturn(this, (Tw2VectorParameter.__proto__ || Object.getPrototypeOf(Tw2VectorParameter)).call(this, name));
 
-        _this.value = new Float32Array(_this.size);
         _this.constantBuffer = null;
         _this.offset = null;
+        _this.value = new Float32Array(_this.size);
+
         if (value) _this.value.set(value);
         return _this;
     }
@@ -1003,14 +1015,6 @@ var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
 
     return Tw2VectorParameter;
 }(Tw2Parameter);
-
-/**
- * The parameter's constantBufferSize
- * @type {number}
- */
-
-
-Tw2VectorParameter.constantBufferSize = 0;
 
 /***/ }),
 /* 5 */
@@ -1618,6 +1622,8 @@ exports.Tw2CurveSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _curves = __webpack_require__(16);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1631,23 +1637,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @class
  */
-var Tw2CurveSequencer = exports.Tw2CurveSequencer = function (_Tw2Curve) {
+var Tw2CurveSequencer = exports.Tw2CurveSequencer = (_temp = _class = function (_Tw2Curve) {
     _inherits(Tw2CurveSequencer, _Tw2Curve);
 
     function Tw2CurveSequencer() {
         _classCallCheck(this, Tw2CurveSequencer);
 
-        return _possibleConstructorReturn(this, (Tw2CurveSequencer.__proto__ || Object.getPrototypeOf(Tw2CurveSequencer)).call(this));
+        return _possibleConstructorReturn(this, (Tw2CurveSequencer.__proto__ || Object.getPrototypeOf(Tw2CurveSequencer)).apply(this, arguments));
     }
-
-    /**
-     * Legacy sequencer sorting
-     * @param {Tw2CurveSequencer} sequencer
-     */
-
 
     _createClass(Tw2CurveSequencer, null, [{
         key: 'Sort',
+
+        /**
+         * Legacy sequencer sorting
+         * @param {Tw2CurveSequencer} sequencer
+         */
         value: function Sort(sequencer) {
             var curves = sequencer['functions'];
             if (curves && curves.length) {
@@ -1673,30 +1678,28 @@ var Tw2CurveSequencer = exports.Tw2CurveSequencer = function (_Tw2Curve) {
                 }
             }
         }
+
+        /**
+         * The sequencer's curve property names
+         * @type {?Array.<string>}
+         */
+
+
+        /**
+         * The sequencer's curve array
+         * @type {?string}
+         */
+
+
+        /**
+         * Operator types
+         * @type {null}
+         */
+
     }]);
 
     return Tw2CurveSequencer;
-}(_curves.Tw2Curve);
-
-/**
- * The sequencer's curve property names
- * @type {?Array.<string>}
- */
-
-
-Tw2CurveSequencer.childProperties = null;
-
-/**
- * The sequencer's curve array
- * @type {?string}
- */
-Tw2CurveSequencer.childArray = null;
-
-/**
- * Operator types
- * @type {null}
- */
-Tw2CurveSequencer.Operator = null;
+}(_curves.Tw2Curve), _class.childProperties = null, _class.childArray = null, _class.Operator = null, _temp);
 
 /***/ }),
 /* 8 */
@@ -1757,15 +1760,15 @@ var EveChild = exports.EveChild = (_temp = _class = function () {
         this.isEffectChild = true;
     }
 
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array<Tw2Resource>} out
-     */
-
-
     _createClass(EveChild, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the child's resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>} out
+         */
         value: function GetResources() {
             var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -1794,11 +1797,12 @@ var EveChild = exports.EveChild = (_temp = _class = function () {
          * Gets render batches
          * @param {number} mode
          * @param {Tw2BatchAccumulator} accumulator
+         * @param {Tw2PerObjectData} perObjectData
          */
 
     }, {
         key: 'GetBatches',
-        value: function GetBatches(mode, accumulator) {}
+        value: function GetBatches(mode, accumulator, perObjectData) {}
 
         /**
          * Class globals and scratch variables
@@ -1833,6 +1837,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveObjectSet = exports.EveObjectSetItem = undefined;
 
+var _class2, _temp;
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
 
 
@@ -1859,13 +1865,13 @@ var EveObjectSetItem = exports.EveObjectSetItem = function () {
         this._onModified = null;
     }
 
-    /**
-     * Fire on value changes
-     */
-
-
     _createClass(EveObjectSetItem, [{
         key: 'OnValueChanged',
+
+
+        /**
+         * Fire on value changes
+         */
         value: function OnValueChanged() {
             this._rebuildPending = true;
             if (this._onModified) this._onModified(this);
@@ -1888,7 +1894,7 @@ var EveObjectSetItem = exports.EveObjectSetItem = function () {
  */
 
 
-var EveObjectSet = exports.EveObjectSet = function () {
+var EveObjectSet = exports.EveObjectSet = (_temp = _class2 = function () {
     function EveObjectSet() {
         var _this = this;
 
@@ -1900,18 +1906,19 @@ var EveObjectSet = exports.EveObjectSet = function () {
         this.items = [];
         this._visibleItems = [];
         this._rebuildPending = false;
+
         this._onChildModified = function (item) {
             return _this.OnValueChanged(item);
         };
     }
 
-    /**
-     * Initializes the set
-     */
-
-
     _createClass(EveObjectSet, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the set
+         */
         value: function Initialize() {
             this.Rebuild();
         }
@@ -2097,31 +2104,29 @@ var EveObjectSet = exports.EveObjectSet = function () {
                 }
             }
         }
+
+        /**
+         * The object set's item
+         * @type {?Function}
+         */
+
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return EveObjectSet;
-}();
-
-/**
- * The object set's item
- * @type {?Function}
- */
-
-
-EveObjectSet.Item = null;
-
-/**
- * Class global and scratch variables
- * @type {{vec3_0, vec3_1, vec3_2}}
- */
-EveObjectSet.global = {
+}(), _class2.Item = null, _class2.global = {
     vec3_0: _global.vec3.create(),
     vec3_1: _global.vec3.create(),
     vec3_2: _global.vec3.create(),
     vec4_0: _global.vec4.create(),
     vec4_1: _global.vec4.create(),
     mat4_0: _global.mat4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 10 */
@@ -2231,14 +2236,14 @@ var Tw2Resource = exports.Tw2Resource = function () {
         this.doNotPurge = 0;
     }
 
-    /**
-     * Checks to see if the resource is loading
-     * @returns {boolean}
-     */
-
-
     _createClass(Tw2Resource, [{
         key: 'IsLoading',
+
+
+        /**
+         * Checks to see if the resource is loading
+         * @returns {boolean}
+         */
         value: function IsLoading() {
             this.KeepAlive();
             return this._isLoading;
@@ -2515,7 +2520,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveObject = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
 
 
 var _global = __webpack_require__(0);
@@ -2530,7 +2537,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} display
  * @class
  */
-var EveObject = exports.EveObject = function () {
+var EveObject = exports.EveObject = (_temp = _class = function () {
     function EveObject() {
         _classCallCheck(this, EveObject);
 
@@ -2539,13 +2546,13 @@ var EveObject = exports.EveObject = function () {
         this.display = true;
     }
 
-    /**
-     * Initializes the object
-     */
-
-
     _createClass(EveObject, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the object
+         */
         value: function Initialize() {}
 
         /**
@@ -2580,18 +2587,16 @@ var EveObject = exports.EveObject = function () {
     }, {
         key: 'GetBatches',
         value: function GetBatches(mode, accumulator) {}
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return EveObject;
-}();
-
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-
-
-EveObject.global = {
+}(), _class.global = {
     vec3_0: _global.vec3.create(),
     vec3_1: _global.vec3.create(),
     vec3_2: _global.vec3.create(),
@@ -2603,7 +2608,7 @@ EveObject.global = {
     mat4_0: _global.mat4.create(),
     mat4_1: _global.mat4.create(),
     mat4_2: _global.mat4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 14 */
@@ -2617,7 +2622,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2ParticleForce = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
 
 
 var _global = __webpack_require__(0);
@@ -2631,7 +2638,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {string} name
  * @class
  */
-var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
+var Tw2ParticleForce = exports.Tw2ParticleForce = (_temp = _class = function () {
     function Tw2ParticleForce() {
         _classCallCheck(this, Tw2ParticleForce);
 
@@ -2639,18 +2646,18 @@ var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
         this.name = '';
     }
 
-    /**
-     * Applies forces
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     * @param {number} dt
-     * @param {number} mass
-     */
-
-
     _createClass(Tw2ParticleForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * Applies forces
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         * @param {number} [dt]
+         * @param {number} [mass]
+         */
         value: function ApplyForce(position, velocity, force, dt, mass) {}
 
         /**
@@ -2661,22 +2668,20 @@ var Tw2ParticleForce = exports.Tw2ParticleForce = function () {
     }, {
         key: 'Update',
         value: function Update(dt) {}
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return Tw2ParticleForce;
-}();
-
-/**
- * Class globals
- * @type {*}
- */
-
-
-Tw2ParticleForce.global = {
+}(), _class.global = {
     vec3_0: _global.vec3.create(),
     vec3_1: _global.vec3.create(),
     vec4_0: _global.vec4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 15 */
@@ -3107,6 +3112,8 @@ exports.Tw2ParticleElementDeclaration = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _core = __webpack_require__(1);
 
 var _global = __webpack_require__(0);
@@ -3123,7 +3130,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} usedByGPU
  * @class
  */
-var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = function () {
+var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = (_temp = _class = function () {
     function Tw2ParticleElementDeclaration() {
         _classCallCheck(this, Tw2ParticleElementDeclaration);
 
@@ -3134,14 +3141,14 @@ var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = func
         this.usedByGPU = true;
     }
 
-    /**
-     * Gets the dimension of an element type
-     * @returns {number}
-     */
-
-
     _createClass(Tw2ParticleElementDeclaration, [{
         key: 'GetDimension',
+
+
+        /**
+         * Gets the dimension of an element type
+         * @returns {number}
+         */
         value: function GetDimension() {
             switch (this.elementType) {
                 case Tw2ParticleElementDeclaration.Type.LIFETIME:
@@ -3191,24 +3198,22 @@ var Tw2ParticleElementDeclaration = exports.Tw2ParticleElementDeclaration = func
 
             return new _core.Tw2VertexElement(usage, this.usageIndex, _global.device.gl.FLOAT, this.GetDimension());
         }
+
+        /**
+         * Particle element declaration types
+         * @type {{LIFETIME: number, POSITION: number, VELOCITY: number, MASS: number, CUSTOM: number}}
+         */
+
     }]);
 
     return Tw2ParticleElementDeclaration;
-}();
-
-/**
- * Particle element declaration types
- * @type {{LIFETIME: number, POSITION: number, VELOCITY: number, MASS: number, CUSTOM: number}}
- */
-
-
-Tw2ParticleElementDeclaration.Type = {
+}(), _class.Type = {
     LIFETIME: 0,
     POSITION: 1,
     VELOCITY: 2,
     MASS: 3,
     CUSTOM: 4
-};
+}, _temp);
 
 /***/ }),
 /* 18 */
@@ -3339,30 +3344,27 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
     _inherits(Tw2TextureRes, _Tw2Resource);
 
     function Tw2TextureRes() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2TextureRes);
 
-        var _this = _possibleConstructorReturn(this, (Tw2TextureRes.__proto__ || Object.getPrototypeOf(Tw2TextureRes)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.texture = null;
-        _this.isCube = false;
-        _this.images = [];
-        _this.width = 0;
-        _this.height = 0;
-        _this.hasMipMaps = false;
-        _this._facesLoaded = 0;
-        _this._currentSampler = 0;
-        _this._isAttached = false;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2TextureRes.__proto__ || Object.getPrototypeOf(Tw2TextureRes)).call.apply(_ref, [this].concat(args))), _this), _this.texture = null, _this.isCube = false, _this.images = [], _this.width = 0, _this.height = 0, _this.hasMipMaps = false, _this._facesLoaded = 0, _this._currentSampler = 0, _this._isAttached = false, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Prepares the resource
-     * @param {string} extension
-     */
-
 
     _createClass(Tw2TextureRes, [{
         key: 'Prepare',
+
+
+        /**
+         * Prepares the resource
+         * @param {string} extension
+         */
         value: function Prepare(extension) {
             var gl = _global.device.gl,
                 format = this.images[0]['ccpGLFormat'] ? this.images[0]['ccpGLFormat'] : gl.RGBA;
@@ -4655,6 +4657,8 @@ exports.Tw2Effect = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2TextureParameter = __webpack_require__(44);
@@ -4676,7 +4680,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} autoParameter
  * @class
  */
-var Tw2Effect = exports.Tw2Effect = function () {
+var Tw2Effect = exports.Tw2Effect = (_temp = _class = function () {
     function Tw2Effect() {
         _classCallCheck(this, Tw2Effect);
 
@@ -4692,13 +4696,13 @@ var Tw2Effect = exports.Tw2Effect = function () {
         this.shader = null;
     }
 
-    /**
-     * Initializes the Tw2Effect
-     */
-
-
     _createClass(Tw2Effect, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Tw2Effect
+         */
         value: function Initialize() {
             if (this.effectFilePath !== '') {
                 this.effectFilePath = this.effectFilePath.toLowerCase();
@@ -5278,18 +5282,16 @@ var Tw2Effect = exports.Tw2Effect = function () {
             effect.Initialize();
             return effect;
         }
+
+        /**
+         * Constant parameters which are ignored when creating an effect
+         * @type {string[]}
+         */
+
     }]);
 
     return Tw2Effect;
-}();
-
-/**
- * Constant parameters which are ignored when creating an effect
- * @type {string[]}
- */
-
-
-Tw2Effect.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS', 'PerObjectPSInt'];
+}(), _class.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS', 'PerObjectPSInt'], _temp);
 
 /***/ }),
 /* 24 */
@@ -5360,14 +5362,14 @@ var Tw2RenderBatch = exports.Tw2RenderBatch = function () {
         this.perObjectData = null;
     }
 
-    /**
-     * Commits the batch
-     * @param {string} technique - technique name
-     */
-
-
     _createClass(Tw2RenderBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the batch
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {}
     }]);
 
@@ -5411,26 +5413,27 @@ var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2RenderBatch) {
     _inherits(Tw2GeometryBatch, _Tw2RenderBatch);
 
     function Tw2GeometryBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2GeometryBatch);
 
-        var _this = _possibleConstructorReturn(this, (Tw2GeometryBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.geometryRes = null;
-        _this.meshIx = 0;
-        _this.start = 0;
-        _this.count = 1;
-        _this.effect = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2GeometryBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryBatch)).call.apply(_ref, [this].concat(args))), _this), _this.geometryRes = null, _this.meshIx = 0, _this.start = 0, _this.count = 1, _this.effect = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the Tw2InstancedMeshBatch for rendering
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(Tw2GeometryBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the Tw2InstancedMeshBatch for rendering
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             if (this.geometryRes && this.effect) {
                 this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, this.effect, technique);
@@ -5585,13 +5588,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Stores raw data for {@link Tw2PerObjectData}
  *
- * @param {Array} [declarations] An optional array containing raw data declarations
  * @property {number} nextOffset
  * @property {Float32Array} data
  * @property {*} elements
  * @class
  */
 var Tw2RawData = exports.Tw2RawData = function () {
+
+    /**
+     * Constructor
+     * @param {Array} [declarations] An optional array containing raw data declarations
+     */
     function Tw2RawData(declarations) {
         _classCallCheck(this, Tw2RawData);
 
@@ -5599,9 +5606,7 @@ var Tw2RawData = exports.Tw2RawData = function () {
         this.data = null;
         this.elements = {};
 
-        if (declarations) {
-            this.DeclareFromObject(declarations);
-        }
+        if (declarations) this.DeclareFromObject(declarations);
     }
 
     /**
@@ -5776,7 +5781,7 @@ exports.EveStation = exports.EveSpaceObject = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class, _temp;
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -5793,96 +5798,82 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * EveSpaceObject
  *
- * @parameter {String} name
- * @parameter {boolean} display                             - Enables/ disables visibility
- * @parameter {{}} visible                                  - Visibility options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
- * @parameter {boolean} visible.children                    - Enables/ disables child visibility
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
- * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
- * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
- * @parameter {Number} lod
- * @parameter {Tw2Mesh} mesh
- * @parameter {Array.<EveLocator>} locators
- * @parameter {Array.<EveSpriteSet>} spriteSets
- * @parameter {Array.<EveTurretSet>} turretSets
- * @parameter {Array.<EveSpaceObjectDecal>} decals
- * @parameter {Array.<EveSpotlightSet>} spotlightSets
- * @parameter {Array.<EvePlaneSet>} planeSets
- * @parameter {Array.<Tw2CurveSet>} curveSets
- * @parameter {Array.<EveCurveLineSet>} lineSets
- * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
- * @parameter {Array.<{}>} children
- * @parameter {vec3} boundingSphereCenter
- * @parameter {Number} boundingSphereRadius
- * @parameter {vec3} shapeEllipsoidRadius
- * @parameter {vec3} shapeEllipsoidCenter
- * @parameter {mat4} transform
- * @parameter {Tw2AnimationController} animation
- * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {Tw2PerObjectData} _perObjectData
+ * @property {String} name
+ * @property {boolean} display                             - Enables/ disables visibility
+ * @property {{}} visible                                  - Visibility options for the space object's elements
+ * @property {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @property {boolean} visible.children                    - Enables/ disables child visibility
+ * @property {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @property {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @property {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @property {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @property {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @property {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @property {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @property {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @property {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
+ * @property {Number} lod
+ * @property {Tw2Mesh} mesh
+ * @property {Array.<EveLocator>} locators
+ * @property {Array.<EveSpriteSet>} spriteSets
+ * @property {Array.<EveTurretSet>} turretSets
+ * @property {Array.<EveSpaceObjectDecal>} decals
+ * @property {Array.<EveSpotlightSet>} spotlightSets
+ * @property {Array.<EvePlaneSet>} planeSets
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {Array.<EveCurveLineSet>} lineSets
+ * @property {Array.<EveMeshOverlayEffect>} overlayEffects
+ * @property {Array.<{}>} children
+ * @property {vec3} boundingSphereCenter
+ * @property {Number} boundingSphereRadius
+ * @property {vec3} shapeEllipsoidRadius
+ * @property {vec3} shapeEllipsoidCenter
+ * @property {mat4} transform
+ * @property {Tw2AnimationController} animation
+ * @property {number} killCount                            - number of kills to show on kill counter decals
+ * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveSpaceObject = exports.EveSpaceObject = (_temp = _class = function (_EveObject) {
+var EveSpaceObject = exports.EveSpaceObject = (_temp2 = _class = function (_EveObject) {
     _inherits(EveSpaceObject, _EveObject);
 
     function EveSpaceObject() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveSpaceObject);
 
-        var _this = _possibleConstructorReturn(this, (EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.visible = {};
-        _this.visible.mesh = true;
-        _this.visible.children = true;
-        _this.visible.effectChildren = true;
-        _this.visible.planeSets = true;
-        _this.visible.spotlightSets = true;
-        _this.visible.decals = true;
-        _this.visible.spriteSets = true;
-        _this.visible.overlayEffects = true;
-        _this.visible.lineSets = true;
-        _this.visible.killmarks = true;
-        _this.visible.customMasks = true;
-
-        _this.mesh = null;
-        _this.animation = new _core.Tw2AnimationController();
-        _this.locators = [];
-        _this.spriteSets = [];
-        _this.turretSets = [];
-        _this.decals = [];
-        _this.spotlightSets = [];
-        _this.planeSets = [];
-        _this.curveSets = [];
-        _this.lineSets = [];
-        _this.overlayEffects = [];
-        _this.children = [];
-        _this.effectChildren = [];
-        _this.customMasks = [];
-        _this.lod = 3;
-        _this.killCount = 0;
-        _this.transform = _global.mat4.create();
-        _this.boundingSphereCenter = _global.vec3.create();
-        _this.boundingSphereRadius = 0;
-        _this.shapeEllipsoidRadius = _global.vec3.create();
-        _this.shapeEllipsoidCenter = _global.vec3.create();
-
-        _this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObject.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveSpaceObject.__proto__ || Object.getPrototypeOf(EveSpaceObject)).call.apply(_ref, [this].concat(args))), _this), _this.visible = {
+            mesh: true,
+            children: true,
+            effectChildren: true,
+            planeSets: true,
+            spotlightSets: true,
+            decals: true,
+            spriteSets: true,
+            overlayEffects: true,
+            lineSets: true,
+            killmarks: true,
+            customMasks: true,
+            turretSets: true,
+            boosters: true
+        }, _this.mesh = null, _this.animation = new _core.Tw2AnimationController(), _this.locators = [], _this.spriteSets = [], _this.turretSets = [], _this.decals = [], _this.spotlightSets = [], _this.planeSets = [], _this.curveSets = [], _this.lineSets = [], _this.overlayEffects = [], _this.children = [], _this.effectChildren = [], _this.customMasks = [], _this.lod = 3, _this.killCount = 0, _this.transform = _global.mat4.create(), _this.boundingSphereCenter = _global.vec3.create(), _this.boundingSphereRadius = 0, _this.shapeEllipsoidRadius = _global.vec3.create(), _this.shapeEllipsoidCenter = _global.vec3.create(), _this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObject.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the EveSpaceObject
-     */
-
 
     _createClass(EveSpaceObject, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the EveSpaceObject
+         */
         value: function Initialize() {
             if (this.mesh) {
                 this.animation.SetGeometryResource(this.mesh.geometryResource);
@@ -6275,7 +6266,7 @@ var EveSpaceObject = exports.EveSpaceObject = (_temp = _class = function (_EveOb
 }(_EveObject2.EveObject), _class.perObjectData = {
     VSData: [['WorldMat', 16], ['WorldMatLast', 16], ['Shipdata', 4, [0, 1, 0, -10]], ['Clipdata1', 4], ['EllipsoidRadii', 4], ['EllipsoidCenter', 4], ['CustomMaskMatrix0', 16, _global.mat4.identity([])], ['CustomMaskMatrix1', 16, _global.mat4.identity([])], ['CustomMaskData0', 4], ['CustomMaskData1', 4], ['JointMat', 696]],
     PSData: [['Shipdata', 4, [0, 1, 0, 1]], ['Clipdata1', 4], ['Clipdata2', 4], ['ShLighting', 4 * 7], ['CustomMaskMaterialID0', 4], ['CustomMaskMaterialID1', 4], ['CustomMaskTarget0', 4], ['CustomMaskTarget1', 4]]
-}, _temp);
+}, _temp2);
 exports.EveStation = EveSpaceObject;
 
 /***/ }),
@@ -6314,13 +6305,13 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
         this.particleSystem = null;
     }
 
-    /**
-     * Initializes the particle emitter
-     */
-
-
     _createClass(Tw2ParticleEmitter, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the particle emitter
+         */
         value: function Initialize() {}
 
         /**
@@ -6348,7 +6339,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2ParticleAttributeGenerator = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /* eslint no-unused-vars:0 */
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp; /* eslint no-unused-vars:0 */
 
 
 var _global = __webpack_require__(0);
@@ -6362,7 +6355,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {string} name
  * @class
  */
-var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = function () {
+var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = (_temp = _class = function () {
     function Tw2ParticleAttributeGenerator() {
         _classCallCheck(this, Tw2ParticleAttributeGenerator);
 
@@ -6370,15 +6363,15 @@ var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = func
         this.name = '';
     }
 
-    /**
-     * Binds a particle system element to the generator
-     * @param {Tw2ParticleSystem} ps
-     * @returns {boolean} True if successfully bound
-     */
-
-
     _createClass(Tw2ParticleAttributeGenerator, [{
         key: 'Bind',
+
+
+        /**
+         * Binds a particle system element to the generator
+         * @param {Tw2ParticleSystem} ps
+         * @returns {boolean} True if successfully bound
+         */
         value: function Bind(ps) {
             return false;
         }
@@ -6393,14 +6386,18 @@ var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = func
     }, {
         key: 'Generate',
         value: function Generate(position, velocity, index) {}
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return Tw2ParticleAttributeGenerator;
-}();
-
-Tw2ParticleAttributeGenerator.global = {
+}(), _class.global = {
     vec3_0: _global.vec3.create()
-};
+}, _temp);
 
 /***/ }),
 /* 33 */
@@ -9588,7 +9585,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2LoadingObject
  *
- * @param {string} [path]                   - The resource's path
  * @property {?string} _redContents         - object's .red file xml contents
  * @property {Number} _inPrepare            - the amount of child objects to prepare
  * @property {Array.<Object>} _objects      - the child objects to prepare
@@ -9600,28 +9596,29 @@ var Tw2LoadingObject = exports.Tw2LoadingObject = function (_Tw2Resource) {
     _inherits(Tw2LoadingObject, _Tw2Resource);
 
     function Tw2LoadingObject() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2LoadingObject);
 
-        var _this = _possibleConstructorReturn(this, (Tw2LoadingObject.__proto__ || Object.getPrototypeOf(Tw2LoadingObject)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.path = '';
-        _this._redContents = null;
-        _this._inPrepare = null;
-        _this._objects = [];
-        _this._constructor = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2LoadingObject.__proto__ || Object.getPrototypeOf(Tw2LoadingObject)).call.apply(_ref, [this].concat(args))), _this), _this.path = '', _this._redContents = null, _this._inPrepare = null, _this._objects = [], _this._constructor = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Adds a child object
-     * @param {Function} onResolved
-     * @param {Function} onRejected
-     * @returns {Object}
-     */
-
 
     _createClass(Tw2LoadingObject, [{
         key: 'AddObject',
+
+
+        /**
+         * Adds a child object
+         * @param {Function} onResolved
+         * @param {Function} onRejected
+         * @returns {Object}
+         */
         value: function AddObject(onResolved, onRejected) {
             if (this.HasErrors()) {
                 if (onRejected) {
@@ -9728,6 +9725,8 @@ exports.Tw2ObjectReader = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2BinaryReader = __webpack_require__(43);
@@ -9739,7 +9738,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2ObjectReader
  *
- * @param {string} xmlNode
  * @property {string} xmlNode
  * @property {?Array} _inputStack
  * @property {?Array} _initializeObjects
@@ -9749,11 +9747,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {?number} _start
  * @class
  */
-var Tw2ObjectReader = exports.Tw2ObjectReader = function () {
+var Tw2ObjectReader = exports.Tw2ObjectReader = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     * @param {string} xmlNode
+     */
     function Tw2ObjectReader(xmlNode) {
         _classCallCheck(this, Tw2ObjectReader);
 
-        this.xmlNode = xmlNode;
+        this.xmlNode = null;
         this._inputStack = null;
         this._initializeObjects = null;
         this._ids = {};
@@ -9761,7 +9764,10 @@ var Tw2ObjectReader = exports.Tw2ObjectReader = function () {
         this._stringTable = null;
         this._start = null;
 
-        if (xmlNode) this.Initialize();
+        if (xmlNode) {
+            this.xmlNode = xmlNode;
+            if (xmlNode) this.Initialize();
+        }
     }
 
     /**
@@ -10021,36 +10027,46 @@ var Tw2ObjectReader = exports.Tw2ObjectReader = function () {
             }
             return result;
         }
+
+        /**
+         * Enables debug mode
+         * @type {boolean}
+         */
+
+
+        /**
+         * ID Bit
+         * @type {number}
+         */
+
+
+        /**
+         * Reference Bit
+         * @type {number}
+         */
+
+
+        /**
+         * Raw element types
+         * @type {{}}
+         */
+
+
+        /**
+         * Element sizes
+         * @type {{SMALL: number, MEDIUM: number, LARGE: number}}
+         */
+
+
+        /**
+         * Typed array types
+         * @type {{number:Function}}
+         */
+
     }]);
 
     return Tw2ObjectReader;
-}();
-
-/**
- * Enables debug mode
- * @type {boolean}
- */
-
-
-Tw2ObjectReader.DEBUG_ENABLED = false;
-
-/**
- * ID Bit
- * @type {number}
- */
-Tw2ObjectReader.ID_BIT = 1 << 6;
-
-/**
- * Reference Bit
- * @type {number}
- */
-Tw2ObjectReader.REFERENCE_BIT = 1 << 7;
-
-/**
- * Raw element types
- * @type {{}}
- */
-Tw2ObjectReader.ElementRawType = {
+}(), _class.DEBUG_ENABLED = false, _class.ID_BIT = 1 << 6, _class.REFERENCE_BIT = 1 << 7, _class.ElementRawType = {
     'NULL': 0,
     'BOOL': 1,
     'INT': 2,
@@ -10062,70 +10078,11 @@ Tw2ObjectReader.ElementRawType = {
     'OBJECT': 8,
     'TYPED_ARRAY': 9,
     'TYPED_MAPPING': 10
-};
-
-/**
- * Element sizes
- * @type {{SMALL: number, MEDIUM: number, LARGE: number}}
- */
-Tw2ObjectReader.ElementSize = {
+}, _class.ElementSize = {
     'SMALL': 0,
     'MEDIUM': 1 << 4,
     'LARGE': 2 << 4
-};
-
-/**
- * Element types
- * @type {{}}
- */
-Tw2ObjectReader.ElementTypes = {
-    'NULL': Tw2ObjectReader.ElementRawType.NULL | Tw2ObjectReader.ElementSize.SMALL,
-
-    'BOOL': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.SMALL,
-    'FALSE': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.MEDIUM,
-    'TRUE': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.LARGE,
-
-    'INT8': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.SMALL,
-    'UINT8': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.SMALL,
-    'INT16': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'UINT16': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'INT32': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.LARGE,
-    'UINT32': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.LARGE,
-
-    'FLOAT16': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.SMALL,
-    'FLOAT32': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'FLOAT64': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.LARGE,
-
-    'SHORT_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.LARGE
-};
-
-/**
- * Typed array types
- * @type {{number:Function}}
- */
-Tw2ObjectReader.TypedArrays = {
+}, _class.TypedArrays = {
     2: Int8Array,
     3: Uint8Array,
     18: Int16Array,
@@ -10135,6 +10092,57 @@ Tw2ObjectReader.TypedArrays = {
     4: Float32Array,
     20: Float32Array,
     36: Float64Array
+}, _temp);
+
+
+var Raw = Tw2ObjectReader.ElementRawType,
+    Size = Tw2ObjectReader.ElementSize;
+
+/**
+ * Element types
+ * @type {{}}
+ */
+Tw2ObjectReader.ElementTypes = {
+    'NULL': Raw.NULL | Size.SMALL,
+
+    'BOOL': Raw.BOOL | Size.SMALL,
+    'FALSE': Raw.BOOL | Size.MEDIUM,
+    'TRUE': Raw.BOOL | Size.LARGE,
+
+    'INT8': Raw.INT | Size.SMALL,
+    'UINT8': Raw.UINT | Size.SMALL,
+    'INT16': Raw.INT | Size.MEDIUM,
+    'UINT16': Raw.UINT | Size.MEDIUM,
+    'INT32': Raw.INT | Size.LARGE,
+    'UINT32': Raw.UINT | Size.LARGE,
+
+    'FLOAT16': Raw.FLOAT | Size.SMALL,
+    'FLOAT32': Raw.FLOAT | Size.MEDIUM,
+    'FLOAT64': Raw.FLOAT | Size.LARGE,
+
+    'SHORT_STRING': Raw.STRING | Size.SMALL,
+    'MEDIUM_STRING': Raw.STRING | Size.MEDIUM,
+    'LARGE_STRING': Raw.STRING | Size.LARGE,
+
+    'SHORT_ARRAY': Raw.ARRAY | Size.SMALL,
+    'MEDIUM_ARRAY': Raw.ARRAY | Size.MEDIUM,
+    'LARGE_ARRAY': Raw.ARRAY | Size.LARGE,
+
+    'SHORT_MAPPING': Raw.MAPPING | Size.SMALL,
+    'MEDIUM_MAPPING': Raw.MAPPING | Size.MEDIUM,
+    'LARGE_MAPPING': Raw.MAPPING | Size.LARGE,
+
+    'SHORT_OBJECT': Raw.OBJECT | Size.SMALL,
+    'MEDIUM_OBJECT': Raw.OBJECT | Size.MEDIUM,
+    'LARGE_OBJECT': Raw.OBJECT | Size.LARGE,
+
+    'SHORT_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.SMALL,
+    'MEDIUM_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.MEDIUM,
+    'LARGE_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.LARGE,
+
+    'SHORT_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.SMALL,
+    'MEDIUM_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.MEDIUM,
+    'LARGE_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.LARGE
 };
 
 /***/ }),
@@ -10155,14 +10163,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2BinaryReader
  *
- * @param {*} data
+ * @property {*} data
+ * @property {number} cursor
  */
 var Tw2BinaryReader = exports.Tw2BinaryReader = function () {
+
+    /**
+     * Constructor
+     * @param {*} data
+     */
     function Tw2BinaryReader(data) {
         _classCallCheck(this, Tw2BinaryReader);
 
-        this.data = data;
+        this.data = null;
         this.cursor = 0;
+
+        this.data = data;
     }
 
     /**
@@ -10314,6 +10330,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _sampler = __webpack_require__(24);
@@ -10331,8 +10349,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2TextureParameter
  *
- * @param {string} [name=''] - Name of the texture parameter
- * @param {string} [texturePath=''] - The texture's resource path
  * @property {string} name
  * @property {boolean} useAllOverrides
  * @property {number} addressUMode
@@ -10345,18 +10361,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2SamplerState} _sampler
  * @class
  */
-var Tw2TextureParameter = exports.Tw2TextureParameter = function (_Tw2Parameter) {
+var Tw2TextureParameter = exports.Tw2TextureParameter = (_temp = _class = function (_Tw2Parameter) {
     _inherits(Tw2TextureParameter, _Tw2Parameter);
 
-    function Tw2TextureParameter() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-        var texturePath = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
+    /**
+     * Constructor
+     * @param {string} [name]        - Name of the texture parameter
+     * @param {string} [texturePath] - The texture's resource path
+     */
+    function Tw2TextureParameter(name, texturePath) {
         _classCallCheck(this, Tw2TextureParameter);
 
         var _this = _possibleConstructorReturn(this, (Tw2TextureParameter.__proto__ || Object.getPrototypeOf(Tw2TextureParameter)).call(this, name));
 
-        _this.resourcePath = texturePath;
+        _this.resourcePath = '';
         _this.useAllOverrides = false;
         _this.addressUMode = 1;
         _this.addressVMode = 1;
@@ -10367,7 +10385,11 @@ var Tw2TextureParameter = exports.Tw2TextureParameter = function (_Tw2Parameter)
         _this.textureRes = null;
         _this._sampler = null;
 
-        if (texturePath) _this.Initialize();
+
+        if (texturePath) {
+            _this.resourcePath = texturePath;
+            _this.Initialize();
+        }
         return _this;
     }
 
@@ -10637,24 +10659,23 @@ var Tw2TextureParameter = exports.Tw2TextureParameter = function (_Tw2Parameter)
         value: function isValue(a) {
             return _global.util.isString(a);
         }
+
+        /**
+         * The texture parameter's override properties
+         * @type {string[]}
+         */
+
     }]);
 
     return Tw2TextureParameter;
-}(_Tw2Parameter2.Tw2Parameter);
+}(_Tw2Parameter2.Tw2Parameter), _class.overrideProperties = ['useAllOverrides', 'addressUMode', 'addressVMode', 'addressWMode', 'filterMode', 'mipFilterMode', 'maxAnisotropy'], _temp);
 
 /**
  * Alias for {@link Tw2TextureParameter.SetTexturePath}
  * @type {Tw2TextureParameter.SetTexturePath}
  */
 
-
 Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
-
-/**
- * The texture parameter's override properties
- * @type {string[]}
- */
-Tw2TextureParameter.overrideProperties = ['useAllOverrides', 'addressUMode', 'addressVMode', 'addressWMode', 'filterMode', 'mipFilterMode', 'maxAnisotropy'];
 
 /***/ }),
 /* 45 */
@@ -10669,6 +10690,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2SamplerState = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -10691,32 +10714,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} hash
  * @class
  */
-var Tw2SamplerState = exports.Tw2SamplerState = function () {
+var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
     function Tw2SamplerState() {
         _classCallCheck(this, Tw2SamplerState);
 
-        var gl = _global.device.gl;
         this.name = '';
         this.registerIndex = 0;
-        this.minFilter = gl.LINEAR;
-        this.maxFilter = gl.LINEAR;
-        this.minFilterNoMips = gl.LINEAR;
-        this.addressU = gl.REPEAT;
-        this.addressV = gl.REPEAT;
-        this.addressW = gl.REPEAT;
+        this.minFilter = _global.device.gl.LINEAR;
+        this.maxFilter = _global.device.gl.LINEAR;
+        this.minFilterNoMips = _global.device.gl.LINEAR;
+        this.addressU = _global.device.gl.REPEAT;
+        this.addressV = _global.device.gl.REPEAT;
+        this.addressW = _global.device.gl.REPEAT;
         this.anisotropy = 1;
-        this.samplerType = gl.TEXTURE_2D;
+        this.samplerType = _global.device.gl.TEXTURE_2D;
         this.isVolume = false;
         this.hash = 0;
     }
 
-    /**
-     * Computes the sampler hash
-     */
-
-
     _createClass(Tw2SamplerState, [{
         key: 'ComputeHash',
+
+
+        /**
+         * Computes the sampler hash
+         */
         value: function ComputeHash() {
             this.hash = 2166136261;
             this.hash *= 16777619;
@@ -10753,13 +10775,23 @@ var Tw2SamplerState = exports.Tw2SamplerState = function () {
         }
 
         /**
-         * Gets the current filter mode
-         * @returns {number}
+         * Filter modes
+         */
+
+
+        /**
+         * Mip filter modes
          */
 
     }, {
-        key: 'GetFilterMode',
-        value: function GetFilterMode() {
+        key: 'filterMode',
+
+
+        /**
+         * Gets the current filter mode
+         * @returns {number}
+         */
+        get: function get() {
             return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
         }
 
@@ -10769,36 +10801,24 @@ var Tw2SamplerState = exports.Tw2SamplerState = function () {
          */
 
     }, {
-        key: 'GetMipFilterMode',
-        value: function GetMipFilterMode() {
+        key: 'mipFilterMode',
+        get: function get() {
             return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
         }
     }]);
 
     return Tw2SamplerState;
-}();
-
-/**
- * Filter modes
- */
-
-
-Tw2SamplerState.FilterMode = {
+}(), _class.FilterMode = {
     9728: 1,
     9729: 2
-};
-
-/**
- * Mip filter modes
- */
-Tw2SamplerState.MipFilterMode = {
+}, _class.MipFilterMode = {
     9728: 0,
     9729: 0,
     9984: 1,
     9985: 1,
     9986: 2,
     9987: 2
-};
+}, _temp);
 
 /***/ }),
 /* 46 */
@@ -10816,11 +10836,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2VertexElement
  *
- * @param {number} usage
- * @param {number} usageIndex
- * @param {number} type
- * @param {number} elements
- * @param {number} [offset=0]
  * @property {number} usage
  * @property {number} usageIndex
  * @property {number} type
@@ -10830,18 +10845,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property customSetter
  * @class
  */
-var Tw2VertexElement = exports.Tw2VertexElement = function Tw2VertexElement(usage, usageIndex, type, elements) {
+var Tw2VertexElement =
+
+/**
+ * Constructor
+ * @param {number} usage
+ * @param {number} usageIndex
+ * @param {number} type
+ * @param {number} elements
+ * @param {number} [offset=0]
+ */
+exports.Tw2VertexElement = function Tw2VertexElement(usage, usageIndex, type, elements) {
     var offset = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
 
     _classCallCheck(this, Tw2VertexElement);
+
+    this.usage = null;
+    this.usageIndex = null;
+    this.type = null;
+    this.elements = null;
+    this.offset = 0;
+    this.location = null;
+    this.customSetter = null;
 
     this.usage = usage;
     this.usageIndex = usageIndex;
     this.type = type;
     this.elements = elements;
     this.offset = offset;
-    this.location = null;
-    this.customSetter = null;
 };
 
 /***/ }),
@@ -10867,21 +10898,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2PerObjectData
  *
- * @param {RawDataObject} [rawDataObject]
  * @property {?Tw2RawData} perObjectVSData - Per object vertex shader data
  * @property {?Tw2RawData} perObjectPSData - Per object pixel shader data
  * @class
  */
 var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
+
+    /**
+     * Constructor
+     * @param {RawDataObject} [rawDataObject]
+     */
     function Tw2PerObjectData(rawDataObject) {
         _classCallCheck(this, Tw2PerObjectData);
 
         this.perObjectVSData = null;
         this.perObjectPSData = null;
 
-        if (rawDataObject) {
-            this.DeclareFromObject(rawDataObject);
-        }
+        if (rawDataObject) this.DeclareFromObject(rawDataObject);
     }
 
     /**
@@ -10906,7 +10939,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 
         /**
          * Defines and creates raw data from an object
-         * @param {RawDataObject} rawDataObject
+         * @param {RawDataObject} [rawDataObject={}]
          */
 
     }, {
@@ -11119,13 +11152,14 @@ var Tw2Mesh = exports.Tw2Mesh = function () {
         this._id = _global.util.generateID();
         this.name = '';
         this.display = true;
-        this.visible = {};
-        this.visible.opaqueAreas = true;
-        this.visible.transparentAreas = true;
-        this.visible.additiveAreas = true;
-        this.visible.pickableAreas = true;
-        this.visible.decalAreas = true;
-        this.visible.depthAreas = true;
+        this.visible = {
+            opaqueAreas: true,
+            transparentAreas: true,
+            additiveAreas: true,
+            pickableAreas: true,
+            decalAreas: true,
+            depthAreas: true
+        };
         this.opaqueAreas = [];
         this.transparentAreas = [];
         this.additiveAreas = [];
@@ -11138,13 +11172,13 @@ var Tw2Mesh = exports.Tw2Mesh = function () {
         this.geometryResource = null;
     }
 
-    /**
-     * Initializes the Tw2Mesh
-     */
-
-
     _createClass(Tw2Mesh, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Tw2Mesh
+         */
         value: function Initialize() {
             if (this.geometryResPath !== '') {
                 this.geometryResource = _global.resMan.GetResource(this.geometryResPath);
@@ -11276,6 +11310,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2MeshArea = undefined;
 
+var _class, _temp;
+
 var _batch = __webpack_require__(18);
 
 var _global = __webpack_require__(0);
@@ -11293,7 +11329,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} display
  * @class
  */
-var Tw2MeshArea = exports.Tw2MeshArea = function Tw2MeshArea() {
+var Tw2MeshArea = exports.Tw2MeshArea = (_temp = _class = function Tw2MeshArea() {
   _classCallCheck(this, Tw2MeshArea);
 
   this._id = _global.util.generateID();
@@ -11303,15 +11339,13 @@ var Tw2MeshArea = exports.Tw2MeshArea = function Tw2MeshArea() {
   this.index = 0;
   this.count = 1;
   this.display = true;
-};
+}
 
 /**
  * Render Batch Constructor
  * @type {Tw2RenderBatch}
  */
-
-
-Tw2MeshArea.batchType = _batch.Tw2GeometryBatch;
+, _class.batchType = _batch.Tw2GeometryBatch, _temp);
 
 /***/ }),
 /* 51 */
@@ -11353,14 +11387,14 @@ var Tw2Animation = exports.Tw2Animation = function () {
         this.trackGroups = [];
     }
 
-    /**
-     * Checks to see if the animation has finished playing
-     * @return {boolean}
-     */
-
-
     _createClass(Tw2Animation, [{
         key: "IsFinished",
+
+
+        /**
+         * Checks to see if the animation has finished playing
+         * @return {boolean}
+         */
         value: function IsFinished() {
             return !this.cycle && this.time >= this.animationRes.duration;
         }
@@ -11460,7 +11494,7 @@ Object.keys(_Tw2VideoRes).forEach(function (key) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Tw2Bone = undefined;
 
@@ -11478,12 +11512,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
-    _classCallCheck(this, Tw2Bone);
+  _classCallCheck(this, Tw2Bone);
 
-    this.boneRes = null;
-    this.localTransform = _global.mat4.create();
-    this.worldTransform = _global.mat4.create();
-    this.offsetTransform = _global.mat4.create();
+  this.boneRes = null;
+  this.localTransform = _global.mat4.create();
+  this.worldTransform = _global.mat4.create();
+  this.offsetTransform = _global.mat4.create();
 };
 
 /***/ }),
@@ -11494,7 +11528,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11508,11 +11542,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2Model = exports.Tw2Model = function Tw2Model() {
-    _classCallCheck(this, Tw2Model);
+  _classCallCheck(this, Tw2Model);
 
-    this.modelRes = null;
-    this.bones = [];
-    this.bonesByName = {};
+  this.modelRes = null;
+  this.bones = [];
+  this.bonesByName = {};
 };
 
 /***/ }),
@@ -11523,7 +11557,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11536,10 +11570,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2Track = exports.Tw2Track = function Tw2Track() {
-    _classCallCheck(this, Tw2Track);
+  _classCallCheck(this, Tw2Track);
 
-    this.trackRes = null;
-    this.bone = null;
+  this.trackRes = null;
+  this.bone = null;
 };
 
 /***/ }),
@@ -11550,7 +11584,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11564,11 +11598,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
-    _classCallCheck(this, Tw2TrackGroup);
+  _classCallCheck(this, Tw2TrackGroup);
 
-    this.trackGroupRes = null;
-    this.model = null;
-    this.transformTracks = [];
+  this.trackGroupRes = null;
+  this.model = null;
+  this.transformTracks = [];
 };
 
 /***/ }),
@@ -11637,16 +11671,11 @@ var Tw2PostEffect = exports.Tw2PostEffect = (_temp = _class = function () {
         this.items = [];
         this._visibleItems = [];
         this._rebuildPending = true;
+
         this._onChildModified = function (item) {
             return _this.OnValueChanged(item);
         };
     }
-
-    /**
-     * Alias for items
-     * @returns {Array}
-     */
-
 
     _createClass(Tw2PostEffect, [{
         key: 'OnValueChanged',
@@ -11998,6 +12027,12 @@ var Tw2PostEffect = exports.Tw2PostEffect = (_temp = _class = function () {
 
     }, {
         key: 'steps',
+
+
+        /**
+         * Alias for items
+         * @returns {Array}
+         */
         get: function get() {
             return this.items;
         }
@@ -12082,26 +12117,28 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
         this._renderBuffer = null;
     }
 
-    /**
-     * Destroys the render target's webgl buffers and textures
-     */
-
-
     _createClass(Tw2RenderTarget, [{
         key: 'Destroy',
+
+
+        /**
+         * Destroys the render target's webgl buffers and textures
+         */
         value: function Destroy() {
+            var gl = _global.device.gl;
+
             if (this.texture) {
-                _global.device.gl.deleteTexture(this.texture.texture);
+                gl.deleteTexture(this.texture.texture);
                 this.texture = null;
             }
 
             if (this._renderBuffer) {
-                _global.device.gl.deleteRenderbuffer(this._renderBuffer);
+                gl.deleteRenderbuffer(this._renderBuffer);
                 this._renderBuffer = null;
             }
 
             if (this._frameBuffer) {
-                _global.device.gl.deleteFramebuffer(this._frameBuffer);
+                gl.deleteFramebuffer(this._frameBuffer);
                 this._frameBuffer = null;
             }
         }
@@ -12117,35 +12154,37 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
     }, {
         key: 'Create',
         value: function Create(width, height, hasDepth) {
+            var gl = _global.device.gl;
+
             this.Destroy();
             this.texture = new _Tw2TextureRes.Tw2TextureRes();
-            this.texture.Attach(_global.device.gl.createTexture());
+            this.texture.Attach(gl.createTexture());
 
-            this._frameBuffer = _global.device.gl.createFramebuffer();
-            _global.device.gl.bindFramebuffer(_global.device.gl.FRAMEBUFFER, this._frameBuffer);
+            this._frameBuffer = gl.createFramebuffer();
+            gl.bindFramebuffer(gl.FRAMEBUFFER, this._frameBuffer);
 
-            _global.device.gl.bindTexture(_global.device.gl.TEXTURE_2D, this.texture.texture);
-            _global.device.gl.texImage2D(_global.device.gl.TEXTURE_2D, 0, _global.device.gl.RGBA, width, height, 0, _global.device.gl.RGBA, _global.device.gl.UNSIGNED_BYTE, null);
-            _global.device.gl.texParameteri(_global.device.gl.TEXTURE_2D, _global.device.gl.TEXTURE_MAG_FILTER, _global.device.gl.LINEAR);
-            _global.device.gl.texParameteri(_global.device.gl.TEXTURE_2D, _global.device.gl.TEXTURE_MIN_FILTER, _global.device.gl.LINEAR);
-            _global.device.gl.bindTexture(_global.device.gl.TEXTURE_2D, null);
+            gl.bindTexture(gl.TEXTURE_2D, this.texture.texture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.bindTexture(gl.TEXTURE_2D, null);
 
             this._renderBuffer = null;
 
             if (hasDepth) {
-                this._renderBuffer = _global.device.gl.createRenderbuffer();
-                _global.device.gl.bindRenderbuffer(_global.device.gl.RENDERBUFFER, this._renderBuffer);
-                _global.device.gl.renderbufferStorage(_global.device.gl.RENDERBUFFER, _global.device.gl.DEPTH_COMPONENT16, width, height);
+                this._renderBuffer = gl.createRenderbuffer();
+                gl.bindRenderbuffer(gl.RENDERBUFFER, this._renderBuffer);
+                gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
             }
 
-            _global.device.gl.framebufferTexture2D(_global.device.gl.FRAMEBUFFER, _global.device.gl.COLOR_ATTACHMENT0, _global.device.gl.TEXTURE_2D, this.texture.texture, 0);
+            gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, this.texture.texture, 0);
 
             if (hasDepth) {
-                _global.device.gl.framebufferRenderbuffer(_global.device.gl.FRAMEBUFFER, _global.device.gl.DEPTH_ATTACHMENT, _global.device.gl.RENDERBUFFER, this._renderBuffer);
+                gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, this._renderBuffer);
             }
 
-            _global.device.gl.bindRenderbuffer(_global.device.gl.RENDERBUFFER, null);
-            _global.device.gl.bindFramebuffer(_global.device.gl.FRAMEBUFFER, null);
+            gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
 
             this.texture.width = this.width = width;
             this.texture.height = this.height = height;
@@ -12228,13 +12267,13 @@ var Tw2PostEffectStep = exports.Tw2PostEffectStep = function () {
         this._onModified = null;
     }
 
-    /**
-     * Fires on value changes
-     */
-
-
     _createClass(Tw2PostEffectStep, [{
         key: 'OnValueChanged',
+
+
+        /**
+         * Fires on value changes
+         */
         value: function OnValueChanged() {
             this._rebuildPending = true;
             if (this._onModified) {
@@ -12478,11 +12517,13 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+    value: true
 });
 exports.EveOccluder = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -12499,185 +12540,187 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<EveSpriteSet>} sprites
  * @class
  */
-var EveOccluder = exports.EveOccluder = function () {
-        function EveOccluder() {
-                _classCallCheck(this, EveOccluder);
+var EveOccluder = exports.EveOccluder = (_temp = _class = function () {
 
-                this._id = _global.util.generateID();
-                this.name = '';
-                this.value = 1;
-                this.sprites = [];
+    /**
+     * Constructor
+     */
+    function EveOccluder() {
+        _classCallCheck(this, EveOccluder);
 
-                EveOccluder.init();
+        this._id = _global.util.generateID();
+        this.name = '';
+        this.value = 1;
+        this.sprites = [];
+
+        EveOccluder.init();
+    }
+
+    /**
+     * UpdateValues
+     * @param {mat4} parentTransform
+     * @param {number} index
+     */
+
+
+    _createClass(EveOccluder, [{
+        key: 'UpdateValue',
+        value: function UpdateValue(parentTransform, index) {
+            if (!_global.device.alphaBlendBackBuffer) return;
+
+            var d = _global.device,
+                g = EveOccluder.global,
+                worldViewProj = g.mat4_0,
+                center = g.vec4_0;
+
+            g.accumulator.Clear();
+
+            for (var i = 0; i < this.sprites.length; ++i) {
+                this.sprites[i].UpdateViewDependentData(parentTransform);
+                this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
+            }
+
+            _global.store.SetVariableValue('OccluderValue', [(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
+
+            g.accumulator.Render();
+
+            _global.mat4.multiply(worldViewProj, d.viewProjection, this.sprites[0].worldTransform);
+            _global.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
+
+            var x0 = (center[0] / center[3] + 1) * 0.5,
+                y0 = (center[1] / center[3] + 1) * 0.5;
+
+            _global.vec4.set(center, 0.5, 0.5, 0, 1);
+            _global.vec4.transformMat4(center, center, worldViewProj);
+
+            var x1 = (center[0] / center[3] + 1) * 0.5,
+                y1 = (center[1] / center[3] + 1) * 0.5;
+
+            center[0] = x0;
+            center[1] = y0;
+            center[2] = x1 - x0;
+            center[3] = y1 - y0;
+
+            g.effect.parameters.OccluderPosition.SetValue(center);
         }
 
         /**
-         * UpdateValues
-         * @param {mat4} parentTransform
+         * CollectSamples
+         * @param {Tw2TextureRes} tex
          * @param {number} index
+         * @param {number} total
+         * @param {number} samples
+         * @returns boolean
          */
 
+    }], [{
+        key: 'CollectSamples',
+        value: function CollectSamples(tex, index, total, samples) {
+            var d = _global.device,
+                g = this.global,
+                effect = g.effect,
+                vertexBuffer = g.vertexBuffer,
+                decl = g.decl;
 
-        _createClass(EveOccluder, [{
-                key: 'UpdateValue',
-                value: function UpdateValue(parentTransform, index) {
-                        if (!_global.device.alphaBlendBackBuffer) return;
+            if (!effect.effectRes || !effect.effectRes.IsGood()) return false;
 
-                        var d = _global.device,
-                            g = EveOccluder.global,
-                            worldViewProj = g.mat4_0,
-                            center = g.vec4_0;
+            effect.parameters.BackBuffer.textureRes = tex;
+            effect.parameters.OccluderIndex.SetValue([index, total, samples]);
 
-                        g.accumulator.Clear();
+            d.SetStandardStates(d.RM_ADDITIVE);
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
 
-                        for (var i = 0; i < this.sprites.length; ++i) {
-                                this.sprites[i].UpdateViewDependentData(parentTransform);
-                                this.sprites[i].GetBatches(d.RM_DECAL, g.accumulator);
-                        }
+            for (var pass = 0; pass < effect.GetPassCount('Main'); ++pass) {
+                effect.ApplyPass('Main', pass);
+                if (decl.SetDeclaration(effect.GetPassInput('Main', pass), 16)) return false;
+                d.ApplyShadowState();
+                d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
+            }
+            return true;
+        }
 
-                        _global.store.SetVariableValue('OccluderValue', [(1 << index * 2) / 255.0, (2 << index * 2) / 255.0, 0, 0]);
+        /**
+         * Initializes class globals and scratch variables
+         */
 
-                        g.accumulator.Render();
+    }, {
+        key: 'init',
+        value: function init() {
+            if (EveOccluder.global) return;
 
-                        _global.mat4.multiply(worldViewProj, d.viewProjection, this.sprites[0].worldTransform);
-                        _global.vec4.transformMat4(center, [0, 0, 0, 1], worldViewProj);
+            var d = _global.device,
+                g = EveOccluder.global = {};
 
-                        var x0 = (center[0] / center[3] + 1) * 0.5,
-                            y0 = (center[1] / center[3] + 1) * 0.5;
+            g.mat4_0 = _global.mat4.create();
+            g.vec4_0 = _global.vec4.create();
+            g.accumulator = new _core.Tw2BatchAccumulator();
 
-                        _global.vec4.set(center, 0.5, 0.5, 0, 1);
-                        _global.vec4.transformMat4(center, center, worldViewProj);
-
-                        var x1 = (center[0] / center[3] + 1) * 0.5,
-                            y1 = (center[1] / center[3] + 1) * 0.5;
-
-                        center[0] = x0;
-                        center[1] = y0;
-                        center[2] = x1 - x0;
-                        center[3] = y1 - y0;
-
-                        g.effect.parameters.OccluderPosition.SetValue(center);
+            g.effect = _core.Tw2Effect.create({
+                name: 'Occluder sampler',
+                effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
+                parameters: {
+                    'OccluderPosition': [1, 1, 1, 1],
+                    'OccluderIndex': [1, 1, 1],
+                    'BackBuffer': ''
                 }
+            });
 
-                /**
-                 * CollectSamples
-                 * @param {Tw2TextureRes} tex
-                 * @param {number} index
-                 * @param {number} total
-                 * @param {number} samples
-                 * @returns boolean
-                 */
+            g.vertexBuffer = null;
+            g.decl = new _core.Tw2VertexDeclaration();
+            g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
+            g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
+            g.decl.RebuildHash();
 
-        }], [{
-                key: 'CollectSamples',
-                value: function CollectSamples(tex, index, total, samples) {
-                        var d = _global.device,
-                            g = this.global,
-                            effect = g.effect,
-                            vertexBuffer = g.vertexBuffer,
-                            decl = g.decl;
+            var vb = new Float32Array(255 * 6 * 4);
+            var index = 0;
+            for (var i = 0; i < 16; ++i) {
+                for (var j = 0; j < 16; ++j) {
+                    var x = (i + Math.random()) / 16 * 2 - 1,
+                        y = (j + Math.random()) / 16 * 2 - 1;
 
-                        if (!effect.effectRes || !effect.effectRes.IsGood()) return false;
+                    vb[index++] = 1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = -1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = 1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
 
-                        effect.parameters.BackBuffer.textureRes = tex;
-                        effect.parameters.OccluderIndex.SetValue([index, total, samples]);
-
-                        d.SetStandardStates(d.RM_ADDITIVE);
-                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, vertexBuffer);
-
-                        for (var pass = 0; pass < effect.GetPassCount('Main'); ++pass) {
-                                effect.ApplyPass('Main', pass);
-                                if (decl.SetDeclaration(effect.GetPassInput('Main', pass), 16)) return false;
-                                d.ApplyShadowState();
-                                d.gl.drawArrays(d.gl.TRIANGLES, 0, 255 * 6);
-                        }
-                        return true;
+                    vb[index++] = -1;
+                    vb[index++] = 1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = 1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
+                    vb[index++] = -1;
+                    vb[index++] = -1;
+                    vb[index++] = x;
+                    vb[index++] = y;
                 }
+            }
 
-                /**
-                 * Initializes class globals and scratch variables
-                 */
+            g.vertexBuffer = d.gl.createBuffer();
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, g.vertexBuffer);
+            d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
+            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+        }
 
-        }, {
-                key: 'init',
-                value: function init() {
-                        if (EveOccluder.global) return;
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
 
-                        var d = _global.device,
-                            g = EveOccluder.global = {};
+    }]);
 
-                        g.mat4_0 = _global.mat4.create();
-                        g.vec4_0 = _global.vec4.create();
-                        g.accumulator = new _core.Tw2BatchAccumulator();
-
-                        g.effect = _core.Tw2Effect.create({
-                                name: 'Occluder sampler',
-                                effectFilePath: 'res:/graphics/effect/managed/space/specialfx/lensflares/collectsamples.fx',
-                                parameters: {
-                                        'OccluderPosition': [1, 1, 1, 1],
-                                        'OccluderIndex': [1, 1, 1],
-                                        'BackBuffer': ''
-                                }
-                        });
-
-                        g.vertexBuffer = null;
-                        g.decl = new _core.Tw2VertexDeclaration();
-                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.POSITION, 0, d.gl.FLOAT, 2, 0));
-                        g.decl.elements.push(new _core.Tw2VertexElement(_core.Tw2VertexDeclaration.Type.TEXCOORD, 0, d.gl.FLOAT, 2, 8));
-                        g.decl.RebuildHash();
-
-                        var vb = new Float32Array(255 * 6 * 4);
-                        var index = 0;
-                        for (var i = 0; i < 16; ++i) {
-                                for (var j = 0; j < 16; ++j) {
-                                        var x = (i + Math.random()) / 16 * 2 - 1,
-                                            y = (j + Math.random()) / 16 * 2 - 1;
-
-                                        vb[index++] = 1;
-                                        vb[index++] = 1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-                                        vb[index++] = -1;
-                                        vb[index++] = 1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-                                        vb[index++] = 1;
-                                        vb[index++] = -1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-
-                                        vb[index++] = -1;
-                                        vb[index++] = 1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-                                        vb[index++] = 1;
-                                        vb[index++] = -1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-                                        vb[index++] = -1;
-                                        vb[index++] = -1;
-                                        vb[index++] = x;
-                                        vb[index++] = y;
-                                }
-                        }
-
-                        g.vertexBuffer = d.gl.createBuffer();
-                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, g.vertexBuffer);
-                        d.gl.bufferData(d.gl.ARRAY_BUFFER, vb, d.gl.STATIC_DRAW);
-                        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
-                }
-        }]);
-
-        return EveOccluder;
-}();
-
-/**
- * Class global and scratch variables
- * @type {*}
- */
-
-
-EveOccluder.global = null;
+    return EveOccluder;
+}(), _class.global = null, _temp);
 
 /***/ }),
 /* 63 */
@@ -12788,7 +12831,7 @@ exports.EveTransform = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class, _temp;
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -12828,44 +12871,33 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2BasicPerObjectData} _perObjectData
  * @class
  */
-var EveTransform = exports.EveTransform = (_temp = _class = function (_EveObject) {
+var EveTransform = exports.EveTransform = (_temp2 = _class = function (_EveObject) {
     _inherits(EveTransform, _EveObject);
 
     function EveTransform() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveTransform);
 
-        var _this = _possibleConstructorReturn(this, (EveTransform.__proto__ || Object.getPrototypeOf(EveTransform)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.visible = {};
-        _this.visible.mesh = true;
-        _this.visible.children = true;
-        _this.mesh = null;
-        _this.curveSets = [];
-        _this.children = [];
-        _this.particleSystems = [];
-        _this.particleEmitters = [];
-        _this.modifier = EveTransform.Modifier.NONE;
-        _this.sortValueMultiplier = 1.0;
-        _this.distanceBasedScaleArg1 = 0.2;
-        _this.distanceBasedScaleArg2 = 0.63;
-        _this.useDistanceBasedScale = false;
-        _this.scaling = _global.vec3.fromValues(1, 1, 1);
-        _this.translation = _global.vec3.create();
-        _this.rotation = _global.quat.create();
-        _this.localTransform = _global.mat4.create();
-        _this.worldTransform = _global.mat4.create();
-
-        _this._perObjectData = new _core.Tw2BasicPerObjectData(EveTransform.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveTransform.__proto__ || Object.getPrototypeOf(EveTransform)).call.apply(_ref, [this].concat(args))), _this), _this.visible = {
+            mesh: true,
+            children: true
+        }, _this.mesh = null, _this.curveSets = [], _this.children = [], _this.particleSystems = [], _this.particleEmitters = [], _this.modifier = EveTransform.Modifier.NONE, _this.sortValueMultiplier = 1.0, _this.distanceBasedScaleArg1 = 0.2, _this.distanceBasedScaleArg2 = 0.63, _this.useDistanceBasedScale = false, _this.scaling = _global.vec3.fromValues(1, 1, 1), _this.translation = _global.vec3.create(), _this.rotation = _global.quat.create(), _this.localTransform = _global.mat4.create(), _this.worldTransform = _global.mat4.create(), _this._perObjectData = new _core.Tw2BasicPerObjectData(EveTransform.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the EveTransform
-     */
-
 
     _createClass(EveTransform, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the EveTransform
+         */
         value: function Initialize() {
             _global.mat4.fromRotationTranslationScale(this.localTransform, this.rotation, this.translation, this.scaling);
         }
@@ -13114,19 +13146,18 @@ var EveTransform = exports.EveTransform = (_temp = _class = function (_EveObject
          * @type {*}
          */
 
+
+        /**
+         * Modifier states
+         * @type {*}
+         */
+
     }]);
 
     return EveTransform;
 }(_EveObject2.EveObject), _class.perObjectData = {
     FFEData: [['World', 16], ['WorldInverseTranspose', 16]]
-}, _temp);
-
-/**
- * Modifier states
- * @type {*}
- */
-
-EveTransform.Modifier = {
+}, _class.Modifier = {
     NONE: 0,
     BILLBOARD: 1,
     TRANSLATE_WITH_CAMERA: 2,
@@ -13136,7 +13167,7 @@ EveTransform.Modifier = {
     EVE_BOOSTER: 101,
     EVE_SIMPLE_HALO: 102,
     EVE_CAMERA_ROTATION: 103
-};
+}, _temp2);
 
 /***/ }),
 /* 65 */
@@ -13273,7 +13304,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2ParticleElement
  *
- * @param {Tw2ParticleElementDeclaration} decl
  * @property {number} elementType
  * @property {string} customName
  * @property {number} dimension
@@ -13287,20 +13317,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} dirty
  * @class
  */
-var Tw2ParticleElement = exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
+var Tw2ParticleElement =
+
+/**
+ * Constructor
+ * @param {Tw2ParticleElementDeclaration} decl
+ */
+exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
     _classCallCheck(this, Tw2ParticleElement);
 
-    this.elementType = decl.elementType;
-    this.customName = decl.customName;
-    this.dimension = decl.GetDimension();
-    this.usageIndex = decl.usageIndex;
-    this.usedByGPU = decl.usedByGPU;
+    this.elementType = null;
+    this.customName = null;
+    this.dimension = null;
+    this.usageIndex = null;
+    this.usedByGPU = null;
     this.buffer = null;
     this.startOffset = 0;
     this.offset = 0;
     this.instanceStride = 0;
     this.vertexStride = 0;
     this.dirty = false;
+
+    if (decl) {
+        this.elementType = decl.elementType;
+        this.customName = decl.customName;
+        this.dimension = decl.GetDimension();
+        this.usageIndex = decl.usageIndex;
+        this.usedByGPU = decl.usedByGPU;
+    }
 };
 
 /***/ }),
@@ -13463,18 +13507,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Accumulates render batches for rendering
  *
- * @param {function} [sorting=null]           - An optional function for sorting the collected render batches
  * @property {Array.<Tw2RenderBatch>} batches - Accumulator render batches and/or child Tw2BatchAccumulators
- * @property {function} _sortMethod           - An optional method to sort batches before rendering them
+ * @property {?function} _sortMethod          - An optional method to sort batches before rendering them
  * @class
  */
 var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
+
+    /**
+     * Constructor
+     * @param {?function} [sorting=null] - An optional function for sorting the collected render batches
+     */
     function Tw2BatchAccumulator() {
         var sorting = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
         _classCallCheck(this, Tw2BatchAccumulator);
 
         this.batches = [];
+        this._sortMethod = null;
+
         this._sortMethod = sorting;
     }
 
@@ -20277,6 +20327,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2SamplerOverride = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _global = __webpack_require__(0);
 
 var _Tw2SamplerState = __webpack_require__(45);
@@ -20294,31 +20346,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} lodBias
  * @property {number} maxMipLevel
  * @property {number} maxAnisotropy
+ * @property {Tw2SamplerState} _sampler
  * @class
  */
-var Tw2SamplerOverride = exports.Tw2SamplerOverride = function Tw2SamplerOverride() {
-    _classCallCheck(this, Tw2SamplerOverride);
+var Tw2SamplerOverride = exports.Tw2SamplerOverride = function () {
+    function Tw2SamplerOverride() {
+        _classCallCheck(this, Tw2SamplerOverride);
 
-    this.name = '';
-    this.addressU = 0;
-    this.addressV = 0;
-    this.addressW = 0;
-    this.filter = 0;
-    this.mipFilter = 0;
-    this.lodBias = 0;
-    this.maxMipLevel = 0;
-    this.maxAnisotropy = 0;
+        this.name = '';
+        this.addressU = 0;
+        this.addressV = 0;
+        this.addressW = 0;
+        this.filter = 0;
+        this.mipFilter = 0;
+        this.lodBias = 0;
+        this.maxMipLevel = 0;
+        this.maxAnisotropy = 0;
+        this._sampler = null;
+    }
 
-    var sampler = null;
+    _createClass(Tw2SamplerOverride, [{
+        key: 'GetSampler',
 
-    /**
-     * Gets the sampler
-     * @param originalSampler
-     * @returns {Tw2SamplerState}
-     */
-    this.GetSampler = function (originalSampler) {
-        if (!sampler) {
-            sampler = new _Tw2SamplerState.Tw2SamplerState();
+
+        /**
+         * Gets the sampler
+         * @param {Tw2SamplerState} originalSampler
+         * @returns {Tw2SamplerState}
+         */
+        value: function GetSampler(originalSampler) {
+            if (this._sampler) {
+                return this._sampler;
+            }
+
+            this._sampler = new _Tw2SamplerState.Tw2SamplerState();
+            var sampler = this._sampler;
             sampler.registerIndex = originalSampler.registerIndex;
             sampler.name = originalSampler.name;
 
@@ -20369,11 +20431,12 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function Tw2SamplerOverrid
             sampler.samplerType = originalSampler.samplerType;
             sampler.isVolume = originalSampler.isVolume;
             sampler.ComputeHash();
+            return sampler;
         }
+    }]);
 
-        return sampler;
-    };
-};
+    return Tw2SamplerOverride;
+}();
 
 /***/ }),
 /* 87 */
@@ -20389,6 +20452,8 @@ exports.Tw2VertexDeclaration = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2VertexElement = __webpack_require__(46);
@@ -20398,18 +20463,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2VertexDeclaration
  *
- * @param {Array<Array|Object>} [declarations]
- * @param {number} [stride]
  * @property {Array.<Tw2VertexElement>} elements
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @class
  */
-var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = function () {
+var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     * @param {Array<Array|Object>} [declarations]
+     * @param {number} [stride]
+     */
     function Tw2VertexDeclaration(declarations, stride) {
         _classCallCheck(this, Tw2VertexDeclaration);
 
         this.elements = [];
         this._elementsSorted = [];
+        this.stride = null;
 
         if (stride !== undefined) {
             this.stride = stride;
@@ -20669,18 +20739,16 @@ var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = function () {
             if (a.usageIndex + usageOffset > b.usageIndex) return 1;
             return 0;
         }
+
+        /**
+         * Vertex Declaration Types
+         * @type {*}
+         */
+
     }]);
 
     return Tw2VertexDeclaration;
-}();
-
-/**
- * Tw2 Vertex Declaration Types
- * @type {number}
- */
-
-
-Tw2VertexDeclaration.Type = {
+}(), _class.Type = {
     POSITION: 0,
     COLOR: 1,
     NORMAL: 2,
@@ -20689,7 +20757,7 @@ Tw2VertexDeclaration.Type = {
     TEXCOORD: 5,
     BLENDWEIGHT: 6,
     BLENDINDICES: 7
-};
+}, _temp);
 
 /***/ }),
 /* 88 */
@@ -22117,22 +22185,27 @@ var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2
     _inherits(Tw2ForwardingRenderBatch, _Tw2RenderBatch);
 
     function Tw2ForwardingRenderBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ForwardingRenderBatch);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ForwardingRenderBatch.__proto__ || Object.getPrototypeOf(Tw2ForwardingRenderBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.geometryProvider = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ForwardingRenderBatch.__proto__ || Object.getPrototypeOf(Tw2ForwardingRenderBatch)).call.apply(_ref, [this].concat(args))), _this), _this.geometryProvider = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the batch for rendering
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(Tw2ForwardingRenderBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the batch for rendering
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             if (this.geometryProvider) {
                 this.geometryProvider.Render(this, technique);
@@ -22176,17 +22249,17 @@ var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2Geometry
     function Tw2GeometryLineBatch() {
         _classCallCheck(this, Tw2GeometryLineBatch);
 
-        return _possibleConstructorReturn(this, (Tw2GeometryLineBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryLineBatch)).call(this));
+        return _possibleConstructorReturn(this, (Tw2GeometryLineBatch.__proto__ || Object.getPrototypeOf(Tw2GeometryLineBatch)).apply(this, arguments));
     }
-
-    /**
-     * Commits the Geometry Line Batch for rendering
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(Tw2GeometryLineBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the Geometry Line Batch for rendering
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             if (this.geometryRes && this.effect) {
                 this.geometryRes.RenderLines(this.meshIx, this.start, this.count, this.effect, technique);
@@ -22229,22 +22302,27 @@ var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2Geomet
     _inherits(Tw2InstancedMeshBatch, _Tw2GeometryBatch);
 
     function Tw2InstancedMeshBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2InstancedMeshBatch);
 
-        var _this = _possibleConstructorReturn(this, (Tw2InstancedMeshBatch.__proto__ || Object.getPrototypeOf(Tw2InstancedMeshBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.instanceMesh = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2InstancedMeshBatch.__proto__ || Object.getPrototypeOf(Tw2InstancedMeshBatch)).call.apply(_ref, [this].concat(args))), _this), _this.instanceMesh = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the Tw2InstancedMeshBatch for rendering
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(Tw2InstancedMeshBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the Tw2InstancedMeshBatch for rendering
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             if (this.instanceMesh && this.effect) {
                 this.instanceMesh.RenderAreas(this.meshIx, this.start, this.count, this.effect, technique);
@@ -22334,13 +22412,13 @@ var Tw2CurveSet = exports.Tw2CurveSet = function () {
         this.scaledTime = 0;
     }
 
-    /**
-     * Initializes the Tw2CurveSet
-     */
-
-
     _createClass(Tw2CurveSet, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Tw2CurveSet
+         */
         value: function Initialize() {
             if (this.playOnLoad) this.Play();
         }
@@ -22481,13 +22559,13 @@ var Tw2ValueBinding = exports.Tw2ValueBinding = function () {
         this._copyFunc = null;
     }
 
-    /**
-     * Initializes the Value Binding
-     */
-
-
     _createClass(Tw2ValueBinding, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Value Binding
+         */
         value: function Initialize() {
             if (!this.sourceObject || this.sourceAttribute === '') return;
             if (!this.destinationObject || this.destinationAttribute === '') return;
@@ -22742,6 +22820,8 @@ exports.Tw2FloatParameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _Tw2Parameter2 = __webpack_require__(4);
 
 var _global = __webpack_require__(0);
@@ -22755,17 +22835,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2FloatParameter
  *
- * @param {string} [name='']
- * @param {number} [value=1]
  * @property {string} name
  * @property {number} value
  * @property {?Float32Array} constantBuffer
  * @property {?number} offset
  * @class
  */
-var Tw2FloatParameter = exports.Tw2FloatParameter = function (_Tw2Parameter) {
+var Tw2FloatParameter = exports.Tw2FloatParameter = (_temp = _class = function (_Tw2Parameter) {
     _inherits(Tw2FloatParameter, _Tw2Parameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {number} [value=1]
+     */
     function Tw2FloatParameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
@@ -22774,9 +22857,12 @@ var Tw2FloatParameter = exports.Tw2FloatParameter = function (_Tw2Parameter) {
 
         var _this = _possibleConstructorReturn(this, (Tw2FloatParameter.__proto__ || Object.getPrototypeOf(Tw2FloatParameter)).call(this, name));
 
-        _this.value = _global.util.isArrayLike(value) ? value[0] : value;
+        _this.name = '';
+        _this.value = 1;
         _this.constantBuffer = null;
         _this.offset = null;
+
+        _this.value = _global.util.isArrayLike(value) ? value[0] : value;
         return _this;
     }
 
@@ -22853,18 +22939,16 @@ var Tw2FloatParameter = exports.Tw2FloatParameter = function (_Tw2Parameter) {
         value: function isValue(a) {
             return _global.util.isNumber(a);
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2FloatParameter;
-}(_Tw2Parameter2.Tw2Parameter);
-
-/**
- * Float parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2FloatParameter.constantBufferSize = 1;
+}(_Tw2Parameter2.Tw2Parameter), _class.constantBufferSize = 1, _temp);
 
 /***/ }),
 /* 98 */
@@ -22880,6 +22964,8 @@ exports.Tw2MatrixParameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Parameter = __webpack_require__(4);
@@ -22893,13 +22979,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2MatrixParameter
  *
- * @param {string} [name='']
- * @param {mat4|Float32Array|Array} [value=mat4.create()]
  * @class
  */
-var Tw2MatrixParameter = exports.Tw2MatrixParameter = function (_Tw2VectorParameter) {
+var Tw2MatrixParameter = exports.Tw2MatrixParameter = (_temp = _class = function (_Tw2VectorParameter) {
     _inherits(Tw2MatrixParameter, _Tw2VectorParameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {mat4|Float32Array|Array} [value=mat4.create()]
+     */
     function Tw2MatrixParameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _global.mat4.create();
@@ -23006,12 +23095,16 @@ var Tw2MatrixParameter = exports.Tw2MatrixParameter = function (_Tw2VectorParame
         set: function set(val) {
             this.SetIndexValue(14, val);
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2MatrixParameter;
-}(_Tw2Parameter.Tw2VectorParameter);
-
-Tw2MatrixParameter.constantBufferSize = 16;
+}(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 16, _temp);
 
 /***/ }),
 /* 99 */
@@ -23029,6 +23122,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+var _class, _temp2;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Parameter2 = __webpack_require__(4);
@@ -23042,7 +23137,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2TransformParameter
  *
- * @param {string} [name='']
  * @parameter {string} name
  * @parameter {vec3} scaling=[1,1,1]
  * @parameter {quat} rotation=[0,0,0,1]
@@ -23051,34 +23145,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @parameter {mat4} transformTranspose
  * @class
  */
-var Tw2TransformParameter = exports.Tw2TransformParameter = function (_Tw2Parameter) {
+var Tw2TransformParameter = exports.Tw2TransformParameter = (_temp2 = _class = function (_Tw2Parameter) {
     _inherits(Tw2TransformParameter, _Tw2Parameter);
 
     function Tw2TransformParameter() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+        var _ref;
+
+        var _temp, _this, _ret;
 
         _classCallCheck(this, Tw2TransformParameter);
 
-        var _this = _possibleConstructorReturn(this, (Tw2TransformParameter.__proto__ || Object.getPrototypeOf(Tw2TransformParameter)).call(this, name));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.scaling = _global.vec3.fromValues(1, 1, 1);
-        _this.rotationCenter = _global.vec3.create();
-        _this.rotation = _global.quat.create();
-        _this.translation = _global.vec3.create();
-        _this.transform = _global.mat4.create();
-        _this.worldTransform = _global.mat4.create();
-        _this.constantBuffer = null;
-        _this.offset = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2TransformParameter.__proto__ || Object.getPrototypeOf(Tw2TransformParameter)).call.apply(_ref, [this].concat(args))), _this), _this.name = '', _this.scaling = _global.vec3.fromValues(1, 1, 1), _this.rotationCenter = _global.vec3.create(), _this.rotation = _global.quat.create(), _this.translation = _global.vec3.create(), _this.transform = _global.mat4.create(), _this.worldTransform = _global.mat4.create(), _this.constantBuffer = null, _this.offset = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the transform parameter
-     */
-
 
     _createClass(Tw2TransformParameter, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the transform parameter
+         */
         value: function Initialize() {
             this.OnValueChanged();
         }
@@ -23162,18 +23252,16 @@ var Tw2TransformParameter = exports.Tw2TransformParameter = function (_Tw2Parame
             _global.vec3.copy(this.rotationCenter, parameter.rotationCenter);
             this.OnValueChanged();
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2TransformParameter;
-}(_Tw2Parameter2.Tw2Parameter);
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2TransformParameter.constantBufferSize = 16;
+}(_Tw2Parameter2.Tw2Parameter), _class.constantBufferSize = 16, _temp2);
 
 /***/ }),
 /* 100 */
@@ -23202,14 +23290,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2VariableParameter
  *
- * @param {string} [name='']
- * @param {string} [variableName='']
  * @property {string} variableName
  * @class
  */
 var Tw2VariableParameter = exports.Tw2VariableParameter = function (_Tw2Parameter) {
     _inherits(Tw2VariableParameter, _Tw2Parameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {string} [variableName='']
+     */
     function Tw2VariableParameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var variableName = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -23217,6 +23308,8 @@ var Tw2VariableParameter = exports.Tw2VariableParameter = function (_Tw2Paramete
         _classCallCheck(this, Tw2VariableParameter);
 
         var _this = _possibleConstructorReturn(this, (Tw2VariableParameter.__proto__ || Object.getPrototypeOf(Tw2VariableParameter)).call(this, name));
+
+        _this.variableName = '';
 
         _this.variableName = variableName;
         return _this;
@@ -23314,6 +23407,8 @@ exports.Tw2Vector2Parameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Parameter = __webpack_require__(4);
@@ -23327,13 +23422,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2Vector2Parameter
  *
- * @param {string} [name='']
- * @param {vec2|Array|Float32Array} [value=vec2.fromValues(1,1)]
  * @class
  */
-var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = function (_Tw2VectorParameter) {
+var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = (_temp = _class = function (_Tw2VectorParameter) {
     _inherits(Tw2Vector2Parameter, _Tw2VectorParameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {vec2|Array|Float32Array} [value=vec2.fromValues(1,1)]
+     */
     function Tw2Vector2Parameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _global.vec2.fromValues(1, 1);
@@ -23383,18 +23481,16 @@ var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = function (_Tw2VectorPara
         set: function set(val) {
             this.SetIndexValue(1, val);
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2Vector2Parameter;
-}(_Tw2Parameter.Tw2VectorParameter);
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2Vector2Parameter.constantBufferSize = 2;
+}(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 2, _temp);
 
 /***/ }),
 /* 102 */
@@ -23410,6 +23506,8 @@ exports.Tw2Vector3Parameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Parameter = __webpack_require__(4);
@@ -23423,13 +23521,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2Vector3Parameter
  *
- * @param {string} [name='']
- * @param {vec3|Array|Float32Array} [value=vec3.fromValues(1,1,1)]
  * @class
  */
-var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = function (_Tw2VectorParameter) {
+var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = (_temp = _class = function (_Tw2VectorParameter) {
     _inherits(Tw2Vector3Parameter, _Tw2VectorParameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {vec3|Array|Float32Array} [value=vec3.fromValues(1,1,1)]
+     */
     function Tw2Vector3Parameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _global.vec3.fromValues(1, 1, 1);
@@ -23499,18 +23600,16 @@ var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = function (_Tw2VectorPara
         set: function set(val) {
             this.SetIndexValue(2, val);
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2Vector3Parameter;
-}(_Tw2Parameter.Tw2VectorParameter);
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2Vector3Parameter.constantBufferSize = 3;
+}(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 3, _temp);
 
 /***/ }),
 /* 103 */
@@ -23526,6 +23625,8 @@ exports.Tw2Vector4Parameter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Parameter = __webpack_require__(4);
@@ -23539,13 +23640,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2Vector4Parameter
  *
- * @param {string} [name='']
- * @param {vec4|Array|Float32Array} [value=vec4.fromValues(1,1,1,1)]
  * @class
  */
-var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = function (_Tw2VectorParameter) {
+var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = (_temp = _class = function (_Tw2VectorParameter) {
     _inherits(Tw2Vector4Parameter, _Tw2VectorParameter);
 
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {vec4|Array|Float32Array} [value=vec4.fromValues(1,1,1,1)]
+     */
     function Tw2Vector4Parameter() {
         var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
         var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _global.vec4.fromValues(1, 1, 1, 1);
@@ -23635,18 +23739,16 @@ var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = function (_Tw2VectorPara
         set: function set(val) {
             this.SetIndexValue(3, val);
         }
+
+        /**
+         * The parameter's constant buffer size
+         * @type {number}
+         */
+
     }]);
 
     return Tw2Vector4Parameter;
-}(_Tw2Parameter.Tw2VectorParameter);
-
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-
-
-Tw2Vector4Parameter.constantBufferSize = 4;
+}(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 4, _temp);
 
 /***/ }),
 /* 104 */
@@ -23726,13 +23828,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2BasicPerObjectData
  *
- * @param {RawDataObject} [rawDataObject]    - An optional object containing raw data declarations
  * @parameter {?Tw2RawData} perObjectFFEData - Fixed Function Emulation data
  * @class
  */
 var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObjectData) {
     _inherits(Tw2BasicPerObjectData, _Tw2PerObjectData);
 
+    /**
+     * Constructor
+     * @param {RawDataObject} [rawDataObject] - An optional object containing raw data declarations
+     */
     function Tw2BasicPerObjectData(rawDataObject) {
         _classCallCheck(this, Tw2BasicPerObjectData);
 
@@ -23791,7 +23896,7 @@ exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Tw2BlendShapeData = undefined;
 
@@ -23809,13 +23914,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property weightProxy
  */
 var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData() {
-    _classCallCheck(this, Tw2BlendShapeData);
+  _classCallCheck(this, Tw2BlendShapeData);
 
-    this.name = '';
-    this.declaration = new _vertex.Tw2VertexDeclaration();
-    this.buffers = [];
-    this.indexes = null;
-    this.weightProxy = null;
+  this.name = '';
+  this.declaration = new _vertex.Tw2VertexDeclaration();
+  this.buffers = [];
+  this.indexes = null;
+  this.weightProxy = null;
 };
 
 /***/ }),
@@ -23826,7 +23931,7 @@ var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData()
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23839,11 +23944,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<Tw2GeometryTrackGroup>} trackGroups
  */
 var Tw2GeometryAnimation = exports.Tw2GeometryAnimation = function Tw2GeometryAnimation() {
-    _classCallCheck(this, Tw2GeometryAnimation);
+  _classCallCheck(this, Tw2GeometryAnimation);
 
-    this.name = '';
-    this.duration = 0;
-    this.trackGroups = [];
+  this.name = '';
+  this.duration = 0;
+  this.trackGroups = [];
 };
 
 /***/ }),
@@ -23859,6 +23964,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2GeometryBone = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -23876,7 +23983,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {mat4} worldTransform
  * @property {mat4} worldTransformInv
  */
-var Tw2GeometryBone = exports.Tw2GeometryBone = function () {
+var Tw2GeometryBone = exports.Tw2GeometryBone = (_temp = _class = function () {
     function Tw2GeometryBone() {
         _classCallCheck(this, Tw2GeometryBone);
 
@@ -23890,14 +23997,14 @@ var Tw2GeometryBone = exports.Tw2GeometryBone = function () {
         this.worldTransformInv = _global.mat4.create();
     }
 
-    /**
-     * Updates the Bone's transform
-     * @returns {mat4}
-     */
-
-
     _createClass(Tw2GeometryBone, [{
         key: 'UpdateTransform',
+
+
+        /**
+         * Updates the Bone's transform
+         * @returns {mat4}
+         */
         value: function UpdateTransform() {
             _global.mat4.fromMat3(this.localTransform, this.scaleShear);
             _global.quat.normalize(this.orientation, this.orientation);
@@ -23908,19 +24015,17 @@ var Tw2GeometryBone = exports.Tw2GeometryBone = function () {
             this.localTransform[14] = this.position[2];
             return this.localTransform;
         }
+
+        /**
+         * Global and scratch variables
+         */
+
     }]);
 
     return Tw2GeometryBone;
-}();
-
-/**
- * Class global variables and scratch
- */
-
-
-Tw2GeometryBone.global = {
+}(), _class.global = {
     mat4_0: _global.mat4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 109 */
@@ -23930,7 +24035,7 @@ Tw2GeometryBone.global = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23944,12 +24049,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Float32Array} controls
  */
 var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
-    _classCallCheck(this, Tw2GeometryCurve);
+  _classCallCheck(this, Tw2GeometryCurve);
 
-    this.dimension = 0;
-    this.degree = 0;
-    this.knots = null;
-    this.controls = null;
+  this.dimension = 0;
+  this.degree = 0;
+  this.knots = null;
+  this.controls = null;
 };
 
 /***/ }),
@@ -23960,7 +24065,7 @@ var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Tw2GeometryMesh = undefined;
 
@@ -23990,23 +24095,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<string>} boneBindings
  */
 var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
-    _classCallCheck(this, Tw2GeometryMesh);
+  _classCallCheck(this, Tw2GeometryMesh);
 
-    this.name = '';
-    this.declaration = new _vertex.Tw2VertexDeclaration();
-    this.areas = [];
-    this.buffer = null;
-    this.bufferLength = 0;
-    this.bufferData = null;
-    this.indexes = null;
-    this.indexData = null;
-    this.indexType = 0;
-    this.minBounds = _global.vec3.create();
-    this.maxBounds = _global.vec3.create();
-    this.boundsSpherePosition = _global.vec3.create();
-    this.boundsSphereRadius = 0;
-    this.bones = [];
-    this.boneBindings = [];
+  this.name = '';
+  this.declaration = new _vertex.Tw2VertexDeclaration();
+  this.areas = [];
+  this.buffer = null;
+  this.bufferLength = 0;
+  this.bufferData = null;
+  this.indexes = null;
+  this.indexData = null;
+  this.indexType = 0;
+  this.minBounds = _global.vec3.create();
+  this.maxBounds = _global.vec3.create();
+  this.boundsSpherePosition = _global.vec3.create();
+  this.boundsSphereRadius = 0;
+  this.bones = [];
+  this.boneBindings = [];
 };
 
 /***/ }),
@@ -24017,7 +24122,7 @@ var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Tw2GeometryMeshArea = undefined;
 
@@ -24037,15 +24142,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} boundsSphereRadius
  */
 var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMeshArea() {
-    _classCallCheck(this, Tw2GeometryMeshArea);
+  _classCallCheck(this, Tw2GeometryMeshArea);
 
-    this.name = '';
-    this.start = 0;
-    this.count = 0;
-    this.minBounds = _global.vec3.create();
-    this.maxBounds = _global.vec3.create();
-    this.boundsSpherePosition = _global.vec3.create();
-    this.boundsSphereRadius = 0;
+  this.name = '';
+  this.start = 0;
+  this.count = 0;
+  this.minBounds = _global.vec3.create();
+  this.maxBounds = _global.vec3.create();
+  this.boundsSpherePosition = _global.vec3.create();
+  this.boundsSphereRadius = 0;
 };
 
 /***/ }),
@@ -24056,7 +24161,7 @@ var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMesh
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24068,10 +24173,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<Tw2GeometryBone>} bones
  */
 var Tw2GeometryMeshBinding = exports.Tw2GeometryMeshBinding = function Tw2GeometryMeshBinding() {
-    _classCallCheck(this, Tw2GeometryMeshBinding);
+  _classCallCheck(this, Tw2GeometryMeshBinding);
 
-    this.mesh = null;
-    this.bones = [];
+  this.mesh = null;
+  this.bones = [];
 };
 
 /***/ }),
@@ -24105,15 +24210,15 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
         this.skeleton = null;
     }
 
-    /**
-     * Finds a bone by it's name
-     * @param {string} name
-     * @returns {Tw2GeometryBone|null}
-     */
-
-
     _createClass(Tw2GeometryModel, [{
         key: 'FindBoneByName',
+
+
+        /**
+         * Finds a bone by it's name
+         * @param {string} name
+         * @returns {Tw2GeometryBone|null}
+         */
         value: function FindBoneByName(name) {
             if (!this.skeleton) {
                 return null;
@@ -24140,7 +24245,7 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24151,9 +24256,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<Tw2GeometryBone>} bones
  */
 var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkeleton() {
-    _classCallCheck(this, Tw2GeometrySkeleton);
+  _classCallCheck(this, Tw2GeometrySkeleton);
 
-    this.bones = [];
+  this.bones = [];
 };
 
 /***/ }),
@@ -24164,7 +24269,7 @@ var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkel
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24177,11 +24282,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array.<Tw2GeometryTransformTrack>} transformTracks
  */
 var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2GeometryTrackGroup() {
-    _classCallCheck(this, Tw2GeometryTrackGroup);
+  _classCallCheck(this, Tw2GeometryTrackGroup);
 
-    this.name = '';
-    this.model = null;
-    this.transformTracks = [];
+  this.name = '';
+  this.model = null;
+  this.transformTracks = [];
 };
 
 /***/ }),
@@ -24192,7 +24297,7 @@ var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2Geometry
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24206,12 +24311,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property scaleShear
  */
 var Tw2GeometryTransformTrack = exports.Tw2GeometryTransformTrack = function Tw2GeometryTransformTrack() {
-    _classCallCheck(this, Tw2GeometryTransformTrack);
+  _classCallCheck(this, Tw2GeometryTransformTrack);
 
-    this.name = '';
-    this.position = null;
-    this.orientation = null;
-    this.scaleShear = null;
+  this.name = '';
+  this.position = null;
+  this.orientation = null;
+  this.scaleShear = null;
 };
 
 /***/ }),
@@ -24327,25 +24432,26 @@ var Tw2InstancedMesh = exports.Tw2InstancedMesh = function (_Tw2Mesh) {
     _inherits(Tw2InstancedMesh, _Tw2Mesh);
 
     function Tw2InstancedMesh() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2InstancedMesh);
 
-        var _this = _possibleConstructorReturn(this, (Tw2InstancedMesh.__proto__ || Object.getPrototypeOf(Tw2InstancedMesh)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.instanceGeometryResource = null;
-        _this.instanceGeometryResPath = '';
-        _this.instanceMeshIndex = 0;
-        _this.minBounds = _global.vec3.create();
-        _this.maxBounds = _global.vec3.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2InstancedMesh.__proto__ || Object.getPrototypeOf(Tw2InstancedMesh)).call.apply(_ref, [this].concat(args))), _this), _this.instanceGeometryResource = null, _this.instanceGeometryResPath = '', _this.instanceMeshIndex = 0, _this.minBounds = _global.vec3.create(), _this.maxBounds = _global.vec3.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the instanced mesh
-     */
-
 
     _createClass(Tw2InstancedMesh, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the instanced mesh
+         */
         value: function Initialize() {
             _get(Tw2InstancedMesh.prototype.__proto__ || Object.getPrototypeOf(Tw2InstancedMesh.prototype), 'Initialize', this).call(this);
             if (this.instanceGeometryResPath !== '') {
@@ -24450,6 +24556,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Tw2MeshLineArea = undefined;
 
+var _class, _temp;
+
 var _batch = __webpack_require__(18);
 
 var _Tw2MeshArea2 = __webpack_require__(50);
@@ -24465,25 +24573,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @class
  */
-var Tw2MeshLineArea = exports.Tw2MeshLineArea = function (_Tw2MeshArea) {
+var Tw2MeshLineArea = exports.Tw2MeshLineArea = (_temp = _class = function (_Tw2MeshArea) {
   _inherits(Tw2MeshLineArea, _Tw2MeshArea);
 
   function Tw2MeshLineArea() {
     _classCallCheck(this, Tw2MeshLineArea);
 
-    return _possibleConstructorReturn(this, (Tw2MeshLineArea.__proto__ || Object.getPrototypeOf(Tw2MeshLineArea)).call(this));
+    return _possibleConstructorReturn(this, (Tw2MeshLineArea.__proto__ || Object.getPrototypeOf(Tw2MeshLineArea)).apply(this, arguments));
   }
 
   return Tw2MeshLineArea;
-}(_Tw2MeshArea2.Tw2MeshArea);
-
-/**
- * Render Batch Constructor
- * @type {Tw2RenderBatch}
- */
-
-
-Tw2MeshLineArea.batchType = _batch.Tw2GeometryLineBatch;
+}(_Tw2MeshArea2.Tw2MeshArea), _class.batchType = _batch.Tw2GeometryLineBatch, _temp);
 
 /***/ }),
 /* 120 */
@@ -24582,6 +24682,8 @@ exports.Tw2AnimationController = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _resource = __webpack_require__(52);
@@ -24601,7 +24703,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /**
  * Tw2AnimationController
  *
- * @param {Tw2GeometryRes} [geometryResource]
  * @property {Array.<Tw2GeometryRes>} geometryResources
  * @property {Array.<Tw2Model>} models
  * @property {Array.<Tw2Animation>} animations
@@ -24613,7 +24714,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Function} [onLoaded] an optional callback fired when any commands are cleared
  * @class
  */
-var Tw2AnimationController = exports.Tw2AnimationController = function () {
+var Tw2AnimationController = exports.Tw2AnimationController = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     * @param {Tw2GeometryRes} [geometryResource]
+     */
     function Tw2AnimationController(geometryResource) {
         _classCallCheck(this, Tw2AnimationController);
 
@@ -24627,9 +24733,7 @@ var Tw2AnimationController = exports.Tw2AnimationController = function () {
         this.onPendingCleared = null;
         this._geometryResource = null;
 
-        if (geometryResource) {
-            this.SetGeometryResource(geometryResource);
-        }
+        if (geometryResource) this.SetGeometryResource(geometryResource);
     }
 
     /**
@@ -24984,7 +25088,7 @@ var Tw2AnimationController = exports.Tw2AnimationController = function () {
                 }
             }
 
-            var id = _global.mat4.identity(Tw2AnimationController.scratch.mat4_0);
+            var id = _global.mat4.identity(Tw2AnimationController.global.mat4_0);
             for (var _i = 0; _i < this.meshBindings.length; ++_i) {
                 for (var _j2 = 0; _j2 < this.meshBindings[_i].length; ++_j2) {
                     for (var k = 0; k * 16 < this.meshBindings[_i][_j2].length; ++k) {
@@ -25120,7 +25224,7 @@ var Tw2AnimationController = exports.Tw2AnimationController = function () {
                 this.geometryResources[i].KeepAlive();
             }
 
-            var g = Tw2AnimationController.scratch,
+            var g = Tw2AnimationController.global,
                 rotationMat = g.mat4_0,
                 orientation = g.quat_0,
                 position = g.vec3_0,
@@ -25372,22 +25476,20 @@ var Tw2AnimationController = exports.Tw2AnimationController = function () {
                 if (animationController.onPendingCleared) animationController.onPendingCleared(animationController);
             }
         }
+
+        /**
+         * Global and Scratch variables
+         */
+
     }]);
 
     return Tw2AnimationController;
-}();
-
-/**
- * Scratch variables
- */
-
-
-Tw2AnimationController.scratch = {
+}(), _class.global = {
     vec3_0: _global.vec3.create(),
     quat_0: _global.quat.create(),
     mat3_0: _global.mat3.create(),
     mat4_0: _global.mat4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 122 */
@@ -25421,38 +25523,43 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Tw2EffectRes
  *
  * @property {Array} passes
+ * @property {*} annotation
+ * @property {Array} permutations
+ * @property {Array} offsets
+ * @property {*} reader
+ * @property {number} version
+ * @property {string} stringTable
+ * @property {*} shaders
  * @inherits Tw2Resource
  */
 var Tw2EffectRes = exports.Tw2EffectRes = function (_Tw2Resource) {
     _inherits(Tw2EffectRes, _Tw2Resource);
 
     function Tw2EffectRes() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2EffectRes);
 
-        var _this = _possibleConstructorReturn(this, (Tw2EffectRes.__proto__ || Object.getPrototypeOf(Tw2EffectRes)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.passes = [];
-        _this.annotations = {};
-        _this.permutations = [];
-        _this.offsets = [];
-        _this.reader = null;
-        _this.version = 0;
-        _this.stringTable = '';
-        _this.shaders = {};
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2EffectRes.__proto__ || Object.getPrototypeOf(Tw2EffectRes)).call.apply(_ref, [this].concat(args))), _this), _this.passes = [], _this.annotations = {}, _this.permutations = [], _this.offsets = [], _this.reader = null, _this.version = 0, _this.stringTable = '', _this.shaders = {}, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Prepares the effect
-     * - Creates Shaders
-     * - Sets shadow states for shaders
-     * - Parses Jessica shader annotations
-     * @param data
-     */
-
 
     _createClass(Tw2EffectRes, [{
         key: 'Prepare',
+
+
+        /**
+         * Prepares the effect
+         * - Creates Shaders
+         * - Sets shadow states for shaders
+         * - Parses Jessica shader annotations
+         * @param data
+         */
         value: function Prepare(data) {
             this.permutations = [];
             this.offsets = [];
@@ -25627,6 +25734,8 @@ exports.Tw2Shader = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _vertex = __webpack_require__(12);
@@ -25644,9 +25753,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Object.<string, Array>} annotations
  * @class
  */
-var Tw2Shader = exports.Tw2Shader = function () {
+var Tw2Shader = exports.Tw2Shader = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     * @param reader
+     * @param version
+     * @param stringTable
+     * @param stringTableOffset
+     * @param path
+     */
     function Tw2Shader(reader, version, stringTable, stringTableOffset, path) {
         _classCallCheck(this, Tw2Shader);
+
+        this.techniques = {};
+        this.annotations = {};
 
         /**
          * ReadString
@@ -25661,9 +25782,6 @@ var Tw2Shader = exports.Tw2Shader = function () {
             }
             return stringTable.substr(offset, end - offset);
         }
-
-        this.techniques = {};
-        this.annotations = {};
 
         var wrapModes = _global.device.wrapModes,
             gl = _global.device.gl;
@@ -26161,18 +26279,16 @@ var Tw2Shader = exports.Tw2Shader = function () {
             }
             return program;
         }
+
+        /**
+         * Constant names that are ignored
+         * @type {string[]}
+         */
+
     }]);
 
     return Tw2Shader;
-}();
-
-/**
- * Constant names that are ignored
- * @type {string[]}
- */
-
-
-Tw2Shader.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS'];
+}(), _class.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS'], _temp);
 
 /***/ }),
 /* 124 */
@@ -26223,30 +26339,28 @@ var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource) {
     _inherits(Tw2GeometryRes, _Tw2Resource);
 
     function Tw2GeometryRes() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2GeometryRes);
 
-        var _this = _possibleConstructorReturn(this, (Tw2GeometryRes.__proto__ || Object.getPrototypeOf(Tw2GeometryRes)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.meshes = [];
-        _this.minBounds = _global.vec3.create();
-        _this.maxBounds = _global.vec3.create();
-        _this.boundsSpherePosition = _global.vec3.create();
-        _this.boundsSphereRadius = 0;
-        _this.models = [];
-        _this.animations = [];
-        _this.systemMirror = false;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2GeometryRes.__proto__ || Object.getPrototypeOf(Tw2GeometryRes)).call.apply(_ref, [this].concat(args))), _this), _this.meshes = [], _this.minBounds = _global.vec3.create(), _this.maxBounds = _global.vec3.create(), _this.boundsSpherePosition = _global.vec3.create(), _this.boundsSphereRadius = 0, _this.models = [], _this.animations = [], _this.systemMirror = false, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * GetInstanceBuffer
-     * @param {number} meshIndex
-     * @returns {*}
-     */
-
 
     _createClass(Tw2GeometryRes, [{
         key: 'GetInstanceBuffer',
+
+
+        /**
+         * GetInstanceBuffer
+         * @param {number} meshIndex
+         * @returns {*}
+         */
         value: function GetInstanceBuffer(meshIndex) {
             return meshIndex < this.meshes.length ? this.meshes[meshIndex].buffer : undefined;
         }
@@ -26963,36 +27077,27 @@ var Tw2VideoRes = exports.Tw2VideoRes = function (_Tw2Resource) {
     _inherits(Tw2VideoRes, _Tw2Resource);
 
     function Tw2VideoRes() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2VideoRes);
 
-        var _this = _possibleConstructorReturn(this, (Tw2VideoRes.__proto__ || Object.getPrototypeOf(Tw2VideoRes)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.texture = null;
-        _this.video = null;
-        _this.width = 0;
-        _this.height = 0;
-        _this.cycle = true;
-        _this.playOnLoad = true;
-
-        _this._currentSampler = 0;
-        _this._currentTime = -1;
-        _this._playable = false;
-        _this._isPlaying = false;
-
-        _this._onPlaying = null;
-        _this._onPause = null;
-        _this._onEnded = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2VideoRes.__proto__ || Object.getPrototypeOf(Tw2VideoRes)).call.apply(_ref, [this].concat(args))), _this), _this.texture = null, _this.video = null, _this.width = 0, _this.height = 0, _this.cycle = true, _this.playOnLoad = true, _this._currentSampler = 0, _this._currentTime = -1, _this._playable = false, _this._isPlaying = false, _this._onPlaying = null, _this._onPause = null, _this._onEnded = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Checks if the resource is good
-     * @returns {boolean}
-     */
-
 
     _createClass(Tw2VideoRes, [{
         key: 'IsGood',
+
+
+        /**
+         * Checks if the resource is good
+         * @returns {boolean}
+         */
         value: function IsGood() {
             this.KeepAlive();
             return _get(Tw2VideoRes.prototype.__proto__ || Object.getPrototypeOf(Tw2VideoRes.prototype), 'IsGood', this).call(this) && this.video && this._playable;
@@ -27311,12 +27416,6 @@ var Tw2PostEffectManager = exports.Tw2PostEffectManager = (_temp = _class = func
         this.items = [];
     }
 
-    /**
-     * Alias for items
-     * @returns {Array}
-     */
-
-
     _createClass(Tw2PostEffectManager, [{
         key: 'CreateItem',
 
@@ -27466,6 +27565,12 @@ var Tw2PostEffectManager = exports.Tw2PostEffectManager = (_temp = _class = func
 
     }, {
         key: 'effects',
+
+
+        /**
+         * Alias for items
+         * @returns {Array}
+         */
         get: function get() {
             return this.items;
         }
@@ -27482,7 +27587,7 @@ var Tw2PostEffectManager = exports.Tw2PostEffectManager = (_temp = _class = func
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _class, _temp;
@@ -27495,9 +27600,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @parameter {Array<Tw2Effect>} stages
  */
 var Tw2PostProcess = exports.Tw2PostProcess = (_temp = _class = function Tw2PostProcess() {
-    _classCallCheck(this, Tw2PostProcess);
+  _classCallCheck(this, Tw2PostProcess);
 
-    this.stages = [];
+  this.stages = [];
 }
 
 /**
@@ -27514,7 +27619,7 @@ var Tw2PostProcess = exports.Tw2PostProcess = (_temp = _class = function Tw2Post
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27526,9 +27631,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @class
  */
 var Tw2Float = exports.Tw2Float = function Tw2Float() {
-    _classCallCheck(this, Tw2Float);
+  _classCallCheck(this, Tw2Float);
 
-    this.value = 0;
+  this.value = 0;
 };
 
 /***/ }),
@@ -27545,6 +27650,8 @@ exports.Tw2Frustum = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27558,7 +27665,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} halfWidthProjection
  * @class
  */
-var Tw2Frustum = exports.Tw2Frustum = function () {
+var Tw2Frustum = exports.Tw2Frustum = (_temp = _class = function () {
     function Tw2Frustum() {
         _classCallCheck(this, Tw2Frustum);
 
@@ -27568,19 +27675,19 @@ var Tw2Frustum = exports.Tw2Frustum = function () {
         this.halfWidthProjection = 1;
     }
 
-    /**
-     * Initializes the Tw2Frustum
-     *
-     * @param {mat4} view - View Matrix
-     * @param {mat4} proj - Projection Matrix
-     * @param {number} viewportSize
-     * @param {mat4} [viewInverse] Optional viewInverse matrix
-     * @param {mat4} [viewProjection] Optional viewProjection matrix
-     */
-
-
     _createClass(Tw2Frustum, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Tw2Frustum
+         *
+         * @param {mat4} view - View Matrix
+         * @param {mat4} proj - Projection Matrix
+         * @param {number} viewportSize
+         * @param {mat4} [viewInverse] Optional viewInverse matrix
+         * @param {mat4} [viewProjection] Optional viewProjection matrix
+         */
         value: function Initialize(view, proj, viewportSize, viewInverse, viewProjection) {
             var mat4_0 = Tw2Frustum.global.mat4_0;
 
@@ -27670,20 +27777,18 @@ var Tw2Frustum = exports.Tw2Frustum = function () {
             var ratio = radius / depth;
             return ratio * this.halfWidthProjection * 2;
         }
+
+        /**
+         * Global and scratch variables
+         */
+
     }]);
 
     return Tw2Frustum;
-}();
-
-/**
- * global variables
- */
-
-
-Tw2Frustum.global = {
+}(), _class.global = {
     vec3_0: _global.vec3.create(),
     mat4_0: _global.mat4.create()
-};
+}, _temp);
 
 /***/ }),
 /* 131 */
@@ -27698,6 +27803,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ColorCurve = exports.Tw2ColorKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -27722,15 +27829,17 @@ var Tw2ColorKey = exports.Tw2ColorKey = function (_Tw2CurveKey) {
     _inherits(Tw2ColorKey, _Tw2CurveKey);
 
     function Tw2ColorKey() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ColorKey);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ColorKey.__proto__ || Object.getPrototypeOf(Tw2ColorKey)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.vec4.create();
-        _this.left = _global.vec4.create();
-        _this.right = _global.vec4.create();
-        _this.interpolation = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ColorKey.__proto__ || Object.getPrototypeOf(Tw2ColorKey)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec4.create(), _this.left = _global.vec4.create(), _this.right = _global.vec4.create(), _this.interpolation = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2ColorKey;
@@ -27749,30 +27858,30 @@ var Tw2ColorKey = exports.Tw2ColorKey = function (_Tw2CurveKey) {
  */
 
 
-var Tw2ColorCurve = exports.Tw2ColorCurve = function (_Tw2Curve) {
+var Tw2ColorCurve = exports.Tw2ColorCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2ColorCurve, _Tw2Curve);
 
     function Tw2ColorCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2ColorCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2ColorCurve.__proto__ || Object.getPrototypeOf(Tw2ColorCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.start = 0;
-        _this2.value = _global.vec4.create();
-        _this2.extrapolation = 0;
-        _this2.keys = [];
-        _this2._currentKey = 1;
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2ColorCurve.__proto__ || Object.getPrototypeOf(Tw2ColorCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.start = 0, _this2.value = _global.vec4.create(), _this2.extrapolation = 0, _this2.keys = [], _this2._currentKey = 1, _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2ColorCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort(this);
         }
@@ -27867,63 +27976,61 @@ var Tw2ColorCurve = exports.Tw2ColorCurve = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2ColorKey}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{NONE: number, CONSTANT: number, LINEAR: number}}
+         */
+
     }]);
 
     return Tw2ColorCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2ColorCurve.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ColorCurve.ouputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ColorCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ColorCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2ColorKey}
- */
-Tw2ColorCurve.Key = Tw2ColorKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2ColorCurve.Extrapolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 4, _class2.ouputDimension = 4, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2ColorKey, _class2.Extrapolation = {
     NONE: 0,
     CONSTANT: 1,
     GRADIENT: 2,
     CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number}}
- */
-Tw2ColorCurve.Interpolation = {
+}, _class2.Interpolation = {
     NONE: 0,
     CONSTANT: 1,
     LINEAR: 2
-};
+}, _temp3);
 
 /***/ }),
 /* 132 */
@@ -27938,6 +28045,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ColorCurve2 = exports.Tw2ColorKey2 = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -27963,15 +28072,17 @@ var Tw2ColorKey2 = exports.Tw2ColorKey2 = function (_Tw2CurveKey) {
     _inherits(Tw2ColorKey2, _Tw2CurveKey);
 
     function Tw2ColorKey2() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ColorKey2);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ColorKey2.__proto__ || Object.getPrototypeOf(Tw2ColorKey2)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.vec4.create();
-        _this.leftTangent = _global.vec4.create();
-        _this.rightTangent = _global.vec4.create();
-        _this.interpolation = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ColorKey2.__proto__ || Object.getPrototypeOf(Tw2ColorKey2)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec4.create(), _this.leftTangent = _global.vec4.create(), _this.rightTangent = _global.vec4.create(), _this.interpolation = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2ColorKey2;
@@ -27995,36 +28106,30 @@ var Tw2ColorKey2 = exports.Tw2ColorKey2 = function (_Tw2CurveKey) {
  */
 
 
-var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = function (_Tw2Curve) {
+var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2ColorCurve2, _Tw2Curve);
 
     function Tw2ColorCurve2() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2ColorCurve2);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2ColorCurve2.__proto__ || Object.getPrototypeOf(Tw2ColorCurve2)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.cycle = false;
-        _this2.reversed = false;
-        _this2.timeOffset = 0;
-        _this2.timeScale = 1;
-        _this2.startValue = _global.vec4.fromValues(0, 0, 0, 1);
-        _this2.currentValue = _global.vec4.fromValues(0, 0, 0, 1);
-        _this2.endValue = _global.vec4.fromValues(0, 0, 0, 1);
-        _this2.startTangent = _global.vec4.create();
-        _this2.endTangent = _global.vec4.create();
-        _this2.interpolation = 1;
-        _this2.keys = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2ColorCurve2.__proto__ || Object.getPrototypeOf(Tw2ColorCurve2)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cycle = false, _this2.reversed = false, _this2.timeOffset = 0, _this2.timeScale = 1, _this2.startValue = _global.vec4.fromValues(0, 0, 0, 1), _this2.currentValue = _global.vec4.fromValues(0, 0, 0, 1), _this2.endValue = _global.vec4.fromValues(0, 0, 0, 1), _this2.startTangent = _global.vec4.create(), _this2.endTangent = _global.vec4.create(), _this2.interpolation = 1, _this2.keys = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2ColorCurve2, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort2(this);
         }
@@ -28149,51 +28254,49 @@ var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2ColorKey2}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{CONSTANT: number, LINEAR: number}}
+         */
+
     }]);
 
     return Tw2ColorCurve2;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2ColorCurve2.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ColorCurve2.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ColorCurve2.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ColorCurve2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2ColorKey2}
- */
-Tw2ColorCurve2.Key = Tw2ColorKey2;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number}}
- */
-Tw2ColorCurve2.Interpolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 4, _class2.outputDimension = 4, _class2.valueProperty = 'currentValue', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2, _class2.Key = Tw2ColorKey2, _class2.Interpolation = {
     CONSTANT: 0,
     LINEAR: 1
-};
+}, _temp3);
 
 /***/ }),
 /* 133 */
@@ -28208,6 +28311,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2EventCurve = exports.Tw2EventKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _Tw2Curve2 = __webpack_require__(2);
 
@@ -28227,12 +28332,17 @@ var Tw2EventKey = exports.Tw2EventKey = function (_Tw2CurveKey) {
     _inherits(Tw2EventKey, _Tw2CurveKey);
 
     function Tw2EventKey() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2EventKey);
 
-        var _this = _possibleConstructorReturn(this, (Tw2EventKey.__proto__ || Object.getPrototypeOf(Tw2EventKey)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = '';
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2EventKey.__proto__ || Object.getPrototypeOf(Tw2EventKey)).call.apply(_ref, [this].concat(args))), _this), _this.value = '', _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2EventKey;
@@ -28251,30 +28361,30 @@ var Tw2EventKey = exports.Tw2EventKey = function (_Tw2CurveKey) {
  */
 
 
-var Tw2EventCurve = exports.Tw2EventCurve = function (_Tw2Curve) {
+var Tw2EventCurve = exports.Tw2EventCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2EventCurve, _Tw2Curve);
 
     function Tw2EventCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2EventCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2EventCurve.__proto__ || Object.getPrototypeOf(Tw2EventCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.value = '';
-        _this2.keys = [];
-        _this2.extrapolation = 0;
-        _this2._time = 0;
-        _this2._currentKey = 0;
-        _this2._length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2EventCurve.__proto__ || Object.getPrototypeOf(Tw2EventCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.value = '', _this2.keys = [], _this2.extrapolation = 0, _this2._time = 0, _this2._currentKey = 0, _this2._length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2EventCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             if (this.keys.length) {
                 this.keys.sort(_Tw2Curve2.Tw2Curve.Compare);
@@ -28322,51 +28432,49 @@ var Tw2EventCurve = exports.Tw2EventCurve = function (_Tw2Curve) {
                 ++this._currentKey;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's output dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2EventKey}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {{NONE: number, CYCLE: number}}
+         */
+
     }]);
 
     return Tw2EventCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2EventCurve.dimension = 1;
-
-/**
- * The curve's output dimension
- * @type {number}
- */
-Tw2EventCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2EventCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2EventCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2EventKey}
- */
-Tw2EventCurve.Key = Tw2EventKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CYCLE: number}}
- */
-Tw2EventCurve.Extrapolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.dimension = 1, _class2.outputDimension = 1, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2EventKey, _class2.Extrapolation = {
     NONE: 0,
     CYCLE: 3
-};
+}, _temp3);
 
 /***/ }),
 /* 134 */
@@ -28376,11 +28484,13 @@ Tw2EventCurve.Extrapolation = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2PerlinCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -28405,74 +28515,69 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} _startOffset
  * @class
  */
-var Tw2PerlinCurve = exports.Tw2PerlinCurve = function (_Tw2Curve) {
-  _inherits(Tw2PerlinCurve, _Tw2Curve);
+var Tw2PerlinCurve = exports.Tw2PerlinCurve = (_temp2 = _class = function (_Tw2Curve) {
+    _inherits(Tw2PerlinCurve, _Tw2Curve);
 
-  function Tw2PerlinCurve() {
-    _classCallCheck(this, Tw2PerlinCurve);
+    function Tw2PerlinCurve() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Tw2PerlinCurve.__proto__ || Object.getPrototypeOf(Tw2PerlinCurve)).call(this));
+        var _temp, _this, _ret;
 
-    _this.value = 0;
-    _this.start = 0;
-    _this.speed = 1;
-    _this.alpha = 1.1;
-    _this.beta = 2;
-    _this.offset = 0;
-    _this.scale = 1;
-    _this.N = 3;
-    _this._startOffset = Math.random() * 100;
-    return _this;
-  }
+        _classCallCheck(this, Tw2PerlinCurve);
 
-  /**
-   * Updates the current value at the given time
-   * @param {number} time
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Tw2PerlinCurve, [{
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.value = this.GetValueAt(time);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2PerlinCurve.__proto__ || Object.getPrototypeOf(Tw2PerlinCurve)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.start = 0, _this.speed = 1, _this.alpha = 1.1, _this.beta = 2, _this.offset = 0, _this.scale = 1, _this.N = 3, _this._startOffset = Math.random() * 100, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time) {
-      time -= this._startOffset;
-      return (_global.noise.perlin1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2 * this.scale + this.offset;
-    }
-  }]);
-
-  return Tw2PerlinCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's dimension
- * @type {number}
- */
+    _createClass(Tw2PerlinCurve, [{
+        key: 'UpdateValue',
 
 
-Tw2PerlinCurve.outputDimension = 1;
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+        value: function UpdateValue(time) {
+            this.value = this.GetValueAt(time);
+        }
 
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2PerlinCurve.valueProperty = 'value';
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @returns {number}
+         */
 
-/**
- * The curve's type
- * @type {number}
- */
-Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time) {
+            time -= this._startOffset;
+            return (_global.noise.perlin1D(time * this.speed, this.alpha, this.beta, this.N) + 1) / 2 * this.scale + this.offset;
+        }
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+    }]);
+
+    return Tw2PerlinCurve;
+}(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
 /* 135 */
@@ -28487,6 +28592,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2QuaternionCurve = exports.Tw2QuaternionKey2 = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -28511,15 +28618,17 @@ var Tw2QuaternionKey2 = exports.Tw2QuaternionKey2 = function (_Tw2CurveKey) {
     _inherits(Tw2QuaternionKey2, _Tw2CurveKey);
 
     function Tw2QuaternionKey2() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2QuaternionKey2);
 
-        var _this = _possibleConstructorReturn(this, (Tw2QuaternionKey2.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey2)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.quat.create();
-        _this.leftTangent = _global.vec4.create();
-        _this.rightTangent = _global.vec4.create();
-        _this.interpolation = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2QuaternionKey2.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey2)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.quat.create(), _this.leftTangent = _global.vec4.create(), _this.rightTangent = _global.vec4.create(), _this.interpolation = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2QuaternionKey2;
@@ -28544,36 +28653,30 @@ var Tw2QuaternionKey2 = exports.Tw2QuaternionKey2 = function (_Tw2CurveKey) {
  */
 
 
-var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
+var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2QuaternionCurve, _Tw2Curve);
 
     function Tw2QuaternionCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2QuaternionCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2QuaternionCurve.__proto__ || Object.getPrototypeOf(Tw2QuaternionCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.cycle = false;
-        _this2.reversed = false;
-        _this2.timeOffset = 0;
-        _this2.timeScale = 1;
-        _this2.startValue = _global.quat.create();
-        _this2.currentValue = _global.quat.create();
-        _this2.endValue = _global.quat.create();
-        _this2.startTangent = _global.vec4.create();
-        _this2.endTangent = _global.vec4.create();
-        _this2.interpolation = 1;
-        _this2.keys = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2QuaternionCurve.__proto__ || Object.getPrototypeOf(Tw2QuaternionCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cycle = false, _this2.reversed = false, _this2.timeOffset = 0, _this2.timeScale = 1, _this2.startValue = _global.quat.create(), _this2.currentValue = _global.quat.create(), _this2.endValue = _global.quat.create(), _this2.startTangent = _global.vec4.create(), _this2.endTangent = _global.vec4.create(), _this2.interpolation = 1, _this2.keys = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2QuaternionCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort2(this);
         }
@@ -28708,51 +28811,49 @@ var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2QuaternionKey2}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{CONSTANT: number, SPHERICAL_LINEAR: number}}
+         */
+
     }]);
 
     return Tw2QuaternionCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2QuaternionCurve.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2QuaternionCurve.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2QuaternionCurve.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2QuaternionCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2QuaternionKey2}
- */
-Tw2QuaternionCurve.Key = Tw2QuaternionKey2;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, SPHERICAL_LINEAR: number}}
- */
-Tw2QuaternionCurve.Interpolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 4, _class2.outputDimension = 4, _class2.valueProperty = 'currentValue', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2, _class2.Key = Tw2QuaternionKey2, _class2.Interpolation = {
     CONSTANT: 0,
     SPHERICAL_LINEAR: 4
-};
+}, _temp3);
 
 /***/ }),
 /* 136 */
@@ -28762,11 +28863,13 @@ Tw2QuaternionCurve.Interpolation = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2RandomConstantCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _Tw2Curve2 = __webpack_require__(2);
 
@@ -28785,66 +28888,66 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {boolean} hold
  * @class
  */
-var Tw2RandomConstantCurve = exports.Tw2RandomConstantCurve = function (_Tw2Curve) {
-  _inherits(Tw2RandomConstantCurve, _Tw2Curve);
+var Tw2RandomConstantCurve = exports.Tw2RandomConstantCurve = (_temp2 = _class = function (_Tw2Curve) {
+    _inherits(Tw2RandomConstantCurve, _Tw2Curve);
 
-  function Tw2RandomConstantCurve() {
-    _classCallCheck(this, Tw2RandomConstantCurve);
+    function Tw2RandomConstantCurve() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Tw2RandomConstantCurve.__proto__ || Object.getPrototypeOf(Tw2RandomConstantCurve)).call(this));
+        var _temp, _this, _ret;
 
-    _this.value = 0;
-    _this.min = 0;
-    _this.max = 1;
-    _this.hold = true;
-    return _this;
-  }
+        _classCallCheck(this, Tw2RandomConstantCurve);
 
-  /**
-   * Updates the current value at the given time
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Tw2RandomConstantCurve, [{
-    key: 'UpdateValue',
-    value: function UpdateValue() {
-      this.value = this.GetValueAt();
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2RandomConstantCurve.__proto__ || Object.getPrototypeOf(Tw2RandomConstantCurve)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.min = 0, _this.max = 1, _this.hold = true, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Gets a value at a specific time
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt() {
-      return this.hold ? this.value : this.min + (this.max - this.min) * Math.random();
-    }
-  }]);
-
-  return Tw2RandomConstantCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's dimension
- * @type {number}
- */
+    _createClass(Tw2RandomConstantCurve, [{
+        key: 'UpdateValue',
 
 
-Tw2RandomConstantCurve.outputDimension = 1;
+        /**
+         * Updates the current value at the given time
+         */
+        value: function UpdateValue() {
+            this.value = this.GetValueAt();
+        }
 
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RandomConstantCurve.valueProperty = 'value';
+        /**
+         * Gets a value at a specific time
+         * @returns {number}
+         */
 
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt() {
+            return this.hold ? this.value : this.min + (this.max - this.min) * Math.random();
+        }
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+    }]);
+
+    return Tw2RandomConstantCurve;
+}(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
 /* 137 */
@@ -28859,6 +28962,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2RigidOrientation = exports.Tw2Torque = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -28882,14 +28987,17 @@ var Tw2Torque = exports.Tw2Torque = function (_Tw2CurveKey) {
     _inherits(Tw2Torque, _Tw2CurveKey);
 
     function Tw2Torque() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2Torque);
 
-        var _this = _possibleConstructorReturn(this, (Tw2Torque.__proto__ || Object.getPrototypeOf(Tw2Torque)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.rot0 = _global.quat.create();
-        _this.omega0 = _global.vec3.create();
-        _this.torque = _global.vec3.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2Torque.__proto__ || Object.getPrototypeOf(Tw2Torque)).call.apply(_ref, [this].concat(args))), _this), _this.rot0 = _global.quat.create(), _this.omega0 = _global.vec3.create(), _this.torque = _global.vec3.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2Torque;
@@ -28909,31 +29017,30 @@ var Tw2Torque = exports.Tw2Torque = function (_Tw2CurveKey) {
  */
 
 
-var Tw2RigidOrientation = exports.Tw2RigidOrientation = function (_Tw2Curve) {
+var Tw2RigidOrientation = exports.Tw2RigidOrientation = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2RigidOrientation, _Tw2Curve);
 
     function Tw2RigidOrientation() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2RigidOrientation);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2RigidOrientation.__proto__ || Object.getPrototypeOf(Tw2RigidOrientation)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.name = '';
-        _this2.I = 1;
-        _this2.drag = 1;
-        _this2.value = _global.quat.create();
-        _this2.start = 0;
-        _this2.states = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2RigidOrientation.__proto__ || Object.getPrototypeOf(Tw2RigidOrientation)).call.apply(_ref2, [this].concat(args))), _this2), _this2.name = '', _this2.I = 1, _this2.drag = 1, _this2.value = _global.quat.create(), _this2.start = 0, _this2.states = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2RigidOrientation, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort(this, this.states);
         }
@@ -28994,42 +29101,40 @@ var Tw2RigidOrientation = exports.Tw2RigidOrientation = function (_Tw2Curve) {
             _global.quat.multiply(value, this.states[key].rot0, quat_0);
             return value;
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2Torque}
+         */
+
     }]);
 
     return Tw2RigidOrientation;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2RigidOrientation.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2RigidOrientation.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RigidOrientation.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2Torque}
- */
-Tw2RigidOrientation.Key = Tw2Torque;
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 4, _class2.outputDimension = 4, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2Torque, _temp3);
 
 /***/ }),
 /* 138 */
@@ -29045,6 +29150,8 @@ exports.Tw2RotationCurve = exports.Tw2QuaternionKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class2, _temp3;
+
 var _global = __webpack_require__(0);
 
 var _Tw2Curve2 = __webpack_require__(2);
@@ -29058,7 +29165,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2QuaternionKey
  *
- * @property {number} time
  * @property {quat} value
  * @property {vec4} leftTangent
  * @property {vec4} rightTangent
@@ -29069,15 +29175,17 @@ var Tw2QuaternionKey = exports.Tw2QuaternionKey = function (_Tw2CurveKey) {
     _inherits(Tw2QuaternionKey, _Tw2CurveKey);
 
     function Tw2QuaternionKey() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2QuaternionKey);
 
-        var _this = _possibleConstructorReturn(this, (Tw2QuaternionKey.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.quat.create();
-        _this.left = _global.vec4.create();
-        _this.right = _global.vec4.create();
-        _this.interpolation = 5;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2QuaternionKey.__proto__ || Object.getPrototypeOf(Tw2QuaternionKey)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.quat.create(), _this.left = _global.vec4.create(), _this.right = _global.vec4.create(), _this.interpolation = 5, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2QuaternionKey;
@@ -29096,30 +29204,30 @@ var Tw2QuaternionKey = exports.Tw2QuaternionKey = function (_Tw2CurveKey) {
  */
 
 
-var Tw2RotationCurve = exports.Tw2RotationCurve = function (_Tw2Curve) {
+var Tw2RotationCurve = exports.Tw2RotationCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2RotationCurve, _Tw2Curve);
 
     function Tw2RotationCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2RotationCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2RotationCurve.__proto__ || Object.getPrototypeOf(Tw2RotationCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.start = 0;
-        _this2.value = _global.quat.create();
-        _this2.extrapolation = 0;
-        _this2.keys = [];
-        _this2._currentKey = 1;
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2RotationCurve.__proto__ || Object.getPrototypeOf(Tw2RotationCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.start = 0, _this2.value = _global.quat.create(), _this2.extrapolation = 0, _this2.keys = [], _this2._currentKey = 1, _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's children
-     */
-
 
     _createClass(Tw2RotationCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's children
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort(this);
         }
@@ -29231,66 +29339,64 @@ var Tw2RotationCurve = exports.Tw2RotationCurve = function (_Tw2Curve) {
                     return _global.quat.sqlerp(value, ck_1.value, ck_1.right, ck.left, ck.value, nt);
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2QuaternionKey}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, SLERP: number, SQUAD: number}}
+         */
+
     }]);
 
     return Tw2RotationCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2RotationCurve.outputDimention = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2RotationCurve.inputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RotationCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RotationCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2QuaternionKey}
- */
-Tw2RotationCurve.Child = Tw2QuaternionKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2RotationCurve.Extrapolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.outputDimention = 4, _class2.inputDimension = 4, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Child = Tw2QuaternionKey, _class2.Extrapolation = {
     NONE: 0,
     CONSTANT: 1,
     GRADIENT: 2,
     CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, SLERP: number, SQUAD: number}}
- */
-Tw2RotationCurve.Interpolation = {
+}, _class2.Interpolation = {
     NONE: 0,
     CONSTANT: 1,
     LINEAR: 2,
     HERMITE: 3,
     SLERP: 5,
     SQUAD: 6
-};
+}, _temp3);
 
 /***/ }),
 /* 139 */
@@ -29305,6 +29411,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ScalarCurve = exports.Tw2ScalarKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _Tw2Curve2 = __webpack_require__(2);
 
@@ -29327,15 +29435,17 @@ var Tw2ScalarKey = exports.Tw2ScalarKey = function (_Tw2CurveKey) {
     _inherits(Tw2ScalarKey, _Tw2CurveKey);
 
     function Tw2ScalarKey() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ScalarKey);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ScalarKey.__proto__ || Object.getPrototypeOf(Tw2ScalarKey)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = 0;
-        _this.left = 0;
-        _this.right = 0;
-        _this.interpolation = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ScalarKey.__proto__ || Object.getPrototypeOf(Tw2ScalarKey)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.left = 0, _this.right = 0, _this.interpolation = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2ScalarKey;
@@ -29356,32 +29466,30 @@ var Tw2ScalarKey = exports.Tw2ScalarKey = function (_Tw2CurveKey) {
  */
 
 
-var Tw2ScalarCurve = exports.Tw2ScalarCurve = function (_Tw2Curve) {
+var Tw2ScalarCurve = exports.Tw2ScalarCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2ScalarCurve, _Tw2Curve);
 
     function Tw2ScalarCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2ScalarCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2ScalarCurve.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.start = 0;
-        _this2.timeScale = 1;
-        _this2.timeOffset = 0;
-        _this2.value = 0;
-        _this2.extrapolation = 0;
-        _this2.keys = [];
-        _this2._currentKey = 1;
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2ScalarCurve.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.start = 0, _this2.timeScale = 1, _this2.timeOffset = 0, _this2.value = 0, _this2.extrapolation = 0, _this2.keys = [], _this2._currentKey = 1, _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2ScalarCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort(this);
         }
@@ -29485,65 +29593,63 @@ var Tw2ScalarCurve = exports.Tw2ScalarCurve = function (_Tw2Curve) {
                     return ret * ret * ck.value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2ScalarKey}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, CATMULROM: number}}
+         */
+
     }]);
 
     return Tw2ScalarCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2ScalarCurve.inputDimension = 1;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ScalarCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ScalarCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ScalarCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2ScalarKey}
- */
-Tw2ScalarCurve.Key = Tw2ScalarKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2ScalarCurve.Extrapolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 1, _class2.outputDimension = 1, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2ScalarKey, _class2.Extrapolation = {
     NONE: 0,
     CONSTANT: 1,
     GRADIENT: 2,
     CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, CATMULROM: number}}
- */
-Tw2ScalarCurve.Interpolation = {
+}, _class2.Interpolation = {
     NONE: 0,
     CONSTANT: 1,
     LINEAR: 2,
     HERMITE: 3,
     CATMULROM: 4
-};
+}, _temp3);
 
 /***/ }),
 /* 140 */
@@ -29558,6 +29664,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ScalarCurve2 = exports.Tw2ScalarKey2 = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _Tw2Curve2 = __webpack_require__(2);
 
@@ -29580,15 +29688,17 @@ var Tw2ScalarKey2 = exports.Tw2ScalarKey2 = function (_Tw2CurveKey) {
     _inherits(Tw2ScalarKey2, _Tw2CurveKey);
 
     function Tw2ScalarKey2() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ScalarKey2);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ScalarKey2.__proto__ || Object.getPrototypeOf(Tw2ScalarKey2)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = 0;
-        _this.leftTangent = 0;
-        _this.rightTangent = 0;
-        _this.interpolation = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ScalarKey2.__proto__ || Object.getPrototypeOf(Tw2ScalarKey2)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.leftTangent = 0, _this.rightTangent = 0, _this.interpolation = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2ScalarKey2;
@@ -29613,36 +29723,30 @@ var Tw2ScalarKey2 = exports.Tw2ScalarKey2 = function (_Tw2CurveKey) {
  */
 
 
-var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = function (_Tw2Curve) {
+var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2ScalarCurve2, _Tw2Curve);
 
     function Tw2ScalarCurve2() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2ScalarCurve2);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2ScalarCurve2.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve2)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.cycle = false;
-        _this2.reversed = false;
-        _this2.timeOffset = 0;
-        _this2.timeScale = 1;
-        _this2.startValue = 0;
-        _this2.currentValue = 0;
-        _this2.endValue = 0;
-        _this2.startTangent = 0;
-        _this2.endTangent = 0;
-        _this2.interpolation = 1;
-        _this2.keys = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2ScalarCurve2.__proto__ || Object.getPrototypeOf(Tw2ScalarCurve2)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cycle = false, _this2.reversed = false, _this2.timeOffset = 0, _this2.timeScale = 1, _this2.startValue = 0, _this2.currentValue = 0, _this2.endValue = 0, _this2.startTangent = 0, _this2.endTangent = 0, _this2.interpolation = 1, _this2.keys = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2ScalarCurve2, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort2(this);
         }
@@ -29790,52 +29894,50 @@ var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = function (_Tw2Curve) {
                     return this.startValue;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2ScalarKey2}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+         */
+
     }]);
 
     return Tw2ScalarCurve2;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2ScalarCurve2.inputDimension = 1;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ScalarCurve2.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ScalarCurve2.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ScalarCurve2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2ScalarKey2}
- */
-Tw2ScalarCurve2.Key = Tw2ScalarKey2;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
- */
-Tw2ScalarCurve2.Interpolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 1, _class2.outputDimension = 1, _class2.valueProperty = 'currentValue', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2, _class2.Key = Tw2ScalarKey2, _class2.Interpolation = {
     CONSTANT: 0,
     LINEAR: 1,
     HERMITE: 2
-};
+}, _temp3);
 
 /***/ }),
 /* 141 */
@@ -29845,11 +29947,13 @@ Tw2ScalarCurve2.Interpolation = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2SineCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _Tw2Curve2 = __webpack_require__(2);
 
@@ -29868,68 +29972,68 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} scale
  * @property {number} speed
  */
-var Tw2SineCurve = exports.Tw2SineCurve = function (_Tw2Curve) {
-  _inherits(Tw2SineCurve, _Tw2Curve);
+var Tw2SineCurve = exports.Tw2SineCurve = (_temp2 = _class = function (_Tw2Curve) {
+    _inherits(Tw2SineCurve, _Tw2Curve);
 
-  function Tw2SineCurve() {
-    _classCallCheck(this, Tw2SineCurve);
+    function Tw2SineCurve() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Tw2SineCurve.__proto__ || Object.getPrototypeOf(Tw2SineCurve)).call(this));
+        var _temp, _this, _ret;
 
-    _this.value = 0;
-    _this.offset = 0;
-    _this.scale = 1;
-    _this.speed = 1;
-    return _this;
-  }
+        _classCallCheck(this, Tw2SineCurve);
 
-  /**
-   * Updates the current value at the given time
-   * @param {number} time
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Tw2SineCurve, [{
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.value = this.GetValueAt(time);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2SineCurve.__proto__ || Object.getPrototypeOf(Tw2SineCurve)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.offset = 0, _this.scale = 1, _this.speed = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time) {
-      return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
-    }
-  }]);
-
-  return Tw2SineCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * THe curve's dimension
- * @type {number}
- */
+    _createClass(Tw2SineCurve, [{
+        key: 'UpdateValue',
 
 
-Tw2SineCurve.outputDimension = 1;
+        /**
+         * Updates the current value at the given time
+         * @param {number} time
+         */
+        value: function UpdateValue(time) {
+            this.value = this.GetValueAt(time);
+        }
 
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2SineCurve.valueProperty = 'value';
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @returns {number}
+         */
 
-/**
- * The curve's type
- * @type {number}
- */
-Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time) {
+            return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
+        }
+
+        /**
+         * THe curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+    }]);
+
+    return Tw2SineCurve;
+}(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
 /* 142 */
@@ -29944,6 +30048,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2Vector2Curve = exports.Tw2Vector2Key = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -29968,15 +30074,17 @@ var Tw2Vector2Key = exports.Tw2Vector2Key = function (_Tw2CurveKey) {
     _inherits(Tw2Vector2Key, _Tw2CurveKey);
 
     function Tw2Vector2Key() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2Vector2Key);
 
-        var _this = _possibleConstructorReturn(this, (Tw2Vector2Key.__proto__ || Object.getPrototypeOf(Tw2Vector2Key)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.vec2.create();
-        _this.leftTangent = _global.vec2.create();
-        _this.rightTangent = _global.vec2.create();
-        _this.interpolation = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2Vector2Key.__proto__ || Object.getPrototypeOf(Tw2Vector2Key)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec2.create(), _this.leftTangent = _global.vec2.create(), _this.rightTangent = _global.vec2.create(), _this.interpolation = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2Vector2Key;
@@ -30001,36 +30109,30 @@ var Tw2Vector2Key = exports.Tw2Vector2Key = function (_Tw2CurveKey) {
  */
 
 
-var Tw2Vector2Curve = exports.Tw2Vector2Curve = function (_Tw2Curve) {
+var Tw2Vector2Curve = exports.Tw2Vector2Curve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2Vector2Curve, _Tw2Curve);
 
     function Tw2Vector2Curve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2Vector2Curve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2Vector2Curve.__proto__ || Object.getPrototypeOf(Tw2Vector2Curve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.cycle = false;
-        _this2.reversed = false;
-        _this2.timeOffset = 0;
-        _this2.timeScale = 1;
-        _this2.startValue = _global.vec2.create();
-        _this2.currentValue = _global.vec2.create();
-        _this2.endValue = _global.vec2.create();
-        _this2.startTangent = _global.vec2.create();
-        _this2.endTangent = _global.vec2.create();
-        _this2.interpolation = 1;
-        _this2.keys = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2Vector2Curve.__proto__ || Object.getPrototypeOf(Tw2Vector2Curve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cycle = false, _this2.reversed = false, _this2.timeOffset = 0, _this2.timeScale = 1, _this2.startValue = _global.vec2.create(), _this2.currentValue = _global.vec2.create(), _this2.endValue = _global.vec2.create(), _this2.startTangent = _global.vec2.create(), _this2.endTangent = _global.vec2.create(), _this2.interpolation = 1, _this2.keys = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2Vector2Curve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort2(this);
         }
@@ -30187,52 +30289,50 @@ var Tw2Vector2Curve = exports.Tw2Vector2Curve = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2Vector2Key}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {*}
+         */
+
     }]);
 
     return Tw2Vector2Curve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2Vector2Curve.inputDimension = 2;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2Vector2Curve.outputDimension = 2;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2Vector2Curve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2Vector2Curve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2Vector2Key}
- */
-Tw2Vector2Curve.Key = Tw2Vector2Key;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
- */
-Tw2Vector2Curve.Interpolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 2, _class2.outputDimension = 2, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2, _class2.Key = Tw2Vector2Key, _class2.Interpolation = {
     CONSTANT: 0,
     LINEAR: 1,
     HERMITE: 2
-};
+}, _temp3);
 
 /***/ }),
 /* 143 */
@@ -30247,6 +30347,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2Vector3Curve = exports.Tw2Vector3Key = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -30272,15 +30374,17 @@ var Tw2Vector3Key = exports.Tw2Vector3Key = function (_Tw2CurveKey) {
     _inherits(Tw2Vector3Key, _Tw2CurveKey);
 
     function Tw2Vector3Key() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2Vector3Key);
 
-        var _this = _possibleConstructorReturn(this, (Tw2Vector3Key.__proto__ || Object.getPrototypeOf(Tw2Vector3Key)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.vec3.create();
-        _this.leftTangent = _global.vec3.create();
-        _this.rightTangent = _global.vec3.create();
-        _this.interpolation = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2Vector3Key.__proto__ || Object.getPrototypeOf(Tw2Vector3Key)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec3.create(), _this.leftTangent = _global.vec3.create(), _this.rightTangent = _global.vec3.create(), _this.interpolation = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2Vector3Key;
@@ -30305,36 +30409,30 @@ var Tw2Vector3Key = exports.Tw2Vector3Key = function (_Tw2CurveKey) {
  */
 
 
-var Tw2Vector3Curve = exports.Tw2Vector3Curve = function (_Tw2Curve) {
+var Tw2Vector3Curve = exports.Tw2Vector3Curve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2Vector3Curve, _Tw2Curve);
 
     function Tw2Vector3Curve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2Vector3Curve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2Vector3Curve.__proto__ || Object.getPrototypeOf(Tw2Vector3Curve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.cycle = false;
-        _this2.reversed = false;
-        _this2.timeOffset = 0;
-        _this2.timeScale = 1;
-        _this2.startValue = _global.vec3.create();
-        _this2.currentValue = _global.vec3.create();
-        _this2.endValue = _global.vec3.create();
-        _this2.startTangent = _global.vec3.create();
-        _this2.endTangent = _global.vec3.create();
-        _this2.interpolation = 1;
-        _this2.keys = [];
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2Vector3Curve.__proto__ || Object.getPrototypeOf(Tw2Vector3Curve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.cycle = false, _this2.reversed = false, _this2.timeOffset = 0, _this2.timeScale = 1, _this2.startValue = _global.vec3.create(), _this2.currentValue = _global.vec3.create(), _this2.endValue = _global.vec3.create(), _this2.startTangent = _global.vec3.create(), _this2.endTangent = _global.vec3.create(), _this2.interpolation = 1, _this2.keys = [], _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2Vector3Curve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort2(this);
         }
@@ -30493,52 +30591,50 @@ var Tw2Vector3Curve = exports.Tw2Vector3Curve = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2Vector3Key}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
+         */
+
     }]);
 
     return Tw2Vector3Curve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2Vector3Curve.inputDimension = 3;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2Vector3Curve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2Vector3Curve.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2Vector3Curve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2Vector3Key}
- */
-Tw2Vector3Curve.Key = Tw2Vector3Key;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, LINEAR: number, HERMITE: number}}
- */
-Tw2Vector3Curve.Interpolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 3, _class2.outputDimension = 3, _class2.valueProperty = 'currentValue', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE2, _class2.Key = Tw2Vector3Key, _class2.Interpolation = {
     CONSTANT: 0,
     LINEAR: 1,
     HERMITE: 2
-};
+}, _temp3);
 
 /***/ }),
 /* 144 */
@@ -30553,6 +30649,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2VectorCurve = exports.Tw2VectorKey = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -30578,15 +30676,17 @@ var Tw2VectorKey = exports.Tw2VectorKey = function (_Tw2CurveKey) {
     _inherits(Tw2VectorKey, _Tw2CurveKey);
 
     function Tw2VectorKey() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2VectorKey);
 
-        var _this = _possibleConstructorReturn(this, (Tw2VectorKey.__proto__ || Object.getPrototypeOf(Tw2VectorKey)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.vec3.create();
-        _this.left = _global.vec3.create();
-        _this.right = _global.vec3.create();
-        _this.interpolation = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2VectorKey.__proto__ || Object.getPrototypeOf(Tw2VectorKey)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec3.create(), _this.left = _global.vec3.create(), _this.right = _global.vec3.create(), _this.interpolation = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     return Tw2VectorKey;
@@ -30606,30 +30706,30 @@ var Tw2VectorKey = exports.Tw2VectorKey = function (_Tw2CurveKey) {
  */
 
 
-var Tw2VectorCurve = exports.Tw2VectorCurve = function (_Tw2Curve) {
+var Tw2VectorCurve = exports.Tw2VectorCurve = (_temp3 = _class2 = function (_Tw2Curve) {
     _inherits(Tw2VectorCurve, _Tw2Curve);
 
     function Tw2VectorCurve() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, Tw2VectorCurve);
 
-        var _this2 = _possibleConstructorReturn(this, (Tw2VectorCurve.__proto__ || Object.getPrototypeOf(Tw2VectorCurve)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.start = 0;
-        _this2.value = _global.vec3.create();
-        _this2.extrapolation = 0;
-        _this2.keys = [];
-        _this2._currentKey = 1;
-        _this2.length = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Tw2VectorCurve.__proto__ || Object.getPrototypeOf(Tw2VectorCurve)).call.apply(_ref2, [this].concat(args))), _this2), _this2.start = 0, _this2.value = _global.vec3.create(), _this2.extrapolation = 0, _this2.keys = [], _this2._currentKey = 1, _this2.length = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2VectorCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             _Tw2Curve2.Tw2Curve.Sort(this);
         }
@@ -30736,64 +30836,62 @@ var Tw2VectorCurve = exports.Tw2VectorCurve = function (_Tw2Curve) {
                     return value;
             }
         }
+
+        /**
+         * The curve's key dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's key constructor
+         * @type {Tw2VectorKey}
+         */
+
+
+        /**
+         * Extrapolation types
+         * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+         */
+
+
+        /**
+         * Interpolation types
+         * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number}}
+         */
+
     }]);
 
     return Tw2VectorCurve;
-}(_Tw2Curve2.Tw2Curve);
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-
-
-Tw2VectorCurve.inputDimension = 3;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2VectorCurve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2VectorCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2VectorCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2VectorKey}
- */
-Tw2VectorCurve.Key = Tw2VectorKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2VectorCurve.Extrapolation = {
+}(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 3, _class2.outputDimension = 3, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2VectorKey, _class2.Extrapolation = {
     NONE: 0,
     CONSTANT: 1,
     GRADIENT: 2,
     CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number}}
- */
-Tw2VectorCurve.Interpolation = {
+}, _class2.Interpolation = {
     NONE: 0,
     CONSTANT: 1,
     LINEAR: 2,
     HERMITE: 3
-};
+}, _temp3);
 
 /***/ }),
 /* 145 */
@@ -30916,6 +31014,8 @@ exports.Tw2ColorSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp2;
+
 var _global = __webpack_require__(0);
 
 var _Tw2CurveSequencer2 = __webpack_require__(7);
@@ -30935,28 +31035,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Array<Tw2Curve>} functions
  * @class
  */
-var Tw2ColorSequencer = exports.Tw2ColorSequencer = function (_Tw2CurveSequencer) {
+var Tw2ColorSequencer = exports.Tw2ColorSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2ColorSequencer, _Tw2CurveSequencer);
 
     function Tw2ColorSequencer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ColorSequencer);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ColorSequencer.__proto__ || Object.getPrototypeOf(Tw2ColorSequencer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.start = 0;
-        _this.value = _global.vec4.create();
-        _this.operator = 0;
-        _this.functions = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ColorSequencer.__proto__ || Object.getPrototypeOf(Tw2ColorSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.start = 0, _this.value = _global.vec4.create(), _this.operator = 0, _this.functions = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2ColorSequencer, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
@@ -31019,51 +31121,49 @@ var Tw2ColorSequencer = exports.Tw2ColorSequencer = function (_Tw2CurveSequencer
                     return value;
             }
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve array
+         * @type {string}
+         */
+
+
+        /**
+         * Operators
+         * @type {{MULTIPLY: number, ADD: number}}
+         */
+
     }]);
 
     return Tw2ColorSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2ColorSequencer.inputDimension = 4;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2ColorSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2ColorSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2ColorSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve array
- * @type {string}
- */
-Tw2ColorSequencer.childArray = 'functions';
-
-/**
- * Operators
- * @type {{MULTIPLY: number, ADD: number}}
- */
-Tw2ColorSequencer.Operator = {
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 4, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER, _class.childArray = 'functions', _class.Operator = {
     MULTIPLY: 0,
     ADD: 1
-};
+}, _temp2);
 
 /***/ }),
 /* 147 */
@@ -31078,6 +31178,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2EulerRotation = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -31099,28 +31201,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {quat} currentValue=[0,0,0,1]
  * @class
  */
-var Tw2EulerRotation = exports.Tw2EulerRotation = function (_Tw2CurveSequencer) {
+var Tw2EulerRotation = exports.Tw2EulerRotation = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2EulerRotation, _Tw2CurveSequencer);
 
     function Tw2EulerRotation() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2EulerRotation);
 
-        var _this = _possibleConstructorReturn(this, (Tw2EulerRotation.__proto__ || Object.getPrototypeOf(Tw2EulerRotation)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.yawCurve = null;
-        _this.pitchCurve = null;
-        _this.rollCurve = null;
-        _this.currentValue = _global.quat.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2EulerRotation.__proto__ || Object.getPrototypeOf(Tw2EulerRotation)).call.apply(_ref, [this].concat(args))), _this), _this.yawCurve = null, _this.pitchCurve = null, _this.rollCurve = null, _this.currentValue = _global.quat.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2EulerRotation, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
         }
@@ -31179,42 +31283,40 @@ var Tw2EulerRotation = exports.Tw2EulerRotation = function (_Tw2CurveSequencer) 
 
             return value;
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve property names
+         * @type {string[]}
+         */
+
     }]);
 
     return Tw2EulerRotation;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2EulerRotation.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2EulerRotation.outputDimension = 3;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2EulerRotation.valueProperty = 'currentValue';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 3, _class.valueProperty = 'currentValue', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'], _temp2);
 
 /***/ }),
 /* 148 */
@@ -31229,6 +31331,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2QuaternionSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -31249,27 +31353,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Array<Tw2Curve>} functions
  * @class
  */
-var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = function (_Tw2CurveSequencer) {
+var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2QuaternionSequencer, _Tw2CurveSequencer);
 
     function Tw2QuaternionSequencer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2QuaternionSequencer);
 
-        var _this = _possibleConstructorReturn(this, (Tw2QuaternionSequencer.__proto__ || Object.getPrototypeOf(Tw2QuaternionSequencer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.start = 0;
-        _this.value = _global.quat.create();
-        _this.functions = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2QuaternionSequencer.__proto__ || Object.getPrototypeOf(Tw2QuaternionSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.start = 0, _this.value = _global.quat.create(), _this.functions = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2QuaternionSequencer, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
@@ -31320,42 +31427,40 @@ var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = function (_Tw2Curv
             }
             return value;
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve array
+         * @type {string}
+         */
+
     }]);
 
     return Tw2QuaternionSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2QuaternionSequencer.inputDimension = 4;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2QuaternionSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2QuaternionSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve array
- * @type {string}
- */
-Tw2QuaternionSequencer.childArray = 'functions';
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 4, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER, _class.childArray = 'functions', _temp2);
 
 /***/ }),
 /* 149 */
@@ -31365,11 +31470,13 @@ Tw2QuaternionSequencer.childArray = 'functions';
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2RGBAScalarSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -31391,112 +31498,111 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2Curve} AlphaCurve
  * @class
  */
-var Tw2RGBAScalarSequencer = exports.Tw2RGBAScalarSequencer = function (_Tw2CurveSequencer) {
-  _inherits(Tw2RGBAScalarSequencer, _Tw2CurveSequencer);
+var Tw2RGBAScalarSequencer = exports.Tw2RGBAScalarSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
+    _inherits(Tw2RGBAScalarSequencer, _Tw2CurveSequencer);
 
-  function Tw2RGBAScalarSequencer() {
-    _classCallCheck(this, Tw2RGBAScalarSequencer);
+    function Tw2RGBAScalarSequencer() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Tw2RGBAScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2RGBAScalarSequencer)).call(this));
+        var _temp, _this, _ret;
 
-    _this.value = _global.vec4.create();
-    _this.RedCurve = null;
-    _this.GreenCurve = null;
-    _this.BlueCurve = null;
-    _this.AlphaCurve = null;
-    return _this;
-  }
+        _classCallCheck(this, Tw2RGBAScalarSequencer);
 
-  /**
-   * Sorts the sequencer
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Tw2RGBAScalarSequencer, [{
-    key: 'Sort',
-    value: function Sort() {
-      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2RGBAScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2RGBAScalarSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec4.create(), _this.RedCurve = null, _this.GreenCurve = null, _this.BlueCurve = null, _this.AlphaCurve = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Gets sequencer length
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      var len = 0;
-      if (this.RedCurve && 'GetLength' in this.RedCurve) len = this.RedCurve.GetLength();
-      if (this.GreenCurve && 'GetLength' in this.GreenCurve) len = Math.max(len, this.GreenCurve.GetLength());
-      if (this.BlueCurve && 'GetLength' in this.BlueCurve) len = Math.max(len, this.BlueCurve.GetLength());
-      if (this.AlphaCurve && 'GetLength' in this.AlphaCurve) len = Math.max(len, this.AlphaCurve.GetLength());
-      return len;
-    }
-
-    /**
-     * Updates the current value at a specific time
-     * @param {number} time
-     */
-
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.GetValueAt(time, this.value);
-    }
-
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @param {vec4} value
-     * @returns {vec4}
-     */
-
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time, value) {
-      value[0] = this.RedCurve ? this.RedCurve.GetValueAt(time) : 0;
-      value[1] = this.GreenCurve ? this.GreenCurve.GetValueAt(time) : 0;
-      value[2] = this.BlueCurve ? this.BlueCurve.GetValueAt(time) : 0;
-      value[3] = this.AlphaCurve ? this.AlphaCurve.GetValueAt(time) : 0;
-      return value;
-    }
-  }]);
-
-  return Tw2RGBAScalarSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
+    _createClass(Tw2RGBAScalarSequencer, [{
+        key: 'Sort',
 
 
-Tw2RGBAScalarSequencer.inputDimension = 1;
+        /**
+         * Sorts the sequencer
+         */
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        }
 
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2RGBAScalarSequencer.outputDimension = 4;
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
 
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2RGBAScalarSequencer.valueProperty = 'value';
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            if (this.RedCurve && 'GetLength' in this.RedCurve) len = this.RedCurve.GetLength();
+            if (this.GreenCurve && 'GetLength' in this.GreenCurve) len = Math.max(len, this.GreenCurve.GetLength());
+            if (this.BlueCurve && 'GetLength' in this.BlueCurve) len = Math.max(len, this.BlueCurve.GetLength());
+            if (this.AlphaCurve && 'GetLength' in this.AlphaCurve) len = Math.max(len, this.AlphaCurve.GetLength());
+            return len;
+        }
 
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
+        /**
+         * Updates the current value at a specific time
+         * @param {number} time
+         */
 
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec4} value
+         * @returns {vec4}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            value[0] = this.RedCurve ? this.RedCurve.GetValueAt(time) : 0;
+            value[1] = this.GreenCurve ? this.GreenCurve.GetValueAt(time) : 0;
+            value[2] = this.BlueCurve ? this.BlueCurve.GetValueAt(time) : 0;
+            value[3] = this.AlphaCurve ? this.AlphaCurve.GetValueAt(time) : 0;
+            return value;
+        }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve property names
+         * @type {string[]}
+         */
+
+    }]);
+
+    return Tw2RGBAScalarSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'], _temp2);
 
 /***/ }),
 /* 150 */
@@ -31511,6 +31617,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2ScalarSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _Tw2CurveSequencer2 = __webpack_require__(7);
 
@@ -31534,32 +31642,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {boolean} clamping
  * @class
  */
-var Tw2ScalarSequencer = exports.Tw2ScalarSequencer = function (_Tw2CurveSequencer) {
+var Tw2ScalarSequencer = exports.Tw2ScalarSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2ScalarSequencer, _Tw2CurveSequencer);
 
     function Tw2ScalarSequencer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ScalarSequencer);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2ScalarSequencer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = 0;
-        _this.operator = 0;
-        _this.functions = [];
-        _this.inMinClamp = 0;
-        _this.inMaxClamp = 1;
-        _this.outMinClamp = 0;
-        _this.outMaxClamp = 1;
-        _this.clamping = false;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2ScalarSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.value = 0, _this.operator = 0, _this.functions = [], _this.inMinClamp = 0, _this.inMaxClamp = 1, _this.outMinClamp = 0, _this.outMaxClamp = 1, _this.clamping = false, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2ScalarSequencer, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
@@ -31634,51 +31740,49 @@ var Tw2ScalarSequencer = exports.Tw2ScalarSequencer = function (_Tw2CurveSequenc
 
             return value;
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve properties
+         * @type {string}
+         */
+
+
+        /**
+         * Operator types
+         * @type {{MULTIPLY: number, ADD: number}}
+         */
+
     }]);
 
     return Tw2ScalarSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2ScalarSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2ScalarSequencer.outputDimension = 1;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2ScalarSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2ScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve properties
- * @type {string}
- */
-Tw2ScalarSequencer.childArray = 'functions';
-
-/**
- * Operator types
- * @type {{MULTIPLY: number, ADD: number}}
- */
-Tw2ScalarSequencer.Operator = {
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER, _class.childArray = 'functions', _class.Operator = {
     MULTIPLY: 0,
     ADD: 1
-};
+}, _temp2);
 
 /***/ }),
 /* 151 */
@@ -31693,6 +31797,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2VectorSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -31714,28 +31820,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Array.<Tw2Curve>} functions
  * @class
  */
-var Tw2VectorSequencer = exports.Tw2VectorSequencer = function (_Tw2CurveSequencer) {
+var Tw2VectorSequencer = exports.Tw2VectorSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2VectorSequencer, _Tw2CurveSequencer);
 
     function Tw2VectorSequencer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2VectorSequencer);
 
-        var _this = _possibleConstructorReturn(this, (Tw2VectorSequencer.__proto__ || Object.getPrototypeOf(Tw2VectorSequencer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.start = 0;
-        _this.value = _global.vec3.create();
-        _this.operator = 0;
-        _this.functions = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2VectorSequencer.__proto__ || Object.getPrototypeOf(Tw2VectorSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.start = 0, _this.value = _global.vec3.create(), _this.operator = 0, _this.functions = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2VectorSequencer, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort(this);
         }
@@ -31798,51 +31906,49 @@ var Tw2VectorSequencer = exports.Tw2VectorSequencer = function (_Tw2CurveSequenc
                     return value;
             }
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve properties
+         * @type {string}
+         */
+
+
+        /**
+         * Operator types
+         * @type {{MULTIPLY: number, ADD: number}}
+         */
+
     }]);
 
     return Tw2VectorSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2VectorSequencer.inputDimension = 3;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2VectorSequencer.outputDimension = 3;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2VectorSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2VectorSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve properties
- * @type {string}
- */
-Tw2VectorSequencer.childArray = 'functions';
-
-/**
- * Operator types
- * @type {{MULTIPLY: number, ADD: number}}
- */
-Tw2VectorSequencer.Operator = {
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 3, _class.outputDimension = 3, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER, _class.childArray = 'functions', _class.Operator = {
     MULTIPLY: 0,
     ADD: 1
-};
+}, _temp2);
 
 /***/ }),
 /* 152 */
@@ -31852,11 +31958,13 @@ Tw2VectorSequencer.Operator = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.Tw2XYZScalarSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -31878,109 +31986,109 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2CurveSequencer} ZCurve
  * @class
  */
-var Tw2XYZScalarSequencer = exports.Tw2XYZScalarSequencer = function (_Tw2CurveSequencer) {
-  _inherits(Tw2XYZScalarSequencer, _Tw2CurveSequencer);
+var Tw2XYZScalarSequencer = exports.Tw2XYZScalarSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
+    _inherits(Tw2XYZScalarSequencer, _Tw2CurveSequencer);
 
-  function Tw2XYZScalarSequencer() {
-    _classCallCheck(this, Tw2XYZScalarSequencer);
+    function Tw2XYZScalarSequencer() {
+        var _ref;
 
-    var _this = _possibleConstructorReturn(this, (Tw2XYZScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2XYZScalarSequencer)).call(this));
+        var _temp, _this, _ret;
 
-    _this.value = _global.vec3.create();
-    _this.XCurve = null;
-    _this.YCurve = null;
-    _this.ZCurve = null;
-    return _this;
-  }
+        _classCallCheck(this, Tw2XYZScalarSequencer);
 
-  /**
-   * Sorts the sequencer
-   */
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-
-  _createClass(Tw2XYZScalarSequencer, [{
-    key: 'Sort',
-    value: function Sort() {
-      _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2XYZScalarSequencer.__proto__ || Object.getPrototypeOf(Tw2XYZScalarSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.vec3.create(), _this.XCurve = null, _this.YCurve = null, _this.ZCurve = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Gets sequencer length
-     * @returns {number}
-     */
-
-  }, {
-    key: 'GetLength',
-    value: function GetLength() {
-      var len = 0;
-      if (this.XCurve && 'GetLength' in this.XCurve) len = this.XCurve.GetLength();
-      if (this.YCurve && 'GetLength' in this.YCurve) len = Math.max(len, this.YCurve.GetLength());
-      if (this.ZCurve && 'GetLength' in this.ZCurve) len = Math.max(len, this.ZCurve.GetLength());
-      return len;
-    }
-
-    /**
-     * Updates a value at a specific time
-     * @param {number} time
-     */
-
-  }, {
-    key: 'UpdateValue',
-    value: function UpdateValue(time) {
-      this.GetValueAt(time, this.value);
-    }
-
-    /**
-     * Gets a value at a specific time
-     * @param {number} time
-     * @param {vec3} value
-     * @returns {vec3}
-     */
-
-  }, {
-    key: 'GetValueAt',
-    value: function GetValueAt(time, value) {
-      value[0] = this.XCurve ? this.XCurve.GetValueAt(time) : 0;
-      value[1] = this.YCurve ? this.YCurve.GetValueAt(time) : 0;
-      value[2] = this.ZCurve ? this.ZCurve.GetValueAt(time) : 0;
-      return value;
-    }
-  }]);
-
-  return Tw2XYZScalarSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
+    _createClass(Tw2XYZScalarSequencer, [{
+        key: 'Sort',
 
 
-Tw2XYZScalarSequencer.inputDimension = 1;
+        /**
+         * Sorts the sequencer
+         */
+        value: function Sort() {
+            _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
+        }
 
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2XYZScalarSequencer.outputDimension = 3;
+        /**
+         * Gets sequencer length
+         * @returns {number}
+         */
 
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2XYZScalarSequencer.valueProperty = 'value';
+    }, {
+        key: 'GetLength',
+        value: function GetLength() {
+            var len = 0;
+            if (this.XCurve && 'GetLength' in this.XCurve) len = this.XCurve.GetLength();
+            if (this.YCurve && 'GetLength' in this.YCurve) len = Math.max(len, this.YCurve.GetLength());
+            if (this.ZCurve && 'GetLength' in this.ZCurve) len = Math.max(len, this.ZCurve.GetLength());
+            return len;
+        }
 
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
+        /**
+         * Updates a value at a specific time
+         * @param {number} time
+         */
 
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
+    }, {
+        key: 'UpdateValue',
+        value: function UpdateValue(time) {
+            this.GetValueAt(time, this.value);
+        }
+
+        /**
+         * Gets a value at a specific time
+         * @param {number} time
+         * @param {vec3} value
+         * @returns {vec3}
+         */
+
+    }, {
+        key: 'GetValueAt',
+        value: function GetValueAt(time, value) {
+            value[0] = this.XCurve ? this.XCurve.GetValueAt(time) : 0;
+            value[1] = this.YCurve ? this.YCurve.GetValueAt(time) : 0;
+            value[2] = this.ZCurve ? this.ZCurve.GetValueAt(time) : 0;
+            return value;
+        }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve property names
+         * @type {string[]}
+         */
+
+    }]);
+
+    return Tw2XYZScalarSequencer;
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 3, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['XCurve', 'YCurve', 'ZCurve'], _temp2);
 
 /***/ }),
 /* 153 */
@@ -31995,6 +32103,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2YPRSequencer = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -32016,29 +32126,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2Curve} RollCurve
  * @class
  */
-var Tw2YPRSequencer = exports.Tw2YPRSequencer = function (_Tw2CurveSequencer) {
+var Tw2YPRSequencer = exports.Tw2YPRSequencer = (_temp2 = _class = function (_Tw2CurveSequencer) {
     _inherits(Tw2YPRSequencer, _Tw2CurveSequencer);
 
     function Tw2YPRSequencer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2YPRSequencer);
 
-        var _this = _possibleConstructorReturn(this, (Tw2YPRSequencer.__proto__ || Object.getPrototypeOf(Tw2YPRSequencer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.value = _global.quat.create();
-        _this.YawPitchRoll = _global.vec3.create();
-        _this.YawCurve = null;
-        _this.PitchCurve = null;
-        _this.RollCurve = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2YPRSequencer.__proto__ || Object.getPrototypeOf(Tw2YPRSequencer)).call.apply(_ref, [this].concat(args))), _this), _this.value = _global.quat.create(), _this.YawPitchRoll = _global.vec3.create(), _this.YawCurve = null, _this.PitchCurve = null, _this.RollCurve = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the sequencer
-     */
-
 
     _createClass(Tw2YPRSequencer, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the sequencer
+         */
         value: function Sort() {
             _Tw2CurveSequencer2.Tw2CurveSequencer.Sort2(this);
         }
@@ -32099,42 +32210,40 @@ var Tw2YPRSequencer = exports.Tw2YPRSequencer = function (_Tw2CurveSequencer) {
 
             return value;
         }
+
+        /**
+         * The sequencer's curve dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The sequencer's type
+         * @type {number}
+         */
+
+
+        /**
+         * The sequencer's curve property names
+         * @type {string[]}
+         */
+
     }]);
 
     return Tw2YPRSequencer;
-}(_Tw2CurveSequencer2.Tw2CurveSequencer);
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-
-
-Tw2YPRSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2YPRSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2YPRSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
+}(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'], _temp2);
 
 /***/ }),
 /* 154 */
@@ -32394,13 +32503,13 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
         this.scaleCurve = null;
     }
 
-    /**
-     * Initializes the Curve
-     */
-
-
     _createClass(Tw2TransformTrack, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Curve
+         */
         value: function Initialize() {
             if (this.resPath !== '') {
                 this.res = _global.resMan.GetResource(this.resPath);
@@ -32548,6 +32657,8 @@ exports.Tw2MayaEulerRotationCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp2;
+
 var _global = __webpack_require__(0);
 
 var _curves = __webpack_require__(16);
@@ -32572,32 +32683,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} length
  * @class
  */
-var Tw2MayaEulerRotationCurve = exports.Tw2MayaEulerRotationCurve = function (_Tw2Curve) {
+var Tw2MayaEulerRotationCurve = exports.Tw2MayaEulerRotationCurve = (_temp2 = _class = function (_Tw2Curve) {
     _inherits(Tw2MayaEulerRotationCurve, _Tw2Curve);
 
     function Tw2MayaEulerRotationCurve() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2MayaEulerRotationCurve);
 
-        var _this = _possibleConstructorReturn(this, (Tw2MayaEulerRotationCurve.__proto__ || Object.getPrototypeOf(Tw2MayaEulerRotationCurve)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.xIndex = -1;
-        _this.yIndex = -1;
-        _this.zIndex = -1;
-        _this.animationEngine = null;
-        _this.eulerValue = _global.vec3.create();
-        _this.updateQuaternion = false;
-        _this.quatValue = _global.quat.create();
-        _this.length = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2MayaEulerRotationCurve.__proto__ || Object.getPrototypeOf(Tw2MayaEulerRotationCurve)).call.apply(_ref, [this].concat(args))), _this), _this.xIndex = -1, _this.yIndex = -1, _this.zIndex = -1, _this.animationEngine = null, _this.eulerValue = _global.vec3.create(), _this.updateQuaternion = false, _this.quatValue = _global.quat.create(), _this.length = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the curve
-     */
-
 
     _createClass(Tw2MayaEulerRotationCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve
+         */
         value: function Sort() {
             this.ComputeLength();
         }
@@ -32680,30 +32789,28 @@ var Tw2MayaEulerRotationCurve = exports.Tw2MayaEulerRotationCurve = function (_T
                 this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
             }
         }
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
     }]);
 
     return Tw2MayaEulerRotationCurve;
-}(_curves.Tw2Curve);
-
-/**
- * The curve's dimension
- * @type {number}
- */
-
-
-Tw2MayaEulerRotationCurve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+}(_curves.Tw2Curve), _class.outputDimension = 3, _class.valueProperty = 'eulerValue', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
 /* 159 */
@@ -32718,6 +32825,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2MayaScalarCurve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _curves = __webpack_require__(16);
 
@@ -32736,28 +32845,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} length
  * @class
  */
-var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = function (_Tw2Curve) {
+var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = (_temp2 = _class = function (_Tw2Curve) {
     _inherits(Tw2MayaScalarCurve, _Tw2Curve);
 
     function Tw2MayaScalarCurve() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2MayaScalarCurve);
 
-        var _this = _possibleConstructorReturn(this, (Tw2MayaScalarCurve.__proto__ || Object.getPrototypeOf(Tw2MayaScalarCurve)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.index = -1;
-        _this.animationEngine = null;
-        _this.value = 0;
-        _this.length = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2MayaScalarCurve.__proto__ || Object.getPrototypeOf(Tw2MayaScalarCurve)).call.apply(_ref, [this].concat(args))), _this), _this.index = -1, _this.animationEngine = null, _this.value = 0, _this.length = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the curve
-     */
-
 
     _createClass(Tw2MayaScalarCurve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve
+         */
         value: function Sort() {
             this.ComputeLength();
         }
@@ -32796,30 +32907,28 @@ var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = function (_Tw2Curve) {
             if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
             if (this.index >= 0) this.length = this.animationEngine.GetLength(this.index);
         }
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
     }]);
 
     return Tw2MayaScalarCurve;
-}(_curves.Tw2Curve);
-
-/**
- * The curve's dimension
- * @type {number}
- */
-
-
-Tw2MayaScalarCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2MayaScalarCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+}(_curves.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
 /* 160 */
@@ -32834,6 +32943,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2MayaVector3Curve = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -32856,30 +32967,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {vec3} value
  * @property {number} length
  */
-var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = function (_Tw2Curve) {
+var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = (_temp2 = _class = function (_Tw2Curve) {
     _inherits(Tw2MayaVector3Curve, _Tw2Curve);
 
     function Tw2MayaVector3Curve() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2MayaVector3Curve);
 
-        var _this = _possibleConstructorReturn(this, (Tw2MayaVector3Curve.__proto__ || Object.getPrototypeOf(Tw2MayaVector3Curve)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.xIndex = -1;
-        _this.yIndex = -1;
-        _this.zIndex = -1;
-        _this.animationEngine = null;
-        _this.value = _global.vec3.create();
-        _this.length = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2MayaVector3Curve.__proto__ || Object.getPrototypeOf(Tw2MayaVector3Curve)).call.apply(_ref, [this].concat(args))), _this), _this.xIndex = -1, _this.yIndex = -1, _this.zIndex = -1, _this.animationEngine = null, _this.value = _global.vec3.create(), _this.length = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Sorts the curve's keys
-     */
-
 
     _createClass(Tw2MayaVector3Curve, [{
         key: 'Sort',
+
+
+        /**
+         * Sorts the curve's keys
+         */
         value: function Sort() {
             this.ComputeLength();
         }
@@ -32948,30 +33059,28 @@ var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = function (_Tw2Curve) {
                 this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
             }
         }
+
+        /**
+         * The curve's dimension
+         * @type {number}
+         */
+
+
+        /**
+         * The curve's current value property
+         * @type {string}
+         */
+
+
+        /**
+         * The curve's type
+         * @type {number}
+         */
+
     }]);
 
     return Tw2MayaVector3Curve;
-}(_curves.Tw2Curve);
-
-/**
- * The curve's dimension
- * @type {number}
- */
-
-
-Tw2MayaVector3Curve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2MayaVector3Curve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
+}(_curves.Tw2Curve), _class.outputDimension = 3, _class.valueProperty = 'value', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
 /* 161 */
@@ -32986,6 +33095,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2MayaAnimationEngine = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -33004,7 +33115,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} _currentCurveIndex
  * @property _evalCache
  */
-var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = function () {
+var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = (_temp = _class = function () {
     function Tw2MayaAnimationEngine() {
         _classCallCheck(this, Tw2MayaAnimationEngine);
 
@@ -33016,16 +33127,16 @@ var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = function () {
         this._evalCache = null;
     }
 
-    /**
-     * Evaluate
-     * @param curveIndex
-     * @param time
-     * @returns {*}
-     */
-
-
     _createClass(Tw2MayaAnimationEngine, [{
         key: 'Evaluate',
+
+
+        /**
+         * Evaluate
+         * @param curveIndex
+         * @param time
+         * @returns {*}
+         */
         value: function Evaluate(curveIndex, time) {
             if (this.curves.length <= curveIndex) return 0;
 
@@ -33313,9 +33424,7 @@ var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = function () {
     }]);
 
     return Tw2MayaAnimationEngine;
-}();
-
-Tw2MayaAnimationEngine.AnimCurveFields = {
+}(), _class.AnimCurveFields = {
     NUM_SEGMENTS: 0,
     SEGMENT_OFFSET: 1,
     END_TIME: 2,
@@ -33325,22 +33434,16 @@ Tw2MayaAnimationEngine.AnimCurveFields = {
     PRE_INFINITY: 6,
     POST_INFINITY: 7,
     IS_WEIGHTED: 8
-};
-
-Tw2MayaAnimationEngine.AnimSegment = {
+}, _class.AnimSegment = {
     TIME: 0,
     VALUE: 1
-};
-
-Tw2MayaAnimationEngine.HermiteSegment = {
+}, _class.HermiteSegment = {
     TIME: 0,
     VALUE: 1,
     COEFF: 2,
     IS_STEP: 3,
     IS_STEP_NEXT: 4
-};
-
-Tw2MayaAnimationEngine.BezierSegment = {
+}, _class.BezierSegment = {
     TIME: 0,
     VALUE: 1,
     COEFF: 2,
@@ -33348,9 +33451,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
     IS_STEP: 4,
     IS_STEP_NEXT: 5,
     IS_LINEAR: 6
-};
-
-Tw2MayaAnimationEngine.INFINITY = 0;
+}, _class.INFINITY = 0, _temp);
 
 /***/ }),
 /* 162 */
@@ -33474,24 +33575,28 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
     _inherits(EveChildBillboard, _EveChild);
 
     function EveChildBillboard() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveChildBillboard);
 
-        var _this = _possibleConstructorReturn(this, (EveChildBillboard.__proto__ || Object.getPrototypeOf(EveChildBillboard)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.mesh = null;
-        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveChildBillboard.__proto__ || Object.getPrototypeOf(EveChildBillboard)).call.apply(_ref, [this].concat(args))), _this), _this.mesh = null, _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array.<Tw2Resource>} out
-     */
-
 
     _createClass(EveChildBillboard, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the child's resources
+         * @param {Array} [out=[]]
+         * @returns {Array.<Tw2Resource>} out
+         */
         value: function GetResources(out) {
             if (this.mesh) this.mesh.GetResources(out);
             return out;
@@ -33555,7 +33660,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.EveChildCloud = undefined;
 
@@ -33575,21 +33680,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var EveChildCloud = exports.EveChildCloud = (_temp = _class = function (_EveChild) {
-    _inherits(EveChildCloud, _EveChild);
+  _inherits(EveChildCloud, _EveChild);
 
-    function EveChildCloud() {
-        _classCallCheck(this, EveChildCloud);
+  function EveChildCloud() {
+    _classCallCheck(this, EveChildCloud);
 
-        return _possibleConstructorReturn(this, (EveChildCloud.__proto__ || Object.getPrototypeOf(EveChildCloud)).call(this));
-    }
+    return _possibleConstructorReturn(this, (EveChildCloud.__proto__ || Object.getPrototypeOf(EveChildCloud)).apply(this, arguments));
+  }
 
-    /**
-     * Identifies that the object is not yet fully implemented
-     * @type {boolean}
-     */
-
-
-    return EveChildCloud;
+  return EveChildCloud;
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
@@ -33627,24 +33726,28 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
     _inherits(EveChildContainer, _EveChild);
 
     function EveChildContainer() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveChildContainer);
 
-        var _this = _possibleConstructorReturn(this, (EveChildContainer.__proto__ || Object.getPrototypeOf(EveChildContainer)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.objects = [];
-        _this.curveSets = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveChildContainer.__proto__ || Object.getPrototypeOf(EveChildContainer)).call.apply(_ref, [this].concat(args))), _this), _this.objects = [], _this.curveSets = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array<Tw2Resource>} out
-     */
-
 
     _createClass(EveChildContainer, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the child's resources
+         * @param {Array} [out=[]]
+         * @returns {Array<Tw2Resource>} out
+         */
         value: function GetResources() {
             var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -33705,7 +33808,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.EveChildExplosion = undefined;
 
@@ -33725,21 +33828,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @class
  */
 var EveChildExplosion = exports.EveChildExplosion = (_temp = _class = function (_EveChild) {
-    _inherits(EveChildExplosion, _EveChild);
+  _inherits(EveChildExplosion, _EveChild);
 
-    function EveChildExplosion() {
-        _classCallCheck(this, EveChildExplosion);
+  function EveChildExplosion() {
+    _classCallCheck(this, EveChildExplosion);
 
-        return _possibleConstructorReturn(this, (EveChildExplosion.__proto__ || Object.getPrototypeOf(EveChildExplosion)).call(this));
-    }
+    return _possibleConstructorReturn(this, (EveChildExplosion.__proto__ || Object.getPrototypeOf(EveChildExplosion)).apply(this, arguments));
+  }
 
-    /**
-     * Identifies that the object is not yet fully implemented
-     * @type {boolean}
-     */
-
-
-    return EveChildExplosion;
+  return EveChildExplosion;
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
@@ -33779,24 +33876,28 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
     _inherits(EveChildMesh, _EveChild);
 
     function EveChildMesh() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveChildMesh);
 
-        var _this = _possibleConstructorReturn(this, (EveChildMesh.__proto__ || Object.getPrototypeOf(EveChildMesh)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.mesh = null;
-        _this.useSpaceObjectData = true;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveChildMesh.__proto__ || Object.getPrototypeOf(EveChildMesh)).call.apply(_ref, [this].concat(args))), _this), _this.mesh = null, _this.useSpaceObjectData = true, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array.<Tw2Resource>} out
-     */
-
 
     _createClass(EveChildMesh, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the child's resources
+         * @param {Array} [out=[]]
+         * @returns {Array.<Tw2Resource>} out
+         */
         value: function GetResources(out) {
             if (this.mesh) this.mesh.GetResources(out);
             return out;
@@ -33890,26 +33991,28 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
     _inherits(EveChildParticleSystem, _EveChild);
 
     function EveChildParticleSystem() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveChildParticleSystem);
 
-        var _this = _possibleConstructorReturn(this, (EveChildParticleSystem.__proto__ || Object.getPrototypeOf(EveChildParticleSystem)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.mesh = null;
-        _this.particleEmitters = [];
-        _this.particleSystems = [];
-        _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveChildParticleSystem.__proto__ || Object.getPrototypeOf(EveChildParticleSystem)).call.apply(_ref, [this].concat(args))), _this), _this.mesh = null, _this.particleEmitters = [], _this.particleSystems = [], _this._perObjectData = new _core.Tw2BasicPerObjectData(_EveChild2.EveChild.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Gets the child's resources
-     * @param {Array} [out=[]]
-     * @returns {Array.<Tw2Resource>} out
-     */
-
 
     _createClass(EveChildParticleSystem, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the child's resources
+         * @param {Array} [out=[]]
+         * @returns {Array.<Tw2Resource>} out
+         */
         value: function GetResources(out) {
             if (this.mesh) this.mesh.GetResources(out);
             return out;
@@ -34052,6 +34155,8 @@ exports.EveLensflare = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
@@ -34088,7 +34193,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {*} _backBuffer
  * @class
  */
-var EveLensflare = exports.EveLensflare = function () {
+var EveLensflare = exports.EveLensflare = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     */
     function EveLensflare() {
         _classCallCheck(this, EveLensflare);
 
@@ -34366,18 +34475,16 @@ var EveLensflare = exports.EveLensflare = function () {
                 g.occluderLevels = [new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget(), new _core.Tw2RenderTarget()];
             }
         }
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return EveLensflare;
-}();
-
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-
-
-EveLensflare.global = null;
+}(), _class.global = null, _temp);
 
 /***/ }),
 /* 171 */
@@ -34427,12 +34534,13 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
         this._id = _global.util.generateID();
         this.name = '';
         this.display = true;
-        this.visible = {};
-        this.visible.opaqueEffects = true;
-        this.visible.decalEffects = true;
-        this.visible.transparentEffects = true;
-        this.visible.additiveEffects = true;
-        this.visible.distortionEffects = true;
+        this.visible = {
+            opaqueEffects: true,
+            decalEffects: true,
+            transparentEffects: true,
+            additiveEffects: true,
+            distortionEffects: true
+        };
         this.update = true;
         this.curveSet = null;
         this.opaqueEffects = [];
@@ -34442,15 +34550,15 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
         this.distortionEffects = [];
     }
 
-    /**
-     * Gets the mesh overlay's resources
-     * @param {Array} [out=[]] - Optional receiving array
-     * @returns {Array.<Tw2Resource>} [out]
-     */
-
-
     _createClass(EveMeshOverlayEffect, [{
         key: 'GetResources',
+
+
+        /**
+         * Gets the mesh overlay's resources
+         * @param {Array} [out=[]] - Optional receiving array
+         * @returns {Array.<Tw2Resource>} [out]
+         */
         value: function GetResources() {
             var out = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
@@ -34552,6 +34660,8 @@ exports.EveStretch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
@@ -34583,7 +34693,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {boolean} _isNegZForward
  * @class
  */
-var EveStretch = exports.EveStretch = function () {
+var EveStretch = exports.EveStretch = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     */
     function EveStretch() {
         _classCallCheck(this, EveStretch);
 
@@ -34605,7 +34719,6 @@ var EveStretch = exports.EveStretch = function () {
         this._displaySourceObject = true;
         this._sourceTransform = null;
         this._displayDestObject = true;
-        this._useTransformsForStretch = false;
         this._isNegZForward = false;
 
         EveStretch.init();
@@ -34844,18 +34957,16 @@ var EveStretch = exports.EveStretch = function () {
                 };
             }
         }
+
+        /**
+         * Global and scratch variables
+         * @type {*}
+         */
+
     }]);
 
     return EveStretch;
-}();
-
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-
-
-EveStretch.global = null;
+}(), _class.global = null, _temp);
 
 /***/ }),
 /* 173 */
@@ -34877,7 +34988,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * EvePerMuzzleData
- * Todo: Remove reference in this.muzzlePosition
  *
  * @property {boolean} started
  * @property {boolean} readyToStart
@@ -34889,19 +34999,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} elapsedTime
  * @class
  */
-var EvePerMuzzleData = exports.EvePerMuzzleData = function EvePerMuzzleData() {
-    _classCallCheck(this, EvePerMuzzleData);
+var EvePerMuzzleData = exports.EvePerMuzzleData = function () {
+    function EvePerMuzzleData() {
+        _classCallCheck(this, EvePerMuzzleData);
 
-    this._id = _global.util.generateID();
-    this.started = false;
-    this.readyToStart = false;
-    this.muzzlePositionBone = null;
-    this.muzzleTransform = _global.mat4.create();
-    this.muzzlePosition = this.muzzleTransform.subarray(12, 15);
-    this.currentStartDelay = 0;
-    this.constantDelay = 0;
-    this.elapsedTime = 0;
-};
+        this._id = _global.util.generateID();
+        this.started = false;
+        this.readyToStart = false;
+        this.muzzlePositionBone = null;
+        this.muzzleTransform = _global.mat4.create();
+        this.currentStartDelay = 0;
+        this.constantDelay = 0;
+        this.elapsedTime = 0;
+    }
+
+    _createClass(EvePerMuzzleData, [{
+        key: 'muzzlePosition',
+
+
+        /**
+         * Muzzle position
+         * @returns {TypedArray}
+         */
+        get: function get() {
+            return this.muzzleTransform.subarray(12, 15);
+        }
+    }]);
+
+    return EvePerMuzzleData;
+}();
 
 /**
  * EveTurretFiringFX
@@ -34952,25 +35078,28 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
         this._perMuzzleData = [];
     }
 
-    /**
-     * Initializes the turret firing fx
-     */
-
-
     _createClass(EveTurretFiringFX, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the turret firing fx
+         */
         value: function Initialize() {
             this._firingDuration = this.GetCurveDuration();
             for (var i = 0; i < this.stretch.length; ++i) {
                 this._perMuzzleData[i] = new EvePerMuzzleData();
-            }if (this._perMuzzleData.length > 0) this._perMuzzleData[0].constantDelay = this.firingDelay1;
-            if (this._perMuzzleData.length > 1) this._perMuzzleData[1].constantDelay = this.firingDelay2;
-            if (this._perMuzzleData.length > 2) this._perMuzzleData[2].constantDelay = this.firingDelay3;
-            if (this._perMuzzleData.length > 3) this._perMuzzleData[3].constantDelay = this.firingDelay4;
-            if (this._perMuzzleData.length > 4) this._perMuzzleData[4].constantDelay = this.firingDelay5;
-            if (this._perMuzzleData.length > 5) this._perMuzzleData[5].constantDelay = this.firingDelay6;
-            if (this._perMuzzleData.length > 6) this._perMuzzleData[6].constantDelay = this.firingDelay7;
-            if (this._perMuzzleData.length > 7) this._perMuzzleData[7].constantDelay = this.firingDelay8;
+            }
+
+            var data = this._perMuzzleData;
+            if (data.length > 0) data[0].constantDelay = this.firingDelay1;
+            if (data.length > 1) data[1].constantDelay = this.firingDelay2;
+            if (data.length > 2) data[2].constantDelay = this.firingDelay3;
+            if (data.length > 3) data[3].constantDelay = this.firingDelay4;
+            if (data.length > 4) data[4].constantDelay = this.firingDelay5;
+            if (data.length > 5) data[5].constantDelay = this.firingDelay6;
+            if (data.length > 6) data[6].constantDelay = this.firingDelay7;
+            if (data.length > 7) data[7].constantDelay = this.firingDelay8;
         }
 
         /**
@@ -35112,7 +35241,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
         /**
          * Gets resources
          * @param {Array} [out=[]}
-         * @returns {Array<Resource>} out
+         * @returns {Array<Tw2Resource>} out
          */
 
     }, {
@@ -35211,9 +35340,9 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.EveStarField = undefined;
+exports.EveStarfield = undefined;
 
 var _class, _temp;
 
@@ -35234,18 +35363,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} minFlashRate
  * @property {number} seed
  */
-var EveStarField = exports.EveStarField = (_temp = _class = function EveStarField() {
-    _classCallCheck(this, EveStarField);
+var EveStarfield = exports.EveStarfield = (_temp = _class = function EveStarfield() {
+  _classCallCheck(this, EveStarfield);
 
-    this._id = _global.util.generateID();
-    this.name = '';
-    this.display = true;
-    this.effect = null;
-    this.maxDist = 0;
-    this.maxFlashRate = 0;
-    this.minFlashIntensity = 0;
-    this.minFlashRate = 0;
-    this.seed = 20;
+  this._id = _global.util.generateID();
+  this.name = '';
+  this.display = true;
+  this.effect = null;
+  this.maxDist = 0;
+  this.maxFlashRate = 0;
+  this.minFlashIntensity = 0;
+  this.minFlashRate = 0;
+  this.seed = 20;
 }
 
 /**
@@ -35304,32 +35433,26 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
     _inherits(EveEffectRoot, _EveObject);
 
     function EveEffectRoot() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveEffectRoot);
 
-        var _this = _possibleConstructorReturn(this, (EveEffectRoot.__proto__ || Object.getPrototypeOf(EveEffectRoot)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.curveSets = [];
-        _this.effectChildren = [];
-        _this.duration = 0;
-        _this.scaling = _global.vec3.fromValues(1, 1, 1);
-        _this.rotation = _global.quat.create();
-        _this.translation = _global.vec3.create();
-        _this.localTransform = _global.mat4.create();
-        _this.rotationTransform = _global.mat4.create();
-        _this.boundingSphereCenter = _global.vec3.create();
-        _this.boundingSphereRadius = 0;
-
-        _this._perObjectData = new _core.Tw2PerObjectData(_EveSpaceObject.EveSpaceObject.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveEffectRoot.__proto__ || Object.getPrototypeOf(EveEffectRoot)).call.apply(_ref, [this].concat(args))), _this), _this.curveSets = [], _this.effectChildren = [], _this.duration = 0, _this.scaling = _global.vec3.fromValues(1, 1, 1), _this.rotation = _global.quat.create(), _this.translation = _global.vec3.create(), _this.localTransform = _global.mat4.create(), _this.rotationTransform = _global.mat4.create(), _this.boundingSphereCenter = _global.vec3.create(), _this.boundingSphereRadius = 0, _this._perObjectData = new _core.Tw2PerObjectData(_EveSpaceObject.EveSpaceObject.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Starts playing the effectRoot's curveSets if they exist
-     */
-
 
     _createClass(EveEffectRoot, [{
         key: 'Start',
+
+
+        /**
+         * Starts playing the effectRoot's curveSets if they exist
+         */
         value: function Start() {
             for (var i = 0; i < this.curveSets.length; ++i) {
                 this.curveSets[i].Play();
@@ -35419,7 +35542,7 @@ exports.EveMissile = exports.EveMissileWarhead = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class, _temp;
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -35454,39 +35577,30 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
-var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (_EveObject) {
+var EveMissileWarhead = exports.EveMissileWarhead = (_temp2 = _class = function (_EveObject) {
     _inherits(EveMissileWarhead, _EveObject);
 
     function EveMissileWarhead() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveMissileWarhead);
 
-        var _this = _possibleConstructorReturn(this, (EveMissileWarhead.__proto__ || Object.getPrototypeOf(EveMissileWarhead)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.mesh = null;
-        _this.spriteSet = null;
-        _this.state = EveMissileWarhead.State.READY;
-        _this.time = 0;
-        _this.durationEjectPhase = 0;
-        _this.startEjectVelocity = 0;
-        _this.acceleration = 1;
-        _this.maxExplosionDistance = 40;
-        _this.impactSize = 0;
-        _this.impactDuration = 0.6;
-        _this.pathOffset = _global.vec3.create();
-        _this.transform = _global.mat4.create();
-        _this.velocity = _global.vec3.create();
-
-        _this._perObjectData = new _core.Tw2PerObjectData(EveMissileWarhead.perObjectData);
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveMissileWarhead.__proto__ || Object.getPrototypeOf(EveMissileWarhead)).call.apply(_ref, [this].concat(args))), _this), _this.mesh = null, _this.spriteSet = null, _this.state = EveMissileWarhead.State.READY, _this.time = 0, _this.durationEjectPhase = 0, _this.startEjectVelocity = 0, _this.acceleration = 1, _this.maxExplosionDistance = 40, _this.impactSize = 0, _this.impactDuration = 0.6, _this.pathOffset = _global.vec3.create(), _this.transform = _global.mat4.create(), _this.velocity = _global.vec3.create(), _this._perObjectData = new _core.Tw2PerObjectData(EveMissileWarhead.perObjectData), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the warhead
-     */
-
 
     _createClass(EveMissileWarhead, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the warhead
+         */
         value: function Initialize() {
             if (this.spriteSet) this.spriteSet.UseQuads(true);
         }
@@ -35649,7 +35763,7 @@ var EveMissileWarhead = exports.EveMissileWarhead = (_temp = _class = function (
     READY: 0,
     IN_FLIGHT: 1,
     DEAD: 2
-}, _temp);
+}, _temp2);
 
 /**
  * EveMissile
@@ -35687,16 +35801,16 @@ var EveMissile = exports.EveMissile = function () {
         this.missileFinishedCallback = null;
     }
 
-    /**
-     * Prepares missile for rendering
-     * @param {vec3} position - Missile starting position
-     * @param {Array} turretTransforms - Turret muzzle local to world transforms
-     * @param {vec3} target - Target position
-     */
-
-
     _createClass(EveMissile, [{
         key: 'Launch',
+
+
+        /**
+         * Prepares missile for rendering
+         * @param {vec3} position - Missile starting position
+         * @param {Array} turretTransforms - Turret muzzle local to world transforms
+         * @param {vec3} target - Target position
+         */
         value: function Launch(position, turretTransforms, target) {
             _global.vec3.copy(this.position, position);
             _global.vec3.copy(this.target, target);
@@ -35855,37 +35969,33 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
     _inherits(EvePlanet, _EveObject);
 
     function EvePlanet() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EvePlanet);
 
-        var _this = _possibleConstructorReturn(this, (EvePlanet.__proto__ || Object.getPrototypeOf(EvePlanet)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.highDetail = new _EveTransform.EveTransform();
-        _this.effectHeight = new _core.Tw2Effect();
-        _this.heightMap = new _core.Tw2RenderTarget();
-        _this.zOnlyModel = null;
-        _this.itemID = 0;
-        _this.heightMapResPath1 = '';
-        _this.heightMapResPath2 = '';
-        _this.heightDirty = false;
-        _this.lockedResources = [];
-        _this.watchedResources = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EvePlanet.__proto__ || Object.getPrototypeOf(EvePlanet)).call.apply(_ref, [this].concat(args))), _this), _this.highDetail = new _EveTransform.EveTransform(), _this.effectHeight = new _core.Tw2Effect(), _this.heightMap = new _core.Tw2RenderTarget(), _this.zOnlyModel = null, _this.itemID = 0, _this.heightMapResPath1 = '', _this.heightMapResPath2 = '', _this.heightDirty = false, _this.lockedResources = [], _this.watchedResources = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Creates the planet from an options object
-     * @param {{}} options={}                   - an object containing the planet's options
-     * @param {number} options.itemID           - the item id is used for randomization
-     * @param {string} options.planetPath       - .red file for a planet, or planet template
-     * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
-     * @param {string} options.heightMap1       - the planet's first height map
-     * @param {string} options.heightMap2       - the planet's second height map
-     * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
-     */
-
 
     _createClass(EvePlanet, [{
         key: 'Create',
+
+
+        /**
+         * Creates the planet from an options object
+         * @param {{}} options={}                   - an object containing the planet's options
+         * @param {number} options.itemID           - the item id is used for randomization
+         * @param {string} options.planetPath       - .red file for a planet, or planet template
+         * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
+         * @param {string} options.heightMap1       - the planet's first height map
+         * @param {string} options.heightMap2       - the planet's second height map
+         * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
+         */
         value: function Create() {
             var _this2 = this;
 
@@ -36192,8 +36302,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * EveShip
  *
- * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
- * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
  * @property {Array.<EveBoosterSet>} boosters
  * @property {Array.<EveTurretSet>} turretSets
  * @property {number} boosterGain
@@ -36203,25 +36311,26 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
     _inherits(EveShip, _EveSpaceObject);
 
     function EveShip() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveShip);
 
-        var _this = _possibleConstructorReturn(this, (EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.visible.turretSets = true;
-        _this.visible.boosters = true;
-        _this.boosters = null;
-        _this.turretSets = [];
-        _this.boosterGain = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveShip.__proto__ || Object.getPrototypeOf(EveShip)).call.apply(_ref, [this].concat(args))), _this), _this.boosters = null, _this.turretSets = [], _this.boosterGain = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the Eve Ship
-     */
-
 
     _createClass(EveShip, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the Eve Ship
+         */
         value: function Initialize() {
             _get(EveShip.prototype.__proto__ || Object.getPrototypeOf(EveShip.prototype), 'Initialize', this).call(this);
             if (this.boosters) {
@@ -36399,7 +36508,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveBoosterSet = exports.EveBoosterSetItem = exports.EveBoosterBatch = undefined;
 
-var _class, _temp;
+var _class3, _temp4;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -36425,22 +36534,27 @@ var EveBoosterBatch = exports.EveBoosterBatch = function (_Tw2RenderBatch) {
     _inherits(EveBoosterBatch, _Tw2RenderBatch);
 
     function EveBoosterBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveBoosterBatch);
 
-        var _this = _possibleConstructorReturn(this, (EveBoosterBatch.__proto__ || Object.getPrototypeOf(EveBoosterBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.boosters = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveBoosterBatch.__proto__ || Object.getPrototypeOf(EveBoosterBatch)).call.apply(_ref, [this].concat(args))), _this), _this.boosters = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the batch
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(EveBoosterBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the batch
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             this.boosters.Render(technique);
         }
@@ -36474,36 +36588,34 @@ var EveBoosterSetItem = exports.EveBoosterSetItem = function (_EveObjectSetItem)
     _inherits(EveBoosterSetItem, _EveObjectSetItem);
 
     function EveBoosterSetItem() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, EveBoosterSetItem);
 
-        var _this2 = _possibleConstructorReturn(this, (EveBoosterSetItem.__proto__ || Object.getPrototypeOf(EveBoosterSetItem)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.visible = {};
-        _this2.visible.glow = true;
-        _this2.visible.symHalo = true;
-        _this2.visible.halo = true;
-        _this2.visible.trail = true;
-        _this2.visible.customValues = false;
-        _this2.locatorName = null;
-        _this2.updateFromLocator = false;
-        _this2.seed = Math.random() * 7;
-        _this2.wavePhase = Math.random();
-        _this2.atlas0 = 0;
-        _this2.atlas1 = 0;
-        _this2.transform = _global.mat4.create();
-        _this2.customValues = null;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = EveBoosterSetItem.__proto__ || Object.getPrototypeOf(EveBoosterSetItem)).call.apply(_ref2, [this].concat(args))), _this2), _this2.visible = {
+            glow: true,
+            symHalo: true,
+            halo: true,
+            trail: true,
+            customValues: true
+        }, _this2.locatorName = null, _this2.updateFromLocator = false, _this2.seed = Math.random() * 7, _this2.wavePhase = Math.random(), _this2.atlas0 = 0, _this2.atlas1 = 0, _this2.transform = _global.mat4.create(), _this2.customValues = null, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Gets the item's position
-     * @param {vec3} out
-     * @returns {vec3} out
-     */
-
 
     _createClass(EveBoosterSetItem, [{
         key: 'GetPosition',
+
+
+        /**
+         * Gets the item's position
+         * @param {vec3} out
+         * @returns {vec3} out
+         */
         value: function GetPosition(out) {
             return _global.mat4.getTranslation(out, this.transform);
         }
@@ -36591,53 +36703,37 @@ var EveBoosterSetItem = exports.EveBoosterSetItem = function (_EveObjectSetItem)
  */
 
 
-var EveBoosterSet = exports.EveBoosterSet = (_temp = _class = function (_EveObjectSet) {
+var EveBoosterSet = exports.EveBoosterSet = (_temp4 = _class3 = function (_EveObjectSet) {
     _inherits(EveBoosterSet, _EveObjectSet);
 
     function EveBoosterSet() {
+        var _ref3;
+
+        var _temp3, _this3, _ret3;
+
         _classCallCheck(this, EveBoosterSet);
 
-        var _this3 = _possibleConstructorReturn(this, (EveBoosterSet.__proto__ || Object.getPrototypeOf(EveBoosterSet)).call(this));
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+        }
 
-        _this3.visible = {};
-        _this3.visible.glows = true;
-        _this3.visible.symHalos = true;
-        _this3.visible.halos = true;
-        _this3.visible.trails = true;
-        _this3.effect = null;
-        _this3.glows = null;
-        _this3.alwaysOn = true;
-        _this3.maxVel = 250;
-        _this3.glowDistance = 2.5;
-        _this3.glowScale = 1.0;
-        _this3.glowColor = _global.vec4.create();
-        _this3.warpGlowColor = _global.vec4.create();
-        _this3.haloDistance = 3.01;
-        _this3.haloScaleX = 1.0;
-        _this3.haloScaleY = 1.0;
-        _this3.haloColor = _global.vec4.create();
-        _this3.warpHaloColor = _global.vec4.create();
-        _this3.symHaloDistance = 3;
-        _this3.symHaloScale = 1.0;
-        _this3.trailColor = _global.vec4.create();
-        _this3.trailSize = _global.vec4.create();
-        _this3._parentTransform = _global.mat4.create();
-        _this3._positions = null;
-        _this3._decl = new _core.Tw2VertexDeclaration(EveBoosterSet.vertexDeclarations);
-        _this3._perObjectData = new _core.Tw2PerObjectData(EveBoosterSet.perObjectData);
-        _this3._locatorRebuildPending = true;
-        return _this3;
+        return _ret3 = (_temp3 = (_this3 = _possibleConstructorReturn(this, (_ref3 = EveBoosterSet.__proto__ || Object.getPrototypeOf(EveBoosterSet)).call.apply(_ref3, [this].concat(args))), _this3), _this3.visible = {
+            glows: true,
+            symHalos: true,
+            halos: true,
+            trails: true
+        }, _this3.effect = null, _this3.glows = null, _this3.alwaysOn = true, _this3.maxVel = 250, _this3.glowDistance = 2.5, _this3.glowScale = 1.0, _this3.glowColor = _global.vec4.create(), _this3.warpGlowColor = _global.vec4.create(), _this3.haloDistance = 3.01, _this3.haloScaleX = 1.0, _this3.haloScaleY = 1.0, _this3.haloColor = _global.vec4.create(), _this3.warpHaloColor = _global.vec4.create(), _this3.symHaloDistance = 3, _this3.symHaloScale = 1.0, _this3.trailColor = _global.vec4.create(), _this3.trailSize = _global.vec4.create(), _this3._parentTransform = _global.mat4.create(), _this3._positions = null, _this3._decl = new _core.Tw2VertexDeclaration(EveBoosterSet.vertexDeclarations), _this3._perObjectData = new _core.Tw2PerObjectData(EveBoosterSet.perObjectData), _this3._locatorRebuildPending = true, _temp3), _possibleConstructorReturn(_this3, _ret3);
     }
-
-    /**
-     * Finds a booster item that belongs to a locator by it's name
-     * @param {string} locatorName
-     * @returns {?EveBoosterSetItem}
-     */
-
 
     _createClass(EveBoosterSet, [{
         key: 'FindItemByLocatorName',
+
+
+        /**
+         * Finds a booster item that belongs to a locator by it's name
+         * @param {string} locatorName
+         * @returns {?EveBoosterSetItem}
+         */
         value: function FindItemByLocatorName(locatorName) {
             for (var i = 0; i < this.items.length; i++) {
                 if (this.items[i].locatorName && this.items[i].locatorName === locatorName) {
@@ -36961,9 +37057,9 @@ var EveBoosterSet = exports.EveBoosterSet = (_temp = _class = function (_EveObje
     }]);
 
     return EveBoosterSet;
-}(_EveObjectSet2.EveObjectSet), _class.Item = EveBoosterSetItem, _class.perObjectData = {
+}(_EveObjectSet2.EveObjectSet), _class3.Item = EveBoosterSetItem, _class3.perObjectData = {
     VSData: [['WorldMat', 16], ['Shipdata', 4]]
-}, _class.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp);
+}, _class3.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class3._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp4);
 
 /***/ }),
 /* 180 */
@@ -36979,7 +37075,7 @@ exports.EveCurveLineSet = exports.EveCurveLineSetItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class, _temp, _class2, _temp2;
+var _class, _temp2, _class2, _temp3;
 
 var _global = __webpack_require__(0);
 
@@ -37011,39 +37107,32 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {number} numOfSegments
  * @class
  */
-var EveCurveLineSetItem = exports.EveCurveLineSetItem = (_temp = _class = function (_EveObjectSetItem) {
+var EveCurveLineSetItem = exports.EveCurveLineSetItem = (_temp2 = _class = function (_EveObjectSetItem) {
     _inherits(EveCurveLineSetItem, _EveObjectSetItem);
 
     function EveCurveLineSetItem() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveCurveLineSetItem);
 
-        var _this = _possibleConstructorReturn(this, (EveCurveLineSetItem.__proto__ || Object.getPrototypeOf(EveCurveLineSetItem)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.type = EveCurveLineSetItem.Type.INVALID;
-        _this.position1 = _global.vec3.create();
-        _this.color1 = _global.vec4.fromValues(1, 1, 1, 1);
-        _this.position2 = _global.vec3.create();
-        _this.color2 = _global.vec4.fromValues(1, 1, 1, 1);
-        _this.intermediatePosition = _global.vec3.create();
-        _this.width = 1;
-        _this.multiColor = _global.vec4.fromValues(0, 0, 0, 1);
-        _this.multiColorBorder = -1;
-        _this.overlayColor = _global.vec4.fromValues(0, 0, 0, 1);
-        _this.animationSpeed = 0;
-        _this.animationScale = 1;
-        _this.numOfSegments = 1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveCurveLineSetItem.__proto__ || Object.getPrototypeOf(EveCurveLineSetItem)).call.apply(_ref, [this].concat(args))), _this), _this.type = EveCurveLineSetItem.Type.INVALID, _this.position1 = _global.vec3.create(), _this.color1 = _global.vec4.fromValues(1, 1, 1, 1), _this.position2 = _global.vec3.create(), _this.color2 = _global.vec4.fromValues(1, 1, 1, 1), _this.intermediatePosition = _global.vec3.create(), _this.width = 1, _this.multiColor = _global.vec4.fromValues(0, 0, 0, 1), _this.multiColorBorder = -1, _this.overlayColor = _global.vec4.fromValues(0, 0, 0, 1), _this.animationSpeed = 0, _this.animationScale = 1, _this.numOfSegments = 1, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Changes the line's colors
-     * @param {vec3} startColor
-     * @param {vec3} endColor
-     */
-
 
     _createClass(EveCurveLineSetItem, [{
         key: 'ChangeColor',
+
+
+        /**
+         * Changes the line's colors
+         * @param {vec3} startColor
+         * @param {vec3} endColor
+         */
         value: function ChangeColor(startColor, endColor) {
             _global.vec3.copy(this.color1, startColor);
             _global.vec3.copy(this.color2, endColor);
@@ -37234,7 +37323,7 @@ var EveCurveLineSetItem = exports.EveCurveLineSetItem = (_temp = _class = functi
     STRAIGHT: 1,
     SPHERED: 2,
     CURVED: 3
-}, _class.DEFAULT_CURVED_SEGMENTS = 20, _class.DEFAULT_SPHERED_SEGMENTS = 20, _temp);
+}, _class.DEFAULT_CURVED_SEGMENTS = 20, _class.DEFAULT_SPHERED_SEGMENTS = 20, _temp2);
 
 /**
  * EveCurveLineSet
@@ -37257,9 +37346,12 @@ var EveCurveLineSetItem = exports.EveCurveLineSetItem = (_temp = _class = functi
  * @class
  */
 
-var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_EveObjectSet) {
+var EveCurveLineSet = exports.EveCurveLineSet = (_temp3 = _class2 = function (_EveObjectSet) {
     _inherits(EveCurveLineSet, _EveObjectSet);
 
+    /**
+     * Constructor
+     */
     function EveCurveLineSet() {
         _classCallCheck(this, EveCurveLineSet);
 
@@ -37272,7 +37364,6 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
                 'OverlayTexMap': 'res:/texture/global/white.dds.0.png'
             }
         });
-
         _this2.pickEffect = null;
         _this2.lineWidthFactor = 1;
         _this2.additive = false;
@@ -37286,7 +37377,6 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
         _this2._vertexSize = 26;
         _this2._vbSize = 0;
         _this2._vb = null;
-
         _this2._perObjectData = new _core.Tw2PerObjectData(EveCurveLineSet.perObjectData);
         _this2._decl = new _core.Tw2VertexDeclaration(EveCurveLineSet.vertexDeclarations, 4 * _this2._vertexSize);
 
@@ -37897,7 +37987,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
 
 
         /**
-         * Class global variables and scratch
+         * Global and scratch variables
          */
 
 
@@ -37918,7 +38008,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
 }(_EveObjectSet2.EveObjectSet), _class2.Item = EveCurveLineSetItem, _class2.global = null, _class2.perObjectData = {
     VSData: [['WorldMat', 16]],
     PSData: [['WorldMat', 16]]
-}, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp2);
+}, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp3);
 
 /***/ }),
 /* 181 */
@@ -37934,6 +38024,8 @@ exports.EveLocator = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -37947,7 +38039,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {?number} atlasIndex1          - A booster locator's atlasIndex1
  * @property {?Tw2Bone} bone                - A turret locator's bone
  */
-var EveLocator = exports.EveLocator = function () {
+var EveLocator = exports.EveLocator = (_temp = _class = function () {
     function EveLocator() {
         _classCallCheck(this, EveLocator);
 
@@ -37958,15 +38050,15 @@ var EveLocator = exports.EveLocator = function () {
         this.bone = null;
     }
 
-    /**
-     * Gets the locator's bone from an animation controller
-     * @param {Tw2AnimationController} animationController
-     * @returns {?Tw2Bone}
-     */
-
-
     _createClass(EveLocator, [{
         key: 'FindBone',
+
+
+        /**
+         * Gets the locator's bone from an animation controller
+         * @param {Tw2AnimationController} animationController
+         * @returns {?Tw2Bone}
+         */
         value: function FindBone(animationController) {
             this.bone = null;
             var model = animationController.FindModelForMesh(0);
@@ -37980,24 +38072,22 @@ var EveLocator = exports.EveLocator = function () {
             }
             return this.bone;
         }
+
+        /**
+         * Locator name prefixes
+         * @type {{AUDIO: string, ATTACH: string, BOOSTER: string, TURRET: string, XL_TURRET: string}}
+         */
+
     }]);
 
     return EveLocator;
-}();
-
-/**
- * Locator name prefixes
- * @type {{AUDIO: string, ATTACH: string, BOOSTER: string, TURRET: string, XL_TURRET: string}}
- */
-
-
-EveLocator.Prefix = {
+}(), _class.Prefix = {
     AUDIO: 'locator_audio',
     ATTACH: 'locator_attach',
     BOOSTER: 'locator_booster',
     TURRET: 'locator_turret',
     XL_TURRET: 'locator_xl'
-};
+}, _temp);
 
 /***/ }),
 /* 182 */
@@ -38011,7 +38101,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EvePlaneSet = exports.EvePlaneSetItem = exports.EvePlaneSetBatch = undefined;
 
-var _class, _temp;
+var _class3, _temp4;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38037,22 +38127,27 @@ var EvePlaneSetBatch = exports.EvePlaneSetBatch = function (_Tw2RenderBatch) {
     _inherits(EvePlaneSetBatch, _Tw2RenderBatch);
 
     function EvePlaneSetBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EvePlaneSetBatch);
 
-        var _this = _possibleConstructorReturn(this, (EvePlaneSetBatch.__proto__ || Object.getPrototypeOf(EvePlaneSetBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.planeSet = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EvePlaneSetBatch.__proto__ || Object.getPrototypeOf(EvePlaneSetBatch)).call.apply(_ref, [this].concat(args))), _this), _this.planeSet = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the plan set
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(EvePlaneSetBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the plan set
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             this.planeSet.Render(technique);
         }
@@ -38083,34 +38178,28 @@ var EvePlaneSetItem = exports.EvePlaneSetItem = function (_EveObjectSetItem) {
     _inherits(EvePlaneSetItem, _EveObjectSetItem);
 
     function EvePlaneSetItem() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, EvePlaneSetItem);
 
-        var _this2 = _possibleConstructorReturn(this, (EvePlaneSetItem.__proto__ || Object.getPrototypeOf(EvePlaneSetItem)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.boneIndex = 0;
-        _this2.groupIndex = -1;
-        _this2.maskAtlasID = 0;
-        _this2.position = _global.vec3.create();
-        _this2.scaling = _global.vec3.fromValues(1, 1, 1);
-        _this2.rotation = _global.quat.create();
-        _this2.transform = _global.mat4.create();
-        _this2.color = _global.vec4.fromValues(1, 1, 1, 1);
-        _this2.layer1Transform = _global.vec4.fromValues(1, 1, 0, 0);
-        _this2.layer2Transform = _global.vec4.fromValues(1, 1, 0, 0);
-        _this2.layer1Scroll = _global.vec4.create();
-        _this2.layer2Scroll = _global.vec4.create();
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = EvePlaneSetItem.__proto__ || Object.getPrototypeOf(EvePlaneSetItem)).call.apply(_ref2, [this].concat(args))), _this2), _this2.boneIndex = 0, _this2.groupIndex = -1, _this2.maskAtlasID = 0, _this2.position = _global.vec3.create(), _this2.scaling = _global.vec3.fromValues(1, 1, 1), _this2.rotation = _global.quat.create(), _this2.transform = _global.mat4.create(), _this2.color = _global.vec4.fromValues(1, 1, 1, 1), _this2.layer1Transform = _global.vec4.fromValues(1, 1, 0, 0), _this2.layer2Transform = _global.vec4.fromValues(1, 1, 0, 0), _this2.layer1Scroll = _global.vec4.create(), _this2.layer2Scroll = _global.vec4.create(), _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Creates a plane set item from an object
-     * @param {*} opt
-     * @returns {EvePlaneSetItem}
-     */
-
 
     _createClass(EvePlaneSetItem, null, [{
         key: 'create',
+
+
+        /**
+         * Creates a plane set item from an object
+         * @param {*} opt
+         * @returns {EvePlaneSetItem}
+         */
         value: function create() {
             var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -38139,28 +38228,22 @@ var EvePlaneSetItem = exports.EvePlaneSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSet) {
+var EvePlaneSet = exports.EvePlaneSet = (_temp4 = _class3 = function (_EveObjectSet) {
     _inherits(EvePlaneSet, _EveObjectSet);
 
     function EvePlaneSet() {
+        var _ref3;
+
+        var _temp3, _this3, _ret3;
+
         _classCallCheck(this, EvePlaneSet);
 
-        var _this3 = _possibleConstructorReturn(this, (EvePlaneSet.__proto__ || Object.getPrototypeOf(EvePlaneSet)).call(this));
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+        }
 
-        _this3.effect = null;
-        _this3.hideOnLowQuality = false;
-        _this3._time = 0;
-        _this3._vertexBuffer = null;
-        _this3._indexBuffer = null;
-        _this3._decl = new _core.Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations);
-        return _this3;
+        return _ret3 = (_temp3 = (_this3 = _possibleConstructorReturn(this, (_ref3 = EvePlaneSet.__proto__ || Object.getPrototypeOf(EvePlaneSet)).call.apply(_ref3, [this].concat(args))), _this3), _this3.effect = null, _this3.hideOnLowQuality = false, _this3._time = 0, _this3._vertexBuffer = null, _this3._indexBuffer = null, _this3._decl = new _core.Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations), _temp3), _possibleConstructorReturn(_this3, _ret3);
     }
-
-    /**
-     * Alias for this.items
-     * @returns {Array}
-     */
-
 
     _createClass(EvePlaneSet, [{
         key: 'GetResources',
@@ -38366,6 +38449,12 @@ var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSe
 
     }, {
         key: 'planes',
+
+
+        /**
+         * Alias for this.items
+         * @returns {Array}
+         */
         get: function get() {
             return this.items;
         }
@@ -38381,7 +38470,7 @@ var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSe
     }]);
 
     return EvePlaneSet;
-}(_EveObjectSet2.EveObjectSet), _class.Item = EvePlaneSetItem, _class.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp);
+}(_EveObjectSet2.EveObjectSet), _class3.Item = EvePlaneSetItem, _class3.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp4);
 
 /***/ }),
 /* 183 */
@@ -38450,13 +38539,13 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = (_temp = _class = functi
         this._perObjectData = new _core.Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
     }
 
-    /**
-     * Initializes the decal
-     */
-
-
     _createClass(EveSpaceObjectDecal, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the decal
+         */
         value: function Initialize() {
             this.SetIndexBuffer(this.indexBuffer);
         }
@@ -38658,7 +38747,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveSpotlightSet = exports.EveSpotlightSetItem = exports.EveSpotlightSetBatch = undefined;
 
-var _class, _temp;
+var _class3, _temp4;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38684,22 +38773,27 @@ var EveSpotlightSetBatch = exports.EveSpotlightSetBatch = function (_Tw2RenderBa
     _inherits(EveSpotlightSetBatch, _Tw2RenderBatch);
 
     function EveSpotlightSetBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveSpotlightSetBatch);
 
-        var _this = _possibleConstructorReturn(this, (EveSpotlightSetBatch.__proto__ || Object.getPrototypeOf(EveSpotlightSetBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.spotlightSet = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveSpotlightSetBatch.__proto__ || Object.getPrototypeOf(EveSpotlightSetBatch)).call.apply(_ref, [this].concat(args))), _this), _this.spotlightSet = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the spotlight set for rendering
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(EveSpotlightSetBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the spotlight set for rendering
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             this.spotlightSet.RenderCones(technique);
             this.spotlightSet.RenderGlow(technique);
@@ -38731,33 +38825,28 @@ var EveSpotlightSetItem = exports.EveSpotlightSetItem = function (_EveObjectSetI
     _inherits(EveSpotlightSetItem, _EveObjectSetItem);
 
     function EveSpotlightSetItem() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, EveSpotlightSetItem);
 
-        var _this2 = _possibleConstructorReturn(this, (EveSpotlightSetItem.__proto__ || Object.getPrototypeOf(EveSpotlightSetItem)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.transform = _global.mat4.create();
-        _this2.coneColor = _global.vec4.create();
-        _this2.spriteColor = _global.vec4.create();
-        _this2.flareColor = _global.vec4.create();
-        _this2.spriteScale = _global.vec3.fromValues(1, 1, 1);
-        _this2.boosterGainInfluence = 0;
-        _this2.boneIndex = 0;
-        _this2.groupIndex = -1;
-        _this2.coneIntensity = 0;
-        _this2.spriteIntensity = 0;
-        _this2.flareIntensity = 0;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = EveSpotlightSetItem.__proto__ || Object.getPrototypeOf(EveSpotlightSetItem)).call.apply(_ref2, [this].concat(args))), _this2), _this2.transform = _global.mat4.create(), _this2.coneColor = _global.vec4.create(), _this2.spriteColor = _global.vec4.create(), _this2.flareColor = _global.vec4.create(), _this2.spriteScale = _global.vec3.fromValues(1, 1, 1), _this2.boosterGainInfluence = 0, _this2.boneIndex = 0, _this2.groupIndex = -1, _this2.coneIntensity = 0, _this2.spriteIntensity = 0, _this2.flareIntensity = 0, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Creates a spotlight set item from an object
-     * @param {*} [opt={}
-     * @returns {EveSpotlightSetItem}
-     */
-
 
     _createClass(EveSpotlightSetItem, null, [{
         key: 'create',
+
+
+        /**
+         * Creates a spotlight set item from an object
+         * @param {*} [opt={}
+         * @returns {EveSpotlightSetItem}
+         */
         value: function create() {
             var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -38786,28 +38875,22 @@ var EveSpotlightSetItem = exports.EveSpotlightSetItem = function (_EveObjectSetI
  */
 
 
-var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_EveObjectSet) {
+var EveSpotlightSet = exports.EveSpotlightSet = (_temp4 = _class3 = function (_EveObjectSet) {
     _inherits(EveSpotlightSet, _EveObjectSet);
 
     function EveSpotlightSet() {
+        var _ref3;
+
+        var _temp3, _this3, _ret3;
+
         _classCallCheck(this, EveSpotlightSet);
 
-        var _this3 = _possibleConstructorReturn(this, (EveSpotlightSet.__proto__ || Object.getPrototypeOf(EveSpotlightSet)).call(this));
+        for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
+        }
 
-        _this3.coneEffect = null;
-        _this3.glowEffect = null;
-        _this3._coneVertexBuffer = null;
-        _this3._spriteVertexBuffer = null;
-        _this3._indexBuffer = null;
-        _this3._decl = new _core.Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations);
-        return _this3;
+        return _ret3 = (_temp3 = (_this3 = _possibleConstructorReturn(this, (_ref3 = EveSpotlightSet.__proto__ || Object.getPrototypeOf(EveSpotlightSet)).call.apply(_ref3, [this].concat(args))), _this3), _this3.coneEffect = null, _this3.glowEffect = null, _this3._coneVertexBuffer = null, _this3._spriteVertexBuffer = null, _this3._indexBuffer = null, _this3._decl = new _core.Tw2VertexDeclaration(EveSpotlightSet.vertexDeclarations), _temp3), _possibleConstructorReturn(_this3, _ret3);
     }
-
-    /**
-     * Alias for this.items
-     * @returns {Array}
-     */
-
 
     _createClass(EveSpotlightSet, [{
         key: 'GetResources',
@@ -39049,6 +39132,12 @@ var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_Eve
 
     }, {
         key: 'spotlightItems',
+
+
+        /**
+         * Alias for this.items
+         * @returns {Array}
+         */
         get: function get() {
             return this.items;
         }
@@ -39094,7 +39183,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_Eve
     }]);
 
     return EveSpotlightSet;
-}(_EveObjectSet2.EveObjectSet), _class.Item = EveSpotlightSetItem, _class.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp);
+}(_EveObjectSet2.EveObjectSet), _class3.Item = EveSpotlightSetItem, _class3.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp4);
 
 /***/ }),
 /* 185 */
@@ -39108,7 +39197,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveSpriteSet = exports.EveSpriteSetItem = exports.EveSpriteSetBatch = undefined;
 
-var _class, _temp;
+var _class3, _temp3;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -39138,26 +39227,27 @@ var EveSpriteSetBatch = exports.EveSpriteSetBatch = function (_Tw2RenderBatch) {
     _inherits(EveSpriteSetBatch, _Tw2RenderBatch);
 
     function EveSpriteSetBatch() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveSpriteSetBatch);
 
-        var _this = _possibleConstructorReturn(this, (EveSpriteSetBatch.__proto__ || Object.getPrototypeOf(EveSpriteSetBatch)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.boosterGlow = false;
-        _this.spriteSet = null;
-        _this.world = null;
-        _this.boosterGain = 0;
-        _this.warpIntensity = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveSpriteSetBatch.__proto__ || Object.getPrototypeOf(EveSpriteSetBatch)).call.apply(_ref, [this].concat(args))), _this), _this.boosterGlow = false, _this.spriteSet = null, _this.world = null, _this.boosterGain = 0, _this.warpIntensity = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Commits the sprite set
-     * @param {string} technique - technique name
-     */
-
 
     _createClass(EveSpriteSetBatch, [{
         key: 'Commit',
+
+
+        /**
+         * Commits the sprite set
+         * @param {string} technique - technique name
+         */
         value: function Commit(technique) {
             if (this.boosterGlow) {
                 this.spriteSet.RenderBoosterGlow(technique, this.world, this.boosterGain, this.warpIntensity);
@@ -39191,32 +39281,28 @@ var EveSpriteSetItem = exports.EveSpriteSetItem = function (_EveObjectSetItem) {
     _inherits(EveSpriteSetItem, _EveObjectSetItem);
 
     function EveSpriteSetItem() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, EveSpriteSetItem);
 
-        var _this2 = _possibleConstructorReturn(this, (EveSpriteSetItem.__proto__ || Object.getPrototypeOf(EveSpriteSetItem)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.position = _global.vec3.create();
-        _this2.blinkRate = 0;
-        _this2.blinkPhase = 0;
-        _this2.minScale = 1;
-        _this2.maxScale = 1;
-        _this2.falloff = 0;
-        _this2.color = _global.vec4.create();
-        _this2.warpColor = _global.vec4.create();
-        _this2.boneIndex = 0;
-        _this2.groupIndex = -1;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = EveSpriteSetItem.__proto__ || Object.getPrototypeOf(EveSpriteSetItem)).call.apply(_ref2, [this].concat(args))), _this2), _this2.position = _global.vec3.create(), _this2.blinkRate = 0, _this2.blinkPhase = 0, _this2.minScale = 1, _this2.maxScale = 1, _this2.falloff = 0, _this2.color = _global.vec4.create(), _this2.warpColor = _global.vec4.create(), _this2.boneIndex = 0, _this2.groupIndex = -1, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Creates a sprite set item from an object
-     * @param {*} [opt={}]
-     * @returns {EveSpriteSetItem}
-     */
-
 
     _createClass(EveSpriteSetItem, null, [{
         key: 'create',
+
+
+        /**
+         * Creates a sprite set item from an object
+         * @param {*} [opt={}]
+         * @returns {EveSpriteSetItem}
+         */
         value: function create() {
             var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -39232,8 +39318,6 @@ var EveSpriteSetItem = exports.EveSpriteSetItem = function (_EveObjectSetItem) {
 /**
  * EveSpriteSet
  *
- * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
- * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
  * @property {Tw2Effect} effect
  * @property {?boolean} useQuads - Use quad rendering (CPU transform)
  * @property {?boolean} isSkinned - Use bone transforms (when useQuads is true)
@@ -39244,9 +39328,14 @@ var EveSpriteSetItem = exports.EveSpriteSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EveSpriteSet = exports.EveSpriteSet = (_temp = _class = function (_EveObjectSet) {
+var EveSpriteSet = exports.EveSpriteSet = (_temp3 = _class3 = function (_EveObjectSet) {
     _inherits(EveSpriteSet, _EveObjectSet);
 
+    /**
+     * Constructor
+     * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
+     * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
+     */
     function EveSpriteSet() {
         var useQuads = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
         var isSkinned = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -39677,7 +39766,7 @@ var EveSpriteSet = exports.EveSpriteSet = (_temp = _class = function (_EveObject
     }]);
 
     return EveSpriteSet;
-}(_EveObjectSet2.EveObjectSet), _class.Item = EveSpriteSetItem, _class.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp);
+}(_EveObjectSet2.EveObjectSet), _class3.Item = EveSpriteSetItem, _class3.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class3.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp3);
 
 /***/ }),
 /* 186 */
@@ -39691,7 +39780,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.EveTurretSet = exports.EveTurretSetItem = undefined;
 
-var _class, _temp;
+var _class2, _temp3;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -39724,28 +39813,26 @@ var EveTurretSetItem = exports.EveTurretSetItem = function (_EveObjectSetItem) {
     _inherits(EveTurretSetItem, _EveObjectSetItem);
 
     function EveTurretSetItem() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, EveTurretSetItem);
 
-        var _this = _possibleConstructorReturn(this, (EveTurretSetItem.__proto__ || Object.getPrototypeOf(EveTurretSetItem)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.bone = null;
-        _this.locatorName = null;
-        _this.updateFromLocator = false;
-        _this.canFireWhenHidden = false;
-        _this.position = _global.vec3.create();
-        _this.rotation = _global.quat.create();
-        _this._localTransform = _global.mat4.create();
-        _this._localRotation = _global.quat.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = EveTurretSetItem.__proto__ || Object.getPrototypeOf(EveTurretSetItem)).call.apply(_ref, [this].concat(args))), _this), _this.bone = null, _this.locatorName = null, _this.updateFromLocator = false, _this.canFireWhenHidden = false, _this.position = _global.vec3.create(), _this.rotation = _global.quat.create(), _this._localTransform = _global.mat4.create(), _this._localRotation = _global.quat.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Updates the turret's transforms
-     */
-
 
     _createClass(EveTurretSetItem, [{
         key: 'UpdateTransforms',
+
+
+        /**
+         * Updates the turret's transforms
+         */
         value: function UpdateTransforms() {
             _global.mat4.fromRotationTranslation(this._localTransform, this.rotation, this.position);
 
@@ -39807,49 +39894,25 @@ var EveTurretSetItem = exports.EveTurretSetItem = function (_EveObjectSetItem) {
  */
 
 
-var EveTurretSet = exports.EveTurretSet = (_temp = _class = function (_EveObjectSet) {
+var EveTurretSet = exports.EveTurretSet = (_temp3 = _class2 = function (_EveObjectSet) {
     _inherits(EveTurretSet, _EveObjectSet);
 
     function EveTurretSet() {
+        var _ref2;
+
+        var _temp2, _this2, _ret2;
+
         _classCallCheck(this, EveTurretSet);
 
-        var _this2 = _possibleConstructorReturn(this, (EveTurretSet.__proto__ || Object.getPrototypeOf(EveTurretSet)).call(this));
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
+        }
 
-        _this2.visible = {};
-        _this2.visible.turrets = true;
-        _this2.visible.firingEffects = true;
-        _this2.activeAnimation = new _core.Tw2AnimationController();
-        _this2.inactiveAnimation = new _core.Tw2AnimationController();
-        _this2.geometryResPath = '';
-        _this2.geometryResource = null;
-        _this2.turretEffect = null;
-        _this2.firingEffectResPath = '';
-        _this2.firingEffect = null;
-        _this2.fireCallback = null;
-        _this2.fireCallbackPending = false;
-        _this2.state = EveTurretSet.State.IDLE;
-        _this2.bottomClipHeight = 0;
-        _this2.locatorName = '';
-        _this2.sysBoneHeight = 0;
-        _this2.hasCyclingFiringPos = false;
-        _this2.targetPosition = _global.vec3.create();
-        _this2.parentMatrix = _global.mat4.create();
-        _this2.boundingSphere = _global.quat.create();
-        _this2._activeTurret = -1;
-        _this2._recheckTimeLeft = 0;
-        _this2._currentCyclingFiresPos = 0;
-
-        _this2._perObjectDataActive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData);
-        _this2._perObjectDataInactive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData);
-        _this2._locatorRebuildPending = true;
-        return _this2;
+        return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = EveTurretSet.__proto__ || Object.getPrototypeOf(EveTurretSet)).call.apply(_ref2, [this].concat(args))), _this2), _this2.visible = {
+            turrets: true,
+            firingEffects: true
+        }, _this2.activeAnimation = new _core.Tw2AnimationController(), _this2.inactiveAnimation = new _core.Tw2AnimationController(), _this2.geometryResPath = '', _this2.geometryResource = null, _this2.turretEffect = null, _this2.firingEffectResPath = '', _this2.firingEffect = null, _this2.fireCallback = null, _this2.fireCallbackPending = false, _this2.state = EveTurretSet.State.IDLE, _this2.bottomClipHeight = 0, _this2.locatorName = '', _this2.sysBoneHeight = 0, _this2.hasCyclingFiringPos = false, _this2.targetPosition = _global.vec3.create(), _this2.parentMatrix = _global.mat4.create(), _this2.boundingSphere = _global.quat.create(), _this2._activeTurret = -1, _this2._recheckTimeLeft = 0, _this2._currentCyclingFiresPos = 0, _this2._perObjectDataActive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData), _this2._perObjectDataInactive = new _core.Tw2PerObjectData(EveTurretSet.perObjectData), _this2._locatorRebuildPending = true, _temp2), _possibleConstructorReturn(_this2, _ret2);
     }
-
-    /**
-     * Alias for this.items
-     * @returns {Array}
-     */
-
 
     _createClass(EveTurretSet, [{
         key: 'Initialize',
@@ -40392,6 +40455,12 @@ var EveTurretSet = exports.EveTurretSet = (_temp = _class = function (_EveObject
 
     }, {
         key: 'turrets',
+
+
+        /**
+         * Alias for this.items
+         * @returns {Array}
+         */
         get: function get() {
             return this.items;
         }
@@ -40525,28 +40594,27 @@ var EveTurretSet = exports.EveTurretSet = (_temp = _class = function (_EveObject
          * @type {{VSData: *[]}}
          */
 
+
+        /**
+         * mat3x4 to quat
+         */
+
     }]);
 
     return EveTurretSet;
-}(_EveObjectSet2.EveObjectSet), _class.Item = EveTurretSetItem, _class.State = {
+}(_EveObjectSet2.EveObjectSet), _class2.Item = EveTurretSetItem, _class2.State = {
     INACTIVE: 0,
     IDLE: 1,
     FIRING: 2,
     PACKING: 2,
     UNPACKING: 4
-}, _class.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'], _class.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'], _class.perObjectData = {
+}, _class2.worldNames = ['turretWorld0', 'turretWorld1', 'turretWorld2'], _class2.positionBoneSkeletonNames = ['Pos_Fire01', 'Pos_Fire02', 'Pos_Fire03', 'Pos_Fire04', 'Pos_Fire05', 'Pos_Fire06', 'Pos_Fire07', 'Pos_Fire08'], _class2.perObjectData = {
     VSData: [['baseCutoffData', 4], ['turretSetData', 4], ['shipMatrix', 16], ['turretTranslation', 4 * 24], ['turretRotation', 4 * 24], ['turretPoseTransAndRot', 2 * 4 * 72]]
-}, _temp);
-
-/**
- * mat3x4 to quat
- */
-
-EveTurretSet.mat3x4toquat = function () {
+}, _class2.mat3x4toquat = function () {
     var m = void 0,
         q = void 0;
 
-    return function mat3x4toquat(mm, index, out, outIndex) {
+    return function (mm, index, out, outIndex) {
         if (!m) {
             m = _global.mat4.create();
             q = _global.quat.create();
@@ -40578,7 +40646,7 @@ EveTurretSet.mat3x4toquat = function () {
         out[outIndex + 2] = q[2];
         out[outIndex + 3] = q[3];
     };
-}();
+}(), _temp3);
 
 /***/ }),
 /* 187 */
@@ -42203,8 +42271,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /**
  * Tw2StaticEmitter
  *
- * @property {string} name
- * @property {string} geometryResourcePath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Number} geometryIndex
  * @property {Boolean} _spawned
@@ -42215,24 +42281,26 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
     _inherits(Tw2StaticEmitter, _Tw2ParticleEmitter);
 
     function Tw2StaticEmitter() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2StaticEmitter);
 
-        var _this = _possibleConstructorReturn(this, (Tw2StaticEmitter.__proto__ || Object.getPrototypeOf(Tw2StaticEmitter)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.geometryResourcePath = '';
-        _this.geometryResource = null;
-        _this.geometryIndex = 0;
-        _this._spawned = false;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2StaticEmitter.__proto__ || Object.getPrototypeOf(Tw2StaticEmitter)).call.apply(_ref, [this].concat(args))), _this), _this.geometryResourcePath = '', _this.geometryResource = null, _this.geometryIndex = 0, _this._spawned = false, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the particle emitter
-     */
-
 
     _createClass(Tw2StaticEmitter, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the particle emitter
+         */
         value: function Initialize() {
             if (this.geometryResourcePath !== '') {
                 this.geometryResource = _global.resMan.GetResource(this.geometryResourcePath);
@@ -42357,24 +42425,26 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
     _inherits(Tw2DynamicEmitter, _Tw2ParticleEmitter);
 
     function Tw2DynamicEmitter() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2DynamicEmitter);
 
-        var _this = _possibleConstructorReturn(this, (Tw2DynamicEmitter.__proto__ || Object.getPrototypeOf(Tw2DynamicEmitter)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.rate = 0;
-        _this.isValid = false;
-        _this._accumulatedRate = 0;
-        _this.generators = [];
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2DynamicEmitter.__proto__ || Object.getPrototypeOf(Tw2DynamicEmitter)).call.apply(_ref, [this].concat(args))), _this), _this.rate = 0, _this.isValid = false, _this._accumulatedRate = 0, _this.generators = [], _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Initializes the particle emitter
-     */
-
 
     _createClass(Tw2DynamicEmitter, [{
         key: 'Initialize',
+
+
+        /**
+         * Initializes the particle emitter
+         */
         value: function Initialize() {
             this.Rebind();
         }
@@ -42447,11 +42517,11 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Tw2GpuUniqueEmitter = undefined;
 
-var _class, _temp;
+var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
@@ -42489,52 +42559,36 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {vec4} color3
  * @class
  */
-var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = (_temp = _class = function (_Tw2ParticleEmitter) {
-    _inherits(Tw2GpuUniqueEmitter, _Tw2ParticleEmitter);
+var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = (_temp2 = _class = function (_Tw2ParticleEmitter) {
+  _inherits(Tw2GpuUniqueEmitter, _Tw2ParticleEmitter);
 
-    function Tw2GpuUniqueEmitter() {
-        _classCallCheck(this, Tw2GpuUniqueEmitter);
+  function Tw2GpuUniqueEmitter() {
+    var _ref;
 
-        var _this = _possibleConstructorReturn(this, (Tw2GpuUniqueEmitter.__proto__ || Object.getPrototypeOf(Tw2GpuUniqueEmitter)).call(this));
+    var _temp, _this, _ret;
 
-        _this.angle = 0;
-        _this.innerAngle = 0;
-        _this.drag = 0;
-        _this.rate = 0;
-        _this.radius = 0;
-        _this.gravity = 0;
-        _this.maxSpeed = 0;
-        _this.minSpeed = 0;
-        _this.minLifeTime = 0;
-        _this.maxLifeTime = 0;
-        _this.sizeVariance = 0;
-        _this.attractorPosition = _global.vec3.create();
-        _this.attractorStrength = 0;
-        _this.turbulenceAmplitude = 0;
-        _this.turbulenceFrequency = 0;
-        _this.textureIndex = 0;
-        _this.sizes = _global.vec3.create();
-        _this.position = _global.vec3.create();
-        _this.color0 = _global.vec4.create();
-        _this.color1 = _global.vec4.create();
-        _this.color2 = _global.vec4.create();
-        _this.color3 = _global.vec4.create();
+    _classCallCheck(this, Tw2GpuUniqueEmitter);
 
-        //this.maxDisplacement=null;
-        //this.emissionDensity=null;
-        //this.velocityStretchRotation=null;
-        //this.inheritVelocity=null;
-        return _this;
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    /**
-     * Identifies that the object is not yet fully implemented
-     * @type {boolean}
-     */
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2GpuUniqueEmitter.__proto__ || Object.getPrototypeOf(Tw2GpuUniqueEmitter)).call.apply(_ref, [this].concat(args))), _this), _this.angle = 0, _this.innerAngle = 0, _this.drag = 0, _this.rate = 0, _this.radius = 0, _this.gravity = 0, _this.maxSpeed = 0, _this.minSpeed = 0, _this.minLifeTime = 0, _this.maxLifeTime = 0, _this.sizeVariance = 0, _this.attractorPosition = _global.vec3.create(), _this.attractorStrength = 0, _this.turbulenceAmplitude = 0, _this.turbulenceFrequency = 0, _this.textureIndex = 0, _this.sizes = _global.vec3.create(), _this.position = _global.vec3.create(), _this.color0 = _global.vec4.create(), _this.color1 = _global.vec4.create(), _this.color2 = _global.vec4.create(), _this.color3 = _global.vec4.create(), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+  //maxDisplacement=null;
+  //emissionDensity=null;
+  //velocityStretchRotation=null;
+  //inheritVelocity=null;
 
 
-    return Tw2GpuUniqueEmitter;
-}(_Tw2ParticleEmitter2.Tw2ParticleEmitter), _class.partialImplementation = true, _temp);
+  /**
+   * Identifies that the object is not yet fully implemented
+   * @type {boolean}
+   */
+
+
+  return Tw2GpuUniqueEmitter;
+}(_Tw2ParticleEmitter2.Tw2ParticleEmitter), _class.partialImplementation = true, _temp2);
 
 /***/ }),
 /* 194 */
@@ -42656,25 +42710,29 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
     _inherits(Tw2ParticleAttractorForce, _Tw2ParticleForce);
 
     function Tw2ParticleAttractorForce() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleAttractorForce);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleAttractorForce.__proto__ || Object.getPrototypeOf(Tw2ParticleAttractorForce)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.magnitude = 0;
-        _this.position = _global.vec3.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleAttractorForce.__proto__ || Object.getPrototypeOf(Tw2ParticleAttractorForce)).call.apply(_ref, [this].concat(args))), _this), _this.magnitude = 0, _this.position = _global.vec3.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * ApplyForce
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     */
-
 
     _createClass(Tw2ParticleAttractorForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * ApplyForce
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         */
         value: function ApplyForce(position, velocity, force) {
             var vec3_0 = _Tw2ParticleForce2.Tw2ParticleForce.global.vec3_0;
 
@@ -42726,24 +42784,29 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
     _inherits(Tw2ParticleDirectForce, _Tw2ParticleForce);
 
     function Tw2ParticleDirectForce() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleDirectForce);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleDirectForce.__proto__ || Object.getPrototypeOf(Tw2ParticleDirectForce)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.force = _global.vec3.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleDirectForce.__proto__ || Object.getPrototypeOf(Tw2ParticleDirectForce)).call.apply(_ref, [this].concat(args))), _this), _this.force = _global.vec3.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * ApplyForce
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     */
-
 
     _createClass(Tw2ParticleDirectForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * ApplyForce
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         */
         value: function ApplyForce(position, velocity, force) {
             _global.vec3.add(force, force, this.force);
         }
@@ -42785,24 +42848,29 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
     _inherits(Tw2ParticleDragForce, _Tw2ParticleForce);
 
     function Tw2ParticleDragForce() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleDragForce);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleDragForce.__proto__ || Object.getPrototypeOf(Tw2ParticleDragForce)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.drag = 0.1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleDragForce.__proto__ || Object.getPrototypeOf(Tw2ParticleDragForce)).call.apply(_ref, [this].concat(args))), _this), _this.drag = 0.1, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Applies forces
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     */
-
 
     _createClass(Tw2ParticleDragForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * ApplyForce
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         */
         value: function ApplyForce(position, velocity, force) {
             force[0] += velocity.buffer[velocity.offset] * -this.drag;
             force[1] += velocity.buffer[velocity.offset + 1] * -this.drag;
@@ -42841,8 +42909,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * Tw2ParticleFluidDragForce
  *
  * @property {number} drag
- * @property {vec3} _tempVec
- * @property {vec3} _tempVec2
  * @inherits Tw2ParticleForce
  * @class
  */
@@ -42850,26 +42916,31 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
     _inherits(Tw2ParticleFluidDragForce, _Tw2ParticleForce);
 
     function Tw2ParticleFluidDragForce() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleFluidDragForce);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleFluidDragForce.__proto__ || Object.getPrototypeOf(Tw2ParticleFluidDragForce)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.drag = 0.1;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleFluidDragForce.__proto__ || Object.getPrototypeOf(Tw2ParticleFluidDragForce)).call.apply(_ref, [this].concat(args))), _this), _this.drag = 0.1, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Applies forces
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     * @param {number} dt - delta time
-     * @param { number} mass
-     */
-
 
     _createClass(Tw2ParticleFluidDragForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * Applies forces
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         * @param {number} dt - delta time
+         * @param { number} mass
+         */
         value: function ApplyForce(position, velocity, force, dt, mass) {
             var vec3_0 = _Tw2ParticleForce2.Tw2ParticleForce.global.vec3_0,
                 vec3_1 = _Tw2ParticleForce2.Tw2ParticleForce.global.vec3_1,
@@ -42935,25 +43006,29 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
     _inherits(Tw2ParticleSpring, _Tw2ParticleForce);
 
     function Tw2ParticleSpring() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleSpring);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleSpring.__proto__ || Object.getPrototypeOf(Tw2ParticleSpring)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.springConstant = 0;
-        _this.position = _global.vec3.create();
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleSpring.__proto__ || Object.getPrototypeOf(Tw2ParticleSpring)).call.apply(_ref, [this].concat(args))), _this), _this.springConstant = 0, _this.position = _global.vec3.create(), _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Applies forces
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     */
-
 
     _createClass(Tw2ParticleSpring, [{
         key: 'ApplyForce',
+
+
+        /**
+         * ApplyForce
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         */
         value: function ApplyForce(position, velocity, force) {
             force[0] += (this.position[0] - position.buffer[position.offset]) * this.springConstant;
             force[1] += (this.position[1] - position.buffer[position.offset + 1]) * this.springConstant;
@@ -43003,28 +43078,29 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
     _inherits(Tw2ParticleTurbulenceForce, _Tw2ParticleForce);
 
     function Tw2ParticleTurbulenceForce() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2ParticleTurbulenceForce);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ParticleTurbulenceForce.__proto__ || Object.getPrototypeOf(Tw2ParticleTurbulenceForce)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.noiseLevel = 3;
-        _this.noiseRatio = 0.5;
-        _this.amplitude = _global.vec3.fromValues(1, 1, 1);
-        _this.frequency = _global.vec4.fromValues(1, 1, 1, 1);
-        _this._time = 0;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ParticleTurbulenceForce.__proto__ || Object.getPrototypeOf(Tw2ParticleTurbulenceForce)).call.apply(_ref, [this].concat(args))), _this), _this.noiseLevel = 3, _this.noiseRatio = 0.5, _this.amplitude = _global.vec3.fromValues(1, 1, 1), _this.frequency = _global.vec4.fromValues(1, 1, 1, 1), _this._time = 0, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * ApplyForce
-     * @param {Tw2ParticleElement} position
-     * @param {Tw2ParticleElement} velocity
-     * @param {Tw2ParticleElement} force
-     */
-
 
     _createClass(Tw2ParticleTurbulenceForce, [{
         key: 'ApplyForce',
+
+
+        /**
+         * ApplyForce
+         * @param {Tw2ParticleElement} position
+         * @param {Tw2ParticleElement} velocity
+         * @param {Tw2ParticleElement} force
+         */
         value: function ApplyForce(position, velocity, force) {
             if (this.noiseLevel === 0) return;
 
@@ -43157,27 +43233,28 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
     _inherits(Tw2RandomIntegerAttributeGenerator, _Tw2ParticleAttribute);
 
     function Tw2RandomIntegerAttributeGenerator() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2RandomIntegerAttributeGenerator);
 
-        var _this = _possibleConstructorReturn(this, (Tw2RandomIntegerAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomIntegerAttributeGenerator)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM;
-        _this.customName = '';
-        _this.minRange = _global.vec4.create();
-        _this.maxRange = _global.vec4.create();
-        _this._element = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2RandomIntegerAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomIntegerAttributeGenerator)).call.apply(_ref, [this].concat(args))), _this), _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM, _this.customName = '', _this.minRange = _global.vec4.create(), _this.maxRange = _global.vec4.create(), _this._element = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Binds a particle system element to the generator
-     * @param {Tw2ParticleSystem} ps
-     * @returns {boolean} True if successfully bound
-     */
-
 
     _createClass(Tw2RandomIntegerAttributeGenerator, [{
         key: 'Bind',
+
+
+        /**
+         * Binds a particle system element to the generator
+         * @param {Tw2ParticleSystem} ps
+         * @returns {boolean} True if successfully bound
+         */
         value: function Bind(ps) {
             for (var i = 0; i < ps._elements.length; ++i) {
                 if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
@@ -43248,27 +43325,28 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
     _inherits(Tw2RandomUniformAttributeGenerator, _Tw2ParticleAttribute);
 
     function Tw2RandomUniformAttributeGenerator() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2RandomUniformAttributeGenerator);
 
-        var _this = _possibleConstructorReturn(this, (Tw2RandomUniformAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomUniformAttributeGenerator)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM;
-        _this.customName = '';
-        _this.minRange = _global.vec4.create();
-        _this.maxRange = _global.vec4.create();
-        _this._element = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2RandomUniformAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2RandomUniformAttributeGenerator)).call.apply(_ref, [this].concat(args))), _this), _this.elementType = _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM, _this.customName = '', _this.minRange = _global.vec4.create(), _this.maxRange = _global.vec4.create(), _this._element = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Binds a particle system element to the generator
-     * @param {Tw2ParticleSystem} ps
-     * @returns {boolean} True if successfully bound
-     */
-
 
     _createClass(Tw2RandomUniformAttributeGenerator, [{
         key: 'Bind',
+
+
+        /**
+         * Binds a particle system element to the generator
+         * @param {Tw2ParticleSystem} ps
+         * @returns {boolean} True if successfully bound
+         */
         value: function Bind(ps) {
             for (var i = 0; i < ps._elements.length; ++i) {
                 if (ps._elements[i].elementType === this.elementType && (this.elementType !== _Tw2ParticleElementDeclaration.Tw2ParticleElementDeclaration.Type.CUSTOM || ps._elements[i].customName === this.customName)) {
@@ -43348,37 +43426,28 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
     _inherits(Tw2SphereShapeAttributeGenerator, _Tw2ParticleAttribute);
 
     function Tw2SphereShapeAttributeGenerator() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2SphereShapeAttributeGenerator);
 
-        var _this = _possibleConstructorReturn(this, (Tw2SphereShapeAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2SphereShapeAttributeGenerator)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.minRadius = 0;
-        _this.maxRadius = 0;
-        _this.minPhi = 0;
-        _this.maxPhi = 360;
-        _this.minTheta = 0;
-        _this.maxTheta = 360;
-        _this.controlPosition = true;
-        _this.controlVelocity = true;
-        _this.minSpeed = 0;
-        _this.maxSpeed = 0;
-        _this.parentVelocityFactor = 1;
-        _this.position = _global.vec3.create();
-        _this.rotation = _global.quat.create();
-        _this._position = null;
-        _this._velocity = null;
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2SphereShapeAttributeGenerator.__proto__ || Object.getPrototypeOf(Tw2SphereShapeAttributeGenerator)).call.apply(_ref, [this].concat(args))), _this), _this.minRadius = 0, _this.maxRadius = 0, _this.minPhi = 0, _this.maxPhi = 360, _this.minTheta = 0, _this.maxTheta = 360, _this.controlPosition = true, _this.controlVelocity = true, _this.minSpeed = 0, _this.maxSpeed = 0, _this.parentVelocityFactor = 1, _this.position = _global.vec3.create(), _this.rotation = _global.quat.create(), _this._position = null, _this._velocity = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Binds a particle system element to the generator
-     * @param {Tw2ParticleSystem} ps
-     * @returns {boolean} True if successfully bound
-     */
-
 
     _createClass(Tw2SphereShapeAttributeGenerator, [{
         key: 'Bind',
+
+
+        /**
+         * Binds a particle system element to the generator
+         * @param {Tw2ParticleSystem} ps
+         * @returns {boolean} True if successfully bound
+         */
         value: function Bind(ps) {
             this._position = null;
             this._velocity = null;
@@ -43469,6 +43538,8 @@ exports.Tw2ParticleSystem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
@@ -43511,7 +43582,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {Array} buffers
  * @class
  */
-var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
+var Tw2ParticleSystem = exports.Tw2ParticleSystem = (_temp = _class = function () {
+
+    /**
+     * Constructor
+     */
     function Tw2ParticleSystem() {
         _classCallCheck(this, Tw2ParticleSystem);
 
@@ -43534,12 +43609,9 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
         this.aabbMin = _global.vec3.create();
         this.aabbMax = _global.vec3.create();
         this.peakAliveCount = 0;
-
         this.bufferDirty = false;
-
         this._vb = null;
         this._declaration = null;
-
         this._stdElements = [null, null, null, null];
         this._elements = [];
         this.instanceStride = [null, null];
@@ -43990,17 +44062,15 @@ var Tw2ParticleSystem = exports.Tw2ParticleSystem = function () {
                 };
             }
         }
+
+        /**
+         * Global and scratch variables
+         */
+
     }]);
 
     return Tw2ParticleSystem;
-}();
-
-/**
- * Class globals
- */
-
-
-Tw2ParticleSystem.global = null;
+}(), _class.global = null, _temp);
 
 /***/ })
 /******/ ]);

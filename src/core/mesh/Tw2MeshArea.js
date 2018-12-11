@@ -14,20 +14,20 @@ import {util} from '../../global';
  */
 export class Tw2MeshArea
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.effect = null;
-        this.meshIndex = 0;
-        this.index = 0;
-        this.count = 1;
-        this.display = true;
-    }
-}
 
-/**
- * Render Batch Constructor
- * @type {Tw2RenderBatch}
- */
-Tw2MeshArea.batchType = Tw2GeometryBatch;
+    _id = util.generateID();
+    name = '';
+    effect = null;
+    meshIndex = 0;
+    index = 0;
+    count = 1;
+    display = true;
+
+
+    /**
+     * Render Batch Constructor
+     * @type {Tw2RenderBatch}
+     */
+    static batchType = Tw2GeometryBatch;
+
+}

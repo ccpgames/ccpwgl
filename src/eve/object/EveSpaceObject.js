@@ -5,84 +5,85 @@ import {EveObject} from './EveObject';
 /**
  * EveSpaceObject
  *
- * @parameter {String} name
- * @parameter {boolean} display                             - Enables/ disables visibility
- * @parameter {{}} visible                                  - Visibility options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
- * @parameter {boolean} visible.children                    - Enables/ disables child visibility
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
- * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
- * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
- * @parameter {Number} lod
- * @parameter {Tw2Mesh} mesh
- * @parameter {Array.<EveLocator>} locators
- * @parameter {Array.<EveSpriteSet>} spriteSets
- * @parameter {Array.<EveTurretSet>} turretSets
- * @parameter {Array.<EveSpaceObjectDecal>} decals
- * @parameter {Array.<EveSpotlightSet>} spotlightSets
- * @parameter {Array.<EvePlaneSet>} planeSets
- * @parameter {Array.<Tw2CurveSet>} curveSets
- * @parameter {Array.<EveCurveLineSet>} lineSets
- * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
- * @parameter {Array.<{}>} children
- * @parameter {vec3} boundingSphereCenter
- * @parameter {Number} boundingSphereRadius
- * @parameter {vec3} shapeEllipsoidRadius
- * @parameter {vec3} shapeEllipsoidCenter
- * @parameter {mat4} transform
- * @parameter {Tw2AnimationController} animation
- * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {Tw2PerObjectData} _perObjectData
+ * @property {String} name
+ * @property {boolean} display                             - Enables/ disables visibility
+ * @property {{}} visible                                  - Visibility options for the space object's elements
+ * @property {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @property {boolean} visible.children                    - Enables/ disables child visibility
+ * @property {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @property {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @property {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @property {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @property {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @property {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @property {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @property {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @property {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
+ * @property {Number} lod
+ * @property {Tw2Mesh} mesh
+ * @property {Array.<EveLocator>} locators
+ * @property {Array.<EveSpriteSet>} spriteSets
+ * @property {Array.<EveTurretSet>} turretSets
+ * @property {Array.<EveSpaceObjectDecal>} decals
+ * @property {Array.<EveSpotlightSet>} spotlightSets
+ * @property {Array.<EvePlaneSet>} planeSets
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {Array.<EveCurveLineSet>} lineSets
+ * @property {Array.<EveMeshOverlayEffect>} overlayEffects
+ * @property {Array.<{}>} children
+ * @property {vec3} boundingSphereCenter
+ * @property {Number} boundingSphereRadius
+ * @property {vec3} shapeEllipsoidRadius
+ * @property {vec3} shapeEllipsoidCenter
+ * @property {mat4} transform
+ * @property {Tw2AnimationController} animation
+ * @property {number} killCount                            - number of kills to show on kill counter decals
+ * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
 export class EveSpaceObject extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.mesh = true;
-        this.visible.children = true;
-        this.visible.effectChildren = true;
-        this.visible.planeSets = true;
-        this.visible.spotlightSets = true;
-        this.visible.decals = true;
-        this.visible.spriteSets = true;
-        this.visible.overlayEffects = true;
-        this.visible.lineSets = true;
-        this.visible.killmarks = true;
-        this.visible.customMasks = true;
 
-        this.mesh = null;
-        this.animation = new Tw2AnimationController();
-        this.locators = [];
-        this.spriteSets = [];
-        this.turretSets = [];
-        this.decals = [];
-        this.spotlightSets = [];
-        this.planeSets = [];
-        this.curveSets = [];
-        this.lineSets = [];
-        this.overlayEffects = [];
-        this.children = [];
-        this.effectChildren = [];
-        this.customMasks = [];
-        this.lod = 3;
-        this.killCount = 0;
-        this.transform = mat4.create();
-        this.boundingSphereCenter = vec3.create();
-        this.boundingSphereRadius = 0;
-        this.shapeEllipsoidRadius = vec3.create();
-        this.shapeEllipsoidCenter = vec3.create();
+    visible = {
+        mesh: true,
+        children: true,
+        effectChildren: true,
+        planeSets: true,
+        spotlightSets: true,
+        decals: true,
+        spriteSets: true,
+        overlayEffects: true,
+        lineSets: true,
+        killmarks: true,
+        customMasks: true,
+        turretSets: true,
+        boosters: true
+    };
+    mesh = null;
+    animation = new Tw2AnimationController();
+    locators = [];
+    spriteSets = [];
+    turretSets = [];
+    decals = [];
+    spotlightSets = [];
+    planeSets = [];
+    curveSets = [];
+    lineSets = [];
+    overlayEffects = [];
+    children = [];
+    effectChildren = [];
+    customMasks = [];
+    lod = 3;
+    killCount = 0;
+    transform = mat4.create();
+    boundingSphereCenter = vec3.create();
+    boundingSphereRadius = 0;
+    shapeEllipsoidRadius = vec3.create();
+    shapeEllipsoidCenter = vec3.create();
+    _perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
 
-        this._perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
-    }
 
     /**
      * Initializes the EveSpaceObject
@@ -518,7 +519,8 @@ export class EveSpaceObject extends EveObject
             ['CustomMaskTarget0', 4],
             ['CustomMaskTarget1', 4]
         ]
-    }
+    };
+
 }
 
 export {EveSpaceObject as EveStation};

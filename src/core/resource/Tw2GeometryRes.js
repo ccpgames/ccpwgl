@@ -33,18 +33,16 @@ import {
  */
 export class Tw2GeometryRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.meshes = [];
-        this.minBounds = vec3.create();
-        this.maxBounds = vec3.create();
-        this.boundsSpherePosition = vec3.create();
-        this.boundsSphereRadius = 0;
-        this.models = [];
-        this.animations = [];
-        this.systemMirror = false;
-    }
+
+    meshes = [];
+    minBounds = vec3.create();
+    maxBounds = vec3.create();
+    boundsSpherePosition = vec3.create();
+    boundsSphereRadius = 0;
+    models = [];
+    animations = [];
+    systemMirror = false;
+
 
     /**
      * GetInstanceBuffer
@@ -784,6 +782,7 @@ export class Tw2GeometryRes extends Tw2Resource
         }
         return curve;
     }
+
 }
 
 /**

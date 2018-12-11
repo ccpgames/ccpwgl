@@ -13,15 +13,13 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2RGBAScalarSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.value = vec4.create();
-        this.RedCurve = null;
-        this.GreenCurve = null;
-        this.BlueCurve = null;
-        this.AlphaCurve = null;
-    }
+
+    value = vec4.create();
+    RedCurve = null;
+    GreenCurve = null;
+    BlueCurve = null;
+    AlphaCurve = null;
+
 
     /**
      * Sorts the sequencer
@@ -68,34 +66,35 @@ export class Tw2RGBAScalarSequencer extends Tw2CurveSequencer
         value[3] = this.AlphaCurve ? this.AlphaCurve.GetValueAt(time) : 0;
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER2;
+
+    /**
+     * The sequencer's curve property names
+     * @type {string[]}
+     */
+    static childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2RGBAScalarSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2RGBAScalarSequencer.outputDimension = 4;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2RGBAScalarSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2RGBAScalarSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];

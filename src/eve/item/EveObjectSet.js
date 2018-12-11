@@ -11,14 +11,13 @@ import {vec3, vec4, mat4, util} from '../../global';
  */
 export class EveObjectSetItem
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this._rebuildPending = true;
-        this._onModified = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    _rebuildPending = true;
+    _onModified = null;
+
 
     /**
      * Fire on value changes
@@ -28,6 +27,7 @@ export class EveObjectSetItem
         this._rebuildPending = true;
         if (this._onModified) this._onModified(this);
     }
+
 }
 
 /**
@@ -43,16 +43,15 @@ export class EveObjectSetItem
  */
 export class EveObjectSet
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.items = [];
-        this._visibleItems = [];
-        this._rebuildPending = false;
-        this._onChildModified = item => this.OnValueChanged(item);
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    items = [];
+    _visibleItems = [];
+    _rebuildPending = false;
+    _onChildModified = item => this.OnValueChanged(item);
+
 
     /**
      * Initializes the set
@@ -227,25 +226,25 @@ export class EveObjectSet
             }
         }
     }
+
+    /**
+     * The object set's item
+     * @type {?Function}
+     */
+    static Item = null;
+
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = {
+        vec3_0: vec3.create(),
+        vec3_1: vec3.create(),
+        vec3_2: vec3.create(),
+        vec4_0: vec4.create(),
+        vec4_1: vec4.create(),
+        mat4_0: mat4.create()
+    };
+
 }
-
-/**
- * The object set's item
- * @type {?Function}
- */
-EveObjectSet.Item = null;
-
-/**
- * Class global and scratch variables
- * @type {{vec3_0, vec3_1, vec3_2}}
- */
-EveObjectSet.global = {
-    vec3_0: vec3.create(),
-    vec3_1: vec3.create(),
-    vec3_2: vec3.create(),
-    vec4_0: vec4.create(),
-    vec4_1: vec4.create(),
-    mat4_0: mat4.create()
-};
-
 

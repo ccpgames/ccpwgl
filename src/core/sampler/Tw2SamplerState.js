@@ -19,21 +19,37 @@ import {device} from '../../global';
  */
 export class Tw2SamplerState
 {
-    constructor()
+
+    name = '';
+    registerIndex = 0;
+    minFilter = device.gl.LINEAR;
+    maxFilter = device.gl.LINEAR;
+    minFilterNoMips = device.gl.LINEAR;
+    addressU = device.gl.REPEAT;
+    addressV = device.gl.REPEAT;
+    addressW = device.gl.REPEAT;
+    anisotropy = 1;
+    samplerType = device.gl.TEXTURE_2D;
+    isVolume = false;
+    hash = 0;
+
+
+    /**
+     * Gets the current filter mode
+     * @returns {number}
+     */
+    get filterMode()
     {
-        const gl = device.gl;
-        this.name = '';
-        this.registerIndex = 0;
-        this.minFilter = gl.LINEAR;
-        this.maxFilter = gl.LINEAR;
-        this.minFilterNoMips = gl.LINEAR;
-        this.addressU = gl.REPEAT;
-        this.addressV = gl.REPEAT;
-        this.addressW = gl.REPEAT;
-        this.anisotropy = 1;
-        this.samplerType = gl.TEXTURE_2D;
-        this.isVolume = false;
-        this.hash = 0;
+        return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
+    }
+
+    /**
+     * Gets the current mip filter mode
+     * @returns {number}
+     */
+    get mipFilterMode()
+    {
+        return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
     }
 
     /**
@@ -78,40 +94,23 @@ export class Tw2SamplerState
     }
 
     /**
-     * Gets the current filter mode
-     * @returns {number}
+     * Filter modes
      */
-    GetFilterMode()
-    {
-        return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
-    }
+    static FilterMode = {
+        9728: 1,
+        9729: 2
+    };
 
     /**
-     * Gets the current mip filter mode
-     * @returns {number}
+     * Mip filter modes
      */
-    GetMipFilterMode()
-    {
-        return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
-    }
+    static MipFilterMode = {
+        9728: 0,
+        9729: 0,
+        9984: 1,
+        9985: 1,
+        9986: 2,
+        9987: 2
+    };
+
 }
-
-/**
- * Filter modes
- */
-Tw2SamplerState.FilterMode = {
-    9728: 1,
-    9729: 2
-};
-
-/**
- * Mip filter modes
- */
-Tw2SamplerState.MipFilterMode = {
-    9728: 0,
-    9729: 0,
-    9984: 1,
-    9985: 1,
-    9986: 2,
-    9987: 2
-};

@@ -7,12 +7,11 @@
  */
 export class Tw2GeometryModel
 {
-    constructor()
-    {
-        this.name = '';
-        this.meshBindings = [];
-        this.skeleton = null;
-    }
+
+    name = '';
+    meshBindings = [];
+    skeleton = null;
+
 
     /**
      * Finds a bone by it's name
@@ -36,4 +35,5 @@ export class Tw2GeometryModel
 
         return null;
     }
+
 }

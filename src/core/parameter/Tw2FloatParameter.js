@@ -4,8 +4,6 @@ import {util} from '../../global';
 /**
  * Tw2FloatParameter
  *
- * @param {string} [name='']
- * @param {number} [value=1]
  * @property {string} name
  * @property {number} value
  * @property {?Float32Array} constantBuffer
@@ -14,12 +12,22 @@ import {util} from '../../global';
  */
 export class Tw2FloatParameter extends Tw2Parameter
 {
+
+    name = '';
+    value = 1;
+    constantBuffer = null;
+    offset = null;
+
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {number} [value=1]
+     */
     constructor(name = '', value = 1)
     {
         super(name);
         this.value = util.isArrayLike(value) ? value[0] : value;
-        this.constantBuffer = null;
-        this.offset = null;
     }
 
     /**
@@ -82,10 +90,11 @@ export class Tw2FloatParameter extends Tw2Parameter
     {
         return util.isNumber(a);
     }
-}
 
-/**
- * Float parameter's constant buffer size
- * @type {number}
- */
-Tw2FloatParameter.constantBufferSize = 1;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 1;
+
+}

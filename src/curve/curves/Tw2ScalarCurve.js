@@ -11,14 +11,12 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2ScalarKey extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = 0;
-        this.left = 0;
-        this.right = 0;
-        this.interpolation = 0;
-    }
+
+    value = 0;
+    left = 0;
+    right = 0;
+    interpolation = 0;
+
 }
 
 
@@ -37,18 +35,16 @@ export class Tw2ScalarKey extends Tw2CurveKey
  */
 export class Tw2ScalarCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.start = 0;
-        this.timeScale = 1;
-        this.timeOffset = 0;
-        this.value = 0;
-        this.extrapolation = 0;
-        this.keys = [];
-        this._currentKey = 1;
-        this.length = 0;
-    }
+
+    start = 0;
+    timeScale = 1;
+    timeOffset = 0;
+    value = 0;
+    extrapolation = 0;
+    keys = [];
+    _currentKey = 1;
+    length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -162,57 +158,58 @@ export class Tw2ScalarCurve extends Tw2Curve
                 return ret * ret * ck.value;
         }
     }
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2ScalarKey}
+     */
+    static Key = Tw2ScalarKey;
+
+    /**
+     * Extrapolation types
+     * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+     */
+    static Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    /**
+     * Interpolation types
+     * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, CATMULROM: number}}
+     */
+    static Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        CATMULROM: 4
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2ScalarCurve.inputDimension = 1;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2ScalarCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2ScalarCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2ScalarCurve.curveType = Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2ScalarKey}
- */
-Tw2ScalarCurve.Key = Tw2ScalarKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2ScalarCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, CATMULROM: number}}
- */
-Tw2ScalarCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2,
-    HERMITE: 3,
-    CATMULROM: 4
-};

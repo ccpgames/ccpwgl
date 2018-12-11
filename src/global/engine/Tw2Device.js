@@ -164,8 +164,14 @@ export class Tw2Device extends Tw2EventEmitter
         }
 
         const
-            returnFalse = () => { return false; },
-            returnTrue = () => { return true; },
+            returnFalse = () =>
+            {
+                return false;
+            },
+            returnTrue = () =>
+            {
+                return true;
+            },
             gl = this.gl;
 
         this.ext = {
@@ -179,15 +185,15 @@ export class Tw2Device extends Tw2EventEmitter
         {
             case Tw2Device.WebglVersion.WEBGL2:
                 this.ext = {
-                    drawElementsInstanced: function(mode, count, type, offset, instanceCount)
+                    drawElementsInstanced: function (mode, count, type, offset, instanceCount)
                     {
                         gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
                     },
-                    drawArraysInstanced: function(mode, first, count, instanceCount)
+                    drawArraysInstanced: function (mode, first, count, instanceCount)
                     {
                         gl.drawArraysInstanced(mode, first, count, instanceCount);
                     },
-                    vertexAttribDivisor: function(location, divisor)
+                    vertexAttribDivisor: function (location, divisor)
                     {
                         gl.vertexAttribDivisor(location, divisor);
                     },
@@ -204,15 +210,15 @@ export class Tw2Device extends Tw2EventEmitter
                 if (instancedArrays)
                 {
                     this.ext = {
-                        drawElementsInstanced: function(mode, count, type, offset, instanceCount)
+                        drawElementsInstanced: function (mode, count, type, offset, instanceCount)
                         {
                             instancedArrays['drawElementsInstancedANGLE'](mode, count, type, offset, instanceCount);
                         },
-                        drawArraysInstanced: function(mode, first, count, instanceCount)
+                        drawArraysInstanced: function (mode, first, count, instanceCount)
                         {
                             instancedArrays['drawArraysInstancedANGLE'](mode, first, count, instanceCount);
                         },
-                        vertexAttribDivisor: function(location, divisor)
+                        vertexAttribDivisor: function (location, divisor)
                         {
                             instancedArrays['vertexAttribDivisorANGLE'](location, divisor);
                         },
@@ -1102,14 +1108,14 @@ export class Tw2Device extends Tw2EventEmitter
     /**
      * Requests and animation frame
      */
-    static RequestAnimationFrame = (function()
+    static RequestAnimationFrame = (function ()
     {
         const requestFrame = window['requestAnimationFrame'] ||
             window['webkitRequestAnimationFrame'] ||
             window['mozRequestAnimationFrame'] ||
             window['oRequestAnimationFrame'] ||
             window['msRequestAnimationFrame'] ||
-            function(callback)
+            function (callback)
             {
                 if (!timeOuts) timeOuts = [];
                 timeOuts.push(window.setTimeout(callback, 1000 / 60));
@@ -1121,7 +1127,7 @@ export class Tw2Device extends Tw2EventEmitter
          * @param {Function} callback
          * @returns {number} id
          */
-        return function(callback)
+        return function (callback)
         {
             return requestFrame(callback);
         };
@@ -1130,7 +1136,7 @@ export class Tw2Device extends Tw2EventEmitter
     /**
      * Cancels an animation frame by it's id
      */
-    static CancelAnimationFrame = (function()
+    static CancelAnimationFrame = (function ()
     {
         const cancelFrame =
             window['cancelAnimationFrame'] ||
@@ -1138,7 +1144,7 @@ export class Tw2Device extends Tw2EventEmitter
             window['mozRequestAnimationFrame'] ||
             window['oRequestAnimationFrame'] ||
             window['msRequestAnimationFrame'] ||
-            function(id)
+            function (id)
             {
                 if (!timeOuts) timeOuts = [];
                 if (timeOuts[id] !== undefined)
@@ -1153,7 +1159,7 @@ export class Tw2Device extends Tw2EventEmitter
          * Cancels an animation frame by it's id
          * @param {number} id
          */
-        return function(id)
+        return function (id)
         {
             cancelFrame(id);
         };

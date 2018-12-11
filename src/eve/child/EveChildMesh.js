@@ -11,12 +11,10 @@ import {EveChild} from './EveChild';
  */
 export class EveChildMesh extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.mesh = null;
-        this.useSpaceObjectData = true;
-    }
+
+    mesh = null;
+    useSpaceObjectData = true;
+
 
     /**
      * Gets the child's resources
@@ -74,4 +72,5 @@ export class EveChildMesh extends EveChild
 
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
     }
+
 }

@@ -4,13 +4,20 @@ import {Tw2Parameter} from './Tw2Parameter';
 /**
  * Tw2VariableParameter
  *
- * @param {string} [name='']
- * @param {string} [variableName='']
  * @property {string} variableName
  * @class
  */
 export class Tw2VariableParameter extends Tw2Parameter
 {
+
+    variableName = '';
+
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {string} [variableName='']
+     */
     constructor(name = '', variableName = '')
     {
         super(name);
@@ -78,5 +85,6 @@ export class Tw2VariableParameter extends Tw2Parameter
         if (includeName) this.name = parameter.name;
         this.variableName = parameter.variableName;
     }
+
 }
 

@@ -65,8 +65,14 @@ export class EveSpaceScene
         this.visible.environmentBlur = true;
 
         Object.defineProperty(this.visible, 'environment', {
-            get: () => { return this.backgroundRenderingEnabled; },
-            set: bool => { this.backgroundRenderingEnabled = bool ? 1 : 0; }
+            get: () =>
+            {
+                return this.backgroundRenderingEnabled;
+            },
+            set: bool =>
+            {
+                this.backgroundRenderingEnabled = bool ? 1 : 0;
+            }
         });
 
         this.lensflares = [];

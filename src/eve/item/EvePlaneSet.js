@@ -10,11 +10,9 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EvePlaneSetBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.planeSet = null;
-    }
+
+    planeSet = null;
+
 
     /**
      * Commits the plan set
@@ -24,6 +22,7 @@ export class EvePlaneSetBatch extends Tw2RenderBatch
     {
         this.planeSet.Render(technique);
     }
+
 }
 
 
@@ -45,22 +44,20 @@ export class EvePlaneSetBatch extends Tw2RenderBatch
  */
 export class EvePlaneSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.boneIndex = 0;
-        this.groupIndex = -1;
-        this.maskAtlasID = 0;
-        this.position = vec3.create();
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.rotation = quat.create();
-        this.transform = mat4.create();
-        this.color = vec4.fromValues(1, 1, 1, 1);
-        this.layer1Transform = vec4.fromValues(1, 1, 0, 0);
-        this.layer2Transform = vec4.fromValues(1, 1, 0, 0);
-        this.layer1Scroll = vec4.create();
-        this.layer2Scroll = vec4.create();
-    }
+
+    boneIndex = 0;
+    groupIndex = -1;
+    maskAtlasID = 0;
+    position = vec3.create();
+    scaling = vec3.fromValues(1, 1, 1);
+    rotation = quat.create();
+    transform = mat4.create();
+    color = vec4.fromValues(1, 1, 1, 1);
+    layer1Transform = vec4.fromValues(1, 1, 0, 0);
+    layer2Transform = vec4.fromValues(1, 1, 0, 0);
+    layer1Scroll = vec4.create();
+    layer2Scroll = vec4.create();
+
 
     /**
      * Creates a plane set item from an object
@@ -77,6 +74,7 @@ export class EvePlaneSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 /**
@@ -95,16 +93,14 @@ export class EvePlaneSetItem extends EveObjectSetItem
  */
 export class EvePlaneSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.effect = null;
-        this.hideOnLowQuality = false;
-        this._time = 0;
-        this._vertexBuffer = null;
-        this._indexBuffer = null;
-        this._decl = new Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations);
-    }
+
+    effect = null;
+    hideOnLowQuality = false;
+    _time = 0;
+    _vertexBuffer = null;
+    _indexBuffer = null;
+    _decl = new Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations);
+
 
     /**
      * Alias for this.items
@@ -333,5 +329,6 @@ export class EvePlaneSet extends EveObjectSet
         ['TEXCOORD', 6, 4],
         ['TEXCOORD', 7, 3]
     ];
+
 }
 

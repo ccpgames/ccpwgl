@@ -25,22 +25,21 @@ import {Tw2PostEffectStep} from './Tw2PostEffectStep';
  */
 export class Tw2PostEffect
 {
-    constructor()
-    {
-        this._id = generateID();
-        this.name = '';
-        this.display = true;
-        this.index = -1;
-        this.width = 0;
-        this.height = 0;
-        this.texture = null;
-        this.curveSet = null;
-        this.targets = {};
-        this.items = [];
-        this._visibleItems = [];
-        this._rebuildPending = true;
-        this._onChildModified = item => this.OnValueChanged(item);
-    }
+
+    _id = generateID();
+    name = '';
+    display = true;
+    index = -1;
+    width = 0;
+    height = 0;
+    texture = null;
+    curveSet = null;
+    targets = {};
+    items = [];
+    _visibleItems = [];
+    _rebuildPending = true;
+    _onChildModified = item => this.OnValueChanged(item);
+
 
     /**
      * Alias for items
@@ -187,7 +186,7 @@ export class Tw2PostEffect
      * @param {number} [height=device.viewportHeight]
      * @returns {Tw2RenderTarget}
      */
-    CreateTarget(name, width=device.viewportWidth, height= device.viewportHeight)
+    CreateTarget(name, width = device.viewportWidth, height = device.viewportHeight)
     {
         if (!this.targets[name])
         {
@@ -198,7 +197,7 @@ export class Tw2PostEffect
         this.targets[name].Create(width, height, false);
         return this.targets[name];
     }
-    
+
     /**
      * Per frame update
      * @param {number} dt
@@ -262,13 +261,13 @@ export class Tw2PostEffect
                     effect = item.effect,
                     shader = effect.shader,
                     parameters = effect.parameters;
-                
+
                 // Auto create current blit
                 if (shader.HasTexture('BlitCurrent' && !parameters.BlitCurrent))
                 {
                     parameters['BlitCurrent'] = new Tw2TextureParameter('BlitCurrent', 'rgba:/0,0,0,255');
                 }
-                
+
                 // Auto create original blit
                 if (shader.HasTexture('BlitOriginal' && !parameters.BlitOriginal))
                 {
@@ -409,7 +408,7 @@ export class Tw2PostEffect
      * @param {*} [opt={}]
      * @returns {Tw2PostEffect}
      */
-    static create(opt={})
+    static create(opt = {})
     {
         const postEffect = new this();
 
@@ -439,4 +438,5 @@ export class Tw2PostEffect
      * @type {Tw2PostEffectStep}
      */
     static Item = Tw2PostEffectStep;
+
 }

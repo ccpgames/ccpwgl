@@ -414,7 +414,7 @@ export class Tw2ResMan extends Tw2EventEmitter
     {
         const path = res.path;
 
-        return function()
+        return function ()
         {
             let readyState = 0;
 
