@@ -310,8 +310,8 @@ class Tw2Store
     /**
      * Creates a type by value and/or type name or function
      * @param {string} name
-     * @param {?*} [value] value
-     * @param {?(string|Function)} [Type] type
+     * @param {?*} [value]
+     * @param {?(string|Function)} [Type]
      * @returns {?*} new parameter
      */
     CreateType(name, value, Type)
