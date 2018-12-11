@@ -761,8 +761,8 @@ export class Tw2AnimationController
     }
 
     /**
-     * Dose a Rebuild of Cached Data
-     * @param {Tw2AnimationController) animationController
+     * DoRebuildCachedData
+     * @param {Tw2AnimationController} animationController
      * @param {Tw2GeometryRes} resource
      */
     static DoRebuildCachedData(animationController, resource)
