@@ -90,7 +90,7 @@ export class Tw2RawData
      * Declares a raw data element
      * @param {String} name
      * @param {number} size
-     * @param {!|number|Array|Float32Array} [value=null] optional value to set on raw data creation
+     * @param {?(number|Array|Float32Array)} [value=null] optional value to set on raw data creation
      */
     Declare(name, size, value=null)
     {

@@ -1,5 +1,6 @@
 /* eslint-env node */
 
+const Webpack = require("webpack");
 const
     path = require('path'),
     UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
@@ -22,6 +23,9 @@ module.exports = {
     },
 
     plugins: [
+        new Webpack.LoaderOptionsPlugin({
+          options: {}
+        }),
         new UglifyJsPlugin({
             include: /\.min\.js$/,
             sourceMap: true,
@@ -37,7 +41,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
-                    'fix' : true
+                    'fix': true
                 }
             },
             {
@@ -45,6 +49,18 @@ module.exports = {
                 exclude: [/node_modules/],
                 loader: 'babel-loader',
                 options: {
+                    'plugins': [
+                        'transform-decorators-legacy',
+                        'transform-class-properties',
+                        [
+                            'transform-builtin-extend',
+                            {
+                                'globals': [
+                                    'Error'
+                                ]
+                            }
+                        ]
+                    ],
                     'presets': [
                         'env'
                     ]
@@ -53,4 +69,3 @@ module.exports = {
         ]
     }
 };
-
