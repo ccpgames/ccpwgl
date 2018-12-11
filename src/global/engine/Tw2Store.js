@@ -191,19 +191,40 @@ class Tw2Store extends Tw2EventEmitter
      */
     GetClass(name)
     {
-        const Constructor = Tw2Store.GetStoreItem(this, 'class', name);
+        let Constructor = Tw2Store.GetStoreItem(this, 'class', name);
+
+        // Allow substitution of Trinity constructors with Tw2 constructors
+        if (!Constructor && name.includes('Tr2'))
+        {
+            const substitute = name.replace('Tr2', 'Tw2');
+            Constructor = Tw2Store.GetStoreItem(this, 'class', substitute);
+            if (Constructor)
+            {
+                this.emit('substitute', {
+                    type: 'class',
+                    key: substitute,
+                    originalKey: name,
+                    value: Constructor,
+                    log: {
+                        type: 'warning',
+                        title: this.name,
+                        message: `"${name}" class not found, substituting with "${substitute}"`
+                    }
+                });
+            }
+        }
 
         // Create a warning when a partially implemented class is called
         if (Constructor && Constructor.partialImplementation)
         {
-            this.emit('warning', {
+            this.emit('partial', {
                 type: 'class',
                 key: name,
                 value: Constructor,
                 log: {
                     type: 'warning',
                     title: this.name,
-                    message: `Feature partially implemented (${name})`
+                    message: `"${name}" class partially implemented`
                 }
             });
         }

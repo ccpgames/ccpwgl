@@ -296,7 +296,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(128);
+var _Tw2Float = __webpack_require__(129);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -308,7 +308,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(129);
+var _Tw2Frustum = __webpack_require__(130);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2925,7 +2925,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(130);
+var _Tw2ColorCurve = __webpack_require__(131);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2937,7 +2937,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(131);
+var _Tw2ColorCurve2 = __webpack_require__(132);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2949,7 +2949,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(132);
+var _Tw2EventCurve = __webpack_require__(133);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2961,7 +2961,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(133);
+var _Tw2PerlinCurve = __webpack_require__(134);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2973,7 +2973,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(134);
+var _Tw2QuaternionCurve = __webpack_require__(135);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2985,7 +2985,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(135);
+var _Tw2RandomConstantCurve = __webpack_require__(136);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2997,7 +2997,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(136);
+var _Tw2RigidOrientation = __webpack_require__(137);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3009,7 +3009,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(137);
+var _Tw2RotationCurve = __webpack_require__(138);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3021,7 +3021,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(138);
+var _Tw2ScalarCurve = __webpack_require__(139);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3033,7 +3033,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(139);
+var _Tw2ScalarCurve2 = __webpack_require__(140);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3045,7 +3045,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(140);
+var _Tw2SineCurve = __webpack_require__(141);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3057,7 +3057,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(141);
+var _Tw2Vector2Curve = __webpack_require__(142);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3069,7 +3069,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(142);
+var _Tw2Vector3Curve = __webpack_require__(143);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3081,7 +3081,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(143);
+var _Tw2VectorCurve = __webpack_require__(144);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3941,16 +3941,35 @@ var Tw2Store = function (_Tw2EventEmitter) {
         value: function GetClass(name) {
             var Constructor = Tw2Store.GetStoreItem(this, 'class', name);
 
+            // Allow substitution of Trinity constructors with Tw2 constructors
+            if (!Constructor && name.includes('Tr2')) {
+                var substitute = name.replace('Tr2', 'Tw2');
+                Constructor = Tw2Store.GetStoreItem(this, 'class', substitute);
+                if (Constructor) {
+                    this.emit('substitute', {
+                        type: 'class',
+                        key: substitute,
+                        originalKey: name,
+                        value: Constructor,
+                        log: {
+                            type: 'warning',
+                            title: this.name,
+                            message: '"' + name + '" class not found, substituting with "' + substitute + '"'
+                        }
+                    });
+                }
+            }
+
             // Create a warning when a partially implemented class is called
             if (Constructor && Constructor.partialImplementation) {
-                this.emit('warning', {
+                this.emit('partial', {
                     type: 'class',
                     key: name,
                     value: Constructor,
                     log: {
                         type: 'warning',
                         title: this.name,
-                        message: 'Feature partially implemented (' + name + ')'
+                        message: '"' + name + '" class partially implemented'
                     }
                 });
             }
@@ -12320,7 +12339,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(144);
+var _sequencers = __webpack_require__(145);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12332,7 +12351,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(153);
+var _tracks = __webpack_require__(154);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12344,7 +12363,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(156);
+var _maya = __webpack_require__(157);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12379,7 +12398,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(162);
+var _EveChildBillboard = __webpack_require__(163);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12391,7 +12410,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildCloud = __webpack_require__(163);
+var _EveChildCloud = __webpack_require__(164);
 
 Object.keys(_EveChildCloud).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12403,7 +12422,7 @@ Object.keys(_EveChildCloud).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(164);
+var _EveChildContainer = __webpack_require__(165);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12415,7 +12434,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(165);
+var _EveChildExplosion = __webpack_require__(166);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12427,7 +12446,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(166);
+var _EveChildMesh = __webpack_require__(167);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12439,7 +12458,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(167);
+var _EveChildParticleSystem = __webpack_require__(168);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12683,7 +12702,7 @@ Object.keys(_EveObject).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(174);
+var _EveEffectRoot = __webpack_require__(175);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12695,7 +12714,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(175);
+var _EveMissile = __webpack_require__(176);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12707,7 +12726,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(176);
+var _EvePlanet = __webpack_require__(177);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12719,7 +12738,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(177);
+var _EveShip = __webpack_require__(178);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13142,7 +13161,7 @@ Object.keys(_EveObjectSet).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(178);
+var _EveBoosterSet = __webpack_require__(179);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13154,7 +13173,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(179);
+var _EveCurveLineSet = __webpack_require__(180);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13166,7 +13185,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(180);
+var _EveLocator = __webpack_require__(181);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13178,7 +13197,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(181);
+var _EvePlaneSet = __webpack_require__(182);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13190,7 +13209,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(182);
+var _EveSpaceObjectDecal = __webpack_require__(183);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13202,7 +13221,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(183);
+var _EveSpotlightSet = __webpack_require__(184);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13214,7 +13233,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(184);
+var _EveSpriteSet = __webpack_require__(185);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13226,7 +13245,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(185);
+var _EveTurretSet = __webpack_require__(186);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13320,7 +13339,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(161);
+var _eve = __webpack_require__(162);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13332,7 +13351,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(188);
+var _particle = __webpack_require__(189);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -27240,6 +27259,18 @@ Object.keys(_Tw2PostEffectStep).forEach(function (key) {
   });
 });
 
+var _Tw2PostProcess = __webpack_require__(128);
+
+Object.keys(_Tw2PostProcess).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2PostProcess[key];
+    }
+  });
+});
+
 /***/ }),
 /* 127 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -27454,6 +27485,38 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _class, _temp;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Tw2PostProcess - Not implemented yet
+ *
+ * @parameter {Array<Tw2Effect>} stages
+ */
+var Tw2PostProcess = exports.Tw2PostProcess = (_temp = _class = function Tw2PostProcess() {
+    _classCallCheck(this, Tw2PostProcess);
+
+    this.stages = [];
+}
+
+/**
+ * Identifies that the object is not yet fully implemented
+ * @type {boolean}
+ */
+, _class.partialImplementation = true, _temp);
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
@@ -27469,7 +27532,7 @@ var Tw2Float = exports.Tw2Float = function Tw2Float() {
 };
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27623,7 +27686,7 @@ Tw2Frustum.global = {
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27863,7 +27926,7 @@ Tw2ColorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28133,7 +28196,7 @@ Tw2ColorCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28306,7 +28369,7 @@ Tw2EventCurve.Extrapolation = {
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28412,7 +28475,7 @@ Tw2PerlinCurve.valueProperty = 'value';
 Tw2PerlinCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28692,7 +28755,7 @@ Tw2QuaternionCurve.Interpolation = {
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28784,7 +28847,7 @@ Tw2RandomConstantCurve.valueProperty = 'value';
 Tw2RandomConstantCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28969,7 +29032,7 @@ Tw2RigidOrientation.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE;
 Tw2RigidOrientation.Key = Tw2Torque;
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29230,7 +29293,7 @@ Tw2RotationCurve.Interpolation = {
 };
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29483,7 +29546,7 @@ Tw2ScalarCurve.Interpolation = {
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29775,7 +29838,7 @@ Tw2ScalarCurve2.Interpolation = {
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29869,7 +29932,7 @@ Tw2SineCurve.valueProperty = 'value';
 Tw2SineCurve.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30172,7 +30235,7 @@ Tw2Vector2Curve.Interpolation = {
 };
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30478,7 +30541,7 @@ Tw2Vector3Curve.Interpolation = {
 };
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30733,7 +30796,7 @@ Tw2VectorCurve.Interpolation = {
 };
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30743,7 +30806,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(145);
+var _Tw2ColorSequencer = __webpack_require__(146);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30755,7 +30818,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(146);
+var _Tw2EulerRotation = __webpack_require__(147);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30767,7 +30830,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(147);
+var _Tw2QuaternionSequencer = __webpack_require__(148);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30779,7 +30842,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(148);
+var _Tw2RGBAScalarSequencer = __webpack_require__(149);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30791,7 +30854,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(149);
+var _Tw2ScalarSequencer = __webpack_require__(150);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30803,7 +30866,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(150);
+var _Tw2VectorSequencer = __webpack_require__(151);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30815,7 +30878,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(151);
+var _Tw2XYZScalarSequencer = __webpack_require__(152);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30827,7 +30890,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(152);
+var _Tw2YPRSequencer = __webpack_require__(153);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -30840,7 +30903,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31003,7 +31066,7 @@ Tw2ColorSequencer.Operator = {
 };
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31154,7 +31217,7 @@ Tw2EulerRotation.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCE
 Tw2EulerRotation.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31295,7 +31358,7 @@ Tw2QuaternionSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2QuaternionSequencer.childArray = 'functions';
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31436,7 +31499,7 @@ Tw2RGBAScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SE
 Tw2RGBAScalarSequencer.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'];
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31618,7 +31681,7 @@ Tw2ScalarSequencer.Operator = {
 };
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31782,7 +31845,7 @@ Tw2VectorSequencer.Operator = {
 };
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31920,7 +31983,7 @@ Tw2XYZScalarSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQ
 Tw2XYZScalarSequencer.childProperties = ['XCurve', 'YCurve', 'ZCurve'];
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32074,7 +32137,7 @@ Tw2YPRSequencer.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER
 Tw2YPRSequencer.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'];
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32084,7 +32147,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(154);
+var _Tw2WbgTrack = __webpack_require__(155);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32096,7 +32159,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(155);
+var _Tw2TransformTrack = __webpack_require__(156);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32109,7 +32172,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32275,7 +32338,7 @@ function Tw2WbgTransformTrack() {
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32413,7 +32476,7 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
 }();
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32423,7 +32486,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(157);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(158);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32435,7 +32498,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(158);
+var _Tw2MayaScalarCurve = __webpack_require__(159);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32447,7 +32510,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(159);
+var _Tw2MayaVector3Curve = __webpack_require__(160);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32459,7 +32522,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(160);
+var _Tw2MayaAnimationEngine = __webpack_require__(161);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32472,7 +32535,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32643,7 +32706,7 @@ Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
 Tw2MayaEulerRotationCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32759,7 +32822,7 @@ Tw2MayaScalarCurve.valueProperty = 'value';
 Tw2MayaScalarCurve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32911,7 +32974,7 @@ Tw2MayaVector3Curve.valueProperty = 'value';
 Tw2MayaVector3Curve.curveType = _curves.Tw2Curve.Type.CURVE_MAYA;
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33290,7 +33353,7 @@ Tw2MayaAnimationEngine.BezierSegment = {
 Tw2MayaAnimationEngine.INFINITY = 0;
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33312,7 +33375,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(168);
+var _effect = __webpack_require__(169);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33348,7 +33411,7 @@ Object.keys(_item).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(186);
+var _EveSpaceScene = __webpack_require__(187);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33360,7 +33423,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(187);
+var _EveSOF = __webpack_require__(188);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33373,7 +33436,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33485,7 +33548,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33530,7 +33593,7 @@ var EveChildCloud = exports.EveChildCloud = (_temp = _class = function (_EveChil
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33635,7 +33698,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33680,7 +33743,7 @@ var EveChildExplosion = exports.EveChildExplosion = (_temp = _class = function (
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33787,7 +33850,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33893,7 +33956,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33903,7 +33966,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(169);
+var _EveLensflare = __webpack_require__(170);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33915,7 +33978,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(170);
+var _EveMeshOverlayEffect = __webpack_require__(171);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33939,7 +34002,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(171);
+var _EveStretch = __webpack_require__(172);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33951,7 +34014,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(172);
+var _EveTurretFiringFX = __webpack_require__(173);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33963,7 +34026,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
   });
 });
 
-var _EveStarField = __webpack_require__(173);
+var _EveStarField = __webpack_require__(174);
 
 Object.keys(_EveStarField).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33976,7 +34039,7 @@ Object.keys(_EveStarField).forEach(function (key) {
 });
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34317,7 +34380,7 @@ var EveLensflare = exports.EveLensflare = function () {
 EveLensflare.global = null;
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34476,7 +34539,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34795,7 +34858,7 @@ var EveStretch = exports.EveStretch = function () {
 EveStretch.global = null;
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35141,7 +35204,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35192,7 +35255,7 @@ var EveStarField = exports.EveStarField = (_temp = _class = function EveStarFiel
 , _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35343,7 +35406,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35744,7 +35807,7 @@ var EveMissile = exports.EveMissile = function () {
 }();
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36103,7 +36166,7 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36325,7 +36388,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36903,7 +36966,7 @@ var EveBoosterSet = exports.EveBoosterSet = (_temp = _class = function (_EveObje
 }, _class.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp);
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37858,7 +37921,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp2 = _class2 = function (_E
 }, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp2);
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37937,7 +38000,7 @@ EveLocator.Prefix = {
 };
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38321,7 +38384,7 @@ var EvePlaneSet = exports.EvePlaneSet = (_temp = _class = function (_EveObjectSe
 }(_EveObjectSet2.EveObjectSet), _class.Item = EvePlaneSetItem, _class.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp);
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38584,7 +38647,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = (_temp = _class = functi
 }, _temp);
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39034,7 +39097,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = (_temp = _class = function (_Eve
 }(_EveObjectSet2.EveObjectSet), _class.Item = EveSpotlightSetItem, _class.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp);
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39617,7 +39680,7 @@ var EveSpriteSet = exports.EveSpriteSet = (_temp = _class = function (_EveObject
 }(_EveObjectSet2.EveObjectSet), _class.Item = EveSpriteSetItem, _class.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp);
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40518,7 +40581,7 @@ EveTurretSet.mat3x4toquat = function () {
 }();
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41081,7 +41144,7 @@ var EveSpaceScene = exports.EveSpaceScene = (_temp = _class = function () {
 }, _class.global = null, _class.DebugRenderer = window['Tw2DebugRenderer'] || null, _temp);
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41970,7 +42033,7 @@ function EveSOF() {
 }
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41980,7 +42043,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(189);
+var _emitters = __webpack_require__(190);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -41992,7 +42055,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(193);
+var _forces = __webpack_require__(194);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42004,7 +42067,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(200);
+var _generators = __webpack_require__(201);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42016,7 +42079,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(204);
+var _constraints = __webpack_require__(205);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42028,7 +42091,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(205);
+var _Tw2ParticleSystem = __webpack_require__(206);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42065,7 +42128,7 @@ Object.keys(_Tw2ParticleElementDeclaration).forEach(function (key) {
 });
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42075,7 +42138,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(190);
+var _Tw2StaticEmitter = __webpack_require__(191);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42087,7 +42150,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(191);
+var _Tw2DynamicEmitter = __webpack_require__(192);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42099,7 +42162,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2GpuUniqueEmitter = __webpack_require__(192);
+var _Tw2GpuUniqueEmitter = __webpack_require__(193);
 
 Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42112,7 +42175,7 @@ Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42258,7 +42321,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42377,7 +42440,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42386,7 +42449,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Tr2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = undefined;
+exports.Tw2GpuUniqueEmitter = undefined;
 
 var _class, _temp;
 
@@ -42473,12 +42536,8 @@ var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = (_temp = _class = functi
     return Tw2GpuUniqueEmitter;
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter), _class.partialImplementation = true, _temp);
 
-// Temporary alias
-
-exports.Tr2GpuUniqueEmitter = Tw2GpuUniqueEmitter;
-
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42488,7 +42547,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(194);
+var _Tw2ParticleAttractorForce = __webpack_require__(195);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42500,7 +42559,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(195);
+var _Tw2ParticleDirectForce = __webpack_require__(196);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42512,7 +42571,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(196);
+var _Tw2ParticleDragForce = __webpack_require__(197);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42524,7 +42583,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(197);
+var _Tw2ParticleFluidDragForce = __webpack_require__(198);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42536,7 +42595,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(198);
+var _Tw2ParticleSpring = __webpack_require__(199);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42548,7 +42607,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(199);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(200);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42561,7 +42620,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42633,7 +42692,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42694,7 +42753,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42755,7 +42814,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42841,7 +42900,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42906,7 +42965,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43011,7 +43070,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43021,7 +43080,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(201);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(202);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43033,7 +43092,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(202);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(203);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43045,7 +43104,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(203);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(204);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43058,7 +43117,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43149,7 +43208,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43240,7 +43299,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43390,14 +43449,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

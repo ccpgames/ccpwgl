@@ -66,7 +66,5 @@ export class Tw2GpuUniqueEmitter extends Tw2ParticleEmitter
      * @type {boolean}
      */
     static partialImplementation = true;
-}
 
-// Temporary alias
-export {Tw2GpuUniqueEmitter as Tr2GpuUniqueEmitter};
+}
