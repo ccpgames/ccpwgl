@@ -112,10 +112,4 @@ export class Tw2TransformTrack
         }
     }
 
-    /**
-     * Class category
-     * @type {string}
-     */
-    static category = 'curve_track';
-
 }
