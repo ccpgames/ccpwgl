@@ -61,7 +61,6 @@ export class Tw2Error extends Error
                 err: this,
                 log: {
                     type: 'error',
-                    title: this.name,
                     message: this.message,
                     err: this
                 }
@@ -71,10 +70,10 @@ export class Tw2Error extends Error
     }
 
     /**
-     * Fallback if instanceof Error isn't supported by client
-     * @type {boolean}
+     * Class category
+     * @type {string}
      */
-    static isError = true;
+    static category = 'error';
 
 }
 

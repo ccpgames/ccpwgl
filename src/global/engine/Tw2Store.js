@@ -1,5 +1,7 @@
 import {isString, isPlain, isArray, isFunction, toArray, isUndefined, enableUUID} from '../util';
 import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
+import {logger} from './Tw2Logger';
+import {resMan} from './Tw2ResMan';
 
 /**
  * Stores engine data
@@ -16,19 +18,16 @@ import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
  */
 class Tw2Store extends Tw2EventEmitter
 {
-    constructor()
-    {
-        super();
-        this.name = 'Variable store';
-        this._type = {};
-        this._path = {};
-        this._variable = {};
-        this._extension = {};
-        this._class = {};
-        this._dynamicPath = {};
-        this._schema = {};
-        this._missing = {};
-    }
+
+    _type = {};
+    _path = {};
+    _variable = {};
+    _extension = {};
+    _class = {};
+    _dynamicPath = {};
+    _schema = {};
+    _missing = {};
+    
 
     /**
      * Checks if a resource path exists
@@ -72,7 +71,6 @@ class Tw2Store extends Tw2EventEmitter
                 value: path,
                 log: {
                     type: 'error',
-                    title: this.name,
                     message: `Cannot register restricted prefix "${prefix}"`
                 }
             });
@@ -194,9 +192,9 @@ class Tw2Store extends Tw2EventEmitter
         let Constructor = Tw2Store.GetStoreItem(this, 'class', name);
 
         // Allow substitution of Trinity constructors with Tw2 constructors
-        if (!Constructor && name.includes('Tr2'))
+        if (!Constructor && (name.includes('Tr2') || name.includes('Tri')))
         {
-            const substitute = name.replace('Tr2', 'Tw2');
+            const substitute = 'Tw2' + name.substring(3);
             Constructor = Tw2Store.GetStoreItem(this, 'class', substitute);
             if (Constructor)
             {
@@ -207,7 +205,6 @@ class Tw2Store extends Tw2EventEmitter
                     value: Constructor,
                     log: {
                         type: 'warning',
-                        title: this.name,
                         message: `"${name}" class not found, substituting with "${substitute}"`
                     }
                 });
@@ -223,7 +220,6 @@ class Tw2Store extends Tw2EventEmitter
                 value: Constructor,
                 log: {
                     type: 'warning',
-                    title: this.name,
                     message: `"${name}" class partially implemented`
                 }
             });
@@ -468,6 +464,7 @@ class Tw2Store extends Tw2EventEmitter
      * Registers store values
      * @param {{}} [opt={}]
      * @param {boolean} [opt.uuid]
+     * @param {*} opt.logger
      * @param {*} opt.paths
      * @param {*} opt.dynamicPaths
      * @param {*} opt.types
@@ -479,6 +476,9 @@ class Tw2Store extends Tw2EventEmitter
     Register(opt = {})
     {
         if ('uuid' in opt) enableUUID(opt.uuid);
+        if ('logger' in opt) logger.Set(opt.logger);
+        if ('resMan' in opt) resMan.Set(opt.resMan);
+
         this.RegisterPaths(opt.paths);
         this.RegisterDynamicPaths(opt.dynamicPaths);
         this.RegisterTypes(opt.types);
@@ -520,7 +520,6 @@ class Tw2Store extends Tw2EventEmitter
                 type, key,
                 log: {
                     type: 'debug',
-                    title: store.name,
                     message: `Missing ${type}: "${key}"`
                 }
             });
@@ -546,7 +545,6 @@ class Tw2Store extends Tw2EventEmitter
                 type, key, value,
                 log: {
                     type: 'error',
-                    title: store.name,
                     message: `Invalid ${type}: "${key}"`,
                 }
             });
@@ -562,7 +560,6 @@ class Tw2Store extends Tw2EventEmitter
                 type, key, value, oldValue,
                 log: {
                     type: 'debug',
-                    title: store.name,
                     message: `${oldValue ? 'Re-registered' : 'Registered'} ${type} "${key}"`
                 }
             });
@@ -597,12 +594,20 @@ class Tw2Store extends Tw2EventEmitter
         }
         return false;
     }
+
+    /**
+     * Restricted path prefixes
+     * @type {string[]}
+     */
+    static RestrictedPathPrefixes = ['dynamic', 'rgba'];
+
+    /**
+     * Class category
+     * @type {string}
+     */
+    static category = 'variable_store';
+
 }
 
-/**
- * Restricted path prefixes
- * @type {string[]}
- */
-Tw2Store.RestrictedPathPrefixes = ['dynamic', 'rgba'];
 
 export const store = new Tw2Store();

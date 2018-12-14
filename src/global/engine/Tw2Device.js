@@ -15,7 +15,7 @@ const WebGLDebugUtil = require('webgl-debug');
  * @property {?VRDisplay} vrDisplay                - An optional VRDisplay context
  * @property {?{}} ext                             - An object containing compatibility extensions
  * @property {boolean} debugMode                   - Toggles debug mode
- * @property {{}} debugUtils                       - Webgl debug utils
+ * @property {?{}} debugUtils                      - Webgl debug utils
  * @property {number} dt                           - Clock delta time
  * @property {number} startTime                    - Clock start time
  * @property {number} currentTime                  - Clock current time
@@ -67,7 +67,6 @@ export class Tw2Device extends Tw2EventEmitter
     constructor()
     {
         super();
-        this.name = 'Device';
         this.gl = null;
         this.glVersion = Tw2Device.WebglVersion.NONE;
         this.vrDisplay = null;
@@ -241,7 +240,6 @@ export class Tw2Device extends Tw2EventEmitter
             gl, params, canvas,
             log: {
                 type: 'debug',
-                title: this.name,
                 message: `Webgl${this.glVersion} context created`,
             }
         });
@@ -1192,6 +1190,13 @@ export class Tw2Device extends Tw2EventEmitter
         WEBGL: 1,
         WEBGL2: 2
     };
+
+    /**
+     * Class category
+     * @type {string}
+     */
+    static category = 'device';
+
 }
 
 // Storage for devices without request animation frame

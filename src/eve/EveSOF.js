@@ -767,7 +767,7 @@ export function EveSOF()
         {
             resMan.log({
                 type: 'warning',
-                title: 'Space object factory',
+                name: 'Space object factory',
                 message: `Unable to bind particle emitters: ${obj.constructor.name}`
             });
         }
@@ -810,7 +810,7 @@ export function EveSOF()
             {
                 resMan.log({
                     type: 'warning',
-                    title: 'Space object factory',
+                    name: 'Space object factory',
                     message: `No resource path found for "${hull.name}" child at index ${i}`
                 });
             }

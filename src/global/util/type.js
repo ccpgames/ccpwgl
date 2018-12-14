@@ -64,13 +64,22 @@ export function isDescriptor(a)
 }
 
 /**
+ * Checks if a value is a valid sof DNA string
+ * @param {*} a
+ */
+export function isDNA(a)
+{
+    return isString(a) && a.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/);
+}
+
+/**
  * Checks if a value is an error
  * @param {*} a
  * @returns {boolean}
  */
 export function isError(a)
 {
-    return !!(a && a instanceof Error || a.constructor.isError);
+    return !!(a && a instanceof Error || a.constructor.category === 'error');
 }
 
 /**

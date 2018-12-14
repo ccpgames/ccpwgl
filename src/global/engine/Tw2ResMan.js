@@ -14,18 +14,19 @@ import {
     ErrResourcePrefixUndefined,
     ErrResourcePrefixUnregistered
 } from '../../core';
+import {assignIfExists} from '../util';
 
 
 /**
  * Resource Manager
  *
- * @property {Boolean} systemMirror - Toggles whether {@link Tw2GeometryRes} Index and Buffer data arrays are visible
  * @property {Tw2MotherLode} motherLode
+ * @property {Boolean} systemMirror - Toggles whether {@link Tw2GeometryRes} Index and Buffer data arrays are visible
  * @property {Number} maxPrepareTime
- * @property {Number} prepareBudget
  * @property {Boolean} autoPurgeResources=true - Sets whether resources should be purged automatically
  * @property {Number} purgeTime=30 = Sets how long resources can remain inactive before they are purged
  * @property {Number} activeFrame
+ * @property {Number} _prepareBudget
  * @property {Array} _prepareQueue
  * @property {Number} _purgeTime
  * @property {Number} _purgeFrame
@@ -36,24 +37,32 @@ import {
  */
 export class Tw2ResMan extends Tw2EventEmitter
 {
-    constructor()
+
+    motherLode = new Tw2MotherLode();
+    systemMirror = false;
+    maxPrepareTime = 0.05;
+    autoPurgeResources = true;
+    activeFrame = 0;
+    purgeTime = 30;
+    _prepareBudget = 0;
+    _prepareQueue = [];
+    _purgeTime = 0;
+    _purgeFrame = 0;
+    _purgeFrameLimit = 1000;
+    _pendingLoads = 0;
+    _noLoadFrames = 0;
+
+
+    /**
+     * Sets resource manager options
+     * @param {*} [opt]
+     */
+    Set(opt)
     {
-        super();
-        this.name = 'Resource manager';
-        this.motherLode = new Tw2MotherLode();
-        this.systemMirror = false;
-        this.maxPrepareTime = 0.05;
-        this.prepareBudget = 0;
-        this.autoPurgeResources = true;
-        this.activeFrame = 0;
-        this.purgeTime = 30;
-        this._prepareQueue = [];
-        this._purgeTime = 0;
-        this._purgeFrame = 0;
-        this._purgeFrameLimit = 1000;
-        this._pendingLoads = 0;
-        this._noLoadFrames = 0;
+        if (!opt) return;
+        assignIfExists(this, opt, ['systemMirror', 'maxPrepareTime', 'autoPurgeResources', 'purgeTime']);
     }
+    
 
     /**
      * Fires on resource errors
@@ -88,7 +97,7 @@ export class Tw2ResMan extends Tw2EventEmitter
         const defaultLog = Tw2ResMan.DefaultLog[eventName.toUpperCase()];
         if (defaultLog)
         {
-            log = Object.assign({title:this.name}, defaultLog, log);
+            log = Object.assign({}, defaultLog, log);
             const eventData = {res: this.motherLode.Find(path), path, log};
 
             const err = log.err;
@@ -149,7 +158,7 @@ export class Tw2ResMan extends Tw2EventEmitter
             this._noLoadFrames = 0;
         }
 
-        this.prepareBudget = this.maxPrepareTime;
+        this._prepareBudget = this.maxPrepareTime;
 
         const startTime = Date.now();
         while (this._prepareQueue.length)
@@ -170,8 +179,8 @@ export class Tw2ResMan extends Tw2EventEmitter
                 res.OnError(err);
             }
 
-            this.prepareBudget -= (Date.now() - startTime) * 0.001;
-            if (this.prepareBudget < 0) break;
+            this._prepareBudget -= (Date.now() - startTime) * 0.001;
+            if (this._prepareBudget < 0) break;
         }
 
         this._purgeTime += dt;
@@ -501,19 +510,27 @@ export class Tw2ResMan extends Tw2EventEmitter
 
         return httpRequest;
     }
+
+    // Default log outputs for resource events
+    static DefaultLog = {
+        ERROR: {type: 'error', message: 'Uncaught error'},
+        WARNING: {type: 'warn', message: 'Undefined warning'},
+        REQUESTED: {type: 'info', message: 'Requested'},
+        RELOADING: {type: 'info', message: 'Reloading'},
+        LOADED: {type: 'info', message: 'Loaded'},
+        PREPARED: {type: 'log', message: 'Prepared'},
+        PURGED: {type: 'debug', message: 'Purged'},
+        UNLOADED: {type: 'debug', message: 'Unloaded'}
+    };
+
+    /**
+     * Class category
+     * @type {string}
+     */
+    static category = 'resource_manager';
+
 }
 
-// Default log outputs for resource events
-Tw2ResMan.DefaultLog = {
-    ERROR: {type: 'error', message: 'Uncaught error'},
-    WARNING: {type: 'warn', message: 'Undefined warning'},
-    REQUESTED: {type: 'info', message: 'Requested'},
-    RELOADING: {type: 'info', message: 'Reloading'},
-    LOADED: {type: 'info', message: 'Loaded'},
-    PREPARED: {type: 'log', message: 'Prepared'},
-    PURGED: {type: 'debug', message: 'Purged'},
-    UNLOADED: {type: 'debug', message: 'Unloaded'}
-};
 
 // Global instance of Tw2ResMan
 export const resMan = new Tw2ResMan();

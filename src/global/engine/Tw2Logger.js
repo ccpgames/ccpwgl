@@ -2,76 +2,135 @@ import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 import {assignIfExists, isError} from '../util';
 
 /**
+ * eventLog
+ * @typedef {{}} eventLog
+ * @property {string} eventLog.type       - The log's type
+ * @property {string} eventLog.name       - The log's name
+ * @property {string} eventLog.message    - The log's message
+ * @property {boolean} [eventLog.hide]    - Toggles log visibility
+ * @property {boolean} [eventLog._logged] - Identifies if the log has been logged
+ * @property {Error} [eventLog.err]       - Optional error (output to the console)
+ * @property {*} [eventLog.data]          - Optional data (output to the console)
+ */
+
+
+/**
  * Handles basic event logging
  *
- * @param {string} [name='']          - The logger's name
- * @property {string} name            - The name of the logger and it's prefix
- * @property {{}} visible             - Visibility options
- * @property {boolean} visible.log    - Toggles console log output
- * @property {boolean} visible.info   - Toggles console info output
- * @property {boolean} visible.debug  - Toggles console debug output
- * @property {boolean} visible.warn   - Toggles console warn output
- * @property {boolean} visible.error  - Toggles console error output
- * @property {number} maxLogs         - The maximum logs that will be stored
- * @property {boolean} display        - Enabled console logging
- * @property {Array} _logs            - Stored logs
- * @property {?Function} _onNewLog    - On new log
+ * @property {string} name                   - The name of the logger
+ * @property {boolean} display               - Toggles console logging
+ * @property {{}} visible                    - Visibility options
+ * @property {boolean} visible.log           - Toggles console log output
+ * @property {boolean} visible.info          - Toggles console info output
+ * @property {boolean} visible.debug         - Toggles console debug output
+ * @property {boolean} visible.warn          - Toggles console warn output
+ * @property {boolean} visible.error         - Toggles console error output
+ * @property {number} history                - The maximum history to store
+ * @property {number} throttle               - The maximum throttling per log type
+ * @property {Array} _logs                   - Stored logs
+ * @property {?{string:string[]}} _throttled - Throttles message cache
  */
 class Tw2Logger extends Tw2EventEmitter
 {
-    constructor(name = '')
+
+    name = '';
+    display = true;
+    visible = {
+        log: true,
+        info: true,
+        debug: true,
+        warn: true,
+        error: true
+    };
+    history = 100;
+    throttle = 20;
+    _logs = [];
+    _throttled = null;
+
+
+    /**
+     * Sets the logger's properties
+     * @param {*} [opt]
+     */
+    Set(opt)
     {
-        super();
-        this.name = name;
-        this.display = true;
-        this.visible = {};
-        this.visible.log = true;
-        this.visible.info = true;
-        this.visible.debug = false;
-        this.visible.warn = true;
-        this.visible.error = true;
-        this.maxLogs = 100;
-        this._logs = [];
+        if (!opt) return;
+        assignIfExists(this, opt, ['name', 'display', 'history', 'throttle']);
+        assignIfExists(this.visible, opt.visible, ['log', 'info', 'debug', 'warn', 'error']);
     }
 
     /**
      * Adds an event log and outputs it to the console
-     * @param {*} log
-     * @returns {*} log
+     * @param {*|eventLog|Error} log - The eventLog or error to log
+     * @returns {eventLog} log
      */
     log(log)
     {
-        if (log.logged)
-        {
-            return log;
-        }
+        if (log._logged) return log;
 
-        // Allow errors to be logged directly
+        // Allow errors as logs
         if (isError(log))
         {
             log = {err: log};
         }
 
-        // Normalize error logs
+        // Normalize log details
         if (log.err)
         {
-            log.type = log.type || 'error';
-            log.name = log.name || log.err.name;
-            log.message = log.message || log.err.message;
+            log.type = 'error';
+            if (!log.name) log.name = log.err.name;
+            if (!log.message) log.message = log.err.message;
+        }
+        else
+        {
+            log.type = Tw2Logger.LogType[log.type ? log.type.toUpperCase() : 'LOG'] || 'log';
+            log.message = log.message || '';
         }
 
-        log.type = Tw2Logger.Type[log.type ? log.type.toUpperCase() : 'LOG'] || 'log';
-        log.message = log.message || '';
-        log.title = log.title || '';
+        // Normalize the log name
+        let name = log.name || this.constructor.category;
+        name = name.replace(/_/g, ' ');
+        name = name.charAt(0).toUpperCase() + name.slice(1);
+        log.name = name;
 
-        if (!log.hide && this.display && this.visible[log.type])
+        if (!this.display || !this.visible[log.type])
         {
-            let header = `${this.name} ${log.title}:`;
+            log.hide = true;
+        }
 
-            if (log.err)
+        // Throttle excessive output
+        if (!this.throttle)
+        {
+            this._throttled = null;
+        }
+        else
+        {
+            if (!log.hide)
+            {
+                if (!this._throttled) this._throttled = {};
+                if (!this._throttled[log.type]) this._throttled[log.type] = [];
+                const t = this._throttled[log.type];
+                if (!t.includes(log.message))
+                {
+                    t.unshift(log.message);
+                    t.splice(this.throttle);
+                }
+                else
+                {
+                    log.hide = true;
+                }
+            }
+        }
+
+        // Output to the console
+        if (!log.hide)
+        {
+            let header = `${this.name} ${log.name}:`;
+            if (log.err || log.data)
             {
                 console.group(header, log.message);
                 if (log.err) console.debug(log.err.stack || log.err.toString());
+                if (log.data) console.debug(JSON.stringify(log.data, null, 4));
                 console.groupEnd();
             }
             else
@@ -80,61 +139,47 @@ class Tw2Logger extends Tw2EventEmitter
             }
         }
 
-        if (this.maxLogs)
+        // Manage log history
+        if (this.history)
         {
-            if (this._logs.length >= this.maxLogs)
-            {
-                this._logs.splice(this.maxLogs, this._logs.length - 1);
-            }
             this._logs.unshift(log);
+            this._logs.splice(this.history);
         }
         else
         {
             this._logs = [];
         }
 
+        log._logged = true;
         this.emit(log.type, log);
-        log.logged = true;
         return log;
     }
 
     /**
-     * Gets an array of logs
-     * @param {number} [count]
-     * @returns {Array<eventLog>}
+     * Log types
+     * @type {*}
      */
-    GetLogs(count)
-    {
-        return Object.assign([], count === undefined ? this._logs : this._logs.splice(0, count));
-    }
+    static LogType = {
+        ERROR: 'error',
+        WARNING: 'warn',
+        INFO: 'info',
+        LOG: 'log',
+        DEBUG: 'debug'
+    };
 
     /**
-     * Sets the logger's properties
-     * @param {*} [opt={}]
+     * Class category
+     * @type {string}
      */
-    Set(opt = {})
-    {
-        assignIfExists(this, opt, ['name', 'maxLogs', 'display']);
-        assignIfExists(this.visible, opt.visible, ['log', 'info', 'debug', 'warn', 'error']);
-    }
+    static category = 'logger';
+
 }
 
-/**
- * Console outputs
- * @type {*}
- */
-Tw2Logger.Type = {
-    ERROR: 'error',
-    WARNING: 'warn',
-    INFO: 'info',
-    LOG: 'log',
-    DEBUG: 'debug'
-};
 
-export const logger = new Tw2Logger('CCPWGL');
+export const logger = new Tw2Logger();
 
 /**
- * The default event logger logger
+ * The default event logger
  * @type {Tw2Logger}
  */
-Tw2EventEmitter.logger = logger;
+Tw2EventEmitter.defaultLogger = logger;

@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 67);
+/******/ 	return __webpack_require__(__webpack_require__.s = 68);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -97,7 +97,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _engine = __webpack_require__(80);
+var _engine = __webpack_require__(81);
 
 Object.keys(_engine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -109,7 +109,7 @@ Object.keys(_engine).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(6);
 
 var util = _interopRequireWildcard(_util);
 
@@ -164,7 +164,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _geometry = __webpack_require__(48);
+var _geometry = __webpack_require__(49);
 
 Object.keys(_geometry).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -200,7 +200,7 @@ Object.keys(_model).forEach(function (key) {
   });
 });
 
-var _parameter = __webpack_require__(27);
+var _parameter = __webpack_require__(28);
 
 Object.keys(_parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -224,7 +224,7 @@ Object.keys(_post).forEach(function (key) {
   });
 });
 
-var _reader = __webpack_require__(29);
+var _reader = __webpack_require__(30);
 
 Object.keys(_reader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -236,7 +236,7 @@ Object.keys(_reader).forEach(function (key) {
   });
 });
 
-var _resource = __webpack_require__(52);
+var _resource = __webpack_require__(53);
 
 Object.keys(_resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -248,7 +248,7 @@ Object.keys(_resource).forEach(function (key) {
   });
 });
 
-var _sampler = __webpack_require__(24);
+var _sampler = __webpack_require__(25);
 
 Object.keys(_sampler).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -320,7 +320,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(58);
+var _Tw2RenderTarget = __webpack_require__(59);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -573,7 +573,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp;
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -673,7 +673,6 @@ var Tw2Error = exports.Tw2Error = (_temp = _class = function (_extendableBuiltin
                     err: this,
                     log: {
                         type: 'error',
-                        title: this.name,
                         message: this.message,
                         err: this
                     }
@@ -683,14 +682,14 @@ var Tw2Error = exports.Tw2Error = (_temp = _class = function (_extendableBuiltin
         }
 
         /**
-         * Fallback if instanceof Error isn't supported by client
-         * @type {boolean}
+         * Class category
+         * @type {string}
          */
 
     }]);
 
     return Tw2Error;
-}(_extendableBuiltin(Error)), _class.isError = true, _temp);
+}(_extendableBuiltin(Error)), _class.category = 'error', _temp);
 
 /**
  * Throws on http request errors
@@ -1601,6 +1600,77 @@ var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _arr = __webpack_require__(40);
+
+Object.keys(_arr).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _arr[key];
+    }
+  });
+});
+
+var _obj = __webpack_require__(83);
+
+Object.keys(_obj).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _obj[key];
+    }
+  });
+});
+
+var _type = __webpack_require__(22);
+
+Object.keys(_type).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _type[key];
+    }
+  });
+});
+
+var _uuid = __webpack_require__(84);
+
+Object.keys(_uuid).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _uuid[key];
+    }
+  });
+});
+
+var _url = __webpack_require__(85);
+
+Object.keys(_url).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _url[key];
+    }
+  });
+});
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Tw2CurveSequencer = undefined;
@@ -1685,77 +1755,6 @@ var Tw2CurveSequencer = exports.Tw2CurveSequencer = (_temp = _class = function (
 
     return Tw2CurveSequencer;
 }(_curves.Tw2Curve), _class.childProperties = null, _class.childArray = null, _class.Operator = null, _temp);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _arr = __webpack_require__(39);
-
-Object.keys(_arr).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _arr[key];
-    }
-  });
-});
-
-var _obj = __webpack_require__(82);
-
-Object.keys(_obj).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _obj[key];
-    }
-  });
-});
-
-var _type = __webpack_require__(22);
-
-Object.keys(_type).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _type[key];
-    }
-  });
-});
-
-var _uuid = __webpack_require__(83);
-
-Object.keys(_uuid).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _uuid[key];
-    }
-  });
-});
-
-var _url = __webpack_require__(84);
-
-Object.keys(_url).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _url[key];
-    }
-  });
-});
 
 /***/ }),
 /* 8 */
@@ -2191,14 +2190,14 @@ var EveObjectSet = exports.EveObjectSet = (_temp = _class2 = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(37);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2", function() { return __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "mat2d", function() { return __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__; });
@@ -2544,7 +2543,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(87);
+var _Tw2VertexDeclaration = __webpack_require__(88);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2556,7 +2555,7 @@ Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   });
 });
 
-var _Tw2VertexElement = __webpack_require__(46);
+var _Tw2VertexElement = __webpack_require__(47);
 
 Object.keys(_Tw2VertexElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2756,6 +2755,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _class, _temp;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
@@ -2765,11 +2766,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var PRIVATE = new WeakMap();
 
 /**
+ * Handles private object
+ * - To replace when private class properties are supported
+ * @param {*} emitter
+ * @param {boolean} [create]
+ * @returns {*}
+ */
+function getPrivate(emitter, create) {
+    var events = PRIVATE.get(emitter);
+    if (!events && create) {
+        events = {};
+        PRIVATE.set(emitter, events);
+    }
+    return events;
+}
+
+/**
  * Tw2EventEmitter
  * @class
  */
-
-var Tw2EventEmitter = exports.Tw2EventEmitter = function () {
+var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
     function Tw2EventEmitter() {
         _classCallCheck(this, Tw2EventEmitter);
     }
@@ -2788,23 +2804,17 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = function () {
             var e = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
             // Short cut to creating a log output
-            if (e.log && !e.log.logged) {
-                this.log(e.log);
-            }
+            if (e.log) e.log = this.log(e.log);
 
-            if (PRIVATE.has(this)) {
-                var events = PRIVATE.get(this);
-                eventName = eventName.toLowerCase();
+            var events = getPrivate(this);
+            if (!events) return this;
 
-                if (eventName in events) {
-                    events[eventName].forEach(function (value, key) {
-                        key.call(value.context, e);
-                        if (value.once) events[eventName].delete(key);
-                    });
-                } else {
-                    events[eventName] = new Set();
-                    this.emit('event_added', { eventName: eventName });
-                }
+            eventName = eventName.toLowerCase();
+            if (eventName in events) {
+                events[eventName].forEach(function (value, key) {
+                    key.call(value.context, e);
+                    if (value.once) events[eventName].delete(key);
+                });
             }
             return this;
         }
@@ -2931,17 +2941,22 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = function () {
 
         /**
          * Logs an event log
-         * @param {*} eventLog
-         * @returns {*}
+         * @param {eventLog|Error} eventLog
+         * @returns {eventLog}
          */
 
     }, {
         key: 'log',
         value: function log(eventLog) {
-            if (this.constructor.logger) {
-                this.constructor.logger.log(eventLog);
+            if (!eventLog.name) {
+                eventLog.name = this.constructor.category || this.constructor.name;
             }
-            return eventLog;
+
+            if (!this.constructor.defaultLogger) {
+                return eventLog;
+            }
+
+            return this.constructor.defaultLogger.log(eventLog, this);
         }
 
         /**
@@ -2954,18 +2969,16 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = function () {
         value: function assign(Constructor) {
             Object.assign(Constructor.prototype, Tw2EventEmitter.prototype);
         }
+
+        /**
+         * Global logger
+         * @type {*}
+         */
+
     }]);
 
     return Tw2EventEmitter;
-}();
-
-/**
- * Global logger
- * @type {*}
- */
-
-
-Tw2EventEmitter.logger = null;
+}(), _class.defaultLogger = null, _temp);
 
 /***/ }),
 /* 16 */
@@ -3286,7 +3299,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(68);
+var _Tw2BatchAccumulator = __webpack_require__(69);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3310,7 +3323,7 @@ Object.keys(_Tw2ForwardingRenderBatch).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryBatch = __webpack_require__(26);
+var _Tw2GeometryBatch = __webpack_require__(27);
 
 Object.keys(_Tw2GeometryBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3334,7 +3347,7 @@ Object.keys(_Tw2GeometryLineBatch).forEach(function (key) {
   });
 });
 
-var _Tw2RenderBatch = __webpack_require__(25);
+var _Tw2RenderBatch = __webpack_require__(26);
 
 Object.keys(_Tw2RenderBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3649,7 +3662,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _num = __webpack_require__(33);
+var _num = __webpack_require__(34);
 
 Object.keys(_num).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3661,7 +3674,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(69);
+var _vec = __webpack_require__(70);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3673,7 +3686,7 @@ Object.keys(_vec).forEach(function (key) {
   });
 });
 
-var _vec2 = __webpack_require__(37);
+var _vec2 = __webpack_require__(38);
 
 Object.keys(_vec2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3685,7 +3698,7 @@ Object.keys(_vec2).forEach(function (key) {
   });
 });
 
-var _vec3 = __webpack_require__(38);
+var _vec3 = __webpack_require__(39);
 
 Object.keys(_vec3).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3697,7 +3710,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(75);
+var _quat = __webpack_require__(76);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3709,7 +3722,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(76);
+var _mat = __webpack_require__(77);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3721,7 +3734,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(77);
+var _mat2 = __webpack_require__(78);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3733,7 +3746,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(78);
+var _noise = __webpack_require__(79);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3745,7 +3758,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(79);
+var _curve = __webpack_require__(80);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3771,9 +3784,15 @@ exports.store = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(7);
+var _class, _temp2;
+
+var _util = __webpack_require__(6);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
+
+var _Tw2Logger = __webpack_require__(41);
+
+var _Tw2ResMan = __webpack_require__(23);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3794,35 +3813,32 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @property {Object.< string, Array<string>>} _missing
  * @class
  */
-var Tw2Store = function (_Tw2EventEmitter) {
+var Tw2Store = (_temp2 = _class = function (_Tw2EventEmitter) {
     _inherits(Tw2Store, _Tw2EventEmitter);
 
     function Tw2Store() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, Tw2Store);
 
-        var _this = _possibleConstructorReturn(this, (Tw2Store.__proto__ || Object.getPrototypeOf(Tw2Store)).call(this));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
 
-        _this.name = 'Variable store';
-        _this._type = {};
-        _this._path = {};
-        _this._variable = {};
-        _this._extension = {};
-        _this._class = {};
-        _this._dynamicPath = {};
-        _this._schema = {};
-        _this._missing = {};
-        return _this;
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2Store.__proto__ || Object.getPrototypeOf(Tw2Store)).call.apply(_ref, [this].concat(args))), _this), _this._type = {}, _this._path = {}, _this._variable = {}, _this._extension = {}, _this._class = {}, _this._dynamicPath = {}, _this._schema = {}, _this._missing = {}, _temp), _possibleConstructorReturn(_this, _ret);
     }
-
-    /**
-     * Checks if a resource path exists
-     * @param {string} prefix
-     * @returns {boolean}
-     */
-
 
     _createClass(Tw2Store, [{
         key: 'HasPath',
+
+
+        /**
+         * Checks if a resource path exists
+         * @param {string} prefix
+         * @returns {boolean}
+         */
         value: function HasPath(prefix) {
             return prefix && prefix in this._path;
         }
@@ -3860,7 +3876,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                     value: path,
                     log: {
                         type: 'error',
-                        title: this.name,
                         message: 'Cannot register restricted prefix "' + prefix + '"'
                     }
                 });
@@ -4004,8 +4019,8 @@ var Tw2Store = function (_Tw2EventEmitter) {
             var Constructor = Tw2Store.GetStoreItem(this, 'class', name);
 
             // Allow substitution of Trinity constructors with Tw2 constructors
-            if (!Constructor && name.includes('Tr2')) {
-                var substitute = name.replace('Tr2', 'Tw2');
+            if (!Constructor && (name.includes('Tr2') || name.includes('Tri'))) {
+                var substitute = 'Tw2' + name.substring(3);
                 Constructor = Tw2Store.GetStoreItem(this, 'class', substitute);
                 if (Constructor) {
                     this.emit('substitute', {
@@ -4015,7 +4030,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                         value: Constructor,
                         log: {
                             type: 'warning',
-                            title: this.name,
                             message: '"' + name + '" class not found, substituting with "' + substitute + '"'
                         }
                     });
@@ -4030,7 +4044,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                     value: Constructor,
                     log: {
                         type: 'warning',
-                        title: this.name,
                         message: '"' + name + '" class partially implemented'
                     }
                 });
@@ -4301,6 +4314,7 @@ var Tw2Store = function (_Tw2EventEmitter) {
          * Registers store values
          * @param {{}} [opt={}]
          * @param {boolean} [opt.uuid]
+         * @param {*} opt.logger
          * @param {*} opt.paths
          * @param {*} opt.dynamicPaths
          * @param {*} opt.types
@@ -4316,6 +4330,9 @@ var Tw2Store = function (_Tw2EventEmitter) {
             var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             if ('uuid' in opt) (0, _util.enableUUID)(opt.uuid);
+            if ('logger' in opt) _Tw2Logger.logger.Set(opt.logger);
+            if ('resMan' in opt) _Tw2ResMan.resMan.Set(opt.resMan);
+
             this.RegisterPaths(opt.paths);
             this.RegisterDynamicPaths(opt.dynamicPaths);
             this.RegisterTypes(opt.types);
@@ -4355,7 +4372,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                     type: type, key: key,
                     log: {
                         type: 'debug',
-                        title: store.name,
                         message: 'Missing ' + type + ': "' + key + '"'
                     }
                 });
@@ -4386,7 +4402,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                     type: type, key: key, value: value,
                     log: {
                         type: 'error',
-                        title: store.name,
                         message: 'Invalid ' + type + ': "' + key + '"'
                     }
                 });
@@ -4401,7 +4416,6 @@ var Tw2Store = function (_Tw2EventEmitter) {
                     type: type, key: key, value: value, oldValue: oldValue,
                     log: {
                         type: 'debug',
-                        title: store.name,
                         message: (oldValue ? 'Re-registered' : 'Registered') + ' ' + type + ' "' + key + '"'
                     }
                 });
@@ -4434,19 +4448,22 @@ var Tw2Store = function (_Tw2EventEmitter) {
             }
             return false;
         }
+
+        /**
+         * Restricted path prefixes
+         * @type {string[]}
+         */
+
+
+        /**
+         * Class category
+         * @type {string}
+         */
+
     }]);
 
     return Tw2Store;
-}(_Tw2EventEmitter2.Tw2EventEmitter);
-
-/**
- * Restricted path prefixes
- * @type {string[]}
- */
-
-
-Tw2Store.RestrictedPathPrefixes = ['dynamic', 'rgba'];
-
+}(_Tw2EventEmitter2.Tw2EventEmitter), _class.RestrictedPathPrefixes = ['dynamic', 'rgba'], _class.category = 'variable_store', _temp2);
 var store = exports.store = new Tw2Store();
 
 /***/ }),
@@ -4713,6 +4730,529 @@ function isVector(a) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.resMan = exports.Tw2ResMan = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp2;
+
+var _Tw2Store = __webpack_require__(21);
+
+var _Tw2MotherLode = __webpack_require__(86);
+
+var _Tw2LoadingObject = __webpack_require__(42);
+
+var _Tw2EventEmitter2 = __webpack_require__(15);
+
+var _core = __webpack_require__(1);
+
+var _util = __webpack_require__(6);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Resource Manager
+ *
+ * @property {Tw2MotherLode} motherLode
+ * @property {Boolean} systemMirror - Toggles whether {@link Tw2GeometryRes} Index and Buffer data arrays are visible
+ * @property {Number} maxPrepareTime
+ * @property {Boolean} autoPurgeResources=true - Sets whether resources should be purged automatically
+ * @property {Number} purgeTime=30 = Sets how long resources can remain inactive before they are purged
+ * @property {Number} activeFrame
+ * @property {Number} _prepareBudget
+ * @property {Array} _prepareQueue
+ * @property {Number} _purgeTime
+ * @property {Number} _purgeFrame
+ * @property {Number} _purgeFrameLimit
+ * @property {Number} _pendingLoads - a count of how many things are pending load
+ * @property {Number} _noLoadFrames
+ * @class
+ */
+var Tw2ResMan = exports.Tw2ResMan = (_temp2 = _class = function (_Tw2EventEmitter) {
+    _inherits(Tw2ResMan, _Tw2EventEmitter);
+
+    function Tw2ResMan() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, Tw2ResMan);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2ResMan.__proto__ || Object.getPrototypeOf(Tw2ResMan)).call.apply(_ref, [this].concat(args))), _this), _this.motherLode = new _Tw2MotherLode.Tw2MotherLode(), _this.systemMirror = false, _this.maxPrepareTime = 0.05, _this.autoPurgeResources = true, _this.activeFrame = 0, _this.purgeTime = 30, _this._prepareBudget = 0, _this._prepareQueue = [], _this._purgeTime = 0, _this._purgeFrame = 0, _this._purgeFrameLimit = 1000, _this._pendingLoads = 0, _this._noLoadFrames = 0, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(Tw2ResMan, [{
+        key: 'Set',
+
+
+        /**
+         * Sets resource manager options
+         * @param {*} [opt]
+         */
+        value: function Set(opt) {
+            if (!opt) return;
+            (0, _util.assignIfExists)(this, opt, ['systemMirror', 'maxPrepareTime', 'autoPurgeResources', 'purgeTime']);
+        }
+
+        /**
+         * Fires on resource errors
+         * - Used when a resource can only be identified by it's path
+         * @param {string} path
+         * @param {Error} err
+         * @returns {Error} err
+         */
+
+    }, {
+        key: 'OnResError',
+        value: function OnResError(path) {
+            var err = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new _core.Tw2Error({ path: path });
+
+            path = Tw2ResMan.NormalizePath(path);
+            var res = this.motherLode.Find(path);
+            if (res) {
+                res.OnError(err);
+            } else {
+                this.OnResEvent('error', path, { type: 'error', message: err.message, err: err });
+            }
+            return err;
+        }
+
+        /**
+         * Fires on resource events
+         * @param {string} eventName - The event's name
+         * @param {string} path      - The resource's path
+         * @param {*} [log={}]       - The event's log
+         */
+
+    }, {
+        key: 'OnResEvent',
+        value: function OnResEvent(eventName, path) {
+            var log = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+            var defaultLog = Tw2ResMan.DefaultLog[eventName.toUpperCase()];
+            if (defaultLog) {
+                log = Object.assign({}, defaultLog, log);
+                var eventData = { res: this.motherLode.Find(path), path: path, log: log };
+
+                var err = log.err;
+                if (err) {
+                    this.motherLode.AddError(path, err);
+                    eventData.err = err;
+                    Object.assign(eventData, err.data);
+                }
+
+                log.message = log.message.includes(path) ? log.message : log.message += ' "' + path + '"';
+                this.emit(eventName.toLowerCase(), eventData);
+            }
+        }
+
+        /**
+         * IsLoading
+         * @returns {Boolean}
+         *
+         */
+
+    }, {
+        key: 'IsLoading',
+        value: function IsLoading() {
+            return this._noLoadFrames < 2;
+        }
+
+        /**
+         * Clears the motherLode {@link Tw2MotherLode}
+         */
+
+    }, {
+        key: 'Clear',
+        value: function Clear() {
+            this.motherLode.Clear();
+        }
+
+        /**
+         * Unloads and Clears the motherLode {@link Tw2MotherLode}
+         */
+
+    }, {
+        key: 'UnloadAndClear',
+        value: function UnloadAndClear() {
+            this.motherLode.UnloadAndClear();
+        }
+
+        /**
+         * Internal update function. It is called every frame.
+         * @param {Number} dt - deltaTime
+         * @returns {Boolean}
+         */
+
+    }, {
+        key: 'PrepareLoop',
+        value: function PrepareLoop(dt) {
+            if (this._prepareQueue.length === 0 && this._pendingLoads === 0) {
+                if (this._noLoadFrames < 2) {
+                    this._noLoadFrames++;
+                }
+            } else {
+                this._noLoadFrames = 0;
+            }
+
+            this._prepareBudget = this.maxPrepareTime;
+
+            var startTime = Date.now();
+            while (this._prepareQueue.length) {
+                var res = this._prepareQueue[0][0],
+                    data = this._prepareQueue[0][1],
+                    xml = this._prepareQueue[0][2];
+
+                this._prepareQueue.shift();
+
+                try {
+                    res.Prepare(data, xml);
+                } catch (err) {
+                    res.OnError(err);
+                }
+
+                this._prepareBudget -= (Date.now() - startTime) * 0.001;
+                if (this._prepareBudget < 0) break;
+            }
+
+            this._purgeTime += dt;
+
+            if (this._purgeTime > 1) {
+                this.activeFrame += 1;
+                this._purgeTime -= Math.floor(this._purgeTime);
+                this._purgeFrame += 1;
+
+                if (this._purgeFrame >= 5) {
+                    if (this.autoPurgeResources) {
+                        this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime);
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        /**
+         * Gets a resource
+         * @param {String} path
+         * @returns {Tw2Resource} resource
+         */
+
+    }, {
+        key: 'GetResource',
+        value: function GetResource(path) {
+            var res = void 0;
+            path = Tw2ResMan.NormalizePath(path);
+
+            // Check if already loaded
+            res = this.motherLode.Find(path);
+            if (res) {
+                if (res.IsPurged()) res.Reload();
+                return res;
+            }
+
+            if (path.indexOf('dynamic:/') === 0) {
+                this.OnResError(path, new _core.ErrFeatureNotImplemented({ feature: 'Dynamic resources' }));
+                return null;
+            }
+
+            var extension = Tw2ResMan.GetPathExt(path);
+            if (extension === null) {
+                this.OnResError(path, new _core.ErrResourceExtensionUndefined({ path: path }));
+                return null;
+            }
+
+            var Constructor = _Tw2Store.store.GetExtension(extension);
+            if (!Constructor) {
+                this.OnResError(path, new _core.ErrResourceExtensionUnregistered({ path: path, extension: extension }));
+                return null;
+            }
+
+            try {
+                res = new Constructor();
+                res.path = path;
+                return Tw2ResMan.LoadResource(this, res);
+            } catch (err) {
+                this.OnResError(path, err);
+                return null;
+            }
+        }
+
+        /**
+         * Gets a resource object
+         * @param {string} path
+         * @param {Function} onResolved - Callback fired when the object has loaded
+         * @param {Function} onRejected - Callback fired when the object fails to load
+         */
+
+    }, {
+        key: 'GetObject',
+        value: function GetObject(path, onResolved, onRejected) {
+            path = Tw2ResMan.NormalizePath(path);
+
+            // Check if already loaded
+            var res = this.motherLode.Find(path);
+            if (res) {
+                res.AddObject(onResolved, onRejected);
+                return;
+            }
+
+            try {
+                res = new _Tw2LoadingObject.Tw2LoadingObject();
+                res.path = path;
+                res.AddObject(onResolved, onRejected);
+                Tw2ResMan.LoadResource(this, res);
+            } catch (err) {
+                this.OnResError(path, err);
+            }
+        }
+
+        /**
+         * Reloads a resource
+         * @param {Tw2Resource} resource
+         * @returns {Tw2Resource} resource
+         */
+
+    }, {
+        key: 'ReloadResource',
+        value: function ReloadResource(resource) {
+            var path = resource.path;
+
+            // Check if already loaded and good
+            var res = this.motherLode.Find(path);
+            if (res && !res.IsPurged()) {
+                return res;
+            }
+
+            try {
+                return Tw2ResMan.LoadResource(this, resource);
+            } catch (err) {
+                this.OnResError(path, err);
+                return resource;
+            }
+        }
+
+        /**
+         * Builds a url from a resource path
+         * @param {string} path
+         * @returns {string}
+         */
+
+    }, {
+        key: 'BuildUrl',
+        value: function BuildUrl(path) {
+            var prefixIndex = path.indexOf(':/');
+            if (prefixIndex === -1) {
+                throw new _core.ErrResourcePrefixUndefined({ path: path });
+            }
+
+            var prefix = path.substr(0, prefixIndex);
+            if (prefix === 'http' || prefix === 'https') {
+                return path;
+            }
+
+            var fullPrefix = _Tw2Store.store.GetPath(prefix);
+            if (!fullPrefix) {
+                throw new _core.ErrResourcePrefixUnregistered({ path: path, prefix: prefix });
+            }
+
+            return fullPrefix + path.substr(prefixIndex + 2);
+        }
+
+        /**
+         * Normalizes a file path by making it lower case and replaces all '\\' with '/'
+         * @param {string} path
+         * @returns {string}
+         */
+
+    }], [{
+        key: 'NormalizePath',
+        value: function NormalizePath(path) {
+            if (path.substr(0, 5) === 'str:/') return path;
+            path = path.toLowerCase();
+            path.replace('\\', '/');
+            return path;
+        }
+
+        /**
+         * Gets a path's extension
+         * @param {string} path
+         * @returns {?string}
+         */
+
+    }, {
+        key: 'GetPathExt',
+        value: function GetPathExt(path) {
+            if (path.substr(0, 5) === 'str:/') {
+                var slash = path.indexOf('/', 5);
+                if (slash === -1) return null;
+                return path.substr(5, slash - 5);
+            } else {
+                var dot = path.lastIndexOf('.');
+                if (dot === -1) return null;
+                return path.substr(dot + 1);
+            }
+        }
+
+        /**
+         * Loads a resource
+         * @param {Tw2ResMan} resMan
+         * @param {Tw2Resource|Tw2LoadingObject} res
+         * @returns {Tw2Resource|Tw2LoadingObject} res
+         */
+
+    }, {
+        key: 'LoadResource',
+        value: function LoadResource(resMan, res) {
+            var path = res.path,
+                url = resMan.BuildUrl(path);
+
+            resMan.motherLode.Add(path, res);
+
+            if (res.DoCustomLoad && res.DoCustomLoad(url, Tw2ResMan.GetPathExt(url))) {
+                return res;
+            }
+
+            var httpRequest = Tw2ResMan.CreateHttpRequest(res);
+            httpRequest.onreadystatechange = Tw2ResMan.DoLoadResource(resMan, res);
+            httpRequest.open('GET', url);
+
+            try {
+                httpRequest.send();
+                resMan._pendingLoads++;
+                res.OnRequested();
+            } catch (err) {
+                throw new _core.ErrHTTPRequestSend({ path: path });
+            }
+
+            return res;
+        }
+
+        /**
+         * Creates an onreadystatechange callback
+         * @param {Tw2ResMan} resMan
+         * @param {Tw2Resource} res
+         */
+
+    }, {
+        key: 'DoLoadResource',
+        value: function DoLoadResource(resMan, res) {
+            var path = res.path;
+
+            return function () {
+                var readyState = 0;
+
+                try {
+                    readyState = this.readyState;
+                } catch (err) {
+                    resMan._pendingLoads--;
+                    res.OnError(new _core.ErrHTTPReadyState({ path: path }));
+                    return;
+                }
+
+                if (readyState === 4) {
+                    var status = this.status;
+                    if (status === 200) {
+                        var data = null,
+                            xml = null;
+
+                        try {
+                            data = this.responseText;
+                            xml = this.responseXML;
+                        } catch (e) {
+                            data = this.response;
+                        }
+
+                        resMan._prepareQueue.push([res, data, xml]);
+                        res.OnLoaded();
+                    } else {
+                        res.OnError(new _core.ErrHTTPStatus({ path: path, status: status }));
+                    }
+                    resMan._pendingLoads--;
+                }
+            };
+        }
+
+        /**
+         * Creates an HTTP request
+         * @param {Tw2Resource} res
+         * @returns {XMLHttpRequest|ActiveXObject}
+         */
+
+    }, {
+        key: 'CreateHttpRequest',
+        value: function CreateHttpRequest(res) {
+            var httpRequest = null;
+
+            if (window.XMLHttpRequest) {
+                // Mozilla, Safari, ...
+                httpRequest = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                // IE
+                try {
+                    httpRequest = new window['ActiveXObject']('Msxml2.XMLHTTP');
+                } catch (e) {
+                    try {
+                        httpRequest = new window['ActiveXObject']('Microsoft.XMLHTTP');
+                    } catch (e) {
+                        /*eslint-disable-line-no-empty*/
+                    }
+                }
+            }
+
+            if (!httpRequest) {
+                throw new _core.ErrHTTPInstance({ path: res.path });
+            } else if (res.requestResponseType) {
+                httpRequest.responseType = res.requestResponseType;
+            }
+
+            return httpRequest;
+        }
+
+        // Default log outputs for resource events
+
+
+        /**
+         * Class category
+         * @type {string}
+         */
+
+    }]);
+
+    return Tw2ResMan;
+}(_Tw2EventEmitter2.Tw2EventEmitter), _class.DefaultLog = {
+    ERROR: { type: 'error', message: 'Uncaught error' },
+    WARNING: { type: 'warn', message: 'Undefined warning' },
+    REQUESTED: { type: 'info', message: 'Requested' },
+    RELOADING: { type: 'info', message: 'Reloading' },
+    LOADED: { type: 'info', message: 'Loaded' },
+    PREPARED: { type: 'log', message: 'Prepared' },
+    PURGED: { type: 'debug', message: 'Purged' },
+    UNLOADED: { type: 'debug', message: 'Unloaded' }
+}, _class.category = 'resource_manager', _temp2);
+
+// Global instance of Tw2ResMan
+
+var resMan = exports.resMan = new Tw2ResMan();
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.Tw2Effect = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4721,7 +5261,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2TextureParameter = __webpack_require__(44);
+var _Tw2TextureParameter = __webpack_require__(45);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5354,7 +5894,7 @@ var Tw2Effect = exports.Tw2Effect = (_temp = _class = function () {
 }(), _class.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS', 'PerObjectPSInt'], _temp);
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5364,7 +5904,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2SamplerState = __webpack_require__(45);
+var _Tw2SamplerState = __webpack_require__(46);
 
 Object.keys(_Tw2SamplerState).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5376,7 +5916,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(86);
+var _Tw2SamplerOverride = __webpack_require__(87);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5389,7 +5929,7 @@ Object.keys(_Tw2SamplerOverride).forEach(function (key) {
 });
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5437,7 +5977,7 @@ var Tw2RenderBatch = exports.Tw2RenderBatch = function () {
 }();
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5450,7 +5990,7 @@ exports.Tw2GeometryBatch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2RenderBatch2 = __webpack_require__(25);
+var _Tw2RenderBatch2 = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5505,7 +6045,7 @@ var Tw2GeometryBatch = exports.Tw2GeometryBatch = function (_Tw2RenderBatch) {
 }(_Tw2RenderBatch2.Tw2RenderBatch);
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5611,7 +6151,7 @@ Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2TextureParameter = __webpack_require__(44);
+var _Tw2TextureParameter = __webpack_require__(45);
 
 Object.keys(_Tw2TextureParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5624,7 +6164,7 @@ Object.keys(_Tw2TextureParameter).forEach(function (key) {
 });
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5793,7 +6333,7 @@ var Tw2RawData = exports.Tw2RawData = function () {
 }();
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5803,7 +6343,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BinaryReader = __webpack_require__(43);
+var _Tw2BinaryReader = __webpack_require__(44);
 
 Object.keys(_Tw2BinaryReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5815,7 +6355,7 @@ Object.keys(_Tw2BinaryReader).forEach(function (key) {
   });
 });
 
-var _Tw2ObjectReader = __webpack_require__(42);
+var _Tw2ObjectReader = __webpack_require__(43);
 
 Object.keys(_Tw2ObjectReader).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -5828,7 +6368,7 @@ Object.keys(_Tw2ObjectReader).forEach(function (key) {
 });
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6330,7 +6870,7 @@ var EveSpaceObject = exports.EveSpaceObject = (_temp2 = _class = function (_EveO
 exports.EveStation = EveSpaceObject;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6388,7 +6928,7 @@ var Tw2ParticleEmitter = exports.Tw2ParticleEmitter = function () {
 }();
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6460,7 +7000,7 @@ var Tw2ParticleAttributeGenerator = exports.Tw2ParticleAttributeGenerator = (_te
 }, _temp);
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6524,7 +7064,7 @@ num.exponentialDecay = function (omega0, torque, I, d, time) {
 };
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7332,7 +7872,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8172,7 +8712,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8834,7 +9374,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8847,7 +9387,7 @@ exports.vec3 = undefined;
 
 var _glMatrix = __webpack_require__(10);
 
-var _num = __webpack_require__(33);
+var _num = __webpack_require__(34);
 
 exports.vec3 = _glMatrix.vec3;
 
@@ -8984,7 +9524,7 @@ _glMatrix.vec3.unproject = function () {
 }();
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9000,7 +9540,7 @@ var _glMatrix = __webpack_require__(10);
 exports.vec4 = _glMatrix.vec4;
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9101,7 +9641,7 @@ function toUniqueArray(a) {
 }
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9110,19 +9650,15 @@ function toUniqueArray(a) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.resMan = exports.Tw2ResMan = undefined;
+exports.logger = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2Store = __webpack_require__(21);
-
-var _Tw2MotherLode = __webpack_require__(85);
-
-var _Tw2LoadingObject = __webpack_require__(41);
+var _class, _temp2;
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
-var _core = __webpack_require__(1);
+var _util = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9131,487 +9667,180 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Resource Manager
- *
- * @property {Boolean} systemMirror - Toggles whether {@link Tw2GeometryRes} Index and Buffer data arrays are visible
- * @property {Tw2MotherLode} motherLode
- * @property {Number} maxPrepareTime
- * @property {Number} prepareBudget
- * @property {Boolean} autoPurgeResources=true - Sets whether resources should be purged automatically
- * @property {Number} purgeTime=30 = Sets how long resources can remain inactive before they are purged
- * @property {Number} activeFrame
- * @property {Array} _prepareQueue
- * @property {Number} _purgeTime
- * @property {Number} _purgeFrame
- * @property {Number} _purgeFrameLimit
- * @property {Number} _pendingLoads - a count of how many things are pending load
- * @property {Number} _noLoadFrames
- * @class
+ * eventLog
+ * @typedef {{}} eventLog
+ * @property {string} eventLog.type       - The log's type
+ * @property {string} eventLog.name       - The log's name
+ * @property {string} eventLog.message    - The log's message
+ * @property {boolean} [eventLog.hide]    - Toggles log visibility
+ * @property {boolean} [eventLog._logged] - Identifies if the log has been logged
+ * @property {Error} [eventLog.err]       - Optional error (output to the console)
+ * @property {*} [eventLog.data]          - Optional data (output to the console)
  */
-var Tw2ResMan = exports.Tw2ResMan = function (_Tw2EventEmitter) {
-    _inherits(Tw2ResMan, _Tw2EventEmitter);
 
-    function Tw2ResMan() {
-        _classCallCheck(this, Tw2ResMan);
+/**
+ * Handles basic event logging
+ *
+ * @property {string} name                   - The name of the logger
+ * @property {boolean} display               - Toggles console logging
+ * @property {{}} visible                    - Visibility options
+ * @property {boolean} visible.log           - Toggles console log output
+ * @property {boolean} visible.info          - Toggles console info output
+ * @property {boolean} visible.debug         - Toggles console debug output
+ * @property {boolean} visible.warn          - Toggles console warn output
+ * @property {boolean} visible.error         - Toggles console error output
+ * @property {number} history                - The maximum history to store
+ * @property {number} throttle               - The maximum throttling per log type
+ * @property {Array} _logs                   - Stored logs
+ * @property {?{string:string[]}} _throttled - Throttles message cache
+ */
+var Tw2Logger = (_temp2 = _class = function (_Tw2EventEmitter) {
+    _inherits(Tw2Logger, _Tw2EventEmitter);
 
-        var _this = _possibleConstructorReturn(this, (Tw2ResMan.__proto__ || Object.getPrototypeOf(Tw2ResMan)).call(this));
+    function Tw2Logger() {
+        var _ref;
 
-        _this.name = 'Resource manager';
-        _this.motherLode = new _Tw2MotherLode.Tw2MotherLode();
-        _this.systemMirror = false;
-        _this.maxPrepareTime = 0.05;
-        _this.prepareBudget = 0;
-        _this.autoPurgeResources = true;
-        _this.activeFrame = 0;
-        _this.purgeTime = 30;
-        _this._prepareQueue = [];
-        _this._purgeTime = 0;
-        _this._purgeFrame = 0;
-        _this._purgeFrameLimit = 1000;
-        _this._pendingLoads = 0;
-        _this._noLoadFrames = 0;
-        return _this;
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, Tw2Logger);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2Logger.__proto__ || Object.getPrototypeOf(Tw2Logger)).call.apply(_ref, [this].concat(args))), _this), _this.name = '', _this.display = true, _this.visible = {
+            log: true,
+            info: true,
+            debug: true,
+            warn: true,
+            error: true
+        }, _this.history = 100, _this.throttle = 20, _this._logs = [], _this._throttled = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
-    /**
-     * Fires on resource errors
-     * - Used when a resource can only be identified by it's path
-     * @param {string} path
-     * @param {Error} err
-     * @returns {Error} err
-     */
+    _createClass(Tw2Logger, [{
+        key: 'Set',
 
 
-    _createClass(Tw2ResMan, [{
-        key: 'OnResError',
-        value: function OnResError(path) {
-            var err = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new _core.Tw2Error({ path: path });
+        /**
+         * Sets the logger's properties
+         * @param {*} [opt]
+         */
+        value: function Set(opt) {
+            if (!opt) return;
+            (0, _util.assignIfExists)(this, opt, ['name', 'display', 'history', 'throttle']);
+            (0, _util.assignIfExists)(this.visible, opt.visible, ['log', 'info', 'debug', 'warn', 'error']);
+        }
 
-            path = Tw2ResMan.NormalizePath(path);
-            var res = this.motherLode.Find(path);
-            if (res) {
-                res.OnError(err);
+        /**
+         * Adds an event log and outputs it to the console
+         * @param {*|eventLog|Error} log - The eventLog or error to log
+         * @returns {eventLog} log
+         */
+
+    }, {
+        key: 'log',
+        value: function log(_log) {
+            if (_log._logged) return _log;
+
+            // Allow errors as logs
+            if ((0, _util.isError)(_log)) {
+                _log = { err: _log };
+            }
+
+            // Normalize log details
+            if (_log.err) {
+                _log.type = 'error';
+                if (!_log.name) _log.name = _log.err.name;
+                if (!_log.message) _log.message = _log.err.message;
             } else {
-                this.OnResEvent('error', path, { type: 'error', message: err.message, err: err });
+                _log.type = Tw2Logger.LogType[_log.type ? _log.type.toUpperCase() : 'LOG'] || 'log';
+                _log.message = _log.message || '';
             }
-            return err;
-        }
 
-        /**
-         * Fires on resource events
-         * @param {string} eventName - The event's name
-         * @param {string} path      - The resource's path
-         * @param {*} [log={}]       - The event's log
-         */
+            // Normalize the log name
+            var name = _log.name || this.constructor.category;
+            name = name.replace(/_/g, ' ');
+            name = name.charAt(0).toUpperCase() + name.slice(1);
+            _log.name = name;
 
-    }, {
-        key: 'OnResEvent',
-        value: function OnResEvent(eventName, path) {
-            var log = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-            var defaultLog = Tw2ResMan.DefaultLog[eventName.toUpperCase()];
-            if (defaultLog) {
-                log = Object.assign({ title: this.name }, defaultLog, log);
-                var eventData = { res: this.motherLode.Find(path), path: path, log: log };
-
-                var err = log.err;
-                if (err) {
-                    this.motherLode.AddError(path, err);
-                    eventData.err = err;
-                    Object.assign(eventData, err.data);
-                }
-
-                log.message = log.message.includes(path) ? log.message : log.message += ' "' + path + '"';
-                this.emit(eventName.toLowerCase(), eventData);
+            if (!this.display || !this.visible[_log.type]) {
+                _log.hide = true;
             }
-        }
 
-        /**
-         * IsLoading
-         * @returns {Boolean}
-         *
-         */
-
-    }, {
-        key: 'IsLoading',
-        value: function IsLoading() {
-            return this._noLoadFrames < 2;
-        }
-
-        /**
-         * Clears the motherLode {@link Tw2MotherLode}
-         */
-
-    }, {
-        key: 'Clear',
-        value: function Clear() {
-            this.motherLode.Clear();
-        }
-
-        /**
-         * Unloads and Clears the motherLode {@link Tw2MotherLode}
-         */
-
-    }, {
-        key: 'UnloadAndClear',
-        value: function UnloadAndClear() {
-            this.motherLode.UnloadAndClear();
-        }
-
-        /**
-         * Internal update function. It is called every frame.
-         * @param {Number} dt - deltaTime
-         * @returns {Boolean}
-         */
-
-    }, {
-        key: 'PrepareLoop',
-        value: function PrepareLoop(dt) {
-            if (this._prepareQueue.length === 0 && this._pendingLoads === 0) {
-                if (this._noLoadFrames < 2) {
-                    this._noLoadFrames++;
-                }
+            // Throttle excessive output
+            if (!this.throttle) {
+                this._throttled = null;
             } else {
-                this._noLoadFrames = 0;
-            }
-
-            this.prepareBudget = this.maxPrepareTime;
-
-            var startTime = Date.now();
-            while (this._prepareQueue.length) {
-                var res = this._prepareQueue[0][0],
-                    data = this._prepareQueue[0][1],
-                    xml = this._prepareQueue[0][2];
-
-                this._prepareQueue.shift();
-
-                try {
-                    res.Prepare(data, xml);
-                } catch (err) {
-                    res.OnError(err);
-                }
-
-                this.prepareBudget -= (Date.now() - startTime) * 0.001;
-                if (this.prepareBudget < 0) break;
-            }
-
-            this._purgeTime += dt;
-
-            if (this._purgeTime > 1) {
-                this.activeFrame += 1;
-                this._purgeTime -= Math.floor(this._purgeTime);
-                this._purgeFrame += 1;
-
-                if (this._purgeFrame >= 5) {
-                    if (this.autoPurgeResources) {
-                        this.motherLode.PurgeInactive(this._purgeFrame, this._purgeFrameLimit, this.purgeTime);
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        /**
-         * Gets a resource
-         * @param {String} path
-         * @returns {Tw2Resource} resource
-         */
-
-    }, {
-        key: 'GetResource',
-        value: function GetResource(path) {
-            var res = void 0;
-            path = Tw2ResMan.NormalizePath(path);
-
-            // Check if already loaded
-            res = this.motherLode.Find(path);
-            if (res) {
-                if (res.IsPurged()) res.Reload();
-                return res;
-            }
-
-            if (path.indexOf('dynamic:/') === 0) {
-                this.OnResError(path, new _core.ErrFeatureNotImplemented({ feature: 'Dynamic resources' }));
-                return null;
-            }
-
-            var extension = Tw2ResMan.GetPathExt(path);
-            if (extension === null) {
-                this.OnResError(path, new _core.ErrResourceExtensionUndefined({ path: path }));
-                return null;
-            }
-
-            var Constructor = _Tw2Store.store.GetExtension(extension);
-            if (!Constructor) {
-                this.OnResError(path, new _core.ErrResourceExtensionUnregistered({ path: path, extension: extension }));
-                return null;
-            }
-
-            try {
-                res = new Constructor();
-                res.path = path;
-                return Tw2ResMan.LoadResource(this, res);
-            } catch (err) {
-                this.OnResError(path, err);
-                return null;
-            }
-        }
-
-        /**
-         * Gets a resource object
-         * @param {string} path
-         * @param {Function} onResolved - Callback fired when the object has loaded
-         * @param {Function} onRejected - Callback fired when the object fails to load
-         */
-
-    }, {
-        key: 'GetObject',
-        value: function GetObject(path, onResolved, onRejected) {
-            path = Tw2ResMan.NormalizePath(path);
-
-            // Check if already loaded
-            var res = this.motherLode.Find(path);
-            if (res) {
-                res.AddObject(onResolved, onRejected);
-                return;
-            }
-
-            try {
-                res = new _Tw2LoadingObject.Tw2LoadingObject();
-                res.path = path;
-                res.AddObject(onResolved, onRejected);
-                Tw2ResMan.LoadResource(this, res);
-            } catch (err) {
-                this.OnResError(path, err);
-            }
-        }
-
-        /**
-         * Reloads a resource
-         * @param {Tw2Resource} resource
-         * @returns {Tw2Resource} resource
-         */
-
-    }, {
-        key: 'ReloadResource',
-        value: function ReloadResource(resource) {
-            var path = resource.path;
-
-            // Check if already loaded and good
-            var res = this.motherLode.Find(path);
-            if (res && !res.IsPurged()) {
-                return res;
-            }
-
-            try {
-                return Tw2ResMan.LoadResource(this, resource);
-            } catch (err) {
-                this.OnResError(path, err);
-                return resource;
-            }
-        }
-
-        /**
-         * Builds a url from a resource path
-         * @param {string} path
-         * @returns {string}
-         */
-
-    }, {
-        key: 'BuildUrl',
-        value: function BuildUrl(path) {
-            var prefixIndex = path.indexOf(':/');
-            if (prefixIndex === -1) {
-                throw new _core.ErrResourcePrefixUndefined({ path: path });
-            }
-
-            var prefix = path.substr(0, prefixIndex);
-            if (prefix === 'http' || prefix === 'https') {
-                return path;
-            }
-
-            var fullPrefix = _Tw2Store.store.GetPath(prefix);
-            if (!fullPrefix) {
-                throw new _core.ErrResourcePrefixUnregistered({ path: path, prefix: prefix });
-            }
-
-            return fullPrefix + path.substr(prefixIndex + 2);
-        }
-
-        /**
-         * Normalizes a file path by making it lower case and replaces all '\\' with '/'
-         * @param {string} path
-         * @returns {string}
-         */
-
-    }], [{
-        key: 'NormalizePath',
-        value: function NormalizePath(path) {
-            if (path.substr(0, 5) === 'str:/') return path;
-            path = path.toLowerCase();
-            path.replace('\\', '/');
-            return path;
-        }
-
-        /**
-         * Gets a path's extension
-         * @param {string} path
-         * @returns {?string}
-         */
-
-    }, {
-        key: 'GetPathExt',
-        value: function GetPathExt(path) {
-            if (path.substr(0, 5) === 'str:/') {
-                var slash = path.indexOf('/', 5);
-                if (slash === -1) return null;
-                return path.substr(5, slash - 5);
-            } else {
-                var dot = path.lastIndexOf('.');
-                if (dot === -1) return null;
-                return path.substr(dot + 1);
-            }
-        }
-
-        /**
-         * Loads a resource
-         * @param {Tw2ResMan} resMan
-         * @param {Tw2Resource|Tw2LoadingObject} res
-         * @returns {Tw2Resource|Tw2LoadingObject} res
-         */
-
-    }, {
-        key: 'LoadResource',
-        value: function LoadResource(resMan, res) {
-            var path = res.path,
-                url = resMan.BuildUrl(path);
-
-            resMan.motherLode.Add(path, res);
-
-            if (res.DoCustomLoad && res.DoCustomLoad(url, Tw2ResMan.GetPathExt(url))) {
-                return res;
-            }
-
-            var httpRequest = Tw2ResMan.CreateHttpRequest(res);
-            httpRequest.onreadystatechange = Tw2ResMan.DoLoadResource(resMan, res);
-            httpRequest.open('GET', url);
-
-            try {
-                httpRequest.send();
-                resMan._pendingLoads++;
-                res.OnRequested();
-            } catch (err) {
-                throw new _core.ErrHTTPRequestSend({ path: path });
-            }
-
-            return res;
-        }
-
-        /**
-         * Creates an onreadystatechange callback
-         * @param {Tw2ResMan} resMan
-         * @param {Tw2Resource} res
-         */
-
-    }, {
-        key: 'DoLoadResource',
-        value: function DoLoadResource(resMan, res) {
-            var path = res.path;
-
-            return function () {
-                var readyState = 0;
-
-                try {
-                    readyState = this.readyState;
-                } catch (err) {
-                    resMan._pendingLoads--;
-                    res.OnError(new _core.ErrHTTPReadyState({ path: path }));
-                    return;
-                }
-
-                if (readyState === 4) {
-                    var status = this.status;
-                    if (status === 200) {
-                        var data = null,
-                            xml = null;
-
-                        try {
-                            data = this.responseText;
-                            xml = this.responseXML;
-                        } catch (e) {
-                            data = this.response;
-                        }
-
-                        resMan._prepareQueue.push([res, data, xml]);
-                        res.OnLoaded();
+                if (!_log.hide) {
+                    if (!this._throttled) this._throttled = {};
+                    if (!this._throttled[_log.type]) this._throttled[_log.type] = [];
+                    var t = this._throttled[_log.type];
+                    if (!t.includes(_log.message)) {
+                        t.unshift(_log.message);
+                        t.splice(this.throttle);
                     } else {
-                        res.OnError(new _core.ErrHTTPStatus({ path: path, status: status }));
+                        _log.hide = true;
                     }
-                    resMan._pendingLoads--;
                 }
-            };
+            }
+
+            // Output to the console
+            if (!_log.hide) {
+                var header = this.name + ' ' + _log.name + ':';
+                if (_log.err || _log.data) {
+                    console.group(header, _log.message);
+                    if (_log.err) console.debug(_log.err.stack || _log.err.toString());
+                    if (_log.data) console.debug(JSON.stringify(_log.data, null, 4));
+                    console.groupEnd();
+                } else {
+                    console[_log.type](header, _log.message);
+                }
+            }
+
+            // Manage log history
+            if (this.history) {
+                this._logs.unshift(_log);
+                this._logs.splice(this.history);
+            } else {
+                this._logs = [];
+            }
+
+            _log._logged = true;
+            this.emit(_log.type, _log);
+            return _log;
         }
 
         /**
-         * Creates an HTTP request
-         * @param {Tw2Resource} res
-         * @returns {XMLHttpRequest|ActiveXObject}
+         * Log types
+         * @type {*}
          */
 
-    }, {
-        key: 'CreateHttpRequest',
-        value: function CreateHttpRequest(res) {
-            var httpRequest = null;
 
-            if (window.XMLHttpRequest) {
-                // Mozilla, Safari, ...
-                httpRequest = new XMLHttpRequest();
-            } else if (window.ActiveXObject) {
-                // IE
-                try {
-                    httpRequest = new window['ActiveXObject']('Msxml2.XMLHTTP');
-                } catch (e) {
-                    try {
-                        httpRequest = new window['ActiveXObject']('Microsoft.XMLHTTP');
-                    } catch (e) {
-                        /*eslint-disable-line-no-empty*/
-                    }
-                }
-            }
+        /**
+         * Class category
+         * @type {string}
+         */
 
-            if (!httpRequest) {
-                throw new _core.ErrHTTPInstance({ path: res.path });
-            } else if (res.requestResponseType) {
-                httpRequest.responseType = res.requestResponseType;
-            }
-
-            return httpRequest;
-        }
     }]);
 
-    return Tw2ResMan;
-}(_Tw2EventEmitter2.Tw2EventEmitter);
+    return Tw2Logger;
+}(_Tw2EventEmitter2.Tw2EventEmitter), _class.LogType = {
+    ERROR: 'error',
+    WARNING: 'warn',
+    INFO: 'info',
+    LOG: 'log',
+    DEBUG: 'debug'
+}, _class.category = 'logger', _temp2);
+var logger = exports.logger = new Tw2Logger();
 
-// Default log outputs for resource events
-
-
-Tw2ResMan.DefaultLog = {
-    ERROR: { type: 'error', message: 'Uncaught error' },
-    WARNING: { type: 'warn', message: 'Undefined warning' },
-    REQUESTED: { type: 'info', message: 'Requested' },
-    RELOADING: { type: 'info', message: 'Reloading' },
-    LOADED: { type: 'info', message: 'Loaded' },
-    PREPARED: { type: 'log', message: 'Prepared' },
-    PURGED: { type: 'debug', message: 'Purged' },
-    UNLOADED: { type: 'debug', message: 'Unloaded' }
-};
-
-// Global instance of Tw2ResMan
-var resMan = exports.resMan = new Tw2ResMan();
+/**
+ * The default event logger
+ * @type {Tw2Logger}
+ */
+_Tw2EventEmitter2.Tw2EventEmitter.defaultLogger = logger;
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9630,7 +9859,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2ObjectReader = __webpack_require__(42);
+var _Tw2ObjectReader = __webpack_require__(43);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -9768,7 +9997,7 @@ var Tw2LoadingObject = exports.Tw2LoadingObject = function (_Tw2Resource) {
 Tw2LoadingObject.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9785,7 +10014,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2BinaryReader = __webpack_require__(43);
+var _Tw2BinaryReader = __webpack_require__(44);
 
 var _Tw2Error = __webpack_require__(3);
 
@@ -10202,7 +10431,7 @@ Tw2ObjectReader.ElementTypes = {
 };
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10371,7 +10600,7 @@ var Tw2BinaryReader = exports.Tw2BinaryReader = function () {
 }();
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10390,7 +10619,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _sampler = __webpack_require__(24);
+var _sampler = __webpack_require__(25);
 
 var _Tw2Parameter2 = __webpack_require__(5);
 
@@ -10734,7 +10963,7 @@ var Tw2TextureParameter = exports.Tw2TextureParameter = (_temp = _class = functi
 Tw2TextureParameter.prototype.SetValue = Tw2TextureParameter.prototype.SetTexturePath;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10877,7 +11106,7 @@ var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
 }, _temp);
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10932,7 +11161,7 @@ exports.Tw2VertexElement = function Tw2VertexElement(usage, usageIndex, type, el
 };
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10947,7 +11176,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2RawData = __webpack_require__(28);
+var _Tw2RawData = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11017,7 +11246,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11160,7 +11389,7 @@ Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11355,7 +11584,7 @@ var Tw2Mesh = exports.Tw2Mesh = function () {
 }();
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11404,7 +11633,7 @@ var Tw2MeshArea = exports.Tw2MeshArea = (_temp = _class = function Tw2MeshArea()
 , _class.batchType = _batch.Tw2GeometryBatch, _temp);
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11460,7 +11689,7 @@ var Tw2Animation = exports.Tw2Animation = function () {
 }();
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11494,7 +11723,7 @@ Object.keys(_Tw2GeometryRes).forEach(function (key) {
   });
 });
 
-var _Tw2LoadingObject = __webpack_require__(41);
+var _Tw2LoadingObject = __webpack_require__(42);
 
 Object.keys(_Tw2LoadingObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11543,7 +11772,7 @@ Object.keys(_Tw2VideoRes).forEach(function (key) {
 });
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11577,7 +11806,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11606,7 +11835,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11633,7 +11862,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 };
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11662,7 +11891,7 @@ var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
 };
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11679,15 +11908,15 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(6);
 
-var _Tw2RenderTarget = __webpack_require__(58);
+var _Tw2RenderTarget = __webpack_require__(59);
 
 var _Tw2TextureRes = __webpack_require__(19);
 
-var _parameter = __webpack_require__(27);
+var _parameter = __webpack_require__(28);
 
-var _Tw2PostEffectStep = __webpack_require__(59);
+var _Tw2PostEffectStep = __webpack_require__(60);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12127,7 +12356,7 @@ var Tw2PostEffect = exports.Tw2PostEffect = (_temp = _class = function () {
 }(), _class.Item = _Tw2PostEffectStep.Tw2PostEffectStep, _temp);
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12274,7 +12503,7 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
 }();
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12287,9 +12516,9 @@ exports.Tw2PostEffectStep = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(6);
 
-var _Tw2Effect = __webpack_require__(23);
+var _Tw2Effect = __webpack_require__(24);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12412,7 +12641,7 @@ var Tw2PostEffectStep = exports.Tw2PostEffectStep = function () {
 }();
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12471,7 +12700,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12566,7 +12795,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12779,7 +13008,7 @@ var EveOccluder = exports.EveOccluder = (_temp = _class = function () {
 }(), _class.global = null, _temp);
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12849,7 +13078,7 @@ Object.keys(_EveShip).forEach(function (key) {
   });
 });
 
-var _EveSpaceObject = __webpack_require__(30);
+var _EveSpaceObject = __webpack_require__(31);
 
 Object.keys(_EveSpaceObject).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12861,7 +13090,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(64);
+var _EveTransform = __webpack_require__(65);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12874,7 +13103,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13226,7 +13455,7 @@ var EveTransform = exports.EveTransform = (_temp2 = _class = function (_EveObjec
 }, _temp2);
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13345,7 +13574,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 });
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13404,7 +13633,7 @@ exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13427,7 +13656,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(60);
+var _curve = __webpack_require__(61);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13489,10 +13718,31 @@ var vec4 = math.vec4,
     mat4 = math.mat4;
 
 /**
- * Register globals
+ * Register global configurations
  */
 
 _global.store.Register({
+
+    resMan: {
+        'systemMirror': false,
+        'autoPurgeResources': true,
+        'purgeTime': 60,
+        'maxPrepareTime': 0.05
+    },
+
+    logger: {
+        'name': 'CCPWGL',
+        'history': 50,
+        'throttle': 10,
+        'display': true,
+        'visible': {
+            'error': true,
+            'warning': true,
+            'log': true,
+            'info': false,
+            'debug': false
+        }
+    },
 
     paths: {
         'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
@@ -13543,7 +13793,7 @@ _global.store.Register({
 });
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13650,7 +13900,7 @@ var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
 }();
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13666,7 +13916,7 @@ var _glMatrix = __webpack_require__(10);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14136,7 +14386,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14638,7 +14888,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16376,7 +16626,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16397,9 +16647,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["fromEuler"] = fromEuler;
 /* harmony export (immutable) */ __webpack_exports__["str"] = str;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4__ = __webpack_require__(37);
 /* Copyright (c) 2015, Brandon Jones, Colin MacKenzie IV.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17067,7 +17317,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17710,7 +17960,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17804,7 +18054,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17820,7 +18070,7 @@ var _glMatrix = __webpack_require__(10);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18011,7 +18261,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18022,9 +18272,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.noise = undefined;
 
-var _vec = __webpack_require__(37);
+var _vec = __webpack_require__(38);
 
-var _vec2 = __webpack_require__(38);
+var _vec2 = __webpack_require__(39);
 
 var noise = exports.noise = {};
 
@@ -18221,7 +18471,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18582,7 +18832,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18592,7 +18842,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(81);
+var _Tw2Device = __webpack_require__(82);
 
 Object.defineProperty(exports, 'device', {
   enumerable: true,
@@ -18601,7 +18851,7 @@ Object.defineProperty(exports, 'device', {
   }
 });
 
-var _Tw2ResMan = __webpack_require__(40);
+var _Tw2ResMan = __webpack_require__(23);
 
 Object.defineProperty(exports, 'resMan', {
   enumerable: true,
@@ -18619,7 +18869,7 @@ Object.defineProperty(exports, 'store', {
   }
 });
 
-var _Tw2Logger = __webpack_require__(90);
+var _Tw2Logger = __webpack_require__(41);
 
 Object.defineProperty(exports, 'logger', {
   enumerable: true,
@@ -18629,7 +18879,7 @@ Object.defineProperty(exports, 'logger', {
 });
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18648,9 +18898,9 @@ var _math = __webpack_require__(20);
 
 var _Tw2Store = __webpack_require__(21);
 
-var _Tw2ResMan = __webpack_require__(40);
+var _Tw2ResMan = __webpack_require__(23);
 
-var _Tw2Effect = __webpack_require__(23);
+var _Tw2Effect = __webpack_require__(24);
 
 var _vertex = __webpack_require__(12);
 
@@ -18664,7 +18914,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var WebGLDebugUtil = __webpack_require__(88);
+var WebGLDebugUtil = __webpack_require__(89);
 
 /**
  * Tw2Device
@@ -18674,7 +18924,7 @@ var WebGLDebugUtil = __webpack_require__(88);
  * @property {?VRDisplay} vrDisplay                - An optional VRDisplay context
  * @property {?{}} ext                             - An object containing compatibility extensions
  * @property {boolean} debugMode                   - Toggles debug mode
- * @property {{}} debugUtils                       - Webgl debug utils
+ * @property {?{}} debugUtils                      - Webgl debug utils
  * @property {number} dt                           - Clock delta time
  * @property {number} startTime                    - Clock start time
  * @property {number} currentTime                  - Clock current time
@@ -18729,7 +18979,6 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
         var _this = _possibleConstructorReturn(this, (Tw2Device.__proto__ || Object.getPrototypeOf(Tw2Device)).call(this));
 
-        _this.name = 'Device';
         _this.gl = null;
         _this.glVersion = Tw2Device.WebglVersion.NONE;
         _this.vrDisplay = null;
@@ -18897,7 +19146,6 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                 gl: gl, params: params, canvas: canvas,
                 log: {
                     type: 'debug',
-                    title: this.name,
                     message: 'Webgl' + this.glVersion + ' context created'
                 }
             });
@@ -19744,6 +19992,12 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
          * @type {{NONE: number, WEBGL: number, WEBGL2: number}}
          */
 
+
+        /**
+         * Class category
+         * @type {string}
+         */
+
     }]);
 
     return Tw2Device;
@@ -19783,7 +20037,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
     NONE: 0,
     WEBGL: 1,
     WEBGL2: 2
-}, _temp);
+}, _class.category = 'device', _temp);
 
 // Storage for devices without request animation frame
 
@@ -19927,7 +20181,7 @@ Tw2Device.prototype.BLENDOP_MAX = 5;
 var device = exports.device = new Tw2Device();
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19942,7 +20196,7 @@ exports.template = template;
 
 var _type = __webpack_require__(22);
 
-var _arr = __webpack_require__(39);
+var _arr = __webpack_require__(40);
 
 /**
  * Assigns property values if they exist in a source object
@@ -20029,7 +20283,7 @@ function template(str) {
 }
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20110,7 +20364,7 @@ function generateID() {
 }
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20192,7 +20446,7 @@ function getURLBoolean(key, defaultValue) {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20235,11 +20489,8 @@ var Tw2MotherLode = exports.Tw2MotherLode = function () {
             this._errors[path] = this._errors[path] || [];
 
             if (!this._errors[path].includes(err)) {
-                // Normalize error data
                 err.data = err.data || {};
                 err.data.path = err.data.path || path;
-                err.data.err = err.data.err || err;
-
                 this._errors[path].push(err);
             }
 
@@ -20372,7 +20623,7 @@ var Tw2MotherLode = exports.Tw2MotherLode = function () {
 }();
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20387,7 +20638,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2SamplerState = __webpack_require__(45);
+var _Tw2SamplerState = __webpack_require__(46);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20495,7 +20746,7 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function () {
 }();
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20512,7 +20763,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2VertexElement = __webpack_require__(46);
+var _Tw2VertexElement = __webpack_require__(47);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -20816,7 +21067,7 @@ var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = (_temp = _class = func
 }, _temp);
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -22020,10 +22271,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(89)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(90)))
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports) {
 
 var g;
@@ -22050,177 +22301,6 @@ module.exports = g;
 
 
 /***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.logger = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _Tw2EventEmitter2 = __webpack_require__(15);
-
-var _util = __webpack_require__(7);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * Handles basic event logging
- *
- * @param {string} [name='']          - The logger's name
- * @property {string} name            - The name of the logger and it's prefix
- * @property {{}} visible             - Visibility options
- * @property {boolean} visible.log    - Toggles console log output
- * @property {boolean} visible.info   - Toggles console info output
- * @property {boolean} visible.debug  - Toggles console debug output
- * @property {boolean} visible.warn   - Toggles console warn output
- * @property {boolean} visible.error  - Toggles console error output
- * @property {number} maxLogs         - The maximum logs that will be stored
- * @property {boolean} display        - Enabled console logging
- * @property {Array} _logs            - Stored logs
- * @property {?Function} _onNewLog    - On new log
- */
-var Tw2Logger = function (_Tw2EventEmitter) {
-    _inherits(Tw2Logger, _Tw2EventEmitter);
-
-    function Tw2Logger() {
-        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-        _classCallCheck(this, Tw2Logger);
-
-        var _this = _possibleConstructorReturn(this, (Tw2Logger.__proto__ || Object.getPrototypeOf(Tw2Logger)).call(this));
-
-        _this.name = name;
-        _this.display = true;
-        _this.visible = {};
-        _this.visible.log = true;
-        _this.visible.info = true;
-        _this.visible.debug = false;
-        _this.visible.warn = true;
-        _this.visible.error = true;
-        _this.maxLogs = 100;
-        _this._logs = [];
-        return _this;
-    }
-
-    /**
-     * Adds an event log and outputs it to the console
-     * @param {*} log
-     * @returns {*} log
-     */
-
-
-    _createClass(Tw2Logger, [{
-        key: 'log',
-        value: function log(_log) {
-            if (_log.logged) {
-                return _log;
-            }
-
-            // Allow errors to be logged directly
-            if ((0, _util.isError)(_log)) {
-                _log = { err: _log };
-            }
-
-            // Normalize error logs
-            if (_log.err) {
-                _log.type = _log.type || 'error';
-                _log.name = _log.name || _log.err.name;
-                _log.message = _log.message || _log.err.message;
-            }
-
-            _log.type = Tw2Logger.Type[_log.type ? _log.type.toUpperCase() : 'LOG'] || 'log';
-            _log.message = _log.message || '';
-            _log.title = _log.title || '';
-
-            if (!_log.hide && this.display && this.visible[_log.type]) {
-                var header = this.name + ' ' + _log.title + ':';
-
-                if (_log.err) {
-                    console.group(header, _log.message);
-                    if (_log.err) console.debug(_log.err.stack || _log.err.toString());
-                    console.groupEnd();
-                } else {
-                    console[_log.type](header, _log.message);
-                }
-            }
-
-            if (this.maxLogs) {
-                if (this._logs.length >= this.maxLogs) {
-                    this._logs.splice(this.maxLogs, this._logs.length - 1);
-                }
-                this._logs.unshift(_log);
-            } else {
-                this._logs = [];
-            }
-
-            this.emit(_log.type, _log);
-            _log.logged = true;
-            return _log;
-        }
-
-        /**
-         * Gets an array of logs
-         * @param {number} [count]
-         * @returns {Array<eventLog>}
-         */
-
-    }, {
-        key: 'GetLogs',
-        value: function GetLogs(count) {
-            return Object.assign([], count === undefined ? this._logs : this._logs.splice(0, count));
-        }
-
-        /**
-         * Sets the logger's properties
-         * @param {*} [opt={}]
-         */
-
-    }, {
-        key: 'Set',
-        value: function Set() {
-            var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-            (0, _util.assignIfExists)(this, opt, ['name', 'maxLogs', 'display']);
-            (0, _util.assignIfExists)(this.visible, opt.visible, ['log', 'info', 'debug', 'warn', 'error']);
-        }
-    }]);
-
-    return Tw2Logger;
-}(_Tw2EventEmitter2.Tw2EventEmitter);
-
-/**
- * Console outputs
- * @type {*}
- */
-
-
-Tw2Logger.Type = {
-    ERROR: 'error',
-    WARNING: 'warn',
-    INFO: 'info',
-    LOG: 'log',
-    DEBUG: 'debug'
-};
-
-var logger = exports.logger = new Tw2Logger('CCPWGL');
-
-/**
- * The default event logger logger
- * @type {Tw2Logger}
- */
-_Tw2EventEmitter2.Tw2EventEmitter.logger = logger;
-
-/***/ }),
 /* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22234,7 +22314,7 @@ exports.Tw2ForwardingRenderBatch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2RenderBatch2 = __webpack_require__(25);
+var _Tw2RenderBatch2 = __webpack_require__(26);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22297,7 +22377,7 @@ exports.Tw2GeometryLineBatch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2GeometryBatch2 = __webpack_require__(26);
+var _Tw2GeometryBatch2 = __webpack_require__(27);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22351,7 +22431,7 @@ exports.Tw2InstancedMeshBatch = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2GeometryBatch2 = __webpack_require__(26);
+var _Tw2GeometryBatch2 = __webpack_require__(27);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -22586,7 +22666,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _parameter = __webpack_require__(27);
+var _parameter = __webpack_require__(28);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23840,7 +23920,7 @@ Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(47);
+var _Tw2PerObjectData = __webpack_require__(48);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23852,7 +23932,7 @@ Object.keys(_Tw2PerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2RawData = __webpack_require__(28);
+var _Tw2RawData = __webpack_require__(29);
 
 Object.keys(_Tw2RawData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23882,9 +23962,9 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2PerObjectData2 = __webpack_require__(47);
+var _Tw2PerObjectData2 = __webpack_require__(48);
 
-var _Tw2RawData = __webpack_require__(28);
+var _Tw2RawData = __webpack_require__(29);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24397,7 +24477,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Effect = __webpack_require__(23);
+var _Tw2Effect = __webpack_require__(24);
 
 Object.keys(_Tw2Effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24421,7 +24501,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(49);
+var _Tw2Mesh = __webpack_require__(50);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24433,7 +24513,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2MeshArea = __webpack_require__(50);
+var _Tw2MeshArea = __webpack_require__(51);
 
 Object.keys(_Tw2MeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24477,7 +24557,7 @@ var _global = __webpack_require__(0);
 
 var _batch = __webpack_require__(18);
 
-var _Tw2Mesh2 = __webpack_require__(49);
+var _Tw2Mesh2 = __webpack_require__(50);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24627,7 +24707,7 @@ var _class, _temp;
 
 var _batch = __webpack_require__(18);
 
-var _Tw2MeshArea2 = __webpack_require__(50);
+var _Tw2MeshArea2 = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24663,7 +24743,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Animation = __webpack_require__(51);
+var _Tw2Animation = __webpack_require__(52);
 
 Object.keys(_Tw2Animation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24687,7 +24767,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(54);
 
 Object.keys(_Tw2Bone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24699,7 +24779,7 @@ Object.keys(_Tw2Bone).forEach(function (key) {
   });
 });
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(55);
 
 Object.keys(_Tw2Model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24711,7 +24791,7 @@ Object.keys(_Tw2Model).forEach(function (key) {
   });
 });
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(56);
 
 Object.keys(_Tw2Track).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24723,7 +24803,7 @@ Object.keys(_Tw2Track).forEach(function (key) {
   });
 });
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(57);
 
 Object.keys(_Tw2TrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24753,17 +24833,17 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _resource = __webpack_require__(52);
+var _resource = __webpack_require__(53);
 
-var _Tw2Animation = __webpack_require__(51);
+var _Tw2Animation = __webpack_require__(52);
 
-var _Tw2Bone = __webpack_require__(53);
+var _Tw2Bone = __webpack_require__(54);
 
-var _Tw2Model = __webpack_require__(54);
+var _Tw2Model = __webpack_require__(55);
 
-var _Tw2Track = __webpack_require__(55);
+var _Tw2Track = __webpack_require__(56);
 
-var _Tw2TrackGroup = __webpack_require__(56);
+var _Tw2TrackGroup = __webpack_require__(57);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25572,7 +25652,7 @@ exports.Tw2EffectRes = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _reader = __webpack_require__(29);
+var _reader = __webpack_require__(30);
 
 var _Tw2Resource2 = __webpack_require__(11);
 
@@ -25807,7 +25887,7 @@ var _global = __webpack_require__(0);
 
 var _vertex = __webpack_require__(12);
 
-var _sampler = __webpack_require__(24);
+var _sampler = __webpack_require__(25);
 
 var _Tw2Error = __webpack_require__(3);
 
@@ -26373,7 +26453,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _reader = __webpack_require__(29);
+var _reader = __webpack_require__(30);
 
 var _vertex = __webpack_require__(12);
 
@@ -26381,7 +26461,7 @@ var _Tw2Resource2 = __webpack_require__(11);
 
 var _Tw2Error = __webpack_require__(3);
 
-var _geometry = __webpack_require__(48);
+var _geometry = __webpack_require__(49);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27395,7 +27475,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PostEffect = __webpack_require__(57);
+var _Tw2PostEffect = __webpack_require__(58);
 
 Object.keys(_Tw2PostEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27419,7 +27499,7 @@ Object.keys(_Tw2PostEffectManager).forEach(function (key) {
   });
 });
 
-var _Tw2PostEffectStep = __webpack_require__(59);
+var _Tw2PostEffectStep = __webpack_require__(60);
 
 Object.keys(_Tw2PostEffectStep).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27459,9 +27539,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp;
 
-var _util = __webpack_require__(7);
+var _util = __webpack_require__(6);
 
-var _Tw2PostEffect = __webpack_require__(57);
+var _Tw2PostEffect = __webpack_require__(58);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31085,7 +31165,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31250,7 +31330,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31403,7 +31483,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31547,7 +31627,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31687,7 +31767,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp2;
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31869,7 +31949,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32035,7 +32115,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32175,7 +32255,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2CurveSequencer2 = __webpack_require__(6);
+var _Tw2CurveSequencer2 = __webpack_require__(7);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32513,6 +32593,12 @@ function Tw2WbgTransformTrack() {
  */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
+/**
+ * Class category
+ * @type {string}
+ */
+Tw2WbgTransformTrack.category = 'curve_key';
+
 /***/ }),
 /* 156 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -32526,6 +32612,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2TransformTrack = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -32550,7 +32638,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {mat4} _scaleShear
  * @class
  */
-var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
+var Tw2TransformTrack = exports.Tw2TransformTrack = (_temp = _class = function () {
     function Tw2TransformTrack() {
         _classCallCheck(this, Tw2TransformTrack);
 
@@ -32646,10 +32734,16 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
                 }
             }
         }
+
+        /**
+         * Class category
+         * @type {string}
+         */
+
     }]);
 
     return Tw2TransformTrack;
-}();
+}(), _class.category = 'curve_track', _temp);
 
 /***/ }),
 /* 157 */
@@ -33531,7 +33625,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(61);
+var _child = __webpack_require__(62);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33555,7 +33649,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(63);
+var _object = __webpack_require__(64);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33567,7 +33661,7 @@ Object.keys(_object).forEach(function (key) {
   });
 });
 
-var _item = __webpack_require__(65);
+var _item = __webpack_require__(66);
 
 Object.keys(_item).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34160,7 +34254,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(62);
+var _EveOccluder = __webpack_require__(63);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34196,14 +34290,14 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
   });
 });
 
-var _EveStarField = __webpack_require__(174);
+var _EveStarfield = __webpack_require__(174);
 
-Object.keys(_EveStarField).forEach(function (key) {
+Object.keys(_EveStarfield).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _EveStarField[key];
+      return _EveStarfield[key];
     }
   });
 });
@@ -34228,7 +34322,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(62);
+var _EveOccluder = __webpack_require__(63);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -35470,7 +35564,7 @@ var _core = __webpack_require__(1);
 
 var _EveObject2 = __webpack_require__(13);
 
-var _EveSpaceObject = __webpack_require__(30);
+var _EveSpaceObject = __webpack_require__(31);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36005,7 +36099,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(64);
+var _EveTransform = __webpack_require__(65);
 
 var _EveObject2 = __webpack_require__(13);
 
@@ -36358,7 +36452,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _EveSpaceObject2 = __webpack_require__(30);
+var _EveSpaceObject2 = __webpack_require__(31);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -41294,13 +41388,13 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(60);
+var _curve = __webpack_require__(61);
 
-var _item = __webpack_require__(65);
+var _item = __webpack_require__(66);
 
-var _child = __webpack_require__(61);
+var _child = __webpack_require__(62);
 
-var _object = __webpack_require__(63);
+var _object = __webpack_require__(64);
 
 function EveSOF() {
     var data = null;
@@ -41907,7 +42001,7 @@ function EveSOF() {
         } else {
             _global.resMan.log({
                 type: 'warning',
-                title: 'Space object factory',
+                name: 'Space object factory',
                 message: 'Unable to bind particle emitters: ' + obj.constructor.name
             });
         }
@@ -41939,7 +42033,7 @@ function EveSOF() {
             } else {
                 _global.resMan.log({
                     type: 'warning',
-                    title: 'Space object factory',
+                    name: 'Space object factory',
                     message: 'No resource path found for "' + hull.name + '" child at index ' + i
                 });
             }
@@ -42247,7 +42341,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(66);
+var _Tw2ParticleElement = __webpack_require__(67);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42336,7 +42430,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(31);
+var _Tw2ParticleEmitter2 = __webpack_require__(32);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42478,7 +42572,7 @@ exports.Tw2DynamicEmitter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Tw2ParticleEmitter2 = __webpack_require__(31);
+var _Tw2ParticleEmitter2 = __webpack_require__(32);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -42601,7 +42695,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2ParticleEmitter2 = __webpack_require__(31);
+var _Tw2ParticleEmitter2 = __webpack_require__(32);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43286,7 +43380,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(32);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(33);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43378,7 +43472,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(32);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(33);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43470,7 +43564,7 @@ var _global = __webpack_require__(0);
 
 var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 
-var _Tw2ParticleAttributeGenerator = __webpack_require__(32);
+var _Tw2ParticleAttributeGenerator = __webpack_require__(33);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -43620,7 +43714,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(66);
+var _Tw2ParticleElement = __webpack_require__(67);
 
 var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 

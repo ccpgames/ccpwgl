@@ -3,4 +3,4 @@ export * from './EveMeshOverlayEffect';
 export * from './EveOccluder';
 export * from './EveStretch';
 export * from './EveTurretFiringFX';
-export * from './EveStarField';
+export * from './EveStarfield';

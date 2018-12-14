@@ -1,7 +1,7 @@
 {
   "name": "ccpwgl",
   "licence": "MIT",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "CCP webGL library",
   "homepage": "https://github.com/ccpgames/ccpwgl",
   "bugs": "https://github.com/ccpgames/ccpwgl/issues",

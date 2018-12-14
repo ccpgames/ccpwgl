@@ -15,36 +15,28 @@ export class Tw2EventEmitter
      * @param {string} eventName
      * @param {*} [e={}]
      * @returns {Tw2EventEmitter}
-     * @emit event_added { eventName: string} - the first time an event is emitted
      */
     emit(eventName, e = {})
     {
         // Short cut to creating a log output
-        if (e.log && !e.log.logged)
+        if (e.log && !e._logged)
         {
-            this.log(e.log);
+            e.log = this.log(e.log);
         }
 
-        if (PRIVATE.has(this))
-        {
-            const events = PRIVATE.get(this);
-            eventName = eventName.toLowerCase();
+        const events = PRIVATE.get(this);
+        if (!events) return this;
 
-            if (eventName in events)
-            {
-                events[eventName].forEach(
-                    function (value, key)
-                    {
-                        key.call(value.context, e);
-                        if (value.once) events[eventName].delete(key);
-                    }
-                );
-            }
-            else
-            {
-                events[eventName] = new Set();
-                this.emit('event_added', {eventName: eventName});
-            }
+        eventName = eventName.toLowerCase();
+        if (eventName in events)
+        {
+            events[eventName].forEach(
+                function (value, key)
+                {
+                    key.call(value.context, e);
+                    if (value.once) events[eventName].delete(key);
+                }
+            );
         }
         return this;
     }
@@ -59,15 +51,10 @@ export class Tw2EventEmitter
      */
     on(eventName, listener, context = undefined, once = false)
     {
-        if (!PRIVATE.has(this)) PRIVATE.set(this, {});
         const events = PRIVATE.get(this);
-
+        if (!events) PRIVATE.set(this, {});
         eventName = eventName.toLowerCase();
-        if (!events[eventName])
-        {
-            events[eventName] = new Set();
-            events[eventName].add(() => this.emit('event_added', {eventName: eventName}), {once: true});
-        }
+        if (!events[eventName]) events[eventName] = new Set();
         events[eventName].add(listener, {context: context, once: once});
         return this;
     }
@@ -92,11 +79,23 @@ export class Tw2EventEmitter
      */
     off(eventName, listener)
     {
-        if (PRIVATE.has(this))
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
+        eventName = eventName.toLowerCase();
+        if (eventName === '*')
         {
-            const events = PRIVATE.get(this);
-            eventName = eventName.toLowerCase();
-            if (eventName in events) events[eventName].delete(listener);
+            for (const name in events)
+            {
+                if (events.hasOwnProperty(name))
+                {
+                    events[name].delete(listener);
+                }
+            }
+        }
+        else if (eventName in events)
+        {
+            events[eventName].delete(listener);
         }
         return this;
     }
@@ -105,20 +104,14 @@ export class Tw2EventEmitter
      * Deletes an event and it's listeners
      * @param {string} eventName
      * @returns {Tw2EventEmitter}
-     * @emit event_removed { eventName: String }
      */
     del(eventName)
     {
-        if (PRIVATE.has(this))
-        {
-            const events = PRIVATE.get(this);
-            eventName = eventName.toLowerCase();
-            if (eventName in events)
-            {
-                this.emit('event_removed', {eventName: eventName});
-                delete events[eventName];
-            }
-        }
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
+        eventName = eventName.toLowerCase();
+        if (eventName in events) delete events[eventName];
         return this;
     }
 
@@ -129,15 +122,14 @@ export class Tw2EventEmitter
      */
     clr(listener)
     {
-        if (PRIVATE.has(this))
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
+        for (let eventName in events)
         {
-            const events = PRIVATE.get(this);
-            for (let eventName in events)
+            if (events.hasOwnProperty(eventName) && events[eventName].has(listener))
             {
-                if (events.hasOwnProperty(eventName) && events[eventName].has(listener))
-                {
-                    events[eventName].delete(listener);
-                }
+                events[eventName].delete(listener);
             }
         }
         return this;
@@ -152,38 +144,36 @@ export class Tw2EventEmitter
     {
         if (PRIVATE.has(this))
         {
-            this.emit('event_kill');
-            PRIVATE.set(this, {});
+            this.emit('kill');
+            PRIVATE.delete(this);
         }
         return this;
     }
 
     /**
      * Logs an event log
-     * @param {*} eventLog
-     * @returns {*}
+     * @param {eventLog|Error} eventLog
+     * @returns {eventLog}
      */
     log(eventLog)
     {
-        if (this.constructor.logger)
+        if (!eventLog.name)
         {
-            this.constructor.logger.log(eventLog);
+            eventLog.name = this.constructor.category || this.constructor.name;
         }
-        return eventLog;
+
+        if (!this.constructor.defaultLogger)
+        {
+            return eventLog;
+        }
+
+        return this.constructor.defaultLogger.log(eventLog, this);
     }
 
     /**
-     * Assigns the event emitter's prototypes to a constructor/class
-     * @param Constructor
+     * Global logger
+     * @type {*}
      */
-    static assign(Constructor)
-    {
-        Object.assign(Constructor.prototype, Tw2EventEmitter.prototype);
-    }
-}
+    static defaultLogger = null;
 
-/**
- * Global logger
- * @type {*}
- */
-Tw2EventEmitter.logger = null;
+}

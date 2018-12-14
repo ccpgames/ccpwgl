@@ -169,3 +169,10 @@ export function Tw2WbgTransformTrack()
  * @prototype
  */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
+
+/**
+ * Class category
+ * @type {string}
+ */
+Tw2WbgTransformTrack.category = 'curve_key';
+
