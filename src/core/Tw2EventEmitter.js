@@ -51,8 +51,12 @@ export class Tw2EventEmitter
      */
     on(eventName, listener, context = undefined, once = false)
     {
-        const events = PRIVATE.get(this);
-        if (!events) PRIVATE.set(this, {});
+        let events = PRIVATE.get(this);
+        if (!events)
+        {
+            events = {};
+            PRIVATE.set(this, events);
+        }
         eventName = eventName.toLowerCase();
         if (!events[eventName]) events[eventName] = new Set();
         events[eventName].add(listener, {context: context, once: once});
