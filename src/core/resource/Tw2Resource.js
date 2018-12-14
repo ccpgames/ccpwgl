@@ -1,4 +1,5 @@
 import {resMan} from '../../global';
+import {Tw2Error} from '../Tw2Error';
 
 /**
  * Tw2Resource base class
@@ -106,10 +107,10 @@ export class Tw2Resource
      * @param {Error} err
      * @returns {Error}
      */
-    OnError(err)
+    OnError(err = new Tw2Error())
     {
         this._isGood = false;
-        resMan.OnResEvent('error', this.path, err);
+        resMan.OnResEvent('error', this.path, {type: 'error', message: err.message, err});
         this.UpdateNotifications('OnResError');
         return err;
     }

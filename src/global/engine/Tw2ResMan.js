@@ -2,18 +2,17 @@ import {store} from './Tw2Store';
 import {Tw2MotherLode} from './Tw2MotherLode';
 import {Tw2LoadingObject} from '../../core/resource/Tw2LoadingObject';
 import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
-import {isError} from '../util';
 import {
     Tw2Error,
-    HTTPInstanceError,
-    HTTPReadyStateError,
-    HTTPRequestSendError,
-    HTTPStatusError,
-    Tw2FeatureNotImplementedError,
-    Tw2ResourceExtensionUndefinedError,
-    Tw2ResourceExtensionUnregisteredError,
-    Tw2ResourcePrefixUndefinedError,
-    Tw2ResourcePrefixUnregisteredError
+    ErrHTTPInstance,
+    ErrHTTPReadyState,
+    ErrHTTPRequestSend,
+    ErrHTTPStatus,
+    ErrFeatureNotImplemented,
+    ErrResourceExtensionUndefined,
+    ErrResourceExtensionUnregistered,
+    ErrResourcePrefixUndefined,
+    ErrResourcePrefixUnregistered
 } from '../../core';
 
 
@@ -58,9 +57,10 @@ export class Tw2ResMan extends Tw2EventEmitter
 
     /**
      * Fires on resource errors
+     * - Used when a resource can only be identified by it's path
      * @param {string} path
-     * @param {Tw2Error|Error} err
-     * @returns {Tw2Error|Error} err;
+     * @param {Error} err
+     * @returns {Error} err
      */
     OnResError(path, err = new Tw2Error({path}))
     {
@@ -72,35 +72,34 @@ export class Tw2ResMan extends Tw2EventEmitter
         }
         else
         {
-            this.OnResEvent('error', path, err);
+            this.OnResEvent('error', path, {type: 'error', message: err.message, err});
         }
         return err;
     }
 
     /**
      * Fires on resource events
-     * @param eventName
-     * @param path
-     * @param log
+     * @param {string} eventName - The event's name
+     * @param {string} path      - The resource's path
+     * @param {*} [log={}]       - The event's log
      */
     OnResEvent(eventName, path, log = {})
     {
         const defaultLog = Tw2ResMan.DefaultLog[eventName.toUpperCase()];
-        let eventData = Object.assign({res: this.motherLode.Find(path), path}, log.data);
-
-        // Convert errors to logs
-        if (isError(log))
-        {
-            const err = this.motherLode.AddError(path, log);
-            log = {err, message: err.message};
-        }
-
-        // Only allow valid events
         if (defaultLog)
         {
-            log = Object.assign({title: this.name}, defaultLog, log);
+            log = Object.assign({title:this.name}, defaultLog, log);
+            const eventData = {res: this.motherLode.Find(path), path, log};
+
+            const err = log.err;
+            if (err)
+            {
+                this.motherLode.AddError(path, err);
+                eventData.err = err;
+                Object.assign(eventData, err.data);
+            }
+
             log.message = log.message.includes(path) ? log.message : log.message += ` "${path}"`;
-            eventData.log = log;
             this.emit(eventName.toLowerCase(), eventData);
         }
     }
@@ -215,23 +214,21 @@ export class Tw2ResMan extends Tw2EventEmitter
 
         if (path.indexOf('dynamic:/') === 0)
         {
-            this.OnResError(path, new Tw2FeatureNotImplementedError({
-                message: 'Dynamic resources not implemented'
-            }));
+            this.OnResError(path, new ErrFeatureNotImplemented({feature: 'Dynamic resources'}));
             return null;
         }
 
         const extension = Tw2ResMan.GetPathExt(path);
         if (extension === null)
         {
-            this.OnResError(path, new Tw2ResourceExtensionUndefinedError({path}));
+            this.OnResError(path, new ErrResourceExtensionUndefined({path}));
             return null;
         }
 
         const Constructor = store.GetExtension(extension);
         if (!Constructor)
         {
-            this.OnResError(path, new Tw2ResourceExtensionUnregisteredError({path, extension}));
+            this.OnResError(path, new ErrResourceExtensionUnregistered({path, extension}));
             return null;
         }
 
@@ -316,7 +313,7 @@ export class Tw2ResMan extends Tw2EventEmitter
         const prefixIndex = path.indexOf(':/');
         if (prefixIndex === -1)
         {
-            throw new Tw2ResourcePrefixUndefinedError({path});
+            throw new ErrResourcePrefixUndefined({path});
         }
 
         const prefix = path.substr(0, prefixIndex);
@@ -328,7 +325,7 @@ export class Tw2ResMan extends Tw2EventEmitter
         const fullPrefix = store.GetPath(prefix);
         if (!fullPrefix)
         {
-            throw new Tw2ResourcePrefixUnregisteredError({path, prefix});
+            throw new ErrResourcePrefixUnregistered({path, prefix});
         }
 
         return fullPrefix + path.substr(prefixIndex + 2);
@@ -399,7 +396,7 @@ export class Tw2ResMan extends Tw2EventEmitter
         }
         catch (err)
         {
-            throw new HTTPRequestSendError({path});
+            throw new ErrHTTPRequestSend({path});
         }
 
         return res;
@@ -425,7 +422,7 @@ export class Tw2ResMan extends Tw2EventEmitter
             catch (err)
             {
                 resMan._pendingLoads--;
-                res.OnError(new HTTPReadyStateError({path}));
+                res.OnError(new ErrHTTPReadyState({path}));
                 return;
             }
 
@@ -452,7 +449,7 @@ export class Tw2ResMan extends Tw2EventEmitter
                 }
                 else
                 {
-                    res.OnError(new HTTPStatusError({path, status}));
+                    res.OnError(new ErrHTTPStatus({path, status}));
                 }
                 resMan._pendingLoads--;
             }
@@ -495,7 +492,7 @@ export class Tw2ResMan extends Tw2EventEmitter
 
         if (!httpRequest)
         {
-            throw new HTTPInstanceError({path: res.path});
+            throw new ErrHTTPInstance({path: res.path});
         }
         else if (res.requestResponseType)
         {

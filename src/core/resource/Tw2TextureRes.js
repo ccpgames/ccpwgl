@@ -1,6 +1,6 @@
 import {resMan, device} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
-import {HTTPRequestError, Tw2ResourceExtensionUnregisteredError} from '../Tw2Error';
+import {ErrHTTPRequest, ErrResourceExtensionUnregistered} from '../Tw2Error';
 
 /**
  * Tw2TextureRes
@@ -72,7 +72,7 @@ export class Tw2TextureRes extends Tw2Resource
                 break;
 
             default:
-                throw new Tw2ResourceExtensionUnregisteredError({path: this.path, extension});
+                throw new ErrResourceExtensionUnregistered({path: this.path, extension});
         }
 
         this.images = null;
@@ -100,7 +100,7 @@ export class Tw2TextureRes extends Tw2Resource
                 break;
 
             default:
-                throw new Tw2ResourceExtensionUnregisteredError({path, extension});
+                throw new ErrResourceExtensionUnregistered({path, extension});
         }
 
         this.OnRequested();
@@ -117,7 +117,7 @@ export class Tw2TextureRes extends Tw2Resource
         {
             resMan._pendingLoads--;
             this.images = null;
-            this.OnError(new HTTPRequestError({path}));
+            this.OnError(new ErrHTTPRequest({path}));
         };
 
         /**

@@ -798,10 +798,22 @@ export function EveSOF()
             };
         }
 
-        var children = _get(hull, 'children', []);
-        for (var i = 0; i < children.length; ++i)
+        const children = _get(hull, 'children', []);
+        for (let i = 0; i < children.length; ++i)
         {
-            resMan.GetObject(children[i]['redFilePath'], onChildLoaded(children[i]));
+            const resPath = children[i]['redFilePath'];
+            if (resPath)
+            {
+                resMan.GetObject(resPath, onChildLoaded(children[i]));
+            }
+            else
+            {
+                resMan.log({
+                    type: 'warning',
+                    title: 'Space object factory',
+                    message: `No resource path found for "${hull.name}" child at index ${i}`
+                });
+            }
         }
     }
 

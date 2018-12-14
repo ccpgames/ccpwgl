@@ -2,7 +2,7 @@ import {vec3, quat, mat3, mat4, device} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
-import {Tw2GeometryFileTypeError, Tw2GeometryMeshEffectBindError, Tw2GeometryMeshInvalidBoneError} from '../Tw2Error';
+import {ErrGeometryFileType, ErrGeometryMeshEffectBinding, ErrGeometryMeshBoneNameInvalid} from '../Tw2Error';
 import {
     Tw2BlendShapeData,
     Tw2GeometryAnimation,
@@ -324,7 +324,7 @@ export class Tw2GeometryRes extends Tw2Resource
 
             if (!bone)
             {
-                throw new Tw2GeometryMeshInvalidBoneError({
+                throw new ErrGeometryMeshBoneNameInvalid({
                     path: res.path,
                     mesh: binding.mesh.name,
                     bone: name,
@@ -429,7 +429,7 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                this.OnError(new Tw2GeometryMeshEffectBindError({
+                this.OnError(new ErrGeometryMeshEffectBinding({
                     path: this.path,
                     pass: pass,
                     passInput: passInput,
@@ -491,7 +491,7 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                this.OnError(new Tw2GeometryMeshEffectBindError({
+                this.OnError(new ErrGeometryMeshEffectBinding({
                     path: this.path,
                     pass: pass,
                     passInput: passInput,
@@ -717,7 +717,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     default:
-                        throw new Tw2GeometryFileTypeError({path: path, key: 'fileType', value: el.fileType & 0xf});
+                        throw new ErrGeometryFileType({path: path, key: 'fileType', value: el.fileType & 0xf});
                 }
             }
         }

@@ -25,11 +25,8 @@ export class Tw2MotherLode
 
         if (!this._errors[path].includes(err))
         {
-            // Normalize error data
             err.data = err.data || {};
             err.data.path = err.data.path || path;
-            err.data.err = err.data.err || err;
-
             this._errors[path].push(err);
         }
 

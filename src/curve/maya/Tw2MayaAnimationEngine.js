@@ -1,5 +1,5 @@
 import {curve, util, vec4} from '../../global';
-import {Tw2FeatureNotImplementedError} from '../../core';
+import {ErrFeatureNotImplemented} from '../../core';
 
 /**
  * Tw2MayaAnimationEngine
@@ -220,7 +220,7 @@ export class Tw2MayaAnimationEngine
     _EvaluateInfinities(curve, segments, startSegment, time, bool)
     {
 
-        throw new Tw2FeatureNotImplementedError({value: 'EvaluateInfinities'});
+        throw new ErrFeatureNotImplemented({feature: 'Maya animation engine evaluate infinities'});
 
     }
 

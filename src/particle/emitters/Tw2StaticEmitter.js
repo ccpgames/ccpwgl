@@ -1,5 +1,5 @@
 import {resMan,} from '../../global';
-import {Tw2GeometryMeshElementComponentError, Tw2GeometryMeshParticleElementError} from '../../core';
+import {ErrGeometryMeshElementComponentsMissing, ErrGeometryMeshMissingParticleElement} from '../../core';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**
@@ -78,7 +78,7 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
                 if (input === null)
                 {
-                    res.OnError(new Tw2GeometryMeshParticleElementError({
+                    res.OnError(new ErrGeometryMeshMissingParticleElement({
                         path: res.path,
                         elementUsage: d.usage,
                         elementUsageIndex: d.usageIndex
@@ -88,7 +88,7 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
                 if (input.elements < d.elements)
                 {
-                    res.OnError(new Tw2GeometryMeshElementComponentError({
+                    res.OnError(new ErrGeometryMeshElementComponentsMissing({
                         path: res.path,
                         inputCount: input.elements,
                         elementCount: d.elements,

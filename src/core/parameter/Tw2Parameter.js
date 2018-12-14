@@ -1,5 +1,6 @@
 /* eslint no-unused-vars:0 */
 import {util} from '../../global';
+import {ErrIndexBounds} from '../Tw2Error';
 
 /**
  * Tw2Parameter base class
@@ -198,8 +199,7 @@ export class Tw2VectorParameter extends Tw2Parameter
             }
             return;
         }
-
-        throw new Error('Index Error');
+        throw new ErrIndexBounds();
     }
 
     /**
@@ -225,7 +225,7 @@ export class Tw2VectorParameter extends Tw2Parameter
         {
             return this.value[index];
         }
-        throw new Error('Index Error');
+        throw new ErrIndexBounds();
     }
 
     /**

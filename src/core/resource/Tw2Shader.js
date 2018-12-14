@@ -1,7 +1,7 @@
 import {quat, util, device} from '../../global';
 import {Tw2VertexDeclaration, Tw2VertexElement} from '../vertex';
 import {Tw2SamplerState} from '../sampler';
-import {Tw2ShaderCompileError, Tw2ShaderLinkError} from '../Tw2Error';
+import {ErrShaderCompile, ErrShaderLink} from '../Tw2Error';
 
 /**
  * Tw2Shader
@@ -511,7 +511,7 @@ export class Tw2Shader
         {
             if (!skipError)
             {
-                throw new Tw2ShaderCompileError({
+                throw new ErrShaderCompile({
                     path: path,
                     shaderType: stageType === 0 ? 'vertex' : 'fragment',
                     infoLog: gl.getShaderInfoLog(shader)
@@ -546,7 +546,7 @@ export class Tw2Shader
         {
             if (!skipError)
             {
-                throw new Tw2ShaderLinkError({
+                throw new ErrShaderLink({
                     path: path,
                     infoLog: gl.getProgramInfoLog(program.program)
                 });

@@ -1,5 +1,5 @@
 import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
-import {assignIfExists} from '../util';
+import {assignIfExists, isError} from '../util';
 
 /**
  * Handles basic event logging
@@ -46,7 +46,20 @@ class Tw2Logger extends Tw2EventEmitter
             return log;
         }
 
-        // Normalize log
+        // Allow errors to be logged directly
+        if (isError(log))
+        {
+            log = {err: log};
+        }
+
+        // Normalize error logs
+        if (log.err)
+        {
+            log.type = log.type || 'error';
+            log.name = log.name || log.err.name;
+            log.message = log.message || log.err.message;
+        }
+
         log.type = Tw2Logger.Type[log.type ? log.type.toUpperCase() : 'LOG'] || 'log';
         log.message = log.message || '';
         log.title = log.title || '';

@@ -1,5 +1,5 @@
 import {util} from '../../global';
-import {Tw2DeclarationValueTypeError} from '../Tw2Error';
+import {ErrDeclarationValueType} from '../Tw2Error';
 
 /**
  * Stores raw data for {@link Tw2PerObjectData}
@@ -109,7 +109,7 @@ export class Tw2RawData
     {
         if (value !== null && !(util.isArrayLike(value) || util.isNumber(value)))
         {
-            throw new Tw2DeclarationValueTypeError({declaration: name, valueType: typeof value});
+            throw new ErrDeclarationValueType({declaration: name, valueType: typeof value});
         }
 
         this.elements[name] = {
