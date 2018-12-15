@@ -1,4 +1,4 @@
-import {isTyped, isArrayLike} from './type';
+import {isTyped, isArrayLike, isArray} from './type';
 import {toArray} from './arr';
 
 /**
@@ -58,14 +58,27 @@ export function assignIfExists(dest, src, attrs)
 /**
  * Gets a source's property value if it exists else returns a default value
  * @param {*} src
- * @param {string} prop
- * @param {*} defaultValue
+ * @param {string|string[]} prop
+ * @param {*} [defaultValue]
  * @returns {*}
  */
 export function get(src, prop, defaultValue)
 {
-    return src && prop in src ? src[prop] : defaultValue;
+    if (!isArray(prop))
+    {
+        return prop in src ? src[prop] : defaultValue;
+    }
+
+    for (let i = 0; i < prop.length; i++)
+    {
+        if (prop[i] in src)
+        {
+            return src[prop[i]];
+        }
+    }
+    return defaultValue;
 }
+
 
 /**
  * Returns a string from a string template and a given object's properties

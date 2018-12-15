@@ -3,13 +3,13 @@ import * as core from './core';
 import * as curve from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
-import {device, store, resMan, logger, util} from './global';
+import {device, store, resMan, logger, util, consts} from './global';
 
 export * from './core';
 export * from './curve';
 export * from './eve';
 export * from './particle';
-export {math, util, device, store, resMan, logger};
+export {math, util, device, store, resMan, logger, consts};
 
 const {vec4, mat4} = math;
 
@@ -48,6 +48,7 @@ store.Register({
         'sm_lo': core.Tw2EffectRes,
         'wbg': core.Tw2GeometryRes,
         'png': core.Tw2TextureRes,
+        'dds': core.Tw2TextureRes,
         'cube': core.Tw2TextureRes,
         'mp4': core.Tw2VideoRes,
         'ogg': core.Tw2VideoRes,
