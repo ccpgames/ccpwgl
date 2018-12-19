@@ -316,6 +316,40 @@ export const BLENDOP_REVSUBTRACT = 3;
 export const BLENDOP_MIN = 4;
 export const BLENDOP_MAX = 5;
 
+// Texture format aliases
+export const TF_ALPHA = 0;
+export const TF_LUMINANCE = 1;
+export const TF_LUMINANCE_ALPHA = 2;
+export const TF_RGB = 4;
+export const TF_RGBA = 5;
+export const TF_RED = 6;
+export const TF_R = 6;
+export const TF_RG = 7;
+export const TF_RED_INTEGER = 8;
+export const TF_R_INTEGER = 8;
+export const TF_RG_INTEGER = 9;
+export const TF_RGB_INTEGER = 10;
+export const TF_RGBA_INTEGER = 11;
+
+// Texture types aliases
+export const TT_UNSIGNED_BYTE = 0;
+export const TT_UNSIGNED_INT = 0;
+export const TT_FLOAT = 1;
+export const TT_HALF_FLOAT = 2;
+export const TT_BYTE = 3;
+export const TT_SHORT = 4;
+export const TT_UNSIGNED_SHORT = 5;
+export const TT_INT = 6;
+export const TT_UNSIGNED_INTEGER = 7;
+export const TT_UNSIGNED_SHORT_4_4_4_4 = 8;
+export const TT_UNSIGNED_SHORT_5_5_5_1 = 9;
+export const TT_UNSIGNED_SHORT_5_6_5 = 10;
+export const TT_UNSIGNED_INT_2_10_10_10_REV = 11;
+export const TT_UNSIGNED_INT_24_8 = 12;
+export const TT_UNSIGNED_INT_10F_11F_11F_REV = 13;
+export const TT_UNSIGNED_INT_5_9_9_9_REV = 14;
+export const TT_FLOAT_32_UNSIGNED_INT_24_8_REV = 15;
+
 // Texture Wrap modes
 export const WrapModes = [
     0,
@@ -346,9 +380,26 @@ export const BlendTable = [
     GL_ONE_MINUS_CONSTANT_COLOR                                         // D3DBLEND_INVBLENDFACTOR
 ];
 
+// Filter mode conversions
+export const FilterMode = {
+    [GL_NEAREST]: 1,
+    [GL_LINEAR]: 2
+};
+
+// Mip filter mode conversions
+export const MipFilterMode = {
+    [GL_NEAREST]: 0,
+    [GL_LINEAR]: 0,
+    [GL_NEAREST_MIPMAP_NEAREST]: 1,
+    [GL_LINEAR_MIPMAP_NEAREST]: 1,
+    [GL_NEAREST_MIPMAP_LINEAR]: 2,
+    [GL_LINEAR_MIPMAP_LINEAR]: 2
+};
+
 /*
 
   Direct Draw Surface
+  https://docs.microsoft.com/en-us/windows/desktop/direct3ddds/dx-graphics-dds-pguide
 
 */
 export const DDS_MAGIC = 0x20534444;
@@ -360,9 +411,11 @@ export const DDSD_PIXELFORMAT = 0x1000;
 export const DDSD_MIPMAPCOUNT = 0x20000;
 export const DDSD_LINEARSIZE = 0x80000;
 export const DDSD_DEPTH = 0x800000;
+
 export const DDSCAPS_COMPLEX = 0x8;
 export const DDSCAPS_MIPMAP = 0x400000;
 export const DDSCAPS_TEXTURE = 0x1000;
+
 export const DDSCAPS2_CUBEMAP = 0x200;
 export const DDSCAPS2_CUBEMAP_POSITIVEX = 0x400;
 export const DDSCAPS2_CUBEMAP_NEGATIVEX = 0x800;
@@ -371,12 +424,14 @@ export const DDSCAPS2_CUBEMAP_NEGATIVEY = 0x2000;
 export const DDSCAPS2_CUBEMAP_POSITIVEZ = 0x4000;
 export const DDSCAPS2_CUBEMAP_NEGATIVEZ = 0x8000;
 export const DDSCAPS2_VOLUME = 0x200000;
+
 export const DDPF_ALPHAPIXELS = 0x1;
 export const DDPF_ALPHA = 0x2;
 export const DDPF_FOURCC = 0x4;
 export const DDPF_RGB = 0x40;
 export const DDPF_YUV = 0x200;
 export const DDPF_LUMINANCE = 0x20000;
+
 export const DDS_HEADER_LENGTH_INT = 31;
 export const DDS_HEADER_OFFSET_MAGIC = 0;
 export const DDS_HEADER_OFFSET_SIZE = 1;
@@ -386,9 +441,25 @@ export const DDS_HEADER_OFFSET_WIDTH = 4;
 export const DDS_HEADER_OFFSET_MIPMAP_COUNT = 7;
 export const DDS_HEADER_OFFSET_PF_FLAGS = 20;
 export const DDS_HEADER_OFFSET_PF_FOURCC = 21;
+export const DDS_HEADER_OFFSET_RGB_BPP = 22;
+export const DDS_HEADER_OFFSET_R_MASK = 23;
+export const DDS_HEADER_OFFSET_G_MASK = 24;
+export const DDS_HEADER_OFFSET_B_MASK = 25;
+export const DDS_HEADER_OFFSET_A_MASK = 26;
+export const DDS_HEADER_OFFSET_CAPS1 = 27;
+export const DDS_HEADER_OFFSET_CAPS2 = 28;
+export const DDS_HEADER_OFFSET_CAPS3 = 29;
+export const DDS_HEADER_OFFSET_CAPS4 = 30;
+export const DDS_HEADER_OFFSET_DXGI_FORMAT = 32;
+
 export const FOURCC_DXT1 = 827611204;
 export const FOURCC_DXT5 = 894720068;
-
+export const FOURCC_DXT3 = 861165636;
+export const FOURCC_DXT10 = 827611204;
+export const FOURCC_D3DFMT_R16G16B16A16F = 113;
+export const FOURCC_D3DFMT_R32G32B32A32F = 116;
+export const DXGI_FORMAT_R16G16B16A16_FLOAT = 10;
+export const DXGI_FORMAT_B8G8R8X8_UNORM = 88;
 
 /*
 
@@ -491,4 +562,3 @@ export const WebglVersion = {
     WEBGL: 1,
     WEBGL2: 2
 };
-

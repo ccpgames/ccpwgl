@@ -58,3 +58,110 @@ num.exponentialDecay = function (omega0, torque, I, d, time)
 {
     return torque * time / d + I * (omega0 * d - torque) / (d * d) * (1.0 - Math.pow(Math.E, -d * time / I));
 };
+
+/**
+ * Gets a value from a half float
+ * @author Babylon
+ * @param {number} a
+ * @returns {number}
+ */
+num.fromHalfFloat = function (a)
+{
+    const
+        s = (a & 0x8000) >> 15,
+        e = (a & 0x7C00) >> 10,
+        f = a & 0x03FF;
+
+    if (e === 0)
+    {
+        return (s ? -1 : 1) * Math.pow(2, -14) * (f / Math.pow(2, 10));
+    }
+    else if (e === 0x1F)
+    {
+        return f ? NaN : ((s ? -1 : 1) * Infinity);
+    }
+
+    return (s ? -1 : 1) * Math.pow(2, e - 15) * (1 + (f / Math.pow(2, 10)));
+};
+
+/**
+ * Gets long word order
+ * @author Babylon
+ * @param {number} a
+ * @returns {number}
+ */
+num.getLongWordOrder = function(a)
+{
+    return (a === 0 || a === 255 || a === -16777216) ? 0 : 1 + num.getLongWordOrder(a >> 8);
+};
+
+/**
+ * Gets the log2 of a number
+ * @param {number} a
+ * @returns {number}
+ */
+num.log2 = function(a)
+{
+    return Math.log(a) * Math.LOG2E;
+};
+
+/**
+ * Converts a number to a half float
+ * @author http://stackoverflow.com/questions/32633585/how-do-you-convert-to-half-floats-in-javascript
+ * @param {number} a
+ * @returns {number}
+ */
+num.toHalfFloat = (function ()
+{
+    let floatView, int32View;
+    
+    return function (a)
+    {
+        if (!floatView)
+        {
+            floatView = new Float32Array(1);
+            int32View = new Int32Array(floatView.buffer);        
+        }
+        
+        floatView[0] = a;
+        const x = int32View[0];
+
+        let bits = (x >> 16) & 0x8000;
+        /* Get the sign */
+        let m = (x >> 12) & 0x07ff;
+        /* Keep one extra bit for rounding */
+        let e = (x >> 23) & 0xff;
+        /* Using int is faster here */
+
+        /* If zero, or denormal, or exponent underflows too much for a denormal half, return signed zero. */
+        if (e < 103)
+        {
+            return bits;
+        }
+
+        /* If NaN, return NaN. If Inf or exponent overflow, return Inf. */
+        if (e > 142)
+        {
+            bits |= 0x7c00;
+            /* If exponent was 0xff and one mantissa bit was set, it means NaN,
+                 * not Inf, so make sure we set one mantissa bit too. */
+            bits |= ((e === 255) ? 0 : 1) && (x & 0x007fffff);
+            return bits;
+        }
+
+        /* If exponent underflows but not too much, return a denormal */
+        if (e < 113)
+        {
+            m |= 0x0800;
+            /* Extra rounding may overflow and set mantissa to 0 and exponent to 1, which is OK. */
+            bits |= (m >> (114 - e)) + ((m >> (113 - e)) & 1);
+            return bits;
+        }
+
+        bits |= ((e - 112) << 10) | (m >> 1);
+        /* Extra rounding. An overflow will set mantissa to 0 and increment the exponent, which is OK. */
+        bits += m & 1;
+        return bits;
+    };
+
+}());

@@ -116,7 +116,6 @@ const WebGLDebugUtil = require('webgl-debug');
  * @property {WebGLTexture} _fallbackCube          - A fallback cube texture
  * @property {WebGLTexture} _fallbackTexture       - A fallback texture
  * @property {Tw2Effect} _blitEffect               - The blit effect used for rendering textures
- * @property {?Function} _onResize                 - An optional function which is called when the canvas resizes
  * @class
  */
 export class Tw2Device extends Tw2EventEmitter
@@ -178,7 +177,6 @@ export class Tw2Device extends Tw2EventEmitter
         this._fallbackCube = null;
         this._fallbackTexture = null;
         this._blitEffect = null;
-        this._onResize = null;
     }
 
     /**
@@ -283,7 +281,7 @@ export class Tw2Device extends Tw2EventEmitter
         }
 
         // Optional extensions
-        this.ext.CompressedTexture = this.GetExtension('compressed_texture_s3tc');
+        this.ext.CompressedTextureS3TC = this.GetExtension('compressed_texture_s3tc');
         this.ext.AnisotropicFilter = this.GetExtension('EXT_texture_filter_anisotropic');
         if (this.ext.AnisotropicFilter)
         {

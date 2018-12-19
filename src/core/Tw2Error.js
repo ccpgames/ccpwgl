@@ -271,6 +271,18 @@ export class ErrResourceExtensionUndefined extends Tw2Error
 
 
 /**
+ * Throws in invalid resource formats
+ */
+export class ErrResourceFormat extends Tw2Error
+{
+    constructor(data)
+    {
+        super(data, 'Invalid resource format');
+    }
+}
+
+
+/**
  * Throws when an effect has an invalid shader version
  */
 export class ErrShaderVersion extends Tw2Error

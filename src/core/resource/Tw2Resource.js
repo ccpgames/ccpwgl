@@ -125,6 +125,15 @@ export class Tw2Resource
     }
 
     /**
+     * Fires on debugs
+     * @param {*} eventLog
+     */
+    OnDebug(eventLog)
+    {
+        resMan.OnResEvent('debug', this.path, eventLog);
+    }
+
+    /**
      * LoadStarted
      * @param {*} [eventLog]
      */

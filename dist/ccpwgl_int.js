@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 68);
+/******/ 	return __webpack_require__(__webpack_require__.s = 69);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -97,7 +97,7 @@ Object.keys(_math).forEach(function (key) {
   });
 });
 
-var _engine = __webpack_require__(81);
+var _engine = __webpack_require__(82);
 
 Object.keys(_engine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -109,7 +109,7 @@ Object.keys(_engine).forEach(function (key) {
   });
 });
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 var util = _interopRequireWildcard(_util);
 
@@ -140,7 +140,7 @@ Object.keys(_batch).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(94);
+var _curve = __webpack_require__(95);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -152,7 +152,7 @@ Object.keys(_curve).forEach(function (key) {
   });
 });
 
-var _data = __webpack_require__(104);
+var _data = __webpack_require__(105);
 
 Object.keys(_data).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -164,7 +164,7 @@ Object.keys(_data).forEach(function (key) {
   });
 });
 
-var _geometry = __webpack_require__(49);
+var _geometry = __webpack_require__(50);
 
 Object.keys(_geometry).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -176,7 +176,7 @@ Object.keys(_geometry).forEach(function (key) {
   });
 });
 
-var _mesh = __webpack_require__(117);
+var _mesh = __webpack_require__(118);
 
 Object.keys(_mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -188,7 +188,7 @@ Object.keys(_mesh).forEach(function (key) {
   });
 });
 
-var _model = __webpack_require__(120);
+var _model = __webpack_require__(121);
 
 Object.keys(_model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -212,7 +212,7 @@ Object.keys(_parameter).forEach(function (key) {
   });
 });
 
-var _post = __webpack_require__(126);
+var _post = __webpack_require__(127);
 
 Object.keys(_post).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -236,7 +236,7 @@ Object.keys(_reader).forEach(function (key) {
   });
 });
 
-var _resource = __webpack_require__(53);
+var _resource = __webpack_require__(54);
 
 Object.keys(_resource).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -296,7 +296,7 @@ Object.keys(_Tw2EventEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2Float = __webpack_require__(129);
+var _Tw2Float = __webpack_require__(130);
 
 Object.keys(_Tw2Float).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -308,7 +308,7 @@ Object.keys(_Tw2Float).forEach(function (key) {
   });
 });
 
-var _Tw2Frustum = __webpack_require__(130);
+var _Tw2Frustum = __webpack_require__(131);
 
 Object.keys(_Tw2Frustum).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -320,7 +320,7 @@ Object.keys(_Tw2Frustum).forEach(function (key) {
   });
 });
 
-var _Tw2RenderTarget = __webpack_require__(59);
+var _Tw2RenderTarget = __webpack_require__(60);
 
 Object.keys(_Tw2RenderTarget).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -567,13 +567,13 @@ var Tw2Curve = exports.Tw2Curve = (_temp = _class2 = function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ErrIndexBounds = exports.ErrFeatureNotImplemented = exports.ErrAbstractClassMethod = exports.ErrSingletonInstantiation = exports.ErrDeclarationValueType = exports.ErrShaderLink = exports.ErrShaderCompile = exports.ErrShaderPermutationValue = exports.ErrShaderHeaderSize = exports.ErrShaderVersion = exports.ErrResourceExtensionUndefined = exports.ErrResourceExtensionUnregistered = exports.ErrResourcePrefixUndefined = exports.ErrResourcePrefixUnregistered = exports.ErrGeometryFileType = exports.ErrGeometryMeshEffectBinding = exports.ErrGeometryMeshBoneNameInvalid = exports.ErrGeometryMeshElementComponentsMissing = exports.ErrGeometryMeshMissingParticleElement = exports.ErrXMLObjectTypeUndefined = exports.ErrXMLBinaryFormat = exports.ErrHTTPReadyState = exports.ErrHTTPStatus = exports.ErrHTTPInstance = exports.ErrHTTPRequestSend = exports.ErrHTTPRequest = exports.Tw2Error = undefined;
+exports.ErrIndexBounds = exports.ErrFeatureNotImplemented = exports.ErrAbstractClassMethod = exports.ErrSingletonInstantiation = exports.ErrDeclarationValueType = exports.ErrShaderLink = exports.ErrShaderCompile = exports.ErrShaderPermutationValue = exports.ErrShaderHeaderSize = exports.ErrShaderVersion = exports.ErrResourceFormat = exports.ErrResourceExtensionUndefined = exports.ErrResourceExtensionUnregistered = exports.ErrResourcePrefixUndefined = exports.ErrResourcePrefixUnregistered = exports.ErrGeometryFileType = exports.ErrGeometryMeshEffectBinding = exports.ErrGeometryMeshBoneNameInvalid = exports.ErrGeometryMeshElementComponentsMissing = exports.ErrGeometryMeshMissingParticleElement = exports.ErrXMLObjectTypeUndefined = exports.ErrXMLBinaryFormat = exports.ErrHTTPReadyState = exports.ErrHTTPStatus = exports.ErrHTTPInstance = exports.ErrHTTPRequestSend = exports.ErrHTTPRequest = exports.Tw2Error = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class, _temp;
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -963,12 +963,29 @@ var ErrResourceExtensionUndefined = exports.ErrResourceExtensionUndefined = func
 }(Tw2Error);
 
 /**
+ * Throws in invalid resource formats
+ */
+
+
+var ErrResourceFormat = exports.ErrResourceFormat = function (_Tw2Error17) {
+    _inherits(ErrResourceFormat, _Tw2Error17);
+
+    function ErrResourceFormat(data) {
+        _classCallCheck(this, ErrResourceFormat);
+
+        return _possibleConstructorReturn(this, (ErrResourceFormat.__proto__ || Object.getPrototypeOf(ErrResourceFormat)).call(this, data, 'Invalid resource format'));
+    }
+
+    return ErrResourceFormat;
+}(Tw2Error);
+
+/**
  * Throws when an effect has an invalid shader version
  */
 
 
-var ErrShaderVersion = exports.ErrShaderVersion = function (_Tw2Error17) {
-    _inherits(ErrShaderVersion, _Tw2Error17);
+var ErrShaderVersion = exports.ErrShaderVersion = function (_Tw2Error18) {
+    _inherits(ErrShaderVersion, _Tw2Error18);
 
     function ErrShaderVersion(data) {
         _classCallCheck(this, ErrShaderVersion);
@@ -984,8 +1001,8 @@ var ErrShaderVersion = exports.ErrShaderVersion = function (_Tw2Error17) {
  */
 
 
-var ErrShaderHeaderSize = exports.ErrShaderHeaderSize = function (_Tw2Error18) {
-    _inherits(ErrShaderHeaderSize, _Tw2Error18);
+var ErrShaderHeaderSize = exports.ErrShaderHeaderSize = function (_Tw2Error19) {
+    _inherits(ErrShaderHeaderSize, _Tw2Error19);
 
     function ErrShaderHeaderSize(data) {
         _classCallCheck(this, ErrShaderHeaderSize);
@@ -1001,8 +1018,8 @@ var ErrShaderHeaderSize = exports.ErrShaderHeaderSize = function (_Tw2Error18) {
  */
 
 
-var ErrShaderPermutationValue = exports.ErrShaderPermutationValue = function (_Tw2Error19) {
-    _inherits(ErrShaderPermutationValue, _Tw2Error19);
+var ErrShaderPermutationValue = exports.ErrShaderPermutationValue = function (_Tw2Error20) {
+    _inherits(ErrShaderPermutationValue, _Tw2Error20);
 
     function ErrShaderPermutationValue(data) {
         _classCallCheck(this, ErrShaderPermutationValue);
@@ -1018,8 +1035,8 @@ var ErrShaderPermutationValue = exports.ErrShaderPermutationValue = function (_T
  */
 
 
-var ErrShaderCompile = exports.ErrShaderCompile = function (_Tw2Error20) {
-    _inherits(ErrShaderCompile, _Tw2Error20);
+var ErrShaderCompile = exports.ErrShaderCompile = function (_Tw2Error21) {
+    _inherits(ErrShaderCompile, _Tw2Error21);
 
     function ErrShaderCompile(data) {
         _classCallCheck(this, ErrShaderCompile);
@@ -1035,8 +1052,8 @@ var ErrShaderCompile = exports.ErrShaderCompile = function (_Tw2Error20) {
  */
 
 
-var ErrShaderLink = exports.ErrShaderLink = function (_Tw2Error21) {
-    _inherits(ErrShaderLink, _Tw2Error21);
+var ErrShaderLink = exports.ErrShaderLink = function (_Tw2Error22) {
+    _inherits(ErrShaderLink, _Tw2Error22);
 
     function ErrShaderLink(data) {
         _classCallCheck(this, ErrShaderLink);
@@ -1052,8 +1069,8 @@ var ErrShaderLink = exports.ErrShaderLink = function (_Tw2Error21) {
  */
 
 
-var ErrDeclarationValueType = exports.ErrDeclarationValueType = function (_Tw2Error22) {
-    _inherits(ErrDeclarationValueType, _Tw2Error22);
+var ErrDeclarationValueType = exports.ErrDeclarationValueType = function (_Tw2Error23) {
+    _inherits(ErrDeclarationValueType, _Tw2Error23);
 
     function ErrDeclarationValueType(data) {
         _classCallCheck(this, ErrDeclarationValueType);
@@ -1069,8 +1086,8 @@ var ErrDeclarationValueType = exports.ErrDeclarationValueType = function (_Tw2Er
  */
 
 
-var ErrSingletonInstantiation = exports.ErrSingletonInstantiation = function (_Tw2Error23) {
-    _inherits(ErrSingletonInstantiation, _Tw2Error23);
+var ErrSingletonInstantiation = exports.ErrSingletonInstantiation = function (_Tw2Error24) {
+    _inherits(ErrSingletonInstantiation, _Tw2Error24);
 
     function ErrSingletonInstantiation(data) {
         _classCallCheck(this, ErrSingletonInstantiation);
@@ -1086,8 +1103,8 @@ var ErrSingletonInstantiation = exports.ErrSingletonInstantiation = function (_T
  */
 
 
-var ErrAbstractClassMethod = exports.ErrAbstractClassMethod = function (_Tw2Error24) {
-    _inherits(ErrAbstractClassMethod, _Tw2Error24);
+var ErrAbstractClassMethod = exports.ErrAbstractClassMethod = function (_Tw2Error25) {
+    _inherits(ErrAbstractClassMethod, _Tw2Error25);
 
     function ErrAbstractClassMethod(data) {
         _classCallCheck(this, ErrAbstractClassMethod);
@@ -1103,8 +1120,8 @@ var ErrAbstractClassMethod = exports.ErrAbstractClassMethod = function (_Tw2Erro
  */
 
 
-var ErrFeatureNotImplemented = exports.ErrFeatureNotImplemented = function (_Tw2Error25) {
-    _inherits(ErrFeatureNotImplemented, _Tw2Error25);
+var ErrFeatureNotImplemented = exports.ErrFeatureNotImplemented = function (_Tw2Error26) {
+    _inherits(ErrFeatureNotImplemented, _Tw2Error26);
 
     function ErrFeatureNotImplemented(data) {
         _classCallCheck(this, ErrFeatureNotImplemented);
@@ -1120,8 +1137,8 @@ var ErrFeatureNotImplemented = exports.ErrFeatureNotImplemented = function (_Tw2
  */
 
 
-var ErrIndexBounds = exports.ErrIndexBounds = function (_Tw2Error26) {
-    _inherits(ErrIndexBounds, _Tw2Error26);
+var ErrIndexBounds = exports.ErrIndexBounds = function (_Tw2Error27) {
+    _inherits(ErrIndexBounds, _Tw2Error27);
 
     function ErrIndexBounds(data) {
         _classCallCheck(this, ErrIndexBounds);
@@ -1212,6 +1229,77 @@ function equals(a, b) {
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _arr = __webpack_require__(40);
+
+Object.keys(_arr).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _arr[key];
+    }
+  });
+});
+
+var _obj = __webpack_require__(84);
+
+Object.keys(_obj).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _obj[key];
+    }
+  });
+});
+
+var _type = __webpack_require__(21);
+
+Object.keys(_type).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _type[key];
+    }
+  });
+});
+
+var _uuid = __webpack_require__(85);
+
+Object.keys(_uuid).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _uuid[key];
+    }
+  });
+});
+
+var _url = __webpack_require__(86);
+
+Object.keys(_url).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _url[key];
+    }
+  });
+});
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1591,77 +1679,6 @@ var Tw2VectorParameter = exports.Tw2VectorParameter = function (_Tw2Parameter) {
 
     return Tw2VectorParameter;
 }(Tw2Parameter);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _arr = __webpack_require__(40);
-
-Object.keys(_arr).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _arr[key];
-    }
-  });
-});
-
-var _obj = __webpack_require__(83);
-
-Object.keys(_obj).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _obj[key];
-    }
-  });
-});
-
-var _type = __webpack_require__(22);
-
-Object.keys(_type).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _type[key];
-    }
-  });
-});
-
-var _uuid = __webpack_require__(84);
-
-Object.keys(_uuid).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _uuid[key];
-    }
-  });
-});
-
-var _url = __webpack_require__(85);
-
-Object.keys(_url).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _url[key];
-    }
-  });
-});
 
 /***/ }),
 /* 7 */
@@ -2190,12 +2207,12 @@ var EveObjectSet = exports.EveObjectSet = (_temp = _class2 = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gl_matrix_mat2__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gl_matrix_mat2d__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__gl_matrix_mat3__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(73);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__gl_matrix_mat4__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__gl_matrix_quat__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__gl_matrix_vec2__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec3__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec4__ = __webpack_require__(37);
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "glMatrix", function() { return __WEBPACK_IMPORTED_MODULE_0__gl_matrix_common__; });
@@ -2412,6 +2429,17 @@ var Tw2Resource = exports.Tw2Resource = function () {
         }
 
         /**
+         * Fires on debugs
+         * @param {*} eventLog
+         */
+
+    }, {
+        key: 'OnDebug',
+        value: function OnDebug(eventLog) {
+            _global.resMan.OnResEvent('debug', this.path, eventLog);
+        }
+
+        /**
          * LoadStarted
          * @param {*} [eventLog]
          */
@@ -2543,7 +2571,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2VertexDeclaration = __webpack_require__(88);
+var _Tw2VertexDeclaration = __webpack_require__(89);
 
 Object.keys(_Tw2VertexDeclaration).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -2766,22 +2794,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var PRIVATE = new WeakMap();
 
 /**
- * Handles private object
- * - To replace when private class properties are supported
- * @param {*} emitter
- * @param {boolean} [create]
- * @returns {*}
- */
-function getPrivate(emitter, create) {
-    var events = PRIVATE.get(emitter);
-    if (!events && create) {
-        events = {};
-        PRIVATE.set(emitter, events);
-    }
-    return events;
-}
-
-/**
  * Tw2EventEmitter
  * @class
  */
@@ -2798,15 +2810,16 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
          * @param {string} eventName
          * @param {*} [e={}]
          * @returns {Tw2EventEmitter}
-         * @emit event_added { eventName: string} - the first time an event is emitted
          */
         value: function emit(eventName) {
             var e = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
             // Short cut to creating a log output
-            if (e.log) e.log = this.log(e.log);
+            if (e.log && !e._logged) {
+                e.log = this.log(e.log);
+            }
 
-            var events = getPrivate(this);
+            var events = PRIVATE.get(this);
             if (!events) return this;
 
             eventName = eventName.toLowerCase();
@@ -2831,21 +2844,16 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
     }, {
         key: 'on',
         value: function on(eventName, listener) {
-            var _this = this;
-
             var context = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
             var once = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
 
-            if (!PRIVATE.has(this)) PRIVATE.set(this, {});
             var events = PRIVATE.get(this);
-
-            eventName = eventName.toLowerCase();
-            if (!events[eventName]) {
-                events[eventName] = new Set();
-                events[eventName].add(function () {
-                    return _this.emit('event_added', { eventName: eventName });
-                }, { once: true });
+            if (!events) {
+                events = {};
+                PRIVATE.set(this, events);
             }
+            eventName = eventName.toLowerCase();
+            if (!events[eventName]) events[eventName] = new Set();
             events[eventName].add(listener, { context: context, once: once });
             return this;
         }
@@ -2874,10 +2882,18 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
     }, {
         key: 'off',
         value: function off(eventName, listener) {
-            if (PRIVATE.has(this)) {
-                var events = PRIVATE.get(this);
-                eventName = eventName.toLowerCase();
-                if (eventName in events) events[eventName].delete(listener);
+            var events = PRIVATE.get(this);
+            if (!events) return this;
+
+            eventName = eventName.toLowerCase();
+            if (eventName === '*') {
+                for (var name in events) {
+                    if (events.hasOwnProperty(name)) {
+                        events[name].delete(listener);
+                    }
+                }
+            } else if (eventName in events) {
+                events[eventName].delete(listener);
             }
             return this;
         }
@@ -2886,20 +2902,16 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
          * Deletes an event and it's listeners
          * @param {string} eventName
          * @returns {Tw2EventEmitter}
-         * @emit event_removed { eventName: String }
          */
 
     }, {
         key: 'del',
         value: function del(eventName) {
-            if (PRIVATE.has(this)) {
-                var events = PRIVATE.get(this);
-                eventName = eventName.toLowerCase();
-                if (eventName in events) {
-                    this.emit('event_removed', { eventName: eventName });
-                    delete events[eventName];
-                }
-            }
+            var events = PRIVATE.get(this);
+            if (!events) return this;
+
+            eventName = eventName.toLowerCase();
+            if (eventName in events) delete events[eventName];
             return this;
         }
 
@@ -2912,12 +2924,12 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
     }, {
         key: 'clr',
         value: function clr(listener) {
-            if (PRIVATE.has(this)) {
-                var events = PRIVATE.get(this);
-                for (var eventName in events) {
-                    if (events.hasOwnProperty(eventName) && events[eventName].has(listener)) {
-                        events[eventName].delete(listener);
-                    }
+            var events = PRIVATE.get(this);
+            if (!events) return this;
+
+            for (var eventName in events) {
+                if (events.hasOwnProperty(eventName) && events[eventName].has(listener)) {
+                    events[eventName].delete(listener);
                 }
             }
             return this;
@@ -2933,8 +2945,8 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
         key: 'kill',
         value: function kill() {
             if (PRIVATE.has(this)) {
-                this.emit('event_kill');
-                PRIVATE.set(this, {});
+                this.emit('kill');
+                PRIVATE.delete(this);
             }
             return this;
         }
@@ -2957,17 +2969,6 @@ var Tw2EventEmitter = exports.Tw2EventEmitter = (_temp = _class = function () {
             }
 
             return this.constructor.defaultLogger.log(eventLog, this);
-        }
-
-        /**
-         * Assigns the event emitter's prototypes to a constructor/class
-         * @param Constructor
-         */
-
-    }], [{
-        key: 'assign',
-        value: function assign(Constructor) {
-            Object.assign(Constructor.prototype, Tw2EventEmitter.prototype);
         }
 
         /**
@@ -3003,7 +3004,7 @@ Object.keys(_Tw2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve = __webpack_require__(131);
+var _Tw2ColorCurve = __webpack_require__(132);
 
 Object.keys(_Tw2ColorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3015,7 +3016,7 @@ Object.keys(_Tw2ColorCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ColorCurve2 = __webpack_require__(132);
+var _Tw2ColorCurve2 = __webpack_require__(133);
 
 Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3027,7 +3028,7 @@ Object.keys(_Tw2ColorCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2EventCurve = __webpack_require__(133);
+var _Tw2EventCurve = __webpack_require__(134);
 
 Object.keys(_Tw2EventCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3039,7 +3040,7 @@ Object.keys(_Tw2EventCurve).forEach(function (key) {
   });
 });
 
-var _Tw2PerlinCurve = __webpack_require__(134);
+var _Tw2PerlinCurve = __webpack_require__(135);
 
 Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3051,7 +3052,7 @@ Object.keys(_Tw2PerlinCurve).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionCurve = __webpack_require__(135);
+var _Tw2QuaternionCurve = __webpack_require__(136);
 
 Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3063,7 +3064,7 @@ Object.keys(_Tw2QuaternionCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RandomConstantCurve = __webpack_require__(136);
+var _Tw2RandomConstantCurve = __webpack_require__(137);
 
 Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3075,7 +3076,7 @@ Object.keys(_Tw2RandomConstantCurve).forEach(function (key) {
   });
 });
 
-var _Tw2RigidOrientation = __webpack_require__(137);
+var _Tw2RigidOrientation = __webpack_require__(138);
 
 Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3087,7 +3088,7 @@ Object.keys(_Tw2RigidOrientation).forEach(function (key) {
   });
 });
 
-var _Tw2RotationCurve = __webpack_require__(138);
+var _Tw2RotationCurve = __webpack_require__(139);
 
 Object.keys(_Tw2RotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3099,7 +3100,7 @@ Object.keys(_Tw2RotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve = __webpack_require__(139);
+var _Tw2ScalarCurve = __webpack_require__(140);
 
 Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3111,7 +3112,7 @@ Object.keys(_Tw2ScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarCurve2 = __webpack_require__(140);
+var _Tw2ScalarCurve2 = __webpack_require__(141);
 
 Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3123,7 +3124,7 @@ Object.keys(_Tw2ScalarCurve2).forEach(function (key) {
   });
 });
 
-var _Tw2SineCurve = __webpack_require__(141);
+var _Tw2SineCurve = __webpack_require__(142);
 
 Object.keys(_Tw2SineCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3135,7 +3136,7 @@ Object.keys(_Tw2SineCurve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Curve = __webpack_require__(142);
+var _Tw2Vector2Curve = __webpack_require__(143);
 
 Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3147,7 +3148,7 @@ Object.keys(_Tw2Vector2Curve).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Curve = __webpack_require__(143);
+var _Tw2Vector3Curve = __webpack_require__(144);
 
 Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3159,7 +3160,7 @@ Object.keys(_Tw2Vector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2VectorCurve = __webpack_require__(144);
+var _Tw2VectorCurve = __webpack_require__(145);
 
 Object.keys(_Tw2VectorCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3299,7 +3300,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BatchAccumulator = __webpack_require__(69);
+var _Tw2BatchAccumulator = __webpack_require__(70);
 
 Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3311,7 +3312,7 @@ Object.keys(_Tw2BatchAccumulator).forEach(function (key) {
   });
 });
 
-var _Tw2ForwardingRenderBatch = __webpack_require__(91);
+var _Tw2ForwardingRenderBatch = __webpack_require__(92);
 
 Object.keys(_Tw2ForwardingRenderBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3335,7 +3336,7 @@ Object.keys(_Tw2GeometryBatch).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryLineBatch = __webpack_require__(92);
+var _Tw2GeometryLineBatch = __webpack_require__(93);
 
 Object.keys(_Tw2GeometryLineBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3359,7 +3360,7 @@ Object.keys(_Tw2RenderBatch).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMeshBatch = __webpack_require__(93);
+var _Tw2InstancedMeshBatch = __webpack_require__(94);
 
 Object.keys(_Tw2InstancedMeshBatch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3387,11 +3388,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var _global = __webpack_require__(0);
-
 var _Tw2Resource2 = __webpack_require__(11);
 
 var _Tw2Error = __webpack_require__(3);
+
+var _global = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -3404,13 +3405,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @property {WebGLTexture} texture
  * @property {boolean} isCube
- * @property {Array} images
  * @property {number} width
  * @property {number} height
- * @property {number} _facesLoaded
  * @property {boolean} hasMipMaps
+ * @property {boolean} enableMipMaps
+ * @property {?string} requestResponseType
  * @property {number} _currentSampler
- * @property {boolean} isAttached - identifies if the texture was attached rather than loaded
+ * @property {boolean} _isAttached    - identifies if the texture was attached rather than loaded
+ * @property {?string} _extension     - loading file extension
  * @inherit Tw2Resource
  */
 var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
@@ -3427,7 +3429,7 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2TextureRes.__proto__ || Object.getPrototypeOf(Tw2TextureRes)).call.apply(_ref, [this].concat(args))), _this), _this.texture = null, _this.isCube = false, _this.images = [], _this.width = 0, _this.height = 0, _this.hasMipMaps = false, _this._facesLoaded = 0, _this._currentSampler = 0, _this._isAttached = false, _temp), _possibleConstructorReturn(_this, _ret);
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tw2TextureRes.__proto__ || Object.getPrototypeOf(Tw2TextureRes)).call.apply(_ref, [this].concat(args))), _this), _this.texture = null, _this.isCube = false, _this.width = 0, _this.height = 0, _this.hasMipMaps = false, _this.requestResponseType = null, _this._currentSampler = 0, _this._isAttached = false, _this._extension = null, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(Tw2TextureRes, [{
@@ -3436,21 +3438,21 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
 
         /**
          * Prepares the resource
-         * @param {string} extension
+         * @param {*|Image|arrayBuffer} data
          */
-        value: function Prepare(extension) {
-            var gl = _global.device.gl,
-                format = this.images[0]['ccpGLFormat'] ? this.images[0]['ccpGLFormat'] : gl.RGBA;
+        value: function Prepare(data) {
+            var gl = _global.device.gl;
+            var format = 'ccpGLFormat' in data ? data['ccpGLFormat'] : gl.RGBA;
 
-            switch (extension) {
+            switch (this._extension) {
                 case 'cube':
                     this.texture = gl.createTexture();
                     gl.bindTexture(gl.TEXTURE_CUBE_MAP, this.texture);
                     var canvas = document.createElement('canvas');
-                    canvas.width = canvas.height = this.images[0].height;
+                    canvas.width = canvas.height = data.height;
                     var ctx = canvas.getContext('2d');
                     for (var j = 0; j < 6; ++j) {
-                        ctx.drawImage(this.images[0], j * canvas.width, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(data, j * canvas.width, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
                         gl.texImage2D(gl.TEXTURE_CUBE_MAP_POSITIVE_X + j, 0, format, format, gl.UNSIGNED_BYTE, canvas);
                     }
                     gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
@@ -3463,19 +3465,102 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
                 case 'png':
                     this.texture = gl.createTexture();
                     gl.bindTexture(gl.TEXTURE_2D, this.texture);
-                    gl.texImage2D(gl.TEXTURE_2D, 0, format, format, gl.UNSIGNED_BYTE, this.images[0]);
-                    this.hasMipMaps = Tw2TextureRes.IsPowerOfTwo(this.images[0].width) && Tw2TextureRes.IsPowerOfTwo(this.images[0].height);
+                    gl.texImage2D(gl.TEXTURE_2D, 0, format, format, gl.UNSIGNED_BYTE, data);
+                    this.hasMipMaps = Tw2TextureRes.IsPowerOfTwo(data.width) && Tw2TextureRes.IsPowerOfTwo(data.height);
                     if (this.hasMipMaps) gl.generateMipmap(gl.TEXTURE_2D);
                     gl.bindTexture(gl.TEXTURE_2D, null);
-                    this.width = this.images[0].width;
-                    this.height = this.images[0].height;
+                    this.width = data.width;
+                    this.height = data.height;
+                    break;
+
+                /*
+                  DDS methods based off work by Brandon Jones
+                -----------------------------------------------------------------------
+                Copyright (c) 2012 Brandon Jones
+                  This software is provided 'as-is', without any express or implied
+                warranty. In no event will the authors be held liable for any damages
+                arising from the use of this software.
+                  Permission is granted to anyone to use this software for any purpose,
+                including commercial applications, and to alter it and redistribute it
+                freely, subject to the following restrictions:
+                  1. The origin of this software must not be misrepresented; you must not
+                claim that you wrote the original software. If you use this software
+                in a product, an acknowledgment in the product documentation would be
+                appreciated but is not required.
+                  2. Altered source versions must be plainly marked as such, and must not
+                be misrepresented as being the original software.
+                  3. This notice may not be removed or altered from any source
+                distribution.
+                  */
+                case 'dds':
+                    var ext = _global.device.GetExtension('compressed_texture_s3tc'),
+                        header = new Int32Array(data, 0, _global.DDS_HEADER_LENGTH_INT),
+                        isFourCC = header[_global.DDS_HEADER_OFFSET_PF_FOURCC],
+                        isMagic = header[_global.DDS_HEADER_OFFSET_MAGIC] === _global.DDS_MAGIC,
+                        isCube = (header[_global.DDS_HEADER_OFFSET_CAPS2] & _global.DDSCAPS2_CUBEMAP) === _global.DDSCAPS2_CUBEMAP,
+                        fourCC = header[_global.DDS_HEADER_OFFSET_PF_FOURCC],
+                        mipmaps = header[_global.DDS_HEADER_OFFSET_FLAGS] & _global.DDSD_MIPMAPCOUNT ? Math.max(1, header[_global.DDS_HEADER_OFFSET_MIPMAP_COUNT]) : 1;
+
+                    // Check compatibility
+                    if (!ext) throw new _Tw2Error.ErrResourceFormat('Compressed textures not supported by your device');
+                    if (!isMagic) throw new _Tw2Error.ErrResourceFormat('Invalid DDS, missing magic number');
+                    if (!isFourCC) throw new _Tw2Error.ErrResourceFormat('Invalid DDS, missing FourCC code');
+
+                    var width = header[_global.DDS_HEADER_OFFSET_WIDTH],
+                        height = header[_global.DDS_HEADER_OFFSET_HEIGHT],
+                        dataOffset = header[_global.DDS_HEADER_OFFSET_SIZE] + 4,
+                        blockBytes = void 0,
+                        internalFormat = void 0;
+
+                    switch (fourCC) {
+                        case _global.FOURCC_DXT1:
+                            blockBytes = 8;
+                            internalFormat = ext.COMPRESSED_RGBA_S3TC_DXT1_EXT;
+                            break;
+
+                        case _global.FOURCC_DXT3:
+                            blockBytes = 16;
+                            internalFormat = ext.COMPRESSED_RGBA_S3TC_DXT3_EXT;
+                            break;
+
+                        case _global.FOURCC_DXT5:
+                            blockBytes = 16;
+                            internalFormat = ext.COMPRESSED_RGBA_S3TC_DXT5_EXT;
+                            break;
+
+                        default:
+                            var code = Tw2TextureRes.Int32ToFourCC(fourCC);
+                            throw new _Tw2Error.ErrResourceFormat('Invalid DDS, ' + code + ' unsupported');
+                    }
+
+                    this.hasMipMaps = mipmaps > 1;
+                    this.isCube = isCube;
+                    this.width = width;
+                    this.height = height;
+
+                    if (this.isCube) {
+                        // TODO: Add dds cube map support
+                        throw new _Tw2Error.ErrFeatureNotImplemented({ feature: 'DDS cube maps' });
+                    } else {
+                        this.texture = gl.createTexture();
+                        gl.bindTexture(gl.TEXTURE_2D, this.texture);
+                        for (var i = 0; i < mipmaps; ++i) {
+                            var dataLength = Math.max(4, width) / 4 * Math.max(4, height) / 4 * blockBytes;
+                            var byteArray = new Uint8Array(data, dataOffset, dataLength);
+                            gl.compressedTexImage2D(gl.TEXTURE_2D, i, internalFormat, width, height, 0, byteArray);
+                            dataOffset += dataLength;
+                            width *= 0.5;
+                            height *= 0.5;
+                        }
+                        gl.bindTexture(gl.TEXTURE_2D, null);
+                    }
                     break;
 
                 default:
-                    throw new _Tw2Error.ErrResourceExtensionUnregistered({ path: this.path, extension: extension });
+                    throw new _Tw2Error.ErrResourceFormat('Invalid format, ' + this._extension + ' unsupported');
             }
 
-            this.images = null;
+            this._extension = null;
             this._isAttached = false;
             this.OnPrepared();
         }
@@ -3492,7 +3577,8 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
         value: function DoCustomLoad(path, extension) {
             var _this2 = this;
 
-            switch (extension) {
+            this._extension = extension;
+            switch (this._extension) {
                 case 'cube':
                     this.isCube = true;
                     path = path.substr(0, path.length - 5) + '.png';
@@ -3502,36 +3588,42 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
                     this.isCube = false;
                     break;
 
+                case 'dds':
+                    // Pass back to the ResMan to load
+                    this._extension = extension;
+                    this.requestResponseType = 'arraybuffer';
+                    return false;
+
                 default:
+                    this._extension = null;
                     throw new _Tw2Error.ErrResourceExtensionUnregistered({ path: path, extension: extension });
             }
 
             this.OnRequested();
             _global.resMan._pendingLoads++;
 
-            this.images = [];
-            this.images[0] = new Image();
-            this.images[0].crossOrigin = 'anonymous';
+            var image = new Image();
+            image.crossOrigin = 'anonymous';
 
             /**
              * Fires on errors
              */
-            this.images[0].onerror = function () {
+            image.onerror = function () {
                 _global.resMan._pendingLoads--;
-                _this2.images = null;
+                _this2._extension = null;
                 _this2.OnError(new _Tw2Error.ErrHTTPRequest({ path: path }));
             };
 
             /**
              * Fires when loaded
              */
-            this.images[0].onload = function () {
+            image.onload = function () {
                 _global.resMan._pendingLoads--;
-                _global.resMan._prepareQueue.push([_this2, extension, null]);
+                _global.resMan._prepareQueue.push([_this2, image, null]);
                 _this2.OnLoaded();
             };
 
-            this.images[0].src = Tw2TextureRes.AddMipLevelSkipCount(path);
+            image.src = Tw2TextureRes.AddMipLevelSkipCount(path);
             return true;
         }
 
@@ -3550,6 +3642,8 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
             this._isPurged = true;
             this._isGood = false;
             this._isAttached = false;
+            this._extension = null;
+            this.requestResponseType = null;
             return true;
         }
 
@@ -3565,6 +3659,8 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
             this.texture = texture;
             this._isPurged = false;
             this._isAttached = true;
+            this._extension = null;
+            this.requestResponseType = null;
             this.OnLoaded({ hide: true, data: { isAttachment: true } });
             this.OnPrepared({ hide: true, data: { isAttachment: true } });
         }
@@ -3608,22 +3704,23 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
             }
 
             gl.bindTexture(targetType, this.texture);
-            if (sampler.hash !== this._currentSampler) {
+            if (sampler.hash !== this._currentSampler || this._updateSampler) {
                 sampler.Apply(this.hasMipMaps);
                 this._currentSampler = sampler.hash;
+                this._updateSampler = false;
             }
         }
 
         /**
          * Finds out if a number is to the power of 2
-         * @param {number} x
+         * @param {number} a
          * @returns {boolean}
          */
 
     }], [{
         key: 'IsPowerOfTwo',
-        value: function IsPowerOfTwo(x) {
-            return (x & x - 1) === 0;
+        value: function IsPowerOfTwo(a) {
+            return (a & a - 1) === 0;
         }
 
         /**
@@ -3645,6 +3742,18 @@ var Tw2TextureRes = exports.Tw2TextureRes = function (_Tw2Resource) {
                 }
             }
             return path;
+        }
+
+        /**
+         * Converts an int32 into FourCC format
+         * @param {number} value
+         * @returns {string}
+         */
+
+    }, {
+        key: 'Int32ToFourCC',
+        value: function Int32ToFourCC(value) {
+            return String.fromCharCode(value & 0xff, value >> 8 & 0xff, value >> 16 & 0xff, value >> 24 & 0xff);
         }
     }]);
 
@@ -3674,7 +3783,7 @@ Object.keys(_num).forEach(function (key) {
   });
 });
 
-var _vec = __webpack_require__(70);
+var _vec = __webpack_require__(71);
 
 Object.keys(_vec).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3710,7 +3819,7 @@ Object.keys(_vec3).forEach(function (key) {
   });
 });
 
-var _quat = __webpack_require__(76);
+var _quat = __webpack_require__(77);
 
 Object.keys(_quat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3722,7 +3831,7 @@ Object.keys(_quat).forEach(function (key) {
   });
 });
 
-var _mat = __webpack_require__(77);
+var _mat = __webpack_require__(78);
 
 Object.keys(_mat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3734,7 +3843,7 @@ Object.keys(_mat).forEach(function (key) {
   });
 });
 
-var _mat2 = __webpack_require__(78);
+var _mat2 = __webpack_require__(79);
 
 Object.keys(_mat2).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3746,7 +3855,7 @@ Object.keys(_mat2).forEach(function (key) {
   });
 });
 
-var _noise = __webpack_require__(79);
+var _noise = __webpack_require__(80);
 
 Object.keys(_noise).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3758,7 +3867,7 @@ Object.keys(_noise).forEach(function (key) {
   });
 });
 
-var _curve = __webpack_require__(80);
+var _curve = __webpack_require__(81);
 
 Object.keys(_curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -3780,13 +3889,276 @@ Object.keys(_curve).forEach(function (key) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+exports.isArrayLike = isArrayLike;
+exports.isBoolean = isBoolean;
+exports.isCanvas = isCanvas;
+exports.isDescriptor = isDescriptor;
+exports.isDNA = isDNA;
+exports.isError = isError;
+exports.isNumber = isNumber;
+exports.isFunction = isFunction;
+exports.isNoU = isNoU;
+exports.isNull = isNull;
+exports.isObject = isObject;
+exports.isObjectLike = isObjectLike;
+exports.isPlain = isPlain;
+exports.isPrimary = isPrimary;
+exports.isString = isString;
+exports.isSymbol = isSymbol;
+exports.isTag = isTag;
+exports.isTyped = isTyped;
+exports.isUndefined = isUndefined;
+exports.isVector = isVector;
+var toString = Object.prototype.toString;
+
+/**
+ * Checks if a value is an array
+ * @param {*} a
+ * @returns {boolean}
+ */
+var isArray = exports.isArray = Array.isArray;
+
+/**
+ * Checks if a value is an array or a typed array
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isArrayLike(a) {
+    return a ? isArray(a) || isTyped(a) : false;
+}
+
+/**
+ * Checks if a value is a boolean
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isBoolean(a) {
+    return isTag(a, '[object Boolean]');
+}
+
+/**
+ * Checks if a value is an html canvas element
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isCanvas(a) {
+    return !!(a && a instanceof HTMLCanvasElement);
+}
+
+/**
+ * Checks if a value is a descriptor
+ * @author jay phelps
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isDescriptor(a) {
+    if (!a || !a.hasOwnProperty) {
+        return false;
+    }
+
+    var keys = ['value', 'initializer', 'get', 'set'];
+
+    for (var i = 0, l = keys.length; i < l; i++) {
+        if (a.hasOwnProperty(keys[i])) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Checks if a value is a valid sof DNA string
+ * @param {*} a
+ */
+function isDNA(a) {
+    return isString(a) && a.match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/);
+}
+
+/**
+ * Checks if a value is an error
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isError(a) {
+    return !!(a && a instanceof Error || a.constructor.category === 'error');
+}
+
+/**
+ * Checks if a value is a number
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isNumber(a) {
+    return isTag(a, '[object Number]');
+}
+
+/**
+ * Checks if a value is a function
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isFunction(a) {
+    return typeof a === 'function';
+}
+
+/**
+ * Checks if a value is null or undefined
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isNoU(a) {
+    return a == null;
+}
+
+/**
+ * Checks if a value is null
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isNull(a) {
+    return a === null;
+}
+
+/**
+ * Checks if a value is an object and not null
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isObject(a) {
+    var type = typeof a === 'undefined' ? 'undefined' : _typeof(a);
+    return a !== null && (type === 'object' || type === 'function');
+}
+
+/**
+ * Checks if a value has the type object, and is not null
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isObjectLike(a) {
+    return a !== null && (typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'object';
+}
+
+/**
+ * Checks if a value is a plain object
+ * @author lodash
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isPlain(a) {
+    if (!isObject(a) || !isTag(a, '[object Object]')) {
+        return false;
+    }
+
+    if (Object.getPrototypeOf(a) === null) {
+        return true;
+    }
+
+    var proto = a;
+    while (Object.getPrototypeOf(proto) !== null) {
+        proto = Object.getPrototypeOf(proto);
+    }
+
+    return Object.getPrototypeOf(a) === proto;
+}
+
+/**
+ * Checks if a value is a primary type
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isPrimary(a) {
+    return isBoolean(a) || isNumber(a) || isString(a);
+}
+
+/**
+ * Checks if a value is a string
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isString(a) {
+    return isTag(a, '[object String]');
+}
+
+/**
+ * Checks if a value is a symbol
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isSymbol(a) {
+    return (typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'symbol' || isTag(a, '[object Symbol]');
+}
+
+/**
+ * Checks if a value has a given tag
+ * @param {*} a
+ * @param {string} tag
+ * @returns {boolean}
+ */
+function isTag(a, tag) {
+    return toString.call(a) === tag;
+}
+
+/**
+ * Checks if a value is a typed array
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isTyped(a) {
+    return a ? !!(a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT) : false;
+}
+
+/**
+ * Checks if a value is undefined
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isUndefined(a) {
+    return a === undefined;
+}
+
+/**
+ * Checks if a value is arraylike and only contains numbers
+ * @param {*} a
+ * @returns {boolean}
+ */
+function isVector(a) {
+    if (!a) {
+        return false;
+    }
+
+    if (isTyped(a)) {
+        return true;
+    }
+
+    if (isArray(a)) {
+        for (var i = 0; i < a.length; i++) {
+            if (!isNumber(a[i])) return false;
+        }
+        return true;
+    }
+}
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.store = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _class, _temp2;
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
@@ -4467,260 +4839,6 @@ var Tw2Store = (_temp2 = _class = function (_Tw2EventEmitter) {
 var store = exports.store = new Tw2Store();
 
 /***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-exports.isArrayLike = isArrayLike;
-exports.isBoolean = isBoolean;
-exports.isCanvas = isCanvas;
-exports.isDescriptor = isDescriptor;
-exports.isError = isError;
-exports.isNumber = isNumber;
-exports.isFunction = isFunction;
-exports.isNoU = isNoU;
-exports.isNull = isNull;
-exports.isObject = isObject;
-exports.isObjectLike = isObjectLike;
-exports.isPlain = isPlain;
-exports.isPrimary = isPrimary;
-exports.isString = isString;
-exports.isSymbol = isSymbol;
-exports.isTag = isTag;
-exports.isTyped = isTyped;
-exports.isUndefined = isUndefined;
-exports.isVector = isVector;
-var toString = Object.prototype.toString;
-
-/**
- * Checks if a value is an array
- * @param {*} a
- * @returns {boolean}
- */
-var isArray = exports.isArray = Array.isArray;
-
-/**
- * Checks if a value is an array or a typed array
- * @param {*} a
- * @returns {boolean}
- */
-function isArrayLike(a) {
-    return a ? isArray(a) || isTyped(a) : false;
-}
-
-/**
- * Checks if a value is a boolean
- * @param {*} a
- * @returns {boolean}
- */
-function isBoolean(a) {
-    return isTag(a, '[object Boolean]');
-}
-
-/**
- * Checks if a value is an html canvas element
- * @param {*} a
- * @returns {boolean}
- */
-function isCanvas(a) {
-    return !!(a && a instanceof HTMLCanvasElement);
-}
-
-/**
- * Checks if a value is a descriptor
- * @author jay phelps
- * @param {*} a
- * @returns {boolean}
- */
-function isDescriptor(a) {
-    if (!a || !a.hasOwnProperty) {
-        return false;
-    }
-
-    var keys = ['value', 'initializer', 'get', 'set'];
-
-    for (var i = 0, l = keys.length; i < l; i++) {
-        if (a.hasOwnProperty(keys[i])) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-/**
- * Checks if a value is an error
- * @param {*} a
- * @returns {boolean}
- */
-function isError(a) {
-    return !!(a && a instanceof Error || a.constructor.isError);
-}
-
-/**
- * Checks if a value is a number
- * @param {*} a
- * @returns {boolean}
- */
-function isNumber(a) {
-    return isTag(a, '[object Number]');
-}
-
-/**
- * Checks if a value is a function
- * @param {*} a
- * @returns {boolean}
- */
-function isFunction(a) {
-    return typeof a === 'function';
-}
-
-/**
- * Checks if a value is null or undefined
- * @param {*} a
- * @returns {boolean}
- */
-function isNoU(a) {
-    return a == null;
-}
-
-/**
- * Checks if a value is null
- * @param {*} a
- * @returns {boolean}
- */
-function isNull(a) {
-    return a === null;
-}
-
-/**
- * Checks if a value is an object and not null
- * @param {*} a
- * @returns {boolean}
- */
-function isObject(a) {
-    var type = typeof a === 'undefined' ? 'undefined' : _typeof(a);
-    return a !== null && (type === 'object' || type === 'function');
-}
-
-/**
- * Checks if a value has the type object, and is not null
- * @param {*} a
- * @returns {boolean}
- */
-function isObjectLike(a) {
-    return a !== null && (typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'object';
-}
-
-/**
- * Checks if a value is a plain object
- * @author lodash
- * @param {*} a
- * @returns {boolean}
- */
-function isPlain(a) {
-    if (!isObject(a) || !isTag(a, '[object Object]')) {
-        return false;
-    }
-
-    if (Object.getPrototypeOf(a) === null) {
-        return true;
-    }
-
-    var proto = a;
-    while (Object.getPrototypeOf(proto) !== null) {
-        proto = Object.getPrototypeOf(proto);
-    }
-
-    return Object.getPrototypeOf(a) === proto;
-}
-
-/**
- * Checks if a value is a primary type
- * @param {*} a
- * @returns {boolean}
- */
-function isPrimary(a) {
-    return isBoolean(a) || isNumber(a) || isString(a);
-}
-
-/**
- * Checks if a value is a string
- * @param {*} a
- * @returns {boolean}
- */
-function isString(a) {
-    return isTag(a, '[object String]');
-}
-
-/**
- * Checks if a value is a symbol
- * @param {*} a
- * @returns {boolean}
- */
-function isSymbol(a) {
-    return (typeof a === 'undefined' ? 'undefined' : _typeof(a)) === 'symbol' || isTag(a, '[object Symbol]');
-}
-
-/**
- * Checks if a value has a given tag
- * @param {*} a
- * @param {string} tag
- * @returns {boolean}
- */
-function isTag(a, tag) {
-    return toString.call(a) === tag;
-}
-
-/**
- * Checks if a value is a typed array
- * @param {*} a
- * @returns {boolean}
- */
-function isTyped(a) {
-    return a ? !!(a.buffer instanceof ArrayBuffer && a.BYTES_PER_ELEMENT) : false;
-}
-
-/**
- * Checks if a value is undefined
- * @param {*} a
- * @returns {boolean}
- */
-function isUndefined(a) {
-    return a === undefined;
-}
-
-/**
- * Checks if a value is arraylike and only contains numbers
- * @param {*} a
- * @returns {boolean}
- */
-function isVector(a) {
-    if (!a) {
-        return false;
-    }
-
-    if (isTyped(a)) {
-        return true;
-    }
-
-    if (isArray(a)) {
-        for (var i = 0; i < a.length; i++) {
-            if (!isNumber(a[i])) return false;
-        }
-        return true;
-    }
-}
-
-/***/ }),
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4736,9 +4854,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp2;
 
-var _Tw2Store = __webpack_require__(21);
+var _Tw2Store = __webpack_require__(22);
 
-var _Tw2MotherLode = __webpack_require__(86);
+var _Tw2MotherLode = __webpack_require__(87);
 
 var _Tw2LoadingObject = __webpack_require__(42);
 
@@ -4746,7 +4864,7 @@ var _Tw2EventEmitter2 = __webpack_require__(15);
 
 var _core = __webpack_require__(1);
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -5235,8 +5353,9 @@ var Tw2ResMan = exports.Tw2ResMan = (_temp2 = _class = function (_Tw2EventEmitte
     RELOADING: { type: 'info', message: 'Reloading' },
     LOADED: { type: 'info', message: 'Loaded' },
     PREPARED: { type: 'log', message: 'Prepared' },
-    PURGED: { type: 'debug', message: 'Purged' },
-    UNLOADED: { type: 'debug', message: 'Unloaded' }
+    PURGED: { type: 'info', message: 'Purged' },
+    UNLOADED: { type: 'info', message: 'Unloaded' },
+    DEBUG: { type: 'debug', message: 'Debug' }
 }, _class.category = 'resource_manager', _temp2);
 
 // Global instance of Tw2ResMan
@@ -5916,7 +6035,7 @@ Object.keys(_Tw2SamplerState).forEach(function (key) {
   });
 });
 
-var _Tw2SamplerOverride = __webpack_require__(87);
+var _Tw2SamplerOverride = __webpack_require__(88);
 
 Object.keys(_Tw2SamplerOverride).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6055,7 +6174,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(6);
 
 Object.keys(_Tw2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6067,7 +6186,7 @@ Object.keys(_Tw2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2FloatParameter = __webpack_require__(97);
+var _Tw2FloatParameter = __webpack_require__(98);
 
 Object.keys(_Tw2FloatParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6079,7 +6198,7 @@ Object.keys(_Tw2FloatParameter).forEach(function (key) {
   });
 });
 
-var _Tw2MatrixParameter = __webpack_require__(98);
+var _Tw2MatrixParameter = __webpack_require__(99);
 
 Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6091,7 +6210,7 @@ Object.keys(_Tw2MatrixParameter).forEach(function (key) {
   });
 });
 
-var _Tw2TransformParameter = __webpack_require__(99);
+var _Tw2TransformParameter = __webpack_require__(100);
 
 Object.keys(_Tw2TransformParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6103,7 +6222,7 @@ Object.keys(_Tw2TransformParameter).forEach(function (key) {
   });
 });
 
-var _Tw2VariableParameter = __webpack_require__(100);
+var _Tw2VariableParameter = __webpack_require__(101);
 
 Object.keys(_Tw2VariableParameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6115,7 +6234,7 @@ Object.keys(_Tw2VariableParameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector2Parameter = __webpack_require__(101);
+var _Tw2Vector2Parameter = __webpack_require__(102);
 
 Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6127,7 +6246,7 @@ Object.keys(_Tw2Vector2Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector3Parameter = __webpack_require__(102);
+var _Tw2Vector3Parameter = __webpack_require__(103);
 
 Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -6139,7 +6258,7 @@ Object.keys(_Tw2Vector3Parameter).forEach(function (key) {
   });
 });
 
-var _Tw2Vector4Parameter = __webpack_require__(103);
+var _Tw2Vector4Parameter = __webpack_require__(104);
 
 Object.keys(_Tw2Vector4Parameter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -7062,6 +7181,100 @@ num.dwordToFloat = function (value) {
 num.exponentialDecay = function (omega0, torque, I, d, time) {
     return torque * time / d + I * (omega0 * d - torque) / (d * d) * (1.0 - Math.pow(Math.E, -d * time / I));
 };
+
+/**
+ * Gets a value from a half float
+ * @author Babylon
+ * @param {number} a
+ * @returns {number}
+ */
+num.fromHalfFloat = function (a) {
+    var s = (a & 0x8000) >> 15,
+        e = (a & 0x7C00) >> 10,
+        f = a & 0x03FF;
+
+    if (e === 0) {
+        return (s ? -1 : 1) * Math.pow(2, -14) * (f / Math.pow(2, 10));
+    } else if (e === 0x1F) {
+        return f ? NaN : (s ? -1 : 1) * Infinity;
+    }
+
+    return (s ? -1 : 1) * Math.pow(2, e - 15) * (1 + f / Math.pow(2, 10));
+};
+
+/**
+ * Gets long word order
+ * @author Babylon
+ * @param {number} a
+ * @returns {number}
+ */
+num.getLongWordOrder = function (a) {
+    return a === 0 || a === 255 || a === -16777216 ? 0 : 1 + num.getLongWordOrder(a >> 8);
+};
+
+/**
+ * Gets the log2 of a number
+ * @param {number} a
+ * @returns {number}
+ */
+num.log2 = function (a) {
+    return Math.log(a) * Math.LOG2E;
+};
+
+/**
+ * Converts a number to a half float
+ * @author http://stackoverflow.com/questions/32633585/how-do-you-convert-to-half-floats-in-javascript
+ * @param {number} a
+ * @returns {number}
+ */
+num.toHalfFloat = function () {
+    var floatView = void 0,
+        int32View = void 0;
+
+    return function (a) {
+        if (!floatView) {
+            floatView = new Float32Array(1);
+            int32View = new Int32Array(floatView.buffer);
+        }
+
+        floatView[0] = a;
+        var x = int32View[0];
+
+        var bits = x >> 16 & 0x8000;
+        /* Get the sign */
+        var m = x >> 12 & 0x07ff;
+        /* Keep one extra bit for rounding */
+        var e = x >> 23 & 0xff;
+        /* Using int is faster here */
+
+        /* If zero, or denormal, or exponent underflows too much for a denormal half, return signed zero. */
+        if (e < 103) {
+            return bits;
+        }
+
+        /* If NaN, return NaN. If Inf or exponent overflow, return Inf. */
+        if (e > 142) {
+            bits |= 0x7c00;
+            /* If exponent was 0xff and one mantissa bit was set, it means NaN,
+                 * not Inf, so make sure we set one mantissa bit too. */
+            bits |= (e === 255 ? 0 : 1) && x & 0x007fffff;
+            return bits;
+        }
+
+        /* If exponent underflows but not too much, return a denormal */
+        if (e < 113) {
+            m |= 0x0800;
+            /* Extra rounding may overflow and set mantissa to 0 and exponent to 1, which is OK. */
+            bits |= (m >> 114 - e) + (m >> 113 - e & 1);
+            return bits;
+        }
+
+        bits |= e - 112 << 10 | m >> 1;
+        /* Extra rounding. An overflow will set mantissa to 0 and increment the exponent, which is OK. */
+        bits += m & 1;
+        return bits;
+    };
+}();
 
 /***/ }),
 /* 35 */
@@ -9555,7 +9768,7 @@ exports.removeFromArray = removeFromArray;
 exports.toArray = toArray;
 exports.toUniqueArray = toUniqueArray;
 
-var _type = __webpack_require__(22);
+var _type = __webpack_require__(21);
 
 /**
  * Adds arguments to an array if they don't already exist in it
@@ -9658,7 +9871,7 @@ var _class, _temp2;
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10621,7 +10834,7 @@ var _global = __webpack_require__(0);
 
 var _sampler = __webpack_require__(25);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(6);
 
 var _Tw2TextureRes = __webpack_require__(19);
 
@@ -10728,11 +10941,11 @@ var Tw2TextureParameter = exports.Tw2TextureParameter = (_temp = _class = functi
     }, {
         key: 'SetTextureRes',
         value: function SetTextureRes(res) {
-            if (this.textureRes !== res) {
-                this.resourcePath = '';
-                this.textureRes = res;
-            }
-            this.textureRes._isAttached = true;
+            if (this.textureRes === res) return false;
+            this.resourcePath = '';
+            this.textureRes = res;
+            if (this.textureRes) this.textureRes._isAttached = true;
+            return true;
         }
 
         /**
@@ -10976,8 +11189,6 @@ exports.Tw2SamplerState = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _class, _temp;
-
 var _global = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -10989,6 +11200,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} registerIndex
  * @property {number} minFilter
  * @property {number} maxFilter
+ * @property {number} magFilter
  * @property {number} minFilterNoMips
  * @property {number} addressU
  * @property {number} addressV
@@ -10999,20 +11211,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {number} hash
  * @class
  */
-var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
+var Tw2SamplerState = exports.Tw2SamplerState = function () {
     function Tw2SamplerState() {
         _classCallCheck(this, Tw2SamplerState);
 
         this.name = '';
         this.registerIndex = 0;
-        this.minFilter = _global.device.gl.LINEAR;
-        this.maxFilter = _global.device.gl.LINEAR;
-        this.minFilterNoMips = _global.device.gl.LINEAR;
-        this.addressU = _global.device.gl.REPEAT;
-        this.addressV = _global.device.gl.REPEAT;
-        this.addressW = _global.device.gl.REPEAT;
+        this.minFilter = _global.GL_LINEAR;
+        this.maxFilter = _global.GL_LINEAR;
+        this.magFilter = _global.GL_LINEAR;
+        this.minFilterNoMips = _global.GL_LINEAR;
+        this.addressU = _global.GL_REPEAT;
+        this.addressV = _global.GL_REPEAT;
+        this.addressW = _global.GL_REPEAT;
         this.anisotropy = 1;
-        this.samplerType = _global.device.gl.TEXTURE_2D;
+        this.samplerType = _global.GL_TEXTURE_2D;
         this.isVolume = false;
         this.hash = 0;
     }
@@ -11058,16 +11271,6 @@ var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
                 gl.texParameterf(targetType, d.ext.AnisotropicFilter.TEXTURE_MAX_ANISOTROPY_EXT, Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
             }
         }
-
-        /**
-         * Filter modes
-         */
-
-
-        /**
-         * Mip filter modes
-         */
-
     }, {
         key: 'filterMode',
 
@@ -11077,7 +11280,7 @@ var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
          * @returns {number}
          */
         get: function get() {
-            return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
+            return this.minFilterNoMips in _global.FilterMode ? _global.FilterMode[this.minFilterNoMips] : 2;
         }
 
         /**
@@ -11088,22 +11291,12 @@ var Tw2SamplerState = exports.Tw2SamplerState = (_temp = _class = function () {
     }, {
         key: 'mipFilterMode',
         get: function get() {
-            return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
+            return this.minFilter in _global.MipFilterMode ? _global.MipFilterMode[this.minFilter] : 2;
         }
     }]);
 
     return Tw2SamplerState;
-}(), _class.FilterMode = {
-    9728: 1,
-    9729: 2
-}, _class.MipFilterMode = {
-    9728: 0,
-    9729: 0,
-    9984: 1,
-    9985: 1,
-    9986: 2,
-    9987: 2
-}, _temp);
+}();
 
 /***/ }),
 /* 47 */
@@ -11162,6 +11355,513 @@ exports.Tw2VertexElement = function Tw2VertexElement(usage, usageIndex, type, el
 
 /***/ }),
 /* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _GL_TYPE_LENGTH, _FilterMode, _MipFilterMode;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/*
+
+    Webgl & Webgl2
+
+*/
+var GL_COLOR_BUFFER_BIT = exports.GL_COLOR_BUFFER_BIT = 16384;
+var GL_DEPTH_BUFFER_BIT = exports.GL_DEPTH_BUFFER_BIT = 256;
+var GL_STENCIL_BUFFER_BIT = exports.GL_STENCIL_BUFFER_BIT = 1024;
+
+var GL_TEXTURE_2D = exports.GL_TEXTURE_2D = 3553;
+var GL_TEXTURE_CUBE_MAP = exports.GL_TEXTURE_CUBE_MAP = 34067;
+var GL_TEXTURE_3D = exports.GL_TEXTURE_3D = 32879;
+
+var GL_TEXTURE_MAG_FILTER = exports.GL_TEXTURE_MAG_FILTER = 10240;
+var GL_TEXTURE_MIN_FILTER = exports.GL_TEXTURE_MIN_FILTER = 10241;
+var GL_TEXTURE_WRAP_S = exports.GL_TEXTURE_WRAP_S = 10242;
+var GL_TEXTURE_WRAP_T = exports.GL_TEXTURE_WRAP_T = 10243;
+
+var GL_BYTE = exports.GL_BYTE = 5120;
+var GL_UNSIGNED_BYTE = exports.GL_UNSIGNED_BYTE = 5121;
+var GL_SHORT = exports.GL_SHORT = 5122;
+var GL_UNSIGNED_SHORT = exports.GL_UNSIGNED_SHORT = 5123;
+var GL_INT = exports.GL_INT = 5124;
+var GL_UNSIGNED_INT = exports.GL_UNSIGNED_INT = 5125;
+var GL_FLOAT = exports.GL_FLOAT = 5126;
+var GL_HALF_FLOAT_OES = exports.GL_HALF_FLOAT_OES = 36193; //webgl only
+var GL_HALF_FLOAT = exports.GL_HALF_FLOAT = 5131; //webgl2
+var GL_DEPTH_COMPONENT16 = exports.GL_DEPTH_COMPONENT16 = 33189; //webgl2
+var GL_DEPTH_COMPONENT24 = exports.GL_DEPTH_COMPONENT24 = 33190; //webgl2
+var GL_DEPTH_COMPONENT32F = exports.GL_DEPTH_COMPONENT32F = 36012; //webgl2
+
+var GL_FLOAT_VEC2 = exports.GL_FLOAT_VEC2 = 35664;
+var GL_FLOAT_VEC3 = exports.GL_FLOAT_VEC3 = 35665;
+var GL_FLOAT_VEC4 = exports.GL_FLOAT_VEC4 = 35666;
+var GL_INT_VEC2 = exports.GL_INT_VEC2 = 35667;
+var GL_INT_VEC3 = exports.GL_INT_VEC3 = 35668;
+var GL_INT_VEC4 = exports.GL_INT_VEC4 = 35669;
+var GL_BOOL = exports.GL_BOOL = 35670;
+var GL_BOOL_VEC2 = exports.GL_BOOL_VEC2 = 35671;
+var GL_BOOL_VEC3 = exports.GL_BOOL_VEC3 = 35672;
+var GL_BOOL_VEC4 = exports.GL_BOOL_VEC4 = 35673;
+var GL_FLOAT_MAT2 = exports.GL_FLOAT_MAT2 = 35674;
+var GL_FLOAT_MAT3 = exports.GL_FLOAT_MAT3 = 35675;
+var GL_FLOAT_MAT4 = exports.GL_FLOAT_MAT4 = 35676;
+
+var GL_TYPE_LENGTH = exports.GL_TYPE_LENGTH = (_GL_TYPE_LENGTH = {}, _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT, 1), _defineProperty(_GL_TYPE_LENGTH, GL_INT, 1), _defineProperty(_GL_TYPE_LENGTH, GL_BYTE, 1), _defineProperty(_GL_TYPE_LENGTH, GL_BOOL, 1), _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT_VEC2, 2), _defineProperty(_GL_TYPE_LENGTH, GL_INT_VEC2, 2), _defineProperty(_GL_TYPE_LENGTH, GL_BOOL_VEC2, 2), _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT_VEC3, 3), _defineProperty(_GL_TYPE_LENGTH, GL_INT_VEC3, 3), _defineProperty(_GL_TYPE_LENGTH, GL_BOOL_VEC3, 3), _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT_VEC4, 4), _defineProperty(_GL_TYPE_LENGTH, GL_INT_VEC4, 4), _defineProperty(_GL_TYPE_LENGTH, GL_BOOL_VEC4, 4), _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT_MAT3, 9), _defineProperty(_GL_TYPE_LENGTH, GL_FLOAT_MAT4, 16), _GL_TYPE_LENGTH);
+
+var GL_SAMPLER_2D = exports.GL_SAMPLER_2D = 35678;
+var GL_SAMPLER_3D = exports.GL_SAMPLER_3D = 35679;
+var GL_SAMPLER_CUBE = exports.GL_SAMPLER_CUBE = 35680;
+
+var GL_DEPTH_COMPONENT = exports.GL_DEPTH_COMPONENT = 6402;
+var GL_ALPHA = exports.GL_ALPHA = 6406;
+var GL_RGB = exports.GL_RGB = 6407;
+var GL_RGBA = exports.GL_RGBA = 6408;
+var GL_LUMINANCE = exports.GL_LUMINANCE = 6409;
+var GL_LUMINANCE_ALPHA = exports.GL_LUMINANCE_ALPHA = 6410;
+var GL_DEPTH_STENCIL = exports.GL_DEPTH_STENCIL = 34041;
+var GL_UNSIGNED_INT_24_8_WEBGL = exports.GL_UNSIGNED_INT_24_8_WEBGL = 34042;
+
+var GL_R8 = exports.GL_R8 = 33321; //webgl2
+var GL_R16F = exports.GL_R16F = 33325; //webgl2
+var GL_R32F = exports.GL_R32F = 33326; //webgl2
+var GL_R8UI = exports.GL_R8UI = 33330; //webgl2
+var GL_RG8 = exports.GL_RG8 = 33323; //webgl2
+var GL_RG16F = exports.GL_RG16F = 33327; //webgl2
+var GL_RG32F = exports.GL_RG32F = 33328; //webgl2
+var GL_RGB8 = exports.GL_RGB8 = 32849; //webgl2
+var GL_SRGB8 = exports.GL_SRGB8 = 35905; //webgl2
+var GL_RGB565 = exports.GL_RGB565 = 36194; //webgl2
+var GL_R11F_G11F_B10F = exports.GL_R11F_G11F_B10F = 35898; //webgl2
+var GL_RGB9_E5 = exports.GL_RGB9_E5 = 35901; //webgl2
+var GL_RGB16F = exports.GL_RGB16F = 34843; //webgl2
+var GL_RGB32F = exports.GL_RGB32F = 34837; //webgl2
+var GL_RGB8UI = exports.GL_RGB8UI = 36221; //webgl2
+var GL_RGBA8 = exports.GL_RGBA8 = 32856; //webgl2
+var GL_RGB5_A1 = exports.GL_RGB5_A1 = 32855; //webgl2
+var GL_RGBA16F = exports.GL_RGBA16F = 34842; //webgl2
+var GL_RGBA32F = exports.GL_RGBA32F = 34836; //webgl2
+var GL_RGBA8UI = exports.GL_RGBA8UI = 36220; //webgl2
+var GL_RGBA16I = exports.GL_RGBA16I = 36232; //webgl2
+var GL_RGBA16UI = exports.GL_RGBA16UI = 36214; //webgl2
+var GL_RGBA32I = exports.GL_RGBA32I = 36226; //webgl2
+var GL_RGBA32UI = exports.GL_RGBA32UI = 36208; //webgl2
+
+var GL_NEAREST = exports.GL_NEAREST = 9728;
+var GL_LINEAR = exports.GL_LINEAR = 9729;
+var GL_NEAREST_MIPMAP_NEAREST = exports.GL_NEAREST_MIPMAP_NEAREST = 9984;
+var GL_LINEAR_MIPMAP_NEAREST = exports.GL_LINEAR_MIPMAP_NEAREST = 9985;
+var GL_NEAREST_MIPMAP_LINEAR = exports.GL_NEAREST_MIPMAP_LINEAR = 9986;
+var GL_LINEAR_MIPMAP_LINEAR = exports.GL_LINEAR_MIPMAP_LINEAR = 9987;
+
+var GL_REPEAT = exports.GL_REPEAT = 10497;
+var GL_CLAMP_TO_EDGE = exports.GL_CLAMP_TO_EDGE = 33071;
+var GL_MIRRORED_REPEAT = exports.GL_MIRRORED_REPEAT = 33648;
+
+var GL_ZERO = exports.GL_ZERO = 0;
+var GL_ONE = exports.GL_ONE = 1;
+var GL_SRC_COLOR = exports.GL_SRC_COLOR = 768;
+var GL_ONE_MINUS_SRC_COLOR = exports.GL_ONE_MINUS_SRC_COLOR = 769;
+var GL_SRC_ALPHA = exports.GL_SRC_ALPHA = 770;
+var GL_ONE_MINUS_SRC_ALPHA = exports.GL_ONE_MINUS_SRC_ALPHA = 771;
+var GL_DST_ALPHA = exports.GL_DST_ALPHA = 772;
+var GL_ONE_MINUS_DST_ALPHA = exports.GL_ONE_MINUS_DST_ALPHA = 773;
+var GL_DST_COLOR = exports.GL_DST_COLOR = 774;
+var GL_ONE_MINUS_DST_COLOR = exports.GL_ONE_MINUS_DST_COLOR = 775;
+var GL_SRC_ALPHA_SATURATE = exports.GL_SRC_ALPHA_SATURATE = 776;
+var GL_CONSTANT_COLOR = exports.GL_CONSTANT_COLOR = 32769;
+var GL_ONE_MINUS_CONSTANT_COLOR = exports.GL_ONE_MINUS_CONSTANT_COLOR = 32770;
+var GL_CONSTANT_ALPHA = exports.GL_CONSTANT_ALPHA = 32771;
+var GL_ONE_MINUS_CONSTANT_ALPHA = exports.GL_ONE_MINUS_CONSTANT_ALPHA = 32772;
+
+var GL_VERTEX_SHADER = exports.GL_VERTEX_SHADER = 35633;
+var GL_FRAGMENT_SHADER = exports.GL_FRAGMENT_SHADER = 35632;
+
+var GL_FRONT = exports.GL_FRONT = 1028;
+var GL_BACK = exports.GL_BACK = 1029;
+var GL_FRONT_AND_BACK = exports.GL_FRONT_AND_BACK = 1032;
+
+var GL_NEVER = exports.GL_NEVER = 512;
+var GL_LESS = exports.GL_LESS = 513;
+var GL_EQUAL = exports.GL_EQUAL = 514;
+var GL_LEQUAL = exports.GL_LEQUAL = 515;
+var GL_GREATER = exports.GL_GREATER = 516;
+var GL_NOTEQUAL = exports.GL_NOTEQUAL = 517;
+var GL_GEQUAL = exports.GL_GEQUAL = 518;
+var GL_ALWAYS = exports.GL_ALWAYS = 519;
+
+var GL_KEEP = exports.GL_KEEP = 7680;
+var GL_REPLACE = exports.GL_REPLACE = 7681;
+var GL_INCR = exports.GL_INCR = 7682;
+var GL_DECR = exports.GL_DECR = 7683;
+var GL_INCR_WRAP = exports.GL_INCR_WRAP = 34055;
+var GL_DECR_WRAP = exports.GL_DECR_WRAP = 34056;
+var GL_INVERT = exports.GL_INVERT = 5386;
+
+var GL_STREAM_DRAW = exports.GL_STREAM_DRAW = 35040;
+var GL_STATIC_DRAW = exports.GL_STATIC_DRAW = 35044;
+var GL_DYNAMIC_DRAW = exports.GL_DYNAMIC_DRAW = 35048;
+
+var GL_ARRAY_BUFFER = exports.GL_ARRAY_BUFFER = 34962;
+var GL_ELEMENT_ARRAY_BUFFER = exports.GL_ELEMENT_ARRAY_BUFFER = 34963;
+
+var GL_POINTS = exports.GL_POINTS = 0;
+var GL_LINES = exports.GL_LINES = 1;
+var GL_LINE_LOOP = exports.GL_LINE_LOOP = 2;
+var GL_LINE_STRIP = exports.GL_LINE_STRIP = 3;
+var GL_TRIANGLES = exports.GL_TRIANGLES = 4;
+var GL_TRIANGLE_STRIP = exports.GL_TRIANGLE_STRIP = 5;
+var GL_TRIANGLE_FAN = exports.GL_TRIANGLE_FAN = 6;
+
+var GL_CW = exports.GL_CW = 2304;
+var GL_CCW = exports.GL_CCW = 2305;
+
+var GL_CULL_FACE = exports.GL_CULL_FACE = 2884;
+var GL_DEPTH_TEST = exports.GL_DEPTH_TEST = 2929;
+var GL_BLEND = exports.GL_BLEND = 3042;
+
+/*
+
+    Direct 3D and CCP
+
+*/
+// Render Mode
+var RM_ANY = exports.RM_ANY = -1;
+var RM_OPAQUE = exports.RM_OPAQUE = 0;
+var RM_DECAL = exports.RM_DECAL = 1;
+var RM_TRANSPARENT = exports.RM_TRANSPARENT = 2;
+var RM_ADDITIVE = exports.RM_ADDITIVE = 3;
+var RM_DEPTH = exports.RM_DEPTH = 4;
+var RM_FULLSCREEN = exports.RM_FULLSCREEN = 5;
+var RM_PICKABLE = exports.RM_PICKABLE = 6;
+var RM_DISTORTION = exports.RM_DISTORTION = 7;
+
+// Render States
+var RS_ZENABLE = exports.RS_ZENABLE = 7; // D3DZBUFFERTYPE (or TRUE/FALSE for legacy)
+var RS_FILLMODE = exports.RS_FILLMODE = 8; // D3DFILLMODE
+var RS_SHADEMODE = exports.RS_SHADEMODE = 9; // D3DSHADEMODE
+var RS_ZWRITEENABLE = exports.RS_ZWRITEENABLE = 14; // TRUE to enable z writes
+var RS_ALPHATESTENABLE = exports.RS_ALPHATESTENABLE = 15; // TRUE to enable alpha tests
+var RS_LASTPIXEL = exports.RS_LASTPIXEL = 16; // TRUE for last-pixel on lines
+var RS_SRCBLEND = exports.RS_SRCBLEND = 19; // D3DBLEND
+var RS_DESTBLEND = exports.RS_DESTBLEND = 20; // D3DBLEND
+var RS_CULLMODE = exports.RS_CULLMODE = 22; // D3DCULL
+var RS_ZFUNC = exports.RS_ZFUNC = 23; // D3DCMPFUNC
+var RS_ALPHAREF = exports.RS_ALPHAREF = 24; // D3DFIXED
+var RS_ALPHAFUNC = exports.RS_ALPHAFUNC = 25; // D3DCMPFUNC
+var RS_DITHERENABLE = exports.RS_DITHERENABLE = 26; // TRUE to enable dithering
+var RS_ALPHABLENDENABLE = exports.RS_ALPHABLENDENABLE = 27; // TRUE to enable alpha blending
+var RS_FOGENABLE = exports.RS_FOGENABLE = 28; // TRUE to enable fog blending
+var RS_SPECULARENABLE = exports.RS_SPECULARENABLE = 29; // TRUE to enable specular
+var RS_FOGCOLOR = exports.RS_FOGCOLOR = 34; // D3DCOLOR
+var RS_FOGTABLEMODE = exports.RS_FOGTABLEMODE = 35; // D3DFOGMODE
+var RS_FOGSTART = exports.RS_FOGSTART = 36; // Fog start (for both vertex and pixel fog)
+var RS_FOGEND = exports.RS_FOGEND = 37; // Fog end
+var RS_FOGDENSITY = exports.RS_FOGDENSITY = 38; // Fog density
+var RS_RANGEFOGENABLE = exports.RS_RANGEFOGENABLE = 48; // Enables range-based fog
+var RS_STENCILENABLE = exports.RS_STENCILENABLE = 52; // BOOL enable/disable stenciling
+var RS_STENCILFAIL = exports.RS_STENCILFAIL = 53; // D3DSTENCILOP to do if stencil test fails
+var RS_STENCILZFAIL = exports.RS_STENCILZFAIL = 54; // D3DSTENCILOP to do if stencil test passes and Z test fails
+var RS_STENCILPASS = exports.RS_STENCILPASS = 55; // D3DSTENCILOP to do if both stencil and Z tests pass
+var RS_STENCILFUNC = exports.RS_STENCILFUNC = 56; // D3DCMPFUNC fn.  Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true
+var RS_STENCILREF = exports.RS_STENCILREF = 57; // Reference value used in stencil test
+var RS_STENCILMASK = exports.RS_STENCILMASK = 58; // Mask value used in stencil test
+var RS_STENCILWRITEMASK = exports.RS_STENCILWRITEMASK = 59; // Write mask applied to values written to stencil buffer
+var RS_TEXTUREFACTOR = exports.RS_TEXTUREFACTOR = 60; // D3DCOLOR used for multi-texture blend
+var RS_WRAP0 = exports.RS_WRAP0 = 128; // wrap for 1st texture coord. set
+var RS_WRAP1 = exports.RS_WRAP1 = 129; // wrap for 2nd texture coord. set
+var RS_WRAP2 = exports.RS_WRAP2 = 130; // wrap for 3rd texture coord. set
+var RS_WRAP3 = exports.RS_WRAP3 = 131; // wrap for 4th texture coord. set
+var RS_WRAP4 = exports.RS_WRAP4 = 132; // wrap for 5th texture coord. set
+var RS_WRAP5 = exports.RS_WRAP5 = 133; // wrap for 6th texture coord. set
+var RS_WRAP6 = exports.RS_WRAP6 = 134; // wrap for 7th texture coord. set
+var RS_WRAP7 = exports.RS_WRAP7 = 135; // wrap for 8th texture coord. set
+var RS_CLIPPING = exports.RS_CLIPPING = 136;
+var RS_LIGHTING = exports.RS_LIGHTING = 137;
+var RS_AMBIENT = exports.RS_AMBIENT = 139;
+var RS_FOGVERTEXMODE = exports.RS_FOGVERTEXMODE = 140;
+var RS_COLORVERTEX = exports.RS_COLORVERTEX = 141;
+var RS_LOCALVIEWER = exports.RS_LOCALVIEWER = 142;
+var RS_NORMALIZENORMALS = exports.RS_NORMALIZENORMALS = 143;
+var RS_DIFFUSEMATERIALSOURCE = exports.RS_DIFFUSEMATERIALSOURCE = 145;
+var RS_SPECULARMATERIALSOURCE = exports.RS_SPECULARMATERIALSOURCE = 146;
+var RS_AMBIENTMATERIALSOURCE = exports.RS_AMBIENTMATERIALSOURCE = 147;
+var RS_EMISSIVEMATERIALSOURCE = exports.RS_EMISSIVEMATERIALSOURCE = 148;
+var RS_VERTEXBLEND = exports.RS_VERTEXBLEND = 151;
+var RS_CLIPPLANEENABLE = exports.RS_CLIPPLANEENABLE = 152;
+var RS_POINTSIZE = exports.RS_POINTSIZE = 154; // float point size
+var RS_POINTSIZE_MIN = exports.RS_POINTSIZE_MIN = 155; // float point size min threshold
+var RS_POINTSPRITEENABLE = exports.RS_POINTSPRITEENABLE = 156; // BOOL point texture coord control
+var RS_POINTSCALEENABLE = exports.RS_POINTSCALEENABLE = 157; // BOOL point size scale enable
+var RS_POINTSCALE_A = exports.RS_POINTSCALE_A = 158; // float point attenuation A value
+var RS_POINTSCALE_B = exports.RS_POINTSCALE_B = 159; // float point attenuation B value
+var RS_POINTSCALE_C = exports.RS_POINTSCALE_C = 160; // float point attenuation C value
+var RS_MULTISAMPLEANTIALIAS = exports.RS_MULTISAMPLEANTIALIAS = 161; // BOOL - set to do FSAA with multisample buffer
+var RS_MULTISAMPLEMASK = exports.RS_MULTISAMPLEMASK = 162; // DWORD - per-sample enable/disable
+var RS_PATCHEDGESTYLE = exports.RS_PATCHEDGESTYLE = 163; // Sets whether patch edges will use float style tessellation
+var RS_DEBUGMONITORTOKEN = exports.RS_DEBUGMONITORTOKEN = 165; // DEBUG ONLY - token to debug monitor
+var RS_POINTSIZE_MAX = exports.RS_POINTSIZE_MAX = 166; // float point size max threshold
+var RS_INDEXEDVERTEXBLENDENABLE = exports.RS_INDEXEDVERTEXBLENDENABLE = 167;
+var RS_COLORWRITEENABLE = exports.RS_COLORWRITEENABLE = 168; // per-channel write enable
+var RS_TWEENFACTOR = exports.RS_TWEENFACTOR = 170; // float tween factor
+var RS_BLENDOP = exports.RS_BLENDOP = 171; // D3DBLENDOP setting
+var RS_POSITIONDEGREE = exports.RS_POSITIONDEGREE = 172; // NPatch position interpolation degree. D3DDEGREE_LINEAR or D3DDEGREE_CUBIC (default)
+var RS_NORMALDEGREE = exports.RS_NORMALDEGREE = 173; // NPatch normal interpolation degree. D3DDEGREE_LINEAR (default) or D3DDEGREE_QUADRATIC
+var RS_SCISSORTESTENABLE = exports.RS_SCISSORTESTENABLE = 174;
+var RS_SLOPESCALEDEPTHBIAS = exports.RS_SLOPESCALEDEPTHBIAS = 175;
+var RS_ANTIALIASEDLINEENABLE = exports.RS_ANTIALIASEDLINEENABLE = 176;
+var RS_TWOSIDEDSTENCILMODE = exports.RS_TWOSIDEDSTENCILMODE = 185; // BOOL enable/disable 2 sided stenciling
+var RS_CCW_STENCILFAIL = exports.RS_CCW_STENCILFAIL = 186; // D3DSTENCILOP to do if ccw stencil test fails
+var RS_CCW_STENCILZFAIL = exports.RS_CCW_STENCILZFAIL = 187; // D3DSTENCILOP to do if ccw stencil test passes and Z test fails
+var RS_CCW_STENCILPASS = exports.RS_CCW_STENCILPASS = 188; // D3DSTENCILOP to do if both ccw stencil and Z tests pass
+var RS_CCW_STENCILFUNC = exports.RS_CCW_STENCILFUNC = 189; // D3DCMPFUNC fn.  ccw Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true
+var RS_COLORWRITEENABLE1 = exports.RS_COLORWRITEENABLE1 = 190; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
+var RS_COLORWRITEENABLE2 = exports.RS_COLORWRITEENABLE2 = 191; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
+var RS_COLORWRITEENABLE3 = exports.RS_COLORWRITEENABLE3 = 192; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
+var RS_BLENDFACTOR = exports.RS_BLENDFACTOR = 193; // D3DCOLOR used for a constant blend factor during alpha blending for devices that support D3DPBLENDCAPS_BLENDFACTOR
+var RS_SRGBWRITEENABLE = exports.RS_SRGBWRITEENABLE = 194; // Enable rendertarget writes to be DE-linearized to SRGB (for formats that expose D3DUSAGE_QUERY_SRGBWRITE)
+var RS_DEPTHBIAS = exports.RS_DEPTHBIAS = 195;
+var RS_SEPARATEALPHABLENDENABLE = exports.RS_SEPARATEALPHABLENDENABLE = 206; // TRUE to enable a separate blending function for the alpha channel
+var RS_SRCBLENDALPHA = exports.RS_SRCBLENDALPHA = 207; // SRC blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE
+var RS_DESTBLENDALPHA = exports.RS_DESTBLENDALPHA = 208; // DST blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE
+var RS_BLENDOPALPHA = exports.RS_BLENDOPALPHA = 209; // Blending operation for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */// Cull Modes
+var CULL_NONE = exports.CULL_NONE = 1;
+var CULL_CW = exports.CULL_CW = 2;
+var CULL_CCW = exports.CULL_CCW = 3;
+
+// Compare
+var CMP_NEVER = exports.CMP_NEVER = 1;
+var CMP_LESS = exports.CMP_LESS = 2;
+var CMP_EQUAL = exports.CMP_EQUAL = 3;
+var CMP_LEQUAL = exports.CMP_LEQUAL = 4;
+var CMP_GREATER = exports.CMP_GREATER = 5;
+var CMP_NOTEQUAL = exports.CMP_NOTEQUAL = 6;
+var CMP_GREATEREQUAL = exports.CMP_GREATEREQUAL = 7;
+var CMP_ALWAYS = exports.CMP_ALWAYS = 8;
+
+// Blend
+var BLEND_ZERO = exports.BLEND_ZERO = 1;
+var BLEND_ONE = exports.BLEND_ONE = 2;
+var BLEND_SRCCOLOR = exports.BLEND_SRCCOLOR = 3;
+var BLEND_INVSRCCOLOR = exports.BLEND_INVSRCCOLOR = 4;
+var BLEND_SRCALPHA = exports.BLEND_SRCALPHA = 5;
+var BLEND_INVSRCALPHA = exports.BLEND_INVSRCALPHA = 6;
+var BLEND_DESTALPHA = exports.BLEND_DESTALPHA = 7;
+var BLEND_INVDESTALPHA = exports.BLEND_INVDESTALPHA = 8;
+var BLEND_DESTCOLOR = exports.BLEND_DESTCOLOR = 9;
+var BLEND_INVDESTCOLOR = exports.BLEND_INVDESTCOLOR = 10;
+var BLEND_SRCALPHASAT = exports.BLEND_SRCALPHASAT = 11;
+var BLEND_BOTHSRCALPHA = exports.BLEND_BOTHSRCALPHA = 12;
+var BLEND_BOTHINVSRCALPHA = exports.BLEND_BOTHINVSRCALPHA = 13;
+var BLEND_BLENDFACTOR = exports.BLEND_BLENDFACTOR = 14;
+var BLEND_INVBLENDFACTOR = exports.BLEND_INVBLENDFACTOR = 15;
+
+// Blend Operations
+var BLENDOP_ADD = exports.BLENDOP_ADD = 1;
+var BLENDOP_SUBTRACT = exports.BLENDOP_SUBTRACT = 2;
+var BLENDOP_REVSUBTRACT = exports.BLENDOP_REVSUBTRACT = 3;
+var BLENDOP_MIN = exports.BLENDOP_MIN = 4;
+var BLENDOP_MAX = exports.BLENDOP_MAX = 5;
+
+// Texture format aliases
+var TF_ALPHA = exports.TF_ALPHA = 0;
+var TF_LUMINANCE = exports.TF_LUMINANCE = 1;
+var TF_LUMINANCE_ALPHA = exports.TF_LUMINANCE_ALPHA = 2;
+var TF_RGB = exports.TF_RGB = 4;
+var TF_RGBA = exports.TF_RGBA = 5;
+var TF_RED = exports.TF_RED = 6;
+var TF_R = exports.TF_R = 6;
+var TF_RG = exports.TF_RG = 7;
+var TF_RED_INTEGER = exports.TF_RED_INTEGER = 8;
+var TF_R_INTEGER = exports.TF_R_INTEGER = 8;
+var TF_RG_INTEGER = exports.TF_RG_INTEGER = 9;
+var TF_RGB_INTEGER = exports.TF_RGB_INTEGER = 10;
+var TF_RGBA_INTEGER = exports.TF_RGBA_INTEGER = 11;
+
+// Texture types aliases
+var TT_UNSIGNED_BYTE = exports.TT_UNSIGNED_BYTE = 0;
+var TT_UNSIGNED_INT = exports.TT_UNSIGNED_INT = 0;
+var TT_FLOAT = exports.TT_FLOAT = 1;
+var TT_HALF_FLOAT = exports.TT_HALF_FLOAT = 2;
+var TT_BYTE = exports.TT_BYTE = 3;
+var TT_SHORT = exports.TT_SHORT = 4;
+var TT_UNSIGNED_SHORT = exports.TT_UNSIGNED_SHORT = 5;
+var TT_INT = exports.TT_INT = 6;
+var TT_UNSIGNED_INTEGER = exports.TT_UNSIGNED_INTEGER = 7;
+var TT_UNSIGNED_SHORT_4_4_4_4 = exports.TT_UNSIGNED_SHORT_4_4_4_4 = 8;
+var TT_UNSIGNED_SHORT_5_5_5_1 = exports.TT_UNSIGNED_SHORT_5_5_5_1 = 9;
+var TT_UNSIGNED_SHORT_5_6_5 = exports.TT_UNSIGNED_SHORT_5_6_5 = 10;
+var TT_UNSIGNED_INT_2_10_10_10_REV = exports.TT_UNSIGNED_INT_2_10_10_10_REV = 11;
+var TT_UNSIGNED_INT_24_8 = exports.TT_UNSIGNED_INT_24_8 = 12;
+var TT_UNSIGNED_INT_10F_11F_11F_REV = exports.TT_UNSIGNED_INT_10F_11F_11F_REV = 13;
+var TT_UNSIGNED_INT_5_9_9_9_REV = exports.TT_UNSIGNED_INT_5_9_9_9_REV = 14;
+var TT_FLOAT_32_UNSIGNED_INT_24_8_REV = exports.TT_FLOAT_32_UNSIGNED_INT_24_8_REV = 15;
+
+// Texture Wrap modes
+var WrapModes = exports.WrapModes = [0, GL_REPEAT, GL_MIRRORED_REPEAT, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE];
+
+// Blend Table
+var BlendTable = exports.BlendTable = [-1, // --
+GL_ZERO, // D3DBLEND_ZERO
+GL_ONE, // D3DBLEND_ONE
+GL_SRC_COLOR, // D3DBLEND_SRCCOLOR
+GL_ONE_MINUS_SRC_COLOR, // D3DBLEND_INVSRCCOLOR
+GL_SRC_ALPHA, // D3DBLEND_SRCALPHA
+GL_ONE_MINUS_SRC_ALPHA, // D3DBLEND_INVSRCALPHA
+GL_DST_ALPHA, // D3DBLEND_DESTALPHA
+GL_ONE_MINUS_DST_ALPHA, // D3DBLEND_INVDESTALPHA
+GL_DST_COLOR, // D3DBLEND_DESTCOLOR
+GL_ONE_MINUS_DST_COLOR, // D3DBLEND_INVDESTCOLOR
+GL_SRC_ALPHA_SATURATE, // D3DBLEND_SRCALPHASAT
+-1, // D3DBLEND_BOTHSRCALPHA
+-1, // D3DBLEND_BOTHINVSRCALPHA
+GL_CONSTANT_COLOR, // D3DBLEND_BLENDFACTOR
+GL_ONE_MINUS_CONSTANT_COLOR // D3DBLEND_INVBLENDFACTOR
+];
+
+// Filter mode conversions
+var FilterMode = exports.FilterMode = (_FilterMode = {}, _defineProperty(_FilterMode, GL_NEAREST, 1), _defineProperty(_FilterMode, GL_LINEAR, 2), _FilterMode);
+
+// Mip filter mode conversions
+var MipFilterMode = exports.MipFilterMode = (_MipFilterMode = {}, _defineProperty(_MipFilterMode, GL_NEAREST, 0), _defineProperty(_MipFilterMode, GL_LINEAR, 0), _defineProperty(_MipFilterMode, GL_NEAREST_MIPMAP_NEAREST, 1), _defineProperty(_MipFilterMode, GL_LINEAR_MIPMAP_NEAREST, 1), _defineProperty(_MipFilterMode, GL_NEAREST_MIPMAP_LINEAR, 2), _defineProperty(_MipFilterMode, GL_LINEAR_MIPMAP_LINEAR, 2), _MipFilterMode);
+
+/*
+
+  Direct Draw Surface
+  https://docs.microsoft.com/en-us/windows/desktop/direct3ddds/dx-graphics-dds-pguide
+
+*/
+var DDS_MAGIC = exports.DDS_MAGIC = 0x20534444;
+var DDSD_CAPS = exports.DDSD_CAPS = 0x1;
+var DDSD_HEIGHT = exports.DDSD_HEIGHT = 0x2;
+var DDSD_WIDTH = exports.DDSD_WIDTH = 0x4;
+var DDSD_PITCH = exports.DDSD_PITCH = 0x8;
+var DDSD_PIXELFORMAT = exports.DDSD_PIXELFORMAT = 0x1000;
+var DDSD_MIPMAPCOUNT = exports.DDSD_MIPMAPCOUNT = 0x20000;
+var DDSD_LINEARSIZE = exports.DDSD_LINEARSIZE = 0x80000;
+var DDSD_DEPTH = exports.DDSD_DEPTH = 0x800000;
+
+var DDSCAPS_COMPLEX = exports.DDSCAPS_COMPLEX = 0x8;
+var DDSCAPS_MIPMAP = exports.DDSCAPS_MIPMAP = 0x400000;
+var DDSCAPS_TEXTURE = exports.DDSCAPS_TEXTURE = 0x1000;
+
+var DDSCAPS2_CUBEMAP = exports.DDSCAPS2_CUBEMAP = 0x200;
+var DDSCAPS2_CUBEMAP_POSITIVEX = exports.DDSCAPS2_CUBEMAP_POSITIVEX = 0x400;
+var DDSCAPS2_CUBEMAP_NEGATIVEX = exports.DDSCAPS2_CUBEMAP_NEGATIVEX = 0x800;
+var DDSCAPS2_CUBEMAP_POSITIVEY = exports.DDSCAPS2_CUBEMAP_POSITIVEY = 0x1000;
+var DDSCAPS2_CUBEMAP_NEGATIVEY = exports.DDSCAPS2_CUBEMAP_NEGATIVEY = 0x2000;
+var DDSCAPS2_CUBEMAP_POSITIVEZ = exports.DDSCAPS2_CUBEMAP_POSITIVEZ = 0x4000;
+var DDSCAPS2_CUBEMAP_NEGATIVEZ = exports.DDSCAPS2_CUBEMAP_NEGATIVEZ = 0x8000;
+var DDSCAPS2_VOLUME = exports.DDSCAPS2_VOLUME = 0x200000;
+
+var DDPF_ALPHAPIXELS = exports.DDPF_ALPHAPIXELS = 0x1;
+var DDPF_ALPHA = exports.DDPF_ALPHA = 0x2;
+var DDPF_FOURCC = exports.DDPF_FOURCC = 0x4;
+var DDPF_RGB = exports.DDPF_RGB = 0x40;
+var DDPF_YUV = exports.DDPF_YUV = 0x200;
+var DDPF_LUMINANCE = exports.DDPF_LUMINANCE = 0x20000;
+
+var DDS_HEADER_LENGTH_INT = exports.DDS_HEADER_LENGTH_INT = 31;
+var DDS_HEADER_OFFSET_MAGIC = exports.DDS_HEADER_OFFSET_MAGIC = 0;
+var DDS_HEADER_OFFSET_SIZE = exports.DDS_HEADER_OFFSET_SIZE = 1;
+var DDS_HEADER_OFFSET_FLAGS = exports.DDS_HEADER_OFFSET_FLAGS = 2;
+var DDS_HEADER_OFFSET_HEIGHT = exports.DDS_HEADER_OFFSET_HEIGHT = 3;
+var DDS_HEADER_OFFSET_WIDTH = exports.DDS_HEADER_OFFSET_WIDTH = 4;
+var DDS_HEADER_OFFSET_MIPMAP_COUNT = exports.DDS_HEADER_OFFSET_MIPMAP_COUNT = 7;
+var DDS_HEADER_OFFSET_PF_FLAGS = exports.DDS_HEADER_OFFSET_PF_FLAGS = 20;
+var DDS_HEADER_OFFSET_PF_FOURCC = exports.DDS_HEADER_OFFSET_PF_FOURCC = 21;
+var DDS_HEADER_OFFSET_RGB_BPP = exports.DDS_HEADER_OFFSET_RGB_BPP = 22;
+var DDS_HEADER_OFFSET_R_MASK = exports.DDS_HEADER_OFFSET_R_MASK = 23;
+var DDS_HEADER_OFFSET_G_MASK = exports.DDS_HEADER_OFFSET_G_MASK = 24;
+var DDS_HEADER_OFFSET_B_MASK = exports.DDS_HEADER_OFFSET_B_MASK = 25;
+var DDS_HEADER_OFFSET_A_MASK = exports.DDS_HEADER_OFFSET_A_MASK = 26;
+var DDS_HEADER_OFFSET_CAPS1 = exports.DDS_HEADER_OFFSET_CAPS1 = 27;
+var DDS_HEADER_OFFSET_CAPS2 = exports.DDS_HEADER_OFFSET_CAPS2 = 28;
+var DDS_HEADER_OFFSET_CAPS3 = exports.DDS_HEADER_OFFSET_CAPS3 = 29;
+var DDS_HEADER_OFFSET_CAPS4 = exports.DDS_HEADER_OFFSET_CAPS4 = 30;
+var DDS_HEADER_OFFSET_DXGI_FORMAT = exports.DDS_HEADER_OFFSET_DXGI_FORMAT = 32;
+
+var FOURCC_DXT1 = exports.FOURCC_DXT1 = 827611204;
+var FOURCC_DXT5 = exports.FOURCC_DXT5 = 894720068;
+var FOURCC_DXT3 = exports.FOURCC_DXT3 = 861165636;
+var FOURCC_DXT10 = exports.FOURCC_DXT10 = 827611204;
+var FOURCC_D3DFMT_R16G16B16A16F = exports.FOURCC_D3DFMT_R16G16B16A16F = 113;
+var FOURCC_D3DFMT_R32G32B32A32F = exports.FOURCC_D3DFMT_R32G32B32A32F = 116;
+var DXGI_FORMAT_R16G16B16A16_FLOAT = exports.DXGI_FORMAT_R16G16B16A16_FLOAT = 10;
+var DXGI_FORMAT_B8G8R8X8_UNORM = exports.DXGI_FORMAT_B8G8R8X8_UNORM = 88;
+
+/*
+
+    Browser and Vendors
+
+ */
+
+/**
+ * Vendor request animation frame names
+ * @type {string[]}
+ */
+var VendorRequestAnimationFrame = exports.VendorRequestAnimationFrame = ['requestAnimationFrame', 'webkitRequestAnimationFrame', 'mozRequestAnimationFrame', 'oRequestAnimationFrame', 'msRequestAnimationFrame'];
+
+/**
+ * Vendor cancel animation frame names
+ * @type {string[]}
+ */
+var VendorCancelAnimationFrame = exports.VendorCancelAnimationFrame = ['cancelAnimationFrame', 'webkitRequestAnimationFrame', 'mozRequestAnimationFrame', 'oRequestAnimationFrame', 'msRequestAnimationFrame'];
+
+/**
+ * Vendor request full screen
+ * @type {string[]}
+ */
+var VendorRequestFullScreen = exports.VendorRequestFullScreen = ['requestFullscreen', 'webkitRequestFullscreen', 'mozRequestFullScreen', 'msRequestFullscreen'];
+
+/**
+ * Vendor exit full screen
+ * @type {string[]}
+ */
+var VendorExitFullScreen = exports.VendorExitFullScreen = ['exitFullscreen', 'webkitExitFullscreen', 'mozCancelFullScreen', 'msExitFullscreen'];
+
+/**
+ * Vendor get full screen element
+ * @type {string[]}
+ */
+var VendorGetFullScreenElement = exports.VendorGetFullScreenElement = ['fullscreenElement', 'webkitFullscreenElement', 'mozFullScreenElement', 'msFullscreenElement'];
+
+/**
+ * Webgl vendor prefixes
+ * @type {string[]}
+ */
+var VendorWebglPrefixes = exports.VendorWebglPrefixes = ['', 'MOZ_', 'WEBKIT_', 'WEBGL_'];
+
+/**
+ * Webgl context names
+ * @type {string[]}
+ */
+var WebglContextNames = exports.WebglContextNames = ['webgl', 'experimental-webgl'];
+
+/**
+ * Webgl2 context names
+ * @type {string[]}
+ */
+var Webgl2ContextNames = exports.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'];
+
+/**
+ * Webgl version
+ * @type {{NONE: number, WEBGL: number, WEBGL2: number}}
+ */
+var WebglVersion = exports.WebglVersion = {
+    NONE: 0,
+    WEBGL: 1,
+    WEBGL2: 2
+};
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11246,7 +11946,7 @@ var Tw2PerObjectData = exports.Tw2PerObjectData = function () {
 }();
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11256,7 +11956,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BlendShapeData = __webpack_require__(106);
+var _Tw2BlendShapeData = __webpack_require__(107);
 
 Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11268,7 +11968,7 @@ Object.keys(_Tw2BlendShapeData).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryAnimation = __webpack_require__(107);
+var _Tw2GeometryAnimation = __webpack_require__(108);
 
 Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11280,7 +11980,7 @@ Object.keys(_Tw2GeometryAnimation).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryBone = __webpack_require__(108);
+var _Tw2GeometryBone = __webpack_require__(109);
 
 Object.keys(_Tw2GeometryBone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11292,7 +11992,7 @@ Object.keys(_Tw2GeometryBone).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryCurve = __webpack_require__(109);
+var _Tw2GeometryCurve = __webpack_require__(110);
 
 Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11304,7 +12004,7 @@ Object.keys(_Tw2GeometryCurve).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMesh = __webpack_require__(110);
+var _Tw2GeometryMesh = __webpack_require__(111);
 
 Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11316,7 +12016,7 @@ Object.keys(_Tw2GeometryMesh).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshArea = __webpack_require__(111);
+var _Tw2GeometryMeshArea = __webpack_require__(112);
 
 Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11328,7 +12028,7 @@ Object.keys(_Tw2GeometryMeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryMeshBinding = __webpack_require__(112);
+var _Tw2GeometryMeshBinding = __webpack_require__(113);
 
 Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11340,7 +12040,7 @@ Object.keys(_Tw2GeometryMeshBinding).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryModel = __webpack_require__(113);
+var _Tw2GeometryModel = __webpack_require__(114);
 
 Object.keys(_Tw2GeometryModel).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11352,7 +12052,7 @@ Object.keys(_Tw2GeometryModel).forEach(function (key) {
   });
 });
 
-var _Tw2GeometrySkeleton = __webpack_require__(114);
+var _Tw2GeometrySkeleton = __webpack_require__(115);
 
 Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11364,7 +12064,7 @@ Object.keys(_Tw2GeometrySkeleton).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTrackGroup = __webpack_require__(115);
+var _Tw2GeometryTrackGroup = __webpack_require__(116);
 
 Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11376,7 +12076,7 @@ Object.keys(_Tw2GeometryTrackGroup).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryTransformTrack = __webpack_require__(116);
+var _Tw2GeometryTransformTrack = __webpack_require__(117);
 
 Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11389,7 +12089,7 @@ Object.keys(_Tw2GeometryTransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11584,7 +12284,7 @@ var Tw2Mesh = exports.Tw2Mesh = function () {
 }();
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11633,7 +12333,7 @@ var Tw2MeshArea = exports.Tw2MeshArea = (_temp = _class = function Tw2MeshArea()
 , _class.batchType = _batch.Tw2GeometryBatch, _temp);
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11689,7 +12389,7 @@ var Tw2Animation = exports.Tw2Animation = function () {
 }();
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11699,7 +12399,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2EffectRes = __webpack_require__(122);
+var _Tw2EffectRes = __webpack_require__(123);
 
 Object.keys(_Tw2EffectRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11711,7 +12411,7 @@ Object.keys(_Tw2EffectRes).forEach(function (key) {
   });
 });
 
-var _Tw2GeometryRes = __webpack_require__(124);
+var _Tw2GeometryRes = __webpack_require__(125);
 
 Object.keys(_Tw2GeometryRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11759,7 +12459,7 @@ Object.keys(_Tw2TextureRes).forEach(function (key) {
   });
 });
 
-var _Tw2VideoRes = __webpack_require__(125);
+var _Tw2VideoRes = __webpack_require__(126);
 
 Object.keys(_Tw2VideoRes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -11772,7 +12472,7 @@ Object.keys(_Tw2VideoRes).forEach(function (key) {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11806,7 +12506,7 @@ var Tw2Bone = exports.Tw2Bone = function Tw2Bone() {
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11835,7 +12535,7 @@ var Tw2Model = exports.Tw2Model = function Tw2Model() {
 };
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11862,7 +12562,7 @@ var Tw2Track = exports.Tw2Track = function Tw2Track() {
 };
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11891,7 +12591,7 @@ var Tw2TrackGroup = exports.Tw2TrackGroup = function Tw2TrackGroup() {
 };
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11908,15 +12608,15 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
-var _Tw2RenderTarget = __webpack_require__(59);
+var _Tw2RenderTarget = __webpack_require__(60);
 
 var _Tw2TextureRes = __webpack_require__(19);
 
 var _parameter = __webpack_require__(28);
 
-var _Tw2PostEffectStep = __webpack_require__(60);
+var _Tw2PostEffectStep = __webpack_require__(61);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12356,7 +13056,7 @@ var Tw2PostEffect = exports.Tw2PostEffect = (_temp = _class = function () {
 }(), _class.Item = _Tw2PostEffectStep.Tw2PostEffectStep, _temp);
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12503,7 +13203,7 @@ var Tw2RenderTarget = exports.Tw2RenderTarget = function () {
 }();
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12516,7 +13216,7 @@ exports.Tw2PostEffectStep = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
 var _Tw2Effect = __webpack_require__(24);
 
@@ -12641,7 +13341,7 @@ var Tw2PostEffectStep = exports.Tw2PostEffectStep = function () {
 }();
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12663,7 +13363,7 @@ Object.keys(_curves).forEach(function (key) {
   });
 });
 
-var _sequencers = __webpack_require__(145);
+var _sequencers = __webpack_require__(146);
 
 Object.keys(_sequencers).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12675,7 +13375,7 @@ Object.keys(_sequencers).forEach(function (key) {
   });
 });
 
-var _tracks = __webpack_require__(154);
+var _tracks = __webpack_require__(155);
 
 Object.keys(_tracks).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12687,7 +13387,7 @@ Object.keys(_tracks).forEach(function (key) {
   });
 });
 
-var _maya = __webpack_require__(157);
+var _maya = __webpack_require__(158);
 
 Object.keys(_maya).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12700,7 +13400,7 @@ Object.keys(_maya).forEach(function (key) {
 });
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12722,7 +13422,7 @@ Object.keys(_EveChild).forEach(function (key) {
   });
 });
 
-var _EveChildBillboard = __webpack_require__(163);
+var _EveChildBillboard = __webpack_require__(164);
 
 Object.keys(_EveChildBillboard).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12734,7 +13434,7 @@ Object.keys(_EveChildBillboard).forEach(function (key) {
   });
 });
 
-var _EveChildCloud = __webpack_require__(164);
+var _EveChildCloud = __webpack_require__(165);
 
 Object.keys(_EveChildCloud).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12746,7 +13446,7 @@ Object.keys(_EveChildCloud).forEach(function (key) {
   });
 });
 
-var _EveChildContainer = __webpack_require__(165);
+var _EveChildContainer = __webpack_require__(166);
 
 Object.keys(_EveChildContainer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12758,7 +13458,7 @@ Object.keys(_EveChildContainer).forEach(function (key) {
   });
 });
 
-var _EveChildExplosion = __webpack_require__(166);
+var _EveChildExplosion = __webpack_require__(167);
 
 Object.keys(_EveChildExplosion).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12770,7 +13470,7 @@ Object.keys(_EveChildExplosion).forEach(function (key) {
   });
 });
 
-var _EveChildMesh = __webpack_require__(167);
+var _EveChildMesh = __webpack_require__(168);
 
 Object.keys(_EveChildMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12782,7 +13482,7 @@ Object.keys(_EveChildMesh).forEach(function (key) {
   });
 });
 
-var _EveChildParticleSystem = __webpack_require__(168);
+var _EveChildParticleSystem = __webpack_require__(169);
 
 Object.keys(_EveChildParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -12795,7 +13495,7 @@ Object.keys(_EveChildParticleSystem).forEach(function (key) {
 });
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13008,7 +13708,7 @@ var EveOccluder = exports.EveOccluder = (_temp = _class = function () {
 }(), _class.global = null, _temp);
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13030,7 +13730,7 @@ Object.keys(_EveObject).forEach(function (key) {
   });
 });
 
-var _EveEffectRoot = __webpack_require__(175);
+var _EveEffectRoot = __webpack_require__(176);
 
 Object.keys(_EveEffectRoot).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13042,7 +13742,7 @@ Object.keys(_EveEffectRoot).forEach(function (key) {
   });
 });
 
-var _EveMissile = __webpack_require__(176);
+var _EveMissile = __webpack_require__(177);
 
 Object.keys(_EveMissile).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13054,7 +13754,7 @@ Object.keys(_EveMissile).forEach(function (key) {
   });
 });
 
-var _EvePlanet = __webpack_require__(177);
+var _EvePlanet = __webpack_require__(178);
 
 Object.keys(_EvePlanet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13066,7 +13766,7 @@ Object.keys(_EvePlanet).forEach(function (key) {
   });
 });
 
-var _EveShip = __webpack_require__(178);
+var _EveShip = __webpack_require__(179);
 
 Object.keys(_EveShip).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13090,7 +13790,7 @@ Object.keys(_EveSpaceObject).forEach(function (key) {
   });
 });
 
-var _EveTransform = __webpack_require__(65);
+var _EveTransform = __webpack_require__(66);
 
 Object.keys(_EveTransform).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13103,7 +13803,7 @@ Object.keys(_EveTransform).forEach(function (key) {
 });
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13455,7 +14155,7 @@ var EveTransform = exports.EveTransform = (_temp2 = _class = function (_EveObjec
 }, _temp2);
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13477,7 +14177,7 @@ Object.keys(_EveObjectSet).forEach(function (key) {
   });
 });
 
-var _EveBoosterSet = __webpack_require__(179);
+var _EveBoosterSet = __webpack_require__(180);
 
 Object.keys(_EveBoosterSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13489,7 +14189,7 @@ Object.keys(_EveBoosterSet).forEach(function (key) {
   });
 });
 
-var _EveCurveLineSet = __webpack_require__(180);
+var _EveCurveLineSet = __webpack_require__(181);
 
 Object.keys(_EveCurveLineSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13501,7 +14201,7 @@ Object.keys(_EveCurveLineSet).forEach(function (key) {
   });
 });
 
-var _EveLocator = __webpack_require__(181);
+var _EveLocator = __webpack_require__(182);
 
 Object.keys(_EveLocator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13513,7 +14213,7 @@ Object.keys(_EveLocator).forEach(function (key) {
   });
 });
 
-var _EvePlaneSet = __webpack_require__(182);
+var _EvePlaneSet = __webpack_require__(183);
 
 Object.keys(_EvePlaneSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13525,7 +14225,7 @@ Object.keys(_EvePlaneSet).forEach(function (key) {
   });
 });
 
-var _EveSpaceObjectDecal = __webpack_require__(183);
+var _EveSpaceObjectDecal = __webpack_require__(184);
 
 Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13537,7 +14237,7 @@ Object.keys(_EveSpaceObjectDecal).forEach(function (key) {
   });
 });
 
-var _EveSpotlightSet = __webpack_require__(184);
+var _EveSpotlightSet = __webpack_require__(185);
 
 Object.keys(_EveSpotlightSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13549,7 +14249,7 @@ Object.keys(_EveSpotlightSet).forEach(function (key) {
   });
 });
 
-var _EveSpriteSet = __webpack_require__(185);
+var _EveSpriteSet = __webpack_require__(186);
 
 Object.keys(_EveSpriteSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13561,7 +14261,7 @@ Object.keys(_EveSpriteSet).forEach(function (key) {
   });
 });
 
-var _EveTurretSet = __webpack_require__(186);
+var _EveTurretSet = __webpack_require__(187);
 
 Object.keys(_EveTurretSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13574,7 +14274,7 @@ Object.keys(_EveTurretSet).forEach(function (key) {
 });
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13633,7 +14333,7 @@ exports.Tw2ParticleElement = function Tw2ParticleElement(decl) {
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13656,7 +14356,7 @@ Object.keys(_core).forEach(function (key) {
     });
 });
 
-var _curve = __webpack_require__(61);
+var _curve = __webpack_require__(62);
 
 Object.keys(_curve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13668,7 +14368,7 @@ Object.keys(_curve).forEach(function (key) {
     });
 });
 
-var _eve = __webpack_require__(162);
+var _eve = __webpack_require__(163);
 
 Object.keys(_eve).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13680,7 +14380,7 @@ Object.keys(_eve).forEach(function (key) {
     });
 });
 
-var _particle = __webpack_require__(189);
+var _particle = __webpack_require__(190);
 
 Object.keys(_particle).forEach(function (key) {
     if (key === "default" || key === "__esModule") return;
@@ -13753,6 +14453,7 @@ _global.store.Register({
         'sm_lo': core.Tw2EffectRes,
         'wbg': core.Tw2GeometryRes,
         'png': core.Tw2TextureRes,
+        'dds': core.Tw2TextureRes,
         'cube': core.Tw2TextureRes,
         'mp4': core.Tw2VideoRes,
         'ogg': core.Tw2VideoRes,
@@ -13793,7 +14494,7 @@ _global.store.Register({
 });
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13900,7 +14601,7 @@ var Tw2BatchAccumulator = exports.Tw2BatchAccumulator = function () {
 }();
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13916,7 +14617,7 @@ var _glMatrix = __webpack_require__(10);
 exports.vec2 = _glMatrix.vec2;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14386,7 +15087,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14888,7 +15589,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16626,7 +17327,7 @@ const sub = subtract;
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17317,7 +18018,7 @@ const setAxes = (function() {
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17960,7 +18661,7 @@ const forEach = (function() {
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18054,7 +18755,7 @@ _glMatrix.quat.pow = function (out, inq, exponent) {
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18070,7 +18771,7 @@ var _glMatrix = __webpack_require__(10);
 exports.mat3 = _glMatrix.mat3;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18261,7 +18962,7 @@ _glMatrix.mat4.setTranslationFromValues = function (out, x, y, z) {
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18471,7 +19172,7 @@ noise.perlin1D = function (x, alpha, beta, n) {
 };
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18832,7 +19533,7 @@ curve.polyZeroes = function (Poly, deg, a, a_closed, b, b_closed, Roots) {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18842,7 +19543,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Device = __webpack_require__(82);
+var _Tw2Device = __webpack_require__(83);
 
 Object.defineProperty(exports, 'device', {
   enumerable: true,
@@ -18860,7 +19561,7 @@ Object.defineProperty(exports, 'resMan', {
   }
 });
 
-var _Tw2Store = __webpack_require__(21);
+var _Tw2Store = __webpack_require__(22);
 
 Object.defineProperty(exports, 'store', {
   enumerable: true,
@@ -18878,8 +19579,20 @@ Object.defineProperty(exports, 'logger', {
   }
 });
 
+var _Tw2Constant = __webpack_require__(48);
+
+Object.keys(_Tw2Constant).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Tw2Constant[key];
+    }
+  });
+});
+
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18896,7 +19609,9 @@ var _class, _temp;
 
 var _math = __webpack_require__(20);
 
-var _Tw2Store = __webpack_require__(21);
+var _util = __webpack_require__(5);
+
+var _Tw2Store = __webpack_require__(22);
 
 var _Tw2ResMan = __webpack_require__(23);
 
@@ -18906,6 +19621,8 @@ var _vertex = __webpack_require__(12);
 
 var _Tw2EventEmitter2 = __webpack_require__(15);
 
+var _Tw2Constant = __webpack_require__(48);
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18914,7 +19631,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var WebGLDebugUtil = __webpack_require__(89);
+var WebGLDebugUtil = __webpack_require__(90);
 
 /**
  * Tw2Device
@@ -18958,7 +19675,6 @@ var WebGLDebugUtil = __webpack_require__(89);
  * @property {?{}} _alphaBlendState                - Alpha states for blending
  * @property {?{}} _alphaTestState                 - Alpha test states
  * @property {?{}} _depthOffsetState               - Depth states
- * @property {?Array<number>} _blendTable          - Webgl blend enum table
  * @property {?Float32Array} _shadowStateBuffer    - unused
  * @property {Array<Function>} _scheduled          - Functions that are scheduled to be called per frame
  * @property {WebGLBuffer} _quadBuffer             - Webgl buffer for full screen quad
@@ -18968,7 +19684,6 @@ var WebGLDebugUtil = __webpack_require__(89);
  * @property {WebGLTexture} _fallbackCube          - A fallback cube texture
  * @property {WebGLTexture} _fallbackTexture       - A fallback texture
  * @property {Tw2Effect} _blitEffect               - The blit effect used for rendering textures
- * @property {?Function} _onResize                 - An optional function which is called when the canvas resizes
  * @class
  */
 var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter) {
@@ -18979,13 +19694,11 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
         var _this = _possibleConstructorReturn(this, (Tw2Device.__proto__ || Object.getPrototypeOf(Tw2Device)).call(this));
 
+        _this.name = 'Device';
         _this.gl = null;
-        _this.glVersion = Tw2Device.WebglVersion.NONE;
+        _this.glVersion = _Tw2Constant.WebglVersion.NONE;
         _this.vrDisplay = null;
         _this.ext = null;
-
-        _this.debugMode = false;
-        _this.debugUtils = null;
 
         _this.dt = 0;
         _this.frameCounter = 0;
@@ -19026,17 +19739,15 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
         _this._alphaBlendState = null;
         _this._alphaTestState = null;
         _this._depthOffsetState = null;
-        _this._blendTable = null;
         _this._shadowStateBuffer = null;
         _this._scheduled = [];
         _this._quadBuffer = null;
         _this._quadDecl = null;
         _this._cameraQuadBuffer = null;
-        _this._currentRenderMode = _this.RM_ANY;
+        _this._currentRenderMode = _Tw2Constant.RM_ANY;
         _this._fallbackCube = null;
         _this._fallbackTexture = null;
         _this._blitEffect = null;
-        _this._onResize = null;
         return _this;
     }
 
@@ -19066,27 +19777,16 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             var _states, _states2, _states3;
 
             this.gl = null;
-            this.glVersion = Tw2Device.WebglVersion.NONE;
+            this.glVersion = _Tw2Constant.WebglVersion.NONE;
             this.effectDir = '/effect.gles2/';
-
-            // Try webgl2 if enabled
-            if (params && params.webgl2) {
-                this.gl = Tw2Device.CreateContext(canvas, params, Tw2Device.Webgl2ContextNames);
-                if (this.gl) this.glVersion = Tw2Device.WebglVersion.WEBGL2;
-            }
-            // Fallback to webgl
-            if (!this.gl) {
-                this.gl = Tw2Device.CreateContext(canvas, params, Tw2Device.WebglContextNames);
-                if (this.gl) this.glVersion = Tw2Device.WebglVersion.WEBGL;
-            }
+            this.canvas = null;
 
             var returnFalse = function returnFalse() {
                 return false;
             },
                 returnTrue = function returnTrue() {
                 return true;
-            },
-                gl = this.gl;
+            };
 
             this.ext = {
                 drawElementsInstanced: returnFalse,
@@ -19095,8 +19795,31 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                 hasInstancedArrays: returnFalse
             };
 
+            var _Tw2Device$CreateCont = Tw2Device.CreateContext(canvas, params, params.webgl2),
+                gl = _Tw2Device$CreateCont.gl,
+                version = _Tw2Device$CreateCont.version;
+
+            if (!gl) return this.glVersion;
+
+            if (this.debugMode) {
+                this.debugUtils = WebGLDebugUtil;
+                gl = this.debugUtils.makeDebugContext(gl);
+            }
+
+            this.gl = gl;
+            this.glVersion = version;
+            this.canvas = canvas;
+
+            this.emit('created', {
+                device: this, gl: gl, params: params, canvas: canvas,
+                log: {
+                    type: 'debug',
+                    message: 'Webgl' + version + ' context created'
+                }
+            });
+
             switch (this.glVersion) {
-                case Tw2Device.WebglVersion.WEBGL2:
+                case _Tw2Constant.WebglVersion.WEBGL2:
                     this.ext = {
                         drawElementsInstanced: function drawElementsInstanced(mode, count, type, offset, instanceCount) {
                             gl.drawElementsInstanced(mode, count, type, offset, instanceCount);
@@ -19111,7 +19834,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                     };
                     break;
 
-                case Tw2Device.WebglVersion.WEBGL:
+                default:
                     this.GetExtension('OES_standard_derivatives');
                     this.GetExtension('OES_element_index_uint');
                     this.GetExtension('OES_texture_float');
@@ -19131,27 +19854,9 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                             hasInstancedArrays: returnTrue
                         };
                     }
-                    break;
-
-                default:
-                    return this.glVersion;
             }
-
-            if (gl && this.debugMode) {
-                this.debugUtils = WebGLDebugUtil;
-                this.gl = this.debugUtils.makeDebugContext(gl);
-            }
-
-            this.emit('created', {
-                gl: gl, params: params, canvas: canvas,
-                log: {
-                    type: 'debug',
-                    message: 'Webgl' + this.glVersion + ' context created'
-                }
-            });
 
             // Optional extensions
-            this.ext.CompressedTexture = this.GetExtension('compressed_texture_s3tc');
             this.ext.AnisotropicFilter = this.GetExtension('EXT_texture_filter_anisotropic');
             if (this.ext.AnisotropicFilter) {
                 this.ext.AnisotropicFilter.maxAnisotropy = gl.getParameter(this.ext.AnisotropicFilter['MAX_TEXTURE_MAX_ANISOTROPY_EXT']);
@@ -19174,7 +19879,6 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             this.msaaSamples = this.gl.getParameter(this.gl.SAMPLES);
             this.antialiasing = this.msaaSamples > 1;
 
-            this.canvas = canvas;
             this.Resize();
 
             var vertices = [1.0, 1.0, 0.0, 1.0, 1.0, 1.0, -1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, -1.0, 0.0, 1.0, 1.0, 0.0, -1.0, -1.0, 0.0, 1.0, 0.0, 0.0];
@@ -19185,43 +19889,24 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             this._cameraQuadBuffer = gl.createBuffer();
             this._quadDecl = new _vertex.Tw2VertexDeclaration([['POSITION', 0, 4], ['TEXCOORD', 0, 2]]);
 
-            this._alphaTestState = {
-                dirty: false,
-                states: (_states = {}, _defineProperty(_states, this.RS_ALPHATESTENABLE, 0), _defineProperty(_states, this.RS_ALPHAREF, -1), _defineProperty(_states, this.RS_ALPHAFUNC, this.CMP_GREATER), _defineProperty(_states, this.RS_CLIPPING, 0), _defineProperty(_states, this.RS_CLIPPLANEENABLE, 0), _states)
-            };
+            this.wrapModes = Array.from(_Tw2Constant.WrapModes);
 
             this._alphaBlendState = {
                 dirty: false,
-                states: (_states2 = {}, _defineProperty(_states2, this.RS_SRCBLEND, this.BLEND_SRCALPHA), _defineProperty(_states2, this.RS_DESTBLEND, this.BLEND_INVSRCALPHA), _defineProperty(_states2, this.RS_BLENDOP, this.BLENDOP_ADD), _defineProperty(_states2, this.RS_SEPARATEALPHABLENDENABLE, 0), _defineProperty(_states2, this.RS_BLENDOPALPHA, this.BLENDOP_ADD), _defineProperty(_states2, this.RS_SRCBLENDALPHA, this.BLEND_SRCALPHA), _defineProperty(_states2, this.RS_DESTBLENDALPHA, this.BLEND_INVSRCALPHA), _states2)
+                states: (_states = {}, _defineProperty(_states, _Tw2Constant.RS_SRCBLEND, _Tw2Constant.BLEND_SRCALPHA), _defineProperty(_states, _Tw2Constant.RS_DESTBLEND, _Tw2Constant.BLEND_INVSRCALPHA), _defineProperty(_states, _Tw2Constant.RS_BLENDOP, _Tw2Constant.BLENDOP_ADD), _defineProperty(_states, _Tw2Constant.RS_SEPARATEALPHABLENDENABLE, 0), _defineProperty(_states, _Tw2Constant.RS_BLENDOPALPHA, _Tw2Constant.BLENDOP_ADD), _defineProperty(_states, _Tw2Constant.RS_SRCBLENDALPHA, _Tw2Constant.BLEND_SRCALPHA), _defineProperty(_states, _Tw2Constant.RS_DESTBLENDALPHA, _Tw2Constant.BLEND_INVSRCALPHA), _states)
+            };
+
+            this._alphaTestState = {
+                dirty: false,
+                states: (_states2 = {}, _defineProperty(_states2, _Tw2Constant.RS_ALPHATESTENABLE, 0), _defineProperty(_states2, _Tw2Constant.RS_ALPHAREF, -1), _defineProperty(_states2, _Tw2Constant.RS_ALPHAFUNC, _Tw2Constant.CMP_GREATER), _defineProperty(_states2, _Tw2Constant.RS_CLIPPING, 0), _defineProperty(_states2, _Tw2Constant.RS_CLIPPLANEENABLE, 0), _states2)
             };
 
             this._depthOffsetState = {
                 dirty: false,
-                states: (_states3 = {}, _defineProperty(_states3, this.RS_SLOPESCALEDEPTHBIAS, 0), _defineProperty(_states3, this.RS_DEPTHBIAS, 0), _states3)
+                states: (_states3 = {}, _defineProperty(_states3, _Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0), _defineProperty(_states3, _Tw2Constant.RS_DEPTHBIAS, 0), _states3)
             };
 
-            this.wrapModes = [0, gl.REPEAT, gl.MIRRORED_REPEAT, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE, gl.CLAMP_TO_EDGE];
-
             this._shadowStateBuffer = new Float32Array(24);
-
-            // webgl to direct 3d blend table
-            this._blendTable = [-1, // --
-            gl.ZERO, // D3DBLEND_ZERO
-            gl.ONE, // D3DBLEND_ONE
-            gl.SRC_COLOR, // D3DBLEND_SRCCOLOR
-            gl.ONE_MINUS_SRC_COLOR, // D3DBLEND_INVSRCCOLOR
-            gl.SRC_ALPHA, // D3DBLEND_SRCALPHA
-            gl.ONE_MINUS_SRC_ALPHA, // D3DBLEND_INVSRCALPHA
-            gl.DST_ALPHA, // D3DBLEND_DESTALPHA
-            gl.ONE_MINUS_DST_ALPHA, // D3DBLEND_INVDESTALPHA
-            gl.DST_COLOR, // D3DBLEND_DESTCOLOR
-            gl.ONE_MINUS_DST_COLOR, // D3DBLEND_INVDESTCOLOR
-            gl.SRC_ALPHA_SATURATE, // D3DBLEND_SRCALPHASAT
-            -1, // D3DBLEND_BOTHSRCALPHA
-            -1, // D3DBLEND_BOTHINVSRCALPHA
-            gl.CONSTANT_COLOR, // D3DBLEND_BLENDFACTOR
-            gl.ONE_MINUS_CONSTANT_COLOR // D3DBLEND_INVBLENDFACTOR
-            ];
 
             return this.glVersion;
         }
@@ -19237,17 +19922,6 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             if (!this._scheduled.includes(func)) {
                 this._scheduled.push(func);
             }
-        }
-
-        /**
-         * Sets a callback which is fired on canvas resizing
-         * @param {Function} func
-         */
-
-    }, {
-        key: 'OnResize',
-        value: function OnResize(func) {
-            this._onResize = func;
         }
 
         /**
@@ -19272,10 +19946,6 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             this.viewportWidth = this.canvas.clientWidth;
             this.viewportHeight = this.canvas.clientHeight;
             this.viewportAspect = this.viewportWidth / this.viewportHeight;
-
-            if (this._onResize) {
-                this._onResize(this.viewportWidth, this.viewportHeight);
-            }
 
             _Tw2Store.store.SetVariableValue('ViewportSize', [this.viewportWidth, this.viewportHeight, this.viewportWidth, this.viewportHeight]);
 
@@ -19328,14 +19998,26 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
         /**
          * Requests an animation frame
-         * @param {Function} func
+         * @param {Function} callback
          * @returns {number}
          */
 
     }, {
         key: 'RequestAnimationFrame',
-        value: function RequestAnimationFrame(func) {
-            return this.vrDisplay ? this.vrDisplay.requestAnimationFrame(func) : Tw2Device.RequestAnimationFrame(func);
+        value: function RequestAnimationFrame(callback) {
+            return this.vrDisplay ? this.vrDisplay.requestAnimationFrame(callback) : Tw2Device.RequestAnimationFrame(callback);
+        }
+
+        /**
+         * Cancels an animation frame
+         * @param id
+         * @returns {*}
+         */
+
+    }, {
+        key: 'CancelAnimationFrame',
+        value: function CancelAnimationFrame(id) {
+            return this.vrDisplay ? this.vrDisplay.cancelAnimationFrame(id) : Tw2Device.CancelAnimationFrame(id);
         }
 
         /**
@@ -19437,7 +20119,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
     }, {
         key: 'IsAlphaTestEnabled',
         value: function IsAlphaTestEnabled() {
-            return this._alphaTestState.states[this.RS_ALPHATESTENABLE];
+            return this._alphaTestState.states[_Tw2Constant.RS_ALPHATESTENABLE];
         }
 
         /**
@@ -19462,14 +20144,10 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
     }, {
         key: 'GetExtension',
         value: function GetExtension(extension) {
-            var prefixes = Tw2Device.WebglVendorPrefixes;
-            for (var prefix in prefixes) {
-                if (prefixes.hasOwnProperty(prefix)) {
-                    var ext = this.gl.getExtension(prefixes[prefix] + extension);
-                    if (ext) return ext;
-                }
+            for (var i = 0; i < _Tw2Constant.VendorWebglPrefixes.length; i++) {
+                var ext = this.gl.getExtension(_Tw2Constant.VendorWebglPrefixes[i] + extension);
+                if (ext) return ext;
             }
-
             return null;
         }
 
@@ -19579,7 +20257,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
         /**
          * Renders a Texture to the screen
-         * @param {WebGLTexture} texture
+         * @param {Tw2TextureRes} texture
          * @returns {boolean}
          */
 
@@ -19595,7 +20273,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                 });
             }
 
-            this._blitEffect.parameters['BlitSource'].textureRes = texture;
+            this._blitEffect.parameters['BlitSource'].SetTextureRes(texture);
             return this.RenderFullScreenQuad(this._blitEffect);
         }
 
@@ -19644,11 +20322,11 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
     }, {
         key: 'SetRenderState',
         value: function SetRenderState(state, value) {
-            this._currentRenderMode = this.RM_ANY;
             var gl = this.gl;
+            this._currentRenderMode = _Tw2Constant.RM_ANY;
 
             switch (state) {
-                case this.RS_ZENABLE:
+                case _Tw2Constant.RS_ZENABLE:
                     if (value) {
                         gl.enable(gl.DEPTH_TEST);
                     } else {
@@ -19656,70 +20334,70 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                     }
                     return;
 
-                case this.RS_ZWRITEENABLE:
+                case _Tw2Constant.RS_ZWRITEENABLE:
                     gl.depthMask(!!value);
                     return;
 
-                case this.RS_ALPHATESTENABLE:
-                case this.RS_ALPHAREF:
-                case this.RS_ALPHAFUNC:
-                case this.RS_CLIPPING:
-                case this.RS_CLIPPLANEENABLE:
+                case _Tw2Constant.RS_ALPHATESTENABLE:
+                case _Tw2Constant.RS_ALPHAREF:
+                case _Tw2Constant.RS_ALPHAFUNC:
+                case _Tw2Constant.RS_CLIPPING:
+                case _Tw2Constant.RS_CLIPPLANEENABLE:
                     if (this._alphaTestState[state] !== value) {
                         this._alphaTestState.states[state] = value;
                         this._alphaTestState.dirty = true;
                     }
                     return;
 
-                case this.RS_SRCBLEND:
-                case this.RS_DESTBLEND:
-                case this.RS_BLENDOP:
-                case this.RS_SEPARATEALPHABLENDENABLE:
-                case this.RS_BLENDOPALPHA:
-                case this.RS_SRCBLENDALPHA:
-                case this.RS_DESTBLENDALPHA:
+                case _Tw2Constant.RS_SRCBLEND:
+                case _Tw2Constant.RS_DESTBLEND:
+                case _Tw2Constant.RS_BLENDOP:
+                case _Tw2Constant.RS_SEPARATEALPHABLENDENABLE:
+                case _Tw2Constant.RS_BLENDOPALPHA:
+                case _Tw2Constant.RS_SRCBLENDALPHA:
+                case _Tw2Constant.RS_DESTBLENDALPHA:
                     if (this._alphaBlendState[state] !== value) {
                         this._alphaBlendState.states[state] = value;
                         this._alphaBlendState.dirty = true;
                     }
                     return;
 
-                case this.RS_CULLMODE:
+                case _Tw2Constant.RS_CULLMODE:
                     switch (value) {
-                        case this.CULL_NONE:
+                        case _Tw2Constant.CULL_NONE:
                             gl.disable(gl.CULL_FACE);
                             return;
 
-                        case this.CULL_CW:
+                        case _Tw2Constant.CULL_CW:
                             gl.enable(gl.CULL_FACE);
                             gl.cullFace(gl.FRONT);
                             return;
 
-                        case this.CULL_CCW:
+                        case _Tw2Constant.CULL_CCW:
                             gl.enable(gl.CULL_FACE);
                             gl.cullFace(gl.BACK);
                             return;
                     }
                     return;
 
-                case this.RS_ZFUNC:
+                case _Tw2Constant.RS_ZFUNC:
                     gl.depthFunc(0x0200 + value - 1);
                     return;
 
-                case this.RS_ALPHABLENDENABLE:
+                case _Tw2Constant.RS_ALPHABLENDENABLE:
                     if (value) gl.enable(gl.BLEND);else gl.disable(gl.BLEND);
                     return;
 
-                case this.RS_COLORWRITEENABLE:
+                case _Tw2Constant.RS_COLORWRITEENABLE:
                     gl.colorMask((value & 1) !== 0, (value & 2) !== 0, (value & 4) !== 0, (value & 8) !== 0);
                     return;
 
-                case this.RS_SCISSORTESTENABLE:
+                case _Tw2Constant.RS_SCISSORTESTENABLE:
                     if (value) gl.enable(gl.SCISSOR_TEST);else gl.disable(gl.SCISSOR_TEST);
                     return;
 
-                case this.RS_SLOPESCALEDEPTHBIAS:
-                case this.RS_DEPTHBIAS:
+                case _Tw2Constant.RS_SLOPESCALEDEPTHBIAS:
+                case _Tw2Constant.RS_DEPTHBIAS:
                     value = _math.num.dwordToFloat(value);
                     if (this._depthOffsetState[state] !== value) {
                         this._depthOffsetState.states[state] = value;
@@ -19740,25 +20418,25 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
             if (this._alphaBlendState.dirty) {
                 var blendOp = gl.FUNC_ADD;
-                if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_SUBTRACT) {
+                if (this._alphaBlendState.states[_Tw2Constant.RS_BLENDOP] === _Tw2Constant.BLENDOP_SUBTRACT) {
                     blendOp = gl.FUNC_SUBTRACT;
-                } else if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_REVSUBTRACT) {
+                } else if (this._alphaBlendState.states[_Tw2Constant.RS_BLENDOP] === _Tw2Constant.BLENDOP_REVSUBTRACT) {
                     blendOp = gl.FUNC_REVERSE_SUBTRACT;
                 }
 
-                var srcBlend = this._blendTable[this._alphaBlendState.states[this.RS_SRCBLEND]],
-                    destBlend = this._blendTable[this._alphaBlendState.states[this.RS_DESTBLEND]];
+                var srcBlend = _Tw2Constant.BlendTable[this._alphaBlendState.states[_Tw2Constant.RS_SRCBLEND]],
+                    destBlend = _Tw2Constant.BlendTable[this._alphaBlendState.states[_Tw2Constant.RS_DESTBLEND]];
 
-                if (this._alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE]) {
+                if (this._alphaBlendState.states[_Tw2Constant.RS_SEPARATEALPHABLENDENABLE]) {
                     var blendOpAlpha = gl.FUNC_ADD;
-                    if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_SUBTRACT) {
+                    if (this._alphaBlendState.states[_Tw2Constant.RS_BLENDOP] === _Tw2Constant.BLENDOP_SUBTRACT) {
                         blendOpAlpha = gl.FUNC_SUBTRACT;
-                    } else if (this._alphaBlendState.states[this.RS_BLENDOP] === this.BLENDOP_REVSUBTRACT) {
+                    } else if (this._alphaBlendState.states[_Tw2Constant.RS_BLENDOP] === _Tw2Constant.BLENDOP_REVSUBTRACT) {
                         blendOpAlpha = gl.FUNC_REVERSE_SUBTRACT;
                     }
 
-                    var srcBlendAlpha = this._blendTable[this._alphaBlendState.states[this.RS_SRCBLENDALPHA]],
-                        destBlendAlpha = this._blendTable[this._alphaBlendState.states[this.RS_DESTBLENDALPHA]];
+                    var srcBlendAlpha = _Tw2Constant.BlendTable[this._alphaBlendState.states[_Tw2Constant.RS_SRCBLENDALPHA]],
+                        destBlendAlpha = _Tw2Constant.BlendTable[this._alphaBlendState.states[_Tw2Constant.RS_DESTBLENDALPHA]];
 
                     gl.blendEquationSeparate(blendOp, blendOpAlpha);
                     gl.blendFuncSeparate(srcBlend, destBlend, srcBlendAlpha, destBlendAlpha);
@@ -19770,7 +20448,7 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
             }
 
             if (this._depthOffsetState.dirty) {
-                gl.polygonOffset(this._depthOffsetState.states[this.RS_SLOPESCALEDEPTHBIAS], this._depthOffsetState.states[this.RS_DEPTHBIAS]);
+                gl.polygonOffset(this._depthOffsetState.states[_Tw2Constant.RS_SLOPESCALEDEPTHBIAS], this._depthOffsetState.states[_Tw2Constant.RS_DEPTHBIAS]);
                 this._depthOffsetState.dirty = false;
             }
 
@@ -19778,48 +20456,50 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
                 invertedAlphaTest = void 0,
                 alphaTestRef = void 0;
 
-            if (this.shadowHandles && this._alphaTestState.states[this.RS_ALPHATESTENABLE]) {
-                switch (this._alphaTestState.states[this.RS_ALPHAFUNC]) {
-                    case this.CMP_NEVER:
+            if (this.shadowHandles && this._alphaTestState.states[_Tw2Constant.RS_ALPHATESTENABLE]) {
+                switch (this._alphaTestState.states[_Tw2Constant.RS_ALPHAFUNC]) {
+                    case _Tw2Constant.CMP_NEVER:
                         alphaTestFunc = 0;
                         invertedAlphaTest = 1;
                         alphaTestRef = -256;
                         break;
 
-                    case this.CMP_LESS:
+                    case _Tw2Constant.CMP_LESS:
                         alphaTestFunc = 0;
                         invertedAlphaTest = -1;
-                        alphaTestRef = this._alphaTestState.states[this.RS_ALPHAREF] - 1;
+                        alphaTestRef = this._alphaTestState.states[_Tw2Constant.RS_ALPHAREF] - 1;
                         break;
 
-                    case this.CMP_EQUAL:
+                    case _Tw2Constant.CMP_EQUAL:
                         alphaTestFunc = 1;
                         invertedAlphaTest = 0;
-                        alphaTestRef = this._alphaTestState.states[this.RS_ALPHAREF];
+                        alphaTestRef = this._alphaTestState.states[_Tw2Constant.RS_ALPHAREF];
                         break;
 
-                    case this.CMP_LEQUAL:
+                    case _Tw2Constant.CMP_LEQUAL:
                         alphaTestFunc = 0;
                         invertedAlphaTest = -1;
-                        alphaTestRef = this._alphaTestState.states[this.RS_ALPHAREF];
+                        alphaTestRef = this._alphaTestState.states[_Tw2Constant.RS_ALPHAREF];
                         break;
 
-                    case this.CMP_GREATER:
+                    case _Tw2Constant.CMP_GREATER:
                         alphaTestFunc = 0;
                         invertedAlphaTest = 1;
-                        alphaTestRef = -this._alphaTestState.states[this.RS_ALPHAREF] - 1;
+                        alphaTestRef = -this._alphaTestState.states[_Tw2Constant.RS_ALPHAREF] - 1;
                         break;
 
-                    /*case this.CMP_NOTEQUAL:
-                     var alphaTestFunc = 1;
-                     var invertedAlphaTest = 1;
-                     var alphaTestRef = this._alphaTestState.states[this.RS_ALPHAREF];
-                     break;*/
+                    /*
+                    case CMP_NOTEQUAL:
+                    var alphaTestFunc = 1;
+                    var invertedAlphaTest = 1;
+                    var alphaTestRef = this._alphaTestState.states[RS_ALPHAREF];
+                    break;
+                    */
 
-                    case this.CMP_GREATEREQUAL:
+                    case _Tw2Constant.CMP_GREATEREQUAL:
                         alphaTestFunc = 0;
                         invertedAlphaTest = 1;
-                        alphaTestRef = -this._alphaTestState.states[this.RS_ALPHAREF];
+                        alphaTestRef = -this._alphaTestState.states[_Tw2Constant.RS_ALPHAREF];
                         break;
 
                     default:
@@ -19847,80 +20527,80 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
             this.gl.frontFace(this.gl.CW);
             switch (renderMode) {
-                case this.RM_OPAQUE:
-                case this.RM_PICKABLE:
-                case this.RM_DISTORTION:
-                    this.SetRenderState(this.RS_ZENABLE, true);
-                    this.SetRenderState(this.RS_ZWRITEENABLE, true);
-                    this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
-                    this.SetRenderState(this.RS_CULLMODE, this.CULL_CW);
-                    this.SetRenderState(this.RS_ALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_ALPHATESTENABLE, false);
-                    this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_SLOPESCALEDEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_DEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
+                case _Tw2Constant.RM_OPAQUE:
+                case _Tw2Constant.RM_PICKABLE:
+                case _Tw2Constant.RM_DISTORTION:
+                    this.SetRenderState(_Tw2Constant.RS_ZENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZWRITEENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZFUNC, _Tw2Constant.CMP_LEQUAL);
+                    this.SetRenderState(_Tw2Constant.RS_CULLMODE, _Tw2Constant.CULL_CW);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHATESTENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_SEPARATEALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_DEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_COLORWRITEENABLE, 0xf);
                     break;
 
-                case this.RM_DECAL:
-                    this.SetRenderState(this.RS_ALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_ALPHATESTENABLE, true);
-                    this.SetRenderState(this.RS_ALPHAFUNC, this.CMP_GREATER);
-                    this.SetRenderState(this.RS_ALPHAREF, 127);
-                    this.SetRenderState(this.RS_ZENABLE, true);
-                    this.SetRenderState(this.RS_ZWRITEENABLE, true);
-                    this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
-                    this.SetRenderState(this.RS_CULLMODE, this.CULL_CW);
-                    this.SetRenderState(this.RS_BLENDOP, this.BLENDOP_ADD);
-                    this.SetRenderState(this.RS_SLOPESCALEDEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_DEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
+                case _Tw2Constant.RM_DECAL:
+                    this.SetRenderState(_Tw2Constant.RS_ALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHATESTENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHAFUNC, _Tw2Constant.CMP_GREATER);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHAREF, 127);
+                    this.SetRenderState(_Tw2Constant.RS_ZENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZWRITEENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZFUNC, _Tw2Constant.CMP_LEQUAL);
+                    this.SetRenderState(_Tw2Constant.RS_CULLMODE, _Tw2Constant.CULL_CW);
+                    this.SetRenderState(_Tw2Constant.RS_BLENDOP, _Tw2Constant.BLENDOP_ADD);
+                    this.SetRenderState(_Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_DEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_SEPARATEALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_COLORWRITEENABLE, 0xf);
                     break;
 
-                case this.RM_TRANSPARENT:
-                    this.SetRenderState(this.RS_CULLMODE, this.CULL_CW);
-                    this.SetRenderState(this.RS_ALPHABLENDENABLE, true);
-                    this.SetRenderState(this.RS_SRCBLEND, this.BLEND_SRCALPHA);
-                    this.SetRenderState(this.RS_DESTBLEND, this.BLEND_INVSRCALPHA);
-                    this.SetRenderState(this.RS_BLENDOP, this.BLENDOP_ADD);
-                    this.SetRenderState(this.RS_ZENABLE, true);
-                    this.SetRenderState(this.RS_ZWRITEENABLE, false);
-                    this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
-                    this.SetRenderState(this.RS_ALPHATESTENABLE, false);
-                    this.SetRenderState(this.RS_SLOPESCALEDEPTHBIAS, 0); // -1.0
-                    this.SetRenderState(this.RS_DEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
+                case _Tw2Constant.RM_TRANSPARENT:
+                    this.SetRenderState(_Tw2Constant.RS_CULLMODE, _Tw2Constant.CULL_CW);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHABLENDENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_SRCBLEND, _Tw2Constant.BLEND_SRCALPHA);
+                    this.SetRenderState(_Tw2Constant.RS_DESTBLEND, _Tw2Constant.BLEND_INVSRCALPHA);
+                    this.SetRenderState(_Tw2Constant.RS_BLENDOP, _Tw2Constant.BLENDOP_ADD);
+                    this.SetRenderState(_Tw2Constant.RS_ZENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZWRITEENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ZFUNC, _Tw2Constant.CMP_LEQUAL);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHATESTENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0); // -1.0
+                    this.SetRenderState(_Tw2Constant.RS_DEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_SEPARATEALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_COLORWRITEENABLE, 0xf);
                     break;
 
-                case this.RM_ADDITIVE:
-                    this.SetRenderState(this.RS_CULLMODE, this.CULL_NONE);
-                    this.SetRenderState(this.RS_ALPHABLENDENABLE, true);
-                    this.SetRenderState(this.RS_SRCBLEND, this.BLEND_ONE);
-                    this.SetRenderState(this.RS_DESTBLEND, this.BLEND_ONE);
-                    this.SetRenderState(this.RS_BLENDOP, this.BLENDOP_ADD);
-                    this.SetRenderState(this.RS_ZENABLE, true);
-                    this.SetRenderState(this.RS_ZWRITEENABLE, false);
-                    this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
-                    this.SetRenderState(this.RS_ALPHATESTENABLE, false);
-                    this.SetRenderState(this.RS_SLOPESCALEDEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_DEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
+                case _Tw2Constant.RM_ADDITIVE:
+                    this.SetRenderState(_Tw2Constant.RS_CULLMODE, _Tw2Constant.CULL_NONE);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHABLENDENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_SRCBLEND, _Tw2Constant.BLEND_ONE);
+                    this.SetRenderState(_Tw2Constant.RS_DESTBLEND, _Tw2Constant.BLEND_ONE);
+                    this.SetRenderState(_Tw2Constant.RS_BLENDOP, _Tw2Constant.BLENDOP_ADD);
+                    this.SetRenderState(_Tw2Constant.RS_ZENABLE, true);
+                    this.SetRenderState(_Tw2Constant.RS_ZWRITEENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ZFUNC, _Tw2Constant.CMP_LEQUAL);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHATESTENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_DEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_SEPARATEALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_COLORWRITEENABLE, 0xf);
                     break;
 
-                case this.RM_FULLSCREEN:
-                    this.SetRenderState(this.RS_ALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_ALPHATESTENABLE, false);
-                    this.SetRenderState(this.RS_CULLMODE, this.CULL_NONE);
-                    this.SetRenderState(this.RS_ZENABLE, false);
-                    this.SetRenderState(this.RS_ZWRITEENABLE, false);
-                    this.SetRenderState(this.RS_ZFUNC, this.CMP_ALWAYS);
-                    this.SetRenderState(this.RS_SLOPESCALEDEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_DEPTHBIAS, 0);
-                    this.SetRenderState(this.RS_SEPARATEALPHABLENDENABLE, false);
-                    this.SetRenderState(this.RS_COLORWRITEENABLE, 0xf);
+                case _Tw2Constant.RM_FULLSCREEN:
+                    this.SetRenderState(_Tw2Constant.RS_ALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ALPHATESTENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_CULLMODE, _Tw2Constant.CULL_NONE);
+                    this.SetRenderState(_Tw2Constant.RS_ZENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ZWRITEENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_ZFUNC, _Tw2Constant.CMP_ALWAYS);
+                    this.SetRenderState(_Tw2Constant.RS_SLOPESCALEDEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_DEPTHBIAS, 0);
+                    this.SetRenderState(_Tw2Constant.RS_SEPARATEALPHABLENDENABLE, false);
+                    this.SetRenderState(_Tw2Constant.RS_COLORWRITEENABLE, 0xf);
                     break;
 
                 default:
@@ -19931,26 +20611,49 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
         }
 
         /**
-         * Creates a gl context
-         *
+         * Creates webgl context
          * @param {HTMLCanvasElement} canvas
-         * @param {*} [params]
-         * @param {*} [contextNames]
-         * @returns {*}
+         * @param {*} params
+         * @param {boolean} [enableWebgl2]
+         * @returns {{gl: *, version: number}}
          */
 
     }], [{
         key: 'CreateContext',
-        value: function CreateContext(canvas, params, contextNames) {
-            contextNames = Array.isArray(contextNames) ? contextNames : [contextNames];
-            for (var i = 0; i < contextNames.length; i++) {
-                try {
-                    return canvas.getContext(contextNames[i], params);
-                } catch (err) {
-                    /* eslint-disable-line no-empty */
+        value: function CreateContext(canvas, params, enableWebgl2) {
+            /**
+             * Creates a gl context
+             * @param {HTMLCanvasElement} canvas
+             * @param {*} [params]
+             * @param {*} [contextNames]
+             * @returns {*}
+             */
+            function create(canvas, params, contextNames) {
+                contextNames = Array.isArray(contextNames) ? contextNames : [contextNames];
+                for (var i = 0; i < contextNames.length; i++) {
+                    try {
+                        return canvas.getContext(contextNames[i], params);
+                    } catch (err) {
+                        /* eslint-disable-line no-empty */
+                    }
                 }
+                return null;
             }
-            return null;
+
+            var gl = null,
+                version = _Tw2Constant.WebglVersion.NONE;
+
+            if (enableWebgl2) {
+                gl = create(canvas, params, _Tw2Constant.Webgl2ContextNames);
+                if (gl) version = _Tw2Constant.WebglVersion.WEBGL2;
+            }
+
+            if (!gl) {
+                gl = create(canvas, params, _Tw2Constant.WebglContextNames);
+                if (gl) version = _Tw2Constant.WebglVersion.WEBGL;
+            }
+
+            return { gl: gl, version: version };
         }
 
         /**
@@ -19960,36 +20663,14 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
 
         /**
-         * Requests and animation frame
+         * Requests an animation frame
+         * @type {Function}
          */
 
 
         /**
-         * Cancels an animation frame by it's id
-         */
-
-
-        /**
-         * Webgl vendor prefixes
-         * @type {string[]}
-         */
-
-
-        /**
-         * Webgl context names
-         * @type {string[]}
-         */
-
-
-        /**
-         * Webgl2 context names
-         * @type {string[]}
-         */
-
-
-        /**
-         * Webgl version
-         * @type {{NONE: number, WEBGL: number, WEBGL2: number}}
+         * Cancels an animation frame
+         * @type {Function}
          */
 
 
@@ -20002,186 +20683,34 @@ var Tw2Device = exports.Tw2Device = (_temp = _class = function (_Tw2EventEmitter
 
     return Tw2Device;
 }(_Tw2EventEmitter2.Tw2EventEmitter), _class.Clock = Date, _class.RequestAnimationFrame = function () {
-    var requestFrame = window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (callback) {
-        if (!timeOuts) timeOuts = [];
-        timeOuts.push(window.setTimeout(callback, 1000 / 60));
-        return timeOuts.length - 1;
-    };
-
-    /**
-     * Requests an animation frame
-     * @param {Function} callback
-     * @returns {number} id
-     */
+    var request = (0, _util.get)(window, _Tw2Constant.VendorRequestAnimationFrame);
     return function (callback) {
-        return requestFrame(callback);
+        return request(callback);
     };
 }(), _class.CancelAnimationFrame = function () {
-    var cancelFrame = window['cancelAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || window['oRequestAnimationFrame'] || window['msRequestAnimationFrame'] || function (id) {
-        if (!timeOuts) timeOuts = [];
-        if (timeOuts[id] !== undefined) {
-            window.clearTimeout(timeOuts[id]);
-            timeOuts[id] = undefined;
-            return true;
-        }
-    };
-
-    /**
-     * Cancels an animation frame by it's id
-     * @param {number} id
-     */
+    var cancel = (0, _util.get)(window, _Tw2Constant.VendorCancelAnimationFrame);
     return function (id) {
-        cancelFrame(id);
+        return cancel(id);
     };
-}(), _class.WebglVendorPrefixes = ['', 'MOZ_', 'WEBKIT_', 'WEBGL_'], _class.WebglContextNames = ['webgl', 'experimental-webgl'], _class.Webgl2ContextNames = ['webgl2', 'experimental-webgl2'], _class.WebglVersion = {
-    NONE: 0,
-    WEBGL: 1,
-    WEBGL2: 2
-}, _class.category = 'device', _temp);
-
-// Storage for devices without request animation frame
-
-var timeOuts = void 0;
+}(), _class.category = 'device', _temp);
 
 // Render Modes
-Tw2Device.prototype.RM_ANY = -1;
-Tw2Device.prototype.RM_OPAQUE = 0;
-Tw2Device.prototype.RM_DECAL = 1;
-Tw2Device.prototype.RM_TRANSPARENT = 2;
-Tw2Device.prototype.RM_ADDITIVE = 3;
-Tw2Device.prototype.RM_DEPTH = 4;
-Tw2Device.prototype.RM_FULLSCREEN = 5;
-Tw2Device.prototype.RM_PICKABLE = 6;
-Tw2Device.prototype.RM_DISTORTION = 7;
 
-// Render States
-Tw2Device.prototype.RS_ZENABLE = 7; // D3DZBUFFERTYPE (or TRUE/FALSE for legacy)
-Tw2Device.prototype.RS_FILLMODE = 8; // D3DFILLMODE
-Tw2Device.prototype.RS_SHADEMODE = 9; // D3DSHADEMODE
-Tw2Device.prototype.RS_ZWRITEENABLE = 14; // TRUE to enable z writes
-Tw2Device.prototype.RS_ALPHATESTENABLE = 15; // TRUE to enable alpha tests
-Tw2Device.prototype.RS_LASTPIXEL = 16; // TRUE for last-pixel on lines
-Tw2Device.prototype.RS_SRCBLEND = 19; // D3DBLEND
-Tw2Device.prototype.RS_DESTBLEND = 20; // D3DBLEND
-Tw2Device.prototype.RS_CULLMODE = 22; // D3DCULL
-Tw2Device.prototype.RS_ZFUNC = 23; // D3DCMPFUNC
-Tw2Device.prototype.RS_ALPHAREF = 24; // D3DFIXED
-Tw2Device.prototype.RS_ALPHAFUNC = 25; // D3DCMPFUNC
-Tw2Device.prototype.RS_DITHERENABLE = 26; // TRUE to enable dithering
-Tw2Device.prototype.RS_ALPHABLENDENABLE = 27; // TRUE to enable alpha blending
-Tw2Device.prototype.RS_FOGENABLE = 28; // TRUE to enable fog blending
-Tw2Device.prototype.RS_SPECULARENABLE = 29; // TRUE to enable specular
-Tw2Device.prototype.RS_FOGCOLOR = 34; // D3DCOLOR
-Tw2Device.prototype.RS_FOGTABLEMODE = 35; // D3DFOGMODE
-Tw2Device.prototype.RS_FOGSTART = 36; // Fog start (for both vertex and pixel fog)
-Tw2Device.prototype.RS_FOGEND = 37; // Fog end
-Tw2Device.prototype.RS_FOGDENSITY = 38; // Fog density
-Tw2Device.prototype.RS_RANGEFOGENABLE = 48; // Enables range-based fog
-Tw2Device.prototype.RS_STENCILENABLE = 52; // BOOL enable/disable stenciling
-Tw2Device.prototype.RS_STENCILFAIL = 53; // D3DSTENCILOP to do if stencil test fails
-Tw2Device.prototype.RS_STENCILZFAIL = 54; // D3DSTENCILOP to do if stencil test passes and Z test fails
-Tw2Device.prototype.RS_STENCILPASS = 55; // D3DSTENCILOP to do if both stencil and Z tests pass
-Tw2Device.prototype.RS_STENCILFUNC = 56; // D3DCMPFUNC fn.  Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true
-Tw2Device.prototype.RS_STENCILREF = 57; // Reference value used in stencil test
-Tw2Device.prototype.RS_STENCILMASK = 58; // Mask value used in stencil test
-Tw2Device.prototype.RS_STENCILWRITEMASK = 59; // Write mask applied to values written to stencil buffer
-Tw2Device.prototype.RS_TEXTUREFACTOR = 60; // D3DCOLOR used for multi-texture blend
-Tw2Device.prototype.RS_WRAP0 = 128; // wrap for 1st texture coord. set
-Tw2Device.prototype.RS_WRAP1 = 129; // wrap for 2nd texture coord. set
-Tw2Device.prototype.RS_WRAP2 = 130; // wrap for 3rd texture coord. set
-Tw2Device.prototype.RS_WRAP3 = 131; // wrap for 4th texture coord. set
-Tw2Device.prototype.RS_WRAP4 = 132; // wrap for 5th texture coord. set
-Tw2Device.prototype.RS_WRAP5 = 133; // wrap for 6th texture coord. set
-Tw2Device.prototype.RS_WRAP6 = 134; // wrap for 7th texture coord. set
-Tw2Device.prototype.RS_WRAP7 = 135; // wrap for 8th texture coord. set
-Tw2Device.prototype.RS_CLIPPING = 136;
-Tw2Device.prototype.RS_LIGHTING = 137;
-Tw2Device.prototype.RS_AMBIENT = 139;
-Tw2Device.prototype.RS_FOGVERTEXMODE = 140;
-Tw2Device.prototype.RS_COLORVERTEX = 141;
-Tw2Device.prototype.RS_LOCALVIEWER = 142;
-Tw2Device.prototype.RS_NORMALIZENORMALS = 143;
-Tw2Device.prototype.RS_DIFFUSEMATERIALSOURCE = 145;
-Tw2Device.prototype.RS_SPECULARMATERIALSOURCE = 146;
-Tw2Device.prototype.RS_AMBIENTMATERIALSOURCE = 147;
-Tw2Device.prototype.RS_EMISSIVEMATERIALSOURCE = 148;
-Tw2Device.prototype.RS_VERTEXBLEND = 151;
-Tw2Device.prototype.RS_CLIPPLANEENABLE = 152;
-Tw2Device.prototype.RS_POINTSIZE = 154; // float point size
-Tw2Device.prototype.RS_POINTSIZE_MIN = 155; // float point size min threshold
-Tw2Device.prototype.RS_POINTSPRITEENABLE = 156; // BOOL point texture coord control
-Tw2Device.prototype.RS_POINTSCALEENABLE = 157; // BOOL point size scale enable
-Tw2Device.prototype.RS_POINTSCALE_A = 158; // float point attenuation A value
-Tw2Device.prototype.RS_POINTSCALE_B = 159; // float point attenuation B value
-Tw2Device.prototype.RS_POINTSCALE_C = 160; // float point attenuation C value
-Tw2Device.prototype.RS_MULTISAMPLEANTIALIAS = 161; // BOOL - set to do FSAA with multisample buffer
-Tw2Device.prototype.RS_MULTISAMPLEMASK = 162; // DWORD - per-sample enable/disable
-Tw2Device.prototype.RS_PATCHEDGESTYLE = 163; // Sets whether patch edges will use float style tessellation
-Tw2Device.prototype.RS_DEBUGMONITORTOKEN = 165; // DEBUG ONLY - token to debug monitor
-Tw2Device.prototype.RS_POINTSIZE_MAX = 166; // float point size max threshold
-Tw2Device.prototype.RS_INDEXEDVERTEXBLENDENABLE = 167;
-Tw2Device.prototype.RS_COLORWRITEENABLE = 168; // per-channel write enable
-Tw2Device.prototype.RS_TWEENFACTOR = 170; // float tween factor
-Tw2Device.prototype.RS_BLENDOP = 171; // D3DBLENDOP setting
-Tw2Device.prototype.RS_POSITIONDEGREE = 172; // NPatch position interpolation degree. D3DDEGREE_LINEAR or D3DDEGREE_CUBIC (default)
-Tw2Device.prototype.RS_NORMALDEGREE = 173; // NPatch normal interpolation degree. D3DDEGREE_LINEAR (default) or D3DDEGREE_QUADRATIC
-Tw2Device.prototype.RS_SCISSORTESTENABLE = 174;
-Tw2Device.prototype.RS_SLOPESCALEDEPTHBIAS = 175;
-Tw2Device.prototype.RS_ANTIALIASEDLINEENABLE = 176;
-Tw2Device.prototype.RS_TWOSIDEDSTENCILMODE = 185; // BOOL enable/disable 2 sided stenciling
-Tw2Device.prototype.RS_CCW_STENCILFAIL = 186; // D3DSTENCILOP to do if ccw stencil test fails
-Tw2Device.prototype.RS_CCW_STENCILZFAIL = 187; // D3DSTENCILOP to do if ccw stencil test passes and Z test fails
-Tw2Device.prototype.RS_CCW_STENCILPASS = 188; // D3DSTENCILOP to do if both ccw stencil and Z tests pass
-Tw2Device.prototype.RS_CCW_STENCILFUNC = 189; // D3DCMPFUNC fn.  ccw Stencil Test passes if ((ref & mask) stencilfn (stencil & mask)) is true
-Tw2Device.prototype.RS_COLORWRITEENABLE1 = 190; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
-Tw2Device.prototype.RS_COLORWRITEENABLE2 = 191; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
-Tw2Device.prototype.RS_COLORWRITEENABLE3 = 192; // Additional ColorWriteEnables for the devices that support D3DPMISCCAPS_INDEPENDENTWRITEMASKS
-Tw2Device.prototype.RS_BLENDFACTOR = 193; // D3DCOLOR used for a constant blend factor during alpha blending for devices that support D3DPBLENDCAPS_BLENDFACTOR
-Tw2Device.prototype.RS_SRGBWRITEENABLE = 194; // Enable rendertarget writes to be DE-linearized to SRGB (for formats that expose D3DUSAGE_QUERY_SRGBWRITE)
-Tw2Device.prototype.RS_DEPTHBIAS = 195;
-Tw2Device.prototype.RS_SEPARATEALPHABLENDENABLE = 206; // TRUE to enable a separate blending function for the alpha channel
-Tw2Device.prototype.RS_SRCBLENDALPHA = 207; // SRC blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE
-Tw2Device.prototype.RS_DESTBLENDALPHA = 208; // DST blend factor for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE
-Tw2Device.prototype.RS_BLENDOPALPHA = 209; // Blending operation for the alpha channel when RS_SEPARATEDESTALPHAENABLE is TRUE */// Cull Modes
-Tw2Device.prototype.CULL_NONE = 1;
-Tw2Device.prototype.CULL_CW = 2;
-Tw2Device.prototype.CULL_CCW = 3;
-// Compare
-Tw2Device.prototype.CMP_NEVER = 1;
-Tw2Device.prototype.CMP_LESS = 2;
-Tw2Device.prototype.CMP_EQUAL = 3;
-Tw2Device.prototype.CMP_LEQUAL = 4;
-Tw2Device.prototype.CMP_GREATER = 5;
-Tw2Device.prototype.CMP_NOTEQUAL = 6;
-Tw2Device.prototype.CMP_GREATEREQUAL = 7;
-Tw2Device.prototype.CMP_ALWAYS = 8;
-// Blend
-Tw2Device.prototype.BLEND_ZERO = 1;
-Tw2Device.prototype.BLEND_ONE = 2;
-Tw2Device.prototype.BLEND_SRCCOLOR = 3;
-Tw2Device.prototype.BLEND_INVSRCCOLOR = 4;
-Tw2Device.prototype.BLEND_SRCALPHA = 5;
-Tw2Device.prototype.BLEND_INVSRCALPHA = 6;
-Tw2Device.prototype.BLEND_DESTALPHA = 7;
-Tw2Device.prototype.BLEND_INVDESTALPHA = 8;
-Tw2Device.prototype.BLEND_DESTCOLOR = 9;
-Tw2Device.prototype.BLEND_INVDESTCOLOR = 10;
-Tw2Device.prototype.BLEND_SRCALPHASAT = 11;
-Tw2Device.prototype.BLEND_BOTHSRCALPHA = 12;
-Tw2Device.prototype.BLEND_BOTHINVSRCALPHA = 13;
-Tw2Device.prototype.BLEND_BLENDFACTOR = 14;
-Tw2Device.prototype.BLEND_INVBLENDFACTOR = 15;
-// Blend Operations
-Tw2Device.prototype.BLENDOP_ADD = 1;
-Tw2Device.prototype.BLENDOP_SUBTRACT = 2;
-Tw2Device.prototype.BLENDOP_REVSUBTRACT = 3;
-Tw2Device.prototype.BLENDOP_MIN = 4;
-Tw2Device.prototype.BLENDOP_MAX = 5;
+Tw2Device.prototype.RM_ANY = _Tw2Constant.RM_ANY;
+Tw2Device.prototype.RM_OPAQUE = _Tw2Constant.RM_OPAQUE;
+Tw2Device.prototype.RM_DECAL = _Tw2Constant.RM_DECAL;
+Tw2Device.prototype.RM_TRANSPARENT = _Tw2Constant.RM_TRANSPARENT;
+Tw2Device.prototype.RM_ADDITIVE = _Tw2Constant.RM_ADDITIVE;
+Tw2Device.prototype.RM_DEPTH = _Tw2Constant.RM_DEPTH;
+Tw2Device.prototype.RM_DISTORTION = _Tw2Constant.RM_DISTORTION;
+Tw2Device.prototype.RM_FULLSCREEN = _Tw2Constant.RM_FULLSCREEN;
+Tw2Device.prototype.RM_PICKABLE = _Tw2Constant.RM_PICKABLE;
+Tw2Device.prototype.RM_DISTORTION = _Tw2Constant.RM_DISTORTION;
 
 var device = exports.device = new Tw2Device();
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20194,7 +20723,7 @@ exports.assignIfExists = assignIfExists;
 exports.get = get;
 exports.template = template;
 
-var _type = __webpack_require__(22);
+var _type = __webpack_require__(21);
 
 var _arr = __webpack_require__(40);
 
@@ -20240,12 +20769,21 @@ function assignIfExists(dest, src, attrs) {
 /**
  * Gets a source's property value if it exists else returns a default value
  * @param {*} src
- * @param {string} prop
- * @param {*} defaultValue
+ * @param {string|string[]} prop
+ * @param {*} [defaultValue]
  * @returns {*}
  */
 function get(src, prop, defaultValue) {
-    return src && prop in src ? src[prop] : defaultValue;
+    if (!(0, _type.isArray)(prop)) {
+        return prop in src ? src[prop] : defaultValue;
+    }
+
+    for (var i = 0; i < prop.length; i++) {
+        if (prop[i] in src) {
+            return src[prop[i]];
+        }
+    }
+    return defaultValue;
 }
 
 /**
@@ -20283,7 +20821,7 @@ function template(str) {
 }
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20364,7 +20902,7 @@ function generateID() {
 }
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20446,7 +20984,7 @@ function getURLBoolean(key, defaultValue) {
 }
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20623,7 +21161,7 @@ var Tw2MotherLode = exports.Tw2MotherLode = function () {
 }();
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20710,6 +21248,7 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function () {
                 }
 
                 sampler.minFilterNoMips = gl.NEAREST;
+                sampler.magFilter = gl.NEAREST;
             } else {
                 switch (this.mipFilter) {
                     case 0:
@@ -20725,13 +21264,13 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function () {
                 }
 
                 sampler.minFilterNoMips = gl.LINEAR;
+                sampler.magFilter = gl.LINEAR;
             }
 
             if (this.filter === 3 || this.mipFilter === 3) {
                 sampler.anisotropy = Math.max(this.maxAnisotropy, 1);
             }
 
-            sampler.magFilter = this.filter === 1 ? gl.NEAREST : gl.LINEAR;
             sampler.addressU = wrapModes[this.addressU];
             sampler.addressV = wrapModes[this.addressV];
             sampler.addressW = wrapModes[this.addressW];
@@ -20746,7 +21285,7 @@ var Tw2SamplerOverride = exports.Tw2SamplerOverride = function () {
 }();
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21067,7 +21606,7 @@ var Tw2VertexDeclaration = exports.Tw2VertexDeclaration = (_temp = _class = func
 }, _temp);
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*
@@ -22271,10 +22810,10 @@ return {
 
 module.exports = WebGLDebugUtils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(90)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(91)))
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports) {
 
 var g;
@@ -22301,7 +22840,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22364,7 +22903,7 @@ var Tw2ForwardingRenderBatch = exports.Tw2ForwardingRenderBatch = function (_Tw2
 }(_Tw2RenderBatch2.Tw2RenderBatch);
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22418,7 +22957,7 @@ var Tw2GeometryLineBatch = exports.Tw2GeometryLineBatch = function (_Tw2Geometry
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22481,7 +23020,7 @@ var Tw2InstancedMeshBatch = exports.Tw2InstancedMeshBatch = function (_Tw2Geomet
 }(_Tw2GeometryBatch2.Tw2GeometryBatch);
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22491,7 +23030,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2CurveSet = __webpack_require__(95);
+var _Tw2CurveSet = __webpack_require__(96);
 
 Object.keys(_Tw2CurveSet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22503,7 +23042,7 @@ Object.keys(_Tw2CurveSet).forEach(function (key) {
   });
 });
 
-var _Tw2ValueBinding = __webpack_require__(96);
+var _Tw2ValueBinding = __webpack_require__(97);
 
 Object.keys(_Tw2ValueBinding).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -22516,7 +23055,7 @@ Object.keys(_Tw2ValueBinding).forEach(function (key) {
 });
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22649,7 +23188,7 @@ var Tw2CurveSet = exports.Tw2CurveSet = function () {
 }();
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22954,7 +23493,7 @@ var Tw2ValueBinding = exports.Tw2ValueBinding = function () {
 }();
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22969,7 +23508,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp;
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(6);
 
 var _global = __webpack_require__(0);
 
@@ -23098,7 +23637,7 @@ var Tw2FloatParameter = exports.Tw2FloatParameter = (_temp = _class = function (
 }(_Tw2Parameter2.Tw2Parameter), _class.constantBufferSize = 1, _temp);
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23115,7 +23654,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23254,7 +23793,7 @@ var Tw2MatrixParameter = exports.Tw2MatrixParameter = (_temp = _class = function
 }(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 16, _temp);
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23273,7 +23812,7 @@ var _class, _temp2;
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23411,7 +23950,7 @@ var Tw2TransformParameter = exports.Tw2TransformParameter = (_temp2 = _class = f
 }(_Tw2Parameter2.Tw2Parameter), _class.constantBufferSize = 16, _temp2);
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23426,7 +23965,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter2 = __webpack_require__(5);
+var _Tw2Parameter2 = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23541,7 +24080,7 @@ var Tw2VariableParameter = exports.Tw2VariableParameter = function (_Tw2Paramete
 }(_Tw2Parameter2.Tw2Parameter);
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23558,7 +24097,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23640,7 +24179,7 @@ var Tw2Vector2Parameter = exports.Tw2Vector2Parameter = (_temp = _class = functi
 }(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 2, _temp);
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23657,7 +24196,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23759,7 +24298,7 @@ var Tw2Vector3Parameter = exports.Tw2Vector3Parameter = (_temp = _class = functi
 }(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 3, _temp);
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23776,7 +24315,7 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _Tw2Parameter = __webpack_require__(5);
+var _Tw2Parameter = __webpack_require__(6);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23898,7 +24437,7 @@ var Tw2Vector4Parameter = exports.Tw2Vector4Parameter = (_temp = _class = functi
 }(_Tw2Parameter.Tw2VectorParameter), _class.constantBufferSize = 4, _temp);
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23908,7 +24447,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2BasicPerObjectData = __webpack_require__(105);
+var _Tw2BasicPerObjectData = __webpack_require__(106);
 
 Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23920,7 +24459,7 @@ Object.keys(_Tw2BasicPerObjectData).forEach(function (key) {
   });
 });
 
-var _Tw2PerObjectData = __webpack_require__(48);
+var _Tw2PerObjectData = __webpack_require__(49);
 
 Object.keys(_Tw2PerObjectData).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -23945,7 +24484,7 @@ Object.keys(_Tw2RawData).forEach(function (key) {
 });
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23962,7 +24501,7 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _global = __webpack_require__(0);
 
-var _Tw2PerObjectData2 = __webpack_require__(48);
+var _Tw2PerObjectData2 = __webpack_require__(49);
 
 var _Tw2RawData = __webpack_require__(29);
 
@@ -24036,7 +24575,7 @@ var Tw2BasicPerObjectData = exports.Tw2BasicPerObjectData = function (_Tw2PerObj
 exports.EveBasicPerObjectData = Tw2BasicPerObjectData;
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24071,7 +24610,7 @@ var Tw2BlendShapeData = exports.Tw2BlendShapeData = function Tw2BlendShapeData()
 };
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24099,7 +24638,7 @@ var Tw2GeometryAnimation = exports.Tw2GeometryAnimation = function Tw2GeometryAn
 };
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24175,7 +24714,7 @@ var Tw2GeometryBone = exports.Tw2GeometryBone = (_temp = _class = function () {
 }, _temp);
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24205,7 +24744,7 @@ var Tw2GeometryCurve = exports.Tw2GeometryCurve = function Tw2GeometryCurve() {
 };
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24262,7 +24801,7 @@ var Tw2GeometryMesh = exports.Tw2GeometryMesh = function Tw2GeometryMesh() {
 };
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24301,7 +24840,7 @@ var Tw2GeometryMeshArea = exports.Tw2GeometryMeshArea = function Tw2GeometryMesh
 };
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24327,7 +24866,7 @@ var Tw2GeometryMeshBinding = exports.Tw2GeometryMeshBinding = function Tw2Geomet
 };
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24385,7 +24924,7 @@ var Tw2GeometryModel = exports.Tw2GeometryModel = function () {
 }();
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24409,7 +24948,7 @@ var Tw2GeometrySkeleton = exports.Tw2GeometrySkeleton = function Tw2GeometrySkel
 };
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24437,7 +24976,7 @@ var Tw2GeometryTrackGroup = exports.Tw2GeometryTrackGroup = function Tw2Geometry
 };
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24467,7 +25006,7 @@ var Tw2GeometryTransformTrack = exports.Tw2GeometryTransformTrack = function Tw2
 };
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24489,7 +25028,7 @@ Object.keys(_Tw2Effect).forEach(function (key) {
   });
 });
 
-var _Tw2InstancedMesh = __webpack_require__(118);
+var _Tw2InstancedMesh = __webpack_require__(119);
 
 Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24501,7 +25040,7 @@ Object.keys(_Tw2InstancedMesh).forEach(function (key) {
   });
 });
 
-var _Tw2Mesh = __webpack_require__(50);
+var _Tw2Mesh = __webpack_require__(51);
 
 Object.keys(_Tw2Mesh).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24513,7 +25052,7 @@ Object.keys(_Tw2Mesh).forEach(function (key) {
   });
 });
 
-var _Tw2MeshArea = __webpack_require__(51);
+var _Tw2MeshArea = __webpack_require__(52);
 
 Object.keys(_Tw2MeshArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24525,7 +25064,7 @@ Object.keys(_Tw2MeshArea).forEach(function (key) {
   });
 });
 
-var _Tw2MeshLineArea = __webpack_require__(119);
+var _Tw2MeshLineArea = __webpack_require__(120);
 
 Object.keys(_Tw2MeshLineArea).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24538,7 +25077,7 @@ Object.keys(_Tw2MeshLineArea).forEach(function (key) {
 });
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24557,7 +25096,7 @@ var _global = __webpack_require__(0);
 
 var _batch = __webpack_require__(18);
 
-var _Tw2Mesh2 = __webpack_require__(50);
+var _Tw2Mesh2 = __webpack_require__(51);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24692,7 +25231,7 @@ var Tw2InstancedMesh = exports.Tw2InstancedMesh = function (_Tw2Mesh) {
 }(_Tw2Mesh2.Tw2Mesh);
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24707,7 +25246,7 @@ var _class, _temp;
 
 var _batch = __webpack_require__(18);
 
-var _Tw2MeshArea2 = __webpack_require__(51);
+var _Tw2MeshArea2 = __webpack_require__(52);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -24733,7 +25272,7 @@ var Tw2MeshLineArea = exports.Tw2MeshLineArea = (_temp = _class = function (_Tw2
 }(_Tw2MeshArea2.Tw2MeshArea), _class.batchType = _batch.Tw2GeometryLineBatch, _temp);
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24743,7 +25282,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2Animation = __webpack_require__(52);
+var _Tw2Animation = __webpack_require__(53);
 
 Object.keys(_Tw2Animation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24755,7 +25294,7 @@ Object.keys(_Tw2Animation).forEach(function (key) {
   });
 });
 
-var _Tw2AnimationController = __webpack_require__(121);
+var _Tw2AnimationController = __webpack_require__(122);
 
 Object.keys(_Tw2AnimationController).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24767,7 +25306,7 @@ Object.keys(_Tw2AnimationController).forEach(function (key) {
   });
 });
 
-var _Tw2Bone = __webpack_require__(54);
+var _Tw2Bone = __webpack_require__(55);
 
 Object.keys(_Tw2Bone).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24779,7 +25318,7 @@ Object.keys(_Tw2Bone).forEach(function (key) {
   });
 });
 
-var _Tw2Model = __webpack_require__(55);
+var _Tw2Model = __webpack_require__(56);
 
 Object.keys(_Tw2Model).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24791,7 +25330,7 @@ Object.keys(_Tw2Model).forEach(function (key) {
   });
 });
 
-var _Tw2Track = __webpack_require__(56);
+var _Tw2Track = __webpack_require__(57);
 
 Object.keys(_Tw2Track).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24803,7 +25342,7 @@ Object.keys(_Tw2Track).forEach(function (key) {
   });
 });
 
-var _Tw2TrackGroup = __webpack_require__(57);
+var _Tw2TrackGroup = __webpack_require__(58);
 
 Object.keys(_Tw2TrackGroup).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -24816,7 +25355,7 @@ Object.keys(_Tw2TrackGroup).forEach(function (key) {
 });
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24833,17 +25372,17 @@ var _class, _temp;
 
 var _global = __webpack_require__(0);
 
-var _resource = __webpack_require__(53);
+var _resource = __webpack_require__(54);
 
-var _Tw2Animation = __webpack_require__(52);
+var _Tw2Animation = __webpack_require__(53);
 
-var _Tw2Bone = __webpack_require__(54);
+var _Tw2Bone = __webpack_require__(55);
 
-var _Tw2Model = __webpack_require__(55);
+var _Tw2Model = __webpack_require__(56);
 
-var _Tw2Track = __webpack_require__(56);
+var _Tw2Track = __webpack_require__(57);
 
-var _Tw2TrackGroup = __webpack_require__(57);
+var _Tw2TrackGroup = __webpack_require__(58);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -25639,7 +26178,7 @@ var Tw2AnimationController = exports.Tw2AnimationController = (_temp = _class = 
 }, _temp);
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25656,7 +26195,7 @@ var _reader = __webpack_require__(30);
 
 var _Tw2Resource2 = __webpack_require__(11);
 
-var _Tw2Shader = __webpack_require__(123);
+var _Tw2Shader = __webpack_require__(124);
 
 var _Tw2Error = __webpack_require__(3);
 
@@ -25868,7 +26407,7 @@ var Tw2EffectRes = exports.Tw2EffectRes = function (_Tw2Resource) {
 Tw2EffectRes.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26438,7 +26977,7 @@ var Tw2Shader = exports.Tw2Shader = (_temp = _class = function () {
 }(), _class.ConstantIgnore = ['PerFrameVS', 'PerObjectVS', 'PerFramePS', 'PerObjectPS'], _temp);
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26461,7 +27000,7 @@ var _Tw2Resource2 = __webpack_require__(11);
 
 var _Tw2Error = __webpack_require__(3);
 
-var _geometry = __webpack_require__(49);
+var _geometry = __webpack_require__(50);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27175,7 +27714,7 @@ var Tw2GeometryRes = exports.Tw2GeometryRes = function (_Tw2Resource) {
 Tw2GeometryRes.prototype.requestResponseType = 'arraybuffer';
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27465,7 +28004,7 @@ var Tw2VideoRes = exports.Tw2VideoRes = function (_Tw2Resource) {
 }(_Tw2Resource2.Tw2Resource);
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27475,7 +28014,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2PostEffect = __webpack_require__(58);
+var _Tw2PostEffect = __webpack_require__(59);
 
 Object.keys(_Tw2PostEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27487,7 +28026,7 @@ Object.keys(_Tw2PostEffect).forEach(function (key) {
   });
 });
 
-var _Tw2PostEffectManager = __webpack_require__(127);
+var _Tw2PostEffectManager = __webpack_require__(128);
 
 Object.keys(_Tw2PostEffectManager).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27499,7 +28038,7 @@ Object.keys(_Tw2PostEffectManager).forEach(function (key) {
   });
 });
 
-var _Tw2PostEffectStep = __webpack_require__(60);
+var _Tw2PostEffectStep = __webpack_require__(61);
 
 Object.keys(_Tw2PostEffectStep).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27511,7 +28050,7 @@ Object.keys(_Tw2PostEffectStep).forEach(function (key) {
   });
 });
 
-var _Tw2PostProcess = __webpack_require__(128);
+var _Tw2PostProcess = __webpack_require__(129);
 
 Object.keys(_Tw2PostProcess).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -27524,7 +28063,7 @@ Object.keys(_Tw2PostProcess).forEach(function (key) {
 });
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27539,9 +28078,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _class, _temp;
 
-var _util = __webpack_require__(6);
+var _util = __webpack_require__(5);
 
-var _Tw2PostEffect = __webpack_require__(58);
+var _Tw2PostEffect = __webpack_require__(59);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -27727,7 +28266,7 @@ var Tw2PostEffectManager = exports.Tw2PostEffectManager = (_temp = _class = func
 }(), _class.Item = _Tw2PostEffect.Tw2PostEffect, _temp);
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27759,7 +28298,7 @@ var Tw2PostProcess = exports.Tw2PostProcess = (_temp = _class = function Tw2Post
 , _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27784,7 +28323,7 @@ var Tw2Float = exports.Tw2Float = function Tw2Float() {
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27938,7 +28477,7 @@ var Tw2Frustum = exports.Tw2Frustum = (_temp = _class = function () {
 }, _temp);
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28180,7 +28719,7 @@ var Tw2ColorCurve = exports.Tw2ColorCurve = (_temp3 = _class2 = function (_Tw2Cu
 }, _temp3);
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28446,7 +28985,7 @@ var Tw2ColorCurve2 = exports.Tw2ColorCurve2 = (_temp3 = _class2 = function (_Tw2
 }, _temp3);
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28624,7 +29163,7 @@ var Tw2EventCurve = exports.Tw2EventCurve = (_temp3 = _class2 = function (_Tw2Cu
 }, _temp3);
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28727,7 +29266,7 @@ var Tw2PerlinCurve = exports.Tw2PerlinCurve = (_temp2 = _class = function (_Tw2C
 }(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29003,7 +29542,7 @@ var Tw2QuaternionCurve = exports.Tw2QuaternionCurve = (_temp3 = _class2 = functi
 }, _temp3);
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29097,7 +29636,7 @@ var Tw2RandomConstantCurve = exports.Tw2RandomConstantCurve = (_temp2 = _class =
 }(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29284,7 +29823,7 @@ var Tw2RigidOrientation = exports.Tw2RigidOrientation = (_temp3 = _class2 = func
 }(_Tw2Curve2.Tw2Curve), _class2.inputDimension = 4, _class2.outputDimension = 4, _class2.valueProperty = 'value', _class2.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE, _class2.Key = Tw2Torque, _temp3);
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29546,7 +30085,7 @@ var Tw2RotationCurve = exports.Tw2RotationCurve = (_temp3 = _class2 = function (
 }, _temp3);
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29799,7 +30338,7 @@ var Tw2ScalarCurve = exports.Tw2ScalarCurve = (_temp3 = _class2 = function (_Tw2
 }, _temp3);
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30087,7 +30626,7 @@ var Tw2ScalarCurve2 = exports.Tw2ScalarCurve2 = (_temp3 = _class2 = function (_T
 }, _temp3);
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30183,7 +30722,7 @@ var Tw2SineCurve = exports.Tw2SineCurve = (_temp2 = _class = function (_Tw2Curve
 }(_Tw2Curve2.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _Tw2Curve2.Tw2Curve.Type.CURVE_NO_KEYS, _temp2);
 
 /***/ }),
-/* 142 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30482,7 +31021,7 @@ var Tw2Vector2Curve = exports.Tw2Vector2Curve = (_temp3 = _class2 = function (_T
 }, _temp3);
 
 /***/ }),
-/* 143 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30784,7 +31323,7 @@ var Tw2Vector3Curve = exports.Tw2Vector3Curve = (_temp3 = _class2 = function (_T
 }, _temp3);
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31041,7 +31580,7 @@ var Tw2VectorCurve = exports.Tw2VectorCurve = (_temp3 = _class2 = function (_Tw2
 }, _temp3);
 
 /***/ }),
-/* 145 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31051,7 +31590,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ColorSequencer = __webpack_require__(146);
+var _Tw2ColorSequencer = __webpack_require__(147);
 
 Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31063,7 +31602,7 @@ Object.keys(_Tw2ColorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2EulerRotation = __webpack_require__(147);
+var _Tw2EulerRotation = __webpack_require__(148);
 
 Object.keys(_Tw2EulerRotation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31075,7 +31614,7 @@ Object.keys(_Tw2EulerRotation).forEach(function (key) {
   });
 });
 
-var _Tw2QuaternionSequencer = __webpack_require__(148);
+var _Tw2QuaternionSequencer = __webpack_require__(149);
 
 Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31087,7 +31626,7 @@ Object.keys(_Tw2QuaternionSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2RGBAScalarSequencer = __webpack_require__(149);
+var _Tw2RGBAScalarSequencer = __webpack_require__(150);
 
 Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31099,7 +31638,7 @@ Object.keys(_Tw2RGBAScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2ScalarSequencer = __webpack_require__(150);
+var _Tw2ScalarSequencer = __webpack_require__(151);
 
 Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31111,7 +31650,7 @@ Object.keys(_Tw2ScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2VectorSequencer = __webpack_require__(151);
+var _Tw2VectorSequencer = __webpack_require__(152);
 
 Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31123,7 +31662,7 @@ Object.keys(_Tw2VectorSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2XYZScalarSequencer = __webpack_require__(152);
+var _Tw2XYZScalarSequencer = __webpack_require__(153);
 
 Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31135,7 +31674,7 @@ Object.keys(_Tw2XYZScalarSequencer).forEach(function (key) {
   });
 });
 
-var _Tw2YPRSequencer = __webpack_require__(153);
+var _Tw2YPRSequencer = __webpack_require__(154);
 
 Object.keys(_Tw2YPRSequencer).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -31148,7 +31687,7 @@ Object.keys(_Tw2YPRSequencer).forEach(function (key) {
 });
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31313,7 +31852,7 @@ var Tw2ColorSequencer = exports.Tw2ColorSequencer = (_temp2 = _class = function 
 }, _temp2);
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31466,7 +32005,7 @@ var Tw2EulerRotation = exports.Tw2EulerRotation = (_temp2 = _class = function (_
 }(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 3, _class.valueProperty = 'currentValue', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'], _temp2);
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31610,7 +32149,7 @@ var Tw2QuaternionSequencer = exports.Tw2QuaternionSequencer = (_temp2 = _class =
 }(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 4, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER, _class.childArray = 'functions', _temp2);
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31752,7 +32291,7 @@ var Tw2RGBAScalarSequencer = exports.Tw2RGBAScalarSequencer = (_temp2 = _class =
 }(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['RedCurve', 'GreenCurve', 'BlueCurve', 'AlphaCurve'], _temp2);
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31932,7 +32471,7 @@ var Tw2ScalarSequencer = exports.Tw2ScalarSequencer = (_temp2 = _class = functio
 }, _temp2);
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32098,7 +32637,7 @@ var Tw2VectorSequencer = exports.Tw2VectorSequencer = (_temp2 = _class = functio
 }, _temp2);
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32238,7 +32777,7 @@ var Tw2XYZScalarSequencer = exports.Tw2XYZScalarSequencer = (_temp2 = _class = f
 }(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 3, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['XCurve', 'YCurve', 'ZCurve'], _temp2);
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32393,7 +32932,7 @@ var Tw2YPRSequencer = exports.Tw2YPRSequencer = (_temp2 = _class = function (_Tw
 }(_Tw2CurveSequencer2.Tw2CurveSequencer), _class.inputDimension = 1, _class.outputDimension = 4, _class.valueProperty = 'value', _class.curveType = _Tw2CurveSequencer2.Tw2CurveSequencer.Type.SEQUENCER2, _class.childProperties = ['YawCurve', 'PitchCurve', 'RollCurve'], _temp2);
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32403,7 +32942,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2WbgTrack = __webpack_require__(155);
+var _Tw2WbgTrack = __webpack_require__(156);
 
 Object.keys(_Tw2WbgTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32415,7 +32954,7 @@ Object.keys(_Tw2WbgTrack).forEach(function (key) {
   });
 });
 
-var _Tw2TransformTrack = __webpack_require__(156);
+var _Tw2TransformTrack = __webpack_require__(157);
 
 Object.keys(_Tw2TransformTrack).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32428,7 +32967,7 @@ Object.keys(_Tw2TransformTrack).forEach(function (key) {
 });
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32593,14 +33132,8 @@ function Tw2WbgTransformTrack() {
  */
 Tw2WbgTransformTrack.prototype = new Tw2WbgTrack();
 
-/**
- * Class category
- * @type {string}
- */
-Tw2WbgTransformTrack.category = 'curve_key';
-
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32612,8 +33145,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.Tw2TransformTrack = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _class, _temp;
 
 var _global = __webpack_require__(0);
 
@@ -32638,7 +33169,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @property {mat4} _scaleShear
  * @class
  */
-var Tw2TransformTrack = exports.Tw2TransformTrack = (_temp = _class = function () {
+var Tw2TransformTrack = exports.Tw2TransformTrack = function () {
     function Tw2TransformTrack() {
         _classCallCheck(this, Tw2TransformTrack);
 
@@ -32734,19 +33265,13 @@ var Tw2TransformTrack = exports.Tw2TransformTrack = (_temp = _class = function (
                 }
             }
         }
-
-        /**
-         * Class category
-         * @type {string}
-         */
-
     }]);
 
     return Tw2TransformTrack;
-}(), _class.category = 'curve_track', _temp);
+}();
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32756,7 +33281,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2MayaEulerRotationCurve = __webpack_require__(158);
+var _Tw2MayaEulerRotationCurve = __webpack_require__(159);
 
 Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32768,7 +33293,7 @@ Object.keys(_Tw2MayaEulerRotationCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaScalarCurve = __webpack_require__(159);
+var _Tw2MayaScalarCurve = __webpack_require__(160);
 
 Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32780,7 +33305,7 @@ Object.keys(_Tw2MayaScalarCurve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaVector3Curve = __webpack_require__(160);
+var _Tw2MayaVector3Curve = __webpack_require__(161);
 
 Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32792,7 +33317,7 @@ Object.keys(_Tw2MayaVector3Curve).forEach(function (key) {
   });
 });
 
-var _Tw2MayaAnimationEngine = __webpack_require__(161);
+var _Tw2MayaAnimationEngine = __webpack_require__(162);
 
 Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -32805,7 +33330,7 @@ Object.keys(_Tw2MayaAnimationEngine).forEach(function (key) {
 });
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32974,7 +33499,7 @@ var Tw2MayaEulerRotationCurve = exports.Tw2MayaEulerRotationCurve = (_temp2 = _c
 }(_curves.Tw2Curve), _class.outputDimension = 3, _class.valueProperty = 'eulerValue', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33092,7 +33617,7 @@ var Tw2MayaScalarCurve = exports.Tw2MayaScalarCurve = (_temp2 = _class = functio
 }(_curves.Tw2Curve), _class.outputDimension = 1, _class.valueProperty = 'value', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33244,7 +33769,7 @@ var Tw2MayaVector3Curve = exports.Tw2MayaVector3Curve = (_temp2 = _class = funct
 }(_curves.Tw2Curve), _class.outputDimension = 3, _class.valueProperty = 'value', _class.curveType = _curves.Tw2Curve.Type.CURVE_MAYA, _temp2);
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33615,7 +34140,7 @@ var Tw2MayaAnimationEngine = exports.Tw2MayaAnimationEngine = (_temp = _class = 
 }, _class.INFINITY = 0, _temp);
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33625,7 +34150,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _child = __webpack_require__(62);
+var _child = __webpack_require__(63);
 
 Object.keys(_child).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33637,7 +34162,7 @@ Object.keys(_child).forEach(function (key) {
   });
 });
 
-var _effect = __webpack_require__(169);
+var _effect = __webpack_require__(170);
 
 Object.keys(_effect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33649,7 +34174,7 @@ Object.keys(_effect).forEach(function (key) {
   });
 });
 
-var _object = __webpack_require__(64);
+var _object = __webpack_require__(65);
 
 Object.keys(_object).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33661,7 +34186,7 @@ Object.keys(_object).forEach(function (key) {
   });
 });
 
-var _item = __webpack_require__(66);
+var _item = __webpack_require__(67);
 
 Object.keys(_item).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33673,7 +34198,7 @@ Object.keys(_item).forEach(function (key) {
   });
 });
 
-var _EveSpaceScene = __webpack_require__(187);
+var _EveSpaceScene = __webpack_require__(188);
 
 Object.keys(_EveSpaceScene).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33685,7 +34210,7 @@ Object.keys(_EveSpaceScene).forEach(function (key) {
   });
 });
 
-var _EveSOF = __webpack_require__(188);
+var _EveSOF = __webpack_require__(189);
 
 Object.keys(_EveSOF).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -33698,7 +34223,7 @@ Object.keys(_EveSOF).forEach(function (key) {
 });
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33814,7 +34339,7 @@ var EveChildBillboard = exports.EveChildBillboard = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33853,7 +34378,7 @@ var EveChildCloud = exports.EveChildCloud = (_temp = _class = function (_EveChil
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33962,7 +34487,7 @@ var EveChildContainer = exports.EveChildContainer = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34001,7 +34526,7 @@ var EveChildExplosion = exports.EveChildExplosion = (_temp = _class = function (
 }(_EveChild2.EveChild), _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34112,7 +34637,7 @@ var EveChildMesh = exports.EveChildMesh = function (_EveChild) {
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34220,7 +34745,7 @@ var EveChildParticleSystem = exports.EveChildParticleSystem = function (_EveChil
 }(_EveChild2.EveChild);
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34230,7 +34755,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _EveLensflare = __webpack_require__(170);
+var _EveLensflare = __webpack_require__(171);
 
 Object.keys(_EveLensflare).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34242,7 +34767,7 @@ Object.keys(_EveLensflare).forEach(function (key) {
   });
 });
 
-var _EveMeshOverlayEffect = __webpack_require__(171);
+var _EveMeshOverlayEffect = __webpack_require__(172);
 
 Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34254,7 +34779,7 @@ Object.keys(_EveMeshOverlayEffect).forEach(function (key) {
   });
 });
 
-var _EveOccluder = __webpack_require__(63);
+var _EveOccluder = __webpack_require__(64);
 
 Object.keys(_EveOccluder).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34266,7 +34791,7 @@ Object.keys(_EveOccluder).forEach(function (key) {
   });
 });
 
-var _EveStretch = __webpack_require__(172);
+var _EveStretch = __webpack_require__(173);
 
 Object.keys(_EveStretch).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34278,7 +34803,7 @@ Object.keys(_EveStretch).forEach(function (key) {
   });
 });
 
-var _EveTurretFiringFX = __webpack_require__(173);
+var _EveTurretFiringFX = __webpack_require__(174);
 
 Object.keys(_EveTurretFiringFX).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34290,7 +34815,7 @@ Object.keys(_EveTurretFiringFX).forEach(function (key) {
   });
 });
 
-var _EveStarfield = __webpack_require__(174);
+var _EveStarfield = __webpack_require__(175);
 
 Object.keys(_EveStarfield).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -34303,7 +34828,7 @@ Object.keys(_EveStarfield).forEach(function (key) {
 });
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34322,7 +34847,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveOccluder = __webpack_require__(63);
+var _EveOccluder = __webpack_require__(64);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34648,7 +35173,7 @@ var EveLensflare = exports.EveLensflare = (_temp = _class = function () {
 }(), _class.global = null, _temp);
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34808,7 +35333,7 @@ var EveMeshOverlayEffect = exports.EveMeshOverlayEffect = function () {
 }();
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35130,7 +35655,7 @@ var EveStretch = exports.EveStretch = (_temp = _class = function () {
 }(), _class.global = null, _temp);
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35494,7 +36019,7 @@ var EveTurretFiringFX = exports.EveTurretFiringFX = function () {
 }();
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35545,7 +36070,7 @@ var EveStarfield = exports.EveStarfield = (_temp = _class = function EveStarfiel
 , _class.partialImplementation = true, _temp);
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35690,7 +36215,7 @@ var EveEffectRoot = exports.EveEffectRoot = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36082,7 +36607,7 @@ var EveMissile = exports.EveMissile = function () {
 }();
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36099,7 +36624,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _EveTransform = __webpack_require__(65);
+var _EveTransform = __webpack_require__(66);
 
 var _EveObject2 = __webpack_require__(13);
 
@@ -36437,7 +36962,7 @@ var EvePlanet = exports.EvePlanet = function (_EveObject) {
 }(_EveObject2.EveObject);
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36658,7 +37183,7 @@ var EveShip = exports.EveShip = function (_EveSpaceObject) {
 }(_EveSpaceObject2.EveSpaceObject);
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37223,7 +37748,7 @@ var EveBoosterSet = exports.EveBoosterSet = (_temp4 = _class3 = function (_EveOb
 }, _class3.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 2], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 1], ['TEXCOORD', 7, 2]], _class3._box = [[[-1.0, -1.0, 0.0], [1.0, -1.0, 0.0], [1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]], [[-1.0, -1.0, -1.0], [-1.0, 1.0, -1.0], [1.0, 1.0, -1.0], [1.0, -1.0, -1.0]], [[-1.0, -1.0, 0.0], [-1.0, 1.0, 0.0], [-1.0, 1.0, -1.0], [-1.0, -1.0, -1.0]], [[1.0, -1.0, 0.0], [1.0, -1.0, -1.0], [1.0, 1.0, -1.0], [1.0, 1.0, 0.0]], [[-1.0, -1.0, 0.0], [-1.0, -1.0, -1.0], [1.0, -1.0, -1.0], [1.0, -1.0, 0.0]], [[-1.0, 1.0, 0.0], [1.0, 1.0, 0.0], [1.0, 1.0, -1.0], [-1.0, 1.0, -1.0]]], _temp4);
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38172,7 +38697,7 @@ var EveCurveLineSet = exports.EveCurveLineSet = (_temp3 = _class2 = function (_E
 }, _class2.vertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 3], ['COLOR', 0, 4], ['COLOR', 1, 4], ['COLOR', 2, 4]], _temp3);
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38251,7 +38776,7 @@ var EveLocator = exports.EveLocator = (_temp = _class = function () {
 }, _temp);
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38634,7 +39159,7 @@ var EvePlaneSet = exports.EvePlaneSet = (_temp4 = _class3 = function (_EveObject
 }(_EveObjectSet2.EveObjectSet), _class3.Item = EvePlaneSetItem, _class3.vertexDeclarations = [['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['COLOR', 0, 4], ['TEXCOORD', 3, 4], ['TEXCOORD', 4, 4], ['TEXCOORD', 5, 4], ['TEXCOORD', 6, 4], ['TEXCOORD', 7, 3]], _temp4);
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38897,7 +39422,7 @@ var EveSpaceObjectDecal = exports.EveSpaceObjectDecal = (_temp = _class = functi
 }, _temp);
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39347,7 +39872,7 @@ var EveSpotlightSet = exports.EveSpotlightSet = (_temp4 = _class3 = function (_E
 }(_EveObjectSet2.EveObjectSet), _class3.Item = EveSpotlightSetItem, _class3.vertexDeclarations = [['COLOR', 0, 4], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 4], ['TEXCOORD', 2, 4], ['TEXCOORD', 3, 3], ['TEXCOORD', 4, 3]], _temp4);
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39930,7 +40455,7 @@ var EveSpriteSet = exports.EveSpriteSet = (_temp3 = _class3 = function (_EveObje
 }(_EveObjectSet2.EveObjectSet), _class3.Item = EveSpriteSetItem, _class3.vertexDeclarations = [['TEXCOORD', 5, 2], ['POSITION', 0, 3], ['COLOR', 0, 3], ['TEXCOORD', 0, 1], ['TEXCOORD', 1, 1], ['TEXCOORD', 2, 1], ['TEXCOORD', 3, 1], ['TEXCOORD', 4, 1]], _class3.quadVertexDeclarations = [['POSITION', 0, 3], ['TEXCOORD', 0, 4], ['TEXCOORD', 1, 2], ['COLOR', 0, 4], ['COLOR', 1, 4]], _temp3);
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40810,7 +41335,7 @@ var EveTurretSet = exports.EveTurretSet = (_temp3 = _class2 = function (_EveObje
 }(), _temp3);
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41373,7 +41898,7 @@ var EveSpaceScene = exports.EveSpaceScene = (_temp = _class = function () {
 }, _class.global = null, _class.DebugRenderer = window['Tw2DebugRenderer'] || null, _temp);
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41388,13 +41913,13 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _curve = __webpack_require__(61);
+var _curve = __webpack_require__(62);
 
-var _item = __webpack_require__(66);
+var _item = __webpack_require__(67);
 
-var _child = __webpack_require__(62);
+var _child = __webpack_require__(63);
 
-var _object = __webpack_require__(64);
+var _object = __webpack_require__(65);
 
 function EveSOF() {
     var data = null;
@@ -42271,7 +42796,7 @@ function EveSOF() {
 }
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42281,7 +42806,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _emitters = __webpack_require__(190);
+var _emitters = __webpack_require__(191);
 
 Object.keys(_emitters).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42293,7 +42818,7 @@ Object.keys(_emitters).forEach(function (key) {
   });
 });
 
-var _forces = __webpack_require__(194);
+var _forces = __webpack_require__(195);
 
 Object.keys(_forces).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42305,7 +42830,7 @@ Object.keys(_forces).forEach(function (key) {
   });
 });
 
-var _generators = __webpack_require__(201);
+var _generators = __webpack_require__(202);
 
 Object.keys(_generators).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42317,7 +42842,7 @@ Object.keys(_generators).forEach(function (key) {
   });
 });
 
-var _constraints = __webpack_require__(205);
+var _constraints = __webpack_require__(206);
 
 Object.keys(_constraints).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42329,7 +42854,7 @@ Object.keys(_constraints).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSystem = __webpack_require__(206);
+var _Tw2ParticleSystem = __webpack_require__(207);
 
 Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42341,7 +42866,7 @@ Object.keys(_Tw2ParticleSystem).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleElement = __webpack_require__(67);
+var _Tw2ParticleElement = __webpack_require__(68);
 
 Object.keys(_Tw2ParticleElement).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42366,7 +42891,7 @@ Object.keys(_Tw2ParticleElementDeclaration).forEach(function (key) {
 });
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42376,7 +42901,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2StaticEmitter = __webpack_require__(191);
+var _Tw2StaticEmitter = __webpack_require__(192);
 
 Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42388,7 +42913,7 @@ Object.keys(_Tw2StaticEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2DynamicEmitter = __webpack_require__(192);
+var _Tw2DynamicEmitter = __webpack_require__(193);
 
 Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42400,7 +42925,7 @@ Object.keys(_Tw2DynamicEmitter).forEach(function (key) {
   });
 });
 
-var _Tw2GpuUniqueEmitter = __webpack_require__(193);
+var _Tw2GpuUniqueEmitter = __webpack_require__(194);
 
 Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42413,7 +42938,7 @@ Object.keys(_Tw2GpuUniqueEmitter).forEach(function (key) {
 });
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42559,7 +43084,7 @@ var Tw2StaticEmitter = exports.Tw2StaticEmitter = function (_Tw2ParticleEmitter)
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42680,7 +43205,7 @@ var Tw2DynamicEmitter = exports.Tw2DynamicEmitter = function (_Tw2ParticleEmitte
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter);
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42761,7 +43286,7 @@ var Tw2GpuUniqueEmitter = exports.Tw2GpuUniqueEmitter = (_temp2 = _class = funct
 }(_Tw2ParticleEmitter2.Tw2ParticleEmitter), _class.partialImplementation = true, _temp2);
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42771,7 +43296,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2ParticleAttractorForce = __webpack_require__(195);
+var _Tw2ParticleAttractorForce = __webpack_require__(196);
 
 Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42783,7 +43308,7 @@ Object.keys(_Tw2ParticleAttractorForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDirectForce = __webpack_require__(196);
+var _Tw2ParticleDirectForce = __webpack_require__(197);
 
 Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42795,7 +43320,7 @@ Object.keys(_Tw2ParticleDirectForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleDragForce = __webpack_require__(197);
+var _Tw2ParticleDragForce = __webpack_require__(198);
 
 Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42807,7 +43332,7 @@ Object.keys(_Tw2ParticleDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleFluidDragForce = __webpack_require__(198);
+var _Tw2ParticleFluidDragForce = __webpack_require__(199);
 
 Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42819,7 +43344,7 @@ Object.keys(_Tw2ParticleFluidDragForce).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleSpring = __webpack_require__(199);
+var _Tw2ParticleSpring = __webpack_require__(200);
 
 Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42831,7 +43356,7 @@ Object.keys(_Tw2ParticleSpring).forEach(function (key) {
   });
 });
 
-var _Tw2ParticleTurbulenceForce = __webpack_require__(200);
+var _Tw2ParticleTurbulenceForce = __webpack_require__(201);
 
 Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -42844,7 +43369,7 @@ Object.keys(_Tw2ParticleTurbulenceForce).forEach(function (key) {
 });
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42920,7 +43445,7 @@ var Tw2ParticleAttractorForce = exports.Tw2ParticleAttractorForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42986,7 +43511,7 @@ var Tw2ParticleDirectForce = exports.Tw2ParticleDirectForce = function (_Tw2Part
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43052,7 +43577,7 @@ var Tw2ParticleDragForce = exports.Tw2ParticleDragForce = function (_Tw2Particle
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43141,7 +43666,7 @@ var Tw2ParticleFluidDragForce = exports.Tw2ParticleFluidDragForce = function (_T
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43210,7 +43735,7 @@ var Tw2ParticleSpring = exports.Tw2ParticleSpring = function (_Tw2ParticleForce)
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43316,7 +43841,7 @@ var Tw2ParticleTurbulenceForce = exports.Tw2ParticleTurbulenceForce = function (
 }(_Tw2ParticleForce2.Tw2ParticleForce);
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43326,7 +43851,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(202);
+var _Tw2RandomIntegerAttributeGenerator = __webpack_require__(203);
 
 Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43338,7 +43863,7 @@ Object.keys(_Tw2RandomIntegerAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2RandomUniformAttributeGenerator = __webpack_require__(203);
+var _Tw2RandomUniformAttributeGenerator = __webpack_require__(204);
 
 Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43350,7 +43875,7 @@ Object.keys(_Tw2RandomUniformAttributeGenerator).forEach(function (key) {
   });
 });
 
-var _Tw2SphereShapeAttributeGenerator = __webpack_require__(204);
+var _Tw2SphereShapeAttributeGenerator = __webpack_require__(205);
 
 Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -43363,7 +43888,7 @@ Object.keys(_Tw2SphereShapeAttributeGenerator).forEach(function (key) {
 });
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43455,7 +43980,7 @@ var Tw2RandomIntegerAttributeGenerator = exports.Tw2RandomIntegerAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43547,7 +44072,7 @@ var Tw2RandomUniformAttributeGenerator = exports.Tw2RandomUniformAttributeGenera
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43688,14 +44213,14 @@ var Tw2SphereShapeAttributeGenerator = exports.Tw2SphereShapeAttributeGenerator 
 }(_Tw2ParticleAttributeGenerator.Tw2ParticleAttributeGenerator);
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43714,7 +44239,7 @@ var _global = __webpack_require__(0);
 
 var _core = __webpack_require__(1);
 
-var _Tw2ParticleElement = __webpack_require__(67);
+var _Tw2ParticleElement = __webpack_require__(68);
 
 var _Tw2ParticleElementDeclaration = __webpack_require__(17);
 

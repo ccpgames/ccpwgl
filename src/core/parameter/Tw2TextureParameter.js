@@ -93,12 +93,11 @@ export class Tw2TextureParameter extends Tw2Parameter
      */
     SetTextureRes(res)
     {
-        if (this.textureRes !== res)
-        {
-            this.resourcePath = '';
-            this.textureRes = res;
-        }
-        this.textureRes._isAttached = true;
+        if (this.textureRes === res) return false;
+        this.resourcePath = '';
+        this.textureRes = res;
+        if (this.textureRes) this.textureRes._isAttached = true;
+        return true;
     }
 
     /**

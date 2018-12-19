@@ -519,8 +519,9 @@ export class Tw2ResMan extends Tw2EventEmitter
         RELOADING: {type: 'info', message: 'Reloading'},
         LOADED: {type: 'info', message: 'Loaded'},
         PREPARED: {type: 'log', message: 'Prepared'},
-        PURGED: {type: 'debug', message: 'Purged'},
-        UNLOADED: {type: 'debug', message: 'Unloaded'}
+        PURGED: {type: 'info', message: 'Purged'},
+        UNLOADED: {type: 'info', message: 'Unloaded'},
+        DEBUG: {type:'debug', message: 'Debug'}
     };
 
     /**

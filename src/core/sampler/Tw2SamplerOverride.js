@@ -66,6 +66,7 @@ export class Tw2SamplerOverride
             }
 
             sampler.minFilterNoMips = gl.NEAREST;
+            sampler.magFilter = gl.NEAREST;
         }
         else
         {
@@ -84,6 +85,7 @@ export class Tw2SamplerOverride
             }
 
             sampler.minFilterNoMips = gl.LINEAR;
+            sampler.magFilter = gl.LINEAR;
         }
 
         if (this.filter === 3 || this.mipFilter === 3)
@@ -91,7 +93,6 @@ export class Tw2SamplerOverride
             sampler.anisotropy = Math.max(this.maxAnisotropy, 1);
         }
 
-        sampler.magFilter = this.filter === 1 ? gl.NEAREST : gl.LINEAR;
         sampler.addressU = wrapModes[this.addressU];
         sampler.addressV = wrapModes[this.addressV];
         sampler.addressW = wrapModes[this.addressW];
@@ -100,5 +101,4 @@ export class Tw2SamplerOverride
         sampler.ComputeHash();
         return sampler;
     }
-
 }

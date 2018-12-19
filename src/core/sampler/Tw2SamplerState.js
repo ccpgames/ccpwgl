@@ -1,4 +1,4 @@
-import {device} from '../../global';
+import {device, FilterMode, MipFilterMode, GL_LINEAR, GL_REPEAT, GL_TEXTURE_2D} from '../../global';
 
 /**
  * Tw2SamplerState
@@ -7,6 +7,7 @@ import {device} from '../../global';
  * @property {number} registerIndex
  * @property {number} minFilter
  * @property {number} maxFilter
+ * @property {number} magFilter
  * @property {number} minFilterNoMips
  * @property {number} addressU
  * @property {number} addressV
@@ -22,14 +23,15 @@ export class Tw2SamplerState
 
     name = '';
     registerIndex = 0;
-    minFilter = device.gl.LINEAR;
-    maxFilter = device.gl.LINEAR;
-    minFilterNoMips = device.gl.LINEAR;
-    addressU = device.gl.REPEAT;
-    addressV = device.gl.REPEAT;
-    addressW = device.gl.REPEAT;
+    minFilter = GL_LINEAR;
+    maxFilter = GL_LINEAR;
+    magFilter = GL_LINEAR;
+    minFilterNoMips = GL_LINEAR;
+    addressU = GL_REPEAT;
+    addressV = GL_REPEAT;
+    addressW = GL_REPEAT;
     anisotropy = 1;
-    samplerType = device.gl.TEXTURE_2D;
+    samplerType = GL_TEXTURE_2D;
     isVolume = false;
     hash = 0;
 
@@ -40,7 +42,7 @@ export class Tw2SamplerState
      */
     get filterMode()
     {
-        return this.minFilterNoMips in Tw2SamplerState.FilterMode ? Tw2SamplerState.FilterMode[this.minFilterNoMips] : 2;
+        return this.minFilterNoMips in FilterMode ? FilterMode[this.minFilterNoMips] : 2;
     }
 
     /**
@@ -49,7 +51,7 @@ export class Tw2SamplerState
      */
     get mipFilterMode()
     {
-        return this.minFilter in Tw2SamplerState.MipFilterMode ? Tw2SamplerState.MipFilterMode[this.minFilter] : 2;
+        return this.minFilter in MipFilterMode ? MipFilterMode[this.minFilter] : 2;
     }
 
     /**
@@ -92,25 +94,5 @@ export class Tw2SamplerState
                 Math.min(this.anisotropy, d.ext.AnisotropicFilter.maxAnisotropy));
         }
     }
-
-    /**
-     * Filter modes
-     */
-    static FilterMode = {
-        9728: 1,
-        9729: 2
-    };
-
-    /**
-     * Mip filter modes
-     */
-    static MipFilterMode = {
-        9728: 0,
-        9729: 0,
-        9984: 1,
-        9985: 1,
-        9986: 2,
-        9987: 2
-    };
 
 }
