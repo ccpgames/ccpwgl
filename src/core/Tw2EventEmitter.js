@@ -19,7 +19,7 @@ export class Tw2EventEmitter
     emit(eventName, e = {})
     {
         // Short cut to creating a log output
-        if (e.log && !e._logged)
+        if (e.log && !e.log._logged)
         {
             e.log = this.log(e.log);
         }
