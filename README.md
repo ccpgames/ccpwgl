@@ -35,4 +35,4 @@ Installation
 Build
 -----
 * Run `webpack` to lint, format and build `dist/ccpwgl_int.js` and `dist/ccpwgl_int.min.js` 
-* Run `npm run watcher` to automatically rebuild `dist/ccpwgl_int.js` and `dist/ccpwgl_int.min.js` while developing
+* Run `npm run watch` to automatically rebuild `dist/ccpwgl_int.js` and `dist/ccpwgl_int.min.js` while developing

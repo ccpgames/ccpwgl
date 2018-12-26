@@ -1,0 +1,11 @@
+#Browsers that ccpwgl can run on
+#This list requires further testing...
+chrome >= 55
+firefox >= 52
+safari >= 10.1
+iOS >= 10.3
+ChromeAndroid >= 70
+FirefoxAndroid >= 63
+Samsung >=6.2
+Opera >= 42
+
