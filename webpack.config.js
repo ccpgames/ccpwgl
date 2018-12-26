@@ -2,16 +2,29 @@
 
 const
     path = require('path'),
-    UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
+    TerserPlugin = require('terser-webpack-plugin'),
     ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
+
+    mode: 'production',
 
     context: path.resolve(__dirname, './src'),
 
     entry: {
         'ccpwgl_int': './index.js',
         'ccpwgl_int.min': './index.js',
+    },
+
+    performance: {
+        maxEntrypointSize: 2000000,
+        maxAssetSize: 2000000
+    },
+
+    devtool: 'none',
+
+    optimization: {
+        minimize: false,
     },
 
     output: {
@@ -22,9 +35,13 @@ module.exports = {
     },
 
     plugins: [
-        new UglifyJsPlugin({
+        new TerserPlugin({
             include: /\.min\.js$/,
-            sourceMap: true,
+            terserOptions: {
+                output: {
+                    comments: false
+                }
+            }
         }),
         new ProgressBarPlugin()
     ],
@@ -37,18 +54,13 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'eslint-loader',
                 options: {
-                    'fix' : true
+                    'fix': true
                 }
             },
             {
                 test: /\.js$/,
                 exclude: [/node_modules/],
-                loader: 'babel-loader',
-                options: {
-                    'presets': [
-                        'env'
-                    ]
-                }
+                loader: 'babel-loader'
             }
         ]
     }

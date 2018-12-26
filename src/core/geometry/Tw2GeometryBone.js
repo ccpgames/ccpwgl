@@ -1,4 +1,4 @@
-import {mat3, mat4, quat, vec3} from '../../math';
+import {mat3, mat4, quat, vec3} from '../../global';
 
 /**
  * Tw2GeometryBone
@@ -14,17 +14,16 @@ import {mat3, mat4, quat, vec3} from '../../math';
  */
 export class Tw2GeometryBone
 {
-    constructor()
-    {
-        this.name = '';
-        this.parentIndex = -1;
-        this.position = vec3.create();
-        this.orientation = quat.create();
-        this.scaleShear = mat3.create();
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.worldTransformInv = mat4.create();
-    }
+
+    name = '';
+    parentIndex = -1;
+    position = vec3.create();
+    orientation = quat.create();
+    scaleShear = mat3.create();
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    worldTransformInv = mat4.create();
+
 
     /**
      * Updates the Bone's transform
@@ -41,11 +40,13 @@ export class Tw2GeometryBone
         this.localTransform[14] = this.position[2];
         return this.localTransform;
     }
+
+    /**
+     * Global and scratch variables
+     */
+    static global = {
+        mat4_0: mat4.create()
+    };
+
 }
 
-/**
- * Class global variables and scratch
- */
-Tw2GeometryBone.global = {
-    mat4_0: mat4.create()
-};

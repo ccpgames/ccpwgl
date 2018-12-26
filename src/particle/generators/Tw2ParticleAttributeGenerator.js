@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util, vec3} from '../../math';
+import {util, vec3} from '../../global';
 
 /**
  * Tw2ParticleAttributeGenerator base class
@@ -10,11 +10,10 @@ import {util, vec3} from '../../math';
  */
 export class Tw2ParticleAttributeGenerator
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-    }
+
+    _id = util.generateID();
+    name = '';
+
 
     /**
      * Binds a particle system element to the generator
@@ -36,8 +35,13 @@ export class Tw2ParticleAttributeGenerator
     {
 
     }
-}
 
-Tw2ParticleAttributeGenerator.global = {
-    vec3_0: vec3.create()
-};
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = {
+        vec3_0: vec3.create()
+    };
+
+}

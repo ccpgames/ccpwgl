@@ -23,14 +23,14 @@
             ccpwgl.initialize(canvas, demos.options);
 
             camera = {
-                getView: function ()
+                getView: function()
                 {
                     var view = mat4.create();
                     mat4.rotateY(view, view, Math.PI);
                     mat4.translate(view, view, [0, -100, 300]);
                     return view;
                 },
-                getProjection: function (aspect)
+                getProjection: function(aspect)
                 {
                     return mat4.perspectiveGL(mat4.create(), 60, aspect, 1, 1000);
                 }
@@ -47,12 +47,12 @@
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };
 
-            canvas.addEventListener('mousedown', function (event)
+            canvas.addEventListener('mousedown', function(event)
             {
                 var x = event.x / canvas.clientWidth * 2 - 1;
                 var y = 1 - event.y / canvas.clientHeight * 2;
@@ -69,7 +69,7 @@
                 ship.setTurretState(slot, ccpwgl.TurretState.FIRING);
                 event.preventDefault();
             });
-            canvas.addEventListener('contextmenu', function (event) { event.preventDefault(); });
+            canvas.addEventListener('contextmenu', function(event) { event.preventDefault(); });
 
         }
     </script>

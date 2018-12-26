@@ -1,15 +1,19 @@
-import {vec2} from '../../math';
+import {vec2} from '../../global';
 import {Tw2VectorParameter} from './Tw2Parameter';
 
 /**
  * Tw2Vector2Parameter
  *
- * @param {string} [name='']
- * @param {vec2|Array|Float32Array} [value=vec2.fromValues(1,1)]
  * @class
  */
 export class Tw2Vector2Parameter extends Tw2VectorParameter
 {
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {vec2|Array|Float32Array} [value=vec2.fromValues(1,1)]
+     */
     constructor(name = '', value = vec2.fromValues(1, 1))
     {
         super(name, value);
@@ -50,10 +54,11 @@ export class Tw2Vector2Parameter extends Tw2VectorParameter
     {
         this.SetIndexValue(1, val);
     }
-}
 
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-Tw2Vector2Parameter.constantBufferSize = 2;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 2;
+
+}

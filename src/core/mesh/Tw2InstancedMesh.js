@@ -1,5 +1,4 @@
-import {resMan} from '../global/Tw2ResMan';
-import {vec3} from '../../math';
+import {vec3, resMan} from '../../global';
 import {Tw2InstancedMeshBatch} from '../batch';
 import {Tw2Mesh} from './Tw2Mesh';
 
@@ -15,15 +14,13 @@ import {Tw2Mesh} from './Tw2Mesh';
  */
 export class Tw2InstancedMesh extends Tw2Mesh
 {
-    constructor()
-    {
-        super();
-        this.instanceGeometryResource = null;
-        this.instanceGeometryResPath = '';
-        this.instanceMeshIndex = 0;
-        this.minBounds = vec3.create();
-        this.maxBounds = vec3.create();
-    }
+
+    instanceGeometryResource = null;
+    instanceGeometryResPath = '';
+    instanceMeshIndex = 0;
+    minBounds = vec3.create();
+    maxBounds = vec3.create();
+
 
     /**
      * Initializes the instanced mesh
@@ -116,5 +113,6 @@ export class Tw2InstancedMesh extends Tw2Mesh
             }
         }
     }
+
 }
 

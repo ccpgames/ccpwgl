@@ -1,5 +1,5 @@
-import {vec3, vec4, quat, mat4, util} from '../../math';
-import {device, Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
+import {vec3, vec4, quat, mat4, util, device} from '../../global';
+import {Tw2VertexDeclaration, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -10,11 +10,9 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EvePlaneSetBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.planeSet = null;
-    }
+
+    planeSet = null;
+
 
     /**
      * Commits the plan set
@@ -24,6 +22,7 @@ export class EvePlaneSetBatch extends Tw2RenderBatch
     {
         this.planeSet.Render(technique);
     }
+
 }
 
 
@@ -45,22 +44,20 @@ export class EvePlaneSetBatch extends Tw2RenderBatch
  */
 export class EvePlaneSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.boneIndex = 0;
-        this.groupIndex = -1;
-        this.maskAtlasID = 0;
-        this.position = vec3.create();
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.rotation = quat.create();
-        this.transform = mat4.create();
-        this.color = vec4.fromValues(1, 1, 1, 1);
-        this.layer1Transform = vec4.fromValues(1, 1, 0, 0);
-        this.layer2Transform = vec4.fromValues(1, 1, 0, 0);
-        this.layer1Scroll = vec4.create();
-        this.layer2Scroll = vec4.create();
-    }
+
+    boneIndex = 0;
+    groupIndex = -1;
+    maskAtlasID = 0;
+    position = vec3.create();
+    scaling = vec3.fromValues(1, 1, 1);
+    rotation = quat.create();
+    transform = mat4.create();
+    color = vec4.fromValues(1, 1, 1, 1);
+    layer1Transform = vec4.fromValues(1, 1, 0, 0);
+    layer2Transform = vec4.fromValues(1, 1, 0, 0);
+    layer1Scroll = vec4.create();
+    layer2Scroll = vec4.create();
+
 
     /**
      * Creates a plane set item from an object
@@ -77,6 +74,7 @@ export class EvePlaneSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 /**
@@ -95,27 +93,14 @@ export class EvePlaneSetItem extends EveObjectSetItem
  */
 export class EvePlaneSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.effect = null;
-        this.hideOnLowQuality = false;
-        this._time = 0;
-        this._vertexBuffer = null;
-        this._indexBuffer = null;
 
-        this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 16));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 4, 32));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 48));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 4, 64));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 4, 80));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 4, 96));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 6, device.gl.FLOAT, 4, 112));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 7, device.gl.FLOAT, 3, 128));
-        this._decl.RebuildHash();
-    }
+    effect = null;
+    hideOnLowQuality = false;
+    _time = 0;
+    _vertexBuffer = null;
+    _indexBuffer = null;
+    _decl = new Tw2VertexDeclaration(EvePlaneSet.vertexDeclarations);
+
 
     /**
      * Alias for this.items
@@ -322,10 +307,28 @@ export class EvePlaneSet extends EveObjectSet
         }
         return true;
     }
+
+    /**
+     * The plane set's item constructor
+     * @type {EvePlaneSetItem}
+     */
+    static Item = EvePlaneSetItem;
+
+    /**
+     * Vertex declarations
+     * @type {*[]}
+     */
+    static vertexDeclarations = [
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 4],
+        ['COLOR', 0, 4],
+        ['TEXCOORD', 3, 4],
+        ['TEXCOORD', 4, 4],
+        ['TEXCOORD', 5, 4],
+        ['TEXCOORD', 6, 4],
+        ['TEXCOORD', 7, 3]
+    ];
+
 }
 
-/**
- * The plane set's item constructor
- * @type {EvePlaneSetItem}
- */
-EvePlaneSet.Item = EvePlaneSetItem;

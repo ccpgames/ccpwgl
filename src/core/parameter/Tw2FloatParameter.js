@@ -1,11 +1,9 @@
 import {Tw2Parameter} from './Tw2Parameter';
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Tw2FloatParameter
  *
- * @param {string} [name='']
- * @param {number} [value=1]
  * @property {string} name
  * @property {number} value
  * @property {?Float32Array} constantBuffer
@@ -14,12 +12,22 @@ import {util} from '../../math';
  */
 export class Tw2FloatParameter extends Tw2Parameter
 {
+
+    name = '';
+    value = 1;
+    constantBuffer = null;
+    offset = null;
+
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {number} [value=1]
+     */
     constructor(name = '', value = 1)
     {
         super(name);
         this.value = util.isArrayLike(value) ? value[0] : value;
-        this.constantBuffer = null;
-        this.offset = null;
     }
 
     /**
@@ -74,14 +82,19 @@ export class Tw2FloatParameter extends Tw2Parameter
     }
 
     /**
-     * Checks if a value is a valid value
-     * @param {number} value
+     * Checks if a value is a valid parameter value
+     * @param {number} a
      * @returns {boolean}
      */
-    static is(value)
+    static isValue(a)
     {
-        return typeof value === 'number';
+        return util.isNumber(a);
     }
-}
 
-Tw2FloatParameter.size = 1;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 1;
+
+}

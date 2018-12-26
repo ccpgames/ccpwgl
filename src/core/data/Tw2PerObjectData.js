@@ -1,25 +1,27 @@
-import {device} from '../global/Tw2Device';
+import {device} from '../../global';
 import {Tw2RawData} from './Tw2RawData';
 
 /**
  * Tw2PerObjectData
  *
- * @param {RawDataObject} [rawDataObject]
  * @property {?Tw2RawData} perObjectVSData - Per object vertex shader data
  * @property {?Tw2RawData} perObjectPSData - Per object pixel shader data
  * @class
  */
 export class Tw2PerObjectData
 {
+
+    perObjectVSData = null;
+    perObjectPSData = null;
+
+
+    /**
+     * Constructor
+     * @param {RawDataObject} [rawDataObject]
+     */
     constructor(rawDataObject)
     {
-        this.perObjectVSData = null;
-        this.perObjectPSData = null;
-
-        if (rawDataObject)
-        {
-            this.DeclareFromObject(rawDataObject);
-        }
+        if (rawDataObject) this.DeclareFromObject(rawDataObject);
     }
 
     /**
@@ -28,20 +30,22 @@ export class Tw2PerObjectData
      */
     SetPerObjectDataToDevice(constantBufferHandles)
     {
+        const gl = device.gl;
+
         if (this.perObjectVSData && constantBufferHandles[3])
         {
-            device.gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
+            gl.uniform4fv(constantBufferHandles[3], this.perObjectVSData.data);
         }
 
         if (this.perObjectPSData && constantBufferHandles[4])
         {
-            device.gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
+            gl.uniform4fv(constantBufferHandles[4], this.perObjectPSData.data);
         }
     }
 
     /**
      * Defines and creates raw data from an object
-     * @param {RawDataObject} rawDataObject
+     * @param {RawDataObject} [rawDataObject={}]
      */
     DeclareFromObject(rawDataObject = {})
     {
@@ -55,4 +59,5 @@ export class Tw2PerObjectData
             this.perObjectPSData = new Tw2RawData(rawDataObject.PSData);
         }
     }
+
 }

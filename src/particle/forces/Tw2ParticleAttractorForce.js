@@ -1,4 +1,4 @@
-import {vec3} from '../../math';
+import {vec3} from '../../global';
 import {Tw2ParticleForce} from './Tw2ParticleForce';
 
 /**
@@ -12,12 +12,10 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleAttractorForce extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.magnitude = 0;
-        this.position = vec3.create();
-    }
+
+    magnitude = 0;
+    position = vec3.create();
+
 
     /**
      * ApplyForce
@@ -37,4 +35,5 @@ export class Tw2ParticleAttractorForce extends Tw2ParticleForce
         vec3.scale(vec3_0, vec3_0, this.magnitude);
         vec3.add(force, force, vec3_0);
     }
+
 }

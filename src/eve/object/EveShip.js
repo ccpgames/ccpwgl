@@ -3,8 +3,6 @@ import {EveSpaceObject} from './EveSpaceObject';
 /**
  * EveShip
  *
- * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
- * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
  * @property {Array.<EveBoosterSet>} boosters
  * @property {Array.<EveTurretSet>} turretSets
  * @property {number} boosterGain
@@ -12,15 +10,11 @@ import {EveSpaceObject} from './EveSpaceObject';
  */
 export class EveShip extends EveSpaceObject
 {
-    constructor()
-    {
-        super();
-        this.visible.turretSets = true;
-        this.visible.boosters = true;
-        this.boosters = null;
-        this.turretSets = [];
-        this.boosterGain = 1;
-    }
+
+    boosters = null;
+    turretSets = [];
+    boosterGain = 1;
+
 
     /**
      * Initializes the Eve Ship
@@ -92,7 +86,7 @@ export class EveShip extends EveSpaceObject
      * @param {Boolean} excludeChildren - True to exclude children's res objects
      * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
      */
-    GetResources(out=[], excludeChildren)
+    GetResources(out = [], excludeChildren)
     {
         super.GetResources(out, excludeChildren);
 
@@ -192,4 +186,5 @@ export class EveShip extends EveSpaceObject
             }
         }
     }
+
 }

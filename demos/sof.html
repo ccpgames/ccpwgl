@@ -14,7 +14,7 @@
 
         var camera, scene, ship;
 
-        $(document).ready(function ()
+        $(document).ready(function()
         {
             console.dir(ccpwgl_int);
 
@@ -23,13 +23,14 @@
 
             camera = ccpwgl.createCamera($canvas[0], undefined, true);
             scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
+            var lastHull = null;
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
             function loadDna(dna)
             {
-                ccpwgl.getSofHullConstructor(dna, function (constructor)
+                ccpwgl.getSofHullConstructor(dna, function(constructor)
                 {
                     if (constructor)
                     {
@@ -40,7 +41,15 @@
                         catch (e)
                         {
                         }
-                        ship = scene[constructor](dna);
+                        ship = scene[constructor](dna, function()
+                        {
+                            var hull = dna.split(':')[0];
+                            if (lastHull !== hull)
+                            {
+                                camera.focus(this, 3, 50, true);
+                                lastHull = hull;
+                            }
+                        });
                         if ('setBoosterStrength' in ship)
                         {
                             ship.setBoosterStrength($('#booster-intensity').val() / 50);
@@ -51,34 +60,34 @@
 
             softree($('.sof-tree'), $('#dna'), loadDna);
 
-            $('#create').click(function ()
+            $('#create').click(function()
             {
                 var dna = $('#dna').val();
                 loadDna(dna);
                 history.pushState({'dna': dna}, 'SOF ' + dna);
             });
 
-            $('#normal').click(function ()
+            $('#normal').click(function()
             {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
             });
 
-            $('#siege').click(function ()
+            $('#siege').click(function()
             {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
             });
 
-            $('#booster-intensity').change(function ()
+            $('#booster-intensity').change(function()
             {
                 scene.getObject(0).setBoosterStrength($(this).val() / 50)
             });
 
-            $('#kills').change(function ()
+            $('#kills').change(function()
             {
                 scene.getObject(0).setKillCount(parseInt($(this).val()));
             });
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

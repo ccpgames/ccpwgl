@@ -8,11 +8,10 @@
  */
 export class Tw2GeometryTransformTrack
 {
-    constructor()
-    {
-        this.name = '';
-        this.position = null;
-        this.orientation = null;
-        this.scaleShear = null;
-    }
+
+    name = '';
+    position = null;
+    orientation = null;
+    scaleShear = null;
+
 }

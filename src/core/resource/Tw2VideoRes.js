@@ -1,7 +1,6 @@
-import {device} from '../global/Tw2Device';
-import {resMan} from '../global/Tw2ResMan';
-import {logger} from '../global/Tw2Logger';
+import {device, resMan} from '../../global';
 import {Tw2Resource} from './Tw2Resource';
+import {ErrHTTPRequest, ErrResourceExtensionUnregistered} from '../Tw2Error';
 
 /**
  * Tw2VideoRes
@@ -23,25 +22,21 @@ import {Tw2Resource} from './Tw2Resource';
  */
 export class Tw2VideoRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.texture = null;
-        this.video = null;
-        this.width = 0;
-        this.height = 0;
-        this.cycle = true;
-        this.playOnLoad = true;
 
-        this._currentSampler = 0;
-        this._currentTime = -1;
-        this._playable = false;
-        this._isPlaying = false;
+    texture = null;
+    video = null;
+    width = 0;
+    height = 0;
+    cycle = true;
+    playOnLoad = true;
+    _currentSampler = 0;
+    _currentTime = -1;
+    _playable = false;
+    _isPlaying = false;
+    _onPlaying = null;
+    _onPause = null;
+    _onEnded = null;
 
-        this._onPlaying = null;
-        this._onPause = null;
-        this._onEnded = null;
-    }
 
     /**
      * Checks if the resource is good
@@ -50,7 +45,7 @@ export class Tw2VideoRes extends Tw2Resource
     IsGood()
     {
         this.KeepAlive();
-        return this._isGood && this.video && this._playable;
+        return super.IsGood() && this.video && this._playable;
     }
 
     /**
@@ -99,13 +94,13 @@ export class Tw2VideoRes extends Tw2Resource
 
     /**
      * Prepares the resource
-     * @param {string} text
+     * @param {string} extension
      */
-    Prepare(text)
+    Prepare(extension)
     {
         const gl = device.gl;
 
-        switch(text)
+        switch (extension)
         {
             case 'mp4':
             case 'webm':
@@ -121,20 +116,36 @@ export class Tw2VideoRes extends Tw2Resource
                 this.height = this.video.height;
                 this.video.loop = this.cycle;
                 if (this.playOnLoad) this.video.play();
-                this.PrepareFinished(true);
+                break;
+
+            default:
+                throw new ErrResourceExtensionUnregistered({path: this.path, extension});
         }
+
+        this.OnPrepared();
     }
 
     /**
      * Loads the resource from a path
      *
      * @param {string} path
+     * @param {string} extension
      * @returns {boolean} returns true to tell the resMan not to handle http requests
      */
-    DoCustomLoad(path)
+    DoCustomLoad(path, extension)
     {
-        const ext = resMan.constructor.GetPathExt(path);
-        this.LoadStarted();
+        switch (extension)
+        {
+            case 'mp4':
+            case 'webm':
+            case 'ogg':
+                break;
+
+            default:
+                throw new ErrResourceExtensionUnregistered({path, extension});
+        }
+
+        this.OnRequested();
         resMan._pendingLoads++;
 
         this.video = document.createElement('video');
@@ -147,16 +158,8 @@ export class Tw2VideoRes extends Tw2Resource
         this.video.onerror = () =>
         {
             resMan._pendingLoads--;
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2TextureRes', 'DoCustomLoad'],
-                msg: 'Error loading resource',
-                type: 'http.error',
-                path: path
-            });
-            this.LoadFinished(false);
-            this.PrepareFinished(false);
             this.video = null;
+            this.OnError(new ErrHTTPRequest({path}));
         };
 
         /**
@@ -167,8 +170,8 @@ export class Tw2VideoRes extends Tw2Resource
             this._playable = true;
             this.video.oncanplay = null;
             resMan._pendingLoads--;
-            resMan._prepareQueue.push([this, ext, null]);
-            this.LoadFinished(true);
+            resMan._prepareQueue.push([this, extension, null]);
+            this.OnLoaded();
         };
 
         /**
@@ -226,28 +229,31 @@ export class Tw2VideoRes extends Tw2Resource
      */
     Bind(sampler)
     {
-        const d = device;
+        const
+            d = device,
+            gl = d.gl;
 
         this.KeepAlive();
         const targetType = sampler.samplerType;
-        if (targetType !== d.gl.TEXTURE_2D) return;
+        if (targetType !== gl.TEXTURE_2D) return;
 
         if (!this.texture)
         {
-            d.gl.bindTexture(d.gl.TEXTURE_2D, d.GetFallbackTexture());
+            gl.bindTexture(gl.TEXTURE_2D, d.GetFallbackTexture());
             return;
         }
 
         this._currentTime = this.video.currentTime;
-        d.gl.bindTexture(d.gl.TEXTURE_2D, this.texture);
-        d.gl.texImage2D(d.gl.TEXTURE_2D, 0, d.gl.RGBA, d.gl.RGBA, d.gl.UNSIGNED_BYTE, this.video);
-        d.gl.bindTexture(d.gl.TEXTURE_2D, null);
+        gl.bindTexture(gl.TEXTURE_2D, this.texture);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.video);
+        gl.bindTexture(gl.TEXTURE_2D, null);
 
-        d.gl.bindTexture(targetType, this.texture);
+        gl.bindTexture(targetType, this.texture);
         if (sampler.hash !== this._currentSampler)
         {
             sampler.Apply(false);
             this._currentSampler = sampler.hash;
         }
     }
+
 }

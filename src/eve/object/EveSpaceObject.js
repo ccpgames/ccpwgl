@@ -1,120 +1,89 @@
-import {vec3, vec4, mat4, util} from '../../math';
-import {Tw2AnimationController, Tw2PerObjectData, Tw2RawData} from '../../core';
+import {vec3, vec4, mat4, util} from '../../global';
+import {Tw2AnimationController, Tw2PerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
  * EveSpaceObject
  *
- * @parameter {String} name
- * @parameter {boolean} display                             - Enables/ disables visibility
- * @parameter {{}} visible                                  - Visibility options for the space object's elements
- * @parameter {boolean} visible.mesh                        - Enables/ disables mesh visibility
- * @parameter {boolean} visible.children                    - Enables/ disables child visibility
- * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child visibility
- * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
- * @parameter {boolean} visible.decals                      - Enables/ disables decal visibility
- * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
- * @parameter {boolean} visible.planeSets                   - Enables/ disables plane visibility
- * @parameter {boolean} visible.lineSets                    - Enables/ disables lines visibility
- * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
- * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark visibility
- * @parameter {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
- * @parameter {Number} lod
- * @parameter {Tw2Mesh} mesh
- * @parameter {Array.<EveLocator>} locators
- * @parameter {Array.<EveSpriteSet>} spriteSets
- * @parameter {Array.<EveTurretSet>} turretSets
- * @parameter {Array.<EveSpaceObjectDecal>} decals
- * @parameter {Array.<EveSpotlightSet>} spotlightSets
- * @parameter {Array.<EvePlaneSet>} planeSets
- * @parameter {Array.<Tw2CurveSet>} curveSets
- * @parameter {Array.<EveCurveLineSet>} lineSets
- * @parameter {Array.<EveMeshOverlayEffect>} overlayEffects
- * @parameter {Array.<{}>} children
- * @parameter {vec3} boundingSphereCenter
- * @parameter {Number} boundingSphereRadius
- * @parameter {vec3} shapeEllipsoidRadius
- * @parameter {vec3} shapeEllipsoidCenter
- * @parameter {mat4} transform
- * @parameter {Tw2AnimationController} animation
- * @parameter {number} killCount                            - number of kills to show on kill counter decals
- * @parameter {Tw2PerObjectData} _perObjectData
+ * @property {String} name
+ * @property {boolean} display                             - Enables/ disables visibility
+ * @property {{}} visible                                  - Visibility options for the space object's elements
+ * @property {boolean} visible.mesh                        - Enables/ disables mesh visibility
+ * @property {boolean} visible.children                    - Enables/ disables child visibility
+ * @property {boolean} visible.effectChildren              - Enables/ disables effect child visibility
+ * @property {boolean} visible.spriteSets                  - Enables/ disables sprite visibility
+ * @property {boolean} visible.decals                      - Enables/ disables decal visibility
+ * @property {boolean} visible.spotlightSets               - Enables/ disables spotlight visibility
+ * @property {boolean} visible.planeSets                   - Enables/ disables plane visibility
+ * @property {boolean} visible.lineSets                    - Enables/ disables lines visibility
+ * @property {boolean} visible.overlayEffects              - Enables/ disables overlay effect visibility
+ * @property {boolean} visible.killmarks                   - Enables/ disables killmark visibility
+ * @property {boolean} visible.customMasks                 - Enables/ disables custom mask visibility
+ * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+ * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
+ * @property {Number} lod
+ * @property {Tw2Mesh} mesh
+ * @property {Array.<EveLocator>} locators
+ * @property {Array.<EveSpriteSet>} spriteSets
+ * @property {Array.<EveTurretSet>} turretSets
+ * @property {Array.<EveSpaceObjectDecal>} decals
+ * @property {Array.<EveSpotlightSet>} spotlightSets
+ * @property {Array.<EvePlaneSet>} planeSets
+ * @property {Array.<Tw2CurveSet>} curveSets
+ * @property {Array.<EveCurveLineSet>} lineSets
+ * @property {Array.<EveMeshOverlayEffect>} overlayEffects
+ * @property {Array.<{}>} children
+ * @property {vec3} boundingSphereCenter
+ * @property {Number} boundingSphereRadius
+ * @property {vec3} shapeEllipsoidRadius
+ * @property {vec3} shapeEllipsoidCenter
+ * @property {mat4} transform
+ * @property {Tw2AnimationController} animation
+ * @property {number} killCount                            - number of kills to show on kill counter decals
+ * @property {Tw2PerObjectData} _perObjectData
  * @class
  */
 export class EveSpaceObject extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.mesh = true;
-        this.visible.children = true;
-        this.visible.effectChildren = true;
-        this.visible.planeSets = true;
-        this.visible.spotlightSets = true;
-        this.visible.decals = true;
-        this.visible.spriteSets = true;
-        this.visible.overlayEffects = true;
-        this.visible.lineSets = true;
-        this.visible.killmarks = true;
-        this.visible.customMasks = true;
 
-        this.mesh = null;
-        this.animation = new Tw2AnimationController();
-        this.locators = [];
-        this.spriteSets = [];
-        this.turretSets = [];
-        this.decals = [];
-        this.spotlightSets = [];
-        this.planeSets = [];
-        this.curveSets = [];
-        this.lineSets = [];
-        this.overlayEffects = [];
-        this.children = [];
-        this.effectChildren = [];
-        this.customMasks = [];
-        this.lod = 3;
-        this.killCount = 0;
-        this.transform = mat4.create();
-        this.boundingSphereCenter = vec3.create();
-        this.boundingSphereRadius = 0;
-        this.shapeEllipsoidRadius = vec3.create();
-        this.shapeEllipsoidCenter = vec3.create();
+    visible = {
+        mesh: true,
+        children: true,
+        effectChildren: true,
+        planeSets: true,
+        spotlightSets: true,
+        decals: true,
+        spriteSets: true,
+        overlayEffects: true,
+        lineSets: true,
+        killmarks: true,
+        customMasks: true,
+        turretSets: true,
+        boosters: true
+    };
+    mesh = null;
+    animation = new Tw2AnimationController();
+    locators = [];
+    spriteSets = [];
+    turretSets = [];
+    decals = [];
+    spotlightSets = [];
+    planeSets = [];
+    curveSets = [];
+    lineSets = [];
+    overlayEffects = [];
+    children = [];
+    effectChildren = [];
+    customMasks = [];
+    lod = 3;
+    killCount = 0;
+    transform = mat4.create();
+    boundingSphereCenter = vec3.create();
+    boundingSphereRadius = 0;
+    shapeEllipsoidRadius = vec3.create();
+    shapeEllipsoidCenter = vec3.create();
+    _perObjectData = new Tw2PerObjectData(EveSpaceObject.perObjectData);
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
-        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
-        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
-        this._perObjectData.perObjectVSData.Declare('JointMat', 696);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
-        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
-        this._perObjectData.perObjectPSData.Create();
-
-        this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-
-        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
-        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
-    }
 
     /**
      * Initializes the EveSpaceObject
@@ -480,7 +449,7 @@ export class EveSpaceObject extends EveObject
 
                 if (show.lineSets)
                 {
-                    for (let i = 0; i <  this.lineSets.length; i++)
+                    for (let i = 0; i < this.lineSets.length; i++)
                     {
                         this.lineSets[i].GetBatches(mode, accumulator);
                     }
@@ -521,6 +490,37 @@ export class EveSpaceObject extends EveObject
     {
         this.animation.RenderDebugInfo(debugHelper);
     }
+
+    /**
+     * Per object data
+     * @type {{VSData: *[], PSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['WorldMat', 16],
+            ['WorldMatLast', 16],
+            ['Shipdata', 4, [0, 1, 0, -10]],
+            ['Clipdata1', 4],
+            ['EllipsoidRadii', 4],
+            ['EllipsoidCenter', 4],
+            ['CustomMaskMatrix0', 16, mat4.identity([])],
+            ['CustomMaskMatrix1', 16, mat4.identity([])],
+            ['CustomMaskData0', 4],
+            ['CustomMaskData1', 4],
+            ['JointMat', 696]
+        ],
+        PSData: [
+            ['Shipdata', 4, [0, 1, 0, 1]],
+            ['Clipdata1', 4],
+            ['Clipdata2', 4],
+            ['ShLighting', 4 * 7],
+            ['CustomMaskMaterialID0', 4],
+            ['CustomMaskMaterialID1', 4],
+            ['CustomMaskTarget0', 4],
+            ['CustomMaskTarget1', 4]
+        ]
+    };
+
 }
 
-export { EveSpaceObject as EveStation };
+export {EveSpaceObject as EveStation};

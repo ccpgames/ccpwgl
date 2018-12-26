@@ -7,10 +7,6 @@ import {Tw2GeometryBatch} from './Tw2GeometryBatch';
  */
 export class Tw2GeometryLineBatch extends Tw2GeometryBatch
 {
-    constructor()
-    {
-        super();
-    }
 
     /**
      * Commits the Geometry Line Batch for rendering
@@ -23,4 +19,5 @@ export class Tw2GeometryLineBatch extends Tw2GeometryBatch
             this.geometryRes.RenderLines(this.meshIx, this.start, this.count, this.effect, technique);
         }
     }
+
 }

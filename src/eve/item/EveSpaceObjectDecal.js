@@ -1,11 +1,5 @@
-import {vec3, quat, mat4, util} from '../../math';
-import {
-    device,
-    store,
-    Tw2PerObjectData,
-    Tw2RawData,
-    Tw2ForwardingRenderBatch
-} from '../../core/';
+import {vec3, quat, mat4, util, device, store} from '../../global';
+import {Tw2PerObjectData, Tw2ForwardingRenderBatch} from '../../core/';
 
 /**
  * EveSpaceObjectDecal
@@ -31,41 +25,25 @@ import {
  */
 export class EveSpaceObjectDecal
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.decalEffect = null;
-        this.pickEffect = null;
-        this.parentGeometry = null;
-        this.parentBoneIndex = -1;
-        this.groupIndex = -1;
-        this.pickable = true;
-        this.position = vec3.create();
-        this.rotation = quat.create();
-        this.scaling = vec3.create();
-        this.decalMatrix = mat4.create();
-        this.invDecalMatrix = mat4.create();
-        this.indexBuffer = [];
-        this._indexBuffer = null;
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('worldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invWorldMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('decalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('invDecalMatrix', 16);
-        this._perObjectData.perObjectVSData.Declare('parentBoneMatrix', 16);
-        this._perObjectData.perObjectVSData.Create();
+    _id = util.generateID();
+    name = '';
+    display = true;
+    decalEffect = null;
+    pickEffect = null;
+    parentGeometry = null;
+    parentBoneIndex = -1;
+    groupIndex = -1;
+    pickable = true;
+    position = vec3.create();
+    rotation = quat.create();
+    scaling = vec3.create();
+    decalMatrix = mat4.create();
+    invDecalMatrix = mat4.create();
+    indexBuffer = [];
+    _indexBuffer = null;
+    _perObjectData = new Tw2PerObjectData(EveSpaceObjectDecal.perObjectData);
 
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('displayData', 4);
-        this._perObjectData.perObjectPSData.Declare('shipData', 4 * 3);
-        this._perObjectData.perObjectPSData.Create();
-
-        mat4.identity(this._perObjectData.perObjectVSData.Get('parentBoneMatrix'));
-    }
 
     /**
      * Initializes the decal
@@ -82,10 +60,13 @@ export class EveSpaceObjectDecal
     {
         if (!this._indexBuffer && this.indexBuffer)
         {
-            const indexes = new Uint16Array(this.indexBuffer);
-            this._indexBuffer = device.gl.createBuffer();
-            device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-            device.gl.bufferData(device.gl.ELEMENT_ARRAY_BUFFER, indexes, device.gl.STATIC_DRAW);
+            const
+                gl = device.gl,
+                indexes = new Uint16Array(this.indexBuffer);
+
+            this._indexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+            gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indexes, gl.STATIC_DRAW);
         }
 
         mat4.fromRotationTranslationScale(this.decalMatrix, this.rotation, this.position, this.scaling);
@@ -240,4 +221,23 @@ export class EveSpaceObjectDecal
         this.parentGeometry.meshes[0].areas[0].count = bkCount;
         this.parentGeometry.meshes[0].indexType = bkIndexType;
     }
+
+    /**
+     * Per object data
+     * @type {{VSData: *[], PSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['worldMatrix', 16],
+            ['invWorldMatrix', 16],
+            ['decalMatrix', 16],
+            ['invDecalMatrix', 16],
+            ['parentBoneMatrix', 16, mat4.identity([])]
+        ],
+        PSData: [
+            ['displayData', 4],
+            ['shipData', 4 * 3]
+        ]
+    };
+
 }

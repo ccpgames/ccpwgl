@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {vec3, vec4, quat, util} from '../../math';
+import {vec3, vec4, quat, util} from '../../global';
 
 /**
  * Tw2CurveKey base class
@@ -11,12 +11,11 @@ import {vec3, vec4, quat, util} from '../../math';
  */
 export class Tw2CurveKey
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.time = 0;
-    }
+
+    _id = util.generateID();
+    name = '';
+    time = 0;
+
 }
 
 
@@ -29,11 +28,10 @@ export class Tw2CurveKey
  */
 export class Tw2Curve
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-    }
+
+    _id = util.generateID();
+    name = '';
+
 
     /**
      * Initializes the Curve
@@ -59,7 +57,7 @@ export class Tw2Curve
     {
         return 0;
     }
-    
+
     /**
      * Updates the current value at the given time
      * @param {number} time
@@ -87,7 +85,7 @@ export class Tw2Curve
      * @param {*} curve
      * @param {Array.<Tw2CurveKey>} [keys=curve.keys] - Optional keys override
      */
-    static Sort(curve, keys=curve.keys)
+    static Sort(curve, keys = curve.keys)
     {
         if (keys && keys.length)
         {
@@ -127,70 +125,72 @@ export class Tw2Curve
             }
         }
     }
+
+
+    /**
+     * The curve's key dimension
+     * @type {?number}
+     */
+    static inputDimension = null;
+
+    /**
+     * The curve's dimension
+     * @type {?number}
+     */
+    static outputDimension = null;
+
+    /**
+     * The curve's current value property
+     * @type {?string}
+     */
+    static valueProperty = null;
+
+    /**
+     * The curve's type
+     * @type {?number}
+     */
+    static curveType = null;
+
+    /**
+     * The curve's Key constructor
+     * @type {?Tw2CurveKey}
+     */
+    static Key = null;
+
+    /**
+     * Interpolation types
+     * @type {?{ string: number}}
+     */
+    static Interpolation = null;
+
+    /**
+     * Extrapolation types
+     * @type {?{ string: number}}
+     */
+    static Extrapolation = null;
+
+    /**
+     * Curve types
+     * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
+     */
+    static Type = {
+        CURVE: 1,
+        CURVE2: 2,
+        CURVE_MAYA: 3,
+        CURVE_NO_KEYS: 4,
+        SEQUENCER: 100,
+        SEQUENCER2: 101,
+    };
+
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = {
+        vec3_0: vec3.create(),
+        vec4_0: vec4.create(),
+        quat_0: quat.create(),
+        quat_1: quat.create()
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {?number}
- */
-Tw2Curve.inputDimension = null;
-
-/**
- * The curve's dimension
- * @type {?number}
- */
-Tw2Curve.outputDimension = null;
-
-/**
- * The curve's current value property
- * @type {?string}
- */
-Tw2Curve.valueProperty = null;
-
-/**
- * The curve's type
- * @type {?number}
- */
-Tw2Curve.curveType = null;
-
-/**
- * The curve's Key constructor
- * @type {?Tw2CurveKey}
- */
-Tw2Curve.Key = null;
-
-/**
- * Interpolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Interpolation = null;
-
-/**
- * Extrapolation types
- * @type {?{ string: number}}
- */
-Tw2Curve.Extrapolation = null;
-
-/**
- * Curve types
- * @type {{CURVE: number, CURVE2: number, CURVE_MAYA: number, SEQUENCER: number, SEQUENCER2: number}}
- */
-Tw2Curve.Type = {
-    CURVE: 1,
-    CURVE2: 2,
-    CURVE_MAYA: 3,
-    CURVE_NO_KEYS: 4,
-    SEQUENCER: 100,
-    SEQUENCER2: 101,
-};
-
-/**
- * Class globals
- * @type {*}
- */
-Tw2Curve.global = {
-    vec3_0: vec3.create(),
-    vec4_0: vec4.create(),
-    quat_0: quat.create(),
-    quat_1: quat.create()
-};

@@ -8,10 +8,9 @@
  */
 export class Tw2Model
 {
-    constructor()
-    {
-        this.modelRes = null;
-        this.bones = [];
-        this.bonesByName = {};
-    }
+
+    modelRes = null;
+    bones = [];
+    bonesByName = {};
+
 }

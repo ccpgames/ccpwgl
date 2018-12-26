@@ -32,59 +32,78 @@
                     'res:/dx9/model/WorldObject/Planet/Template/Moon/p_moon_51.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Moon/Moon01_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Moon/Moon03_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Moon/Moon03_H.dds.0.png',
+                    function() { console.warn('Loaded: Moon 1')}],
                 [40000002,
                     'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_61.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png',
+                    function() { console.warn('Loaded: Terrestrial planet 1')}],
                 [40000005,
                     'res:/dx9/model/WorldObject/Planet/Template/Terrestrial/P_Terrestrial_04.red',
                     undefined,
                     'res:/dx9/Model/WorldObject/planet/Terrestrial/Terrestrial01_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png',
+                    function() { console.warn('Loaded: Terrestrial planet 2')}],
                 [40000007,
                     'res:/dx9/model/WorldObject/Planet/Template/SandStorm/P_SandStorm_84.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial04_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Moon/Moon01_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Moon/Moon01_H.dds.0.png',
+                    function() { console.warn('Loaded: Sandstorm planet')}],
                 [40000008,
                     'res:/dx9/model/WorldObject/Planet/Template/Ocean/P_Ocean_10.red',
                     undefined,
                     'res:/dx9/Model/WorldObject/planet/Terrestrial/Terrestrial01_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial03_H.dds.0.png',
+                    function() { console.warn('Loaded: Ocean planet')}],
                 [40000010,
                     'res:/dx9/model/WorldObject/Planet/Template/Moon/p_moon_32.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Moon/Moon02_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Moon/Moon02_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Moon/Moon02_H.dds.0.png',
+                    function() { console.warn('Loaded: Moon 2')}],
                 [40000011,
                     'res:/dx9/model/WorldObject/Planet/Template/Gas/P_GasGiant_48.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant02_D.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant02_D.dds.0.png',
+                    function() { console.warn('Loaded: Gas giant 1')}],
                 [40000024,
                     'res:/dx9/model/WorldObject/Planet/Template/Lava/P_Lava_44_S.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Lava/Lava02_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Lava/Lava01_H.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Lava/Lava01_H.dds.0.png',
+                    function() { console.warn('Loaded: Lava planet')}],
                 [40000100,
                     'res:/dx9/model/WorldObject/Planet/Template/Gas/P_GasGiant_12.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant01_D.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant03_D.dds.0.png'],
+                    'res:/dx9/model/worldobject/planet/Gasgiant/GasGiant03_D.dds.0.png',
+                    function() { console.warn('Loaded: Gas giant 2')}
+                ],
                 [40000123,
                     'res:/dx9/model/WorldObject/Planet/Template/Ice/P_Ice_61.red',
                     undefined,
                     'res:/dx9/model/worldobject/planet/Ice/Ice04_H.dds.0.png',
-                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png']
+                    'res:/dx9/model/worldobject/planet/Terrestrial/Terrestrial02_H.dds.0.png',
+                    function() { console.warn('Loaded: Terrestrial planet 3')}],
             ];
 
             window.planets = [];
 
             for (var i = 0; i < planets.length; ++i)
             {
-                var planet = scene.loadPlanet(planets[i][0], planets[i][1], planets[i][2], planets[i][3], planets[i][4]);
+                var planet = scene.loadPlanet(
+                    planets[i][0],
+                    planets[i][1],
+                    planets[i][2],
+                    planets[i][3],
+                    planets[i][4],
+                    planets[i][5]
+                );
+
                 var angle = Math.PI * 2 * i / planets.length;
                 planet.setTransform(mat4.fromValues(
                     10000, 0, 0, 0,
@@ -95,7 +114,7 @@
                 window.planets.push(planet);
             }
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

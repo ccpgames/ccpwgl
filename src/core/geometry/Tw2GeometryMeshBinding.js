@@ -6,9 +6,8 @@
  */
 export class Tw2GeometryMeshBinding
 {
-    constructor()
-    {
-        this.mesh = null;
-        this.bones = [];
-    }
+
+    mesh = null;
+    bones = [];
+
 }

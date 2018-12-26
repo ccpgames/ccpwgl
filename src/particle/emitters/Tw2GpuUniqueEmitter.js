@@ -1,4 +1,4 @@
-import { vec3, vec4 } from '../../math';
+import {vec3, vec4} from '../../global';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**
@@ -29,38 +29,39 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  */
 export class Tw2GpuUniqueEmitter extends Tw2ParticleEmitter
 {
-    constructor()
-    {
-        super();
-        this.angle = 0;
-        this.innerAngle = 0;
-        this.drag = 0;
-        this.rate = 0;
-        this.radius = 0;
-        this.gravity = 0;
-        this.maxSpeed = 0;
-        this.minSpeed = 0;
-        this.minLifeTime = 0;
-        this.maxLifeTime = 0;
-        this.sizeVariance = 0;
-        this.attractorPosition = vec3.create();
-        this.attractorStrength = 0;
-        this.turbulenceAmplitude = 0;
-        this.turbulenceFrequency = 0;
-        this.textureIndex = 0;
-        this.sizes = vec3.create();
-        this.position = vec3.create();
-        this.color0 = vec4.create();
-        this.color1 = vec4.create();
-        this.color2 = vec4.create();
-        this.color3 = vec4.create();
 
-        //this.maxDisplacement=null;
-        //this.emissionDensity=null;
-        //this.velocityStretchRotation=null;
-        //this.inheritVelocity=null;
-    }
+    angle = 0;
+    innerAngle = 0;
+    drag = 0;
+    rate = 0;
+    radius = 0;
+    gravity = 0;
+    maxSpeed = 0;
+    minSpeed = 0;
+    minLifeTime = 0;
+    maxLifeTime = 0;
+    sizeVariance = 0;
+    attractorPosition = vec3.create();
+    attractorStrength = 0;
+    turbulenceAmplitude = 0;
+    turbulenceFrequency = 0;
+    textureIndex = 0;
+    sizes = vec3.create();
+    position = vec3.create();
+    color0 = vec4.create();
+    color1 = vec4.create();
+    color2 = vec4.create();
+    color3 = vec4.create();
+    //maxDisplacement=null;
+    //emissionDensity=null;
+    //velocityStretchRotation=null;
+    //inheritVelocity=null;
+
+
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+    static partialImplementation = true;
+
 }
-
-// Temporary alias
-export { Tw2GpuUniqueEmitter as Tr2GpuUniqueEmitter };

@@ -8,14 +8,12 @@ import {Tw2MeshArea} from './Tw2MeshArea';
  */
 export class Tw2MeshLineArea extends Tw2MeshArea
 {
-    constructor()
-    {
-        super();
-    }
+
+    /**
+     * Render Batch Constructor
+     * @type {Tw2RenderBatch}
+     */
+    static batchType = Tw2GeometryLineBatch;
+
 }
 
-/**
- * Render Batch Constructor
- * @type {Tw2RenderBatch}
- */
-Tw2MeshLineArea.batchType = Tw2GeometryLineBatch;

@@ -1,5 +1,4 @@
-import {util} from '../../math';
-import {resMan, device, store} from '../global';
+import {util, resMan, device, store} from '../../global';
 import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
 
 /**
@@ -19,19 +18,18 @@ import {Tw2TextureParameter} from '../parameter/Tw2TextureParameter';
  */
 export class Tw2Effect
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.effectFilePath = '';
-        this.effectRes = null;
-        this.parameters = {};
-        this.techniques = [];
-        this.samplerOverrides = [];
-        this.autoParameter = false;
-        this.options = {};
-        this.shader = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    effectFilePath = '';
+    effectRes = null;
+    parameters = {};
+    techniques = [];
+    samplerOverrides = [];
+    autoParameter = false;
+    options = {};
+    shader = null;
+
 
     /**
      * Initializes the Tw2Effect
@@ -53,7 +51,20 @@ export class Tw2Effect
      */
     IsGood()
     {
+        this.KeepAlive();
         return this.shader !== null;
+    }
+
+    /**
+     * Keeps the effect and it's parameters alive
+     */
+    KeepAlive()
+    {
+        const res = this.GetResources();
+        for (let i = 0; i < res.length; i++)
+        {
+            res[i].KeepAlive();
+        }
     }
 
     /**
@@ -260,7 +271,7 @@ export class Tw2Effect
                             }
 
                             const p = {
-                                parameter : param,
+                                parameter: param,
                                 slot: stageRes.textures[k].registerIndex,
                                 sampler: null
                             };
@@ -318,7 +329,8 @@ export class Tw2Effect
         const
             p = this.techniques[technique][pass],
             rp = this.shader.techniques[technique].passes[pass],
-            d = device;
+            d = device,
+            gl = d.gl;
 
         const program = (d.IsAlphaTestEnabled() && rp.shadowShaderProgram) ? rp.shadowShaderProgram : rp.shaderProgram;
 
@@ -340,10 +352,10 @@ export class Tw2Effect
         }
 
         const cbh = program.constantBufferHandles;
-        if (cbh[0]) d.gl.uniform4fv(cbh[0], p.stages[0].constantBuffer);
-        if (cbh[7]) d.gl.uniform4fv(cbh[7], p.stages[1].constantBuffer);
-        if (d.perFrameVSData && cbh[1]) d.gl.uniform4fv(cbh[1], d.perFrameVSData.data);
-        if (d.perFramePSData && cbh[2]) d.gl.uniform4fv(cbh[2], d.perFramePSData.data);
+        if (cbh[0]) gl.uniform4fv(cbh[0], p.stages[0].constantBuffer);
+        if (cbh[7]) gl.uniform4fv(cbh[7], p.stages[1].constantBuffer);
+        if (d.perFrameVSData && cbh[1]) gl.uniform4fv(cbh[1], d.perFrameVSData.data);
+        if (d.perFramePSData && cbh[2]) gl.uniform4fv(cbh[2], d.perFramePSData.data);
         if (d.perObjectData) d.perObjectData.SetPerObjectDataToDevice(cbh);
     }
 
@@ -435,7 +447,7 @@ export class Tw2Effect
                     value = options[key],
                     param = this.parameters[key];
 
-                if (Tw2TextureParameter.is(value))
+                if (Tw2TextureParameter.isValue(value))
                 {
                     if (param)
                     {
@@ -493,7 +505,7 @@ export class Tw2Effect
 
                 if (param)
                 {
-                    if (param.constructor.is(value) && !param.EqualsValue(value))
+                    if (param.constructor.isValue(value) && !param.EqualsValue(value))
                     {
                         this.parameters[key].SetValue(value);
                         updated = true;
@@ -575,6 +587,16 @@ export class Tw2Effect
         return out;
     }
 
+    /**
+     * Adds effect parameters automatically
+     * @returns {boolean} true if updated
+     */
+    AutoParameter()
+    {
+        this.autoParameter = true;
+        return this.BindParameters();
+    }
+
 
     /**
      * Converts an effect file path into one suitable for an effect resource
@@ -598,7 +620,7 @@ export class Tw2Effect
         path = path.substr(0, path.lastIndexOf('.')).replace(device.effectDir, '/effect/') + '.' + ext;
         return path.toLowerCase();
     }
-    
+
     /**
      * Creates a Tw2Effect from an object
      * @param {{}} [opt]
@@ -613,7 +635,7 @@ export class Tw2Effect
     static create(opt = {})
     {
         const effect = new this();
-        util.assignIfExists(effect, opt, ['name', 'effectFilePath', 'display', 'autoParameter', ]);
+        util.assignIfExists(effect, opt, ['name', 'effectFilePath', 'display', 'autoParameter',]);
         if ('parameters' in opt) effect.SetParameters(opt.parameters);
         if ('textures' in opt) effect.SetTextures(opt.textures);
         if ('overrides' in opt) effect.SetOverrides(opt.overrides);
@@ -624,20 +646,28 @@ export class Tw2Effect
             effect.name = path.substring(path.lastIndexOf('/') + 1, path.length);
         }
 
+        if (!effect.name && effect.effectFilePath)
+        {
+            effect.name = effect.effectFilePath.substring(
+                effect.effectFilePath.lastIndexOf('/') + 1,
+                effect.effectFilePath.lastIndexOf('.')
+            );
+        }
+
         effect.Initialize();
         return effect;
     }
+
+    /**
+     * Constant parameters which are ignored when creating an effect
+     * @type {string[]}
+     */
+    static ConstantIgnore = [
+        'PerFrameVS',
+        'PerObjectVS',
+        'PerFramePS',
+        'PerObjectPS',
+        'PerObjectPSInt'
+    ];
+
 }
-
-/**
- * Constant parameters which are ignored when creating an effect
- * @type {string[]}
- */
-Tw2Effect.ConstantIgnore = [
-    'PerFrameVS',
-    'PerObjectVS',
-    'PerFramePS',
-    'PerObjectPS',
-    'PerObjectPSInt'
-];
-

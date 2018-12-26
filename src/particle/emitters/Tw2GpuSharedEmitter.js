@@ -7,11 +7,11 @@ import {Tw2GpuUniqueEmitter} from './Tw2GpuUniqueEmitter';
  */
 export class Tw2GpuSharedEmitter extends Tw2GpuUniqueEmitter
 {
-    constructor()
-    {
-        super();
-    }
-}
 
-// Temporary alias
-export {Tw2GpuSharedEmitter as Tr2GpuSharedEmitter};
+    /**
+     * Identifies that the object is not yet fully implemented
+     * @type {boolean}
+     */
+    static partialImplementation = true;
+
+}

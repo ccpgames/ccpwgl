@@ -1,4 +1,4 @@
-import {vec3, vec4, noise} from '../../math';
+import {vec3, vec4, noise} from '../../global';
 import {Tw2ParticleForce} from './Tw2ParticleForce';
 
 /**
@@ -14,15 +14,13 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleTurbulenceForce extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.noiseLevel = 3;
-        this.noiseRatio = 0.5;
-        this.amplitude = vec3.fromValues(1, 1, 1);
-        this.frequency = vec4.fromValues(1, 1, 1, 1);
-        this._time = 0;
-    }
+
+    noiseLevel = 3;
+    noiseRatio = 0.5;
+    amplitude = vec3.fromValues(1, 1, 1);
+    frequency = vec4.fromValues(1, 1, 1, 1);
+    _time = 0;
+
 
     /**
      * ApplyForce
@@ -69,4 +67,5 @@ export class Tw2ParticleTurbulenceForce extends Tw2ParticleForce
     {
         this._time += dt;
     }
+
 }

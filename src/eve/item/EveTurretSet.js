@@ -1,7 +1,5 @@
-import {vec3, vec4, quat, mat4, util} from '../../math';
+import {vec3, vec4, quat, mat4, util, resMan, device} from '../../global';
 import {
-    device,
-    resMan,
     Tw2PerObjectData,
     Tw2VertexElement,
     Tw2VertexDeclaration,
@@ -9,7 +7,6 @@ import {
     Tw2ForwardingRenderBatch
 } from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
-import {Tw2RawData} from '../../core';
 
 
 /**
@@ -27,18 +24,16 @@ import {Tw2RawData} from '../../core';
  */
 export class EveTurretSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.bone = null;
-        this.locatorName = null;
-        this.updateFromLocator = false;
-        this.canFireWhenHidden = false;
-        this.position = vec3.create();
-        this.rotation = quat.create();
-        this._localTransform = mat4.create();
-        this._localRotation = quat.create();
-    }
+
+    bone = null;
+    locatorName = null;
+    updateFromLocator = false;
+    canFireWhenHidden = false;
+    position = vec3.create();
+    rotation = quat.create();
+    _localTransform = mat4.create();
+    _localRotation = quat.create();
+
 
     /**
      * Updates the turret's transforms
@@ -57,7 +52,7 @@ export class EveTurretSetItem extends EveObjectSetItem
             quat.copy(this._localRotation, this.rotation);
         }
     }
-    
+
     /**
      * Creates a turret item from an object
      * @param {*} [opt={}]
@@ -72,6 +67,7 @@ export class EveTurretSetItem extends EveObjectSetItem
         item.UpdateTransforms();
         return item;
     }
+
 }
 
 
@@ -104,55 +100,36 @@ export class EveTurretSetItem extends EveObjectSetItem
  */
 export class EveTurretSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.turrets = true;
-        this.visible.firingEffects = true;
-        this.activeAnimation = new Tw2AnimationController();
-        this.inactiveAnimation = new Tw2AnimationController();
-        this.geometryResPath = '';
-        this.geometryResource = null;
-        this.turretEffect = null;
-        this.firingEffectResPath = '';
-        this.firingEffect = null;
-        this.fireCallback = null;
-        this.fireCallbackPending = false;
-        this.state = EveTurretSet.State.IDLE;
-        this.bottomClipHeight = 0;
-        this.locatorName = '';
-        this.sysBoneHeight = 0;
-        this.hasCyclingFiringPos = false;
-        this.targetPosition = vec3.create();
-        this.parentMatrix = mat4.create();
-        this.boundingSphere = quat.create();
-        this._activeTurret = -1;
-        this._recheckTimeLeft = 0;
-        this._currentCyclingFiresPos = 0;
-        
-        this._perObjectDataActive = new Tw2PerObjectData();
-        this._perObjectDataActive.perObjectVSData = new Tw2RawData();
-        this._perObjectDataActive.perObjectVSData.Declare('baseCutoffData', 4);
-        this._perObjectDataActive.perObjectVSData.Declare('turretSetData', 4);
-        this._perObjectDataActive.perObjectVSData.Declare('shipMatrix', 16);
-        this._perObjectDataActive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        this._perObjectDataActive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        this._perObjectDataActive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        this._perObjectDataActive.perObjectVSData.Create();
 
-        this._perObjectDataInactive = new Tw2PerObjectData();
-        this._perObjectDataInactive.perObjectVSData = new Tw2RawData();
-        this._perObjectDataInactive.perObjectVSData.Declare('baseCutoffData', 4);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretSetData', 4);
-        this._perObjectDataInactive.perObjectVSData.Declare('shipMatrix', 16);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretTranslation', 4 * 24);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretRotation', 4 * 24);
-        this._perObjectDataInactive.perObjectVSData.Declare('turretPoseTransAndRot', 2 * 4 * 72);
-        this._perObjectDataInactive.perObjectVSData.Create();
+    visible = {
+        turrets: true,
+        firingEffects: true
+    };
+    activeAnimation = new Tw2AnimationController();
+    inactiveAnimation = new Tw2AnimationController();
+    geometryResPath = '';
+    geometryResource = null;
+    turretEffect = null;
+    firingEffectResPath = '';
+    firingEffect = null;
+    fireCallback = null;
+    fireCallbackPending = false;
+    state = EveTurretSet.State.IDLE;
+    bottomClipHeight = 0;
+    locatorName = '';
+    sysBoneHeight = 0;
+    hasCyclingFiringPos = false;
+    targetPosition = vec3.create();
+    parentMatrix = mat4.create();
+    boundingSphere = quat.create();
+    _activeTurret = -1;
+    _recheckTimeLeft = 0;
+    _currentCyclingFiresPos = 0;
 
-        this._locatorRebuildPending = true;
-    }
+    _perObjectDataActive = new Tw2PerObjectData(EveTurretSet.perObjectData);
+    _perObjectDataInactive = new Tw2PerObjectData(EveTurretSet.perObjectData);
+    _locatorRebuildPending = true;
+
 
     /**
      * Alias for this.items
@@ -229,7 +206,7 @@ export class EveTurretSet extends EveObjectSet
         {
             const item = this.items[i];
             if (!item.display && !item.canFireWhenHidden) continue;
-            
+
             turretPosition[0] = item._localTransform[12];
             turretPosition[1] = item._localTransform[13];
             turretPosition[2] = item._localTransform[14];
@@ -461,7 +438,7 @@ export class EveTurretSet extends EveObjectSet
 
         for (let i = 0; i < locators.length; i++)
         {
-            const {name, transform, bone=null} = locators[i];
+            const {name, transform, bone = null} = locators[i];
 
             let item = this.FindItemByLocatorName(name);
             if (!item)
@@ -795,7 +772,7 @@ export class EveTurretSet extends EveObjectSet
             translation[i * 4 + 1] = item._localTransform[13];
             translation[i * 4 + 2] = item._localTransform[14];
             translation[i * 4 + 3] = 1;
-            
+
             rotation[i * 4] = item.rotation[0];
             rotation[i * 4 + 1] = item.rotation[1];
             rotation[i * 4 + 2] = item.rotation[2];
@@ -829,90 +806,107 @@ export class EveTurretSet extends EveObjectSet
             turretSet.fireCallbackPending = true;
         }
     }
+
+    /**
+     * The eve turret set's item constructor
+     * @type {EveTurretSetItem}
+     */
+    static Item = EveTurretSetItem;
+
+    /**
+     * Turret states
+     * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
+     */
+    static State = {
+        INACTIVE: 0,
+        IDLE: 1,
+        FIRING: 2,
+        PACKING: 2,
+        UNPACKING: 4
+    };
+
+    /**
+     * World turret bone names
+     * @type {string[]}
+     */
+    static worldNames = [
+        'turretWorld0',
+        'turretWorld1',
+        'turretWorld2'
+    ];
+
+    /**
+     * Bone Skeleton Names
+     * @type {string[]}
+     */
+    static positionBoneSkeletonNames = [
+        'Pos_Fire01',
+        'Pos_Fire02',
+        'Pos_Fire03',
+        'Pos_Fire04',
+        'Pos_Fire05',
+        'Pos_Fire06',
+        'Pos_Fire07',
+        'Pos_Fire08'
+    ];
+
+    /**
+     * Per object data
+     * @type {{VSData: *[]}}
+     */
+    static perObjectData = {
+        VSData: [
+            ['baseCutoffData', 4],
+            ['turretSetData', 4],
+            ['shipMatrix', 16],
+            ['turretTranslation', 4 * 24],
+            ['turretRotation', 4 * 24],
+            ['turretPoseTransAndRot', 2 * 4 * 72]
+        ]
+    };
+
+    /**
+     * mat3x4 to quat
+     */
+    static mat3x4toquat = (function ()
+    {
+        let m, q;
+
+        return function (mm, index, out, outIndex)
+        {
+            if (!m)
+            {
+                m = mat4.create();
+                q = quat.create();
+            }
+
+            index *= 12;
+            outIndex *= 4;
+
+            m[0] = mm[index];
+            m[1] = mm[index + 4];
+            m[2] = mm[index + 8];
+            m[3] = 0;
+            m[4] = mm[index + 1];
+            m[5] = mm[index + 5];
+            m[6] = mm[index + 9];
+            m[7] = 0;
+            m[8] = mm[index + 2];
+            m[9] = mm[index + 6];
+            m[10] = mm[index + 10];
+            m[11] = 0;
+            m[12] = mm[index + 3];
+            m[13] = mm[index + 7];
+            m[14] = mm[index + 11];
+            m[15] = 1;
+
+            mat4.getRotation(q, m);
+            out[outIndex] = q[0];
+            out[outIndex + 1] = q[1];
+            out[outIndex + 2] = q[2];
+            out[outIndex + 3] = q[3];
+        };
+    })();
+
 }
 
-/**
- * mat3x4 to quat
- */
-EveTurretSet.mat3x4toquat = (function ()
-{
-    let m, q;
-
-    return function mat3x4toquat(mm, index, out, outIndex)
-    {
-        if (!m)
-        {
-            m = mat4.create();
-            q = quat.create();
-        }
-
-        index *= 12;
-        outIndex *= 4;
-
-        m[0] = mm[index];
-        m[1] = mm[index + 4];
-        m[2] = mm[index + 8];
-        m[3] = 0;
-        m[4] = mm[index + 1];
-        m[5] = mm[index + 5];
-        m[6] = mm[index + 9];
-        m[7] = 0;
-        m[8] = mm[index + 2];
-        m[9] = mm[index + 6];
-        m[10] = mm[index + 10];
-        m[11] = 0;
-        m[12] = mm[index + 3];
-        m[13] = mm[index + 7];
-        m[14] = mm[index + 11];
-        m[15] = 1;
-
-        mat4.getRotation(q, m);
-        out[outIndex] = q[0];
-        out[outIndex + 1] = q[1];
-        out[outIndex + 2] = q[2];
-        out[outIndex + 3] = q[3];
-    };
-})();
-
-/**
- * The eve turret set's item constructor
- * @type {EveTurretSetItem}
- */
-EveTurretSet.Item = EveTurretSetItem;
-
-/**
- * Turret states
- * @type {{INACTIVE: number, IDLE: number, FIRING: number, PACKING: number, UNPACKING: number}}
- */
-EveTurretSet.State = {
-    INACTIVE: 0,
-    IDLE: 1,
-    FIRING: 2,
-    PACKING: 2,
-    UNPACKING: 4
-};
-
-/**
- * World turret bone names
- * @type {string[]}
- */
-EveTurretSet.worldNames = [
-    'turretWorld0',
-    'turretWorld1',
-    'turretWorld2'
-];
-
-/**
- * Bone Skeleton Names
- * @type {string[]}
- */
-EveTurretSet.positionBoneSkeletonNames = [
-    'Pos_Fire01',
-    'Pos_Fire02',
-    'Pos_Fire03',
-    'Pos_Fire04',
-    'Pos_Fire05',
-    'Pos_Fire06',
-    'Pos_Fire07',
-    'Pos_Fire08'
-];

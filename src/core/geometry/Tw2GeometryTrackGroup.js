@@ -7,10 +7,9 @@
  */
 export class Tw2GeometryTrackGroup
 {
-    constructor()
-    {
-        this.name = '';
-        this.model = null;
-        this.transformTracks = [];
-    }
+
+    name = '';
+    model = null;
+    transformTracks = [];
+
 }

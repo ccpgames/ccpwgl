@@ -1,11 +1,6 @@
 /**
  * Tw2VertexElement
  *
- * @param {number} usage
- * @param {number} usageIndex
- * @param {number} type
- * @param {number} elements
- * @param {number} [offset=0]
  * @property {number} usage
  * @property {number} usageIndex
  * @property {number} type
@@ -17,6 +12,24 @@
  */
 export class Tw2VertexElement
 {
+
+    usage = null;
+    usageIndex = null;
+    type = null;
+    elements = null;
+    offset = 0;
+    location = null;
+    customSetter = null;
+
+
+    /**
+     * Constructor
+     * @param {number} usage
+     * @param {number} usageIndex
+     * @param {number} type
+     * @param {number} elements
+     * @param {number} [offset=0]
+     */
     constructor(usage, usageIndex, type, elements, offset = 0)
     {
         this.usage = usage;
@@ -24,7 +37,5 @@ export class Tw2VertexElement
         this.type = type;
         this.elements = elements;
         this.offset = offset;
-        this.location = null;
-        this.customSetter = null;
     }
 }

@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Particle Emitter base class
@@ -11,12 +11,11 @@ import {util} from '../../math';
  */
 export class Tw2ParticleEmitter
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.particleSystem = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    particleSystem = null;
+
 
     /**
      * Initializes the particle emitter
@@ -34,4 +33,5 @@ export class Tw2ParticleEmitter
     {
 
     }
+
 }

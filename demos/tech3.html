@@ -16,13 +16,13 @@
             var canvas = document.getElementById('mainCanvas');
             ccpwgl.initialize(canvas, demos.options);
 
-            var camera = ccpwgl.createCamera(canvas, { distance: 100 }, true);
+            var camera = ccpwgl.createCamera(canvas, {distance: 100}, true);
             var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            document.getElementById('create').addEventListener('click', function ()
+            document.getElementById('create').addEventListener('click', function()
             {
                 var race = document.getElementById('race').value.split('/');
                 var s1 = race[1] + '_t3_' + document.getElementById('system1').value;
@@ -47,10 +47,10 @@
                 catch (e)
                 {
                 }
-                scene.loadShip(paths, function(){ camera.focus(this, 10, 600)});
+                scene.loadShip(paths, function() { camera.focus(this, 10, 600)});
             });
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

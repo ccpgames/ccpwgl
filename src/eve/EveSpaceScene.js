@@ -1,5 +1,5 @@
-import {vec3, vec4, quat, mat4, util} from '../math';
-import {device, resMan, store, Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
+import {vec3, vec4, quat, mat4, util, device, resMan, store} from '../global';
+import {Tw2BatchAccumulator, Tw2RawData, Tw2Frustum} from '../core';
 
 /**
  * EveSpaceScene
@@ -65,8 +65,14 @@ export class EveSpaceScene
         this.visible.environmentBlur = true;
 
         Object.defineProperty(this.visible, 'environment', {
-            get: () => { return this.backgroundRenderingEnabled; },
-            set: bool => { this.backgroundRenderingEnabled = bool ? 1 : 0; }
+            get: () =>
+            {
+                return this.backgroundRenderingEnabled;
+            },
+            set: bool =>
+            {
+                this.backgroundRenderingEnabled = bool ? 1 : 0;
+            }
         });
 
         this.lensflares = [];
@@ -100,40 +106,8 @@ export class EveSpaceScene
         this._debugHelper = null;
 
         this._batches = new Tw2BatchAccumulator();
-        this._perFrameVS = new Tw2RawData();
-        this._perFrameVS.Declare('ViewInverseTransposeMat', 16);
-        this._perFrameVS.Declare('ViewProjectionMat', 16);
-        this._perFrameVS.Declare('ViewMat', 16);
-        this._perFrameVS.Declare('ProjectionMat', 16);
-        this._perFrameVS.Declare('ShadowViewMat', 16);
-        this._perFrameVS.Declare('ShadowViewProjectionMat', 16);
-        this._perFrameVS.Declare('EnvMapRotationMat', 16);
-        this._perFrameVS.Declare('SunData.DirWorld', 4);
-        this._perFrameVS.Declare('SunData.DiffuseColor', 4);
-        this._perFrameVS.Declare('FogFactors', 4);
-        this._perFrameVS.Declare('TargetResolution', 4);
-        this._perFrameVS.Declare('ViewportAdjustment', 4);
-        this._perFrameVS.Declare('MiscSettings', 4);
-        this._perFrameVS.Create();
-
-        this._perFramePS = new Tw2RawData();
-        this._perFramePS.Declare('ViewInverseTransposeMat', 16);
-        this._perFramePS.Declare('ViewMat', 16);
-        this._perFramePS.Declare('EnvMapRotationMat', 16);
-        this._perFramePS.Declare('SunData.DirWorld', 4);
-        this._perFramePS.Declare('SunData.DiffuseColor', 4);
-        this._perFramePS.Declare('SceneData.AmbientColor', 3);
-        this._perFramePS.Declare('SceneData.NebulaIntensity', 1);
-        this._perFramePS.Declare('SceneData.FogColor', 4);
-        this._perFramePS.Declare('ViewportOffset', 2);
-        this._perFramePS.Declare('ViewportSize', 2);
-        this._perFramePS.Declare('TargetResolution', 4);
-        this._perFramePS.Declare('ShadowMapSettings', 4);
-        this._perFramePS.Declare('ShadowCameraRange', 4);
-        this._perFramePS.Declare('ProjectionToView', 2);
-        this._perFramePS.Declare('FovXY', 2);
-        this._perFramePS.Declare('MiscSettings', 4);
-        this._perFramePS.Create();
+        this._perFrameVS = new Tw2RawData(EveSpaceScene.perFrameData.VSData);
+        this._perFramePS = new Tw2RawData(EveSpaceScene.perFrameData.PSData);
 
         EveSpaceScene.init();
     }
@@ -312,7 +286,7 @@ export class EveSpaceScene
      * @param {Array.<EveObject>} objectArray
      * @param {Tw2BatchAccumulator} accumulator
      */
-    RenderBatches(mode, objectArray, accumulator=this._batches)
+    RenderBatches(mode, objectArray, accumulator = this._batches)
     {
         for (let i = 0; i < objectArray.length; ++i)
         {
@@ -551,17 +525,59 @@ export class EveSpaceScene
             };
         }
     }
+
+    /**
+     * Per frame data
+     * @type {*}
+     */
+    static perFrameData = {
+        PSData: [
+            ['ViewInverseTransposeMat', 16],
+            ['ViewMat', 16],
+            ['EnvMapRotationMat', 16],
+            ['SunData.DirWorld', 4],
+            ['SunData.DiffuseColor', 4],
+            ['SceneData.AmbientColor', 3],
+            ['SceneData.NebulaIntensity', 1],
+            ['SceneData.FogColor', 4],
+            ['ViewportOffset', 2],
+            ['ViewportSize', 2],
+            ['TargetResolution', 4],
+            ['ShadowMapSettings', 4],
+            ['ShadowCameraRange', 4],
+            ['ProjectionToView', 2],
+            ['FovXY', 2],
+            ['MiscSettings', 4],
+        ],
+        VSData: [
+            ['ViewInverseTransposeMat', 16],
+            ['ViewProjectionMat', 16],
+            ['ViewMat', 16],
+            ['ProjectionMat', 16],
+            ['ShadowViewMat', 16],
+            ['ShadowViewProjectionMat', 16],
+            ['EnvMapRotationMat', 16],
+            ['SunData.DirWorld', 4],
+            ['SunData.DiffuseColor', 4],
+            ['FogFactors', 4],
+            ['TargetResolution', 4],
+            ['ViewportAdjustment', 4],
+            ['MiscSettings', 4]
+        ]
+    };
+
+    /**
+     * Class global and scratch variables
+     * @type {?*}
+     */
+    static global = null;
+
+    /**
+     * Debug renderer
+     * @type {?Function}
+     */
+    static DebugRenderer = window['Tw2DebugRenderer'] || null;
 }
 
-/**
- * Class global and scratch variables
- * @type {{string:*}}
- */
-EveSpaceScene.global = null;
 
-/**
- * Debug renderer
- * @type {?Function}
- */
-EveSpaceScene.DebugRenderer = 'Tw2DebugRenderer' in window ? window['Tw2DebugRenderer'] : null;
 

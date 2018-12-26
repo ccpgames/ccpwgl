@@ -9,19 +9,17 @@ import {EveChild} from './EveChild';
  */
 export class EveChildContainer extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.objects = [];
-        this.curveSets = [];
-    }
+
+    objects = [];
+    curveSets = [];
+
 
     /**
      * Gets the child's resources
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         for (let i = 0; i < this.objects.length; i++)
         {
@@ -69,4 +67,5 @@ export class EveChildContainer extends EveChild
             }
         }
     }
+
 }

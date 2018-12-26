@@ -1,5 +1,5 @@
-import {vec3, mat4} from '../../math';
-import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
+import {vec3, mat4, device} from '../../global';
+import {Tw2BasicPerObjectData} from '../../core';
 import {EveChild} from './EveChild';
 
 /**
@@ -11,16 +11,10 @@ import {EveChild} from './EveChild';
  */
 export class EveChildBillboard extends EveChild
 {
-    constructor()
-    {
-        super();
-        this.mesh = null;
-        this._perObjectData = new Tw2BasicPerObjectData();
-        this._perObjectData.perObjectFFEData = new Tw2RawData();
-        this._perObjectData.perObjectFFEData.Declare('world', 16);
-        this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
-        this._perObjectData.perObjectFFEData.Create();
-    }
+
+    mesh = null;
+    _perObjectData = new Tw2BasicPerObjectData(EveChild.perObjectData);
+
 
     /**
      * Gets the child's resources
@@ -76,4 +70,5 @@ export class EveChildBillboard extends EveChild
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
     }
+
 }

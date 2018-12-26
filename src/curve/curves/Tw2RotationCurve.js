@@ -1,10 +1,9 @@
-import {num, vec4, quat} from '../../math';
+import {num, vec4, quat} from '../../global';
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
 
 /**
  * Tw2QuaternionKey
  *
- * @property {number} time
  * @property {quat} value
  * @property {vec4} leftTangent
  * @property {vec4} rightTangent
@@ -13,14 +12,12 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2QuaternionKey extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = quat.create();
-        this.left = vec4.create();
-        this.right = vec4.create();
-        this.interpolation = 5;
-    }
+
+    value = quat.create();
+    left = vec4.create();
+    right = vec4.create();
+    interpolation = 5;
+
 }
 
 
@@ -37,16 +34,14 @@ export class Tw2QuaternionKey extends Tw2CurveKey
  */
 export class Tw2RotationCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.start = 0;
-        this.value = quat.create();
-        this.extrapolation = 0;
-        this.keys = [];
-        this._currentKey = 1;
-        this.length = 0;
-    }
+
+    start = 0;
+    value = quat.create();
+    extrapolation = 0;
+    keys = [];
+    _currentKey = 1;
+    length = 0;
+
 
     /**
      * Sorts the curve's children
@@ -168,58 +163,60 @@ export class Tw2RotationCurve extends Tw2Curve
                 return quat.sqlerp(value, ck_1.value, ck_1.right, ck.left, ck.value, nt);
         }
     }
+
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static outputDimention = 4;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static inputDimension = 4;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2QuaternionKey}
+     */
+    static Child = Tw2QuaternionKey;
+
+    /**
+     * Extrapolation types
+     * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
+     */
+    static Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    /**
+     * Interpolation types
+     * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, SLERP: number, SQUAD: number}}
+     */
+    static Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        SLERP: 5,
+        SQUAD: 6
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2RotationCurve.outputDimention = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2RotationCurve.inputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RotationCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RotationCurve.curveType = Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2QuaternionKey}
- */
-Tw2RotationCurve.Child = Tw2QuaternionKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CONSTANT: number, GRADIENT: number, CYCLE: number}}
- */
-Tw2RotationCurve.Extrapolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    GRADIENT: 2,
-    CYCLE: 3
-};
-
-/**
- * Interpolation types
- * @type {{NONE: number, CONSTANT: number, LINEAR: number, HERMITE: number, SLERP: number, SQUAD: number}}
- */
-Tw2RotationCurve.Interpolation = {
-    NONE: 0,
-    CONSTANT: 1,
-    LINEAR: 2,
-    HERMITE: 3,
-    SLERP: 5,
-    SQUAD: 6
-};

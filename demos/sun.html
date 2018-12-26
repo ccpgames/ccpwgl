@@ -17,14 +17,14 @@
 
             var camera = ccpwgl.createCamera(canvas, undefined, true);
             var scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
-            scene.loadShip('ab1_t1:amarrbase:amarr', function(){ camera.focus(this, 4)});
+            scene.loadShip('ab1_t1:amarrbase:amarr', function() { camera.focus(this, 4)});
             scene.loadSun('res:/fisfx/lensflare/orange_sun.red');
             scene.setSunDirection([1, 0, 0.7]);
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

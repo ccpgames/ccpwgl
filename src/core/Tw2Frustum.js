@@ -1,4 +1,4 @@
-import {vec3, vec4, mat4} from '../math';
+import {vec3, vec4, mat4} from '../global';
 
 /**
  * Tw2Frustum
@@ -11,13 +11,15 @@ import {vec3, vec4, mat4} from '../math';
  */
 export class Tw2Frustum
 {
-    constructor()
-    {
-        this.planes = [vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create(), vec4.create()];
-        this.viewPos = vec3.create();
-        this.viewDir = vec3.create();
-        this.halfWidthProjection = 1;
-    }
+
+    planes = [
+        vec4.create(), vec4.create(), vec4.create(),
+        vec4.create(), vec4.create(), vec4.create()
+    ];
+    viewPos = vec3.create();
+    viewDir = vec3.create();
+    halfWidthProjection = 1;
+
 
     /**
      * Initializes the Tw2Frustum
@@ -117,12 +119,14 @@ export class Tw2Frustum
         let ratio = radius / depth;
         return ratio * this.halfWidthProjection * 2;
     }
+
+    /**
+     * Global and scratch variables
+     */
+    static global = {
+        vec3_0: vec3.create(),
+        mat4_0: mat4.create()
+    };
+
 }
 
-/**
- * global variables
- */
-Tw2Frustum.global = {
-    vec3_0: vec3.create(),
-    mat4_0: mat4.create()
-};

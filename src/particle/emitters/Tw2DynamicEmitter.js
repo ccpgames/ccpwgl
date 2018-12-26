@@ -13,14 +13,12 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  */
 export class Tw2DynamicEmitter extends Tw2ParticleEmitter
 {
-    constructor()
-    {
-        super();
-        this.rate = 0;
-        this.isValid = false;
-        this._accumulatedRate = 0;
-        this.generators = [];
-    }
+
+    rate = 0;
+    isValid = false;
+    _accumulatedRate = 0;
+    generators = [];
+
 
     /**
      * Initializes the particle emitter
@@ -82,4 +80,5 @@ export class Tw2DynamicEmitter extends Tw2ParticleEmitter
             this.particleSystem.EndSpawnParticle();
         }
     }
+
 }

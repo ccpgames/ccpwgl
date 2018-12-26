@@ -1,22 +1,28 @@
-import {device} from '../global/Tw2Device';
+import {util, device} from '../../global';
 import {Tw2VertexElement} from './Tw2VertexElement';
 
 /**
  * Tw2VertexDeclaration
  *
- * @param {Array<Array|Object>} [declarations]
- * @param {number} [stride]
  * @property {Array.<Tw2VertexElement>} elements
  * @property {Array.<Tw2VertexElement>} _elementsSorted
  * @class
  */
 export class Tw2VertexDeclaration
 {
+
+    elements = [];
+    _elementsSorted = [];
+    stride = null;
+
+
+    /**
+     * Constructor
+     * @param {Array<Array|Object>} [declarations]
+     * @param {number} [stride]
+     */
     constructor(declarations, stride)
     {
-        this.elements = [];
-        this._elementsSorted = [];
-
         if (stride !== undefined)
         {
             this.stride = stride;
@@ -80,6 +86,8 @@ export class Tw2VertexDeclaration
      */
     SetDeclaration(inputDecl, stride)
     {
+        const gl = device.gl;
+
         let index = 0;
         for (let i = 0; i < inputDecl._elementsSorted.length; ++i)
         {
@@ -90,8 +98,8 @@ export class Tw2VertexDeclaration
             {
                 if (index >= this._elementsSorted.length)
                 {
-                    device.gl.disableVertexAttribArray(el.location);
-                    device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                    gl.disableVertexAttribArray(el.location);
+                    gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
                     break;
                 }
 
@@ -101,8 +109,8 @@ export class Tw2VertexDeclaration
 
                 if (cmp > 0)
                 {
-                    device.gl.disableVertexAttribArray(el.location);
-                    device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                    gl.disableVertexAttribArray(el.location);
+                    gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
                     break;
                 }
 
@@ -114,8 +122,8 @@ export class Tw2VertexDeclaration
                     }
                     else
                     {
-                        device.gl.enableVertexAttribArray(el.location);
-                        device.gl.vertexAttribPointer(
+                        gl.enableVertexAttribArray(el.location);
+                        gl.vertexAttribPointer(
                             el.location,
                             input.elements,
                             input.type,
@@ -141,13 +149,15 @@ export class Tw2VertexDeclaration
      */
     SetPartialDeclaration(inputDecl, stride, usageOffset = 0, divisor = 0)
     {
-        const resetData = [];
+        const
+            {ext, gl} = device,
+            resetData = [];
 
         let index = 0;
         for (let i = 0; i < inputDecl._elementsSorted.length; ++i)
         {
             const el = inputDecl._elementsSorted[i];
-            if (el.location < 0)    continue;
+            if (el.location < 0) continue;
 
             while (true)
             {
@@ -163,15 +173,16 @@ export class Tw2VertexDeclaration
                     }
                     else
                     {
-                        device.gl.enableVertexAttribArray(el.location);
-                        device.gl.vertexAttribPointer(
+                        gl.enableVertexAttribArray(el.location);
+                        gl.vertexAttribPointer(
                             el.location,
                             input.elements,
                             input.type,
                             false,
                             stride,
                             input.offset);
-                        device.ext.vertexAttribDivisor(el.location, divisor);
+
+                        ext.vertexAttribDivisor(el.location, divisor);
 
                         if (divisor)
                         {
@@ -184,8 +195,8 @@ export class Tw2VertexDeclaration
                 {
                     if (!divisor)
                     {
-                        device.gl.disableVertexAttribArray(el.location);
-                        device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                        gl.disableVertexAttribArray(el.location);
+                        gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
                     }
                     break;
                 }
@@ -195,8 +206,8 @@ export class Tw2VertexDeclaration
                 {
                     if (!divisor)
                     {
-                        device.gl.disableVertexAttribArray(el.location);
-                        device.gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
+                        gl.disableVertexAttribArray(el.location);
+                        gl.vertexAttrib4f(el.location, 0, 0, 0, 0);
                     }
                     return resetData;
                 }
@@ -223,8 +234,9 @@ export class Tw2VertexDeclaration
     /**
      * Sets vertex declarations from an array of arrays, or an array of objects
      * @param {Array<Array>|Array<Object>} declarations
+     * @param {number} [stride]
      */
-    DeclareFromObject(declarations)
+    DeclareFromObject(declarations, stride)
     {
         this.elements.splice(0, this.elements.length);
         let currentOffset = 0;
@@ -234,40 +246,50 @@ export class Tw2VertexDeclaration
             const decl = declarations[i];
             let usage, usageIndex, type, elements, offset;
 
-            if (Array.isArray(decl))
+            if (util.isArray(decl))
             {
                 usage = decl[0];
                 usageIndex = decl[1];
-                type = decl[2];
-                elements = decl[3];
+                elements = decl[2];
+                type = decl[3];
                 offset = decl[4];
             }
             else
             {
                 usage = decl.usage;
                 usageIndex = decl.usageIndex;
-                type = decl.type;
                 elements = decl.elements;
+                type = decl.type;
                 offset = decl.offset;
             }
 
-            if (typeof usage === 'string')
+            if (util.isString(usage))
             {
                 usage = Tw2VertexDeclaration.Type[usage.toUpperCase()];
             }
 
-            if (typeof type === 'string')
+            if (util.isNoU(type))
+            {
+                type = 'FLOAT';
+            }
+
+            if (util.isString(type))
             {
                 type = device.gl[type.toUpperCase()];
             }
 
-            if (offset === undefined)
+            if (util.isNoU(offset))
             {
                 offset = currentOffset;
             }
 
             this.elements.push(new Tw2VertexElement(usage, usageIndex, type, elements, offset));
             currentOffset += elements * 4;
+        }
+
+        if (stride !== undefined)
+        {
+            this.stride = stride;
         }
 
         this.RebuildHash();
@@ -289,19 +311,20 @@ export class Tw2VertexDeclaration
         if (a.usageIndex + usageOffset > b.usageIndex) return 1;
         return 0;
     }
-}
 
-/**
- * Tw2 Vertex Declaration Types
- * @type {number}
- */
-Tw2VertexDeclaration.Type = {
-    POSITION: 0,
-    COLOR: 1,
-    NORMAL: 2,
-    TANGENT: 3,
-    BINORMAL: 4,
-    TEXCOORD: 5,
-    BLENDWEIGHT: 6,
-    BLENDINDICES: 7
-};
+    /**
+     * Vertex Declaration Types
+     * @type {*}
+     */
+    static Type = {
+        POSITION: 0,
+        COLOR: 1,
+        NORMAL: 2,
+        TANGENT: 3,
+        BINORMAL: 4,
+        TEXCOORD: 5,
+        BLENDWEIGHT: 6,
+        BLENDINDICES: 7
+    };
+
+}

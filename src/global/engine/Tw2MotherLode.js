@@ -1,8 +1,6 @@
-import {logger} from './Tw2Logger';
-
 /**
  * Manages loaded resources
- * 
+ *
  * @property {Object} _loadedObjects            - loaded resources
  * @property {{string:Array<eventLog>}} _errors - Not implemented yet
  * @class
@@ -18,21 +16,27 @@ export class Tw2MotherLode
     /**
      * Adds an error log for a given path
      * @param {string} path
-     * @param {eventLog} log
+     * @param {Tw2Error|Error} err
+     * @returns {Tw2Error|Error} err
      */
-    AddError(path, log)
+    AddError(path, err)
     {
         this._errors[path] = this._errors[path] || [];
-        if (!this._errors[path].includes(log))
+
+        if (!this._errors[path].includes(err))
         {
-            this._errors[path].push(log);
+            err.data = err.data || {};
+            err.data.path = err.data.path || path;
+            this._errors[path].push(err);
         }
+
+        return err;
     }
 
     /**
      * Gets a path's error logs
      * @param {string} path
-     * @returns {?Array<eventLog>}
+     * @returns {?Array<Tw2Error|Error>}
      */
     GetErrors(path)
     {
@@ -40,9 +44,19 @@ export class Tw2MotherLode
     }
 
     /**
+     * Checks if a path has any errors
+     * @param {string} path
+     * @returns {*|boolean}
+     */
+    HasErrors(path)
+    {
+        return (path && path in this._errors);
+    }
+
+    /**
      * Finds a loaded object by it's file path
      * @param {string} path
-     * @returns {Tw2LoadingObject}
+     * @returns {Tw2LoadingObject|Tw2Resource}
      */
     Find(path)
     {
@@ -56,7 +70,7 @@ export class Tw2MotherLode
     /**
      * Adds a loaded object
      * @param {string} path
-     * @param {Tw2LoadingObject} obj
+     * @param {Tw2LoadingObject|Tw2Resource} obj
      */
     Add(path, obj)
     {
@@ -115,26 +129,17 @@ export class Tw2MotherLode
                 const res = this._loadedObjects[path];
                 if (!res.doNotPurge)
                 {
-                    if (res._isPurged)
+                    if (res.IsPurged())
                     {
-                        logger.log('res.event', {
-                            msg: 'Unloaded  ',
-                            path: res.path,
-                            type: 'purged'
-                        });
-
-                        delete this._loadedObjects[path];
+                        res.OnUnloaded();
+                        this.Remove(path);
                     }
                     if (res._isGood && (curFrame - res.activeFrame) % frameLimit >= frameDistance)
                     {
                         if (res.Unload())
                         {
-                            logger.log('res.event', {
-                                msg: 'Unloaded  ',
-                                path: res.path,
-                                type: 'unused'
-                            });
-                            delete this._loadedObjects[path];
+                            res.OnUnloaded();
+                            this.Remove(path);
                         }
                     }
                 }

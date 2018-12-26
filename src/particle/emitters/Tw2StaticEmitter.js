@@ -1,11 +1,10 @@
-import {resMan, logger} from '../../core';
+import {resMan,} from '../../global';
+import {ErrGeometryMeshElementComponentsMissing, ErrGeometryMeshMissingParticleElement} from '../../core';
 import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
 
 /**
  * Tw2StaticEmitter
  *
- * @property {string} name
- * @property {string} geometryResourcePath
  * @property {Tw2GeometryRes} geometryResource
  * @property {Number} geometryIndex
  * @property {Boolean} _spawned
@@ -14,14 +13,12 @@ import {Tw2ParticleEmitter} from './Tw2ParticleEmitter';
  */
 export class Tw2StaticEmitter extends Tw2ParticleEmitter
 {
-    constructor()
-    {
-        super();
-        this.geometryResourcePath = '';
-        this.geometryResource = null;
-        this.geometryIndex = 0;
-        this._spawned = false;
-    }
+
+    geometryResourcePath = '';
+    geometryResource = null;
+    geometryIndex = 0;
+    _spawned = false;
+
 
     /**
      * Initializes the particle emitter
@@ -57,17 +54,19 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
      */
     Update()
     {
+        const res = this.geometryResource;
+
         if (!this._spawned &&
             this.particleSystem &&
-            this.geometryResource &&
-            this.geometryResource.IsGood() &&
-            this.geometryResource.meshes.length > this.geometryIndex &&
-            this.geometryResource.meshes[this.geometryIndex].bufferData)
+            res &&
+            res.IsGood() &&
+            res.meshes.length > this.geometryIndex &&
+            res.meshes[this.geometryIndex].bufferData)
         {
             this._spawned = true;
 
             const
-                mesh = this.geometryResource.meshes[this.geometryIndex],
+                mesh = res.meshes[this.geometryIndex],
                 elts = this.particleSystem.elements,
                 inputs = new Array(elts.length);
 
@@ -79,36 +78,23 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
 
                 if (input === null)
                 {
-                    logger.log('res.error', {
-                        log: 'error',
-                        src: ['Tw2StaticEmitter', 'Update'],
-                        msg: 'Input geometry mesh lacks element required by particle system',
-                        path: this.geometryResource.path,
-                        type: 'geometry.elements',
-                        data:
-                            {
-                                elementUsage: d.usage,
-                                elementUsageIndex: d.usageIndex
-                            }
-                    });
+                    res.OnError(new ErrGeometryMeshMissingParticleElement({
+                        path: res.path,
+                        elementUsage: d.usage,
+                        elementUsageIndex: d.usageIndex
+                    }));
                     return;
                 }
 
                 if (input.elements < d.elements)
                 {
-                    logger.log('res.error', {
-                        log: 'error',
-                        src: ['Tw2StaticEmitter', 'Update'],
-                        msg: 'Input geometry mesh elements do not have the required number of components',
-                        path: this.geometryResource.path,
-                        type: 'geometry.elementcomponents',
-                        data: {
-                            inputCount: input.elements,
-                            elementCount: d.elements,
-                            elementUsage: d.usage,
-                            elementUsageIndex: d.usageIndex
-                        }
-                    });
+                    res.OnError(new ErrGeometryMeshElementComponentsMissing({
+                        path: res.path,
+                        inputCount: input.elements,
+                        elementCount: d.elements,
+                        elementUsage: d.usage,
+                        elementUsageIndex: d.usageIndex
+                    }));
                     return;
                 }
 
@@ -133,4 +119,5 @@ export class Tw2StaticEmitter extends Tw2ParticleEmitter
             }
         }
     }
+
 }

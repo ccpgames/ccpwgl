@@ -7,9 +7,8 @@
  */
 export class Tw2Track
 {
-    constructor()
-    {
-        this.trackRes = null;
-        this.bone = null;
-    }
+
+    trackRes = null;
+    bone = null;
+
 }

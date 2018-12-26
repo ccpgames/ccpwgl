@@ -1,4 +1,5 @@
-import {device, resMan, Tw2Effect, Tw2RenderTarget, Tw2TextureParameter, Tw2FloatParameter} from '../../core';
+import {util, device, resMan} from '../../global';
+import {Tw2Effect, Tw2RenderTarget, Tw2TextureParameter, Tw2FloatParameter} from '../../core';
 import {EveTransform} from './EveTransform';
 import {EveObject} from './EveObject';
 
@@ -16,49 +17,83 @@ import {EveObject} from './EveObject';
  * @property {string} heightMapResPath2
  * @property {boolean} heightDirty
  * @property {Array} lockedResources
- * @property {Array.<Resource>} watchedResources
+ * @property {Array.<Tw2Resource>} watchedResources
  * @class
  */
 export class EvePlanet extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.highDetail = new EveTransform();
-        this.effectHeight = new Tw2Effect();
-        this.heightMap = new Tw2RenderTarget();
-        this.zOnlyModel = null;
-        this.itemID = 0;
-        this.heightMapResPath1 = '';
-        this.heightMapResPath2 = '';
-        this.heightDirty = false;
-        this.lockedResources = [];
-        this.watchedResources = [];
-    }
+
+    highDetail = new EveTransform();
+    effectHeight = new Tw2Effect();
+    heightMap = new Tw2RenderTarget();
+    zOnlyModel = null;
+    itemID = 0;
+    heightMapResPath1 = '';
+    heightMapResPath2 = '';
+    heightDirty = false;
+    lockedResources = [];
+    watchedResources = [];
+
 
     /**
-     * Creates the planet
-     * @param {number} itemID - the item id is used for randomization
-     * @param {string} planetPath - .red file for a planet, or planet template
-     * @param {string} [atmospherePath] - optional .red file for a planet's atmosphere
-     * @param {string} heightMap1
-     * @param {string} heightMap2
+     * Creates the planet from an options object
+     * @param {{}} options={}                   - an object containing the planet's options
+     * @param {number} options.itemID           - the item id is used for randomization
+     * @param {string} options.planetPath       - .red file for a planet, or planet template
+     * @param {string} [options.atmospherePath] - optional .red file for a planet's atmosphere
+     * @param {string} options.heightMap1       - the planet's first height map
+     * @param {string} options.heightMap2       - the planet's second height map
+     * @param {function} [onLoaded]             - an optional callback which is fired when the planet has loaded
      */
-    Create(itemID, planetPath, atmospherePath, heightMap1, heightMap2)
+    Create(options = {}, onLoaded)
     {
+        const {itemID = 0, planetPath, atmospherePath, heightMap1, heightMap2} = options;
+
         this.itemID = itemID;
         this.heightMapResPath1 = heightMap1;
         this.heightMapResPath2 = heightMap2;
         this.highDetail.children = [];
         this.heightDirty = true;
 
-        resMan.GetObject(planetPath, obj => EvePlanet.MeshLoaded(this, obj));
-        resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', obj => this.zOnlyModel = obj);
+        let loadingParts = 1;
+        if (planetPath) loadingParts++;
+        if (atmospherePath) loadingParts++;
+
+        /**
+         * Handles the optional onLoaded callback which is fired when all parts have loaded
+         */
+        function onPartLoaded()
+        {
+            loadingParts--;
+            if (loadingParts < 1 && onLoaded)
+            {
+                onLoaded();
+            }
+        }
+
+        if (planetPath)
+        {
+            resMan.GetObject(planetPath, obj =>
+            {
+                EvePlanet.MeshLoaded(this, obj);
+                onPartLoaded();
+            });
+        }
 
         if (atmospherePath)
         {
-            resMan.GetObject(atmospherePath, obj => this.highDetail.children.push(obj));
+            resMan.GetObject(atmospherePath, obj =>
+            {
+                this.highDetail.children.push(obj);
+                onPartLoaded();
+            });
         }
+
+        resMan.GetObject('res:/dx9/model/worldobject/planet/planetzonly.red', obj =>
+        {
+            this.zOnlyModel = obj;
+            onPartLoaded();
+        });
     }
 
     /**
@@ -73,7 +108,7 @@ export class EvePlanet extends EveObject
         if (visited.includes(obj)) return;
         visited.push(obj);
 
-        if (obj && typeof(obj['doNotPurge']) !== typeof(undefined))
+        if (obj && !util.isUndefined(obj['doNotPurge']))
         {
             result.push(obj);
             return;
@@ -83,7 +118,7 @@ export class EvePlanet extends EveObject
         {
             if (obj.hasOwnProperty(prop))
             {
-                if (typeof(obj[prop]) === 'object')
+                if (util.isObjectLike(obj[prop]))
                 {
                     this.GetPlanetResources(obj[prop], visited, result);
                 }
@@ -299,4 +334,5 @@ export class EvePlanet extends EveObject
             }
         }
     }
+
 }

@@ -1,4 +1,4 @@
-import {quat} from '../../math';
+import {quat} from '../../global';
 import {Tw2CurveSequencer} from './Tw2CurveSequencer';
 
 /**
@@ -13,14 +13,12 @@ import {Tw2CurveSequencer} from './Tw2CurveSequencer';
  */
 export class Tw2EulerRotation extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.yawCurve = null;
-        this.pitchCurve = null;
-        this.rollCurve = null;
-        this.currentValue = quat.create();
-    }
+
+    yawCurve = null;
+    pitchCurve = null;
+    rollCurve = null;
+    currentValue = quat.create();
+
 
     /**
      * Sorts the sequencer
@@ -80,34 +78,35 @@ export class Tw2EulerRotation extends Tw2CurveSequencer
 
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 3;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'currentValue';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER2;
+
+    /**
+     * The sequencer's curve property names
+     * @type {string[]}
+     */
+    static childProperties = ['yawCurve', 'pitchCurve', 'rollCurve'];
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2EulerRotation.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2EulerRotation.outputDimension = 3;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2EulerRotation.valueProperty = 'currentValue';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2EulerRotation.curveType = Tw2CurveSequencer.Type.SEQUENCER2;
-
-/**
- * The sequencer's curve property names
- * @type {string[]}
- */
-Tw2EulerRotation.childProperties = [ 'yawCurve', 'pitchCurve', 'rollCurve' ];

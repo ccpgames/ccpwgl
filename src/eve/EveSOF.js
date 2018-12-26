@@ -1,5 +1,4 @@
-import {vec3, vec4, quat, mat4} from '../math';
-import {resMan} from '../core';
+import {vec3, vec4, quat, mat4, resMan} from '../global';
 import {Tw2FloatParameter} from '../core';
 import {Tw2TextureParameter} from '../core';
 import {Tw2Vector4Parameter} from '../core';
@@ -744,22 +743,33 @@ export function EveSOF()
 
     function BindParticleEmitters(obj, curveSet, curve)
     {
-        for (var i = 0; i < obj.particleEmitters.length; ++i)
+        if (Array.isArray(obj.particleEmitters))
         {
-            if ('rate' in obj.particleEmitters[i])
+            for (var i = 0; i < obj.particleEmitters.length; ++i)
             {
-                var binding = new Tw2ValueBinding();
-                binding.sourceObject = curve;
-                binding.sourceAttribute = 'currentValue';
-                binding.destinationObject = obj.particleEmitters[i];
-                binding.destinationAttribute = 'rate';
-                binding.Initialize();
-                curveSet.bindings.push(binding);
+                if ('rate' in obj.particleEmitters[i])
+                {
+                    var binding = new Tw2ValueBinding();
+                    binding.sourceObject = curve;
+                    binding.sourceAttribute = 'currentValue';
+                    binding.destinationObject = obj.particleEmitters[i];
+                    binding.destinationAttribute = 'rate';
+                    binding.Initialize();
+                    curveSet.bindings.push(binding);
+                }
+            }
+            for (i = 0; i < obj.children.length; ++i)
+            {
+                BindParticleEmitters(obj.children[i], curveSet, curve);
             }
         }
-        for (i = 0; i < obj.children.length; ++i)
+        else
         {
-            BindParticleEmitters(obj.children[i], curveSet, curve);
+            resMan.log({
+                type: 'warning',
+                name: 'Space object factory',
+                message: `Unable to bind particle emitters: ${obj.constructor.name}`
+            });
         }
     }
 
@@ -767,7 +777,7 @@ export function EveSOF()
     {
         function onChildLoaded(child)
         {
-            return function(obj)
+            return function (obj)
             {
                 if (obj.isEffectChild)
                 {
@@ -788,10 +798,22 @@ export function EveSOF()
             };
         }
 
-        var children = _get(hull, 'children', []);
-        for (var i = 0; i < children.length; ++i)
+        const children = _get(hull, 'children', []);
+        for (let i = 0; i < children.length; ++i)
         {
-            resMan.GetObject(children[i]['redFilePath'], onChildLoaded(children[i]));
+            const resPath = children[i]['redFilePath'];
+            if (resPath)
+            {
+                resMan.GetObject(resPath, onChildLoaded(children[i]));
+            }
+            else
+            {
+                resMan.log({
+                    type: 'warning',
+                    name: 'Space object factory',
+                    message: `No resource path found for "${hull.name}" child at index ${i}`
+                });
+            }
         }
     }
 
@@ -860,7 +882,7 @@ export function EveSOF()
         return ship;
     }
 
-    this.LoadData = function(callback)
+    this.LoadData = function (callback)
     {
         if (data === null)
         {
@@ -876,7 +898,7 @@ export function EveSOF()
                 spriteEffect.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                 spriteEffect.Initialize();
 
-                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function(obj)
+                resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function (obj)
                 {
                     data = obj;
                     for (var i = 0; i < pendingLoads.length; ++i)
@@ -897,11 +919,11 @@ export function EveSOF()
         }
     };
 
-    this.BuildFromDNA = function(dna, callback)
+    this.BuildFromDNA = function (dna, callback)
     {
         if (data === null)
         {
-            this.LoadData(function()
+            this.LoadData(function ()
             {
                 var result = Build(dna);
                 if (callback)
@@ -1012,11 +1034,11 @@ export function EveSOF()
         }
     }
 
-    this.SetupTurretMaterial = function(turretSet, parentFactionName, turretFactionName, callback)
+    this.SetupTurretMaterial = function (turretSet, parentFactionName, turretFactionName, callback)
     {
         if (data === null)
         {
-            this.LoadData(function()
+            this.LoadData(function ()
             {
                 SetupTurretMaterial(turretSet, parentFactionName, turretFactionName);
                 if (callback)
@@ -1055,33 +1077,33 @@ export function EveSOF()
         }
     }
 
-    this.GetHullNames = function(callback)
+    this.GetHullNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('hull'));
         });
     };
 
-    this.GetFactionNames = function(callback)
+    this.GetFactionNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('faction'));
         });
     };
 
-    this.GetRaceNames = function(callback)
+    this.GetRaceNames = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('race'));
         });
     };
 
-    this.GetSofData = function(callback)
+    this.GetSofData = function (callback)
     {
-        this.LoadData(function()
+        this.LoadData(function ()
         {
             callback(getDataKeys('all'));
         });

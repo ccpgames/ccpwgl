@@ -5,8 +5,7 @@
  */
 export class Tw2GeometrySkeleton
 {
-    constructor()
-    {
-        this.bones = [];
-    }
+
+    bones = [];
+
 }

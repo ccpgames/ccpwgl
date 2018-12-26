@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import { vec3, quat, mat4, util } from '../../math';
+import {vec3, quat, mat4, util} from '../../global';
 
 /**
  * EveChild base class
@@ -21,30 +21,29 @@ import { vec3, quat, mat4, util } from '../../math';
  */
 export class EveChild
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.useSRT = true;
-        this.lowestLodVisible = 2;
-        this.staticTransform = false;
-        this.rotation = quat.create();
-        this.translation = vec3.create();
-        this.scaling = vec3.fromValues(1,1,1);
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
-        this.worldTransformLast = mat4.create();
-        this._perObjectData = null;
-        this.isEffectChild = true;
-    }
+
+    _id = util.generateID();
+    name = '';
+    display = true;
+    useSRT = true;
+    lowestLodVisible = 2;
+    staticTransform = false;
+    rotation = quat.create();
+    translation = vec3.create();
+    scaling = vec3.fromValues(1, 1, 1);
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    worldTransformLast = mat4.create();
+    _perObjectData = null;
+    isEffectChild = true;
+
 
     /**
      * Gets the child's resources
      * @param {Array} [out=[]]
      * @returns {Array<Tw2Resource>} out
      */
-    GetResources(out=[])
+    GetResources(out = [])
     {
         return out;
     }
@@ -70,18 +69,32 @@ export class EveChild
      * Gets render batches
      * @param {number} mode
      * @param {Tw2BatchAccumulator} accumulator
+     * @param {Tw2PerObjectData} perObjectData
      */
-    GetBatches(mode, accumulator)
+    GetBatches(mode, accumulator, perObjectData)
     {
 
     }
+
+    /**
+     * Class globals and scratch variables
+     * @type {Object}
+     */
+    static global = {
+        mat4_0: mat4.create(),
+        vec3_0: vec3.create()
+    };
+
+    /**
+     * Per object data
+     * @type {{FFEData: *[]}}
+     */
+    static perObjectData = {
+        FFEData: [
+            ['world', 16],
+            ['worldInverseTranspose', 16]
+        ]
+    };
+
 }
 
-/**
- * Class globals and scratch variables
- * @type {Object}
- */
-EveChild.global = {
-    mat4_0 : mat4.create(),
-    vec3_0 : vec3.create()
-};

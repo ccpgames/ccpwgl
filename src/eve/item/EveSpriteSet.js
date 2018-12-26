@@ -1,5 +1,5 @@
-import {vec3, vec4, util} from '../../math';
-import {device, Tw2VertexDeclaration, Tw2VertexElement, Tw2RenderBatch} from '../../core';
+import {vec3, vec4, util, device} from '../../global';
+import {Tw2VertexDeclaration, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -14,15 +14,13 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveSpriteSetBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.boosterGlow = false;
-        this.spriteSet = null;
-        this.world = null;
-        this.boosterGain = 0;
-        this.warpIntensity = 0;
-    }
+
+    boosterGlow = false;
+    spriteSet = null;
+    world = null;
+    boosterGain = 0;
+    warpIntensity = 0;
+
 
     /**
      * Commits the sprite set
@@ -39,6 +37,7 @@ export class EveSpriteSetBatch extends Tw2RenderBatch
             this.spriteSet.Render(technique, this.world, this.perObjectData);
         }
     }
+
 }
 
 
@@ -59,20 +58,18 @@ export class EveSpriteSetBatch extends Tw2RenderBatch
  */
 export class EveSpriteSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.position = vec3.create();
-        this.blinkRate = 0;
-        this.blinkPhase = 0;
-        this.minScale = 1;
-        this.maxScale = 1;
-        this.falloff = 0;
-        this.color = vec4.create();
-        this.warpColor = vec4.create();
-        this.boneIndex = 0;
-        this.groupIndex = -1;
-    }
+
+    position = vec3.create();
+    blinkRate = 0;
+    blinkPhase = 0;
+    minScale = 1;
+    maxScale = 1;
+    falloff = 0;
+    color = vec4.create();
+    warpColor = vec4.create();
+    boneIndex = 0;
+    groupIndex = -1;
+
 
     /**
      * Creates a sprite set item from an object
@@ -88,14 +85,13 @@ export class EveSpriteSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 
 /**
  * EveSpriteSet
  *
- * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
- * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
  * @property {Tw2Effect} effect
  * @property {?boolean} useQuads - Use quad rendering (CPU transform)
  * @property {?boolean} isSkinned - Use bone transforms (when useQuads is true)
@@ -106,21 +102,26 @@ export class EveSpriteSetItem extends EveObjectSetItem
  */
 export class EveSpriteSet extends EveObjectSet
 {
+
+    effect = null;
+    useQuads = null;
+    isSkinned = null;
+    _time = 0;
+    _vertexBuffer = null;
+    _indexBuffer = null;
+    _instanceBuffer = null;
+    _decl = new Tw2VertexDeclaration();
+    _vdecl = new Tw2VertexDeclaration([['TEXCOORD', 5, 1]]);
+
+
+    /**
+     * Constructor
+     * @param {boolean} [useQuads] - Use quad rendering (CPU transform)
+     * @param {boolean} [isSkinned] - Use bone transforms (when useQuads is true)
+     */
     constructor(useQuads = false, isSkinned = false)
     {
         super();
-        this.effect = null;
-        this.useQuads = null;
-        this.isSkinned = null;
-        this._time = 0;
-        this._vertexBuffer = null;
-        this._indexBuffer = null;
-        this._instanceBuffer = null;
-        this._decl = this._decl = new Tw2VertexDeclaration();
-        this._vdecl = new Tw2VertexDeclaration();
-        this._vdecl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 1, 0));
-        this._vdecl.RebuildHash();
-
         this.UseQuads(useQuads, isSkinned);
     }
 
@@ -150,32 +151,9 @@ export class EveSpriteSet extends EveObjectSet
     UseQuads(useQuads, isSkinned)
     {
         if (this.useQuads === useQuads) return;
-
         this.useQuads = useQuads;
         this.isSkinned = isSkinned;
-
-        this._decl.elements.splice(0, this._decl.elements.length);
-        if (!useQuads)
-        {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 2, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 8));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 3, 20));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 1, 32));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 1, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 1, 40));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 1, 44));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 1, 48));
-        }
-        else
-        {
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 4, 12));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 2, 28));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 0, device.gl.FLOAT, 4, 36));
-            this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.COLOR, 1, device.gl.FLOAT, 4, 52));
-        }
-
-        this._decl.RebuildHash();
+        this._decl.DeclareFromObject(!useQuads ? EveSpriteSet.vertexDeclarations : EveSpriteSet.quadVertexDeclarations);
         this._rebuildPending = true;
     }
 
@@ -212,23 +190,25 @@ export class EveSpriteSet extends EveObjectSet
      */
     Unload()
     {
+        const gl = device.gl;
+
         if (this._vertexBuffer)
         {
-            device.gl.deleteBuffer(this._vertexBuffer);
+            gl.deleteBuffer(this._vertexBuffer);
             this._vertexBuffer = null;
         }
 
         // Standard
         if (this._indexBuffer)
         {
-            device.gl.deleteBuffer(this._indexBuffer);
+            gl.deleteBuffer(this._indexBuffer);
             this._indexBuffer = null;
         }
 
         // Quad
         if (this._instanceBuffer)
         {
-            device.gl.deleteBuffer(this._instanceBuffer);
+            gl.deleteBuffer(this._instanceBuffer);
             this._instanceBuffer = null;
         }
     }
@@ -243,15 +223,15 @@ export class EveSpriteSet extends EveObjectSet
         const itemCount = this._visibleItems.length;
         if (!itemCount) return;
 
-        const d = device;
+        const gl = device.gl;
 
         if (this.useQuads)
         {
-            this._vertexBuffer = d.gl.createBuffer();
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
-            d.gl.bufferData(d.gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), d.gl.STATIC_DRAW);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
-            this._instanceBuffer = d.gl.createBuffer();
+            this._vertexBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 2, 2, 3, 0]), gl.STATIC_DRAW);
+            gl.bindBuffer(gl.ARRAY_BUFFER, null);
+            this._instanceBuffer = gl.createBuffer();
             return;
         }
 
@@ -288,10 +268,10 @@ export class EveSpriteSet extends EveObjectSet
             }
         }
 
-        this._vertexBuffer = d.gl.createBuffer();
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
-        d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.STATIC_DRAW);
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, null);
+        this._vertexBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, array, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
         const indexes = new Uint16Array(itemCount * 6);
         for (let i = 0; i < itemCount; ++i)
@@ -308,10 +288,10 @@ export class EveSpriteSet extends EveObjectSet
             indexes[offset + 5] = vtxOffset + 2;
         }
 
-        this._indexBuffer = d.gl.createBuffer();
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
-        d.gl.bufferData(d.gl.ELEMENT_ARRAY_BUFFER, indexes, d.gl.STATIC_DRAW);
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, null);
+        this._indexBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indexes, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
         this._indexBuffer.count = itemCount * 6;
     }
 
@@ -376,16 +356,20 @@ export class EveSpriteSet extends EveObjectSet
 
         if (!this.effect || !this.effect.IsGood() || !this._indexBuffer) return false;
 
-        device.SetStandardStates(device.RM_ADDITIVE);
-        device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._vertexBuffer);
-        device.gl.bindBuffer(device.gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
+        const
+            d = device,
+            gl = d.gl;
+
+        d.SetStandardStates(d.RM_ADDITIVE);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this._indexBuffer);
 
         for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
             this.effect.ApplyPass(technique, pass);
             if (!this._decl.SetDeclaration(this.effect.GetPassInput(technique, pass), 52)) return false;
-            device.ApplyShadowState();
-            device.gl.drawElements(device.gl.TRIANGLES, this._indexBuffer.count, device.gl.UNSIGNED_SHORT, 0);
+            d.ApplyShadowState();
+            gl.drawElements(gl.TRIANGLES, this._indexBuffer.count, gl.UNSIGNED_SHORT, 0);
         }
         return true;
     }
@@ -404,6 +388,7 @@ export class EveSpriteSet extends EveObjectSet
 
         const
             d = device,
+            gl = d.gl,
             pos = EveObjectSet.global.vec3_0,
             itemCount = this._visibleItems.length,
             array = new Float32Array(17 * itemCount);
@@ -434,19 +419,19 @@ export class EveSpriteSet extends EveObjectSet
             array[index++] = warpIntensity;
         }
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
-        d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this._instanceBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, array, gl.DYNAMIC_DRAW);
 
         for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
             this.effect.ApplyPass(technique, pass);
             const passInput = this.effect.GetPassInput(technique, pass);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
             this._vdecl.SetPartialDeclaration(passInput, 4);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._instanceBuffer);
             const resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
             d.ApplyShadowState();
-            d.ext.drawArraysInstanced(d.gl.TRIANGLES, 0, 6, itemCount);
+            d.ext.drawArraysInstanced(gl.TRIANGLES, 0, 6, itemCount);
             this._decl.ResetInstanceDivisors(resetData);
         }
 
@@ -466,6 +451,7 @@ export class EveSpriteSet extends EveObjectSet
 
         const
             d = device,
+            gl = d.gl,
             itemCount = this._visibleItems.length,
             array = new Float32Array(17 * itemCount),
             pos = EveObjectSet.global.vec3_0,
@@ -509,29 +495,59 @@ export class EveSpriteSet extends EveObjectSet
             array[index++] = 1;
         }
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
-        d.gl.bufferData(d.gl.ARRAY_BUFFER, array, d.gl.DYNAMIC_DRAW);
+        gl.bindBuffer(gl.ARRAY_BUFFER, this._instanceBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, array, gl.DYNAMIC_DRAW);
 
         for (let pass = 0; pass < this.effect.GetPassCount(technique); ++pass)
         {
             this.effect.ApplyPass(technique, pass);
             const passInput = this.effect.GetPassInput(technique, pass);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._vertexBuffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._vertexBuffer);
             this._vdecl.SetPartialDeclaration(passInput, 4);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, this._instanceBuffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, this._instanceBuffer);
             const resetData = this._decl.SetPartialDeclaration(passInput, 17 * 4, 0, 1);
             d.ApplyShadowState();
-            d.ext.drawArraysInstanced(d.gl.TRIANGLES, 0, 6, itemCount);
+            d.ext.drawArraysInstanced(gl.TRIANGLES, 0, 6, itemCount);
             this._decl.ResetInstanceDivisors(resetData);
         }
 
         return true;
     }
+
+    /**
+     * The sprite set's item constructor
+     * @type {EveSpriteSetItem}
+     */
+    static Item = EveSpriteSetItem;
+
+    /**
+     * Vertex declarations
+     * @type {*[]}
+     */
+    static vertexDeclarations = [
+        ['TEXCOORD', 5, 2],
+        ['POSITION', 0, 3],
+        ['COLOR', 0, 3],
+        ['TEXCOORD', 0, 1],
+        ['TEXCOORD', 1, 1],
+        ['TEXCOORD', 2, 1],
+        ['TEXCOORD', 3, 1],
+        ['TEXCOORD', 4, 1]
+    ];
+
+    /**
+     * cpu transform vertex declarations
+     * @type {*[]}
+     */
+    static quadVertexDeclarations = [
+        ['POSITION', 0, 3],
+        ['TEXCOORD', 0, 4],
+        ['TEXCOORD', 1, 2],
+        ['COLOR', 0, 4],
+        ['COLOR', 1, 4]
+    ];
+
 }
 
-/**
- * The sprite set's item constructor
- * @type {EveSpriteSetItem}
- */
-EveSpriteSet.Item = EveSpriteSetItem;
+
 

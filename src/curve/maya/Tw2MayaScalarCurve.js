@@ -11,14 +11,12 @@ import {Tw2Curve} from '../curves';
  */
 export class Tw2MayaScalarCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.index = -1;
-        this.animationEngine = null;
-        this.value = 0;
-        this.length = 0;
-    }
+
+    index = -1;
+    animationEngine = null;
+    value = 0;
+    length = 0;
+
 
     /**
      * Sorts the curve
@@ -57,22 +55,23 @@ export class Tw2MayaScalarCurve extends Tw2Curve
         if (!this.animationEngine || this.animationEngine.GetNumberOfCurves() === 0) return;
         if (this.index >= 0) this.length = this.animationEngine.GetLength(this.index);
     }
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE_MAYA;
+
 }
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2MayaScalarCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2MayaScalarCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2MayaScalarCurve.curveType = Tw2Curve.Type.CURVE_MAYA;

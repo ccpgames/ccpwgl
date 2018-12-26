@@ -1,5 +1,4 @@
-import {curve, vec3, quat, mat4, util} from '../../math';
-import {resMan} from '../../core';
+import {curve, vec3, quat, mat4, util, resMan} from '../../global';
 
 /**
  * Tw2TransformTrack
@@ -22,23 +21,22 @@ import {resMan} from '../../core';
  */
 export class Tw2TransformTrack
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.resPath = '';
-        this.res = null;
-        this.group = '';
-        this.cycle = false;
-        this.duration = 0;
-        this.translation = vec3.create();
-        this.rotation = quat.create();
-        this.scale = vec3.fromValues(0, 0, 0);
-        this.scaleShear = mat4.create();
-        this.positionCurve = null;
-        this.orientationCurve = null;
-        this.scaleCurve = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    resPath = '';
+    res = null;
+    group = '';
+    cycle = false;
+    duration = 0;
+    translation = vec3.create();
+    rotation = quat.create();
+    scale = vec3.fromValues(0, 0, 0);
+    scaleShear = mat4.create();
+    positionCurve = null;
+    orientationCurve = null;
+    scaleCurve = null;
+
 
     /**
      * Initializes the Curve
@@ -113,4 +111,5 @@ export class Tw2TransformTrack
             }
         }
     }
+
 }

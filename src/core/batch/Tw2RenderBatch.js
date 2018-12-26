@@ -1,5 +1,5 @@
 /*eslint no-unused-vars:0*/
-import {device} from '../global';
+import {device} from '../../global';
 
 /**
  * Tw2RenderBatch base class
@@ -10,11 +10,10 @@ import {device} from '../global';
  */
 export class Tw2RenderBatch
 {
-    constructor()
-    {
-        this.renderMode = device.RM_ANY;
-        this.perObjectData = null;
-    }
+
+    renderMode = device.RM_ANY;
+    perObjectData = null;
+
 
     /**
      * Commits the batch
@@ -24,4 +23,5 @@ export class Tw2RenderBatch
     {
 
     }
+
 }

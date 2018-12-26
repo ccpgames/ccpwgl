@@ -10,30 +10,24 @@ const PRIVATE = new WeakMap();
  */
 export class Tw2EventEmitter
 {
-    constructor()
-    {
-        PRIVATE.set(this, {events: {}});
-    }
-
     /**
      * Emits an event
      * @param {string} eventName
      * @param {*} [e={}]
      * @returns {Tw2EventEmitter}
-     * @emit event_added { eventName: string} - the first time an event is emitted
      */
-    emit(eventName, e)
+    emit(eventName, e = {})
     {
-        eventName = eventName.toLowerCase();
-
         // Short cut to creating a log output
-        if (e && e['__log'])
+        if (e.log && !e.log._logged)
         {
-            e.log = this.log(eventName, e['__log']);
-            delete e['__log'];
+            e.log = this.log(e.log);
         }
 
-        const events = PRIVATE.get(this).events;
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
+        eventName = eventName.toLowerCase();
         if (eventName in events)
         {
             events[eventName].forEach(
@@ -44,12 +38,6 @@ export class Tw2EventEmitter
                 }
             );
         }
-        else
-        {
-            events[eventName] = new Set();
-            this.emit('event_added', {eventName: eventName});
-        }
-
         return this;
     }
 
@@ -63,13 +51,14 @@ export class Tw2EventEmitter
      */
     on(eventName, listener, context = undefined, once = false)
     {
-        const events = PRIVATE.get(this).events;
-        eventName = eventName.toLowerCase();
-        if (!events[eventName])
+        let events = PRIVATE.get(this);
+        if (!events)
         {
-            events[eventName] = new Set();
-            events[eventName].add(() => this.emit('event_added', {eventName: eventName}), {once: true});
+            events = {};
+            PRIVATE.set(this, events);
         }
+        eventName = eventName.toLowerCase();
+        if (!events[eventName]) events[eventName] = new Set();
         events[eventName].add(listener, {context: context, once: once});
         return this;
     }
@@ -94,9 +83,24 @@ export class Tw2EventEmitter
      */
     off(eventName, listener)
     {
-        const events = PRIVATE.get(this).events;
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
         eventName = eventName.toLowerCase();
-        if (eventName in events) events[eventName].delete(listener);
+        if (eventName === '*')
+        {
+            for (const name in events)
+            {
+                if (events.hasOwnProperty(name))
+                {
+                    events[name].delete(listener);
+                }
+            }
+        }
+        else if (eventName in events)
+        {
+            events[eventName].delete(listener);
+        }
         return this;
     }
 
@@ -104,17 +108,14 @@ export class Tw2EventEmitter
      * Deletes an event and it's listeners
      * @param {string} eventName
      * @returns {Tw2EventEmitter}
-     * @emit event_removed { eventName: String }
      */
     del(eventName)
     {
-        const events = PRIVATE.get(this).events;
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
         eventName = eventName.toLowerCase();
-        if (eventName in events)
-        {
-            this.emit('event_removed', {eventName: eventName});
-            delete events[eventName];
-        }
+        if (eventName in events) delete events[eventName];
         return this;
     }
 
@@ -125,7 +126,9 @@ export class Tw2EventEmitter
      */
     clr(listener)
     {
-        const events = PRIVATE.get(this).events;
+        const events = PRIVATE.get(this);
+        if (!events) return this;
+
         for (let eventName in events)
         {
             if (events.hasOwnProperty(eventName) && events[eventName].has(listener))
@@ -143,29 +146,38 @@ export class Tw2EventEmitter
      */
     kill()
     {
-        this.emit('event_kill');
-        PRIVATE.get(this).events = {};
+        if (PRIVATE.has(this))
+        {
+            this.emit('kill');
+            PRIVATE.delete(this);
+        }
         return this;
     }
 
     /**
      * Logs an event log
-     * @param {string} eventName
-     * @param {eventLog} eventLog
+     * @param {eventLog|Error} eventLog
      * @returns {eventLog}
      */
-    log(eventName, eventLog)
+    log(eventLog)
     {
-        if (this.constructor.logger)
+        if (!eventLog.name)
         {
-            this.constructor.logger.log(eventName, eventLog);
+            eventLog.name = this.constructor.category || this.constructor.name;
         }
-        return eventLog;
-    }
-}
 
-/**
- * Global logger
- * @type {*}
- */
-Tw2EventEmitter.logger = null;
+        if (!this.constructor.defaultLogger)
+        {
+            return eventLog;
+        }
+
+        return this.constructor.defaultLogger.log(eventLog, this);
+    }
+
+    /**
+     * Global logger
+     * @type {*}
+     */
+    static defaultLogger = null;
+
+}

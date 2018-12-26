@@ -1,5 +1,5 @@
-import {vec3, quat, mat4} from '../../math';
-import {device, Tw2BasicPerObjectData, Tw2RawData} from '../../core';
+import {vec3, quat, mat4, device} from '../../global';
+import {Tw2BasicPerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -30,34 +30,28 @@ import {EveObject} from './EveObject';
  */
 export class EveTransform extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.mesh = true;
-        this.visible.children = true;
-        this.mesh = null;
-        this.curveSets = [];
-        this.children = [];
-        this.particleSystems = [];
-        this.particleEmitters = [];
-        this.modifier = EveTransform.Modifier.NONE;
-        this.sortValueMultiplier = 1.0;
-        this.distanceBasedScaleArg1 = 0.2;
-        this.distanceBasedScaleArg2 = 0.63;
-        this.useDistanceBasedScale = false;
-        this.scaling = vec3.fromValues(1, 1, 1);
-        this.translation = vec3.create();
-        this.rotation = quat.create();
-        this.localTransform = mat4.create();
-        this.worldTransform = mat4.create();
 
-        this._perObjectData = new Tw2BasicPerObjectData();
-        this._perObjectData.perObjectFFEData = new Tw2RawData();
-        this._perObjectData.perObjectFFEData.Declare('World', 16);
-        this._perObjectData.perObjectFFEData.Declare('WorldInverseTranspose', 16);
-        this._perObjectData.perObjectFFEData.Create();
-    }
+    visible = {
+        mesh: true,
+        children: true
+    };
+    mesh = null;
+    curveSets = [];
+    children = [];
+    particleSystems = [];
+    particleEmitters = [];
+    modifier = EveTransform.Modifier.NONE;
+    sortValueMultiplier = 1.0;
+    distanceBasedScaleArg1 = 0.2;
+    distanceBasedScaleArg2 = 0.63;
+    useDistanceBasedScale = false;
+    scaling = vec3.fromValues(1, 1, 1);
+    translation = vec3.create();
+    rotation = quat.create();
+    localTransform = mat4.create();
+    worldTransform = mat4.create();
+    _perObjectData = new Tw2BasicPerObjectData(EveTransform.perObjectData);
+
 
     /**
      * Initializes the EveTransform
@@ -73,7 +67,7 @@ export class EveTransform extends EveObject
      * @param {Boolean} [excludeChildren] - True to exclude children's res objects
      * @returns {Array.<Tw2Resource>} [out]
      */
-    GetResources(out=[], excludeChildren)
+    GetResources(out = [], excludeChildren)
     {
         if (this.mesh) this.mesh.GetResources(out);
 
@@ -310,20 +304,32 @@ export class EveTransform extends EveObject
         c[2] = a[2] * d + a[6] * e + a[10] * b;
         return c;
     }
-}
 
-/**
- * Modifier states
- * @type {{string:Number}}
- */
-EveTransform.Modifier = {
-    NONE: 0,
-    BILLBOARD: 1,
-    TRANSLATE_WITH_CAMERA: 2,
-    LOOK_AT_CAMERA: 3,
-    SIMPLE_HALO: 4,
-    EVE_CAMERA_ROTATION_ALIGNED: 100,
-    EVE_BOOSTER: 101,
-    EVE_SIMPLE_HALO: 102,
-    EVE_CAMERA_ROTATION: 103
-};
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        FFEData: [
+            ['World', 16],
+            ['WorldInverseTranspose', 16]
+        ]
+    };
+
+    /**
+     * Modifier states
+     * @type {*}
+     */
+    static Modifier = {
+        NONE: 0,
+        BILLBOARD: 1,
+        TRANSLATE_WITH_CAMERA: 2,
+        LOOK_AT_CAMERA: 3,
+        SIMPLE_HALO: 4,
+        EVE_CAMERA_ROTATION_ALIGNED: 100,
+        EVE_BOOSTER: 101,
+        EVE_SIMPLE_HALO: 102,
+        EVE_CAMERA_ROTATION: 103
+    };
+
+}

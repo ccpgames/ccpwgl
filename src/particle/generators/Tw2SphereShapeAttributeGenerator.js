@@ -1,5 +1,5 @@
-import {vec3, quat} from '../../math';
-import {Tw2ParticleElementDeclaration} from '../Tw2ParticleElement';
+import {vec3, quat} from '../../global';
+import {Tw2ParticleElementDeclaration} from '../Tw2ParticleElementDeclaration';
 import {Tw2ParticleAttributeGenerator} from './Tw2ParticleAttributeGenerator';
 
 /**
@@ -24,25 +24,23 @@ import {Tw2ParticleAttributeGenerator} from './Tw2ParticleAttributeGenerator';
  */
 export class Tw2SphereShapeAttributeGenerator extends Tw2ParticleAttributeGenerator
 {
-    constructor()
-    {
-        super();
-        this.minRadius = 0;
-        this.maxRadius = 0;
-        this.minPhi = 0;
-        this.maxPhi = 360;
-        this.minTheta = 0;
-        this.maxTheta = 360;
-        this.controlPosition = true;
-        this.controlVelocity = true;
-        this.minSpeed = 0;
-        this.maxSpeed = 0;
-        this.parentVelocityFactor = 1;
-        this.position = vec3.create();
-        this.rotation = quat.create();
-        this._position = null;
-        this._velocity = null;
-    }
+
+    minRadius = 0;
+    maxRadius = 0;
+    minPhi = 0;
+    maxPhi = 360;
+    minTheta = 0;
+    maxTheta = 360;
+    controlPosition = true;
+    controlVelocity = true;
+    minSpeed = 0;
+    maxSpeed = 0;
+    parentVelocityFactor = 1;
+    position = vec3.create();
+    rotation = quat.create();
+    _position = null;
+    _velocity = null;
+
 
     /**
      * Binds a particle system element to the generator
@@ -122,4 +120,5 @@ export class Tw2SphereShapeAttributeGenerator extends Tw2ParticleAttributeGenera
             this._position.buffer[offset + 2] = rv[2];
         }
     }
+
 }

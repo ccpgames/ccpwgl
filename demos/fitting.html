@@ -13,12 +13,12 @@
 
         var camera, scene, ship;
 
-        $(document).ready(function ()
+        $(document).ready(function()
         {
             var $canvas = $('#mainCanvas');
             ccpwgl.initialize($canvas[0], demos.options);
 
-            camera = ccpwgl.createCamera($canvas[0], { distance: 100 }, true);
+            camera = ccpwgl.createCamera($canvas[0], {distance: 100}, true);
             scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
 
             if (demos.options.postprocess)
@@ -26,7 +26,7 @@
 
             function fitTurret(ship, select, slot)
             {
-                return function ()
+                return function()
                 {
                     var res = select.val();
                     if (res)
@@ -44,7 +44,7 @@
 
             function idle(slot)
             {
-                return function ()
+                return function()
                 {
                     scene.objects[0].setTurretState(slot, ccpwgl.TurretState.IDLE);
                 }
@@ -52,7 +52,7 @@
 
             function offline(slot)
             {
-                return function ()
+                return function()
                 {
                     scene.objects[0].setTurretState(slot, ccpwgl.TurretState.OFFLINE);
                 }
@@ -102,19 +102,19 @@
                 return parents[0] != 'hull' || !parents[1] || parents[1] == 'ship';
             });
 
-            $('#create').click(function ()
+            $('#create').click(function()
             {
                 var dna = $('#dna').val();
                 loadDna(dna);
                 history.pushState({dna: dna}, 'Ship Fitting ' + dna);
             });
 
-            $('#idle').click(function ()
+            $('#idle').click(function()
             {
                 scene.objects[0].setTurretState(1, ccpwgl.TurretState.IDLE);
             });
 
-            ccpwgl.onPreRender = function ()
+            ccpwgl.onPreRender = function()
             {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };

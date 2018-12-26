@@ -1,4 +1,4 @@
-import {vec3, quat} from '../../math';
+import {vec3, quat} from '../../global';
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
 
 /**
@@ -11,13 +11,11 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2Torque extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.rot0 = quat.create();
-        this.omega0 = vec3.create();
-        this.torque = vec3.create();
-    }
+
+    rot0 = quat.create();
+    omega0 = vec3.create();
+    torque = vec3.create();
+
 }
 
 
@@ -35,17 +33,15 @@ export class Tw2Torque extends Tw2CurveKey
  */
 export class Tw2RigidOrientation extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.name = '';
-        this.I = 1;
-        this.drag = 1;
-        this.value = quat.create();
-        this.start = 0;
-        this.states = [];
-        this.length = 0;
-    }
+
+    name = '';
+    I = 1;
+    drag = 1;
+    value = quat.create();
+    start = 0;
+    states = [];
+    length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -112,35 +108,35 @@ export class Tw2RigidOrientation extends Tw2Curve
         quat.multiply(value, this.states[key].rot0, quat_0);
         return value;
     }
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static inputDimension = 4;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2Torque}
+     */
+    static Key = Tw2Torque;
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2RigidOrientation.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2RigidOrientation.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2RigidOrientation.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2RigidOrientation.curveType = Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2Torque}
- */
-Tw2RigidOrientation.Key = Tw2Torque;
-

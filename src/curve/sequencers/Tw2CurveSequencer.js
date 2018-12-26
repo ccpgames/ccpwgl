@@ -7,11 +7,6 @@ import {Tw2Curve} from '../curves';
  */
 export class Tw2CurveSequencer extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-    }
-    
     /**
      * Legacy sequencer sorting
      * @param {Tw2CurveSequencer} sequencer
@@ -44,22 +39,23 @@ export class Tw2CurveSequencer extends Tw2Curve
             }
         }
     }
+
+    /**
+     * The sequencer's curve property names
+     * @type {?Array.<string>}
+     */
+    static childProperties = null;
+
+    /**
+     * The sequencer's curve array
+     * @type {?string}
+     */
+    static childArray = null;
+
+    /**
+     * Operator types
+     * @type {null}
+     */
+    static Operator = null;
+
 }
-
-/**
- * The sequencer's curve property names
- * @type {?Array.<string>}
- */
-Tw2CurveSequencer.childProperties = null;
-
-/**
- * The sequencer's curve array
- * @type {?string}
- */
-Tw2CurveSequencer.childArray = null;
-
-/**
- * Operator types
- * @type {null}
- */
-Tw2CurveSequencer.Operator = null;

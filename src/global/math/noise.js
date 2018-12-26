@@ -1,5 +1,6 @@
 import {vec3} from './vec3';
 import {vec4} from './vec4';
+
 export const noise = {};
 
 /**
@@ -13,7 +14,7 @@ export const noise = {};
  * @param {number} power
  * @returns {vec4} out
  */
-noise.turbulence = (function()
+noise.turbulence = (function ()
 {
     const
         s_noiseLookup = [],
@@ -130,7 +131,7 @@ noise.turbulence = (function()
  * @param {number} a
  * @returns {number}
  */
-noise.perlin1 = (function()
+noise.perlin1 = (function ()
 {
     let p_initialized = false,
         p_B = 0x100,
@@ -172,7 +173,7 @@ noise.perlin1 = (function()
 
         p_initialized = true;
     }
-    
+
     return function perlin1(a)
     {
         if (!p_initialized) initialize();

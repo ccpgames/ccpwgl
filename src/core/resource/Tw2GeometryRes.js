@@ -1,9 +1,8 @@
-import {vec3, quat, mat3, mat4} from '../../math';
-import {device} from '../global/Tw2Device';
-import {logger} from '../global/Tw2Logger';
+import {vec3, quat, mat3, mat4, device} from '../../global';
 import {Tw2BinaryReader} from '../reader';
 import {Tw2VertexElement} from '../vertex';
 import {Tw2Resource} from './Tw2Resource';
+import {ErrGeometryFileType, ErrGeometryMeshEffectBinding, ErrGeometryMeshBoneNameInvalid} from '../Tw2Error';
 import {
     Tw2BlendShapeData,
     Tw2GeometryAnimation,
@@ -17,6 +16,7 @@ import {
     Tw2GeometryTrackGroup,
     Tw2GeometryTransformTrack
 } from '../geometry';
+
 
 /**
  * Tw2GeometryRes
@@ -33,18 +33,16 @@ import {
  */
 export class Tw2GeometryRes extends Tw2Resource
 {
-    constructor()
-    {
-        super();
-        this.meshes = [];
-        this.minBounds = vec3.create();
-        this.maxBounds = vec3.create();
-        this.boundsSpherePosition = vec3.create();
-        this.boundsSphereRadius = 0;
-        this.models = [];
-        this.animations = [];
-        this.systemMirror = false;
-    }
+
+    meshes = [];
+    minBounds = vec3.create();
+    maxBounds = vec3.create();
+    boundsSpherePosition = vec3.create();
+    boundsSphereRadius = 0;
+    models = [];
+    animations = [];
+    systemMirror = false;
+
 
     /**
      * GetInstanceBuffer
@@ -93,7 +91,7 @@ export class Tw2GeometryRes extends Tw2Resource
     Prepare(data)
     {
         const
-            d = device,
+            gl = device.gl,
             reader = new Tw2BinaryReader(new Uint8Array(data));
 
         /* let fileVersion = */
@@ -103,14 +101,14 @@ export class Tw2GeometryRes extends Tw2Resource
         {
             const mesh = new Tw2GeometryMesh();
             mesh.name = reader.ReadString();
-            const buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.declaration);
+            const buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.declaration, this.path);
 
             if (buffer)
             {
                 mesh.bufferLength = buffer.length;
-                mesh.buffer = d.gl.createBuffer();
-                d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-                d.gl.bufferData(d.gl.ARRAY_BUFFER, buffer, d.gl.STATIC_DRAW);
+                mesh.buffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+                gl.bufferData(gl.ARRAY_BUFFER, buffer, gl.STATIC_DRAW);
             }
             else
             {
@@ -120,10 +118,10 @@ export class Tw2GeometryRes extends Tw2Resource
             const indexes = Tw2GeometryRes.ReadIndexBuffer(reader);
             if (indexes)
             {
-                mesh.indexes = d.gl.createBuffer();
-                mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? d.gl.UNSIGNED_SHORT : d.gl.UNSIGNED_INT;
-                d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
-                d.gl.bufferData(d.gl.ELEMENT_ARRAY_BUFFER, indexes, d.gl.STATIC_DRAW);
+                mesh.indexes = gl.createBuffer();
+                mesh.indexType = indexes.BYTES_PER_ELEMENT === 2 ? gl.UNSIGNED_SHORT : gl.UNSIGNED_INT;
+                gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+                gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indexes, gl.STATIC_DRAW);
             }
             else
             {
@@ -162,7 +160,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 {
                     mesh.blendShapes[i] = new Tw2BlendShapeData();
                     mesh.blendShapes[i].name = reader.ReadString();
-                    mesh.blendShapes[i].buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.blendShapes[i].declaration);
+                    mesh.blendShapes[i].buffer = Tw2GeometryRes.ReadVertexBuffer(reader, mesh.blendShapes[i].declaration, this.path);
                     mesh.blendShapes[i].indexes = Tw2GeometryRes.ReadIndexBuffer(reader);
                 }
             }
@@ -186,7 +184,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 bone.parentIndex = reader.ReadUInt8();
                 if (bone.parentIndex === 255) bone.parentIndex = -1;
 
-                if ((flags & 1) != 0)
+                if ((flags & 1) !== 0)
                 {
                     vec3.set(bone.position, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -195,7 +193,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     vec3.set(bone.position, 0, 0, 0);
                 }
 
-                if ((flags & 2) != 0)
+                if ((flags & 2) !== 0)
                 {
                     quat.set(bone.orientation, reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32(), reader.ReadFloat32());
                 }
@@ -204,7 +202,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     quat.identity(bone.orientation);
                 }
 
-                if ((flags & 4) != 0)
+                if ((flags & 4) !== 0)
                 {
                     for (let k = 0; k < 9; ++k)
                     {
@@ -270,7 +268,7 @@ export class Tw2GeometryRes extends Tw2Resource
                     const track = new Tw2GeometryTransformTrack();
                     track.name = reader.ReadString();
                     track.orientation = Tw2GeometryRes.ReadCurve(reader);
-                    track.position =Tw2GeometryRes.ReadCurve(reader);
+                    track.position = Tw2GeometryRes.ReadCurve(reader);
                     track.scaleShear = Tw2GeometryRes.ReadCurve(reader);
 
                     if (track.orientation)
@@ -305,7 +303,7 @@ export class Tw2GeometryRes extends Tw2Resource
             this.animations[this.animations.length] = animation;
         }
 
-        this.PrepareFinished(true);
+        this.OnPrepared();
     }
 
     /**
@@ -326,17 +324,11 @@ export class Tw2GeometryRes extends Tw2Resource
 
             if (!bone)
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'BindMeshToModel'],
-                    msg: 'Mesh has invalid bone name for model',
+                throw new ErrGeometryMeshBoneNameInvalid({
                     path: res.path,
-                    type: 'geometry.invalidbone',
-                    data: {
-                        mesh: binding.mesh.name,
-                        bone: name,
-                        model: model.name
-                    }
+                    mesh: binding.mesh.name,
+                    bone: name,
+                    model: model.name
                 });
             }
             else
@@ -367,10 +359,11 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            {ext, gl} = d,
             mesh = this.meshes[meshIx],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
@@ -378,9 +371,9 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (passInput.elements.length === 0) continue;
 
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
+            gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
             mesh.declaration.SetPartialDeclaration(passInput, mesh.declaration.stride);
-            d.gl.bindBuffer(d.gl.ARRAY_BUFFER, instanceVB);
+            gl.bindBuffer(gl.ARRAY_BUFFER, instanceVB);
             const resetData = instanceDecl.SetPartialDeclaration(passInput, instanceStride, 8, 1);
             d.ApplyShadowState();
 
@@ -399,7 +392,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.ext.drawElementsInstanced(d.gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
+                    ext.drawElementsInstanced(gl.TRIANGLES, acount, mesh.indexType, areaStart, instanceCount);
                 }
             }
             instanceDecl.ResetInstanceDivisors(resetData);
@@ -423,11 +416,12 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            gl = d.gl,
             mesh = this.meshes[meshIx] || this.meshes[0],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
@@ -435,18 +429,12 @@ export class Tw2GeometryRes extends Tw2Resource
             const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
+                this.OnError(new ErrGeometryMeshEffectBinding({
                     path: this.path,
-                    type: 'geometry.meshbind',
-                    data: {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }));
                 return false;
             }
 
@@ -467,7 +455,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.TRIANGLES, acount, mesh.indexType, areaStart);
+                    gl.drawElements(gl.TRIANGLES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -490,30 +478,25 @@ export class Tw2GeometryRes extends Tw2Resource
 
         const
             d = device,
+            gl = d.gl,
             mesh = this.meshes[meshIx],
             passCount = effect.GetPassCount(technique);
 
-        d.gl.bindBuffer(d.gl.ARRAY_BUFFER, mesh.buffer);
-        d.gl.bindBuffer(d.gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
+        gl.bindBuffer(gl.ARRAY_BUFFER, mesh.buffer);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, mesh.indexes);
 
         for (let pass = 0; pass < passCount; ++pass)
         {
             effect.ApplyPass(technique, pass);
-            let passInput = effect.GetPassInput(technique, pass);
+            const passInput = effect.GetPassInput(technique, pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                logger.log('res.error', {
-                    log: 'error',
-                    src: ['Tw2GeometryRes', 'RenderLines'],
-                    msg: 'Error binding mesh to effect',
+                this.OnError(new ErrGeometryMeshEffectBinding({
                     path: this.path,
-                    type: 'geometry.meshbind',
-                    data: {
-                        pass: pass,
-                        passInput: passInput,
-                        meshStride: mesh.declaration.stride
-                    }
-                });
+                    pass: pass,
+                    passInput: passInput,
+                    meshStride: mesh.declaration.stride
+                }));
                 return false;
             }
 
@@ -534,7 +517,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         acount += area.count;
                         ++i;
                     }
-                    d.gl.drawElements(d.gl.LINES, acount, mesh.indexType, areaStart);
+                    gl.drawElements(gl.LINES, acount, mesh.indexType, areaStart);
                 }
             }
         }
@@ -578,15 +561,17 @@ export class Tw2GeometryRes extends Tw2Resource
     {
         for (let i = 0; i < this.meshes.length; ++i)
         {
+            const gl = device.gl;
+
             if (this.meshes[i].buffer)
             {
-                device.gl.deleteBuffer(this.meshes[i].buffer);
+                gl.deleteBuffer(this.meshes[i].buffer);
                 this.meshes[i].buffer = null;
             }
 
             if (this.meshes[i].indexes)
             {
-                device.gl.deleteBuffer(this.meshes[i].indexes);
+                gl.deleteBuffer(this.meshes[i].indexes);
                 this.meshes[i].indexes = null;
             }
         }
@@ -600,9 +585,10 @@ export class Tw2GeometryRes extends Tw2Resource
      * ReadVertexBuffer
      * @param {Tw2BinaryReader} reader
      * @param {Tw2VertexDeclaration} declaration
+     * @param {string} path
      * @returns {?Float32Array}
      */
-    static ReadVertexBuffer(reader, declaration)
+    static ReadVertexBuffer(reader, declaration, path)
     {
         const declCount = reader.ReadUInt8();
         let vertexSize = 0;
@@ -635,7 +621,7 @@ export class Tw2GeometryRes extends Tw2Resource
                 switch (el.fileType & 0xf)
                 {
                     case 0:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -652,7 +638,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 1:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -690,7 +676,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 8:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < el.elements; ++i)
                             {
@@ -707,7 +693,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     case 9:
-                        if ((el.fileType & 0x10) != 0)
+                        if ((el.fileType & 0x10) !== 0)
                         {
                             for (let i = 0; i < declaration.elements[declIx].elements; ++i)
                             {
@@ -731,15 +717,7 @@ export class Tw2GeometryRes extends Tw2Resource
                         break;
 
                     default:
-                        logger.log('res.error', {
-                            log: 'error',
-                            src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
-                            msg: 'Error loading wbg data',
-                            path: self.path,
-                            type: 'geometry.filetype',
-                            value: el.fileType & 0xf
-                        });
-                        throw 1;
+                        throw new ErrGeometryFileType({path: path, key: 'fileType', value: el.fileType & 0xf});
                 }
             }
         }
@@ -804,6 +782,7 @@ export class Tw2GeometryRes extends Tw2Resource
         }
         return curve;
     }
+
 }
 
 /**

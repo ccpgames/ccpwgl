@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util, vec3, vec4} from '../../math';
+import {util, vec3, vec4} from '../../global';
 
 /**
  * Tw2ParticleForce base class
@@ -10,19 +10,18 @@ import {util, vec3, vec4} from '../../math';
  */
 export class Tw2ParticleForce
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-    }
+
+    _id = util.generateID();
+    name = '';
+
 
     /**
      * Applies forces
      * @param {Tw2ParticleElement} position
      * @param {Tw2ParticleElement} velocity
      * @param {Tw2ParticleElement} force
-     * @param {number} dt
-     * @param {number} mass
+     * @param {number} [dt]
+     * @param {number} [mass]
      */
     ApplyForce(position, velocity, force, dt, mass)
     {
@@ -37,14 +36,15 @@ export class Tw2ParticleForce
     {
 
     }
-}
 
-/**
- * Class globals
- * @type {*}
- */
-Tw2ParticleForce.global = {
-    vec3_0: vec3.create(),
-    vec3_1: vec3.create(),
-    vec4_0: vec4.create(),
-};
+    /**
+     * Global and scratch variables
+     * @type {*}
+     */
+    static global = {
+        vec3_0: vec3.create(),
+        vec3_1: vec3.create(),
+        vec4_0: vec4.create(),
+    };
+
+}

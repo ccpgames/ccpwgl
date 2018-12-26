@@ -1,30 +1,33 @@
-import {util} from '../../math';
+import {isString, isPlain, isArray, isFunction, toArray, isUndefined, enableUUID} from '../util';
+import {Tw2EventEmitter} from '../../core/Tw2EventEmitter';
 import {logger} from './Tw2Logger';
+import {resMan} from './Tw2ResMan';
 
 /**
  * Stores engine data
  *
- * @property {Object.< string, string>} _paths
- * @property {Object.< string, Array<string>>} _dynamicPaths
- * @property {Object.< string, Tw2Parameter>} _variables
- * @property {Object.< string, Function>} _types
- * @property {Object.< string, Function>} _extensions
- * @property {Object.< string, Function>} _constructors
+ * @property {Object.< string, string>} _path
+ * @property {Object.< string, Array<string>>} _dynamicPath
+ * @property {Object.< string, Tw2Parameter>} _variable
+ * @property {Object.< string, Function>} _type
+ * @property {Object.< string, Function>} _extension
+ * @property {Object.< string, Function>} _class
+ * @property {Object.< string, Tw2Schema>} _schema
  * @property {Object.< string, Array<string>>} _missing
  * @class
  */
-class Tw2Store
+class Tw2Store extends Tw2EventEmitter
 {
-    constructor()
-    {
-        this._types = {};
-        this._paths = {};
-        this._variables = {};
-        this._extensions = {};
-        this._constructors = {};
-        this._dynamicPaths = {};
-        this._missing = {};
-    }
+
+    _type = {};
+    _path = {};
+    _variable = {};
+    _extension = {};
+    _class = {};
+    _dynamicPath = {};
+    _schema = {};
+    _missing = {};
+    
 
     /**
      * Checks if a resource path exists
@@ -33,7 +36,7 @@ class Tw2Store
      */
     HasPath(prefix)
     {
-        return (prefix && prefix in this._paths);
+        return (prefix && prefix in this._path);
     }
 
 
@@ -44,7 +47,7 @@ class Tw2Store
      */
     GetPath(prefix)
     {
-        return Tw2Store.GetStoreItem(this, 'paths', prefix);
+        return Tw2Store.GetStoreItem(this, 'path', prefix);
     }
 
     /**
@@ -55,7 +58,26 @@ class Tw2Store
      */
     RegisterPath(prefix, path)
     {
-        return !!Tw2Store.SetStoreItem(this, 'paths', prefix, path);
+        if (path.lastIndexOf('/') !== path.length - 1)
+        {
+            path += '/';
+        }
+
+        if (Tw2Store.RestrictedPathPrefixes.includes(prefix))
+        {
+            this.emit('error', {
+                type: 'path',
+                key: prefix,
+                value: path,
+                log: {
+                    type: 'error',
+                    message: `Cannot register restricted prefix "${prefix}"`
+                }
+            });
+            return false;
+        }
+
+        return Tw2Store.SetStoreItem(this, 'path', prefix, path, isString);
     }
 
     /**
@@ -75,7 +97,7 @@ class Tw2Store
      */
     HasDynamicPath(prefix)
     {
-        return (prefix && prefix in this._dynamicPaths);
+        return (prefix && prefix in this._dynamicPath);
     }
 
     /**
@@ -85,7 +107,7 @@ class Tw2Store
      */
     GetDynamicPath(prefix)
     {
-        return Tw2Store.GetStoreItem(this, 'dynamicPaths', prefix);
+        return Tw2Store.GetStoreItem(this, 'dynamicPath', prefix);
     }
 
     /**
@@ -96,7 +118,7 @@ class Tw2Store
      */
     RegisterDynamicPath(prefix, paths)
     {
-        return !!Tw2Store.SetStoreItem(this, 'dynamicPaths', prefix, paths);
+        return Tw2Store.SetStoreItem(this, 'dynamicPath', prefix, paths, isArray);
     }
 
     /**
@@ -116,7 +138,7 @@ class Tw2Store
      */
     HasExtension(ext)
     {
-        return (ext && ext in this._extensions);
+        return (ext && ext in this._extension);
     }
 
     /**
@@ -126,22 +148,18 @@ class Tw2Store
      */
     GetExtension(ext)
     {
-        return Tw2Store.GetStoreItem(this, 'extensions', ext);
+        return Tw2Store.GetStoreItem(this, 'extension', ext);
     }
 
     /**
      * Registers a resource extension
-     * @param {name} ext
+     * @param {string} ext
      * @param {Function} Constructor
      * @returns {boolean}
      */
     RegisterExtension(ext, Constructor)
     {
-        if (typeof Constructor === 'function')
-        {
-            return !!Tw2Store.SetStoreItem(this, 'extensions', ext, Constructor);
-        }
-        return false;
+        return Tw2Store.SetStoreItem(this, 'extension', ext, Constructor, isFunction);
     }
 
     /**
@@ -159,9 +177,9 @@ class Tw2Store
      * @param {string} name
      * @returns {boolean}
      */
-    HasConstructor(name)
+    HasClass(name)
     {
-        return (name && name in this._constructors);
+        return (name && name in this._class);
     }
 
     /**
@@ -169,9 +187,45 @@ class Tw2Store
      * @param {string} name
      * @returns {?Function}
      */
-    GetConstructor(name)
+    GetClass(name)
     {
-        return Tw2Store.GetStoreItem(this, 'constructors', name);
+        let Constructor = Tw2Store.GetStoreItem(this, 'class', name);
+
+        // Allow substitution of Trinity constructors with Tw2 constructors
+        if (!Constructor && (name.includes('Tr2') || name.includes('Tri')))
+        {
+            const substitute = 'Tw2' + name.substring(3);
+            Constructor = Tw2Store.GetStoreItem(this, 'class', substitute);
+            if (Constructor)
+            {
+                this.emit('substitute', {
+                    type: 'class',
+                    key: substitute,
+                    originalKey: name,
+                    value: Constructor,
+                    log: {
+                        type: 'warning',
+                        message: `"${name}" class not found, substituting with "${substitute}"`
+                    }
+                });
+            }
+        }
+
+        // Create a warning when a partially implemented class is called
+        if (Constructor && Constructor.partialImplementation)
+        {
+            this.emit('partial', {
+                type: 'class',
+                key: name,
+                value: Constructor,
+                log: {
+                    type: 'warning',
+                    message: `"${name}" class partially implemented`
+                }
+            });
+        }
+
+        return Constructor;
     }
 
     /**
@@ -180,13 +234,9 @@ class Tw2Store
      * @param {Function} Constructor
      * @returns {boolean}
      */
-    RegisterConstructor(name, Constructor)
+    RegisterClass(name, Constructor)
     {
-        if (typeof Constructor === 'function')
-        {
-            return !!Tw2Store.SetStoreItem(this, 'constructors', name, Constructor);
-        }
-        return false;
+        return Tw2Store.SetStoreItem(this, 'class', name, Constructor, isFunction);
     }
 
     /**
@@ -194,9 +244,9 @@ class Tw2Store
      * @param {{string:Function}|Array<{string:Function}>} obj
      * @returns {boolean}
      */
-    RegisterConstructors(obj)
+    RegisterClasses(obj)
     {
-        return Tw2Store.RegisterFromObject(this, 'RegisterConstructor', obj);
+        return Tw2Store.RegisterFromObject(this, 'RegisterClass', obj);
     }
 
     /**
@@ -206,7 +256,7 @@ class Tw2Store
      */
     HasVariable(name)
     {
-        return (name && name in this._variables);
+        return (name && name in this._variable);
     }
 
     /**
@@ -216,7 +266,7 @@ class Tw2Store
      */
     GetVariable(name)
     {
-        return Tw2Store.GetStoreItem(this, 'variables', name);
+        return Tw2Store.GetStoreItem(this, 'variable', name);
     }
 
     /**
@@ -251,14 +301,15 @@ class Tw2Store
     /**
      * Registers a variable
      * @param {string} name
-     * @param {*|{value:*, type: string|Function}} [value]
+     * @param {*|{value:*, Type: string|Function}} [value]
      * @param {string|Function} [Type]
      * @returns {?*}
      */
     RegisterVariable(name, value, Type)
     {
         const variable = this.CreateType(name, value, Type);
-        return Tw2Store.SetStoreItem(this, 'variables', name, variable);
+        Tw2Store.SetStoreItem(this, 'variable', name, variable);
+        return variable;
     }
 
     /**
@@ -277,7 +328,7 @@ class Tw2Store
      */
     GetType(name)
     {
-        return Tw2Store.GetStoreItem(this, 'types', name);
+        return Tw2Store.GetStoreItem(this, 'type', name);
     }
 
     /**
@@ -287,7 +338,7 @@ class Tw2Store
      */
     HasType(name)
     {
-        return (name && name in this._types);
+        return (name && name in this._type);
     }
 
     /**
@@ -297,11 +348,14 @@ class Tw2Store
      */
     GetTypeByValue(value)
     {
-        for (let type in this._types)
+        for (let type in this._type)
         {
-            if (this._types.hasOwnProperty(type) && 'is' in this._types[type])
+            if (this._type.hasOwnProperty(type) && 'isValue' in this._type[type])
             {
-                if (this._types[type]['is'](value)) return this._types[type];
+                if (this._type[type]['isValue'](value))
+                {
+                    return this._type[type];
+                }
             }
         }
         return null;
@@ -316,7 +370,7 @@ class Tw2Store
      */
     CreateType(name, value, Type)
     {
-        if (value && value.constructor.name === 'Object')
+        if (isPlain(value))
         {
             Type = value['Type'] || value['type'];
             value = value['value'];
@@ -326,12 +380,13 @@ class Tw2Store
         {
             Type = this.GetTypeByValue(value);
         }
-        else if (typeof Type === 'string')
+
+        if (isString(Type))
         {
             Type = this.GetType(Type);
         }
 
-        if (typeof Type === 'function')
+        if (isFunction(Type))
         {
             return new Type(name, value);
         }
@@ -347,11 +402,7 @@ class Tw2Store
      */
     RegisterType(name, Constructor)
     {
-        if (typeof Constructor === 'function')
-        {
-            return !!Tw2Store.SetStoreItem(this, 'types', name, Constructor);
-        }
-        return false;
+        return Tw2Store.SetStoreItem(this, 'type', name, Constructor, isFunction);
     }
 
     /**
@@ -365,25 +416,76 @@ class Tw2Store
     }
 
     /**
+     * Checks if a schema exists
+     * @param {string} name
+     * @returns {boolean}
+     */
+    HasSchema(name)
+    {
+        return (name && name in this._schema);
+    }
+
+
+    /**
+     * Gets a schema by it's name
+     * @param {string} name
+     * @returns {?string}
+     */
+    GetSchema(name)
+    {
+        return Tw2Store.GetStoreItem(this, 'schema', name);
+    }
+
+    /**
+     * Registers a schema
+     * @param {string} name
+     * @param {string} schema
+     * @returns {boolean}
+     */
+    RegisterSchema(name, schema)
+    {
+        return Tw2Store.SetStoreItem(this, 'schema', name, schema, a =>
+        {
+            return a && a.constructor.name === 'Tw2Schema';
+        });
+    }
+
+    /**
+     * Registers schemas from an object or an array of objects
+     * @param {{string:string}|Array<{string:string}>} obj
+     * @returns {boolean}
+     */
+    RegisterSchemas(obj)
+    {
+        return Tw2Store.RegisterFromObject(this, 'RegisterSchema', obj);
+    }
+
+    /**
      * Registers store values
      * @param {{}} [opt={}]
      * @param {boolean} [opt.uuid]
+     * @param {*} opt.logger
      * @param {*} opt.paths
      * @param {*} opt.dynamicPaths
      * @param {*} opt.types
-     * @param {*} opt.constructors
+     * @param {*} opt.classes
      * @param {*} opt.extensions
      * @param {*} opt.variables
+     * @param {*} opt.schemas
      */
     Register(opt = {})
     {
-        if ('uuid' in opt) util.enableUUID(opt.uuid);
+        if ('uuid' in opt) enableUUID(opt.uuid);
+        if ('logger' in opt) logger.Set(opt.logger);
+        if ('resMan' in opt) resMan.Set(opt.resMan);
+
         this.RegisterPaths(opt.paths);
         this.RegisterDynamicPaths(opt.dynamicPaths);
         this.RegisterTypes(opt.types);
-        this.RegisterConstructors(opt.constructors);
+        this.RegisterClasses(opt.classes);
         this.RegisterExtensions(opt.extensions);
         this.RegisterVariables(opt.variables);
+        this.RegisterSchemas(opt.schemas);
     }
 
     /**
@@ -396,34 +498,31 @@ class Tw2Store
      */
     static GetStoreItem(store, type, key)
     {
-        if (typeof key === 'string')
+        const storeSet = store['_' + type];
+        if (storeSet && isString(key))
         {
-            const
-                storeSet = store[`_${type}`],
-                singular = type.substring(0, type.length - 1);
-
-            if (storeSet)
+            if (key in storeSet)
             {
-                if (key in storeSet)
-                {
-                    return storeSet[key];
-                }
-
-                if (!store._missing[type])
-                {
-                    store._missing[type] = [];
-                }
-
-                if (!store._missing[type].includes(key))
-                {
-                    store._missing[type].push(key);
-
-                    logger.log('store.warning', {
-                        log: 'warning',
-                        msg: `Missing ${singular}: '${key}'`
-                    });
-                }
+                return storeSet[key];
             }
+
+            if (!store._missing[type])
+            {
+                store._missing[type] = [];
+            }
+
+            if (!store._missing[type].includes(key))
+            {
+                store._missing[type].push(key);
+            }
+
+            store.emit('missing', {
+                type, key,
+                log: {
+                    type: 'debug',
+                    message: `Missing ${type}: "${key}"`
+                }
+            });
         }
 
         return null;
@@ -435,42 +534,36 @@ class Tw2Store
      * @param {string} type
      * @param {string} key
      * @param {*} value
+     * @param {Function} [validator]
+     * @returns {boolean} true if successful
      */
-    static SetStoreItem(store, type, key = '', value)
+    static SetStoreItem(store, type, key = '', value, validator)
     {
-        if (typeof key === 'string' && value !== undefined)
+        if (validator && !validator(value))
         {
-            const storeSet = store[`_${type}`];
-            if (storeSet)
-            {
-                const
-                    existing = storeSet[key],
-                    singular = type.substring(0, type.length - 1);
-
-                storeSet[key] = value;
-
-                if (!existing)
-                {
-                    logger.log('store.registered', {
-                        log: 'debug',
-                        msg: `Registered ${singular}: '${key}'`,
-                        hide: true
-                    });
+            store.emit('error', {
+                type, key, value,
+                log: {
+                    type: 'error',
+                    message: `Invalid ${type}: "${key}"`,
                 }
-                else
-                {
-                    logger.log('store.registered', {
-                        log: 'debug',
-                        msg: `Re-registered ${singular}: '${key}'`,
-                        data: {
-                            old_value: existing,
-                            new_value: value
-                        }
-                    });
-                }
+            });
+            return false;
+        }
 
-                return value;
-            }
+        const storeSet = store['_' + type];
+        if (storeSet && isString(key) && !isUndefined(value))
+        {
+            const oldValue = storeSet[key];
+            storeSet[key] = value;
+            store.emit('registered', {
+                type, key, value, oldValue,
+                log: {
+                    type: 'debug',
+                    message: `${oldValue ? 'Re-registered' : 'Registered'} ${type} "${key}"`
+                }
+            });
+            return true;
         }
         return false;
     }
@@ -486,7 +579,7 @@ class Tw2Store
     {
         if (obj && funcName in store)
         {
-            obj = Array.isArray(obj) ? obj : [obj];
+            obj = toArray(obj);
             for (let i = 0; i < obj.length; i++)
             {
                 for (let key in obj[i])
@@ -501,6 +594,20 @@ class Tw2Store
         }
         return false;
     }
+
+    /**
+     * Restricted path prefixes
+     * @type {string[]}
+     */
+    static RestrictedPathPrefixes = ['dynamic', 'rgba'];
+
+    /**
+     * Class category
+     * @type {string}
+     */
+    static category = 'variable_store';
+
 }
+
 
 export const store = new Tw2Store();

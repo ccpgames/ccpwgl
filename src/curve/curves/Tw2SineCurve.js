@@ -11,14 +11,12 @@ import {Tw2Curve} from './Tw2Curve';
  */
 export class Tw2SineCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.value = 0;
-        this.offset = 0;
-        this.scale = 1;
-        this.speed = 1;
-    }
+
+    value = 0;
+    offset = 0;
+    scale = 1;
+    speed = 1;
+
 
     /**
      * Updates the current value at the given time
@@ -38,22 +36,23 @@ export class Tw2SineCurve extends Tw2Curve
     {
         return Math.sin(time * Math.PI * 2 * this.speed) * this.scale + this.offset;
     }
+
+    /**
+     * THe curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE_NO_KEYS;
+
 }
-
-/**
- * THe curve's dimension
- * @type {number}
- */
-Tw2SineCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2SineCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2SineCurve.curveType = Tw2Curve.Type.CURVE_NO_KEYS;

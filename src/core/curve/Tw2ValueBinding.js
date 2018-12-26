@@ -1,4 +1,4 @@
-import {quat, util} from '../../math';
+import {quat, util} from '../../global';
 import {Tw2Vector4Parameter} from '../parameter';
 
 /**
@@ -20,22 +20,21 @@ import {Tw2Vector4Parameter} from '../parameter';
  */
 export class Tw2ValueBinding
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.sourceObject = null;
-        this.sourceAttribute = '';
-        this._sourceElement = null;
-        this.sourceIsArray = null;
-        this.destinationObject = null;
-        this.destinationAttribute = '';
-        this._destinationElement = null;
-        this.destinationIsArray = null;
-        this.scale = 1;
-        this.offset = quat.create();
-        this._copyFunc = null;
-    }
+
+    _id = util.generateID();
+    name = '';
+    sourceObject = null;
+    sourceAttribute = '';
+    _sourceElement = null;
+    sourceIsArray = null;
+    destinationObject = null;
+    destinationAttribute = '';
+    _destinationElement = null;
+    destinationIsArray = null;
+    scale = 1;
+    offset = quat.create();
+    _copyFunc = null;
+
 
     /**
      * Initializes the Value Binding
@@ -194,11 +193,11 @@ export class Tw2ValueBinding
                 this._copyFunc = Tw2ValueBinding.CopyValueToValue;
             }
         }
-        else if (this.sourceIsArray && srcSwizzled && typeof this.destinationObject[this.destinationAttribute] === 'number')
+        else if (this.sourceIsArray && srcSwizzled && util.isNumber(this.destinationObject[this.destinationAttribute]))
         {
             this._copyFunc = Tw2ValueBinding.CopyElementToValue;
         }
-        else if (this.destinationIsArray && typeof this.sourceObject[this.sourceAttribute] === 'number')
+        else if (this.destinationIsArray && util.isNumber(this.sourceObject[this.sourceAttribute]))
         {
             if (destSwizzled)
             {
@@ -209,7 +208,7 @@ export class Tw2ValueBinding
                 this._copyFunc = Tw2ValueBinding.ReplicateValue;
             }
         }
-        else if (typeof this.sourceObject[this.sourceAttribute] === 'number' && typeof this.destinationObject[this.destinationAttribute] === 'boolean')
+        else if (util.isNumber(this.sourceObject[this.sourceAttribute]) && util.isBoolean(this.destinationObject[this.destinationAttribute]))
         {
             this._copyFunc = Tw2ValueBinding.CopyFloatToBoolean;
         }
@@ -315,4 +314,5 @@ export class Tw2ValueBinding
     {
         this.destinationObject[this.destinationAttribute] = this.sourceObject[this.sourceAttribute] !== 0;
     }
+
 }

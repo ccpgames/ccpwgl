@@ -1,11 +1,10 @@
-import {logger} from '../global/Tw2Logger';
-import {store} from '../global/Tw2Store';
+import {store} from '../../global';
 import {Tw2BinaryReader} from './Tw2BinaryReader';
+import {ErrFeatureNotImplemented, ErrXMLBinaryFormat, ErrXMLObjectTypeUndefined} from '../Tw2Error';
 
 /**
  * Tw2ObjectReader
  *
- * @param {string} xmlNode
  * @property {string} xmlNode
  * @property {?Array} _inputStack
  * @property {?Array} _initializeObjects
@@ -17,17 +16,27 @@ import {Tw2BinaryReader} from './Tw2BinaryReader';
  */
 export class Tw2ObjectReader
 {
+
+    xmlNode = null;
+    _inputStack = null;
+    _initializeObjects = null;
+    _ids = {};
+    _reader = null;
+    _stringTable = null;
+    _start = null;
+
+
+    /**
+     * Constructor
+     * @param {string} xmlNode
+     */
     constructor(xmlNode)
     {
-        this.xmlNode = xmlNode;
-        this._inputStack = null;
-        this._initializeObjects = null;
-        this._ids = {};
-        this._reader = null;
-        this._stringTable = null;
-        this._start = null;
-
-        if (xmlNode) this.Initialize();
+        if (xmlNode)
+        {
+            this.xmlNode = xmlNode;
+            if (xmlNode) this.Initialize();
+        }
     }
 
     /**
@@ -37,14 +46,7 @@ export class Tw2ObjectReader
     {
         if (!Tw2ObjectReader.IsValidXML(this.xmlNode))
         {
-            logger.log('res.error', {
-                log: 'error',
-                src: ['Tw2ObjectReader', 'constructor'],
-                msg: 'Invalid Binary',
-                type: 'redbin.invalid',
-                data: this.xmlNode
-            });
-            return;
+            throw new ErrXMLBinaryFormat({message: 'Invalid binary, expected binred'});
         }
 
         this._reader = new Tw2BinaryReader(new Uint8Array(this.xmlNode));
@@ -94,56 +96,39 @@ export class Tw2ObjectReader
             return data;
         }
 
-        let object;
-
-        const Constructor = store.GetConstructor(data.type);
+        let Constructor = store.GetClass(data.type);
         if (!Constructor)
         {
-            logger.log('res.error', {
-                log: 'throw',
-                src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
-                msg: 'Object with undefined type',
-                type: 'xml.type',
-                value: data.type
-            });
-
-            throw new Error('YAML: object with undefined type \'' + data.type + '\'');
+            if (Tw2ObjectReader.DEBUG_ENABLED)
+            {
+                Constructor = Object;
+            }
+            else
+            {
+                throw new ErrXMLObjectTypeUndefined({type: data.type});
+            }
         }
 
-        try
-        {
-            object = new Constructor();
-        }
-        catch (e)
-        {
-            logger.log('res.error', {
-                log: 'throw',
-                src: ['Tw2ObjectReader', 'Tw2ObjectReader.ConstructObject'],
-                msg: 'Error instantiating constructor',
-                type: 'xml.type.constructor',
-                value: data.type,
-                err: e
-            });
-
-            throw e;
-        }
-
+        const object = new Constructor();
         for (let k in data)
         {
             if (data.hasOwnProperty(k) && k !== 'type')
             {
-                if (object[k] === undefined && this.DEBUG_ENABLED)
+                if (data[k].constructor === Object)
                 {
-                    object[k] = null;
-                }
-
-                if (object[k] && data[k].constructor === Object)
-                {
-                    for (let key in data[k])
+                    if (this.DEBUG_ENABLED)
                     {
-                        if (data[k].hasOwnProperty(key))
+                        object[k] = object[k] || {};
+                    }
+
+                    if (object[k])
+                    {
+                        for (let key in data[k])
                         {
-                            object[k][key] = data[k][key];
+                            if (data[k].hasOwnProperty(key))
+                            {
+                                object[k][key] = data[k][key];
+                            }
                         }
                     }
                 }
@@ -236,7 +221,7 @@ export class Tw2ObjectReader
                         return objReader._reader.ReadFloat32();
 
                     default:
-                        throw Error('float64 values are not yet supported');
+                        throw new ErrFeatureNotImplemented({feature: 'Element raw type Float64'});
                 }
 
             case this.ElementRawType.STRING:
@@ -323,107 +308,119 @@ export class Tw2ObjectReader
         }
         return result;
     }
+
+    /**
+     * Enables debug mode
+     * @type {boolean}
+     */
+    static DEBUG_ENABLED = false;
+
+    /**
+     * ID Bit
+     * @type {number}
+     */
+    static ID_BIT = 1 << 6;
+
+    /**
+     * Reference Bit
+     * @type {number}
+     */
+    static REFERENCE_BIT = 1 << 7;
+
+    /**
+     * Raw element types
+     * @type {{}}
+     */
+    static ElementRawType = {
+        'NULL': 0,
+        'BOOL': 1,
+        'INT': 2,
+        'UINT': 3,
+        'FLOAT': 4,
+        'STRING': 5,
+        'ARRAY': 6,
+        'MAPPING': 7,
+        'OBJECT': 8,
+        'TYPED_ARRAY': 9,
+        'TYPED_MAPPING': 10
+    };
+
+    /**
+     * Element sizes
+     * @type {{SMALL: number, MEDIUM: number, LARGE: number}}
+     */
+    static ElementSize = {
+        'SMALL': 0,
+        'MEDIUM': 1 << 4,
+        'LARGE': 2 << 4
+    };
+
+    /**
+     * Typed array types
+     * @type {{number:Function}}
+     */
+    static TypedArrays = {
+        2: Int8Array,
+        3: Uint8Array,
+        18: Int16Array,
+        19: Uint16Array,
+        34: Int32Array,
+        35: Uint32Array,
+        4: Float32Array,
+        20: Float32Array,
+        36: Float64Array
+    };
+
 }
 
-/**
- * ID Bit
- * @type {number}
- */
-Tw2ObjectReader.ID_BIT = 1 << 6;
-
-/**
- * Reference Bit
- * @type {number}
- */
-Tw2ObjectReader.REFERENCE_BIT = 1 << 7;
-
-/**
- * Raw element types
- * @type {{}}
- */
-Tw2ObjectReader.ElementRawType = {
-    'NULL': 0,
-    'BOOL': 1,
-    'INT': 2,
-    'UINT': 3,
-    'FLOAT': 4,
-    'STRING': 5,
-    'ARRAY': 6,
-    'MAPPING': 7,
-    'OBJECT': 8,
-    'TYPED_ARRAY': 9,
-    'TYPED_MAPPING': 10
-};
-
-/**
- * Element sizes
- * @type {{SMALL: number, MEDIUM: number, LARGE: number}}
- */
-Tw2ObjectReader.ElementSize = {
-    'SMALL': 0,
-    'MEDIUM': 1 << 4,
-    'LARGE': 2 << 4
-};
+const
+    Raw = Tw2ObjectReader.ElementRawType,
+    Size = Tw2ObjectReader.ElementSize;
 
 /**
  * Element types
  * @type {{}}
  */
 Tw2ObjectReader.ElementTypes = {
-    'NULL': Tw2ObjectReader.ElementRawType.NULL | Tw2ObjectReader.ElementSize.SMALL,
+    'NULL': Raw.NULL | Size.SMALL,
 
-    'BOOL': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.SMALL,
-    'FALSE': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.MEDIUM,
-    'TRUE': Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.LARGE,
+    'BOOL': Raw.BOOL | Size.SMALL,
+    'FALSE': Raw.BOOL | Size.MEDIUM,
+    'TRUE': Raw.BOOL | Size.LARGE,
 
-    'INT8': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.SMALL,
-    'UINT8': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.SMALL,
-    'INT16': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'UINT16': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'INT32': Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.LARGE,
-    'UINT32': Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.LARGE,
+    'INT8': Raw.INT | Size.SMALL,
+    'UINT8': Raw.UINT | Size.SMALL,
+    'INT16': Raw.INT | Size.MEDIUM,
+    'UINT16': Raw.UINT | Size.MEDIUM,
+    'INT32': Raw.INT | Size.LARGE,
+    'UINT32': Raw.UINT | Size.LARGE,
 
-    'FLOAT16': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.SMALL,
-    'FLOAT32': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'FLOAT64': Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.LARGE,
+    'FLOAT16': Raw.FLOAT | Size.SMALL,
+    'FLOAT32': Raw.FLOAT | Size.MEDIUM,
+    'FLOAT64': Raw.FLOAT | Size.LARGE,
 
-    'SHORT_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_STRING': Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.LARGE,
+    'SHORT_STRING': Raw.STRING | Size.SMALL,
+    'MEDIUM_STRING': Raw.STRING | Size.MEDIUM,
+    'LARGE_STRING': Raw.STRING | Size.LARGE,
 
-    'SHORT_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_ARRAY': Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+    'SHORT_ARRAY': Raw.ARRAY | Size.SMALL,
+    'MEDIUM_ARRAY': Raw.ARRAY | Size.MEDIUM,
+    'LARGE_ARRAY': Raw.ARRAY | Size.LARGE,
 
-    'SHORT_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_MAPPING': Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.LARGE,
+    'SHORT_MAPPING': Raw.MAPPING | Size.SMALL,
+    'MEDIUM_MAPPING': Raw.MAPPING | Size.MEDIUM,
+    'LARGE_MAPPING': Raw.MAPPING | Size.LARGE,
 
-    'SHORT_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_OBJECT': Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.LARGE,
+    'SHORT_OBJECT': Raw.OBJECT | Size.SMALL,
+    'MEDIUM_OBJECT': Raw.OBJECT | Size.MEDIUM,
+    'LARGE_OBJECT': Raw.OBJECT | Size.LARGE,
 
-    'SHORT_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_TYPED_ARRAY': Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+    'SHORT_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.SMALL,
+    'MEDIUM_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.MEDIUM,
+    'LARGE_TYPED_ARRAY': Raw.TYPED_ARRAY | Size.LARGE,
 
-    'SHORT_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.SMALL,
-    'MEDIUM_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
-    'LARGE_TYPED_MAPPING': Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.LARGE
+    'SHORT_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.SMALL,
+    'MEDIUM_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.MEDIUM,
+    'LARGE_TYPED_MAPPING': Raw.TYPED_MAPPING | Size.LARGE
 };
 
-/**
- * Typed array types
- * @type {{number:Function}}
- */
-Tw2ObjectReader.TypedArrays = {
-    2: Int8Array,
-    3: Uint8Array,
-    18: Int16Array,
-    19: Uint16Array,
-    34: Int32Array,
-    35: Uint32Array,
-    4: Float32Array,
-    20: Float32Array,
-    36: Float64Array
-};

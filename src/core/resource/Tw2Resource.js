@@ -1,8 +1,10 @@
-import {resMan} from '../global/Tw2ResMan';
+import {resMan} from '../../global';
+import {Tw2Error} from '../Tw2Error';
 
 /**
  * Tw2Resource base class
  *
+ * @param {string} [path='']
  * @property {string} path
  * @property {boolean} _isLoading
  * @property {boolean} _isGood
@@ -14,16 +16,15 @@ import {resMan} from '../global/Tw2ResMan';
  */
 export class Tw2Resource
 {
-    constructor()
-    {
-        this.path = '';
-        this._isLoading = false;
-        this._isGood = false;
-        this._isPurged = false;
-        this._notifications = [];
-        this.activeFrame = 0;
-        this.doNotPurge = 0;
-    }
+
+    path = '';
+    _isLoading = false;
+    _isGood = false;
+    _isPurged = false;
+    _notifications = [];
+    activeFrame = 0;
+    doNotPurge = 0;
+
 
     /**
      * Checks to see if the resource is loading
@@ -46,52 +47,12 @@ export class Tw2Resource
     }
 
     /**
-     * Checks to see if the resource is purged
+     * Checks to see if the resource has been purged
      * @returns {boolean}
-     * @prototype
      */
     IsPurged()
     {
         return this._isPurged;
-    }
-
-    /**
-     * LoadStarted
-     */
-    LoadStarted()
-    {
-        this._isLoading = true;
-        this.UpdateNotifications('ReleaseCachedData');
-    }
-
-    /**
-     * LoadFinished
-     * @param {boolean} success
-     */
-    LoadFinished(success)
-    {
-        this._isLoading = false;
-        if (!success) this._isGood = false;
-    }
-
-    /**
-     * PrepareFinished
-     * @param {boolean} success
-     */
-    PrepareFinished(success)
-    {
-        this._isLoading = false;
-        this._isGood = success;
-        this.UpdateNotifications('RebuildCachedData');
-    }
-
-    /**
-     * Sets resource's isGood property
-     * @param {boolean} success
-     */
-    SetIsGood(success)
-    {
-        this._isGood = success;
     }
 
     /**
@@ -117,7 +78,108 @@ export class Tw2Resource
     KeepAlive()
     {
         this.activeFrame = resMan.activeFrame;
-        if (this._isPurged) this.Reload();
+        if (this.IsPurged())
+        {
+            this.Reload();
+        }
+    }
+
+    /**
+     * Gets an array of resource errors, or an empty array if there are none
+     * @returns {Array.<Tw2Error|Error>}
+     */
+    GetErrors()
+    {
+        return resMan.motherLode.GetErrors(this.path);
+    }
+
+    /**
+     * Checks if the resource has errors
+     * @returns {boolean}
+     */
+    HasErrors()
+    {
+        return resMan.motherLode.HasErrors(this.path);
+    }
+
+    /**
+     * Fires on errors
+     * @param {Error} err
+     * @returns {Error}
+     */
+    OnError(err = new Tw2Error())
+    {
+        this._isGood = false;
+        resMan.OnResEvent('error', this.path, {type: 'error', message: err.message, err});
+        this.UpdateNotifications('OnResError');
+        return err;
+    }
+
+    /**
+     * Fires on warnings
+     * @param {*} [eventLog]
+     */
+    OnWarning(eventLog)
+    {
+        resMan.OnResEvent('warning', this.path, eventLog);
+    }
+
+    /**
+     * Fires on debugs
+     * @param {*} eventLog
+     */
+    OnDebug(eventLog)
+    {
+        resMan.OnResEvent('debug', this.path, eventLog);
+    }
+
+    /**
+     * LoadStarted
+     * @param {*} [eventLog]
+     */
+    OnRequested(eventLog)
+    {
+        this._isLoading = true;
+        this._isPurged = false;
+        resMan.OnResEvent(this.IsPurged() ? 'reloading' : 'requested', this.path, eventLog);
+        this.UpdateNotifications('ReleaseCachedData');
+    }
+
+    /**
+     * LoadFinished
+     * @param {*} [eventLog]
+     */
+    OnLoaded(eventLog)
+    {
+        this._isLoading = false;
+        if (!this.HasErrors())
+        {
+            resMan.OnResEvent('loaded', this.path, eventLog);
+        }
+    }
+
+    /**
+     * PrepareFinished
+     * @param {*} [eventLog]
+     */
+    OnPrepared(eventLog)
+    {
+        this._isLoading = false;
+        if (!this.HasErrors())
+        {
+            this._isGood = true;
+            resMan.OnResEvent('prepared', this.path, eventLog);
+            this.UpdateNotifications('RebuildCachedData');
+        }
+    }
+
+    /**
+     * Fires when the resource has been unloads
+     * @param {*} [eventLog]
+     */
+    OnUnloaded(eventLog)
+    {
+        resMan.OnResEvent(this.IsPurged() ? 'purged' : 'unloaded', this.path, eventLog);
     }
 
     /**
@@ -129,7 +191,14 @@ export class Tw2Resource
         if (!this._notifications.includes(notification))
         {
             this._notifications.push(notification);
-            if (this._isGood && 'RebuildCachedData' in notification)
+            if (this.HasErrors())
+            {
+                if ('OnResError' in notification)
+                {
+                    notification['OnResError'](this);
+                }
+            }
+            else if (this.IsGood() && 'RebuildCachedData' in notification)
             {
                 notification.RebuildCachedData(this);
             }
@@ -159,6 +228,7 @@ export class Tw2Resource
             }
         }
     }
+
 }
 
 /**

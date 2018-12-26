@@ -1,21 +1,29 @@
 /* eslint no-unused-vars:0 */
-import { util } from '../../math';
+import {util} from '../../global';
+import {ErrIndexBounds} from '../Tw2Error';
 
 /**
  * Tw2Parameter base class
  *
- * @param {string} [name='']
  * @property {string|number} _id
  * @property {string} name
  * @property {Array<Function>} _onModified
  */
 export class Tw2Parameter
 {
+
+    _id = util.generateID();
+    name = '';
+    _onModified = [];
+
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     */
     constructor(name = '')
     {
-        this._id = util.generateID();
         this.name = name;
-        this._onModified = [];
     }
 
     /**
@@ -70,11 +78,11 @@ export class Tw2Parameter
     /**
      * Gets the parameter's value
      * @param {boolean} [serialize] - forces serialized result
-     * @returns {null}
+     * @returns {*}
      */
     GetValue(serialize)
     {
-        return null;
+
     }
 
     /**
@@ -127,13 +135,14 @@ export class Tw2Parameter
         parameter.Copy(this, true);
         return parameter;
     }
-}
 
-/**
- * The parameter's constant buffer size
- * @type {number}
- */
-Tw2Parameter.constantBufferSize = 0;
+    /**
+     * The parameter's constant buffer size
+     * @type {number}
+     */
+    static constantBufferSize = 0;
+
+}
 
 
 /**
@@ -146,12 +155,20 @@ Tw2Parameter.constantBufferSize = 0;
  */
 export class Tw2VectorParameter extends Tw2Parameter
 {
+
+    constantBuffer = null;
+    offset = null;
+    value = new Float32Array(this.size);
+
+
+    /**
+     * Constructor
+     * @param {string} [name='']
+     * @param {Float32Array|Array} [value]
+     */
     constructor(name, value)
     {
         super(name);
-        this.value = new Float32Array(this.size);
-        this.constantBuffer = null;
-        this.offset = null;
         if (value) this.value.set(value);
     }
 
@@ -182,8 +199,7 @@ export class Tw2VectorParameter extends Tw2Parameter
             }
             return;
         }
-
-        throw new Error('Index Error');
+        throw new ErrIndexBounds();
     }
 
     /**
@@ -209,7 +225,7 @@ export class Tw2VectorParameter extends Tw2Parameter
         {
             return this.value[index];
         }
-        throw new Error('Index Error');
+        throw new ErrIndexBounds();
     }
 
     /**
@@ -299,8 +315,9 @@ export class Tw2VectorParameter extends Tw2Parameter
      * @param {Float32Array|Array} value
      * @returns {boolean}
      */
-    static is(value)
+    static isValue(value)
     {
         return (util.isArrayLike(value) && value.length === this.constantBufferSize);
     }
+
 }

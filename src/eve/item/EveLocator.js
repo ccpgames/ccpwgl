@@ -1,4 +1,4 @@
-import {mat4} from '../../math/index';
+import {mat4} from '../../global';
 
 /**
  * Contains transform information for T3 Attachments, Boosters, Turrets and XLTurrets
@@ -11,14 +11,13 @@ import {mat4} from '../../math/index';
  */
 export class EveLocator
 {
-    constructor()
-    {
-        this.name = '';
-        this.transform = mat4.create();
-        this.atlasIndex0 = null;
-        this.atlasIndex1 = null;
-        this.bone = null;
-    }
+
+    name = '';
+    transform = mat4.create();
+    atlasIndex0 = null;
+    atlasIndex1 = null;
+    bone = null;
+
 
     /**
      * Gets the locator's bone from an animation controller
@@ -42,16 +41,17 @@ export class EveLocator
         }
         return this.bone;
     }
-}
 
-/**
- * Locator name prefixes
- * @type {{AUDIO: string, ATTACH: string, BOOSTER: string, TURRET: string, XL_TURRET: string}}
- */
-EveLocator.Prefix = {
-    AUDIO: 'locator_audio',
-    ATTACH: 'locator_attach',
-    BOOSTER: 'locator_booster',
-    TURRET: 'locator_turret',
-    XL_TURRET: 'locator_xl'
-};
+    /**
+     * Locator name prefixes
+     * @type {{AUDIO: string, ATTACH: string, BOOSTER: string, TURRET: string, XL_TURRET: string}}
+     */
+    static Prefix = {
+        AUDIO: 'locator_audio',
+        ATTACH: 'locator_attach',
+        BOOSTER: 'locator_booster',
+        TURRET: 'locator_turret',
+        XL_TURRET: 'locator_xl'
+    };
+
+}

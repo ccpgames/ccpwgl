@@ -8,11 +8,9 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2EventKey extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = '';
-    }
+
+    value = '';
+
 }
 
 
@@ -29,16 +27,14 @@ export class Tw2EventKey extends Tw2CurveKey
  */
 export class Tw2EventCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.value = '';
-        this.keys = [];
-        this.extrapolation = 0;
-        this._time = 0;
-        this._currentKey = 0;
-        this._length = 0;
-    }
+
+    value = '';
+    keys = [];
+    extrapolation = 0;
+    _time = 0;
+    _currentKey = 0;
+    _length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -92,43 +88,44 @@ export class Tw2EventCurve extends Tw2Curve
             ++this._currentKey;
         }
     }
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static dimension = 1;
+
+    /**
+     * The curve's output dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2EventKey}
+     */
+    static Key = Tw2EventKey;
+
+    /**
+     * Extrapolation types
+     * @type {{NONE: number, CYCLE: number}}
+     */
+    static Extrapolation = {
+        NONE: 0,
+        CYCLE: 3
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2EventCurve.dimension = 1;
-
-/**
- * The curve's output dimension
- * @type {number}
- */
-Tw2EventCurve.outputDimension = 1;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2EventCurve.valueProperty = 'value';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2EventCurve.curveType = Tw2Curve.Type.CURVE;
-
-/**
- * The curve's key constructor
- * @type {Tw2EventKey}
- */
-Tw2EventCurve.Key = Tw2EventKey;
-
-/**
- * Extrapolation types
- * @type {{NONE: number, CYCLE: number}}
- */
-Tw2EventCurve.Extrapolation = {
-    NONE: 0,
-    CYCLE: 3
-};

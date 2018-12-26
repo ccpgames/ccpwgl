@@ -1,4 +1,4 @@
-import {vec4, quat} from '../../math';
+import {vec4, quat} from '../../global';
 import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
 
 /**
@@ -12,14 +12,12 @@ import {Tw2CurveKey, Tw2Curve} from './Tw2Curve';
  */
 export class Tw2QuaternionKey2 extends Tw2CurveKey
 {
-    constructor()
-    {
-        super();
-        this.value = quat.create();
-        this.leftTangent = vec4.create();
-        this.rightTangent = vec4.create();
-        this.interpolation = 1;
-    }
+
+    value = quat.create();
+    leftTangent = vec4.create();
+    rightTangent = vec4.create();
+    interpolation = 1;
+
 }
 
 
@@ -42,22 +40,20 @@ export class Tw2QuaternionKey2 extends Tw2CurveKey
  */
 export class Tw2QuaternionCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.cycle = false;
-        this.reversed = false;
-        this.timeOffset = 0;
-        this.timeScale = 1;
-        this.startValue = quat.create();
-        this.currentValue = quat.create();
-        this.endValue = quat.create();
-        this.startTangent = vec4.create();
-        this.endTangent = vec4.create();
-        this.interpolation = 1;
-        this.keys = [];
-        this.length = 0;
-    }
+
+    cycle = false;
+    reversed = false;
+    timeOffset = 0;
+    timeScale = 1;
+    startValue = quat.create();
+    currentValue = quat.create();
+    endValue = quat.create();
+    startTangent = vec4.create();
+    endTangent = vec4.create();
+    interpolation = 1;
+    keys = [];
+    length = 0;
+
 
     /**
      * Sorts the curve's keys
@@ -210,43 +206,44 @@ export class Tw2QuaternionCurve extends Tw2Curve
                 return value;
         }
     }
+
+    /**
+     * The curve's key dimension
+     * @type {number}
+     */
+    static inputDimension = 4;
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 4;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'currentValue';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE2;
+
+    /**
+     * The curve's key constructor
+     * @type {Tw2QuaternionKey2}
+     */
+    static Key = Tw2QuaternionKey2;
+
+    /**
+     * Interpolation types
+     * @type {{CONSTANT: number, SPHERICAL_LINEAR: number}}
+     */
+    static Interpolation = {
+        CONSTANT: 0,
+        SPHERICAL_LINEAR: 4
+    };
+
 }
-
-/**
- * The curve's key dimension
- * @type {number}
- */
-Tw2QuaternionCurve.inputDimension = 4;
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2QuaternionCurve.outputDimension = 4;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2QuaternionCurve.valueProperty = 'currentValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2QuaternionCurve.curveType = Tw2Curve.Type.CURVE2;
-
-/**
- * The curve's key constructor
- * @type {Tw2QuaternionKey2}
- */
-Tw2QuaternionCurve.Key = Tw2QuaternionKey2;
-
-/**
- * Interpolation types
- * @type {{CONSTANT: number, SPHERICAL_LINEAR: number}}
- */
-Tw2QuaternionCurve.Interpolation = {
-    CONSTANT: 0,
-    SPHERICAL_LINEAR: 4
-};

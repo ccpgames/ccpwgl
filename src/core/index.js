@@ -1,8 +1,6 @@
 export * from './batch';
 export * from './curve';
 export * from './data';
-export * from './deprecated';
-export * from './global';
 export * from './geometry';
 export * from './mesh';
 export * from './model';
@@ -13,7 +11,8 @@ export * from './resource';
 export * from './sampler';
 export * from './vertex';
 
+export * from './Tw2Error';
+export * from './Tw2EventEmitter';
 export * from './Tw2Float';
 export * from './Tw2Frustum';
 export * from './Tw2RenderTarget';
-export * from './Tw2EventEmitter';

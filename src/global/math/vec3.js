@@ -1,5 +1,6 @@
 import {vec3, vec4} from 'gl-matrix';
 import {num} from './num';
+
 export {vec3};
 
 /**
@@ -9,7 +10,7 @@ export {vec3};
  * @param {vec3} [center]  - Optional center
  * @returns {vec3} out     - receiving vec3
  */
-vec3.fromSpherical = function(out, spherical, center)
+vec3.fromSpherical = function (out, spherical, center)
 {
     const
         phi = spherical[0],
@@ -36,7 +37,7 @@ vec3.fromSpherical = function(out, spherical, center)
  * @param {vec3} a
  * @returns {vec3} out
  */
-vec3.getSpherical = function(out, a)
+vec3.getSpherical = function (out, a)
 {
     let phi = 0,
         theta = 0,
@@ -65,7 +66,7 @@ vec3.getSpherical = function(out, a)
  * @param {number} time
  * @returns {vec3} out
  */
-vec3.exponentialDecay = function(out, omega0, torque, I, drag, time)
+vec3.exponentialDecay = function (out, omega0, torque, I, drag, time)
 {
     out[0] = num.exponentialDecay(omega0[0], torque[0], I, drag, time);
     out[1] = num.exponentialDecay(omega0[1], torque[1], I, drag, time);
@@ -81,7 +82,7 @@ vec3.exponentialDecay = function(out, omega0, torque, I, drag, time)
  * @param {vec4} viewport      - view port settings (x, y, width, height)
  * @returns {vec3} out         - receiving vec3 (x, y, perspectiveDivide)
  */
-vec3.project = function(out, a, m, viewport)
+vec3.project = function (out, a, m, viewport)
 {
     let x = a[0],
         y = a[1],
@@ -109,7 +110,7 @@ vec3.project = function(out, a, m, viewport)
  * @returns {vec3} out
  * @throw On perspective divide error
  */
-vec3.unproject = (function()
+vec3.unproject = (function ()
 {
     let vec4_0;
 

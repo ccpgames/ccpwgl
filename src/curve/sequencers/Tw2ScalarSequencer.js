@@ -1,4 +1,4 @@
-import { Tw2CurveSequencer } from './Tw2CurveSequencer';
+import {Tw2CurveSequencer} from './Tw2CurveSequencer';
 
 /**
  * Tw2ScalarSequencer
@@ -16,18 +16,16 @@ import { Tw2CurveSequencer } from './Tw2CurveSequencer';
  */
 export class Tw2ScalarSequencer extends Tw2CurveSequencer
 {
-    constructor()
-    {
-        super();
-        this.value = 0;
-        this.operator = 0;
-        this.functions = [];
-        this.inMinClamp = 0;
-        this.inMaxClamp = 1;
-        this.outMinClamp = 0;
-        this.outMaxClamp = 1;
-        this.clamping = false;
-    }
+
+    value = 0;
+    operator = 0;
+    functions = [];
+    inMinClamp = 0;
+    inMaxClamp = 1;
+    outMinClamp = 0;
+    outMaxClamp = 1;
+    clamping = false;
+
 
     /**
      * Sorts the sequencer
@@ -74,21 +72,21 @@ export class Tw2ScalarSequencer extends Tw2CurveSequencer
     {
         let value;
 
-        switch(this.operator)
+        switch (this.operator)
         {
             case Tw2ScalarSequencer.Operator.MULTIPLY:
                 value = 1;
                 for (let i = 0; i < this.functions.length; ++i)
                 {
                     let v = this.functions[i].GetValueAt(time);
-                    if (this.clamping) 
+                    if (this.clamping)
                     {
                         v = Math.min(Math.max(v, this.inMinClamp), this.inMaxClamp);
                     }
                     value *= v;
                 }
                 break;
-                
+
             default:
                 value = 0;
                 for (let i = 0; i < this.functions.length; ++i)
@@ -101,51 +99,52 @@ export class Tw2ScalarSequencer extends Tw2CurveSequencer
                     value += v;
                 }
         }
-        
-        if (this.clamping) 
+
+        if (this.clamping)
         {
             value = Math.min(Math.max(value, this.outMinClamp), this.outMaxClamp);
         }
-        
+
         return value;
     }
+
+    /**
+     * The sequencer's curve dimension
+     * @type {number}
+     */
+    static inputDimension = 1;
+
+    /**
+     * The sequencer's dimension
+     * @type {number}
+     */
+    static outputDimension = 1;
+
+    /**
+     * The sequencer's current value property
+     * @type {string}
+     */
+    static valueProperty = 'value';
+
+    /**
+     * The sequencer's type
+     * @type {number}
+     */
+    static curveType = Tw2CurveSequencer.Type.SEQUENCER;
+
+    /**
+     * The sequencer's curve properties
+     * @type {string}
+     */
+    static childArray = 'functions';
+
+    /**
+     * Operator types
+     * @type {{MULTIPLY: number, ADD: number}}
+     */
+    static Operator = {
+        MULTIPLY: 0,
+        ADD: 1
+    };
+
 }
-
-/**
- * The sequencer's curve dimension
- * @type {number}
- */
-Tw2ScalarSequencer.inputDimension = 1;
-
-/**
- * The sequencer's dimension
- * @type {number}
- */
-Tw2ScalarSequencer.outputDimension = 1;
-
-/**
- * The sequencer's current value property
- * @type {string}
- */
-Tw2ScalarSequencer.valueProperty = 'value';
-
-/**
- * The sequencer's type
- * @type {number}
- */
-Tw2ScalarSequencer.curveType = Tw2CurveSequencer.Type.SEQUENCER;
-
-/**
- * The sequencer's curve properties
- * @type {string}
- */
-Tw2ScalarSequencer.childArray = 'functions';
-
-/**
- * Operator types
- * @type {{MULTIPLY: number, ADD: number}}
- */
-Tw2ScalarSequencer.Operator = {
-    MULTIPLY: 0,
-    ADD: 1
-};

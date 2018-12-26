@@ -1,5 +1,5 @@
-import {vec3, mat4, util} from '../../math';
-import {Tw2PerObjectData, Tw2RawData} from '../../core';
+import {vec3, mat4, util} from '../../global';
+import {Tw2PerObjectData} from '../../core';
 import {EveObject} from './EveObject';
 
 /**
@@ -25,42 +25,22 @@ import {EveObject} from './EveObject';
  */
 export class EveMissileWarhead extends EveObject
 {
-    constructor()
-    {
-        super();
-        this.mesh = null;
-        this.spriteSet = null;
-        this.state = EveMissileWarhead.State.READY;
-        this.time = 0;
-        this.durationEjectPhase = 0;
-        this.startEjectVelocity = 0;
-        this.acceleration = 1;
-        this.maxExplosionDistance = 40;
-        this.impactSize = 0;
-        this.impactDuration = 0.6;
-        this.pathOffset = vec3.create();
-        this.transform = mat4.create();
-        this.velocity = vec3.create();
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectVSData.Create();
+    mesh = null;
+    spriteSet = null;
+    state = EveMissileWarhead.State.READY;
+    time = 0;
+    durationEjectPhase = 0;
+    startEjectVelocity = 0;
+    acceleration = 1;
+    maxExplosionDistance = 40;
+    impactSize = 0;
+    impactDuration = 0.6;
+    pathOffset = vec3.create();
+    transform = mat4.create();
+    velocity = vec3.create();
+    _perObjectData = new Tw2PerObjectData(EveMissileWarhead.perObjectData);
 
-        this._perObjectData.perObjectPSData = new Tw2RawData();
-        this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
-        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
-        this._perObjectData.perObjectPSData.Create();
-
-        this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
-        this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
-        this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
-    }
 
     /**
      * Initializes the warhead
@@ -205,17 +185,37 @@ export class EveMissileWarhead extends EveObject
             }
         }
     }
-}
 
-/**
- * Missile warhead states
- * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
- */
-EveMissileWarhead.State = {
-    READY: 0,
-    IN_FLIGHT: 1,
-    DEAD: 2
-};
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        VSData: [
+            ['WorldMat', 16],
+            ['WorldMatLast', 16],
+            ['Shipdata', 4, [0, 1, 0, -10]],
+            ['Clipdata1', 4],
+            ['JointMat', 696]
+        ],
+        PSData: [
+            ['Shipdata', 4, [0, 1, 0, 1]],
+            ['Clipdata1', 4],
+            ['Clipdata2', 4],
+        ]
+    };
+
+    /**
+     * Missile warhead states
+     * @type {{READY: number, IN_FLIGHT: number, DEAD: number}}
+     */
+    static State = {
+        READY: 0,
+        IN_FLIGHT: 1,
+        DEAD: 2
+    };
+
+}
 
 
 /**
@@ -237,23 +237,20 @@ EveMissileWarhead.State = {
  */
 export class EveMissile
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-        this.display = true;
-        this.warheads = [];
-        this.curveSets = [];
-        this.speed = 1;
-        this.position = vec3.create();
-        this.target = vec3.create();
-        this.boundingSphereCenter = vec3.create();
-        this.boundingSphereRadius = 0;
-        this.warheadExplosionCallback = null;
-        this.missileFinishedCallback = null;
 
-        EveMissile.init();
-    }
+    _id = util.generateID();
+    name = '';
+    display = true;
+    warheads = [];
+    curveSets = [];
+    speed = 1;
+    position = vec3.create();
+    target = vec3.create();
+    boundingSphereCenter = vec3.create();
+    boundingSphereRadius = 0;
+    warheadExplosionCallback = null;
+    missileFinishedCallback = null;
+
 
     /**
      * Prepares missile for rendering
@@ -373,4 +370,5 @@ export class EveMissile
             this.warheads[i].GetBatches(mode, accumulator);
         }
     }
+
 }

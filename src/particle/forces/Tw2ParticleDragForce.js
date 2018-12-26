@@ -9,14 +9,12 @@ import {Tw2ParticleForce} from './Tw2ParticleForce';
  */
 export class Tw2ParticleDragForce extends Tw2ParticleForce
 {
-    constructor()
-    {
-        super();
-        this.drag = 0.1;
-    }
+
+    drag = 0.1;
+
 
     /**
-     * Applies forces
+     * ApplyForce
      * @param {Tw2ParticleElement} position
      * @param {Tw2ParticleElement} velocity
      * @param {Tw2ParticleElement} force
@@ -27,4 +25,5 @@ export class Tw2ParticleDragForce extends Tw2ParticleForce
         force[1] += velocity.buffer[velocity.offset + 1] * -this.drag;
         force[2] += velocity.buffer[velocity.offset + 2] * -this.drag;
     }
+
 }

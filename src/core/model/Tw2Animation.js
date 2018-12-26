@@ -12,16 +12,15 @@
  */
 export class Tw2Animation
 {
-    constructor()
-    {
-        this.animationRes = null;
-        this.time = 0;
-        this.timeScale = 1.0;
-        this.cycle = false;
-        this.isPlaying = false;
-        this.callback = null;
-        this.trackGroups = [];
-    }
+
+    animationRes = null;
+    time = 0;
+    timeScale = 1.0;
+    cycle = false;
+    isPlaying = false;
+    callback = null;
+    trackGroups = [];
+
 
     /**
      * Checks to see if the animation has finished playing
@@ -31,4 +30,5 @@ export class Tw2Animation
     {
         return !this.cycle && this.time >= this.animationRes.duration;
     }
+
 }

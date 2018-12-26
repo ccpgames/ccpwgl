@@ -11,12 +11,11 @@ import {Tw2VertexDeclaration} from '../vertex';
  */
 export class Tw2BlendShapeData
 {
-    constructor()
-    {
-        this.name = '';
-        this.declaration = new Tw2VertexDeclaration();
-        this.buffers = [];
-        this.indexes = null;
-        this.weightProxy = null;
-    }
+
+    name = '';
+    declaration = new Tw2VertexDeclaration();
+    buffers = [];
+    indexes = null;
+    weightProxy = null;
+
 }

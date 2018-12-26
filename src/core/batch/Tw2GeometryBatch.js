@@ -13,15 +13,13 @@ import {Tw2RenderBatch} from './Tw2RenderBatch';
  */
 export class Tw2GeometryBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.geometryRes = null;
-        this.meshIx = 0;
-        this.start = 0;
-        this.count = 1;
-        this.effect = null;
-    }
+
+    geometryRes = null;
+    meshIx = 0;
+    start = 0;
+    count = 1;
+    effect = null;
+
 
     /**
      * Commits the Tw2InstancedMeshBatch for rendering
@@ -34,5 +32,6 @@ export class Tw2GeometryBatch extends Tw2RenderBatch
             this.geometryRes.RenderAreas(this.meshIx, this.start, this.count, this.effect, technique);
         }
     }
+
 }
 

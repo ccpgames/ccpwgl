@@ -1,21 +1,43 @@
-import * as math from './math';
+import * as math from './global/math';
 import * as core from './core';
 import * as curve from './curve';
 import * as eve from './eve';
 import * as particle from './particle';
+import {device, store, resMan, logger, util, consts} from './global';
 
 export * from './core';
 export * from './curve';
 export * from './eve';
 export * from './particle';
-export {math};
+export {math, util, device, store, resMan, logger, consts};
 
 const {vec4, mat4} = math;
 
 /**
- * Register globals
+ * Register global configurations
  */
-core.store.Register({
+store.Register({
+
+    resMan: {
+        'systemMirror' : false,
+        'autoPurgeResources' : true,
+        'purgeTime' : 60,
+        'maxPrepareTime': 0.05
+    },
+
+    logger: {
+        'name' : 'CCPWGL',
+        'history' : 50,
+        'throttle' : 10,
+        'display' : true,
+        'visible': {
+            'error': true,
+            'warning': true,
+            'log' : true,
+            'info': false,
+            'debug': false
+        }
+    },
 
     paths: {
         'res': 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/'
@@ -26,13 +48,14 @@ core.store.Register({
         'sm_lo': core.Tw2EffectRes,
         'wbg': core.Tw2GeometryRes,
         'png': core.Tw2TextureRes,
+        'dds': core.Tw2TextureRes,
         'cube': core.Tw2TextureRes,
-        'mp4' : core.Tw2VideoRes,
-        'ogg' : core.Tw2VideoRes,
-        'webm' : core.Tw2VideoRes
+        'mp4': core.Tw2VideoRes,
+        'ogg': core.Tw2VideoRes,
+        'webm': core.Tw2VideoRes
     },
 
-    constructors: [
+    classes: [
         core,
         curve,
         eve,

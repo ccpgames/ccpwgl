@@ -1,4 +1,4 @@
-import {vec3, quat} from '../../math';
+import {vec3, quat} from '../../global';
 import {Tw2Curve} from '../curves';
 
 /**
@@ -17,18 +17,16 @@ import {Tw2Curve} from '../curves';
  */
 export class Tw2MayaEulerRotationCurve extends Tw2Curve
 {
-    constructor()
-    {
-        super();
-        this.xIndex = -1;
-        this.yIndex = -1;
-        this.zIndex = -1;
-        this.animationEngine = null;
-        this.eulerValue = vec3.create();
-        this.updateQuaternion = false;
-        this.quatValue = quat.create();
-        this.length = 0;
-    }
+
+    xIndex = -1;
+    yIndex = -1;
+    zIndex = -1;
+    animationEngine = null;
+    eulerValue = vec3.create();
+    updateQuaternion = false;
+    quatValue = quat.create();
+    length = 0;
+
 
     /**
      * Sorts the curve
@@ -46,7 +44,7 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
     {
         return this.length;
     }
-    
+
     /**
      * Updates a value at a specific time
      * @param {number} time
@@ -125,22 +123,23 @@ export class Tw2MayaEulerRotationCurve extends Tw2Curve
             this.length = Math.max(this.length, this.animationEngine.GetLength(this.zIndex));
         }
     }
+
+    /**
+     * The curve's dimension
+     * @type {number}
+     */
+    static outputDimension = 3;
+
+    /**
+     * The curve's current value property
+     * @type {string}
+     */
+    static valueProperty = 'eulerValue';
+
+    /**
+     * The curve's type
+     * @type {number}
+     */
+    static curveType = Tw2Curve.Type.CURVE_MAYA;
+
 }
-
-/**
- * The curve's dimension
- * @type {number}
- */
-Tw2MayaEulerRotationCurve.outputDimension = 3;
-
-/**
- * The curve's current value property
- * @type {string}
- */
-Tw2MayaEulerRotationCurve.valueProperty = 'eulerValue';
-
-/**
- * The curve's type
- * @type {number}
- */
-Tw2MayaEulerRotationCurve.curveType = Tw2Curve.Type.CURVE_MAYA;

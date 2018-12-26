@@ -1,5 +1,5 @@
 /* eslint no-unused-vars:0 */
-import {util} from '../../math';
+import {util} from '../../global';
 
 /**
  * Tw2ParticleConstraint base class
@@ -10,11 +10,10 @@ import {util} from '../../math';
  */
 export class Tw2ParticleConstraint
 {
-    constructor()
-    {
-        this._id = util.generateID();
-        this.name = '';
-    }
+
+    _id = util.generateID();
+    name = '';
+
 
     /**
      * Applies constraints
@@ -27,4 +26,5 @@ export class Tw2ParticleConstraint
     {
 
     }
+
 }

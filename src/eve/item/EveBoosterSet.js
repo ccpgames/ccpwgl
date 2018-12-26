@@ -1,5 +1,5 @@
-import {vec3, vec4, mat4, util} from '../../math';
-import {device, Tw2VertexDeclaration, Tw2VertexElement, Tw2PerObjectData, Tw2RawData, Tw2RenderBatch} from '../../core';
+import {vec3, vec4, mat4, util, device} from '../../global';
+import {Tw2VertexDeclaration, Tw2PerObjectData, Tw2RenderBatch} from '../../core';
 import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
 
 /**
@@ -10,11 +10,9 @@ import {EveObjectSet, EveObjectSetItem} from './EveObjectSet';
  */
 export class EveBoosterBatch extends Tw2RenderBatch
 {
-    constructor()
-    {
-        super();
-        this.boosters = null;
-    }
+
+    boosters = null;
+
 
     /**
      * Commits the batch
@@ -47,24 +45,23 @@ export class EveBoosterBatch extends Tw2RenderBatch
  */
 export class EveBoosterSetItem extends EveObjectSetItem
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.glow = true;
-        this.visible.symHalo = true;
-        this.visible.halo = true;
-        this.visible.trail = true;
-        this.visible.customValues = false;
-        this.locatorName = null;
-        this.updateFromLocator = false;
-        this.seed = Math.random() * 7;
-        this.wavePhase = Math.random();
-        this.atlas0 = 0;
-        this.atlas1 = 0;
-        this.transform = mat4.create();
-        this.customValues = null;
-    }
+
+    visible = {
+        glow: true,
+        symHalo: true,
+        halo: true,
+        trail: true,
+        customValues: true
+    };
+    locatorName = null;
+    updateFromLocator = false;
+    seed = Math.random() * 7;
+    wavePhase = Math.random();
+    atlas0 = 0;
+    atlas1 = 0;
+    transform = mat4.create();
+    customValues = null;
+
 
     /**
      * Gets the item's position
@@ -115,6 +112,7 @@ export class EveBoosterSetItem extends EveObjectSetItem
         ]);
         return item;
     }
+
 }
 
 
@@ -152,54 +150,36 @@ export class EveBoosterSetItem extends EveObjectSetItem
  */
 export class EveBoosterSet extends EveObjectSet
 {
-    constructor()
-    {
-        super();
-        this.visible = {};
-        this.visible.glows = true;
-        this.visible.symHalos = true;
-        this.visible.halos = true;
-        this.visible.trails = true;
-        this.effect = null;
-        this.glows = null;
-        this.alwaysOn = true;
-        this.maxVel = 250;
-        this.glowDistance = 2.5;
-        this.glowScale = 1.0;
-        this.glowColor = vec4.create();
-        this.warpGlowColor = vec4.create();
-        this.haloDistance = 3.01;
-        this.haloScaleX = 1.0;
-        this.haloScaleY = 1.0;
-        this.haloColor = vec4.create();
-        this.warpHaloColor = vec4.create();
-        this.symHaloDistance = 3;
-        this.symHaloScale = 1.0;
-        this.trailColor = vec4.create();
-        this.trailSize = vec4.create();
-        this._parentTransform = mat4.create();
-        this._positions = null;
 
-        this._decl = new Tw2VertexDeclaration();
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.POSITION, 0, device.gl.FLOAT, 3, 0));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 0, device.gl.FLOAT, 2, 12));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 1, device.gl.FLOAT, 4, 20));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 2, device.gl.FLOAT, 4, 36));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 3, device.gl.FLOAT, 4, 52));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 4, device.gl.FLOAT, 4, 68));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 5, device.gl.FLOAT, 4, 84));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 6, device.gl.FLOAT, 1, 100));
-        this._decl.elements.push(new Tw2VertexElement(Tw2VertexDeclaration.Type.TEXCOORD, 7, device.gl.FLOAT, 2, 104));
-        this._decl.RebuildHash();
+    visible = {
+        glows: true,
+        symHalos: true,
+        halos: true,
+        trails: true
+    };
+    effect = null;
+    glows = null;
+    alwaysOn = true;
+    maxVel = 250;
+    glowDistance = 2.5;
+    glowScale = 1.0;
+    glowColor = vec4.create();
+    warpGlowColor = vec4.create();
+    haloDistance = 3.01;
+    haloScaleX = 1.0;
+    haloScaleY = 1.0;
+    haloColor = vec4.create();
+    warpHaloColor = vec4.create();
+    symHaloDistance = 3;
+    symHaloScale = 1.0;
+    trailColor = vec4.create();
+    trailSize = vec4.create();
+    _parentTransform = mat4.create();
+    _positions = null;
+    _decl = new Tw2VertexDeclaration(EveBoosterSet.vertexDeclarations);
+    _perObjectData = new Tw2PerObjectData(EveBoosterSet.perObjectData);
+    _locatorRebuildPending = true;
 
-        this._perObjectData = new Tw2PerObjectData();
-        this._perObjectData.perObjectVSData = new Tw2RawData();
-        this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
-        this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
-        this._perObjectData.perObjectVSData.Create();
-
-        this._locatorRebuildPending = true;
-    }
 
     /**
      * Finds a booster item that belongs to a locator by it's name
@@ -514,58 +494,81 @@ export class EveBoosterSet extends EveObjectSet
             }
         }
     }
+
+    /**
+     * The booster set's item constructor
+     * @type {EveBoosterSetItem}
+     */
+    static Item = EveBoosterSetItem;
+
+    /**
+     * Per object data
+     * @type {*}
+     */
+    static perObjectData = {
+        VSData: [
+            ['WorldMat', 16],
+            ['Shipdata', 4]
+        ]
+    };
+
+    /**
+     * Vertex declarations
+     * @type {*}
+     */
+    static vertexDeclarations = [
+        ['POSITION', 0, 3],
+        ['TEXCOORD', 0, 2],
+        ['TEXCOORD', 1, 4],
+        ['TEXCOORD', 2, 4],
+        ['TEXCOORD', 3, 4],
+        ['TEXCOORD', 4, 4],
+        ['TEXCOORD', 5, 4],
+        ['TEXCOORD', 6, 1],
+        ['TEXCOORD', 7, 2]
+    ];
+
+    /**
+     * Internal helper
+     * @type {Array}
+     */
+    static _box = [
+        [
+            [-1.0, -1.0, 0.0],
+            [1.0, -1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [-1.0, 1.0, 0.0]
+        ],
+        [
+            [-1.0, -1.0, -1.0],
+            [-1.0, 1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, -1.0, -1.0]
+        ],
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, 1.0, 0.0],
+            [-1.0, 1.0, -1.0],
+            [-1.0, -1.0, -1.0]
+        ],
+        [
+            [1.0, -1.0, 0.0],
+            [1.0, -1.0, -1.0],
+            [1.0, 1.0, -1.0],
+            [1.0, 1.0, 0.0]
+        ],
+        [
+            [-1.0, -1.0, 0.0],
+            [-1.0, -1.0, -1.0],
+            [1.0, -1.0, -1.0],
+            [1.0, -1.0, 0.0]
+        ],
+        [
+            [-1.0, 1.0, 0.0],
+            [1.0, 1.0, 0.0],
+            [1.0, 1.0, -1.0],
+            [-1.0, 1.0, -1.0]
+        ]
+    ];
+
 }
-
-/**
- * The booster set's item constructor
- * @type {EveBoosterSetItem}
- */
-EveBoosterSet.Item = EveBoosterSetItem;
-
-/**
- * Internal helper
- * @type {Array}
- */
-EveBoosterSet._box = [
-    [
-        [-1.0, -1.0, 0.0],
-        [1.0, -1.0, 0.0],
-        [1.0, 1.0, 0.0],
-        [-1.0, 1.0, 0.0]
-    ],
-
-    [
-        [-1.0, -1.0, -1.0],
-        [-1.0, 1.0, -1.0],
-        [1.0, 1.0, -1.0],
-        [1.0, -1.0, -1.0]
-    ],
-
-    [
-        [-1.0, -1.0, 0.0],
-        [-1.0, 1.0, 0.0],
-        [-1.0, 1.0, -1.0],
-        [-1.0, -1.0, -1.0]
-    ],
-
-    [
-        [1.0, -1.0, 0.0],
-        [1.0, -1.0, -1.0],
-        [1.0, 1.0, -1.0],
-        [1.0, 1.0, 0.0]
-    ],
-
-    [
-        [-1.0, -1.0, 0.0],
-        [-1.0, -1.0, -1.0],
-        [1.0, -1.0, -1.0],
-        [1.0, -1.0, 0.0]
-    ],
-
-    [
-        [-1.0, 1.0, 0.0],
-        [1.0, 1.0, 0.0],
-        [1.0, 1.0, -1.0],
-        [-1.0, 1.0, -1.0]
-    ]
-];
