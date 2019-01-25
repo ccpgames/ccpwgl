@@ -128,7 +128,7 @@ export class Tw2Mesh
                 return;
 
             case device.RM_ADDITIVE:
-                if (this.visible.transparentAreas)
+                if (this.visible.additiveAreas)
                 {
                     getBatches(this, this.additiveAreas, mode, accumulator, perObjectData);
                 }
