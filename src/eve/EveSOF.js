@@ -106,7 +106,7 @@ export function EveSOF()
         return null;
     }
 
-    function GetOverridenParameter(name, area, commands, race)
+    function GetOverridenParameter(name, area, commands, faction)
     {
         var prefixes, materialIndex, materialData, shortName;
         if ('mesh' in commands)
@@ -140,7 +140,7 @@ export function EveSOF()
 
         if (materialIndex !== null)
         {
-            materialData = _get(data.material, race.defaultPatternLayer1MaterialName, null);
+            materialData = _get(data.material, faction.defaultPatternLayer1MaterialName, null);
             if (materialData)
             {
                 shortName = name.substr(prefixes[materialIndex].length);
@@ -175,7 +175,7 @@ export function EveSOF()
             for (var j = 0; j < names.length; ++j)
             {
                 var name = names[j];
-                var param = GetOverridenParameter(name, area, commands, race);
+                var param = GetOverridenParameter(name, area, commands, faction);
                 param = param || _get(_get(_get(data.generic.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(race.hullAreas, area.name, {}), 'parameters', {}), name);
                 param = param || _get(_get(_get(faction.areas, area.name, {}), 'parameters', {}), name);
