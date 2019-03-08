@@ -260,7 +260,7 @@ export function EveSOF()
         }
     }
 
-    function SetupPattern(hull, race, commands)
+    function SetupPattern(hull, faction, commands)
     {
         var pattern = {
             patterns: [],
@@ -319,7 +319,7 @@ export function EveSOF()
             {
                 pattern.patterns.push(layer);
             }
-            p = _get(race, 'defaultPattern', {});
+            p = _get(faction, 'defaultPattern', {});
             layer = _get(p, 'layer1', null);
             if (layer)
             {
@@ -843,7 +843,7 @@ export function EveSOF()
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
         var ship = new (_get(hull, 'buildClass', 0) === 2 ? EveSpaceObject : EveShip)();
-        var pattern = SetupPattern(hull, race, commands);
+        var pattern = SetupPattern(hull, faction, commands);
         SetupMesh(ship, hull, faction, race, commands, pattern);
         SetupCustomMasks(ship, pattern);
         SetupDecals(ship, hull, faction);
