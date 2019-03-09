@@ -260,7 +260,7 @@ export function EveSOF()
         }
     }
 
-    function SetupPattern(hull, race, commands)
+    function SetupPattern(hull, faction, commands)
     {
         var pattern = {
             patterns: [],
@@ -308,28 +308,15 @@ export function EveSOF()
         }
         else if (_get(hull, 'defaultPattern'))
         {
+            // Hull contains up to two pattern transforms, or nothing
             p = _get(hull, 'defaultPattern', {});
             layer = _get(p, 'transformLayer1', null);
-            if (layer)
-            {
-                pattern.patterns.push(layer);
-            }
+            if (layer) pattern.patterns.push(layer);
             layer = _get(p, 'transformLayer2', null);
-            if (layer)
-            {
-                pattern.patterns.push(layer);
-            }
-            p = _get(race, 'defaultPattern', {});
-            layer = _get(p, 'layer1', null);
-            if (layer)
-            {
-                pattern.layers.push(layer);
-            }
-            layer = _get(p, 'layer2', null);
-            if (layer)
-            {
-                pattern.layers.push(layer);
-            }
+            if (layer) pattern.patterns.push(layer);
+            // Faction is a single pattern layer, or nothing
+            layer = _get(faction, 'defaultPattern', null);
+            if (layer) pattern.layers.push(layer);
         }
         return pattern;
     }
@@ -843,7 +830,7 @@ export function EveSOF()
         var faction = data['faction'][parts[1]];
         var race = data['race'][parts[2]];
         var ship = new (_get(hull, 'buildClass', 0) === 2 ? EveSpaceObject : EveShip)();
-        var pattern = SetupPattern(hull, race, commands);
+        var pattern = SetupPattern(hull, faction, commands);
         SetupMesh(ship, hull, faction, race, commands, pattern);
         SetupCustomMasks(ship, pattern);
         SetupDecals(ship, hull, faction);
