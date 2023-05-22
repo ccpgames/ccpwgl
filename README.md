@@ -10,6 +10,8 @@ Core files
 
 Demos
 -----
+Click [here](https://phobiacide.github.io/ccpwgl/) for a live demo.
+
 * `demo/index.html`         - A collection of ccpwgl demonstrations
 * `demo/sof.html`           - Shows how to load ships using Space Object Factory and how to query its data
 * `demo/planets.html`       - Shows how to load planets
