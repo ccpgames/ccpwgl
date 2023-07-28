@@ -27,7 +27,7 @@
                 {
                     var view = mat4.create();
                     mat4.rotateY(view, view, Math.PI);
-                    mat4.translate(view, view, [0, -100, 300]);
+                    mat4.translate(view, view, [-200, -100, 1000]);
                     return view;
                 },
                 getProjection: function (aspect)
@@ -39,10 +39,10 @@
             ccpwgl.setCamera(camera);
 
             scene = ccpwgl.loadScene('res:/dx9/scene/universe/m10_cube.red');
-            ship = scene.loadShip('abc1_t1:amarrbase:amarr');
+            ship = scene.loadShip('ab1_t2:drifter:jove');
             ship.mountTurret(1, 'res:/dx9/model/turret/Energy/Beam/M/beam_focused_F.red');
             ship.mountTurret(2, 'res:/dx9/model/turret/Hybrid/Rail/M/Rail_250mm_T1.red');
-            ship.setBoosterStrength(0.3);
+            ship.setBoosterStrength(1);
 
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
@@ -76,7 +76,7 @@
 
 </head>
 <body onload="OnDocLoad()">
-<canvas id="mainCanvas" width="500" height="500"></canvas>
+<canvas id="mainCanvas" width="100%" height="100%"></canvas>
 <div id="loading">Loading...</div>
 </body>
 </html>
