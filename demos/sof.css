@@ -1,0 +1,51 @@
+/* Custom CSS styles for aesthetic improvements */
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-expand {
+  flex-grow: 1;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-field label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.browse-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sof-tree {
+  list-style-type: none;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.sof-tree li {
+  margin-bottom: 5px;
+}
