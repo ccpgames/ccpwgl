@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>SOF Browser - CCPWGL Demos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
@@ -14,8 +15,7 @@
 
         var camera, scene, ship;
 
-        $(document).ready(function ()
-        {
+        $(document).ready(function () {
             console.dir(ccpwgl_int);
 
             var $canvas = $('#mainCanvas');
@@ -27,22 +27,16 @@
             if (demos.options.postprocess)
                 ccpwgl.enablePostprocessing(true);
 
-            function loadDna(dna)
-            {
-                ccpwgl.getSofHullConstructor(dna, function (constructor)
-                {
-                    if (constructor)
-                    {
-                        try
-                        {
+            function loadDna(dna) {
+                ccpwgl.getSofHullConstructor(dna, function (constructor) {
+                    if (constructor) {
+                        try {
                             scene.removeObject(0);
                         }
-                        catch (e)
-                        {
+                        catch (e) {
                         }
                         ship = scene[constructor](dna);
-                        if ('setBoosterStrength' in ship)
-                        {
+                        if ('setBoosterStrength' in ship) {
                             ship.setBoosterStrength($('#booster-intensity').val() / 50);
                         }
                     }
@@ -51,75 +45,72 @@
 
             softree($('.sof-tree'), $('#dna'), loadDna);
 
-            $('#create').click(function ()
-            {
+            $('#create').click(function () {
                 var dna = $('#dna').val();
                 loadDna(dna);
-                history.pushState({'dna': dna}, 'SOF ' + dna);
+                history.pushState({ 'dna': dna }, 'SOF ' + dna);
             });
 
-            $('#normal').click(function ()
-            {
+            $('#normal').click(function () {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.NORMAL);
             });
 
-            $('#siege').click(function ()
-            {
+            $('#siege').click(function () {
                 scene.getObject(0).setSiegeState(ccpwgl.ShipSiegeState.SIEGE);
             });
 
-            $('#booster-intensity').change(function ()
-            {
+            $('#booster-intensity').change(function () {
                 scene.getObject(0).setBoosterStrength($(this).val() / 50)
             });
 
-            $('#kills').change(function ()
-            {
+            $('#kills').change(function () {
                 scene.getObject(0).setKillCount(parseInt($(this).val()));
             });
 
-            ccpwgl.onPreRender = function ()
-            {
+            ccpwgl.onPreRender = function () {
                 document.getElementById('loading').style.display = ccpwgl.isLoading() ? 'block' : 'none';
             };
         });
     </script>
 
 </head>
+
 <body>
-<canvas id="mainCanvas" width="500" height="500"></canvas>
-<div id="toolbox">
-    <div>
-        <button id="browse" class="btn" data-pane="browse-pane">Browse</button>
+    <canvas id="mainCanvas" width="500" height="500"></canvas>
+    <div id="toolbox">
+        <div>
+            <button id="browse" class="btn" data-pane="browse-pane">Browse</button>
+        </div>
+        <div>
+            <button id="state" class="btn" data-pane="state-pane">State</button>
+        </div>
     </div>
-    <div>
-        <button id="state" class="btn" data-pane="state-pane">State</button>
+
+    <div id="loading">Loading...</div>
+    <div id="browse-pane" class="pane visible">
+        <div class="pane-heading">Browse</div>
+        <div class="flex-horizontal">
+            <input id="dna" type="text" class="flex-expand" value="::">
+            <button id="create" class="default">Create</button>
+        </div>
+        <ul class="sof-tree flex-expand"></ul>
     </div>
-</div>
-<div id="loading">Loading...</div>
-<div id="browse-pane" class="pane visible">
-    <div class="pane-heading">Browse</div>
-    <div class="flex-horizontal">
-        <input id="dna" type="text" class="flex-expand" value="::">
-        <button id="create" class="default">Create</button>
+    <div id="state-pane" class="pane">
+        <div class="pane-heading">Controls</div>
+        <div>
+            <label for="booster-intensity">Boosters</label>
+            <input type="range" id="booster-intensity" style="vertical-align: middle">
+        </div>
+        <div>
+            <label>Siege State</label>
+            <button id="normal">Normal</button>
+            <button id="siege">Siege</button>
+        </div>
+        <div>
+            <label for="kills">Kills</label>
+            <input id="kills" type="number" value="0">
+        </div>
     </div>
-    <ul class="sof-tree flex-expand"></ul>
-</div>
-<div id="state-pane" class="pane">
-    <div class="pane-heading">Controls</div>
-    <div>
-        <label for="booster-intensity">Boosters</label>
-        <input type="range" id="booster-intensity" style="vertical-align: middle">
-    </div>
-    <div>
-        <label>Siege State</label>
-        <button id="normal">Normal</button>
-        <button id="siege">Siege</button>
-    </div>
-    <div>
-        <label for="kills">Kills</label>
-        <input id="kills" type="number" value="0">
-    </div>
-</div>
 </body>
+
 </html>
